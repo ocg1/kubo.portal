@@ -1,0 +1,66 @@
+/*
+ * --------------------------------------------
+  	FdC:         [12.Junio.2014]
+  	Folder:      css/secciones/fichas_producto/
+  	Programador: Damián Tapia Nava
+ * ---------------------------------------------
+ */
+ 
+@CHARSET "UTF-8";
+
+div.main_container
+{
+	width:auto;
+	min-width:1300px;
+	overflow:hidden;
+	
+	border:0px solid black;
+}
+
+div.west_column
+{
+	height:auto;
+	width:22%;
+	/*min-width:290px;*/
+	
+	margin:5px 1%;
+	
+	float:left;
+	
+	border:0px solid blue;
+}
+
+div.center_colum
+{
+	height:auto;
+	width:51%;
+	/*min-width:490px;*/
+	
+	margin:5px;
+	float:left;
+	
+	color: #333333;	
+	
+	border:0px solid black;
+}
+
+div.east_column
+{
+	height:auto;
+	width:21%;
+	/*min-width:290px;*/
+	
+	margin:5px 1%;
+	float:left;
+	
+	border:0px solid blue;
+}
+
+div.float_divider
+{
+	height:1px;
+	clear: both;
+	display:block;
+	font-size:1px;
+	line-height:1px;	
+}

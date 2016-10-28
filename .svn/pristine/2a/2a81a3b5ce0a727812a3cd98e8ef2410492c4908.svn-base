@@ -1,0 +1,140 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div>
+		<script>
+			 $(document).ready(function(){ 
+					 $(".elige_opcion").hide();
+		
+			}); 
+		 </script>
+	 
+		<span>Elige tus preguntas de seguridad y contéstalas, éstas nos ayudarán a identificarte en caso de que olvides tu contraseña</span>						
+		
+		<div>
+		
+			<div>
+				<p><h:outputText value="Preguntas de seguridad 1: " styleClass="labelsStl"></h:outputText></p>
+			</div>
+			
+			<div class = "dvElement">
+				<div >
+					<h:selectOneMenu id    = "preg" disabled = "true"
+									 value = "#{forgotPass.seqQuest}" 
+									 
+									 >
+									 
+						<f:selectItem itemLabel = "Seleccione Pregunta" itemValue = ""/>
+						
+						<f:selectItems value     = "#{forgotPass.securityQList}" 
+									   var       = "security" 
+									   itemLabel = "#{security.question}" 
+									   itemValue = "#{security.securityQuestionPK.security_question_id}"/>
+						
+						<p:ajax event = "change" onstart = "return validaSelect('preg');" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+		</div>
+		
+		<div class = "dvContent">
+			<div class = "dvLabel">
+				<h:outputText value = "Respuesta: " styleClass = "labelsStl"/>
+			</div>	
+								
+			<div class = "dvElement">
+				<p:inputText id         = "resp"  								 
+							 value      = "#{forgotPass.answer}"
+							 disabled   = "true" 								  
+							 type       = "password" 
+							 >
+					
+				</p:inputText>
+			</div>
+		</div>
+
+		<br />
+		
+		<div>
+			<div class="dvLabel">
+				<h:outputText value="Preguntas de seguridad 2: "></h:outputText>
+			</div>
+			<div  class="dvElement">
+				<div class="styled-select">
+					<h:selectOneMenu id="preg2" value="#{forgotPass.seqQuest2}"  >
+						<f:selectItem itemLabel="Seleccione Pregunta" itemValue="" />
+						<f:selectItems  value="#{forgotPass.securityQList}" var="security" itemLabel="#{security.question}" itemValue="#{security.securityQuestionPK.security_question_id}"/>
+						<p:ajax event="change" onstart="return validaSelect('preg2');" ></p:ajax>
+					</h:selectOneMenu>
+				</div>
+			</div>
+		</div>
+		
+		<div class="dvContent">
+			<div class="dvLabel">
+				<h:outputText value="Respuesta: " styleClass="labelsStl"></h:outputText>
+			</div>						
+			<div  class="dvElement">
+				<p:inputText type="password"  styleClass="elementStl" id="resp2"  value="#{forgotPass.answer2}" >
+					<!--  p:ajax event="blur" onstart="return validaLenght('resp2',4);" ></p:ajax-->
+				</p:inputText>
+			</div>
+		</div>
+		
+		<div class="dvContent">
+			<div class="dvLabel">
+				<h:outputText value="Confirma tu respuesta: " ></h:outputText>
+			</div>						
+			<div  class="dvElement">
+				<p:inputText type="password" id="confresp2"  styleClass="elementStl"   >
+					<p:ajax event="blur" onstart="return validaConfRes('resp2','confresp2');" ></p:ajax>
+				</p:inputText>
+			</div>
+		</div>
+		
+		<!-- ***************************************** -->
+		<!-- ***************************************** -->
+		
+		<br />
+		<div class="dvContent">
+			<div class="dvLabel">
+				<h:outputText value="Preguntas de seguridad 3: "></h:outputText>
+			</div>
+			<div  class="dvElement">
+				<div class="styled-select">
+					<h:selectOneMenu id="preg3" value="#{forgotPass.seqQuest3}" >
+						<f:selectItem itemLabel="Seleccione Pregunta" itemValue="" />
+						<f:selectItems  value="#{forgotPass.securityQList}" var="security" itemLabel="#{security.question}" itemValue="#{security.securityQuestionPK.security_question_id}"/>
+						<p:ajax event="change" onstart="return validaSelect('preg3');" ></p:ajax>
+					</h:selectOneMenu>
+				</div>
+			</div>
+		</div>
+		
+		<div class="dvContent">
+			<div class="dvLabel">
+				<h:outputText value="Respuesta: " styleClass="labelsStl"/>
+			</div>						
+			<div  class="dvElement">
+				<p:inputText type="password" id="resp3"  value="#{forgotPass.answer3}" >
+					<!-- p:ajax event="blur" onstart="return validaLenght('resp3',4);" /-->
+				</p:inputText>
+			</div>
+		</div>
+		
+		<div class="dvContent">
+			<div class="dvLabel">
+				<h:outputText value="Confirma tu respuesta: " />
+			</div>						
+			<div  class="dvElement">
+				<p:inputText type="password" id="confresp3"   >
+					<p:ajax event="blur" onstart="return validaConfRes('resp3','confresp3');" />
+				</p:inputText>
+			</div>
+		</div>
+	
+	</div>				
+</ui:composition>				

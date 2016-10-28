@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://kubows.kubo.com.mx" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://kubows.kubo.com.mx" xmlns:intf="http://kubows.kubo.com.mx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://kubows.kubo.com.mx" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="publishProyect">
+    <complexType>
+     <sequence>
+      <element name="prospectus_id" type="xsd:string"/>
+      <element name="company_id" type="xsd:string"/>
+      <element name="proyect_id" type="xsd:string"/>
+      <element name="status" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="publishProyectResponse">
+    <complexType>
+     <sequence>
+      <element name="publishProyectReturn" type="impl:WsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="WsResponse">
+    <sequence>
+     <element name="folio" nillable="true" type="xsd:string"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="verificationStatus">
+    <complexType>
+     <sequence>
+      <element name="prospectus_id" type="xsd:string"/>
+      <element name="company_id" type="xsd:string"/>
+      <element name="proyect_id" type="xsd:string"/>
+      <element name="status" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="verificationStatusResponse">
+    <complexType>
+     <sequence>
+      <element name="verificationStatusReturn" type="impl:WsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setTransunionCalif">
+    <complexType>
+     <sequence>
+      <element name="transunion" type="impl:TransUnionCalifRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="TransUnionCalifRequest">
+    <sequence>
+     <element name="ajuste1" nillable="true" type="xsd:string"/>
+     <element name="ajuste2" nillable="true" type="xsd:string"/>
+     <element name="burSolNum" nillable="true" type="xsd:string"/>
+     <element name="califRiesgo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="setTransunionCalifResponse">
+    <complexType>
+     <sequence>
+      <element name="setTransunionCalifReturn" type="impl:WsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setProspectRisk">
+    <complexType>
+     <sequence>
+      <element name="request" type="impl:ProspectRiskRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ProspectRiskRequest">
+    <sequence>
+     <element name="cci_score" nillable="true" type="xsd:string"/>
+     <element name="emisor_company_id" nillable="true" type="xsd:string"/>
+     <element name="emisor_prospect_id" nillable="true" type="xsd:string"/>
+     <element name="evento" nillable="true" type="xsd:string"/>
+     <element name="kubo_rate" nillable="true" type="xsd:string"/>
+     <element name="kubo_score_a" nillable="true" type="xsd:string"/>
+     <element name="kubo_score_b" nillable="true" type="xsd:string"/>
+     <element name="liquidity" nillable="true" type="xsd:string"/>
+     <element name="mx_solicitud_buro" nillable="true" type="xsd:string"/>
+     <element name="openning_comision" nillable="true" type="xsd:string"/>
+     <element name="prospect_id" nillable="true" type="xsd:string"/>
+     <element name="rate" nillable="true" type="xsd:string"/>
+     <element name="rate_investor" nillable="true" type="xsd:string"/>
+     <element name="risk_level" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="setProspectRiskResponse">
+    <complexType>
+     <sequence>
+      <element name="setProspectRiskReturn" type="impl:WsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="setProspectRiskResponse">
+
+      <wsdl:part element="impl:setProspectRiskResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setTransunionCalifResponse">
+
+      <wsdl:part element="impl:setTransunionCalifResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verificationStatusRequest">
+
+      <wsdl:part element="impl:verificationStatus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setTransunionCalifRequest">
+
+      <wsdl:part element="impl:setTransunionCalif" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="publishProyectResponse">
+
+      <wsdl:part element="impl:publishProyectResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setProspectRiskRequest">
+
+      <wsdl:part element="impl:setProspectRisk" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verificationStatusResponse">
+
+      <wsdl:part element="impl:verificationStatusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="publishProyectRequest">
+
+      <wsdl:part element="impl:publishProyect" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PublicProyect">
+
+      <wsdl:operation name="publishProyect">
+
+         <wsdl:input message="impl:publishProyectRequest" name="publishProyectRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:publishProyectResponse" name="publishProyectResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verificationStatus">
+
+         <wsdl:input message="impl:verificationStatusRequest" name="verificationStatusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:verificationStatusResponse" name="verificationStatusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setTransunionCalif">
+
+         <wsdl:input message="impl:setTransunionCalifRequest" name="setTransunionCalifRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setTransunionCalifResponse" name="setTransunionCalifResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setProspectRisk">
+
+         <wsdl:input message="impl:setProspectRiskRequest" name="setProspectRiskRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setProspectRiskResponse" name="setProspectRiskResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PublicProyectSoapBinding" type="impl:PublicProyect">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="publishProyect">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="publishProyectRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="publishProyectResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verificationStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verificationStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verificationStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setTransunionCalif">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setTransunionCalifRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setTransunionCalifResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setProspectRisk">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setProspectRiskRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setProspectRiskResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PublicProyectService">
+
+      <wsdl:port binding="impl:PublicProyectSoapBinding" name="PublicProyect">
+
+         <wsdlsoap:address location="http://localhost:8080/Kubo/services/PublicProyect"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,233 @@
+#lstIncometb,
+#lstExpensestb
+{
+	width: 440px;
+	margin: 0 auto 30px;
+	display:block;
+	font-size:17px;
+	font-weight:400;
+	background: #fff;
+	padding: 6px;
+	border: solid 1px #ccc;
+}
+
+	
+#lstIncometb table,
+#lstExpensestb table,
+{
+	width:100%;
+}
+
+.detail_income_bussines,
+#porcentClientDis,
+#negotiationDv 
+{
+	display:none;
+	position:absolute;
+	z-index:999;
+	top: 50px;
+	width:500px;
+	max-height:500px;
+	left: 29%;
+	background: #fff;
+	border: solid 2px #4ca330;
+	padding: 20px 4%;
+	overflow: auto;
+}
+
+#porcentClientDis
+{
+	width: 450px; 
+	height: auto; 
+	padding-bottom: 20px;
+}
+
+.ui-widget-content a {
+    color: #4ca330;
+}
+
+.veloE {
+	width:100%;
+	height: 100%;
+	display:none;
+	position: relative;
+	background: rgba(255,255,255,.5);
+	z-index: 1;
+	max-height: 2000%;
+	overflow: hidden;
+	position: absolute;
+}
+
+.pantallaTelefonos {
+	overflow:visible;
+}
+
+.formato_tablas {
+	margin: 8px 0 0 0;
+	/* font-family: arial; */
+	font-size: 15px;
+}
+.formato_tablas td{
+	vertical-align:top;
+	padding: 10px 5px;
+	color: #666;
+	border: solid 1px #ccc !important;
+}
+
+.formato_tablas td p {
+	vertical-align:top;
+	margin:0;
+}
+
+.formato_tablas>tbody> tr.par{
+	background: #f1f1f1;
+	color: #333;
+
+}
+
+.formato_tablas th{
+	height:25px;	
+	padding: 8px 1.7% 4px 1.7%;
+	color: #ffffff;
+	background: #4ca330;	
+	margin: 0;
+	text-align: left;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+.encabezado {
+	background:#666;
+	color:#fff;
+	padding: 14px 5px 0;
+}
+
+.inputMod {
+	width: 83%;
+	text-align: right;
+	font-size: 12px !important;
+	color: #333333;
+	margin: 0 0 0 4% !important;
+}
+.celdaMod {
+	
+}
+
+.celdaMod span {
+	
+}
+
+.bordeLinea {
+	text-align:center;
+	border-top: solid 2px #9E9E9E;
+	/* margin-right: 5px; */
+	/* margin: -10px 0 0 0; */
+}
+
+#tableDetails_data td, #dtIncome td {
+	padding: 8px 5px !important;
+	font-weight: 400;
+	font-family: 'Lato', sans-serif;
+	font-size:15px;
+	background: none;
+}
+
+#tableDetails th {
+	padding:10px 0 !important;
+}
+
+.ui-datatable-odd {
+    background:#f1f1f1 !important;
+}
+
+.otherInc {
+	background:none !important;
+}
+
+td.principal {
+	background:#ccc;
+	text-transform:uppercase;
+	text-shadow:none;
+	font-weight: 700 !important;
+}
+
+#closeDetailIncome, 
+#close_percentage
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+
+.expandTemp, .encabezado {
+	font-size:22px;
+	font-weight:500;
+	margin: 0 0 20px;
+	color: #4CA330;
+	background:none;
+}
+
+#pnlTableIncome .borderTop {
+	border-top: solid 2px #000 !important;
+}
+
+b.menor_25_porciento
+{
+	background-color: green;
+	padding:5px;
+	color:white;
+}
+
+b.mayor_25_menor_30_porciento
+{
+	background-color: yellow;
+	padding:5px;
+	color:black;
+}
+
+b.mayor_30_porciento
+{
+	background-color: red;
+	padding:5px;
+	color:white;
+}
+
+#negotiationBtn img
+{
+	width:20px;
+	height:auto;	
+}
+
+#negotiationBtn:hover
+{	
+	cursor: pointer;
+}
+
+#thisSimNeg
+{
+	width: 100%;
+	position: relative;	
+	overflow: hidden; 
+	min-height: 370px; 
+	margin-top: 25px;
+	margin-left: auto 0; 		
+	font-size: 0.75em; 	 	
+}
+
+.sim_cont
+{
+	padding-top: 30px; 
+	padding-left: 0px; 
+	width: 100%;
+	margin-right: auto; 
+	margin-left: auto; 
+	overflow: hidden; 
+}
+
+.sim_cont_back
+{
+	width: 100%;
+	min-height: 270px;
+}
+ 
+

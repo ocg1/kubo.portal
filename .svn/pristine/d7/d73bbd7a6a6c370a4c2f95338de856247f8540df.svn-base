@@ -1,0 +1,465 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+<script type = "text/javascript" src = "../resources/js/templates/simulador/simulador.js" />
+
+<script>
+
+function loader(){
+	
+	$("#resultadosSimNeg").css("display","none");
+	$("#loaderSimNeg").css("display","block");
+	
+	 return true;
+}
+
+function showRes(){
+	$("#loaderSimNeg").css("display","none");
+	$("#resultadosSimNeg").css("display","block");
+	return true;
+}
+
+function simOnStartVal(){
+	
+	if( validaMontoMinSim('ammountNeg','simulator') ){
+		if( validaPlazoSim('termNeg') ){
+			
+			loader();
+			var ent = $("#ammountNeg").val().replace(",","");
+			var input = $("#ammountNeg");
+			
+			if(!isNaN(ent)){
+			 	
+				return true;
+			 	
+			}else{
+				
+				alert("Cantidad invalida");
+				input.value="";
+				return false;
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+function validaReestruct() {
+	
+	var monto = $("#ammountNeg").val();
+	
+	var term = $("#termNeg").val();
+	
+	var freq = $("#frecuProyect").val();
+	
+	if(freq == 1){
+		
+		freq = "Semanales";
+		
+	}else if(freq == 2){
+		
+		freq = "Catorcenales";
+		
+	}else if(freq == 3){
+		
+		freq = "Quincenales";
+		
+	}else if(freq == 4){
+		
+		freq = "Mensuales";
+		
+	}
+	
+	var payment = $("#payment").val();
+	
+	var total = $("#totalpayment").val();
+	
+	if( confirm("Usted eligió reestructurar el crédito con las siguientes condiciones: \nmonto: $"+monto+" \n plazo: "+term+" pagos "+freq+" \ncuota: $"+payment+"\ntotal a pagar: $"+total) ){
+			
+		return displayMessageProcessing('msgprocessing', false);
+		
+	}
+	else{
+		
+		return false;
+		
+	}
+	 
+	
+}
+
+</script>
+
+<style>
+	a:HOVER {
+		text-decoration: none;
+	}
+</style>
+
+<h:form prependId="false" >
+
+<div  class="respMesa" style=" font-size: 0.75em !important; ">
+	<h:panelGroup id="contRestructure" rendered="#{restructure.displayCase}">
+	
+	<h:panelGroup  rendered="#{restructure.restructDisplay}" >
+	<table>
+		<tr>
+			<td colspan="4" >
+				<div style=" margin-top: 20px; margin-bottom: 20px; margin-left: auto; margin-right: auto; font-size: 2.1em; color: #439539; height: auto; width: 300px; ">
+					Reestructura de Crédito
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" >
+				<p:commandLink	
+					onstart="return displayMessageProcessing('msgprocessing', false);"																	
+					actionListener="#{menuControlTableBean.cambiaPagina}"	
+					oncomplete="closeFancy();"
+					update=":actualPage :form_Prin">
+					<f:attribute name="section" value="#{restructure.btnPage}::#{restructure.btnPageId}::#{restructure.btnMenu}" />
+					<div class="buttonPR" style="width: 200px; font-size: 1.35em; padding-top: 6px; margin-left: 0px;">
+						#{restructure.msgBtn}	
+					</div>
+				</p:commandLink>
+			</td>
+			<td colspan="2" />
+			
+		</tr>
+		
+		<tr>
+			<td colspan="4" >
+				<div style=" margin-top: 20px; margin-bottom: 20px; margin-left: auto; margin-right: auto; font-size: 1.8em; height: auto; width: 600px; ">
+					Condiciones Actuales del Crédito a Reestructurar
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><div class="labelsStl" style="width: 190px;" >Crédito:</div></td>
+			<td colspan="3" ><div class="labelsStl" style="width: 300px;">#{restructure.proyect.proyect.safi_credit_id}</div></td>
+		</tr>
+		
+		<tr>
+			<td><div class="labelsStl" style="width: 190px;" >Monto:</div></td>
+			<td><div class="labelsStl" style="width: 300px;"><span style="color: #439539;" >#{restructure.monto}</span></div></td>
+			<td><div class="labelsStl" style="width: 190px;">Plazo</div></td>
+			<td><div class="labelsStl" style="width: 300px;"><span style="color: #439539;" >#{restructure.plazo}</span></div></td>
+		</tr>
+		<tr>
+			<td><div class="labelsStl" > Tasa: </div></td>
+			<td><div class="labelsStl" ><span style="color: #439539;" > #{restructure.proyect.proyect.rate}%  anual </span> </div></td>
+		<!-- </tr>
+		<tr> -->
+			<td><div class="labelsStl" > CAT: </div></td>
+			<td><div class="labelsStl" ><span style="color: #439539;" > #{restructure.proyect.proyect.mx_cat}% </span> </div></td>
+		</tr>										
+		<tr>
+			<td><div class="labelsStl" >Fecha Inicio:</div></td>
+			<td><div class="labelsStl" ><span style="color: #439539;" > #{restructure.proyect.fechaInicio} </span></div></td>
+			<td><div class="labelsStl" >Fecha Término</div></td>
+			<td><div class="labelsStl" ><span style="color: #439539;" > #{restructure.proyect.fechaFin} </span></div></td>
+		</tr>
+		
+		<tr>
+			<td>
+				<div class="labelsStl" > Saldo para liquidar: </div>
+			</td>
+			<td>
+				<div class="labelsStl" >
+				
+				<table>
+					<tr>
+						<td><span style="color: #439539;" > #{restructure.proyect.getSaldoLiquidarStr()} </span></td>
+					</tr>
+				</table> 
+				 
+				</div>
+			</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	
+	<div style="position: relative; height: auto; width: auto; overflow: hidden; margin-left: auto; margin-right: auto;">
+		
+		<div id="negotiationDv" style=" width: 450px; font-size:1.3em;  height: auto; padding-bottom: 20px; position: relative; margin-left: 280px;  border: solid 0px #FF0000; " >
+			<p:outputPanel id="negotiationCont" >
+			
+				<div id="negotiationDisWait" style="display: none; margin-left: auto; margin-right: auto; margin-top: 40px;" >
+					<p:graphicImage url="../resources/img/ajax-loader.gif" width="24px" height="24px"></p:graphicImage>
+				</div>
+			<!-- ++++++++ SIMULADOR ++++++++ -->
+				<h:panelGroup id="contSimRegNeg"  rendered="#{sessionBean.area=='M'}" >
+					<h:panelGroup>
+							
+						<div id="thisSimNeg" style="min-height: 370px; margin-top: 25px; width: 285px; overflow: hidden; font-size: 0.75em; margin-left: auto; margin-right: auto; position: relative; " >
+							
+							<h:inputHidden id="montoMax" value="#{restructure.montoMax}" ></h:inputHidden>
+							<h:inputHidden id="montoMin" value="#{restructure.montoMin}" ></h:inputHidden>
+							<h:inputHidden id="termMax"  value="#{restructure.termMax}" ></h:inputHidden>
+							
+							<div class="sim_cont_back" style="width: 230px; min-height: 270px;">
+								<div class="sim_cont" style="padding-top: 30px; padding-left: 0px; width: 205px; margin-right: auto; margin-left: auto; overflow: hidden; ">
+									<div style="height: 32px; z-index: 1; border: solid 1px #FFF200; position: absolute; top: 10px; left: 7px;width: 268px;
+									background-image: url('../resources/img/backButtH.png'); background-repeat: repeat-x; opacity:0.9; filter:alpha(opacity=90);"> 
+									  <div  style="width: 10px; height: 15px;  position: absolute; top: 32px; left: 0px; background-image: url('../resources/img/bkTitle-1.png'); background-repeat: no-repeat; "></div>
+									  <div style="width: 10px; height: 15px;  position: absolute; top: 32px; right:0px; background-image: url('../resources/img/bkTitle-2.png'); background-repeat: no-repeat; "></div>
+									</div>
+									<div style="height: 32px; z-index: 2; font-size: 1.3em; font-weight: bold; padding-top: 7px; border: solid 0px #000000; position: absolute; top: 10px; left: 7px;width: 268px;text-align: center;">
+										Condiciones de Reestructura
+									</div>
+									<table id="sim_table_neg" style="margin-left: 0px; width: 200px !important;" >
+										<tr>
+											<td class="sim_desc">Monto</td>
+										</tr>
+										<tr>
+											 <td class="sim_value" style="text-align: center !important;" >
+											 	<h:panelGroup id="pnlAmmountNeg">
+												 	<!-- <h:inputText id="ammountNeg"  value="#{restructure.montoNegotiation}"  styleClass="elementAddres1" onkeyup="format(this,'simulator');" style="width: 175px !important; font-size: .95em !important; text-align: right !important;"  >
+												 		<p:ajax event="blur" listener="#{restructure.modificaCondiciones}"  update="resSimRegNeg catSimRegNeg  btnCondiciones "  onstart="return simOnStartVal();"  oncomplete="return showRes();" />
+												 	</h:inputText> -->
+												 	<h:outputText id="ammountNegLbl"  value="#{restructure.montoNegotiation}" style="width: 175px !important; font-size: 1.3em !important;"  />
+												 	<h:inputHidden id="ammountNeg" value="#{restructure.montoNegotiation}" ></h:inputHidden>
+											 	</h:panelGroup>
+											 </td>
+										</tr>
+										<tr  style="margin-bottom: 0px !important; padding-bottom: 0px !important;">
+											<td class="sim_desc" style="margin-bottom: 0px; padding-bottom: 0px;" >Plazo</td>
+										</tr>
+										<tr  style="margin-top: 0px !important; padding-top: 0px !important;" >
+											<td class="sim_value" style="margin-top: 0px !important; padding-top: 0px !important;">
+												
+												 <table style="margin-left: auto; margin-right: auto; font-size: 0.8em;">
+												   	<tr>
+					                            		<td>
+					                            			<h:inputText styleClass="elementAddresMin" style="width: 40px !important;" maxlength="3"  required="true" id="termNeg" value="#{restructure.term_id}"   >
+																 <p:ajax event="change" onstart="return simOnStartVal();" oncomplete="return showRes();"  listener="#{restructure.modificaCondiciones}" update="resSimRegNeg catSimRegNeg "  />  
+															</h:inputText>
+					                            		</td>
+			
+					                            		<td>
+					                            			<div class="styled-select-Month"  style="width: 125px !important;" >
+					                            			<h:selectOneMenu id="frecuProyect" value="#{restructure.frequency_id}"  style="width: 150px !important; background: none !important; height: 29px !important;  position: relative;"  styleClass="elementStlSelMonth"  >
+																<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+																<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+																<p:ajax event="change" onstart="return simOnStartVal();" oncomplete="return showRes();" listener="#{restructure.modificaCondiciones}" update="resSimRegNeg catSimRegNeg " />  
+															</h:selectOneMenu>	
+															</div>
+					                            		</td>
+					                            	</tr>
+											    </table>
+												
+											</td>
+										</tr>
+										
+										<tr>
+											<td>
+												<h:panelGroup id="resSimRegNeg">
+												<div id="loaderSimNeg" style="display: none;" >
+													<p:graphicImage url="../resources/img/ajax-loader.gif" width="24px" height="24px"></p:graphicImage>
+												</div>
+												<div id="resultadosSimNeg">
+													
+													<table>
+														<tr>
+															<td >
+																<table style="margin-left: 3px;">
+																	<tr>
+																		<td class="sim_desc" style="width: 100px; text-align: left; padding-top: 3px;">
+																			Pagos de
+																		</td>
+																		<td class="sim_value couta">
+																			
+																			<h:outputText  value="#{restructure.payment}" rendered="#{restructure.payment!=null and restructure.payment>0 }">
+																				<f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="0" minFractionDigits="0" groupingUsed="true" locale="es_MX"/>
+																			</h:outputText>
+																			<h:outputText value="No disponible" rendered="#{restructure.payment==null || restructure.payment==0 }" />
+																			<h:inputHidden id="payment" value="#{restructure.payment}" />
+																		</td>
+																	</tr>
+																</table> 
+															</td>
+														</tr>
+														<tr>
+															
+														</tr>
+														<tr>
+															<td class="sim_desc">
+																<table style="margin-left: 3px;">
+																	<tr>
+																		<td style="width: 100px; text-align: left;">
+																			Total a pagar
+																		</td>
+																		<td class="sim_value total">
+																			<h:outputText value="#{restructure.total_payment}" >
+																				<f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="0" minFractionDigits="0" groupingUsed="true" locale="es_MX"/>
+																			</h:outputText>
+																			
+																			<h:inputHidden id="totalpayment" value="#{restructure.total_payment}" />
+																			
+																		</td>
+																	</tr>
+																</table> 
+															</td>
+														</tr>
+													</table>
+													
+												</div>
+												</h:panelGroup>
+											</td>
+										</tr>
+										
+											
+									</table>
+								</div>
+							</div>
+							
+							<div class="labelsStl" style="text-align: justify; font-size: .95em; width: 280px; margin-left: auto; margin-right: auto; margin-top: 15px; padding: 5px;">
+							 <h:panelGroup id="catSimRegNeg"> 
+				      			<span style="text-align: justify; font-size: 1.3em;"><b>Costo Anual Total (CAT) #{simulator.catStr}% sin IVA.</b></span> Tasa fija. Para fines informativos y de comparación. 
+				      			Fecha de cálculo: #{simulator.fechaInicio}.
+				      			</h:panelGroup>
+				      		</div>
+						 
+						</div>
+					
+					</h:panelGroup>
+					
+				</h:panelGroup>
+				
+			<!-- ++++++ FIN SIMULADOR ++++++ -->
+			
+			</p:outputPanel>
+		</div>
+		<div style="width: 210px; ">
+		<p:commandLink	
+			onstart="return validaReestruct();"																	
+			actionListener="#{restructure.createRestructure}"
+			oncomplete="closeFancy();"
+			update="contRestructure"
+			>
+			
+			<div class="buttonPR" style="width: 200px; font-size: 1.35em; padding-top: 6px;">
+					Reestructurar Crédito
+			</div>
+			
+		</p:commandLink>
+		</div>
+	</div>
+	
+	</h:panelGroup>
+	
+	<h:panelGroup  rendered="#{!restructure.restructDisplay}" >
+	
+			<table style="margin-left: auto; margin-right: auto;" >
+			
+			<tr>
+			
+				<td colspan="4" >
+				
+					<div style=" margin-top: 20px; margin-bottom: 20px; margin-left: auto; margin-right: auto; font-size: 2.1em; color: #439539; height: auto; width: 300px; text-align: center; ">
+						Reestructura de Crédito
+					</div>
+					
+				</td>
+				
+			</tr>
+			
+			<tr>
+			
+				<td colspan="4" style="text-align: center;" >
+					<div class="labelsStl" >
+						El Crédito ha sido Reestructurado
+					</div>
+				</td>
+				
+			</tr>
+			
+			<tr>
+			
+				<td colspan="4" >
+					
+					<p:commandLink	
+						onstart="return displayMessageProcessing('msgprocessing', false);"																	
+						actionListener="#{menuControlTableBean.cambiaPagina}"	
+						oncomplete="closeFancy();"
+						update=":actualPage :form_Prin">
+						<f:attribute name="section" value="controlTable/edCuentaControl::22::menu6" />
+						<div class="buttonPR" style="width: 200px; font-size: 1.35em; padding-top: 6px;">
+								Regresar al Crédito
+						</div>
+					</p:commandLink>
+					
+				</td>
+				
+			</tr>
+			
+		</table>
+	
+	</h:panelGroup>
+	
+	</h:panelGroup>
+	
+	
+	<h:panelGroup rendered="#{not restructure.displayCase}" >
+	
+		<table style="margin-left: auto; margin-right: auto;" >
+			
+			<tr>
+			
+				<td colspan="4" >
+				
+					<div style=" margin-top: 20px; margin-bottom: 20px; margin-left: auto; margin-right: auto; font-size: 2.1em; color: #439539; height: auto; width: 300px; text-align: center; ">
+						Reestructura de Crédito
+					</div>
+					
+				</td>
+				
+			</tr>
+			
+			<tr>
+			
+				<td colspan="4" style="text-align: center;" >
+					<div class="labelsStl" >
+						No se ha seleccionado ningun crédito
+					</div>
+				</td>
+				
+			</tr>
+			
+			<tr>
+			
+				<td colspan="4" >
+					
+					<p:commandLink	
+						onstart="return displayMessageProcessing('msgprocessing', false);"																	
+						actionListener="#{menuControlTableBean.cambiaPagina}"	
+						oncomplete="closeFancy();"
+						update=":actualPage :form_Prin">
+						<f:attribute name="section" value="controlTable/edCuentaControl::22::menu6" />
+						<div class="buttonPR" style="width: 200px; font-size: 1.35em; padding-top: 6px;">
+								Seleccionar Crédito
+						</div>
+					</p:commandLink>
+					
+				</td>
+				
+			</tr>
+			
+		</table>
+		
+	</h:panelGroup>
+	
+	
+	
+</div>
+
+</h:form>
+
+</ui:composition>

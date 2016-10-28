@@ -1,0 +1,53 @@
+
+.banner .caption {
+	color:#000;
+	font-family:"medium";
+	font-weight:normal;
+}
+.banner .caption h2 {
+	color:#000;
+	font-family:"medium";
+	font-weight:normal;
+	border-bottom: solid 1px #ccc;
+}
+.banner .caption p {
+	color: #666;
+	font-weight: normal;
+	font-family: "light";
+}
+.banner .caption a {
+	background:#ff3f2b;
+	color:#fff;
+	text-decoration:none;
+	font-family: "medium";
+	text-align: center;
+}
+ #full-width-slider {
+	  color: #000;
+}
+
+
+
+.coloredBlock {
+	  background: rgba(255,0,0,0.6);
+	  color: #FFF;
+}
+.infoBlock {
+	  background: #FFF;
+	  background: rgba(255, 255, 255, 0.8);
+	  overflow: hidden;
+}
+.infoBlockLeftBlack {
+	  color: #FFF;
+	  background: #000;
+	  background: #fff;
+	  right: 0px;
+	  right: auto;
+}
+.infoBlock a {
+	  color: #FFF;
+	  text-decoration: underline;
+}
+.rsNav.rsBullets {
+	display:none !important;
+}

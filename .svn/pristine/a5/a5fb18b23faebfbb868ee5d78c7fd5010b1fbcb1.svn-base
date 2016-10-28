@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+	<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../../resources/favicon.ico"/> 
+        <!-- CSS --> 
+        
+        <link rel="stylesheet" type="text/css" href="../../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_formulario.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../../resources/css/laptop_medium.css" />        
+        <link rel="stylesheet" href="../../resources/css/font-awesome.css"/> 
+        
+        <link rel="stylesheet" type="text/css" href="../../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../../resources/css/alertify.default.css" />
+
+       	<link rel="stylesheet" type="text/css" href="../../resources/css/frmStyle.css" />	
+       		<!--  link rel="stylesheet" type="text/css" href="../../resources/css/style.css" -->	
+        <!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+ 	    
+ 	    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ 	    <script type="text/javascript" src="../../resources/js/scripts.js"></script>
+        <script type="text/javascript" src="../../resources/js/jquery.slides.min.js"></script>
+        <script type="text/javascript" src="../../resources/js/banners_footer.js"></script>
+    	<script data-cfasync="false" type='text/javascript' src="../../resources/js/chat.js" ></script>
+		<script src="../../resources/js/scripts_interior.js"></script>
+		<script type="text/javascript" src="../../resources/js/easyscroll.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../../resources/js/mousewheel.js"></script>
+        <script type="text/javascript" src="../../resources/js/alertify.js"></script>	
+		<script language="javascript" type="text/javascript" src="../../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../../resources/js/preregfrm.js"></script>
+		<script language="javascript" type="text/javascript" src="../../resources/js/preregfrm2.js"></script>
+		
+		
+		<script language="javascript" type="text/javascript" src="../../resources/js/validar_cambio_correo.js"></script>
+		<script language="javascript" type="text/javascript" src="../../resources/js/envio_correo_preregistro.js"></script>
+        <script type="text/javascript" src="../../resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="../../resources/js/browserDetect.js"/>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        <script type="text/javascript" language="javascript">
+        
+    	/******************GOOGLE*ANALYTICS**************************************/ 
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+        
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+         </script>
+         
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".push_header").addClass("interior").show();
+		
+		});
+	
+	</script>
+
+			<script type = 'text/javascript' src = "../../../resources/js/mx.com.kubo.acreditado/registro/historial.js" />	
+		<script type = "text/javascript" src = "../../../resources/js/frmscript.js"/>			
+		
+
+		
+		
+		
+		
+		
+		<script type="text/javascript" src = "https://maps.google.com/maps/api/js?sensor=true"/>
+		<script type="text/javascript" src = "../../../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"/>
+		<script type="text/javascript" src = "../../../resources/js/fancybox/jquery.easing-1.3.pack.js"/>
+		<script type="text/javascript" src = "../../../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"/>
+		<script type="text/javascript" src = "../../../resources/js/jquery.scrollTo.js"/>
+		<script type="text/javascript" src = "../../../resources/js/jquery.blockUI.js"/>
+		<script type="text/javascript" src = "../../../resources/js/jquery.watermark.js"/>					
+		<script type="text/javascript" src = "../../../resources/js/validation/js/jquery.validationEngine-es.js"/>
+		<script type="text/javascript" src = "../../../resources/js/validation/js/jquery.validationEngine.js"/>
+						
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/validar_institucion_credito_automotriz.js"/>
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/validar_institucion_credito_hipotecario.js"/>
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/validar_titular_tarjeta_vigente.js"/>
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/validar_formulario.js"/>		
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/init_function_events.js"/>
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/historial_crediticio.js"/>
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/historial_crediticio/nota_del_coach.js"/>
+		
+		<script type = "text/javascript" src = "../../../resources/js/secciones/registro/menu/menu_item.js"/>
+								
+	
+		<script type="text/javascript" src="../../../resources/js/utilerias/charCount.js"/>
+		<script type="text/javascript" src="../../../resources/js/utilerias/jquery.formatCurrency-1.4.0.min.js"/>
+		
+
+		<script type="text/javascript" src="../../../resources/js/reloj.js"/>
+		<script type="text/javascript" src="../../kubo/js/scriptUnidadEsp.js"/>
+		<script type="text/javascript" src="../../../resources/js/registro/miPrestamo.js"/>
+		<script type="text/javascript" src="../../../resources/js/dealJS.js"/>
+		
+		<script type = 'text/javascript' src = "../../../resources/js/mx.com.kubo.registro/counter.js" />	
+	
+		<script type = "text/javascript" src = "../../../resources/js/frmscript.js"/>			
+				<script type = 'text/javascript' src = "../../../resources/js/mx.com.kubo.acreditado/registro/historial.js" />	
+		<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.core/require.js" />
+
+	
+		
+		
+		
+		
+</h:head>
+
+<h:body>
+    
+    
+    
+    	<div class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+        	<h:form>
+   		  
+       	   
+       	   <!-- header -->
+       	   <ui:include src="../../templates/header.xhtml" />
+           
+            <div class="titulo"><h2>Proceso de solicitud de préstamo</h2></div>		
+            <div class="content">
+            	
+                
+                <div class="inner_content">
+            	   <ui:include  src="../../templates/procedimiento_acreditados.xhtml" />
+            	
+                <div class="col_derecha inscripcion">
+           
+                
+                
+                
+                
+                   <div class="formulario tipo_2 lab">
+
+           				<ui:include src="../../../jsf/secciones/registro/basicdata.xhtml" />  
+           					
+           					
+           						<!--  
+                                 <h3><strong>6.</strong>Oferta final</h3> 
+                              
+                                <h6 class="punteada exclamacion">Aún no esta completa tu solicitud </h6>
+                               <article class="pantallas">
+                                  	<p>Para poder finalizar el proceso, por favor completa la información marcada como obligatoria en las pantallas que se mencionan aquí abajo</p>
+                                    
+                                    <ol>
+                                    	<li><a href="#"><strong>2.</strong>Mi préstamo</a></li>
+                                        <li><a href="#"><strong>3.</strong>Ingresos / gastos</a></li>
+                                        <li><a href="#"><strong>5.</strong>Documentación</a></li>
+                                    
+                                    </ol>
+                                    
+                                    
+                                     <a href="#light6" class="btn_modal open_lightbox"   data-div="6" >Finalizar</a>
+                              </article>
+                              
+                       				-->
+                               
+                               
+                             
+                              
+                            
+             
+                        
+                        
+                       
+                    </div>
+                
+                
+                
+                  
+                  
+               </div>
+                
+              
+           </div>
+            
+           </div>
+         <!--footer mapa de sitio-->
+        <ui:include src="../../templates/footer_mapa.xhtml" />        
+        
+        <!--lightbox abrir sesion-->
+        <ui:include src="../../templates/modal_iniciar_sesion.xhtml" />
+         
+          <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+	 	<ui:include src="../../templates/modal_condusef.xhtml" />    
+	 	<ui:include src="../../templates/modal_cat.xhtml" />    
+	 	<ui:include src="../../templates/modal_gat.xhtml" />  
+        
+        <!--lightbox sesion sin actividad-->
+        <ui:include src="../../templates/modal_sesion_inactiva.xhtml" />  
+        <!--Requisitos-->
+        <ui:include src="../../templates/modal_requisitos.xhtml" />
+        
+        <ui:include src="../../templates/contrasena_validador.xhtml" />
+
+	    <ui:include src="../../templates/modal_condiciones.xhtml" />
+	    <ui:include src="../../templates/modal_correo_existente.xhtml" />
+	    
+		<ui:include src="../../templates/modal_activar_cambiar_correo.xhtml" />
+		<ui:include src="../../templates/modal_cambiar_correo.xhtml" />
+		
+		<ui:include src="../../templates/mandar_mail.xhtml" />
+		
+		<ui:include src="../../templates/modal_cambiocontrasena.xhtml" />
+		
+		
+		
+        
+	
+	</h:form>
+<h:panelGroup id="contSimReg"></h:panelGroup>
+<h:panelGroup id="generalData"></h:panelGroup>
+
+<script type="text/javascript">
+					
+						// NO MOVER DE AQUI!!  Funcion que inicializa los cambos que cambian  el mapa  
+							$(document).ready(function()
+							{
+								init_mapa();
+								
+								
+							});
+
+							
+					</script>
+				
+						<script>
+						    /* variable que inda si el código postal es válido  */
+							isValidZipCode = true;
+						</script>
+	<script>
+		setChat();
+	</script>	
+    </div>
+
+    </h:body>
+		<script type="text/javascript">
+		/** Start Alexa Certify Javascript **/
+		_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+		
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+		
+		/* End Alexa Certify Javascript */
+		  
+		
+		</script>
+	<!-- Alexa Certify Javascript -->
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+	<!-- End Alexa Certify Javascript -->
+	
+	
+	
+	
+	
+	
+
+</html>

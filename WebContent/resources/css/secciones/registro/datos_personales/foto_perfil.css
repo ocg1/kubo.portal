@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+div.cont_foto_perfil
+{
+	width:208px;	
+	 
+	margin:5px auto;
+	
+	overflow: hidden; 
+	border:0px solid black;		
+}
+
+div.nav_corner 
+{ 
+	float:left;			
+}
+
+div.main_photo
+{	
+	float:left;
+}
+
+div.oi_corner 
+{
+	width: 42px; 
+	height:40px; 
+	margin:0; 
+	margin-top:126px;
+	padding:0px; 		
+	overflow: hidden;
+	border:0px solid #f0f3c3; 
+}
+
+div.oi_photo
+{	
+	margin:0;
+	cursor:pointer;
+	border:8px solid #f0f3c3;
+}
+

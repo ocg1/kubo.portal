@@ -1,0 +1,28 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id="img_docAddress" rendered="#{electronicFile.doc_address_disp}">
+		<fieldset>
+			<div class="dvContent" style="overflow: hidden;">
+				<div id="containerDocCapPago" style="width: auto;height: auto;">								
+					<ui:repeat var="document" value="#{electronicFile.listDocAddress}">
+							
+							<h:panelGroup rendered="#{document.flag}">
+								<div align="center" style="width: 100%; background-color: #f0f3c3; height:auto; overflow:auto;">
+								<br></br>
+								Proyecto: #{document.proyect_loan_id} Estatus: #{document.status}
+								</div>
+							</h:panelGroup>
+							<div style="margin:15px;">
+								<div class="clTitle" style="width: 450px;">#{document.description}<br /></div>				
+								<iframe src="../resources#{document.urlImg}"  style="width:700px; height:600px;"></iframe>	
+							</div>						
+					</ui:repeat>						
+				</div>
+			</div>
+		</fieldset>
+	</h:panelGroup>				
+</ui:composition>				

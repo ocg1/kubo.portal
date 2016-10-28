@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<p:commandLink immediate = "true" 														      
+			       onstart   = "return validationAddNewPhone('addnumphone', '','select-type_phone', 'phone_extension');"  
+			       actionListener = "#{summaryRequest.telefono.addNewPhone}"
+			       update = ":frmQuest:updateSectionPhone :frmQuest:show-ischange-phone"
+			       style  = "text-decoration: none;">
+			       
+		<div class = "buttonPR" style = "width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">
+			Guardar
+		</div>		
+	</p:commandLink>
+												 	
+	<div class   = "buttonPR"  
+		 onclick = "$('#btn-add-phone').click();" 
+		 style   = "margin: 0; width:71px; font-size:0.9em; float: left;">
+				Cancelar
+	</div>								
+</ui:composition>				

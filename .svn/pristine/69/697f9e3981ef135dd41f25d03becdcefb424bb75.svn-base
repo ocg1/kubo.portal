@@ -1,0 +1,54 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+							
+								
+	<div id="primerPasoInv"></div>
+		<div class = "field">
+			<div class = "dvLabel">
+				<h:outputLabel styleClass = "labelsStl" value = "#{msg.person_type}" />
+			</div>
+				<fieldset class="conjuntoChecks conjunto conjunto2 selCheck">
+				   <div class="btnN  dosBtn" data-opcion="F">
+				   		<small class="palomita">
+	        					<i class="fa fa-user"></i>
+	        				<i class="fa fa-check"></i>
+	        			</small>
+			        	<span>	Persona Física</span>
+			        	<i class="fa fa-check checkMobile"></i>
+			       </div>
+			       <div class="btnN  btnR dosBtn"  data-opcion="M">
+			       <small class="palomita">
+	        					<i class="fa fa-briefcase"></i>
+	        				<i class="fa fa-check"></i>
+	        			</small>
+			        	<span>	Persona Moral</span>
+			        	<i class="fa fa-check checkMobile"></i>
+			        	
+			       </div>			
+			<div id = "person-type-id">
+				<h:selectOneRadio immediate  = "true" value = "#{basicData.prospectus.person_type}"  
+								  styleClass = "elementStlLbl validatorClass requiredVerify ocultaSelect">
+								  					    
+				    <f:selectItem itemValue = "F" itemLabel = "Persona Física"/>
+				    <f:selectItem itemValue = "M" itemLabel = "Persona Moral"/>					    			    		      
+				    
+				    <p:ajax event = "click" update = "persona-moral-ENABLED domicilio_title"
+				    		onstart    = "displayMessageProcessing('msgprocessing',false);"
+				    	    oncomplete = "PersonaMoral.person_type_on_complete(xhr, status, args);"
+				    		listener   = "#{basicData.moral.init_person_type_id}" />
+				</h:selectOneRadio>						
+			</div>
+			</fieldset>
+		</div>
+	
+	
+	<script>
+		$(document).ready(function()
+		{
+			PersonaMoral.init();
+		});
+	</script>			
+</ui:composition>				

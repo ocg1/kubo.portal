@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<div>					
+		<p:panel header = "Inversionista">
+			<h:form>
+				<div class = "ui-corner-all" 
+					 style = "margin:0;
+							  padding:10px 0;
+					 		  text-align:center; 					 		  					 		 
+					 		  border:1px solid #a8a8a8;">	
+		 		  
+					<p:commandButton value = "Activar " actionListener = "#{test_investor_list.activar}">
+						<f:attribute name = "prospectusid"   value = "12665"/>								
+						<f:attribute name = "companyid" 	  value = "1"/>					
+					</p:commandButton>								
+				</div>
+			</h:form>
+		</p:panel>
+	</div>				
+</ui:composition>				

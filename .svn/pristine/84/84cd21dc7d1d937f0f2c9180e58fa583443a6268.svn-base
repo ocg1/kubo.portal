@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field">
+			<div class = "dvLabel" style = "width: 70px; float: left;">
+				<h:outputLabel styleClass = "labelsStl" value="#{msg.Street_text}" />
+			</div>
+			
+	
+			
+			<div class = "dvElementAddres1">
+				<h:inputText id = "street" tabindex = "51" immediate = "true" 
+							 value = "#{business.addressbean.street}" 
+							 onfocus = "ActividadEconomica.Domicilio.init_focus_date(3);"
+							 styleClass = "elementAddres1 validatorClass mapClass street hs_class">
+							 
+					<p:ajax event = "blur"
+							oncomplete = "ActividadEconomica.Domicilio.input_text_oncomplete(xhr, status, args);" 
+							listener   = "#{addMyLoan.domicilio_negocio.init_input_text}"/>
+				</h:inputText>
+				
+				<h:inputHidden value="#{business.addressbean.street}"/>
+			</div>
+		</div>				
+</ui:composition>				

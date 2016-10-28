@@ -1,0 +1,158 @@
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+<style>
+		@media screen and (max-width: 780px) {
+		  #contCap1Img1,#contCap1Img2,#contCap1Img3{
+		  	width: 96%;
+		   	float: none;
+		  }
+		  #Cap1Img1,#Cap1Img2,#Cap1Img3{
+		  	float: left;
+		  	margin-left: 8px;
+		  	width: 48%;
+		  	
+		  }
+		  #Cap1TxImg1,#Cap1TxImg2,#Cap1TxImg3{
+		  	height: 100%;
+		  	float: left;
+		  	vertical-align: middle;
+		  	margin-left: 8px;
+		  	margin-bottom: auto;
+		  	margin-top: 40px;
+		  	width: 40%;
+		  	text-align: left;
+		  }
+		 
+		}
+	</style>
+
+<div id="contCap1" style="width: 100%; right: auto; left: auto;">
+<h:panelGrid columns="1">
+	<!-- Frase Descriptiva del Titulo -->
+	<h:panelGroup>
+		<div class="tituloCnt">
+			<h:outputLabel>Tasas y tarifas</h:outputLabel>
+		</div>
+	</h:panelGroup>
+	<h:panelGroup>
+		<hr class="hrCnt"></hr>
+	</h:panelGroup>
+	<!-- Fin Frase Descriptiva del Titulo -->
+	<!-- Gráfico -->
+		<!-- (VACIO) -->
+	<!-- Fin Grafico -->
+<!-- Frase Referente a la imagen -->
+<!-- (VACIO) -->
+<!-- Fin Frase Referente a la imagen -->
+<!-- Frase Ayuda -->
+<!-- (VACIO) -->
+<!-- Fin Frase Ayuda -->
+
+<!-- Detalles de los Beneficios -->
+<h:panelGroup>
+<h:outputLabel styleClass="lsCnt"><h2>Tasas por adelantado y sin comisiones ocultas.</h2></h:outputLabel>
+
+		<div class="CntDesc">En <b>kubo</b>, no hay comisiones o cargos ocultos. Te puedes unir a <b>kubo</b> y tramitar un crédito sin costo alguno, 
+		y tu solo pagas una comisión por originación si el crédito es autorizado.</div>
+	
+</h:panelGroup>
+
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+
+<h:panelGroup>
+<h:outputLabel styleClass="lsCnt"><h2>Tasas de interés y TPAs (Tasas Preferentes Anualizadas).</h2></h:outputLabel>
+
+		<div class="CntDesc">A cada crédito solicitado por un acreditado se le asigna un grado que va de A1 a G5 con una tasa de interés 
+			referida en dicha graduación. La tasa de interés correspondiente y el porcentaje de tasa anual de cada préstamo son señalados 
+			a continuación:<br /><br />
+			Créditos de $ ______a $ _____ sólo son contratables a 36 meses de plazo.
+			
+			<h2> tabla por definir</h2>
+			
+			<br /><br />
+			
+			
+		</div>
+	
+</h:panelGroup>
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+<h:panelGroup>
+<h:outputLabel styleClass="lsCnt"><h2>Comisiones para el acreditado.</h2></h:outputLabel>
+
+		<ul class="lsCnt">
+	<li>
+		<h3>Comisión por apertura de crédito</h3>
+		<div class="lsCntDesc">
+			Evaluamos una comisión de originación por el ofrecimiento del servicio de detección de 
+		acreditados y expedición de los créditos. La comisión de originación es determinada por el grado del préstamo que 
+		se señalan la lista y condiciones de la tabla que se señala a continuación:
+		
+		<br></br><br></br>TABLA POR DEFINIR<br></br><br></br>
+		La comisión de apertura está incluida en el cálculo de la Tasa de Porcentaje Anual y se resta de los fondos del préstamo antes del desembolso.<br></br> 
+		Por ejemplo, si tu recibes $ 5,000 de 36 meses de plazo a una tasa de interés del 6.03% con una comisión de apertura del 1.11% por el 
+		monto de $ 55.50, tu recibirás un préstamo de $ 4,944.50 y deberás realizar 36 pagos mensuales aproximadamente de $ 152.18 con 
+		una TPA de 6.78%. <br></br>
+		En el caso de un crédito por $ 15,000 a 60 meses a una tasa de interés del 7,90%, con una comisión de apertura del 3,00% por el monto 
+		de $ 450.00, tu recibirás un préstamo de $ 14,550.00 y deberás realizar 60 pagos mensuales de aproximadamente $ 303.43 con una TPA de 9,20%. <br></br>
+		No todas las condiciones del préstamo y tasas están disponibles para todos los solicitantes de préstamos. <br></br>
+		No hay comisiones por presentar una solicitud, y no pagarás ninguna comisión de apertura si el préstamo no fue otorgado. 
+		
+		</div> 
+	</li>
+	<li>
+		<h3>Comisión por rechazo de pago</h3>
+		<div class="lsCntDesc">
+			Cuando se emite un pago automático a <b>kubo</b> por parte del  acreditado, y por alguna razón  falla y su depósito es rechazado por 
+			el banco entonces se aplicara un cargo adicional para poder cubrir el costo del crédito. Esto puede suceder cuando no se cuenta 
+			con el  saldo suficiente en la cuenta bancaria  o  se encuentra suspendida por alguna razón. Por cada intento de pago se considera 
+			como una operación independiente por lo tanto por cada intento fallido se  tiene  la posibilidad de efectuar el cobro de comisión 
+			es decir su pago será de $___.
+		</div>
+	</li>
+	<li>
+		<h3>Comisión por realizar un pago fuera de plazo.</h3>
+		<span class="lsCntDesc">
+			Cuando el cliente no paga dentro el plazo establecido,  <b>kubo</b> ofrece a nuestros clientes un período de gracia de 15 días, 
+			sin embargo si no se realiza en este tiempo, se les cobrará una comisión adicional.Esta cuota se prorratea y se pasa luego a los 
+			fondeadores. El monto de una cuota por pago atrasado es el mayor de ____% del valor de la cuota sin pagar o $ __.
+			Esto aplicará una sola vez como consecuencia de un pago fuera de tiempo.
+		</span>
+	</li>
+	<li>
+		<h3>Comisión por pago con cheque.</h3>
+		<span class="lsCntDesc">
+			Si un acreditado opta por supeditar los pagos mediante cheque, habrá un cargo de $ ___ por cada pago.
+			No hay ningún cargo adicional si el acreditado hace pagos a través de una transferencia automática de 
+			su cuenta bancaria de débito. 
+		</span>
+	</li>
+</ul>
+	
+</h:panelGroup>
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+
+
+<!-- Llamada a la accion -->
+<!-- (VACIO) -->
+<!-- Fin Llamada a la accion -->
+<!-- <h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup> -->
+<!-- Cierre -->
+<!-- (VACIO) -->
+<!-- Cierre -->
+
+</h:panelGrid>
+</div>
+
+</html>

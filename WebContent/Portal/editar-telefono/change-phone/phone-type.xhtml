@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+	<div id = "select-phone-type-#{p.phone.phonePk.phone_id}" class = "selectNuevo">	
+		<h:selectOneMenu immediate = "true">
+					     
+			<f:selectItem itemValue = "0" itemLabel = ""/>
+			
+			<f:selectItems value = "#{editor_telefono.listPhoneType}" var = "phonetype" 
+						   itemLabel = "#{phonetype.name}" 
+						   itemValue = "#{phonetype.phoneTypePk.phone_type_id}"/>
+						   
+			<p:ajax event = "change"
+					oncomplete = "EditorTelefono.phone_type_oncomplete(xhr, status, args);" 
+					listener = "#{editor_telefono.init_phone_type}"/>															
+		</h:selectOneMenu>																						
+	</div>						
+</ui:composition>				

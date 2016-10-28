@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<fieldset class = "rfc_curpPaso1">
+	
+		<div class = "dvContent2">
+		
+					
+									
+					
+			<h:panelGroup id = "panel-rfc-curp">
+				<div class="rfcContainer">
+					<i class="fa fa-caret-down "></i>
+					<div class = "dvLabel dvDescLabelRFC">
+					<h:outputLabel value = "El RFC y el CURP se generan automáticamente con los datos anteriores."
+						styleClass = "labelsStl dvDescLabelRFC" />
+				</div>
+					<ui:include src = "rfc-curp/mx_rfc.xhtml"/>
+					<ui:include src = "rfc-curp/mx_curp.xhtml"/>
+				</div>
+			</h:panelGroup>		
+			
+			<div style = "display:none">
+				<h:commandLink id = "init-panel-rfc-curp" immediate = "true" value = "init-panel-rfc-curp">
+					<p:ajax event = "click" update = "panel-rfc-curp"
+							oncomplete = "DatosPersonales.CURP_generator_on_complete(xhr, status, args);" 
+							listener = "#{basicData.init_CURP_generator}"/>
+				</h:commandLink>
+			</div>
+											
+		</div>
+		
+	</fieldset>				
+</ui:composition>

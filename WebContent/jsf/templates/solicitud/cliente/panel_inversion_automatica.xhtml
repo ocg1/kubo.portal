@@ -1,0 +1,35 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:f  = "http://java.sun.com/jsf/core"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+			     <style>
+			     	.clsTitReinvAu{
+			     		font-weight: bold;
+			     	}
+			     	
+			     	.clsContReinvAu span{
+			     	 font-weight: bold;
+			     	}
+			     	.clsMarginBottom{
+			     		margin-bottom: 10px;
+			     	}
+			     </style>
+
+	<h:panelGroup rendered="#{summaryRequest.hasReinvestment}" >
+	
+		<div class="clsTitReinvAu" >El inversionista cuenta con reinversión automática</div> 
+		
+		<div class="clsContReinvAu" >Frecuencia: <span> ${summaryRequest.frequencyInvestment=='D'?'Diaria':summaryRequest.frequencyInvestment=='S'?'Semanal':summaryRequest.frequencyInvestment=='C'?'Catorcenal':summaryRequest.frequencyInvestment=='Q'?'Quincenal':summaryRequest.frequencyInvestment=='M'?'Mensual':'Personal'} </span></div>
+		
+		<div class="clsContReinvAu" >Última reinversión: <span> ${summaryRequest.lastInvestment} </span> </div>
+		
+		<div class="clsContReinvAu clsMarginBottom" >Próxima reinversión: <span> ${summaryRequest.nextInvestment} </span>   </div>
+		
+		<div class="clsContReinvAu clsMarginBottom" >Estatus: <span> ${summaryRequest.statusAutomaticInvestment} </span>   </div>
+	
+	</h:panelGroup>
+
+
+</ui:composition>

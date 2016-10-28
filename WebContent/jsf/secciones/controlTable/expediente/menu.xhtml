@@ -1,0 +1,73 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup id = "container_search" >
+		<h:form id = "frm_container_expedient" rendered = "#{searchSummaySession.searchSummary != null}">
+		
+			<div class = "col_izquierda_productos containerFloatingMenu menuIzqC" >
+				<div class = "menu_interior FloatingMenu">			 			 				 
+			<div class="contentMenu">
+                    	<h6><span>MENÚ</span></h6>
+                    	<ul>
+                    		<li>
+							<ui:include src = "menu/identificacion.xhtml"/>
+							</li>
+							<li>
+							<ui:include src = "menu/solicitud-credito.xhtml"/>
+							     </li>
+							<li>
+							<ui:include src = "menu/solicitud-inversion.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/estados-financieros.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/capacidad-pago.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/contratos-credito.xhtml"/>
+								</li>
+							<li>																														
+							<ui:include src = "menu/contratos-inversion.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/consultas.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/estado-cuenta.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/bitacora-cobranza.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/comprobante-domicilio.xhtml"/>
+								</li>
+							<li>
+							<ui:include src = "menu/garantias.xhtml"/>		
+								</li>
+							<li>																							
+							<ui:include src = "menu/reestructura.xhtml"/>	
+								</li>
+								
+						</ul>
+							
+					<ui:include src = "menu/complemento-PLD.xhtml"/>	
+					
+					</div>
+					
+								
+				</div>
+			</div>
+	
+			<p:remoteCommand name = "refreshExpedient" actionListener = "#{electronicFile.loadDocumentation}" update = ":container_gral"/>
+
+			<script>
+				initMenu();
+			</script>
+
+		</h:form>
+	</h:panelGroup>
+</ui:composition>

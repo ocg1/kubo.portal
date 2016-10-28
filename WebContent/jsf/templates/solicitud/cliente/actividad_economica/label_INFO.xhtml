@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{econAct.icon_ENABLED}" >						
+		<div>											 
+			<span>#{econAct.labelCompletDesc} </span>
+			<span style = "color:#8FC450">#{econAct.activityDesc}</span>
+			<img src = "../resources/img/warning01.png" style = "width:20px; height:20px; cursor: pointer;"/>
+		</div>
+	</h:panelGroup>				
+	
+	<h:panelGroup rendered = "#{!econAct.icon_ENABLED}" >						
+		<div> 
+			<span>#{econAct.labelCompletDesc} #{econAct.activityDesc}</span>
+		</div>
+	</h:panelGroup>					
+</ui:composition>				

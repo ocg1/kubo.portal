@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "section-update-mail" class = "target">			
+		<div class = "dvContent2" style = "margin-left: 0px;">
+			<div class = "dvContent">
+				<h:outputLabel styleClass = "label" value = "Nuevo correo electrónico*"/>
+				
+				<p:inputText id = "txt-mail" styleClass = "elementStl" value = "#{perfilController.newemail}">
+					<p:ajax event = "blur" listener = "#{perfilController.correo.init_email}"/>
+				</p:inputText>							
+		
+				</div>
+				
+				<div class = "btn_aceptar_cancelar">
+				
+					
+					<div class="callActionMedium btnGris" onclick="hideElement('section-update-mail');">
+						<h:outputText value="Cancelar" />
+					</div>
+					
+					
+						<p:commandLink immediate = "true" 														 	
+									oncomplete     = "oncompleteSubmit(xhr, status, args);"
+									actionListener = "#{perfilController.saveNewMail}"
+									update         = ":frm-change-data"
+									value		   = "Cambiar"
+									styleClass	   = "callActionMedium btnNaranja" >
+					</p:commandLink>
+				</div>
+	 	</div>
+
+	 </div>					
+</ui:composition>				

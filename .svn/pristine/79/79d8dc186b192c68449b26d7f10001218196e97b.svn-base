@@ -1,0 +1,36 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<ui:repeat value = "#{perfilController.pool_preguntas_seguridad}" var = "pool" varStatus = "iterator">				
+		<div class = "panel_pregunta_seguridad">
+			<div class = "panel_pregunta_description description_#{iterator.index + 1}">
+				<div class = "labelsStl">
+					<h:outputText value = "Pregunta de seguridad #{iterator.index + 1}: #{pool.pregunta.question}"/>
+				</div>
+			</div>
+			
+			<div class = "panel_opciones_cambio cambio_#{iterator.index + 1}">				
+				<div onclick = "cambiar_pregunta(#{iterator.index + 1}, #{pool.pk.security_question_id})" style = "float:left">		
+					<p>Cambiar</p>			
+				</div>	
+				
+				<div style = "float:left">
+					<p style = "margin:0; padding: 0 5px">|</p>
+				</div>
+				
+				<div onclick = "comprobar_pregunta(#{iterator.index + 1})" style = "float:left">		
+					<p>Comprobar respuesta</p>			
+				</div>	
+			</div>
+		</div>
+	</ui:repeat>		
+	
+	<div id = "listener_pregunta_selected" style = "display:none">
+		<p:inputText immediate = "true">
+			<p:ajax event = "click" listener = "#{perfilController.listener_pregunta_selected}"/>
+		</p:inputText>
+	</div>						  
+</ui:composition>				

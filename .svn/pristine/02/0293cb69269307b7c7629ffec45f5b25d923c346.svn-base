@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{summaryRequest.actividad_economica.domicilio.coincidencias_NIVEL_1 gt 0 and sessionBean.area == 'M'}">
+			
+		<p:commandLink id = "alarma-coincidencias-NIVEL-1" onclick = "init_listener_lista_coincidencias('NIVEL_1', 'ACTIVIDAD_ECONOMICA'); ">
+	
+			<img title  = "#{summaryRequest.actividad_economica.domicilio.alarma_NIVEL_1}"
+				 src    = "../resources/img/warning01.png" 
+				 width  = '20px' 
+				 height = '20px'			 
+				 style  = 'margin-left: 10px; border:0; cursor: pointer;'/>
+				
+		</p:commandLink>
+													
+	</h:panelGroup>	
+	
+	<div style = "display: none"> 
+		<p:commandLink id = "init-lista-coincidencias-NIVEL-1" immediate = "true" update = "panel-lista-coincidencias-actividad"
+			 		   actionListener = "#{summaryRequest.actividad_economica.domicilio.listener_lista_coincidencias}"
+			 		   onstart    = "displayMessageProcessing('msgprocessing',false);"
+			 		   oncomplete = "listener_lista_coincidencias(xhr, status, args);"/>
+	</div>			
+</ui:composition>	

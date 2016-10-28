@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+      xmlns:h  = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f  = "http://java.sun.com/jsf/core"
+      xmlns:p  = "http://primefaces.org/ui">
+        
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	        
+    	<title>Préstamos en línea | kubo.financiero</title>
+        <meta name="description" content="" />    	      
+       	<meta name ="viewport"         content="width=device-width, minimum-scale=1, maximum-scale=1,  initial-scale=1"/>     	
+        <meta name="format-detection"  content="telephone=no"/>        
+        <meta name="apple-mobile-web-app-capable"          content="yes" />            
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />       
+        <meta property="og:title" content=""/>
+        <meta property="og:url"   content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+        <meta name="apple-mobile-web-app-title" content="Kubo.Financiero"/>   
+        <meta http-equiv="cleartype"       content="on" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 	
+        
+	    <link rel="shortcut icon" href="resources/favicon.ico"/> 
+        <link rel="apple-touch-icon-precomposed" href="resources/images/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/apple-touch-icon72.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/apple-touch-icon144.png"/>                    
+        <link rel="apple-touch-startup-image"  media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="resources/images/320_460.png" />        
+		<link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="resources/css/laptop_medium.css"/>              
+		
+        <link rel="stylesheet" type="text/css" href="resources/css/reset.css" />        
+        <link rel="stylesheet" type="text/css" href="resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/interior_styles.css" />
+        <!-- link rel="stylesheet" type="text/css" href="resources/css/desbloquear-password.css"/ -->
+        
+        <link rel="stylesheet" type="text/css" href="resources/css/frmStyle.css" />	
+        <link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+       	<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css" />
+       	<link rel="stylesheet" type="text/css" href="resources/css/smart_tab_vertical.css" />
+       
+<!-- 
+	    <link rel="stylesheet" href="../resources/js/firmaJS/public/stylesheets/signature.css" />
+	    <link rel="stylesheet" href="../resources/js/firmaJS/public/stylesheets/animate.min.css" />
+        -->
+       <!-- script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/jquery.min.js"></script -->
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/easeljs.min.js"></script>
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/script.js"></script>
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/script2.js"></script>
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/script3.js"></script>
+	    <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/script4.js"></script>
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/animatedModal.min.js"></script>
+	      <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/responsive.js"></script>
+	   <!-- 
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/bootstrap.js"></script>
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/detectmobilebrowser.js"></script>
+	   <script type="text/javascript" src="../resources/js/firmaJS/public/javascripts/responsive.js"></script>
+	   <script data-cfasync="false" type='text/javascript' src="resources/js/chat.js" />
+       -->
+      
+    	
+    
+		  <script type="text/javascript" src="resources/js/jquery.scrollTo.js"/>
+  	  
+
+  
+    	<script type="text/javascript" src="resources/js/scripts.js"/>
+   		<script type="text/javascript" src="resources/js/ga_event.js"/>  
+   		<script type="text/javascript" src="resources/js/alertify.js"/>	
+   		
+   		<!--  	
+		
+		<script type="text/javascript" src="resources/js/general.js"/>
+		<script type="text/javascript" src="resources/js/preregfrm.js"/>
+		<script type="text/javascript" src="resources/js/preregfrm2.js"/>
+		<script type="text/javascript" src="resources/js/validar_cambio_correo.js"/>
+		<script type="text/javascript" src="resources/js/envio_correo_preregistro.js"/>		
+        <script type="text/javascript" src="resources/js/forgot_password.js"/>	
+        <script type="text/javascript" src="resources/js/desbloqueo-password.js"/>
+        <script type="text/javascript" src="resources/js/desbloqueo-password/security-question.js"/>
+        <script type="text/javascript" src="resources/js/desbloqueo-password/security-answer.js"/>
+        <script type="text/javascript" src="resources/js/desbloqueo-password/por-correo.js"/>
+         --> 
+        <script type="text/javascript" src="resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="resources/js/browserDetect.js"/>
+		<script type="text/javascript" src="resources/js/easyscroll.js"/>
+	    <script type="text/javascript" src="resources/js/mousewheel.js" charset="utf-8"/>
+
+   	    <script type="text/javascript" src="resources/js/firmaScripts.js"/>
+
+        <script type = "text/javascript" >
+        /******************GOOGLE*ANALYTICS**************************************/  
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+            	  ga('require', 'linkid');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+        </script>
+        
+		
+		<script type="text/javascript">
+		
+        setTimeout(
+
+        		 function(){ 
+        			 BrowserDetect.init(); 
+        			 setInfoBrawser('browser_name_F','browser_version_F','browser_OS_F', 'browser_width_F', 'browser_height_F');
+        			 $("#browser_data").val( navigator.userAgent );
+        			 $('#browser_data').blur();
+        			 $('#browser_name_F').blur();
+        			 $('#browser_version_F').blur();
+        			 $('#browser_OS_F').blur();
+        			 $('#browser_width_F').blur();
+        			 $('#browser_height_F').blur();
+        			 
+        			 $("#cmdRegAccess").click();
+        			 
+        		 }
+				
+        	,500);
+			
+        $(document).ready(function() {
+        	
+        	$(".ingresar.open_lightbox").click(function (){
+        		$(".logoEscritorio").trigger("click");
+        	});
+        	
+        });
+		</script>
+		
+
+	
+  		  <link rel="stylesheet" type="text/css" href="../jsf/docs/contratos/css/custom.css"/>
+      
+  		
+  		<!-- ROYAL SLIDER SCRIPTS -->
+  		 <link href="resources/royal/css/style.css" rel="stylesheet" type="text/css"/>
+         <link rel="stylesheet" type="text/css"  href="resources/royal/css/3_tablet_mini_portrait.css" />
+         <link class="rs-file" href="resources/royal/css/royalslider.css" rel="stylesheet"/>
+         <link class="rs-file" href="resources/royal/css/rs-minimal-white.css" rel="stylesheet"/>
+         <script class="rs-file" src="resources/royal/js/jquery.royalslider.min.js"></script>
+         <script src="resources/royal/js/highlight.pack.js"></script>
+         <script src="resources/royal/js/jquery-ui-1.8.22.custom.min.js"></script>
+         <script> hljs.initHighlightingOnLoad();</script>
+            <script type="text/javascript" src="../jsf/docs/contratos/js/fecha.js"/>
+	</h:head>
+
+    <h:body id="body">
+    
+    <div style="display: none;">
+				
+		#{inicioValues.inicio}
+		#{headerBean.user}
+		
+	</div>	
+	
+     <input id="nombreCliente" style="display:none" value="#{contractData.data.cliNombre}"	/>
+
+     <div class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+    		<div class="cargandoNuevo alerts">
+				  <img src="#{configManaged.location}resources/images/loader.gif"/>
+                        
+			</div>
+			<div id="carrousel" class="sliderFirmas alerts">    
+				<p class="parrafoSlider">Para continuar tu procedimiento, ¿deseas utilizar la  firma seleccionada 
+				para todos los contratos restantes o quieres volver a firmar?</p>
+				<div class="loaderFirmaSeleccionada alerts">
+				  <img src="#{configManaged.location}resources/images/loader.gif"/>
+                        
+				</div>
+				
+	            <div class="sliderContainer fullWidth clearfix">
+					<div id="full-width-slider" class="royalSlider heroSlider rsMinW">
+					
+					  <h:panelGroup rendered="#{contractData.signature_medios_location != 'resources/img/img3.PNG' }" >
+						  <div class="rsContent">
+						   
+						       <a class="rsImg" data-rsw="400" data-rsh="500" data-rsbigimg="../#{contractData.signature_medios_location}" href="../#{contractData.signature_medios_location}">Firma de Contrato de Servicios Financieros Electrónicos<img alt="medios"  class="rsTmb" src="../#{contractData.signature_medios_location}"/></a>
+						   
+						  </div>
+					  </h:panelGroup>
+					  
+					  <h:panelGroup rendered="#{contractData.signature_captacion_location != 'resources/img/img3.PNG' }" >
+						  <div class="rsContent">
+						   
+						         <a class="rsImg" data-rsw="400" data-rsh="500" data-rsbigimg="../#{contractData.signature_captacion_location}" href="../#{contractData.signature_captacion_location}">Firma de Contrato de captación<img alt="captacion" class="rsTmb" src="../#{contractData.signature_captacion_location}"/></a>
+						        
+						  </div>
+					  </h:panelGroup>
+					  
+					 <h:panelGroup rendered="#{contractData.signature_garantia_location != 'resources/img/img3.PNG' }" >
+						 <div class="rsContent">
+						
+						       <a class="rsImg" data-rsw="400" data-rsh="500" data-rsbigimg="../#{contractData.signature_garantia_location}" href="../#{contractData.signature_garantia_location}">Firma de Contrato de garantía líquida e irrevocable<img  alt="garantia"  class="rsTmb" src="../#{contractData.signature_garantia_location}"/></a>
+						      
+						  </div>
+					  </h:panelGroup>
+					  
+					  <h:panelGroup rendered="#{contractData.signature_credito_location != 'resources/img/img3.PNG' }" >
+						  <div class="rsContent">
+						
+						       <a class="rsImg" data-rsw="400" data-rsh="500" data-rsbigimg="../#{contractData.signature_credito_location}" href="../#{contractData.signature_credito_location}">Firma de Contrato de crédito<img alt="credito" class="rsTmb" src="../#{contractData.signature_credito_location}"/></a>
+						      
+						  </div>
+					  </h:panelGroup>
+					  
+					</div>
+					<fieldset class="opcionesFirmar">
+						<div class="callActionMedium btnNaranja ocuparFirma" onclick=" ocuparFirmaPrevia ();">Utilizar esta firma para todos los contratos</div>
+						<div class="callActionMedium btnGris ocuparFirma" onclick="firmarNuevamente()">Quiero volver a firmar</div>
+					
+					</fieldset>
+	  			</div>
+        </div> 
+    	<h:form id="user"  prependId="false" > 
+    	
+       	    <ui:include src="templates/header.xhtml" />
+       	    <div class="titulo tFirma"><h2>Firma tus contratos</h2></div>
+       	    <div class="content">            	               
+                	<div class="inner_content">
+		                  <div class="firmaDigital">
+			                	<div class="instrucciones">
+			                			<h4>En 5 pasos:</h4>
+		                			
+		                				<ol>
+		                				 		<li><strong>1.</strong> Lee todos tus contratos.</li>
+												<li><strong>2.</strong> Acepta los términos y condiciones de todos los contratos.</li>
+												<li><strong>3.</strong>  Presiona el botón "Firmar contratos".</li>
+												<li><strong>4.</strong> Firma dentro del área punteada.</li>
+												<li><strong>5.</strong> Para terminar presiona el botón "Enviar contratos"</li>
+		                				
+		                				</ol>
+		                		</div>
+		             
+		            <h:panelGroup id="pnlConAll" >
+		                    <!-- Contrato medios -->
+		                	<h:panelGroup id="pnlConMedios" rendered="#{contractData.flagRenderedContactCapt}" >
+									<div  class="bloqueContrato medios">
+											
+											<h2>
+												<span>Contrato de Servicios Financieros Electrónicos</span>
+												
+											   
+											</h2>
+										
+										    <div  class="bloqueContratoInner small" id="mediosContrato">										
+													
+													<div class="contenido_contrato" id="htmlContratoMediosContenido">
+												 		<h:panelGroup rendered="#{!contractData.have_contrato_medios_electronicos}" >
+												 			
+												 			<ui:include src = "../jsf/docs/contratos/medios/contratoMediosContenido.xhtml"/>
+												 				<script>
+												 				contratoMedios = false;
+												 				pdfNoGenerado("mediosLinkLleno");
+												 				</script>
+												 			
+												 		</h:panelGroup>
+												 		<h:panelGroup rendered="#{contractData.have_contrato_medios_electronicos}" >
+												 			<!-- iframe scrolling="auto" src="../#{contractData.url_contrato_medios_electronicos}" frameborder="0" height="315px;"  width="100%"></iframe-->
+												 			<script>
+											 				     pdfHecho ("aceptoContratoMedios", "mediosLinkVacio", "mediosLinkLleno", "mediosContrato", "aceptoContratoMedios", ".bloqueContrato.medios h2 i" );
+											 				     contratoMedios = true;
+											 				
+												 		    </script>
+												 		    
+													 		
+												 		</h:panelGroup>
+												 	
+														
+													</div>
+													
+												</div>
+												<div class="btnDecargarVer">
+													<h:panelGroup rendered="#{!contractData.have_contrato_medios_electronicos}" >
+															<a class="mediosLinkVacio callActionMedium btnC descargarBtn" target="_blank" href="../jsf/docs/contratos/contratoMedios.pdf">Descargar</a>
+													</h:panelGroup>
+													<h:panelGroup rendered="#{contractData.have_contrato_medios_electronicos}" >
+															<a class="mediosLinkLleno callActionMedium btnC full" target="_blank" href="../#{contractData.url_contrato_medios_electronicos}">Descarga tu contrato</a>
+													</h:panelGroup>
+													<h:panelGroup rendered="#{!contractData.have_contrato_medios_electronicos}" >
+														 	<div class="callActionMedium fullCon btnC" onclick="contratoVistaCompleta(this,'mediosContrato');" >Leer</div>
+													</h:panelGroup>
+													<div class="callActionMedium smallCon btnC" onclick="contratoSmall(this,'mediosContrato');">Cerrar</div>
+												 </div>
+												 
+											   <aside id="aceptoContratoMedios" onclick="checkTerminos(this, 'medios')" >  
+											   		<div class="bloquearCheck" ></div>
+													<p:selectManyCheckbox  styleClass = "checkStl aceptoContrato"  value="#{contractData.acceptedMedios}" >
+														<f:selectItem  itemValue = "S" itemLabel = "He leído y acepto los términos y condiciones de este contrato."  />
+														<p:ajax event = "change" listener="#{contractData.checkContractMedios}" />
+													</p:selectManyCheckbox>					
+												</aside>
+													<h:panelGroup rendered="#{contractData.have_signature_medios_electronicos and !contractData.have_contrato_medios_electronicos}">
+												 			<div class="png medios">
+																<figure>
+																	<img src="../#{contractData.signature_medios_location}"/>
+																</figure>
+
+												
+															</div>
+															 <script>
+																		bloquearCheck2 ("aceptoContratoMedios");	
+																		console.log("bloquea");
+																	</script>
+														</h:panelGroup>
+									</div>
+									
+										
+							</h:panelGroup>
+							  <!-- Contrato acreditado-->
+							<h:panelGroup id="pnlConAcreditado" rendered="#{contractData.credit}">
+								<div class="bloqueContrato acreditado">
+									<h2>
+										<span>Contrato de crédito</span>
+										
+									</h2>
+                          			<div  class="bloqueContratoInner small" id="acreditadoContrato">
+													
+										<div class="contenido_contrato" id="htmlContratoAcreditadoContenido">
+											
+											<h:panelGroup rendered="#{!contractData.have_contrato_credito}" >
+												<script>
+												   contratoAcreditado = false;
+												   pdfNoGenerado("acreditadoLinkLleno");
+												</script>
+												 <ui:include src = "../jsf/docs/contratoAcreditado/contrato_archivos/contenidoContrato.xhtml"/>
+											</h:panelGroup>
+											
+											<h:panelGroup rendered="#{contractData.have_contrato_credito}" >
+												<script>
+											              pdfHecho ("aceptoContratoAcreditado", "acreditadoLinkVacio", "acreditadoLinkLleno", "acreditadoContrato", "aceptoContratoAcreditado", ".bloqueContrato.acreditado  h2 i" );
+												</script>
+											</h:panelGroup>
+											
+										</div>
+											
+									</div>
+								<div class="btnDecargarVer">
+								
+									<h:panelGroup rendered="#{!contractData.have_contrato_credito}" >
+										<a class="acreditadoLinkVacio callActionMedium btnC descargarBtn" target="_blank" id="redirectCopy" >Descargar</a>
+									</h:panelGroup>
+									<h:panelGroup rendered="#{contractData.have_contrato_credito}" >	
+										<a class="acreditadoLinkLleno callActionMedium btnC full" target="_blank" href="../#{contractData.url_contrato_credito}">Descarga tu contrato</a>
+							        </h:panelGroup>
+							        <h:panelGroup rendered="#{!contractData.have_contrato_credito}" >
+							        	<div class="callActionMedium fullCon btnC" onclick="contratoVistaCompleta(this,'acreditadoContrato');" >Leer</div>
+									 </h:panelGroup>
+										<div class="callActionMedium smallCon btnC" onclick="contratoSmall(this,'acreditadoContrato');">Cerrar</div>
+								   
+								    </div>
+								    <aside id="aceptoContratoAcreditado" onclick="checkTerminos(this, 'acreditado')" >  
+									       <div class="bloquearCheck" ></div>
+												<p:selectManyCheckbox  styleClass = "checkStl aceptoContrato" value="#{contractData.acceptedCredito}" >
+														<f:selectItem  itemValue = "S" itemLabel = "He leído y acepto los términos y condiciones de este contrato."  />
+														<p:ajax event = "change" listener="#{contractData.checkContractCredito}" />
+												</p:selectManyCheckbox>					
+									</aside>
+										<h:panelGroup rendered="#{contractData.have_signature_credito and !contractData.have_contrato_credito}">
+												 			<div class="png credito">
+																<figure>
+																	<img src="../#{contractData.signature_credito_location}"/>
+																</figure>
+																 
+															
+												
+															</div>
+															 <script>
+																		bloquearCheck2 ("aceptoContratoAcreditado");	
+																	</script>
+									</h:panelGroup>
+									</div>
+							</h:panelGroup>
+							<!-- Contrato captacion-->
+							<h:panelGroup id="pnlConCapta" rendered="#{contractData.flagRenderedContactCapt}" >			
+									<div  class="bloqueContrato captacion">
+									<h2>
+										<span>Contrato de captación</span>
+										</h2>
+									<div class="bloqueContratoInner small" id="contratoCaptacion">
+									          <div class="contenido_contrato" id="htmlContratoCaptacionContenido">
+														<h:panelGroup rendered="#{!contractData.have_contrato_captacion}" >
+												 			<ui:include src = "../jsf/docs/contratos/captacion/contratoCaptacionContenido.xhtml"/>
+												 			<script>
+												 			 contratoCaptacion = false;
+												 			pdfNoGenerado("captacionLinkLLeno");
+												 			
+												 		    	</script>
+								
+												 		</h:panelGroup>
+												 		<h:panelGroup rendered="#{contractData.have_contrato_captacion}" >
+												 			<!-- iframe scrolling="auto" src="../#{contractData.url_contrato_captacion}" frameborder="0" height="315px;"  width="100%"></iframe-->
+												 		
+												 				<script>
+												 				contratoCaptacion = true;
+											 				     pdfHecho ("aceptoContratoCaptacion", "captacionLinkVacio", "captacionLinkLLeno", "contratoCaptacion", "aceptoContratoCaptacion", ".bloqueContrato.captacion h2 i" );
+												 		    	</script>
+												 		</h:panelGroup>
+												 		
+												 		
+													</div>
+										</div>
+										<div class="btnDecargarVer">
+											<h:panelGroup rendered="#{!contractData.have_contrato_captacion}" >
+											  		<a class="captacionLinkVacio callActionMedium btnC descargarBtn" target="_blank" href="../jsf/docs/contratos/contratoCaptacion.pdf">Descargar</a>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{contractData.have_contrato_captacion}" >
+											 	 <a class="captacionLinkLLeno  callActionMedium btnC full"  target="_blank" href="../#{contractData.url_contrato_captacion}">Descarga tu contrato</a>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{!contractData.have_contrato_captacion}" >
+												<div class="callActionMedium fullCon btnC" onclick="contratoVistaCompleta(this,'contratoCaptacion');" >Leer</div>
+											</h:panelGroup>
+												<div class="callActionMedium smallCon btnC" onclick="contratoSmall(this,'contratoCaptacion');">Cerrar</div>
+								
+										</div>
+									     <aside id="aceptoContratoCaptacion"  onclick="checkTerminos(this, 'captacion')" > 
+											  	   <div class="bloquearCheck" ></div> 
+													<p:selectManyCheckbox  styleClass = "checkStl aceptoContrato" value="#{contractData.acceptedCaptacion }">
+														<f:selectItem  itemValue = "S" itemLabel = "He leído y acepto los términos y condiciones de este contrato."  />
+														<p:ajax event = "change" listener="#{contractData.checkContractCaptacion}" />
+													</p:selectManyCheckbox>					
+			
+			
+										  </aside>
+										
+											<h:panelGroup rendered="#{contractData.have_signature_captacion and !contractData.have_contrato_captacion}">
+												 			<div class="png captacion">
+																<figure>
+																	<img src="../#{contractData.signature_captacion_location}"/>
+																</figure>
+																 
+																
+												
+															</div>
+															  <script>
+																		bloquearCheck2 ("aceptoContratoCaptacion");	
+																	</script>
+												       </h:panelGroup>
+									</div>	
+									
+								</h:panelGroup>
+							    <!-- Contrato garantías-->	
+								<h:panelGroup id="pnlConGarantias" rendered="#{contractData.flagRenderedContactCapt}" >
+									<div  class="bloqueContrato garantia">
+										<h2>
+											<span>Contrato de garantía líquida e irrevocable</span>
+											
+										
+										</h2>
+									 	<div  class="bloqueContratoInner small" id="contratoGarantia">
+													<div class="contenido_contrato" id="htmlContratoGarantiaContenido">
+														<h:panelGroup rendered="#{!contractData.have_contrato_garantias}" >
+												 			<ui:include src = "../jsf/docs/contratos/garantia/contenidoContratoGarantia.xhtml"/>
+												 			<script>
+												 			pdfNoGenerado("garantiaLinkLleno");
+												 	
+											 				contratoGarantia = false;
+												 		    	</script>
+												 		</h:panelGroup>
+												 		<h:panelGroup rendered="#{contractData.have_contrato_garantias}" >
+												 			<!-- iframe scrolling="auto" src="../#{contractData.url_contrato_garantias}" frameborder="0" height="315px;"  width="100%"></iframe -->
+												 		
+												 			     <script>
+												 			    contratoGarantia = true;
+												 				     pdfHecho ("aceptoContratoGarantia", "garantiaLinkVacio", "garantiaLinkLleno", "contratoGarantia", "aceptoContratoGarantia", ".bloqueContrato.garantia h2 i" );
+												 				</script>
+												 		</h:panelGroup>
+												 		
+													</div>
+											 </div>
+											 
+											   <div class="btnDecargarVer">
+													<h:panelGroup rendered="#{!contractData.have_contrato_garantias}" >
+											   			<a class="garantiaLinkVacio callActionMedium btnC descargarBtn" target="_blank" href="../jsf/docs/contratos/contratoGarantia.pdf">Descargar</a>
+											   		</h:panelGroup>
+											   		<h:panelGroup rendered="#{contractData.have_contrato_garantias}" >
+											   			<a class="garantiaLinkLleno callActionMedium btnC full" target="_blank" href="../#{contractData.url_contrato_garantias}">Descarga tu contrato</a>
+													</h:panelGroup>	
+													<h:panelGroup rendered="#{!contractData.have_contrato_garantias}" >			   	
+									 					<div class="callActionMedium fullCon btnC" onclick="contratoVistaCompleta(this,'contratoGarantia');" >Leer</div>
+									 				</h:panelGroup>
+										    		<div class="callActionMedium smallCon btnC" onclick="contratoSmall(this,'contratoGarantia');">Borrar</div>
+									 			</div>
+											  <aside id="aceptoContratoGarantia" onclick="checkTerminos(this,  'garantia')">  
+		 											<div class="bloquearCheck" ></div>
+		 											<p:selectManyCheckbox    styleClass = "checkStl aceptoContrato" value="#{contractData.acceptedGarantia}" >
+														<f:selectItem  itemValue = "S" itemLabel = "He leído y acepto los términos y condiciones de este contrato."  />
+														<p:ajax event = "change" listener="#{contractData.checkContractGarantia}" />
+													</p:selectManyCheckbox>					
+			
+			
+											   </aside>
+											 
+									 			<h:panelGroup rendered="#{contractData.have_signature_garantias and !contractData.have_contrato_garantias}">
+												 			<div class="png garantia">
+																<figure>
+																	<img src="../#{contractData.signature_garantia_location}"/>
+																</figure>
+																 
+																 
+																
+																   
+															</div>
+															  <script>
+																		bloquearCheck2 ("aceptoContratoGarantia");	
+																	</script>
+												       </h:panelGroup>
+									  </div>	
+								</h:panelGroup>
+										
+								<h:panelGroup rendered="#{!(contractData.have_contrato_medios_electronicos and contractData.have_contrato_garantias and contractData.have_contrato_captacion)}" >	
+										<div class="callAction btnNaranja firmarContratos mobile" onclick="firmaContratoMobile();">Firmar contratos</div>
+								</h:panelGroup>
+									
+								<div class="callActionMedium btnGris regresarBtn mobile" onclick="regresarContratosMobile();"> <i class="fa fa-angle-left"></i><span>Regresar</span></div>
+		                			
+		                	     <div id="marcador" style="opacity:0;">Marcador</div>
+		                		
+		                		<!-- Modulo firma medios-->	
+		                		<h:panelGroup id="pnlMediosBloqueFirma">
+		                			<h:panelGroup rendered="#{!contractData.have_signature_medios_electronicos and !contractData.have_contrato_medios_electronicos and contractData.flagRenderedContactCapt}">
+		                					<div class="firmaAqui medios">
+		                			   			<div class="bloquearFirma" onclick="noAceptoTerminos(contratoMediosTitulo)"></div>
+		                					<div class="instrucciones">
+		                						<h3>Firma aquí.</h3>
+		                					</div>
+		                					<div id="drawingDiv" class="drawingDiv">
+													<canvas id="canvas1" class="canvas" height="460" width="460"></canvas>
+										    </div>
+											<div id="serializerDiv" style="display: none;">
+												<textarea id="serDataTxt" cols="80" rows="8"></textarea>
+												<br />
+												<input id="cancelBtn" type="button" value="Close" class="btn btn-default btn-respon" />
+											    <input id="okBtn" type="submit" value="Submit" class="btn btn-default btn-respon" />
+											</div>
+		                							
+		                					<fieldset>
+		                							<div id="clearBtn" class="callActionMedium btnGris" onclick="clear1();">Borrar</div>
+													<div  id="continueMedios" class="callActionMedium btnNaranja continuarFirma"  onclick="continuarFirma(this, 'aceptoContratoMedios', contratoMediosTitulo, 'signature', 'firmaData', 'cmdSendDataSignature', record, cacheCanvas);">Continuar</div>
+		                					</fieldset>
+		                							
+		                					
+			                			</div>
+			                			</h:panelGroup>
+		                			</h:panelGroup>
+		                			<!-- Modulo firma acreditado-->	
+		                			<h:panelGroup id="pnlAcreditadoBloqueFirma">
+		                				<h:panelGroup  rendered="#{contractData.credit}">
+				                			<h:panelGroup rendered="#{!contractData.have_signature_credito and !contractData.have_contrato_credito}" >
+					                			<div class="firmaAqui acreditado">
+					                			   		<div class="bloquearFirma" onclick="noAceptoTerminos(contratoAcreditadoTitulo)"></div>
+					                					<div class="instrucciones">
+					                	
+					                						<h3>Firma el Contrato de crédito en el área punteada.</h3>
+					                					</div>
+					                		     		<div id="drawingDiv4" class="drawingDiv" >
+																<canvas id="canvas4" class="canvas" height="460" width="460"></canvas>
+													    </div>
+														<div id="serializerDiv4" style="display: none;">
+															<textarea id="serDataTxt4" cols="80" rows="8"></textarea>
+															<br />
+															<input id="cancelBtn4" type="button" value="Close" class="btn btn-default btn-respon" />
+														    <input id="okBtn4" type="submit" value="Submit" class="btn btn-default btn-respon" />
+														</div>	
+					                					<fieldset>
+			                								<div id="clearBtn4" class="callActionMedium btnGris borrarFirma" onclick="clear4();">Borrar</div>
+			                								<div  id="continueAcreditado" class="callActionMedium btnNaranja continuarFirma"  onclick="continuarFirma(this, 'aceptoContratoAcreditado', contratoAcreditadoTitulo, 'signature4', 'firmaData4', 'cmdSendDataSignature4', record4, cacheCanvas4);">Continuar</div>
+					                					</fieldset>
+					                			    </div>
+				                				</h:panelGroup>
+		                				</h:panelGroup>
+		                			</h:panelGroup>
+		                				<!-- Modulo firma captacion-->	
+		                			<h:panelGroup id="pnlCaptacionBloqueFirma">
+			                			<h:panelGroup rendered="#{!contractData.have_signature_captacion and !contractData.have_contrato_captacion and contractData.flagRenderedContactCapt}" >
+				                			<div class="firmaAqui captacion">
+				                			<div class="bloquearFirma" onclick="noAceptoTerminos(contratoCaptacionTitulo)"></div>
+				                					<div class="instrucciones">
+				                	
+				                						<h3>Firma tu Contrato de captación en el área punteada.</h3>
+				                					</div>
+				                			 	    <div id="drawingDiv2" class="drawingDiv" >
+															<canvas id="canvas2" class="canvas" height="460" width="460"></canvas>
+												    </div>
+													<div id="serializerDiv2" style="display: none;">
+														<textarea id="serDataTxt2" cols="80" rows="8"></textarea>
+														<br />
+														<input id="cancelBtn2" type="button" value="Close" class="btn btn-default btn-respon" />
+													    <input id="okBtn2" type="submit" value="Submit" class="btn btn-default btn-respon" />
+													</div>
+				                							
+				                					<fieldset>
+				                							<div id="clearBtn2" class="callActionMedium btnGris borrarFirma" onclick="clear2();">Borrar</div>
+				         									<div  id="continueBtnCaptacion" class="callActionMedium btnNaranja continuarFirma" onclick="continuarFirma(this,'aceptoContratoCaptacion', contratoCaptacionTitulo, 'signature2', 'firmaData2', 'cmdSendDataSignature2', record2, cacheCanvas2 );" >Continuar</div>
+				                					</fieldset>
+				                			</div>
+			                			</h:panelGroup>
+			                		</h:panelGroup>
+			                		
+		                			<!-- Modulo firma garantia-->	
+		                			<h:panelGroup id="pnlGarantiaBloqueFirma">
+			                			<h:panelGroup rendered="#{!contractData.have_signature_garantias and !contractData.have_contrato_garantias and contractData.flagRenderedContactCapt}" >
+				                			<div class="firmaAqui garantia">
+				                			   		<div class="bloquearFirma" onclick="noAceptoTerminos(contratoGarantiaTitulo)"></div>
+				                					<div class="instrucciones">
+				                	
+				                						<h3>Firma el Contrato de garantía líquida e irrevocable en el área punteada.</h3>
+				                					</div>
+				                		     		<div id="drawingDiv3" class="drawingDiv" >
+															<canvas id="canvas3" class="canvas" height="460" width="460"></canvas>
+												    </div>
+													<div id="serializerDiv3" style="display: none;">
+														<textarea id="serDataTxt3" cols="80" rows="8"></textarea>
+														<br />
+														<input id="cancelBtn3" type="button" value="Close" class="btn btn-default btn-respon" />
+													    <input id="okBtn3" type="submit" value="Submit" class="btn btn-default btn-respon" />
+													</div>
+				                							
+				                					<fieldset>
+		                								<div id="clearBtn3" class="callActionMedium btnGris borrarFirma" onclick="clear3();">Borrar</div>
+		                								<div  id="continueGarantia" class="callActionMedium btnNaranja continuarFirma"  onclick="continuarFirma(this, 'aceptoContratoGarantia', contratoGarantiaTitulo, 'signature3', 'firmaData3', 'cmdSendDataSignature3', record3, cacheCanvas3);">Continuar</div>
+				                					</fieldset>
+				                			</div>
+			                			</h:panelGroup>
+			                		</h:panelGroup>
+		    		                
+		    		                
+		    		                	
+					                <h:panelGroup><!-- investor -->
+					                    <h:panelGroup rendered="#{contractData.have_contrato_medios_electronicos and contractData.have_contrato_captacion and contractData.have_contrato_garantias}" >
+											 <script>
+												todoFirmado ();
+											
+											</script>		                	
+					                	</h:panelGroup>	
+					                </h:panelGroup>	
+					                 <h:panelGroup rendered="#{contractData.credit}"><!-- acreditado -->
+					                    <h:panelGroup rendered="#{contractData.have_contrato_medios_electronicos and contractData.have_contrato_captacion and contractData.have_contrato_garantias and contractData.have_contrato_credito and contractData.flagRenderedContactCapt}" >
+											 <script>
+												todoFirmado ();
+											
+											</script>		                	
+					                	</h:panelGroup>	
+					                	
+					                	 <h:panelGroup rendered="#{contractData.have_contrato_credito and !contractData.flagRenderedContactCapt}" >
+											 <script>
+												todoFirmado ();
+											
+											</script>		                	
+					                	</h:panelGroup>	
+					                	
+					                </h:panelGroup>	
+					           		 <h:panelGroup rendered="#{contractData.todosFirmados}" >
+						           		 <script>
+						           		 documentosEnviados = true;
+						           		 console.log("documentosEnviados"+documentosEnviados);
+						           		 </script>
+					           		</h:panelGroup>
+					          
+					           </h:panelGroup>	
+		               
+           <!-- Mensaje final -->		
+		                <div class="mensajeFinal">
+		                	  <h2>Listo! has firmado todos los contratos</h2>
+		                	   <p>Para finalizar tu proceso, dale click en el botón "Enviar contratos firmados", para enviar los contratos firmados a validación.</p>
+		                	  <article>
+			                		<div class="callAction btnNaranja btnGeneraContratos" onclick="generaContratos();">Enviar contratos firmados</div>
+			                  </article>
+		                </div>
+
+		                		
+		                		</div>
+                	</div>
+            </div>
+           
+
+	        <ui:include src="templates/footer_mapa.xhtml" />       
+	        <!-- ui:include src="templates/modal_iniciar_sesion.xhtml" / --> 	    
+	 	    <ui:include src="templates/modal_condusef.xhtml" />    
+	 	   	<ui:include src="templates/modal_cat.xhtml" />             
+	        <ui:include src="templates/modal_sesion_inactiva.xhtml" />  
+	      
+	        <!-- ui:include src="templates/modal_activar_cambiar_correo.xhtml" /-->
+	        <!-- 
+			<ui:include src="templates/modal_cambiar_correo.xhtml" />
+		    <ui:include src="templates/mandar_mail.xhtml" />
+		    <ui:include src="templates/contrasena_validador.xhtml" />
+		     -->
+		    <!-- ui:include src="templates/modal_correo_existente.xhtml" / -->	
+			<ui:include src="templates/modal_cambiocontrasena.xhtml" />
+			<ui:include src="templates/modal-init-login.xhtml" />
+		
+		 
+		 
+        </h:form>
+       
+        <h:form action="playback" method="POST" id="playback" prependId="false" >
+            <!-- Post contrato medios -->	
+			<div style="display:none;">
+			
+				<!-- HTML TEXT -->
+				<h:inputTextarea name="inputContratoMedios" id="inputContratoMedios" cols="50" rows="25" value="#{contractData.txtContratoMedios}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+			
+				<!-- SERIALIZE TEXT -->
+				<h:inputTextarea name="signature" id="signature" cols="50" rows="25" value="#{contractData.serialize_str}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				
+				<!-- DATA URL TEXT -->
+				<h:inputTextarea name="firma" 	  id="firmaData" cols="50" rows="25" value="#{contractData.data_url_str}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				
+				<input type="hidden" name="id" value="0" />
+	        </div>	
+	        
+			<div style="display:none;" >
+				<h:commandLink id="cmdSendDataSignature" >
+					<p:ajax event="click" listener="#{contractData.generaFirma}" oncomplete="regresaFirma('medios',contratoMediosTitulo);" update=":user:pnlConMedios :user:pnlMediosBloqueFirma"  ></p:ajax>
+		        </h:commandLink>
+			</div>
+																				
+	   
+	         <!-- Post contrato captacion -->	
+			<div style="display:none;">
+			
+				<!-- HTML TEXT -->
+				<h:inputTextarea name="inputContratoCaptacion" id="inputContratoCaptacion" cols="50" rows="25" value="#{contractData.txtContratoCaptacion}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+			
+				<!-- SERIALIZE TEXT -->
+				<h:inputTextarea name="signature" id="signature2" cols="50" rows="25" value="#{contractData.serialize_str_2}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				
+				<!-- DATA URL TEXT -->
+				<h:inputTextarea name="firma" 	  id="firmaData2" cols="50" rows="25" value="#{contractData.data_url_str_2}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				<input type="hidden" name="id" value="0" />
+	        </div>	
+	        
+			<div style="display:none;" >
+				<h:commandLink id="cmdSendDataSignature2" >
+					<p:ajax event="click" listener="#{contractData.generaFirma_2}" oncomplete="regresaFirma('captacion', contratoCaptacionTitulo);" update=":user:pnlConCapta :user:pnlCaptacionBloqueFirma"  ></p:ajax>
+		        </h:commandLink>
+			</div>
+																				
+		    <!-- Post contrato garantia -->	
+			<div style="display:none;">
+			
+				<!-- HTML TEXT -->
+				<h:inputTextarea name="inputContratoGarantia" id="inputContratoGarantia" cols="50" rows="25" value="#{contractData.txtContratoGarantia}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+			
+				<!-- SERIALIZE TEXT -->
+				<h:inputTextarea name="signature" id="signature3" cols="50" rows="25" value="#{contractData.serialize_str_3}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				<h:inputTextarea name="firma" 	  id="firmaData3" cols="50" rows="25" value="#{contractData.data_url_str_3}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				<input type="hidden" name="id" value="0" />
+				
+	        </div>	
+	        
+	        <div style="display:none;" >
+				<h:commandLink id="cmdSendDataSignature3" >
+					<p:ajax event="click" listener="#{contractData.generaFirma_3}" oncomplete="regresaFirma('garantia',contratoGarantiaTitulo);"  update=":user:pnlConGarantias :user:pnlGarantiaBloqueFirma" ></p:ajax>
+		        </h:commandLink>
+			</div>
+			
+			<!-- Post Envia Contratos -->	
+
+			<div style="display:none;" >
+				<h:commandLink id="cmdGenerateContract" >
+					<p:ajax event="click"  oncomplete="enviarValidacion();" update=":user"  ></p:ajax>
+				</h:commandLink>
+		  </div>
+		  		<!-- Post contrato acreditado -->
+			
+			<div style="display:none;">
+				<!-- HTML TEXT -->
+				<h:inputTextarea name="inputContratoAcreditado" id="inputContratoAcreditado" cols="50" rows="25" value="#{contractData.txtContratoCredito}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+			
+				<!-- SERIALIZE TEXT -->
+				<h:inputTextarea name="signature" id="signature4" cols="50" rows="25" value="#{contractData.serialize_str_4}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				<h:inputTextarea name="firma" 	  id="firmaData4" cols="50" rows="25" value="#{contractData.data_url_str_4}" >
+						<p:ajax event="blur"  ></p:ajax>
+				</h:inputTextarea>
+				<input type="hidden" name="id" value="0" />
+				
+	        </div>	
+	        
+	        <div style="display:none;" >
+				<h:commandLink id="cmdSendDataSignature4" >
+					<p:ajax event="click" listener="#{contractData.generaFirma_4}" oncomplete="regresaFirma('acreditado',contratoAcreditadoTitulo);"  update=":user:pnlConAcreditado :user:pnlAcreditadoBloqueFirma" ></p:ajax>
+		        </h:commandLink>
+		        
+		        <h:commandLink id="cmdSendCopyContrct" >
+					<p:ajax event="click" listener="#{contractData.generaCopiaContratoCredito}" oncomplete="redirectCopy(xhr, status, args)" ></p:ajax>
+		        </h:commandLink>
+		        
+		       
+		        
+			</div>
+			
+			<!-- Fin contrato acreditado  -->
+				
+			<div style="display:none;" >
+			
+				<h:inputText id="inputSeguimientoContratos" value="#{contractData.unsignature}" >
+					<p:ajax event="blur" />
+				</h:inputText>
+			
+				<h:commandLink id="cmdAllSigned" >
+					<p:ajax event="click" listener="#{contractData.replicaFirma}" oncomplete="regresaFirmaTodos();" update=":user:pnlConAll" ></p:ajax>
+		        </h:commandLink>
+		        
+		        
+		        <h:commandLink id="cmdRegAccess" >
+					<p:ajax event="click" listener="#{contractData.registraAccess}"  ></p:ajax>
+		        </h:commandLink>
+		        
+		         <h:commandLink id="cmdShowedCont" >
+					<p:ajax event="click" listener="#{contractData.registraShowed}"  ></p:ajax>
+		        </h:commandLink>
+		        
+			</div>
+					
+			<div style="display:none;" >
+			
+				<h:inputText value="#{contractData.browser_data}" id="browser_data" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+				
+				<h:inputText value="#{contractData.browser_name}" id="browser_name_F" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+				
+				<h:inputText value="#{contractData.browser_version}" id="browser_version_F" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+				
+				<h:inputText value="#{contractData.browser_OS}" id="browser_OS_F" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+				
+				<h:inputText value="#{contractData.browser_width}" id="browser_width_F" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+				
+				<h:inputText value="#{contractData.browser_height}" id="browser_height_F" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+		
+				<h:inputText value="#{contractData.actual}" id="statusInput">
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>	
+			</div>	
+																		
+		</h:form>
+	</div>
+        
+        <h:panelGroup rendered="#{contractData.acceptedMedios.size() > 0}" >
+        
+        		<script>
+	        	$(document).ready(function() {	
+	        		$("#aceptoContratoMedios").trigger("click");
+	        	});
+	        	//window.open(args.url_copy, '_blank');
+        	</script> 
+					
+        
+        </h:panelGroup>
+         
+        <h:panelGroup rendered="#{contractData.acceptedCaptacion.size() > 0}" >
+         
+         	<script>
+        	$(document).ready(function() {	
+        		$("#aceptoContratoCaptacion").trigger("click");
+        	});
+        	</script> 
+         	
+        </h:panelGroup>
+         
+        <h:panelGroup rendered="#{contractData.acceptedGarantia.size() > 0}" >
+        
+        	<script>
+        	$(document).ready(function() {	
+        		$("#aceptoContratoGarantia").trigger("click");
+        	});
+        	</script> 
+         
+        </h:panelGroup>
+
+		 <h:panelGroup>
+        
+        	<script>
+        	$(document).ready(function() {	
+        		$("#aceptoContratoAcreditado").trigger("click");
+        	});
+        	</script> 
+         
+        </h:panelGroup>
+		<script>
+			
+			
+			setTimeout(function(){
+				ejecutaCmdShowedCont();
+				
+			},1000);
+			$('#full-width-slider').royalSlider({
+				 fullscreen: {
+				      enabled: true,
+				      nativeFS: true
+				    },
+				    controlNavigation: 'thumbnails',
+				    autoScaleSlider: true, 
+				    autoScaleSliderWidth: 960,     
+				    autoScaleSliderHeight: 850,
+				    loop: false,
+				    imageScaleMode: 'fit-if-smaller',
+				    navigateByClick: true,
+				    numImagesToPreload:2,
+				    arrowsNav:true,
+				    arrowsNavAutoHide: true,
+				    arrowsNavHideOnTouch: true,
+				    keyboardNavEnabled: true,
+				    fadeinLoadedSlide: true,
+				    globalCaption: true,
+				    globalCaptionInside: false,
+				    thumbs: {
+				      appendSpan: true,
+				      firstMargin: true,
+				      paddingBottom: 4
+				    }
+			  });
+			
+			
+		
+			
+			
+        </script> 
+
+   
+    </h:body>
+
+	
+		
+		
+		
+</html>

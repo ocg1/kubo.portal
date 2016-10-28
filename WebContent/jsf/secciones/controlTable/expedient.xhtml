@@ -1,0 +1,136 @@
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui">
+
+<script type="text/javascript" src="../resources/js/expediente.js"/>
+<script type="text/javascript" src="../resources/js/consultaBuro.js"/>	
+
+<script>
+$("#dvCntCancel").show();
+</script>
+
+<style>
+	a:HOVER{
+		text-decoration: none !important;
+	}
+	.investFrm{
+		display: none;
+	}
+	
+	.clsExpe{
+		width: 920px !important;
+	}
+	
+	.clssControlBuro{
+		font-size: 1.0em !important;
+	}
+	
+	.clssTablesBuro{
+		font-size: 0.86em !important;
+	}
+	
+	.clMenuExp{
+		cursor: pointer;
+		color: #333333;
+	}
+	
+	.clMenuExp:HOVER{
+		background-color: rgba(231,235,187,0.6);
+	}
+	
+	.clMenuExp a{
+		color: #333333;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	
+	.clMenuExpSel{
+		background-color: #439539 !important;
+	}
+	
+	a .clMenuExpSel {
+		color: #FFFFFF !important;
+	}
+	
+	#bar_menu_logs a{
+		padding: 15px 5px !important;
+	}
+	
+	.numberMenu{
+		color: #C1D82F;
+		font-size: 2em;
+		font-weight: bold;
+		margin-right: 5px;
+	}
+	.marginLeft{
+		margin-left: 15px;
+	}
+	
+	#imgCarteraKubo{
+			left: 387px !important;
+		}
+	
+	.clContMenu{
+		width: auto;
+		height: auto;
+		overflow: auto;
+		border: solid 0px #000000;
+		padding-top: 5px;
+	}
+	
+</style>
+
+	<div  class="respMesa">
+
+		<ui:include src = "expediente/buscador.xhtml"/>
+
+		<br/><br/>
+
+		<div>
+
+		
+
+				<ui:include src = "expediente/menu.xhtml" />
+
+			
+			
+			<div class="contenidoExpediente">
+				<h:panelGroup id = "container_gral" >
+
+					<h:inputHidden id="burSolNumExp" value="#{electronicFile.proyectLoan.mx_solicitud_buro}"  />
+	
+					<ui:include src = "expediente/identificacion.xhtml" />
+
+					<h:panelGroup rendered="#{electronicFile.include_disp}">		
+						
+						<fieldset>	 	
+						
+							<ui:include  src="../../#{electronicFile.pageStr}"  />
+					
+						</fieldset>
+				
+						<ui:include src = "expediente/consultas.xhtml" />
+				
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{electronicFile.msg_disp}">
+						<fieldset>
+							<div style="margin:15px;">
+								<div class="clTitle" style="width: 450px;">#{electronicFile.titleStr}<br /></div>				
+								<div style="margin-left: 20px;">#{electronicFile.contMsgStr}</div>
+							</div>
+						</fieldset>
+					</h:panelGroup>
+					
+					<ui:include src = "expediente/capacidad-pago.xhtml"/>
+					<ui:include src = "expediente/comprobante-domicilio.xhtml"/>
+					<ui:include src = "expediente/contratos.xhtml"/>
+					<ui:include src = "expediente/propietario-real.xhtml"/>
+					
+				</h:panelGroup>
+			</div>
+		</div>
+	</div>
+</html>

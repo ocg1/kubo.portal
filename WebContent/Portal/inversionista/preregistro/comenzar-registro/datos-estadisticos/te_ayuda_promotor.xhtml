@@ -1,0 +1,29 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+		<li class="promoLi">
+			<h:outputText value="#{msg.Registration_select_promoter}" styleClass="etiqueta"/>
+		</li>
+		<li class="promoLi">		
+
+		
+		
+		
+		
+	
+	
+			<h:selectOneRadio id="havePromotor"  value="#{addNaturalPerson.promotorDisp}"  styleClass="radio elementStlLbl validatorClass requiredVerify" style="border: solid 0px #FFFFFF !important;">
+			    <f:selectItem itemValue="true"  itemLabel="Si"/>
+			    <f:selectItem itemValue="false" itemLabel="No"/>
+			    <p:ajax event="change"   oncomplete="validapromotor();"></p:ajax>
+			</h:selectOneRadio>
+			
+			
+	   </li>	
+
+					
+</ui:composition>					

@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html">
+				
+	
+           	 			 
+	<article style = "display:block;" >
+		<ul>
+			       	    <ui:include src = "datos-cuenta/email.xhtml" />																	
+						<ui:include src = "datos-cuenta/crear_password.xhtml" />
+												
+						<h:panelGroup rendered="#{(addNaturalPerson.area != null and addNaturalPerson.area == 'L') or ( addNaturalPerson.area != null and addNaturalPerson.area == 'I' and addNaturalPerson.isActiveInvestmentSection == 'S' ) }">
+							<script>
+								varPass=false;
+							</script>
+						</h:panelGroup>                                                                                                            
+		</ul>
+	</article>				
+</ui:composition>

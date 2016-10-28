@@ -1,0 +1,154 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+		<!-- otras consultas -->
+		
+		<div class="detailsControlTable clssControlBuro clssTablesBuro" id="dvlstCnsltCont" style="margin-top: 15px;" >
+							
+			<div class="centerPosition">
+			
+				<h:panelGroup id="pnlCnsListBur">
+					<p><strong class="orange">Consultas anteriores realizadas por Kubo</strong></p>
+				</h:panelGroup>
+				
+					
+				<!-- 
+					<div id="dvWaithConsult" style="width: 32px; margin: 35px auto 0px; height: 32px;" >
+					
+						<h:graphicImage style="width: 30px; margin: 35px 0px 0px; height: 30px;"  
+								url="../resources/img/ajax-loader.gif" >
+						</h:graphicImage>
+						
+					
+					</div>
+				 -->
+					<div id="dvcsltPy">
+					<!-- 
+					<div style="display:none;">
+						
+						<h:commandLink id="cmdCargaConsultBuro" >
+							<p:ajax event="click" listener="#{chartBackBean.asignar_consultas_anteriores}" update="pnlBuroConsultationBur" oncomplete="resultadoCargaConsultas();" immediate= "true" />
+						</h:commandLink>
+					
+					</div>
+					 -->
+				
+					<h:panelGroup id="pnlBuroConsultationBur">
+						
+						<h:panelGroup rendered="#{ chartBackBean.lstConsultas == null or chartBackBean.lstConsultas.size() == 0}" >
+						
+							<table class="formato_tablas">
+								<tr class="par">
+									<td> No existen consultas anteriores realizadas por Kubo para este cliente.</td>
+								</tr>
+							</table>
+						
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{chartBackBean.lstConsultas.size()>0}" >
+					
+						<div style="margin-left: auto; margin-right: auto; margin-top: 40px; margin-bottom: 40px; width: 100%;" >
+							
+							<table  style="width: 100%;" >
+								<tr>
+									<td>
+										<table style="border-collapse: collapse; width: 100%;" >
+											
+											<tr>
+												<th style="text-align: center;" >
+													Folio de Buró de Crédito
+												</th>
+												<th width="152px;" style="text-align: left;">
+													Fecha de Consulta
+												</th>
+												<th style="text-align: left; padding-right: 5px;">
+													BCScore
+												</th>
+												<th style="text-align: left;">
+													Tipo
+												</th>
+												<th width="142px" style="text-align: left;">
+													Crédito
+												</th>
+												<th  style="text-align: left;">
+													Status
+												</th>
+											</tr>
+												
+									<ui:repeat var="cnslt" value="#{chartBackBean.lstConsultas}" varStatus="pos" >
+									
+											<tr class="#{!pos.odd?'lendingAnswer':''}" >
+												<td style="text-align: left; width: 113px !important; padding-top: 8px; padding-bottom: 8px;" >
+													<div class="consult#{pos.index}" >#{cnslt.bursolnum}</div>
+												</td>
+												<td width="152px;" style="text-align: left; width: 150px !important; padding-top: 8px; padding-bottom: 8px;">
+													<div class="consult#{pos.index}" >#{cnslt.fecConsult}</div>
+												</td>
+												<td style="text-align: left; width: 45px !important; padding-top: 8px; padding-bottom: 8px; ">
+													<div class="consult#{pos.index}" >#{cnslt.bcScore}</div>
+												</td>
+												<td style="text-align: left; width: 156px !important; padding-top: 8px; padding-bottom: 8px; ">
+													<div class="consult#{pos.index}" >#{cnslt.tipoConsulta}</div>
+												</td>
+												<td width="142px" style="text-align: left;  width: 141px !important; padding-top: 8px; padding-bottom: 8px; ">
+													<div class="consult#{pos.index}" > #{(cnslt.bursolnum==chartBackBean.burSolNum)?'ACTUAL':(cnslt.credito)}</div>
+												</td>
+												<td  style="text-align: left; width: 122px !important; padding-top: 8px; padding-bottom: 8px; ">
+													<div class="consult#{pos.index}" >
+														<p:graphicImage url="../resources#{cnslt.status}" style="margin-left: auto; margin-right: auto;" rendered="#{cnslt.status != 'Sin proyecto'}" width="25" height="25" />
+														<h:outputLabel rendered="#{cnslt.status == 'Sin proyecto'}" value="#{cnslt.status}" ></h:outputLabel>
+													</div>
+												</td>
+											</tr>
+										
+									<style>
+										.consult#{pos.index}{
+											text-decoration: none;
+										}
+									
+										.consult#{pos.index}:HOVER{
+											cursor: pointer;
+											text-decoration: underline;
+										}
+										
+									</style>
+									
+									<script>
+									
+									$(".consult#{pos.index}").fancybox({
+										'transitionIn'	:	'elastic',
+										'transitionOut'	:	'elastic',
+										'speedIn'		:	600, 
+										'speedOut'		:	200, 
+										'overlayShow'	:	true,
+										'width'			:	'100%',
+										'height'		: 	'100%',
+										'href'			:	'reporteBuroSolNum.jsf?solNum=#{cnslt.bursolnum}',
+										'type'			:	'iframe'
+									});
+									
+									</script>
+										
+								</ui:repeat>
+								
+										</table>
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+						
+						</h:panelGroup>
+					
+				</h:panelGroup>
+				
+				</div>
+				
+			</div>
+		
+		</div>
+		
+		<!-- /otras consultas -->
+		<p></p>				
+</ui:composition>				

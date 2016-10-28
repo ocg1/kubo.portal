@@ -1,0 +1,31 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<script type = "text/javascript">
+
+		$("#dvCntCancel").show();
+	</script>		
+					
+	<div id = "dvCntProfile">
+	
+		<ui:include src = "solicitud/busqueda.xhtml"/>
+		<ui:include src = "solicitud/busqueda/couch-financiero.xhtml"/>
+				
+		<h:panelGroup id = "update_summary">
+			<h:panelGroup rendered = "#{searchSummaySession.searchSummary != null}">
+								
+					<ui:include  src = "../../templates/request.xhtml"  />
+					
+			</h:panelGroup>	
+			<!-- 
+			<h:panelGroup id = "solicitud-inversionista" rendered = "#{searchSummaySession.investor_ENABLED}">
+				<ui:include src = "solicitud/inversionista.xhtml"/>			
+			</h:panelGroup>
+			 -->
+			
+		</h:panelGroup>		
+	</div>	
+</ui:composition>

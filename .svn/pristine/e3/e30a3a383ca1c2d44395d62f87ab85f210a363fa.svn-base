@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui"
+				xmlns:c  = "http://java.sun.com/jsp/jstl/core">
+			
+	<c:set var = "localhost"    value = "http://localhost:8080" />				
+	<c:set var = "context_root" value = "#{request.contextPath}" />
+	<c:set var = "Portal"       value = "#{localhost}#{context_root}/Portal" />
+	<c:set var = "resources"    value = "#{localhost}#{context_root}/resources" />	
+	
+	<h:outputStylesheet library="css" name="headerStyles.css"/>
+	<h:outputScript library="js" target="head" name="headerScripts.js" />
+		<h:panelGroup  rendered="#{sessionBean.prospectus_id != null  and sessionBean.isnew == 'N'  }">
+			<ui:include src = "mensajeInicialAcesso.xhtml"/>	
+	
+		</h:panelGroup>
+		<h:form prependId="false">
+			<ui:include src = "../../Portal/templates/header_in.xhtml"/>
+			 <div class="push_header"></div>
+		</h:form>
+		
+	
+	</ui:composition>

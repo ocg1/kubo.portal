@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui">
+
+<h:head>
+	
+	<link rel="stylesheet" type="text/css" href="../../resources/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/ayudaStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/frmStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/preregistro2.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/simulator.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/preaprobacion.css" />	
+	<link rel="stylesheet" type="text/css" href="../../resources/js/jcrop/jquery.Jcrop.min.css" />	
+	<script type="text/javascript" src="../../resources/js/cropperImg.js"/>
+	<script language="javascript" type="text/javascript" src="../../resources/js/general.js"/>
+	<script type="text/javascript" src="../../resources/js/jcrop/jquery.Jcrop.min.js"/>	
+	<script type="text/javascript" src="../../resources/js/imgscale/imgscale.jquery.min.js"/>	
+	<script type="text/javascript" src="../../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"/>
+	<script type="text/javascript" src="../../resources/js/fancybox/jquery.easing-1.3.pack.js"/>
+	<script type="text/javascript" src="../../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"/>		
+	<link rel="stylesheet" type="text/css" href="../../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />				
+	
+</h:head>
+
+<h:body>
+
+<div>
+	<div class="contPR" style="position: relative;margin-right: 0px;background-color: #FFFFFF;min-height: 0;">
+		<div class="contFrm" style="padding-right: 0px;width: auto;margin: 0px;">
+			<div id="general">				
+				<h:form id="frmEditImage" prependId="false">
+				
+				<h:inputHidden id="isPdfFile" value="#{cropperImage.formatIspdfFile}"/>
+				 <h:panelGroup rendered = "#{sessionBean.area == 'M'}" >
+					<div class="clTitle" style="width:auto;margin:0;" >
+						<p:inplace label="#{cropperImage.documentTypeDesc.description}">
+						<h:outputLabel value="Seleccione nueva clasificación del documento"></h:outputLabel>
+							<div class="selectNuevo">							
+								<h:selectOneMenu id="cbo-list-type"  style="font-size: 0.8em ! important; width: 500px ! important;" styleClass="elementStlSelAddress" value="#{cropperImage.documentTypeDesc.typeFile}">								
+									<f:selectItems  value="#{cropperImage.menuItems}" ></f:selectItems>
+									<p:ajax event="change" listener="#{cropperImage.changeReclasificationTypeFile}"  update=":frmEditImage:saveChange_id" ></p:ajax>
+								</h:selectOneMenu>	 
+							</div>	
+						</p:inplace>
+					</div>
+				</h:panelGroup>
+				
+				<div class="dvContent">
+				 <h:panelGroup rendered = "#{sessionBean.area == 'M'}" >
+					<p:commandLink actionListener="#{cropperImage.rotateImage(-90)}" disabled="#{cropperImage.formatIspdfFile}" style="float:left;text-decoration:none;" ajax="false">
+						<div  style="background: url('../../resources/img/rotate-left.png') no-repeat scroll -15px -22px transparent; width: 50px; height: 40px; margin: 10px 5px;">
+							
+						</div>
+					</p:commandLink>
+					<p:commandLink actionListener="#{cropperImage.rotateImage(90)}" disabled="#{cropperImage.formatIspdfFile}" style="float:left;text-decoration:none;" ajax="false">
+						<div  style="background: url('../../resources/img/rotate-right.png') no-repeat scroll -15px -22px transparent; width: 50px; height: 40px; margin: 10px 5px;">
+							 
+						</div>
+					</p:commandLink>
+					<p:commandLink id="setCropToImage" disabled="#{cropperImage.formatIspdfFile}" style="float:left;text-decoration:none;">
+						<div  style="background: url('../../resources/img/crop.png') no-repeat scroll 0 transparent; width: 50px; height: 42px; margin: 10px 5px;">
+							
+						</div>
+					</p:commandLink>
+					
+					<p:commandLink actionListener="#{cropperImage.cropImg}" style="display:none;"  ajax="false"></p:commandLink>
+					</h:panelGroup>
+					<p:commandLink actionListener="#{cropperImage.cancelCrop}" oncomplete="cancel_crop();" style="float:left;text-decoration:none;">
+						<div style="background: url('../../resources/img/cancel-crop.png') no-repeat scroll 0 -3px transparent; width: 50px; height: 42px; margin: 10px 5px;">
+							
+						</div>
+					</p:commandLink>
+						 <h:panelGroup rendered = "#{sessionBean.area == 'M'}" >
+					<p:commandLink id="saveChange_id" actionListener="#{cropperImage.saveChange}" disabled="#{!cropperImage.disabled}" style="float:left;text-decoration:none;" onstart="return checkSelection();"  oncomplete="closeAndSave(#{cropperImage.thisFiles!=null ?'false':'true'});">
+						<div style="background: url('../../resources/img/save-crop.png') no-repeat scroll 0 transparent; width: 50px; height: 42px; margin: 10px 5px;">
+							
+						</div>
+					</p:commandLink>
+				
+					<p:commandLink id="removeFile" actionListener="#{cropperImage.removeThisFile}" onstart="return confirm('¿Estas seguro de eliminar este documento?');" style="float:right;text-decoration:none;"  oncomplete="closeAndSave(#{cropperImage.thisFiles!=null ?'false':'true'});" >
+						<div style="background: url('../../resources/img/delete.png') no-repeat scroll 0 transparent; width: 50px; height: 42px; margin: 10px 5px;">
+													
+						</div>
+					</p:commandLink>	
+					</h:panelGroup>	
+				</div>								
+		
+				<fieldset style="float:left;">
+					<h:panelGroup rendered="#{!cropperImage.formatIspdfFile}">
+		        		<div id="contentImg" class="parent-content" style="overflow: auto;text-align: center;">
+		        			<p:graphicImage id="realImage" style="display:none;" value="../../resources/temp/#{cropperImage.rotateImgName}"/>		        			
+		        		</div>
+	        		</h:panelGroup>
+	        		<h:panelGroup rendered="#{cropperImage.formatIspdfFile}">
+	        			<iframe src="../../resources/temp/#{cropperImage.rotateImgName}" width="550" height="470" style="border:none;" ></iframe>
+	        		</h:panelGroup>
+	        	</fieldset>			
+							
+						<h:inputHidden  id="x" value="#{cropperImage.x}" ></h:inputHidden>
+						<h:inputHidden  id="y" value="#{cropperImage.y}"></h:inputHidden> 
+						<h:inputHidden  id="x2" value="#{cropperImage.x2}"></h:inputHidden>
+						<h:inputHidden  id="y2" value="#{cropperImage.y2}"></h:inputHidden>					
+												
+				
+				</h:form>	
+		
+			</div>
+		</div>
+	</div>
+</div>
+<ui:include src="../templates/parentmsgprocessing.xhtml" /> 
+</h:body>
+</html>

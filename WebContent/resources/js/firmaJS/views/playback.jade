@@ -1,0 +1,146 @@
+doctype html
+html(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='user-scalable=false')
+    title Signature Hola Banco
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/signature.css')
+    link(rel='stylesheet', href='/stylesheets/animate.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500italic,500,700italic,700,900,900italic', rel='stylesheet', type='text/css')
+    style(type='text/css').
+      img.wp-smiley,
+      img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+      }
+  body#body.single.single-post.postid-863.single-format-standard
+    #containerApp.container
+       .col-md-10.col-md-offset-1.col-xs-12
+         #tarjeta-login.tarjeta-login
+           .titulo.Bold
+            .col-md-6
+               img.logo_header(src="/images/logo_kubo.png")
+            .col-md-6
+               br
+               img#img-firma2.der(src="/images/sig2.png")
+            h1  &nbsp
+           .contenido
+             .row
+               .col-sm-12
+                   #wrapper.hfeed: .firma: #main: #container: #content(role='main'): div
+                     h1  Firma Playback
+                     h2  Podrás reproducir una firma paso por paso.
+                     .entry-content
+                       p
+                         script(type='text/javascript', src='/javascripts/jquery.min.js')
+                         script(type='text/javascript', src='/javascripts/easeljs.min.js')
+                         script(type='text/javascript', src='/javascripts/script.js')
+                         script(type='text/javascript', src='/javascripts/detectmobilebrowser.js')
+                         script(type='text/javascript', src='/javascripts/responsive.js')
+                         script(type='text/javascript', src='/javascripts/bootstrap.js')
+                         script(type='text/javascript').
+                           // <![CDATA[
+                           $(document).ready(function() {
+                             replayMode = true;
+                             init('canvas1');
+                             record.deserialize('!{signature}');
+                             record.play(true);
+                             var position = record.buffer.length - 1;
+                             
+                             var importantActions = [];
+                             for(var i = 0; i < record.buffer.length; i++) {
+                               if (record.buffer[i].a == 1) {
+                                 importantActions.push(i);
+                               }
+                             }
+                             
+                             var calculateLinePos = function(pos){
+                               for (var i = importantActions.length - 1; i >= 0; i--) {
+                                 if (pos >= importantActions[i]){
+                                   return importantActions[i];
+                                 }
+                               }
+                             }
+                             var isLastLine = function(pos) {
+                               for (var i = importantActions.length - 1; i >= 0; i--) {
+                                 if (pos < importantActions[i]){
+                                   return false;
+                                 }
+                               }
+                               return true;
+                             }
+                             var nextLinePos = function(pos){
+                               if (isLastLine(pos)) {
+                                 return record.buffer.length;
+                               }
+                               for (var i = importantActions.length - 1; i >= 0; i--) {
+                                 if (pos >= importantActions[i]){
+                                   return importantActions[i + 1];
+                                 }
+                               }
+                             }
+                             
+                             $('#inicioBtn').click(function(){
+                               position = 0;
+                               record.play(false, position);
+                               console.log('inicio', position);
+                             });
+                             $('#finBtn').click(function(){
+                               position = record.buffer.length;
+                               record.play(false, position);
+                               console.log('fin', position);
+                             });
+                             $('#prevBtn').click(function(){
+                               position = Math.max(--position, 0);
+                               record.play(false, position);
+                               console.log('prev', position);
+                             });
+                             $('#nextBtn').click(function(){
+                               position = Math.min(++position, record.buffer.length - 1);
+                               record.play(false, position);
+                               console.log('next', position);
+                             });
+                             $('#prevLineBtn').click(function(){
+                               position = Math.max(calculateLinePos(position) - 1, 0);
+                               record.play(false, position);
+                               console.log('prevLine', position);
+                             });
+                             $('#nextLineBtn').click(function(){
+                               position = Math.min(nextLinePos(position), record.buffer.length - 1);
+                               record.play(false, position);
+                               console.log('nextLine', position);
+                             });
+                             
+                           });
+                           // ]]&gt;
+                       #drawingDiv
+                         canvas#canvas1(height='400', width='500')
+                         .btnsActions
+                           
+                           input.btn.btn-default.btn-sm#inicioBtn(type='button', value='inicio')
+                           input.btn.btn-default.btn-sm#prevLineBtn(type='button', value='|<')
+                           input.btn.btn-default.btn-sm#prevBtn(type='button', value='<')
+                           input.btn.btn-default.btn-sm#nextBtn(type='button', value='>')
+                           input.btn.btn-default.btn-sm#nextLineBtn(type='button', value='>|')
+                           input.btn.btn-default.btn-sm#finBtn(type='button', value='fin')
+                         
+                         br
+                         a.btn.btn-primary.btn-lg.btn-respon2(href='/') Atrás
+                         br
+                       div
+                       #serializerDiv(style='display: none;')
+                         textarea#serDataTxt(cols='80', rows='8')
+                         br
+                         input.btn.btn-default#cancelBtn(type='button', value='Close')
+                         input.btn.btn-default#okBtn(type='submit', value='Submit')
+                       //- pre.
+
+                 

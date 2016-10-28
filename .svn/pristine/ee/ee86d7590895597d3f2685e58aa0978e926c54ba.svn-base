@@ -1,0 +1,95 @@
+package mx.com.kubo.proyect_loan.reasignacion;
+
+import mx.com.kubo.bean.ChangeBean;
+import mx.com.kubo.managedbeans.mesa.creditos.adicionales.TipoCreditoAdicional;
+import mx.com.kubo.model.ProyectLoan;
+
+public abstract class ReasignadorPMO extends ReasignadorAMO
+{
+	protected void crear_proyect_loan_NEW(TipoCreditoAdicional tipo_credito_adicional, int loan_type, int emisor_prospectus_id)
+	{		
+		asignar_valores_a_copiar();
+						
+		proyect_loan_NEW = new ProyectLoan();
+		
+		switch(tipo_credito_adicional)
+		{			
+			case NUEVA_CONSULTA_ENABLED:			
+				asignar_valores_copiados_con_consulta();
+				asignar_tipo_de_credito(loan_type);
+				
+				asignar_proyect_NEW_PK(company_id, prospectus_id);
+				
+				scoreService.removeScoring(prospectus_id, company_id);
+				
+				registrar_bitacora_accesso(8, 0,   company_id, prospectus_id);
+				registrar_bitacora_accesso(4, 0,   company_id, prospectus_id);
+				
+				realizaSimulacion(company_id, prospectus_id);
+				
+				registrar_bitacora_accesso(2, 90, company_id, prospectus_id);																									
+			break;
+						
+			case NUEVA_CONSULTA_DISABLED:									
+				asignar_valores_copiados_sin_consulta();
+				asignar_tipo_de_credito(loan_type);
+				
+				asignar_proyect_NEW_PK(company_id, prospectus_id);
+				realizaSimulacion(company_id, prospectus_id);
+				
+				registrar_bitacora_accesso(8, 0, company_id, prospectus_id);
+				registrar_bitacora_accesso(4, 0, company_id, prospectus_id);
+				registrar_bitacora_accesso(2, 90, company_id, prospectus_id);
+			break;
+			
+			case RENOVACION:
+				asignar_valores_copiados_sin_consulta();
+				asignar_tipo_de_credito(loan_type);
+				
+				proyect_loan_NEW.setOpening_commission        (0D);
+				proyect_loan_NEW.setOpening_commission_amount (0D);
+				proyect_loan_NEW.setIs_collection_solution("S");
+				
+				asignar_proyect_ORIGINAL_PK(company_id, prospectus_id);
+				
+				registrar_bitacora_accesso(8, 0, company_id, prospectus_id);
+				registrar_bitacora_accesso(4, 0, company_id, prospectus_id);								
+			break;
+		}
+		
+		if(bursolnum == null)
+		{
+			bursolnum = "";
+		}
+		
+		System.out.println("AddiotionalCreditaMO.asignarProyect_loan():");
+		System.out.println("solicitud_buro = " + bursolnum);
+		
+		proyectloanService.add(proyect_loan_NEW);
+	}
+
+	protected void registrar_change_control(ChangeBean change_control_bean, int emisor_prospectus_id) 
+	{
+		switch(change_control_bean.getChange_control())
+		{
+			case CREDITO_ADICIONAL_CON_CONSULTA:								
+				change_control_bean.setWhyChangeData("CREDITO_ADICIONAL_CON_CONSULTA - " + proyect_loan_NEW.getLoan_type());
+			break;
+			
+			case CREDITO_ADICIONAL_SIN_CONSULTA:								
+				change_control_bean.setWhyChangeData("CREDITO_ADICIONAL_SIN_CONSULTA - " + proyect_loan_NEW.getLoan_type());								
+			break;
+			
+			case RENOVACION_CREDITO:
+				change_control_bean.setWhyChangeData("RENOVACION_CREDITO - " + proyect_loan_NEW.getLoan_type());
+			break;
+			
+			default: break;
+		}
+		
+		change_control_bean.setNewValue(Integer.toString(proyect_loan_NEW.getProyectloanPk().getProyect_loan_id()));
+		change_control_bean.setOrigValue(Integer.toString(proyect_loan_id_ORIGINAL));	
+							
+		registrarChangeControl(change_control_bean, company_id, prospectus_id, emisor_prospectus_id);
+	}
+}

@@ -1,0 +1,45 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+		<div  id = "dvContHtml" >
+			<div style = "display:none">
+				<div id    = "dvEdoCuenta" 
+					 style = "background-color: #FFFFFF !important;
+					 		  font-size: 1.15em !important; 
+					 		  position: relative;">
+				<div class="ticket_cerrar" onclick="clasefnTckt();">
+						<img src="../resources/img/close.png" />
+					</div>
+					
+					<div style = "display: none;">						
+						<p:inputText id = "btnTicket" value = "#{estadoCuenta.values}"  > 								
+							<p:ajax listener = "#{estadoCuenta.getTicket}" 
+									event      = "blur" 
+									onstart    = "return showWaitCount();" 									 
+									oncomplete = "showTicket(xhr, status, args);" 
+									update     = "pnlEdoCta" />								
+						</p:inputText>												
+					</div>
+					
+					<div id = "dvWaitEdo" style = "display: none; width: 100%;" >
+						<img src  = "../resources/img/ajax-loader.gif" 
+							style = "margin-top: 40px; margin-left: auto; margin-right: auto;" />
+					</div>
+					
+					<div id = "dvshow" >
+						<h:panelGroup id = "pnlEdoCta" >								
+							<h:outputLabel 
+								escape = "false" 
+								id     = "lblHtml" 
+								value  = "#{estadoCuenta.edoHtml}" />								
+						</h:panelGroup>
+					</div>						
+				</div>					
+			</div>	
+		</div>
+	
+</ui:composition>	

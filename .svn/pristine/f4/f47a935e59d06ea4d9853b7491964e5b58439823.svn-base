@@ -1,0 +1,207 @@
+<ui:composition 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+		
+		<script>
+		
+		//<![CDATA[
+		                   
+			function openVerMás( val ){
+				
+				// alert( $("#explica_"+val).is(":visible") );
+				
+				if( $("#explica_"+val).is(":visible") ){
+				
+					$("#explica_"+val).hide();
+				
+				}else{
+					
+					dibujaLimites( val );
+					
+					$("#explica_"+val).show();
+					
+				}
+				
+			}
+			
+			function formatCurrency(total) {
+			    var neg = false;
+			    if(total < 0) {
+			        neg = true;
+			        total = Math.abs(total);
+			    }
+			    return (neg ? "-$" : '$') + parseFloat(total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
+			}
+			
+			
+			function dibujaLimites( val ){
+			
+				var valInit = $("#param_id_"+val ).val();
+				
+				if( parseInt( valInit ) > 100 ){
+					alertify.alert( "Cantidad no válida" )
+					$(".alertify-cover").show(); $("#alertify").show();
+					$("#param_id_"+val ).val( 0 );
+					$("#param_id_"+val ).blur();
+					
+					$(".alertify-button").click( function(){ $(".alertify-cover").hide(); $("#alertify").hide(); }  );
+					
+					return;
+				}
+				
+			$("#dvContInfo_"+val).empty();
+			var saldo =  $("#inSaldoActual").val() ;
+			
+			var saldoActual = formatCurrency( $("#inSaldoActual").val() );
+			var montoInvertido;
+			var montoLimite;
+			var disponible;
+			var proy;
+			
+			console.log( "saldo : " + $("#inSaldoActual").val() );
+			console.log( " E5 :  " +  $("#inMontoInvertidoE5").val() );
+			console.log( " FG : " + $("#inMontoInvertidoFG").val() );
+			
+			if( val == '1' ){
+				
+				var monTemp = $("#inMontoInvertidoE5").val();
+				
+				montoInvertido = formatCurrency( monTemp );
+				
+				var procTmp = $("#param_id_"+val ).val();
+				
+				var lim = (parseFloat(saldo) * parseFloat(procTmp)) / 100;
+				
+				montoLimite = formatCurrency( lim );
+				
+				var dis = parseFloat(lim) - parseFloat(monTemp);
+				
+				disponible = formatCurrency( dis );
+				
+				proy = "E5";
+				
+			}else if( val == '2' ){
+				
+				var monTemp = $("#inMontoInvertidoFG").val();
+				
+				montoInvertido = formatCurrency( monTemp );
+				
+				var procTmp = $("#param_id_"+val ).val();
+				
+				var lim = ( parseFloat(saldo) * parseFloat(procTmp)) / 100;
+				
+				montoLimite = formatCurrency( lim );
+				
+				var dis = parseFloat(lim) - parseFloat(monTemp);
+				
+				disponible = formatCurrency( dis );
+				
+				proy = "F y G";
+			}
+			
+			var htmlStr = "<table style='border: solid 1px #439539 ; margin-left: auto; margin-right: auto; ' >" +
+								"<tr>" +
+									"<td>SALDO TOTAL ACTUAL</td>" +
+									"<td style='text-align: right;color: #439539;font-weight: bold;'>"+saldoActual+"</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td>MONTO TOTAL INVERTIDO EN RIESGO "+proy+" ACTUALMENTE</td>" +
+									"<td style='text-align: right;color: #439539;font-weight: bold;' >"+montoInvertido+"</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td>MONTO LÍMITE PARA INVERTIR EN RIESGO "+proy+" </td>" +
+									"<td style='text-align: right; color: #439539;font-weight: bold;  '>"+montoLimite+"</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td>MONTO DISPONIBLE PARA INVERTIR EN RIESGO "+proy+" </td>" +
+									"<td style='text-align: right; color: #439539;font-weight: bold;'>"+disponible+"</td>" +
+								"</tr>" +
+							"<table>";
+			
+			$("#dvContInfo_"+val).html( htmlStr );
+			
+			}
+			
+			
+			//]]>
+		</script>
+		
+		<h:form id="FPyInv" prependId="false">
+		
+		<div style="width: 99%; margin-left: auto; margin-right: auto; text-align: center; color: #439539;font-weight: bold; font-size: 1.3em; margin-bottom: 20px; margin-top: 25px;">
+			<h:outputText value="CONFIGURACIÓN" />
+		</div>
+		
+		<div id="dvContentLoanLst" class="container_loanlist">	
+		<div id="providing_table">
+	
+		<div style="overflow: auto; width: 100%; border: solid 0px #00ff00;   margin-left: auto; margin-right: auto;" >
+		
+			<div style="width: 99%; border: solid 0px #ff0000;  margin-left: auto; margin-right: auto;" >
+			
+				<ui:repeat var="ajuste" value="#{ajustes.paramCat}">
+					<div style="margin-top: 15px;" >
+					
+						<div style=" width: 80%;padding-top: 12px;" >
+							#{ajuste.description} <br /> <span style="color: #439539; cursor: pointer;" onclick="openVerMás( #{ajuste.pk.investment_param_cat_id} );"> ver más ... </span> 
+						</div>
+						<p style="float: none; clear:  both;" />
+						<div style="width: 170px; " >
+							<INPUT id="param_id_#{ajuste.pk.investment_param_cat_id}" name="param_id_#{ajuste.pk.investment_param_cat_id}" class="elementAddres1" style="width: 130px !important; text-align: right;" disabled="disabled" onblur="dibujaLimites( #{ajuste.pk.investment_param_cat_id} );" onkeypress="return isNumberKey(event);" type="text" /> %
+						</div>
+						
+						
+						
+						<p style="float: none; clear:  both;" />
+						
+						<div id="explica_#{ajuste.pk.investment_param_cat_id}" style="display: none;" >
+							 <div id="dvContInfo_#{ajuste.pk.investment_param_cat_id}"></div>
+						</div>
+						
+						<p style="float: none; clear:  both;" />
+						
+						<HR />
+						
+					</div>
+				
+					<p style="float: none; clear:  both;" />
+					
+				</ui:repeat>	
+			
+				<div style="margin-left: auto; margin-right: auto; width: 30%; padding: 5px; padding-bottom: 15px; "  >
+					<p:commandLink id="callBean" actionListener="#{ajustes.updateParam}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" >
+					<div class="callActionMedium  btnNaranja"  >
+						Guardar
+					</div>
+					</p:commandLink>
+				</div>
+			
+			</div>
+
+		</div>
+		
+		<br/>
+		
+		<!-- 
+		<p:commandLink id="buttonTable1"  ></p:commandLink>
+		 -->
+		 
+		 <INPUT type="hidden" id="inSaldoActual" value="#{ajustes.saldoTotalActual}" />
+		 <INPUT type="hidden" id="inMontoInvertidoE5" value="#{ajustes.montoInvertido_E5}" />
+		 <INPUT type="hidden" id="inMontoInvertidoFG" value="#{ajustes.montoInvertido_FG}" />
+		 
+	</div>
+		
+		</div>
+		
+		<h:outputLabel escape="false" value="#{ajustes.investor_param_script}" ></h:outputLabel>
+		
+		</h:form> 
+		
+		
+		
+		
+
+</ui:composition>

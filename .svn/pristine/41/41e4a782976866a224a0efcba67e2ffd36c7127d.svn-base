@@ -1,0 +1,39 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	<h:panelGroup id = "panel-is-legal-address">							
+		<h:panelGroup rendered = "#{basicData.legal_address_ENABLED}">								
+		
+				<div class = "field">
+					<div class = "dvLabel">
+						<h:outputLabel styleClass = "labelsStl" value = "#{msg.legal_address}" />
+					</div>
+					<fieldset class="conjuntoChecks">
+					   <div class="btnN dosBtnChecks" data-opcion="S">
+				        	<span>Sí</span>
+				       </div>
+				       <div class="btnN dosBtnChecks btnR"  data-opcion="N">
+				        	<span>No</span>
+				       </div>		
+						<div id = "person-type-id" class = "dvElement">
+							<h:selectOneRadio immediate  = "true" value = "#{basicData.is_legal_address}"  
+											  styleClass = "elementStlLbl validatorClass requiredVerify ocultaSelect">
+											  					    
+							    <f:selectItem itemValue = "S" itemLabel = "Sí"/>
+							    <f:selectItem itemValue = "N" itemLabel = "No"/>					    			    		      
+							    
+							    <p:ajax event = "click"
+							    		onstart    = "displayMessageProcessing('msgprocessing',false);"
+							    	    oncomplete = "Domicilio.legal_address_on_complete(xhr, status, args);"
+							    		listener   = "#{basicData.init_legal_address}" />
+							</h:selectOneRadio>						
+						</div>
+						</fieldset>
+				</div>
+			
+		</h:panelGroup>
+	</h:panelGroup>
+</ui:composition>	

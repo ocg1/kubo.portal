@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"			
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "callActionMedium btnNaranja btn-add" onclick = "Documentacion.toggle_section_file();" >																
+		Adjuntar nuevo documento														
+	</div>
+				
+	<div id = "section-add-file" class = "ui-inplace-content centrar_h" style = "display: none;  width: 280px;">
+		<h3>Nuevo Documento</h3>
+						
+		<ui:include src = "file-type.xhtml"/>	
+		<ui:include src = "reca-id.xhtml"/>								
+		<ui:include src = "subir-archivo.xhtml"/>				
+	</div>				
+</ui:composition>				

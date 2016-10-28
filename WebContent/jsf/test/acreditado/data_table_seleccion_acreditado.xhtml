@@ -1,0 +1,32 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+    <p:dataTable var                 = "acreditado" 
+    			 value               = "#{panel_seleccion.lista_acreditados}"		     
+			     selectionMode       = "single"	
+    			 selection           = "#{panel_seleccion.acreditado_selected}"
+    			 rows                = "10"		     		    
+			     paginator           = "true"			    
+                 paginatorTemplate   = "{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"                 
+                 rowKey              = "#{acreditado.membershipPK.prospectus_id}">
+                       
+        <p:ajax event      = "rowSelect"   
+        		listener   = "#{panel_seleccion.listener_acreditado_selected}" />
+        
+        <p:column headerText = "prospectus_id">
+            <h:outputText value = "#{acreditado.membershipPK.prospectus_id}" />
+        </p:column>
+        
+        <p:column headerText = "nombre">
+            <h:outputText value = "#{acreditado.person.first_name} #{acreditado.person.father_last_name} #{acreditado.person.mother_last_name}" />
+        </p:column>
+        
+        <p:column headerText = "email">
+            <h:outputText value = "#{acreditado.email}" />
+        </p:column>    
+    </p:dataTable>		
+    				
+</ui:composition>	

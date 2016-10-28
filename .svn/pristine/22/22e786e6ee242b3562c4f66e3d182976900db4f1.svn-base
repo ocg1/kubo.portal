@@ -1,0 +1,96 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+<div class="bloqueBanner bloqPrestamo">
+				<h2>¿Necesitas un préstamo?</h2>
+				    	<h:inputHidden id="montoMax" value="#{simulator.montoMax}" ></h:inputHidden>
+						<h:inputHidden id="montoMin" value="#{simulator.montoMin}" ></h:inputHidden>
+						<h:inputHidden id="termMax"  value="#{simulator.termMax}" ></h:inputHidden>
+				<ul>
+					<li>
+					    
+						<h4>¿Para qué lo utilizarás?</h4>
+						<div class="selects full_select">
+	                         
+		                                  <h:selectOneMenu value="#{simulator.purpose_id}">
+											<f:selectItem  itemLabel="Selecciona..." itemValue="" />
+											<f:selectItems value="#{simulator.listPurpose}" var="purpose" itemLabel="#{purpose.name}"  itemValue="#{purpose.purposePK.purpose_id}"/>
+											<p:ajax event="change" />  
+										</h:selectOneMenu>
+                         </div>
+					
+					</li>
+					<li>
+					    
+						<h4>¿Cuánto necesitas?</h4>
+						<h:inputText  id="ammount" required="true" value="#{simulator.ammountStr}" onkeyup="format(this,'simulator');"  >
+                                	<p:ajax event="blur" onstart="return validaMontoMin( 'ammount' ,'simulator');" immediate="true" />
+                        </h:inputText>
+                        <p:watermark for="term" value="50,000" />
+					</li>
+					<li>
+					   
+						<h4>¿A qué plazo?</h4>
+					
+                                                
+                                                
+                                                
+                                              
+	                                                   <p:inputText styleClass="elementAddresMin"  required="true" id="term" value="#{simulator.term_id}"  >
+															 <p:ajax event="keyup" immediate="true" onstart="validaPlazo('term');"  />  
+															 <p:watermark for="term" value="00" />
+														</p:inputText>
+                                        	
+                                        			       
+                                                   <div class="selects big">
+	                                                     <i class="fa fa-angle-down"></i>
+	                                                     <h:selectOneMenu id="frecuProyect" value="#{simulator.frequency_id}" styleClass="elementStlSelMonth">
+															<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+															<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+															<p:ajax event="change" onstart="validaPlazo('term');" />  
+														</h:selectOneMenu>
+                                        			 </div>
+                                                
+                                
+					</li>
+				
+				</ul>
+				
+				<div class="contenidoBanner">
+				
+				
+							<p>Solicita desde $5 mil hasta $75 mil.</p>
+
+							<p>Obtén tu pre-aprobación en 5 min.</p>
+							
+							<p>Préstamos para tu negocio, deudas, 
+							hogar, educación y <p:commandLink onclick="ga('send','event', 'Prestamos','prestamos')" action="productos" immediate="true" >más.</p:commandLink></p>
+							
+							<p>Tu historia cuenta... Con tu buen 
+							historial de crédito pagas menos.</p>
+				
+				</div>
+			
+			
+				 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
+                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="ga('send', 'event', 'Leads', 'Solicita Prestamo', 'Solicita Prestamo Home');"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
+                       </h:panelGroup>
+				<ol>
+					<li>
+						<div class="simulador-acreditado">
+							 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
+									<p:commandLink id="simulaAction" styleClass="btn_simular  solicitarPrestamo"   value="Simula tu préstamo" onclick="ga('send', 'event', 'Leads', 'Simula Prestamo', 'Simula Home');" onstart="return showloader2();"  oncomplete="muestraRes(xhr,status,args);  columnas();"  actionListener="#{simulator.simulaLst}" immediate="true" update="simulator_acreditado"  ></p:commandLink>
+							  </h:panelGroup>
+						</div>
+						
+				 </li>
+					<li><a class="open_lightbox" href="#"  data-div="4" onClick="ga('send', 'event', 'Leads', 'Requisitos Prestamo', 'Requisitos Prestamo');" >Requisitos</a></li>
+				</ol>
+				
+			</div>
+		        
+		        
+                    </ui:composition>

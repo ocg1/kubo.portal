@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>kubo.financiero</title>
+	
+	<link rel="icon" href="https://www.kubofinanciero.com/Kubo/resources/img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="https://www.kubofinanciero.com/Kubo/resources/img/favicon.ico" type="image/x-icon" /> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<meta name="HandheldFriendly" content="True"> </meta>
+	<meta name="MobileOptimized" content="320"> </meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+	<!-- MS --> 
+	<meta http-equiv="cleartype" content="on"> </meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+	
+	<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+	
+	<script type="text/javascript" src="../resources/js/kubo-info.js"></script>
+	
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+	
+	<link rel="stylesheet" type="text/css" href="../resources/css/fontStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+	
+	<link rel="stylesheet" type="text/css" href="../resources/css/kubo-info.css" />
+	
+	<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+	<link rel="stylesheet" type="text/css"  media="screen" charset="utf-8" href="../resources/css/responsive/footerResponsive.css" />
+
+	<script>
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		</script>
+	
+	<script>
+			(function() {
+				var _fbq = window._fbq || (window._fbq = []);
+				if (!_fbq.loaded) {
+				var fbds = document.createElement('script');
+				fbds.async = true;
+				fbds.src = '//connect.facebook.net/en_US/fbds.js';;
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fbds, s);
+				_fbq.loaded = true;
+				}
+				_fbq.push(['addPixelId', '974610895889842']);
+				})();
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', 'PixelInitialized', {}]);
+		</script>
+		<noscript>
+			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=974610895889842&amp;ev=PixelInitialized" />
+		</noscript>
+
+     <title>Kubo.financiero | Información para solicitar un préstamo</title>				
+     <meta name="Description" content="Kubo.financiero te ofrece préstamos de 5 mil a 50 mil pesos. Hasta 18 meses para pagar. Sin avales ni garantías Conoce, los requisitos, el procedimiento y la tasa de intéres"/>
+	
+</h:head>
+<h:body>
+
+<!-- Start Alexa Certify Javascript -->
+
+		<script type="text/javascript">
+		
+		_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+		
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+		
+		</script>
+		
+		<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" /></noscript>
+		
+	<!-- End Alexa Certify Javascript -->
+
+<div class="wideCls" >
+
+	<div class="widecontImg">
+	
+		<img src="../resources/img/landingWide.png" />
+		
+		<div class="widelogo1Cls clPointer" onclick="goToHome();"  ></div>
+		<div class="widelogoCls clPointer" onclick="javascript:goToHome();"  ></div>
+		
+		<div class="wideBtnBlogCls clPointer" onclick="goToBlog();" ></div>
+		<div class="wideCreditCls clPointer" onclick="goToCredit();" ></div>
+		<div class="wideBtnAccessCls clPointer" onclick="goToAccess();" ></div>
+		
+		<div class="wideBtnReg1Cls clPointer" onclick="goToReg();" ></div>
+		<div class="wideBtnSim1Cls clPointer" onclick="goToSim();" ></div>
+		<div class="wideBtnVideo1Cls clPointer" onclick="goToVid();" ></div>
+		<div class="wideBtnReg2Cls clPointer" onclick="goToReg();" ></div>
+		
+		<div class="wideBtnFbCls clPointer" onclick="goToFB();" ></div>
+		<div class="wideBtnTwCls clPointer" onclick="goToTW();" ></div>
+		
+		<div class="wideAviPrivCls clPointer" onclick="goToAvLe();" ></div>
+		<div class="wideLeyTransCls clPointer" onclick="goLT();" ></div>
+		<div class="wideUnEspCls clPointer" ></div>
+		<div class="wideCatCls clPointer" ></div>
+		<div class="widePregCls clPointer" onclick="goToQuest();" ></div>
+		
+		<div id="footer" style="width: 100%; magin-right: 0px;">
+			<ui:include src="templates/footerContenido.xhtml" /> 
+		</div>
+		
+	</div>
+	
+</div>
+
+<div class="tblCls" >
+	
+	<div class="tblcontImg">
+	
+		<!-- <img src="../resources/img/landingTbl.jpg" /> -->
+		
+		<div class="tbllogo1Cls clPointer" onclick="goToHome();"  ></div>
+		<div class="tbllogoCls clPointer" onclick="javascript:goToHome();"  ></div>
+		
+		<div class="tblBtnBlogCls clPointer" onclick="goToBlog();" ></div>
+		<div class="tblCreditCls clPointer" onclick="goToCredit();" ></div>
+		<div class="tblBtnAccessCls clPointer" onclick="goToAccess();" ></div>
+		
+		<div class="tblBtnReg1Cls clPointer" onclick="goToReg();" ></div>
+		<div class="tblBtnSim1Cls clPointer" onclick="goToSim();" ></div>
+		<div class="tblBtnVideo1Cls clPointer" onclick="goToVid();" ></div>
+		<div class="tblBtnReg2Cls clPointer" onclick="goToReg();" ></div>
+		
+		<div class="tblBtnFbCls clPointer" onclick="goToFB();" ></div>
+		<div class="tblBtnTwCls clPointer" onclick="goToTW();" ></div>
+		
+		<div class="tblAviPrivCls clPointer" onclick="goToAvLe();" ></div>
+		<div class="tblLeyTransCls clPointer" onclick="goLT();" ></div>
+		<div class="tblUnEspCls clPointer" ></div>
+		<div class="tblCatCls clPointer"  ></div>
+		<div class="tblPregCls clPointer" onclick="goToQuest();" ></div>
+		
+		
+		
+	</div>
+	<div id="footer" style="width: 100%; magin-right: 0px; position: relative;">
+			<ui:include src="templates/footerContenido.xhtml" /> 
+		</div>
+</div>
+<div class="mblCls" >
+	
+	<div class="mblcontImg">
+		
+		<!-- <img src="../resources/img/landingMbl.jpg" /> -->
+		
+		<div class="mbllogo1Cls clPointer" onclick="goToHome();"  ></div>
+		<div class="mbllogoCls clPointer" onclick="javascript:goToHome();"  ></div>
+		<div class="mblBtnReg1Cls clPointer" onclick="goToReg();" ></div>
+		<div class="mblBtnSim1Cls clPointer" onclick="goToSim();" ></div>
+		<div class="mblBtnVideo1Cls clPointer" onclick="goToVid();" ></div>
+		<div class="mblBtnReg2Cls clPointer" onclick="goToReg();" ></div>
+		
+		<div class="mblBtnFbCls clPointer" onclick="goToFB();" ></div>
+		<div class="mblBtnTwCls clPointer" onclick="goToTW();" ></div>
+		
+		<div class="mblAviPrivCls clPointer" onclick="goToAvLe();" ></div>
+		<div class="mblLeyTransCls clPointer" onclick="goLT();" ></div>
+		<div class="mblUnEspCls clPointer" onclick="goToUE();" ></div>
+		<div class="mblCatCls clPointer" onclick="goToCat();" ></div>
+		<div class="mblPregCls clPointer" onclick="goToQuest();" ></div>
+		
+	</div>
+	
+</div>
+
+<div style="display:none;">
+	#{inicioValues.inicio}
+</div>
+
+
+
+</h:body>
+</html>

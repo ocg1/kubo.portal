@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../resources/favicon.ico"/> 
+
+        
+        <!-- CSS --> 
+        <link rel="stylesheet" type="text/css" href="../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../resources/css/laptop_medium.css" />        
+		<link rel="stylesheet" type="text/css" href="../resources/css/flexslider.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		 <link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+		<!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+      		<script>
+	         $(document).ready(function(){
+	        	 $(".terminos_condiciones").addClass("active");	 
+	        	 $(".push_header").addClass("interior").show();
+	         });
+         </script>
+           <script type="text/javascript" src="../resources/js/jquery.slides.min.js"></script>
+    	<script type="text/javascript" src="../resources/js/scripts.js"></script>
+		<script src="../resources/js/scripts_interior.js"></script>
+		<script src="../resources/js/jquery.flexslider.js"></script>
+        <script src="../resources/js/flexslider_start.js"></script>
+   
+		<script type="text/javascript" src="../resources/js/ga_event.js"></script>
+	    <script type="text/javascript" src="../resources/js/banners_footer.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm2.js"></script>
+         <script data-cfasync="false" type='text/javascript' src="../resources/js/chat.js" ></script>
+        <script language="javascript" type="text/javascript" src="../resources/js/validar_cambio_correo.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/envio_correo_preregistro.js"></script>
+        <script type="text/javascript" src="../resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="../resources/js/browserDetect.js"/> 
+	    <script type="text/javascript" src="../resources/js/alertify.js"></script>	
+	    <script type="text/javascript" src="../resources/js/easyscroll.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../resources/js/mousewheel.js"></script>
+
+
+        <script type="text/javascript" language="javascript">
+        
+    	/******************GOOGLE*ANALYTICS**************************************/ 
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+            	  ga('require', 'linkid');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+        
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+         </script>
+ 	
+
+<style>
+	
+		.errormsg{
+			color: #DD4B39;
+		    display: block;
+		    line-height: 17px;
+		    margin: 0.5em 0 0;
+		}
+		
+	
+		
+		#dvMsg{
+			
+				font-size: 0.9em;
+				color: #FF0000;
+				
+			}
+			
+		
+	</style>
+
+</h:head>
+
+
+
+    <h:body>
+
+    
+    	<div class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+		<h:form  prependId="false" acceptcharset="UTF-8">
+           
+       	   <!-- header -->
+       	   <ui:include src="../templates/header.xhtml" />
+       	    
+            <div class="titulo"><h2>Avisos Legales</h2></div>	
+            <div class="content top">
+                <div class="inner_content">
+            	<div class="col_izquierda_productos containerFloatingMenu">
+                	 <!-- menu lateral productos -->
+       	  		    <ui:include src="../templates/menu-aviso-legal.xhtml" />
+                	
+	
+                </div>
+                <div class="col_derecha_productos">
+                		<div class="content_tabs">
+                		<div class="terminos_condiciones">
+	                			<h2>Términos y condiciones</h2>
+	                			
+	                			<p>A los Usuarios les informamos de los siguientes Términos y Condiciones de Uso y Privacidad que, les son aplicables por el simple uso o acceso a cualquiera de las Páginas que integran el Portal kubo.financiero (el "Portal"), por lo que entenderemos que los acepta y acuerda obligarse en el cumplimiento de los mismos. </p>
+                				
+                				<p><strong>En caso de no estar de acuerdo con los Términos y Condiciones de Uso y Privacidad deberá abstenerse de acceder o utilizar el Portal. </strong></p>
+                				
+                				<p>ku-bo financiero, S.A. de C.V. S.F.P., se reserva el derecho de modificar discrecionalmente el contenido y funcionalidad del Portal en cualquier momento, sin necesidad de previo aviso. </p>
+                				
+                				<p>El Usuario, entendiendo por este término a aquella persona que accede mediante el uso de un equipo de cómputo y/o de comunicación al Portal, está de acuerdo en no utilizar dispositivos, programas de cómputo, software, o cualquier otro medio que pueda interferir tanto en las funcionalidades, actividades y/u operaciones del Portal como en las bases de datos y/o información que se contenga en el mismo. </p>
+                				
+                				<h3>Uso y restricciones</h3>
+                				
+                				<p>El acceso o utilización del Portal expresan la adhesión plena y sin reservas del Usuario a los presentes Términos y Condiciones de Uso y Privacidad. A través del Portal <a href="https://www.kubofinanciero.com/">(www.kubofinanciero.com)</a>, el Usuario se servirá y/o utilizará diversos servicios y contenidos (en lo sucesivo, los "Servicios y Contenidos"), puestos a disposición de los Usuarios por ku-bo financiero, S.A. de C.V. S.F.P., y/o por terceros proveedores de Servicios y Contenidos. </p>
+                				<p>kubo.financiero tendrá el derecho a negar, restringir o condicionar al Usuario el acceso a las Páginas que integran el Portal, total o parcialmente, a su entera discreción, así como a modificar los Servicios y Contenidos de las Páginas en cualquier momento y sin necesidad de previo aviso.El Usuario reconoce que no todos los Servicios y Contenidos están disponibles en todas las áreas geográficas y que algunos podrán ser utilizados solamente con posterioridad a su contratación, activación o registro previo por el Usuario y/o mediante el pago de una comisión, según se indique en las condiciones de contratación que se establezcan en la documentación respectiva. kubo.financiero no garantiza la disponibilidad y continuidad de la operación del Portal o de las Páginas y de los Servicios y Contenidos, ni la utilidad del Portal o los Servicios y Contenidos en relación con cualquier actividad específica, independientemente del medio de acceso que utilice el Usuario incluido el de telefonía móvil. kubo.financiero no será responsable por daño o pérdida alguna de cualquier naturaleza que pueda ser causado debido a la falta de disponibilidad o continuidad de operación del Portal, la Página y/o de los Servicios y Contenidos. </p>
+                				
+                				<h3>Propiedad intelectual de kubo.financiero</h3>	
+                				
+                				<p>Reconozco que kubo.financiero es titular de todos los derechos de propiedad industrial e intelectual relativos a los Servicios y Contenidos, así como los signos distintivos y dominios de las Páginas o el Portal, adicionalmente los derechos de uso y explotación de los mismos, incluyendo su divulgación, publicación, reproducción, distribución y transformación, así como a las aplicaciones móviles son propiedad exclusiva de kubo.financiero. </p>    
+                				<p>No podré explotar o servirme comercialmente, de forma directa o indirecta, total o parcial, de ninguno de los contenidos que conforme el sitio web y/o aplicaciones móviles de kubo.financiero sin su autorización previa y por escrito.</p>
+								<p>Entiendo que en ningún momento adquiero derecho alguno de propiedad intelectual por el simple uso de los Servicios y Contenidos de la Página y en ningún momento dicho uso será considerado como una autorización o licencia para utilizar los Servicios y Contenidos con fines distintos a los que se contemplan en los presentes Términos y Condiciones de Uso y Privacidad y en los contratos respectivos. </p>
+                				
+                				<h3>Propiedad intelectual de terceros</h3>
+								<p>El Usuario acuerda que los derechos reconocidos en el apartado anterior, respecto de la titularidad de los derechos de kubo.financiero, también son aplicables a los derechos de terceros respecto de los Servicios y Contenidos de las Páginas, dominios o información presentada o vinculada al Portal. </p>
+                				
+                				
+                				<h3>Propiedad de imágenes, logos y logotipos cargados por el Usuario</h3>
+								<p>Declaro que las imágenes, logos y logotipos que he cargado y cargaré al Portal, son de mi propiedad o cuento con la autorización expresa para su utilización, por lo que el uso de las mismas no constituye la comisión de Delitos en Materia de Derechos de Autor tipificado en el artículo 424, fracción III del Código Penal Federal y sus correlativos en los demás Códigos Penales del Distrito Federal y de los Estados de la República, por lo que autorizo a kubo.financiero a la utilización de las imágenes, logos y logotipos. </p>
+								<p>Al respecto, declaro ser el propietario o titular de los derechos del contenido que publique, mismos que me permiten conceder a kubo.financiero la licencia para su publicación o que, en su caso, he obtenido de terceros el consentimiento necesario para ello, sin que esto vulnere las leyes aplicables al derecho a la intimidad, a la imagen y/o al honor, derechos de propiedad intelectual o industrial o similares ni ningún derecho de un tercero, ya sea persona física o una entidad. </p>
+                				
+                				
+                				<h3>Usos permitidos</h3>
+								<p>El uso de los Servicios y Contenidos del Portal son exclusiva responsabilidad del Usuario, quien los utilizará de acuerdo con las funcionalidades permitidas en la propia Página y a los usos autorizados en los presentes Términos y Condiciones de Uso y Privacidad, el Usuario se obliga a utilizarlos de modo tal que no atenten contra las (i) normas de uso y convivencia en Internet, (ii) las leyes de los Estados Unidos Mexicanos y la legislación vigente en el país en que el Usuario se encuentre al usarlos, (iii) las buenas costumbres, (iv) la dignidad de la persona y (v) los derechos de terceros. </p>
+								
+								<h3>Usos no permitidos</h3>
+								<p>Reconozco y acepto que seré responsable por el acceso o la utilización de los servicios prestados por kubo.financiero a través de su Portal cuando se realicen con fines ilegales o no autorizados, con o sin finalidad económica.</p> 
+								
+                				<h3>Seguridad del Perfil</h3>
+								<p>Acepto y entiendo que los Servicios prestados por kubo.financiero y las funcionalidades asociadas al Portal, se ofrecen exclusivamente para uso personal y no pueden ser utilizadas para una finalidad económica o comercial sin contar con la previa autorización de kubo.financiero. </p>
+                				
+                				
+                				<h3>Transacciones fuera de kubo.financiero</h3>
+								<p>Acepto que al realizar transacciones con otros miembros de kubo.financiero fuera de los lineamientos establecidos por la propia entidad financiera lo hago bajo mi propio riesgo.</p>
+                				
+                				<h3>Condiciones de Uso</h3>
+								<p>Acepto que los contenidos que publique en el Portal, puedan ser vistos tanto por otros Usuarios del servicio como por terceros, sin que dichos contenidos sean asociados de mera alguna a mis datos personales.</p> 
+                			
+                				<h3>Condiciones de Uso de kubo.financiero en el móvil</h3>
+								<p>Entiendo y acepto que mi operador de telefonía móvil podrá cobrarme por la conexión de datos, mensajes de texto y/u otros accesos a los Servicios y Contenidos a través de la red móvil, así como, por el consumo de datos que realice con motivo del uso del servicio en el móvil ya sea a través del Portal y/o mediante aplicaciones de kubo.financiero instaladas en mi teléfono móvil. </p>
+                			
+                				<h3>Restricciones</h3>
+								<p>El Usuario no tiene el derecho de colocar híper ligas de y al Portal, ni el derecho de colocar o utilizar los Servicios y Contenidos de la Página en sitios o páginas propias o de terceros sin autorización previa y por escrito kubo.financiero. </p>
+								<p>Asimismo, el Usuario no tendrá el derecho de limitar o impedir a cualquier otro Usuario el uso del Portal. </p>
+                			
+                				<h3>Calidad de los servicios y contenidos</h3>
+                				<p>Ni kubo.financiero, ni sus proveedores o socios comerciales serán responsables de cualquier daño o perjuicio que sufra el Usuario a consecuencia de inexactitudes, consultas realizadas, asesorías, errores tipográficos y cambios o mejoras que se realicen periódicamente a los Servicios y Contenidos. Los consejos, “tips” o recomendaciones presentados y/u obtenidos a través del Portal son genéricos, por lo que no deben tomarse en cuenta en la adopción de decisiones personales ni profesionales, para ello se debe consultar a un profesional apropiado que pueda asesorar al Usuario de acuerdo con sus necesidades específicas. </p>
+                				
+                				<h3>Bienes y servicios de terceros enlazados</h3>
+								<p>El hecho de que se ofrezca información en el Portal o en otros ligados o vinculados al Portal, no implica la recomendación, garantía, patrocinio o aprobación por parte kubo.financiero respecto dicha información, bienes y/o servicios. </p>
+								<p>La disponibilidad de bienes y/o servicios ofertados por terceros o por sitios ligados o vinculados, no es responsabilidad kubo.financiero. En vista de lo anterior, kubo.financiero no será responsable ante cualquier autoridad de cualquier naturaleza, por cualquier asunto relacionado con la venta, consumo, distribución, entrega, disponibilidad o prestación con respecto de cualquiera de los bienes y/o servicios ofertados por terceros o por sitios ligados o vinculados a través del Portal. </p>
+								<p>Respecto de los Servicios y Contenidos que prestan terceros dentro o mediante enlaces al Portal o sus Páginas (tales como ligas, banners y botones), kubo.financiero se limita exclusivamente, para conveniencia del Usuario, a: (i) informar al Usuario sobre los mismos, y (ii) a proporcionar un medio para poner en contacto al Usuario con proveedores o vendedores. Los productos y/o servicios que se comercializan dentro del Portal y/o en los sitios de terceros enlazados son suministrados por comerciantes independientes a kubo.financiero, por lo que no existe ningún tipo de relación laboral, asociación o sociedad, entre kubo.financiero y dichos terceros.</p> 
+								<p>Toda asesoría, consejo, declaración, información y contenido de las páginas de terceros enlazadas o dentro del Portal o las Páginas representan las opiniones y juicios de dicho tercero, y kubo.financiero no será responsable de ningún daño o perjuicio que sufra el Usuario a consecuencia de los mismos.</p>
+                				
+                				
+                				<h3>Confidencialidad</h3>
+								<p>kubo.financiero se obliga a mantener la confidencialidad de la información que reciba por parte del Usuario que tenga dicho carácter conforme a las disposiciones legales aplicables en los Estados Unidos Mexicanos. </p>
+								<p>No obstante lo anterior, kubo.financiero no asume ninguna obligación de mantener la confidencialidad de cualquier otra información que el Usuario le proporcione, ya sea al inscribirse al Portal o en cualquier otro momento posterior, incluyendo aquella información que el Usuario proporcione a través de boletines, pizarras o pláticas en línea (chats); así como, la información que obtenga kubo.financiero a través de las Cookies que se describen en el apartado siguiente. </p>
+                				
+                				
+                				<h3>Cookies</h3>
+								<p>El Usuario, al acceder al Portal o sus Páginas, conviene en recibir archivos que les transmitan los servidores de kubo.financiero denominados "Cookie", entendiéndose por este término a todo aquel archivo de datos que se almacena en el disco duro de la computadora o dispositivo del Usuario cuando éste tiene acceso a la Páginas del Portal. </p>
+								<p>Dichos archivos pueden contener información tal como la identificación proporcionada por el Usuario o información para rastrear las páginas que el Usuario ha visitado. Una Cookie no puede leer los datos o información del disco duro del Usuario ni leer las Cookies creadas por otros sitios o páginas. </p>
+                				
+                				
+                				<h3>Publicidad</h3>
+								<p>Conozco y acepto que hay publicidad en el portal de kubo.financiero y que, por tanto, desde mi Perfil podré acceder a publicidad de kubo.financiero y/o terceras empresas y profesionales contraten con kubo.financiero. </p>
+                				
+                				
+                				<h3>Uso de la información no confidencial o individual</h3>
+								<p>Mediante el uso del Portal y/o sus Páginas, el Usuario autoriza a kubo.financiero a utilizar, reproducir, publicar, divulgar, comunicar públicamente y transmitir la información no confidencial o no individual, en términos de lo establecido en el artículo 109 de la Ley Federal de los Derechos de Autor y de la fracción I, del artículo 76 bis de la Ley Federal de Protección al Consumidor. </p>
+                				
+                				
+                				<h3>Aviso de privacidad de datos personales</h3>
+
+								<p>Toda la información que kubo.financiero recabe del Usuario es tratada con absoluta confidencialidad conforme las disposiciones legales aplicables. </p>
+									
+								<p>Para mayor información de la protección de sus datos personales acuda a la siguiente liga: 
+									<a href="aviso-privacidad.xhtml">Aviso de privacidad</a> </p>
+                				
+                				
+                				<h3>Contraseñas y nombre de usuario</h3>
+
+<p>El Usuario acepta que los medios electrónicos que kubo.financiero ponga a su disposición, constituirán los medios y forma de creación, transmisión, modificación o extinción de los derechos y obligaciones de las operaciones y servicios, por lo que en términos de las disposiciones legales aplicables, los medios de identificación, en sustitución de la firma autógrafa, producirán los mismos efectos que las leyes otorgan a los documentos correspondientes y en consecuencia, tendrán el mismo valor probatorio. </p>
+
+<p>La contraseña es considerada homóloga de la firma escrita, al considerarse personal e intransferible, como un medio de identificación y nombre de usuario para determinar de forma fehaciente quien realiza una operación o movimiento, toda vez que se manejarán datos críticos y confidenciales, por lo que acepto siempre observar lo siguiente:</p>
+	<ul>
+		<li>Ingresar al Portal con el nombre de usuario que fue aceptado como válido.</li>
+		<li>La contraseña es personal e intransferible, por lo que jamás deberá ser compartida con terceras personas, ni comunicarse por ningún medio escrito. Lo contrario supondría tolerar una suplantación de personalidad.</li>
+
+		<li>En caso de olvidar la contraseña, se solicitará una nueva.</li>
+
+		<li>La contraseña deberá tener una longitud no mayor a los caracteres permitidos por kubo.financiero y no debe coincidir con ninguna palabra o clave que facilite que un tercero la adivine.</li>
+
+		<li>La contraseña deberá ser cambiada por lo menos cada 3 meses.</li>
+
+		<li>El Usuario, reconoce el carácter personal, confidencial e intransferible de las claves y contraseñas; en consecuencia, es responsable de su uso, liberando a kubo.financiero de cualquier responsabilidad, reservándose este último la facultad de rescindir el mismo y cancelar el servicio, en caso de que el Usuario otorgue un uso distinto al señalado en el presente.</li>
+	</ul>	
+
+<h3>Mecanismos de Seguridad</h3>
+
+<h3>Confirmación de correo electrónico</h3>
+
+<p>Validamos que el correo electrónico no haya sido proporcionado por otro usuario, ya que identificará de manera única a cada uno de nuestros usuarios, así como validamos si este existe, mediante el envío de un correo electrónico de verificación para activar la cuenta. </p>
+
+<h3>Contraseña de Acceso</h3>
+
+<p>Se refiere la clave alfanumérica para acceso, consistente en al menos ocho caracteres de largo que el Usuario creara siguiendo ciertas reglas. El Usuario al crear su Contraseña deberá tomar en consideración que no podrá:</p>
+
+		<ul>	
+			<li>Repetir los mismos caracteres alfanuméricos de tal manera que el nombre de Usuario y la Contraseña sean idénticos;</li>
+			<li>Usar la denominación de la Institución;</li>
+			<li>Utilizar más de dos caracteres idénticos en forma consecutiva;</li>
+			<li>Más de dos caracteres consecutivos numéricos o alfabéticos;</li>
+			<li>RUsar su nombre o su correo electrónico;</li>
+			<li>La Contraseña de acceso será personal, confidencial e intransferible y el Usuario deberá utilizarla únicamente para el acceso al servicio, siendo de su completa responsabilidad el uso que se le dé a la misma;</li>
+			<li>Las Claves descritas anteriormente serán desconocidas por kubo.financiero y/o sus empleados y funcionarios y son resguardadas en forma encriptada en los sistemas de kubo.financiero, y</li>
+			<li>La Contraseña podrá modificarse a solicitud del Usuario a través del vínculo ubicado en el portal principal de la Entidad.</li>
+			<li>Se pide capturar la contraseña dos veces al momento del registro inicial, de tal forma que el Usuario pueda confirmar que la escribió correctamente y ponerla como definitiva.</li>
+			<li>Pregunta de Seguridad</li>
+		</ul>	
+<p>El Usuario al momento de la contratación del servicio, deberá elegir contestar una pregunta de seguridad, la presente información es de tipo confidencial para el Usuario y servirá en los casos de bloqueo de usuario. </p>
+
+	<h3>Robo de Identidad - Sesión Simultánea</h3>
+
+
+
+	<p>kubo.financiero no enviará correos electrónicos al Usuario solicitándole cualquier tipo de información personal, por lo que el Usuario no deberá proporcionar ningún tipo de información por el medio antes mencionado, asimismo el Usuario se obliga entre otros a:</p>
+	<ul>
+		<li>Hacer caso omiso y por consiguiente a no responder los correos electrónicos que parezcan provenir de kubo.financiero, en los que se le solicite proporcionar información personal;</li>
+
+		<li>No seguir la(s) liga(s) o vínculo(s) que aparezca(n) en el cuerpo de los correos electrónicos señalados en el inciso inmediato anterior;</li>
+
+		<li>Revisar su equipo para asegurar que está libre de software malicioso y de actualizar los mecanismos de seguridad, y</li>
+
+		<li>kubo.financiero cuenta con mecanismos para:
+
+			<ul>
+				<li>Impedir el acceso en forma simultánea, mediante la utilización de un mismo Usuario a más de una Sesión, e informar al Usuario, cuando su Usuario esté siendo utilizado en otra Sesión;</li>
+
+				<li>Informar al Usuario, en caso del supuesto anterior, que una tercera persona está intentando acceder a su servicio, en el entendido que el Usuario deberá notificar de manera inmediata esta situación a kubo.financiero.</li>
+			</ul>
+		</li>
+</ul>
+
+<h3>Bloqueo de cuenta por intentos fallidos de autenticación</h3>
+
+
+<p>Por seguridad, si el Usuario introduce más de cinco veces su contraseña de acceso de forma incorrecta, se procederá a bloquear la cuenta. El usuario no podrá acceder a ella más que mediante un proceso de verificación, por medio del cual tiene que comunicarse con kubo.financiero para su validación y desbloqueo. </p>
+
+<h3>Inactividad de la Sesión y del Servicio</h3>
+
+<p>El Usuario entiende y reconoce que en caso de que durante cada sesión, existan periodos de inactividad que duren más de diez minutos, el sistema de kubo.financiero, dará por concluida la sesión respectiva en forma automática, en el entendido de que para que el Usuario pueda reiniciar la sesión, deberá volver a ingresar claves de autenticación en los términos de lo establecido en el Contrato.   </p>
+
+<h3>Comunicación encriptada</h3>
+
+<p>kubo.financiero cuenta con mecanismos para encriptar la comunicación entre el Usuario y el Portal kubo.financiero, mediante el uso del protocolo HTTPS, y usando un Certificado Digital para encriptar la comunicación. </p>
+
+<h3>Reconocimiento de humanos o “CAPTCHA”</h3>
+
+<p>kubo.financiero lleva a cabo mecanismos para evitar que robots automatizados puedan crear cuentas en el Portal kubo.financiero. Esta prueba permite identificar si el Usuario que está llenando el formulario es humano o es un robot mediante la presentación de texto de difícil lectura, que solo un humano podría interpretar. Este método combate el spam en el sitio. </p>
+
+<h3>Horarios de Servicio</h3>
+
+<p>kubo.financiero efectuará las operaciones convenidas a través del Portal dentro de los horarios de servicio del producto que se le de a conocer al Usuario en la fecha de firma del Contrato, y en su caso, en las fechas de vencimiento de los productos relacionados con el mismo. Asimismo, dichos horarios estarán disponibles en el Centro de Atención Telefónica o en el propio Portal. kubo.financiero podrá ampliar o restringir los horarios de acuerdo con sus necesidades operativas, debiendo informar previamente al Usuario por cualquiera de los medios antes citados. </p>
+
+<h3>Modificaciones</h3>
+
+<p>kubo.financiero tendrá el derecho de modificar en cualquier momento los Términos y Condiciones de Uso y Privacidad. Por lo anterior, el Usuario debe leer atentamente los mismos cada vez que pretenda utilizar el Portal. </p>
+
+<p>Ciertos Servicios y Contenidos ofrecidos a los Usuarios en y/o a través del Portal o las Páginas están sujetos a condiciones particulares propias que sustituyen, completan y/o modifican los Términos y Condiciones de Uso y Privacidad (en adelante, las "Condiciones Particulares"). Por lo anterior, el Usuario también debe leer atentamente las correspondientes Condiciones Particulares antes de acceder a cualquiera de los Servicios y Contenidos. </p>
+
+<p>De conformidad con la legislación aplicable ciertos servicios requerirán de la instalación de herramientas de protección para la información que se solicite, por lo que estos servicios serán negados en caso de no ser aceptada la instalación requerida. </p>
+
+<h3>Terminación de los servicios</h3>
+
+<p>kubo.financiero se reserva el derecho a negar o dar por terminado el acceso o el uso del Usuario al Portal, a cualquier servicio, producto o material, o cualquier parte de los mismos, bajo la discreción total de kubo.financiero, sin notificación y limitación alguna, salvo aquellas estipuladas por el respectivo contrato de servicios, por cualquier razón, incluyendo, sin estar limitado al incumplimiento por parte del usuario de cualquier disposición de estas reglas del sitio o cualquier contrato de servicios aplicable, o la discontinuidad en el acceso de kubo.financiero a cualquier producto o material. En caso de cualquier terminación por estos motivos, kubo.financiero no tendrá responsabilidad alguna frente al usuario. </p>
+
+<h3>Leyes aplicables y jurisdicción</h3>
+
+<p>Para la interpretación, cumplimiento y ejecución de los presentes Términos y Condiciones de Uso y Privacidad, el Usuario está de acuerdo en que serán aplicables las leyes Federales de los Estados Unidos Mexicanos y competentes los tribunales de la Ciudad de México, Distrito Federal, renunciando expresamente a cualquier otro fuero o jurisdicción que pudiera corresponderles en razón de sus domicilios presentes o futuros o por cualquier otra causa.</p>
+                				
+                			</div>
+                		</div>
+                    
+                    </div>
+                    </div>
+                
+                    
+                
+                
+           
+           </div>  
+          
+		 <!--footer mapa de sitio-->
+	        <ui:include src="../templates/footer_mapa.xhtml" />        
+	        
+	        <!--lightbox abrir sesion-->
+	        <ui:include src="../templates/modal_iniciar_sesion.xhtml" />
+	         
+	        <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+	 	    <ui:include src="../templates/modal_condusef.xhtml" />    
+	 	   	<ui:include src="../templates/modal_cat.xhtml" />    
+	 	   	<ui:include src="../templates/modal_gat.xhtml" />   
+	        
+	        <!--lightbox sesion sin actividad-->
+	        <ui:include src="../templates/modal_sesion_inactiva.xhtml" />  
+	        <!--Requisitos-->
+	        <ui:include src="../templates/modal_requisitos.xhtml" />
+	      
+	        <ui:include src="../templates/contrasena_validador.xhtml" />
+	
+		    <ui:include src="../templates/modal_condiciones.xhtml" />
+		    <ui:include src="../templates/modal_correo_existente.xhtml" />
+		    
+			<ui:include src="../templates/modal_activar_cambiar_correo.xhtml" />
+			<ui:include src="../templates/modal_cambiar_correo.xhtml" />
+			
+			<ui:include src="../templates/mandar_mail.xhtml" />
+			
+			<ui:include src="../templates/modal_cambiocontrasena.xhtml" />
+      
+      
+        </h:form>
+        <script>
+			setChat();
+		</script>
+    </div>
+    </h:body>
+		<script type="text/javascript">
+		/** Start Alexa Certify Javascript **/
+		_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+		
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+		
+		/* End Alexa Certify Javascript */
+		  
+		
+		</script>
+	<!-- Alexa Certify Javascript -->
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+	<!-- End Alexa Certify Javascript -->
+	
+		<div style="display: none;">
+				#{inicioValues.inicio}
+		</div>
+		
+</html>

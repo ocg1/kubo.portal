@@ -1,0 +1,83 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">										
+	
+	<h:outputScript name = "jquery.fancybox-1.3.4.pack.js"   target = "head" library = "js/fancybox"/>
+	<h:outputScript name = "jquery.easing-1.3.pack.js"       target = "head" library = "js/fancybox"/>
+	<h:outputScript name = "jquery.mousewheel-3.0.4.pack.js" target = "head" library = "js/fancybox"/>
+	
+	<h:outputScript name = "jquery.scrollTo.js"  target = "head" library = "js"/>
+	<h:outputScript name = "jquery.blockUI.js"   target = "head" library = "js"/>	
+	<h:outputScript name = "jquery.watermark.js" target = "head" library = "js"/>
+	
+	<h:outputScript name = "jquery.validationEngine-es.js" target = "head" library = "js/validation/js"/>
+	<h:outputScript name = "jquery.validationEngine.js"    target = "head" library = "js/validation/js"/>
+	
+	<h:outputScript name = "browserDetect.js" target = "head" library = "js/utilerias"/>
+	<h:outputScript name = "charCount.js"     target = "head" library = "js/utilerias"/>	
+	<h:outputScript name = "jquery.formatCurrency-1.4.0.min.js" target = "head" library = "js/utilerias"/>		
+	
+	<h:outputScript name = "alertify.js"                  target = "head" library = "js"/>
+	<h:outputScript name = "general.js"                   target = "head" library = "js"/>
+	<h:outputScript name = "reloj.js"                     target = "head" library = "js"/>	
+	<h:outputScript name = "scriptUnidadEsp.js"           target = "head" library = "js"/>
+	<h:outputScript name = "frmscript.js"                 target = "head" library = "js"/>
+	<h:outputScript name = "dealJS.js"                    target = "head" library = "js"/>
+	<h:outputScript name = "urlParameters.js"             target = "head" library = "js"/>
+	<h:outputScript name = "validacion_llenado.js"        target = "head" library = "js"/>
+	<h:outputScript name = "chat.js"                      target = "head" library = "js"/>
+	<h:outputScript name = "explorer.js"                  target = "head" library = "js"/>
+	<h:outputScript name = "beneficiarios.js"             target = "head" library = "js"/>
+	<h:outputScript name = "perfil_inversionista.js"      target = "head" library = "js"/>
+	<h:outputScript name = "mayusculas.js"                target = "head" library = "js"/>
+	<h:outputScript name = "basicosHistorial.js"          target = "head" library = "js"/>
+	<h:outputScript name = "variasFuncionesFormulario.js" target = "head" library = "js"/>
+	
+	<h:outputScript name = "datos_hubspot.js" target = "head" library = "js"/>
+	
+	<h:outputScript name = "incomeExpense.js"   target = "head" library = "js/registro"/>	
+	<h:outputScript name = "incomeExpensev2.js" target = "head" library = "js/registro"/>
+	<h:outputScript name = "miPrestamo.js"      target = "head" library = "js/registro"/>
+				
+	<h:outputScript name = "registro-main-config.js" target = "head" library = "js/mx.com.kubo.core"/>
+ 	<h:outputScript name = "domicilio.js"            target = "head" library = "js/mx.com.kubo.registro"/>
+ 	<h:outputScript name = "codigo_postal.js"        target = "head" library = "js/mx.com.kubo.registro"   />
+ 	<h:outputScript name = "counter.js"              target = "head" library = "js/mx.com.kubo.registro"   />
+ 	<h:outputScript name = "datos-personales.js"     target = "head" library = "js/mx.com.kubo.registro"  />
+ 	<h:outputScript name = "focus-date.js"           target = "head" library = "js/mx.com.kubo.registro/datos" />
+ 	<h:outputScript name = "person-name.js"          target = "head" library = "js/mx.com.kubo.registro/datos"   />
+ 	<h:outputScript name = "documentacion.js"        target = "head" library = "js/mx.com.kubo.registro"/> 
+ 		
+ 	<h:outputScript name = "menuregistro.js" target = "head" library = "js/mx.com.kubo.acreditado/registro"/>
+ 	<h:outputScript name = "basicdata.js"    target = "head" library = "js/mx.com.kubo.acreditado/registro"/>
+ 	<h:outputScript name = "historial.js"    target = "head" library = "js/mx.com.kubo.acreditado/registro"/>
+ 	<h:outputScript name = "creditcard.js"   target = "head" library = "js/mx.com.kubo.acreditado/registro/historial"/>
+ 	<h:outputScript name = "mortage.js"      target = "head" library = "js/mx.com.kubo.acreditado/registro/historial"/>
+ 	<h:outputScript name = "car.js"          target = "head" library = "js/mx.com.kubo.acreditado/registro/historial"/>
+ 	<h:outputScript name = "consulta.js"     target = "head" library = "js/mx.com.kubo.acreditado/registro/historial"/>
+ 	<h:outputScript name = "domicilio.js"    target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo"/>
+ 	<h:outputScript name = "zipcode.js"      target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo/domicilio"/>
+ 	<h:outputScript name = "neighborhood.js" target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo/domicilio"/>
+ 	
+ 	<h:outputScript name = "mapa.js"            target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo"/>
+ 	<h:outputScript name = "employment.js"      target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo"/>
+ 	<h:outputScript name = "business.js"        target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo"/>
+ 	<h:outputScript name = "event-listeners.js" target = "head" library = "js/mx.com.kubo.acreditado/registro/mi-prestamo"/>
+ 	<h:outputScript name = "mi_prestamo.js"     target = "head" library = "js/mx.com.kubo.acreditado/registro"/>
+ 		
+ 	<h:outputScript name = "person-type.js"  target = "head" library = "js/mx.com.kubo.inversionista/registro"/>
+ 	<h:outputScript name = "beneficiario.js" target = "head" library = "js/mx.com.kubo.inversionista/registro"/>
+ 	<h:outputScript name = "domicilio.js"    target = "head" library = "js/mx.com.kubo.inversionista/registro/beneficiario"/>
+ 	<h:outputScript name = "zipcode.js"      target = "head" library = "js/mx.com.kubo.inversionista/registro/beneficiario"/>
+ 	<h:outputScript name = "neighborhood.js" target = "head" library = "js/mx.com.kubo.inversionista/registro/beneficiario"/>
+ 		
+ 	<h:outputScript name = "menu_item.js" target = "head" library = "js/secciones/registro/menu"/>
+ 		
+ 	<h:outputScript name = "validar_institucion_credito_automotriz.js"  target = "head" library = "js/secciones/registro/historial_crediticio"/>
+ 	<h:outputScript name = "validar_institucion_credito_hipotecario.js" target = "head" library = "js/secciones/registro/historial_crediticio"/>
+ 	<h:outputScript name = "validar_titular_tarjeta_vigente.js"         target = "head" library = "js/secciones/registro/historial_crediticio"/>
+ 	<h:outputScript name = "validar_formulario.js"                      target = "head" library = "js/secciones/registro/historial_crediticio"/>
+ 	<h:outputScript name = "init_function_events.js"                    target = "head" library = "js/secciones/registro/historial_crediticio"/>
+ 	<h:outputScript name = "historial_crediticio.js"                    target = "head" library = "js/secciones/registro/historial_crediticio"/>																
+					
+</ui:composition>				

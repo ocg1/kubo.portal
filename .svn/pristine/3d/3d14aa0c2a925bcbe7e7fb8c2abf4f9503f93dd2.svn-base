@@ -1,0 +1,15 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"				 
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<div class = "wrap-btn-editoridentification">				 
+		<div class = "btn_editor_identification btn_aceptar" onclick = "IdentificationType.update()">				 
+			<a>Guardar</a>
+		</div>			
+		
+		<div class = "btn_editor_identification btn_cancelar" onclick = "IdentificationType.cancel()">				 
+			<a>Cancelar</a>
+		</div>		
+	</div>	 
+</ui:composition>				 

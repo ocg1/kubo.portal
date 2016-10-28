@@ -1,0 +1,482 @@
+@CHARSET "UTF-8";
+
+body{
+	
+		padding: 0px !important;
+		margin: 0px !important;
+	
+	}
+	
+	.mblcontImg{
+		
+		width: 320px;
+		height: 1360px;
+		margin-right: auto;
+		margin-left: auto;
+		border: solid 0px #00FF00;
+		position: relative;
+	
+	}
+	
+	.tblCls,.mblCls,.wideCls{
+		width: auto;
+		height: auto;
+		overflow: auto;
+		margin-left: auto;
+		margin-right: auto;
+		border: solid 0px #FF0000;
+	}
+	
+	.mbllogo1Cls{
+		border: solid 0px #ff0000;
+		width: 35px;
+		height: 35px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	
+	.mbllogoCls{
+		border: solid 0px #ff0000;
+		width: 75px;
+		height: 75px;
+		position: absolute;
+		top: 38px;
+		left: 0px;
+	}
+	
+	.mblBtnReg1Cls{
+		border: solid 0px #ff0000;
+		width: 260px;
+		height: 45px;
+		position: absolute;
+		top: 248px;
+		left: 30px;
+	}
+	
+	.mblBtnSim1Cls{
+		border: solid 0px #ff0000;
+		width: 170px;
+		height: 35px;
+		position: absolute;
+		top: 308px;
+		left: 75px;
+	}
+	.mblBtnReg2Cls{
+		border: solid 0px #ff0000;
+		width: 215px;
+		height: 22px;
+		position: absolute;
+		top: 893px;
+		left: 65px;
+	}
+	.mblBtnVideo1Cls{
+		border: solid 0px #ff0000;
+		width: 255px;
+		height: 140px;
+		position: absolute;
+		top: 980px;
+		left: 32px;
+	}
+	.mblBtnFbCls{
+		border: solid 0px #ff0000;
+		width: 46px;
+		height: 48px;
+		position: absolute;
+		top: 1140px;
+		right: 52px;
+	}
+	.mblBtnTwCls{
+		border: solid 0px #ff0000;
+		width: 46px;
+		height: 48px;
+		position: absolute;
+		top: 1140px;
+		right: 5px;
+	}
+	.mblAviPrivCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 29px;
+		position: absolute;
+		top: 1217px;
+		left: 1px;
+	}
+	.mblLeyTransCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 29px;
+		position: absolute;
+		top: 1247px;
+		left: 1px;
+	}
+	.mblUnEspCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 27px;
+		position: absolute;
+		top: 1277px;
+		left: 1px;
+	}
+	.mblCatCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 28px;
+		position: absolute;
+		top: 1305px;
+		left: 1px;
+	}
+	.mblPregCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 29px;
+		position: absolute;
+		top: 1334px;
+		left: 1px;
+	}
+	
+	
+	.tblcontImg{
+		
+		width: 768px;
+		height: 985px;
+		margin-right: auto;
+		margin-left: auto;
+		border: solid 0px #00FF00;
+		position: relative;
+	
+	}
+	
+	.tbllogoCls{
+		border: solid 0px #ff0000;
+		width: 79px;
+		height: 79px;
+		position: absolute;
+		top: 60px;
+		left: 11px;
+	}
+	.tblBtnBlogCls{
+		border: solid 0px #ff0000;
+		width: 47px;
+		height: 19px;
+		position: absolute;
+		top: 22px;
+		right: 208px;
+	}
+	.tblCreditCls{
+		border: solid 0px #ff0000;
+		width: 70px;
+		height: 20px;
+		position: absolute;
+		top: 21px;
+		right: 112px;
+	}
+	.tblBtnAccessCls{
+		border: solid 0px #ff0000;
+		width: 63px;
+		height: 20px;
+		position: absolute;
+		top: 22px;
+		right: 20px;
+	}
+	.tblBtnReg1Cls{
+		border: solid 0px #ff0000;
+		width: 245px;
+		height: 45px;
+		position: absolute;
+		top: 267px;
+		left: 135px;
+	}
+	
+	.tblBtnSim1Cls{
+		border: solid 0px #ff0000;
+		width: 227px;
+		height: 40px;
+		position: absolute;
+		top: 268px;
+		left: 405px;
+	}
+	.tblBtnReg2Cls{
+		border: solid 0px #ff0000;
+		width: 213px;
+		height: 26px;
+		position: absolute;
+		top: 903px;
+		left: 82px;
+	}
+	.tblBtnVideo1Cls{
+		border: solid 0px #ff0000;
+		width: 354px;
+		height: 195px;
+		position: absolute;
+		top: 532px;
+		right: 37px;
+	}
+	.tblBtnFbCls{
+		border: solid 0px #ff0000;
+		width: 46px;
+		height: 48px;
+		position: absolute;
+		top: 1140px;
+		right: 48px;
+		display: none;
+	}
+	.tblBtnTwCls{
+		border: solid 0px #ff0000;
+		width: 46px;
+		height: 48px;
+		position: absolute;
+		top: 1140px;
+		right: 1px;
+		display: none;
+	}
+	.tblAviPrivCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1212px;
+		left: 1px;
+		display: none;
+	}
+	.tblLeyTransCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1237px;
+		left: 1px;
+		display: none;
+	}
+	.tblUnEspCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1262px;
+		left: 1px;
+		display: none;
+	}
+	.tblCatCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1287px;
+		left: 1px;
+		display: none;
+	}
+	.tblPregCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1312px;
+		left: 1px;
+		display: none;
+	}
+	
+	
+	.widecontImg{
+	
+		width: 1340px;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+		border: solid 0px #00FF00;
+		position: relative;
+	
+	}
+	.widelogoCls{
+		border: solid 0px #ff0000;
+		width: 105px;
+		height: 105px;
+		position: absolute;
+		top: 61px;
+		left: 189px;
+	}
+	.wideBtnBlogCls{
+		border: solid 0px #ff0000;
+		width: 51px;
+		height: 17px;
+		position: absolute;
+		top: 23px;
+		right: 441px;
+	}
+	.wideCreditCls{
+		border: solid 0px #ff0000;
+		width: 76px;
+		height: 19px;
+		position: absolute;
+		top: 22px;
+		right: 340px;
+	}
+	.wideBtnAccessCls{
+		border: solid 0px #ff0000;
+		width: 62px;
+		height: 19px;
+		position: absolute;
+		top: 22px;
+		right: 251px;
+	}
+	.wideBtnReg1Cls{
+		border: solid 0px #ff0000;
+		width: 329px;
+		height: 59px;
+		position: absolute;
+		top: 337px;
+		left: 352px;
+	}
+	
+	.wideBtnSim1Cls{
+		border: solid 0px #ff0000;
+		width: 313px;
+		height: 59px;
+		position: absolute;
+		top: 337px;
+		left: 707px;
+	}
+	.wideBtnReg2Cls{
+		border: solid 0px #ff0000;
+		width: 277px;
+		height: 31px;
+		position: absolute;
+		top: 1189px;
+		left: 288px;
+	}
+	.wideBtnVideo1Cls{
+		border: solid 0px #ff0000;
+		width: 473px;
+		height: 260px;
+		position: absolute;
+		top: 691px;
+		right: 191px;
+	}
+	.wideBtnFbCls{
+		border: solid 0px #ff0000;
+		width: 46px;
+		height: 48px;
+		position: absolute;
+		top: 1140px;
+		right: 48px;
+		display: none;
+	}
+	.wideBtnTwCls{
+		border: solid 0px #ff0000;
+		width: 46px;
+		height: 48px;
+		position: absolute;
+		top: 1140px;
+		right: 1px;
+		display: none;
+	}
+	.wideAviPrivCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1212px;
+		left: 1px;
+		display: none;
+	}
+	.wideLeyTransCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1237px;
+		left: 1px;
+		display: none;
+	}
+	.wideUnEspCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1262px;
+		left: 1px;
+		display: none;
+	}
+	.wideCatCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1287px;
+		left: 1px;
+		display: none;
+	}
+	.widePregCls{
+		border: solid 0px #ff0000;
+		width: 316px;
+		height: 24px;
+		position: absolute;
+		top: 1312px;
+		left: 1px;
+		display: none;
+	}
+	
+	.clPointer{
+		cursor: pointer;
+	}
+	
+	.tblCls,.mblCls{
+		display:none;
+		}
+			
+	
+	
+		@media screen and (max-width: 1250px) {
+			/*tablet*/
+
+			.wideCls{
+				display:none;
+			}
+			.tblCls{
+				display:block;
+			}
+			.mblCls{
+				display:none;
+			}
+			
+			body{
+				background-image:url('../img/landingTbl.png');
+				background-repeat:no-repeat;
+				background-position:center top; 
+			}
+
+		}
+
+		@media screen and (max-width: 630px) {
+			/*mobile*/
+
+			.wideCls{
+				display:none;
+			}
+			.tblCls{
+				display:none;
+			}
+			.mblCls{	
+				display:block;
+			}
+			body{
+				background-image:url('../img/landingMbl.png');
+				background-repeat:no-repeat;
+				background-position:center top; 
+			}
+			.unidadModal{
+				width: 90% !important;
+				height: auto !important;
+				overflow: auto !important;
+			}
+		}
+		
+		@media screen and (max-width: 330px) {
+		
+			#dvCat{
+					width: 200px !important;
+					height: auto !important;
+					overflow: auto !important; 
+				}
+
+		}

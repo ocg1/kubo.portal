@@ -1,0 +1,43 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+
+	<div class = "dvContent dt_center">
+		<div id = "sendInfodisable" class = "solicitud callAction btnGris">
+					Guardar y continuar
+		</div>
+		
+		<div id = "sendInfo" class = "solicitud callAction btnNaranja " >
+				Guardar y continuar
+		</div>
+		
+	</div>
+	
+	
+	<script>		
+		Historial.consulta_buro();									
+	</script>
+	
+	<div style = "display: none;">
+	
+		<input id = "valFlagPrep" type = "text" value = "NO ENTRO!!" />
+		
+		<p:inputText id = "listener_asignar_nota_del_coach" ajax = "true" immediate = "true">
+				<p:ajax event = "click"  listener = "#{creditHistoryController.listener_asignar_nota_del_coach}"/>
+		</p:inputText>
+		
+		<p:commandLink id = "listener_guardar_nota_del_coach" ajax = "true" actionListener = "#{creditHistoryController.listener_guardar_nota_del_coach}"/>
+		
+		<p:commandLink id = "callSGBWS" ajax = "true" actionListener = "#{creditHistoryController.callWSSGB}"/>
+					   
+		<h:commandLink id = "cmdDatosReview333">
+					   
+			<p:ajax event	= "click"  update = "pnlSureCont" immediate	= "true"
+				    onstart    = "return displayWait();" 
+				    oncomplete = "Historial.person_data_oncomplete(xhr, status, args);" 						   
+				    listener   = "#{creditHistoryController.getPersonDataCreditHistory}"/>					   
+		</h:commandLink>
+	</div>				 
+</ui:composition>				 

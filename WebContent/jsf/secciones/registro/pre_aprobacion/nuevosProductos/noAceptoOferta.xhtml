@@ -1,0 +1,48 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			     
+			     <div class="noIntAce noAceptoOferta">
+										<h4>Ayúdanos a mejorar kubo</h4>
+									
+										<h3>¿Por qué no te interesa una oferta especial?</h3>
+									
+										<p>Tus comentarios son muy importantes:</p>
+							<!-- div class="selectNuevo">
+						  
+						    
+						    
+						    <h:selectOneMenu id         = "motive_rejection"  immediate = "true"
+									     value      = "#{checkScoreProcessed.motive_id}"  onchange="otraRazon ()"  >
+									     
+							<f:selectItem itemLabel = "Selecciona Motivo " itemValue = "0" />
+							
+							<f:selectItems value = "#{checkScoreProcessed.lstmotive}" var="mot" itemLabel="#{mot.description}" itemValue="#{mot.pk.offer_rejection_motive_id}"/>
+							
+							<p:ajax event="change" />
+							
+						</h:selectOneMenu>
+						
+						  </div-->
+  
+  
+						<h:inputTextarea id="otroTextarea" value="#{checkScoreProcessed.motiveStr}" onblur="otroTextArea();">
+							<p:ajax event="blur" />
+						</h:inputTextarea>
+
+
+						<p:watermark for = "otroTextarea" value= "Escribe por que no te interesa la oferta "/>		
+
+			<!-- 
+						<div class="callAction  btnNaranja" onclick="enviarComentario();">Enviar</div>
+							 -->
+							 		
+						<h:commandLink  styleClass="callAction  btnNaranja"  id="enviarRazon" value="Enviar" immediate="true">
+							<p:ajax event="click" listener="#{checkScoreProcessed.updateMotiveRejection}" onstart="return enviarComentario();" oncomplete="cerrarLienzoPreaprobacion();"   />
+						</h:commandLink>		
+							
+						</div>
+				
+</ui:composition>

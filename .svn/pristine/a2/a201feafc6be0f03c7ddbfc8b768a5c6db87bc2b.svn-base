@@ -1,0 +1,154 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+		
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.acreditado/registro/menuregistro.js" />
+		
+		<style>
+		
+			.btnCloseSimulador{
+				display: none;
+			}
+		
+		</style>
+		
+		<ui:include src = "menuregistro_menu_items.xhtml"/>
+		
+				
+		<div id = "frm_content" class = "formFrm">
+		
+			<h:panelGroup id = "actualPage">
+		
+				<ui:include src = "secciones/#{navigationBean.paginaActual}.xhtml"  />
+				
+				<!-- script>
+					if( $("#frm_content").height() > $(".helpFrm").height() + 50 )
+					{
+						$("#	").height( ($("#frm_content").height() + 50) + "px");
+						
+					} else {
+						$("#contFrmReg").height( ($(".helpFrm").height() + 150 ) + "px");	
+					}		
+					
+				</script-->			
+			</h:panelGroup>
+		</div>
+				
+				<div class = "helpFrm">
+					
+					<div class="btnCloseSimulador" style="position: absolute; z-index: 101; top: -2px;left: -3px; width: 30px; height: 30px;" >
+	          			<p:graphicImage url="../resources/img/close.png" onclick="hideSimulador();" ></p:graphicImage>
+	          		</div>
+					
+					<h:panelGroup rendered = "#{navigationBean.loaner and sessionBean.area=='L'}" >
+					
+						<h:form prependId = "false">
+						
+							<div class = "buttonPR"  style = "margin-bottom: 0px !important; margin-top: 0px !important;width: 229px; margin-left: 26px;">
+								<p:commandLink id = "btnEdoCuenta" value = "Revisa tu Estado de Cuenta" action = "edocuenta" />
+							</div>
+							
+						</h:form>                     
+					</h:panelGroup>
+					
+					
+					<h:panelGroup rendered = "#{sessionBean.area=='I'}" >
+					
+						<h:form prependId = "false">
+						
+							<div class = "buttonPR"  style = "margin-bottom: 0px !important; margin-top: 0px !important;width: 229px; margin-left: 26px; margin-top: 15px; margin-bottom: 15px;">
+								<p:commandLink id = "simulaBtn" value = "Simula tu inversión" action = "simulaInver" />
+							</div>
+							
+						</h:form>					
+					</h:panelGroup>
+										
+					<ui:include src = "menuregistro_simulador.xhtml"/>	
+																			
+					<h:panelGroup rendered="false" >
+						<div class="helpCont">
+							Ayuda
+						</div>
+					</h:panelGroup>
+					
+					<div style="margin-left: 0px !important; margin-right: auto  !important; border: solid 0px #000000; position: relative; width: 242px; height: auto; margin-top: 10px; " >
+						<p:graphicImage url="../resources/img/contactanos003.jpg"></p:graphicImage>
+						<!--  div style="border: solid 0px #000000; position: absolute; z-index: 100; width: 88px; height: 20px; top: 85px; right: 12px; text-align: left; color: #439539;  " >
+								Al teléfono:<br />
+								#{msg.Kubo_telefono}
+						</div-->
+					</div>
+					
+					<div class="imgSecure" style="margin-left: 61px; !important; margin-right: auto  !important; border: solid 0px #000000; margin-top: 10px;">
+						<!-- <p:graphicImage url="../resources/img/networksolutions.png" width="175px" height="44px"></p:graphicImage> -->
+						<span id="siteseal">
+							<script type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=8HPF1Heq1pPkmz01JL4MTFpXy9IeyHbc49jtzi35Ll8Xmgi7dIrykMiExSQ2"></script>
+						</span>
+					</div>
+					
+					<h:panelGroup rendered="false" >
+						<div style="margin-left: 0px !important; margin-right: auto  !important; border: solid 0px #000000; position: relative; width: 242px; height: auto; " >
+							<p:graphicImage url="../resources/img/pademobile_reg.png" width="242px" height="205px"></p:graphicImage>
+							<div id="dvPademovile" style="border: solid 0px #000000; position: absolute; z-index: 100; width: 144px; height: 32px; top: 152px; right: 26px; text-align: left; color: #439539;cursor: pointer;  " >
+									
+							</div>
+						</div>
+					</h:panelGroup>
+					
+				</div>
+						<!-- mapa de google -->	
+			         
+				   		
+				   		<!-- imagen IFE -->
+				   		
+				   		<div id="ife"  style="opacity: 1.87; position: absolute; display: none; border: 2px solid #CCCCCC; width:454px;height:184px;">
+			          		<div class="arrow_left" ></div>
+			          		<div class="blindAction" style="position: absolute; z-index: 101; top: -10px;right: -10px; width: 30px; height: 30px;" >
+			          			<p:graphicImage url="../resources/img/close.png" onclick="hideIFEjs();" ></p:graphicImage>
+			          		</div>
+				   			<div id="imgIFE" style="width:450px;height:180px;">
+				   				<p:graphicImage url="../resources/img/ayudaIFE.jpg" ></p:graphicImage>
+				   			</div>
+				   		</div>
+				   		
+				   		<!-- end imagen IFE -->	   	
+				   		
+				   		<!-- mensaje historial Cred -->
+				   		
+				   		<div id="credNum"  style="opacity: 1.87; position: absolute; display: none; border: 2px solid #CCCCCC; width:300px;height:230px;">
+			          		<div class="arrow_leftCH" ></div>
+			          		<div class="blindAction" style="position: absolute; z-index: 101; top: -13px;right: -13px; width: 30px; height: 30px;" >
+			          			<p:graphicImage url="../resources/img/close.png" onclick="hideMessage();" ></p:graphicImage>
+			          		</div>
+				   			<div id="message" style="width:280px;height:230px; background-color: #FFFFFF; padding: 10px;">
+				   				<div id="infoDepVisa" style=" margin-bottom: 6px; display: none;" >
+				   					<b>
+				   					Asegurate que tu tarjeta sea VISA o MASTERCARD.
+				   					</b>
+				   					En caso contrario, intenta con otra tarjeta.
+				   				
+				   				</div>
+				   				
+				   				<div id="infoCoppel" style=" margin-bottom: 6px; display: none;" >
+				   					<b>
+				   					Asegurate que tu tarjeta sea VISA o MASTERCARD.
+				   					</b>
+				   					En caso contrario, intenta con otra tarjeta.
+				   				
+				   				</div>
+				   				
+				   				La información que nos proporcionas es confidencial, tus datos estan seguros y solo se utilizarán para consultarte en Buro de Crédito.<br />
+				   				<span id="msgCredit">
+				   					<b>Verifica que tu tarjeta sea de crédito</b> – Mira el reverso de la tarjeta, si NO encuentras una leyenda que diga “<b>Esta tarjeta de Crédito…</b>” 
+				   					entonces prueba con otra tarjeta o si es tu única tarjeta, selecciona “No”.
+				   				</span>
+				   			</div>
+				   		</div>
+				   		
+				   		<!-- end mensaje historial Cred -->		
+				   					   
+		<ui:include src = "menuregistro_navegacion_AJAX.xhtml"/>
+				
+</ui:composition>

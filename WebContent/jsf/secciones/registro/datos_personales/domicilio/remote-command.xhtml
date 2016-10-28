@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div style = "display: none">
+		<h:inputText id = "init-address-type" immediate = "true" ajax = "true">
+			<p:ajax event = "click" update = "updateSectionAddress panel-is-legal-address panel-domicilio-fiscal"
+					oncomplete = "PersonaMoral.address_type_on_complete(xhr, status, args);"
+					listener   = "#{basicData.init_address_type}"/>
+		</h:inputText>
+		
+		<h:commandLink id = "focus-domicilio">
+			<p:ajax event = "click" 
+					oncomplete = "Domicilio.focus_on_complete(xhr, status, args);"
+					listener = "#{basicData.domicilio.init_focus_date}"/>
+		</h:commandLink>
+		
+		<h:commandLink id = "focus-domicilio-fiscal">
+			<p:ajax event = "click" 
+					oncomplete = "Domicilio.focus_on_complete(xhr, status, args);"
+					listener = "#{basicData.fiscal.init_focus_date}"/>
+		</h:commandLink>
+		
+		<h:inputText id = "init-domicilio" immediate = "true" >
+			<p:ajax event = "click" update = "coverage-zone-ENABLED panel-domicilio-fiscal" 
+					oncomplete = "Domicilio.domicilio_on_complete(xhr, status, args);"/>
+		</h:inputText>		
+		
+		<h:inputText id = "init-neighborhood-text-ENABLED" immediate = "true" ajax = "true">
+			<p:ajax event = "click" update = "coverage-zone-ENABLED fiscal-coverage-zone-ENABLED"
+					oncomplete = "Domicilio.neighborhood_text_ENABLED_on_complete(xhr, status, args);"
+					listener = "#{basicData.init_neighborhood_text_ENABLED}"/>
+		</h:inputText>		
+		
+		<h:inputText id = "init-domicilio-fiscal" immediate = "true" ajax = "true">
+			<p:ajax event = "click" update = "panel-domicilio-fiscal"
+					oncomplete = "Domicilio.domicilio_fiscal_on_complete(xhr, status, args);"/>
+		</h:inputText>		
+	</div>				
+</ui:composition>	

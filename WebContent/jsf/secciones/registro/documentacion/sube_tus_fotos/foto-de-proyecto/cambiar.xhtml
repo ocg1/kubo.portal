@@ -1,0 +1,51 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+<!-- 
+	<h:commandLink onclick="return display_alert()">		 
+-->
+	<p:fileUpload id = "file_logos" 									  
+				  rendered = "#{images.typeLogo >= 0 and images.isSave()}"
+				  update   = ":sectionLogos" 
+				  
+				  fileUploadListener = "#{addPldDocument.editFileLogo}" 
+				  																										  
+			      invalidSizeMessage = "Tamaño del archivo inválido."
+			      invalidFileMessage = "Tipo de archivo no válido." 
+			      									    
+	              mode  = "advanced"   							            
+	              auto  = "true"            
+	              label = "Cambiar"					            
+	              sizeLimit  = "5242880"						              
+	              allowTypes = "/(\.|\/)(gif|jpe?g|png)$/"
+	              
+	              styleClass = "custumStlFileUpload  btnChangeDoc"
+	              style = "float:left;width:auto;">						 
+	</p:fileUpload>
+
+<!-- 
+	</h:commandLink> 
+-->
+<!-- 
+	<h:panelGroup>
+		<div style="opacity:0.0;filter:alpha(opacity=0);position:absolute;">
+			
+				<p:fileUpload id = "loaderCont33" 
+					          value = "#{addPldDocument.fileLogo}" 
+					          widgetVar  = "wloadAction33" 					 
+					          onstart    = "uploadStart();"  
+					          mode       = "simple" 
+					          styleClass = "loader" />  
+				
+				<h:commandButton value = "Submit" 
+								 id = "loadAction33" 
+								 ajax = "false" 
+								 styleClass = "loader" 
+						         action = "#{addPldDocument.editFileLogo(status.index)}"/>
+		
+		</div>
+	</h:panelGroup>
+-->				
+</ui:composition>				

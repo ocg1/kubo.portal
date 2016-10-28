@@ -1,0 +1,51 @@
+package mx.com.kubo.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.QueryHint;
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			resultClass = MontoInvertido_F_G_Collector.class,
+			name = "queryMontoInvertido_FG",    
+			query = "call MINIMOPORCENPORCTACON(:safi_account)",    
+			hints = {    
+			   			@QueryHint(name = "org.hibernate.callable", value = "true")  
+					}    
+	
+	)
+})
+
+@Entity
+public class MontoInvertido_F_G_Collector implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(name="CuentAhoId")
+	private String cuentAhoId;
+	@Column(name="TotalFondeado")
+	private Double totalFondeado;
+	
+	public String getCuentAhoId() {
+		return cuentAhoId;
+	}
+	public void setCuentAhoId(String cuentAhoId) {
+		this.cuentAhoId = cuentAhoId;
+	}
+	public Double getTotalFondeado() {
+		return totalFondeado;
+	}
+	public void setTotalFondeado(Double totalFondeado) {
+		this.totalFondeado = totalFondeado;
+	}
+	
+}

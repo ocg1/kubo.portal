@@ -1,0 +1,159 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	
+
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+
+			/* Apply fancybox to multiple items */
+			
+			$("a.quienesSomos").fancybox({
+				'width' : '50%',
+				'height' : '98%',
+				'autoScale' : 'false',
+				'transitionIn' : 'elastic',
+				'transitionOut' : 'elastic',
+				'type' : 'iframe',
+				'scrolling' : 'auto',
+				'centerOnScroll' : 'true',
+				'overlayColor': '#333333'
+			});
+
+		});
+	</script>
+	
+	<style>
+	
+	.reloj{
+		color: #FFFFFF !important;
+	}
+	
+	.menuItemHome{
+		padding: 5px !important;
+		width: 100% !important;
+	}
+	#menuBut{
+		display: none;
+	}
+	</style>
+	
+<h:form>
+	<!-- <div id="barraAyuda" class="barra">
+		<div id="descBarra" class="descBarra">
+			<span>¿Qué es <span class="marca">kubo</span>.financiero?</span> La primera plataforma online que promueve el desarrollo. <a class="quienesSomos"  href="secciones/informativo/quienesSomos.xhtml">Ver más</a>
+		</div>
+	</div>
+	 <p:growl id="messages" style="background-color: #00FF00; color: #ff0000;"/>  -->
+	<div class="backHeader">
+		<div class="general"  style="width: 300px;position: relative;" >
+			<div id="logo" class="logo">
+				<p:commandLink action="kubofinanciero">
+					<p:graphicImage
+						url="/resources/img/LOGO.png"
+						style="border: 0px; "
+					/>
+				</p:commandLink>
+			</div>
+			<div class="clBeta">Beta</div>
+			<h:panelGroup rendered="#{inicioValues.renderLogoPartner}" >
+				<div style="margin-left: 10px; position: absolute; top: 0px; left: 173px;">
+					
+						<p:graphicImage
+							url="/resources/img/logo_barared01.png"
+							style="border: 0px; "
+						/>
+					
+				</div>
+			</h:panelGroup>
+		</div>
+	</div>
+	<!-- <div id="thisBar" class="barGreen">
+	</div> -->
+</h:form>	
+	
+	<h:panelGroup rendered="false">
+	
+	<!-- <div  class="transparent2" id="shadowMenu">
+		<img src="../resources/img/shadow.png" width="100%" height="100%"  id="bg02" />
+	</div> -->
+	
+	<div id="menu" class="listMenu" >
+	
+		<h:form>
+		<ul id="navlist">
+			<!--
+			<li>
+				 <a class="quienesSomos letterMenu"  href="secciones/informativo/quienesSomos.xhtml">¿Qué es kubo.financiero?</a>
+			</li>
+			
+			<li><span class="pipe letterMenu">|</span></li>
+			
+			<li>
+				<p:commandLink action="creditos_personales" styleClass="puntero  letterMenu">
+					<h:outputLabel styleClass="puntero">Préstamos Personales</h:outputLabel>
+				</p:commandLink>
+			</li>
+			<li><span class="pipe letterMenu">|</span></li>
+			-->
+			<li>
+				<h:panelGroup >
+					<p:commandLink action="#{sessionBean.setAreaReg('I')}" styleClass="puntero letterMenu">
+						<h:outputLabel styleClass="puntero letterMenu">Inversiones</h:outputLabel>
+					</p:commandLink>
+				</h:panelGroup>
+			</li>
+			<!--
+			<li><span class="pipe letterMenu">|</span></li>
+			<li><a href="#" class=" letterMenu" >¿Cómo Trabajamos?</a></li>
+			<li><span class="pipe letterMenu">|</span></li>
+			<li><a href="#"  class="letterMenu" >Conócenos</a></li>
+			-->
+		</ul>
+		</h:form>
+	</div>
+	</h:panelGroup>
+	
+	<div id="menuNombre"  class="listMenu">
+		<h:form id="loginForm">
+		<ul id="navlist2">
+			<li>
+				<div id="entrar">
+					<a href="#">
+						<h:panelGroup rendered="#{sessionBean.prospectus_id == null}">
+							<ui:include src="headerOut2.xhtml" />
+						</h:panelGroup>
+						<h:panelGroup rendered="#{sessionBean.prospectus_id != null}">
+							<ui:include src="headerIn.xhtml" />
+						</h:panelGroup>
+					</a>
+				</div>
+			</li>			
+		</ul>
+		</h:form>
+	</div>
+	
+	<a id="menuBut" href="#data">
+		<div  class="butMenu puntero bottonBn" style="width: 80px; margin: 20px !important; ">
+			<span class="textHelNeueBold" style="font-size: 11.3pt !important; " >MENU</span>
+		</div>
+	</a>
+	
+	<div style="display:none">
+		<div id="data" style="width: 100% !important; overflow: hidden; background-color: #439539; color: #FFFFFF;">
+			<h:form>
+				<div class="textHelNeueBold menuItemHome"  style="color: #FFFFFF !important; font-size: 18px !important;">¿Qué es kubo.financiero?</div>
+				<div class="menuItemHome textHelNeueBold"  style="color: #FFFFFF !important; font-size: 18px !important;">Préstamos Personales</div>
+				<div class="menuItemHome textHelNeueBold"  style="color: #FFFFFF !important; font-size: 18px !important;" >Inversiones</div>
+				<div class="menuItemHome textHelNeueBold"  style="color: #FFFFFF !important; font-size: 18px !important;" >¿Cómo Trabajamos?</div>
+				<div class="menuItemHome textHelNeueBold"  style="color: #FFFFFF !important; font-size: 18px !important;" >Conócenos</div>
+			</h:form>
+		</div>
+	</div>
+	
+	
+	</html>

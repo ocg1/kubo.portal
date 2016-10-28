@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns    = "http://www.w3.org/1999/xhtml"
+		xmlns:h  = "http://java.sun.com/jsf/html"
+		xmlns:ui = "http://java.sun.com/jsf/facelets"
+		xmlns:f  = "http://java.sun.com/jsf/core"
+		xmlns:p  = "http://primefaces.org/ui">
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="cleartype" content="on"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="format-detection" content="telephone=no"/>
+
+		
+	<h:head>
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/header.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/footer.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/estado_cuenta.css" /> 	
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/creditos.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/responsive/headerResponsive2.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/responsive/footerResponsive.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/font-awesome.css"/> 		
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/style.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/frmStyle.css" />
+		
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/referencia_pago/panel.css" />						
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/referencia_pago/acreditado.css" />			
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/referencia_pago/referencia_DMO_panel.css" />
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/referencia_pago/referencia_DMO_panel_SPEI.css" />		
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/referencia_pago/referencia_DMO.css" />	
+		<link type = "text/css" rel = "stylesheet" href = "../../../resources/css/secciones/estado_cuenta/referencia_pago/nota.css" />	
+	
+		<script type = "text/javascript" src = "../../../resources/js/secciones/estado_cuenta/referencia_pago/panel.js"/>
+	
+		<h:outputStylesheet library="css" name="style.css"  />
+		
+		<!--<h:outputScript     library="js"  name="common.js" />-->
+		
+		<title>kubo.financiero | Quiero liquidar mi pr&eacute;stamo</title>
+	</h:head>
+	
+	<h:body styleClass="clBody" >
+		
+		<div id = "header">		 
+			<ui:include src = "../../templates/headContenido.xhtml" />		
+		</div>
+		
+		
+		<div class = "edo_cta_titulo">
+			<h:form prependId = "false">
+				<h:commandLink 
+							   value  = "Regresar" 
+						       action = "ESTADO_DE_CUENTA"
+							   styleClass = "callActionMedium btnVerde edoCtaRegresar" 
+							   >
+				</h:commandLink>
+				
+				<ui:include src = "referencia_pago_liquidacion/credito_INFO.xhtml"/>
+				
+				<ui:include src = "ya-hice-mi-pago.xhtml"/>
+				<ui:include src = "modal_notificacion.xhtml"/>
+													
+				<ui:include src = "referencia_pago_liquidacion/imprimir.xhtml"/>								
+				<ui:include src = "referencia_pago_liquidacion.xhtml"/>				
+			</h:form>
+		</div>		
+
+		<div>		
+			<ui:include src="../../templates/footerContenido.xhtml" />		
+		</div>
+		
+	</h:body>
+</html>

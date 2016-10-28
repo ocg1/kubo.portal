@@ -1,0 +1,300 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				<script>
+				
+				$('.clsDiagNosticoButt').show();
+				$('.detailsTabHelpControlTable').show();
+				
+				</script>
+				
+	
+	<h:panelGroup rendered="#{summaryRequest.actualProyect==null and !searchSummaySession.person}">
+		
+			
+			<script>
+			
+				console.log( 'init-scripts()  script' );
+			
+				$('.detailsControlTable').hide();
+				$('.clsDiagNosticoButt').hide();
+				
+				$('.profileControlTable').show();
+				/*$('.detailsTabAllControlTable').hide();*/
+				$('.detailsTabHelpControlTable').hide();
+				
+				$('.detailsTabAllControlTable').text( 'Ver Estado de Cuenta');
+				
+				$('.detailsTabAllControlTable').css({'left':'694px' });
+				
+				$('.detailsTabAllControlTable').addClass("clEdoCtaInv");
+				
+				$('.clEdoCtaInv').click(function(e){
+					
+					e.preventDefault();
+					inicializaSolInv();
+					
+				});
+				
+				if( $(".clsActivityButt").is(":visible") ){
+					
+					$(".clsActivityButt").off();
+					
+					initActivityInv();
+					
+				}
+				
+				map=null;
+				initializeMap();
+				
+				function inicializaSolInv(){
+					
+					displayMessageProcessing('msgprocessing',true);
+					
+					console.log( "inicializaSolInv  --  init" );
+					
+					$( ".clEdoCtaInv" ).off()
+					$('.detailsTabAllControlTable').removeClass("clEdoCtaInv");
+					
+					$('.profileControlTable').hide();
+					$('#carterakubo').hide();
+					
+					$("#dvCntMyInvestment").show();
+					
+					$('.detailsTabAllControlTable').text( 'Ver Solicitud de Inversión');
+					
+					$("#dvCntProfile").addClass("clCntProfileWidth");
+					
+					$("#dvCntSearchProfile").addClass("clCntSearchProfile");
+					
+					$("#dvCntTitleProfile").addClass("clCntSearchProfile");
+					
+					$('.detailsTabAllControlTable').addClass("clSolInv");
+					
+					$('#valEdoCtaInv').val( $("#prospectus_id").val()+"::"+$("#company_id").val() );
+					
+					$('#btnInitEdoCtaInv').blur();
+					
+					$('#lnkInitEdoCtaInv').click();
+					
+					console.log( "inicializaSolInv  --  fin" );
+					
+					$('#dvSumaryCnt').hide();
+					$('.detailsControlTable').hide();
+					$('.clsDiagNosticoButt').hide();
+					/*$('.detailsTabAllControlTable').hide();*/
+					$('.detailsTabHelpControlTable').hide();
+					
+				}
+				
+				function fncReturnEdoCtaInv(){
+					
+					$('#dvSumaryCnt').hide();
+					$('.detailsControlTable').hide();
+					$('.clsDiagNosticoButt').hide();
+					
+					$('.profileControlTable').show();
+					/*$('.detailsTabAllControlTable').hide();*/
+					$('.detailsTabHelpControlTable').hide();
+					
+				}
+				
+				function returnIFrameFuntion(){
+					
+					var testframe = document.createElement("iframe");
+				    testframe.id = "testframe";
+				    testframe.src = "../jsf/edoCuentaInv.xhtml";
+				    
+				    $('#dvSumaryCnt').hide();
+					$('.detailsControlTable').hide();
+					$('.clsDiagNosticoButt').hide();
+					
+					$('.profileControlTable').hide();
+					/*$('.detailsTabAllControlTable').hide();*/
+					$('.detailsTabHelpControlTable').hide();
+				    
+				    $("#dvCntMyInvestment").empty();
+				    $("#dvCntMyInvestment").append(testframe);
+				    var styles = {
+				    		width : "98%",
+				    		border: "0px",
+				    		height: "1600px",
+				    		overflow: "hidden"
+				    		};
+				    $("#testframe").css(styles);
+					
+					$('.clSolInv').click(function( e ){
+						e.preventDefault();
+						inicializaEdoCta();
+						
+					});
+					closeFancy();
+				}
+				
+				function inicializaEdoCta(){
+					
+					$( ".clSolInv" ).off()
+					$('.detailsTabAllControlTable').removeClass("clSolInv");
+					
+					$('.profileControlTable').show();
+					$('#carterakubo').show();
+					$("#dvCntMyInvestment").hide();
+					
+					$('.detailsTabAllControlTable').addClass("clEdoCtaInv");
+					
+					$('.detailsTabAllControlTable').text( 'Ver Estado de Cuenta');
+					
+					$('.detailsTabAllControlTable').css("top","-26");
+					
+					$("#dvCntProfile").removeClass("clCntProfileWidth");
+					
+					$("#dvCntSearchProfile").removeClass("clCntSearchProfile");
+					$("#dvCntTitleProfile").removeClass("clCntSearchProfile");
+					
+					$('#dvSumaryCnt').hide();
+					
+					$('.detailsControlTable').hide();
+					$('.clsDiagNosticoButt').hide();
+					
+					$('.clEdoCtaInv').click(function(e){
+						e.preventDefault();	
+						inicializaSolInv();
+						
+					});
+				}
+				
+				function initActivityInv(){
+					
+					$(".clsActivityButt").click( function(e)
+							{		
+								initActivityInvAction();
+								 
+							});
+					
+				}
+				
+				function initSolInv2(){
+					
+					$('.detailsControlTable').hide();
+					$('.clsDiagNosticoButt').hide();
+					
+					$("#dvCntActivityPerson").hide();
+					
+					
+					/*$('.detailsTabAllControlTable').hide();*/
+					$('.detailsTabHelpControlTable').hide();
+					
+					$('.profileControlTable').show();
+					
+					$('.clsActivityButt').empty();
+					 
+					 $('.clsActivityButt').text( 'Actividad');
+					
+					 $('.clsActivityButt').off();
+					 
+					 $('.clsActivityButt').click(function(){
+						 
+						 flagActivity = true;
+						 initActivityInvAction();
+						 
+					 });
+					 
+				}
+				
+				function initActivityInvAction(){
+					
+					$('.profile').hide(); 
+					$('.profileControlTable').hide();
+					$("#dvCntDiagnostico").hide();
+					 
+					 $('#dvSumaryCnt').hide(); 		 
+					 $('#dvCntBuroReport').hide(); 
+					 
+					 $("#dvCntActivityPerson").show();
+					
+					 if(flagActivity)
+					 {			 
+						 var datos_init_activity = $('#prospectus_id').val() + "::" + $('#company_id').val();
+						 
+						 console.log("datos_init_activity = " + datos_init_activity);
+							 
+						 $('#valActivity').val(datos_init_activity).trigger("blur");
+						 
+						 $("div#dvContPersonalData").show();
+						 
+						 flagActivity = false;
+						 
+						 $('.clsActivityButt').empty();
+						 
+						 $('.clsActivityButt').text( 'Ver Solicitud de Inversión');
+						 
+						 $('.clsActivityButt').off();
+						 
+						 $('.clsActivityButt').click(function(){
+							 
+							 initSolInv2();
+							 
+						 });
+						
+						 
+					 }
+					
+				}
+				
+				console.log( 'init-scripts()  /script' );
+				
+			</script>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{sessionBean.area == 'I' and summaryRequest.actualProyect.safi_credit_id != null}" >
+			<script>
+			
+			
+			</script>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{searchSummaySession.person}">
+		
+			<script>
+			
+			$(document).ready(function()
+			{
+				
+				//displayMessageProcessing('msgprocessing', false);
+				
+				console.log( '$(document).ready  init-scripts()' );
+				
+				
+				
+				setTimeout( function()
+				{	
+					console.log( 'setTimeout  init-scripts()' );
+					
+					$('#valActivity').val($('#prospectus_id').val()+"::"+$('#company_id').val());
+					//alert($('#valGraphic').val());
+					 $('#valActivity').blur();
+					 
+					 console.log( ' fin setTimeout  init-scripts()' );
+					 
+					closeMessageProcessing();	
+					
+				}, 300);								
+				
+			});
+
+			</script>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{sessionBean.area != 'M'}">
+		<script>
+			mostrar_tooltip_ayuda();
+		</script>
+		</h:panelGroup>
+	
+				
+</ui:composition>				

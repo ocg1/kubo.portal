@@ -1,0 +1,311 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+				 xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+		<div class="detalleRaModal elementoCentrar">
+			<sup class="cerrarRa" onclick="cerrarRa()"></sup>
+				<h2>Cálculo del RA (Retorno Anual) y RA Estimado(Retorno Anual Estimado)</h2>
+			
+				<!-- 
+				<h3>Cálculo de Pérdida Probable:</h3>
+				<div class=" tablasRa">
+				<table cellspacing="0"  cellpadding="0" border="0">
+					<tr>
+						<th>Dias</th>
+						<th>Saldo Vigente</th>
+						<th>Saldo Atrasado</th>
+						<th>Total</th>
+						<th>Perdida</th>
+					</tr>
+
+ 
+					<tr>
+						<td><strong>Total</strong></td>
+						<td><strong>9,702</strong></td>
+						<td><strong>86</strong></td>
+						<td><strong>9,788 </strong></td>
+						<td><strong>96</strong></td>
+						
+					</tr>
+					<tr>
+						<td>0</td>
+						
+						<td>8,560</td>
+						<td>  0</td>
+						<td>8,560 </td>
+						<td> 21</td>
+					
+					</tr>
+					<tr>
+						<td>
+				1 a 15</td>
+					
+						<td>1,003S</td>
+					
+				
+					
+						<td>
+					82</td>
+					
+						<td>
+					
+					1,086  </td>
+					
+				
+					<td>
+					52</td>
+</tr>
+<tr>
+<td>
+				16 a 30 </td>
+				
+				<td>139</td>
+				
+				<td>10</td>
+				
+				<td>149</td>
+					<td>
+					
+					24
+					</td>
+				</tr>
+				<tr>
+					<td>
+					31 a 60
+					</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				
+				</tr>
+				<tr>
+					<td>
+					61 a 90
+					</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				
+				</tr>
+				<tr>
+					<td>
+					91 a 120
+					</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				
+				</tr>
+				<tr>
+					<td>
+					121 o más
+					</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				
+				</tr>
+				</table>
+				<table cellspacing="0"  cellpadding="0" border="0">
+					<tr>
+						<th>Dias</th>
+						<th>Probas</th>
+					</tr>	
+					<tr>
+					<td>0 </td>   <td> 5%</td>
+					</tr>
+					<tr>
+<td>1 a 15</td>  
+<td>30%</td> 
+</tr>
+<tr>
+<td>16 a 30</td> 
+ <td>40% </td> 
+</tr>
+<tr>
+<td>31 a 60</td>
+  <td>50%</td> 
+</tr>
+<tr>
+<td>61 a 90</td>  <td>80%</td> 
+</tr>
+<tr>
+<td>91 a 120</td>  <td>100%</td> 
+</tr>
+<tr>
+<td>121 o más</td>  <td>100%</td> 
+</tr>
+				
+				</table>
+				
+				
+				</div>
+				 -->
+				<h3>Definiciones:</h3>
+
+<p><strong>RA</strong>(Retorno Anual) es una medición anual de la tasa de retorno sobre el capital invertido
+
+durante la vida de una inversión. Se basa en los pagos reales recibidos cada mes. El RA
+
+no es una proyección al futuro.</p>
+
+<p><strong>RA Estimado</strong> (Retorno Anual Estimado) es similar al RA, la única diferencia es que se
+
+hace una estimación de las pérdidas futuras. Para calcular esta estimación se aplica una
+
+tasa de pérdida la cual se obtiene con datos históricos.</p>
+
+	<ul>
+					<li>RA <strong> #{myInvestments.retornoAnual}%</strong>
+						<img src="../resources/img/formula1.png"/>
+					</li>
+	
+					<li>RA Estimado <strong>#{myInvestments.retornoAnual_Ajustado}%</strong>
+					
+						<img src="../resources/img/formula2.jpg"/>
+					</li>
+				</ul>
+				
+				
+			</div>
+			<div class="ra" >  
+				<h2>información de rendimientos <small>(prueba*)</small></h2>
+						<div class="datosRa">
+								<div>
+								<div class="ayudaInfo" onclick="detalleRa()">?</div>
+								<p>Retorno Anual:  <span>#{myInvestments.retornoAnual}%</span></p>
+								</div>
+								<div>
+								<p > 
+								Retorno Anual Estimado:
+								<small class="ayudaInfo" onclick="detalleRa()">?</small>
+										<span >#{myInvestments.retornoAnual_Ajustado}%</span>
+								</p>
+								</div>
+							</div>
+							
+								<div class="graficaRA" onclick="cerrarTooltip ();">
+			<div class="ayudaInfo" onclick="ayudaRaTooltip(event.stopPropagation())">?</div>
+				
+				<ul class="menuGraficas">
+					<li class="active" onclick="showGraph(this,'#chart_combo_div');">Pagos - Saldo Disponible</li>
+					<li onclick="showGraph(this,'#chart_area_div');">Saldo Disponible / Retiros - Depósitos</li>
+					<li  onclick="showGraph(this,'#chart_bar_div');">Comportamiento de pagos</li>
+				
+				</ul>
+				<div class="contenedorGraficas">
+				<strong class='izqNota'>Pagos recibidos</strong><strong class='derNota'>Pagos por recibir</strong>
+				<!-- 
+				<div class="vAxis_1">hola que tal</div>
+				<div class="vAxis_2">hola que tal</div>
+				 -->
+					<div id="chart_bar_div" class="graficaN" style="width: 100%; " />
+							<!-- GRÁFICA SALDO DISPONIBLE -->
+					<div id="chart_area_div"  class="graficaN" style="width: 100%; " />
+				<!-- FIN GRÁFICA SALDO DISPONIBLE -->
+				
+				<!-- GRÁFICA COMBO PAGOS - SALDO DISPONIBLE -->
+					<div id="chart_combo_div" class="graficaN"  style="width: 100%; " />
+				<!-- FIN GRÁFICA COMBO PAGOS - SALDO DISPONIBLE -->
+				</div>
+							<div class="ayudaRaTooltip">
+							
+						<script>
+
+					
+						setTimeout(function(){	
+							$("#chart_bar_div").addClass("hide");
+							$("#chart_area_div").addClass("hide");
+					 }, 500)
+
+						</script>	
+						
+			<sup class="cerrarRa" onclick="cerrarTooltip()"></sup>
+			<h3>	Gráfica de pagos kubo.financiero</h3>
+			
+			<p><strong>Comportamientos de Pagos</strong> - Se muestra en una gráfica mes a mes cómo te han
+			
+			pagado capital e intereses. A partir del mes actual se proyecta como recibirás los
+			
+			pagos.</p></div>
+			
+	
+			
+			</div>
+			
+	
+
+			<div class="tablasRa resumenInversion">
+			<!-- h3>Cuadro resumen de inversiones de forma mensual.</h3 -->
+					<div class="encabezadoRa">
+						<table cellpadding="0" cellspacing="0" border="0" >
+							<tr>
+								<th width="10%">Mes</th>
+								<th width="10%">Monto Invertido Promedio</th>
+								<th width="10%">% Invertido</th>
+								<th width="10%">Monto Retirable Promedio</th>
+								<th width="10%">Intereses Mensuales</th>	
+								<th width="10%">Intereses Acumulados</th>
+								<th width="20%">Rendimiento Mensual Sobre Monto Invertido</th>
+								<th width="20%">Rendimiento Mensual Acumulado Sobre Monto Invertido</th>
+							
+							</tr>
+						</table>
+					</div>
+					<div class="contenidoRa" >
+					<table cellpadding="0" cellspacing="0" border="0">
+					<ui:repeat var="rendimiento" value="#{myInvestments.lstRendimientos}" >	
+ 					
+						<tr>
+						
+							<td width="10%">
+								<h:outputText value="#{rendimiento.pk.fecha}">
+								  <f:convertDateTime type="date" pattern="MMM-yyyy"/>
+								</h:outputText>
+							</td>
+							
+							<td width="10%">
+								<h:outputText value="#{rendimiento.montoInvertidoProm}">
+								  <f:convertNumber type="currency" currencySymbol="$" locale="es_MX" />
+								</h:outputText>
+							</td>
+							<td width="10%">#{rendimiento.porcInversion}%</td>
+							<td width="10%"> 
+								<h:outputText value="#{rendimiento.saldoDisponibleProm}">
+								  <f:convertNumber type="currency" currencySymbol="$" locale="es_MX" />
+								</h:outputText>
+							</td>
+							<td width="10%">
+								<h:outputText value="#{rendimiento.interesMensual}">
+								  <f:convertNumber type="currency" currencySymbol="$" locale="es_MX" />
+								</h:outputText>
+							</td>
+							<td width="10%">
+								<h:outputText value="#{rendimiento.interesMensulAcum}">
+								  <f:convertNumber type="currency" currencySymbol="$" locale="es_MX" />
+								</h:outputText>
+							</td>
+							<td width="20%">
+								<h:outputText value="#{rendimiento.rendimientoMensual}%">
+								</h:outputText>
+							</td>
+							<td width="20%">
+								<h:outputText value="#{rendimiento.rendimientoMenAcum}%">
+								</h:outputText>
+							</td>
+								
+						</tr>
+					
+					</ui:repeat>
+		
+				</table>
+				</div>
+			</div>
+					
+			</div>
+</ui:composition>

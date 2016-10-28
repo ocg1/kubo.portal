@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<!-- h:panelGroup rendered="#{(addNaturalPerson.area != null and addNaturalPerson.area == 'L') or ( addNaturalPerson.area != null and addNaturalPerson.area == 'I' and addNaturalPerson.isActiveInvestmentSection == 'S' ) }" -->
+		
+<li>
+		<label>Teléfono celular <sup>*</sup></label>
+	</li>
+	
+	<li class="phone">
+		<small>044/045</small>
+				
+					
+					<h:inputText id="phoneCel_employ" maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);" styleClass="elementAddres1 validatorClass elmPhoneCls field_2" value="#{addNaturalPerson.phoneCellProspectus}">
+						<p:ajax event="blur" oncomplete="validRequeredField('phoneCel_employ');" ></p:ajax>
+					</h:inputText>
+					<p:watermark for = "phoneCel_employ" value = "5512345678" /> 
+		
+		<p>10 dígitos</p>
+		<div class="alerta"></div>
+	</li>
+</ui:composition>				

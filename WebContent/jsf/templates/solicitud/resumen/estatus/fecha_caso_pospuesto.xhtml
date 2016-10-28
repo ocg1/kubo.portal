@@ -1,0 +1,53 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"				
+				xmlns:p  = "http://primefaces.org/ui">							
+								
+	<div id = "main_select_fecha" 
+		 style = "width: auto; 
+		 		  height: auto; 
+		 		  display:none; 
+		 		  border: 0px solid black">					
+			<table style="font-size: 0.87em;">
+				<tr>
+					<td>
+						<div id = "select_fecha_lista_dd" class = "styled-select-Day">
+							<h:selectOneMenu  onchange            = "set_selected_day(this);"
+											  value 			  = "#{summaryRequest.casosPospuestos.selected_day}"		  											  
+											  styleClass          = "elementStlSelDay">			
+											
+								<f:selectItems  value = "#{summaryRequest.casosPospuestos.list_of_days}"/>						
+								
+							</h:selectOneMenu>
+						</div>
+					</td>
+					
+					<td>
+						<div id = "select_fecha_lista_mm" class = "styled-select-Month">
+							<h:selectOneMenu onchange            = "set_selected_month(this);"
+											 value				 = "#{summaryRequest.casosPospuestos.selected_month}"											 
+											 styleClass          = "elementStlSelMonth" 
+											 style 			     = "width: 180px !important;">	
+											 							
+								<f:selectItems value = "#{summaryRequest.casosPospuestos.list_of_months}" />																
+								
+							</h:selectOneMenu>
+						</div>
+					</td>
+					
+					<td>
+						<div id = "select_fecha_lista_yyyy" class = "styled-select-Year">
+							<h:selectOneMenu onchange            = "set_selected_year(this);"
+											 value               = "#{summaryRequest.casosPospuestos.selected_year}" 										     
+											 styleClass          = "elementStlSelYear">			
+											 				
+								<f:selectItems  value = "#{summaryRequest.casosPospuestos.list_of_years}" />																
+								
+							</h:selectOneMenu>
+						</div>
+					</td>
+				</tr>
+			</table>					
+	</div>				
+</ui:composition>				

@@ -1,0 +1,48 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div class = "bloqueBanner bloqPrestamo">
+		<h2>¿Necesitas un préstamo?</h2>
+		
+		<h:inputHidden id="montoMax" value="#{simulator.montoMax}" />
+		<h:inputHidden id="montoMin" value="#{simulator.montoMin}" />
+		<h:inputHidden id="termMax"  value="#{simulator.termMax}" />
+				    
+		<ul>
+			<ui:include src = "simulador/purpose-id.xhtml"/>
+			<ui:include src = "simulador/ammount.xhtml"/>
+		
+			<li>					   
+				<ui:include src = "simulador/term-id.xhtml"/>
+				<ui:include src = "simulador/frequency-id.xhtml" />                                         	
+			</li>	
+		</ul>
+		
+		<div class = "callAction btnNaranja" onclick = "Simulador.init();" style = "display: block;">
+			Continuar
+		</div>	
+		
+<!-- 
+	onclick = "ga('send', 'event', 'Leads', 'Simula Prestamo', 'Simula Home');"
+	update  = "simulator_acreditado" 
+	id = "simulaAction"
+	onstart = "return showloader2();"  
+	oncomplete = "muestraRes(xhr,status,args);  columnas();"
+-->
+		
+		<ol>
+			<li>										
+				<div style = "clear: both;"/>
+				
+				<h:commandLink  immediate = "true" value = "Regrear a las opciones" styleClass = "solicitarPrestamo" >			
+					<p:ajax event = "click" 
+							onstart    = "displayMessageProcessing('msgprocessing',false);"
+							oncomplete = "Ofertas.init_tabla_ofertas();"/>
+				</h:commandLink>
+			</li>
+		</ol>
+	</div>
+</ui:composition>           

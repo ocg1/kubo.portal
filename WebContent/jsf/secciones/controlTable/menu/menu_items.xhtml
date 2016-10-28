@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div style = "*float: left; *width: 224px;" >
+		<div id = "menuContainer">
+			<h:form prependId = "false" id = "form_Prin">				
+				<ul  id="bar_menu">
+					<ui:repeat value = "#{menuControlTableBean.menus}" var = "m">
+						<li>
+							<p:commandLink	onstart        = "return displayMessageProcessing('msgprocessing', false);"																	
+										    actionListener = "#{menuControlTableBean.cambiaPagina}"	
+											oncomplete     = "proyectos_activos_scroll2();"
+											update         = ":actualPage :form_Prin"
+											styleClass     = "#{m.classItem} menuitem">
+								<span class = "numberMenu" >#{m.position}</span>
+								<f:attribute name = "section" value = "#{m.targetItem}::#{m.screenid}::#{m.idItem}" />
+								#{m.nameItem}
+							</p:commandLink>
+						</li>							
+					</ui:repeat>										
+				</ul>			
+			</h:form>
+		</div>
+	</div>				
+</ui:composition>				

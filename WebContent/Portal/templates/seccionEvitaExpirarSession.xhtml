@@ -1,0 +1,40 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html" 
+     xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    	<h:panelGroup id="pnlEvitaExpirar" >
+    
+            <h:panelGroup rendered="#{sessionBean.prospectus_id == null}" >
+	            
+	            <div style="display:none;">
+	            	
+	            	<h:form prependId="false" >
+	            	
+	            		<h:commandLink id="cmdEvitaExpirar" update="pnlEvitaExpirar" >
+	            			<p:ajax event="click" listener="#{inicioValues.validaSession}" immediate="true"  /> 
+	            		</h:commandLink>
+	            	
+	            		<script>
+	            		 
+	            			setInterval( "intervalFunction()" , ( 10 * 60000) );
+	            		 	
+	            			function intervalFunction(){
+	            				
+	            				$("#cmdEvitaExpirar").trigger("click");
+	            				
+	            			}
+	            		 
+	            		</script>
+	            	
+	            	</h:form>
+	            	
+	            </div>
+	            
+            </h:panelGroup>
+            
+         </h:panelGroup>
+     
+</ui:composition>

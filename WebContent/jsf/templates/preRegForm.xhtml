@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html">
+
+	<!-- ui:include src = "pre_registro/banner.xhtml" / -->	
+	<ui:include src = "pre_registro/pre_registro.xhtml" />
+	<ui:include src = "pre_registro/ajax_listeners.xhtml" />
+	<ui:include src = "pre_registro/password_help.xhtml" />
+	<ui:include src = "pre_registro/condiciones_de_uso.xhtml"/>
+	
+		<script>
+			//<![CDATA[			
+			var asteriskPreregistro = function (campoPreregistro) {
+				  $(campoPreregistro+":contains('\*')").html(function(_, html) {
+					   return html.replace(/(\*)/g, '<small class="small">$1</small>');
+				   });	
+			 }
+			asteriskPreregistro(".etiqueta");
+			//]]>
+	 	</script>
+			
+</ui:composition>

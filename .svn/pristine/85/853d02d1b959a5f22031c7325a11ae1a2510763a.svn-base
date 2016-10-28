@@ -1,0 +1,341 @@
+@CHARSET "UTF-8";
+/* tablet */
+
+		@media screen and (max-width: 1250px) {
+			/*tablet Horizontal*/
+			/* .logo {
+			    margin-left: 20px !important;
+			    margin-bottom: 15px;
+			    margin-top: 15px;
+			    width: 200px !important;
+			} */
+			
+			#logo img {
+					height: 100px;
+					width: 100px;
+				}
+			
+			
+			.letterMenu{
+				font-size:  11pt !important;
+			}
+			#shadowMenu{
+				width: 963px !important;
+				border: solid 0px #000000;
+				height: 5px;
+				right: -92px !important;
+				top: -10px !important;
+				z-index: -1 !important;
+			}
+		}
+		
+		@media screen and (max-width: 1150px){
+			.logo {
+			    margin-left: 20px !important;
+			    margin-bottom: 15px;
+			    margin-top: 60px;
+			    width: 200px !important;
+			}
+			.clBeta{
+				left: 128px !important; 
+				color: #FFFFFF; 
+				position: absolute; 
+				top: 85px;
+			}
+			#phoneHead{
+				margin-left: 20px !important;
+			}
+			ul.menuSup{
+				margin-top: 0px !important;
+				margin-bottom: 0px !important;
+				padding-left: 10px !important;
+				float: left;
+				margin-right: 50px;
+				list-style-type: none;
+				text-align: center;
+			}
+			
+		}
+		
+		@media screen and (max-width: 1071px) {
+			
+			.letterMenu{
+				font-size:  19px !important;
+			}
+			
+			#menu{
+				margin-top: 13px !important;
+				margin-right: 13px !important;
+				height: 47px;
+				width: 880px;
+				top: -9px;
+				right: 0px !important;
+				border: solid 0px #000000;
+				text-align: right !important;
+			}
+			
+			#navlist, #navlistReg{
+				margin-right: -3px !important;
+				padding-left: 0px !important; 
+			}
+			
+			#headout{
+				right: 5px !important;
+				top:   40px !important;
+			}
+			#shadowMenu{
+				width: 948px !important;
+				border: solid 0px #000000;
+				height: 26px;
+				right: 0px !important;
+				top: 9px !important;
+				position: absolute;
+				z-index: 0 !important;
+			}
+	    }
+
+		@media screen and (max-width: 1005px) {
+			/*tablet Horizontal*/
+			
+			.logo {
+			    margin-left: 10px !important;
+			    margin-bottom: 7px;
+			    margin-top: 55px !important;
+			    width: 200px !important;
+			}
+			
+			.letterMenu{
+				font-size:  19px !important;
+			}
+			
+			#navlist, #navlistReg{
+				text-align: right;
+				padding-left: 16px !important;
+				margin-right: auto !important; 
+				margin-left: auto !important;
+			}
+			
+			#menu{
+				margin-top: 129px !important;
+				margin-right: auto !important; 
+				margin-left: auto !important;
+				width: 100% !important;
+				right: 16px !important;
+				
+			}
+			#headout{
+				right: 0px !important;
+				top:   10px !important;
+			}
+			#shadowMenu{
+				width: 80% !important;
+				border: solid 0px #000000;
+				height: 20px !important;
+				right: 0px !important;
+				top: 130px !important;
+				z-index: -1;
+			}
+			
+		}
+		
+		@media screen and (max-width: 900px) {
+			/*tablet Vertical*/
+			
+			
+			#shadowMenu{
+				width: 760px !important;
+				border: solid 0px #000000;
+				height: 25px !important;
+				right: 0px !important;
+				top: 130px !important;
+				z-index: -1;
+				border: solid 0px #000000;
+				
+			}
+			
+			.letterMenu{
+				font-size:  1.26em !important;
+			}
+			#menu{
+				width: 99% !important;
+				margin-right: auto !important; 
+				margin-left: auto !important;
+				right: auto;
+				left: 0px !important;
+				border: solid 0px #000000;
+			}
+			#navlist, #navlistReg{
+				
+				padding-left: 0px !important;
+				margin-right: auto !important; 
+				margin-left: auto !important;
+			}
+			
+			.logo {
+			    margin-left: 10px !important;
+			    margin-bottom: 15px;
+			    margin-top: 10px;
+			    width: 200px !important;
+			}
+			
+			.clBeta{
+				left: 114px !important; 
+				color: #FFFFFF; 
+				position: absolute; 
+				top: 85px;
+			}
+			
+			
+			
+		}
+		
+		@media screen and (max-width: 700px) {
+		/* movil Horizontal */
+			
+			#phoneHead{
+				margin-left: 10px !important;
+			}
+			
+			#socialHead{
+				display: none;
+			}
+			
+			#navlist, #navlistReg{
+				
+				padding-left: 10px !important;
+				margin-right: auto !important; 
+				margin-left: auto !important;
+			}
+			
+			.logo {
+			    margin-left: 10px !important;
+			    margin-bottom: 10px;
+			    margin-top: 10px;
+			    width: 200px !important;
+			}
+			
+			#menu{
+				
+				display: none !important;
+			}
+			
+			#shadowMenu{
+				display: none !important;
+			}
+			
+		
+			.clBeta{
+				left: 128px !important; 
+				color: #FFFFFF; 
+				position: absolute; 
+				top: 85px;
+				display: none !important;
+			}
+		/* }
+			
+			@media screen and (max-width: 600px) { */
+				/* movil Horizontal */
+				
+				#habla_beta_container_do_not_rely_on_div_classes_or_names{
+					display: none;
+				}
+				
+				#logo img {
+					height: 83px !important;
+					width: 83px !important;
+				}
+				
+				.listMenu{
+					position: absolute !important;
+					left: auto !important;
+					top:   10px !important;
+					right: 0px !important;
+				}
+				
+				#btnSigIn{
+					/* width: 145px !important;
+					clear: both !important;
+					left: auto !important;
+					right: -230px !important;
+					position: relative !important;
+					top:   -10px !important; */
+					clear: both !important;
+					float: none !important;
+					/* position: r !important; */
+					position: absolute !important;
+					right: 0px !important;
+					top:   93px !important;
+					width: 145px !important;
+					
+				}
+				
+				#headout{
+					float: none !important;
+					clear: both !important;
+					position: absolute !important;
+					margin-right: 200px !important;
+					right: 0px !important;
+				}
+				
+				.butMenu{
+					display: block;
+					position: absolute !important;
+					left: auto !important;
+					top:   93px !important;
+					right: 3px !important;
+					width: 145px !important;
+					margin-right: 0px !important;
+				}
+				#menuBut{
+					display: block !important;
+				}
+				
+			}
+			
+		
+		
+		
+		@media screen and (max-width: 400px) {
+		
+			.listMenu{
+					position: absolute !important;
+					left: auto !important;
+					top:   113px !important;
+					right: 0px !important;
+				}
+		
+			#btnSigIn.bottonBn{
+			
+					width: 145px !important;
+					position: absolute !important;
+					left: auto !important;
+					right: -35px !important;
+					top:   10px !important;
+					
+				}
+				
+			.butMenu{
+				
+					display: block;
+					position: absolute !important;
+					left: auto !important;
+					top:   113px !important;
+					right: -13px !important;
+					width: 145px !important;
+					margin-right: 0px !important;
+					
+				}
+				
+				ul.menuSup{
+				margin-top: 0px !important;
+				margin-bottom: 0px !important;
+				padding-left: 10px !important;
+				float: left;
+				margin-right: 0px;
+				list-style-type: none;
+				text-align: center;
+			}
+				
+		}
+		
+		

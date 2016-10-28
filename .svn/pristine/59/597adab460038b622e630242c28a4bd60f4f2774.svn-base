@@ -1,0 +1,79 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+ 			<!-- div que contiene el formulario para actualizar nombre de instituciones  -->
+ 			
+ 			<!-- <h:form id="frmChange" prependId="false" > -->
+	 			<h:panelGroup>
+	 				<div style="display: none">
+		 				<div id="dvFrmChange" >
+		 				
+		 					<div class="dvCloseChng" style="position: absolute; z-index: 101; top: 1px;right: 1px; width: 30px; height: 30px;" >
+			          			<p:graphicImage url="../resources/img/close.png" onclick="$.fancybox.close();" style="cursor: pointer;" ></p:graphicImage>
+			          		</div>
+		 					<div style="width: 100%; text-align: center;" >
+		 						<strong class="orange">Identificar Créditos</strong>
+		 					</div>
+		 					<br />
+		 					<div id="dvContActualName"></div>
+		 					<br />
+		 					Institución Identificada:
+		 					<!-- <input type="text" id="newName" /> -->
+		 					<br />
+		 					<!-- <div class="dvElement" style="width: 350px !important;" >
+								<div class="styled-select" style="padding-top: 0px !important; background-color: #FFFFFF !important;">
+									<h:selectOneMenu id="banck_select" style="width: 285px !important; background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important"  styleClass="elementStlSel validatorClass"  >
+										<f:selectItem itemValue=""  itemLabel=""/>
+										<f:selectItems var="banck" value="#{chartBackBean.lstBanks}" itemLabel="#{banck.short_name}" itemValue="#{banck.short_name}"/>
+										<p:ajax event="change" />
+									</h:selectOneMenu>
+								</div>
+							</div> -->
+							
+							<div  class="dvElementAddres1">
+								<p:autoComplete id="acSimple" styleClass="validatorClass"  completeMethod="#{chartBackBean.autocomplete}" >
+								 	<p:ajax event="itemSelect" listener="#{chartBackBean.handleSelect}" /> 
+								 	 <!-- <p:ajax event="blur" listener="#{chartBackBean.saveCreditHistory}" />  -->
+								</p:autoComplete>  
+							</div>
+		 					
+		 					<input type="hidden" id="prevName" />
+		 					<br />
+		 					<br />
+		 					<div id="btnRecommen" onclick="onClckJsonAct();" class="buttonPR" style="width: 170px; font-size: 1.0em; margin-left: auto !important; margin-right: auto !important;"  >
+		 						
+		 							Guardar
+		 						
+		 					</div>
+		 					
+		 				</div>
+	 				</div>
+	 			
+	 			</h:panelGroup>
+	 			
+	 			<div style="display: none;">
+			 			<!-- <p:commandLink id="cmdJsonAction" actionListener="#{chartBackBean.saveIdentified999}" immediate="true" onstart="return startJson();" >
+			 			</p:commandLink> -->
+			 			
+			 			 <p:inputText id="cmdJsonAction">
+			 		     <p:ajax event="blur" 
+			 		     listener="#{chartBackBean.saveIdentified}" 
+			 		     onstart="return startJson();" 
+			 		     oncomplete="completeJson();" 
+			 		     update="pnlGraphic titleGraphic pnlBurResumeData pnlContCredVig pnlContPersonalData pnlContAddressBuro pnlContConsulBuroUlt6M pnlContConsulBuroMas6M pnlContCredVigCom pnlContCredCerrUlt6M pnlContCredCerrMas6M pnlContAlertas01 pnlContAlertas02 pnlBuroConsultationBur pnlKuboRules" />
+			 			 	<!-- <p:ajax event="blur" listener="#{chartBackBean.saveIdentified}" onstart="return startJson();" oncomplete="drawChartBuro();"  /> -->
+			 			 </p:inputText>
+			 		
+			 			<p:inputText id="jsonKey" value="#{chartBackBean.keyStrJS}" >
+			 				<p:ajax event="blur" />
+			 			</p:inputText>
+			 			
+			 			<p:inputText id="jsonVal" value="#{chartBackBean.valStrJS}" >
+			 				<p:ajax event="blur" />
+			 			</p:inputText>
+			 	</div>
+	 			
+ 			<!-- </h:form> -->
+ 			<!-- Fin div que contiene el formulario para actualizar nombre de instituciones -->				
+</ui:composition>				

@@ -1,0 +1,40 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+
+	<div class = "field">
+		<div class = "dvLabel dvLablWidth">
+			<h:outputLabel value = "¿Con qué institución financiera? *" styleClass = "labelsStl"/>
+		</div>
+				
+		<div id = "creditcard_company" class = "dvElementAddres1">
+				
+				<script>
+				$(document).ready(function(){
+					bancoppel();
+					
+					$("#acSimple_input").bind('keyup', function (e) {
+					    $("#acSimple_input").val(($("#acSimple_input").val()).toUpperCase());
+					});
+				}); 
+
+				   	resetar_indices();		
+				</script>
+				
+			<p:autoComplete id = "acSimple" styleClass = "validatorClass hs_private hs_class"
+							value = "#{creditHistoryController.credithistory.creditcard_company}" 
+							completeMethod = "#{creditHistoryController.bank_engine.autocomplete}"	
+							onfocus = "Historial.init_focus_date(1);"						 							 
+							onblur  = "Historial.init_company_name();">								
+															 	
+				<p:ajax event = "itemSelect" 
+						onstart = "return bancoppel();" 						
+						oncomplete = "Historial.creditcard_company_oncomplete(xhr, status, args);"
+						listener   = "#{creditHistoryController.creditcard.init_company}" /> 
+			</p:autoComplete>  
+		</div>				
+	</div>
+</ui:composition>				 
+				 

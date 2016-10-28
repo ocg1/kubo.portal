@@ -1,0 +1,26 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui"> 		
+	
+	<h:form>			     
+		<p:panel header            = "Click aquí para ver tus Referencias de Pago" 
+				 rendered          = "#{credit.panel_enabled}"
+			     toggleable 	   = "true" 
+			     toggleOrientation = "vertical"
+			     collapsed         = "true"			     
+			     styleClass        = "panel-referencia-pago">	
+			     
+			<p:ajax event = "toggle" listener = "#{estadoCuenta.registrar_consulta}"/>	
+			
+			<div id = "ref_pago_panel_impresion_#{credit.numCredito}">
+			 	<ui:include src = "referencia_pago/referencia_acreditado_panel.xhtml"/>								
+				<ui:include src = "referencia_pago/referencia_DMO_panel.xhtml"/>
+				<ui:include src = "referencia_pago/referencia_DMO_panel_SPEI.xhtml"/>
+				<ui:include src = "referencia_pago/referencia_panel_imprimir.xhtml"/>				
+			</div>							
+		</p:panel>				
+	</h:form>
+</ui:composition>

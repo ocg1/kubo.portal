@@ -1,0 +1,51 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup rendered = "#{deal.errorDisp}">				
+		<div id = "errorsPage">
+		
+			<h:outputText escape = "false" value = "#{deal.errorDesc}"/>
+			
+			<h:panelGroup rendered = "#{deal.listRequiredMenu != null and deal.listRequiredMenu.size() > 0}">
+				<script>
+			
+				
+				
+				
+				</script>
+				
+				<div class="panel_incompleta ">
+					          
+					<div class="clTitle"  >
+							Aún no está completa tu solicitud
+					</div>
+					
+					<div>
+						<span >
+						Para poder finalizar el proceso, por favor completa la información marcada como obligatoria en las siguientes pantallas.
+						</span>
+					</div>
+					
+					<ul id = "requiered-info-menu" style = "color:#439539; list-style:square outside none;">
+						<ui:repeat  var = "m" value = "#{deal.listRequiredMenu}">
+							<li style="margin:5px 0;">
+								<p:commandLink style          = "color:#439539;text-decoration:underline;"						
+											   onstart        = "return displayMessageProcessing('msgprocessing', false);"																	
+											   actionListener = "#{navigationBean.cambiaPagina}"	
+											   immediate      = "true"
+											   update         = ":actualPage :#{sessionBean.mobile?'form_menu_mbl':'form_Prin'}:hiddenactios :#{sessionBean.mobile?'form_menu_mbl':'form_Prin'} :contSimReg"
+											   oncomplete     = "closeFancy();">
+									<f:attribute name = "section" value = "#{m.targetItem}::#{m.screenid}::#{m.idItem}" />
+									#{m.nameItem}
+								</p:commandLink> 								
+							</li>
+						</ui:repeat>
+					</ul>
+				</div>						
+			</h:panelGroup>
+		</div>				
+	</h:panelGroup>
+</ui:composition>				

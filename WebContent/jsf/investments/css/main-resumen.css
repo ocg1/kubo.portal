@@ -1,0 +1,571 @@
+/* CARACTERISTICAS GENERALES */
+body {
+	width: 100%;
+	height: 100%;
+	font: normal 1em Arial, Helvetica, Tahoma, sans-serif;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 1.5em;
+	/*color: #2166B2;*/	
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+h6 {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+a { 
+	text-decoration: none;
+	color: #0066ff;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+strong {
+	font-weight: bold;
+}
+
+td, th {
+	vertical-align: middle;
+}
+
+tr {
+	height: 30px;
+}
+
+
+/* CARACTERISTICAS PARTICULARES */
+.wrapper {
+	margin: 0 auto;
+	width: 980px;
+	height: 100%;
+	/*background:rgba(255,0,0,.1);*/
+}
+
+.clear {
+	clear: both;
+}
+
+.detailBoxes {
+	margin-bottom: 20px;
+}
+
+.mainHeader {
+	/*background: rgba(0,0,0,.1);*/
+	padding-bottom: 15px;
+}
+
+.mainHeader img {
+	display: block;
+	float: left;
+	width: 200px;
+}
+
+.welcome {
+	width: 780px;
+	float: left;
+}
+
+.welcometext {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: right;
+	background: #FFF;
+}
+
+.date {
+	font-size: 1.0em;
+	font-weight: bold;	
+	text-align: right;
+	color: #FF6600;
+	/*background: #FF0;*/
+}
+
+.mainHeader nav {
+	margin-top: 15px;
+}
+
+.mainHeader nav a {
+	text-decoration: none;
+	color: #4d4d4d;
+	padding: 4px 4px 4px 12px;
+	margin-right: 15px;
+}
+
+
+.mainHeader nav a:hover {
+	text-decoration: none;
+	margin-top: 1px;
+	color: #E86421;
+}
+
+.mainHeader nav a.selected {
+	color: #000;
+	font-weight: bold;	
+	background: #CCCCCC url(../img/orange-square.jpg) no-repeat 1px 9px;
+}
+
+.container {
+	margin-top: 10px;
+	position: relative;
+}
+
+.details {
+	background: #F9F9F9;	
+	border: 1px solid #CCC;
+	float: left;
+	width: 658px;
+	height: 100%	
+	margin-top: -5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+	position: relative;
+	z-index: 2;	
+}
+
+.detailsTabHelp {
+	background: #ECECEC;
+	width: 100px;
+	height:	50px;
+	text-align: center;
+	top: -30px;
+	left: 558px;
+	position: absolute;
+	border: 1px solid #CCC;
+	padding-top: 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+	z-index: 0;
+	font-size: 0.8em;
+}
+
+.detailsTable tr td:nth-child(2) {
+	text-align: right;
+}
+
+.total {
+	border-top: 2px solid #CCC;
+	
+}
+
+.detailsTabAll {
+	background: #ECECEC;
+	width: 200px;
+	height:	50px;
+	text-align: center;
+	top: -30px;
+	left: 357px;
+	position: absolute;
+	border: 1px solid #CCC;
+	padding-top: 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+	z-index: 1;
+	font-size: 0.8em;
+}
+
+.detailsClient {
+	background: #F9F9F9;	
+	border: 1px solid #CCC;
+	float: left;
+	width: 638px;
+	height: 100%;
+	margin-top: -5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+	position: relative;
+	z-index: 2;	
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+
+
+#detailsClientImg {
+	height: 130px;	
+	margin-top: 20px;
+}
+
+.details1 {
+	width:220px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+#details2 {
+	margin-top: 34px;
+}
+
+.details3 {
+	width:220px;
+	margin-top: 20px;
+}
+
+.details4 {
+	margin-top: 20px;
+	width: 550px;
+}
+
+.detailsTable {
+	margin-top: 20px;
+	width: 260px;
+}
+
+#detailsTableRight {
+	margin-left: 80px;
+}
+
+.ribbon {
+	width: 100px;
+	height: 15px;
+	background: red;
+	position: absolute;
+	top: 25px;
+	left: 570px;
+}
+
+.detailsLeft {
+	/*background: #DFDFDF;*/
+	float: left;
+	width: 180px;
+	/*height: 300px;*/
+	padding-left: 20px;
+	margin-top: 20px;
+}
+
+.detailsLeft li, .invest li, #detailsPublishedDate {
+	font-size: 0.8em;
+}
+
+
+/*.detailsLinkText {
+	color: black;
+}*/
+
+.detailsMiddle {
+	/*background: #D0D0D0;*/
+	float: left;
+	width: 420px;
+	/*height: 285px;*/
+	margin: 0 20px 0 15px;
+	padding-top: 15px;
+}
+
+.detailsMiddleData {
+	/*background: #FF0;*/
+	width: 420px;
+	height: 200px;
+	float: left;
+	/*margin-right: 20px;*/
+}
+
+.detailsMiddleDataBarLeft {
+	width: 275px;
+	/*height: 100px;*/
+	float: left;
+}
+
+.detailsMiddleDataNumbers {
+	width: 420px;
+	height: 100px;
+	/*background: #E6F2FA;*/
+}
+
+.detailsMiddleBox {
+	float: left;
+	width: 130px;
+	height: 60px;
+	background: #EEE;
+	margin: 25px 0px;
+	text-align: center;
+	padding-top: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+}
+
+/*.detailsBoxValue {
+	margin-top: 10px;
+}*/
+
+#detailsMiddleBoxCenter {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.detailsMiddleDataBar {
+	width: 420px;
+	height: 100px;
+	margin-top: 15px;
+	/*background: #5F9EA0;*/
+	text-align: center;	
+}
+
+.detailsMiddleStatus {
+	/*background: #F0F;*/
+	width: 130px;
+	/*height: 200px;*/
+	float: left;
+	margin-left: 15px;
+}
+
+.detailsMiddleStatusData {
+	/*background: #FF6EB4;*/
+	width: 130px;
+	/*height: 100px;*/
+	float: left;	
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+
+.detailsMiddleStatusVerification {
+	/*background: #8B3A62;*/
+	width: 130px;
+	/*height: 100px;*/
+	float: left;
+	/*margin-top: 5px;*/
+}
+
+
+.detailsMiddleStatusVerification span {
+	text-align: center;	
+}
+
+#statusLeft {
+	float: left;
+	background: #06F;
+	border: 1px solid #06F;
+	padding: 0 5px;
+	color: white;
+}
+
+#statusRight {
+	float: left;
+	color: #06F;
+	padding: 0 5px;
+	border: 1px solid #06F;
+}
+
+
+.detailsProgress {
+	/*border: 1px solid #ccc; */
+	width: 275px; 
+	/*margin: 2px 5px 2px 45px;*/ 
+	/*padding: 1px; */
+	/*float: left; */
+	background: #aaccff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.detailsProgress > div {
+	background-color: #0066ff; 
+	border-radius: 10px 0px 0px 10px; 
+	-moz-border-radius: 10px 0px 0px 10px; 
+	-webkit-border-radius: 10px 0px 0px 10px; 
+	height: 15px
+}
+
+.detailsFunding {
+	text-align: center;
+	width: 68px;
+	margin-top: 15px;
+	float: left;
+}
+
+#detailsFundingLast {
+	margin-left: 3px;
+}
+
+#rightRating {
+	float: right;
+	color: #4D4D4D;
+	font-size: 0.8em;
+	width: 60px;
+	padding-top: 4px;
+}
+
+#rightVerification {
+	float: right;
+	color: #4D4D4D;
+	font-size: 0.8em;
+	width: 72px;
+	padding-top: 4px;
+}
+
+
+.invest {
+	background: #F9F9F9;	
+	border: 1px solid #CCC;
+	width: 278px;
+	height: 300px;
+	margin-left: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	float: left;
+	/*position: fixed;		
+	top: 155px;
+	left: 800px;*/	
+}
+
+.invest ul {
+	text-align: right;
+	margin-right: 65px;
+	margin-top: 20px;
+}
+
+.detailsInvest {
+	/*margin: 0px 15px 20px 15px;*/	
+	text-align: center;
+	width: 278px;
+	padding: 20px 0px 20px 0px;
+}
+
+.detailsMiddleStatusRating img {
+	margin-top: 0px;
+}
+
+#status {
+	background: url(../img/estatus.png) no-repeat;
+	width: 30px;
+	padding: 6px 0;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	float: left;
+	margin-top: 5px;
+}
+
+#detailsStatusNumber {
+	font-size: 1.1em;
+	margin-bottom: 30px;
+}
+
+.left {
+	float: left;
+}
+
+.investInput {
+	margin-bottom: 15px;
+	margin-top: 10px
+}
+
+#detailsInvestBtn {
+	background: #0066ff;
+	padding: 5px 25px;
+	margin-left: 30px;
+	margin-bottom: 5px;
+	display: block;
+	width: 180px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.3em;
+	text-align: center;
+	color: white;
+}
+
+#detailsInvestMore {
+	padding-left: 35px;
+}
+
+#detailsInvestBtn:hover {
+	background: #FF6600;
+	color: white;
+}
+
+#investInputBox {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+	width: 160px;
+	padding: 7px;
+	margin-left: 5px;
+	color: #9C94A4;
+	line-height: 1.2em;
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+.small {
+	font-size: 0.9em;
+}
+
+.orange {
+	color: #FF6600;
+	font-size: 1.3em;
+}
+
+.smallOrange {
+	color: #FF6600;
+	font-size: 0.8em;
+}
+
+
+.bigOrange {
+	color: #FF6600;
+	font-size: 2em;
+}
+
+
+.smallGray {
+	color: #4D4D4D;
+	font-size: 0.8em;
+}
+
+.smallGray2 {
+	color: #4D4D4D;
+	font-size: 0.72em;
+}
+
+.gray {
+	color: #4D4D4D;
+}
+
+.smallBlue {
+	color: #0066ff;
+	font-size: 0.8em;
+}
+
+.normalGray {
+	color: #4D4D4D;
+	font-size: 0.8em;
+}
+
+.bigBlack {
+	color: #000;
+	font-size: 1.4em;
+}
+
+.black {
+	color: #000;
+	font-size: 1.2em;
+}
+
+.smallBlack {
+	color: #000;
+	font-size: 0.85em;
+}

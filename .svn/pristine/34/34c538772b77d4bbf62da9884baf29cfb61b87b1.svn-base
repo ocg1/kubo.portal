@@ -1,0 +1,230 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<web-app xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns     = "http://java.sun.com/xml/ns/javaee" 
+		 xmlns:web = "http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+		 xsi:schemaLocation = "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		 id = "WebApp_ID" version = "3.0">
+		 
+	<display-name>Kubo</display-name>
+  
+	<listener>
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  
+  	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>/WEB-INF/applicationContext.xml</param-value>
+  	</context-param>
+  	
+  	<context-param>
+  		<param-name>facelets.LIBRARIES</param-name>
+    	<param-value>/WEB-INF/rc.taglib.xml</param-value>
+  	</context-param>
+  
+  	<context-param>
+        <param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
+        <param-value>/Portal/resources/css/</param-value>
+    </context-param>
+    
+  <listener>
+    <listener-class>mx.com.kubo.listeners.SesionListener</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>mx.com.kubo.listeners.AplicacionListener</listener-class>
+  </listener>
+  
+  <session-config>
+    <session-timeout>120</session-timeout>
+  </session-config>
+  
+  <filter>
+    <filter-name>SessionTimeoutFilter</filter-name>
+    <filter-class>mx.com.kubo.session.SessionTimeoutFilter</filter-class>
+     <init-param>
+        <param-name>avoid-urls</param-name>
+        <param-value>/Portal/sesion-expirada.xhtml</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>SessionTimeoutFilter</filter-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>SessionTimeoutFilter</filter-name>
+    <url-pattern>/faces/*</url-pattern>
+  </filter-mapping>
+ 
+  <error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/Portal/index.xhtml</location>
+  </error-page>
+  
+  <context-param>
+    <description>Context param for JSTL 1.2 to work in Tomcat 6 sun RI</description>
+    <param-name>com.sun.faces.expressionFactory</param-name>
+    <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+  </context-param>
+  
+  <context-param>
+    <description>Parameter required by Mojarra 2.0</description>
+    <param-name>com.sun.faces.allowTextChildren</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>aristo</param-value>
+  </context-param>
+  
+  <filter>
+    <filter-name>PrimeFaces FileUpload Filter</filter-name>
+    <filter-class>org.primefaces.webapp.filter.FileUploadFilter
+        </filter-class>
+    <init-param>
+      <param-name>thresholdSize</param-name>
+      <param-value>10240</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>PrimeFaces FileUpload Filter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>Resource Servlet</servlet-name>
+    <servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Resource Servlet</servlet-name>
+    <url-pattern>/primefaces_resource/*</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+    <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+    <param-value>6LeKfdkSAAAAACxCCOvMleA-ejJY7pTqQNdbWfLR</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+    <param-value>6LeKfdkSAAAAAEyZJeEkqgc4kq29OPTdccETQYvi</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>server</param-value>
+  </context-param>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsf</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <context-param>
+    <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>com.sun.faces.enableViewStateIdRendering</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.faces</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>Apache-Axis Servlet</display-name>
+    <servlet-name>AxisServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/servlet/AxisServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>*.jws</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>Axis Admin Servlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>
+    <load-on-startup>100</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/servlet/AdminServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- UDAY Seccion -->
+  
+  <servlet>
+    <servlet-name>SrvInteractor</servlet-name>
+    <servlet-class>mx.com.kubo.controller.SrvInteractor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SrvInteractor</servlet-name>
+    <url-pattern>/SrvInteractor</url-pattern>
+  </servlet-mapping>
+  
+  <!-- FIN UDAY Seccion -->
+<!-- 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error</location>
+    </error-page>
+ -->
+  
+</web-app>

@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+						
+	<h:panelGroup rendered = "#{summaryRequest.actualProyect != null}">
+		<div style = "display: none">			
+			<h:inputText id = "init-investor-category" ajax = "true" immediate = "true">
+				<p:ajax event = "blur" 
+					 	listener   = "#{summaryRequest.fondeador.init_investor_category}"
+					 	oncomplete = "Resumen.kubo_property_on_complete(xhr, status, args);" />
+			</h:inputText>		
+							
+			<h:inputText id = "input_investor_category_id" ajax = "true" immediate = "true">
+				<p:ajax event = "blur" 
+					 	listener   = "#{summaryRequest.fondeador.init_investor_category_id}"
+					 	oncomplete = "Resumen.investor_category_id_on_complete(xhr, status, args);"/>
+			</h:inputText>				
+		</div>	
+	</h:panelGroup>
+</ui:composition>				

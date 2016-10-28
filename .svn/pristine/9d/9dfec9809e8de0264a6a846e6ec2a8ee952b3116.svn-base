@@ -1,0 +1,43 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">	
+	
+		<div class="recomendaciones" style="display: block !important">			
+			
+			<div class="solicitar_considera" >
+				   			<h4>Al solicitar tu crédito considera:</h4>
+							<ol>
+								<li>Incumplir tus obligaciones te puede generar comisiones e intereses moratorios.</li>
+								<li>Contratar créditos por arriba de tu capacidad de pago puede afectar tu historial crediticio.</li>
+								<li>En caso de que el préstamo requiera avalista, obligado solidario o coacreditado: El avalista, obligado solidario o coacreditado responderá como obligado principal frente a la Entidad Financiera.</li>
+							</ol>
+						
+			</div>
+				   		<div class="dos_columnas">
+				   			<div class="recomendacion unidad_especializada">	
+								<h4>Unidad Especializada de Atención a Usuarios </h4>	
+								<p>Unidad especializada kubo:</p>
+								<p>Barranca del Muerto 92, Col. Florida, C.P. 01030, México D.F.Teléfono: 62-69-00-24</p>
+								<p>Correo electrónico:</p>
+								<p>soporte@kubofinanciero.com</p> 			
+							</div>	
+							<div class="recomendacion condusef">
+								<h4>CONDUSEF</h4> 
+								 <p>Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros</p>
+								 <p>Centro de Atención Telefónica</p>
+								 <p>53-40-09-99 </p>
+								 <p>01-800-999-80-80</p>
+								<p><a href="http://www.condusef.gob.mx" target="_blank">www.condusef.gob.mx</a></p>			
+							</div>		
+						</div>				
+							<div class="razonSocial">
+								<p>#{estadoCuenta.razonSocial} con R.F.C.: <b>#{estadoCuenta.rfcKubo}</b> Barranca del Muerto 92, Col. Florida, C.P. 01030, México D.F. Teléfono: #{estadoCuenta.telefonoKubo}</p>
+							 </div>	
+	
+		
+		</div>		
+	
+	
+</ui:composition>	

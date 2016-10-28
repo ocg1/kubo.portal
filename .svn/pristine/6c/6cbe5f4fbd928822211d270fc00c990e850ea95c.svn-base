@@ -1,0 +1,69 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+<div class="col_lateral vp">
+     <div class="progreso oferta">
+                		<ul>
+                        	<li class="historial">
+                           	    <strong>1</strong>
+                                <div>
+                                	  
+                                   	<a href="historial.html"></a>
+                                    <h5> Historial crediticio</h5>
+                                    <span><small style="width:100%;"></small></span>
+                                    <p>100% <sub>de avance</sub></p>
+                                </div>
+                            </li>
+                            <li class="mi_prestamo">
+                           	    <strong>2</strong>
+                                <div>
+                                	<a href="prestamo.html"></a>
+                                    <h5>Mi préstamo</h5>
+                                    <span><small style="width:35%;"></small></span>
+                                    <p>35% <sub>de avance</sub></p>
+                                </div>
+                            </li>
+                            <li class="ingresos">
+                         	    <strong>3</strong>
+                            	<div>
+                                  	<a href="ingresos.html"></a>
+                                    <h5>Ingresos / gastos</h5>
+                                    <span><small style="width:20%;"></small></span>
+                                    <p>20% <sub>de avance</sub></p>
+                                </div>
+                            </li>
+                              <li class="referencias">
+                              	<strong>4</strong>
+                              	<div>
+                                  	<a href="referencias.html"></a>
+                                    <h5>Referencias</h5>
+                                    <span><small style="width:0%;"></small></span>
+                                    <p>0% <sub>de avance</sub></p>
+                                </div>
+                            </li>
+                               <li class="documentacion">
+                               <strong>5</strong>
+                               	<div>
+                                	<a href="documentacion.html"></a>
+                                    <h5> Documentación</h5>
+                                    <span><small style="width:0%;"></small></span>
+                                    <p>0% <sub>de avance</sub></p>
+                                </div>
+                            </li>
+                               <li class="oferta_finalb active">
+                                 <strong>6</strong>
+                                     
+                                 <div>
+                               	     <a href="oferta_final.html"></a> 
+                                     <h5> Oferta Final</h5>   
+                                 </div>
+                            </li>
+                        
+                        </ul>
+					</div>
+            
+                </div>
+</ui:composition>

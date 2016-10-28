@@ -1,0 +1,81 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	
+					
+	<div class="dvContent2 ContenedorImagenMuestra" id="selff" >	
+					
+		<div class="dvContent" style="margin:0;">										
+			<div  class="dvElementLength field ">
+		
+			<h:panelGroup id = "sectionSelfie" >
+			
+<ui:include src = "selfie_identificacion/titulo.xhtml"/>	
+		
+				<!-- <ui:repeat var = "images" value = "#{addPldDocument.listImgLogos}" varStatus = "status">	 -->
+					<h:form id = "frm_selfie"  enctype = "multipart/form-data" data-ajax = "false">						
+				
+							<h:panelGroup rendered="#{addPldDocument.selfieIdentification != null}">
+								<div class = "imgLogoProyect">
+								   <p:graphicImage url   = "../resources#{addPldDocument.selfieIdentification!=null?addPldDocument.selfieIdentification.location_thump:'/img/no-logo.jpg'}"  />
+								</div>		
+							</h:panelGroup>
+				
+						<fieldset class="btn_imagenes" >
+							
+							<ui:include src = "selfie_identificacion/cambiar.xhtml" />
+							<h:panelGroup rendered="#{addPldDocument.selfieIdentification != null}">
+								<ui:include src = "selfie_identificacion/eliminar.xhtml" />
+								
+								<script>
+									comienza_a_contar();
+								</script>
+								
+							</h:panelGroup>
+							
+								
+						</fieldset>
+						
+						<script>
+				listoPaso ();
+				fieldCount();
+				</script>
+						
+					</h:form>
+						<h:panelGroup rendered="#{addPldDocument.selfieIdentification == null}">
+									<div class="custumStlFileUpload subirSelfie" style="clear:both;" onclick="subirSelfie();">
+									
+										<div class="fileupload-buttonbar">
+											<div class="fileinput-button ui-button">
+												<span class="ui-button-text ">+ Subir</span>
+											
+											</div>
+										</div>
+									</div>
+							</h:panelGroup>
+							
+									
+				
+							
+			</h:panelGroup>				
+		</div>	
+		
+		</div>
+		<div class="imagen_referencia">
+	
+	
+				
+			<div class="blindAction" onclick="cerrar_imagenreferencia(this);">
+				X
+			</div>
+			
+			<figure>
+				<img src="../resources/img/credencial/selfiesmall.jpg"/>
+			</figure>		
+		</div>
+	</div>	
+	
+</ui:composition>				

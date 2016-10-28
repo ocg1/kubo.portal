@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+	
+	<h:form id = "form_seleccion_proyecto">	 
+	
+		<div style = "text-align: left; margin-bottom:5px;">
+	  		<p:commandButton update = "form_seleccion_proyecto" icon = "ui-icon-refresh"/>
+	  	</div> 	
+	  		
+		<p:dataTable rows          = "10"
+					 selectionMode = "single"		  			 	
+	  			 	 var           = "proyecto" 	  
+					 rowKey        = "#{proyecto.proyectoPk.proyect_id}"			 	 
+	  			 	 value         = "#{panel_seleccion.lista_proyectos}"
+	    			 selection     = "#{panel_seleccion.proyecto_selected}">
+	   		<p:ajax event = "rowSelect" listener = "#{panel_seleccion.listener_proyecto_selected}"/>
+	 		
+	        <p:column headerText = "proyect_id">
+	            <h:outputText value = "#{proyecto.proyectoPk.proyect_id}" />
+	        </p:column>
+	        
+	        <p:column headerText = "nombre">
+	            <h:outputText value = "#{proyecto.name}"/>
+	        </p:column>  
+		</p:dataTable>								    			   		  				
+	</h:form>	
+</ui:composition>				

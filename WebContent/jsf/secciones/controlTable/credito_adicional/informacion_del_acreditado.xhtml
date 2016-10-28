@@ -1,0 +1,80 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id    = "dvContPersonalData" 
+		 class = "detailsControlTable clssControlBuro" 
+		 style = "clear: both; 
+		 	      float: none !important; 
+		 	      display: block; 
+		 	      min-height: auto !important; 
+		 	      margin-bottom: 20px !important; 
+		 	      margin-left: auto !important; 
+		 	      margin-right: auto; 
+		 	      font-size: 1.1em !important; ">
+		 	      
+		<div class = "centerPosition">
+		
+			<h:panelGroup id = "sectionPersonalData">
+				<p style="width: 200px; float: left;"><strong class="orange">Crédito Adicional</strong></p>	
+				<br style="clear:both;" />
+				
+				<div style="font-size: 1.0em; margin-top: 20px;" >
+					<table>
+					
+						<tr>
+							<td colspan="4" style="text-align: left; padding-top: 15px; padding-bottom: 15px;" ><b>Han transcurrido <b>#{additionalCredit.diasTrans}</b> días desde la fecha de consulta</b></td>
+						</tr>
+					
+						<tr>
+							<td width="100px" >Prospecto:</td>
+							<td><b>#{additionalCredit.proyectloan.person.natPerPK.prospectus_id}</b></td>
+							
+							<td width="100px" ></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Cliente:</td>
+							<td><b>#{additionalCredit.proyectloan.person.NombreCompletoNPM()} </b></td>
+							
+							<td colspan="2"></td>
+						</tr>
+						<!-- <tr>
+							<td>CURP</td>
+							<td><b>#{chartBackBean.infocte.curp}</b></td>
+							
+							<td style="padding-left: 25px;">RFC:</td>
+							<td><b>#{chartBackBean.infocte.rfc}</b></td>
+						</tr> -->
+						<tr>
+							<td style="width: 145px;" >Fecha de consulta:</td>
+							<td><b>#{additionalCredit.fecConsult}</b></td>
+						
+							<td style="padding-left: 25px;">BurSolNum:</td>
+							<td><b>#{additionalCredit.bur.bur_solnum}</b></td>
+						</tr>
+						<tr>
+							<td style="width: 145px;" >Folio:</td>
+							<td><b>#{additionalCredit.bur.burFol}</b></td>
+						
+							<td style="padding-left: 25px;">Bc-Score:</td>
+							<td><b>#{additionalCredit.bur.score_buro}</b></td>
+						</tr>
+						<tr>
+							<td colspan="4" >
+							<h:panelGroup rendered="#{additionalCredit.flagnopublish}" >
+							<div style="width: 100%; height: auto; overflow: auto; text-align: center; background-color: #f4c82d;" >
+								El cliente cuenta con un crédito no publicado
+							</div>
+							</h:panelGroup>
+							</td>
+						</tr>
+						
+					</table>					
+				</div>					
+			</h:panelGroup>
+		</div>
+	</div>				
+</ui:composition>				

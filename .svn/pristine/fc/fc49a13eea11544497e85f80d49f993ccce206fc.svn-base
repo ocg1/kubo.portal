@@ -1,0 +1,43 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+				<div class="col_lateral req containerFloatingMenu">
+                	<div class="menu_inscripcion FloatingMenu">
+                		<div class="contentMenu">
+                		<h5 class="comoFunciona"><span>¿Cómo funciona?</span></h5>
+                        <ul>
+                 
+                                <li><span>1. Regístrate.</span></li>
+                                <li><span>2. Realiza tu diagnóstico de crédito y obtén tu pre-aprobación.</span></li>
+                                <li><span>3. Completa tu solicitud.</span></li>
+                                <li><span>4. Obtén tu dinero.</span></li>
+                               
+                          
+
+                        </ul>  
+                    	<h5><span>Requisitos</span></h5>
+                        <ul>
+                 
+                                <li><span>1. Tener un buen historial crediticio.</span></li>
+                               
+                                <li><span>2. Credencial de elector vigente.</span></li>
+                                <li><span>3. Comprobante de domicilio e ingresos.</span></li>
+                               
+                          
+
+                            </ul>   
+                            
+                 
+                		 
+                    </div>
+                    
+                    </div>
+                   
+					
+            
+                </div>
+
+</ui:composition>

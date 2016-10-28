@@ -1,0 +1,13 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html">
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.State_text}" />
+		</div>
+
+
+			<h:inputText id = "estado" value = "#{basicData.domicilio.estado}" disabled = "true" styleClass = "elementAddres1 validatorClass mapClass state stlDisabled hs_class"/>
+	
+	</div>				 
+</ui:composition>				 

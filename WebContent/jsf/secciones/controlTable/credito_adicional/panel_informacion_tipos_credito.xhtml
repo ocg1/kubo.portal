@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div id = "helpCont">
+	
+		<div style = "margin-left: 28px; position: relative;" >
+			<p class="desc">
+				<b>Redocumentación:</b> Es el crédito que se otorga una vez que se haya concluido en su totalidad 
+					con los pagos de sus créditos anteriores.
+			</p> 
+			
+			<p class="desc">
+				<b>Crédito Adicional:</b> Cuando se le otorga un crédito paralelo al que tiene vigente.
+			</p>
+			
+			<p class="desc">
+				<b>Renovación:</b> Cuando se le otorga un crédito de monto mayor al total de las cuotas que le faltan por 
+				pagar y con éste cubre la totalidad de las cuotas que le faltan por pagar y lo que sobre se le otorga al cliente.
+			</p>
+			
+			<p class="desc">
+				<b>Nuevo:</b> Cuando la persona cuenta ya con solicitudes anteriores, pero ninguna de ellas se ha otorgado.
+			</p>
+			
+			<div style = "width: 30px; 
+						  height: 30px; 
+						  position: absolute; 
+						  top: -27px; 
+						  left: 363px; 
+						  z-index: 100; 
+						  cursor: pointer; 
+						  border: solid 0px #990000; " 
+				  onclick = "closeHelpCont();" >
+				  
+				<img src = "../resources/img/close.png" />
+			</div>			
+		</div>			
+	</div>				
+</ui:composition>

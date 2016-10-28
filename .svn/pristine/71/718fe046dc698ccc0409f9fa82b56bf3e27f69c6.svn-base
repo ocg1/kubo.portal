@@ -1,0 +1,53 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:form>
+		<div id = "dvCntCancelAction" style = "display: none;">
+			<div class = "contPR" style = "position: relative;margin-right: 0px;min-height: 0 !important;background-color: #FFFFFF;">
+				<div class = "contFrm" style="padding-right: 0px;width: 750px; margin: 0px auto;">
+				
+			 		<div class="clTitle" style="width:auto;margin:0;" >
+						<h:outputText value="Cancelación de Cuenta"  />
+					</div>
+					
+					<fieldset>
+						<div style="width: 90%; margin-left: auto;margin-right: auto; padding: 10px; padding-top: 25px;">			
+							La cuenta del cliente 
+								<b>#{summaryRequest.prospecto.prospectusPK.prospectus_id} - #{summaryRequest.persona.NombreCompletoNPM()}</b>  
+							será cancelada
+							
+							<br />
+							<br />
+							Motivo de la cancelación:
+							<h:inputTextarea id="canceledReason" styleClass="elementTextArea" style="margin:5px 0; width:480px !important; height:150px;font-size: 1em !important; margin-left: auto !important; margin-right: auto !important;" cols="25" rows="5" value="#{summaryRequest.cancelAccountComment}">
+						 		<p:ajax event="blur"></p:ajax>
+						 	</h:inputTextarea>
+							
+							<p:commandLink style="text-decoration:none;" onstart="return initCancelAccount();" immediate="true" actionListener="#{summaryRequest.cancelClientAction}" oncomplete="completeCancelAction( xhr, status, args );" >
+								<div class="buttonPR" style="font-size: 0.9em; width: 280px !important; margin-left: auto; margin-right: auto;margin-top: 30px; margin-bottom: 20px;">
+									El cliente solicitó la cancelación
+								</div>
+								<f:attribute name="cancelType" value="C" />
+							</p:commandLink>
+							
+							<p:commandLink style="text-decoration:none;" onstart="return initCancelAccount();" immediate="true" actionListener="#{summaryRequest.cancelClientAction}" oncomplete="completeCancelAction( xhr, status, args );" >
+								<div class="buttonPR" style="font-size: 0.9em; width: 280px !important; margin-left: auto; margin-right: auto;margin-top: 30px; margin-bottom: 20px;">
+									Kubo decide cancelar la cuenta
+								</div>
+								<f:attribute name="cancelType" value="K" />
+							</p:commandLink>
+							
+							<div class="buttonPR" onclick="javascript:muestraSolicitud();" style="font-size: 0.9em; margin-left: auto; margin-right: auto;margin-top: 30px; margin-bottom: 20px;">
+								Regresar
+							</div>
+							
+						</div>
+					</fieldset>			
+				</div>		
+			</div>
+		</div>
+	</h:form>
+</ui:composition>

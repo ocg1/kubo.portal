@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{!summaryRequest.changeDispersion}" >
+		#{summaryRequest.changeBankData.origValue}
+	</h:panelGroup>				
+				
+	<p:inplace id         = "inplace-clabe" 
+			   styleClass = "section-edit-clabe" 
+			   widgetVar  = "editClabe" 
+			   rendered   = "#{summaryRequest.changeDispersion}" 			   
+			   label = "#{(summaryRequest.changeBankData.origValue==null or summaryRequest.changeBankData.origValue=='')?'No definido': summaryRequest.changeBankData.origValue}">
+													
+				<p:ajax event = "save" immediate  = "true" update = "change-clabe-inter"
+						onstart    = "return validationClabe('txt-mxclabe');" 
+						oncomplete = "$('#bank-desc').show();" 						 
+						listener   = "#{summaryRequest.saveNewClabe}"/>	
+																						
+				<h:inputText id = "txt-mxclabe" maxlength = "18"
+							 value = "#{summaryRequest.changeBankData.origValue}"  
+				        	 onfocus    = "$('#bank-desc').hide();"
+				             onkeypress = "return isNumberKey(event);"
+							 styleClass = "elementAddres1">
+																 
+					<p:ajax event = "blur"  onstart="return validaClabe();" />
+				</h:inputText>
+													
+				<h:inputTextarea id="txt-reason-clabe" styleClass="elementTextArea" style="margin:5px 0;width:200px;height:100px;font-size: 1em ! important;" cols="25" rows="3" value="#{summaryRequest.changeBankData.whyChangeData}">
+					<p:ajax event="blur"/>
+				</h:inputTextarea>
+												 	
+				<p:watermark for="txt-reason-clabe" value="Motivo del cambio" />
+												 	
+				<div class="dos_botones">
+					<div class="buttonPR" onclick="editClabe.save();">Guardar</div>
+					<div class="buttonPR"  onclick="editClabe.cancel();$('#bank-desc').show();" >Cancelar</div> 
+				</div>														
+	</p:inplace>															
+</ui:composition>				

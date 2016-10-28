@@ -1,0 +1,40 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+								
+	<div class = "credito_INFO">
+	
+		<div class = "numero_estatus">
+			<div class = "numero_credito"> 
+				<p>Número de crédito: <b>#{liquidar_credito.panel.safi_credit_id}</b></p> 
+			</div>									
+		</div>
+		
+		<div style = "padding:10px; font-size:16px; border: solid 1px #f1f1f1">				
+			<table cellspadding="0" cellspacing="0" width="100%">					
+				<tr class="encabezado_gris">
+					<td colspan = "2" align = "center">
+						<p style = "margin: 10px 0"><b>Liquidación anticipada de Crédito</b></p>
+					</td>
+				</tr>
+				
+				<tr>
+					<td><p>Fecha del pago:</p></td>
+					<td><p style = "color: red">#{liquidar_credito.fecha_del_pago}</p></td>
+				</tr>
+				
+				<tr class = "encabezado_gris">
+					<td>
+						<p><b>Saldo para liquidar:</b></p>
+					</td>
+					
+					<td>
+						<p style = "color: red"><b>$#{liquidar_credito.panel.pago}</b></p>
+					</td>
+				</tr>
+			</table>
+		</div>				
+	</div>				
+</ui:composition>				

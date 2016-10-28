@@ -1,0 +1,374 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+
+<div class="bloque_der">
+		  	
+		  	
+		
+		
+		 <h:panelGroup rendered="#{sessionBean.area=='I' and investmentList.displayInvestAction  }" >
+		 	
+		 	<div style="display:none" class="individual_paquete left_col">
+				<h:selectOneRadio value="#{investmentList.blnPaquete}"  styleClass="radio elementStlLbl blnPaquete">
+				    <f:selectItem itemValue="true" itemLabel="Paquete"/>
+				    <f:selectItem itemValue="false" itemLabel="Individual"/>
+				    <p:ajax event="change"  update=":table_proyect_list:creditos, :formLL:pnlNumCredito,:table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot" ></p:ajax>
+				</h:selectOneRadio>
+		 	</div>
+		 	
+	
+		 </h:panelGroup>
+		 
+		
+		 
+		 
+		  <div class="clssMssgAlrt actProceso">
+				 
+		 	Actualizaciones en proceso, espere un momento
+		 
+		 </div>
+		 
+			<h:panelGroup id="pnlInvButton" >	
+			
+				
+				 
+				 <!-- 
+				 <div class="buttonPR" style="float: none; margin-left: 10px; clear: both; ">
+					<p:commandLink onstart="return displayMessageProcessing('msgprocessing',true);" style="text-decoration: none;"  value="Normalizar" actionListener="#{investmentList.pruebaTienda}" update=":formLL:section_account , :table_proyect_list:creditos, :pnlResInv, :table_proyect_list:pnlInvButton" oncomplete="initPopup();"  />
+				</div>
+				  -->
+				  	 <h:panelGroup id="pnlMsgSugMin" >
+		
+			<div class="inversion_maxrecomendada">
+				
+				<div>
+					<div class="intInversion_maxrecomendada"  >
+						 <h:form>
+						 	<div class="max_recomendada">
+							<p:commandLink style="display:none;"  id="tooltip_inversiones7"  styleClass="tooltip_text">Invierte </p:commandLink> 	  
+						 	   <h3>Monto máximo que podrás invertir por proyecto</h3>
+						 	   <table class="tabla_invMax" cellspacing="0" cellpadding="0" border="0">
+						 	   	<tr>
+						 	   		<th>Kubo.score </th>
+						 	   		<th>Monto</th>
+						 	   		<th>% de tu saldo total</th>
+						 	   	</tr>
+						 	   	<tr>
+									<td><small>A1 -E3</small></td>
+									<td><strong>   
+							 	  						<h:outputText value="#{investmentList.maximoInvBySaldoG}">
+															<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+														</h:outputText>
+							 	  			</strong> 
+							 	  	</td>
+									<td>
+										<strong>  
+											<h:outputText value="#{investmentList.porcMaxSaldoG}" >
+												<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+											</h:outputText>%
+										</strong> 
+									</td>						 	   	
+						 	   	</tr>
+						 	   	<tr>
+						 	   		<td><small>E4</small></td>
+						 	   		<td><strong>
+										 	  	<h:outputText value="#{investmentList.maximoInvBySaldoPryE4}">
+													<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+												</h:outputText>
+							 	  	    	</strong>
+							 	  	 </td>
+						 	   		<td>
+						 	   			<strong>
+						 	   			<h:panelGroup rendered="#{!investmentList.flagMin_E5_E4}">
+								 	  		<h:outputText	value="#{investmentList.porcMaxSaldoPryE4G}" >
+								 	  			 <f:convertNumber pattern="#0.00"  locale="es_MX" />									
+											</h:outputText>%
+								 	    </h:panelGroup> 
+								 	    </strong>		</td>
+						 	   	
+						 	   	</tr>
+						 	   	<tr>
+						 	   		<td><small>E5</small></td>
+						 	   		<td>	<strong>
+										 	  	<h:outputText value="#{investmentList.maximoInvBySaldoPryE5}">
+													<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+												</h:outputText>
+						 	  	
+						 	  				</strong>
+						 	  				</td>
+						 	   		<td>
+						 	   		<strong>
+						 	   			<h:panelGroup rendered="#{!investmentList.flagMin_E5_E4}">
+								 	  		<h:outputText value="#{investmentList.porcMaxSaldoPryE5G}">
+								 	  			<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+											</h:outputText>% 
+								 	    </h:panelGroup> 	
+								 	    </strong>	 	
+								 	    </td>
+						 	   	</tr>
+						 	   	<h:panelGroup rendered="#{investmentList.flagInversionFG}" >
+						 	   	
+						 	   	<tr>
+						 	   		<td><small>F1-G1</small></td>
+						 	   		<td>	<strong>
+										 	  	<h:outputText value="#{investmentList.maximoInvBySaldoPryF1G1 gt investmentList.montoMinF1G1 ? investmentList.maximoInvBySaldoPryF1G1 : investmentList.montoMinF1G1}">
+													<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+												</h:outputText>
+						 	  	
+						 	  				</strong>
+						 	  				</td>
+						 	   		<td>
+						 	   		<strong>
+						 	   			<h:panelGroup rendered="#{investmentList.maximoInvBySaldoPryF1G1 gt investmentList.montoMinF1G1}">
+								 	  		<h:outputText value="#{investmentList.porcMaxSaldoPryF1G1_G}">
+								 	  			<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+											</h:outputText>% 
+								 	    </h:panelGroup>
+								 	    <h:panelGroup rendered="#{!(investmentList.maximoInvBySaldoPryF1G1 gt investmentList.montoMinF1G1)}">
+								 	  		<h:outputText value="Monto Máximo Por Proyecto">
+								 	  										
+											</h:outputText>
+								 	    </h:panelGroup>  	
+								 	    </strong>	 	
+								 	    </td>
+						 	   	</tr>
+						 	   	
+						 	   	</h:panelGroup>
+						 	   	
+						 	   
+						 	   </table>
+						 	   
+						 	   <!-- ul>
+							 	   	<li>1.-
+							 	   		<p:commandLink  id="tooltip_inversiones7"  styleClass="tooltip_text">Invierte </p:commandLink> 	  
+							 	   		hasta
+							 	   		<strong>    
+							 	   			<span class="maxInvBySaldo">   
+							 	  						<h:outputText value="#{investmentList.maximoInvBySaldoG}">
+															<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+														</h:outputText>
+							 	  			</span> 
+							 	  		</strong> por proyecto.
+							 	  		Esto equivale al #{investmentList.porcMaxSaldoG}%  de tu saldo total
+							 	  </li>
+							 	  <li>2.- Invierte hasta  	
+							 	  	  <strong>
+							 	  	  		<span class="maxInvBySaldo2">
+										 	  	<h:outputText value="#{investmentList.maximoInvBySaldoPryE4}">
+													<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+												</h:outputText>
+							 	  	    	</span>
+							 	  	    </strong>
+								 	  	    en proyectos con calificación E4. Esto equivale al							 	  	
+								 	  	    <h:panelGroup rendered="#{!investmentList.flagMin_E5_E4}">
+							 	  			 #{investmentList.porcMaxSaldoPryE4G}% de tu saldo total.
+							 	 			</h:panelGroup> 
+							 	  	</li>
+							 	  	<li>3.-
+							 	  		Invierte hasta  	
+							 	  		<strong>
+							 	  			<span class="maxInvBySaldo2">
+										 	  	<h:outputText value="#{investmentList.maximoInvBySaldoPryE5}">
+													<f:convertNumber currencySymbol="$" type="currency" locale="MX" />
+												</h:outputText>
+						 	  	
+						 	  				</span>
+						 	  			</strong> 
+								 	  	en proyectos con calificación E5. 
+								 	  	<h:panelGroup rendered="#{!investmentList.flagMin_E5_E4}">
+								 	  		Esto equivale al #{investmentList.porcMaxSaldoPryE5G}% de tu saldo total.
+								 	    </h:panelGroup> 		 
+							 	  	</li>
+						 	   </ul-->
+						 	   
+						 	</div> 
+							<p:tooltip for="tooltip_inversiones7" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
+										<ui:include src="../../../templates/content_tooltip.xhtml" />
+							</p:tooltip>
+						</h:form>
+						
+						<small style="display:none;">
+							 #{investmentList.porcMaxSaldoG}
+							 #{myInvestments.total_balance}	 
+						</small>
+					
+					</div>
+				</div>
+							
+				<div class="datoQueTuPerfil">
+					Dado que tu perfil es <span style="font-weight: bold;">#{investmentList.profileStr}</span> te recomendamos que tu inversión máxima sea de <span style="font-weight: bold;"> #{investmentList.maxInvBiteRecomded}</span>.
+				
+				</div>
+				<h2 class="proyectos_disponibles"></h2>
+				
+				
+			</div>
+		
+		</h:panelGroup>
+				  
+	     <h:panelGroup id="pnlInvestmentInfo" rendered="#{sessionBean.area=='I' }">
+				
+				 	<div id="dvCntInvPaqDesc-loader" class="clsloaderInv" >
+					  
+					 
+					  
+					  </div>
+				 
+					  <div id="fixed" class="clsCntInvDesc fixed-left">
+					 
+					  	<table>
+					  		<!-- 
+					  		<tr>
+					  			<td>	
+									<h:outputLabel styleClass="label" value="#{msg.ll_credit_available}"/>
+								</td>
+					  			<td>					  			
+									<h:outputText id="creditOfAccount" value="#{investmentList.saldoActual}" styleClass="labelsStl val_bold">
+									     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									</h:outputText>				  			
+					  			</td>
+					  		</tr>
+					  	 -->
+					  		<tr>
+					  		
+					  			<td class="invCelIzq">Monto a <p:commandLink id="tooltip_inversiones5"  styleClass="tooltip_text" >invertir:</p:commandLink></td>
+					  				<p:tooltip for="tooltip_inversiones5" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
+										<ui:include src="../../../templates/content_tooltip.xhtml" />
+									
+									</p:tooltip>
+					  			<td>
+					  			<!-- 
+					  				<h:inputText id="ammountToInv" value="#{investmentList.ammoutToInv}" />
+					  				 -->
+					  				 $
+					  				<h:inputText id="ammountToInv"  styleClass="elementAddres1" value="#{investmentList.ammoutToInvStr}" onkeyup="validateEnter( event , this );"  >
+										<p:ajax event="blur" listener="#{investmentList.validaMontoAInvertir}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="resNewValToInv(xhr, status, args)" update="pnlContTableCreditos, creditos, pnlInvestmentInfo, :frmInvFlot:pnlInvButtonFlot"   />
+									</h:inputText>
+					  				
+					  			</td>
+					  			
+					  		</tr>
+					  	
+					  		<tr>
+					  			<td>Proyectos seleccionados:</td>
+					  			<td>
+					  				<h:outputText id="valCountInv" value="#{investmentList.proyectListForInvesInd.size()}" />
+					  			</td>
+					  		</tr>
+					  		<tr>
+					  			<td>Monto seleccionado:</td>
+					  			<td>
+					  				<h:outputText id="valAmmountInv" value="#{investmentList.ammountFoundedInv}">
+										<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									</h:outputText>
+					  			</td>
+					  		</tr>
+					  		<tr>
+					  			<td><h:outputLabel styleClass="label disponible" value="Disponible:"/></td>
+					  			<td><span class="disponible_val val_bold">
+											 
+											</span></td>
+					  		</tr>
+					  	</table>
+					  	
+					  	<script>
+					
+					  	
+					  	
+					  	</script>
+					  	
+					  	<div class="cambiarFiltrosContainer"  >
+					  			<div class="filtrar callActionMedium btnVerde-2" onclick="abrir_panel_filtros();">Cambiar filtros</div>
+					  		<h:panelGroup  rendered="#{investmentList.proyectListForInvesInd.size() > 0}" >
+					  			<p:commandLink id="quitar" styleClass="callActionMedium  btnGris full" value="Quitar selección a todos" actionListener="#{investmentList.quitarSeleccion}" update="pnlContTableCreditos pnlInvestmentInfo :frmInvFlot:pnlInvButtonFlot" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="distribuir_quitar();" />
+					  		</h:panelGroup>
+					  		
+					  		<h:panelGroup rendered="#{investmentList.proyectListForInvesInd.size() == 0}" >
+					  			<p:commandLink id="distribuir" styleClass="callActionMedium  btnGris full" value="Distribuir inversión" actionListener="#{investmentList.calculaInvestmentBite}" update="pnlContTableCreditos pnlInvestmentInfo :frmInvFlot:pnlInvButtonFlot" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="distribuir_quitar();" />
+					  		</h:panelGroup>
+					  		
+					  		<h:panelGroup rendered="#{investmentList.proyectListForInvesInd.size() > 0}" >
+					  			<p:commandLink id="distribuirSel" styleClass="callActionMedium  btnGris" style="display:none;" value="Distribuir inversión seleccionados" actionListener="#{investmentList.calculaInvestmentBiteInProyectSel}" update="pnlContTableCreditos pnlInvestmentInfo :frmInvFlot:pnlInvButtonFlot" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="distribuir_quitar();" />
+					  		</h:panelGroup>
+					  		
+					  		<div class="left_col btn_paq">
+				 <h:panelGroup rendered="#{investmentList.displayInvButton and sessionBean.area=='I' and investmentList.blnPaquete }">
+				 	
+				 	<!-- <p:commandLink id="cmdConfirmInvAction" actionListener="#{investmentList.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" > -->
+				 		<div id="inv_paq" class="callActionMedium  btnNaranja" onclick="bridgeFunctionInvPaq();" >
+						 
+							 Invertir Paquete
+						 
+						</div>
+						
+						 	
+				 	
+					<!-- </p:commandLink> -->
+					
+				 </h:panelGroup>
+				 
+				 <div style="display: none;">
+					<p:commandLink id="cmdInvestmentAction" value="Datos personales" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',true);" oncomplete="closeFancy();" update=":panelContentListProyect" >
+						<f:attribute name="seccionInv" value="investment_Action" />
+					</p:commandLink>
+				</div>
+				 
+				 <h:panelGroup rendered="#{sessionBean.area=='I' and !investmentList.blnPaquete }">
+				 	<!-- <div class="buttonPR" style="float: left; margin-left: 10px; clear: both; ">
+						<p:commandLink onstart="return initInvestmentSel()" 	style="text-decoration: none;"  value="Invertir" 		 actionListener="#{investmentList.invierteListSel}" update=":formLL:section_account , :table_proyect_list:creditos, :pnlResInv, :table_proyect_list:pnlInvButton" oncomplete="initPopup();"  />
+					</div> -->
+					
+					<!-- <p:commandLink id="cmdConfirmInvActionInd" actionListener="#{investmentList.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" > -->
+				 		<div  id="inv_ind" class="btn_naranja"  onclick="bridgeFunctionInvPaq();" >
+						 
+							 Invertir
+						 
+						</div>
+					<!-- </p:commandLink> -->
+					
+				 </h:panelGroup>
+				 
+			
+				 
+				 </div>
+				
+					  			<!--  div class="simulationBtn btn_naranja" onclick="simulacion_button();" >
+							 	Invertir
+							</div-->
+					  	</div>
+					  
+					  	
+					  </div>
+				
+					<script>
+					$(".proyectos_disponibles").html($("#pnlNumCredito span").text());	
+					 if($("#ammountToInvFlot").length) {
+						 disponible ();
+					 }
+						function validateEnter(e, element) {
+							 	
+							    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+							    	$("#ammountToInv").trigger("blur");
+							    }else{
+							    	format( element );
+							    }
+							    
+							    //e.preventDefault();
+						}
+					
+						
+					</script>
+					  
+				 </h:panelGroup >
+			
+				 
+				 
+			</h:panelGroup>
+			
+			
+			</div>
+</ui:composition>

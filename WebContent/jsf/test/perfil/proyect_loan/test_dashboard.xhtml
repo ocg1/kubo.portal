@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+ <html xmlns    = "http://www.w3.org/1999/xhtml"
+	   xmlns:ui = "http://java.sun.com/jsf/facelets"
+	   xmlns:h  = "http://java.sun.com/jsf/html"
+	   xmlns:p  = "http://primefaces.org/ui"
+	   xmlns:f  = "http://java.sun.com/jsf/core"
+	   xmlns:c  = "http://java.sun.com/jsp/jstl/core">	  
+	   
+	<h:head>		
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/tipografia/tipografia.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/secciones/fichas_producto/fluid_grid.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/header.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/label_menu_items.css" />	
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/label_bienvenido_usuario.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/secciones_menu_items.css" />					
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/footer/footer.css" />				
+	</h:head>
+	
+	<h:body>
+		<style>
+		/*
+			.prospecto_panel_grid tr, .prospecto_panel_grid td
+			{
+				border: none;
+			}
+			*/
+			
+		.grid_fecha_pospuesta
+		{
+			padding: 0 10px !important;
+			border: 0 !important;
+		}
+		</style>
+		
+		<c:set var = "localhost"    value = "http://localhost:8080" />				
+		<c:set var = "context_root" value = "#{request.contextPath}" />
+		<c:set var = "resources"    value = "#{localhost}#{context_root}/resources" />	
+		
+		<div id    = "loading_gif"  
+			 style = "display:none;
+			 		  position:absolute;
+			          width: 50px;
+			          height: 50px;
+			          top:100px;
+			          left: 600px;
+			          z-index: 100;">
+			<img src = "#{resources}/img/loading.gif"/>
+		</div>
+			
+		<p:layout fullPage = "true">
+			<p:layoutUnit position = "north">			
+				<div class = "main_header">
+					<ui:include src = "../../../templates/header/header.xhtml" />					
+				</div>	
+			</p:layoutUnit>		
+			
+			<p:layoutUnit position    = "west" 
+						  header      = "Panel / Usuarios"
+						  size        = "600" 
+						  resizable   = "true"
+						  collapsible = "true"
+						  collapsed   = "false">			
+						  
+				<ui:include src = "../../login/panel_seleccion_login.xhtml"/>				
+				<ui:include src = "../../acreditado/panel_seleccion_acreditado.xhtml"/>							  						 
+        		<ui:include src = "../../login/submit_seleccion_login.xhtml"/>    				    				
+		    </p:layoutUnit>
+		
+		    <p:layoutUnit position = "center" size = "300">			    
+		    	<p:panel header = "Proyecto" collapsed = "true" toggleable = "true">			    	
+		    		<ui:include src = "../../proyecto/panel_seleccion.xhtml"/>			    		
+				</p:panel>
+				
+				<p:panel header = "Proyect Loan" collapsed = "false" toggleable = "true">			    	
+		    		<ui:include src = "../../proyect_loan/panel_seleccion.xhtml"/>			    		
+				</p:panel>	
+				
+				<p:panel header = "Proyect Loan / Notas del Caso" collapsed = "true" toggleable = "true">	
+		    			    		
+		    	</p:panel>
+				
+				<p:panel header = "Bitácora / Change Control" collapsed = "true" toggleable = "true">			    	
+		    			    		
+				</p:panel>		
+				
+				<p:panel header = "Bitácora  / Notificaciones" collapsed = "true" toggleable = "true">			    	
+		    			    		
+				</p:panel>		
+				
+				<p:panel header = "Bitácora / Service Calling" collapsed = "true" toggleable = "true">			    	
+		    					    		
+				</p:panel>		    
+		    </p:layoutUnit>	
+		    
+		    <p:layoutUnit position = "east" 
+		    			  header      = "Panel / Proyect Loan"
+						  size        = "300" 
+						  resizable   = "true"
+						  collapsible = "true"
+						  collapsed   = "false">
+		    	<p:panel header = "Cambiar / Estatus" collapsed = "true" toggleable = "true">	
+		    		<ui:include src = "../../proyect_loan/estatus/panel_de_edicion.xhtml"/>		    		
+		    	</p:panel>		
+		    	
+		    	<p:panel header = "Agregar / Notas del Caso" collapsed = "true" toggleable = "true">	
+		    			    		
+		    	</p:panel>    	
+		    </p:layoutUnit>
+		
+			<p:layoutUnit position = "south" size = "65">
+    			<div style = "width:auto;
+    			              overflow:hidden;
+							  border:0px solid black;">
+							  
+			    	<div class = "float_divider"/>		
+		
+					<div class = "south_column">					
+						<ui:include src = "../../../templates/footer/footer.xhtml" />
+					</div>	
+				</div>				
+			</p:layoutUnit>
+		</p:layout>	
+	</h:body>
+</html>	

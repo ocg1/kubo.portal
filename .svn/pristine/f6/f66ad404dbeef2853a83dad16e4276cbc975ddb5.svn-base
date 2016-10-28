@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../resources/favicon.ico"/> 
+
+        
+        <!-- CSS --> 
+        <link rel="stylesheet" type="text/css" href="../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../resources/css/laptop_medium.css" />        
+		<link rel="stylesheet" type="text/css" href="../resources/css/flexslider.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		 <link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+       	 <link rel="stylesheet" href="../resources/css/font-awesome.css"/> 
+		<!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+         	<script>
+	         $(document).ready(function(){
+	        	 $(".comision-kubo-plazoFijo").addClass("active");	 
+	        	 $(".push_header").addClass("interior").show();
+	         });
+         </script>
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="../resources/js/jquery.slides.min.js"></script>
+    	<script type="text/javascript" src="../resources/js/scripts.js"></script>
+		<script src="../resources/js/scripts_interior.js"></script>
+		<script src="../resources/js/jquery.flexslider.js"></script>
+        <script src="../resources/js/flexslider_start.js"></script>
+   
+		<script type="text/javascript" src="../resources/js/ga_event.js"></script>
+	    <script type="text/javascript" src="../resources/js/banners_footer.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm2.js"></script>
+         <script data-cfasync="false" type='text/javascript' src="../resources/js/chat.js" ></script>
+        <script language="javascript" type="text/javascript" src="../resources/js/validar_cambio_correo.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/envio_correo_preregistro.js"></script>
+        <script type="text/javascript" src="../resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="../resources/js/browserDetect.js"/> 
+	    <script type="text/javascript" src="../resources/js/alertify.js"></script>	
+	    <script type="text/javascript" src="../resources/js/easyscroll.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../resources/js/mousewheel.js"></script>
+        <script type="text/javascript" language="javascript">
+        
+    	/******************GOOGLE*ANALYTICS**************************************/ 
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+            	  ga('require', 'linkid');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+        
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+         </script>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				 
+				// para el modulo recuperar contraseña
+				   loadEvent();
+					setInfoBrawser('browser_name','browser_version','browser_OS', 'browser_width'); 
+				});
+		</script>
+ 	
+
+
+</h:head>
+
+
+
+    <h:body>
+
+    
+    	<div class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+		<h:form  prependId="false" acceptcharset="UTF-8">
+           
+       	   <!-- header -->
+       	   <ui:include src="../templates/header.xhtml" />
+       	    
+                      <div class="titulo consulta"><h2>Consulta los Costos y las Comisiones de nuestros productos</h2></div>	
+
+            <div class="content top">
+                <div class="inner_content">
+            	<div class="col_izquierda_productos containerFloatingMenu">
+                	 <!-- menu lateral productos -->
+       	  		    <ui:include src="../templates/menu_comisiones.xhtml" />
+                	
+	
+                </div>
+                <div class="col_derecha_productos">
+                		<div class="content_tabs transparencia">
+                			<div class="caratula_credito">
+                		
+                				
+							
+						<ol class="logoTex">
+						<li ><img style="width:80px; margin:0 20px 0 0;" src="../resources/images/logo_kubo.png"/></li>
+						<li>
+							<p>KU-BO FINANCIERO, S.A. DE C.V., S.F.P.</p>
+							
+						</li>
+					</ol>
+						<h2>Nombre del Producto: kubo.plazoFijo</h2>	
+						
+                			<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
+								<tr>
+									<td colspan="2">COMISIONES RELEVANTES</td>
+									
+	
+								</tr>
+								
+								<tr>
+									<td>Manejo de cuenta:</td>
+									<td><strong>$ 0</strong></td>
+	
+								</tr>
+								
+								<tr>
+									<td>Transferencia Interbancaria del mismo cliente:</td>
+									<td>Una disposición al mes sin costo, $ 15.00 más IVA por transacción a partir de la segunda.</td>
+								</tr>
+								<tr>
+									<td>Transferencia a Cuenta Eje:</td>
+									<td><strong>$ 0</strong></td>
+								</tr>
+								<tr>
+									<td>Transferencia entre cuentas Kubo de diferente Cliente: </td>
+									<td><strong>$ 0</strong></td>
+								</tr>
+								
+								<tr>
+									<td>Consulta de saldo por celular: </td>
+									<td><strong>$ 0</strong></td>
+								</tr>
+								
+								<tr>
+									<td>Consulta de saldo vía internet: </td>
+									<td><strong>$ 0</strong></td>
+								</tr>
+								
+								<tr>
+									<td colspan="2">Para otras comisiones consulte el Portal.Kubo <a href="https://www.kubofinanciero.com">www.kubofinanciero.com</a> y la cláusula sexagésima quinta del presente contrato  </td>
+									
+								</tr>
+							
+							</table>
+							<div class="tasasActivas">
+						
+						<table border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tbody><tr >
+  <th >Plazo</th>
+  <th>Tasa Fija Anual Simple</th>
+ </tr>
+ <tr >
+  <td>28 días</td>
+  <td><strong>3.30%</strong></td>
+ </tr>
+ <tr >
+  <td >60 días</td>
+  <td ><strong>3.75%</strong></td>
+ </tr>
+ <tr>
+  <td >90 días</td>
+  <td ><strong>4.20%</strong></td>
+ </tr>
+ <tr>
+  <td >120 días</td>
+  <td><strong>4.35%</strong></td>
+ </tr>
+ <tr>
+  <td>150 días </td>
+  <td ><strong>4.50%</strong></td>
+ </tr>
+ <tr >
+  <td >180 días</td>
+  <td ><strong>4.65%</strong></td>
+ </tr>
+ <tr>
+  <td >210 días</td>
+  <td ><strong>4.80%</strong></td>
+ </tr>
+ <tr >
+  <td>240 días</td>
+  <td ><strong>4.95%</strong></td>
+ </tr>
+ <tr >
+  <td>270 días</td>
+  <td ><strong>5.10%</strong></td>
+ </tr>
+ <tr >
+  <td>300 días </td>
+  <td ><strong>5.25%</strong></td>
+ </tr>
+ <tr >
+  <td>330 días</td>
+  <td ><strong>5.40%</strong></td>
+ </tr>
+ <tr >
+  <td>360 días</td>
+  <td ><strong>5.70%</strong></td>
+ </tr></tbody></table>
+					</div>	
+						
+						
+						<div class="catAnualPromedio">
+	                <table class="table_gats" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<th>Plazo</th>
+				<th>GAT <span>Nominal <sup>1</sup></span></th>
+				<th>GAT <span>Real <sup>2</sup></span></th>
+				<th><span>Monto para el cálculo  <sup>3</sup></span></th>
+			</tr>
+			<tr>
+				<td>180</td>
+				<td><strong>4.70%</strong></td>
+				<td><strong>1.37%</strong></td>
+				<td>$100</td>
+			</tr>
+		
+		</table>
+		
+		<p class="big"><sup>1</sup> <strong>GAT calculada antes de impuestos,</strong> <span>fecha de cálculo 1 de Junio de 2016. utilizó el monto y plazo referido, con una tasa de rendimiento fija anual simple del 4.65%</span></p>
+		
+		
+		<p class="sup"><sup>2</sup> La GAT Real es el rendimiento que obtendría después de descontar la inflación estimada</p>
+		<p class="sup"><sup>3</sup>  Montos en Moneda Nacional.</p>
+		<p class="sup"> <small>Las Tasas son revisables diariamente y sujetas a cambios dependiendo de las variaciones de Mercado. Datos de carácter informativo.</small></p>
+		
+		<p>GAT: es la Ganancia anual total Neta expresada en términos porcentuales anuales, que,
+		 para fines informativos y de comparación, incorpora los intereses que generen las operaciones pasivas de ahorro, 
+		 inversión y otras análogas menos todos los costos relacionados con la operación, 
+		 incluidos los de apertura, el que será expresado tanto en términos reales como nominales de conformidad con las disposiciones que emita el Banco de México para su cálculo.</p>
+		 
+		 <p>Para fines informativos y de comparación exclusivamente.</p>
+		 
+					</div>
+                			</div>
+                			
+          
+                			
+                			</div>
+                			
+                		
+                		
+                		</div>
+                    
+                    </div>
+                    </div>
+                
+                    
+                
+                
+           
+           
+          
+			<!--footer mapa de sitio-->
+	        <ui:include src="../templates/footer_mapa.xhtml" />        
+	        
+	        <!--lightbox abrir sesion-->
+	        <ui:include src="../templates/modal_iniciar_sesion.xhtml" />
+	         
+	        <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+	 	    <ui:include src="../templates/modal_condusef.xhtml" />    
+	 	   	<ui:include src="../templates/modal_cat.xhtml" />    
+	 	   	<ui:include src="../templates/modal_gat.xhtml" />   
+	        
+	        <!--lightbox sesion sin actividad-->
+	        <ui:include src="../templates/modal_sesion_inactiva.xhtml" />  
+	        <!--Requisitos-->
+	        <ui:include src="../templates/modal_requisitos.xhtml" />
+	      
+	        <ui:include src="../templates/contrasena_validador.xhtml" />
+	
+		    <ui:include src="../templates/modal_condiciones.xhtml" />
+		    <ui:include src="../templates/modal_correo_existente.xhtml" />
+		    
+			<ui:include src="../templates/modal_activar_cambiar_correo.xhtml" />
+			<ui:include src="../templates/modal_cambiar_correo.xhtml" />
+			
+			<ui:include src="../templates/mandar_mail.xhtml" />
+			
+			<ui:include src="../templates/modal_cambiocontrasena.xhtml" />
+      
+      
+        </h:form>
+        <script>
+			setChat();
+		</script>
+    </div>
+    </h:body>
+		<script type="text/javascript">
+		/** Start Alexa Certify Javascript **/
+		_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+		
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+		
+		/* End Alexa Certify Javascript */
+		  
+		
+		</script>
+	<!-- Alexa Certify Javascript -->
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+	<!-- End Alexa Certify Javascript -->
+	
+		<div style="display: none;">
+				#{inicioValues.inicio}
+		</div>
+</html>

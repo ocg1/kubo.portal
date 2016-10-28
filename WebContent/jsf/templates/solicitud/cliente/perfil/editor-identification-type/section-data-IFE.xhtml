@@ -1,0 +1,25 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<h:panelGroup rendered = "#{summaryRequest.editor_identification.editor_ife_ENABLED}">
+	
+		<ui:include src = "bitacora.xhtml" />		
+		
+		<table class="formato_tablas" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th>Tipo de identificación:</th>							
+					<th style = "text-align: center;">IFE</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<ui:repeat id = "uiife" var = "changeife" varStatus = "status" value = "#{summaryRequest.editor_identification.lstChangeIFE}">					
+					<ui:include src = "editor-IFE.xhtml" />																					
+				</ui:repeat>																	
+			</tbody>																
+		</table>
+	</h:panelGroup>				 
+</ui:composition>				 

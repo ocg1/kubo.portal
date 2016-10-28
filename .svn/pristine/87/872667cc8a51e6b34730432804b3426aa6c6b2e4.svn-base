@@ -1,0 +1,33 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">				
+	
+	<div class = "clear details12 left" >
+		<div style = "overflow: visible;">
+			<p style = "float:left; font-weight: bold;">RFC</p>
+			
+			<ui:include src = "editor-rfc/bitacora.xhtml" />
+		</div>		
+										
+		<p:inplace id = "sectionEditRFC" 
+		 		   widgetVar = "editRFC" 
+		 		   rendered  = "#{summaryRequest.changeActions}" 
+		 		   label = "#{summaryRequest.persona.mx_rfc}" >
+		
+			<p:ajax event = "save"
+					update   = "section-edit-curp" 
+					listener = "#{summaryRequest.editor_RFC.listener_guardar_cambios}"/>
+		 	
+		 	<ui:include src = "editor-rfc/rfc.xhtml" />		 							 	
+			<ui:include src = "editor-rfc/motivo.xhtml" />
+			<ui:include src = "editor-rfc/guardar-cancelar.xhtml" />
+		</p:inplace>
+	
+		<h:panelGroup rendered = "#{!summaryRequest.changeActions}" >
+			
+			<p>#{summaryRequest.persona.mx_rfc}</p>
+			
+		</h:panelGroup>								
+	</div> 		
+</ui:composition>				

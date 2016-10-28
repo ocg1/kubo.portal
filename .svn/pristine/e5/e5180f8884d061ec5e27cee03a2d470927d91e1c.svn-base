@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+					
+	<h:panelGroup rendered = "#{deal.proyecto_desistido}">				
+		<div class = "regParag" align = "justify">
+			<div class = "clContEnd">
+							
+				<div class = "corner_img">
+		    		<p:graphicImage url   = "../resources/img/corner.png" 
+		    						style = "width: 40px; height: 40px;" />
+		    	</div>
+		    	
+		    	<div class = "borderContDescEnd">
+					<div class = "dvContent clContDescBack1" style = "margin: 0px !important;" >
+						<div class = "clContDescBack2">
+							Proyecto Desistido
+						</div>
+					</div>
+				</div>				
+			</div>								
+		</div> 	
+	</h:panelGroup>			
+</ui:composition>

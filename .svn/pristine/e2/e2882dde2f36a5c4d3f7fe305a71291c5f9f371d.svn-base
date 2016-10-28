@@ -1,0 +1,212 @@
+package mx.com.kubo.managedbeans;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.el.ELContext;
+import javax.el.ELResolver;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
+import mx.com.kubo.constantes.NavigationRule;
+import mx.com.kubo.managedbeans.portal.IniciaSession;
+import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.PasswordHistory;
+import mx.com.kubo.model.PasswordHistoryPK;
+import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.ProspectusPK;
+import mx.com.kubo.services.MembershipService;
+import mx.com.kubo.services.PasswordHistoryService;
+import mx.com.kubo.services.ProspectusService;
+import mx.com.kubo.tools.GeneradorCodigos;
+import mx.com.kubo.tools.Utilities;
+
+@ManagedBean
+@SessionScoped
+public class Hs_Init implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@ManagedProperty("#{membershipServiceImp}")
+	protected MembershipService membershipService;
+	
+	@ManagedProperty("#{passwordHistoryServiceImp}")
+	protected PasswordHistoryService passwordhistoryservice;
+	
+	@ManagedProperty("#{prospectusServiceImp}")
+	protected ProspectusService prospectusService;
+	
+	private String nombre;
+	private String email;
+	private String pass;
+	
+	protected Membership member;
+	
+	@PostConstruct
+	public void init(){
+		
+		ExternalContext external = FacesContext.getCurrentInstance().getExternalContext();
+		
+		Map<String, String> request_map = external.getRequestParameterMap();
+		
+		email = request_map.get("hs_email");
+		
+		if( email != null ){
+			
+			member = membershipService.getMembershipByEmail(email);
+			
+			if( member != null ){
+				
+				nombre = "";
+				
+				if( member.getPerson().getFirst_name() != null && member.getPerson().getFirst_name().trim().length() > 0)
+				{
+					nombre = member.getPerson().getFirst_name();
+				}
+				
+				if(member.getPerson().getMiddle_name() != null && member.getPerson().getMiddle_name().trim().length() > 0)
+				{
+					nombre += " "+member.getPerson().getMiddle_name();
+				}
+				
+				if(nombre.trim().length() == 0 ){
+					nombre = null;
+				}
+				
+			}else{
+				//TODO  no encuentra el correo en la base
+			}
+			
+		}else{
+			//TODO  no llega el hs_mail en la url
+		}
+		
+	}
+	
+	public void login(){
+		
+	}
+	
+	public String savePass(){
+		
+		try{
+			
+			member.setPassword(Utilities.encrypt(pass));
+			member.setIs_active(1);
+			
+			membershipService.update(member);
+			
+			PasswordHistoryPK pssPk = new PasswordHistoryPK();
+			PasswordHistory passHis = new PasswordHistory(); 
+			
+			pssPk.setCompany_id( member.getMembershipPK().getCompany_id() );			
+			pssPk.setProspectus_id( member.getMembershipPK().getProspectus_id() );
+								
+			passHis.setDate_changed(new Date());
+			passHis.setPassword( member.getPassword() );
+			passHis.setPwdhpk( pssPk );
+			
+			passwordhistoryservice.savePasswordHistory(passHis);
+			
+			ProspectusPK ppk = new ProspectusPK(member.getMembershipPK().getProspectus_id(), member.getMembershipPK().getCompany_id());
+			
+			Prospectus prospectus =  prospectusService.getProspectusById(ppk);
+			
+			prospectus.setTracking_id( generaTracking_id ( member.getMembershipPK().getCompany_id(),member.getMembershipPK().getProspectus_id() ) );
+			
+			prospectusService.update(prospectus);
+			
+			FacesContext faces   = FacesContext.getCurrentInstance();
+			ELContext context  = faces.getELContext();		
+			ELResolver resolver = faces.getApplication().getELResolver();
+			
+			IniciaSession inicio = (IniciaSession) resolver.getValue(context, null, "iniciaSession");
+			inicio.setEmail(member.getEmail());
+			inicio.setPassword(pass);
+			inicio.setCheckLogin(false);
+			inicio.iniciaSesion();
+			
+			return NavigationRule.REGISTRAR.toString();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return "";
+		}
+		
+	}
+
+	public MembershipService getMembershipService() {
+		return membershipService;
+	}
+
+	public void setMembershipService(MembershipService membershipService) {
+		this.membershipService = membershipService;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public Membership getMember() {
+		return member;
+	}
+
+	public void setMember(Membership member) {
+		this.member = member;
+	}
+
+	public PasswordHistoryService getPasswordhistoryservice() {
+		return passwordhistoryservice;
+	}
+
+	public void setPasswordhistoryservice(PasswordHistoryService passwordhistoryservice) {
+		this.passwordhistoryservice = passwordhistoryservice;
+	}
+	
+	private String generaTracking_id( int company_id, int prospectus_id ){
+		
+		String tracking = "";
+		
+		tracking = GeneradorCodigos.get_tracking_id(company_id, prospectus_id);
+		
+		return tracking;
+		
+	}
+
+	public ProspectusService getProspectusService() {
+		return prospectusService;
+	}
+
+	public void setProspectusService(ProspectusService prospectusService) {
+		this.prospectusService = prospectusService;
+	}
+
+}

@@ -1,0 +1,83 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+						<h:panelGroup rendered = "#{sessionBean.isClient and sessionBean.area == 'L' }" > 
+							<script>
+
+							$(document).ready(function() {
+								ponerValidacionPass();
+							
+							});
+							</script>
+						</h:panelGroup>
+						<h:panelGroup rendered = "#{sessionBean.area != 'L' }" > 
+							<script>
+							$(document).ready(function() {
+								ponerValidacionPass();
+
+							});
+							</script>
+						</h:panelGroup>
+				
+	 <div id = "section-update-pass" class="target">
+
+				
+			
+		 	<div class="dvContent2" style="margin-left: 0px;" >
+				<div class="dvContent">
+				
+						<h:outputLabel styleClass="label" value="Contraseña actual*"/>
+			
+					
+															
+						<p:inputText id="passAnt"  styleClass="elementStl"  type="password"  value="#{perfilController.pass}">
+							<p:ajax event="blur"></p:ajax>
+						</p:inputText>																				
+				</div>	
+				
+				<div class="dvContent">
+			
+						<h:outputLabel styleClass="label" value="Contraseña nueva*"/>
+					
+			
+					
+	
+						<p:inputText id="pass" styleClass="elementStl"  type="password"  value="#{perfilController.newPass}">
+							<p:ajax event="blur" onstart="return validaNewPass();"/>
+						</p:inputText>							
+				</div>
+				
+				<div class="dvContent">
+						<h:outputLabel styleClass="label" value="Confirma contraseña*"/>
+					
+		
+						<p:inputText id="passConf" styleClass="elementStl"  type="password"  value="#{perfilController.newPassConf}">
+							<p:ajax event="blur" listener="#{perfilController.confPass}"/>
+						</p:inputText>							
+				</div>	
+				
+				<div class="btn_aceptar_cancelar">
+					
+					<div class="callActionMedium btnGris" onclick="hideElement('section-update-pass');">
+						<h:outputText value="Cancelar" />
+					</div>
+					
+					<p:commandLink	id="changePass" immediate="true" 
+								
+									oncomplete     = "oncompleteSubmit(xhr, status, args);inicializaValoresPerfil();"	
+									actionListener = "#{perfilController.saveNewPass}"
+									update         = ":frm-change-data"
+									value		   = "Cambiar"
+									styleClass	   = "callActionMedium btnNaranja" 
+									>
+						
+					</p:commandLink>
+					
+				</div>											
+			</div>		
+
+	 </div>									 
+</ui:composition>									 

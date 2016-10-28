@@ -1,0 +1,61 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+	<div class="datos_credito table_style">
+		<table cellspadding="0" cellspacing="0" >
+	
+			<tr>
+				<td><div class="labelsStl" >Límite de Crédito:</div></td>
+				<td>
+					<div class="labelsStl"> <span>#{credit.monto}</span></div>
+				</td>
+			</tr>
+			
+			<tr >
+				<td><div class="labelsStl" >Frecuencia:</div></td>
+				<td>
+					<div class="labelsStl" ><span>#{credit.plazo}</span></div>
+				</td>
+			</tr>
+							
+			<tr>
+				<td><div class="labelsStl" ><sup>(a)</sup>Tasa de Interés Ordinaria :</div></td>
+				<td>
+					<div class="labelsStl"><span >#{credit.tasa}% Anual</span></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td>
+					<div class="labelsStl"><span>#{credit.tasaMensual}% Mensual</span></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td><div class="labelsStl" >Tasa de Interés Moratoria:</div></td>
+				<td>
+					<div class="labelsStl"><span>#{credit.tasaMora}% Anual</span></div>
+				</td>
+			</tr>
+							
+			<tr>
+				<td></td>
+				<td>
+					<div class="labelsStl"><span>#{credit.tasaMoraMensual}% Mensual</span></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td><div class="labelsStl"><sup>(b)</sup>CAT (Costo Anual Total) :</div></td>
+				<td>
+					<div class="labelsStl"><span>#{credit.cat}%</span></div>
+				</td>
+			</tr>
+			
+		</table>
+	</div>				
+</ui:composition>				

@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------
+	FdC:         [11.Junio.2014]
+	Folder:      css/templates/header/
+	Programador: Damián Tapia Nava
+ * ------------------------------------
+*/
+
+@CHARSET "UTF-8";
+
+div.main_labels
+{	
+	overflow:hidden;
+	
+	background-color: #C1D82F; 
+	
+	border-bottom:0px solid black;
+	height: 20px;
+	line-height: 20px;
+}
+
+div.left_phoneHead
+{
+	width: 180px; 
+	height: auto;
+		
+	margin-top:0px;
+	margin-left: 100px; 	
+	
+	float: left; 	
+	overflow: auto; 
+			
+	font-weight: bold; 
+	font-size: 1.05em !important;
+	color: #222222; 
+	
+	border:0px solid black; 
+}
+
+div.left_phoneHead span
+{
+	font-size: 18px;
+	color: #439539;
+}

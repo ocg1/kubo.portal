@@ -1,0 +1,202 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+	<div style = "display: none; float:right; width:200px;">
+		<h:form id = "hdNext">
+<!-- 
+			<p:commandLink id = "siguienteBASICOS"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart    = "return  validaSigCreditHistory();"
+						   oncomplete = "closeMessageProcessing();"									
+						   update = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name = "section" value = "registro/historialCred::3::menu2" />
+			</p:commandLink> 
+-->
+			
+			<p:commandLink id = "siguienteBASICOS"
+			               immediate = "true" ajax = "true" 
+			               actionListener = "#{basicData.validaRelationship}" 
+					       onstart    = "return  validaSigCreditHistory();"
+					       oncomplete = "validaRelationShipBasic(xhr, status, args);"					        
+					       update     = ":contSimReg">
+			</p:commandLink>
+			
+			<p:commandLink id = "cmdValidaRelationship"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{basicData.validaRelationship}" 
+						   
+						   oncomplete = "validaRelationShipBasic(xhr, status, args);"			
+						   update     = ":pn_edadFueraRango">
+					<f:attribute name = "section" value="registro/edad_fuera_de_rango::40::edad_fuera_de_rango" />
+			</p:commandLink>
+			
+			<p:commandLink id = "edad_fuera_de_rango"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart    = "return validateIsValidZipCode();"
+						   oncomplete = "closeMessageProcessing();"				
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name = "section" value="registro/edad_fuera_de_rango::40::edad_fuera_de_rango" />
+			</p:commandLink>
+			
+			<p:commandLink id = "siguienteBASICOSACTION"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart    = "return validateIsValidZipCode();"
+						   oncomplete = "closeMessageProcessing();"				
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name = "section" value = "registro/historialCred::3::menu2" />
+			</p:commandLink>
+			
+			<p:commandLink id = "nextInvestor"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{basicData.validaRelationship}"
+						   onstart    = "return validateNextMenu('S');"
+						   oncomplete = "validaRelationShipBasicInv(xhr, status, args);"						   
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name = "section" value = "registro/investor/investmentProfile::31::menu2" />
+			</p:commandLink>
+			
+			<p:commandLink id = "nextInvestorClickMenu"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{basicData.validaRelationship}"
+						   onstart    = "return validateNextMenu('S');"
+						   oncomplete = "validaRelationShipBasicInvClickMenu(xhr, status, args);"						   
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name = "section" value = "registro/investor/investmentProfile::31::menu2" />
+			</p:commandLink>
+			
+			<p:commandLink id = "nextInvestorAction"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   oncomplete = "closeMessageProcessing();"
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name = "section" value = "registro/investor/investmentProfile::31::menu2" />
+			</p:commandLink>			
+			
+			<p:commandLink id = "siguientePrep"
+					       immediate = "true" ajax = "true"
+					       onstart = "return displayMessageProcessing('msgprocessing',true);"
+					       actionListener = "#{navigationBean.cambiaPagina}"
+					       oncomplete = "location.reload();"				
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg :frm_cont_lienzo :form_Prin"
+						   styleClass="siguientePrep"
+						   onclick="ga('send', 'event', 'Leads', 'Paso 2', 'Referencias');"
+						   >
+						   <!-- onstart    = "return validateNextMenu('S');" 
+						   oncomplete = "location.reload();"				
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg :frm_cont_lienzo :form_Prin"
+						   styleClass="siguientePrep" -->
+					<f:attribute name = "section" value = "registro/miPrestamo::4::menu3" />
+			</p:commandLink>
+			
+				<p:commandLink id = "siguienteRechazo"
+					       immediate = "true" ajax = "true"
+					       onstart = "return displayMessageProcessing('msgprocessing',true);"
+					       actionListener = "#{navigationBean.cambiaPaginaRechazado}"
+					       				
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg :frm_cont_lienzo :form_Prin"
+						   styleClass="siguienteRechazo">
+						   
+						   <!-- onstart    = "return validateNextMenu('S');" 
+						   oncomplete = "location.reload();"				
+						   update     = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg :frm_cont_lienzo :form_Prin"
+						   styleClass="siguientePrep" -->
+						   
+					<f:attribute name = "section" value = "registro/rechazoAutomatico::59::menu0" />
+			</p:commandLink>
+
+
+			<p:commandLink id = "siguienteIncomeExpense"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPaginaAceptado}"
+						   onstart        = "return validateNextMenu('N');"
+						   oncomplete     = "closeMessageProcessing();"									
+						   update         = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg :frm_cont_lienzo :form_Prin"
+						   styleClass	  = "siguienteIncomeExpense"
+						   onclick="ga('send', 'event', 'Leads', 'Paso 1', 'Termina Ingresos y Gastos');"
+						   
+						   >
+					<f:attribute name = "section" value = "registro/incomeExpense::5::menu4" />
+			</p:commandLink>
+			
+			<p:commandLink id = "siguienteMasInfo"
+						   immediate = "true" ajax = "true"
+					       actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart        = "return  validateNextMenu('N');"
+						   oncomplete     = "closeMessageProcessing();"				
+						   update         = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg"
+						   styleClass	  = "siguienteMasInfo" >
+					<f:attribute name = "section" value = "registro/moreInfo::7::menu5" />
+			</p:commandLink>
+			
+			<p:commandLink id = "siguienteDocPLD"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart    = "return  validateNextMenu('N');"
+						   oncomplete = "closeMessageProcessing();"					
+						   update = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg"
+						   onclick="ga('send', 'event', 'Leads', 'Paso 3', 'Sobre ti');">
+					<f:attribute name="section" value="registro/documentationAndPld::8::menu6" />
+			</p:commandLink>
+			
+			
+			<p:commandLink id = "siguienteCierre"
+					       immediate = "true" ajax = "true"
+					       actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart        = "return  validateFileUpload('S');"
+						   oncomplete     = "closeMessageProcessing();"					
+						   update = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg"
+						   onclick="ga('send', 'event', 'Leads', 'Paso 4', 'Documentacion');"
+						   
+						   >
+					<f:attribute name = "section" value = "registro/cierre::6::menu7" />
+			</p:commandLink>
+			
+			<p:commandLink id = "siguienteBasicosReview"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart    = "return  validateNextMenu('N');"
+						   oncomplete = "closeMessageProcessing();"					
+						   update = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name="section" value="registro/basicosHistorial::2::menu1" />
+			</p:commandLink>
+						
+			<p:commandLink id = "nextBeneficiaries"
+						   immediate = "true" ajax = "true"
+						   actionListener = "#{navigationBean.cambiaPagina}"
+						   onstart    = "return  validateNextMenu('N');"
+						   oncomplete = "closeMessageProcessing();"					
+						   update = ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name="section" value="registro/investor/Ibeneficiaries::10::menu2" />
+			</p:commandLink>		
+			</h:form>
+			
+			<h:form id = "changeButtons">
+				<p:commandLink id             = "countPorcent"
+						       immediate      = "true" 
+							   ajax           = "true"
+							   actionListener = "#{navigationBean.cambiaPorcentBasicos}"		
+						update = ":form_Prin:buttons">
+				</p:commandLink>
+				
+				<p:inputText id = "porcBasic" value = "#{navigationBean.porcentBasic}" >
+					<p:ajax event = "blur"/>
+				</p:inputText>
+			</h:form>
+			
+			
+			
+		</div>
+		
+		<h:panelGroup id="pn_edadFueraRango">
+ 			  <div class="alerts edadFueraRango">
+ 			  		<ui:include src = "registro/edad_fuera_de_rango.xhtml"/>	
+ 			  </div>
+ 			  </h:panelGroup>
+		
+							 
+</ui:composition>

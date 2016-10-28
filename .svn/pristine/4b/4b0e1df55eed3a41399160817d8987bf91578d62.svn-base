@@ -1,0 +1,338 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+				
+<h:outputStylesheet library="css" name="buttonSyles.css"  target = "head"/>
+				
+				<h:outputStylesheet library="css" name="referencia-edicion.css"  target = "head" />
+
+				<h:outputScript name = "referencias-personales.js"              target = "head" library = "js"/>
+				<h:outputScript name = "referencia_edicion.js"                  target = "head" library = "js"/>
+
+				<h:panelGroup id="pnlContRef"  >
+				
+
+				<h:panelGroup  >
+				
+					<h:panelGroup id="pnlReferences">
+						<h3 class="tab"><strong class="orange">Referencias personales (#{referencias_personales.listReference == null ? '0' : referencias_personales.listReference.size()})</strong></h3>
+					</h:panelGroup>
+				
+				
+					<ui:repeat var="reference" 
+						value="#{referencias_personales.listReference}" varStatus="status">
+						<div
+							class="bloqueReferencia #{(status.index % 2) == 0 ? 'lendingAnswer' : 'lendingAnswer02'}">
+							
+							<div>Motivo:
+								<strong>
+									#{reference.motive != null ?reference.motive.description : " "}
+								</strong>
+							</div>
+												<div>
+								<strong>#{reference.first_name != null ?
+									reference.first_name : ""} #{reference.middle_name != null ?
+									reference.middle_name:""} #{reference.father_last_name != null
+									? reference.father_last_name : ""} #{reference.mother_last_name
+									!= null ? reference.mother_last_name : ""}</strong>
+							</div>
+							<div>#{reference.phone != null ? reference.phone:""}</div>
+							<div>#{reference.email != null ? reference.email:""}</div>
+							<div>#{reference.relationship != null ?
+								reference.relationship : ""}</div>
+							<div><strong>#{reference.score != null ?reference.score.description : " "}</strong></div>
+							<div class="clsCntBtn">
+								<div class="clsDeleteRefe">
+									
+									<h:commandLink  >
+										<p:ajax event="click" onstart="return initEdit();" listener="#{referencias_personales.cargaReferenciaRem}" oncomplete="oncompleteCargaRemove();" update=":frmQuest:pnlRemoveRef" ></p:ajax>
+										<i class="fa fa-minus" />
+										<f:attribute name="referencia" value="#{reference.referencePK.reference_id}::#{reference.referencePK.prospectus_id}::#{reference.referencePK.company_id}" ></f:attribute>
+									</h:commandLink>
+									
+								</div>
+
+								<div class="clsEdirtRefe">
+									<h:commandLink  >
+										<p:ajax event="click" onstart="return initEdit();" listener="#{referencias_personales.cargaReferencia}" oncomplete="oncompleteEdit();" update=":frmQuest:pnlEditRef" ></p:ajax>
+										<i class="fa fa-pencil" />
+										<f:attribute name="referencia" value="#{reference.referencePK.reference_id}::#{reference.referencePK.prospectus_id}::#{reference.referencePK.company_id}" ></f:attribute>
+									</h:commandLink>
+								</div>
+							</div>
+
+						</div>
+					</ui:repeat>
+
+					<div id="lendingProfileComment" class="refePerso">
+						<p class="gray">#{referencias_personales.noshowRefStr}</p>
+					</div>
+
+					<div class="addReferencia bloqueReferencia dvContent2">
+
+						<div class="field">
+						<div class="dvLabel">
+							<span class="labelsStl clslabelRef">
+								Motivo de por qué se pide referencia:
+							</span>
+						</div>
+						
+							<div class="selectNuevo">
+								<h:selectOneMenu id="MotivRef" styleClass="elementStlSelAddress" value="#{referencias_personales.referenceAdd.reference_motive_id}">
+									<f:selectItem itemValue="0" itemLabel="Selecciona" />
+
+									<f:selectItems value="#{referencias_personales.listReferenceMotive}" var="motive" itemLabel="#{motive.description}"  itemValue="#{motive.pk.reference_motive_id}"/>
+									
+									<p:ajax event="change"></p:ajax>
+								</h:selectOneMenu>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+							<span class="labelsStl clslabelRef">Nombre completo:
+							</span>
+							</div>
+
+							<div>
+								<h:inputText styleClass="elementAddres1" value="#{referencias_personales.referenceAdd.first_name}" >
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+							<span class="labelsStl clslabelRef telefonoRF">Teléfono:</span>
+							</div>
+							<div>
+								<h:inputText styleClass="elementAddres1 " value="#{referencias_personales.referenceAdd.phone}" >
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+							<span class="labelsStl clslabelRef">Correo Electrónico:</span>
+							</div>
+							<div>
+								<h:inputText styleClass="elementAddres1" value="#{referencias_personales.referenceAdd.email}" >
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+							<span class="labelsStl clslabelRef">Parentesco:</span>
+							</div>
+							<div>
+								<h:inputText styleClass="elementAddres1" value="#{referencias_personales.referenceAdd.relationship}" >
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+
+
+							<div class="dvLabel">
+							<span class="labelsStl clslabelRef">Calificación:</span>
+							</div>
+						<div class="selectNuevo">
+							<h:selectOneMenu id="ScoreRef" styleClass="elementStlSelAddress" value="#{referencias_personales.referenceAdd.reference_score_id}">
+									<f:selectItem itemValue="0" itemLabel="Selecciona" />
+
+									<f:selectItems value="#{referencias_personales.listReferenceScore}" var="score" itemLabel="#{score.description}"  itemValue="#{score.pk.reference_score_id}"/>
+									
+									<p:ajax event="change"></p:ajax>
+								</h:selectOneMenu>
+						</div>
+
+						<div class="btn_refe_ca">
+						<div id="cancelaRef" class="callActionMedium btnGris"
+							style="display: block;" onclick="cancelaAdd();" >Cancelar</div>
+						<div id="guardarRef" class="callActionMedium btnNaranja"
+							style="display: block;" onclick="saveAction();" >Guardar</div>
+
+
+					</div>
+					</div>
+
+
+					<div id="agregaRef" class="btn_verde"
+						style="display: block;" onclick="muestraAdd();" >Agregar Referencia</div>
+
+				</h:panelGroup>
+
+
+				<h:panelGroup id="pnlRemoveRef" >
+				
+				<div class="clsConfirmDelete alerts" >
+				
+					<div class="bloqueReferencia">
+				
+						<div class="clsEditRefTit" >Eliminar Referencia</div>
+
+						<div class="field">
+							
+							<div class="clslabelRef">
+							
+								¿Estas de acuerdo que se elimine a <b>#{referencias_personales.referenceRemove.first_name}</b> como referencia?
+							
+							</div>
+							
+						</div>
+						<div class="botonesEliminar">
+								<div id="cancelaRemRef" class="callActionMedium btnGris"
+									style="display: block;" onclick="closeRem();" >Cancelar</div>
+								<div id="guardarRemRef" class="callActionMedium btnNaranja"
+									style="display: block;" onclick="remAction();" >Eliminar</div>
+						</div>
+						
+					</div>
+				
+				</div>
+				
+				</h:panelGroup>
+
+
+				<h:panelGroup id="pnlEditRef" >
+				
+				
+				<div class="clsEditRef alerts">
+				
+				<div class="bloqueReferencia">
+				
+						<div class="clsEditRefTit" >Editar Referencia</div>
+
+						<div >
+							
+							<div class="dvLabel">
+								<span class="labelsStl clslabelRef">Motivo de por qué se pide
+								referencia:</span>
+							</div>
+							
+							<div class="selectNuevo">
+								<h:selectOneMenu id="MotivUpdateRef" styleClass="elementStlSelAddress" value="#{referencias_personales.referenceEdit.reference_motive_id}">
+									<f:selectItem itemValue="0" itemLabel="Selecciona" />
+
+									<f:selectItems value="#{referencias_personales.listReferenceMotive}" var="motive" itemLabel="#{motive.description}"  itemValue="#{motive.pk.reference_motive_id}"/>
+									
+									<p:ajax event="change"></p:ajax>
+								</h:selectOneMenu>
+							</div>
+							
+						</div>
+
+						<div class="field">
+							<div class="dvLabel">
+								<span class="labelsStl clslabelRef">Nombre completo:</span>
+							</div>
+
+							<div>
+								<h:inputText styleClass="elementAddres1" value="#{referencias_personales.referenceEdit.first_name}">
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+									<span class="labelsStl clslabelRef">Teléfono:</span>
+								</div>
+							<div>
+								<h:inputText styleClass="elementAddres1 " value="#{referencias_personales.referenceEdit.phone}">
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+								<span class="labelsStl clslabelRef">Correo Electrónico:</span>
+								</div>
+							<div>
+								<h:inputText styleClass="elementAddres1" value="#{referencias_personales.referenceEdit.email}">
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+						<div class="field">
+								<div class="dvLabel">
+									<span class="labelsStl clslabelRef">Parentesco:</span>
+								</div>
+							<div>
+								<h:inputText styleClass="elementAddres1" value="#{referencias_personales.referenceEdit.relationship}" >
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+						</div>
+
+
+						<div class="field">
+								<div class="dvLabel">
+									<span class="labelsStl clslabelRef">Calificación:
+								</span>
+								</div>
+								<div class="selectNuevo">
+								<h:selectOneMenu id="ScoreUpdateRef" styleClass="elementStlSelAddress" value="#{referencias_personales.referenceEdit.reference_score_id}">
+										<f:selectItem itemValue="0" itemLabel="Selecciona" />
+	
+										<f:selectItems value="#{referencias_personales.listReferenceScore}" var="score" itemLabel="#{score.description}"  itemValue="#{score.pk.reference_score_id}"/>
+										
+										<p:ajax event="change"></p:ajax>
+									</h:selectOneMenu>
+							</div>
+						</div>
+
+				<div class="botonesEliminar">
+						<div id="cancelaEditRef" class="callActionMedium btnGris"
+							style="display: block;" onclick="closeEdit();" >Cancelar</div>
+						<div id="guardarEditRef" class="callActionMedium btnNaranja"
+							style="display: block;" onclick="updateAction();" >Editar</div>
+					</div>
+
+					</div>
+					
+					</div>
+				
+				</h:panelGroup>
+
+				<div style="display: none;">
+					<h:inputText id="init-access-CONFIG" immediate="true">
+						<p:ajax event="click"
+							oncomplete="ReferenciasPersonales.init_access_on_complete(xhr, status, args);"
+							listener="#{referencias_personales.auditor.init_access_CONFIG}" />
+					</h:inputText>
+					
+					<h:commandLink id="cmdRemRefAction" >
+						<p:ajax event="click"  listener="#{referencias_personales.removeReference}" update=":frmQuest:pnlContRef" oncomplete="initVelo();"  ></p:ajax>
+						<i class="fa fa-minus" />
+					</h:commandLink>
+					
+					<h:commandLink id="cmdUpdateRefAction" >
+						<p:ajax event="click"  listener="#{referencias_personales.updateReference}" update=":frmQuest:pnlContRef" oncomplete="initVelo();" ></p:ajax>
+						<i class="fa fa-minus" />
+					</h:commandLink>
+					
+					<h:commandLink id="cmdSaveRefAction" >
+						<p:ajax event="click"  listener="#{referencias_personales.saveReference}" update=":frmQuest:pnlContRef" oncomplete="initVelo();"  ></p:ajax>
+						<i class="fa fa-minus" />
+					</h:commandLink>
+					
+				</div>
+				
+				<script>
+				
+				
+				</script>
+				</h:panelGroup>
+
+
+</ui:composition>

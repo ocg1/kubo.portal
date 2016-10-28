@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{summaryRequest.actividad_economica.domicilio.coincidencias_NIVEL_2 gt 0 and sessionBean.area == 'M'}">
+			
+		<p:commandLink id = "alarma-coincidencias-NIVEL-2" onclick = "init_listener_lista_coincidencias('NIVEL_2', 'ACTIVIDAD_ECONOMICA'); ">
+	
+			<i title  = "#{summaryRequest.actividad_economica.domicilio.alarma_NIVEL_2}"
+				
+				class="mapaSitio fa fa-exclamation-circle"/>			 				
+		</p:commandLink>
+													
+	</h:panelGroup>			
+	
+	<div style = "display: none"> 
+		<p:commandLink id = "init-lista-coincidencias-NIVEL-2" immediate = "true" update = "panel-lista-coincidencias-actividad"
+		 		   actionListener = "#{summaryRequest.actividad_economica.domicilio.listener_lista_coincidencias_NIVEL_2}"
+		 		   onstart    = "displayMessageProcessing('msgprocessing',false);"
+		 		   oncomplete = "listener_lista_coincidencias(xhr, status, args);"/>
+	</div>
+		
+</ui:composition>	

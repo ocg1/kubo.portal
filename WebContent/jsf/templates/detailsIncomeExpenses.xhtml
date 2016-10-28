@@ -1,0 +1,177 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	> 
+
+<h:head>
+	
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/ayudaStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/frmStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/preregistro2.css" />
+	
+	<link rel="stylesheet" type="text/css" href="../../resources/css/loanListStyle.css" /> 
+
+        <script type = "text/javascript" src = "../resources/js/loanListScript_complements.js"/>
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_contadorToken.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_movimentos.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_botonRegreso.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/urlParameters.js"/>	
+		<script type = "text/javascript" src = "../resources/js/loanListScript_resumenSaldos.js"/>	
+</h:head>
+
+<h:body>
+<div class="clTitle" >
+	<h:outputText value="#{msg.Safe_household_expenditure}"  />
+</div>
+<h:form id="frm_details_income_expenses" prependId="false">
+		<fieldset>	
+						<div class="dvContent2">
+							<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.Credit_card_text}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<div  class="dvElementLength" style="width: 500px;" >
+										<h:inputText id="inp_credit_car_help" style="text-align: right; width:110px !important;" styleClass="elementAddres1" onkeyup="format(this);$('#cbo_credit_car_loan').val(0);$('#inp_month_loan_credit_car').val('0.00');calculatedValueLoan('','','');"/>
+									
+										<h:selectOneMenu id="cbo_credit_car_loan" style="width:120px !important;margin-left: 10px;padding: 0px;" onchange="calculatedValueLoan(this,'inp_credit_car_help','inp_month_loan_credit_car');" styleClass="elementStlSelAddress">
+											<f:selectItem itemValue="0"  itemLabel="Seleccione"/>										
+											<f:selectItem itemValue="2" itemLabel="Semanal"/>
+											<f:selectItem itemValue="3" itemLabel="Quincenal"/>
+											<f:selectItem itemValue="4" itemLabel="Mensual"/>																																			
+										</h:selectOneMenu>
+										<span class="labelsStl" style="margin-left: 50px;font-size: 1.1em;">$</span>
+										<h:inputText id="inp_month_loan_credit_car" styleClass="elementStl" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;" disabled="true" value="0.00"/><h:outputText value=" #{msg.Monthly_text}" style="font-size: 1.1em;" styleClass="labelsStl"></h:outputText>
+										
+									</div>
+							</div>
+							<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.Personal_loan_text}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<div  class="dvElementLength" style="width: 500px;" >
+										<h:inputText  id="inp_personal_loan_help" style="text-align: right; width:110px !important;" styleClass="elementAddres1" onkeyup="format(this);$('#cbo_personal_loan').val(0);$('#inp_month_loan_personal').val('0.00');calculatedValueLoan('','','');" size="15"/>
+									
+										<h:selectOneMenu id="cbo_personal_loan" style="width:120px !important;margin-left: 10px;padding: 0px;" onchange="calculatedValueLoan(this,'inp_personal_loan_help','inp_month_loan_personal');" styleClass="elementStlSelAddress">
+											<f:selectItem itemValue="0"  itemLabel="Seleccione..."/>											
+											<f:selectItem itemValue="2" itemLabel="Semanal"/>
+											<f:selectItem itemValue="3" itemLabel="Quincenal"/>
+											<f:selectItem itemValue="4" itemLabel="Mensual"/>																																				
+										</h:selectOneMenu>									
+										<span class="labelsStl" style="margin-left: 50px;font-size: 1.1em;">$</span>
+										<h:inputText id="inp_month_loan_personal" styleClass="elementStl" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;" disabled="true" value="0.00" /><h:outputText value=" #{msg.Monthly_text}" style="font-size: 1.1em;" styleClass="labelsStl"></h:outputText>
+									</div>
+							</div>
+							<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.Payroll_credit_text}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<div  class="dvElementLength" style="width: 500px;" >
+										<h:inputText id="inp_payroll_credit_help" style="text-align: right; width:110px !important;" styleClass="elementAddres1" onkeyup="format(this);$('#cbo_payroll_credit_loan').val(0);$('#inp_month_loan_payroll').val('0.00');calculatedValueLoan('','','');" size="15"/>
+									
+										<h:selectOneMenu id="cbo_payroll_credit_loan" style="width:120px !important;margin-left: 10px;padding: 0px;" onchange="calculatedValueLoan(this,'inp_payroll_credit_help','inp_month_loan_payroll');" styleClass="elementStlSelAddress">
+											<f:selectItem itemValue="0"  itemLabel="Seleccione..."/>											
+											<f:selectItem itemValue="2" itemLabel="Semanal"/>
+											<f:selectItem itemValue="3" itemLabel="Quincenal"/>
+											<f:selectItem itemValue="4" itemLabel="Mensual"/>																																		
+										</h:selectOneMenu>
+										<span class="labelsStl" style="margin-left: 50px;font-size: 1.1em">$</span>
+										<h:inputText id="inp_month_loan_payroll" styleClass="elementAddres1" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;" disabled="true" value="0.00"/><h:outputText value=" #{msg.Monthly_text}" style="font-size:1.1em" styleClass="labelsStl"></h:outputText>
+									</div>
+							</div>
+							<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.Car_text}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<div  class="dvElementLength" style="width: 500px;" >
+										<h:inputText id="inp_car_help" style="text-align: right; width:110px !important;" styleClass="elementAddres1" onkeyup="format(this);$('#cbo_car_loan').val(0);$('#inp_month_loan_car').val('0.00');calculatedValueLoan('','','');" size="15"/>
+																
+										<h:selectOneMenu id="cbo_car_loan" style="width:120px !important;margin-left: 10px;padding: 0px;" onchange="calculatedValueLoan(this,'inp_car_help','inp_month_loan_car');" styleClass="elementStlSelAddress">
+											<f:selectItem itemValue="0"  itemLabel="Seleccione..."/>											
+											<f:selectItem itemValue="2" itemLabel="Semanal"/>
+											<f:selectItem itemValue="3" itemLabel="Quincenal"/>
+											<f:selectItem itemValue="4" itemLabel="Mensual"/>																																			
+										</h:selectOneMenu>
+										<span class="labelsStl" style="margin-left: 50px;font-size: 1.1em;">$</span>
+										<h:inputText id="inp_month_loan_car" styleClass="elementAddres1" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;" disabled="true" value="0.00" /><h:outputText value=" #{msg.Monthly_text}" style="font-size:1.1em" styleClass="labelsStl"></h:outputText>
+									</div>
+							</div>
+	      					<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.Series_text}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<p />
+									<div  class="dvElementLength" style="width: 500px;" >
+										<h:inputText id="inp_series_help" style="text-align: right; width:110px !important;" styleClass="elementAddres1" onkeyup="format(this);$('#cbo_series_loan').val(0);$('#inp_month_loan_series').val('0.00');calculatedValueLoan('','','');" size="15"/>
+									
+										<h:selectOneMenu id="cbo_series_loan" style="width:120px !important;margin-left: 10px;padding: 0px;" onchange="calculatedValueLoan(this,'inp_series_help','inp_month_loan_series');" styleClass="elementStlSelAddress">
+											<f:selectItem itemValue="0"  itemLabel="Seleccione..."/>											
+											<f:selectItem itemValue="2" itemLabel="Semanal"/>
+											<f:selectItem itemValue="3" itemLabel="Quincenal"/>
+											<f:selectItem itemValue="4" itemLabel="Mensual"/>																																				
+										</h:selectOneMenu>
+										<span class="labelsStl" style="margin-left: 50px;font-size: 1.1em">$</span>
+										<h:inputText id="inp_month_loan_series" styleClass="elementStl" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;" disabled="true" value="0.00" /><h:outputText value=" #{msg.Monthly_text}" style="font-size:1.1em" styleClass="labelsStl"></h:outputText>
+										
+									</div>
+							</div>
+							<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.Other_text}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<div  class="dvElementLength" style="width: 500px;" >
+										<h:inputText id="inp_other_help" style="text-align: right; width:110px !important;" styleClass="elementAddres1" onkeyup="format(this);$('#cbo_other_loan').val(0);$('#inp_month_loan_other').val('0.00');calculatedValueLoan('','','');" size="15"/>
+									
+										<h:selectOneMenu  id="cbo_other_loan" style="width:120px !important;margin-left: 10px;padding: 0px;" onchange="calculatedValueLoan(this,'inp_other_help','inp_month_loan_other');" styleClass="elementStlSelAddress">
+											<f:selectItem itemValue="0"  itemLabel="Seleccione..."/>											
+											<f:selectItem itemValue="2" itemLabel="Semanal"/>
+											<f:selectItem itemValue="3" itemLabel="Quincenal"/>
+											<f:selectItem itemValue="4" itemLabel="Mensual"/>																																			
+										</h:selectOneMenu>
+										<span class="labelsStl" style="margin-left: 50px;font-size: 1.1em">$</span>
+										<h:inputText id="inp_month_loan_other" styleClass="elementStl" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;" disabled="true" value="0.00" /><h:outputText value=" #{msg.Monthly_text}" style="font-size:1.1em" styleClass="labelsStl"></h:outputText>
+									</div>
+									
+							</div>	
+							<p:separator  style="float: right; margin-right: 35px; width: 180px;" />
+							<div class="dvContent" style="float: right;">
+									<div  class="dvLabel" style="width: 50px;" >
+										<h:outputText value="#{msg.Sum_total_text}" style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+									</div>
+									<div class="dvElementLength" style="float: right; width: 210px; margin-left: 36px;">
+										<span class="labelsStl" style="font-size:1.1em" >$</span>
+										<h:inputText id="inp_total_loan_help" styleClass="elementStl" style="text-align: right; margin-left: 10px; border: medium none ! important; width: 80px ! important;font-size: 1.1em ! important;font-weight: bold !important;" disabled="true" value="0.00" />
+										<h:outputText value=" #{msg.Monthly_text}" style="font-size:1.1em;font-weight: bold;" styleClass="labelsStl"></h:outputText>
+									</div>
+							</div>																																
+						
+						</div>
+						</fieldset>
+						
+						<div class="dvContent">
+							 	<div class="dvLabel"> 										
+								</div>
+								<p />
+								<div class="dvElementLength" style="width: 500px;">
+								<div class="buttonCP" id="btn_cancel_helpme"  style="float: left; margin-right: 10px;">
+									#{msg.Btn_return}
+								</div>
+											
+								<div class="buttonCP" id="btn_clean_helpme" style="float: left;margin-right: 10px;" >
+									#{msg.Btn_clean_form}
+								</div>
+								
+								<div class="buttonCP" id="btn_end_helpme" style="float: left;" >
+									#{msg.Btn_end}
+								</div>
+											
+									 
+								</div>								
+					      </div> 			
+		</h:form>
+</h:body>
+</html>

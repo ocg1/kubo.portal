@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+      xmlns:h  = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f  = "http://java.sun.com/jsf/core"
+      xmlns:p  = "http://primefaces.org/ui">
+
+	<h:head>
+		<title>#{editor_solicitud.page_title}</title>			       
+    	
+		<meta http-equiv = "Content-Type" content = "text/html; charset=UTF-8" />	
+		
+		<script type = "text/javascript" src = "../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"/>
+		<script type = "text/javascript" src = "../resources/js/fancybox/jquery.easing-1.3.pack.js"/>
+		<script type = "text/javascript" src = "../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"/>
+ 	
+		<script type = "text/javascript" src = "https://maps.google.com/maps/api/js?sensor=true"/>
+		<script type = "text/javascript" src = "https://www.google.com/jsapi"/>
+		<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"/>
+
+		<script type = "text/javascript" src = "../kubo/js/scriptUnidadEsp.js"/>	
+		
+		<link type = "text/css" rel = "stylesheet" href = "resources/css/reset.css" />        
+        <link type = "text/css" rel = "stylesheet" href = "resources/css/kubo_styles.css" />
+        <link type = "text/css" rel = "stylesheet" href = "resources/css/font-awesome.css" />		
+		
+		<script>
+		$(document).ready(function ()
+		{
+			console.log("init");
+			
+			$("#detailsBuro, #DiagnosticoButton").css("display","none")	
+			
+			init_access_CONFIG();
+		});
+		
+		init_access_CONFIG = function()
+		{		
+			var user_agent = navigator.userAgent;
+			
+			var browser_width  = $(window).width();
+			var browser_height = $(window).height();
+			
+			var access_CONFIG = browser_width + "::" + browser_height + "::" + user_agent;
+			
+			console.log("init_access_CONFIG(): " + access_CONFIG);
+			
+			$("#init-access-CONFIG").val(access_CONFIG).trigger("click");
+		};
+		
+		init_access_on_complete = function(xhr, status, args)
+		{
+			var init_access_OK = args.init_access_OK;		
+			
+			console.log("init_access_on_complete(): " + init_access_OK);
+		};
+		</script>						
+	</h:head>
+	
+	<h:body style = "background:#f1f1f1;">			
+				
+		<ui:include  src = "../jsf/styles/solicitud.xhtml"  />
+		<ui:include  src = "../jsf/scripts/solicitud.xhtml"  />
+		
+		<div class = "veloE"></div>
+		
+		<div style = "display: none">
+			<ui:include src = "../jsf/secciones/controlTable/menu/menu_items.xhtml"/>
+		</div>	
+		
+		<p:outputPanel id = "actualPage">	
+			<div class = "pantalla_controltable content pantallaTelefonos">
+				<img style = "width:80px; height:auto; margin:0 0 15px;" src="https://www.kubofinanciero.com/Kubo/Portal/resources/images/logo_kubo.png"/>
+				
+				<ui:include  src = "../jsf/templates/request.xhtml"  />
+			</div>
+		</p:outputPanel>
+		
+		<h:form prependId = "false">
+			<div style = "display: none;">				
+				<h:inputText id = "init-access-CONFIG" immediate = "true">
+					<p:ajax event = "click"
+						   	oncomplete = "init_access_on_complete(xhr, status, args);"
+						   	listener   = "#{editor_solicitud.auditor.init_access_CONFIG}"/>
+				</h:inputText>	
+			</div>
+		</h:form>
+	</h:body>		
+      
+</html>

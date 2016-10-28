@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+ 	
+ 		<div>
+		  	<h:commandButton immediate = "true" value = "Renovar solicitud de credito">
+		  		<p:ajax event = "click" listener = "#{testAdditionalCredit.renovar_solicitud_de_credito}"/>
+		  	</h:commandButton>
+	  	</div>	  
+	  	
+	  	<div>
+			<h:commandButton immediate = "true" value = "Crear nuevo proyecto">
+		  		<p:ajax event = "click" listener = "#{testAdditionalCredit.generar_solicitud}"/>
+		  	</h:commandButton>
+	  	</div>		
+	  	
+	  	<div>
+			<h:commandButton immediate = "true" value = "Renovación Aprobación Automática">
+		  		<p:ajax event = "click" listener = "#{testAdditionalCredit.init_renovacion_aprobacion_automatica}"/>
+		  	</h:commandButton>
+	  	</div>					
+</ui:composition>				

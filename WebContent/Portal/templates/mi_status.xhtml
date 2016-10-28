@@ -1,0 +1,15 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+		<div class="disponible">
+            <a href="javascript:void(0);" class="open-disponible">Tu estatus</a>
+            <div class="inner-disponible">
+               <p>Dispones de <span>$1.000.000.00</span> en total /  <span>2</span> proyectos.  Saldo: <span>$8,000</span> </p>
+                <div class="invertir_filtros"><p:commandLink value="Invertir" onclick="ga('send','event', 'Status','Invertir')" styleClass="mi_estatus_invertir" ></p:commandLink></div>
+            </div>
+        </div>
+
+</ui:composition>

@@ -1,0 +1,39 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "tabla-oferta-2-#{renovationNumber.index}" class = "tablaUn  morado">
+		<div class = "tabla-header ofert-frequency-2-#{renovationNumber.index}">#{renovacion.term_frequency_2_TOKEN}</div>
+		
+		<div class = "nCol">
+          		<table cellspacing="0" cellpadding="0" border="0">
+          			<tr>
+          				<th class="checkHead"></th>
+					<th>Préstamo</th>
+           			<th>Pago mensual</th>
+				</tr>
+			</table>
+		</div>
+			
+		<div class="tabla-cont">
+          		<table cellspacing="0" cellpadding="0" border="0">
+          			<ui:repeat var = "oferta" value = "#{renovacion.tabla_oferta_2}" varStatus = "position">					
+           			<tr>
+            			<td  class="check">
+            				<div class="combo_checkBox fa">
+                               	<input type="checkbox" checked="checked" name="check" onclick="Ofertas.combo_checkBox(this, #{position.index}, 2, #{renovationNumber.index})"/>
+							</div>
+            			</td>
+						<td class = "ofert-ammount-#{position.index}">$#{oferta.ammount}</td>
+		            	<td class = "ofert-payment-#{position.index}">$#{oferta.payment}</td>
+            		</tr>
+            	</ui:repeat>
+          		</table>
+          		
+          		<div class = "callAction btn-oferta-continuar btn-continuar-2-#{renovationNumber.index}" onclick = "Ofertas.init_simulation_ofert();">Continuar</div>
+          					
+          	</div>            				            				
+	</div>				
+</ui:composition>				

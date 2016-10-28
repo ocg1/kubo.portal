@@ -1,0 +1,60 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "gestor-sesiones">				
+		<div class = "gestion-sesiones container" >
+	
+			<div style = "width: 250px;">
+				<strong>Usuarios Firmados:			
+				<h:outputText value="#{gestor_sesiones.lista_membership.size()}" /></strong> 	
+			</div>
+				
+			<h:panelGroup rendered = "#{gestor_sesiones.lista_membership.size() > 0}" >
+				<table cellspacing="0"  cellpadding="0" border = "0"  class="formato_tablas sesiones">
+					<thead>
+						<tr>
+							<th>prospectus_id</th>
+							<th colspan="2" style= "text-align: left;">email</th>
+						</tr>
+					</thead>
+							
+					<tbody>
+						<ui:repeat value = "#{gestor_sesiones.lista_membership}" var = "usuario">
+								<tr>
+									<td >#{usuario.membershipPK.prospectus_id}</td>
+									
+									<td>#{usuario.email}</td>
+									
+									<td>
+					
+										<div onclick = "GestorSesiones.listener_usuario_SELECTED(#{usuario.membershipPK.prospectus_id});"
+											 class = "callActionMedium borrarSesion btnNaranja " 
+											 >
+											Borrar sesión
+										</div>		
+									</td>	
+								</tr>						
+						</ui:repeat>
+					</tbody>
+				</table>
+				<script>
+					 $(document).ready(function() {
+				    
+					setTimeout(function(){
+			    		
+						$(".sesiones tr:odd").addClass("par");
+			
+						
+						 
+					 	},100);
+					
+					 });
+					
+				</script>
+			</h:panelGroup>
+		</div>			
+	</h:panelGroup>				
+</ui:composition>				

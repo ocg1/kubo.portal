@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div style = "display: none;">
+		<h:inputText id = "init-pool-autenticacion" immediate = "true" ajax = "true">
+			<p:ajax event = "click" 
+					listener   = "#{tablero_autenticacion.init_pool_autenticacion}" 
+					oncomplete = "pool_autenticacion_on_complete(xhr, status, args);" 
+					update     = ":panel-pool-autenticacion" />
+		</h:inputText>
+	</div>
+				
+</ui:composition>				

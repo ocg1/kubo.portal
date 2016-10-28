@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/ayudaStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/header.css" />
+
+</h:head>
+
+<h:body>
+
+	<div class="backHeader">
+		<div id="logo">
+			<p:graphicImage  
+				url="../../../resources/img/logoblancoV5.png"
+				>
+			</p:graphicImage>
+		</div>
+	</div>
+
+<div class="kuboPrimeraPlataforma">
+	<br></br><br></br>
+	<b>Kubo</b> es la primera plataforma de financiamiento para proyectos creativos. Cada semana, decenas de miles de 
+	 personas asombrosas apoyan con millones de dólares a los proyectos del mundo de la música, el cine, arte, tecnología, diseño, comida, 
+	publicidad y otros áreas creativos.
+	<br></br><br></br>
+	Una nueva modalidad de oferta y demanda. No se trata de inversiones o préstamos. Los creadores del proyecto mantienen el 100% de 
+	la propiedad y el control sobre su trabajo. En su lugar, ofrecen productos y experiencias que son únicas para cada proyecto.
+	<br></br><br></br>
+	Todo o nada del financiamiento. En <b>kubo</b>, un proyecto debe alcanzar su meta de financiamiento antes de que acabe el 
+	tiempo o ningún dinero cambia de manos. ¿Por qué? Protegemos a todos los involucrados. 
+	<br></br><br></br>
+	Cada proyecto es una creación independiente de alguien como tú. No importa el tamaño de tu proyecto, ya sea grande y pequeño, serio y caprichoso, 
+	tradicional y experimental. 
+	<br></br><br></br>
+	Esperamos que estés de acuerdo ... Bienvenido a <b>kubo</b>!
+	<br></br><br></br>
+Gracias!
+</div>
+</h:body>
+</html>

@@ -1,0 +1,54 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+							
+
+	
+		<h:panelGroup rendered = "#{sessionBean.area == 'I'}">
+			<div class = "aviso_inicial">
+				
+				<!-- >h3>Información importante </h3 -->
+				<!-- p>Por tu seguridad, despues de 10 min de inactividad,<br/> tendrás que reiniciar tu sesión.</p -->
+<!-- 
+				<p>Pero tu información se guardará automáticamente para que continúes donde te quedaste.</p>								
+-->
+				<ui:include src = "person-type.xhtml"/>
+				
+				<h:panelGroup id = "persona-moral-ENABLED">
+					<h:panelGroup rendered = "#{basicData.moral.persona_moral_ENABLED}">
+						<div class="sectionInv">
+							Datos de la Empresa
+						</div>	
+						
+						<ui:include src = "legal-name.xhtml"/>
+						<ui:include src = "society-type.xhtml"/>
+						<ui:include src = "mx-company-rfc.xhtml"/>
+						
+				
+							
+							<div class="sectionInv">Datos del Representante Legal</div>	
+											
+					</h:panelGroup>					
+				</h:panelGroup>
+			</div>	
+		</h:panelGroup>
+		
+		<div class = "dvContent2">
+			<h:panelGroup>
+				<ui:include src = "nombre.xhtml"/>	
+				<ui:include src = "segundoNombre.xhtml"/>		
+				<ui:include src = "apellidos.xhtml"/>
+			</h:panelGroup>
+			
+			<ui:include src = "genero.xhtml"/>
+			<ui:include src = "fecha_nacimiento.xhtml"/>
+			<ui:include src = "nacionalidad.xhtml"/>	
+			<ui:include src = "lugar_nacimiento.xhtml"/>
+			<ui:include src = "pais_nacimiento.xhtml"/>
+			<ui:include src = "remote-command.xhtml"/>													
+		</div>
+	
+			
+</ui:composition>				

@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+				<div class="col_lateral req containerFloatingMenu">
+                	<div class="menu_inscripcion FloatingMenu">
+                		<div class="contentMenu">
+                		<h5 class="comoFunciona"><span>¿Cómo funciona?</span></h5>
+               
+                       
+					  <ul>
+							 <li><span>1.	Regístrate.</span></li>
+							 <li><span>2.	Completa tu solicitud.</span></li>
+							 <li><span>3.	Deposita a partir de $10 mil.</span></li>
+							 <li><span>4.	Invierte en proyectos.</span></li>
+							 <li><span>5.	Recibe tus rendimientos</span></li>
+                       </ul>
+                    	<h5><span>Requisitos</span></h5>
+                        <ul>
+
+                                <li><span>1. Identificación oficial vigente.</span></li>
+                                <li><span>2. Comprobante de domicilio.</span></li>
+                                <li><span>3. Cuenta bancaria a tu nombre.</span></li>
+                              
+                          
+
+                            </ul>
+                            
+                 
+                		 
+                    </div>
+                    
+                    </div>
+                   
+					
+            
+                </div>
+
+</ui:composition>

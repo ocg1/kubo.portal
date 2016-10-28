@@ -1,0 +1,32 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<!-- <div class="buttonPR" onclick="editPhone#{p.index}.save()" style="width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">Guardar</div> -->		
+														 	
+	<!-- <div class="buttonPR"  onclick="editPhone#{p.index}.cancel()" style="margin: 0; width: 71px;font-size:0.9em;float: left;">Cancelar</div> -->
+		 	
+		 	<div class="buttonPR" onclick = "Telefonos.save(#{p.index})" style="width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">Guardar</div>
+		 	
+		 	<div class="buttonPR" onclick = "Telefonos.cancel(#{p.index});" 
+		 	style="margin: 0; width: 71px;font-size:0.9em;float: left;">Cancelar</div>		
+		 	
+		 	<div id = "init-phone-#{p.index}" style = "display: none">
+				<h:commandLink immediate = "true">
+					<p:ajax event = "click"
+							onstart    = "Telefonos.phone_onstart(#{p.index});"
+							oncomplete = "Telefonos.phone_oncomplete(xhr, status, args);" 
+							listener   = "#{summaryRequest.telefono.init_phone(p)}"/>
+				</h:commandLink>							
+			</div>		
+			
+			<div id = "save-phone-#{p.index}" style = "display: none">
+				<h:commandLink immediate = "true">
+					<p:ajax event = "click"
+							oncomplete = "Telefonos.update_oncomplete(xhr, status, args);" 
+							listener  = "#{summaryRequest.telefono.init_update(p)}"/>
+				</h:commandLink>							
+			</div>				
+</ui:composition>				

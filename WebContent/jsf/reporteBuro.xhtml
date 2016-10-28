@@ -1,0 +1,40 @@
+<ui:composition
+	xmlns	 = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+	 <meta name="format-detection" content="telephone=no"/>	 
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/jquery-ui/css/redmond/jquery-ui-1.8.4.custom.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/jquery-ui/css/ui-lightness/jquery-ui-1.8.4.custom.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/jquery-ui/css/smoothness/jquery-ui-1.8.4.custom.css"/>		
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/css/base.css" />
+	<link rel = "stylesheet" type = "text/css" href = "../resources/css/reporteBuro.css" />	
+	<link rel = "stylesheet" type = "text/css" href = "../resources/css/bootstrap-sgb-iconos.css" />	
+	<link rel = "stylesheet" type = "text/css" href = "https://www.kubofinanciero.com/SGBBeta/css/bootstrapSgb.css"  />
+	
+	<script type = "text/javascript" src = "../resources/js/tableFix/highlighter/codehighlighter.js" />
+	<script type = "text/javascript" src = "../resources/js/tableFix/highlighter/javascript.js" />  
+	<script type = "text/javascript" src = "../resources/js/tableFix/javascript/jquery.fixheadertable.min.js" />
+	<script type = "text/javascript" src = "../resources/js/reporteBuro.js" />
+	<script type = "text/javascript" src = "../resources/js/reporteBuroChart.js" />	
+	
+	<ui:include src = "consulta-buro/datos-personales.xhtml"/>
+	<ui:include src = "consulta-buro/bloqueos.xhtml"/>
+	<ui:include src = "consulta-buro/grafica.xhtml"/>
+	<ui:include src = "consulta-buro/nivel-endeudamiento.xhtml"/>
+	<ui:include src = "consulta-buro/consultas-anteriores.xhtml"/>
+	<ui:include src = "consulta-buro/perfil-riesgo.xhtml"/>	 		
+	<ui:include src = "consulta-buro/direcciones.xhtml"/>
+	<ui:include src = "consulta-buro/creditos.xhtml"/>	
+	<ui:include src = "consulta-buro/consultas.xhtml"/>
+	<ui:include src = "consulta-buro/alertas.xhtml"/>
+	<ui:include src = "consulta-buro/identificar-creditos.xhtml"/>  			 				 		
+ 			
+ 	<h:outputText escape = "false"   value = "#{chartBackBean.scriptAction}" />
+ 	 
+ 	<ui:include src = "consulta-buro/login.xhtml"/> 	 
+ 	<ui:include src = "templates/msgProcessing.xhtml" />
+ 	
+</ui:composition>

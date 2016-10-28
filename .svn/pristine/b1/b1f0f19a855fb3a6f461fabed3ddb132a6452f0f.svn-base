@@ -1,0 +1,112 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+		<fieldset>		
+				
+					<div class="dvContent">
+						
+							<h3 class="encH3">Un amigo</h3>
+						
+					</div>
+			
+					<div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.Name_innerText} "/>
+						</div>
+				
+						<div  class="dvElementAddres1">
+							<h:inputText  id="inp_name_ref2" styleClass="elementAddres1 hideIFE validatorClass hs_class" value="#{moreInfo.reference2.first_name}" >
+								<p:ajax event="blur" onstart="return validaNombre('inp_name_ref2')"   listener="#{moreInfo.saveReference2}" ></p:ajax>
+							</h:inputText>	
+							<p:watermark for="inp_name_ref2" value="Escribe su nombre"/>						
+						</div>
+					</div>	
+					<div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.SecondName_innerText}"/>
+						</div>
+					
+						<div  class="dvElementAddres1">
+							<h:inputText id="inp_secondName_ref2" styleClass="elementAddres1 hideIFE" value="#{moreInfo.reference2.middle_name}" >
+								<p:ajax event="blur"   listener="#{moreInfo.saveReference2}" ></p:ajax>
+							</h:inputText>	
+							<p:watermark for="inp_secondName_ref2" value="Escribe su segundo nombre"/>													
+						</div>
+					</div>
+					<div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.LastName_innerText}"/>
+						</div>
+					
+						
+							<h:inputText id="inp_lastName_ref2" styleClass="elementAddres1 hideIFE validatorClass hs_class" value="#{moreInfo.reference2.father_last_name}" >
+								<p:ajax event="blur"   listener="#{moreInfo.saveReference2}" ></p:ajax>						
+							</h:inputText>							
+							<p:watermark for="inp_lastName_ref2" value="Escribe su apellido paterno"/>	
+					</div>	
+					<div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.SurName_innerText}"/>
+						</div>
+					
+						
+							<h:inputText id="inp_surName_ref2" styleClass="elementAddres1 hideIFE" value="#{moreInfo.reference2.mother_last_name}" >
+								<p:ajax event="blur"   listener="#{moreInfo.saveReference2}" ></p:ajax>	
+							</h:inputText>							
+						<p:watermark for="inp_surName_ref2" value="Escribe su apellido materno"/>	
+					</div>
+					<div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="Relación *"/>
+						</div>
+					
+		
+							<h:inputText id="refRelation2" value="#{moreInfo.reference2.relationship}" styleClass="elementAddres1 hideIFE validatorClass hs_class">
+								<p:ajax event="blur" onstart="hideIFEjs()" listener="#{moreInfo.saveReference2}"></p:ajax>
+							</h:inputText>
+							<p:watermark for="refRelation2" value="Escribe"/>
+					</div>
+					<div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="Teléfono celular * "/>
+						</div>
+					
+					
+						 
+							<!-- 
+							<h:inputText id="lada_phone2" maxlength="3" onkeypress="return isNumberKey(event);"  styleClass="elementAddres1 validatorClass lada_tel" value="#{moreInfo.phone_lada_ref2}">						
+								<p:ajax event="blur"  listener="#{moreInfo.savePhoneRef2}" ></p:ajax>
+							</h:inputText> -->
+							
+							<div  class="containerPnohe" >
+										<h:outputLabel styleClass="labelsStl" value="044/045"/>
+									
+							
+										<h:inputText id="phone2" maxlength="10" onkeypress="return isNumberKey(event);"  styleClass="elementAddres1 hideIFE validatorClass number_tel hs_class" value="#{moreInfo.phone_ref2}">
+											<p:ajax event="blur"  listener="#{moreInfo.savePhoneRef2}"   ></p:ajax>
+										</h:inputText>	
+									
+										<p:watermark for="phone2" value="Son 10 dígitos"/>
+												
+								</div>
+					
+					</div>
+					<!-- div class="field">
+						<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.Email_norequired_text}"/>
+						</div>
+					
+						
+							<h:inputText id="refMail2" value="#{moreInfo.reference2.email}" styleClass="elementAddres1 hideIFE">
+								<p:ajax event="blur" onstart="hideIFEjs(); checaemailElement('refMail2');" listener="#{moreInfo.saveReference2}" ></p:ajax>
+							</h:inputText>
+						
+					</div -->
+					
+		
+		</fieldset>
+	
+</ui:composition>		

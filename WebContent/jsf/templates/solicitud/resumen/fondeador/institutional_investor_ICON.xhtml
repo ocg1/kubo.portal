@@ -1,0 +1,15 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">		
+
+	<div class = "imgInstitutionalInvestor">
+		<h:panelGroup rendered = "#{sessionBean.area=='M' and summaryRequest.actualProyect.is_kubo_property!=0}">
+			<h:graphicImage id = "imgInstitutionalInvestor" 
+							url = "../resources#{summaryRequest.actualProyect!=null?summaryRequest.actualProyect.institutionalInvestor.icon:'/img/logo_cartera_pronafim.png'}" 
+							onclick = "hideComponent()" 
+							height = "#{summaryRequest.actualProyect.institutionalInvestor.institutionalInvestorPK.institutional_investor_id==1?'30px':'40px'};"/>
+		</h:panelGroup>
+	</div>				
+</ui:composition>				

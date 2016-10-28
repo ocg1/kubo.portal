@@ -1,0 +1,295 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				<section class="espacio">
+				
+					<div class="container">
+					<div class="logoAtlas"><h:graphicImage library="img" name= "segurosAtlas.jpg"   /> </div>
+						<h4>CONSENTIMIENTO - CERTIFICADO INDIVIDUAL PARA SER ASEGURADO</h4>
+						
+						<h4>EN LA PÓLIZA DE VIDA GRUPO</h4>
+						
+						
+						
+						<div class="tablaIzq">
+	<table cellspacing="0" cellpadding="0" border="1">
+		<tr class="celdaGris">
+			<td colspan="3">
+				<p><strong>Contratante</strong></p>
+			</td>	
+		</tr>
+		<tr>
+			<td colspan="3">
+				<p><strong>KU-BO FINANCIERO SAPI DE C.V SOFOM ENR</strong></p>
+			</td>	
+		</tr>	
+	
+	
+		<tr class="celdaGris">
+			<td colspan="3">
+				<p><strong>Nombre del asegurado</strong></p>
+			</td>	
+		</tr>	
+		<tr>
+			<td >
+				<p><strong>Apellido paterno</strong></p>
+				<p>#{contractData.segrep.apellidoPaterno} </p>
+			</td>
+
+			<td >
+				<p><strong>Apellido materno</strong></p>
+				<p>#{contractData.segrep.apellidoMaterno} </p>
+			</td>	
+<td >
+				<p><strong>Nombre (s)</strong></p>
+				<p>#{contractData.segrep.primerNombre}  
+ #{contractData.segrep.segundoNombre}</p>
+			</td>	
+		</tr>
+		<tr>
+			<td class="noPad" colspan="3">
+				<table  cellspacing="0" cellpadding="0" border="1">
+				<tr class="celdaGris">
+					<td>
+					<p><strong>Fecha de Nacimiento</strong></p>
+
+					</td>
+					<td>
+						<p><strong>Fecha de ingreso al servicio del contratante</strong></p>
+					</td>
+				</tr>
+<tr>
+	<td><p><strong>#{contractData.segrep.fechaNacimiento}</strong></p></td>
+	<td><p><strong>  
+			<h:outputText value="#{contractData.segrep.fechaInicio}" >
+   				 <f:convertDateTime pattern="dd-MM-yyyy" />
+   			
+			</h:outputText></strong></p>
+			<br/></td>
+</tr>
+
+				</table>
+			</td>
+		</tr>
+        </table>
+
+</div>
+
+
+ <div class="tablaDer">
+	<table cellspacing="0" cellpadding="0" border="1">
+		<tr class="celdaGris">
+			<td><p><strong>No. de Póliza</strong></p></td>	
+			<td><p><strong>Certificado</strong></p></td>		
+		</tr>
+		<tr>
+			<td><p>#{contractData.segrep.polizaID}</p></td>	
+			<td><p></p></td>	
+		</tr>
+		<tr class="celdaGris">
+			<td><p><strong>Vigencia de las 12:00 hrs</strong></p></td>	
+			<td><p><strong>Hasta las 12:00 hrs.</strong></p></td>	
+		</tr>
+		<tr class="celdaGris">
+			<td colspan="2"><p><strong>Póliza</strong></p></td>		
+		</tr>
+		<tr>
+			<td><p><strong>De: #{contractData.segrep.polizaIni}  </strong></p></td>
+	        <td><p><strong>A:  #{contractData.segrep.polizaVenc}  </strong></p></td>
+				
+		</tr>
+		<tr class="celdaGris">
+			<td colspan="2">
+				<p><strong>Certificado</strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td >
+				<p><strong>De: <h:outputText value="#{contractData.segrep.fechaInicio}" >
+   				 <f:convertDateTime pattern="dd-MM-yyyy" />
+   			
+			</h:outputText> </strong></p>
+			</td>
+<td >
+				<p><strong>A:  <h:outputText value="#{contractData.segrep.vigenciaSeguro}" >
+   				 <f:convertDateTime pattern="dd-MM-yyyy" />
+   			
+			</h:outputText></strong></p>
+			</td>
+		</tr>
+			<tr>
+				<td ><br/><br/><br/><br/></td>
+				<td></td>
+			</tr>
+	</table>	
+</div>
+<div class="tablaInf">
+	<table cellspacing="0" cellpadding="0" border="1">
+		<tr class="celdaGris">
+			<td>
+				<p><strong>Coberturas Contratadas</strong></p>
+			</td>
+		</tr>
+		<tr >
+			<td>
+				<p><strong>Fallecimiento</strong></p>
+			</td>
+		</tr>
+		<tr class="celdaGris">
+			<td>
+				<p><strong>Beneficiarios (especificar nombre, parentesco y porcentaje)</strong></p>
+			</td>
+		</tr>
+		<tr >
+			<td>
+				<p>		El Seguro se pagará a: KU-BO FINANCIERO SAPI DE C.V. SOFOM ENR, beneficiario único e irrevocable hasta el saldo insoluto que exista en el momento de la eventualidad prevista. La diferencia entre la Suma Asegurada y el saldo insoluto , si la hubiere, se pagará a:
+</p>
+			</td>
+		</tr>
+		<tr >
+			<td>
+				<p>En caso que deseen nombrar beneficiarios a menores de edad, no debe señalar a un mayor como representante de los menores para efecto de que en su representación cobre la indemnización. Lo anterior por que las legislaciones civiles previenen la forma en que deben designarse tutores, albaceas, representantes, herederos u otros cargos similares y no consideran el contrato del seguro como el instrumento adecuado para tales designaciones, la designación que se hiciera de un mayor de edad como representante de menores beneficiarios, durante la minoría de edad de ellos, legalmente puede implicar que se nombre beneficiario al mayor de edad, quien en todo caso solo tendría la obligación moral, pues la designación que se hace de beneficiarios de un contrato de seguro le concede el derecho incondicional de disponer de la suma asegurada.	</p>
+			</td>
+		</tr>
+			<tr class="celdaGris">
+			<td>
+				<p><strong>Condiciones adicionales</strong></p>
+			</td>
+		</tr>
+		<tr >
+			<td>
+				<p>
+				Reglas para determinar la suma asegurada:</p>
+
+
+<p>Suma Asegurada Otorgada:</p>
+
+
+<p>"Declaro no padezco o he padecido enfermedades como: Cáncer, Enfisema, SIDA, Cirrosis, Diabetes Tipo II, Diabetes e Hipertensión al mismo tiempo, insuficiencia renal ni estoy sujeto a algún tratamiento médico o estoy incapacitado".
+				
+				</p>
+				</td>
+				</tr>
+				
+				<tr >
+			<td>
+				<p>	
+				México D.F. a  30  de  Octubre  de 2013</p>
+				</td>
+				</tr>
+				
+	</table>
+	
+</div>
+	<p>En virtud de la solicitud presentada a Seguros Atlas, S.A. por el contratante para un seguro de vida denominado como indica, manifiesto a ustedes mi consentimiento para ser asegurado en dicha póliza, para ese efecto proporciono los datos y hago constar que las declaraciones contenidas en él las he hecho personalmente y son del todo verídicas; de igual forma autorizo me sea descontada de mi sueldo la proporción de prima indicada en este consentimiento.</p>
+
+	
+	<h:panelGroup>
+		
+		<div class="container firmas center">
+		
+          						 	<div class="unaFirma">
+								<h:graphicImage library="img" name= "firmaRodrigoMg.png"  />  
+						</div>  
+					<hr/>
+				
+				
+				  <p>Rodrigo Martínez Gonzalez.
+</p>
+				  <p>Firma Contratante</p>
+				 
+			  
+		</div>
+		
+		
+		<div class="container firmas center">
+		
+          						 	<div class="unaFirma">
+								
+						</div>  
+					<hr/>
+				
+				
+		  <p>Firma Autorizada</p>
+				 
+			  
+		</div>
+		<div class="container firmas center">
+	
+          	<span class="unaFirma">
+				<span class="firmaCliente"></span>
+			</span>
+					<hr/>
+				  <p> <span class="variable">#{contractData.contratoCredito.nombreCliente}</span></p>
+				
+				  <p>Firma Asegurado
+</p>
+				
+				 
+			  
+		</div>
+	</h:panelGroup>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<div class="cuatro_cols">
+		<div class="colTable">
+			<table  cellspacing="0" cellpadding="0" >
+				<tr class="primeraFila"><td><p>ASEGURADO</p></td></tr>
+				<tr><td><p>Seguro Atlas, S.A.</p></td></tr>
+			</table>		
+		</div>
+		<div class="colTable">
+			<table  cellspacing="0" cellpadding="0">
+				<tr class="primeraFila"><td><p>Cláusulas importantes en página 2</p></td></tr>
+				<tr><td><p>Paseo del Tamarindos No. 60. P.B.
+T.(55) 91 77 50 00</p></td></tr>
+			</table>		
+		</div>
+		<div class="colTable">
+			<table  cellspacing="0" cellpadding="0">
+			<tr class="primeraFila"><td></td></tr>
+				<tr><td><p>Col. Bosques de las Lomas</p>
+				
+				<p>www.segurosatlas.com.mx</p>
+				</td></tr>
+	
+			</table>
+		</div>
+<div class="colTable">
+			<table cellspacing="0" cellpadding="0" >
+				<tr class="primeraFila"><td></td></tr>
+	<tr><td>
+	<p>México D.F. C.P. 05120</p>
+	<p>segatla@segurosatlas.com.mx</p></td></tr>
+			</table>
+		</div>
+	</div>
+<p><small>"La documentación contractual y la nota técnica que integran este producto están registrados ante la Comisión Nacional de Seguros y Fianzas, de conformidad con lo dispuesto por los artículos 36, 36-A, 36-B y 36-D de la Ley General de Instituciones y Sociedades Mutualistas de Seguros, bajo el registro número según se indica en la sección correspondiente</small></p>
+					
+					</div>
+				
+				</section>
+				
+</ui:composition>

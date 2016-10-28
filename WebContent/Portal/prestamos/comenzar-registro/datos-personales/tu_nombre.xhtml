@@ -1,0 +1,31 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<li>
+		<label> Tu nombre <sup>*</sup></label>
+	</li>
+		                            	
+	<li class = "inline">
+		<h:panelGroup id = "warningName">
+			<div>	
+				<div style="color: #FF0000; font-size: 0.9em;" >
+					<h:outputText value = "#{addNaturalPerson.warningName}" escape = "false" />
+				</div>												
+			</div>
+		</h:panelGroup>
+                                                                	                                
+		<p:inputText id         = "name" 
+					 onfocus    = "$(this).removeClass('requiredClass');" 
+				     value      = "#{addNaturalPerson.newNaturalPerson.first_name}"  
+					 styleClass = "name elementStl validatorClass hs_class" >
+			<p:ajax event    = "blur" 
+					listener = "#{addNaturalPerson.validaNombre_portal}" 
+					update   = "warningName" />
+		</p:inputText>
+                                	                                	
+		<p:watermark for = "name" value = "Nombre" />                                	                               		  	                                                               
+	</li>				
+</ui:composition>				

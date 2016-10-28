@@ -1,0 +1,21 @@
+div.alta-partner.container
+{
+	width: inherit;
+	height:auto;
+	margin: 0 5px;	
+	padding:0;
+	overflow: hidden;
+}
+
+div.alta-partner.partner-info.container,
+div.alta-partner.registration-reason-info.container
+{
+	border-top:0;	
+	display: none;
+}
+
+div.alta-partner.guardar.buttonPR
+{
+	display: none;
+}
+

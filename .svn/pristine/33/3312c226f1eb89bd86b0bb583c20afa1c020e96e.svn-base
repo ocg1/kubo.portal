@@ -1,0 +1,42 @@
+package mx.com.kubo.mesa.solicitud.perfil.domicilio;
+
+import org.primefaces.context.RequestContext;
+
+public final class DomicilioIMP extends DomicilioAMO
+implements DomicilioIMO 
+{
+	public void init() 
+	{		
+		address = service_address.getMaxAddressByType(prospectus_id, company_id, address_type_id);
+		
+		init_coincidencias();
+	}
+	
+	public final void listener_lista_coincidencias()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		System.out.println("DomicilioIMP.listener_lista_coincidencias(): " + neighborhood_id);
+		
+		lista_address = service_address.getLista_coincidencias(NIVEL_1, address);	
+		
+		init_lista_coincidencias();
+		
+		request.addCallbackParam("address_type_id", address.getAddress_type_id());
+		request.addCallbackParam("numero_coincidencias", lista_coincidencias.size());
+	}
+	
+	public final void listener_lista_coincidencias_NIVEL_2()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		System.out.println("EditorViviendaIMP.listener_lista_coincidencias_NIVEL_2(): " + neighborhood_id);				
+		
+		lista_address = service_address.getLista_coincidencias(NIVEL_2, address);		
+		
+		init_lista_coincidencias();
+		
+		request.addCallbackParam("address_type_id", address.getAddress_type_id());
+		request.addCallbackParam("numero_coincidencias", lista_coincidencias.size());
+	}
+}

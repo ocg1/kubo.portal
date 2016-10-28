@@ -1,0 +1,36 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				
+				<script>
+				
+					var elmntGRAL;
+				
+				</script>
+				 		 
+	<div id="dvContMenuREG" >
+		<div id = "menuRG" class = "menuFrm" style = "margin-right: 0px;">
+			<h:form prependId = "false" id = "form_Prin">
+			
+				<div class="btnCloseMenu" style="position: absolute; z-index: 101; top: -2px;right: -3px; width: 30px; height: 30px;" >
+          			<p:graphicImage url="../resources/img/close.png" onclick="hideMenu();" />
+          		</div>
+			
+				<h:inputHidden id = "area"     value = "#{sessionBean.area}" />
+			
+				<h:inputHidden id = "thisMail" value = "#{sessionBean.email}" />
+				<h:inputHidden value="#{sessionBean.prospectus_id}"  id="prospectoID"/>
+			
+				<ui:include src = "menu_items.xhtml"/>						
+							
+				<h:panelGroup id = "hiddenactios">
+					<input type = "hidden" id = "selected"    value = "#{navigationBean.menuSel}ItemBar"/>
+					<input type = "hidden" id = "selectedPor" value = "#{navigationBean.menuSel}Porcent"/>
+					<input type = "hidden" id = "anterior"    value = "#{navigationBean.menuSel}"/>
+				</h:panelGroup>
+			</h:form>
+		</div>
+	</div>				 
+</ui:composition>				 

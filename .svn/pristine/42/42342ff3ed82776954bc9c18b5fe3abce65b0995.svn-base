@@ -1,0 +1,22 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+	<div class="field">
+	
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="#{msg.City_text}" />
+		</div>
+		
+	
+		
+		<div id = "delegacion_municipio_#{benefic.beneficiarie_id}" class = "dvElementAddres1">
+		
+			<h:inputText disabled   = "true" 
+						 value      = "#{benefic.addressbean.townName}" 
+						 styleClass = "elementAddres1 validatorClass mapClass town stlDisabled"/>
+		</div>
+	</div>				 
+</ui:composition>

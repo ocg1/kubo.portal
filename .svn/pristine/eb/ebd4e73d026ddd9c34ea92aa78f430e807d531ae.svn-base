@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:panelGroup id = "section-notes">	
+		<h:panelGroup rendered = "#{summaryRequest.displayNotes and summaryRequest.notas != null}">														
+			<div id = "dvNotesGrales" 
+				 class = "profileControlTable" 
+				 style = "margin-top: 15px; 
+				 		  display:none; 
+				 		  position: relative;">
+				<ui:include src = "notas_del_caso/notas_del_caso.xhtml"/>
+			</div>
+		</h:panelGroup>
+	</h:panelGroup>				
+</ui:composition>				

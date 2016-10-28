@@ -1,0 +1,59 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel value = "#{msg.birthday} " styleClass = "labelsStl"/>
+		</div>
+						
+		<p/>
+		
+		<div class = "dvElement dvDateElement" >
+						
+			<h:panelGroup id = "comboDate">
+								
+				<script>				
+					$(".validatorClass").bind("change blur", function(event) 
+					{
+						fieldCount();
+						
+						event.preventDefault();												
+					});
+					
+					resetar_indices(); 			
+				</script>
+							
+				<table>
+					<tr>
+						<td><ui:include src = "fecha_nacimiento/dia.xhtml"/></td>						
+						<td><ui:include src = "fecha_nacimiento/mes.xhtml"/></td>
+						<td><ui:include src = "fecha_nacimiento/year.xhtml"/></td>
+					</tr>
+				</table>
+								
+				<h:panelGroup rendered = "#{basicData.birthday.renderMsgTutor}" >								
+					<div id = "fecha_msg_tutor">
+						#{basicData.birthday.msgTutor}
+					</div>			
+									
+				</h:panelGroup>		
+										
+			</h:panelGroup>
+							
+			<h:panelGroup id = "pnlMsg">
+<!-- 			
+				<script>fieldCount();</script>
+ -->				
+				
+				<h:panelGroup rendered = "#{basicData.birthday.renderMsg}" >
+					<div style = "color: #FF0000; font-size: 0.9em;" >
+						#{basicData.birthday.msg}
+					</div>
+				</h:panelGroup>				
+			</h:panelGroup>							
+		</div>
+	</div>				
+</ui:composition>				

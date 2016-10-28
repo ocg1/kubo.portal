@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+			    xmlns:h  = "http://java.sun.com/jsf/html"				
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+	<tr>
+		<td class = "titulo_tabla_simulador">Monto</td>
+	</tr>
+	
+	<tr>
+		 <td>
+		 	<h:inputText id         = "ammount" 
+		 	             styleClass = "input_monto" 
+		 	             onkeyup    = "format_input_monto(this,'simulator');" 
+		 	             value      = "#{simulator.ammountStr}">
+		 	             
+		 		<p:ajax event      = "blur" 
+		 				listener   = "#{simulator.simulaCred(false)}" 
+		 				update     = "resSimReg catSimReg" 
+		 				onstart    = "return simOnStart();" 
+		 				oncomplete = "return showRes();"  />
+		 	</h:inputText>
+		 </td>
+	</tr>				
+</ui:composition>				

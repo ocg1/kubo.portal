@@ -1,0 +1,193 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+<script>
+	
+	function showWaitProsp(){
+		
+		$("#dvWaitProsp").show();
+		$("#dvInfoProsp").hide();
+		
+	}
+	
+	function showRespProsp(){
+		
+		$("#dvInfoProsp").fadeIn(500);
+		
+	}
+
+</script>
+
+<h:panelGroup id = "ping_buro" rendered = "#{administrationProfile.actualPage == 'pingBuro.xhtml'}">
+
+	<div style="border: solid 0px #E3E3E3; margin-left: auto; margin-right: auto; margin-top: 15px; width: 90%; height: auto;  padding: 10px;" >
+	
+	
+		<div style="width: 99%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+			
+			<span style="color: #439539;font-size: 1.3em; font-weight: bold;" >
+				
+				Estatus de Consultas a Buró
+				
+			</span>
+		
+		</div>
+		
+		<h:panelGroup id="pnlStatusBuro" >
+		
+			<h:panelGroup rendered="#{administrationProfile.flgStatusBuro}" >
+		
+				<div  style="margin-left: auto; margin-right: auto; width:30% "  >
+					<h:graphicImage library="img" name="check.png" rendered="#{administrationProfile.flgStatusBuro}" width="30" height="30" /> Consultas  Activas
+				</div>
+				
+				<br />
+		
+				<p:commandLink 	
+							
+							immediate="true" 
+							actionListener="#{administrationProfile.desactivarConsultas}"
+							update="pnlStatusBuro"
+							 >
+							
+					<div  class="callActionMedium  btnNaranja" style="width: 30%;" >
+					
+						Desactivar
+					
+					</div>
+					
+				</p:commandLink>
+				
+		
+			</h:panelGroup>
+		
+			<h:panelGroup rendered="#{!administrationProfile.flgStatusBuro}"  >
+			
+				<div  style="margin-left: auto; margin-right: auto; width:30% "  >
+					<h:graphicImage library="img" name="warning.png" rendered="#{!administrationProfile.flgStatusBuro}" width="30" height="30" /> Consultas  Desactivadas
+				</div>
+			
+				<br />
+				
+				<p:commandLink 	
+							immediate="true" 
+							actionListener="#{administrationProfile.activarConsultas}"
+							update="pnlStatusBuro"
+							 >
+							
+					<div id="inv_paq" class="callActionMedium  btnVerde" style="width: 30%;" >
+					
+						Activar
+					
+					</div>
+					
+				</p:commandLink>
+			
+			</h:panelGroup>
+		
+		</h:panelGroup>
+	
+		<br />
+		<br />
+			
+		<div style="width: 99%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+			
+			<span style="color: #439539;font-size: 1.3em; font-weight: bold;" >
+				
+				Ping Buró de Crédito
+				
+			</span>
+		
+		</div>
+		
+		
+		<div class="clsContBtnInvPend" >
+		
+			<p:commandLink 	onstart="return showWaitProsp();"
+							oncomplete = "showRespProsp();"
+							immediate="true" 
+							actionListener="#{administrationProfile.pingProspector}"
+							update="pnlRespProspector"
+							 >
+							
+				<div id="inv_paq" class="callActionMedium  btnNaranja" style="width: 30%;" >
+				
+					Prospector
+				
+				</div>
+				
+			</p:commandLink>
+		
+		</div>
+		
+		<h:panelGroup id="pnlRespProspector" >
+		
+			<div id="dvWaitProsp" style="display:none" >
+				<h:graphicImage library="img" name="loader.gif" />
+			</div>
+		
+			<div id="dvInfoProsp" style="display:none" >
+			
+				<br />
+				<br />
+				
+				<b>Fecha Inicio:</b>
+				
+				<h:outputText value="#{administrationProfile.dateInicio}" >
+				    <f:convertDateTime locale="es_MX" pattern=" dd 'de' MMMM 'de' yyyy HH:mm:ss" />
+				</h:outputText>
+			
+				<br />
+				<br />
+			
+				<b>Cadena Enviada: </b> #{administrationProfile.strSendConsultaProspector}
+			
+				<br />
+				<br />
+			
+				<b>Cadena Recibida: </b> #{administrationProfile.strResConsultaProspector}
+			
+				<br />
+				<br />
+				
+				<b>Fecha Fin:</b> 
+			
+					<h:outputText value="#{administrationProfile.dateFin}" >
+					    <f:convertDateTime locale="es_MX" pattern=" dd 'de' MMMM 'de' yyyy HH:mm:ss" />
+					</h:outputText>
+			
+				<br />
+				<br />
+			
+				<b>Estatus:</b> 
+						<h:graphicImage library="img" name="check.png" rendered="#{administrationProfile.consultaSatisfactoria}" width="30" height="30" />
+						<h:graphicImage library="img" name="error.png" rendered="#{!administrationProfile.consultaSatisfactoria}" />
+			
+			</div>
+			
+		</h:panelGroup>
+		
+		<!-- <div class="clsContBtnInvPend" >
+			<p:commandLink 	
+							immediate="true" 
+							 >
+							
+				<div id="inv_paq" class="callActionMedium  btnNaranja" style="width: 30%;" >
+				
+					ID Provider
+				
+				</div>
+				
+			</p:commandLink>
+		
+		</div> -->
+		
+		
+	</div>
+	
+</h:panelGroup>
+
+</ui:composition>

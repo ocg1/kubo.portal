@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+@media screen and (max-width: 1100px) {		
+
+	.investFrm{
+	
+		position: 	absolute !important;
+		top: 		 -80px !important;
+		left: 		570px !important;
+	
+	}
+	
+	#menuContainer{
+		margin-left: 35px !important;
+	}
+	
+	#bar_menu a{
+		padding-top: 	15px !important;
+		padding-bottom:  8px !important;
+		padding-left:   8px !important;
+		padding-right:	8px !important; 
+		
+	}
+	
+	#dvCntProfile{
+		
+		margin-left: 2px !important;
+	}
+
+}

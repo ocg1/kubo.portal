@@ -1,0 +1,74 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+
+	<div id = "dvPromotion" class = "profileControlTable" style = "position: relative;border-bottom: solid 2px #b3b3b3;padding-bottom: 35px;">
+	
+		<h3 class="tab"><strong class="orange">Promoción</strong></h3>
+	
+		<div class="promoTitle" >#{summaryRequest.promotionTitle}</div>
+		
+		<br />
+		<br />
+			<style>
+				.descripcionOferta{
+					display: block !important;
+				}
+				.promoTitle{
+					color: #548f39;
+				}
+			</style>
+			<ui:include src="#{summaryRequest.pagePromo}"></ui:include>
+		<br />
+		<br />
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.option_selected != null}">
+		
+			<div class="mensajeStatus">
+				<p><span>El usuario eligió la propuesta #{summaryRequest.offer.option_selected}</span></p>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{summaryRequest.hasOffer == 1}">
+			<div class="mensajeStatus">
+				<p>Estatus:<span> No aceptó oferta: #{summaryRequest.rejectionMotiveStr} </span> </p>
+			</div>
+		</h:panelGroup>
+			<h:panelGroup rendered="#{summaryRequest.hasOffer == 3}">
+			<div class="mensajeStatus">
+				<p>Estatus: <span>El usuario no ha visto la oferta.</span></p>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_date != null}">
+			<div class="ofertaFechas">Fecha en que se generó la oferta: <span>#{summaryRequest.offer.offer_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.showed1_date != null}">
+			<div class="ofertaFechas" >Fecha en que se le informó que tenía una oferta: <span>#{summaryRequest.offer.showed1_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.accepted1_date != null}">
+			<div class="ofertaFechas">Fecha en que dió click para ver la oferta completa: <span>#{summaryRequest.offer.accepted1_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.rejection1_date != null}">
+			<div class="ofertaFechas">Fecha en que no quizó ver la oferta completa: <span>#{summaryRequest.offer.rejection1_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.showed2_date != null}">
+			<div class="ofertaFechas">Fecha en que se mostró la oferta completa: <span>#{summaryRequest.offer.showed2_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.accepted2_date != null}">
+			<div class="ofertaFechas">Fecha en que se aceptó la oferta: <span>#{summaryRequest.offer.accepted2_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.rejection2_date != null}">
+			<div class="ofertaFechas">Fecha en que se rechazó la oferta completa: <span>#{summaryRequest.offer.rejection2_date}</span></div>
+		</h:panelGroup>
+		
+		
+	
+	</div>
+
+</ui:composition>

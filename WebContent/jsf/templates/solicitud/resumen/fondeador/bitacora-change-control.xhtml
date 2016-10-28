@@ -1,0 +1,20 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:c  = "http://java.sun.com/jsp/jstl/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div class = "bitacoraCambios">
+		<h:panelGroup id = "showIsChangeIvestor" style = "position: absolute; z-index: 100; ">
+			<p:commandLink rendered = "#{sessionBean.area=='M' and summaryRequest.fondeador.change_bean.hasChange}" 
+						   immediate = "true" 
+						   actionListener = "#{summaryRequest.setListChanges(summaryRequest.fondeador.change_bean)}" 
+						   oncomplete = "showPopUpChanges();" 
+						   style = "cursor:pointer;cursor:hand;">
+						   
+				<h:graphicImage url = "../resources/img/change-icon.png"/>
+			</p:commandLink>
+		</h:panelGroup>
+	</div>		
+</ui:composition>				

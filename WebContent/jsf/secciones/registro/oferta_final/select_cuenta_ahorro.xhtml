@@ -1,0 +1,48 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:panelGroup>
+	
+		
+		
+		<div class = "field recibir_transferencia">
+			<div class = "dvLabel">
+					<h:outputLabel value = "¿Cómo quieres recibir tu dinero?" styleClass = "labelsStl"/>
+			</div>
+				
+  		
+  				<fieldset id="sC" class="conjunto  conjuntoChecks">
+				   <div class="btnN dosBtn" data-opcion="1">
+				   <small class="palomita">
+	        				<i class="fa  fa-credit-card"></i>
+	        				<i class="fa fa-check "></i>
+	        			</small>
+			        	<span>	 Transferencia</span>
+			        	<i class="fa fa-check checkMobile"></i>
+			       </div>
+			       <div class="btnN dosBtn btnR"  data-opcion="0">
+			       	   <small class="palomita">
+	        				<i class="fa fa-money "></i>
+	        				<i class="fa fa-check "></i>
+	        			</small>
+			        	<span>	 Cheque</span>
+			        	<i class="fa fa-check checkMobile"></i>
+			       </div>
+					<h:selectOneRadio id         = "hasaccount"  
+									  value      = "#{deal.selAccount}"
+									  styleClass = "elementStlLbl validatorClass hs_class ocultaSelect">
+	            		<f:selectItem itemValue = "1" itemLabel = "Si"/>
+	             		<f:selectItem itemValue = "0" itemLabel = "No"/>
+	             		<p:ajax event    = "click" 
+	             				listener = "#{deal.selectAccount}" 
+	             				update   = "accountData"
+	             				oncomplete="conjuntoCombos();" />
+	         		</h:selectOneRadio>
+         		</fieldset>
+			
+		</div>
+	
+	</h:panelGroup>				
+</ui:composition>				

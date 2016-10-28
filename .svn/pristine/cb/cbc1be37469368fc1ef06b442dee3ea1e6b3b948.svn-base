@@ -1,0 +1,35 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+		<h:panelGroup rendered="#{deal.dispInvestor}" >
+			<fieldset>
+				<div class="dvContent2">
+						<div class="field">
+							<div class="dvLabel">
+								<h:outputLabel styleClass="labelsStl" value="#{msg.question_statement_sent_electronically}" />
+							</div>
+							<fieldset class="conjuntoChecks">
+								   <div class="btnN dosBtnChecks" data-opcion="1">
+							        	<span>	<i class="fa fa-check"></i> Sí</span>
+							       </div>
+							       <div class="btnN dosBtnChecks btnR"  data-opcion="2">
+							        	<span>	<i class="fa fa-times"></i> No</span>
+							       </div>
+							       
+									<h:selectOneRadio id="statement_sent"  value="#{deal.prospectus.electronic_statement}"  styleClass="elementStlLbl validatorClass requiredVerify ocultaSelect hs_class">
+									    <f:selectItem itemValue="1" itemLabel="Si"  />
+									    <f:selectItem itemValue="2" itemLabel="No"/>
+									    <p:ajax event="click" listener="#{deal.saveProspectData}" oncomplete="fieldCount();"></p:ajax>
+									</h:selectOneRadio>		
+									
+								</fieldset>				
+							
+						</div>
+				</div>	
+				
+				
+			</fieldset>
+		</h:panelGroup>				 
+</ui:composition>				 

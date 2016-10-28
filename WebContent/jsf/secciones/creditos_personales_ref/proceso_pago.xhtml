@@ -1,0 +1,157 @@
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+<style>
+		@media screen and (max-width: 780px) {
+		  #contCap1Img1,#contCap1Img2,#contCap1Img3{
+		  	width: 96%;
+		   	float: none;
+		  }
+		  #Cap1Img1,#Cap1Img2,#Cap1Img3{
+		  	float: left;
+		  	margin-left: 8px;
+		  	width: 48%;
+		  	
+		  }
+		  #Cap1TxImg1,#Cap1TxImg2,#Cap1TxImg3{
+		  	height: 100%;
+		  	float: left;
+		  	vertical-align: middle;
+		  	margin-left: 8px;
+		  	margin-bottom: auto;
+		  	margin-top: 40px;
+		  	width: 40%;
+		  	text-align: left;
+		  }
+		 
+		}
+	</style>
+
+<div id="contCap1" style="width: 100%; right: auto; left: auto;">
+<h:panelGrid columns="1">
+	<!-- Frase Descriptiva del Titulo -->
+	<h:panelGroup>
+		<div class="tituloCnt">
+			<h:outputLabel>Préstamos Personales <b>kubo</b></h:outputLabel>
+		</div>
+	</h:panelGroup>
+	<h:panelGroup>
+		<hr class="hrCnt"></hr>
+	</h:panelGroup>
+	<!-- Fin Frase Descriptiva del Titulo -->
+	<!-- Gráfico -->
+	<h:panelGroup>
+		<div id="contCap1Img">
+		
+			<!-- Imagen 1 -->
+			<div id="contCap1Img1">
+				<div align="center" id="Cap1Img1">
+					<p:graphicImage width="142px" height="144px"  url="../resources/img/iconos-2_2_1.png" ></p:graphicImage>
+				</div>
+				<div align="center" id="Cap1TxImg1" class="txtImg">
+					<h:outputLabel><b>Enlaza</b><br></br> una cuenta bancaria.</h:outputLabel>
+				</div>
+ 			</div>
+			<!-- Fin Imagen 1 -->
+			
+			<!-- Imagen 2 -->
+			<div id="contCap1Img2">
+				<div align="center" id="Cap1Img2" >
+					<p:graphicImage width="142px" height="144px"  url="../resources/img/iconos-2_2_2.png" ></p:graphicImage>
+				</div>
+				<div align="center" id="Cap1TxImg2" class="txtImg">
+					<h:outputLabel ><b>Prepaga en cualquier momento </b> <br></br> sin sanciones.</h:outputLabel>
+				</div>
+ 			</div>
+			<!-- Fin Imagen 2 -->
+			
+			<!-- Imagen 3 -->
+			<div id="contCap1Img3">
+				<div align="center" id="Cap1Img3">
+					<p:graphicImage width="142px" height="144px" url="../resources/img/iconos-2_2_3.png" ></p:graphicImage>
+				</div>
+				<div align="center" id="Cap1TxImg3" class="txtImg">
+					<h:outputLabel ><b>Realizar automáticamente</b> <br></br>  tus pagos mensualmente.</h:outputLabel>
+				</div>
+			</div>
+			<!-- Fin Imagen 3 -->
+		</div>
+	</h:panelGroup>
+<h:panelGroup>
+<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!-- Fin Grafico -->
+<!-- Frase Referente a la imagen -->
+<!-- (VACI) -->
+<!-- Fin Frase Referente a la imagen -->
+<!-- Frase Ayuda -->
+<!-- (VACIO) -->
+<!-- Fin Frase Ayuda -->
+
+<!-- Detalles de los Beneficios -->
+<h:panelGroup>
+<ul class="lsCnt">	
+	<li>
+		<h3>Retiro automático.</h3>
+		<div class="lsCntDesc">
+			Tus pagos del crédito se pueden realizar automáticamente de la cuenta que tu señalaste cuando te registraste en <b>kubo</b>.<br></br>
+			Te enviaremos un recordatorio unos días antes de tu fecha obligatoria de pago, solo te tienes que asegurar de que haya 
+			fondos suficientes en tu cuenta para evitar  que se te aplique un cargo por transacción bancaria no exitosa.
+		</div> 
+	</li>
+	<li>
+		<h3>No existen comisiones por pago anticipado.</h3>
+		<div class="lsCntDesc">
+			Tu puedes pagar tu crédito en cualquier momento y sin multas. Solo contáctanos por lo menos 10 días naturales antes de 
+			la fecha de vencimiento de tu  próximo pago y nosotros te orientaremos en el proceso.
+		</div>
+	</li>
+	<li>
+		<h3>Realiza tu pago puntual.</h3>
+		<div class="lsCntDesc">
+			Si incumples un pago, asegúrate de ponerte al día dentro de los siguientes 15 días de tu fecha 
+			de pago para evitar comisiones de atraso.
+		</div>
+		
+	</li>
+</ul>
+</h:panelGroup>
+<!-- Fin Detalles de los Beneficios -->
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!-- Llamada a la accion - ->
+<h:panelGroup>
+	<h:form id="form22e">
+	<div class="calltoAction">
+		<h:outputLabel>Comencemos a trabajar con tu crédito  </h:outputLabel>
+		<p:commandLink styleClass="linkInterno">
+			<h:outputLabel value="Revisa tu tasa"/>
+		</p:commandLink>
+	</div>
+	</h:form>
+</h:panelGroup>
+<!- - Fin Llamada a la accion - ->
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!- - Cierre -->
+<h:panelGroup>
+	<div class="cierre">
+		<h:outputLabel>
+		* Todos  los depósitos de tu crédito se realizarán  en  ( Determinar Bancos).
+		con una  tasa anual de______%; los préstamos van de _______% hasta______%.
+		El otorgamiento del  crédito  dependerá del  la calificación y estado actual 
+		del score, monto del crédito, términos  de uso e historial.
+		</h:outputLabel>
+	</div>
+</h:panelGroup>
+<!-- Cierre -->
+
+</h:panelGrid>
+</div>
+
+</html>

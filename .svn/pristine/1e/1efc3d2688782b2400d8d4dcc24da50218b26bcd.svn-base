@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta charset="utf-8"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<!--[if lt IE 9]>
+			<script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<!-- MS --> 
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/registro.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/infoBasica.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/css/footer.css" />
+		
+		<script type="text/javascript"
+			src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript"
+			src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript"
+			src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/loanListStyle.css" /> 
+	<link rel="stylesheet" type="text/css" href="../../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	
+	
+	</h:head>
+	<h:body >
+	<h:form id="forminfo" prependId="false">
+			<div id="header">
+				<div id="upperBannerContainer" >
+					<img id="bannersup_sim" src="../../resources/img/bannersup_sim.png" alt="Header" />
+					<img clasS="formInfologo" src="../../resources/img/logo.png" alt="Logo"/>
+				</div>
+			
+				<div class="formContainer">
+					<h3>&nbsp;&nbsp;Seleccione una cuenta bancaria.</h3>	
+					<div id="elementsContainer">
+						<h:selectOneMenu id="cuentasUsr" value="#{listaCreditos.cuentaActual}" valueChangeListener="#{listaCreditos.handleAccountChange}">  
+			                <f:selectItem itemLabel="Todas las cuentas" />
+			                <f:selectItems value="#{listaCreditos.numCuentas}" var="cA"/>
+			                <p:ajax event="change"  update="tagFromAccount , addBtn"/>    
+			            </h:selectOneMenu>
+			            <div id="accountTag" >
+			            	<h:outputText id="tagFromAccount" value="#{listaCreditos.getTagOfAccount()}"></h:outputText>
+			            </div>
+		            </div>
+		            
+		            <br />
+		            <div id="divBtnFounding">
+			            	<p:commandButton  id="addBtn" value="Confirmar" disabled="#{listaCreditos.getFlagTinyBtn()}">
+			            	
+			            	
+			            	</p:commandButton>
+			        </div>
+		        	<img class="BannerMid" src="../../resources/img/greyBannerMid.png" alt="footer" />
+		      
+	            </div>
+			</div>
+			
+			
+			
+	</h:form>
+		
+	</h:body>
+</html>

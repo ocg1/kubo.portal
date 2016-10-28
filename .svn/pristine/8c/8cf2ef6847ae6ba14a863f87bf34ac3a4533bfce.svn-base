@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="field">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="#{msg.Contract_type_text}" />
+		</div>
+
+		
+		<div class="dvElementLength">
+			<div class="selectNuevo">
+				<h:selectOneMenu id="id_contract_type" tabindex="22" styleClass="elementStlSelAddress validatorClass hs_class" value="#{employment.employment.contract_type_id}">
+					<f:selectItem itemValue="" itemLabel="" />
+					<f:selectItems value="#{addMyLoan.listContractType}" var="contractType" itemLabel="#{contractType.name}" itemValue="#{contractType.contract_typeCatPK.contract_type_id}" />
+					<p:ajax event="change" listener="#{addMyLoan.updateEmployment(employment)}" />						
+				</h:selectOneMenu>
+			</div>
+		</div>
+	</div>				
+</ui:composition>				

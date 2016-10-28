@@ -1,0 +1,185 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">
+	<h:body>
+		<!-- 
+		<h:panelGroup rendered="#{credit.status == 'A' or credit.status == 'B' }" >
+			<div style="width: 99%; height: auto; overflow: auto; margin-left: 0px; margin-right: auto; padding: 5px;" >
+				<!- - <table>
+					<tr>
+						<td><div class="labelsStl" > Próxima couta:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.fecProxCuota} </span> </div></td>
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > Monto próxima cuota:</div></td>
+						<td>
+							<div class="labelsStl" >
+								<table>
+									<tr>
+										<td>
+											<span style="color: #439539;" >  #{credit.montoProxCuota} </span>
+											<div id="morePayCont"  class="dvCntDesPay" >
+												<h:outputLabel value="#{credit.contDesMonto}" escape="false"   ></h:outputLabel>
+											</div>
+										</td>
+										<td>
+											<img id="morePay" alt="Desglose" src="../resources/img/more.png" border="0px" width="22px" height="22px" style="cursor: pointer;" class="btnMorePayment"  />
+										</td>
+									</tr>
+								</table> 
+							</div> 
+						</td>
+						
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > Tasa: </div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.tasa}% anual </span> </div></td>
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > CAT: </div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.cat}% </span> </div></td>
+					</tr>
+					<tr>
+						<td>
+						
+							<div class="labelsStl" > Saldo para liquidar: </div>
+							
+							<div id="moreTotalPayCont" class="dvCntDesPay" >
+								<h:outputLabel value="#{credit.contDesTotal}" escape="false"   ></h:outputLabel>
+							</div>
+						</td>
+						
+						<td>
+							<table>
+								<tr>
+									<td> <div class="labelsStl" ><span style="color: #439539;" > #{credit.saldoLiquidar} </span></div></td>
+									<td><img id="moreTotalPay" alt="Desglose" src="../resources/img/more.png" border="0px" width="22px" height="22px" style="cursor: pointer;" class="btnMorePayment" /></td>
+								</tr>
+							</table> 
+						</td>
+						
+					</tr>
+				</table> - ->
+				
+				PPPPPPPPPPPPPPPPP
+				<table>
+					<tr>
+						<td><div class="labelsStl" style="width: 190px;" >Monto:</div></td>
+						<td><div class="labelsStl" style="width: 300px;"><span style="color: #439539;" >#{credit.monto}</span></div></td>
+						<td><div class="labelsStl" style="width: 190px;">Plazo:</div></td>
+						<td><div class="labelsStl" style="width: 300px;"><span style="color: #439539;" >#{credit.plazo}</span></div></td>
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > Fecha próxima cuota:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.fecProxCuota} </span> </div></td>
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > Monto próxima cuota:</div></td>
+						<td>
+							
+								<div class="labelsStl" >
+									<table>
+										<tr>
+											<td>
+												<span style="color: #439539;" >  #{credit.montoProxCuota} </span>
+												<div id="morePay#{status.index}Cont"  class="dvCntDesPay" >
+													<h:outputLabel value="#{credit.contDesMonto}" escape="false"   ></h:outputLabel>
+												</div>
+											</td>
+											<td>
+												<img id="morePay#{status.index}" alt="Desglose" src="../resources/img/more.png" border="0px" width="22px" height="22px" style="cursor: pointer;" class="btnMorePayment"  />
+											</td>
+										</tr>
+									</table> 
+								</div> 
+								
+							
+						</td>
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > Tasa: </div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.tasa}% anual </span> </div></td>
+					</tr>
+					<tr>
+						<td><div class="labelsStl" > CAT: </div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.cat}% </span> </div></td>
+					</tr>
+					
+					<tr>
+						<td><div class="labelsStl" >Fecha Inicio:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" >#{credit.fecInicio}</span></div></td>
+						<td><div class="labelsStl" >Fecha Término:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" >#{credit.fecFin}</span></div></td>
+					</tr>
+					
+					<tr>
+						<td>
+							<div class="labelsStl" > Saldo para liquidar: </div>
+							
+							<div id="moreTotalPay#{status.index}Cont" class="dvCntDesPay" >
+								<h:outputLabel value="#{credit.contDesTotal}" escape="false"   ></h:outputLabel>
+							</div>
+							
+						</td>
+						<td>
+							<div class="labelsStl" >
+							
+							<table>
+								<tr>
+									<td><span style="color: #439539;" > #{credit.saldoLiquidar} </span></td>
+									<td><img id="moreTotalPay#{status.index}" alt="Desglose" src="../resources/img/more.png" border="0px" width="22px" height="22px" style="cursor: pointer;" class="btnMorePayment" /></td>
+								</tr>
+							</table> 
+							 
+							</div>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr>
+						
+						<td colspan="4" style="padding: 3px;" >
+							<h:panelGroup rendered="#{estadoCuenta.pademovil}" >
+								
+								<div style="width: 190px; height: auto;overflow: auto;">
+									
+									<p:commandLink onstart="return validaUser();" actionListener="#{estadoCuenta.pademovilAction}" update="pnlScriptPade" >
+										
+										<div class="buttonPR" style="width: 170px; font-size: 1.2em; margin: 8px; cursor: pointer;">
+											Pagar con Pademobile
+										</div>
+										
+										<f:attribute name="ammount" value="#{credit.montoProxCuota}" ></f:attribute>
+										<f:attribute name="safi_credit_id" value="#{credit.numCredito}" ></f:attribute>
+										<f:attribute name="proyect_id" value="#{credit.proyect_id}" ></f:attribute>
+										<f:attribute name="proyect_loan_id" value="#{credit.proyect_loan_id}" ></f:attribute>
+									</p:commandLink>
+									
+								</div>
+								
+								<div style="margin-left: 8px;" >
+									
+									<a class="iframe" href="https://www.pademobile.com/es-es/mx/">
+										
+										¿Que es Pademobile?
+										
+									</a>
+									
+								</div>
+							</h:panelGroup>
+							
+						</td>
+						
+					</tr>
+					
+				</table>
+				PPPPPPPPPPPPPPPPPP
+			</div>
+		</h:panelGroup> 
+		-->	
+	</h:body>
+</ui:composition>

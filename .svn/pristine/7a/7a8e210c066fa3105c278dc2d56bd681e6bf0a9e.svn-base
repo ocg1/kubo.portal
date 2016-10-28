@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<li>
+		<label class="etiqueta">Descripción:</label>
+		<div class="campo">
+				<h:inputTextarea  id = "descripcion-cancelacion"
+								 rows = "5" 
+								 styleClass = "inputText" 
+								 value     = "#{movimientosInversionista.cancelacion.descripcion}" 
+								 immediate = "true" >
+					<p:ajax event = "blur" />
+				</h:inputTextarea>
+				
+				<p:watermark for = "descripcion-cancelacion" value = "Ej: descripción de la cancelación " />
+			</div>
+	
+	</li>				
+</ui:composition>	

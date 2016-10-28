@@ -1,0 +1,42 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	
+                            		
+				
+		<div class="bloqueBanner bloqInversion">
+				<h2>Inversiones</h2>
+				<ul>
+					<li>
+						<h4>Rendimiento promedio</h4>
+						<p><strong>16%</strong>  (ponderado anual con reinversión)<sup><a id="footerCita" href="#captacionObservacion">Nota 6</a></sup></p>
+					</li>
+					<li>
+						<h4>Monto mínimo para iniciar</h4>
+						<p><strong>$10 mil</strong></p>
+					</li>
+					<li>
+						<h4>Innovación P2P Lending</h4>
+						<p>Estamos supervisados por la CNBV </p>
+					</li>
+				</ul>
+				
+				
+				     <h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+                            			<p:commandLink styleClass="callAction btnVerde investment" action="inicio_preregistro_inversionista" immediate="true" onclick="ga('send', 'event', 'Leads', 'Solicita Inversion', 'Solicita Inversion Home');"> Invierte con nosotros</p:commandLink>
+                       		</h:panelGroup>
+
+			
+				
+				<ol>
+					<li></li>
+					<li><a class="open_lightbox" href="#"  data-div="22" onclick="ga('send', 'event', 'Leads', 'Requisitos Inversion', 'Requisitos Inversion Home');" >Requisitos</a></li>
+				</ol>
+			</div>
+			
+                                  
+			
+</ui:composition>				

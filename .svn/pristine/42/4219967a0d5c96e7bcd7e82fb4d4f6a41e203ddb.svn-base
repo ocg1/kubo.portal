@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+	            xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<div id = "modal-init-login">			
+                   		
+		<a class = "close_lightbox" href = "#" onclick = "DesbloqueoPassword.cerrar('modal-init-login');"/>
+			
+		<h2 style = "text-align: center;">La contraseña se ha desbloqueado exitosamente.</h2>	
+			                   		                    		
+		<div id = "boton-listener-init-login">								
+							
+			<p:commandLink immediate = "true" 
+						   ajax      = "true" 
+						   actionListener = "#{desbloqueo_password.por_pregunta.listener_init_login}"
+						   oncomplete     = "DesbloqueoPassword.listener_init_login(xhr, status, args);">
+						
+				<div class = "buttonPR">
+					<h:outputText value = "#{msg.Btn_next_next}" />
+				</div>
+			</p:commandLink>			
+		</div>		
+	</div>		
+</ui:composition>

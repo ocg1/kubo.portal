@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<p:row rendered = "#{incomesExpenses.displayPnlOtherIncome}" >
+		<p:column colspan = "3"  styleClass="otherInc">
+			<f:facet name = "footer">
+				<div class="other_incomes">
+					<table cellspacing = "0" cellpadding = "0">
+						<tbody >
+							<tr>
+								<td class = "principal" >
+									<h:outputText value = "#{incomesExpenses.description_other_income}" styleClass="principal" style="width:295px !important;"  />
+								</td>
+							</tr>
+						</tbody>
+					</table> 
+				</div>
+			</f:facet>
+		</p:column>
+	</p:row>
+</ui:composition>				

@@ -1,0 +1,61 @@
+console.log("mx.com.kubo.mesa/main.js");
+
+var Kubo = window.Kubo || {};
+
+Kubo.Mesa                         = window.Kubo.Mesa || {};
+Kubo.Mesa.Solicitud               = window.Kubo.Mesa.Solicitud || {};
+Kubo.Mesa.Solicitud.Resumen       = window.Kubo.Mesa.Solicitud.Resumen  || {};
+Kubo.Mesa.Solicitud.Busqueda      = window.Kubo.Mesa.Solicitud.Busqueda || {};
+Kubo.Mesa.Solicitud.Nota          = window.Kubo.Mesa.Solicitud.Nota || {};
+Kubo.Mesa.Solicitud.Documentacion = window.Kubo.Mesa.Solicitud.Documentacion || {};
+Kubo.Mesa.Solicitud.Telefonos     = window.Kubo.Mesa.Solicitud.Telefonos || {};
+Kubo.Mesa.Solicitud.Inusual       = window.Kubo.Mesa.Solicitud.Inusual || {};
+Kubo.Mesa.Proyectos               = window.Kubo.Mesa.Proyectos || {};
+Kubo.Mesa.Sesiones                = window.Kubo.Mesa.Sesiones || {};
+
+var Solicitud = Kubo.Mesa.Solicitud;
+
+var Resumen        = Kubo.Mesa.Solicitud.Resumen;
+var Busqueda       = Kubo.Mesa.Solicitud.Busqueda;
+var Nota           = Kubo.Mesa.Solicitud.Nota;
+var Documentacion  = Kubo.Mesa.Solicitud.Documentacion;
+var Telefonos      = Kubo.Mesa.Solicitud.Telefonos; 
+var Inusual        = Kubo.Mesa.Solicitud.Inusual;
+var Proyectos      = Kubo.Mesa.Proyectos;
+var GestorSesiones = Kubo.Mesa.Sesiones
+
+require.config(
+{
+	baseUrl: '../resources/js/mx.com.kubo.mesa',
+
+    paths: 
+    {
+    	solicitud:         'solicitud',
+    	//busqueda:          'solicitud/busqueda',    	
+    	nota:              'solicitud/notas/nota',
+    	nota_editor:       'solicitud/notas/editor',
+    	nota_editor_panel: 'solicitud/notas/editor_panel'
+    }
+});
+
+require (
+[
+ 	'solicitud',
+	//'busqueda', 
+	'nota', 
+	'nota_editor',
+	'nota_editor_panel'
+	
+], function (
+	solicitud,
+	//busqueda, 
+	nota, 
+	nota_editor,
+	nota_editor_panel
+) {		
+	solicitud.init();
+	//busqueda.init();
+	nota.init();
+	nota_editor.init();
+	nota_editor_panel.init();
+});

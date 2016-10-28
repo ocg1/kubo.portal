@@ -1,0 +1,34 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+						
+	<p:columnGroup type = "header">
+		<p:row>
+			<p:column style = "text-align:right; ">
+				<f:facet name = "header"/>
+			</p:column>
+			
+			<p:column style="text-align:right;">
+				<f:facet name = "header">
+					<div style = "font-weight: normal;font-size: 1.1em; float: left;" >Cliente</div>
+				</f:facet>
+			</p:column>
+			
+			<p:column style = "text-align:right;">
+				<f:facet name = "header">
+					<div style = "font-weight: normal;font-size: 1.1em; float: left;" >Mesa de control</div>
+				</f:facet>
+			</p:column>
+		</p:row>
+		
+		<p:row rendered = "#{listIncome.income_type_id ==1}">
+			<p:column colspan = "3" headerText = "Ingresos salarios" />
+		</p:row>
+		
+		<p:row>
+			<p:column colspan = "3" headerText = "Otros ingresoss" rendered = "#{listIncome.income_type_id ==1}" />
+		</p:row>
+	</p:columnGroup>				
+</ui:composition>				

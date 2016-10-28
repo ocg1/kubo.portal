@@ -1,0 +1,35 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+	<div class = "administracion-panel container">
+	
+		<ui:include src = "administracion/menu-items.xhtml" />
+	
+		<h:panelGroup id = "pnlCntProfile" >
+			<h:form prependId = "false">
+				<div id = "admCont">
+														
+					<ui:include src = "administracion/permisos.xhtml"/>
+					<ui:include src = "administracion/perfiles.xhtml"/>
+					<ui:include src = "administracion/pantallas.xhtml"/>				
+					<ui:include src = "administracion/reinversion_automatica.xhtml"/>
+					<ui:include src = "administracion/alta_masiva.xhtml" />
+					<ui:include src = "administracion/pingBuro.xhtml" />
+					
+					<div style = "display: none;">					
+						<p:commandLink id = "updateAction" update = "pnlDatosGen" />											
+					</div>										
+				</div>
+			</h:form>
+		</h:panelGroup>		
+	</div>
+
+	<script>
+		setClassMenu('dvMenuPerf');
+		
+		$("#dvCntCancel").hide();
+	</script>
+</ui:composition>

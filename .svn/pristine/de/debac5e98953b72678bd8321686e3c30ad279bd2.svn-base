@@ -1,0 +1,414 @@
+package mx.com.kubo.proyect_loan.reasignacion;
+
+import static mx.com.kubo.change_control.ChangeControlEMO.CREDITO_ADICIONAL_CON_CONSULTA;
+import static mx.com.kubo.change_control.ChangeControlEMO.CREDITO_ADICIONAL_SIN_CONSULTA;
+import static mx.com.kubo.change_control.ChangeControlEMO.RENOVACION_CREDITO;
+import static mx.com.kubo.managedbeans.mesa.creditos.adicionales.TipoCreditoAdicional.NUEVA_CONSULTA_DISABLED;
+import static mx.com.kubo.managedbeans.mesa.creditos.adicionales.TipoCreditoAdicional.NUEVA_CONSULTA_ENABLED;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.faces.context.FacesContext;
+
+import mx.com.kubo.bean.ChangeBean;
+import mx.com.kubo.bean.DocumentationDMO;
+import mx.com.kubo.change_control.AccesControlIMO;
+import mx.com.kubo.change_control.ChangeControlIMO;
+import mx.com.kubo.managedbeans.mesa.creditos.adicionales.TipoCreditoAdicional;
+import mx.com.kubo.model.Files;
+import mx.com.kubo.model.MembershipPK;
+import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.Proyect;
+import mx.com.kubo.model.ProyectLoan;
+import mx.com.kubo.model.ServiceCalling;
+
+import org.springframework.stereotype.Service;
+
+import com.soa.webServices.WsSgbRiskServiceLocator;
+import com.soa.webServices.request.DocumentsReviewRequest;
+import com.soa.webServices.responses.WsSgbResponse;
+import com.soa.webServices.util.InputParam;
+
+@SuppressWarnings("serial")
+@Service(value = "reasignador_service")
+public final class ReasignadorIMP extends ReasignadorPMO
+implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
+{	
+	public final void setProyect_loan_reasignable(ProyectLoan proyect_loan)
+	{
+		setProyectloan(proyect_loan);
+	}
+	
+	public final void init(ProyectLoan proyect_loan_ACTUAL)
+	{
+		proyect_loan   = proyect_loan_ACTUAL;
+		
+		company_id     = proyect_loan.getPerson().getNatPerPK().getCompany_id();
+		prospectus_id  = proyect_loan.getPerson().getNatPerPK().getProspectus_id();		
+		
+		MembershipPK mpk = new MembershipPK();
+		
+		mpk.setCompany_id(company_id);
+		mpk.setProspectus_id(prospectus_id);
+		
+		membership =  membershipservice.getMembershipById(mpk);
+		
+	}
+	
+	public final void renovar_solicitud_de_credito(TipoCreditoAdicional tipo_credito_adicional)
+	{
+		int emisor_prospectus_id = sesion.getProspectus_id();
+		
+		crear_proyect_loan_NEW(tipo_credito_adicional, 3, emisor_prospectus_id);
+		
+		proyect_loan_NEW = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
+		
+		crear_lista_documentos(VALIDACION_VIGENCIA_DISABLED);
+		copiar_documentos();
+		
+		callSGB(proyect_NEW, proyect_loan_NEW);
+		
+		registrar_change_control(new ChangeBean(RENOVACION_CREDITO), emisor_prospectus_id);
+	}
+		
+	public final void crear_nuevo_proyecto(TipoCreditoAdicional tipo_credito_adicional, int loan_type)
+	{	
+		int emisor_prospectus_id = sesion.getProspectus_id();
+		
+		company_id     = proyect_loan.getPerson().getNatPerPK().getCompany_id();
+		prospectus_id  = proyect_loan.getPerson().getNatPerPK().getProspectus_id();
+		
+		crear_proyect(prospectus_id, company_id);													
+			
+		if(is_proyect_NEW_OK)
+		{					
+			crear_proyect_loan_NEW(tipo_credito_adicional, loan_type, emisor_prospectus_id);						
+			
+			proyect_loan_NEW = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);	
+			
+			if(tipo_credito_adicional == NUEVA_CONSULTA_DISABLED)
+			{
+				registrar_change_control(new ChangeBean(CREDITO_ADICIONAL_SIN_CONSULTA), emisor_prospectus_id);
+			}
+			
+			if(tipo_credito_adicional == NUEVA_CONSULTA_ENABLED)
+			{
+				registrar_change_control(new ChangeBean(CREDITO_ADICIONAL_CON_CONSULTA), emisor_prospectus_id);
+			}
+		}			
+	}
+	
+	public final void crear_lista_documentos(boolean validacion_de_vigencia) 
+	{
+		faces    = FacesContext.getCurrentInstance();
+		external = faces.getExternalContext();
+		
+		proyect_loan_id = proyect_loan.getProyectloanPk().getProyect_loan_id();
+		
+		lista_files_loaded = filesService.getListFilesByProspectOrderByCategory(prospectus_id, company_id, proyect_loan_id);
+		
+		lista_files = new ArrayList<DocumentationDMO>(lista_files_loaded.size());
+		
+		for (Files file : lista_files_loaded)
+		{
+			 real_path      = external.getRealPath("//resources//") + file.getLocation();
+			 
+			 url_img        = file.getLocation();
+			 formatDocument = file.getLocation().substring(file.getLocation().lastIndexOf(".") + 1);
+			 			 
+			 uploaded_date  = file.getUpload_date();
+			 category_id    = file.getFileType().getFile_category_id();
+			 dias_vigencia  = file.getFileType().getFileCategory().getValidity();			 
+			 file_type      = file.getFileType().getName();
+			 
+			 prospectus_id  = file.getFilesPk().getProspectus_id();
+			 company_id     = file.getFilesPk().getCompany_id();			 			 			 		
+			 file_type_id   = file.getFilesPk().getFile_type_id();			 
+			 file_id        = file.getFilesPk().getFile_id();			
+			 
+			 docBean   = new DocumentationDMO();
+				 
+			 docBean.setProspectus_id(prospectus_id);
+			 docBean.setCompany_id(company_id);
+			 
+			 docBean.setDescription(file_type);
+			 docBean.setUrlImg(url_img);
+			 
+			 docBean.setOriginalPathImg(real_path);
+			 docBean.setFormatFile(formatDocument);
+			 
+			 docBean.setTypeFile(file_type_id);
+			 docBean.setFile_id(file_id);
+			 docBean.setProyect_loan_id(proyect_loan_id);
+			 
+			 if(validacion_de_vigencia)
+			 {
+				 asignar_vigencia_del_documento(getFecha_vigente(uploaded_date, dias_vigencia));
+				 
+				 if(isDocumento_vigente_DISABLED() && category_id != 8)
+				 {
+					 lista_files.add(docBean);
+				 }
+				 
+			 } else {
+				 
+				 if(category_id != 8)
+				 {
+					 lista_files.add(docBean);
+				 }
+			 }
+		}
+	}
+	
+	public final void copiar_documentos() 
+	{
+		for(DocumentationDMO documento: lista_files)
+		{
+			error_al_mover = copiar_archivos(documento);
+			
+			if(error_al_mover)
+			{
+				break;
+			} 
+		}
+	}
+		
+	public final boolean callSGB(Proyect proyect, ProyectLoan proyect_loan)
+	{
+		try
+		{
+			locator = new WsSgbRiskServiceLocator();
+			service = locator.getWsSgbRisk();
+			
+			srvCall = new ServiceCalling();
+			res     =  new WsSgbResponse();
+			
+			int company_id      = proyect_loan.getProyectloanPk().getCompany_id();
+			int prospectus_id   = proyect_loan.getProyectloanPk().getProspectus_id();
+			int proyect_loan_id = proyect_loan.getProyectloanPk().getProyect_loan_id();
+			
+			NaturalPerson person = proyect_loan.getPerson();
+			
+			lista_archivos = filesService.getListFilesByProspect(prospectus_id, company_id, proyect_loan_id);
+			
+			proyect = validaPurpose(proyect);
+			
+			if(lista_archivos.size() > 0)
+			{
+				com.soa.webServices.util.Files[] files = null ;
+				
+				if( person.getIdentification_type_id() != null && (person.getIdentification_type_id().intValue() == 3 || person.getIdentification_type_id().intValue() == 4 || person.getIdentification_type_id().intValue() == 5 || person.getIdentification_type_id().intValue() == 6 ) ){
+				
+					files = new com.soa.webServices.util.Files[lista_archivos.size() + 1];
+				
+				}else{
+					files = new com.soa.webServices.util.Files[lista_archivos.size()];
+				}
+				
+				int i = 0;
+				
+				for(Files file : lista_archivos )
+				{
+					params = null;
+					
+					 if(file.getFilesPk().getFile_type_id() == 1 || ( ( person.getIdentification_type_id() != null && (person.getIdentification_type_id().intValue() == 3 || person.getIdentification_type_id().intValue() == 4 || person.getIdentification_type_id().intValue() == 5 || person.getIdentification_type_id().intValue() == 6 )) && ( file.getFilesPk().getFile_type_id().intValue() == 132 || file.getFilesPk().getFile_type_id().intValue() == 132 || file.getFilesPk().getFile_type_id().intValue() == 133 || file.getFilesPk().getFile_type_id().intValue() == 76 ) ) )
+					 {
+						 params = new InputParam[5];
+/*
+					     params[0] = new InputParam("1", "6", "Clave de elector", person.getMx_ife_cveelector());
+					     params[1] = new InputParam("1", "7", "Emisión",          person.getMx_ife_numemision() +"");
+					     params[2] = new InputParam("1", "10", "ocr",             person.getMx_ife_numvertical() );
+					     params[3] = new InputParam("1", "11", "seccion",         person.getMx_ife_seccion() );  
+*/
+						 String name = "";
+						 
+						if (person.getMiddle_name()!=null&&!person.getMiddle_name().isEmpty())
+						{
+							name = person.getFirst_name().trim() + " " + person.getMiddle_name().trim();
+							
+						} else {
+							
+							name = person.getFirst_name().trim();
+						}
+						
+						if(person.getFather_last_name()!=null&&!person.getFather_last_name().isEmpty())
+						{
+							name = name + " " + person.getFather_last_name();
+						}
+						
+						if(person.getMother_last_name()!=null&&!person.getMother_last_name().isEmpty())
+						{
+							name = name + " " + person.getMother_last_name();
+						}
+					     
+						 params[0] = new InputParam("1", null, "1", name);
+						 params[1] = new InputParam("1", null, "2", person.getMx_curp());
+						 params[2] = new InputParam("1", "6",  "3", person.getMx_ife_cveelector());
+						 params[3] = new InputParam("1", "7",  "4", person.getMx_ife_numemision() +"");
+						 params[4] = new InputParam("1", "11", "11",person.getMx_ife_seccion() );
+					     
+					 } else if(file.getFilesPk().getFile_type_id() == 42) {
+						 
+						 params    = new InputParam[1];
+					     params[0] = new InputParam("1", "10", "9", person.getMx_ife_numvertical());
+					 }
+					 
+					 if(( person.getIdentification_type_id() != null && (person.getIdentification_type_id().intValue() == 3 || person.getIdentification_type_id().intValue() == 4 || person.getIdentification_type_id().intValue() == 5 || person.getIdentification_type_id().intValue() == 6 )) && ( file.getFilesPk().getFile_type_id().intValue() == 132 || file.getFilesPk().getFile_type_id().intValue() == 132 || file.getFilesPk().getFile_type_id().intValue() == 133 || file.getFilesPk().getFile_type_id().intValue() == 76 ) ){
+					 					
+						 files[i] =  new com.soa.webServices.util.Files(null, null, file.getFileType().getName(), "1", file.getLocation(), params, null, proyect.getProyectoPk().getProspectus_id()+"");
+						 i++;
+					
+						 files[i] =  new com.soa.webServices.util.Files(null, null, file.getFileType().getName(), "42", file.getLocation(), params, null, proyect.getProyectoPk().getProspectus_id()+"");
+						 i++;
+					
+					}else{
+					
+						files[i] =  new com.soa.webServices.util.Files(null, null, file.getFileType().getName(), file.getFilesPk().getFile_type_id()+"", file.getLocation(), params, null, proyect.getProyectoPk().getProspectus_id()+"");
+						i++;	
+					
+					}
+				}
+				
+				DocumentsReviewRequest docs = new DocumentsReviewRequest(files,proyect_loan.getProyectloanPk().getProyect_loan_id()+"");
+
+				srvCall.setAcces_datetime(new Date());
+				srvCall.setCompany_id(proyect_loan.getProyectloanPk().getCompany_id());
+				srvCall.setInfo("Invocando Servicio Web WsSgbRiskServiceLocator.getWsSgbRisk.documentsReview");
+				srvCall.setProspectus_id(proyect_loan.getProyectloanPk().getProspectus_id());
+				srvCall.setStatus(1);
+				
+				service_calling.saveServiceCall(srvCall);
+				
+				res = service.documentsReview(docs );
+				
+				if(res.getStatus().equals("0"))
+				{					
+					srvCall = new ServiceCalling();
+
+					srvCall.setAcces_datetime(new Date());
+					srvCall.setCompany_id(proyect_loan.getProyectloanPk().getCompany_id());
+					srvCall.setInfo("Regresando Satisfactoriamente de Servicio WsSgbRiskServiceLocator.getWsSgbRisk.documentsReview: "+((res.getMessage().length()>120)?res.getMessage().substring(0,120):res.getMessage()));
+					srvCall.setProspectus_id(proyect_loan.getProyectloanPk().getProspectus_id());
+					srvCall.setStatus(2);
+					
+					service_calling.saveServiceCall(srvCall);
+										
+				} else {
+					
+					srvCall = new ServiceCalling();
+					
+					srvCall.setAcces_datetime(new Date());
+					srvCall.setCompany_id(proyect_loan.getProyectloanPk().getCompany_id());
+					srvCall.setException(((res.getMessage().length()>120)?res.getMessage().substring(0,120):res.getMessage()));
+					srvCall.setProspectus_id(proyect_loan.getProyectloanPk().getProspectus_id());
+					srvCall.setStatus(3);
+					
+					service_calling.saveServiceCall(srvCall);
+					//return false;
+				}
+				
+			}
+				
+			srvCall = new ServiceCalling();
+
+			srvCall.setAcces_datetime(new Date());
+			srvCall.setCompany_id(proyect_loan.getProyectloanPk().getCompany_id());
+			srvCall.setInfo("Invocando Servicio Web WsSgbRiskServiceLocator.getWsSgbRisk.newProject");
+			srvCall.setProspectus_id(proyect_loan.getProyectloanPk().getProspectus_id());
+			srvCall.setStatus(1);
+				
+			service_calling.saveServiceCall(srvCall);
+			
+			prospectId = Integer.toString(proyect.getProyectoPk().getProspectus_id());
+			projectId  = Integer.toString(proyect_loan.getProyectloanPk().getProyect_loan_id());
+			productId  = Integer.toString(proyect.getType_id());			
+			companyId  = Integer.toString(proyect_loan.getProyectloanPk().getCompany_id());
+			mxFrec     = Integer.toString(proyect_loan.getFrequency_id());
+			mxNumPagos = Integer.toString(proyect_loan.getTerm_id());
+			amount     = Double.toString(proyect_loan.getAmmount());
+			mxTasa     = Double.toString(proyect_loan.getRate());
+			mxComisionApertura = Double.toString(proyect_loan.getOpening_commission());
+			
+			if( proyect_loan.getIs_prospector_score() != null && proyect_loan.getIs_prospector_score().equals("S") ){
+				bursolnum = "PROSPECTOR_INVALID";
+			}else{
+				bursolnum = proyect_loan.getMx_solicitud_buro();
+			}
+			loan_type = proyect_loan.getLoan_type();
+			is_collection_solution = proyect_loan.getIs_collection_solution();
+			
+					
+			res = service.newProject(prospectId, projectId, productId, amount, companyId, mxTasa, mxFrec, mxNumPagos, mxComisionApertura, bursolnum, loan_type, is_collection_solution);
+			
+			if(res.getStatus().equals("0"))
+			{
+				
+				srvCall = new ServiceCalling();
+
+				srvCall.setAcces_datetime(new Date());
+				srvCall.setCompany_id(proyect_loan.getProyectloanPk().getCompany_id());
+				srvCall.setInfo("Regresando Satisfactoriamente de Servicio WsSgbRiskServiceLocator.getWsSgbRisk.newProject: "+((res.getMessage().length()>120)?res.getMessage().substring(0,120):res.getMessage()));
+				srvCall.setProspectus_id(proyect_loan.getProyectloanPk().getProspectus_id());
+				srvCall.setStatus(2);
+
+				service_calling.saveServiceCall(srvCall);
+				
+//				proyect_loan.setStatus_id(1);
+//				proyect_loan.setDay_published(new Date());
+//				
+//				proyectloanService.update(proyect_loan);
+				
+				if( membership == null ){
+				
+					MembershipPK mpk = new MembershipPK();
+					
+					mpk.setCompany_id(company_id);
+					mpk.setProspectus_id(prospectus_id);
+					
+					membership =  membershipservice.getMembershipById(mpk);
+					
+				}
+				
+					if( membership.getFile_creation_date() == null )
+					{
+						membership.setFile_creation_date(new Date());
+						membershipservice.update(membership);
+					}
+				
+				
+				
+				if( proyect_loan.getStatus_id() != 11 ){
+				
+					return proyectloanService.cambioStatus(proyect_loan, 1, new Date());
+				
+				}else{
+					
+					return proyectloanService.cambioStatus(proyect_loan, 11, new Date());
+					
+				}
+				
+				
+			} else {
+				
+				srvCall = new ServiceCalling();
+				
+				srvCall.setAcces_datetime(new Date());
+				srvCall.setCompany_id(proyect_loan.getProyectloanPk().getCompany_id());
+				srvCall.setException(((res.getMessage().length()>120)?res.getMessage().substring(0,120):res.getMessage()));
+				srvCall.setProspectus_id(proyect_loan.getProyectloanPk().getProspectus_id());
+				srvCall.setStatus(3);
+				
+				service_calling.saveServiceCall(srvCall);
+				
+				return false;
+			}
+				
+		
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+}

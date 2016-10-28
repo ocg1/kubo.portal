@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+<!-- 
+		<ui:repeat var = "listEmployment" value = "#{summaryRequest.listEmployment}">
+			<p>#{summaryRequest.female?'Empleada':'Empleado'} de #{listEmployment.employer} por #{summaryRequest.actividad_economica.auxTenure} 
+				<h:panelGroup rendered="#{summaryRequest.nameVisible}">
+				<br />Ubicado en #{summaryRequest.actividad_economica.employAddressStr}
+				</h:panelGroup> 
+			</p>
+		</ui:repeat>
+-->		
+		
+</ui:composition>				

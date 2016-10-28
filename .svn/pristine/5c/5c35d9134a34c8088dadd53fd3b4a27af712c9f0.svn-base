@@ -1,0 +1,104 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+	<div>
+
+	<!-- 
+		<h:panelGroup rendered = "#{credit.status == 'V' or credit.status == 'A' or credit.status == 'B'}" > 
+	-->
+		<h:panelGroup rendered = "true" >
+			
+			<div class="cont_tables">					
+				<ui:include src = "creditos/monto_saldos_intereses.xhtml" />	
+								
+				<ui:include src = "creditos/fecha_frecuencia_tasas.xhtml" />
+				
+				<div class = "col_grafica table_style">
+					<div id = "piechart_3d_#{credit.numCredito}"/>
+					
+					<h:outputText escape = "false" value = "#{credit.scriptGraphic}" />
+				</div>
+					
+				<div style = "clear:both"/>																										
+			
+				<ui:include src = "creditos/quiero_liquidar_prestamo.xhtml" />							
+			</div>	
+									
+			<div class = "labelsStl observaciones">
+					*Todos los montos son expresados en pesos mexicanos<br /> 
+		    		 <sup>(a)</sup>Tasa fija anual simple.<br />
+					 <sup>(b)</sup>Costo Anual Total. Para fines informativos y de comparación. 
+		    		Los <a  href="avisolegal.jsf?page=condiciones" class="ahref" >términos, condiciones</a> y <a href="leyTransparencia.jsf?page=comisiones" class="ahref">comisiones</a> aplicables al 
+		    		Crédito Personal kubo.financiero son los incluidos en el <a href="leyTransparencia.xhtml?page=contrato" class="ahref">Contrato de Adhesión</a> relacionado en la solicitud. Puedes consultar nuestros <a  href="avisolegal.jsf?page=requisitos" class="ahref" >requisitos y modalidades de contratación</a>.	
+		   	</div>						   	
+			
+			<!-- <ui:include src = "creditos/pagar_con_pademobile.xhtml" /> -->										
+							
+		</h:panelGroup>
+		
+		<!-- <h:panelGroup rendered="#{credit.status == 'P'}" > -->
+		<h:panelGroup rendered="false" >
+		
+			<!-- <div class="labelsStlTitle" style="width: 230px; margin-left: auto !important; margin-right: auto !important;" > Crédito Liquidado </div> -->
+		
+			<!-- <div style="width: 260px; height: auto; overflow: auto; margin-left: 0px; margin-right: auto; padding: 5px;" >
+				
+				<table>
+					<tr>
+						<td>
+							<div class="labelsStl" > Tasa:</div>
+						</td>
+						<td>
+							<div class="labelsStl" ><span style="color: #439539;" > #{credit.tasa}% anual </span> </div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="labelsStl" > CAT: </div>
+						</td>
+						<td>
+							<div class="labelsStl" ><span style="color: #439539;" > #{credit.cat}% </span> </div>
+						</td>
+					</tr>
+				</table>
+			
+			</div> -->
+			
+			<div class="tabla_final">
+				<table>
+					<tr>
+						<td><div class="labelsStl" >Monto:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" >#{credit.monto}</span></div></td>
+						<td><div class="labelsStl">Plazo:</div></td>
+						<td><div class="labelsStl"><span style="color: #439539;" >#{credit.plazo}</span></div></td>
+					</tr>
+					
+					<tr>
+						<td><div class="labelsStl" > Tasa: </div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.tasa}% anual </span> </div></td>
+					<!-- </tr>
+					<tr> -->
+						<td><div class="labelsStl" > CAT: </div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" > #{credit.cat}% </span> </div></td>
+					</tr>										
+					<tr>
+						<td><div class="labelsStl" >Fecha Inicio:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" >#{credit.fecInicio}</span></div></td>
+						<td><div class="labelsStl" >Fecha Término:</div></td>
+						<td><div class="labelsStl" ><span style="color: #439539;" >#{credit.fecFin}</span></div></td>
+					</tr>
+					
+					
+				</table>
+			</div>																														
+		</h:panelGroup>
+		<!-- 
+		<ui:include src = "commented_block_3.xhtml"/>
+		 -->
+	</div>
+	
+</ui:composition>

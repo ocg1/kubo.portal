@@ -1,0 +1,155 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<script type = "text/javascript" src = "../resources/js/mx.com.kubo.acreditado/registro/documentacion.js"/>	
+	<script type = "text/javascript" src = "../resources/js/mx.com.kubo.acreditado/registro/documentacion/tipo-credencial.js"/>	
+	<script type = "text/javascript" src = "../resources/js/registro/fileUpload.js"/>
+	<script type = "text/javascript" src = "../resources/js/imgscale/imgscale.jquery.min.js"/>
+	
+	<script type = "text/javascript">
+	
+$(document).ready(function() 
+{
+	init_listeners_documentacion();
+	 
+
+	
+	$(".formatpld").keyup(function(e) 
+	{			
+		$(this).formatCurrency({ 
+				colorize: true, 
+				positiveFormat: '%n', 
+				roundToDecimalPlace: -1, 
+				eventOnDecimalsEntered: true });
+	
+	});
+	
+	$("h2.expand_heading").toggle(function()
+	{        	
+		$(this).children().removeClass("change");	 		    
+        }, function () {
+        	$(this).children().addClass("change");
+    });
+	
+    $("h2.expand_heading").click(function(event)
+    {   
+    		$(this).next(".toggle_container").slideToggle("slow");
+    		event.preventDefault();
+    });
+    
+    $(".validatorClass").bind("change blur",function(event) 
+    {
+    	fieldCount();
+    	event.preventDefault();
+    });   	
+});
+
+	</script>
+	<style>
+	.dvLabel{
+		width: 425px !important;
+		text-align: justify !important;
+	}
+	
+	.labelsStl{
+		text-align: justify !important;
+	}
+	.elementStlLbl{
+		font-size: 1.1em !important;
+	}
+	.dvContent{
+		margin-top: 18px;
+	}
+	.dvContentPLD{
+	
+		height: auto;
+		overflow: auto;
+		float: none;
+		vertical-align: bottom;
+	
+	}
+	.dvContentPLD p{
+		clear: both;
+	}
+	td{
+	  margin-right: 15px !important;
+	  border-right-width: 10px !important;
+	  border-right-color: #FFFFFF !important;
+	  padding-right: 15px !important;
+	}
+	</style>
+
+	<h:panelGroup id="panelScript">
+		<script type="text/javascript">
+			oncompleterequest('#{addPldDocument.thisDocumentId}');
+		</script>
+	</h:panelGroup>	
+
+	<div id="general"  style="padding-top: 0px !important; margin-top: 0px !important;">
+		<div class="backStyle"  style="padding-top: 0px !important; margin-top: 0px !important;">	
+			<div id="contFrmPre"  style="padding-top: 0px !important; margin-top: 0px !important;">
+			
+			
+				
+				<!-- div class="dvContent2" >
+					<div class="msgDoc">Se aceptarán únicamente comprobantes no alterados, documentos legibles y a
+
+color.</div 
+				</div-->								
+				<h:panelGroup styleClass="areaL" id="documentosActualizar" >
+				
+					   <ui:include src = "../documentacion/sube_tus_fotos/titulo.xhtml"/>
+				  <ui:include src = "../borrarDoc.xhtml"/>
+					<ui:include src = "paso_6_documentacion/credencial-elector.xhtml"/>									
+					<ui:include src = "paso_6_documentacion/datos_credencial_elector.xhtml"/>				
+					<ui:include src = "paso_6_documentacion/comprobante-domicilio.xhtml"/>						
+				</h:panelGroup>		
+				
+				<div class="dvContent" style="margin-left: auto; margin-right: auto;">
+					<div class="nextPLD solicitud callAction btnNaranja mapOff" onclick="validationBtn ('Documentacion')">
+						Guardar y continuar
+					</div>
+				</div>
+					
+					
+				<h:form prependId="false">
+					<div style="display: none;">
+						<p:commandLink
+								id = "nextToClabe"
+								immediate = "true" ajax = "true"
+								onstart    = "return  validateNextMenu('N');"
+								oncomplete = "closeMessageProcessing();"
+								actionListener = "#{navigationBean.cambiaPagina}"					
+								update = ":actualPage :form_Prin:hiddenactios :form_Prin">
+							<f:attribute name="section" value="registro/investor/addClabe::18::menu18" />
+						</p:commandLink>
+					</div>
+				</h:form>
+				
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+					
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+			
+			</div>
+		</div>
+	</div>
+</ui:composition>

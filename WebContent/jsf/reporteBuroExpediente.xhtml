@@ -1,0 +1,97 @@
+<ui:composition
+	xmlns	 = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+	
+	<!-- <link rel="shortcut icon" href="../resources/img/" /> -->
+		 
+		<!-- <script type="text/javascript" src="../resources/js/jquery-1.7.1.js"></script> -->	
+		
+		
+		<!-- table Fixed -->
+		
+		<link rel="stylesheet" type="text/css" href="../resources/js/tableFix/jquery-ui/css/redmond/jquery-ui-1.8.4.custom.css"/>
+		<link rel="stylesheet" type="text/css" href="../resources/js/tableFix/jquery-ui/css/ui-lightness/jquery-ui-1.8.4.custom.css"/>
+		<link rel="stylesheet" type="text/css" href="../resources/js/tableFix/jquery-ui/css/smoothness/jquery-ui-1.8.4.custom.css"/>
+		<link rel="stylesheet" type="text/css" href="../resources/js/tableFix/jquery-ui/css/flick/jquery-ui-1.8.4.custom.css" id="link"/>
+		<link rel="stylesheet" type="text/css" href="../resources/js/tableFix/css/base.css" />
+		
+		 <script type="text/javascript" src="../resources/js/tableFix/highlighter/codehighlighter.js"></script>
+		<script type="text/javascript" src="../resources/js/tableFix/highlighter/javascript.js"></script>
+		<script type="text/javascript" src="../resources/js/tableFix/javascript/jquery.fixheadertable.min.js"></script>	
+		
+		<!-- End table Fixed -->
+		
+		<script type="text/javascript" src="../resources/js/consultaBuro.js"></script>	
+		
+	<style>
+		.detailsControlTable{
+			width: 830px !important; 
+			float: none; 
+			clear: both; 
+			margin-top: 15px;
+		}
+			
+			.centerPosition{
+				width: 807px !important;
+			}
+			
+			.clGraphicTitle{
+				margin: 31px auto auto 28px; 
+				font-size: 1.19em;
+			}
+			
+			.ui-autocomplete-input, .ui-autocomplete{
+			
+				color: #333333;
+				background-color: transparent !important
+			
+			}
+			
+			.ui-state-hover, .ui-state-focus {
+			
+				color: #333333;
+				background: none !important;
+				background-color: transparent !important;
+				
+			}
+			
+			.ui-autocomplete-input :focus, .ui-autocomplete :focus{
+			
+				color: #333333;
+				background-color: transparent !important
+			}
+			
+			div.tooltip_icon {
+				    display: none;
+				}
+			
+	</style>
+		
+	<script type="text/javascript">
+    	 google.load("visualization", "1", {packages:["corechart"]});
+    	 /*var flagF = true;
+    	 function inicializaTable(){
+    	if(flagF){
+    		$('.fixme').fixheadertable({
+                caption : 'Créditos Vigentes',
+                height  : 200,
+                width	: 780 ,
+                colratio	: [80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80,80]
+           });
+    		flagF = false;
+    	}
+    	} */
+    	
+	</script>
+		
+		<h:form prependId="false" >
+			<div style="width: 881px; height: auto; overflow: auto; border: 0px solid #ff0000; margin-left: auto; margin-right: auto; position: relative !important;" >
+				<ui:include src="reporteBuro.xhtml" />
+			</div>
+		</h:form>
+
+</ui:composition>

@@ -1,0 +1,794 @@
+@CHARSET "UTF-8";
+#contGeneral{
+	position: relative;
+	min-height: 450px;
+	overflow: auto;
+}
+.divsimulatorkubo{
+	width: 350px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+}
+
+#mnsjSim{
+	width: auto;
+	/*border: solid 1px #f32323;*/
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	color: #000000;
+	/*background-color: #f66532;*/
+	margin-bottom: 8px;
+	font-size: 1.85em;
+	font-weight: normal;	
+}
+
+#opcSim{
+	float:right;
+	margin-top:90px;
+}
+
+#contSim{
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#contMsj{
+	border: solid 0px #000000;
+	height: auto;
+	overflow: auto;
+	width: 540px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+
+#mensaje1,#mensaje2,#mensaje3,#mensaje4{
+	width: 220px;
+	font-size: 1.05em;
+	float: left;
+	margin-left: 10px;
+	text-align: center;
+}
+
+#mensaje1{
+
+}
+
+#mensaje2{
+
+	
+}
+#mensaje4{
+	clear: both;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#mensaje3{
+	width: 290px;
+}
+
+#mnsjSim1, #mnsjSim2, #mnsjSim3{
+	
+	border: solid 2px #f77f31;
+	/*border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    padding: 5px 8px 5px 5px;*/
+    margin-top: 9px;
+    text-align: center;
+    float: left;
+    position: relative;
+    margin-left: 10px;
+    /*background-color: #f77f31;*/
+    color: #f77f31;
+    background-color: #FFFFFF;
+    border-radius: 15em 15em 15em 15em;
+    -moz-border-radius: 15em 15em 15em 15em;
+    padding: 5em 5em 5em 5em;
+    
+}
+#mnsjSim1{
+	/*width: 150px;*/
+}
+#mnsjSim2{
+	/*width: 180px;*/
+}
+#mnsjSim3{
+	/*width: 220px;*/
+}
+#simTable {
+	border: 1px solid #000;
+	background: #B7DEE8;
+	border-collapse: collapse;
+}
+
+#simTableNeg {
+	border: 1px solid #000;
+	background: #B7DEE8;
+	border-collapse: collapse;
+}
+
+.totalPagar, .tasaInteres, .pagoAnual,.propuestaCuota{
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+	font-weight: bold;
+	background-color: #92D050;
+    display: block;	
+}
+.propuestaCuota{
+	font-size: 1.2em;
+	background-color: transparent;
+	color: #f96302;
+}
+.totalPagar{
+	font-size: 15px;
+}
+.tasaInteres{
+	font-size: 20px;
+}
+.pagoAnual{
+	font-size: 30px;
+}
+.columnone{
+	text-align: left;
+	border-right: 1px solid #000;
+}
+.columntwo{
+	text-align: right;
+}
+#conCompara{
+	width: 70%;
+	height: 450px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid 0px #E6E6E6;
+	background-image: none;
+	background-repeat: repeat;
+	padding: 10px 10px 10px 10px;
+	overflow: hidden !important; 
+	padding-top: 3px;
+}
+#compara{
+	position: relative;
+	/*top: 15px;
+	left: 0px;*/
+	margin-left: auto;
+	margin-right: auto;
+	width: 0px;
+	border: solid 0px #6e6e6e;
+	border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+	height: auto;
+	overflow: auto;
+    padding-bottom: 0px;
+    border: solid 0px #000000;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    overflow: hidden !important; 
+}
+.compara{	
+	width: 292px;
+	height: 429px;
+	border: solid 1px #909192;
+	border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    padding: 8px 8px 8px 8px;
+    margin-top: 0px;
+    text-align: center;
+   /*  background-color:  rgba(240, 243, 195, 1.0); */
+   background-color:  rgba(240, 243, 195, 1.0);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3px;
+    float:left;
+    overflow: hidden !important; 
+}
+
+.espera{
+	float: left;
+	width: 280px;
+	margin-top: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 29px;
+	height: 350px;
+	overflow: auto;
+	display: none;
+	
+}
+.tableCompara{
+	float: left;
+	width: 220px;
+	margin-top: 8px;
+	position: absolute;
+	top: 29px;
+	left: 58px;
+	border: solid 0px #000000;
+	height: auto;
+	overflow: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tableComparaKubo{
+	width: 280px;
+	margin-top: 3px;
+	position: absolute;
+	top: 25px;
+	left: 10px;
+	display: none;
+	border: solid 0px #000000;
+	height: 422px;
+	overflow: hidden;
+	text-align: left;
+}
+
+#contTableSim1{
+	width: 50%;
+}
+
+.contTablesSim{
+	position: relative;
+	border: solid 0px #000000;
+	width: 310px;
+	height: auto;
+	overflow: hidden;
+	margin-left: 10px;
+	margin-top: 10px;
+	float: left;
+}
+
+.botSimComp:hover{
+	cursor: pointer;
+}
+#contMsjSim{
+	height: auto;
+	overflow: auto;
+	border: solid 0px #000000;
+	margin-top: 40px;
+	padding-right: 10px;
+	padding-bottom: 6px;
+	text-align: center;
+	width: 680px;
+	padding-left: 0px;	
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+}
+#detalle{
+	display: none;
+	width: 200px;
+	float: left;
+	top: 80px;
+	position: relative;
+}
+#msjDet{
+	text-align: right;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.resaltaSim{
+	background-color: #96bc0d;
+	color: #f6f6f6;
+	font-weight: bold;
+}
+.actionSim{
+	color: inherit;
+	text-decoration: none;
+	font-weight: bold;
+}
+.actionSim span{
+	color: #f77f31;
+}
+#back{
+	float: left;	
+}
+#next{
+	float: right;	
+}
+#nav{
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	height: auto;
+	overflow: auto;
+	width: 200px;
+}
+#back:hover,#next:hover{
+	cursor: pointer;	
+}
+
+#callToActionSim{
+			padding: 5px 5px 5px 5px;
+			background-color: #e6511e;
+			border: solid 1px #f6f6f6;
+			border-radius: 4px;
+			-ms-border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			-khtml-border-radius: 4px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 150px;
+			height: auto;
+			overflow: auto;
+			margin-bottom: 0px;
+			margin-top: 20px;
+			text-align: center;
+			vertical-align: middle;
+			color: #f6f6f6;
+			font-weight: bold;
+		}
+		
+#contMenuSim{
+	height: auto;
+	overflow: auto;
+	border: solid 1px #f3f3f3;
+	width: 320px;
+	position: absolute; 
+	right: 700px; 
+	top: 50px; 
+}
+#comparaLnk, #menuSim1, #menuSim2, #menuSim3, #menuSim4, #menuSim5{
+	font-size: .98em;
+	width: 260px;
+	border-bottom: solid 1px #f0f0f0;
+	/*border-right: solid 1px #f3f3f3;*/
+	padding: 10px 10px 10px 10px ;
+	color: #a9a9a9;
+	vertical-align: middle;
+}
+#comparaLnk a,#menuSim1 a, #menuSim2 a, #menuSim3 a, #menuSim4 a, #menuSim5 a{
+	color: inherit;
+	text-decoration: none;
+	font-weight: bold;	
+}
+#menuSim4{
+	border-bottom: solid 0px;
+}
+
+#menuSim1:hover, #menuSim2:hover, #menuSim3:hover, #menuSim4:hover, #menuSim5:hover{
+	background-color: #f6f6f6;
+	cursor: pointer;
+	
+}
+#comparaLnk{
+	border-bottom: solid 0px #f0f0f0;
+	font-size: 1.5em;
+	width: 430px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #898989;
+}
+#comparaLnk:hover{
+	cursor: pointer;
+}
+#satisfactorio{
+	font-size: 1.98em;
+	text-align: center;
+	padding: 10px 10px 10px 10px ;
+	color: #a9a9a9;
+	vertical-align: middle;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
+}
+#titAmort{
+	font-size: 1.98em;
+	text-align: center;
+	color: #f96302;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.amort {
+	margin: 20px 20px 20px 20px;
+	
+}
+.amort table{
+	border-collapse: collapse;
+	font-size: 1.1em;
+}
+.amort table td{
+	border-collapse: collapse;
+	border-bottom: solid 1px #f3f3f3;
+}
+.numero{
+	text-align: right;
+}
+#descSim{
+	width: 200px; 
+	height: 190px; 
+	float: left; 
+	margin-left: 15px;
+	margin-top: 0px;
+	padding-top: 0px;
+	font-size: 1.5em;
+	color: #222222;
+	text-align: center;
+	line-height: 25px;
+}
+#descSim .ammount{
+	
+	color: #3e3e40;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+#descSim .totalPagos{
+	
+}
+#descSim .freq{
+	font-weight: bold;
+}
+#descSim .montoCuota{
+	color: #f96302;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+#descSim .montoTotal{
+	font-size: 0.9em;
+	color: #96bc0d;
+}
+div.verDet{
+	margin-top: 8px;
+	font-size: 0.6em;
+	text-align: right;
+	
+	color: #666666;
+}
+div.verDet:hover{
+	cursor: pointer;
+}
+
+.linkPreregistro{
+	text-decoration: none;
+	color: #F96302;
+	font-size: 1.7em;
+}
+
+.contComparaTable{
+	width: 290px;
+	height: auto;
+}
+
+.comparaTableRes{
+	font-family: Arial, sans-serif,  "Lucida Grande", "Lucida Sans Unicode" !important;
+	letter-spacing: 0px;
+	font-size: 13px;
+	width: 126px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.12em;
+	border-collapse: collapse;
+	border: solid 1px #F0F0F0;
+}
+
+.comparaTableRes td{
+	padding-left: 5px;
+	width: 98px;
+	
+}
+.cuota{
+	background-color: #99dc7b; 
+	
+}
+.cuota span{
+	font-size: 1.15em;	font-weight: bold;
+}
+.elementAddresMin{
+	width: 75px !important;
+}
+.elementStlSelMonth{
+	width: 105px !important;
+}
+
+/*************    simulador tabla   *****************/
+
+table#sim_table{
+  	text-align: center;
+  	font-size: 15px;
+  	border: solid 0px #000000;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 210px;
+  	border-collapse: collapse;
+  }
+  
+  table#sim_table_neg{
+  	text-align: center;
+  	font-size: 1.4em;
+  	border: solid 0px #000000;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 210px;
+  	border-collapse: collapse;
+  }
+
+.sim_cont_back{
+	height: auto;
+	padding: 1px;
+	border: solid 8px #f0f3c3;
+	overflow: auto;
+	width: 215px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.sim_cont{
+	height: auto;
+	overflow: auto;
+	width: 100%;
+	padding: 2px;
+	border: solid 0px #FF0000;
+	font-size: 15px;
+}
+.sim_title{
+	color: #439539;
+	padding-bottom: 4px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.sim_desc{
+	padding-top: 8px;
+}
+.sim_value{
+	font-weight: bold;
+}
+.total{
+	color: #439539;
+}
+.couta{
+	/* color: #C1D82F; */
+	color: #231f20;
+}
+.sim_button{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: .95em;
+}
+.simValues_cont_back{
+	height: auto;
+	padding: 1px;
+	border: solid 8px #f0f3c3;
+	overflow: auto;
+	width: 204px;
+}
+.simValues_cont{
+	height: auto;
+	overflow: auto;
+	width: 200px;
+	padding: 2px;
+	border: solid 0px #FF0000;
+}
+.simValues_title{
+	color: #439539;
+	padding-bottom: 4px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.simValues_desc{
+	padding-top: 8px;
+}
+.simValues_value{
+	font-weight: bold;
+}
+
+.dvRiskA .statusLeft{
+	background-color: #003366; 
+	border: 1px solid #003366;
+}
+.dvRiskB .statusLeft{
+	background-color: #7BC9DC; 
+	border: 1px solid #7BC9DC;
+}
+.dvRiskC .statusLeft{
+	background-color: #83BA52; 
+	border: 1px solid #83BA52;
+}
+.dvRiskD .statusLeft{
+	background-color: #9DDF3D; 
+	border: 1px solid #9DDF3D;
+}
+.dvRiskE .statusLeft{
+	background-color: #FDC93D;
+	border: 1px solid #FDC93D;
+}
+
+.statusLeft {
+	padding: 0 5px;
+	color:#fff;
+	font-size: 1.1em;
+}
+
+#checkSim{
+	
+	width: 230px !important;
+	font-size: 1.7em !important;
+	
+}
+
+.menuSimWide{
+			display: block;
+		}
+		
+		.menuSim {
+			display: none;
+		}
+
+
+
+
+/************pagina simulator 2 ************/
+
+.pagTitulo{
+	border:solid 0px #000000;
+	text-align: center;
+	padding: 5px;
+	position: absolute;
+	top: 55px; 
+	left: 374px;
+	color: #000000 !important;
+}
+
+.pagDvCntMsgTit{
+	
+	width: 800px; 
+	margin: 10px 20px 10px 25px; 
+	height: 40px; 
+	border:solid 0px #000000;
+	text-align: center;
+	position: absolute;
+	top: 105px;
+	left: 74px;
+	
+}
+
+.dvCntMsg{
+	font-size: 1.4em;
+}
+
+.dvCntMsg span{
+	font-weight: bold;
+}
+
+.pagClsContSim{
+	clear: both; 
+	min-height: 610px; 
+	overflow: hidden; 
+	margin-left: auto; 
+	margin-right: auto;  
+	padding-top: 0px; 
+	padding-bottom: 10px; 
+	padding-left: 15px; 
+	border: solid 0px #000000; 
+	width: 93% !important; 
+}
+
+.pagDvContSim{
+	min-height: 430px; 
+	float: left; 
+	height: auto; 
+	overflow: auto; 
+	width: auto; 
+	padding-top: 0px; 
+	padding-bottom: 10px; 
+	padding-left: 0px; 
+	padding-right: 0px;
+	border: solid 0px #000000; 
+}
+
+.dvPagContSim{
+	display: none;  
+	/* margin-left: #{simulator.msim}px;  */ 
+	width: 335px; 
+	overflow: hidden !important; 
+	height: auto; 
+	background-color: #f0f3c3;
+	margin-left: 230px !important;
+}
+.dvPagMetaSim{
+	padding-left: 15px; 
+	width: 300px; 
+	font-size: 0.8em; 
+}
+
+.dvPagContRespSim{
+	
+	width: 269px; 
+	overflow: hidden; 
+	float: left;
+	border: solid 0px #FF0000;
+	
+}
+
+/*---acordeon simulador-----*/
+@media (min-width: 851px) {
+	.pleca_simulador.pestania {
+		display:block;
+	}
+}
+
+.pestania {
+	display:none;
+}
+
+@media (max-width: 600px) {
+	.pestania {
+		display:block;
+	
+		background: #8FC450 !important;
+		color: #fff;
+		font-weight: normal !important;
+		text-transform: uppercase;
+		border: none !important;
+		border-bottom: dotted 1px #fff;
+		padding: 7px 3% !important;
+		font-size: 16px !important;
+		text-align: left !important;
+		margin: 0 0 2px;
+		height: auto !important;
+}
+	
+	#contFrmReg .helpFrm {
+		width:100% !important;
+	
+		z-index: 9999999999999999999 !important;
+		top: 77px;
+}
+	.contactanos_imagen {
+		display:none;
+	}
+	#thisSim, table#sim_table {
+	width:100% !important;
+	height: auto !important;
+	min-height: initial !important;
+}
+	.sim_cont_back #ammount, .sim_cont_back  #term  {
+		border: solid 1px #9f9f9f !important;
+		box-shadow:none !important;
+		margin: 0 !important;
+}
+#sim_table .sim_value #ammount {
+	width:100% !important;
+	min-width: 90%;
+}
+.sim_cont table {
+	width:100% !important;
+}
+.sim_cont_back {
+	min-height:inherit !important;	
+	border: solid 1px #ccc !important;
+	padding: 0 !important;
+}
+.pestania.active {
+	background-color:#ccc !important;
+}
+
+.sim_cont_back #term {
+	min-width: 147px !important;
+}
+.velo {
+	width:100%;
+	height: 160%;
+	display:none;
+	position: fixed;
+	background: rgba(255,255,255,.5);
+	z-index: 999;
+	top: 0;
+	left: 0;
+}
+.helpFrm .btnCloseSimulador {
+	right: 15px !important;
+	left: auto !important;
+}
+}

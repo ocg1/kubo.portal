@@ -1,0 +1,23 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+	<div id = "authentication-id-3"> 		 
+		<div class="styled-select-Address">
+			<h:selectOneMenu styleClass = "elementStlSelAddress">
+								
+				<f:selectItem itemLabel = "Selecciona..." itemValue = "" />
+				
+				<f:selectItems  value = "#{tablero_autenticacion.domicilio.lista_delegaciones}" 
+								var   = "delegacion" 
+								itemLabel = "#{delegacion.name}" 
+								itemValue = "#{delegacion.townCatPK.town_id}"/>
+								
+				<p:ajax event      = "change" 
+						listener   = "#{tablero_autenticacion.domicilio.init_town_id}"  
+						oncomplete = "town_id_on_complete(xhr, status, args);"  />
+			</h:selectOneMenu>
+		</div>	
+	</div>			 
+</ui:composition>	

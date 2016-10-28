@@ -1,0 +1,32 @@
+/*
+----------------------------------------
+FdC:        [29.Abril.2014]
+Folder:     css/secciones/estado_cuenta/
+Programmer: Damián Tapia Nava
+---------------------------------------
+*/
+
+@CHARSET "UTF-8";
+
+.col_referencia_logo
+{
+	width: 10%;
+	/* min-width:124px; */
+	
+	text-align: center;
+	
+	vertical-align: top;
+	padding-top: 15px;
+}
+
+
+.col_referencia_logo img {
+	width:90%;
+	
+}
+
+.col_referencia_concepto_panel
+{				
+	padding:0;
+	border:0px solid black;
+}

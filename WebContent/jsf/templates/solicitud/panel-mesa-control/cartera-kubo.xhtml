@@ -1,0 +1,31 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+<!--  
+			
+	<h:panelGroup rendered="#{sessionBean.area=='M' and summaryRequest.actualProyect.is_kubo_property==0 }">
+		<p:commandLink style="text-decoration: none;" onstart="return confirmCartera();" actionListener="#{summaryRequest.creaCartera(summaryRequest.actualProyect)}" update=":frmQuest" oncomplete="closeFancy();" >
+			<div class="buttonPR" style="height: 29px; margin-bottom: 0px;">
+				<h:outputText value="Cartera kubo" />
+			</div>
+		</p:commandLink>
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{sessionBean.area=='M'}">
+			<ui:repeat var="instInvestor" value="#{summaryRequest.getListInstitutionalInvestor()}">
+				<h:panelGroup rendered="#{instInvestor.institutionalInvestorPK.institutional_investor_id != 0 and instInvestor.institutionalInvestorPK.institutional_investor_id != summaryRequest.actualProyect.institutionalInvestor.institutionalInvestorPK.institutional_investor_id }">
+					<p:commandLink style="text-decoration: none;" onstart="return confirmCartera('#{instInvestor.short_name}');" actionListener="#{summaryRequest.creaCartera}" update=":frmQuest" oncomplete="onCompleteAddInvestor();" >
+						<div class="buttonPR" style="height: 29px; margin-bottom: 0px;">
+							<h:outputText value="#{instInvestor.short_name}" />
+						</div>
+						<f:attribute name="carteraType" value="#{instInvestor.institutionalInvestorPK.institutional_investor_id}"></f:attribute>
+						<f:attribute name="actualProyect" value="#{summaryRequest.actualProyect}"></f:attribute>
+					</p:commandLink>
+				</h:panelGroup>
+			</ui:repeat>
+		</h:panelGroup>
+				
+-->				
+</ui:composition>				

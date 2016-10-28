@@ -1,0 +1,13 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">	
+
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa" name="main.js"    />
+	
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa"                  name="solicitud.js" />
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa/solicitud"        name="busqueda.js"/>
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa/solicitud/notas"  name="nota.js"/>
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa/solicitud/notas"  name="editor.js"/>
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa/solicitud/notas"  name="editor_panel.js"/>
+	<h:outputScript target="head" library="js/mx.com.kubo.mesa/solicitud/perfil" name="editor-nombre.js"/>	
+</ui:composition>				

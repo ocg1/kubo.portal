@@ -1,0 +1,169 @@
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+<style>
+		@media screen and (max-width: 780px) {
+		  #contCap1Img1,#contCap1Img2,#contCap1Img3{
+		  	width: 96%;
+		   	float: none;
+		  }
+		  #Cap1Img1,#Cap1Img2,#Cap1Img3{
+		  	float: left;
+		  	margin-left: 8px;
+		  	width: 48%;
+		  	
+		  }
+		  #Cap1TxImg1,#Cap1TxImg2,#Cap1TxImg3{
+		  	height: 100%;
+		  	float: left;
+		  	vertical-align: middle;
+		  	margin-left: 8px;
+		  	margin-bottom: auto;
+		  	margin-top: 40px;
+		  	width: 40%;
+		  	text-align: left;
+		  }
+		 
+		}
+		
+		
+	</style>
+
+<div id="contCap1" style="width: 100%; right: auto; left: auto;">
+<h:panelGrid columns="1">
+	<!-- Frase Descriptiva del Titulo -->
+	<h:panelGroup rendered="false">
+		<div class="tituloCnt">
+			<h:outputLabel>Préstamos Personales <b>kubo</b></h:outputLabel>
+		</div>
+	</h:panelGroup>
+	<h:panelGroup>
+		<hr class="hrCnt"></hr>
+	</h:panelGroup>
+	<!-- Fin Frase Descriptiva del Titulo -->
+	<!-- Gráfico -->
+	<h:panelGroup>
+		<div id="contCap1Img">
+		
+			<!-- Imagen 1 -->
+			<div id="contCap1Img1">
+				<div style="display: inline; 
+							border-left: 30px solid transparent;border-top: 30px solid #439539;float: left;top: 115px;position: relative;
+							height: 0;width: 0;right: 0px;" ></div>
+				<div align="center" id="Cap1Img1" style="display: inline; float: left; background-color: #C1D82F;width: 145px; height: 145px; margin-left: 0px !important; margin-bottom: 10px;" >
+					<p:graphicImage width="125px" height="125px"  url="../resources/img/icono1.png" ></p:graphicImage>
+				</div>
+				<div align="center" id="Cap1TxImg1" class="txtImg">
+					<h:outputLabel><b>Solicitar tu crédito</b><br></br> en línea en cuestión de minutos.</h:outputLabel>
+				</div>
+ 			</div>
+			<!-- Fin Imagen 1 -->
+			
+			<!-- Imagen 2 -->
+			<div id="contCap1Img2">
+				<div style="display: inline; 
+							border-left: 30px solid transparent;border-top: 30px solid #439539;float: left;top: 115px;position: relative;
+							height: 0;width: 0;right: 0px;" ></div>
+				<div align="center" id="Cap1Img2" style="display: inline; float: left; background-color: #C1D82F;width: 145px; height: 145px; margin-left: 0px !important; margin-bottom: 10px;" >
+					<p:graphicImage width="145px" height="145px"  url="../resources/img/icono2.png" ></p:graphicImage>
+				</div>
+				<div align="center" id="Cap1TxImg2" class="txtImg">
+					<h:outputLabel ><b>Obtener</b> <br></br> el financiamiento de tu crédito en poco tiempo.</h:outputLabel>
+				</div>
+ 			</div>
+			<!-- Fin Imagen 2 -->
+			
+			<!-- Imagen 3 -->
+			<div id="contCap1Img3">
+				<div style="display: inline; 
+							border-left: 30px solid transparent;border-top: 30px solid #439539;float: left;top: 115px;position: relative;
+							height: 0;width: 0;right: 0px;" ></div>
+				<div align="center" id="Cap1Img3" style="display: inline; float: left; background-color: #C1D82F;width: 145px; height: 145px; margin-left: 0px !important; margin-bottom: 10px;" >
+					<p:graphicImage width="142px" height="144px" url="../resources/img/icono3.png" ></p:graphicImage>
+				</div>
+				<div align="center" id="Cap1TxImg3" class="txtImg" style="clear: both;">
+					<h:outputLabel ><b>Realizar</b> <br></br>  tus pagos mensualmente.</h:outputLabel>
+				</div>
+			</div>
+			<!-- Fin Imagen 3 -->
+		</div>
+	</h:panelGroup>
+<h:panelGroup>
+<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!-- Fin Grafico -->
+<!-- Frase Referente a la imagen -->
+<!-- (VACI) -->
+<!-- Fin Frase Referente a la imagen -->
+<!-- Frase Ayuda -->
+<h:panelGroup>
+	<h:form id="form1ee">
+ 	<div class="FraseAyuda">
+ 		<h:outputLabel>Créditos de hasta $50,000* con la tasa mas baja </h:outputLabel>
+ 		<p:commandLink styleClass="linkInterno"><h:outputLabel value="Compare>>"/></p:commandLink>
+ 	</div>
+ 	</h:form>
+</h:panelGroup>
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!-- Fin Frase Ayuda -->
+
+<!-- Detalles de los Beneficios -->
+<h:panelGroup>
+<h:outputLabel styleClass="lsCnt"><h2>Ofrecemos los mejores  créditos  con:</h2></h:outputLabel>
+<ul class="lsCnt">
+	<li>
+		<h3>Menores tasas</h3>
+		<span class="lsCntDesc">Nosotros te reducimos los costos bancarios reflejados directamente en tu bolsillo.</span> 
+	</li>
+	<li>
+		<h3>Fáciles, rápido y con proceso en línea</h3>
+		<span class="lsCntDesc">Se aplica  fácil y rápidamente, te cotizamos  tu tasa en  unos cuantos minutos.</span>
+	</li>
+	<li>
+		<h3>Seguridad absoluta de tu identidad  e información</h3>
+		<span class="lsCntDesc">Confiabilidad, protección y seguridad son las cualidades que nos distinguen.</span>
+		
+	</li>
+</ul>
+</h:panelGroup>
+<!-- Fin Detalles de los Beneficios -->
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!-- Llamada a la accion -->
+<h:panelGroup>
+	<h:form id="form22e">
+	<div class="calltoAction">
+		<h:outputLabel>Comencemos a trabajar con tu crédito  </h:outputLabel>
+		<p:commandLink styleClass="linkInterno">
+			<h:outputLabel value="Revisa tu tasa"/>
+		</p:commandLink>
+	</div>
+	</h:form>
+</h:panelGroup>
+<!-- Fin Llamada a la accion -->
+<h:panelGroup>
+	<hr class="hrCnt"></hr>
+</h:panelGroup>
+<!-- Cierre -->
+<h:panelGroup>
+	<div class="cierre">
+		<h:outputLabel>
+		* Todos  los depósitos de tu crédito se realizarán  en  ( Determinar Bancos).
+		con una  tasa anual de______%; los préstamos van de _______% hasta______%.
+		El otorgamiento del  crédito  dependerá del  la calificación y estado actual 
+		del score, monto del crédito, términos  de uso e historial.
+		</h:outputLabel>
+	</div>
+</h:panelGroup>
+<!-- Cierre -->
+
+</h:panelGrid>
+</div>
+
+</html>

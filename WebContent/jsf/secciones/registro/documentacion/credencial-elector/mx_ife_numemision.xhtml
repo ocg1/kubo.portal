@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field ContenedorImagenMuestra">
+		<div class = "dvLabel" style="width: 290px; clear: both;">
+			<h:outputLabel styleClass = "labelsStl" value = "Los últimos 2 números de emisión*" /><span class="imagenDescripcion"><i onclick = "abrir_imagenreferencia(this);" class = "fa fa-question-circle numEmision"></i></span>
+		</div>
+		
+
+		
+		<div class="dvElementAddres1">
+			<h:inputText id = "no_emi" maxlength = "2" 										 
+						 onkeypress = "return isNumberKey(event);" 										 
+						 value = "#{addPldDocument.naturalperson.mx_ife_numemision}"
+						 styleClass = "elementAddres1  validatorClass hs_private hs_class emision"
+						      
+						 
+						>
+						 
+				<p:ajax event = "blur" listener = "#{addPldDocument.saveData}" />
+				
+			</h:inputText>
+			<p:watermark for="no_emi" value="Los últimos 2 números de emisión" />
+		</div>
+<div class = "imagen_referencia">
+			
+			
+				
+			<div class = "blindAction" onclick = "cerrar_imagenreferencia(this);"  >
+				X
+			</div>
+		        				 <figure>
+				 					<img src="../resources/img/credencial/Emisionsmall.jpg" alt= "numero vertical"/>
+				 				</figure>
+			</div>
+				  
+	</div>				
+</ui:composition>				

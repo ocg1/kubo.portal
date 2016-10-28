@@ -1,0 +1,30 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+	
+	<div id="dvSamePerson" >
+		<div id="dvSamePersonCont">
+			<div style="position: relative; padding-top: 10px;padding-bottom: 10px;" >
+			
+		  		<div id="dvSameResp" style="width: 90%; margin-left: auto; margin-right: auto; margin-top: 10px;position: relative;" >
+			  		<b>Ya existe un usuario dado de alta</b> con la información que nos proporcionaste con los siguientes datos:<br />
+			  		<div id="lstMembers"></div>
+			  		¿Qué puedes hacer?
+			  		<ul style="list-style-type:circle; " >
+			  			<li>Para iniciar sesión nuevamente <a href="#" onclick="javascript: clickExit();" >da click aquí.</a> </li>
+			  			<li>Si olvidaste tu contaseña <a href="#" onclick="javascript: clickForward();" >da click aquí.</a> </li>
+			  			<li>Si jamás te has dado de alta con nosotros, por favor contáctanos al 
+			  		teléfono #{msg.Kubo_telefono} o al correo <span style="color: #439539;" >soporte@kubofinanciero.com</span>
+			  		 para que podamos seguir atendiéndote.</li>
+			  		</ul>
+			  		 
+				</div>
+				
+				<div class="buttonPR" id="btnRelPerson" style="margin-bottom: 10px;margin-top: 0px !important;" onclick="msgSameOff();">
+					Cerrar
+				</div>
+				
+			</div>
+		</div>
+	</div>	
+</ui:composition>	

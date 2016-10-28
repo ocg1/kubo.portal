@@ -1,0 +1,35 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<div id = "dvGenSure">
+		<div id = "dvSureCont">
+			<div style="position: relative; padding-top: 10px;" >
+	<!-- 
+				<div class="clHide" style="position: absolute; z-index: 101; top: -25px;right: -16px; width: 30px; height: 30px;" >
+ 						<p:graphicImage url="../resources/img/close.png" onclick="hideDvSureCont();" ></p:graphicImage>
+ 					</div> 
+ 		-->
+		
+				<div id = "dvWait" style="display:none !important;">	 							
+					<div class = "procesando">
+				 					
+					Espere un momento, su información esta siendo procesada....
+				
+						<div class="loader">
+							<p:graphicImage url="../resources/img/ajax-loader.gif"></p:graphicImage>
+						</div>
+					</div> 	
+					
+					
+				</div>
+					
+				<div id = "dvRespHistorial">
+					<ui:include src = "person_data.xhtml"/>
+				</div>
+			</div>
+		</div>
+	</div>				 
+</ui:composition>				 

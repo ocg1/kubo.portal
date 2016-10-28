@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "pnlRecaCont" >
+		
+		<h:panelGroup rendered = "#{summaryRequest.documentacion.reca_ENABLED}"> 
+		
+			<div style = "margin-top: 15px;">
+			
+				<h:outputLabel value = "Seleccione el numero de RECA que tiene el contrato"/>
+				
+				<div class = "selectNuevo" >
+				
+					<h:selectOneMenu id    = "cbo-list-reca" immediate = "true"
+									 value = "#{summaryRequest.documentacion.reca_id}" 
+									 style = "font-size: 1.0em ! important; width: 500px ! important;  height: 28px !important;  background: transparent !important;border: 0px !important; box-shadow: 0px 0px 0px 0px #C2C2C2 !important;" 
+									 styleClass = "elementStlSelAddress">
+									 														
+						<f:selectItems  value = "#{summaryRequest.documentacion.recaitems}" 
+									    var   = "reca" 
+									    itemLabel = "#{reca.reca_number}" 
+									    itemValue = "#{reca.pk.reca_id}" />
+									    
+						<p:ajax event = "change"
+								oncomplete = "Documentacion.reca_id_on_complete(xhr, status, args);" 
+								listener = "#{summaryRequest.documentacion.init_reca_id}"/>
+					</h:selectOneMenu>
+				</div>
+			</div>
+		
+		</h:panelGroup>
+		
+	</h:panelGroup>				
+</ui:composition>				

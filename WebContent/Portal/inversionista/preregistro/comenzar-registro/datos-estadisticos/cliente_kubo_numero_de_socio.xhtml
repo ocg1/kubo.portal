@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+		<li class="recomendado">
+				<h:outputText value="Número de socio*" styleClass="etiqueta"/>
+		</li>
+
+		<li class="recomendado">
+				<p:inputText id = "kubo_member" 
+						     onfocus = "$(this).removeClass('requiredClass');" 
+						     value = "#{addNaturalPerson.who_recommends}"  
+						     styleClass = "validatorClass validate[required,minSize[1]] text-input"    
+						     required = "true" >
+					<p:ajax  event = "blur"  />
+				</p:inputText>
+		</li>
+	
+</ui:composition>								

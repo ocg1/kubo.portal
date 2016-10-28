@@ -1,0 +1,30 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">	
+	
+	<h:panelGroup rendered = "false" >
+		<div class="subtituloMenu">
+			<h:outputLabel style="vertical-align: bottom;">Alianzas</h:outputLabel>
+		</div>
+	
+		<div style="width: 100%;">
+			<ui:repeat var="m" value="#{menuController.menusAlianza}">
+				
+					<p:commandLink actionListener = "#{menuController.cambiaPagina}"
+								   styleClass     = "links"
+								   immediate      = "true" 
+								   update         = ":form_Prin:contPage">
+						<div id      = "dv#{m.direccion}" 
+						     class   = "dvMenu"  
+						     onclick = "javascipt:selecciona('dv#{m.direccion}');">
+							<h:outputLabel value = "#{m.nombre}"  styleClass = "elmnt" />
+							<f:attribute name = "capitulo" value = "#{m.direccion}" />
+						</div>
+					</p:commandLink>				
+			</ui:repeat>
+		</div>
+	</h:panelGroup>	
+</ui:composition>	

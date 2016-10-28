@@ -1,0 +1,353 @@
+@CHARSET "UTF-8";
+/* tablet */
+
+		@media screen and (max-width: 1250px) {
+			/*tablet Horizontal*/
+						
+			#content{
+				height: auto;
+				overflow: auto;
+				width: 870px !important;
+				border: solid 0px #FF0000;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				padding-top: 25px;
+				padding-bottom: 25px;
+			}
+			
+			#content #cont{
+				width: 850px !important;
+				border: solid 0px #000000;
+				height: 65px !important;
+				overflow: auto;
+				margin-top: 0px;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			
+			#frase1 {
+				margin-left: 10px !important;
+				margin-top: 5px !important;
+			}
+			#frase2{
+				margin-top: 25px !important;
+			 	/*clear: both;
+			 	float: right !important;
+			 	margin-right: 25px;*/
+			 	
+			}
+			
+			
+			
+			.cont-sim-complete{
+				width: 40.25%
+			}
+			
+			.sim-back02{
+				display: none;
+			}
+
+			
+			#contVideoAndFraseWMin{
+				clear: both !important;
+				margin-left: auto;
+				margin-right: auto;
+				border: solid 0px #00FF00 !important;
+				float: none !important;
+				
+				display: none;
+			}
+			
+			
+		
+		}
+		
+		@media screen and (max-width: 965px) {
+			/*tablet Vertical*/
+			#content{
+				height: auto;
+				overflow: auto;
+				width: 620px !important;
+				border: solid 0px #FF0000;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				padding-top: 25px;
+				padding-bottom: 25px;
+			}
+			
+			#content #cont{
+				width: 600px !important;
+				border: solid 0px #000000;
+				height: 115px !important;
+				overflow: auto;
+				margin-top: 0px;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			
+			#frase1 {
+				margin-left: 10px !important;
+				margin-top: 5px !important;
+				
+			}
+			#frase2{
+				margin-top: 25px !important;
+			 	clear: both;
+			 	float: right !important;
+			 	margin-right: 25px;
+			 	
+			}
+			
+			.cont-sim-complete{
+				clear: both;
+				margin-left: auto;
+				margin-right: auto;
+				float: none !important;
+				width: 340px;
+			}
+			
+			#contVideoAndSim{
+			
+				width: 95% !important;
+				border: solid 0px #FF0000 !important;
+			
+			}
+			
+			#contVideoAndFraseWMax{
+				clear: both !important;
+				margin-left: auto;
+				margin-right: auto;
+				border: solid 0px #00FF00 !important;
+				float: none !important;
+				display: none;
+			}
+			#contVideoAndFraseWMin{
+				clear: both !important;
+				margin-left: auto;
+				margin-right: auto;
+				border: solid 0px #00FF00 !important;
+				float: none !important;
+				font-size: 0.7em !important;
+				display: block;
+				width: 60%
+				
+			}
+			
+		
+		}
+		
+		@media screen and (max-width: 510px) {
+		/* movil Horizontal */
+			
+			#content{
+				height: auto;
+				overflow: auto;
+				width: 470px !important;
+				border: solid 0px #FF0000;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				padding-top: 25px;
+				padding-bottom: 25px;
+			}
+			
+			#content #cont{
+				width: 460px !important;
+				border: solid 0px #000000;
+				height: 100px !important;
+				overflow: auto;
+				margin-top: 0px;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			
+			#frase1 {
+				font-size: 2.2em !important;
+				margin-left: 10px !important;
+				margin-top: 5px !important;
+			}
+			#frase2{
+				margin-top: 5px !important;
+				font-size: 1.9em !important;
+			 	clear: both;
+			 	float: right !important;
+			 	margin-right: 25px;
+			}
+			.cont-sim-complete{
+				clear: both;
+				margin-left: auto;
+				margin-right: auto;
+				float: none !important;
+				width: 390px;
+			}
+			
+			#contVideoAndFraseWMin{
+				
+				width: 90% !important;
+				
+			}
+			.contFormAllSim{
+				margin-left: 5px !important;
+			}
+			.contLabel{
+	
+				margin-top: 5px; 
+				width: 320px;
+				border: solid 0px #000000;
+				
+			}
+			
+			.labelsStl{
+				font-size: 1.75em !important;
+			}
+			
+			.elementStlSel, .elementAddres1, .elementAddresMin,.elementStlSelMonth{
+				font-size: 1.75em !important;
+			}
+			
+			.btnRegSim{
+				position: relative !important; 
+				margin-left: auto; 
+				margin-right: auto;   
+				padding-left: 0px; 
+				border: solid 0px #000000;
+				color: #000000; 
+				text-decoration: none;
+				
+				font-size: 1.4em;
+				width: 95%;
+				
+			}
+			
+			#titulosim.btnRegSim{
+			left: 10px !important;
+			top: 10px !important;
+			}
+			
+			.btnRegSim a{
+			margin-left: auto; 
+				margin-right: auto;
+				color: #000000 !important; 
+				text-decoration: none !important;	
+				font-size: 1.7em !important;
+			}
+			
+			.simulatorAction{
+			  font-size: 1.2em !important;
+			}
+		
+		}
+		
+		@media screen and (max-width: 400px) {
+		/* movil Vertical */
+			
+			#content{
+				height: auto;
+				overflow: auto;
+				width: 310px !important;
+				border: solid 0px #FF0000;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				padding-top: 25px;
+				padding-bottom: 25px;
+			}
+			
+			#content #cont{
+				width: 100% !important;
+				border: solid 0px #000000;
+				height: 80px !important;
+				overflow: hidden;
+				margin-top: 0px;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+			
+			#frase1 {
+				font-size: 2.6em !important;
+				margin-left: 10px !important;
+				margin-top: 5px !important;
+			}
+			#frase2{
+				margin-top: 5px !important;
+				font-size: 1.75em !important;
+			 	clear: both;
+			 	float: right !important;
+			 	
+			}
+			
+			#contVideoAndSim{
+			
+				width: 95% !important;
+				border: solid 0px #FF0000 !important;
+				overflow: hidden;
+			
+			}
+			
+			#contVideoAndFraseWMax, #dvVideo, #dvFrase{
+				display: none;
+			}
+			#contVideoAndFraseWMin{
+				display: none;
+			}
+			
+			.cont-sim-complete{
+				clear: both;
+				margin-left: auto;
+				margin-right: auto;
+				float: none !important;
+				width: 340px;
+			}
+			
+			#cont-sim{
+				width: 83% !important;
+			}
+			#meta-sim{
+				width: 93% !important;
+			}
+			.contFormAllSim{
+				margin-left: 0px !important; 
+			}
+			#titulosim{
+				font-size: 0.95em !important;
+			}
+			
+			.labelsStl{
+				font-size: 1.45em !important;
+			}
+			
+			.elementStlSel, .elementAddres1, .elementAddresMin,.elementStlSelMonth{
+				font-size: 1.45em !important;
+			}
+			
+			.btnRegSim{
+				position: relative !important; 
+				margin-left: auto; 
+				margin-right: auto;   
+				padding-left: 0px; 
+				border: solid 0px #000000;
+				color: #000000; 
+				text-decoration: none;
+				
+				font-size: 1.4em;
+				width: 95%;
+				
+			}
+			
+			#titulosim.btnRegSim{
+			left: 10px !important;
+			top: 10px !important;
+			}
+			
+			.btnRegSim a{
+			margin-left: auto; 
+				margin-right: auto;
+				color: #000000 !important; 
+				text-decoration: none !important;	
+				font-size: 1.7em !important;
+			}
+			
+			.simulatorAction{
+			  font-size: 1.2em !important;
+			}
+			
+			
+		}

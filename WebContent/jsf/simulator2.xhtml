@@ -1,0 +1,673 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<script>
+		
+		 var loc = document.location.href; 
+		 var getString = "";
+		  
+		 if(loc.indexOf('?')>0) { 
+		        // cogemos la parte de la url que hay despues del interrogante 
+		        getString = loc.split('?')[1]; 
+		  }
+		 
+		  if(getString.length > 0){
+			  getString ="?"+getString
+		  }
+		 
+		  location.href="../Portal/acreditado/simulador/simulador-acreditado.xhtml"+getString;
+
+		
+		</script>
+		
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<!-- MS --> 
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/fontStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/inicio.css" />	
+		<!-- <link rel="stylesheet" type="text/css" href="../resources/css/ayuda.css" /> -->
+		<link rel="stylesheet" type="text/css" href="../resources/css/ayudaStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capitulo1.css" />
+		<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="../resources/css/proyectos.css" />
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/simulator.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/comparison.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/registro.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />	
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />	
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		
+		
+		<script type="text/javascript"	src="../resources/js/contenido.js"></script>
+		<script type="text/javascript"	src="../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script> 
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.blockUI.js"></script>
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/simulatorResponsive.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css' />
+		
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#menuSim5").click (function() {
+				$("#formSim2\\:actionAmort").click();
+				$("#tablaAmort").delay(1000).slideDown(400,function(){
+					$.scrollTo('#tablaAmort', 800, { axis:'y' });
+					$("#isVisibleTable").val(1);
+				});
+				
+			});
+			$(".verDet").click(function(){
+				if($('#isVisibleDet').val()==0){
+					var w = parseInt($('#contSim2').width())+265;
+					$('#contSim2').width(w);
+					$("#detalle").show( "blind", 
+		                     {direction: "horizontal"}, 1000 );
+					$(".verDet").html("Oculta detalle");
+					$('#isVisibleDet').val(1);
+				}else{
+					$("#detalle").hide( "blind", 
+		                     {direction: "horizontal"}, 1000,function(){
+		                    	 var w = parseInt($('#contSim2').width())-265;
+		     					$('#contSim2').width(w);
+		                     } );
+					$(".verDet").html("Ver detalle");
+					$('#isVisibleDet').val(0);
+				}
+				
+			});
+			
+			
+		}); 
+		
+		function muestraValores(){
+			$("#cont-sim").css("display","none");
+				$("#espera").css("display","block");
+				$("#simulaAction").click();
+				
+			
+		}
+		
+		function muestraCont(){
+			
+			$("#thisSim").css("display","none");
+			$("#cont-sim").css("display","block");
+			$(".newSimulation").css("display","none");
+			
+		}
+		
+		function muestraRes(xhr,status,args){
+			$("#espera").css("display","none");
+			$("#thisSim").css("display","block");
+			$(".newSimulation").css("display","block");
+			/*$("#espera").hide("fade", 500,function(){
+				$("#thisSim").show();
+			});*/
+		}
+		
+		function checaTabla(){
+			if($("#isVisibleTable").val()=="1"){
+				$("#tablaAmort").delay(100).slideUp(800);
+				$("#isVisibleTable").val(0);
+			}
+		}
+	
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		
+		
+		
+		</script>
+		
+		
+		<script>
+			(function() {
+				var _fbq = window._fbq || (window._fbq = []);
+				if (!_fbq.loaded) {
+				var fbds = document.createElement('script');
+				fbds.async = true;
+				fbds.src = '//connect.facebook.net/en_US/fbds.js';;
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fbds, s);
+				_fbq.loaded = true;
+				}
+				_fbq.push(['addPixelId', '974610895889842']);
+				})();
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', 'PixelInitialized', {}]);
+		</script>
+		<noscript>
+			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=974610895889842&amp;ev=PixelInitialized" />
+		</noscript>
+		
+		
+		<style>
+		
+		 ol.labelsStl{
+	    	padding-left: 20px !important;
+	    	margin-top: 0px !important;
+	    	margin-bottom: 0px !important;
+	    	font-size: 1.8em !important;
+	    }
+	    
+	    ol.labelsStl li{
+	    	margin-left: 3px !important;
+	    	color: #439539 !important;
+	    }
+		
+		sup{
+			font-size: 0.6em !important;
+		}
+		
+		a.refTbAmrt{
+			font-size: 0.7em;
+			text-decoration: none !important;
+			color:#439539;
+		}
+		a.refTbAmrt:HOVER{
+			text-decoration: underline !important;
+		}
+		
+		a.ahref{
+				color: #439539 !important;
+				text-decoration: none !important;
+			}
+			
+			a.ahref:HOVER{
+				text-decoration: underline !important;
+			}
+			a.ahref:VISITED{
+				color: #439539 !important;
+				text-decoration: none !important;
+			}
+		
+			.clsColorFuente02{
+				color: #999999 !important;
+			}
+		
+		</style>
+		
+		<title>kubo.financiero | Simulador de crédito</title>				   
+        <meta name="Description" content="
+		Simulador de crédito. Destino. Monto. Plazo. Numero de cuentas. Total a pagar."/>
+		
+</h:head>
+<h:body>
+
+<div id="header" style="width: 100%; magin-right: 0px; margin-bottom: 0px;">
+	<ui:include src="templates/headContenido.xhtml" />
+</div>
+
+<h:form id="form_Prin" prependId="false">
+
+<!--  --> 
+	<div class="dvPagSimContTint">
+		<div id="titulo" class="pagTitulo" >Simulador</div>
+		<div class="pagDvCntMsgTit">
+			<div class="dvCntMsg">
+				Con Kubo.financiero,<span>"tu historia cuenta".</span><br/>Entre mejor pagues, te bajamos la tasa de interés.</div>
+			
+		</div>
+	</div>
+	<div id="contSim2" class="pagClsContSim" >
+	
+	<table>
+		
+		<tr>
+			<td style="min-height: 600px; padding: 5px;">
+	<!-- <div style="min-height: 430px; float: left; height: auto; overflow: auto; width: #{simulator.wsim}px;  padding-top: 0px; padding-bottom: 10px; padding-left: 0px; padding-right: 0px;border: solid 0px #000000; "> -->
+		
+				<div class="pagDvContSim" >
+		
+		<!-- simulador Nuevo -->
+		<h:panelGroup id="conResSim">
+		<div id="thisSim">
+			<div class="menuSim">
+				<div style="margin: 0px auto 10px auto !important; text-align: center; font-size: 1.6em !important;">
+					¿Quieres cambiar algo?
+				</div>
+				<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 20px; margin-left: 30px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;font-size: 1.6em !important;">
+					<div class="buttonPR" onclick="muestraCont();"  style="margin-top: 0pt ! important; margin-bottom: 0pt ! important; width: 190px;  ">
+							<span style="color: #000000 !important;">Simula de nuevo</span>
+					</div>
+				</div>
+			</div>
+		<ui:repeat var="sim" value="#{simulator.lstSim}">
+		
+		<div class="dvPagContRespSim" >
+		
+			<div class="sim_cont_back" style="margin-top: 0px !important;padding-top: 0px !important;margin-bottom: 0px !important; ">
+			<div class="dvRisk#{sim.kuboScoreLetter}" style="text-align: center; margin-bottom: 0px;">
+				<p class="statusLeft" style="margin-bottom: 0px !important;margin-top: 0px !important; font-size: 1.3em; font-weight: normal !important;">Nivel #{sim.kuboScoreLetter}</p>
+			</div>
+				<div class="sim_cont">
+					<table id="sim_table">
+						<tr>
+							<td class="sim_desc">Monto</td>
+						</tr>
+						<tr>
+							<td class="sim_value">$#{sim.ammountStr}</td>
+						</tr>
+						<tr>
+							<td class="sim_desc">Comisión por apertura</td>
+						</tr>
+						<tr>
+							<td class="sim_value"> #{sim.comisionApertura}% incluye IVA</td>
+						</tr>
+						<tr>
+							<td class="sim_desc">Total a recibir</td>
+						</tr>
+						<tr>
+							<td class="sim_value">#{sim.totalRecibir}</td>
+						</tr>
+						<tr>
+							<td class="sim_desc">Plazo</td>
+						</tr>
+						<tr>
+							<td class="sim_value">#{sim.numCuota} pagos #{sim.frequencyStr}</td>
+						</tr>
+						<tr>
+							<td class="sim_desc">Tasa de interés</td>
+						</tr>
+						<tr>
+							<td class="sim_value">#{sim.tasaTotal}% sin IVA<sup style="font-size: 0.9em !important;">(a)</sup></td>
+						</tr>
+						<tr>
+							<td class="sim_desc">Pagos de</td>
+						</tr>
+						<tr style="padding-bottom: 0px !important;" >
+							<td class="sim_value couta">$#{sim.montoCuotaStr}</td>
+						</tr>
+						
+						<tr style="padding-top: 0px;">
+							<td style="font-size: 0.65em; padding-top: 0px !important; font-weight: bold; ">Los pagos incluyen IVA</td>
+						</tr>
+						
+						<tr>
+							<td class="sim_desc">Total a pagar</td>
+						</tr>
+						<tr>
+							<td style="padding-bottom: 10px" class="sim_value total">$#{sim.totalPagarStr}</td>
+						</tr>
+						
+						<tr>
+							<td style="padding-bottom: 10px;">
+								<a class="refTbAmrt" href="/Kubo/jsf/tabla_de_amortizacion.xhtml?monto=#{sim.ammountStr}&amp;term=#{sim.numCuota}&amp;rate=#{sim.tasaTotal}&amp;payment=#{sim.montoCuotaStr}&amp;frequency=#{sim.frequencyStr}&amp;comision=#{sim.comisionApertura}&amp;totalPayment=#{sim.totalPagarStr}&amp;cat=#{sim.catStr}" target="popup" onClick="window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+									Ver Tabla de Amortización
+								</a>
+							</td>
+						</tr>
+						
+					</table>
+				</div>
+			</div>
+			
+			<div class="labelsStl" style="text-align: center; font-size: 1.4em; width: 230px; margin-left: auto; margin-right: auto; padding: 5px; border: solid 0px #000000;"> 
+      			<span style=" font-weight: bold; font-size: 1.1em;"> CAT: #{sim.catStr}% sin IVA<sup style="font-size: 0.9em !important;">(b)</sup></span>
+      		</div>
+			
+		</div>
+		</ui:repeat>
+		<div class="labelsStl" style="text-align: justify; clear: both; font-size: .90em; width: #{simulator.wcat}px; margin-left: 20px; margin-top: 10px; padding: 5px; border: solid 0px #000000;"> 
+    		 <sup style=" font-size: 1.2em !important; margin-right: 5px;">(a)</sup>Tasa fija anual simple.<br />
+			 <sup style=" font-size: 1.2em !important; margin-right: 5px;">(b)</sup>Costo Anual Total. Para fines informativos y de comparación. 
+    		Fecha de cálculo: #{simulator.fechaInicio}. Los <a  href="avisolegal.jsf?page=condiciones" class="ahref" >términos, condiciones</a> y <a href="leyTransparencia.jsf?page=comisiones" class="ahref">comisiones</a> aplicables al 
+    		Crédito Personal kubo.financiero son los incluidos en el <a href="leyTransparencia.xhtml?page=contrato" class="ahref">Contrato de Adhesión</a> relacionado en la solicitud. Puedes consultar nuestros <a  href="avisolegal.jsf?page=requisitos" class="ahref" >requisitos y modalidades de contratación</a>.	
+   		</div>
+   		
+   		<div style="font-size: 1.4em !important; margin-top: 20px !important; margin-left: 30px !important;">
+   			Al solicitar tu crédito considera:
+			<ol>
+				<li>Incumplir tus obligaciones te puede generar comisiones e intereses moratorios.</li>
+				<li>Contratar créditos por arriba de tu capacidad de pago puede afectar tu historial crediticio.</li>
+				<li>En caso de que el préstamo requiera avalista, obligado solidario o coacreditado: El avalista, obligado solidario o coacreditado responderá como obligado principal frente a la Entidad Financiera.</li>
+			</ol>
+		
+   		</div>
+   		
+   		</div>
+   		
+		</h:panelGroup>
+		
+		<div id="espera" style="display: none; width: 105px; min-height: 580px; margin-left: auto; margin-right: auto;">
+			<div id="contEspera" style="width: 50px; margin-left: auto; margin-right: auto; margin-top: 180px">
+				<p:graphicImage url="../resources/img/ajax-loader.gif"></p:graphicImage>
+			</div>
+		</div>
+		
+		
+		<div id="cont-sim" class="dvPagContSim" >
+					
+					<div id="meta-sim" class="dvPagMetaSim">
+						
+						<div id="titulosim" style="width: 311px;" >
+							<span id="sim" style="font-size: 2.6em; margin-left: 0px;" >Quiero un préstamo</span>
+						</div>
+						
+						<div id="contFormSim" style="padding-left: 14px; width: 285px; font-size: 1.1em;">
+						
+						<h:inputHidden id="montoMax" value="#{simulator.montoMax}" ></h:inputHidden>
+						<h:inputHidden id="montoMin" value="#{simulator.montoMin}" ></h:inputHidden>
+						<h:inputHidden id="termMax"  value="#{simulator.termMax}" ></h:inputHidden>
+						
+							<div style=" margin-top: 5px;" class="labelsStl">¿Para qué lo utilizarás?</div>
+									<div class="styled-select">
+									<h:selectOneMenu  styleClass="elementStlSel clsColorFuente02" value="#{simulator.purpose_id}" style="width: 285px !important; font-size: 1.4em !important; ">
+										<f:selectItem itemLabel="Seleccione..." itemValue="" />
+										<f:selectItems value="#{simulator.listPurpose}" var="purpose" itemLabel="#{purpose.name}"  itemValue="#{purpose.purposePK.purpose_id}"/>
+										<p:ajax event="change" />  
+									</h:selectOneMenu>
+									</div>
+									<br />
+									<div class="labelsStl" style="margin-top: 5px;">¿Cuánto necesitas?</div>
+									<h:inputText  size="15" styleClass="elementAddres1 clsColorFuente02" onkeyup="format(this,'simulator');" style="width: 255px !important; font-size: 1.4em !important;" required="true" id="ammount" value="#{simulator.ammountStr}"  >
+										 <p:ajax event="blur" onstart="return validaMontoMin( 'ammount' ,'simulator');" immediate="true" />  
+									</h:inputText>
+									<br />
+									<div class="labelsStl" style="margin-top: 5px;">¿A qué plazo?</div>
+
+		                            <table>
+		                            	<tr>
+		                            		<td>
+		                            			<h:inputText styleClass="elementAddresMin clsColorFuente02"  required="true" id="term" value="#{simulator.term_id}" style="font-size: 1.43em !important;" >
+													 <p:ajax event="blur" immediate="true" onstart="validaPlazo('term');"  />  
+												</h:inputText>
+		                            		</td>
+
+		                            		<td>
+		                            			<div class="styled-select-Month">
+		                            			<h:selectOneMenu id="frecuProyect" value="#{simulator.frequency_id}" styleClass="elementStlSelMonth clsColorFuente02" style="font-size: 1.4em !important;" >
+													<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+													<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+													<p:ajax event="change" onstart="validaPlazo('term');" />  
+												</h:selectOneMenu>	
+												</div>	
+		                            		</td>
+		                            	</tr>
+								    </table>
+		                            
+		                        	
+									<div class="buttonPR" id="checkSim" onclick="muestraValores();" >
+										SIMULA TUS PAGOS
+									</div>
+						</div>
+											
+					</div>
+				
+				</div>
+				<div class="menuSim">
+					<div style="margin-top: 20px; height: auto; overflow: auto; border: solid 0px #000000; width: 630px; margin-left: auto !important; margin-right: auto !important;">
+				
+						<h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+							
+							<div id="comparaLnk" style="width: 290px !important;float: left; border: solid 0px #ff0000; ">
+								<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 10px !important; margin-top: 5px !important;width: 320px;">
+									¿Quieres saber cuál es tu tasa?
+								</div>
+								<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 0px; margin-left: 10px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;">
+									<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; color: #000000 !important;">
+										<p:commandLink action="#{sessionBean.setAreaReg('L')}" onstart="return displayMessageProcessing('msgprocessing',false);" id="registro2" styleClass="actionSim">
+											<span style="color: #000000 !important; font-weight: normal;">Regístrate</span>
+										</p:commandLink> 
+									</div>
+								</div>
+							</div>
+						</h:panelGroup>
+						
+						<div id="comparaLnk" style="width: 290px !important;float: left; border: solid 0px #00ff00;">
+							<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 10px !important; margin-top: 5px !important; width: 240px;">
+								¿Tienes otros préstamos?
+							</div>
+							<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 0px; margin-left: 30px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;">
+								<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; color: #000000 !important;">
+									<p:commandLink action="comparation" id="actionCompara2" styleClass="actionSim">
+										<span style="color: #000000 !important; font-weight: normal;">Compáranos</span>
+									</p:commandLink> 
+								</div>
+							</div>
+							
+							
+						</div>	
+					</div>
+				</div>
+				
+				<div style="display: none;">
+					<p:commandLink id="simulaAction"  oncomplete="muestraRes(xhr,status,args);" update="conResSim" actionListener="#{simulator.simulaLst}" onclick="ga('send', 'event', 'Leads', 'Simula Prestamo', 'Simula Home');"/>
+				</div>
+
+		
+		<!-- Fin Simulador nuevo -->
+		
+
+	</div>
+	</td>
+	<td style="vertical-align: top; padding-top: 0px; width: 360px !important; overflow: auto;">
+		<div class="menuSimWide">
+			<div style="margin-top: 50px; height: auto; overflow: auto; border: solid 0px #000000; width: 380px;">
+				<h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+					<div id="comparaLnk" style="width: 329px !important;">
+						<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 10px !important; margin-top: 5px !important;width: 320px;">
+							¿Quieres saber cuál es tu tasa?
+						</div>
+						<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 0px; margin-left: 10px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;">
+							<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; color: #000000 !important;">
+								<p:commandLink action="#{sessionBean.setAreaReg('L')}" id="registro" styleClass="actionSim">
+									<span style="color: #000000 !important; font-weight: normal;">Regístrate</span>
+								</p:commandLink> 
+							</div>
+						</div>
+					</div>
+				</h:panelGroup>
+				
+				<div id="comparaLnk" style="width: 329px !important;">
+					<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 10px !important; margin-top: 15px !important; width: 240px;">
+						¿Tienes otros préstamos?
+					</div>
+					<div style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 0px; margin-left: 30px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;">
+						<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; color: #000000 !important;">
+							<p:commandLink action="comparation" id="actionCompara" styleClass="actionSim">
+								<span style="color: #000000 !important; font-weight: normal;">Compáranos</span>
+							</p:commandLink> 
+						</div>
+					</div>
+					
+					<div class="newSimulation" style="margin: 40px 0pt 10px ! important; text-align: center;">
+						¿Quieres cambiar algo?
+					</div>
+					<div class="newSimulation" style="margin-left: auto !important; margin-right: auto !important; margin-bottom: 0px; margin-left: 30px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;">
+						<div class="buttonPR" onclick="muestraCont();"  style="margin-top: 0pt ! important; margin-bottom: 0pt ! important; width: 190px;  ">
+								<span style="color: #000000 !important;">Simula de nuevo</span>
+						</div>
+					</div>
+					
+				</div>	
+			</div>
+		</div>
+	</td> 
+	</tr>
+	<tr>
+		<td>
+		
+			<div style="width: auto; height: auto; overflow: auto; position: relative; ">
+		<div style="padding: 0px; margin-top: 10px !important; height: auto; overflow: hidden; width: 482px; margin-left: auto; margin-right: auto; margin-top: 20px;  padding-top: 0px !important; border: solid 0px #000000; position: relative; ">
+		
+		<div class="corner" style="width: 82px; height: 72px; margin-bottom: 0px;  overflow: hidden; float: left; border: solid 0px #f0f3c3; bottom: -1px; left: 7px; position: absolute;  ">
+    		<div class="cornerFill"></div>
+    	</div>
+    	
+		<div class="msgBorder" style="height: auto; margin-left: auto; margin-right: auto; padding-top: 0px !important; overflow: hidden; width: 312px; ">
+				<div class="dvContent" style=" width: 312px; clear: both; background-color: #FFFFFF; margin-top: 0px !important;  padding: 15px !important;" >
+						<div class="dvLabel" style=" clear: both; width: 310px; margin-left: auto; margin-right: auto; text-align: left;">
+							<!-- <p:column>  
+					            <p:panel header="#{dealbean.title}" style="text-align: center; color: #439539; margin-left: auto; margin-right: auto; padding: 0px !important;"> -->
+					              
+					                <table id="propuesta" style="width:279px; text-align: left; margin-left: auto; margin-right: auto; margin-top: 0px; border-collapse: collapse; color: #439539;">
+					                
+					                	<tr>
+					                    	<td style="padding-bottom: 8px;">
+					                    		<h:outputText value="Requisitos " 	styleClass="labelsStl" style="text-align:left; font-size: 1.85em !important; font-weight: bold; color: #C1D82F " />
+					                    	</td>
+					                    </tr>
+					                	  
+					                    <tr>
+					                    	<td style="text-align:left;">
+					                    	<ol class="labelsStl">
+					                    		<li>
+					                    		<h:outputText value="Contar con buen historial crediticio validado en Buró o Círculo de Crédito" style="text-align:left; font-weight: bold; color: #439539 !important; "  />
+					                    	<!-- </td >
+
+					                    </tr>
+					                    
+					                    <tr>
+					                    	<td style="text-align:left;"> -->
+					                    	</li>
+					                    		<li>
+					                    		<h:outputText value="Tener más de 18 años" style="color: #439539 !important;" />
+					                    	<!-- </td>
+					                    </tr>
+					                    
+					                    <tr>
+					                    	<td style="text-align:left;"> -->
+					                    	</li>
+					                    		<li>
+					                    		<h:outputText value="Vivir en D.F. o zona metropolitana"  style=" color: #439539 !important;" />
+					                    	<!-- </td>
+					                    </tr>
+					                    
+					                     <tr>
+					                    	<td style="text-align:left;"> -->
+					                    	</li>
+					                    		<li>
+					                    		<h:outputText value="Credencial de elector"	style="text-align:left; color: #439539 !important;" />
+					                    	<!-- </td>
+					                    </tr>
+					                    <tr>
+					                    	<td style="text-align:left;">   -->
+					                    	</li>
+					                    		<li>
+					                    	<h:outputText value="Comprobante de domicilio" style="text-align:left; width:200px; color: #439539 !important; " />
+					                    	<!-- </td>
+					                    	
+					                    </tr>
+					                    
+					                    <tr>
+					                    	<td style="text-align:left;"> -->
+					                    	</li>
+					                    		<li>
+					                    		<h:outputText value="Contar con ingresos" style=" color: #439539 !important;" />
+					                    	<!-- </td>
+					                    </tr>
+					                    
+					                    <tr>
+					                    	<td style="text-align:left;"> -->
+					                    	</li>
+					                    		<li>
+					                    		<h:outputText value="Acceso a internet"  style=" color: #439539 !important;" />
+					                    		</li>
+					                    	</ol>
+					                    	</td>
+					                    </tr>
+					                    
+					                    
+					                    
+					                 </table> 
+					                 
+					                
+					           <!-- </p:panel>  
+					        </p:column>  -->
+						</div>
+				</div>
+		</div>
+		
+		</div>
+		
+	</div>
+		
+		</td>
+		<td></td>
+	</tr>
+	</table>
+	
+</div>
+
+<div id="tablaAmort" style="display: none; height: auto; overflow: auto; margin-left: auto; margin-right: auto; border: solid 1px #f3f3f3; width: 500px;">
+	<div id="formAmort" style=" width: 100%; height:auto; overflow:auto; padding: 0px 0px 0px 0px;" >
+		<div id="titAmort">Tabla de Amortización</div>
+		<h:outputText id="tableAmort" escape="false" value="#{simulator.tableAmort}"></h:outputText>
+	</div>
+</div>
+
+</h:form>
+
+<div style="display:none; ">
+	<h:form id="formSim2">
+		<p:commandLink id="actionAmort" actionListener="#{simulator.creaTablaAmort}" ajax="true" update=":form_Prin:tableAmort"></p:commandLink>
+	</h:form>
+</div>
+
+<div id="footer" style="width: 100%; magin-right: 0px;">
+	<ui:include src="templates/footerContenido.xhtml" /> 
+</div>
+
+<h:panelGroup rendered="#{simulator.lstSim==null or simulator.lstSim.size()==0 }">
+	<script>
+		muestraCont();
+	</script>
+</h:panelGroup>
+<!-- Start Alexa Certify Javascript -->
+	
+	<script type="text/javascript">
+	
+	_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+	
+	(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+	
+	</script>
+	
+	<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" /></noscript>
+
+<!-- End Alexa Certify Javascript -->
+
+</h:body>
+</html>

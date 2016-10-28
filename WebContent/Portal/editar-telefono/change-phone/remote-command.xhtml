@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<div style = "display: none">
+	 	<div id = "init-change-phone-#{p.phone.phonePk.phone_id}">
+			<h:commandLink immediate = "true">
+				<p:ajax event = "click"
+						oncomplete = "EditorTelefono.phone_oncomplete(xhr, status, args);" 
+						listener   = "#{editor_telefono.changer.init_phone(p)}"/>
+			</h:commandLink>							
+		</div>		
+		
+		<div id = "save-phone-#{p.phone.phonePk.phone_id}">
+			<h:commandLink immediate = "true">
+				<p:ajax event = "click"
+						oncomplete = "EditorTelefono.update_oncomplete(xhr, status, args);" 
+						listener  = "#{editor_telefono.changer.init_update(p)}"/>
+			</h:commandLink>							
+		</div>				
+	</div>	
+</ui:composition>				

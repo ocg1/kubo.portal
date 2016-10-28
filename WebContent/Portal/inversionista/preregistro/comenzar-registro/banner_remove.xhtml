@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html">
+	<div class="contFrasesPr" >
+		
+		<h:panelGroup rendered="#{addNaturalPerson.area != null and addNaturalPerson.area == 'I'}" >
+			
+			<div class="lemaPR lema1" style="padding-top: 0px !important; vertical-align: bottom; margin-top: 0px !important; line-height: 50px; height: 50px !important; border: solid 0px #FF00FF; width: 700px; overflow: hidden;">
+					PERSONAS INVIRTIENDO EN PERSONAS
+				
+			</div>
+			
+			<div class="lemaPR lema2" style="padding-top: 10px !important; vertical-align: bottom; margin-top: 0px !important; line-height: 30px;" >
+					
+					PREREGISTRO PARA INVERSIÓN
+					
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{addNaturalPerson.area == null or addNaturalPerson.area == 'L'}" >
+			<div class="lemaPR lema1"  >
+				<h:outputLabel>INICIEMOS TU SOLICITUD</h:outputLabel> 
+			</div>
+			<div class="lemaPR lema2" >
+				<h:outputLabel>TU HISTORIA CUENTA</h:outputLabel> 
+			</div>
+		</h:panelGroup>
+		
+	</div>				
+</ui:composition>				

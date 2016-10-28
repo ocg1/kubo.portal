@@ -1,0 +1,36 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui"
+			     xmlns:f  = "http://java.sun.com/jsf/core">
+			     
+	<div class = "dvContent">
+	
+		<div class = "dvLabel" style = "margin: 0;">
+			<h:outputLabel value = "#{msg.residence_type} " styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<P />
+		
+		<div>
+			<div class = "styled-select">
+				<h:selectOneMenu 
+								 value      = "#{summaryRequest.editor_domicilio.tipo_vivienda_id}" 
+								 styleClass = "validatorClass mapOff editor-domicilio input-text"
+								 style = "height:30px"
+								 >
+								 
+					<f:selectItem itemLabel = "" itemValue = "" />
+					
+					<f:selectItems  value     = "#{summaryRequest.editor_domicilio.lista_tipo_vivienda}" 
+									var       = "tipo_vivienda" 
+									itemLabel = "#{tipo_vivienda.description}" 
+									itemValue = "#{tipo_vivienda.residencePK.residence_id}"/>
+									
+					 <p:ajax event = "change" listener = "#{summaryRequest.editor_domicilio.listener_tipo_vivienda_SELECTED}"/>
+					 
+				</h:selectOneMenu>
+			</div>
+		</div>
+	</div>			     
+</ui:composition>

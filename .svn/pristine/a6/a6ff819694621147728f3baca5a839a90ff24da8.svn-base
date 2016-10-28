@@ -1,0 +1,245 @@
+<ui:composition
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui" >			
+	
+	<fieldset>
+		<div class = "dvContent2">		
+			<!--	
+			<div class = "dvContent">
+				<div class = "dvElement" 
+				     style = "width: 300px;">
+				     
+					<h:selectOneRadio id         = "genero" 
+									  disabled   = "#{navigationBean.disabledComponent('genero')}" 
+									  value      = "#{basicData.naturalPerson.gender_id}"  
+									  styleClass = "radio elementStlLbl validatorClass requiredVerify" 
+									  style      = "border: solid 0px #FFFFFF !important;">
+									  
+					    <f:selectItem itemValue = "1" itemLabel = "Masculino"/>
+					    <f:selectItem itemValue = "2" itemLabel = "Femenino"/>
+					    
+					    <p:ajax event      = "click"  
+							    listener   = "#{basicData.getCURP}" 
+							    oncomplete = "fieldCount();" 
+							    update     = "rfc curp" />
+					</h:selectOneRadio>
+				</div>
+			</div>
+			 -->
+		
+		<div class = "dvContent">
+			<div class = "dvLabel">
+				<h:outputLabel value      = "#{msg.birthday}" 
+							   styleClass = "labelsStl"/>
+			</div><p/>
+			
+			<div  class = "dvElement dvDateElement" >			
+				<h:panelGroup id = "comboDate">
+					
+					<script>
+						$(".validatorClass").bind("change blur",function(event) {fieldCount();event.preventDefault();});
+					</script>
+				
+					<table>
+						<tr>
+							<td>
+								<div class="styled-select-Day">
+									<h:selectOneMenu id         = "day" 
+													 value      = "#{basicData.day}"  
+													 disabled   = "#{navigationBean.disabledComponent('day')}" 
+													 styleClass = "elementStlSelDay mapOff validatorClass requiredVerify">
+										<f:selectItem itemLabel = "Día: " itemValue = "0" />
+										<f:selectItems  value = "#{basicData.days}"/>
+										<p:ajax event    = "change" 
+												listener = "#{basicData.generateDate}" 
+												update   = "rfc comboDate curp" />
+									</h:selectOneMenu>
+								</div>
+							</td>
+							
+							<td>
+								<div class = "selectNuevo">
+									<h:selectOneMenu id="month" 
+													value="#{basicData.month}" 
+													disabled="#{navigationBean.disabledComponent('month')}"  
+													styleClass="elementStlSelMonth mapOff validatorClass requiredVerify" 
+													style="width: 180px !important;">
+										<f:selectItem itemLabel="Mes: " itemValue="0" />
+										<f:selectItems  value="#{basicData.months}"/>
+										<p:ajax event="change" 
+												listener="#{basicData.generateDate}" 
+												update="rfc comboDate curp"/>
+									</h:selectOneMenu>
+								</div>
+							</td>
+							<td>
+								<div class = "styled-select-Year">
+									<h:selectOneMenu id         = "year" 
+													 value      = "#{basicData.year}" 
+													 disabled   = "#{navigationBean.disabledComponent('year')}"  
+													 styleClass = "elementStlSelYear mapOff validatorClass requiredVerify">
+										<f:selectItem itemLabel = "Año: " itemValue = "0" />
+										<f:selectItems  value = "#{basicData.years}"/>
+										<p:ajax event    = "change" 
+												listener = "#{basicData.generateDate}" 
+												update   = "rfc comboDate curp" />
+									</h:selectOneMenu>
+								</div>
+							</td>
+						</tr>
+					</table>					
+				</h:panelGroup>
+				
+				<h:panelGroup id="pnlMsg">
+					<script>fieldCount();</script>
+					<h:panelGroup rendered="#{basicData.renderMsg}" >
+						<div style="color: #FF0000;" >
+							#{basicData.msg}
+						</div>
+					</h:panelGroup>
+				</h:panelGroup>
+				
+			</div>
+		</div>
+		
+		<div class = "dvContent">
+			<div class = "dvLabel">
+				<h:outputLabel value      = "#{msg.citizenship}"
+							   styleClass = "labelsStl"/>
+			</div><p />
+			
+			<div  class = "dvElement" style = "width: 300px;">
+				<h:selectOneRadio id         = "nacionalidad" 
+								  disabled   = "#{navigationBean.disabledComponent('nacionalidad')}" 
+								  value      = "#{basicData.naturalPerson.citizenship}"  
+								  styleClass = "elementStlLbl mapOff validatorClass requiredVerify">
+				    <f:selectItem itemValue = "1" itemLabel = "Mexicana"/>
+				    <f:selectItem itemValue = "0" itemLabel = "Extranjero"/>
+				    <p:ajax event      = "click" 
+						    update     = "nacmex, nacext , curp, rfc "  
+						    listener   = "#{basicData.changeNation}" 
+						    oncomplete = "fieldCount();" />
+				</h:selectOneRadio>
+			</div>
+		</div>
+		
+		<h:panelGroup id = "nacmex">
+			<div class = "dvContent" 
+				 style = "display:#{basicData.mexDis}">
+				 
+				<div class = "dvLabel">
+					<h:outputLabel value = "#{msg.birth_place}"
+								   styleClass = "labelsStl"/>
+				</div><P />
+				
+				<div  class = "dvElementAddres1">
+					<div class = selectNuevo>
+						<h:selectOneMenu id       ="edoNac" 
+										 disabled = "#{navigationBean.disabledComponent('edoNac')}" 
+										 value    = "#{basicData.naturalPerson.state_id}"  
+										styleClass = "elementStlSelAddress mapOff validatorClass requiredVerify">
+							<f:selectItem itemLabel = "" itemValue = "" />
+							<f:selectItems value     = "#{basicData.stateList}" 
+										   var       =   "state" 
+										   itemLabel = "#{state.name}" 
+										   itemValue = "#{state.stateCatPK.state_id}"/>
+							<p:ajax event="change" listener="#{basicData.getCURP}"  oncomplete="fieldCount();" update="curp, rfc " ></p:ajax>
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup id = "nacext">
+			<div class = "dvContent" style = "display: #{basicData.extDis}">
+			
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.birth_country} "/>
+				</div><P />
+				
+				<div  class = "dvElementAddres1">
+					<div class = "selectNuevo">
+						<h:selectOneMenu id         = "countryNac" 
+										 value      = "#{basicData.naturalPerson.country_id}" 
+										 disabled   = "#{navigationBean.disabledComponent('countryNac')}"   
+										 styleClass = "elementStlSelAddress mapOff validatorClass">
+							<f:selectItem itemLabel = "" itemValue = "" />
+							<f:selectItems  value     = "#{basicData.countryList}"
+											var       =   "country"  
+										    itemLabel = "#{country.name}" 
+											itemValue = "#{country.pk.country_id}"/>
+							<p:ajax event      = "change"  
+									oncomplete = "fieldCount();" 
+									listener   = "#{basicData.getCURP}" 
+									update     = "curp, rfc "/>
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+	</div>
+	</fieldset>
+
+	<br />  
+	<fieldset>
+		<div class = "dvContent2">
+		
+			<div class="dvContent">
+				<div class = "dvLabel dvDescLabelRFC">
+					<h:outputLabel value      = "El RFC y el CURP se generan automáticamente con los datos anteriores."
+					    		   styleClass = "labelsStl dvDescLabelRFC"/>
+				</div>
+			</div>
+			
+			<br/> 
+					
+			<div class = "dvContent">
+				<div class = "dvLabel">
+					<h:outputLabel value = "#{msg.mx_rfc}" styleClass = "labelsStl"/>
+				</div><p/>
+				
+				<div  class="dvElementAddres1">
+					<h:inputText id         = "rfc" readonly = "true"
+								 value      = "#{basicData.naturalPerson.mx_rfc}"
+								 styleClass = "elementAddres1 stlDisabled"/>
+				</div>
+				
+			</div>
+					
+			<div class = "dvContent">
+				<div class = "dvLabel">
+					<h:outputLabel value = "#{msg.mx_curp}" styleClass="labelsStl"/>
+				</div><p/>
+				
+				<div  class="dvElementAddres1">
+					<h:inputText id         = "curp" readonly = "true"
+								 value      = "#{basicData.naturalPerson.mx_curp}" 
+								 styleClass = "elementAddres1 stlDisabled"/>
+				</div>
+			</div>
+					
+			</div>
+		</fieldset>
+		
+		<br/>
+		
+		<fieldset>			
+			<div class = "dvContent2">
+				<div class = "dvContent" style = "width: 380px;">
+					<div class = "dvLabel" style = "width: 290px; clear: both;">
+						<h:outputLabel value = "#{msg.nickname}" styleClass = "labelsStl"/>
+					</div><P />
+					
+					<div class="dvElementAddres1">
+						<h:inputText value      = "#{basicData.membership.nickname}"
+									 styleClass = "elementAddres1 hideIFE validatorClass">
+							<p:ajax event = "blur" listener = "#{basicData.saveMembership}"/>
+						</h:inputText>
+					</div>
+				</div>
+			</div>					
+		</fieldset>
+</ui:composition>

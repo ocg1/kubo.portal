@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<li>
+		<label class="etiqueta">Monto depositado:</label>
+		
+			<div class="campo">
+				<h:inputText id = "ammountDep" 													 
+							 onkeyup    = "format(this,'')" 
+							 value      = "#{disposicionEfectivo.monto_SELECTED_dep}" 
+							 styleClass = "inputText"
+							 style = "font-size:1.2em;">
+				     <p:ajax event = "blur" onstart = "return validaMontoDepositado();" immediate = "true" />
+				</h:inputText>
+				<div id="dvContMsgCapNet"  style ="width: 99%; display: none;" >
+					El monto depositado superó el capital neto de la empresa
+				</div>
+			</div>
+  </li>	
+			
+</ui:composition>				

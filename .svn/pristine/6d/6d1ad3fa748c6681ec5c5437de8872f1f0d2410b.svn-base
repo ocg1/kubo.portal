@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"				
+				xmlns:p  = "http://primefaces.org/ui">				
+	
+	<div class = "field" >
+		<div class = "dvLabel" style = "width: 120px; clear: both;">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.BetweenStreet2_text}" />
+		</div>
+		
+	
+		
+		<div class = "dvElementAddres1">
+			<h:inputText id = "betweenStreet2" immediate = "true" tabindex = "35"
+						 onfocus = "ActividadEconomica.Domicilio.init_focus_date(3);" 
+						 value = "#{business.addressbean.second_street_reference}" 
+						 styleClass = "elementAddres1">
+						 
+				<p:ajax event = "blur"
+						oncomplete = "ActividadEconomica.Domicilio.input_text_oncomplete(xhr, status, args);" 
+						listener   = "#{addMyLoan.domicilio_negocio.init_input_text}"/>
+			</h:inputText>
+		</div>
+	</div>				
+</ui:composition>	

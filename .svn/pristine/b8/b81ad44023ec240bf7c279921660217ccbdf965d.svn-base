@@ -1,0 +1,44 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 		
+	<div class="dvContent">
+		<div id    = "dvNeighborhoodText_#{benefic.beneficiarie_id}" 
+		     class = "dvElementAddres1"
+		     style = "display: #{benefic.addressbean.neighborhood_text_ENABLED}">
+			
+			<div>					
+				<h:inputText id = "neighborhood_text_control" immediate = "true"
+							 value = "#{benefic.addressbean.neighborhood_text}"  
+							 onfocus    = "Beneficiario.Domicilio.init_focus_date(#{benefic.beneficiarie_id});"
+							 styleClass = "elementAddres1 mapClass neighborhood_text">
+							 
+			   <f:attribute name = "beneficiarie_id" value = "#{benefic.beneficiarie_id}"/>
+			   <f:attribute name = "input_text_ID"   value = "neighborhood_text"/>	
+			   
+			   <p:ajax event = "blur"
+				       oncomplete = "Beneficiario.Domicilio.input_text_oncomplete(xhr, status, args);" 
+					   listener   = "#{ibeneficiaries.domicilio.init_input_text}"/>		
+	
+<!-- 
+					<p:ajax event      = "blur"  
+					        listener   = "#{benefic.editor_vivienda.listener_colonia_TEXT}"  
+					        oncomplete = "Vivienda.callback_vivienda_TOKEN(xhr, status, args);"/>
+-->					        
+					
+				</h:inputText>											
+			</div>
+					
+			<p />
+			
+			<div class   = "editar_colonia" 
+				 onclick = "Vivienda.showNeighSel('#{benefic.beneficiarie_id}')" 
+				 style   = "cursor: pointer;">		  		  
+				<p>Da click aqui si prefieres elegir de la lista</p>		
+			</div>
+			
+		</div>				
+	</div>
+</ui:composition>		

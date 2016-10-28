@@ -1,0 +1,34 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+		
+			<!-- h:panelGroup rendered = "#{addPldDocument.enabled_whatsapp}" >
+				 <div class="envioCorreoWhatsApp">
+					   <h6 class="encabezado_6">Tip</h6>
+					   <p>También puedes enviar tus documentos por:</p>
+					   <p>WhatsApp <a href="tel:5532814533"><strong><img src="../resources/img/whatsapp.png"/>(55) 3281 4533</strong></a></p>
+					   <p>Correo <a href="mailto:informes@kubofinanciero.com"><strong>informes@kubofinanciero.com</strong></a></p>
+				</div>
+			</h:panelGroup-->	
+			   <!-- div class="introduccion bloque_texto_frm">
+		   			<h6 class="encabezado_6">Instrucciones</h6>
+				<p>Selecciona el documento que quieras subir, pueden ser fotografías tomadas con tu celular o documentos escaneados. Deben estar a color y ser legibles.</p>
+				
+				</div -->
+				
+					<h:form prependId="false" style="display:none;" >
+						<h:inputText value="#{addPldDocument.deleteString}"  id="datos_eliminar" type="text" >
+							<p:ajax event="blur" />
+							<p:ajax event="click" listener="#{addPldDocument.deleteFile}" update=":documentosActualizar" oncomplete="borradoElemento();"/>
+							
+						</h:inputText>
+					</h:form>										 
+					
+							<!-- p>A continuación te solicitamos que adjuntes documentación,
+							como fotos, videos y documentación personal que respalden tu solicitud. 
+							La información que subas será confidencial y nos ayudará a validar tu proyecto.</p-->
+			
+</ui:composition>				

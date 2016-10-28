@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"				
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup id="show-who-other">
+		<h:panelGroup rendered="#{addMyLoan.thisMembership.who_answered_id == 99}">
+		<div class="dvContent">
+			<div class="dvLabel" style="clear: both;">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.Who_answered_other_text}" />
+			</div>
+			<P />
+			<div class="dvElementLength">
+				<h:inputText id="txt_name_who_other" tabindex="11"   styleClass="elementAddres1 validatorClass oculto"  value="#{addMyLoan.thisMembership.who_answered_other}" >
+					<p:ajax event="blur" listener="#{addMyLoan.updateMembership}"/>
+				</h:inputText>
+			</div>
+		</div>	
+		</h:panelGroup>
+	</h:panelGroup>		
+</ui:composition>			

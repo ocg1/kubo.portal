@@ -1,0 +1,178 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:panelGroup rendered="#{sessionBean.area=='M' and summaryRequest.actualProyect!=null}" >
+	
+		<div class="#{sessionBean.area=='M'?'profileControlTable':'profile'}" id="dvlstPyCont" style="display: none;">
+			
+			<div class="centerPosition">
+				<h:panelGroup id="pnlCnsList">
+					<h3 class="tab"><strong class="orange">Consultas anteriores realizadas por Kubo</strong></h3>
+				</h:panelGroup>
+				<h:panelGroup id="pnlBuroConsultation">
+					<div id="dvcsltPy">
+						
+						<h:panelGroup rendered="#{summaryRequest.lstConsultas.size()>0}" >
+					
+						<div>
+					
+					<script>
+						par();
+					</script>
+										<table cellspacing="0" cellpadding="0" class="formato_tablas">
+											
+											<tr>
+												<th style="text-align: center;" >
+													Folio de Buró de Crédito
+												</th>
+												<th width="152px;" style="text-align: left;">
+													Fecha de Consulta
+												</th>
+												<th style="text-align: left; padding-right: 5px;">
+													BCScore
+												</th>
+												<th style="text-align: left;">
+													Tipo
+												</th>
+												<th width="142px" style="text-align: left;">
+													Crédito
+												</th>
+												<th  style="text-align: left;">
+													Status
+												</th>
+											</tr>
+												
+								<ui:repeat var="cnslt" value="#{summaryRequest.lstConsultas}" varStatus="pos" >
+									
+									
+												
+												
+												
+													<tr class="#{!pos.odd?'lendingAnswer':''}" >
+														<td style="text-align: left; width: 113px !important; padding-top: 8px; padding-bottom: 8px;" >
+															<div class="consult#{pos.index}" style="#{(cnslt.proyect_loan_id==summaryRequest.actualProyect.proyectloanPk.proyect_loan_id)?'font-weight: bold !important;':''}" >#{cnslt.bursolnum}</div>
+														</td>
+														<td width="152px;" style="text-align: left; width: 150px !important; padding-top: 8px; padding-bottom: 8px;">
+															<div class="consult#{pos.index}" style="#{(cnslt.proyect_loan_id==summaryRequest.actualProyect.proyectloanPk.proyect_loan_id)?'font-weight: bold !important;':''}" >#{cnslt.fecConsult}</div>
+														</td>
+														<td style="text-align: left; width: 45px !important; padding-top: 8px; padding-bottom: 8px; ">
+															<div class="consult#{pos.index}" style="#{(cnslt.proyect_loan_id==summaryRequest.actualProyect.proyectloanPk.proyect_loan_id)?'font-weight: bold !important;':''}">#{cnslt.bcScore}</div>
+														</td>
+														<td style="text-align: left; width: 156px !important; padding-top: 8px; padding-bottom: 8px; ">
+															<div class="consult#{pos.index}" style="#{(cnslt.proyect_loan_id==summaryRequest.actualProyect.proyectloanPk.proyect_loan_id)?'font-weight: bold !important;':''}" >#{cnslt.tipoConsulta}</div>
+														</td>
+														<td width="142px" style="text-align: left;  width: 141px !important; padding-top: 8px; padding-bottom: 8px; ">
+															<div class="consult#{pos.index}" style="#{(cnslt.proyect_loan_id==summaryRequest.actualProyect.proyectloanPk.proyect_loan_id)?'font-weight: bold !important;':''}"> #{(cnslt.proyect_loan_id==summaryRequest.actualProyect.proyectloanPk.proyect_loan_id)?'ACTUAL':(cnslt.credito)}</div>
+														</td>
+														<td  style="text-align: left; width: 122px !important; padding-top: 8px; padding-bottom: 8px; ">
+															<div class="consult#{pos.index}" >
+																<p:graphicImage url="../resources#{cnslt.status}" style="margin-left: auto; margin-right: auto;" rendered="#{cnslt.status != 'Sin proyecto'}" width="25" height="25" />
+																<h:outputLabel rendered="#{cnslt.status == 'Sin proyecto'}" value="#{cnslt.status}" ></h:outputLabel>
+															</div>
+														</td>
+													</tr>
+												
+												
+												
+											
+											
+											<style>
+												.consult#{pos.index}{
+													text-decoration: none;
+												}
+											
+												.consult#{pos.index}:HOVER{
+													cursor: pointer;
+													text-decoration: underline;
+												}
+												
+											</style>
+											
+											<script>
+											
+											$(".consult#{pos.index}").fancybox({
+												'transitionIn'	:	'elastic',
+												'transitionOut'	:	'elastic',
+												'speedIn'		:	600, 
+												'speedOut'		:	200, 
+												'overlayShow'	:	true,
+												'width'			:	'100%',
+												'height'		: 	'100%',
+												'href'			:	'reporteBuroSolNum.jsf?solNum=#{cnslt.bursolnum}',
+												'type'			:	'iframe'
+											});
+											
+											</script>
+											
+										
+								</ui:repeat>
+										</table>
+						
+								
+							<h:panelGroup rendered="#{summaryRequest.makeNewConsultation}">
+								<br />
+								<div id="dvBtnNwCnslt1" class="btn_verde" style="margin: 0 0 15px; width: 150px">																
+									<h:outputText value="Nueva Consulta" />																
+								</div>
+								
+								<div id="dvCntBtnCsl" style="display:none; width: 700px;" >
+									<h:panelGroup rendered="#{summaryRequest.actualProyect.status_id != 3 and summaryRequest.makeNewConsultation}">
+						
+											<p>¿Deseas que esta nueva consulta se asigne al proyecto actual?</p>
+									
+											<h:selectOneRadio id="changeBurSolNum" value="#{summaryRequest.changeBurSolNum}" styleClass="radio elementStlLbl">
+												<f:selectItem itemValue="true" itemLabel="Si"></f:selectItem>
+												<f:selectItem itemValue="false" itemLabel="No"></f:selectItem>
+												<f:ajax event="click"></f:ajax>
+											</h:selectOneRadio>
+								
+									</h:panelGroup>
+									
+									
+									<br/>
+									<div style="width: 500px; height: auto;overflow: auto;">
+										<div id="divNewConsultation" class="buttonPR" style="height: 29px; margin: 0 0 15px; width: 150px; float: left;">																
+											<h:outputText value="Consultar" />																
+										</div>
+										<div id="dvCancelConsultation" class="buttonPR" style="height: 29px; margin: 0 0 15px 15px; width: 150px; float: left;">																
+											<h:outputText value="Cancelar" />																
+										</div>
+									</div>
+									
+									<h:panelGroup rendered="#{summaryRequest.displayConsulSuccess==1}">
+										<script type="text/javascript">
+											alertjs('Consulta realizada con exito.');
+										</script>
+									</h:panelGroup>
+									<h:panelGroup rendered="#{summaryRequest.displayConsulSuccess==0}">
+										<script type="text/javascript">
+											alertjs('Error al realizar la consulta.');
+										</script>
+									</h:panelGroup>
+									
+									<!-- 
+									<div style="color: #FF0000; font-size: 0.9em;" >
+										<h:outputText  value="#{summaryRequest.messageConsultationOff}"></h:outputText>
+									</div>
+									<div style="color: #000000; font-size: 0.9em;" >
+										<h:outputText  value="#{summaryRequest.messageConsultationOn}"></h:outputText>
+									</div>
+									 -->
+								</div>
+							</h:panelGroup>
+							
+						</div>
+						
+						</h:panelGroup>
+						
+						
+					</div>
+				</h:panelGroup>
+			</div>
+		
+		</div>
+		
+	</h:panelGroup>				
+</ui:composition>				

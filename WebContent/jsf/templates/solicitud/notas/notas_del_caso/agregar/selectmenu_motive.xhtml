@@ -1,0 +1,34 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"				
+				xmlns:p  = "http://primefaces.org/ui">							
+	<div id = "dvMotiveNote" style = "display:none;">				
+		<div id = "main_motive_select_note" 
+			 style = "width: auto; height: auto; border: 0px solid black;">	
+			 	
+			<h:panelGroup id="pnlMotiveNote" >
+			
+				<p style = "margin:0 auto; border:0px solid black" >Motivo</p>
+								
+				<div class = "main_selectmenu_tipo_nota" style = "width: 344px !important; border: solid 0px; height: 28px !important;" >															
+					<h:selectOneMenu id         = "select-motive-note"  
+									 value      = "#{summaryRequest.notas.motive_id_SELECTED}"
+									 style		= "width: 360px !important;" >
+									 
+						<f:selectItem itemValue = ""  itemLabel = ""/>
+								
+						<f:selectItems value     = "#{summaryRequest.notas.lista_motivos}" 
+									   var       = "motive" 
+									   itemLabel = "#{motive.description}" 
+									   itemValue = "#{motive.pk.motive_id}" />	
+									   										
+						<p:ajax event    = "change" 
+								listener = "#{summaryRequest.notas.listener_motive_id_SELECTED}"/>		
+																			
+					</h:selectOneMenu>																							
+				</div>				
+			</h:panelGroup>
+		</div>
+	</div>
+</ui:composition>				

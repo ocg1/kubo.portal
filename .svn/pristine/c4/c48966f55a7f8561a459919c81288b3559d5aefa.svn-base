@@ -1,0 +1,46 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui"> 	
+	
+	<h:form prependId = "false" >	
+	
+		<script>
+			function initCreditLiquidacion(){
+				
+					$("#j_idt133\\:0\\:inputCreditValue").val( $(".clsSafiCredi").text() );
+					$("#j_idt133\\:0\\:inputCreditValue").blur();
+					
+					$("#j_idt133\\:0\\:inputSaldoLiquidar").val( $(".clsSaldoLiqui").text() );
+					$("#j_idt133\\:0\\:inputSaldoLiquidar").blur();
+					
+				return true;
+			}
+		</script>
+	
+		<div style="display:none;" >
+			<div class="clsSafiCredi">#{credit.panel.safi_credit_id}</div>
+			
+			<div class="clsSaldoLiqui">#{credit.saldoLiquidar}</div>
+			<h:inputText value="#{estadoCuenta.credit_id}" id="inputCreditValue"  >
+				<p:ajax event="blur"  ></p:ajax>
+			</h:inputText>
+			<h:inputText value="#{estadoCuenta.saldo_liquidar}" id="inputSaldoLiquidar"  >
+				<p:ajax event="blur"  ></p:ajax>
+			</h:inputText>
+			
+		</div>
+					
+		<p:commandLink value      = "Quiero liquidar mi préstamo" 
+					   rendered   = "#{credit.saldo_liquidar_ENABLED}"
+					   onstart	  = "return initCreditLiquidacion();"
+					   action     = "#{estadoCuenta.registrar_consulta_liquidacion}"
+					   styleClass = "callActionMedium btnNaranja" 
+					   style = "margin:0; margin-top:25px; width: 300px;">
+					   
+					   
+		</p:commandLink>		
+	</h:form>	
+</ui:composition>	

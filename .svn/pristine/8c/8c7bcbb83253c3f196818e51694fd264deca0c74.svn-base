@@ -1,0 +1,28 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<fieldset class="content_beneficiario">
+				<script>
+				resetar_indices();
+				atravez_pasos ();
+				</script>
+			<h:outputLabel value="Beneficiario #{benefic.varStatus}" styleClass="labelsStlTitle beneficiario_titulo" style=" font-weight: bold !important;"/>						
+					
+		<div class = "dvContent2">
+			<ui:include src = "eliminar.xhtml"/>
+			<ui:include src = "nombre.xhtml"/>
+			<ui:include src = "fecha_nacimiento.xhtml"/>
+			<ui:include src = "genero.xhtml"/>	
+			<ui:include src = "parentesco.xhtml"/>
+			
+			<h:panelGroup rendered="#{ibeneficiaries.person.country_of_residence != null and ibeneficiaries.person.country_of_residence != 1}" >
+				<ui:include src = "mismo_domicilio.xhtml"/>
+			</h:panelGroup>
+			
+		</div>															
+	</fieldset>				 
+				 
+</ui:composition>				 

@@ -1,0 +1,88 @@
+package mx.com.kubo.repositories.impl;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import mx.com.kubo.model.RegistrationReason;
+import mx.com.kubo.repositories.RegistrationReasonDao;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+ 
+@Repository
+public class RegistrationReasonDaoImp 
+implements RegistrationReasonDao 
+{
+	Logger log = Logger.getLogger(getClass());
+	
+	private EntityManager em = null;
+	
+	private String query;
+	
+	private List<RegistrationReason> cats;
+	
+    @PersistenceContext
+    public void setEntityManager(EntityManager em) 
+    {
+        this.em = em;
+    }
+    
+	@Transactional	
+	public boolean save(RegistrationReason registration_reason) 
+	{					
+		boolean save_OK = false;
+		
+		try
+		{
+			em.persist(registration_reason);
+			
+			save_OK = true;
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return save_OK;
+	}
+	
+	public int getMaxRegistration_reason_id()
+	{
+		String query = "SELECT MAX(rr.regPK.registration_reason_id) FROM RegistrationReason rr";
+		
+		Integer registration_reason_id = (Integer) em.createQuery(query).getSingleResult();
+		
+		if(registration_reason_id != null)
+		{
+			registration_reason_id++;
+			
+		} else {
+			
+			registration_reason_id = 1;
+		}
+		
+		return registration_reason_id;
+	}
+
+	public List<RegistrationReason> loadRegistrationReasonList() 
+	{
+		cats = em.createQuery("from RegistrationReason ", RegistrationReason.class).getResultList();
+		
+		 return cats;
+	}
+
+	public List<RegistrationReason> loadRegistrationReasonWithoutOtherList() 
+	{
+		cats = null;
+		
+		query = "from RegistrationReason as r where r.regPK.registration_reason_id <> ? order by r.order_list desc";
+		
+		cats = em.createQuery(query, RegistrationReason.class).setParameter(1, 7).getResultList();
+		
+		return cats;
+	}
+
+}

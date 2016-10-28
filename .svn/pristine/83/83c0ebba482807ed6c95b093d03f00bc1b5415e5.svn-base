@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>Kubo</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<!-- <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'> -->
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="js/kubo.js"></script>
+		<script type="text/javascript" src="js/kubo-graph.js"></script>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<!--mainHeader -->
+			<header class="mainHeader">
+				<div>
+					<img class="logoKubo" alt="Logo Kubo" src="img/kubo-logo.jpg"/> 
+					<div class="welcome">
+						<p class="welcometext">¡Buenos días, Juan!</p>
+						<p class="date">27 de junio de 2012</p>
+					</div>				
+					<div class="clear"></div>
+				</div>
+				<nav>
+					<a class="selected" title="Mi Kubo" href="#" >Mi Kubo</a>
+					<a title="Notas" href="#" >Notas</a>
+					<a title="Portafolios" href="#" >Portafolios</a>
+					<a title="Historial" href="#" >Historial</a>
+					<a title="Detalle de actividad" href="#" >Detalle de actividad</a>
+					<a title="Cuenta bancaria" href="#" >Cuenta bancaria</a>
+					<a title="Documentación" href="#" >Documentación</a>
+					<a title="Estadísticas" href="#" >Estadísticas</a>
+				</nav>
+			</header>
+			
+			<!--section myInvestments -->
+			<section class="myInvestments">
+				<header>
+					<h1>Mis inversiones</h1>
+					<div class="clear"></div>
+				</header>
+				<div class="container">
+					<div class="content">
+						<!-- navMyInvestments -->
+						<nav class="secondaryMenu">
+							<a class="selected" title="Resumen" href="#" >Resumen</a>
+							<a title="Invertir" href="#" >Invertir</a>
+							<a title="Selecciona proyectos" href="#" >Selecciona proyectos</a>
+							<a title="Alertas" href="#" >Alertas</a>
+							<a title="Depositar" href="#" >Depositar</a>
+						</nav>
+						
+						<!-- detailBoxes -->
+						<div class="detailBoxes">
+							<div class="detailBox">
+								<p class="detailTitle">Rendimiento anualizado (GAT)</p>
+								<p class="detailValue">12.31%</p>
+								<p class="detailBottomValue detailBottomValueLeft">Ver cómo se calcula...</p>
+							</div>
+							<div class="detailBox detailBoxMiddle">
+								<p class="detailTitle">Intereses cobrados</p>
+								<p class="detailValue">$1,623.22</p>
+								<p class="detailBottomValue">Pagos totales recibidos: <strong class="gray">$9,999,999.00</strong></p>
+							</div>
+							<div class="detailBox">
+								<p class="detailTitle">Saldo total</p>
+								<p class="detailValue">$17,363.40</p>
+								<p class="detailBottomValue">Efectivo: <strong class="gray">$1,250.00</strong></p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						
+						<!-- detailAccount -->
+						<div>
+							<div class="account">
+								<table class="accountTable">
+									<thead>
+										<tr>
+											<th class="myAccount"><strong class="bigBlack">Mi cuenta:</strong> <strong class="orange">#</span><span class="gray">987654</span></th>
+											<th class="black">Saldos</th>
+											<th class="black">Notas</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td>Efectivo disponible</td>
+											<td>$1,250.00</td>
+											<td><a title="Efectivo disponible" href="#" >0</a></td>
+										</tr>
+
+										<tr>
+											<td>Inversiones en proceso</td>
+											<td>$500.00</td>
+											<td><a title="Inversiones en proceso" href="#" >2</a></td>
+										</tr>
+
+										<tr>
+											<td>Inversiones activas</td>
+											<td>$15,490.00</td>
+											<td><a title="Inversiones activas" href="#" >29</a></td>
+										</tr>								
+
+										<tr>
+											<td>Intereses devengados</td>
+											<td>$123.40</td>
+											<td><a title="Intereses devengados" href="#" >29</a></td>
+										</tr>								
+									</tbody>
+									
+									<tfoot>
+										<tr>
+											<td class="black">Saldo total</td>
+											<td class="black">$17,363.00</td>
+											<td></td>
+										</tr>
+									</tfoot>
+								</table>
+								
+								<div class="buttons">
+									<a class="blueBtn" title="Ver detalles" href="#" >Detalles</a>
+									<a class="blueBtn blueBtnMiddle" title="Incrementar saldo" href="#" >Incrementar saldo</a>
+									<a class="blueBtn" title="Invertir" href="#" >Invertir</a>
+								</div>
+							</div>													
+
+							<div class="summary">
+								<div class="summaryBox">
+									<a class="summaryTitle" title="Resumen de inversiones" href="#" >Resumen de inversiones</a>
+									<div class="summaryContent">
+										<table class="summaryTable">
+											<tbody>
+												<tr>
+													<td>Activas</td>
+													<td><span class="monTop">$100.00</span><span class="numTop">1</span></td>
+												</tr>
+												<tr>
+													<td>En proceso</td>
+													<td><span class="monTop">$200.00</span><span class="numTop">2</span></td>
+												</tr>
+												<tr>
+													<td>Atrasadas de 16-30 días</td>
+													<td><span class="monTop">$3.00</span><span class="numTop">3</span></td>
+												</tr>
+												<tr>
+													<td>Atrasadas de 31-90 días</td>
+													<td><span class="monTop">$40.00</span><span class="numTop">4</span></td>
+												</tr>
+												<tr>
+													<td>Vencidas de 91-120 días</td>
+													<td><span class="monTop">$500.00</span><span class="numTop">5</span></td>
+												</tr>
+												<tr>
+													<td>Vencidas de 121-180 días</td>
+													<td><span class="monTop">$600.00</span><span class="numTop">6</span></td>
+												</tr>
+												<tr>
+													<td>Quebrantadas</td>
+													<td><span class="monTop">$7,000.00</span><span class="numTop">7</span></td>
+												</tr>
+												<tr>
+													<td>Pagadas totalmente</td>
+													<td><span class="monTop">$800.00</span><span class="numTop">8</span></td>
+												</tr>
+
+											</tbody>
+											<tfoot>
+												<tr>
+													<td></td>
+													<td><a id="summaryLinkTop" href="#">Ver por cantidad</a></td>
+												</tr>
+											</tfoot>											
+										</table>									
+									</div> <!-- .summaryContent -->
+								</div>
+								<div class="summaryBox">
+									<a class="summaryTitle" title="Resumen de pagos" href="#" >Resumen de pagos</a>
+									<div class="summaryContent">
+										<table class="summaryTable">
+											<tbody>
+												<tr>
+													<td>Pagos recibidos</td>
+													<td><span class="numBottom">1</span><span class="monBottom">$100.00</span></td>
+												</tr>
+												<tr>
+													<td>Capital</td>
+													<td><span class="numBottom">2</span><span class="monBottom">$200.00</span></td>
+												</tr>
+												<tr>
+													<td>Intereses ordinarios</td>
+													<td><span class="numBottom">3</span><span class="monBottom">$300.00</span></td>
+												</tr>
+												<tr>
+													<td>Intereses moratorios</td>
+													<td><span class="numBottom">4</span><span class="monBottom">$400.00</span></td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td></td>
+													<td><a id="summaryLinkBottom" href="#">Ver por cantidad</a></td>
+												</tr>
+											</tfoot>
+										</table>									
+									</div> <!-- .summaryContent -->
+								</div>
+							</div>			
+							
+							<div class="clear"></div>										
+						</div> <!-- detailAccount -->
+						
+					</div>
+					<aside>
+						<div class="ads"></div>
+						<div class="faq">
+							<h3>Preguntas frecuentes</h3>
+							<ul>
+								<li><a title="Cómo" href="#" >Cómo</a></li>
+								<li><a title="Cómo" href="#" >Qué</a></li>
+								<li><a title="Cómo" href="#" >Cuánto</a></li>
+							</ul>
+						</div>
+					</aside>
+					<div class="clear"></div>
+				</div>
+			</section>		
+		</div>	
+		
+	</body>
+</html>
+
+

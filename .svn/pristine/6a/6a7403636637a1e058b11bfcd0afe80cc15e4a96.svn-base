@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div id = "email-desbloqueo-por-correo" style = "display: none;">
+		<span>Introduce el correo electrónico con el que te registraste.</span>
+
+		<h:inputText style = "margin-top: 10px">
+			<p:ajax event = "blur" listener = "#{desbloqueo_password.listener_email}"/>
+		</h:inputText>						 		
+		
+		<div id = "boton-init_respuesta_seguridad">
+			<p:commandLink immediate = "true" ajax = "true" 
+						   onstart        = "DesbloqueoPassword.show_process_icon();"
+						   oncomplete     = "DesbloqueoPassword.listener_desbloqueo_por_correo(xhr, status, args);"
+						   actionListener = "#{desbloqueo_password.init_desbloqueo_por_correo}"						   
+						   update = "panel-security-question">						   	
+						   
+				<div class = "buttonPR" >
+					<h:outputText value = "#{msg.Btn_next_next}" />
+				</div>								
+			</p:commandLink>
+		</div>						
+	</div>									
+</ui:composition>	

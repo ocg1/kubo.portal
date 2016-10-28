@@ -1,0 +1,82 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html">	
+
+	<h:panelGroup id = "noHit" rendered = "#{preaprobacion.noHit}">
+		<!-- div style="height: auto; overflow: hidden; ">
+		
+			<div class="msgpreaprobado">
+				<b>¡Lo sentimos #{sessionBean.nombre}!</b>    
+			</div>
+			
+
+				<h:outputLabel value = "#{preaprobacion.errorMsg}" escape = "false"/>
+				
+			</div>
+		
+			<div class="dvContent" style="margin-left: auto; margin-right: auto; font-size: 1.19em;">
+				<div class="buttonPR" onclick="closeWindow();">
+						Siguiente
+				</div>
+			</div>
+		</div -->
+		<div class="preaprobacion_pantallas">
+					
+					<figure>
+							<img src="../../../resources/img/nohit/fuera_servicio.png"/>
+					
+					</figure>
+					
+					<article>
+						<h2>#{headerBean.name}:</h2>
+				
+						<p>No pudimos localizarte en Buró de Crédito para conocer tu historial de crédito. 
+							<span>Por favor sigue las siguientes recomendaciones:</span>
+					    </p>
+				
+						
+						<ul>
+							<li><figure><img src="../../../resources/img/nohit/h.png"/></figure> <span><strong>-Tarjeta válida:</strong> es indispensable que tu tarjeta tenga la leyenda “Tarjeta de crédito” en la parte posterior.</span></li>
+							<li><figure><img src="../../../resources/img/nohit/i.png"/></figure>  <span><strong>-Tarjetas NO válidas:</strong>Tarjetas de servicios, puntos, monederos electrónicos, ni tarjetas de débito. Tampoco las tarjetas departamentales de Liverpool y Palacio de Hierro.</span></li> 
+							<li><figure><img src="../../../resources/img/nohit/j.png"/></figure>  <span><strong>-Nombre y fecha de nacimiento:</strong> revisa que sean los mismos que los de tu credencial de elector.</span> </li>
+							<li><figure><img src="../../../resources/img/nohit/k.png"/></figure>  <span><strong>-Crédito de automóvil o hipotecario:</strong> si lo terminaste de pagar hace más de 3 meses, entonces menciona que no lo tienes.</span> </li>
+						</ul>
+					
+						<div class="importante">
+							<figure> <img src="../../../resources/img/nohit/l.png"/></figure>	
+							<article>
+								<p><strong>IMPORTANTE:</strong></p>
+								<ul>
+									 <li>- Por tu seguridad, solo tienes dos intentos por día. </li>
+									 <li>- ¿Quieres que te ayudemos? Por favor llama al <a href="tel:62690024">(55)62690024</a> o escribe a <a  href="mailto:soporte@kubofinanciero.com">soporte@kubofinanciero.com.</a></li>
+							   </ul>
+						   </article>
+						 </div>
+				   </article>
+				   
+</div>
+
+		<!-- Facebook Conversion Code for Paso 2- Consulta - NO HIT -->
+		<script>
+			(function() {
+			  var _fbq = window._fbq || (window._fbq = []);
+			  if (!_fbq.loaded) {
+			    var fbds = document.createElement('script');
+			    fbds.async = true;
+			    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+			    var s = document.getElementsByTagName('script')[0];
+			    s.parentNode.insertBefore(fbds, s);
+			    _fbq.loaded = true;
+		  	}
+		
+		})();
+		
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', '6022624476296', {'value':'0.00','currency':'MXN'}]);
+		</script>
+		<noscript>
+			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022624476296&amp;cd[value]=0.00&amp;cd[currency]=MXN&amp;noscript=1" />
+		</noscript>
+		
+	</h:panelGroup>
+</ui:composition>	

@@ -1,0 +1,28 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+	<div id = "container_credito_year_anterior" class = "dvContent">
+		<div class="dvLabel dvLablWidth" >
+			<h:outputLabel value="¿Tienes o has tenido algún crédito en los últimos 12  meses?*" styleClass="labelsStl"/>
+		</div>
+		
+		<div class="dvElement">
+			<h:selectOneRadio  id = "credito_obtenido_year_anterior" immediate = "true"
+							   value = "#{creditHistoryController.credithistory.have_credit}" 
+							   styleClass = "elementStlLbl validatorClass" style="display:none">
+							   
+	             <f:selectItem itemValue = "1" itemLabel = "Si"/>
+	             <f:selectItem itemValue = "0" itemLabel = "No"/>
+	             
+	             <p:ajax event = "click" 
+	             		 onstart    = "return remove_error_required_input('container_credito_year_anterior');"	             		 
+	             		 listener   = "#{creditHistoryController.data.init_have_credit}" 
+	             		 oncomplete = "Historial.have_credit_oncomplete();" />
+	         </h:selectOneRadio>
+	         
+		</div>
+	</div>				 
+</ui:composition>				 

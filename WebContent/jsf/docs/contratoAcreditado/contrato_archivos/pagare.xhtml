@@ -1,0 +1,263 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				<span class="pagareInicio"></span>
+			
+				<section class="espacio">
+				<div class="container">
+				
+				<h4>PAGARÉ</h4>
+<p >
+    Sucursal: <span class="variable borde anexo">#{contractData.sucursal}</span>
+</p>
+<p>
+    No. Crédito: <span class="variable borde anexo"> #{contractData.contratoCredito.creditoID}</span>
+</p>
+<p>
+    Debo y pagaré incondicionalmente a la orden de KU-BO FINANCIERO S.A. de C.V. S.F.P. en su domicilio ubicado en Av. Barranca del Muerto 92, Colonia Florida,
+    Delegación Álvaro Obregón, C.P. 01030, México, D.F., o en cualquiera de sus sucursales, la cantidad de $  <strong>
+    							    <h:outputText value="#{contractData.monto_credito}" >
+   										<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+									</h:outputText> 
+							 
+							</strong>( <strong class="variable borde">#{contractData.monto_a_pagar_str}</strong> pesos <strong class="variable borde">#{contractData.centavos}</strong>/100 M.N.), valor
+    recibido a mi entera satisfacción. El pago de la cantidad que ampara el presente pagaré se efectuará el día <strong class="variable borde">#{contractData.fechaVencimientoStr}</strong>, más intereses ordinarios a razón
+    del <span class="variable borde">#{contractData.tasaFija}</span> % (<span class="variable borde">#{contractData.tasaFijaTxt}</span> por ciento) anual fijo más IVA sobre saldos insolutos (éstos intereses se generarán a partir de la fecha de suscripción del presente
+    documento hasta su vencimiento) de conformidad con la Tabla anexa a este Pagaré y hasta la total liquidación de la cantidad que ampara el presente pagaré,
+    estipulándose que por la falta de un solo pago de los abonos señalados, se originará el vencimiento del saldo total del crédito y se hará exigible dicha
+    cantidad sin necesidad de declaración judicial previa.
+</p>
+<p >
+    La suma principal de este pagaré se pagará en Moneda Nacional, libre de cualquier deducción por cualquier impuesto, derecho, cargo o imposición fiscal
+    presente o futura con respecto a dichos pagos, los cuales en caso de ser aplicables serán por cuenta del Suscriptor y pagados por éste.
+</p>
+<p>
+    En caso de incumplimiento por falta de pago oportuno, El Suscriptor se obliga a pagar intereses moratorios sobre el capital a una tasa de interés anual que
+    resulte de multiplicar por 2.0 veces la tasa de interés ordinaria establecida más el IVA correspondiente que se causarán sobre los saldos insolutos y no
+    pagados del presente pagaré en el entendido que los intereses moratorios, se generarán a partir de la segunda fecha acumulada de pago de la cuota no pagada, en forma diaria durante todo el tiempo que dure la deuda y hasta el
+    momento en que se liquide la totalidad el adeudo.
+</p>
+<div class="tabla tablaPagare">
+<table width="669" cellpadding="4" cellspacing="0" border="1">
+
+    <tbody>
+        <tr valign="top">
+            <td  >
+                <p >
+                    <strong>Número de periodo</strong>
+                </p>
+            </td>
+            <td >
+                <p >
+                    <strong>Fecha Inicio</strong>
+                </p>
+            </td>
+            <td>
+                <p >
+                    <strong>Fecha Vencimiento</strong>
+                </p>
+            </td>
+            <td >
+                <p >
+                    <strong>Fecha Pago</strong>
+                </p>
+            </td>
+            <td>
+                <p >
+                    <strong>Importe de abono al principal (Capital)</strong>
+                </p>
+            </td>
+            <td>
+                <p >
+                    <strong>Monto de intereses ordinarios</strong>
+                </p>
+            </td>
+            <td>
+                <p >
+                    <strong>IVA de los Interés</strong>
+                </p>
+            </td>
+            <td>
+                <p >
+                    <strong>Pago total de periodo</strong>
+                </p>
+            </td>
+            <td >
+                <p >
+                    <strong>Saldo insoluto al principal (Capital)</strong>
+                </p>
+            </td>
+        </tr>
+
+
+        <ui:repeat value="#{contractData.pagareamortizacionlst}" var="amort" >
+        <tr valign="top">
+            <td >
+            
+            	#{amort.amortizacionID}
+            </td>
+            
+            <td >
+            <h:outputText value="#{amort.fechaInicio}" >
+   				 <f:convertDateTime pattern="dd-MM-yyyy" />
+   			
+			</h:outputText>
+           
+               
+                
+            </td>
+            <td>
+            <h:outputText value="#{amort.fechaVencim}" >
+   				 <f:convertDateTime pattern="dd-MM-yyyy" />
+   			
+			</h:outputText>
+               
+            </td>
+            <td >
+                <h:outputText value="#{amort.fechaExigible}" >
+   				 <f:convertDateTime pattern="dd-MM-yyyy" />
+   			
+			</h:outputText>
+            
+            </td>
+            <td >
+            <h:outputText value="#{amort.capital}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+                  
+            </td>
+            <td >
+               
+                  <h:outputText value="#{amort.interes}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+            </td>
+            <td >
+            
+             <h:outputText value="#{amort.iVAInteres}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+            </td>
+            <td >
+              
+               <h:outputText value="#{amort.montoCuota}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+            </td>
+            <td >
+               <h:outputText value="#{amort.saldoCapital}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+           
+            </td>
+        </tr>
+        </ui:repeat>
+        
+        <tr valign="top">
+            <td >
+            </td>
+            <td >
+            </td>
+            <td>
+            </td>
+            <td >
+     
+
+
+
+                <p >
+                    Totales
+                </p>
+            </td>
+            <td >
+                <p >
+                    $ <h:outputText value="#{contractData.sumCapital}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+                </p>
+            </td>
+            <td >
+            
+                <p >
+                    $<h:outputText value="#{contractData.sumInteres}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+			</h:outputText>
+                </p>
+                
+                
+            </td>
+            <td >
+                <p >
+                    $<h:outputText value="#{contractData.sumIva}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+                </p>
+            </td>
+            <td >
+                <p >
+                    $<h:outputText value="#{contractData.sumPagTot}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+                </p>
+            </td>
+            <td >
+                <p >
+                    $<h:outputText value="#{contractData.sumPagTot}" >
+   				<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+   			
+			</h:outputText>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p >
+    SÍ ACEPTO,
+</p>
+<p >
+    Av. Barranca del Muerto 92, Colonia Florida, Delegación Álvaro Obregón, C.P. 01030, México, D.F.
+</p>
+<p>
+  
+	<div class="fechaPersonalizada variable borde"> <span class="variable">#{contractData.contratoCredito.dia}</span> de <span class="variable">#{contractData.contratoCredito.mesDescrip}</span>
+	de <span class="variable">#{contractData.contratoCredito.anio}</span></div>
+</p>
+
+</div>
+</section>
+<section>
+<!-- h:panelGroup rendered = "#{contractData.data.cliTipoPersona == 'F'}"-->
+	<h:panelGroup>
+		
+		<div class="container firmas center">
+		<h4>EL SUSCRIPTOR</h4>
+          	<span class="unaFirma">
+			<span class="firmaCliente"></span>
+			</span>
+					<hr/>
+				  <p> <span class="variable">#{contractData.contratoCredito.nombreCliente}</span></p>
+				
+		
+				 
+				 <p><strong>#{contractData.data.cliDireccionCompleta}</strong></p>
+			  
+		</div>
+	</h:panelGroup>	
+	
+	
+
+</section>
+<span class="pagareFin"></span>
+</ui:composition>

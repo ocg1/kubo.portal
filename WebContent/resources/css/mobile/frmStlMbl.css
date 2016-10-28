@@ -1,0 +1,1289 @@
+@CHARSET "UTF-8";
+
+body{
+	/*font: 13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+	color: #333333;
+    /*font-size: 13px/1.5;*/
+    line-height: 20px;
+    /*font: 13px/1.5 Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;*/
+}
+
+input{
+	border: solid 1px #FFF200;
+	background: none repeat scroll 0 0 #FFFFFF;
+    /*box-shadow: 0 0px 0px #FFFFFF inset;*/
+    color: #333333;
+}
+
+.radio {
+border: 0;
+} 
+
+fieldset{	
+	width:auto;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: solid 1px #EFF5EF;
+    -moz-border-radius: 3px; 
+    padding: 5px;
+}
+img{
+	border: 0px;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button ,
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield, .elementStl,.elementStlPwd, .elementStlLong,
+ .elementStlSel,.elementStlSelDay,.elementStlSelMonth,.elementStlSelSim,.elementStlSelYear, .elementStlSelLong, .elementStlMin, 
+ .elementAddres1, .elementAddresPointref, .elementTextArea, .elementAddresMin, .elementStlAddressStreet, .elementStlSelAddress{
+
+    /*box-shadow: none !important;*/
+    
+	font-weight: normal !important;
+	color: #2e2e2e;
+	
+	height: 20px;
+	width: 190px;
+	background-color: #FFFFFF  !important;
+	border: solid 1px #FFF200 !important;
+	
+	border-radius: 0px !important;
+	-ms-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	-webkit-border-radius: 0px !important;
+	-khtml-border-radius: 0px !important;
+	
+	-webkit-box-shadow: 1px 1px 10px -3px #c2c2c2 !important;
+  	-moz-box-shadow: 	1px 1px 10px -3px #c2c2c2 !important;
+  	box-shadow: 		1px 1px 10px -3px #c2c2c2 !important;
+}
+
+.elementStlSel, .elementStlSelLong, .elementStlSelAddress, .elementStlRich{
+	height: 28px !important;
+	width: 196px !important;
+}
+
+
+.ui-inputfield:focus, .ui-widget-content .ui-inputfield:focus,
+ .ui-widget-header .ui-inputfield:focus, .elementStl:focus,.elementStlPwd:focus, 
+ .elementStlLong:focus, .elementStlMin:focus, 
+ .elementAddres1:focus,.elementTextArea:focus, .elementAddresPointref:focus 
+ .elementAddresMin:focus, .elementStlAddressStreet:focus, .elementStlRich:focus, .elementAddresMin:focus{
+
+	/*border: solid 1px #72b1ff !important;
+	border: solid 1px #ffcc33 !important;*/
+	border: solid 1px #4AA432 !important;
+	
+	background-color: #FFFFFF !important;
+
+}
+
+/**/
+.ui-tabs .ui-tabs-panel {
+
+    padding: 0px 0px;
+}
+/**/
+
+#content{
+	padding-left: 0px;
+	font-size: 0.9em;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: auto;
+}
+#general{
+	margin: 0px !important;
+	width: 100%;
+	overflow: hidden;
+}
+.backStyle{
+	padding: 0px 0px 10px 0px;
+	
+	/*background-color: #e7e8d6;
+	
+	border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-khtml-border-radius: 15px;*/
+	margin: 0px auto 20px auto;
+}
+
+.stlDisabled{
+	background-color: #F6F6F6 !important;
+}
+
+#contFrmPre{
+	
+	height: auto;
+	*overflow: hidden;
+	padding: 10px 0px 10px 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+.labelsStl{
+	font-size: 1.45em !important;
+	font-weight: normal;
+	color: #333333;
+	text-align: justify;
+	line-height: 25px;
+}
+.dvElementLength span.labelsMoney{
+	margin-top: 0px !important;
+	margin-right: 4px  !important;
+	margin-top: 0px;
+	padding-top: 0px;
+	vertical-align: middle;
+}
+.labelsMoney{
+	margin-top: 0px !important;
+	margin-right: 4px  !important;
+	margin-top: 0px;
+	padding-top: 0px;
+	vertical-align: middle;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button ,
+.elementStl,.elementStlPwd, .elementStlLong, .elementStlMin, .elementAddresMin, 
+.elementStlWidth, .elementStlSel,.elementStlSelDay,.elementStlSelMonth,.elementStlSelSim,
+.elementStlSelYear, .elementStlSelLong, .elementAddres1, .elementAddresPointref,
+.elementTextArea, .elementStlAddressStreet, .elementStlSelAddress{
+
+	/*font: inherit;*/
+	
+	/*-moz-box-shadow: none !important;*/
+	/*width: 155px !important;*/
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+	padding: 3px 2px 3px 2px;
+	/* radio */
+	border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+}
+
+.ui-widget select, .elementStlSel, .elementStlSelDay, .elementStlSelMonth, .elementStlSelSim,
+.elementStlSelYear, .elementStlSelLong, .elementStlSelAddress{
+	margin-top: 0px !important;
+	padding-top: 0px !important;
+}
+
+.elementStl,.elementStlPwd, .elementStlLong, .elementStlMin, .elementAddresMin, 
+.elementStlWidth, .elementStlSel ,.elementStlSelDay,.elementStlSelMonth,
+.elementStlSelSim,.elementStlSelYear, .elementStlSelLong, .elementStlSelAddress, 
+.elementStlLbl, .elementAddres1, .elementAddresPointref, .elementTextArea,
+ .elementStlAddressStreet{
+
+	font-size: 1.45em !important;
+	font-weight: normal !important;
+}
+.elementStlWidth{
+	width: 350px;
+}
+.elementStlMin, .elementAddresMin, .elementStlAddressStreet{
+	width: 55px !important;
+	text-align: left;
+}
+
+.elementStlRd{
+	margin-right: 20px !important;
+}
+
+.elementStlSel, .elementStlSelLong, .elementStlSelAddress,.elementStlSelDay,
+.elementStlSelMonth,.elementStlSelSim,.elementStlSelYear{
+	height: 22px;
+	padding: 2px 1px 3px 1px;
+	margin-top: 6px;
+	margin-bottom: 2px;
+	background-color: #FFFFFF;
+}
+.dvDescLabelRFC{
+	padding-right: 5px !important;
+	line-height: 25px !important;
+	width: 97% !important;
+}
+
+.ui-body-a, 
+.ui-page-theme-a .ui-body-inherit, 
+html .ui-bar-a .ui-body-inherit, 
+html .ui-body-a .ui-body-inherit, 
+html body .ui-group-theme-a .ui-body-inherit, 
+html .ui-panel-page-container-a{
+	border: 0px;
+}
+
+.ui-shadow-inset{
+	box-shadow: 0px;
+}
+
+.elementStlSelAddress{
+	width: 195px !important;
+	font-size: 1.43em !important;
+	height: 26px !important;
+}
+#edoNac-button, #coloniaEmp-button, #tipoVivienda-button, #activityEconomic-button{
+	height: 39px !important;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.tooltipStl{
+	width: 230px;
+	font-size: .80em;
+	font-weight: color;
+}
+.dvLabel, .dvLabelLeft{
+	/*border: solid 1px #FFc6c6;*/
+	
+	width: 100% !important;;
+	float: left;
+	height:auto;
+	overflow: hidden;
+	padding-top: 6px;
+	text-align: right;
+	border: solid 0px #000000;
+}
+.dvElement,.dvElementWidth, .dvWarning,.dvElementLength, .dvElementAddres1{
+	
+	/*border: solid 1px #c6FFc6;*/
+	width: auto !important;
+	text-align: left;
+	vertical-align: bottom;
+	overflow: auto;
+	margin-bottom: 0px;
+	padding-left: 3px;
+
+}
+.dvElementWidth{
+	width: 365px;
+}
+
+.dvElement, .dvElementAddres1{
+	width: auto !important;
+	margin-left: 0px;
+}
+
+.dvDateElement{
+	width: 99% !important;	
+}
+.dvMonthElement{
+	margin-left: 3px;
+}
+.dvYearElement{
+	margin-left: 3px;
+}
+
+.elementStlLbl{
+	font-size: 1.2em !important;
+}
+
+.dvLabel{
+	text-align: left !important;
+	margin-left: 3px;
+	width: 255px;
+}
+
+
+.dvContent, .dvContent2{
+	
+	height: auto;
+	overflow: hidden;
+	float: none;
+	vertical-align: bottom;
+
+}
+
+.dvContent p{
+	clear: both;
+	*margin: 0;
+}
+
+.dvContent2{
+	margin-left: 2px;
+}
+.dvWarning{
+	margin-top: 0px;
+	padding-top: 0px;
+	width: 170px;
+	border: solid 1px #ecb051;
+	background-color: #ffe29b;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.contLeftRight{
+	height: auto;
+	overflow: auto;
+}
+.dvLeft,.dvLeftLength{
+	height: auto;
+	overflow: auto;
+	width: 38%;
+	float: left;
+}
+.dvRight{
+	height: auto;
+	overflow: auto;
+	width: 54%;
+	float: right;
+}
+#recaptcha{
+	text-align: center;
+	width: 320px;
+	height: 130px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.aviso{
+	font-size: 0.80em;
+}
+
+.clTitle, .labelsStlTitle{
+			font: 13px/1.5 Helvetica,Arial,sans-serif;
+			width: 90%;
+			margin-top: 0px;
+			margin-left: 2px;
+			margin-right: 5px;
+			margin-bottom: 15px;
+			font-size: 1.5em;
+			
+			color: #439539 !important;
+		}
+		
+.clTitleLbl{
+	font-size: 1.0em !important;
+}
+		
+.labelsStlTitle{
+	
+	margin-left: 15px !important;
+	
+
+	}
+		
+.regParag{
+	color: #333333;
+	font-size: 1.2em;
+}
+
+.regParag p{
+	font-weight: bold;
+	font-size: 1.2em;
+	}
+	
+.tabFrmStl{
+	font-size: 0.9em;
+}
+.water{
+	font-weight: normal;
+	color: 8f8f8f;
+}
+.dvElementLength{
+	width: auto;
+	padding: 3px;
+	overflow: hidden;	
+}
+.dvLeftLength{
+	width: 46%;
+}
+
+.contFrmReg{
+	background-color: #FFFFFF;
+	margin-top: 0px;
+}
+
+
+.ui-inputfield:focus, .ui-widget-content .ui-inputfield:focus, .ui-widget-header .ui-inputfield:focus{
+
+	/* border: solid 1px #72b1ff; */
+	
+	border: solid 1px #439539;
+	background-color: #FFFFFF;
+
+}
+
+.descripPR{
+	font-size: 1em;
+}
+
+.dvElementAddres1{
+	width: auto !important;
+	float: left;
+	border: solid 0px #ff0000;
+	
+}
+.elementAddres1, .elementAddresPointref{
+	width: 300px !important;
+	margin-left: 0px !important;
+	font-size: 1.43em !important;
+}
+
+.elementAddresPointref{
+	height: 60px  !important
+}
+
+.elementTextArea{
+	font-family: Arial, sans-serif,  "Lucida Grande", "Lucida Sans Unicode" !important;
+	height: 80px  !important;
+	width: 300px !important;
+	font-size: 1.43em !important;
+}
+
+.elementStlLong{
+	width: 250px !important;
+}
+
+.elementAmountsAlign{
+	text-align: right;	
+}
+
+.elementAddresMin{
+	width: 110px !important;
+	margin-left: 0px !important;
+}
+
+.elementStlAddressStreet{
+	width: 125px !important;
+	margin-left: 0px !important;
+}
+
+
+.elementStlSelLong{
+	width: 250px !important;	
+}
+.elementStlRich{
+	height: 120px !important;
+	width: 476px !important;
+}
+
+.elementStlSelDay,.elementStlSelMonth,.elementStlSelSim,.elementStlSelYear{
+	
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+#day-button{
+	    height: 31px;
+    margin: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 41px;
+    padding-top: 0 !important;
+}
+
+#month-button{
+	    height: 31px;
+    margin: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 41px;
+    padding-top: 0 !important;
+}
+
+#year-button{
+	    height: 31px;
+    margin: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 41px;
+    padding-top: 0 !important;
+}
+
+.elementStlSelDay{
+	width: 26px !important;
+	height: 26px !important;
+	
+}
+.elementStlSelMonth{
+	width: 80px !important;
+	height: 26px !important;
+}
+.elementStlSelYear{
+	width: 60px !important;
+	height: 26px !important;
+}
+
+.elementStlSelSim{
+	font-size: 1.1em !important;
+	width: 130px !important;
+	height: 28px !important;
+}
+.elementStlPwd{
+	font-size: 1.1em !important;
+}
+.contFrm{
+	width: 1150px;
+	height: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid 0px #000000;
+	overflow: auto;
+	/* position: relative; */
+}
+
+.menuFrm, .menuFrmFixed, .menuFrmTop, .menuFrmBottom{
+	height: auto;
+	width: 224px;
+	overflow: auto;
+	float: left;
+	border: solid 0px #EFEFEF;
+	margin-right: 0px;
+	position: absolute;
+	*position: relative;
+	*float: none;
+	z-index: 10;
+	margin-bottom: 450px;
+}
+
+.menuFrmBottom a, .menuFrmBottom a:HOVER, .menuFrmBottom a:VISITED,
+.menuFrmFixed a, .menuFrmFixed a:HOVER, .menuFrmFixed a:VISITED,
+.menuFrm a, .menuFrm a:HOVER, .menuFrm a:VISITED{
+	text-decoration: none;
+	color: inherit;
+}
+.menuFrmTop{
+
+	position: relative;
+	top: 50px;
+}
+.menuFrmBottom{
+
+	position: absolute;
+	bottom: 0px !important;
+	margin-bottom: 0px !important;
+}
+.menuFrmFixed{
+	top: 45px;
+	position: fixed;
+	z-index: 100;
+}
+
+.menuItem, .menuItem1, .menuItem1Sel, .menuItemSel, .menuItemUnHover{
+	/*height: 30px;*/
+	height: 49px;
+	width: 200px;
+	overflow: auto;
+	float: left;
+	border: solid 1px #EFEFEF;
+	
+	border-bottom: solid 0px #EFEFEF;
+	border-right: solid 1px #EFEFEF;
+	border-top: solid 0px #439539;
+	border-left: solid 1px #EFEFEF;
+	
+	border-radius: 0px !important;
+	-ms-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	-webkit-border-radius: 0px !important;
+	-khtml-border-radius: 0px !important;
+	padding: 5px;
+	padding-top: 5px;
+	margin-bottom: 0px;
+	/*background-color: #F1F2F2;*/
+	background-color: #F0F3C3;
+	font-weight: normal;
+	color: #888888;
+	text-align: right;
+	
+}
+
+.menuItemNum{
+	color: #C1D82F;
+	font-weight: bold;
+}
+.menuItemCont{
+	
+}
+.menuItemBar{
+	margin-top: 10px;
+	text-align: center;
+}
+.menuItem:hover, .menuItem1:hover, .menuItemNum:hover{
+	cursor: pointer;
+	background-color: #E7EBBB;
+}
+.menuItemUnHover:hover{
+	cursor: default;
+	background-color: #E7EBBB;
+}
+.menuItem1,.menuItem1Sel{
+	border-top: solid 1px #EFEFEF;
+}
+.menuItemSel, .menuItem1Sel{
+	background-color: #439539;
+	font-weight: normal;
+	width: 200px;
+	color: #FFffff;
+	border-bottom: solid 1px #439539;
+	border-right: solid 1px #439539;
+	border-top: solid 1px #439539;
+	border-left: solid 1px #439539;
+	border-radius: 0px 0px 0px 0px !important;
+	-ms-border-radius: 0px 0px 0px 0px !important;
+	-moz-border-radius: 0px 0px 0px 0px !important;
+	-webkit-border-radius: 0px 0px 0px 0px !important;
+	-khtml-border-radius: 0px 0px 0px 0px !important;
+	text-align: right;
+	height: 45px;
+}
+.menuItemNumSel{
+	color: #C1D82F;
+	font-weight: bold;
+}
+
+.formFrm{
+	width: 570px;
+	height: auto;
+	background-color: #FFFFFF;
+	float: left;
+	position: relative;
+	margin-left: 221px;
+	*margin-left: 3px;
+	padding: 0px;
+	border: solid 0px #EFEFEF;
+}
+/* .contPR{
+	position: relative;
+} */
+.helpFrm{
+	position: absolute;
+	/* float: left; */
+	margin-left: 790px;
+	width: 200px;
+	margin-bottom: 20px;
+	border: solid 0px #000000;
+	top: 84px;
+}
+.helpCont{
+	width: 270px;
+	height: 150px;
+	border: solid 1px #EFEFEF;
+	font-size: 1.0em;
+	background-color: #FFFFFF;
+	overflow: auto;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.displayNone{
+	display: block;
+}
+.displayBlock{
+	display: block;
+}
+.porcent{
+	color: #888888;
+	font-size: .8em;
+}
+.porcentSel{
+	color: #FFFFFF;
+	font-size: .8em;
+}
+.introReg{
+	font-size: .8em;
+}
+
+/*  progressBar */
+.ui-progressbar .ui-widget-header, .failBar{
+	width: 130px;
+    border-radius: 0px 0px 0px 0px;
+    background-color: #c1d82f !important;
+    background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)) repeat scroll 0 0 #c1d82f !important;
+    background-color: #c1d82f !important;
+}
+
+.ui-progressbar{
+    border-radius: 0px 0px 0px 0px;
+    height: 1.1em;
+    text-align: left;
+    width: 130px;
+    height: 10px;
+    margin-left: auto;
+    margin-right: 5px;
+    margin-top: 8px;
+    box-shadow: 0 0px 0px #8F8F8F inset;
+    
+}
+
+/*  end progressBar */
+
+#gmap{
+	width: 400px;
+	height: 350px;
+	border: solid 1px #000000;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 500px;
+}
+
+
+.tip {
+	width: 500px;
+	/*padding-top: 37px;*/
+	overflow: hidden;
+	display: none;
+	position: absolute;
+	z-index: 500;
+	background: transparent url(../resources/img/tipTop.png) no-repeat top;}
+	
+.tipMid {background: transparent url(../resources/img/tipMid.png) repeat-y; padding: 0 25px 20px 25px;}
+.tipBtm {background: transparent url(../resources/img/tipBtm.png) no-repeat bottom; height: 32px;}
+		
+form .counter {
+    color: #CCCCCC;
+    font-size: 15px;
+    font-weight: bold;
+    float: right;
+    right: 0;
+    top: 0;
+}
+form .warning {color: #FFCC33;}
+form .exceeded{color:#e00;}
+
+.frmError{
+	position: absolute;
+	top: 460px;
+	left: 730px;
+	display: none;
+	cursor: pointer;
+}
+
+.frmError .formErrorContent {
+	width: 100%;
+	background: #FFC7CE;
+	position:relative;
+	color: #333333;
+	width: 260px;
+	font-size: 0.9em;
+	border: 2px solid #ddd;
+	/*box-shadow: 0 0 6px #000;
+	-moz-box-shadow: 0 0 6px #000;
+	-webkit-box-shadow: 0 0 6px #000;*/
+	padding: 4px 10px 4px 10px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+.arrow_leftHelp{
+	background-image: url("../../resources/img/arrow_left.gif");
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 23px;
+    left: -9px;
+    position: absolute;
+    top: 5px;
+    width: 10px;
+}
+.frmError .formErrorArrowImg{
+	background-image: url("../../resources/img/arrow_left.gif");
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 23px;
+    left: -9px;
+    position: absolute;
+    top: 5px;
+    width: 10px;
+}
+
+.relativeLoad33:hover{
+		cursor: pointer;
+	}
+	
+.requiredClass{
+	border: solid 1px #FF0000 !important;
+	background-color: #fff8f8 !important;
+}
+
+.descVal{
+	padding-left: 20px;
+	/* background-image: url("../../resources/img/bullet-white.png"); */
+	background-position: left;
+	background-repeat: no-repeat;
+	color: #000000;
+}
+
+.descValGreen{
+	padding-left: 20px;
+	background-image: url("../../resources/img/Bullet.png");
+	background-position: left;
+	background-repeat: no-repeat;
+	/* color: #5abf11; */
+}
+.descValOrange{
+	padding-left: 20px;
+	background-image: url("../../resources/img/error2.png");
+	background-position: left;
+	background-repeat: no-repeat;
+	color: #ff0000;
+}
+
+.elementStlSel ,.elementStlSelAddress, .elementStlSelDay,.elementStlSelMonth,.elementStlSelYear{
+	background: transparent !important;
+	border: 0px !important;
+	padding-top: 0px;
+	box-shadow: 0px 0px 0px 0px #C2C2C2 !important;
+}
+.elementStlSel{
+	width: 250px !important;
+}
+.msgHelpMap{
+	background-color: #FFFFFF;
+	border: solid 1px #f4f4f4 !important;
+	 width: 448px;
+}
+
+.auocmpleStl input{
+	font-size: 1.14em !important;
+}
+
+.msgDoc{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.clTitleDetailsIncome{
+	text-align: center; 
+	margin-left: auto; 
+	margin-right: auto;
+	font-size: 1.3em; 
+	font-weight: bold; 
+	margin-top: 10px; 
+	margin-bottom: 10px;
+}
+
+
+/* ********* SIMULADOR ********** */
+
+.sim_cont{
+	height: auto;
+	overflow: auto;
+	width: 210px;
+	padding: 2px;
+	border: solid 0px #FF0000;
+}
+
+/* ********* /SIMULADOR ********** */
+
+.collapse{
+	display: none;
+}
+.expand_heading a{
+	text-decoration: none !important;
+	text-align: left  !important;
+	font-size: 0.75em !important;
+	font-weight: normal !important;
+	
+}
+.clTitle{
+	
+	text-align: center  !important;
+	font-size: 1.8em !important;
+	
+}
+.box{
+	
+	text-align: left !important;
+	
+}
+
+.dvLablWidth ,.labelsStl{
+	width: 95%;
+	padding-right: 5px !important;
+}
+
+.lblAlgnJ{
+	
+	text-align: left !important;
+	
+	}
+	
+.ui-btn{
+	border: solid 0px !important;
+}
+
+.ui-block-a,.ui-block-b,.ui-block-c{
+	border: solid 1px #C1D82F !important;
+}
+.ui-block-b{
+	border-left: 0px !important;
+	border-right: 0px !important;
+}
+.ui-shadow{
+	box-shadow: 0px !important;
+}
+
+.stlNumInt{
+	width: 100px !important; 
+	float: left; 
+	margin-left: 10px;
+}
+
+.stlNumExt{
+	width: 100px !important; 
+	float: left;
+}
+.stlCntNumExt{
+	float: left; 
+	width: 180px
+}
+
+
+.buttonPR, .buttonLoan, .btndetails, .btnNextMyLoan, .btnNextInvestor, .bottonUpload, .bottonBn, .bottonBnInv{
+	overflow: auto;
+	width: 168px;
+	border: solid 0px #ffff63;
+	border: solid 1px #fff200;
+	height: 28px;
+	/* background-color: #ffcc33; */
+	/*background-color: #4AA432;*/
+	background-image: url("../../../resources/img/backButt.png");
+	background-repeat: repeat-x;;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 5PX;
+	
+	border-radius: 0px;
+	-ms-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-khtml-border-radius: 0px;
+	
+	text-align: center;
+	color: #000000;
+	font-weight: normal;
+	
+	-webkit-box-shadow: 2px 2px 10px -1px #626262 !important;
+  	-moz-box-shadow: 	2px 2px 10px -1px #626262 !important;
+  	box-shadow: 		2px 2px 10px -1px #626262 !important;
+	
+}
+.buttonPR a, .buttonLoan a, .btndetails a, .btnNextMyLoan a, .btnNextInvestor a, .bottonUpload a, .bottonBn a{
+	text-decoration: none;
+	color: inherit;
+	font-size: inherit;
+	/*color:#FFFBF7;*/
+}
+.buttonPR a:hover, .buttonLoan a:hover, .btndetails a:hover, .btnNextMyLoan a:hover, .btnNextInvestor a:hover, .bottonUpload a:hover{
+	cursor: pointer;
+	/* background-image: url("../../../resources/img/backButtH.png");
+	background-repeat: repeat-x; */
+}
+
+.buttonPR input, .buttonLoan input. .bottonUpload input{
+	background-color: inherit;
+	color: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+.buttonPR input:hover, .buttonLoan input:hover, .btndetails input:hover, .btnNextMyLoan input:hover, .btnNextInvestor input:hover, .bottonUpload input:hover{
+	cursor: pointer;
+	background-image: url("../../../resources/img/backButtH.png");
+	background-repeat: repeat-x;
+	-webkit-box-shadow: 2px 2px 10px -1px #626262 !important;
+  	-moz-box-shadow: 	2px 2px 10px -1px #626262 !important;
+  	box-shadow: 		2px 2px 10px -1px #626262 !important;
+}
+
+.buttonPR:hover, .buttonLoan:hover, .btndetails:hover, .btnNextMyLoan:hover, .btnNextInvestor:hover, .bottonUpload:hover{
+	cursor: pointer;
+	/* background-color: #fbbf08; */
+	color: #000000;
+	border: solid 1px #fff200;
+	background-image: url("../../../resources/img/backButtH.png");
+	background-repeat: repeat-x;
+	-webkit-box-shadow: 2px 2px 10px -1px #626262 !important;
+  	-moz-box-shadow: 	2px 2px 10px -1px #626262 !important;
+  	box-shadow: 		2px 2px 10px -1px #626262 !important;
+}
+
+
+/****************CREDIT*HISTORY*************************/
+#dvGenSure{
+	font-size: 1.45em;
+	line-height: 27px;
+
+	}
+	
+#wrongData,#goodData{
+	
+	font-size: 0.7em;
+
+	}
+#testframe{
+	font-size: 0.7em;
+}
+/******************************************/
+
+.clWidthTitle{
+ 	width: auto;
+	border: solid 0px #000000;	
+}
+
+.clLabelContent{
+	width: auto !important; 
+	margin-right: 0px;
+	text-align: left !important;
+}
+
+.clLabelStl{
+	width: 99% !important; 
+	margin-right: 0px;
+	text-align: center !important;
+}
+
+/**************Documentacion**********************/
+
+.contDescDocument{
+	width: 95% !important; 
+	margin-right: 0px;
+}
+
+.titleH2DocDesc{
+	cursor: pointer; 
+	width: 99%; 
+	margin-left: 5px;
+}
+
+
+.dvTexDescDoc{
+	text-align: left !important;
+	border: solid 0px #000000;
+}
+
+.dvDescPhotoProyect{
+	text-align: left; 
+	margin: 3px 8pt 3px 2px; 
+	width: 99%;
+}
+
+/* .ui-mobile label, div.ui-controlgroup-label{
+	
+	font-size: 1.45em !important;
+	
+} */
+
+/************ /Documentacion**********************/
+
+/************* CIERRE ***************************/
+
+.corner{
+	
+	display: none;
+	
+}
+
+.borderPropuesta{
+	padding: 0px; 
+	margin-top: 0px !important; 
+	height: auto; 
+	overflow: hidden; 
+	width: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 20px;  
+	padding-top: 0px !important; 
+	border: solid 0px #000000; 
+	position: relative; 
+}
+
+.contCatDesc{
+	text-align: justify; 
+	font-size: .5em !important; 
+	width: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 15px;
+}
+
+.clEndCat{
+	text-align: center; 
+	font-size: 1.4em; 
+	width: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 5px; 
+	border: solid 0px #000000;
+}
+
+.clDesCondicionesCat{
+	text-align: left; 
+	font-size: 1.0em; 
+	width: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 5px;
+	height: auto;
+	border: solid 0px #000000;
+}
+
+.clLabelCondiciones{
+	text-align: left; 
+	clear: both; 
+	font-size: 1.1em; 
+	width: auto; 
+	margin-left: 0px; 
+	margin-top: 10px; 
+	padding: 5px; 
+	border: solid 0px #000000;
+}
+
+
+.contTablePropuesta1{
+	height: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	overflow: hidden; 
+	width: auto; 
+	border: solid 8px #f0f3c3;	
+}
+
+.contTablePropuesta2{
+	width: auto; 
+	clear: both; 
+	background-color: #C1D82F;  
+	padding: 5px;
+}
+.contTablePropuesta3{
+	clear: both; 
+	width: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align: left;	
+}
+
+table.tblPropuesta{
+	width:auto; 
+	text-align: left; 
+	margin-left: auto; 
+	margin-right: auto; 
+	border-collapse: collapse;
+}
+
+table.tblPropuesta td{
+	padding: 0px !important;
+}
+
+td.clTdMonto{
+	text-align:right; 
+	width: auto;
+	padding: 0px !important;
+}
+td.clTdMontoStr{
+	text-align:left; 
+	width: auto;
+}
+
+.clLabelVal{
+	
+	text-align:left; 
+	font-weight: bold; 
+	width:auto;
+	
+}
+
+
+.titlePropuesta{
+	
+	text-align:left; 
+	font-size: 1.25em !important; 
+	font-weight: bold; 
+	color: #000000 !important; 
+	
+}
+
+.clLabelTable{
+	font-size: 0.9em !important; 
+}
+
+
+.clLabelTableVal{
+	font-weight: bold;
+	text-align:left; 
+	font-size: 0.9em !important; 
+}
+
+
+.btnAgree{
+	margin-left: auto; 
+	margin-right: auto; 
+	font-size: 1.1em;
+}
+
+
+.btnAgree .buttonPR{
+	
+	width: 250px;
+	text-shadow: 0 0px 0 #F3F3F3 !important;
+}
+
+.clContEnd{
+	
+	padding: 0px; 
+	margin-top: 0px !important; 
+	height: auto; 
+	overflow: hidden; 
+	width: auto;
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 20px;  
+	padding-top: 0px !important; 
+	border: solid 0px #000000; 
+	position: relative; 
+	
+}
+
+.borderContDescEnd{
+	height: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	overflow: hidden; 
+	width: auto; 
+	border: solid 8px #f0f3c3;
+}
+
+
+.clContDescBack1{
+	width: auto; 
+	clear: both; 
+	background-color: #C1D82F;  
+	padding: 5px;
+}
+
+
+.clContDescBack2{
+	clear: both; 
+	width: auto; 
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align: left;
+	font-size: 0.7em !important;
+}
+
+.clTableEnd{
+	width:auto; 
+	text-align: left; 
+	text-align: left; 
+	margin-left: auto; 
+	margin-right: auto; 
+	border-collapse: collapse; 
+	text-shadow: 0 0px 0 #F3F3F3 !important;
+	font-size: 0.9em !important;
+	line-height: 27px !important;
+}
+
+/************* /CIERRE **************************/

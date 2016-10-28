@@ -1,0 +1,45 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id="pnlBanckDesc" rendered="#{summaryRequest.changeDispersion}">
+											
+		<p:inplace widgetVar="banckDesc" 
+					label="#{(summaryRequest.changeBankData.bank_description==null or summaryRequest.changeBankData.bank_description=='')? 'No definido':summaryRequest.changeBankData.bank_description}"  >
+													
+			<p:ajax event="save" update="pnlBanckDesc"  listener="#{summaryRequest.saveNewBanckDesk}"/>
+													
+			<h:panelGroup>
+				<!-- <h:inputText id="txt-mxinstitucion" styleClass="elementAddres1" style="width: 200px ! important; font-size: 1em !important;" value="#{summaryRequest.changeBankData.bank_description}"></h:inputText> -->
+														
+						<p:autoComplete id="txt-mxinstitucion" value="#{summaryRequest.changeBankData.bank_description}"   completeMethod="#{summaryRequest.autocomplete}" >
+						 	<p:ajax event="itemSelect" listener="#{summaryRequest.handleSelect}" /> 
+						</p:autoComplete>
+					
+						<h:inputTextarea id="txt-reason-inst" styleClass="elementTextArea"  cols="25" rows="3" value="#{summaryRequest.changeBankData.whyChangeData}">
+					 		<p:ajax event="blur"></p:ajax>
+					 	</h:inputTextarea>
+					 	<p:watermark for="txt-reason-inst" value="Motivo del cambio" />
+					 	
+					 	<div class="dos_botones">
+						 	<div class="buttonPR" onclick="banckDesc.save();">
+								Guardar
+							</div>
+						 	
+						 	<div class="buttonPR"  onclick="banckDesc.cancel();" >
+								Cancelar
+					</div> 
+				</div>
+			</h:panelGroup>																		
+		</p:inplace>
+	</h:panelGroup>
+											
+	<h:panelGroup rendered="#{!summaryRequest.changeDispersion}">									
+		<p id="bank-desc"> 
+			<h:outputLabel id="back-desc-value_02" 
+				value="#{(summaryRequest.changeBankData.bank_description==null or summaryRequest.changeBankData.bank_description=='' )? 'No definido':summaryRequest.changeBankData.bank_description}">
+			</h:outputLabel> 
+		</p>
+	</h:panelGroup>				
+</ui:composition>				

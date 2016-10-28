@@ -1,0 +1,113 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{summaryRequest.thisTutor == null }">
+		<div id = "dvMsgNoTutor" style="width: auto; margin-left: auto; margin-right: auto; padding: 10px; border: solid 1px #e6e6e6; background-color: rgb(255, 211, 105); " >
+			El usuario aún no cuenta con la mayoría de edad, es necesario que su tutor también se registre con nosotros.<br />
+						
+			<h:panelGroup rendered="#{summaryRequest.thisTutor == null }">
+	
+				<div id="lnkAddTutor" class="buttonPR">Agregar tutor</div>
+	
+			</h:panelGroup>										
+		</div>
+							
+		<div id = "dvSelTutor" style="display: none; width: auto; margin-left: auto; margin-right: auto; padding: 10px; border: solid 1px #e6e6e6; background-color: rgb(255, 211, 105); position: relative;" >
+			<div style="position: absolute;top: -14px;right: -14px; width: 30px; height: 30px; z-index: 180;" >
+				<p:graphicImage url="../resources/img/close.png"  style="cursor: pointer;" onclick="cancelTutor();" />
+       		</div>
+					          				
+			<div style="width: 225px; margin-left: auto; margin-right: auto; text-align: center; font-weight: bold; color: #439539;">Selecciona Tutor</div>
+				<div id="dvtableTutor">
+					<table>
+						<tr>
+							<td style="width: 320px;padding-bottom: 35px;">
+								<div  class="dvElementAddres1" style="width: 370px" >
+									<div>
+										<p:autoComplete id	= "inp_tutor_search" 
+						                	widgetVar      	= "inpAutocompleteTutor"  
+											value          	= "#{summaryRequest.tutor_search}"
+											completeMethod 	= "#{summaryRequest.completeinfoclient}"
+											var            	= "c" 
+											itemLabel      	= "#{c.full_name}" 
+											itemValue      	= "#{c}"
+											converter      	= "viewFullNameConverter"
+											style			= "width: 300px;">
+										
+										<p:ajax event = "blur" />
+										<p:ajax event="itemSelect" listener="#{summaryRequest.onItemSelect}" />
+										
+										</p:autoComplete>
+									</div>
+								</div>													
+							</td>
+						
+							<td style="width: 320px;">
+							
+								<p:commandLink id             = "link_search_tutor"  
+								   style          = "text-decoration: none;float:left;"										
+								   actionListener = "#{summaryRequest.search_Tutor}"
+								   immediate		= "true"
+								   oncomplete		= "muestraResTutor();"
+								   update="pnlTutorDesc">	
+							
+								<div class="buttonPR" >Seleccionar</div>
+								
+								</p:commandLink>
+								
+							</td>
+						</tr>
+					</table>																				
+				</div>
+								
+				<div id =  "dvDatosTutorSel" style="display: none;">
+								
+					<h:panelGroup id = "pnlTutorDesc">
+																	
+						<h:panelGroup rendered = "#{summaryRequest.tutor.getEdad() lt 18 }">
+							El usuario seleccionado no cuenta con la mayoria de edad
+						</h:panelGroup>
+																																
+						<table style="width: 450px; margin-left: auto; margin-right: auto;">
+						
+							<tr>
+								<td colspan="2" style="text-align: right;" ><span onclick="regresaTutor();" style="text-decoration: underline; cursor: pointer;color: #0066FF;">Regresar</span></td>
+							</tr>
+						
+							<tr>
+								<td>Area: </td>
+								<td>#{summaryRequest.tutor.prospectus.area=='I'?'INVERSIONISTA':summaryRequest.tutor.prospectus.area=='L'?'ACREDITADO':''}</td> 
+							</tr>
+							<tr>
+								<td>Nombre:</td>
+								<td>#{summaryRequest.tutor.NombreCompletoNPM()}</td> 
+							</tr>
+							<tr>
+								<td>Edad:</td>
+								<td>#{summaryRequest.tutor.getEdad()}</td> 
+							</tr>
+							<tr>
+								<td colspan="2">
+									<h:panelGroup rendered = "#{summaryRequest.tutor.getEdad() gt 18 }">
+										<p:commandLink id             = "link_asign_tutor"  
+										   style          = "text-decoration: none;float:left;"										
+										   actionListener = "#{summaryRequest.asignarTutor}"
+										   immediate		= "true"
+										   update="pnlTutor"
+										   >	
+									
+											<div class="buttonPR" style="width: 180px;" >Asignar Tutor</div>
+										
+										</p:commandLink>
+									</h:panelGroup>
+								</td>
+							</tr>
+						</table>											
+				</h:panelGroup>										
+			</div>										
+		</div>
+	</h:panelGroup>				
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "lista_preguntas_seguridad" style = "display: none">		
+		<div >	
+			<div>
+				<div class = "styled-select">
+				
+					<h:selectOneMenu immediate = "true" ajax = "true"						
+									 styleClass = "elementStlSel" 
+									 >		
+									 									
+						<f:selectItems value = "#{perfilController.catalogo_preguntas_seguridad}" 
+									   var       = "security" 
+									   itemLabel = "#{security.question}" 
+									   itemValue = "#{security.securityQuestionPK.security_question_id}"/>
+									   
+						<p:ajax event      = "change" 
+								listener   = "#{perfilController.listener_catalogo_preguntas}"
+								oncomplete = "callback_listener_catalogo_preguntas(xhr, status, args)"/>
+						
+					</h:selectOneMenu>
+				</div>
+			</div>
+		</div>
+	</div>
+</ui:composition>	

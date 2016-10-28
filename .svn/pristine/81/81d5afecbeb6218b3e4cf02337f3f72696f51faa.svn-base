@@ -1,0 +1,66 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<ui:include src = "credencial/titulo.xhtml"/>
+	
+	<div class="dvContent2" >				
+		<div class="dvContent" style="margin:0;">
+			
+			<div  id="btns_credencial" class="dvElementLength">
+			
+				
+				<ui:repeat var="type" value="#{addPldDocument.listCREFM2}">	
+					<h:form id="frm_credFm2" class="cred_image" enctype="multipart/form-data" prependId="false">
+					
+							<h:outputLabel class="frente_vuelta"   value="#{type.name}" />							
+					
+							
+						
+						<ui:include src = "credencial/seleccionar.xhtml"/>
+																			 
+					</h:form>
+				 </ui:repeat>						
+			</div>
+			
+			<div  class="dvElementLength">	
+				<h:panelGroup id="listCredFm2" class="contenedor_docs" oncomplete="hideloader ();">
+					<script>
+					
+					actualizacionListadoDocumentos ("#listCredFm2");
+					resetar_indices();
+					</script>
+					
+					<h:panelGroup   rendered ="#{addPldDocument.lDocAddedCredFm2.size() eq 1 }" >
+						<span class="doc_proporcionado">
+							Has proporcionado el siguiente documento
+						</span>	
+					</h:panelGroup>	
+					<h:panelGroup   rendered ="#{addPldDocument.lDocAddedCredFm2.size() gt 1 }" >
+						<span class="doc_proporcionado">
+							Has proporcionado los siguientes documentos
+						</span>
+					</h:panelGroup>	
+					
+					
+							<ui:repeat  var = "loopCredFm2" value = "#{addPldDocument.lDocAddedCredFm2}">
+								
+								  <div>
+								  	<figure><img src="../resources#{loopCredFm2.location_thump}" /></figure>
+									<small><i class="fa fa-check"></i>#{loopCredFm2.uploaded_text}</small> 
+									<fieldset class="btn_imagenes">
+										<span onclick="return ejecutaAccion(this, '#{loopCredFm2.file_type_id}','#{loopCredFm2.proyect_loan_id}')" class="cambiar"><i class="fa fa-pencil-square-o"></i> </span>
+										<span onclick="return eliminarElemento(this, '#{loopCredFm2.company_id}','#{loopCredFm2.file_id}', '#{loopCredFm2.file_type_id}', '#{loopCredFm2.prospectus_id}', '#{loopCredFm2.proyect_loan_id}', '#{loopCredFm2.location}')" class="eliminar"><i class=" fa fa-trash"></i></span>
+									</fieldset>
+								</div>
+							</ui:repeat>
+							
+				</h:panelGroup>														 						
+			</div>
+			
+		</div>
+	</div>
+				
+</ui:composition>				

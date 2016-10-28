@@ -1,0 +1,22 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui">
+	<div class="dvContent">
+		<div class="dvLabel" style="width: 400px;">
+			<p class = "labelsStl">Motivo del cambio</p>
+		</div>
+		
+		<p />
+		
+		<div id = "motivo_edicion_vivienda" class="dvElementAddres1" style="width: 370px;">
+			<h:inputTextarea immediate  = "true" rows = "5" 
+							 styleClass = "elementTextArea validatorClass mapOff" 
+							 value      = "#{ibeneficiaries.editor_vivienda.motivo_del_cambio}">
+				<p:ajax event    = "blur"
+						onstart  = "return validar_formulario_edicion_vivienda()" 
+						listener = "#{ibeneficiaries.editor_vivienda.listener_motivo_del_cambio}"/>
+			</h:inputTextarea>
+		</div>
+	</div>			     
+</ui:composition>

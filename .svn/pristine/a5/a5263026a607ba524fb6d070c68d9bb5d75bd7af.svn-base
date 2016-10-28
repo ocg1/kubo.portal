@@ -1,0 +1,1086 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+<section class="sectionImprimir">
+	<div class="containerPrint">
+	
+				 <div class="btnImprimirEstado" onclick="window.print();">
+				<img src="images/imprimir.png" border="0"/>
+			</div>
+	
+	</div>
+
+	
+</section>
+
+
+
+	<ui:include src = "contenidoPortadaGlobal.xhtml"/>
+	<div class="pagebreak"></div>
+	
+	<ui:include src = "contenidoPortadaKuboImpulso.xhtml"/>
+	<div class="pagebreak"></div>
+	
+	<ui:include src = "contenidoPortadaPlazoFijo.xhtml"/>
+	<div class="pagebreak"></div>
+<section>
+  <div class="container">
+
+
+    <p>
+
+      <strong>
+      CONTRATO ÚNICO DE INVERSIÓN CON DEPÓSITOS A LA VISTA, DEPÓSITOS RETIRABLES EN DÍAS PREESTABLECIDOS Y DEPÓSITOS A PLAZO FIJO (EN LO SUCESIVO EL “CONTRATO”) QUE CELEBRAN POR UNA PARTE KU-BO FINANCIERO, SOCIEDAD ANÓNIMA DE CAPITAL VARIABLE, SOCIEDAD FINANCIERA POPULAR, (EN LO SUCESIVO “KUBO”) REPRESENTADA POR LA PERSONA IDENTIFICADA EN EL CAPITULO IV DEL PRESENTE CONTRATO Y EN SUS ANEXOS COMO SU APODERADO LEGAL, Y POR OTRA PARTE, LA PERSONA FÍSICA O MORAL QUE TAMBIÉN ESTÁ IDENTIFICADA EN EL CAPITULO IV DEL PRESENTE CONTRATO Y EN SUS ANEXOS, QUIEN ACTÚA POR SU PROPIO DERECHO O A TRAVÉS DE SU REPRESENTANTE O APODERADO LEGAL, SEGÚN SEA EL CASO (EN LO SUCESIVO EL “CLIENTE” O “EL INVERSIONISTA”), Y A QUIENES CONJUNTAMENTE EN LO SUCESIVO SE LES DENOMINARÁ COMO “LAS PARTES”, AL TENOR SIGUIENTE:
+</strong>
+</p>
+
+<p >
+    <strong>INDICE</strong>
+</p>
+<p >
+    <strong>CAPÍTULO I. CLAUSULAS.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. DEPÓSITO A LA VISTA.
+</p>
+<p >
+    SECCIÓN SEGUNDA. DEPÓSITO RETIRABLE DE DÍAS PREESTABLECIDOS.
+</p>
+<p >
+    SECCIÓN TERCERA. DEPOSITO RETIRABLE A PLAZO FIJO.
+</p>
+<p >
+    SECCIÓN CUARTA. GARANTÍA Y TRANSMISIÓN O CESIÓN DE DERECHOS.
+</p>
+<p >
+    SECCIÓN QUINTA. USO DE LOS PRODUCTOS Y SERVICIOS DE KUBO.
+</p>
+<p >
+    SECCIÓN SEXTA. SERVICIO AL CLIENTE.
+</p>
+<p >
+    SECCIÓN SÉPTIMA. RENDIMIENTOS Y COMISIONES.
+</p>
+<p >
+    SECCIÓN OCTAVA. CLÁUSULAS GENERALES.
+</p>
+<p >
+    <strong>CAPÍTULO II. DEFINICIONES.</strong>
+</p>
+<p >
+    <strong>CAPÍTULO III. DECLARACIONES.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. DECLARACIONES DE KUBO.
+</p>
+<p >
+    SECCIÓN SEGUNDA. DECLARACIONES DEL CLIENTE.
+</p>
+<p >
+    SECCIÓN TERCERA. DECLARACIONES DE LAS PARTES.
+</p>
+<p >
+    <strong>CAPÍTULO IV. DATOS GENERALES DE LAS PARTES CONTRATANTES.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. DATOS GENERALES DEL CLIENTE.
+</p>
+<p >
+    SECCIÓN SEGUNDA. DATOS GENERALES DE KUBO.
+</p>
+<p >
+    <strong>CAPÍTULO V. TRANSCRIPCIÓN DE DISPOSCIONES LEGALES EXPRESAMENTE REFERIDAS EN EL CONTRATO.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. CODIGO CIVIL FEDERAL.
+</p>
+<p >
+    SECCIÓN SEGUNDA. CÓDIGO PENAL FEDERAL.
+</p>
+<p >
+    SECCIÓN TERCERA. LEY GENERAL DE TITULOS Y OPERACIONES DE CRÉDITO.
+</p>
+<p >
+    SECCIÓN CUARTA. LEY DE AHORRO Y CRÉDITO POPULAR.
+</p>
+<p >
+    <strong>ANEXO 1. AUTORIZACIÓN DE SOCIEDAD DE INFORMACIÓN CREDITICIA.</strong>
+</p>
+<p >
+    <strong>ANEXO 2. AUTORIZACIÓN DE DATOS PERSONALES.</strong>
+</p>
+
+
+  </div>
+</section>
+
+
+<section>
+    <div class="container">
+<p>
+Expuesto lo señalado en el capítulo III de declaraciones del presente Contrato, las partes manifiestan que es su libre voluntad celebrar el mismo y están de acuerdo en otorgar las cláusulas que se establecen en el capítulo I y reconocer las definiciones establecidas en el capítulo II, los datos generales señalados en el capítulo IV y la transcripción de disposiciones legales referidas en el capítulo V, que a continuación se señalan: 
+</p>
+<h4>CLÁUSULAS </h4>
+
+<h4>CAPÍTULO I</h4>
+<h4>SECCIÓN PRIMERA: DEPÓSITO A LA VISTA
+	<p>Producto kubo.global </p>
+
+	</h4>
+
+
+
+<p>
+  <strong>PRIMERA.</strong> OBJETO DEL CONTRATO. En virtud del Depósito a la Vista, el Cliente instruye a Kubo para que los recursos depositados se apliquen a la constitución de un Depósito a la Vista, para lo cual, Kubo se obliga a restituirlos contra la instrucción del Cliente en el tiempo y forma previstos en el presente Contrato, sus capítulos y anexos. 
+</p>  
+
+<p>
+  <strong>SEGUNDA.</strong> TIPO Y MONTO DEL DEPÓSITO. El Cliente constituye en Kubo depósitos a la vista por las cantidades señaladas en los comprobantes de operación.
+</p> 
+
+ <p> 
+ 	<strong>TERCERA</strong>.DEPOSITO. El Cliente deberá realizar sus depósitos en moneda nacional mediante transferencia electrónica o cheque de la Cuenta del Cliente a la Cuenta Kubo con el número de referencia que identifica el Registro de Depósito del Cliente, otorgando Kubo en este acto el recibo más amplio, suficiente y eficaz que en derecho corresponda respecto de las cantidades depositadas, éstos únicamente se comprobarán mediante los Comprobantes que Kubo expida a través del Portal.Kubo, los que contendrán la información suficiente sobre las operaciones realizadas, debiendo constar de igual forma en dichos Comprobantes.
+ 
+ </p>
+
+<p>
+	Los recursos se acreditarán en el mismo día hábil cuando éstos se realicen mediante transferencia electrónica, y cuando se realicen a través de cheque, en virtud de que éste se recibe “salvo buen cobro”, se acreditarán en la Cuenta kubo.global al segundo día hábil, una vez confirmado el depósito. <strong>Cuando el Cliente realice un depósito deberá de informarlo a través del Portal.Kubo. </strong>
+</p>
+
+ <p> <strong>
+CUARTA.</strong>  RETIROS. El Cliente podrá retirar total o parcialmente, de los recursos asignados como Depósito a la Vista menos los impuestos causados. En días y horas hábiles de Kubo, el Cliente podrá girar una instrucción a Kubo aplicando su Firma Electrónica en el Portal.Kubo para retirar de su Cuenta kubo.global y realizar alguna de las siguientes acciones establecidas en la cláusula décima tercera del presente contrato. Lo anterior, siempre y cuando no existan obligaciones pendientes del Cliente con Kubo.
+</p>
+<p>
+El Cliente podrá solicitar retiros de la Cuenta kubo.global, los cuales generarán el pago de una comisión, con excepción de por lo menos la primera, a favor de Kubo de conformidad con lo establecido en la cláusula sexagésima cuarta del Contrato. El Cliente podrá realizar una transferencia mensual sin costo.  
+Una vez que el Cliente realice la instrucción de traspaso, Kubo llevará a cabo la transferencia de los recursos de conformidad con la instrucción girada por el Cliente, y el nuevo saldo de su Cuenta kubo.global, aparecerá en el estado de cuenta electrónico en el Portal.Kubo.
+</p>
+
+<p>
+El Cliente autoriza a las personas que al efecto se señalan en el capítulo IV del Contrato para disponer de los recursos de la Cuenta kubo.global, aplicando la Firma Electrónica a través de la contraseña que las personas autorizadas hayan generado de acuerdo a los procedimientos establecidos en el Portal.Kubo, mediante el cual consta la autorización y consentimiento, causando los mismos efectos que si el Cliente hubiese aplicado su Firma Electrónica.
+</p>
+<p>
+Cuando el Cliente sea una persona moral, la disposición del Depósito o de los rendimientos en los términos del párrafo anterior, sólo podrá ser realizada por la persona autorizada para tal efecto de conformidad con lo establecido en el Contrato, debiendo cumplir dicha persona, al momento de solicitar la disposición, con los requisitos que establezca Kubo de conformidad a sus políticas vigentes.
+</p>
+<p>
+El Cliente libera a Kubo de toda la responsabilidad que se pudiera generar por el mal uso de la autorización o abuso de la persona en quien se confía, entre otras conductas, que la persona autorizada por su cuenta pudiera realizar. 
+</p>
+
+<p>
+<strong>QUINTA.</strong> BLOQUEO DE RECURSOS. En el supuesto de que El Cliente tenga interés en aplicar recursos en proyectos publicados en el Portal.Kubo, El Cliente, aplicando su Firma Electrónica podrá autorizar el bloqueo de recursos en su Cuenta kubo.global hasta que se destinen a los proyectos seleccionados, de conformidad con los procedimientos establecidos por Kubo para la asignación de recursos.
+</p>
+
+
+ <p> 
+ 	<strong>SÉXTA.</strong> COMPROBANTES DE DEPÓSITO. Cada Depósito que el Cliente entregue a Kubo se documentará en un Comprobante de Depósito emitido por Kubo, el cual será considerado por las partes que intervienen en el Contrato como anexo del mismo y se encontrará plenamente identificado con el folio consecutivo que le corresponda por cada operación en específico que el Cliente solicite, los cuales se podrán únicamente otorgar en garantía líquida o de cualquier forma transmitir única y exclusivamente a favor de Kubo, mismo que no podrá ser negociado, cedido o de cualquier forma transmitido a otro tercero.
+</p>
+
+
+ <p> 
+ 	<strong>SÉPTIMA.</strong> SALDO MÍNIMO. Kubo informará al Cliente a través del Portal.Kubo, los montos y saldos mínimos para la constitución y mantenimiento de su Cuenta kubo.global.
+</p>
+
+ <p> 
+ <strong>OCTAVA.</strong> REVOLVENCIA. El Cliente manifiesta que está conforme en los términos y condiciones del presente documento y reconoce que por medio de su Cuenta kubo.global podrá efectuar Depósitos, retiros de fondos, pagos de servicios e inversiones mediante cargos a la misma, así como la realización de todas las transacciones necesarias para manejo de Depósitos a la Vista. De igual forma, el Cliente autoriza expresa e irrevocablemente a Kubo para cargar en su Cuenta kubo.global cualquier cantidad que se le adeudara a Kubo en razón de los servicios ofrecidos por Kubo al Inversionista de conformidad con el Contrato, obligándose el Cliente a mantener en la misma, fondos suficientes y disponibles en las fechas en que conforme a lo establecido se deban efectuar los pagos, en el entendido de que está autorización no libera al Inversionista de su obligación de pago, hasta que Kubo reciba íntegras las cantidades que se le llegaren a adeudar, estableciendo las partes que intervienen en el Contrato de manera expresa que los cargos señalados se harán junto con sus accesorios e impuestos correspondientes en razón de la operación realizada, en su debida oportunidad.
+</p>
+
+
+<p>
+<strong>NOVENA.</strong> RENDIMIENTOS Y CAPITALIZACIÓN. Los recursos depositados en la Cuenta kubo.global causarán intereses de acuerdo a lo señalado en la Carátula del Contrato. Kubo asigna la Tasa de Interés Anual Fija que se establece en la Carátula del Contrato, la cual podrá ser ajustada mensualmente, tomando como base la Tasa de Interés Anual Bruta que Kubo tenga vigente al inicio del mes para el Producto kubo.global, por lo anterior, la tasa establecida podrá variar durante la vigencia del Producto.
+La capitalización de los intereses será mensual. El pago de intereses se realizará por el periodo que se abarque al cierre del mes correspondiente.
+</p>
+
+<p>
+<strong>DÉCIMA.</strong> GAT. Kubo hace del conocimiento del Cliente que la GAT antes de impuestos, que en específico se asigna al Producto kubo.global se encontrará establecida en la Carátula del Contrato y que su variación será informada al Inversionista a través del Portal.Kubo.
+</p>
+<p>
+<strong>DÉCIMA PRIMERA.</strong> COMISIONES. Las comisiones que el Cliente deberá pagar relacionadas con el Producto kubo.global son las que establece la cláusula sexagésima cuarta del Contrato. Las comisiones y sus variaciones serán informadas al Inversionista a través del Portal.Kubo.
+</p>
+<p>
+<strong>DÉCIMA SEGUNDA.</strong> TASAS DE INTERÉS. Kubo establecerá las tasas de interés que devenguen los Depósitos de la Cuenta kubo.global, mismas que serán informadas al Inversionista a través del Portal.Kubo. Las tasas se aplicarán sobre los saldos diarios del periodo en el cual hayan estado vigentes. Kubo realizará pago de los intereses el último día hábil de cada mes.
+</p>
+<p>
+<strong>DÉCIMA TERCERA.</strong> VENCIMIENTO DEL PRODUCTO DE DEPÓSITO A LA VISTA. El Cliente podrá cancelar su Registro a Kubo y retirar sus recursos de la Cuenta kubo.global, aplicando el procedimiento establecido en el presente Contrato. Kubo no cobrará cantidad alguna por este hecho y del retiro señalado se descontarán los adeudos que el Cliente ya hubiese generado y que tenga la obligación de cubrir a la fecha de solicitud de terminación. Para el retiro total o parcial de sus recursos, de acuerdo a lo establecido en la cláusula cuarta del presente contrato, el Cliente podrá: (i) Traspasarlos a la cuenta Depósito Retirable en Días Preestablecidos conocida como kubo.impulso; (ii) Traspasar dichos recursos a la cuenta Depósito Retirable a Plazo Fijo denominada kubo.plazofijo; iii) Aplicarlos al pago de créditos a su cargo o de terceros clientes de Kubo; iv) utilizarlos para el pago de servicios que Kubo ponga a disposición de sus clientes; v) solicitar su traspaso a otro cliente de Kubo; o vi) A través de transferencia bancaria a la Cuenta del Cliente. En su caso, Kubo descontará los adeudos que el Cliente ya hubiese generado y que tenga la obligación de cubrir a la fecha de solicitud de terminación.Una vez realizado el retiro del saldo, Kubo proporcionará al Cliente acuse de recibo o clave de confirmación de cancelación renunciando ambos a sus derechos de cobro residuales, que pudieran subsistir después del momento de la cancelación.
+</p>
+
+</div>
+</section>
+
+<section>
+  <div class="container">
+
+
+<h4>SECCIÓN SEGUNDA. DEPÓSITO RETIRABLE EN DÍAS PREESTABLECIDOS
+<p>Producto kubo.impulso</p>
+</h4>
+
+
+<p><strong>DÉCIMA CUARTA.</strong> OBJETO DEL CONTRATO. En virtud del Depósito Retirable en Días Preestablecidos, el Cliente instruye a Kubo para que los recursos depositados al amparo del presente Contrato sean aplicados a la constitución de un Depósito Retirable en Días Preestablecidos, para lo cual, Kubo se obliga a restituirlos en los días y forma previstos de conformidad con lo establecido el presente Capítulo.
+</p>
+<p>
+El Cliente actuará como Garante a través de los recursos que deposite, los cuales fungirán como garantía de los créditos seleccionados  por el Cliente y otorgados por Kubo.  
+</p>
+
+<p>
+Los Clientes menores de edad no podrán constituir Depósitos Retirables en Días Preestablecidos cuando estos pretendan garantizar obligaciones a cargo de terceros por créditos otorgados por Kubo. 
+</p>
+
+
+<p>
+<strong>DÉCIMA QUINTA.</strong> TIPO Y MONTO DEL DEPÓSITO. El Cliente constituye en Kubo un Depósito Retirable en Días Preestablecidos inicial en la Cuenta kubo.impulso. El Cliente está de acuerdo en constituir el Depósito Retirable en Días Preestablecidos de conformidad con lo establecido en presente Capítulo del Contrato.</p>
+<p>
+<strong>DÉCIMA SEXTA.</strong> COMPROBANTES DE INVERSIÓN. Cada Depósito que el Cliente entregue a Kubo se documentará en un Comprobante de inversión emitido por Kubo, el cual será considerado por las partes que intervienen en el Contrato como anexo del mismo, y se encontrará plenamente identificado con el folio consecutivo que le corresponda por cada operación en específico que el Cliente solicite, mismo que no podrá ser negociado, cedido o de cualquier forma transmitido a un tercero.
+</p>
+<p>
+<strong>DÉCIMA SÉPTIMA.</strong> SALDO MÍNIMO. Kubo informará al Cliente a través del Portal.Kubo, los montos y saldos mínimos para la constitución y mantenimiento de su Cuenta kubo.impulso,
+</p>
+<p>
+<strong>DÉCIMA OCTAVA.</strong> PLAZO. Al constituirse el Depósito a través del Comprobante de inversión correspondiente, Kubo y el Cliente pactarán en cada caso, el plazo de los mismos; Kubo se reserva el derecho de establecer los plazos mínimos y máximos en que recibirá las inversiones, por lo que Kubo reintegrará al Inversionista la inversión más los rendimientos devengados menos los impuestos causados, al terminar el plazo pactado en el Comprobante de inversión correspondiente.
+</p>
+<p>
+<strong>DÉCIMA NOVENA.</strong> NUEVOS DEPOSITOS. El Cliente podrá constituir nuevos Depósitos en la Cuenta kubo.impulso. No obstante lo anterior, Kubo se reserva invariablemente el derecho de no recibir nuevos Depósitos en la cuenta de que se trate.
+</p> 
+
+<p>
+<strong>VIGÉSIMA. </strong> RETIROS.El Cliente podrá retirar total o parcialmente los recursos asignados como Depósito Retirable en Días Preestablecidos menos los impuestos causados. A la fecha de vencimiento de los días preestablecidos, el Cliente podrá girar una instrucción a Kubo aplicando su Firma Electrónica en el Portal.Kubo  realizando alguna de las acciones establecidas en la cláusula vigésima quinta del presente contrato. Lo anterior, siempre y cuando no existan obligaciones pendientes del Cliente con Kubo. 
+</p>
+<p>
+El Cliente únicamente podrá realizar las disposiciones de recursos en las fechas y montos establecidos de conformidad con las tablas de disposición que Kubo dará a conocer al Inversionista a través del Portal.Kubo, que al efecto haya estructurado para cada Depósito Retirable en Días Preestablecidos.
+</p>
+<p>
+Una vez que el Cliente realice la instrucción de traspaso, Kubo realizará la transferencia de los recursos de conformidad con la instrucción girada por el Cliente, y en su caso, el nuevo saldo de su Cuenta kubo.global, aparecerá en el estado de cuenta electrónico en el Portal.Kubo.
+</p>
+<p>
+El Cliente autoriza a las personas que al efecto se señalan en el capítulo IV del Contrato para disponer de los recursos de la Cuenta kubo.impulso, aplicando la Firma Electrónica a través de la contraseña que las personas autorizadas hayan generado de acuerdo a los procedimientos establecidos en el Portal.Kubo, mediante el cual consta la autorización y consentimiento, causando los mismos efectos que si el Cliente hubiese aplicado su Firma Electrónica.
+</p>
+<p>
+Cuando el Cliente sea una persona moral, la disposición del Depósito o de los rendimientos en los términos del párrafo anterior, sólo podrá ser realizada por la persona autorizada para tal efecto de conformidad con lo establecido en el Contrato, debiendo cumplir dicha persona, al momento de solicitar la disposición, con los requisitos que establezca Kubo de conformidad a sus políticas vigentes.
+</p>
+<p>
+El Cliente libera a Kubo de toda la responsabilidad que se pudiera generar por el mal uso de la autorización o abuso de la persona en quien se confía, entre otras conductas, que la persona autorizada por su cuenta pudiera realizar. 
+</p>
+<p>
+En caso de que el Cliente no gire instrucciones sobre el destino de sus recursos al vencimiento de los días preestablecidos, el Cliente autoriza a Kubo a traspasar el Depósito más los rendimientos devengados menos los impuestos causados, a la Cuenta kubo.global para que el Cliente decida sobre la disposición de los mismos, aplicando desde ese momento a los recursos transferidos, las condiciones del Producto kubo.global, dejando sin ningún efecto jurídico el Comprobante correspondiente. 
+</p>
+<p>
+Tratándose de Depósitos Retirables en Días Preestablecidos que garanticen obligaciones a cargo de terceros derivadas de otorgamientos de créditos otorgados por Kubo, la disposición de los Depósitos estará sujeta a lo establecido en el contrato de garantía correspondiente.
+</p>
+ 
+<p>
+<strong>VIGÉSIMA PRIMERA.</strong> VENCIMIENTO EN DÍA INHÁBIL. Cuando el vencimiento del depósito de los días preestablecidos ocurra en un día inhábil, el reintegro de la cantidad que corresponda se efectuará el día hábil inmediato siguiente. En este caso, los rendimientos continuarán devengándose hasta la fecha de disposición a la tasa de interés originalmente pactada. Para efectos del Contrato se entienden por días inhábiles todos aquéllos que sean señalados por la Comisión Nacional Bancaria y de Valores, así como los que en su caso, Kubo agregue.
+</p>
+<p>
+<strong>VIGÉSIMA SEGUNDA.</strong> GAT. Kubo hace del conocimiento del Cliente que la GAT antes de impuestos, que en específico se asigna al Producto kubo.impulso se encontrará establecida en la Carátula del Contrato y que su variación será informada al Inversionista a través del Portal.Kubo.
+</p>
+<p>
+<strong>VIGÉSIMA TERCERA.</strong> COMISIONES. Las comisiones que el Cliente deberá pagar relacionadas con el Producto kubo.impulso son las que establece la cláusula sexagésima cuarta del contrato. Las comisiones y sus variaciones serán informadas al Inversionista a través del Portal.Kubo. 
+</p>
+<p>
+<strong>VIGÉSIMA CUARTA.</strong> TASAS DE INTERÉS. Kubo establecerá las tasas de interés que devenguen los Depósitos de la Cuenta kubo.impulso, mismas que serán informadas al Inversionista a través del Portal.Kubo, las cuales podrán ser distintas por cada uno de los Depósitos constituidos. La tasa pactada será fija y no podrá revisarse durante la vigencia del Depósito. Las tasas se aplicarán sobre los saldos diarios del periodo en el cual hayan estado vigentes. Kubo pagará los intereses al vencimiento de cada Depósito.
+</p>
+<p>
+<strong>VIGÉSIMA QUINTA.</strong> VENCIMIENTO DEL PRODUCTO DE DEPÓSITO RETIRABLE EN DÍAS PREESTABLECIDOS. Una vez concluido el plazo del Depósito el Cliente podrá: (i) constituir un nuevo depósito retirable en días preestablecidos; (ii) transferir el principal y los intereses a la Cuenta kubo.global; o (iii) aplicar el producto del Depósito a la constitución de un Depósito retirable a plazo fijo denominado kubo.plazofijo. En su caso, Kubo descontará los adeudos que el Cliente ya hubiese generado y que tenga la obligación de cubrir a la fecha de solicitud de terminación.
+</p>
+
+</div>
+
+</section>
+<section>
+  <div class="container">
+
+
+<h4>SECCIÓN TERCERA.DEPÓSITO RETIRABLE A PLAZO FIJO
+<p>Producto kubo.plazofijo</p></h4>
+
+<p>
+<strong>
+
+VIGÉSIMA SEXTA.</strong> OBJETO DEL CONTRATO. En virtud del Depósito Retirable a Plazo Fijo, el Cliente instruye a Kubo para que los recursos depositados al amparo del presente Contrato sean aplicados a la constitución de un Depósito Retirable a Plazo Fijo, para lo cual, Kubo 
+se obliga a restituirlos al término del plazo de conformidad con lo establecido el presente Capítulo.
+</p>
+<p>
+<strong>VIGÉSIMA SÉPTIMA.</strong> TIPO Y MONTO DEL DEPÓSITO. El Cliente constituye en Kubo un Depósito Retirable a Plazo Fijo por la cantidad señalada en los Comprobantes referidos al Producto kubo.plazofijo. 
+</p>
+
+<p><strong>VIGÉSIMA OCTAVA.</strong> CONSTANCIAS. Los Depósitos a Plazo Fijo se documentarán mediante Constancias electrónicas de depósito a plazo fijo que se generan en la contratación de un producto de inversión cuya condición en el vencimiento del plazo es “con renovación”. Los derechos que ampara tal constancia no podrán ser cedidos a instituciones de crédito o a otras entidades financieras. 
+</p>
+<p>
+Cada Depósito que el Cliente entregue a Kubo se documentará en una Constancia electrónica emitida por Kubo, misma que será considerada por las partes como anexo del Contrato, la cual se encuentra plenamente identificada con el folio consecutivo que le corresponda por cada operación en específico que solicite el Cliente, las cuales se podrán únicamente otorgar en garantía líquida o de cualquier forma transmitir única y exclusivamente a favor de Kubo 
+</p>
+<p>
+La Constancia que emita Kubo al Inversionista a efecto de acreditar la apertura de la inversión, será siempre nominativa y pagada en los términos y condiciones que se estipulen tanto en el Contrato como en el anexo correspondiente.
+</p>
+
+<p>
+<strong>VIGÉSIMA NOVENA.</strong> SALDO MÍNIMO. Kubo Informará al Cliente través del Portal.Kubo, los montos y saldos mínimos para la constitución y mantenimiento de su Cuenta kubo.plazofijo,
+</p>
+<p>
+<strong>TRIGÉSIMA.</strong> PLAZO. Al constituirse el Depósito a través de la Constancia Electrónica correspondiente, Kubo y el Cliente pactarán en cada caso, el plazo de los mismos que a su vez serán forzosos para ambas partes, por lo que Kubo reintegrará al Inversionista el Depósito más los rendimientos generados menos los impuestos causados, al terminar el plazo forzoso pactado en la propia Constancia. Kubo se reserva el derecho de establecer los plazos mínimos y máximos en que recibirá los Depósitos.
+</p>
+
+<p><strong>TRIGÉSIMA PRIMERA.</strong> RETIROS. El Cliente podrá retirar el Depósito más los rendimientos menos los impuestos causados hasta que el plazo forzoso pactado en la correspondiente Constancia haya concluido, conforme a la tasa de interés pactada para tal efecto, mismos que se hubiesen generado. A la fecha de vencimiento del plazo fijo documentado en la Constancia, en horas y días hábiles el Cliente podrá girar una instrucción a Kubo aplicando su Firma Electrónica en el Portal.Kubo para que realice alguna de las acciones establecidas en la cláusula cuadragésima del presente contrato.
+</p>
+<p>
+Una vez que el Cliente realice la instrucción de traspaso, Kubo realizará la transferencia de los recursos de conformidad con la instrucción girada por el Cliente, y en su caso, el nuevo saldo de su Cuenta kubo.global, aparecerá en el estado de cuenta electrónico en el Portal.Kubo.
+</p>
+<p>
+El Cliente autoriza a las personas que al efecto se señalan en el capítulo IV del Contrato para disponer de los recursos de la Cuenta kubo.plazofijo, aplicando la Firma Electrónica a través de la contraseña que las personas autorizadas hayan generado de acuerdo a los procedimientos establecidos en el Portal.Kubo, mediante el cual consta la autorización y consentimiento, causando los mismos efectos que si el Cliente hubiese aplicado su Firma Electrónica.
+</p>
+<p>
+Cuando el Cliente sea una persona moral, la disposición del Depósito o de los rendimientos en los términos del párrafo anterior, sólo podrá ser realizada por la persona autorizada para tal efecto de conformidad con lo establecido en el Contrato, debiendo cumplir dicha persona, al momento de solicitar la disposición, con los requisitos que establezca Kubo de conformidad a sus políticas vigentes.
+</p>
+<p>
+El Cliente libera a Kubo de toda la responsabilidad que se pudiera generar por el mal uso de la autorización o abuso de la persona en quien se confía, entre otras conductas, que la persona autorizada por su cuenta pudiera realizar. 
+</p>
+
+<p>
+	<strong>TRIGÉSIMA SEGUNDA.</strong> 
+	VENCIMIENTO EN DÍA INHÁBIL. Cuando el vencimiento del plazo fijo ocurra en un día inhábil, el reintegro de la cantidad que corresponda se efectuará el día hábil inmediato siguiente. En este caso, los rendimientos continuarán devengándose hasta la fecha de disposición a la tasa de interés originalmente pactada. Para efectos del Contrato se entienden por días inhábiles todos aquéllos que sean señalados por la Comisión Nacional Bancaria y de Valores, así como los que en su caso, Kubo agregue.
+</p>
+
+
+<p>
+	<strong>TRIGÉSIMA TERCERA.</strong> 
+	GAT. Kubo hace del conocimiento del Cliente que la GAT antes de impuestos, que en específico se asigna al Producto kubo.plazofijo se encontrará establecida en la Carátula del Contrato y que su variación será informada al Inversionista a través del Portal.Kubo.
+</p>
+<p>
+<strong>TRIGÉSIMA CUARTA.</strong> COMISIONES. Las comisiones que el Cliente deberá pagar relacionadas con el Producto kubo.plazofijo son las que establece la cláusula sexagésima cuartas del contrato. Las comisiones y sus variaciones serán informadas al Inversionista a través del Portal.Kubo.  
+</p>
+<p>
+<strong>TRIGÉSIMA QUINTA.</strong> TASAS DE INTERÉS. Kubo establecerá las tasas de interés que devenguen los Depósitos de la Cuenta kubo.plazofijo, mismas que serán informadas al Inversionista a través del Portal.Kubo, las cuales podrán ser distintas por cada uno de los depósitos constituidos. La tasa pactada será fija y no podrá revisarse. Las tasas se aplicarán sobre los saldos diarios del periodo en el cual hayan estado vigentes. Kubo pagará los intereses al vencimiento de cada Depósito. 
+</p>
+<p>
+<strong>TRIGÉSIMA SEXTA.</strong> RECURSOS PARA APLICAR RENOVACIÓN AUTOMÁTICA. El Cliente tendrá la opción de solicitar la renovación automática únicamente del capital que respalda el Depósito, o en su caso, podrá solicitar que se renueve automáticamente, sumándole los rendimientos que se hayan generado a la fecha de la renovación automática.
+</p>
+<p>
+Cuando se hubiere convenido la renovación automática de la inversión, ya sea únicamente del capital que respalda del Depósito o en su caso, la suma total tanto de capital del Depósito como de los rendimientos que se hayan generado, restando en ambos supuestos los correspondientes impuestos, se renovarán automáticamente al vencimiento establecido en dicho Depósito por un plazo forzoso igual al originalmente pactado en la Constancia correspondiente, siendo aplicable la tasa de interés que Kubo tenga vigente en ese momento y que corresponda al monto y plazo del Depósito..
+</p>
+<p>
+Para las inversiones que venzan y que tengan la condición de renovación automática, el capital más los rendimientos menos los impuestos, serán depositados por Kubo en la Cuenta kubo.global, a través de un proceso automático que se llevará a cabo el día de la fecha estipulada por las partes como fecha de vencimiento del Depósito correspondiente, quedando disponible dicha cantidad durante el transcurso de ese mismo día y hasta el final del mismo, acordando las partes que intervienen en el Contrato que será necesario para que se pueda generar el proceso de renovación automática de la inversión, que exista en la Cuenta kubo.global al final del día del vencimiento, el saldo suficiente, acordando las partes que intervienen en el Contrato que en el supuesto de que por cualquier causa imputable al Inversionista, siendo éste supuesto de manera enunciativa más no limitativa, la disposición parcial o total que pudiera llegar a realizar el Cliente respecto del saldo de la Cuenta kubo.global, y que en virtud de dicha disposición no exista saldo suficiente para poder llevar a cabo el proceso de renovación automática, Kubo no podrá realizar dicha renovación ni podrá emitir la Constancia Electrónica correspondiente, liberándose Kubo de cualquier responsabilidad al respecto. El Cliente podrá instruir a Kubo que los vencimientos que coincidan el mismo día podrán renovarse en la misma operación.
+</p>
+<p  >
+<strong>TRIGÉSIMA SÉPTIMA.</strong> PROCEDIMIENTO DE RENOVACION AUTOMÁTICA. En el supuesto de que el Cliente no acuerde nuevas condiciones con Kubo, en la fecha de vencimiento de la inversión pactada en la Constancia correspondiente y de conformidad a lo estipulado en el mismo respecto a la renovación automática de la inversión, Kubo renovará automáticamente dicho Depósito por un plazo forzoso igual al originalmente pactado y por ende, el Cliente podrá únicamente solicitar la devolución de su Depósito más los rendimientos menos los impuestos generados hasta la nueva fecha de vencimiento, o en su caso, atendiendo a las condiciones originalmente pactadas en la Constancia correspondiente, respecto al retiro únicamente de los rendimientos, ya sea de manera mensual o hasta el vencimiento del plazo de la reinversión.
+</p>
+<p  >
+<strong>TRIGÉSIMA OCTAVA.</strong> CAMBIO DE INSTRUCCIÓN RESPECTO A LA RENOVACIÓN AUTOMÁTICA. El Cliente, podrá solicitar la modificación de las condiciones a la inversión contratada con renovación automática, dicha solicitud podrá realizarse a partir de la fecha de apertura  e incluso en la fecha de vencimiento. Dicha solicitud se deberá efectuar a través del Portal.Kubo.
+</p>
+<p  >
+<strong>TRIGÉSIMA NOVENA.</strong> PAGO DE INTERÉS PERIODICO. Para los Depósitos en los que se haya pactado a través de la Constancia correspondiente, el Cliente podrá disponer antes de su vencimiento y a partir de la fecha de apertura de la inversión, únicamente de los rendimientos que el Depósito haya generado hasta ese momento, Kubo, en el día hábil marcado según calendario generado en la apertura, traspasará la cantidad de rendimientos devengados menos los impuestos causados a la Cuenta kubo.global del Cliente.
+</p>
+<p  >
+<strong>CUADRAGÉSIMA.</strong> VENCIMIENTO DEL PRODUCTO DE DEPÓSITO A PLAZO FIJO. Una vez concluido el plazo del Depósito el Cliente podrá (i) Realizar un nuevo Depósito a plazo fijo, (ii) transferir el principal y los interés a la Cuenta kubo.global para que disponga de ellos conforme al presente Contrato, o (iii) aplicar el producto del Depósito a la constitución de un depósito retirable en días preestablecidos denominado kubo.impulso. En su caso, Kubo descontará los adeudos que el Cliente ya hubiese generado y que tenga la obligación de cubrir a la fecha de solicitud de terminación.
+</p  >
+   </div>
+
+</section>
+
+<section>
+    <div class="container">
+
+<h4 >
+    <strong>SECCIÓN CUARTA. GARANTÍA Y TRANSMISIÓN O CESIÓN DE DERECHOS.</strong>
+</h4>
+<p  >
+    <strong>CUADRAGÉSIMA PRIMERA.</strong>
+    GARANTÍA. Los depósitos que el Cliente realice al amparo del presente Contrato y que en su caso garanticen créditos otorgados por Kubo a favor de terceros,
+    les será aplicable lo establecido en el artículo 336 Bis de la Ley General de Títulos y Operaciones de Crédito.
+</p>
+<p >
+    Tratándose de la constitución de garantías líquidas e irrevocables en dinero, las mismas se sujetarán a la regulación aplicable a la prenda, de conformidad
+    con la Sección Sexta del Capítulo IV Título Segundo de la Ley General de Títulos y Operaciones de Crédito y de manera supletoria el artículo 2856 del
+    Código Civil Federal.
+</p>
+<p >
+    <strong>CUADRAGÉSIMA SEGUNDA. </strong>
+    TRANSMISIÓN O CESIÓN DE DERECHOS. Kubo podrá ceder o transmitir a favor de terceras personas que en su caso cuenten con la capacidad, en propiedad o en
+    garantía, los derechos y obligaciones derivados de la relación contractual que sostenga con el Cliente bastando una notificación a este último, misma que
+    se realizará en un plazo de 30 (treinta) días naturales siguientes a que se realice la cesión o transmisión. El Cliente no podrá ceder ni transmitir
+    derecho y obligaciones derivados de la relación contractual que sostenga con Kubo.
+</p>
+<h4 >
+    <strong>SECCIÓN QUINTA. USO DE LOS PRODUCTOS Y SERVICIOS DE KUBO</strong>
+</h4>
+<p >
+    <strong>CUADRAGÉSIMA TERCERA.</strong>
+    USO DE LOS PRODUCTOS Y SERVICIOS DE KUBO. Las partes acuerdan que el uso de los productos y servicios descritos en el Contrato, se entenderá y constituirá
+    la aceptación plena de sus términos y condiciones.
+</p>
+<p >
+    <strong>CUADRAGÉSIMA CUARTA.</strong>
+    FIRMA ELECTRÓNICA. La Firma Electrónica u otros medios de identificación que Kubo establezca conforme a lo previsto en el Contrato, en sustitución de la
+    firma autógrafa, producirá los mismos efectos que las leyes otorgan a los documentos correspondientes y, en consecuencia, tendrán el mismo valor
+    probatorio; por lo tanto, las partes concederán valor probatorio pleno a los Comprobantes expedidos por Kubo a través de equipos, medios electrónicos,
+    ópticos, sistemas automatizados, redes de telecomunicaciones y los emitidos por establecimientos autorizados por Kubo por lo que el Cliente deberá
+    conservar y presentar los mismos en caso de alguna inconformidad.
+</p>
+<p  >
+    <strong>CUADRAGÉSIMA QUINTA.</strong>
+    FIRMA AUTOGRAFA. Las partes reconocen que la celebración del presente Contrato se llevará a cabo mediante el uso de la Firma Autógrafa.
+</p>
+<p >
+    <strong>CUADRAGÉSIMA SEXTA.</strong>
+    TRANSFERENCIAS. Cuando el Cliente solicité retiros, en caso de existir errores en los datos proporcionados por el Cliente, Kubo no tendrá responsabilidad
+    alguna por realizar las transferencias de conformidad con las instrucciones proporcionadas. Tampoco habrá responsabilidad Kubo por los daños y perjuicios
+    que se pudieran causar al Inversionista cuando por caso fortuito o fuerza mayor no sea posible transferir los fondos a través de los sistemas de pagos
+    autorizados y operados en el sistema financiero mexicano. Kubo quedará liberado de toda responsabilidad en el momento en que, en su caso, transmita a la
+    Cuenta del Cliente los fondos correspondientes, asimismo no tendrá responsabilidad en el evento de que dichos fondos no sean por cualquier causa aceptados
+    por la institución de crédito o entidad financiera receptora donde está la Cuenta del Cliente, y en consecuencia, ésta última proceda a su devolución. En
+    todo caso Kubo estará facultado para cobrar las comisiones que correspondan, aún cuando no se realice la transferencia de fondos por las causas aquí
+    expresadas.
+</p>
+<p >
+    Kubo quedará facultado por el Cliente para realizar intercambio de información con las autoridades e instituciones financieras receptoras, intermediarias o
+    corresponsales, a fin de llevar a cabo las transferencias de fondos.
+</p>
+<p >
+    <strong>CUADRAGÉSIMA SÉPTIMA.</strong>
+    GASTOS. Todos los gastos y honorarios que se generen en el trámite y operación del Depósito correrán a cargo de Kubo.
+</p>
+<p >
+    <strong>CUADRAGÉSIMA OCTAVA</strong>
+    . RESUMEN DE SALDOS Y MOVIMIENTOS. El Cliente podrá consultar en el Portal.Kubo, su resumen de saldos y movimientos de los Productos, debiendo para tal
+    efecto, identificarse con su Firma Electrónica. Kubo de forma gratuita, pondrá a disposición del Cliente un “Resumen de Saldos y Movimientos” del Producto
+    correspondiente, el cual especificará el saldo vigente, los rendimientos devengados y por cobrar, intereses recibidos y el detalle de las inversiones,
+    junto con las comisiones e impuestos retenidos. El Cliente podrá consultar en el Portal.Kubo, los estados de cuenta anteriores a 6 (seis) meses, a más
+    tardar en los 10 días siguientes de la fecha de corte que corresponda. El Portal.Kubo contará con información actualizada relativa a los montos, conceptos
+    y periodicidad de las Comisiones.
+</p>
+<p >
+    <strong>CUADRAGÉSIMA NOVENA.</strong>
+    CONSULTA DE SALDOS, MOVIMIENTOS E INFORMACIÓN. El Cliente podrá consultar saldos y movimientos a través del Portal.Kubo. Los límites diarios de disposición
+    serán los que Kubo tenga establecidos en las fechas de disposición y que se hubieren dado a conocer a través del Portal.Kubo, en el cual el Cliente podrá
+    consultar información sobre comisiones, tasas de interés y GAT.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA</strong>
+    . COMPROBANTES DE OPERACIÓN. Kubo generará a favor del Cliente un Comprobante electrónico que documente las operaciones realizadas dentro del Portal.Kubo
+    respecto del Contrato, el cual le se dará a conocer vía el Portal.Kubo. El Cliente reconoce desde ahora, sin reservas y como prueba de los Depósitos y
+    retiros que efectúe a través de los equipos y sistemas automatizados, los textos y los montos que impriman los referidos sistemas, mismos que harán
+    referencia a la Cuenta del Cliente y a las cantidades depositadas o retiradas, toda vez que el uso de equipos, medios electrónicos, ópticos o de cualquier
+    otra tecnología, sistemas automatizados y redes de telecomunicaciones y las claves de identificación, sustituyen la Firma Autógrafa por la Firma
+    Electrónica.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA PRIMERA</strong>
+    . SUSPENSIÓN DE SERVICIOS Y CORRECCIÓN DE TRANSACCIONES. Kubo podrá suspender o cancelar el trámite de operaciones que pretenda realizar mediante el uso de
+    equipos, medios electrónicos, ópticos o de cualquier otra tecnología, sistemas automatizados de procesamiento de datos y redes de telecomunicaciones,
+    siempre que Kubo cuente con elementos suficientes para presumir que los medios de identificación pactados para tal efecto han sido utilizados en forma
+    indebida por el Cliente. Lo anterior también resultará aplicable cuando Kubo detecte algún error en la instrucción respectiva.
+</p>
+<p >
+    Para el supuesto en que a través del seguimiento que se brinde por parte de la Unidad Especializada Kubo, se acredite la aplicación de cualquier movimiento
+    erróneo, ya sea en cargo o en abono a la Cuenta del Cliente, siempre y cuando dicha aplicación de movimiento implique un beneficio indebido al tratarse de
+    un error, este último, otorga desde este momento y de manera expresa su más amplio consentimiento a Kubo para que aplique la reclasificación del movimiento
+    de conformidad a la resolución que emita la Unidad Especializada Kubo.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA SEGUNDA</strong>
+    . CANCELACIÓN DE SERVICIOS DE DOMICILIACION. El Cliente, notificando a Kubo, de conformidad con la cláusula sexagésima novena podrá solicitar en cualquier
+    momento la cancelación de los servicios de domiciliación de pagos de bienes y servicios con cargo a la Cuenta del Cliente o cualquier otra cuenta, sin que
+    requiera de la previa autorización de los respectivos proveedores de bienes o servicios. Kubo cancelará, sin su responsabilidad, los servicios de
+    domiciliación en la fecha de la solicitud de terminación presentada por el Cliente, con independencia de quien conserve la autorización de los cargos
+    correspondientes.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA TECERA</strong>
+    . TERMINO DE RESPONSABILIDAD DE USO DE MEDIOS DE DISPOSICIÓN Y PORTAL.KUBO. La responsabilidad del Cliente cesa por el uso de Medios de Disposición y las
+    instrucciones que se realicen a través del Portal.Kubo en caso defunción, robo, extravío o realización de hechos ilícitos en perjuicio del Cliente, a
+    partir de que Kubo sea notificado de dicha situación de conformidad con lo establecido en la cláusula sexagésima novena del Contrato.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA CUARTA. </strong>
+    PORTABILIDAD. El Cliente podrá solicitar la terminación de cualquiera de los Productos del presente Contrato, por conducto de otra institución financiera
+    que se denominará receptora, la cual en caso de resultar procedente debe abrir una cuenta a nombre del Cliente y comunicar a la institución financiera
+    transferente su compromiso sobre la veracidad y legitimidad de la instrucción de transferencia por parte del Cliente, a fin de que se transfieran los
+    recursos a la institución financiera receptora, incluyendo los accesorios generados a la fecha de entrega de los recursos, quien llevará a cabo los
+    trámites respectivos, bajo su responsabilidad y sin cobro de comisión alguna por tales gestiones, a más tardar al tercer día hábil siguiente a aquel en que
+    se reciba la solicitud respectiva. La operación se dará por terminada una vez que los recursos estén en la cuenta que al efecto abra la institución
+    financiera receptora. Tratándose de depósitos a plazo o retirables en días preestablecidos, la transferencia se realizará una vez terminado el plazo
+    correspondiente al Producto que corresponda y una vez liquidadas las obligaciones directas o contingentes del Cliente con Kubo.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA QUINTA</strong>
+    . CUENTA SIN MOVIMIENTOS. Las partes acuerdan que el principal y los intereses del Producto que corresponda de conformidad a lo estipulado en el Contrato,
+    que no tengan fecha de vencimiento, o bien, que teniéndola se renueven de forma automática, así como las transferencias vencidas y no reclamadas, que al 31
+    de diciembre de cada año, no hayan tenido movimiento por Depósitos o retiros durante los últimos diez años, contados a partir de dicha fecha, cuyo importe
+    no sea superior al equivalente de doscientos días de salario mínimo general diario vigente en el Distrito Federal, prescribirán a favor del patrimonio de
+    la beneficencia pública; debiendo Kubo, dar previo aviso por escrito al Inversionista, de manera fehaciente, en el domicilio que conste en el expediente
+    respectivo con ciento veinte días de antelación a la conclusión de dicho plazo.
+</p>
+<p >
+    <strong>SECCIÓN SEXTA. SERVICIO AL CLIENTE.</strong>
+</p>
+<p  >
+    <strong>QUINCUAGÉSIMA SEXTA. </strong>
+    HORARIOS.<strong> </strong>La recepción de instrucciones del Inversionista se podrá notificar en el Portal.Kubo en cualquier momento, con las excepciones
+    establecidas en el presente contrato, así como en el contrato de servicios digitales que en su caso las Partes hayan celebrado. Kubo prestará los servicios
+    objeto de este contrato en los horarios que sean informados en el Portal.Kubo para cada Producto, con excepción de los días inhábiles que establezca la
+    Comisión Nacional Bancaria y de Valores, los cuales estarán disponibles para conocimiento del Inversionista en el Portal.Kubo.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA SÉPTIMA. </strong>
+    CONTRATACIÓN DE SERVICIOS FINANCIEROS ELECTRÓNICOS.<strong> </strong>El Cliente podrá contratar los servicios financieros electrónicos que Kubo le ofrece,
+    mediante los cuales podrá, conforme a los términos y condiciones convenidos en el presente Contrato y lo dispuesto en el Contrato de Servicios Digitales
+    correspondiente, acceder a diversos servicios y operaciones que Kubo le ofrece a través de medios electrónicos; sin perjuicio de su facultad de afiliarse a
+    los servicios con o sin costo que Kubo le ofrece o pudiese ofrecer en cualquier momento.<strong> </strong>En caso de que el Cliente no celebre el Contrato
+    de Servicios Digitales referido anteriormente, éste podrá proporcionar instrucciones sobre el presente Contrato en las oficinas de Kubo, previa
+    identificación y verificación que Kubo aplique con los procedimientos que considere adecuados para ello. Para el caso de la contratación posterior de otros
+    productos o servicios que se incluyan en el presente Contrato, la documentación relacionada con dicha contratación podrá enviarse al correo electrónico que
+    el Cliente hubiese proporcionado para tales efectos.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA OCTAVA.</strong>
+    ENTREGA DE CONTRATO Y CONTRATACIÓN POSTERIOR DE SERVICIOS. El Cliente podrá solicitar la entrega del presente Contrato, su Carátula y Anexos, de manera
+    física o electrónica, el cual incluye los productos que se contratan en el mismo. Para el caso de la contratación posterior de otros productos o servicios
+    que se incluyen en el presente Contrato, la documentación relacionada con dicha contratación podrá enviarse al correo electrónico que el Cliente
+    proporciona a Kubo para tales efectos, la cual se incluye en el capítulo IV, Datos Generales de las partes contratantes.
+</p>
+<p >
+    <strong>QUINCUAGÉSIMA NOVENA.</strong>
+    PRESENTACIÓN DE ACLARACIONES E INCONFORMIDADES. El Cliente podrá solicitar a Kubo la aclaración de los estados de cuenta dentro de los noventa días
+    naturales contados a partir de la fecha en que se de a conocer el estado de cuenta en el Portal.Kubo, o en su caso, de la realización de alguna operación o
+    del servicio. Cualquier solicitud de aclaración deberá presentarse con acuse de recibo en el Domicilio de Kubo, a través del correo electrónico de la
+    Unidad Especializada Kubo señalado en el encabezado en el Contrato o a través del Portal.Kubo, en la inteligencia de que transcurrido dicho plazo sin que
+    el Cliente presente aclaración, cualquier transacción, movimiento o cargo realizado se tendrá aceptado por el Cliente quedando Kubo libre de toda
+    responsabilidad.
+</p>
+<p >
+    Kubo deberá responder por escrito al Inversionista, en un plazo que no exceda de 45 días naturales, contados a partir de la fecha de recepción de la
+    solicitud de aclaración de que se trate, periodo en el que Kubo pondrá a disposición del Cliente en el Domicilio de Kubo, el expediente generado con motivo
+    de la aclaración, así como a integrar en éste, toda la documentación e información que deba obrar en su poder y que se relacione directamente con la
+    solicitud de aclaración correspondiente, sin incluir datos relativos a operaciones relacionadas con terceras personas.
+</p>
+<p >
+    Lo dispuesto en los párrafos anteriores es sin perjuicio del derecho del Cliente de acudir ante la CONDUSEF o ante la autoridad jurisdiccional
+    correspondiente conforme a las disposiciones legales aplicables, en el entendido de que el procedimiento previsto en la presente cláusula quedará sin
+    efectos a partir de que el Cliente presente su demanda ante autoridad jurisdiccional o conduzca su reclamación.
+</p>
+<p >
+    En caso de que la aclaración del Cliente a su estado de cuenta o a la realización de la operación o del servicio, sea justificada, Kubo abonará al
+    Inversionista en la cuenta de que se trate, a más tardar al día hábil inmediato siguiente a aquél en que se haya notificado la aclaración, la totalidad de
+    los cargos.
+</p>
+<p  >
+    <strong>SEXAGÉSIMA. </strong>
+    INFORMACIÓN DE CONTACTO DE LA UNIDAD ESPECIALIZADA DE ATENCIÓN PARA ACLARACIONES Y RECLAMACIONES Y DE LA COMISIÓN NACIONAL PARA LA PROTECCIÓN Y DEFENSA DE
+    LOS USUARIOS DE SERVICIOS FINANCIEROS. En cumplimiento a lo dispuesto por la legislación aplicable Kubo señala como datos adicionales de identificación,
+    localización y contacto de la Unidad Especializada de Kubo, los siguientes:
+</p>
+<p >
+    Teléfono. (55) 62690024. Página de Internet: <u><a href="http://www.kubofinanciero.com/">www.kubofinanciero.com</a></u>. Correo: soporte@kubofinanciero.com
+</p>
+<p >
+    Domicilio: Av. Barranca del Muerto 92, Colonia Florida, Delegación Álvaro Obregón, C.P. 01030, México, D.F.
+</p>
+<p >
+    En caso de consultas, reclamaciones o aclaraciones el Cliente podrá acudir a la CONDUSEF, con domicilio en Insurgentes Sur 762, Colonia del Valle,
+    Delegación Benito Juárez, Código Postal 03100, México, Distrito Federal, en los teléfonos lada sin costo 01800 999 8080 y 53 40 09 99, enviar un correo
+electrónico a <u><a href="mailto:opinion@condusef.gob.mx">opinion@condusef.gob.mx</a></u> o consultar la página electrónica en Internet    <u><a href="http://www.condusef.gob.mx/">www.condusef.gob.mx</a></u>.
+</p>
+<p >
+    <strong>SEXAGÉSIMA PRIMERA. REDES SOCIALES. </strong>
+    El Cliente podrá consultar las cuentas que Kubo mantenga activas en redes sociales de internet accesando al Portal.Kubo.
+</p>
+<p >
+    <strong>SECCIÓN SÉPTIMA. RENDIMIENTOS Y COMISIONES.</strong>
+</p>
+<p >
+    <strong>SEXAGÉSIMA SEGUNDA.</strong>
+    RENDIMIENTOS. Los Depósitos que se constituyan al amparo del presente Contrato generarán una Tasa de Interés Anual Bruta, la cual se señalará en los
+    Comprobantes. Dichos intereses se calcularán multiplicando el saldo del Depósito a la fecha del cálculo por la Tasa de Interés Anual Bruta, dividiendo el
+    resultado entre 360 y multiplicando el resultado por los días en que se mantuvo dicho saldo promedio, y que se pagarán a través del Depósito de dichos
+    rendimientos en la Cuenta kubo.global.
+</p>
+<p >
+    La tasa de interés aplicable al Producto correspondiente quedará debidamente establecida y estipulada en el Comprobante correspondiente.
+</p>
+<p >
+    <strong>SEXAGÉSIMA TERCERA.</strong>
+    CAPITALIZACIÓN DE RENDIMIENTOS. El Cliente podrá realizar la capitalización de rendimientos periódicos de conforme a los plazos contratados, calculándose
+    los mismos por períodos vencidos y sobre promedio diarios o saldos insolutos según el tipo de Producto.
+</p>
+<p >
+    Los rendimientos específicos por Producto, se acreditarán en la cuenta del Cliente en función de lo establecido en el Producto que corresponda.
+</p>
+<p >
+    <strong>SEXAGÉSIMA CUARTA</strong>
+    <strong>.</strong>
+    COMISIONES. El Cliente se obliga a cubrir cada comisión pactada dentro del Contrato, de conformidad con las cláusulas aplicables a cada Producto durante la
+    vigencia del Contrato, así como en los Comprobantes, respecto los Productos que solicite el Cliente. Las comisiones relacionadas con los Productos son por
+    los conceptos y periodicidad que se enlistan a continuación, así como por los montos que se detallan en el Portal.Kubo:
+</p>
+
+
+
+<table cellpadding="0" cellspacing="0" border="1" class="tablaDosColumna">
+
+<tr>
+<th>
+Concepto
+</th>
+<th>
+Periodicidad
+</th>
+</tr>
+<tr>
+
+<td>
+	<ol class="disc noMargin">
+		<li>Por apertura</li>
+	</ol>
+</td>
+<td>Única</td>
+</tr>
+<tr>
+<td>
+	<ol class="disc noMargin">
+		<li>
+		Manejo de cuenta
+		</li>
+	</ol>
+		</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>	<ol class="disc noMargin">
+			<li>Anualidad</li>
+	</ol>
+			
+			</td>
+<td>Anual</td>
+</tr>
+<tr>
+<td>	<ol class="disc noMargin">
+			<li>Transferencia Interbancaria del mismo cliente
+			</li>
+		</ol>	
+			</td>
+<td>Por evento</td>
+</tr>
+<tr>
+<td>	<ol class="disc noMargin">
+			<li>Transferencia a Cuenta Eje</li>
+		</ol>
+			
+			</td>
+<td>Por evento</td>
+</tr>
+<tr>
+<td><ol class="disc noMargin">
+			<li>Transferencia entre cuentas Kubo de diferente Cliente</li>
+	</ol>		
+			</td>
+<td>Por evento</td>
+</tr>
+<tr>
+
+<td><ol class="disc noMargin">
+			<li>Consulta de saldo por celular</li>
+			</ol>
+			
+			
+			</td>
+<td>Por evento</td>
+</tr>
+<tr>
+<td><ol class="disc noMargin">
+			<li>Consulta de saldo vía internet</li>
+	</ol>		
+			
+			</td>
+<td>Por evento</td>
+</tr>
+<tr>
+<td><ol class="disc noMargin">
+			<li>Emisión de posteriores estados de cuenta</li>
+	</ol>		
+			</td>
+<td>Por evento</td>
+</tr>
+<tr>
+<td><ol class="disc noMargin">
+			<li>Reclamación improcedente</li>
+			</ol>
+			
+			</td>
+<td>Por evento</td>
+</tr>
+</table>
+
+
+ </div>
+</section>
+
+
+<section>
+    <div class="container">
+    <p>
+    <strong>SECCIÓN OCTAVA. CLÁUSULAS GENERALES.</strong>
+</p>
+<p >
+    <strong>SEXAGÉSIMA QUINTA</strong>
+    . BENEFICIARIOS. En caso de fallecimiento del Cliente, Kubo entregará a las personas señaladas como beneficiarios y en los porcentajes designados por el
+    Cliente en el capítulo IV del presente Contrato, el Depósito más los rendimientos generados menos los impuestos correspondientes.
+</p>
+<p >
+    Los beneficiarios se deberán de identificar cumpliendo con los requerimientos para acreditar su personalidad de acuerdo a las leyes aplicables en esta
+    materia.
+</p>
+<p >
+    Los derechos que el Cliente que otorga a sus beneficiarios respecto de cada Producto, surtirán efectos legales hasta la liquidación de todos los adeudos
+    que el Cliente tenga pendientes de cubrir a favor de Kubo, quien les reconocerá el derecho como beneficiarios respecto de la cantidad restante del
+    Producto, una vez liquidados dichos adeudos.
+</p>
+<p >
+    Independientemente de lo anterior, Kubo se reserva el derecho de entregar El Depósito más los rendimientos generados menos los impuestos, a los
+    beneficiarios, en los supuestos donde se deban consignar dichas cantidades ante la autoridad judicial competente.
+</p>
+<p >
+    Los derechos que el Cliente otorga a sus beneficiarios respecto de cada Producto, se ajustarán a los términos y condiciones estipulados en el Contrato
+    respecto de la funcionalidad del Producto específico. El Contrato seguirá surtiendo efectos legales posteriormente al fallecimiento del Cliente hasta el
+    cumplimiento de todas las prerrogativas establecidas en la presente cláusula.
+</p>
+<p >
+    El Cliente en todo momento tendrá la facultad de cambiar o sustituir beneficiarios y porcentajes designados a favor de los mismos comunicándolo a Kubo de
+    conformidad con la cláusula sexagésima novena del Contrato. La presente cláusula no es aplicable cuando el Cliente es una persona moral.
+</p>
+<p >
+    <strong>SEXAGÉSIMA SEXTA</strong>
+    . FONDO DE PROTECCIÓN. Únicamente están garantizados por el Fondo de Protección al Ahorro los depósitos de dinero: a la vista, de ahorro, a plazo,
+    retirables en días preestablecidos o con previo aviso, hasta por el equivalente a veinticinco mil UDIS por persona física o moral, cualquiera que sea el
+    número y clase de operaciones a su favor y a cargo de una misma Institución Financiera, en caso de que se declare su disolución y liquidación, o se decrete
+    su concurso mercantil.
+</p>
+<p >
+    <strong>SEXAGÉSIMA SÉPTIMA</strong>
+    . IMPUESTOS. En términos de las disposiciones fiscales aplicables, Kubo deducirá, retendrá y entregará a la autoridad fiscal competente, los impuestos que
+    le corresponda pagar al Cliente en relación al tipo de Producto en específico que el Cliente solicite a Kubo durante la vigencia del Contrato y hasta el
+    vencimiento de cada uno de los Productos. Las partes se obligan a cumplir con sus obligaciones fiscales en términos de las leyes y regulaciones aplicables.
+</p>
+<p >
+    <strong>SEXAGÉSIMA OCTAVA.</strong>
+    TIPO DE MONEDA. Todos los depósitos que se constituyan al amparo del presente Contrato serán en moneda nacional.
+</p>
+<p >
+    <strong>SEXAGÉSIMA NOVENA</strong>
+    . NOTIFICACIONES. Todas las notificaciones, avisos y en general cualquier comunicación que las partes deban hacerse para los efectos del Contrato, se harán
+    a través del Portal.Kubo.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA.</strong>
+    VIGENCIA DEL PRESENTE CONTRATO. La vigencia del Contrato será indefinida. No obstante lo anterior, las partes se obligan a respetar el plazo que se
+    estipule en cada uno de los Depósitos; plazo que atenderá en todo momento a los términos, condiciones y funcionalidad de cada uno de los Productos que en
+    específico contrate el Cliente.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA PRIMERA.</strong>
+    IDENTIDAD DEL CLIENTE. Para que el Cliente acceda a los Productos, Kubo revisará que la información y documentos sean fidedignos y que garanticen su plena
+    identificación, así como el origen de los recursos de sus Depósitos, aplicando los procedimientos que considere adecuados para ello.
+</p>
+<p >
+    Para mantener actualizado el expediente electrónico del Cliente, el Cliente deberá de informar y entregar los documentos requeridos por Kubo, o en su caso
+    Kubo solicitará la información y/o documentos que requiera al Inversionista, quien se obliga a agregar dicha información y documentos en su expediente
+    electrónico ubicado en el Portal.Kubo con el objetivo de cumplir con dicha actualización. El Cliente gozará de un plazo de 45 días naturales para
+    actualizar la información y/o documentos solicitados por Kubo.
+</p>
+<p >
+    <strong>
+        Los datos personales proporcionados por el Cliente son necesarios para acceder a los Productos que ampara el presente Contrato, en virtud de lo
+        anterior, será su responsabilidad comunicar a Kubo cualquier cambio en los mismos, para tal efecto, el Cliente reconoce y acepta que al no
+        reportar los cambios de sus datos personales, Kubo no tendrá los elementos suficientes para mantener actualizados los mismos, así como no podrá
+        realizar notificaciones por los medios acordados entre las Partes; por lo tanto Kubo, en caso de incumplimiento del Cliente, se deslinda de toda
+        responsabilidad
+    </strong>
+    . El Cliente acepta que todos los documentos que entrega a Kubo a través de cualquier medio son auténticos, no han sido alterados, ni mutilados.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA SEGUNDA. </strong>
+    TRATAMIENTO DE DATOS PERSONALES. El Cliente podrá otorgar autorización a Kubo para el tratamiento de sus datos personales de conformidad con la
+    autorización para el uso de datos personales establecida en el Anexo 2 del presente Contrato.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA TERCERA</strong>
+    . CONFIDENCIALIDAD. La información y documentación relativa a las operaciones, movimientos, estados de cuenta y saldos de los Productos que usa el Cliente
+    al amparo del Contrato tienen el carácter confidencial, por lo que Kubo, en protección del derecho a la privacidad del Cliente solo podrá informar de los
+    depósitos, operaciones o servicios, al Inversionista o a sus representantes legales o a quienes le haya otorgado poder para disponer de la cuenta o para
+    intervenir en la operación o servicio de los Productos solicitados por el Cliente; lo anterior con excepción de aquellas autorizaciones que el Cliente
+    otorgue expresamente a Kubo en términos del presente contrato.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA CUARTA</strong>
+    . CASO FORTUITO O FUERZA MAYOR. Kubo no será responsable de los incumplimientos en que incurra, cuando dichos incumplimientos se deban a la ocurrencia de
+    algún caso fortuito o fuerza mayor, mencionando de manera enunciativa más no limitativa en los siguientes supuestos: fallas en el funcionamiento del
+    Portal.Kubo, de los sistemas de cómputo con los que Kubo realice su operación, interrupciones en los sistemas de comunicación o en el suministro de energía
+    eléctrica, o por desperfectos ocasionales en equipos y sistemas automatizados.
+</p>
+<p>
+    <strong>SEPTUAGÉSIMA QUINTA. </strong>
+    TITULOS.<strong> </strong>Los títulos de las cláusulas se incluyen únicamente como referencia y no pretenden definir, limitar o describir el alcance o
+    intención de las disposiciones de este Contrato.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA SEXTA</strong>
+    . TOTALIDAD DE ACUERDOS. El presente instrumento, sus capítulos y anexos, así como las publicaciones realizadas en el Portal.Kubo vinculadas con los
+    acuerdos adoptados por las partes en el Contrato, contienen la totalidad de los acuerdos celebrados entre Kubo y el Cliente.
+</p>
+<p >
+    Las partes acuerdan que la información generada en el Portal.Kubo tendrá todos los efectos legales y vinculantes que el Contrato les reconoce.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA SÉPTIMA.</strong>
+    MODIFICACIONES. Kubo se reserva el derecho de efectuar modificaciones al presente Contrato, incluyendo incremento o nuevas comisiones, mediante aviso dado
+    con 30 (treinta) días naturales de anticipación a la fecha en que las modificaciones surtan efectos, a través del Portal.Kubo.
+</p>
+<p >
+    En el evento que el Cliente no esté de acuerdo con las modificaciones propuestas podrá solicitar la cancelación del Contrato hasta 30 (treinta) días
+    naturales posteriores a la fecha del aviso mencionado, sin responsabilidad de su parte, debiendo cumplir en su caso cualquier adeudo que se hubiese
+    generado a la fecha de la solicitud de terminación por parte del Cliente; bajo las condiciones anteriores a las modificaciones propuestas. En caso de no
+    solicitar la terminación antes mencionada, las modificaciones propuestas entrarán en vigor a la conclusión de dicho periodo y se tendrán por aceptadas.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA OCTAVA. </strong>
+    RESCISIÓN DEL CONTRATO. En caso de incumplimiento del plazo establecido en la cláusula septuagésima primera que establece la obligación de actualizar la
+    información y/o documentos de identidad del Inversionista, asó como el origen de los recursos de los Depósitos del Inversionista, Kubo podrá rescindir el
+    presente Contrato automáticamente sin responsabilidad de su parte; en dicho evento el Cliente se obliga a cumplir cualquier adeudo que en su caso, se
+    hubiese generado a la fecha.
+</p>
+<p >
+    Para aplicar la rescisión establecida en la presente cláusula, Kubo deberá de comprobar de manera fehaciente que realizó el requerimiento de dicha
+    información y/o documentos al Inversionista y el incumplimiento del mismo.
+</p>
+<p >
+    <strong>SEPTUAGÉSIMA NOVENA</strong>
+    . TERMINACIÓN DEL PRESENTE CONTRATO. Independientemente de las causas de terminación anticipada que se contemplan en el Contrato y que son aplicables en
+    específico a cada Producto, el Cliente podrá solicitar la terminación del Contrato.
+</p>
+<p >
+    El Cliente contará con un período de gracia de diez días hábiles posteriores a la firma del Contrato para cancelarlo, en cuyo caso, Kubo no cobrará
+    comisión alguna, regresando las cosas al estado en el que se encontraban antes de su firma, sin responsabilidad alguna para el Cliente. Lo anterior,
+    siempre y cuando el Cliente no haya utilizado u operado los productos o servicios financieros contratados.
+</p>
+<p >
+    <strong>OCTAGÉSIMA.</strong>
+    DISPOSICIONES LEGALES REFERENCIADAS. En el capítulo V del presente Contrato se encuentra la transcripción de disposiciones legales expresamente
+    referenciadas en el mismo.
+</p>
+<p>
+    <strong>OCTAGÉSIMA PRIMERA.</strong>
+    LEYES Y TRIBUNALES COMPETENTES. Para todo lo relativo a la interpretación y cumplimiento de este Contrato, las partes se someten a las leyes de los Estados
+    Unidos Mexicanos y la jurisdicción de los tribunales competentes de la Ciudad de México, Distrito Federal, renunciando el Cliente, a cualquier fuero que
+    por razón de su domicilio presente o futuro pudiera corresponderle.
+</p>
+    </div>
+
+
+</section>
+
+
+
+<section>
+    <div class="container">
+          <h4>CAPÍTULO II. DEFINICIONES</h4>
+            <p>Los términos que se utilizan en el Contrato y que se relacionan a continuación, tendrán los significados siguientes, los cuales serán igualmente aplicables a las formas plural o singular de los mismos:</p>
+
+
+<ol>
+             <li> Bloqueo de recursos: Recursos asignados por el Cliente a proyectos pendientes de fondeo y liberación.</li>
+
+<li>Carátula: Es el documento que contiene las características específicas de cada producto que se genera al amparo del Contrato, la cual forma parte integrante del mismo.</li>
+
+<li>Centro de Atención Kubo: Es el centro telefónico de atención que Kubo pone a disposición del Cliente para brindar los servicios contenidos en el presente Contrato y en los términos y condiciones del Portal.Kubo.
+</li>
+<li>Clave: Es la contraseña asignada de manera automática por el Portal.Kubo para que el Cliente deposite en la Cuenta Kubo y se abra la Cuenta kubo.global de Depósito a la Vista.
+</li>
+<li>Comprobante Electrónico o Comprobante: Son las Constancias o Comprobantes de depósito o inversión de los depósitos realizados por el Cliente que emitirá Kubo por cada operación que se efectúe al amparo de cada Producto de que se trate, los que son electrónicos y están a disposición del Cliente en el Portal.Kubo y que el Cliente solicite a Kubo en los términos y condiciones estipulados en el Contrato.
+</li>
+<li>Contrato: Es el presente contrato único de inversión con depósitos a la vista, depósitos retirables en días preestablecidos y depósitos a plazo fijo integrado por su clausulado. Carátula, capítulos y cualquier convenio que lo modifique o adicione.
+</li>
+<li>CONDUSEF: Es la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros.
+</li>
+<li>Cuenta del Cliente: Es la cuenta de la que es titular el Cliente, de la que salen sus recursos para hacer el Depósito, misma que se señala en el capítulo V del Contrato y la cual servirá como medio de recepción de pagos a que se refiere el Contrato.
+</li>
+<li>
+Cuenta kubo.global: Es la cuenta en la que el Cliente podrá hacer depósito a la vista, la cual opera como cuenta eje de las operaciones que realice con Kubo.
+</li>
+
+<li>  Cuenta kubo.impulso: Es la cuenta en la que el Cliente podrá realizar operaciones de Depósito de dinero retirables en día preestablecido a favor de personas físicas o morales.
+</li>
+
+<li>Cuenta kubo.plazofijo: Es la cuenta en la que el Cliente podrá realizar operaciones de Depósitos a Plazo Fijo a favor de personas físicas o morales.
+</li>
+<li>
+Cuenta Kubo: Es la cuenta bancaria de la que Kubo es titular, misma que se señala en el capítulo V del Contrato, la cual servirá como medio para recibir el Depósito a que se refiere este instrumento.
+</li>
+<li>
+Cuestionario de Conocimiento del Cliente: Es el cuestionario electrónico que contesta el Cliente en el Portal.Kubo donde captura datos personales del cliente, incluyendo patrimoniales y financieros.. Dicho cuestionario obra en el expediente electrónico del Cliente, en el cual también ha manifestado que Kubo podrá hacer uso de sus datos para fines estadísticos, publicitarios y mercadológicos.
+</li>
+
+<li>Depósito: La suma de dinero en Moneda Nacional entregada por el Cliente a Kubo.
+</li>
+<li>
+Depósito a la Vista: Contrato de depósito en virtud del cual el Cliente con la calidad de depositante entrega una suma de dinero a Kubo con la calidad de depositario, obligándose este último a restituir la suma determinada en el Contrato más un interés en la misma especie.
+</li>
+<li>Depósito Retirable en Días Preestablecidos: Depósito con una tasa de interés fija en la que sólo se podrán efectuar retiros con base al saldo existente y en los días que se establecen en el Comprobante Electrónico.
+</li>
+<li>
+Día inhábil: Son los días de cada año calendario en que Kubo cierra sus puertas y suspende operaciones, de conformidad con el calendario que anualmente establezca la Comisión Nacional Bancaria y de Valores.
+</li>
+<li>Disposición Única de la CONDUSEF: Es la Disposición Única de la CONDUSEF aplicable a Entidades Financieras. 
+</li>
+<li>Domicilio de Kubo: Es la dirección en la que se encuentran ubicadas las oficinas de Kubo y que está señalada en el encabezado del Contrato.
+</li>
+
+<li>
+Firma Autógrafa: Es el trazo que el Cliente estampa en el presente contrato con el objetivo de obligarse a responder de su contenido y manifestar su entendimiento y aceptación del mismo con su puño y letra en papel o que es plasmada en dispositivos con pantalla táctil que permiten generar el trazo y la imagen digitalizada de la firma.</li>
+
+<li> Firma Electrónica o Fiable: Significan los datos en forma electrónica y clave electrónica de seguridad utilizados por el Cliente para identificarse con Kubo y aceptar las características, términos y condiciones, así como los derechos y obligaciones, y Medios de Disposición de los Productos contratados mediante el Contrato, incluyendo su Carátula, capítulos, anexos y Comprobantes.  
+</li>
+<li>Garante: Es el Cliente que otorga garantía prendaria liquida irrevocable a créditos otorgados por Kubo.
+</li>
+<li>GAT: es la Ganancia anual total Neta expresada en términos porcentuales anuales, que, para fines informativos y de comparación, incorpora los intereses que generen las operaciones pasivas de ahorro, inversión y otras análogas menos todos los costos relacionados con la operación, incluidos los de apertura, el que será expresado tanto en términos reales como nominales de conformidad con las disposiciones que emita el Banco de México para su cálculo.
+</li>
+<li>Inversión Vista: Es la cuenta de inversión asociada al Depósito a la Vista con disponibilidad diaria, recibiendo el Cliente un interés.
+</li>
+<li>Medios de Disposición: Son las transferencias electrónicas de fondos.
+</li>
+<li>
+Portal.Kubo: Sistema electrónico propiedad de Kubo, cuyo dominio es www.kubofinanciero.com, el cual es accesible por el Cliente a través del uso de Internet como medio de comunicación, cuya utilización le permite convenir mediante instrucciones y eligiendo las opciones habilitadas en dicho sistema, los servicios financieros, utilizando la Firma Electrónica o Fiable como medio de expresión de la voluntad y pleno consentimiento del Cliente.
+</li>
+
+<li>Producto: Las operaciones pasivas de inversión que ofrece Kubo, que se enlistan a continuación y a las cuales el Cliente, si así lo desea, tendrá acceso a través del Contrato: Depósitos a la vista, denominado kubo.global, depósitos retirables en días preestablecidos, denominado kubo.impulso; y depósitos a plazo fijo, denominado kubo.plazofijo. 
+</li>
+<li>RECA: Es el Registro de Contratos de Adhesión, ante CONDUSEF.
+</li>
+<li>Registro: Es la solicitud de apertura de la Cuenta del Cliente que éste realiza en el Portal.Kubo.
+</li>
+<li>Registro de Depósito del Cliente. Es el registro del cual el Cliente es titular y en el que Kubo realizará las anotaciones sobre los movimientos de sus abonos y disposiciones al amparo del Contrato.
+</li>
+<li>Saldo Disponible: Es el monto de recursos económicos disponibles para el Cliente en su Cuenta kubo.global.  
+</li>
+<li>
+Saldo Promedio Diario: Es la suma del saldo diario de cada mes, mismo que el Cliente tiene en su Registro de Depósito de Inversionista, dividida entre el número de días naturales de dicho mes.
+</li>
+<li>
+SPEI: El Sistema de Pagos Electrónico e Interbancario desarrollado por el Banco de México y la banca comercial, para permitir a los clientes del sistema financiero, enviar y recibir transferencias electrónicas de dinero.
+</li>
+<li>
+Tasa de Interés Anual Bruta: Tasa anual que pagará kubo por los depósitos constituidos de conformidad con el presente Contrato, antes de impuestos.
+</li>
+<li>
+Unidad Especializada Kubo: Unidad Especializada de Atención a Clientes de Kubo.
+</li>
+<li>
+UDIS: Unidades de Inversión.
+</li>
+</ol>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<section>
+  <div class="container">
+
+    <h4>CAPÍTULO III. DECLARACIONES</h4>
+	<h4>SECCIÓN PRIMERA. DECLARACIONES DE KUBO.</h4>
+<p> Declara Kubo, a través de su representante legal que: </p>
+<ul class="latin">
+<li>
+Es una Sociedad Anónima de Capital Variable debidamente constituida ante fedatario público e inscrita en el Registro Público de Comercio, que cuenta con la licencia autorizada por la Comisión Nacional Bancaria y de Valores para operar como Sociedad Financiera Popular y que por lo tanto cuenta con la autorización y capacidad para asumir y dar cumplimiento a las obligaciones que se establecen en el Contrato.
+</li>
+<li>
+ Su domicilio es el señalado en el encabezado del presente Contrato. 
+</li>
+<li>
+Cuenta con las facultades legales necesarias para representar a Kubo en el presente Contrato, mismas que no le han sido modificadas ni revocadas en forma alguna, tal como consta en el instrumento público que al efecto se detalla en el capítulo IV.
+</li>
+<li>
+Dentro de su objeto social tiene permitido recibir depósitos de dinero a la vista, de ahorro, a plazo, retirables en días preestablecidos y retirables con previo aviso, de conformidad con lo dispuesto en las disposiciones legales aplicables.
+</li>
+<li>
+Ha desarrollado el Portal.Kubo, a través del cual, tendrá comunicación con el Cliente y le hará llegar toda la información y notificaciones a que hace referencia al Contrato.
+</li>
+<li>
+Es voluntad de Kubo celebrar el Contrato con sus capítulos, anexos, Comprobantes y Carátula, de acuerdo con los términos y condiciones acordados en cada uno de ellos. 
+</li>
+<li>
+El Contrato se encuentra debidamente inscrito en el Registro de Contratos de Adhesión (RECA) de la CONDUSEF de acuerdo a sus productos con el siguiente número de registro: <span class="variable">#{contractData.data.kboReca}</span>.
+</li>
+</ul>
+<h4>SECCIÓN SEGUNDA. DECLARACIONES DEL CLIENTE.</h4>
+<p> Declara el Cliente por su propio derecho o a través de su representante o apoderado legal que:</p>
+<ul class="latin">
+<li>
+Sus generales son los que se detallan en el capítulo IV del presente Contrato.
+</li>
+<li>Las copias simples de identificación personal, comprobante de domicilio y demás documentos que entregó a Kubo para acreditar su identidad fueron obtenidos de documentos originales.  </li>
+<li>
+Es una persona física o moral, según corresponda, que cuenta con todas las facultades para obligarse en los términos y condiciones del Contrato.
+</li>
+<li>En caso de que el Cliente sea una persona moral, garantiza tener las facultades suficientes para celebrar el Contrato, las cuales asegura que no le han sido revocadas, limitadas ni modificadas en forma alguna.
+</li>
+<li>
+Previo a la celebración del Contrato, Kubo hizo de su pleno conocimiento su contenido íntegro y alcance legal, incluyendo sus Comprobantes, el formato del estado de cuenta, comisiones y Productos que el Cliente podrá operar por la celebración del mismo, el cual es su voluntad suscribirlo.
+</li>
+<li>Ha realizado todos los trámites necesarios para tener acceso al Portal.Kubo.
+</li>
+<li>
+Esta de acuerdo en agregar los documentos e información solicitados en el Portal.Kubo para la integración de su expediente electrónico.
+</li>
+<li>
+El  o los Depósitos que entregará a Kubo son recursos de su propiedad y producto del desarrollo normal de sus actividades propias, por tanto no provienen de la realización de actividades ilícitas, además de que conoce y entiende plenamente las disposiciones relativas a las operaciones realizadas con recursos de procedencia ilícita y financiamiento al terrorismo, y sus consecuencias.
+</li>
+<li>
+
+Reconoce que sus datos personales, incluyendo los patrimoniales y financieros son necesarios para la formalización del Contrato y que está de acuerdo en permitir la recolección y tratamiento de sus datos personales para el cumplimiento del objetivo del Contrato y confirma que antes de realizar su Registro en el Portal.Kubo fue informado, conoció y aceptó las condiciones de uso del Portal.Kubo y el Aviso de Privacidad, referente al tratamiento que Kubo podrá dar a los mismos, posteriormente capturó su información personal.
+</li>
+<li>
+Reconoce que después de realizar las actividades referidas en la declaración anterior, recibió un mensaje de Kubo al correo electrónico, un mensaje SMS o una llamada telefónica que proporcionó para terminar con el proceso de activación de su Registro al Portal.Kubo.
+</li>
+
+
+</ul>
+<h4>SECCIÓN TERCERA. DECLARACIONES DE LAS PARTES.</h4>
+<p> Declaran Las Partes, según aplique, por su propio derecho o a través de su Apoderado o Representante Legal que:</p>
+<ul class="latin">
+<li>
+Se reconocen mutuamente la personalidad jurídica con la que comparecen a la celebración del Contrato. 
+</li>
+
+<li>La Carátula y Compr|obantes que se generen por cada Producto, forman parte integral del Contrato y reconocen que serán obligatorias para ambos.
+</li>
+<li>Los Productos que contrate el Cliente, se podrán identificar a través del número que se genera en el correspondiente Comprobante Electrónico que al efecto se emite. 
+</li>
+<li>Cada Producto que solicite el Cliente, durante la vigencia del Contrato, será respaldado con los Comprobantes Electrónicos referidos al Producto correspondiente.
+</li>
+<li>Han celebrando el contrato de servicios digitales referido a los servicios financieros electrónicos.
+</li>
+</ul>
+
+  </div>
+</section>
+
+
+	<div class="pagebreak"></div>
+	
+	<ui:include src = "contenidoAnexo1.xhtml"/>
+	<div class="pagebreak"></div>
+	
+	<ui:include src = "contenidoAnexo2.xhtml"/>
+	<div class="pagebreak"></div>
+	
+	<ui:include src = "autorizacionConsulta.xhtml"/>
+	<div class="pagebreak"></div>
+	<ui:include src = "autorizacionUsoDatos.xhtml"/>
+</ui:composition>
+
+
+

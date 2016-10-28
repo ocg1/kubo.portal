@@ -1,0 +1,45 @@
+package mx.com.kubo.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+@NamedQuery(name = "lisTenureCat", query = " FROM TenureCat t")
+@Entity @Table(name = "gn_tenure")
+public class TenureCat 
+implements Serializable 
+{
+	private static final long serialVersionUID = 742304835400373832L;
+	
+	@EmbeddedId
+	private TenureCatPK tenureCatPK;
+	
+	@Column private String name;
+	
+	public TenureCat()
+	{
+		super();
+	}
+	public void setTenureCatPK(TenureCatPK tenureCatPK) 
+	{
+		this.tenureCatPK = tenureCatPK;
+	}
+
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+	
+	public TenureCatPK getTenureCatPK()
+	{
+		return tenureCatPK;
+	}
+	
+	public String getName() 
+	{
+		return name;
+	}
+}

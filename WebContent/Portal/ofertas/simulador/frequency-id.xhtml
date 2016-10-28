@@ -1,0 +1,33 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div class = "selects big">
+		<i class = "fa fa-angle-down"/>
+<!-- 
+		<h:selectOneMenu id = "frecuProyect" value="#{simulator.frequency_id}" styleClass="elementStlSelMonth">
+			<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+			<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+			<p:ajax event="change" onstart="validaPlazo('term');" />  
+		</h:selectOneMenu>
+-->		
+		
+		<h:selectOneMenu id = "simulador-frequency-id" immediate = "true" styleClass = "elementStlSelMonth"
+						 value = "#{ofertaRenovacion.simulador.frequency_id}" >
+							 
+			<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "0" />
+				
+			<f:selectItems  value = "#{ofertaRenovacion.simulador.listFrequency}" 
+							var = "frequency" 
+							itemLabel = "#{frequency.name}" 
+							itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+							
+				<p:ajax event      = "change" 
+						onstart    = "return simOnStartVal('simulador_ammount', 'simulador_term_id');" 
+						oncomplete = "Simulador.info_oncomplete(xhr, status, args);"  
+						listener   = "#{ofertaRenovacion.simulador.initSelectOneMenu}" />  
+		</h:selectOneMenu>	
+	</div>  			
+</ui:composition>				

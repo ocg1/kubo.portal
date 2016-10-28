@@ -1,0 +1,157 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+	<script type = "text/javascript">
+
+	// window.history.pushState(null, null, "#referencias")
+
+
+$(document).ready(function() 
+{		
+	if( $("#prospectus_id_in_ex").val() == ""   ){
+			
+			window.location="../Portal/sesion-expirada.xhtml?redirecFrom=moreInfo.xhtml";
+			return;	
+		}
+	
+	$(".validatorClass").bind("change blur", function(event) 
+	{		
+		fieldCount();
+		event.preventDefault();			
+	});
+				
+	$('.hideIFE').focus(function(event)
+	{
+		hideIFEjs();
+		event.preventDefault();
+	});
+	
+	$('.btnMoreInfo').click(function(){
+		
+		if( $("#area").val() == "L") {
+			buttonClick = true;
+			revision_pasos(); 
+		}else {
+			hideIFEjs();
+			$("#hdNext\\:siguientePrep").click();
+			$.scrollTo('#header', 800, { axis:'y' });
+		}
+	});
+	
+	$(".validatorRef").blur(function()
+	{
+		var thisID = $(this).attr("id");
+		
+		validateFieldReferences(thisID);
+		
+	});
+	
+});
+</script>
+     <!-- h:panelGroup rendered="#{sessionBean.kubo_score == 'E5' or sessionBean.kubo_score == 'F1' or sessionBean.kubo_score == 'G1' or sessionBean.kubo_score == 'V1'  or sessionBean.kubo_score == 'V2' or sessionBean.kubo_score == 'V3'}"-->
+
+	<div class="plecaForm no-padding-style">
+        			<h3>Compártenos 2 referencias.</h3>
+        			<p class="light">
+        				Selecciona dos personas que nos den muy buenos 
+comentarios de ti, recuerda ingresar bien sus datos.
+</p>
+     	<span class="triangle"><i class="fa fa-caret-down"></i></span>
+        		</div>
+       <!-- /h:panelGroup -->
+	<h:form styleClass="areaL" id="frmMoreInfo" prependId="false" >
+	
+<!-- 
+	<div id="contador" style="position: fixed; top: 0px; left: 200px; background-color: #e7e706;"/> 
+-->
+	
+		<div style="width: 100%; background-color: #FFFFFF; padding-top: 0px !important; margin-top: 0px !important;" >	
+			<div id="general"  style="padding-top: 0px !important; margin-top: 0px !important;">
+				<div class="backStyle"  style="padding-top: 0px !important; margin-top: 0px !important;">							
+					<div id="contFrmPre"  style="padding-top: 0px !important; margin-top: 0px !important;" >
+						<!-- ui:include src = "referencias/titulo.xhtml"/-->
+					
+						<!-- or moreInfo.kuboscore == 'V2' -->
+						
+						<h:panelGroup rendered="#{moreInfo.kuboscore == 'E5' or moreInfo.kuboscore == 'F1' or moreInfo.kuboscore == 'G1' or moreInfo.kuboscore == 'V1'  or moreInfo.kuboscore == 'V2' or moreInfo.kuboscore == 'V3'}">
+							
+							<ui:include src = "referencias/referencia_1.xhtml"/>
+							<ui:include src = "referencias/referencia_2.xhtml"/>
+							<script>
+	
+							   
+								setTimeout(function(){
+									$(".btnMoreInfo").css("opacity", "1");
+						   		},700);
+							</script>
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{moreInfo.kuboscore != 'E5' and moreInfo.kuboscore != 'F1' and moreInfo.kuboscore != 'G1' and moreInfo.kuboscore != 'V1' and moreInfo.kuboscore != 'V2'  and moreInfo.kuboscore != 'V3'}">
+							
+							
+							<!-- div class="personaMoral_beneficiarios" style="margin:100px 0 0;">
+									<h:graphicImage style="text-align:center"  library="img/nuevoRegistro" name= "ajax-loader.gif"  /> 
+									</div-->
+							
+								
+	       								
+        							
+							<input  type="text" class="validatorClass" style="opacity:0; height:1px !important;" id="campoValidacionFieldCount"/>
+							
+							<script>
+						
+			
+								$("#campoValidacionFieldCount").val("123456789");
+							   
+								setTimeout(function(){
+									$(".btnMoreInfo").css("opacity", "0");
+									$("#campoValidacionFieldCount").blur();
+						   		},700);
+								
+								setTimeout(function(){
+									
+									$(".btnMoreInfo").trigger("click");
+						   		},1000);
+								
+								</script>
+						</h:panelGroup>
+						
+						<!-- 
+						<ui:include src = "referencias/referencia_3.xhtml"/>
+						<ui:include src = "referencias/referencia_4.xhtml"/>
+			 			-->
+								
+						<div class="dvContent" style="margin-left: auto; margin-right: auto;">
+							<div style="opacity:0" class="solicitud callAction btnNaranja mapOff hideIFE btnMoreInfo">
+									Continuar
+							</div>
+						</div>
+						
+						 <ui:include src = "../../templates/datos_protegidos.xhtml" />
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- pixelprogramatic paso 5, 11 marzo 2015 -->
+		<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+			<script>
+			  	 crear_indices();
+			     blur_indices();
+			     focus_indices();
+	               	 $(document).ready(function(){
+	                     $(".moreInfo").trigger("click");
+	                 });
+	            </script>
+					<a class="moreInfo" href="#" onclick="ga('send', { 'hitType': 'pageview', 'page': '/registro/paso5.html', 'title': 'Paso 5' });"> </a>
+             				<img border="0" src="https://r.turn.com/r/beacon?b2=D9w1c89qQldVgfwT-H7Fgx-8ELpH58mu3PhE-xuQV48gp1wj57Plw7FfebHAu3QLKPV3Kts1K9Lwdrm-yewajw&amp;cid="/>
+
+             </h:panelGroup>  
+             
+             <h:inputHidden id="prospectus_id_in_ex"  value="#{sessionBean.prospectus_id}"/>
+             
+</h:form>
+</ui:composition>

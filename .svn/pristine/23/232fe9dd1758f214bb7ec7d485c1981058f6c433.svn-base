@@ -1,0 +1,58 @@
+console.log("mx.com.kubo.acreditado/registro/tipo-credencial.js");
+
+function listener_tipo_credencial(xhr, status, args)
+{
+	var IFE = 1;
+	var INE = 2;
+	
+	var tipo_credencial = args.tipo_credencial;
+	
+	console.log("listener_tipo_credencial(): " + tipo_credencial);
+	
+	switch(tipo_credencial)
+	{
+		case IFE:
+			$(".ine").slideUp();
+			$(".ife").slideDown();
+		break;
+		
+		case INE:
+			$(".ife").slideUp();
+			$(".ine").slideDown();
+		break;
+	}
+	conjuntoCombos();
+}
+
+function init_tipo_credencial()
+{	
+	console.log("init_tipo_credencial(): INIT");
+	
+	$.each($("#ine_ife").find("input:radio"), function(index, value)
+	{
+		var IFE = "1";
+		var INE = "2";
+		var tipo_credencial = $(this).val();
+		var radio_selected  = $(this).is(":checked");
+		
+		console.log(tipo_credencial + " " + radio_selected);
+		
+		if(radio_selected)
+		{												
+			switch(tipo_credencial)
+			{
+				case IFE:					
+					$(".ife").show();
+					console.log("IFE");
+				break;
+				
+				case INE:
+					$(".ine").show();
+					console.log("INE");
+				break;
+			}						
+		}
+	});
+	
+	console.log("init_tipo_credencial(): OK");
+}

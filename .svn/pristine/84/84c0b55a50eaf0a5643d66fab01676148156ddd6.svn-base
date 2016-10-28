@@ -1,0 +1,47 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:f  = "http://java.sun.com/jsf/core">
+			     	
+	<h:panelGroup id = "blocked-person-ENABLED" rendered = "#{preaprobacion.blocked_person_ENABLED}">
+		<div style = "height: auto; overflow: hidden;">
+			
+			<div class = "msgpreaprobadoDesc resultado_buro">
+				 <p>
+					De conformidad con el artículo 124 de la Ley de Crédito y Ahorro Popular, 
+					por medio del  presente se  hace de su conocimiento que con fecha
+					 
+					<h:outputText value = "#{preaprobacion.blocked.person.blocked_date}" style = "font-weight:bold;">					
+						<f:convertDateTime pattern = "d 'de' MMMM 'de' yyyy" locale = "es_MX"/>
+					</h:outputText>
+					  
+					, esta Sociedad Financiera Popular recibió el oficio numero <strong>#{preaprobacion.blocked.person.mx_oficio}</strong> 
+					con el número de expediente <strong>#{preaprobacion.blocked.person.mx_expediente}</strong> suscrito por la Comisión Nacional Bancaria y de Valores, 
+					mediante el cual, en el ejercicio de sus atribuciones, remite el oficio <strong>#{preaprobacion.blocked.person.mx_oficio}</strong> 
+					suscrito por la Unidad de Inteligencia Financiera, dependiente de la Secretaria de Hacienda y Crédito Público, en el cual se notifica que ha sido introducido al Listado de Personas Bloqueadas.
+					 
+					En este sentido Ku-bo Financiero, S.A. de C.V., S.F.P. se encuentra imposibilitado para iniciar cualquier acto, 
+					operación o servicio con usted o cualquier tercero que actúe en su nombre y representación.
+					 
+					En atención a lo anterior, en términos de la 75ª disposición de las Disposiciones de Carácter General a que se refiere el artículo 124 de la Ley de Crédito y Ahorro Popular, 
+					dentro de los 10 días hábiles siguientes a la día de la recepción del presente comunicado, 
+					usted podrá acudir ante el Titular de la Unidad de Inteligencia Financiera para efectos de ejercer sus derechos, 
+					de conformidad con la 76ª de las Disposiciones referidas anteriormente.
+					 
+					Sirva la presente como notificación para todos los efectos legales a que hay lugar.
+					 
+					Atentamente,
+					 
+					Ku-bo Financiero, S.A. de C.V., S.F.P
+				 </p>				
+				
+				<div class="necesitas_ayuda">
+					<h5>¿Necesitas ayuda?</h5>
+					<a class="tel" href="tel:6269-0024" >(55)6260 00 24 </a>
+					<a class="mail" href="mailto:soporte@kubofinanciero.com">soporte@kubofinanciero.com </a>				
+				</div>							
+			</div>		
+		</div>
+		
+	</h:panelGroup>				 
+</ui:composition>	

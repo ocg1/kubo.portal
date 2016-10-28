@@ -1,0 +1,55 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				  					
+	<h:panelGroup id = "pnlSureCont" style="display:none" >		  					  					  			
+		<h:panelGroup rendered = "#{creditHistoryController.data.displayAction}">																				
+			<div class="datos_historial_confirmar" >
+				<h2>#{creditHistoryController.data.person.first_name}:</h2>
+				
+				<h6 class="tus_datos_correctos">¿Tus datos son correctos?</h6>
+					<ul>
+						<li>Sexo: <strong>#{creditHistoryController.data.person.gender_id==1?'Masculino':'Femenino'}</strong></li> 
+						<li>Fecha de nacimiento: <strong>#{creditHistoryController.data.birthday}</strong></li>
+						<li>Edad: <strong>#{creditHistoryController.data.edad} años</strong></li>
+						<li>RFC: <strong>#{creditHistoryController.data.person.mx_rfc}</strong></li>
+						<li>CURP: <strong>#{creditHistoryController.data.person.mx_curp}</strong></li>												
+						<li>Domicilio: <strong>#{creditHistoryController.data.addressStr}</strong></li>																				
+						<li>Teléfono celular: <strong>#{creditHistoryController.data.phone.phone_number}</strong></li>
+					</ul>
+							
+					<div style="display: none;">
+						<p><strong>#{creditHistoryController.data.legendCard}</strong></p>						
+						<p><strong>#{creditHistoryController.data.legendCar}</strong></p>								
+						<p><strong>#{creditHistoryController.data.legendMortgage}</strong></p>
+					</div>
+							
+					<div style="display:none;">
+						<p>Nota adicional: <strong>#{creditHistoryController.nota_del_coach}</strong></p>
+					</div>
+											
+					<div class="botones">								
+						<div id="wrongData" class=" callAction btnGris" onclick="dataReview();">Regresar</div>
+						
+						<div id = "goodData" onclick = "mis_datos_son_correctos();" class = "callAction btnNaranja">Obtén tu pre-aprobación </div>
+																			
+						<ui:include src = "../../../templates/datos_protegidos.xhtml" />															
+				</div>						
+			</div>						
+		</h:panelGroup>
+			
+		<h:panelGroup rendered="#{!creditHistoryController.data.displayAction}">
+			<div style="width: 90%; margin-left: auto; margin-right: auto; margin-top: 10px;position: relative;">
+				<h:outputText escape="false" value="#{creditHistoryController.data.messageInit}" /> 
+			</div>
+			
+			<div class="dvContent" style="margin-top: 25px; margin-left: auto; margin-right: auto; font-size: 1.09em;">
+				<div style="display:none;" class="buttonPR" onclick="dataReview();">
+					Revisar
+				</div>
+			</div>
+		</h:panelGroup>					
+	</h:panelGroup>									 
+</ui:composition>				 

@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:panelGroup id="warningConfMail">
+		<div>							
+			<div style="color: #FF0000; font-size: 0.9em;" >
+				<h:outputText escape="false" value="#{addNaturalPerson.warningConfMail}"/>
+			</div>						
+		</div>					
+	</h:panelGroup>
+			
+	<div class = "confirmar">
+		<p:inputText id = "confemail" data-enhance = "false" 
+					 onfocus = "$(this).removeClass('requiredClass');" 
+					 value   = "#{addNaturalPerson.confMail}" 
+					 styleClass = "elementStl validatorClass text-input" >
+			<p:ajax event      = "blur" 
+					listener   = "#{addNaturalPerson.listener_email_confirmar}"
+					update      = "warningConfMail"/>
+		</p:inputText>
+						
+		<p:watermark for = "confemail" value = "Confirma tu correo electrónico" /> 
+	</div>				
+</ui:composition>				

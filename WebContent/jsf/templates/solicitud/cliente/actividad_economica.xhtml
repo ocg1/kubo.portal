@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "panel-actividad-economica" rendered = "#{summaryRequest.prospecto.area == 'L'}" >
+		<div class = "clear details4 left">
+			<p style = "float:left"><strong>Actividad económica</strong></p>
+			
+			<ui:include src = "tooltip/actividad_economica.xhtml"/>
+			
+			<ui:include src = "actividad_economica/domicilio/bitacora-change-control.xhtml"/>	
+			<ui:include src = "actividad_economica/domicilio/alarma-coincidencia.xhtml"/>	
+			<ui:include src = "actividad_economica/domicilio/alarma-coincidencia-nivel-2.xhtml"/>							
+			<ui:include src = "actividad_economica/domicilio/address_TOKEN.xhtml"/>
+			<ui:include src = "actividad_economica/domicilio/lista_coincidencias.xhtml"/>
+			<ui:include src = "actividad_economica/domicilio/editor-docimicilio.xhtml"/>	
+			<ui:include src = "actividad_economica/domicilio/remote-command.xhtml"/>				
+		</div>
+	</h:panelGroup>				
+</ui:composition>				

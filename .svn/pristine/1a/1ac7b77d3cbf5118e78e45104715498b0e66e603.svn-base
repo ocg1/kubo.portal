@@ -1,0 +1,101 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+			<h:panelGroup  rendered="true" id="pnlContCredVig" >
+				<div id="dvContCredVig" class="detailsControlTable clssControlBuro clssTablesBuro" style="margin-top: 15px;font-size: 0.9em; ">
+					<div class="clssInverView centerPosition">
+						
+						<h:panelGroup id="sectionCredVig">
+							
+							<p style="width: 70%; float: left;"><strong class="orange">Créditos vigentes</strong></p>	
+							
+							<br style="clear:both;" />
+							
+							<div class="tabS" style="font-size: 1.0em; margin-top: 20px;" >
+								
+								<table class="fixme">
+								 
+									<h:outputText escape="false"   value="#{chartBackBean.tableVigData}" ></h:outputText>
+								 
+								</table>
+								
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+			
+			
+			<h:panelGroup  rendered="true" id="pnlContCredVigCom" >
+				<div id="dvContCredVigCom" class="detailsControlTable clssControlBuro clssTablesBuro" style="margin-top: 15px;font-size: 0.9em; ">
+					<div class="clssInverView centerPosition">
+						
+						<h:panelGroup id="sectionCredVigCom">
+							
+							<p style="width: 70%; float: left;"><strong class="orange">Créditos vigentes comunicaciones</strong></p>	
+							
+							<br style="clear:both;" />
+							
+							<div class="tabS" style="font-size: 1.0em; margin-top: 20px;" >
+								
+								<table class="fixmeCom">
+								 
+									<h:outputText escape="false"   value="#{chartBackBean.tableVigDataCom}" ></h:outputText>
+								 
+								</table>
+								
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+			
+			
+			<h:panelGroup  rendered="true" id="pnlContCredCerrUlt6M" >
+				<div id="dvContCredCerrUlt6M" class="detailsControlTable clssControlBuro clssTablesBuro" style="margin-top: 15px;font-size: 0.9em; ">
+					<div class="clssInverView centerPosition">
+						<h:panelGroup id="sectionCredCerrUlt6M">
+							
+							<p style="width: 70%; float: left;"><strong class="orange">Créditos cerrados en los últimos 6 meses</strong></p>	
+							
+							<br style="clear:both;" />
+							
+							<div class="tabS" style="font-size: 1.0em; margin-top: 20px;" >
+								
+								<table class="tableCredClose">
+								
+									<h:outputText escape="false"   value="#{chartBackBean.tableCredCerr}" ></h:outputText>
+									
+								</table>
+								
+							</div>
+							
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+			
+			<h:panelGroup  rendered="true" id="pnlContCredCerrMas6M" >
+				<div id="dvContCredCerrMas6M" class="detailsControlTable clssControlBuro clssTablesBuro" style="margin-top: 15px;font-size: 0.9em; ">
+					<div class="clssInverView centerPosition">
+						<h:panelGroup id="sectionCredCerrMas6M">
+							
+							<p style="width: 70%; float: left;"><strong class="orange">Créditos cerrados hace más de 6 meses</strong></p>	
+							
+							<br style="clear:both;" />
+							
+							<div class="tabS" style="font-size: 1.0em; margin-top: 20px;" >
+							
+								<table class="tableCredCloseM6">
+								
+									<h:outputText escape="false"   value="#{chartBackBean.tableCredCerr_M_6}" ></h:outputText>
+									
+								</table>
+								
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>				
+</ui:composition>				

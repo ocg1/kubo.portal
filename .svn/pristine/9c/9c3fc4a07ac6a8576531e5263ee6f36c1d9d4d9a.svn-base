@@ -1,0 +1,117 @@
+
+
+
+
+
+
+
+
+.alertify-show,
+.alertify-log {
+	-webkit-transition: .4s;-moz-transition: .4s;-o-transition: .4s;transition: .4s;
+	-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);transform:scale(1);  opacity:1;
+}
+.alertify-hide {
+	-webkit-transition: .4s;-moz-transition: .4s;-o-transition: .4s;transition: .4s;
+-webkit-transform:scale(0);-moz-transform:scale(0);-o-transform:scale(0);transform:scale(0); opacity:0;
+}
+.alertify-cover {
+	position: fixed; 
+	z-index: 999999999;
+	top: 0; right: 0; bottom: 0; left: 0;
+	background:rgba(255, 255, 255, 0.5)
+}
+.alertify {
+	position: fixed; z-index: 999999999;
+	top: 200px; left: 60%;
+	width: 350px;
+	margin-left: -275px;
+}
+	.alertify-hidden {
+		top: 200px;
+		visibility: hidden;
+		
+-webkit-transform:scale(0);-moz-transform:scale(0);-o-transform:scale(0);transform:scale(0); opacity:0;
+	}
+.alertify-logs {
+	position: fixed;
+	z-index: 9999999999999;
+	bottom: 10px;
+	right: 10px;
+	width: 300px;
+}
+	.alertify-log {
+		display: block;
+		
+		position: relative;
+		right: -300px;
+	}
+	.alertify-log-show {
+		right: 0;
+	}
+	.alertify-dialog {
+		padding: 20px;
+	}
+	
+	.alertify-dialog.telefono {
+		padding: 20px 20px 90px 20px;
+	}
+		.alertify-resetFocus {
+			border: 0;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+		}
+		.alertify-inner {
+			text-align: center;
+		}
+		.alertify-text {
+			margin-bottom: 15px;
+			width: 100%;
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			        box-sizing: border-box;
+			font-size: 100%;
+		}
+		.alertify-buttons {
+    overflow: hidden;
+		
+    margin: 0px 0 0 0;
+}
+			.alertify-button {
+				/* line-height and font-size for input button */
+				line-height: 1.5;
+				font-size: 100%;
+				display: inline-block;
+				cursor: pointer;
+				margin-left: 5px;
+			}
+@media only screen and (max-width: 767px) {
+
+.alertify {
+	position:absolute;
+	top:10%;
+}
+}
+@media only screen and (max-width: 680px) {
+	.alertify,
+	.alertify-logs {
+		width: 90%;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+	}
+	.alertify {
+		left: 5%;
+		margin: 0;
+	}
+}
+
+
+
+
+

@@ -1,0 +1,182 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup>		
+
+		<div class="close_negotiation" onclick="closeNegotiation();">
+			<img src="../resources/img/close.png"/>
+		</div>
+		<div id="thisSimNeg" style="min-height: 370px; margin-top: 25px; width: 285px; overflow: hidden; font-size: 0.75em; margin-left: auto; margin-right: auto; position: relative; " >
+			
+			<h:inputHidden id="montoMax" value="#{simulator.montoMax}" ></h:inputHidden>
+			<h:inputHidden id="montoMin" value="#{simulator.montoMin}" ></h:inputHidden>
+			<h:inputHidden id="termMax"  value="#{simulator.termMax}" ></h:inputHidden>
+			
+			<div class="sim_cont_back" style="width: 230px; min-height: 270px;">
+				<div class="sim_cont" style="padding-top: 30px; padding-left: 0px; width: 205px; margin-right: auto; margin-left: auto; overflow: hidden; ">
+
+					<h3>
+						Condiciones del préstamo
+					</h3>
+					<table id="sim_table_neg" style="margin-left: 0px; width: 200px !important;" >
+						<tr>
+							<td class="sim_desc">Monto</td>
+						</tr>
+						<tr>
+							<!-- <td class="sim_value">$#{simulator.ammountStr}</td> -->
+							 <td class="sim_value">
+							 	<h:panelGroup id = "pnlAmmountNeg">
+								 	<h:inputText id         = "ammountNeg"  
+								 				 value      = "#{summaryRequest.montoNegotiation}" 
+								 				 onkeyup    = "format(this,'simulator');" 
+									 			 styleClass = "elementAddres1"
+								 				  >
+								 		<!-- <p:ajax event="blur" listener="#{summaryRequest.realizaSimulacion}" update="resSimRegNeg catSimRegNeg" onstart="return simOnStartVal();" oncomplete="return showRes();"  /> -->
+								 		<p:ajax event      = "blur" 
+								 				onstart    = "return simOnStartVal();"  
+								 				oncomplete = "return showRes();" 
+								 				listener   = "#{summaryRequest.modificaCondiciones}"  
+								 				update     = "resSimRegNeg catSimRegNeg pnlIndicadoresControl btnCondiciones indice_pago_deudas indice_pago_deudas_mesa_control" />
+								 	</h:inputText>
+							 	</h:panelGroup>
+							 </td>
+						</tr>
+						<tr  style="margin-bottom: 0px !important; padding-bottom: 0px !important;">
+							<td class="sim_desc" style="margin-bottom: 0px; padding-bottom: 0px;" >Plazo</td>
+						</tr>
+						<tr  style="margin-top: 0px !important; padding-top: 0px !important;" >
+							<td class="sim_value" style="margin-top: 0px !important; padding-top: 0px !important;">
+								<!-- <h:inputText id="rfc" styleClass="elementAddres1" style="width: 130px !important;" value="#{simulator.numCuota}"></h:inputText> -->
+								<!-- #{simulator.numCuota} pagos #{simulator.frequencyStr} -->
+								
+								 <table class="termNeg">
+								   	<tr>
+	                            		<td>
+	                            			<h:inputText id         = "termNeg" 
+	                            						 value      = "#{summaryRequest.negotiation != null ? summaryRequest.negotiation.term_id : ''}"
+	                            						 styleClass = "elementAddresMin" 
+	                            						
+	                            						 maxlength  = "3"  
+	                            						 required   = "true">
+	                            						 
+												<p:ajax event       = "change" 
+														 onstart    = "return simOnStartVal();" 
+														 oncomplete = "return showRes();"  
+														 listener   = "#{summaryRequest.modificaCondiciones}" 
+														 update     = "resSimRegNeg catSimRegNeg pnlIndicadoresControl btnCondiciones indice_pago_deudas indice_pago_deudas_mesa_control"/>  
+											</h:inputText>
+	                            		</td>
+
+	                            		<td>
+	                            			<div class="styled-select-Month" >
+	                            			<h:selectOneMenu id         = "frecuProyectNeg" 
+	                            							 value      = "#{summaryRequest.negotiation.frequency_id}"  
+	                            							
+	                            							 styleClass = "elementStlSelMonth"  >
+												<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "" />
+												<f:selectItems  value     = "#{simulator.listFrequency}" 
+																var       = "frequency" 
+																itemLabel = "#{frequency.name}" 
+																itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+												<p:ajax event      = "change" 
+														onstart    = "return simOnStartVal();" 
+														oncomplete = "return showRes();" 
+														listener   = "#{summaryRequest.modificaCondiciones}" 
+														update     = "resSimRegNeg catSimRegNeg pnlIndicadoresControl btnCondiciones indice_pago_deudas indice_pago_deudas_mesa_control" />  
+											</h:selectOneMenu>	
+											</div>
+	                            		</td>
+	                            	</tr>
+							    </table>
+								
+							</td>
+						</tr>
+						
+						<tr>
+							<td>
+								<h:panelGroup id="resSimRegNeg">
+								<div id="loaderSimNeg" style="display: none;" >
+									<p:graphicImage url="../resources/img/ajax-loader.gif" width="24px" height="24px"></p:graphicImage>
+								</div>
+								<div id="resultadosSimNeg">
+									
+									<table>
+										<tr>
+											<td >
+												<table style="margin-left: 3px;">
+													<tr>
+														<td class="sim_desc">
+															Pagos de
+														</td>
+														<td class="sim_value couta">
+															<h:outputText value="#{summaryRequest.negotiation.payment}" rendered="#{summaryRequest.negotiation.payment!=null and summaryRequest.negotiation.payment>0 }">
+																<f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="0" minFractionDigits="0" groupingUsed="true" locale="es_MX"/>
+															</h:outputText>
+															<h:outputText value="No disponible" rendered="#{summaryRequest.negotiation.payment==null || summaryRequest.negotiation.payment==0 }">
+																
+															</h:outputText>
+															
+														</td>
+													</tr>
+												</table> 
+											</td>
+										</tr>
+										<tr>
+											
+										</tr>
+										<tr>
+											<td class="sim_desc">
+												<table style="margin-left: 3px;">
+													<tr>
+														<td style="width: 100px; text-align: left;">
+															Total a pagar
+														</td>
+														<td class="sim_value total">
+															<h:outputText value="#{summaryRequest.negotiation.total_payment}">
+																<f:convertNumber currencySymbol="$" type="currency" maxFractionDigits="0" minFractionDigits="0" groupingUsed="true" locale="es_MX"/>
+															</h:outputText>
+														</td>
+													</tr>
+												</table> 
+											</td>
+										</tr>
+									</table>
+									
+								</div>
+								</h:panelGroup>
+							</td>
+						</tr>
+						<tr>
+							<td  class="sim_button" id="againSim"  >
+								<h:panelGroup id="btnCondiciones">
+									<h:panelGroup rendered="#{summaryRequest.dispBotCondiciones}" >
+										<p:commandLink 
+											id="saveNegotiation"
+											onstart="return confirmCondiciones002();" 
+											value="Modificar condiciones"
+											styleClass="callActionMedium btnVerde"
+											>
+										</p:commandLink>
+									</h:panelGroup>
+								</h:panelGroup>
+							</td>
+						</tr>
+							
+					</table>
+				</div>
+			</div>
+			
+			<div class="labelsStl">
+			 <h:panelGroup id="catSimRegNeg"> 
+      			<span><b>Costo Anual Total (CAT) #{simulator.catStr}% sin IVA.</b></span> Tasa fija. Para fines informativos y de comparación. 
+      			Fecha de cálculo: #{simulator.fechaInicio}.
+      			</h:panelGroup>
+      		</div>
+		 
+		</div>
+	
+	</h:panelGroup>					
+</ui:composition>				

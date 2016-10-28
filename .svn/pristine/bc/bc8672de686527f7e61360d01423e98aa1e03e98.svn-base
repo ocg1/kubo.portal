@@ -1,0 +1,60 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+										
+	<ui:repeat var       = "credit" 
+			   varStatus = "status"
+	    	   value     = "#{estadoCuenta.creditlst}">
+		    
+		    <br/>
+			
+			<div class = "contEdoCuentafieldset">				
+				<table>
+					<tr>
+						<td colspan="2">
+							<div class="numero_estatus">
+								<div class = "numero_credito"> 
+									Número de crédito: <span>#{credit.numCredito}</span> 
+								</div>
+								
+								<ui:include src = "creditos_reestructurar_CMDLNK.xhtml"/>	
+								
+								<div class = "estatus">
+									<ui:include src = "creditos_estatus.xhtml"/>
+								</div>		
+							</div>
+						</td>						
+					</tr>
+					
+					<tr><td colspan = "2"/></tr>
+					
+					<tr>
+						<td colspan = "2">							
+							<ui:include src = "creditos_tablas_detalle.xhtml"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan = "2">
+							<ui:include src = "creditos_asignacion_gestion_cobranza.xhtml"/>								
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan = "2">							
+							<ui:include src = "creditos_referencia_pago.xhtml"/>								
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan = "2">
+							<ui:include src = "creditos_pagos.xhtml"/>								
+						</td>
+					</tr>
+				</table>
+			</div>
+		</ui:repeat>
+	
+</ui:composition>	

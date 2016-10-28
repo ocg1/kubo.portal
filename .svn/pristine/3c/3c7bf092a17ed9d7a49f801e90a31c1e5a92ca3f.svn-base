@@ -1,0 +1,57 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.inversionista/registro/cuenta.js" />
+	
+	<script>
+		$(document).ready(function() 
+		{				
+			$(".validatorClass").bind("change blur", function(event) 
+			{
+				fieldCount();
+				
+				event.preventDefault();
+			});
+			
+			init_alta_inversionista();	
+		});
+	</script>
+
+
+	<h:form id = "frmCuentaClabe" prependId = "false" styleClass="areaL" >
+	
+
+		<ui:include src = "paso_7_cuenta/requiered-info-menu.xhtml" />	
+
+
+		<h:panelGroup id = "pnlContCuenta" rendered = "#{!addInvestorSafi.errorDisp}">
+			<h:panelGroup rendered = "#{!addInvestorSafi.successFull}" >		
+				<div id = "dvcntClabe">
+					<div id = "general" style = "margin-top: 0px !important; padding-top: 0px !important;">			
+						<div class = "backStyle" style = "margin-top: 0px !important; padding-top: 0px !important;">			
+														
+							<ui:include src = "paso_7_cuenta/titulo.xhtml" />
+							<ui:include src = "paso_7_cuenta/datos.xhtml" />
+													
+							<script>
+								resetar_indices();
+							</script>					
+						</div>
+					</div>
+						
+					<ui:include src = "paso_7_cuenta/siguiente.xhtml" />	
+						
+				</div>
+				
+				<div id = "dvcntSuccess" style = "overflow: none !important;"/>
+				
+			</h:panelGroup>
+			
+			<ui:include src = "paso_7_cuenta/propuesta.xhtml" />	
+			
+		</h:panelGroup>	
+	</h:form>
+</ui:composition>

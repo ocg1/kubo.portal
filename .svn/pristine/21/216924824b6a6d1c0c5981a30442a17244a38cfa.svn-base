@@ -1,0 +1,83 @@
+<ui:component xmlns    = "http://www.w3.org/1999/xhtml"
+			  xmlns:h  = "http://java.sun.com/jsf/html"
+			  xmlns:ui = "http://java.sun.com/jsf/facelets"
+			  xmlns:f  = "http://java.sun.com/jsf/core"
+			  xmlns:p  = "http://primefaces.org/ui">
+			  
+	<h:panelGroup rendered = "#{sessionBean.role_id != 15}">			  
+	<div class="respMesa">
+			<div class="contenedor_buscador">
+				<h2  class="expand_heading" style="cursor: pointer; width:500px;">
+					<a href="#">Búsqueda de solicitud</a>
+					<span class = "collapse #{searchSummaySession.searchSummary !=null ? '' : 'change'}" >Collapse/Expand</span>
+				</h2>											 
+				
+				<div class = "toggle_container" 
+					 style = "width:auto;
+					 	      display: #{searchSummaySession.searchSummary !=null ? 'none;':'block;'}">
+					<div class = "box">
+						<h:form id = "frm_search_request" prependId = "false" >
+						
+							
+									<h:selectOneRadio id        = "radio-type-search" 
+												     onchange   = "Busqueda.changelabelSearch(this,'inp_search_input','text-search-type',inpAutocomplete);" 
+												     value      = "#{estadoCuenta.radioTypeSearch}"  
+												     styleClass = "radio elementStlLbl">
+									    <f:selectItem itemValue = "1" itemLabel = "Por nombre"/>
+									    <f:selectItem itemValue = "2" itemLabel = "Por número de prospecto"/>
+									    <!--  <f:selectItem itemValue="3" itemLabel="Por email"/>  -->	
+									    <f:ajax event="click"/>				    
+									</h:selectOneRadio>
+						
+					
+							
+							<div class="dvContent">					
+								
+									<h:outputLabel id="text-search-type"  style="float:left; margin:0 0 0 10px;" value="Buscar por nombre completo"/>		
+					
+								
+								<p style = "padding: 0pt; margin: 0pt;"/>
+									<div class="dvElementAddres1" style="width: 480px" >
+						
+											<p:autoComplete id             = "inp_search" 
+											                widgetVar      = "inpAutocomplete"  
+															value          = "#{estadoCuenta.search}"
+															completeMethod = "#{estadoCuenta.completeinfoclient}"
+															 var           = "c" 
+															 itemLabel     = "#{c.full_name}" 
+															 itemValue     = "#{c}"
+															 converter     = "viewFullNameConverter">												
+												<p:ajax event = "blur" />
+											</p:autoComplete>	
+											
+											<p:watermark id="water_id_search" for="inp_search"  value="Escribe el nombre"/>	
+							
+																
+										<div style = "float: left;">																									
+											<p:commandLink id = "link_search" style = "text-decoration: none;float:left;"										
+												   actionListener = "#{estadoCuenta.busca_prospectus}" 
+												   update         = ":pnlContEdoCuenta :pnlCancel"
+												   onstart		  = "displayMessageProcessing('msgprocessing',false);"
+												   oncomplete	  =	"Busqueda.completSearch(xhr, status, args);">						
+													<div class = "buttonPR" style = "margin:5px 0;width: 100px;">	
+														<h:outputText value = "Buscar" />					
+													</div>
+												</p:commandLink>
+										</div>																
+									</div>
+								</div>
+					
+					<div class="dvContent">					
+						<div class="dvLabel" style="width: 485px !important; margin-right: 0px; ">	
+							<h:outputLabel id="error_msg" style="color: red;float: left;" styleClass="labelsStl" value=""/>					
+						</div>
+					</div>
+					</h:form>
+				</div>
+				</div>
+			</div>
+			<br/>
+			<br/>
+		</div>	
+		</h:panelGroup>		  
+</ui:component>			  

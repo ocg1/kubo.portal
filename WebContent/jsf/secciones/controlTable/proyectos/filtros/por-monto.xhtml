@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+
+	<h:panelGroup rendered="true" >
+		<div class="dvContent">
+			<h2  class="expand_heading">
+				<a  href="#">#{msg.ll_filter_ammount}</a>
+				<span class="collapse change" >Collapse/Expand</span>
+			</h2>		
+												 
+			<div class="toggle_container">
+				<div class="box">
+					<div class="dvLabel" style="width: 70px ! important;">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.ll_filter_from}"></h:outputLabel>
+					</div>
+					
+					<input id="inputFrom" type="text" maxlength="6" name="inputFromBtn" style="width: 100px !important;" class="elementStl"  onkeypress="return esInteger(event)"/>
+				</div>
+				
+				<div class="dvLabel" style="width: 70px ! important;">
+					<h:outputLabel id="inputToLabel" styleClass="labelsStl" value="#{msg.ll_filter_to}"></h:outputLabel>
+				</div>
+				
+				<div  class="dvElementLength">
+					<input type="text" maxlength="6" name="inputToBtn"  id="inputTo" style="width: 100px !important;" class="elementStl" onkeypress="return esInteger(event)"/>
+				</div>
+				
+				<div class="buttonPR" style=" width: 80px; ">
+					<p:commandLink style="margin-left:5px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();" update=":pnlScriptStatus" />
+				</div>
+				
+				<div id="labelForFundedFilter">
+					<h:outputLabel id="lblForFundedFilter" value="#{listaCreditos.labelOnFilteringByAmmount}"></h:outputLabel>
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+</ui:composition>				

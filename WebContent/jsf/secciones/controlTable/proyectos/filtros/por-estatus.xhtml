@@ -1,0 +1,71 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<h:panelGroup id = "filter_by_status" rendered = "#{sessionBean.area=='M'}" >	
+		<div class = "dvContent">
+			<div style = "margin-top: 0px !important;">
+				<h2  class="expand_heading">
+					<a  href="#">Filtro por estatus</a>
+					<span class="collapse change" >Collapse/Expand</span>
+				</h2>
+															 
+				<div class = "toggle_container" style = "width: 233px;">
+					<div class = "box">
+						<table style = "border-spacing: 0; width: auto;">														
+							<tbody align="left">
+								<!-- <tr>
+									<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_creado"  /></td>
+									<td style="padding:0 7px 5px 0;"><h:graphicImage width="20" height="20" title="En construcción" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/construction.png" /></td>
+									<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(0)}%</p:outputPanel></td>
+									<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_nopublic" /></td>
+									<td style="padding:0 7px 5px 0;"><h:graphicImage width="25" height="25" title="Verificaciones" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/search02.png" /></td>
+									<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(1)}%</p:outputPanel></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_fond" /></td>
+									<td><h:graphicImage width="20" height="20" title="Fondeado" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/Bullet.png" /></td>
+									<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(3)}%</p:outputPanel></td>
+									<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_cancel" /></td>
+									<td><h:graphicImage width="20" height="20" title="Cancelado" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/error.png" /></td>
+									<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(4)}%</p:outputPanel></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_public" /></td>
+									<td><h:graphicImage width="20" height="20" title="Publicado" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/pig.png" /></td>
+									<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(2)}%</p:outputPanel></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr> -->
+								
+								<ui:repeat var="status" varStatus="indexVal" value="#{listaCreditos.lstStatus}">
+									
+									<h:panelGroup rendered="#{(indexVal.index%2)==0}" >
+										<h:outputText escape="false" value="#{listaCreditos.tr}" ></h:outputText>
+									</h:panelGroup>
+									
+										<td><input type="checkbox" class="ui-checkbox-filter statusclss" name="checkbox-filter" id="status_#{status.statusPK.status_id}" /></td>
+										<td style="padding:0 7px 5px 0;"><h:graphicImage width="20" height="20" title="#{status.name}" style="margin:0;padding:0;background:none;border:none;" url="../resources#{status.url_img}" /></td>
+										<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(status.statusPK.status_id)}%</p:outputPanel></td>
+										
+									<h:panelGroup rendered="#{(indexVal.index%2)==1}" >
+										<h:outputText escape="false" value="#{listaCreditos.tr1}" ></h:outputText>
+									</h:panelGroup>
+								
+								</ui:repeat>
+								
+							</tbody>
+						</table>
+						
+						<div class="buttonPR" style=" width: 85px;">
+							<p:commandLink style="margin-left:3px; text-decoration: none;" onclick="buildQueryFilter();"  value="#{msg.ll_link_filter}" update=":pnlScriptStatus"  />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+</ui:composition>				

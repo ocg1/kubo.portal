@@ -1,0 +1,27 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="field">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="¿Sabes si alguno de tus familiares ha abierto una cuenta en kubo.financiero?*"/>
+		</div>
+		
+	
+		<fieldset class="conjuntoChecks">
+				   <div class="btnN dosBtnChecks" data-opcion="S">
+			        	<span>	<i class="fa fa-check"></i> Sí</span>
+			       </div>
+			       <div class="btnN dosBtnChecks btnR" data-opcion="N">
+			        	<span>	<i class="fa fa-times"></i> No</span>
+			       </div>
+			<h:selectOneRadio id="famCuenta" value="#{addPldDocument.prevencionld.has_previous_account}" styleClass="elementStlLbl validatorClass elementStlRd hs_class ocultaSelect">
+			    <f:selectItem itemValue="S" itemLabel="Si"/>
+			    <f:selectItem itemValue="N" itemLabel="No"/>
+			    <p:ajax event="click" oncomplete="fieldCount();" listener="#{addPldDocument.savePrevencionLD}" />
+			</h:selectOneRadio>
+			</fieldset>
+		
+	</div>				
+</ui:composition>				

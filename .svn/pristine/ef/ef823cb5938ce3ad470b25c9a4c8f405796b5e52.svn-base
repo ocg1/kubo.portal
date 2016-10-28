@@ -1,0 +1,56 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<div style = "display: none;">				
+		<h:inputText id = "init-access-CONFIG" immediate = "true">
+			<p:ajax event = "click"
+				   	oncomplete = "IncomesExpenses.init_access_on_complete(xhr, status, args);"
+				   	listener   = "#{incomesExpenses.auditor.init_access_CONFIG}"/>
+		</h:inputText>	
+		
+		<h:commandLink id = "update-lstIncometb">
+			<p:ajax event = "click" update = "lstIncometb section-income-details pnlIndicadores indice_pago_deudas"
+					listener = "#{incomesExpenses.init_calculator}"
+					oncomplete = "IncomesExpenses.calculator_oncomplete(xhr, status, args);"/>
+		</h:commandLink>
+		
+		<h:commandLink id = "show-other-income">
+			<p:ajax event = "click" update = "lstIncometb"
+					listener = "#{incomesExpenses.showOtherIncome}"/>
+		</h:commandLink>
+		
+		<h:inputText id = "update-lstExpensestb">
+			<p:ajax event = "click" update = "lstExpensestb pnlIndicadores indice_pago_deudas"
+					listener = "#{incomesExpenses.init_expenses_calculator}"
+					oncomplete = "IncomesExpenses.calculator_oncomplete(xhr, status, args);"/>
+		</h:inputText>
+		
+		<h:inputText id = "init_percentage" immediate = "true">				 				
+				<p:ajax event = "click" update = "pnlPorcClientCont"
+						oncomplete = "IncomesExpenses.porcentage_on_complete(xhr, status, args);" 
+						listener   = "#{incomesExpenses.calculaPorcCliente}"/>
+		</h:inputText>
+		
+		<h:commandLink id = "btnInitialize" immediate = "true">
+			<p:ajax event = "click" update = "negotiationCont pnlIndicadores resSimRegNeg catSimRegNeg pnlAmmountNeg contSimRegNeg pnlAmmountNeg"
+					listener = "#{incomesExpenses.modifier.setIniciales}"
+					oncomplete = "IncomesExpenses.complete_set_iniciales_negotiation(xhr, status, args);" />
+		</h:commandLink>
+		
+		<h:commandLink id = "modifcaCondiciones" immediate = "true">
+			<p:ajax event = "click"					
+					listener   = "#{incomesExpenses.modifier.modificaCondiciones}" 
+					oncomplete = "showRes();" 
+					update = "resSimRegNeg catSimRegNeg pnlIndicadoresControl btnCondiciones indice_pago_deudas indice_pago_deudas_mesa_control"/>
+		</h:commandLink>	
+		
+		<h:commandLink id = "init-modifier-indicadores" immediate = "true">
+			<p:ajax event = "click"					
+					listener   = "#{incomesExpenses.init_modifier_indicadores}" 
+					oncomplete = "IncomesExpenses.modifier_indicadores_oncomplete(xhr, status, args);" 
+					update = "pnlIndicadores pnlIndicadoresControl indice_pago_deudas indice_pago_deudas_mesa_control resSimRegNeg catSimRegNeg"/>
+		</h:commandLink>	
+	</div>				
+</ui:composition>		

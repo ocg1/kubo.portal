@@ -1,0 +1,18 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html">
+	<div class = "dvContent">
+		<div class = "dvLabel" style = "margin: 0;">
+			<h:outputLabel value = "#{msg.State_text}" styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<p />
+		
+		<div id = "activity-state-id">
+		
+			<h:inputText value = "#{summaryRequest.domicilio_actividad.address.stateCat.name}" 
+						 disabled = "true" 
+						 styleClass = "elementAddres1 validatorClass mapClass state stlDisabled editor-domicilio input-text"/>
+		</div>
+	</div>				 
+</ui:composition>

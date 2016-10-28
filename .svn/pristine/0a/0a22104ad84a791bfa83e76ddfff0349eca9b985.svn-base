@@ -1,0 +1,13 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">	
+						
+						
+	<h:outputScript target="head" name="actividad-economica.js"          library="js/mx.com.kubo.mesa/solicitud/domicilio" />						
+	<h:outputScript target="head" name="listener_lista_coincidencias.js" library="js/mx.com.kubo.mesa/solicitud/domicilio"/>	
+	<h:outputScript target="head" name="zipcode.js"                      library="js/mx.com.kubo.mesa/solicitud/domicilio" />	
+	<h:outputScript target="head" name="guardar_edicion_vivienda.js"     library="js/mx.com.kubo.mesa/solicitud/domicilio" />
+		
+	<h:outputStylesheet name="edicion_vivienda.css" library = "css/templates/perfil_completo" />		
+	<h:outputStylesheet name="edicion_nombre.css"   library = "css/templates/perfil_completo" />	
+</ui:composition>				

@@ -1,0 +1,20 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+	<div align = "right" 
+	 		 style = "width: 30px; 
+	 		          float: left;">
+		<p:commandLink immediate      = "true" 
+					   rendered       = "#{summaryRequest.editor_nombre.change_control_bean.hasChange}" 				  			   
+		  			   actionListener = "#{summaryRequest.setListChanges(summaryRequest.editor_nombre.change_control_bean)}" 
+		  			   oncomplete     = "showPopUpChanges();" 
+		  			   style          = "cursor:pointer;">
+		  			   
+			<h:graphicImage url      = "../resources/img/change-icon.png" 
+						    rendered = "#{summaryRequest.editor_nombre.change_control_bean.hasChange}"
+							styleClass = "change_icon"/>
+		</p:commandLink>
+	</div>				 
+</ui:composition>				 

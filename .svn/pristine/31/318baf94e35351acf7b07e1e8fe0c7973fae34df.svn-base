@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+
+.ui-datatable.notas_alta_prioridad
+{
+	margin:40px 20px 15px 20px;
+	
+	clear:both;
+
+	border: 0px solid black;
+}
+
+.ui-datatable.notas_alta_prioridad thead tr
+{
+	background-color: #C1D82F;
+}
+	
+.ui-datatable.notas_alta_prioridad thead th .ui-dt-c 
+{	
+	font-size: 16px;
+	font-weight: bold;
+	color: #333333;
+	text-shadow:0px 0px 0px white;
+	
+	border: 0px solid black;
+	 
+}
+
+.ui-datatable.notas_alta_prioridad .ui-cell-editor
+{
+	font-size: 16px;
+	font-weight: normal;
+	color: #333333;
+	text-shadow:0px 0px 0px white;
+}
+
+.ui-datatable.notas_alta_prioridad .ui-icon
+{
+	width:16px;
+	height:16px;
+	margin:0;
+	border: 0px solid black;
+}
+
+.ui-datatable.notas_del_caso thead tr
+{
+	background-color: #548f39;
+	color: #fff;
+	text-shadow: none;
+}
+.ui-datatable.notas_del_caso thead tr th{
+	padding:7px 0;
+
+}
+.ui-datatable.notas_del_caso thead tr div{
+	color:#fff;
+	font-weight:normal;
+	text-shadow:none;
+	font-size:16px;
+}
+
+div.alta_prioridad
+{
+	font-weight: bold;;
+}
+
+#titulo_notas_del_caso h3{
+	width:300px;
+	float:left;
+
+}

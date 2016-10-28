@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../../resources/favicon.ico"/> 
+
+        
+        <!-- CSS --> 
+        <link rel="stylesheet" type="text/css" href="../../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_formulario.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../../resources/css/laptop_medium.css" />        
+		<link rel="stylesheet" type="text/css" href="../../resources/css/font-awesome.css" />
+        <!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+
+        <script type="text/javascript" src="../../resources/js/jquery.slides.min.js"></script>
+         <script type="text/javascript" src="../../resources/js/banners_footer.js"></script>
+    	<script type="text/javascript" src="../../resources/js/scripts.js"></script>
+		<script src="../../resources/js/scripts_interior.js"></script>
+		<script type="text/javascript" src="../../resources/js/ga_event.js"></script>
+		<script data-cfasync="false" type='text/javascript' src="../../resources/js/chat.js" ></script>
+        <script type="text/javascript" src="../../resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="../../resources/js/browserDetect.js"/>
+        <script type="text/javascript" src="../../resources/js/easyscroll.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../../resources/js/mousewheel.js"></script>
+
+       <meta name="Description" content="Bienvenido al proceso de registro"/>
+		
+		<!-- Facebook Conversion - KUBO -->
+		<script>
+			(function() {
+			  var _fbq = window._fbq || (window._fbq = []);
+			  if (!_fbq.loaded) {
+			    var fbds = document.createElement('script');
+			    fbds.async = true;
+			    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+			    var s = document.getElementsByTagName('script')[0];
+			    s.parentNode.insertBefore(fbds, s);
+			    _fbq.loaded = true;
+			  }
+			})();
+			window._fbq = window._fbq || [];
+			_fbq.push(['track','6017584332146',{'value':'0.01','currency':'MXN'}]);
+		</script>
+		<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6017584332146&amp;cd[value]=0.01&amp;cd[currency]=MXN&amp;noscript=1" /></noscript>
+		
+		<!-- Facebook Conversion - MEDIA SCIENCE -->
+		<script>
+			(function() {
+				  var _fbq = window._fbq || (window._fbq = []);
+				  if (!_fbq.loaded) {
+				    var fbds = document.createElement('script');
+				    fbds.async = true;
+				    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+				    var s = document.getElementsByTagName('script')[0];
+				    s.parentNode.insertBefore(fbds, s);
+				    _fbq.loaded = true;
+				  }
+				})();
+				window._fbq = window._fbq || [];
+				window._fbq.push(['track', '6019113023805', {'value':'0.00','currency':'USD'}]);
+		</script>
+		<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6019113023805&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+
+
+
+<!-- Facebook Conversion Code for Kubo Registros -->
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6022921906525', {'value':'0.01','currency':'EUR'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022921906525&amp;cd[value]=0.01&amp;cd[currency]=EUR&amp;noscript=1" /></noscript>
+
+		
+		
+		<script type="text/javascript" >
+			 
+			
+			/******************GOOGLE*ANALYTICS**************************************/  
+			
+			  var _gaq = _gaq || [];
+
+			  _gaq.push(['_setAccount', 'UA-40649010-1']);
+
+			  _gaq.push(['_trackPageview']);
+
+			 
+
+			  (function() {
+
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+			  })();
+
+			  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+			
+			
+			  /**********Google Code for Conversion_Kubo Conversion Page**************/
+
+			/* <![CDATA[ */
+			var google_conversion_id = 979877773;
+			var google_conversion_language = "en";
+			var google_conversion_format = "3";
+			var google_conversion_color = "ffffff";
+			var google_conversion_label = "Nsl7COuE2AgQjf-e0wM";
+			var google_conversion_value = 0;
+			var google_remarketing_only = false;
+			/* ]]> */
+
+
+</script>
+
+		<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js" />
+		
+		<noscript>
+			<div style="display:inline;">
+				<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/979877773/?value=0&amp;label=Nsl7COuE2AgQjf-e0wM&amp;guid=ON&amp;script=0"/>
+			</div>
+		</noscript>
+			  
+
+		
+
+		<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6017584332146&amp;value=0.01&amp;currency=MXN" /></noscript>​
+			<!-- Facebook Conversion Code for Kubo Nuevo Registros -->
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6021095716096', {'value':'0.00','currency':'MXN'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6021095716096&amp;cd[value]=0.00&amp;cd[currency]=MXN&amp;noscript=1" /></noscript>
+		
+		
+		<script>
+		$(document).ready(function(){
+			$(".push_header").addClass("interior").show();
+			 setTimeout(function(){
+				 $("#inciaRegistro").trigger("click");
+				 console.log("click");
+			 	}, 100);
+			
+		});
+		</script>
+		
+		<style>
+		
+		
+		
+/*---- INICIO solicitacredito_4.html  ----*/
+
+.confirma_registro  {
+	overflow:hidden;
+	margin: 0 auto;
+	display: block;
+}
+
+.confirma_registro .bienvenido {
+	display:block;
+	width:47%;
+	border:solid 1px #cccccc;
+
+	font-size:14px;
+
+	color:#565b59;
+	margin: 0 auto 0px;
+	position:relative;
+}		
+.confirma_registro .bienvenido h2 {
+	background: #538b39 url(../images/thanks.png) no-repeat 95% center;
+	background-size: 60px;
+	color:#fff !important;
+	font-size: 47px !important;
+	font-weight:500;
+	padding: 19px 15px 21px;
+	/* line-height:25px; */
+	letter-spacing: -1px;
+}
+
+.confirma_registro .bienvenido h2 span {
+	font-size: 20px;
+	display:block;
+}
+
+.confirma_registro .bienvenido div {
+	width:90%;
+	overflow:hidden;
+	padding:20px 5%;
+}
+
+.confirma_registro .bienvenido div .call_action{
+	width: 230px;
+	overflow:hidden;
+	padding: 12px 5%;
+	float:none;
+	margin:20px auto 0;
+}
+
+
+
+.confirma_registro .bienvenido div p, .confirma_registro article div h4 {
+	clear:both;
+	width:100%;
+	display:block;
+	overflow:hidden;
+
+	/* line-height: 17px; */
+}
+
+.NavegadorCompatible, .internetExplorerOld {
+	display:none;
+}
+
+.confirma_registro .internetExplorerOld p{
+	font-size:16px;
+	margin:0 0 10px;
+	line-height:18px;
+
+	line-height: 19px;
+}
+
+.confirma_registro .internetExplorerOld ul li{
+	font-size:16px;	
+	color:#000;
+	margin:0 0 7px;
+}
+
+.confirma_registro .internetExplorerOld ul li a{
+
+	color:#538b39;
+	text-decoration:none;
+	font-weight:500;
+}
+     
+
+.confirma_registro .internetExplorerOld ul li a i{
+	margin:0 5px 0 0;
+	text-decoration:none ;
+}
+
+
+.confirma_registro .internetExplorerOld ul li a span{
+	text-decoration:underline;
+}
+@media (max-width: 1023px) {
+	.confirma_registro .bienvenido {
+		width:99%;
+	
+	}
+
+}
+		.velo, .velo2 {
+			display:none !important;
+		}
+		
+		
+.NavegadorCompatible > a	{
+	width:250px;
+	margin:20px auto 0;
+
+}	
+		</style>
+		
+</h:head>
+
+
+
+    <h:body>
+    
+    	<div style="display:none;"  >
+    		${welcomeBean.inicio}
+    	</div>
+    
+    	<noscript>
+			<!--  div style="display:none;">
+				<img height="1" width="1" style="border-style:none; display:none;" alt="" src="//www.googleadservices.com/pagead/conversion/979877773/?value=0&amp;label=Nsl7COuE2AgQjf-e0wM&amp;guid=ON&amp;script=0"/>
+			</div-->
+		</noscript>
+    
+    	<div class="kubo_container activa no_mapasitio #{sessionBean.prospectus_id !=null ? 'privado':'publico'}" style="opacity:0">
+        	<h:form id="form_Prin" prependId = "false" >
+        	
+         <!-- chat -->
+          
+       	   <!-- header -->
+       	   <ui:include src="../../templates/header.xhtml" /> 
+  
+            <div class="content">
+            	
+                
+                <div class="inner_content">
+            	<h:inputHidden value="${welcomeBean.inicio}" />
+                 <div class="confirma_registro">
+               
+               	   <div class="bienvenido">
+	                 	<h2>¡Bienvenido! </h2>
+	                 	    <div class="loader">
+                          	
+                        		<img src="#{configManaged.location}resources/images/loader.gif"/>
+                        		
+                        		Cargando...
+                        		
+                        	</div>
+	                    <div class="NavegadorCompatible">
+	                        <p><strong>¡Muchas gracias!</strong></p>
+	                        
+	                        <p>Gracias por registrarte en kubo.financiero.</p>
+	                        <p>Inicia tu solicitud para convertirte en inversionista.</p>
+	                  
+	                		
+						
+	                	
+									<h:commandLink id = "inciaRegistro"														  												
+														  action = "#{welcomeBean.iniciaRegistro}"
+														  value  = "Iniciar"
+														  onclick = "showloader(); "
+														  styleClass = "callAction btnNaranja"
+														  immediate="true">
+											</h:commandLink>
+
+
+
+	                	</div>
+	                    <div class="internetExplorerOld">
+												<p>Tu preregistro se ha realizado con éxito, sin embargo para continuar con tu solicitud, <strong>es necesario que actualices tu Navegador de Internet</strong>, ya que la version con la que cuentas no soporta todas las caracteristicas técnicas del Portal</p>
+												
+												
+												<p>Una vez que descargues o actualices tu navegador <strong> continua desde este tu solicitud, </strong> escibriendo en la barra de direcciones: https://www.kubofinanciero.com/Kubo/Portal/index.xhtml, dando click en el boton ingresar, y en ese panel Ingresar <strong>escribe el correo y la contraseña con la que te preregistraste.</strong>  </p>
+												<p>A continuación  te damos algunas opciones:</p>
+												
+												<ul class="opciones_navegadores">
+													<li><a target="blank" href="https://www.google.com/intl/es/chrome/browser/?hl=es"><i class="flaticon-chrome4"></i><span>Google Chrome</span> </a></li>
+													<li><a target="blank" href="http://www.mozilla.org/es-MX/firefox/new/"><i class="flaticon-logotype47"></i><span>Mozilla Firefox</span> </a></li>
+													<li><a target="blank" href="http://windows.microsoft.com/es-MX/internet-explorer/downloads/ie-9/worldwide-languages"><i class="flaticon-internet9"></i><span>Actualiza tu navegador Explorer</span></a></li>						
+												</ul>				
+											
+										
+
+										
+											  <p:commandLink styleClass="salir_sesion" action="#{headerBean.SignOut}" inmmediate="true"></p:commandLink>			
+							</div>
+							</div>
+                
+                </div>
+                
+                
+              
+           </div>
+            
+           </div>
+        <!--footer mapa de sitio-->
+        <ui:include src="../../templates/footer_mapa.xhtml" />        
+        
+        <!--lightbox abrir sesion-->
+        <ui:include src="../../templates/modal_iniciar_sesion.xhtml" />
+         
+         <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+	 	<ui:include src="../../templates/modal_condusef.xhtml" />    
+	 	<ui:include src="../../templates/modal_cat.xhtml" />    
+	 	<ui:include src="../../templates/modal_gat.xhtml" />  
+        <!--lightbox sesion sin actividad-->
+        <ui:include src="../../templates/modal_sesion_inactiva.xhtml" />  
+        <!--Requisitos-->
+        <ui:include src="../../templates/modal_requisitos.xhtml" />
+      <!-- img border="0" src="http://r.turn.com/r/beacon?b2=cwqVjhy17fB71rs53qUiVJCy9z-Nks0hZdMSrGU9S6Egp1wj57Plw7FfebHAu3QLV11UC-CV5f0z1uBRV55udQ&amp;cid="/ -->
+          	<script>
+				setChat();
+			</script>	
+        </h:form>
+    </div>
+    </h:body>
+			<script type="text/javascript">
+			
+			_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+			
+			(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+			
+		</script>
+		
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+			<noscript>
+		<img border="0" src="https://r.turn.com/r/beacon?b2=cwqVjhy17fB71rs53qUiVJCy9z-Nks0hZdMSrGU9S6Egp1wj57Plw7FfebHAu3QLV11UC-CV5f0z1uBRV55udQ&amp;cid="/>
+		</noscript>
+		
+		
+	<!-- End Alexa Certify Javascript -->
+
+
+<!-- Pixel Invent -->
+	<noscript>
+		<img border="0" src="https://r.turn.com/r/beacon?b2=cwqVjhy17fB71rs53qUiVJCy9z-Nks0hZdMSrGU9S6Egp1wj57Plw7FfebHAu3QLV11UC-CV5f0z1uBRV55udQ&amp;cid;="/>
+	</noscript>
+	
+</html>

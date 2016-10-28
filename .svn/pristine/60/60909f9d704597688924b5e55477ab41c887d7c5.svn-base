@@ -1,0 +1,21 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+	<P style = "clear: both;" />
+	
+	<div class = "dvContent" style = "float: left;  width: 180px">
+		<div class = "dvLabel" style = "width: 120px; float: left; margin:0">
+			<h:outputLabel value = "${msg.Block_text}" styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<div class="dvElement" style="width: 120px; float: left; padding: 0">
+			<h:inputText id    = "mx_manzana" size="4" immediate = "true"
+						 value = "#{summaryRequest.editor_domicilio.address.mx_manzana}" 
+						 styleClass = "elementAddresMin editor-domicilio input-text">
+				<p:ajax event="blur"  listener="#{summaryRequest.editor_domicilio.listener_generar_vivienda_TOKEN}"/>
+			</h:inputText>
+		</div>
+	</div>			     
+</ui:composition>	

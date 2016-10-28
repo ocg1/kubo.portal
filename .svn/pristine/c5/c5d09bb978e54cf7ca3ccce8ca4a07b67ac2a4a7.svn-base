@@ -1,0 +1,35 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+	<h:panelGroup id = "pnael-third-party-name">				
+		<div class = "propios_terceros propios">
+			<p>Por medio de la presente declaro que en la contratación
+			 de los servicios financieros acordados con ustedes,
+			  estoy actuando a mi nombre y por cuenta propia, 
+			  y por lo tanto los beneficios derivados de dicha contratación serán a mi favor.</p>
+		</div> 
+						
+		<div class = "propios_terceros terceros">
+
+			<p>Por medio de la presente declaro que en la contratación
+			 de los servicios financieros acordados con ustedes, estoy 
+			 actuando a nombre y por cuenta de <strong>#{addPldDocument.third_party_name}</strong>. Los beneficios
+			  derivados de la contratación referida serán a su favor.</p>
+ 
+			<p>Estoy enterado de que Kubo.financiero, S.A. de C.V., S.F.P.
+			 no podrá ofrecerme los servicios contratados hasta que se haya
+			  integrado el respectivo expediente de identificación de cliente de dicha persona.</p>
+		</div>	
+	</h:panelGroup>		
+	
+	<div style = "dislay: none">
+		<h:commandLink class = "init-third-party-name" immediate = "true">
+			<p:ajax event = "click" update = "pnael-third-party-name"
+					listener = "#{addPldDocument.init_third_party_name}" 
+					oncomplete = "Documentacion.third_party_name_on_complete(xhr, status, args);"/>
+		</h:commandLink>
+	</div>		
+</ui:composition>				

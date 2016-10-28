@@ -1,0 +1,119 @@
+
+/*estilos botones redondeados */
+
+.callAction {
+	color:#fff;
+	font-size: 14px;
+	padding: 6px 0;
+		font-weight: 800 !important;
+	font-family: 'Lato', sans-serif;	
+	display: block;
+	text-align:center;
+	border-radius:5px;
+	font-size: 21px !important;
+	text-decoration:none;
+	cursor:pointer;
+}
+.callActionMedium {
+	color:#fff;
+	font-size: 14px;
+	padding: 6px 0;
+	font-family:'Open Sans', sans-serif;
+	font-weight: 700 !important;	
+	display: block;
+	text-align:center;
+	border-radius:5px;
+	margin:0 auto;
+	font-size: 15px;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.btnGris {
+	background:#625f5f;
+	border:none;
+	border-bottom: solid 4px #333;
+}
+.btnNaranja {
+	background-color: #ff8a02;
+	border-bottom: solid 4px #DB8D13;
+}
+
+.btnVerde {
+	background: #8FC450;
+	border-bottom: #6E983D solid 4px;
+}
+
+.btnVerde-2 {
+	
+	background: #548f39;
+	border-bottom: #3F5722 solid 4px;
+} 
+
+.callAction.solicitud {
+	width: 290px !important;
+	margin: 0 auto;
+}
+
+.callAction.center, .callActionMedium.center {
+	margin:0 auto;
+}
+@media (min-width:1024px) {
+.callAction:hover, .callActionMedium:hover {
+	color: #fff;
+	background: #cadc2d;
+	border-bottom: 4px #A8B62C solid;
+	text-decoration:none !important;
+}
+}
+/*---------*/
+
+	.close_lightbox{
+		background:url(../img/close.png) no-repeat right top;
+		width:35px;
+		height:35px;
+		display:block;
+		position:absolute;
+		z-index:10;
+		top:-20px;
+		right:-20px;
+		cursor: pointer;
+	}
+	
+	.botones_lightbox 
+	{
+	
+	margin: 15px auto 15px;
+	overflow: hidden;
+}
+
+.botones_lightbox .callActionMedium  {
+	width:47%;
+	float:left;
+}
+
+.dvValidaArchivo .botones_lightbox  {
+	width:100% !important;
+}
+
+.dvValidaArchivo .botones_lightbox .callActionMedium {
+	width:40% !important;
+}
+.dvValidaArchivo .botones_lightbox .callActionMedium i {
+	font-size:22px !important;
+	margin:0 7px 0 0 !important;
+}
+.dvValidaArchivo .botones_lightbox .callActionMedium + .callActionMedium{
+	float:right !important;
+}
+
+.btnVerde-3 {
+	
+	background: #548f39 !important;
+	border-bottom: #3F5722 solid 4px  !important;
+} 
+
+.btnRoja {
+	background:red !important;
+	border-bottom: #A50E0E solid 4px !important;
+} 

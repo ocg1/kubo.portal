@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"				
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	<div class = "dvContent  stlCntNumExt" >
+	
+		<div class = "dvLabel" >
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.ExtNumber_text}" />
+		</div>
+
+		<div class = "dvElement" >
+			<h:inputText id = "address_number" immediate = "true"
+						 value = "#{business.addressbean.address_number}" 
+						 onfocus = "ActividadEconomica.Domicilio.init_focus_date(3);"
+						 styleClass = "elementAddresMin">
+						 
+				<p:ajax event = "blur"
+						oncomplete = "ActividadEconomica.Domicilio.input_text_oncomplete(xhr, status, args);" 
+						listener   = "#{addMyLoan.domicilio_negocio.init_input_text}"/>
+			</h:inputText>
+		</div>
+	</div>		
+</ui:composition>		

@@ -1,0 +1,103 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+								
+			<div id="providing_table">
+			
+				<FIELDSET>
+						
+						<div id="dvDetMovs" style="overflow: auto;">
+<!-- 						<h:inputHidden id="saldoInicial" value="#{detMovsInvestments.saldoInicialMes}" /> -->
+						
+						<div>
+						
+							<h3 class="tituloTabla">Detalle de Movimientos</h3>
+							
+							<h4 class="detalle_mov">#{detMovsInvestments.periodoAconsultar}</h4>
+							
+							<div>
+							
+							<ol class="estiloEncabezados">
+									<li class="enc_fechas">Fecha</li>
+										<li class="enc_descripcionMov">Descripción del movimiento</li>
+										<li  class="enc_abonos"><span>Abono</span></li>
+										<li  class="enc_cargos"><span>Cargo</span></li>
+										<li  class="enc_saldos"><span>Saldos</span></li>
+										<li  class="enc_bancoReceptor">Banco Receptor</li>
+									
+							</ol>
+					
+						
+									<h:panelGroup rendered="#{detMovsInvestments.detMovsInvestmentsList.size() != null 
+															and detMovsInvestments.detMovsInvestmentsList.size() gt 0}">
+															
+										<ui:repeat value="#{detMovsInvestments.detMovsInvestmentsList}" var="detalle" varStatus="status"  >
+											
+											<ul class="filasEstilo  detalleMov">
+												<li class="fechas">
+														<sup class="caption">Fecha</sup>							
+														<div>#{detalle.fecha}	</div>										
+													</li>
+													<li  class="descripcionMov">
+														<sup class="caption">Descripción del movimiento</sup>		
+														<div>
+															<span>
+																#{detalle.descripcion1}
+														   </span>
+													 
+														   <span>
+																#{detalle.descripcion2}
+															</span>
+															 <span>
+																#{detalle.descripcion3}
+															</span>
+													  </div>							
+																								
+													</li>
+													<li  class="abonos">	
+														<sup class="caption">Abono</sup>
+														<div>								
+															<span>#{detalle.abonosMov}</span>		
+														</div>									
+													</li>
+													<li  class="cargos">	
+													<sup class="caption">Cargo</sup>										
+														<div>
+															<span>#{detalle.cargosMov}</span>
+														</div>										
+													</li>
+													<li  class="saldos">	
+														<sup class="caption">Saldos</sup>										
+														<div>
+															<span><strong>#{detalle.saldo}</strong></span>
+														</div>
+													</li>
+													<li  class="bancoReceptor" >	
+														<sup class="caption">Banco Receptor</sup>										
+														<div>#{detalle.bancoReceptor}</div>								
+													</li>
+												</ul>
+											
+										</ui:repeat>
+									</h:panelGroup>
+										
+							
+							</div>								
+						</div>						
+					</div>
+					
+					<script>
+					 par ();
+						function par () {
+							$(".filasEstilo:even").addClass("par");
+						}
+					</script>
+														
+				</FIELDSET>
+						
+			</div>
+							
+</ui:composition>	

@@ -1,0 +1,113 @@
+doctype html
+html(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    title Signature Hola Banco
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/signature.css')
+    link(rel='stylesheet', href='/stylesheets/animate.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500italic,500,700italic,700,900,900italic', rel='stylesheet', type='text/css')
+    style(type='text/css').
+      img.wp-smiley,
+      img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+      }
+  body#body.single.single-post.postid-863.single-format-standard
+    #animatedModal
+      #tarjeta-modal.tarjeta-login-modal
+        center
+          img.close-animatedModal.btn-close(src="/images/close.png")
+        .container
+          .row
+            .col-xs-12.col-md-6.col-md-offset-3
+              .row.alerta-modal
+                .col-xs-12
+                  | ¿Aceptas firmar el contrato?
+                .col-xs-5.col-xs-offset-1
+                  a#form-next.btn.btn-primary.btn-respon-form.btn-modal-close.close-animatedModal() Cancelar
+                .col-xs-5
+                  a#continueBtn.btn.btn-primary.btn-respon-form.btn-modal.close-animatedModal() Aceptar
+
+    #containerApp.containerp
+       .col-md-8.col-md-offset-2.col-xs-12
+         #tarjeta-login.tarjeta-login
+           .titulo.Bold
+            .col-md-6
+              .img-logo-cont
+                img.logo_header(src="/images/logo_kubo.png")
+            .col-md-6
+               br
+               .img-firma
+                img.der(src="/images/sig2.png", height="77px;")
+            h1  &nbsp
+           .contenido
+             .row
+               .col-sm-12
+                   #wrapper.hfeed: .firma: #main: #container: #content(role='main'): div
+                     h1  Firma tu solicitud
+                     h2.
+                       Para registrar tu firma, es necesario que firmes en este espacio, 
+                       utilizando tu mouse o el mouse pad.
+                     .entry-content
+                      p
+                          script(type='text/javascript', src='/javascripts/jquery.min.js')
+                          //- script(type='text/javascript', src='/javascripts/jquery.mobile.custom.min.js')
+                          script(type='text/javascript', src='/javascripts/easeljs.min.js')
+                          script(type='text/javascript', src='/javascripts/script.js')
+                          script(type='text/javascript', src='/javascripts/bootstrap.js')
+                          script(type='text/javascript', src='/javascripts/detectmobilebrowser.js')
+                          script(type='text/javascript', src='/javascripts/responsive.js')
+                          script(type='text/javascript', src='/javascripts/animatedModal.min.js')
+                          script(type='text/javascript').
+                            // <![CDATA[
+                            $(document).ready(function() {
+                              init('canvas1');
+                              $('#continueBtn').on('click', function() {
+                                  // Serialización de la firma
+                                $('#signature').val(record.serialize());
+                                  // Base64 de render en formato png
+                                $('#firmaData').val(cacheCanvas.toDataURL());
+                                $('#playback').submit();
+                              });
+                              $('#clearBtn').on('click', clear);
+                            });
+                            // ]]&gt;
+                       #drawingDiv
+                         canvas#canvas1(height='400', width='500')
+                         img#clearBtn(src="/images/borrar2.png")
+                         //-  .btnsActions
+                         //-    img#playBtn(src="images/play.png", height="40px;")
+                         //-    img#pauseBtn(src="images/pause.png", height="40px;")
+                         //-    input.btn.btn-default.btn-sm#recordBtn(type='button', value='Record')
+                         //-    input.btn.btn-default.btn-sm#playBtn(type='button', value='Play')
+                         //-    input.btn.btn-default.btn-sm#pauseBtn(type='button', value='Pause')
+                         //-    input.btn.btn-default#clearBtn(type='button', value='Clear')
+                         
+                         br
+                         form(action='playback' method='POST' id='playback')
+                           input(type='hidden' name='signature' id='signature')
+                           input(type='hidden' name='firma' id='firmaData')
+                           input(type='hidden' name='id' value='#{id}')
+                           a.btn.btn-primary.btn-respon#continueBtn2(href="#animatedModal") Continuar
+                          script(type='text/javascript').
+                            $("#continueBtn2").animatedModal({
+                                color: "rgba(255, 255, 255, 0.8)"
+                            });
+
+                         br
+                         //- input.btn.btn-default#serializeBtn(type='button', value='Serialize')
+                         //- input.btn.btn-default.btn-respon#deserializeBtn(type='button', value='Deserialize')
+                       div
+                       #serializerDiv(style='display: none;')
+                         textarea#serDataTxt(cols='80', rows='8')
+                         br
+                         input.btn.btn-default.btn-respon#cancelBtn(type='button', value='Close')
+                         input.btn.btn-default.btn-respon#okBtn(type='submit', value='Submit')

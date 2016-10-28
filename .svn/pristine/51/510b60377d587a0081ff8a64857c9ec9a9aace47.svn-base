@@ -1,0 +1,33 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">	
+	
+	<h:form  prependId = "false" >
+		<div style = "
+					  float: right;
+					  border:0px solid black"> 
+			<h:panelGroup rendered = "#{sessionBean.area == 'M' and 
+									    credit.status   != 'P'  and 
+									    estadoCuenta.restructure }" >
+							
+				<p:commandLink actionListener = "#{menuControlTableBean.toRestructurePage}" 
+							   onstart        = "return displayMessageProcessing('msgprocessing', true);" 
+							   oncomplete     = "closeFancy();" 
+							   update         = ":actualPage :form_Prin"
+							   value = "Reestructurar"
+							   styleClass="callActionMedium btnNaranja"
+							   style="margin:10px 10px;">
+							   	<f:attribute name = "proyect"    value = "#{credit.proyect}" />
+					<f:attribute name = "fromAction" value = "EdoCuenta" />
+					</p:commandLink>
+								   
+			
+					
+			
+			</h:panelGroup>
+		</div>
+	</h:form>
+</ui:composition>

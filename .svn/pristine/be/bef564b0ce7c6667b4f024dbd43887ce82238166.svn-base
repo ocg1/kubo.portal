@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+a.refTbAmort
+{
+	font-size: 13px;
+	text-decoration: none !important;
+	color:#439539; 
+}
+
+a.refTbAmort:HOVER
+{
+	text-decoration: underline !important;
+}
+
+a.refTbAmort:HOVER
+{
+	color: #439539 !important;
+	text-decoration: underline !important;
+}
+
+a.refTbAmort
+{
+	color: #439539 !important;
+	text-decoration: none !important;
+}

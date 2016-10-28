@@ -1,0 +1,91 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<table class = "tblAttmp">
+		<thead>
+			<tr>						
+				<th>Fecha de Consulta</th>
+				<th>Resultado</th>
+				<th>¿Tiene tarjeta de crédito?</th>
+				<th>Últimos 4 dígitos</th>
+				<th>¿Tiene crédito hipotecario?</th>
+				<th>¿Tiene crédito automotriz?</th>
+				<th>RFC</th>
+				<th>CURP</th>
+				<th>Primer Nombre</th>
+				<th>Segundo Nombre</th>
+				<th>Apellido Paterno</th>
+				<th>Apellido Materno</th>
+				<th>Fecha de Nacimiento</th>
+				<th>Calle</th>
+				<th>Mz</th>
+				<th>Lt</th>
+				<th>Número Exterior</th>
+				<th>Número Interior</th>
+				<th>Colonia</th>
+				<th>Delegación/Municipio</th>
+				<th>Estado</th>
+				<th>Código Postal</th>
+				<th>Teléfono</th>						
+			</tr>
+		</thead>
+				
+		<tbody>
+			<ui:repeat value="#{activityPerson.attemps}" var="attempt" >
+					
+				<tr>
+					<td>
+						<h:outputText value="#{attempt.consultation_date}">
+					        <f:convertDateTime pattern="EEEE dd 'de' MMMM 'de' yyyy ' a las ' hh:mm a " />
+					    </h:outputText>
+					</td>
+						
+					<td style="color: #{ ( (attempt.info_res != null) and (attempt.info_res == 'Consulta satisfactoria') )?'#75D10A;':'#FF0000;'} ">
+						#{attempt.info_res}					
+					</td>
+						
+					<td style="color: #{ ( (attempt.creditcard_is_principal == null) or (attempt.creditcard_is_principal == 0) or (attempt.creditcard_is_principal == '') )?'#FF0000;':'#75D10A;'} " >
+						#{((attempt.creditcard_is_principal == null) or (attempt.creditcard_is_principal == 0) or (attempt.creditcard_is_principal == '') )?'NO ':'SI '}CUENTA CON TARJETA DE CRÉDITO
+					</td>
+						
+					<td>#{attempt.creditcard_four_digits}	</td>
+						
+					<td style = "color: #{ ( (attempt.mortgage_is_principal == null) or (attempt.mortgage_is_principal == 0) or (attempt.mortgage_is_principal == '') )?'#FF0000;':'#75D10A;'} " >
+						#{((attempt.mortgage_is_principal == null) or (attempt.mortgage_is_principal == 0) or (attempt.mortgage_is_principal == '') )?'NO ':'SI '}CUENTA CON CRÉDITO HIPOTECARIO
+					</td>
+						
+					<td style="color: #{ ( (attempt.car_is_principal == null) or (attempt.car_is_principal == 0) or (attempt.car_is_principal == '') )?'#FF0000;':'#75D10A;'} " >
+						#{((attempt.car_is_principal == null) or (attempt.car_is_principal == 0) or (attempt.car_is_principal == '') )?'NO ':'SI '}CUENTA CON CRÉDITO AUTOMOTRIZ
+					</td>
+						
+					<td><b>#{attempt.mx_rfc}			</b></td>
+					<td><b>#{attempt.mx_curp}			</b></td>
+					<td>#{attempt.first_name}				</td>
+					<td>#{attempt.middle_name}				</td>
+					<td>#{attempt.father_last_name}			</td>
+					<td>#{attempt.mother_last_name}			</td>
+						
+					<td>
+						<h:outputText value="#{attempt.date_of_birth}">
+					        <f:convertDateTime pattern="dd 'de' MMMM 'de' yyyy" />
+					    </h:outputText>
+					</td>
+						
+					<td>#{attempt.street}					</td>
+					<td>#{attempt.mx_manzana}				</td>
+					<td>#{attempt.mx_lote}					</td>
+					<td>#{attempt.address_number}			</td>
+					<td>#{attempt.apt_number}				</td>
+					<td>#{attempt.neighborhood_name}		</td>
+					<td>#{attempt.town_name}				</td>
+					<td>#{attempt.state_name}				</td>
+					<td>#{attempt.zip_code}					</td>
+					<td>#{attempt.phone}					</td>					
+				</tr>
+			</ui:repeat>
+		</tbody>
+	</table>								
+</ui:composition>				

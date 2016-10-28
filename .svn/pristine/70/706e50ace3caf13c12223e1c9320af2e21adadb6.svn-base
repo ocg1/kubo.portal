@@ -1,0 +1,52 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	
+                            		
+				
+		<div class="bloqueBanner bloqInversion">
+				<h2>¿Quieres invertir?</h2>
+				<ul>
+					<li>
+						<h4>Rendimiento promedio</h4>
+						<p><strong>16%</strong>  (ponderado anual con reinversión)<sup><a id="footerCita" href="#captacionObservacion">Nota 7</a></sup></p>
+					</li>
+					<li>
+						<h4>Monto mínimo para iniciar</h4>
+						<p><strong>$10 mil</strong></p>
+					</li>
+					<li>
+						<h4>Innovación P2P Lending</h4>
+						<p>Estamos supervisados por la CNBV </p>
+					</li>
+				</ul>
+				
+				
+				     <h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+                            			<p:commandLink styleClass="callAction btnVerde investment" action="inicio_preregistro_inversionista" immediate="true" onclick="ga('send', 'event', 'Leads', 'Solicita Inversion', 'Solicita Inversion Home');">Invertir mi dinero</p:commandLink>
+                       		</h:panelGroup>
+
+			
+				
+					<div class="contenidoBanner">
+				
+				
+							<p>Presta a otras personas desde $10 mil. </p>
+							<p>Tenemos más de 1,000 proyectos.</p>
+							<p>Obtén un rendimiento promedio del <a id="footerCita" href="#captacionObservacion">16%.</a></p>
+							
+							<p>Estamos supervisados por la CNBV.</p>
+							
+				</div>
+				<ol>
+					<li></li>
+					<li><a class="open_lightbox" href="#"  data-div="22" onclick="ga('send', 'event', 'Leads', 'Requisitos Inversion', 'Requisitos Inversion Home');" >Requisitos</a></li>
+				</ol>
+			</div>
+			
+                                  
+			
+</ui:composition>				

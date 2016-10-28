@@ -1,0 +1,18 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+				<h3 class="encH3">Identificación FM2 y Pasaporte</h3>
+				<ui:repeat var="type" value="#{addPldDocument.listCREFM2}">	
+			
+					<h:form id="frm_credFm2" class="cred_image" enctype="multipart/form-data" prependId="false">
+							<h:outputLabel class="frente_vuelta"   value="#{type.name}" />						
+							<ui:include src = "credencial/seleccionar.xhtml"/>
+																			 
+					</h:form>
+				 </ui:repeat>	
+				 
+				 
+</ui:composition>

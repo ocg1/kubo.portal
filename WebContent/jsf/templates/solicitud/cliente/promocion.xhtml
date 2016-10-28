@@ -1,0 +1,201 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+
+<script>
+
+function offerAction( varType ){
+
+	if(varType == 'A'){
+
+		$("#cmdOfferAccepted").trigger("click");
+
+	}else if(varType == 'R'){
+
+		$(".clsBtnOfferAccepted").fadeOut( 300, function(){
+			
+			$(".clsBtnOfferRejection").fadeIn( 300 );
+			
+		} );
+		
+	}
+
+}
+
+function offerRejectionAction(){
+	
+	$("#cmdOfferRejection").trigger("click");
+	
+}
+
+</script>
+
+	<div id = "dvPromotion" class = "profileControlTable" style = "position: relative;border-bottom: solid 2px #b3b3b3;padding-bottom: 35px;">
+	
+		<h3 class="tab"><strong class="orange">Promoción</strong></h3>
+	
+		<div class="promoTitle" >#{summaryRequest.promotionTitle}</div>
+		
+		<br />
+		<br />
+			<style>
+				.descripcionOferta{
+					display: block !important;
+				}
+				.promoTitle{
+					color: #548f39;
+				}
+				.clsBtnOfferAccepted {
+					width: 400px;
+				}
+				
+				.clsBtnOfferAccepted > .btnGris{
+					width: 180px;
+					float: left;
+				}
+				
+				.clsBtnOfferAccepted .btnVerde-3{
+					width: 180px;
+					float: left;
+					margin-left: 15px;
+				}
+				
+				.clsBtnOfferRejection{
+					display:none;
+				}
+				
+			</style>
+			<ui:include src="#{summaryRequest.pagePromo}"></ui:include>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_status_id == 0}" >
+		
+			<div class="botones_lightbox clsBtnOfferAccepted">
+	
+				<div class="callAction  btnGris" onclick="offerAction( 'R' );"  >
+					<i class="fa fa-times"></i>Rechazar Oferta
+				</div>
+				<div class="callAction  btnVerde-3" onclick="offerAction( 'A' );" >
+					<i class="fa fa-check"></i> Aceptar Oferta
+				</div>
+			
+			</div>
+			
+			<div class="clsBtnOfferRejection" style="width:355px; margin-left: auto; margin-right: auto;" >
+			
+				<div>
+					¿Por qué no la quiere?
+				</div>
+			
+				<div class="main_textarea_nota">
+					<h:inputTextarea class="textarea_nota" value="#{summaryRequest.offer_why_not}">
+						<p:ajax event="blur" />
+					</h:inputTextarea>
+				</div>
+				
+				<div class="botones_lightbox">
+	
+					<div class="callAction  btnGris" onclick="offerRejectionAction();" >
+						<i class="fa fa-times"></i>Rechazar Oferta
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_status_id != 0}" >
+		
+			<div class="mensajeStatus">
+				<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_status_id == 1}" >
+			
+					<p style="text-align: center;" ><span>La oferta fue aceptada en Mesa de Control</span></p>
+				
+				</h:panelGroup>
+				
+				<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_status_id == 2}" >
+			
+					<p style="text-align: center;" ><span>La oferta fue rechazada en Mesa de Control: #{summaryRequest.offer.why_not} </span>  </p>
+				
+				</h:panelGroup>
+				
+				<div class="mensajeStatus">
+					<p>Analista: <span>#{summaryRequest.getOfferAnalyst()}</span>				
+					<br />Fecha: <span>
+					
+					<h:outputLabel value="#{summaryRequest.offer.analyzed_date}">
+					    <f:convertDateTime dateStyle="full"
+					        locale="es_MX"
+					        timeStyle="long" type="both" />
+					</h:outputLabel>
+					
+					</span></p>
+				</div>
+				
+			</div>
+		
+		</h:panelGroup>
+		
+		<br />
+		<br />
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.option_selected != null}">
+		
+			<div class="mensajeStatus">
+				<p><span>El usuario eligió la propuesta #{summaryRequest.offer.option_selected}</span></p>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{summaryRequest.hasOffer == 1}">
+			<div class="mensajeStatus">
+				<p>Estatus:<span> No aceptó oferta: #{summaryRequest.rejectionMotiveStr} </span> </p>
+			</div>
+		</h:panelGroup>
+			<h:panelGroup rendered="#{summaryRequest.hasOffer == 3}">
+			<div class="mensajeStatus">
+				<p>Estatus: <span>El usuario no ha visto la oferta.</span></p>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_date != null}">
+			<div class="ofertaFechas">Fecha en que se generó la oferta: <span>#{summaryRequest.offer.offer_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.showed1_date != null}">
+			<div class="ofertaFechas" >Fecha en que se le informó que tenía una oferta: <span>#{summaryRequest.offer.showed1_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.accepted1_date != null}">
+			<div class="ofertaFechas">Fecha en que dió click para ver la oferta completa: <span>#{summaryRequest.offer.accepted1_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.rejection1_date != null}">
+			<div class="ofertaFechas">Fecha en que no quizó ver la oferta completa: <span>#{summaryRequest.offer.rejection1_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.showed2_date != null}">
+			<div class="ofertaFechas">Fecha en que se mostró la oferta completa: <span>#{summaryRequest.offer.showed2_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.accepted2_date != null}">
+			<div class="ofertaFechas">Fecha en que se aceptó la oferta: <span>#{summaryRequest.offer.accepted2_date}</span></div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.rejection2_date != null}">
+			<div class="ofertaFechas">Fecha en que se rechazó la oferta completa: <span>#{summaryRequest.offer.rejection2_date}</span></div>
+		</h:panelGroup>
+		
+		<div style="display: none;" >
+		
+			<h:commandLink id="cmdOfferAccepted" immediate="true" >
+				<p:ajax event="click" listener="#{summaryRequest.aceptarOferta}" update="pnlPromocion"  />
+			</h:commandLink>
+			
+			<h:commandLink id="cmdOfferRejection" immediate="true" >
+				<p:ajax event="click" listener="#{summaryRequest.rechazarOferta}" update="pnlPromocion"  />
+			</h:commandLink>
+		
+		</div>
+	
+	</div>
+
+</ui:composition>

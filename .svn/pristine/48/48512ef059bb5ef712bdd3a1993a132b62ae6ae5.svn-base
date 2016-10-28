@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:c  = "http://java.sun.com/jsp/jstl/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div>
+		<p id    = "detailsPublishedDate" class = "smallGray" >#{sessionBean.area=='M'?'BC Score':'Score'}: 
+		<h:panelGroup rendered = "#{summaryRequest.bCDesc != null and summaryRequest.bCDesc != ''}">
+			<a href="#" onclick = "showBCDesc();">#{summaryRequest.actualProyect.bc_score}</a>
+	     </h:panelGroup>
+			
+			
+			<h:panelGroup rendered = "#{summaryRequest.bCDesc == ''}">
+				#{summaryRequest.actualProyect.bc_score}
+			</h:panelGroup>
+			
+			
+			<h:panelGroup rendered = "#{summaryRequest.displayReport}">
+				<a href = "../resources/#{summaryRequest.report}" target="_blank">
+					<img style="width: 25px; height: 25px;" alt="Reporte" src="../resources/img/page-32.png" />
+				</a>
+			</h:panelGroup>
+		 </p>
+	 </div>								
+</ui:composition>				

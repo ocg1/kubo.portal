@@ -1,0 +1,20 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<p:dataTable var      = "nota"
+				 value    = "#{summaryRequest.notas.listaNotasPrioridadMediaBaja}" 
+				 rendered = "#{summaryRequest.notas.listaNotasPrioridadMediaBaja != null and summaryRequest.notas.listaNotasPrioridadMediaBaja.size() > 0}"
+				 styleClass = "notas_del_caso"  					 
+				 style      = "font-size: 1.0em !important;">
+				 
+		<ui:include src = "data_table_headers.xhtml"/>
+		<ui:include src = "data_table_content.xhtml"/>											
+	</p:dataTable>
+	
+	<h:panelGroup rendered = "#{summaryRequest.notas.listaNotasPrioridadMediaBaja == null or summaryRequest.notas.listaNotasPrioridadMediaBaja.size() == 0}">
+		<p>No existen notas del caso</p>
+	</h:panelGroup>				
+</ui:composition>	

@@ -1,0 +1,33 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+ 			 <h:outputScript library="js" target="head" name="hubSpot_analytics.js" />
+ 			 <h:outputScript library="js" target="head" name="headerScripts.js" />
+ 			  <h:outputScript library="js" target="head" name="menuLateral.js" />
+ 			 <h:outputStylesheet library="css"  name="headerStyles.css" />
+ 			 <h:outputStylesheet library="css"  name="generales_estructura_menu.css" />
+ 	
+ 			 
+ 			 
+			
+			
+			
+			<h:panelGroup rendered="#{sessionBean.prospectus_id != null}" >
+				
+					<ui:include src="header_in.xhtml" />
+				 
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{sessionBean.prospectus_id == null}" >
+				<ui:include src="header_out.xhtml" />    
+	
+			</h:panelGroup>  
+			
+	        <!--lightbox abrir sesion-->
+	         
+      <div class="push_header"></div>
+		
+            
+            	</ui:composition>

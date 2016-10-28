@@ -1,0 +1,88 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id="lstPercBenefi">
+	
+	<script>
+
+	distribuirBeneficiarios_reset();
+
+	</script>
+		<div  class="dvElement" style="width: 99%;">
+			<fieldset>
+				
+					<div class="title_percentaje">						
+						<!-- <h:outputLabel styleClass="labelsStlTitle" rendered="#{ibeneficiaries.listBenefic.size()==1}" style=" font-weight: bold !important;" value="Beneficiario" /> -->
+						<h:outputLabel styleClass="labelsStlTitle" style=" font-weight: bold !important;" value="#{msg.Percentage_text}" />						
+					</div>
+					<div class=" distribuir_benef" onclick="distribuirBeneficiarios();"  >
+						Distribuir a beneficiarios
+					
+					</div>
+					<!-- input type="text" value="" id="total_suma"/ --> 
+				
+				
+				<h:dataTable var="benefic" value="#{ibeneficiaries.listBenefi_ciaries}" binding="#{table}" >
+					<h:column>
+						<div class="dvContent2">
+							<div class="dvContent">
+								<div class="dvLabel" >
+									<h:outputLabel styleClass="labelsStl" value="#{benefic.first_name} #{benefic.middle_name} #{benefic.father_last_name} #{benefic.mother_last_name}" />
+								</div>
+							</div>
+						</div>
+					</h:column>	
+							
+					<h:column styleClass="year-beneficiaries" style="vertical-align: bottom !important;">
+						<div class="dvContent">
+							<!-- div class="styled-select-Day full-year">
+								<h:selectOneMenu id="selPorc"   value="#{benefic.percentage}"  styleClass="elementStlSelDay validatorClass requiredVerify persentage">
+									
+									<f:selectItems  value="#{ibeneficiaries.listPercentage}"/>
+									<p:ajax event="change" oncomplete="return Beneficiario.verificPersentage(#{table.rowIndex});" listener="#{ibeneficiaries.updateOrSaveBenefic(benefic)}"></p:ajax>
+									<p:ajax event="blur" listener="#{ibeneficiaries.updateOrSaveBenefic(benefic)}"></p:ajax>
+								</h:selectOneMenu>
+							</div -->
+							
+							<div>
+								<p:inputText id="selPorc"   value="#{benefic.percentage}"  styleClass="elementStlSelDay validatorClass requiredVerify persentage">
+									<f:convertNumber locale="es_MX"  pattern="#0.00" />
+									<p:ajax event="change" oncomplete="return Beneficiario.verificPersentage(#{table.rowIndex});" listener="#{ibeneficiaries.beneficiario.persist(benefic)}"/>
+									<p:ajax event="blur" listener="#{ibeneficiaries.beneficiario.persist(benefic)}"/>
+								</p:inputText>
+							</div>
+					
+						</div>
+					</h:column>
+					
+					<h:column>
+						<div class="dvContent">
+							%
+						</div>
+					</h:column>		
+					
+					 <f:facet name="footer">
+       						
+      						<!-- <h:outputText value="Total: #{shoppingCartBean.total}" /> -->
+   
+						<div >
+							<div id="totalPerc" style="width: 120px; border-top: solid 2px #000000;text-align: center;font-size: 1.25em;font-weight: bold; float: right; margin-right: 25px;" >
+								0%
+							</div>
+						</div>
+					
+					</f:facet>
+												
+				</h:dataTable>
+				
+				
+			</fieldset>
+		</div>				
+	</h:panelGroup>
+	<script>
+	resetar_indices();
+	</script>
+</ui:composition>				

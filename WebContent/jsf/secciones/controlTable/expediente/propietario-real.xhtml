@@ -1,0 +1,68 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<p:dataTable var      = "notification"
+				 value    = "#{electronicFile.lista_pld_notification}" 
+				 rendered = "#{electronicFile.lista_pld_notification != null and electronicFile.lista_pld_notification.size() > 0}"
+				 styleClass = "notas_del_caso formato_tablas"  					 
+				 style      = "font-size: 1.0em !important;">
+
+		<p:columnGroup type = "header" >	
+			<p:row>																
+				<p:column >
+					<f:facet name = "header">		
+					 	<div style = "font-weight:bold;" >Tipo de nota</div>										
+					</f:facet>
+				</p:column>
+				
+				<p:column>
+					<f:facet name = "header">
+						<div style = "font-weight:bold;" >Nota</div>													
+					</f:facet>
+				</p:column>
+				
+				<p:column>
+					<f:facet name = "header">
+						<div style = "font-weight:bold;" >Agregó</div>
+					</f:facet>
+				</p:column>	
+					
+				<p:column colspan = "2">
+					<f:facet name = "header">
+						<div style = "font-weight:bold;" >Fecha</div>
+					</f:facet>
+				</p:column>										
+			</p:row>
+		</p:columnGroup>	
+		
+		<p:column  style="width: 20% !important;border: solid 0px #000000;" >		
+			<div  style = "width:99% !important;">				
+				<h:outputText value = "Se identificó el propietario real" />			
+			</div>
+		</p:column>
+	
+	<p:column style="width: 30% !important;border: solid 0px #000000;" >
+		<div  style = "width: 99% !important;text-align: justify;">
+			<h:outputText value = "#{notification.comments}" />			
+		</div>
+	</p:column>
+	
+	<p:column style="text-align:center; border: solid 0px #000000;">
+		<div  style = "width: 99% !important;border: solid 0px #000000;">				
+			<h:outputText value = "#{notification.person.first_name} #{notification.person.father_last_name}" />			
+		</div>
+	</p:column>
+		
+	<p:column style = "text-align:cente; border: solid 0px #000000;" >
+		<div  style = "width: 99% !important;border: solid 0px #000000;">		
+			<h:outputText value = "#{notification.notification_date}">
+				<f:convertDateTime pattern = "dd/MM/yyyy hh:mm:ss" />
+			</h:outputText>			
+		</div>					
+	</p:column>
+	
+	</p:dataTable>
+</ui:composition>				

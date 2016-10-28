@@ -1,0 +1,57 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+	<div style="display: none;" >					
+			<div id="show_confirm">						
+				<h2 class="encabezado_2"> Nos declaraste lo siguiente:</h2>									
+			<div class="operacionNegocio  ContenedorImagenMuestra" style="display:#{addIncomeExpenses.businessCompanyDisp}">
+				<ul>
+				    <li>
+					  	<span>Utilidad neta</span> 
+			
+					   
+					   <strong class="utilidadNeta"> $ 0</strong>
+					   
+					   </li>
+					 <li>
+						<span>Otros ingresos</span>       
+						<strong class="otrosIngresos"> $ 0</strong>
+					 </li>
+					 <li>
+						<span>Total de gastos</span>      
+						<strong class="totalGastos"></strong>
+						
+					 </li>
+				</ul>
+									
+				
+																
+		</div>
+		<div class="operacionEmpleo" style="display: #{addIncomeExpenses.wagesSalaryDisp}">
+			<ul>
+				<li>
+					<span>Total de ingresos </span>       
+					<strong class="IngresosEmpleo" > 0</strong>
+				</li>
+				<li>
+					<span>Total de gastos  </span>      
+					<strong class="totalGastosEmpleo"></strong>
+				</li>
+			</ul>
+		</div>
+		
+		
+		        <div class="montoDisponibleTotal">
+					<h:outputLabel styleClass="labelsStl"  value="#{msg.Surplus_expense_text}"/>
+					<strong><span id="surplus_expense" class="signoPesos"></span></strong>
+				</div>											
+				<div  class="acuerdoMontos"><h:outputLabel styleClass="labelsStl"  value="¿Estas de acuerdo con los montos?"/></div>
+				<div  class="btn_gris" onclick="$.fancybox.close()" style="float: right; margin: 20px;width: 80px;">Corregir</div>
+				<div id="btnNextIncomeExp" class="btn_naranja" style="float: right; margin: 20px;width: 80px;">Continuar</div>													
+			</div>
+		</div>
+					
+</ui:composition>

@@ -1,0 +1,57 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class="">
+		<div>
+			<script>par();</script>
+								
+			<table cellspacing="0" cellpadding="0" class="formato_tablas">
+				<tr>
+					<th colspan="2">Información para dispersión 						
+						<ui:include src = "dispersion/change-control-icon.xhtml"/>																															
+					</th>
+				</tr>
+				
+				<tr>
+					<td>
+						<div><p style="margin: 0px;">Clabe interbancaria:</p></div>
+					</td>
+										
+					<td>
+						<ui:include src = "dispersion/editar-CLABE.xhtml"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<div><p>Institución financiera:</p> </div>
+					</td>
+					
+					<td>
+						<ui:include src = "dispersion/editar-bank.xhtml"/>
+					</td>
+				</tr>
+									
+				<h:panelGroup rendered = "#{summaryRequest.actualProyect != null}">										
+					<tr>									
+						<td>Medio de pago:</td>
+						
+						<td>				
+							<ui:include src = "dispersion/editar-deposit-method.xhtml"/>													
+						</td>										
+					</tr>
+										
+					<tr>
+						<td style="vertical-align:top" >Fecha de desembolso:</td>
+						<td>																					
+							<ui:include src = "dispersion/editar-signature-date.xhtml"/>									
+						</td>
+					</tr>											
+				</h:panelGroup>	
+			</table>
+		</div>
+	</div>					
+</ui:composition>

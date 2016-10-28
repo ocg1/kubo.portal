@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+ <html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:p  = "http://primefaces.org/ui"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:c  = "http://java.sun.com/jsp/jstl/core">	  
+	<h:head>		
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/templates/tipografia/tipografia.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/secciones/fichas_producto/fluid_grid.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/templates/header/header.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/templates/header/label_menu_items.css" />	
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/templates/header/label_bienvenido_usuario.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/templates/header/secciones_menu_items.css" />					
+		<link rel = "stylesheet" type = "text/css" href = "../../../resources/css/templates/footer/footer.css" />				
+	</h:head>
+	
+	<h:body>
+		<style>
+		/*
+			.prospecto_panel_grid tr, .prospecto_panel_grid td
+			{
+				border: none;
+			}
+			*/
+		</style>
+	
+		<p:layout fullPage = "true">
+			<p:layoutUnit position = "north" >			
+				<div class = "main_header">
+					<ui:include src = "../../templates/header/header.xhtml" />					
+				</div>	
+			</p:layoutUnit>
+		</p:layout>
+		
+		<p:layoutUnit position = "center">
+			
+		<p:panelGrid columns = "3">
+						  					 		  
+			<ui:include src = "notificacion_registro_acreditado.xhtml"/>
+			
+			<ui:include src = "registro_inversionista.xhtml"/>					 		  			 		  					
+						  
+			<ui:include src = "notificacion_generacion_password_activacion.xhtml"/>					 		  			 		  					
+
+		</p:panelGrid>		
+			
+			<p:panel header = "Notificar Evento">
+				<h:form>
+					<p:panelGrid columns = "2">
+						<h:outputText value = "Credito Rechazado"/>
+						<p:commandButton value = "Notificar" actionListener = "#{notificacionesTest.credito_rechazado}"/>								
+						
+						<h:outputText value = "Disposición de Efectivo" />
+						<p:commandButton value = "Notificar" actionListener = "#{notificacionesTest.notificar_disposicion_efectivo}"/>
+						
+						<h:outputText value = "Cancelación de Cuenta"/>
+						<p:commandButton value = "Notificar" actionListener = "#{notificacionesTest.notificar_cancelacion_cuenta}"/>
+						
+						<h:outputText value = "Cancelación de Cuenta Inversionista"/>
+						<p:commandButton value = "Notificar" actionListener = "#{notificacionesTest.notificar_cancelacion_cuenta_inversionista}"/>
+						
+						<h:outputText value = "Publicación"/>
+						<p:commandButton value = "Notificar" actionListener = "#{notificacionesTest.notificar_publicacion}"/>
+					</p:panelGrid>
+				</h:form>
+			</p:panel>			
+			
+			<c:set var = "localhost"    value = "http://localhost:8080" />				
+			<c:set var = "context_root" value = "#{request.contextPath}" />
+			<c:set var = "resources"    value = "#{localhost}#{context_root}/resources" />	
+			<div id    = "loading_gif"  
+				 style = "display:none;
+				 		  position:absolute;
+				          width: 50px;
+				          height: 50px;
+				          top:100px;
+				          left: 600px;
+				          z-index: 100;">
+				<img src = "#{resources}/img/loading.gif"/>
+			</div>
+				
+			<div class = "float_divider"/>		
+				
+			<div class = "south_column">					
+				<ui:include src = "../../templates/footer/footer.xhtml" />
+			</div>	
+		</p:layoutUnit>		
+	</h:body>
+</html>	

@@ -1,0 +1,31 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+	<h:panelGroup rendered="#{estadoCuenta.pademovil}">		
+		<div>			
+			<p:commandLink onstart="return validaUser();" actionListener="#{estadoCuenta.pademovilAction}" update="pnlScriptPade" >
+				
+				<div class="buttonPR">Pagar con Pademobile</div>
+				
+				<f:attribute name="ammount" value="#{credit.montoProxCuota}" />
+				<f:attribute name="safi_credit_id" value="#{credit.numCredito}" />
+				<f:attribute name="proyect_id" value="#{credit.proyect_id}" />
+				<f:attribute name="proyect_loan_id" value="#{credit.proyect_loan_id}" />
+			</p:commandLink>			
+		</div>
+		
+		<div class="queEsPademobile" >			
+			<a class = "iframe" href = "https://www.pademobile.com/es-es/mx/">¿Que es Pademobile?</a>			
+		</div>
+	</h:panelGroup>		
+	
+	<h:panelGroup id = "pnlScriptPade">								
+		<h:panelGroup rendered = "#{estadoCuenta.disPnlScriptPade}" >										
+			<h:outputText escape="false" value="#{estadoCuenta.scriptPade}" />										
+		</h:panelGroup>									
+	</h:panelGroup>
+			
+</ui:composition>				

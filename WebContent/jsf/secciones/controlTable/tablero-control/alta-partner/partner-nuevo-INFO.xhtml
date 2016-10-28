@@ -1,0 +1,32 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "partner-nuevo-info" class = "alta-partner container partner-info">
+		<div class = "alta-partner partner-id label">
+			<p class = "tipografia"> Nombre <sup>*</sup></p>
+		</div>
+		                            	
+		<div class = "partner-info input">											                                                          	                                								
+			<p:inputText maxlength = "90">
+				<p:ajax event = "blur"
+						oncomplete = "listener_partner_name(xhr, status, args);" 
+					    listener   = "#{tablero_control.alta_partner.listener_partner_name}" />
+			</p:inputText>	                                	                                					                              	                               		  	                                                              
+		</div>
+		
+		<div class = "partner-info description label">
+			<p class = "tipografia"> Descripción <sup>*</sup></p>
+		</div>
+		                            	
+		<div class = "partner-info input">											                                                          	                                								
+			<p:inputTextarea maxlength = "2000">
+				<p:ajax event = "blur"
+						oncomplete = "listener_partner_descripcion(xhr, status, args);"  
+					    listener   = "#{tablero_control.alta_partner.listener_partner_descripcion}" />
+			</p:inputTextarea>	                                	                                					                              	                               		  	                                                              
+		</div>
+	</div>				
+</ui:composition>	

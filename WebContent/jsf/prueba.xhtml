@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:rc="http://www.kubofinanciero.com/rc">
+	<h:head> 				
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		<script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+
+		<script type="text/javascript" src="../resources/js/general.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.blockUI.js"></script>
+
+		<script type="text/javascript" src="../resources/js/frmscript.js"></script>	
+
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/infoBasica.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+
+		
+     <title>kubo.financiero | Genera tu CURP y RFC automaticamente</title>				
+     <meta name="Description" content="Ingresa los datos necesarios para generar automáticamente tu CURP y RFC"/>
+
+	</h:head>
+	<h:body >
+		
+		<div id="header" style="width: 100%; margin: 0px;">
+			<ui:include src="templates/headContenido.xhtml" />
+		</div>
+		
+		<!-- <div id="tester" style="position: fixed; top: 100px; right: 0px; background-color: #22CC33; z-index: 20;"></div> -->
+		
+		<div class="contPR" style="position: relative;margin-right: 0px;">
+			<div class="contFrm" style="padding-right: 0px; overflow: auto;">
+				
+				
+				
+				<div class="formFrm"  >
+					
+					
+					
+					<div style="margin-left: auto; margin-right: auto;" >
+						<b>Mi IP : #{sessionBean.getIP_address_client()}</b>
+					</div>
+					
+					
+				</div>
+
+								   
+				   		
+			</div>
+		</div>		 
+		<div id="footer"  style="width: 100%; magin-right: 0px; position: relative;">
+			 <ui:include src="templates/footerContenido.xhtml" /> 
+		</div>
+	
+	</h:body>
+</html>
+ 

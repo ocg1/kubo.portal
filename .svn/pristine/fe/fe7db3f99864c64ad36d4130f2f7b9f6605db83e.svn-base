@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<li>
+		<h4>¿Para qué lo utilizarás?</h4>
+		
+		<div class = "selects full_select">
+			<h:selectOneMenu id = "simulador-purpose-id" value = "#{ofertaRenovacion.simulador.purpose_id}" immediate = "true">
+			
+				<f:selectItem  itemLabel = "Selecciona..." itemValue = "0" />
+				
+				<f:selectItems value = "#{ofertaRenovacion.listPurpose}" var = "purpose" 
+							   itemLabel = "#{purpose.name}"  
+							   itemValue = "#{purpose.purposePK.purpose_id}"/>
+							   
+				<p:ajax event = "change"
+						oncomplete = "Simulador.info_oncomplete(xhr, status, args);" 
+						listener   = "#{ofertaRenovacion.simulador.initSelectOneMenu}"/>  
+			</h:selectOneMenu>
+		</div>					
+	</li>
+</ui:composition>			

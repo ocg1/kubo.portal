@@ -1,0 +1,39 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div style = "margin-left: 100px;">
+		<div class = "contenedor_buscador">
+			<h2 class = "expand_heading" style = "cursor: pointer; width:500px;">
+				<a href = "#">Búsqueda de solicitud</a>
+				<span class = "collapse #{searchSummaySession.searchSummary !=null ? '' : 'change'}" >Collapse/Expand</span>
+			</h2>											 
+				
+			<div class = "toggle_container" style = "width:auto; display: #{searchSummaySession.searchSummary !=null ? 'none;':'block;'}">
+				<div class = "box">
+					<h:form prependId = "false">
+													
+						<ui:include src = "buscador/filtro-por-area.xhtml"/>
+																									
+						<div style = "border: 0px solid gray; overflow: hidden">												
+							<ui:include src = "buscador/autocomplete.xhtml"/>
+							<ui:include src = "buscador/boton-init.xhtml"/>
+						</div>
+					
+						<div class = "dvContent">					
+							<div class = "dvLabel" style = "width: 485px !important; margin-right: 0px;">	
+								<h:outputLabel id = "error_msg" style = "color: red; float: left;" styleClass = "labelsStl" value = ""/>					
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<script>
+		loadScriptsearch();
+	</script>
+</ui:composition>		

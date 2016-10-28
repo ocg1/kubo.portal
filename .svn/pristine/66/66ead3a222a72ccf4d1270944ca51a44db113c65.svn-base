@@ -1,0 +1,25 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+	<h:panelGrid columns       = "1" 
+		         border  	   = "0"
+		         cellspacing   = "1"
+		         width         = "100%">
+		<p class = "col_paso_id">
+			<span><b>Nota: </b></span> 
+			<span>#{referencia.nota.descripcion}</span>
+		</p>		     	
+     	
+		<ui:repeat var = "paso" value = "#{referencia.nota.lista_pasos}">
+			<p class = "col_paso_id">
+				<span><b>#{paso.paso_id}: </b></span> 
+				<span>#{paso.paso_id_descripcion}</span>
+			</p>
+		</ui:repeat>
+	</h:panelGrid>
+	
+</ui:composition>	

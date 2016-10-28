@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+								
+	<link   type = "text/css" rel = "stylesheet" href = "../resources/css/templates/perfil_completo/request.css" />			
+	<link   type = "text/css" rel = "stylesheet" href = "../resources/css/templates/perfil_completo/tooltip_ayuda.css" />	
+	<link   type = "text/css" rel = "stylesheet" href = "../resources/css/templates/perfil_completo/edicion_nombre.css" />
+	
+	<script type = "text/javascript" src = "../resources/js/templates/perfil_completo/resumen_de_la_solicitud/request.js"/>				
+	<script type = "text/javascript" src = "../resources/js/templates/proyect_loan/tooltip_ayuda.js"/>				
+	
+	<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.mesa/solicitud/perfil/editor-nombre.js" />	
+	<script type = "text/javascript" src = "../resources/js/kubo.js" />
+	<script type = "text/javascript" src = "../resources/js/solcredkubo.js" />		
+									 
+	<ui:include src = "../scripts/domicilio.xhtml"/>
+				 	
+	<ui:include src = "solicitud/solicitud.xhtml"/>
+	<ui:include src = "solicitud/cancelacion-de-cuenta.xhtml" />	
+	<ui:include src = "solicitud/init-scripts.xhtml"/>
+	<ui:include src = "solicitud/confirmar-invertir-en-proyecto.xhtml"/>		
+	
+</ui:composition>

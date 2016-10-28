@@ -1,0 +1,58 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class="calle_numeros">
+		<div class="dvContent stlCntNumExt" >
+			<div class="dvLabel" style="width: 160px; float: left;">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.ExtNumber_text}" />
+			</div>
+			
+			<div class="dvElement" >
+				<h:inputText id="address_number" tabindex="52" onkeypress="return isNumberKey(event);" value="#{business.addressbean.address.address_number}" styleClass="elementAddresMin mapClass address_number">
+					<p:ajax event="blur" onstart="return validateNumAdrress('uibus\:#{status.index}\:address_number')" listener="#{addMyLoan.domicilio.updateAddressBlurBusiness(business)}"></p:ajax>
+				</h:inputText>
+				<h:inputHidden value="#{business.addressbean.address.address_number}"></h:inputHidden>													
+			</div>
+		</div>
+		
+		<div class="dvContent stlCntNumInt">
+			<div class="dvLabel" style="width: 160px; float: left; margin-left: 10px;">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.IntNumber_text}" />
+			</div>
+			<P />
+			<div class="dvElement">
+				<h:inputText id="address_intNumber" tabindex="52"  value="#{business.addressbean.address.apt_number}" styleClass="elementAddresMin">
+					<p:ajax event="blur" listener="#{addMyLoan.domicilio.updateAddressBlurBusiness(business)}"/>
+				</h:inputText>
+			</div>
+		</div>
+		
+		<P style="clear: both;" />
+		
+		<div class="dvContent stlCntNumApple" >
+			<div class="dvLabel" style="width: 120px; float: left;">
+				<h:outputLabel styleClass="labelsStl" value="${msg.Block_text}" />
+			</div>
+			<P />
+			<div class="dvElement" >
+				<h:inputText id="address_block" tabindex="54" value="#{business.addressbean.address.mx_manzana}" styleClass="elementAddresMin">
+					<p:ajax event="blur" listener="#{addMyLoan.domicilio.updateAddressBlurBusiness(business)}"/>
+				</h:inputText>
+			</div>
+		</div>
+		
+		<div class="dvContent stlCntNumLote">
+			<div class="dvLabel">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.Lt_text}" />
+			</div>
+			<P />
+			<div class="dvElement" >
+				<h:inputText id="address_lote" tabindex="55" value="#{business.addressbean.address.mx_lote}" styleClass="elementAddresMin">
+					<p:ajax event="blur" listener="#{addMyLoan.domicilio.updateAddressBlurBusiness(business)}"/>
+				</h:inputText>
+			</div>
+		</div>		
+	</div>
+</ui:composition>				

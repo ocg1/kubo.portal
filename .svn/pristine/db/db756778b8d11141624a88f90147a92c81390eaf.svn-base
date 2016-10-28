@@ -1,0 +1,507 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<style>
+		.dvContent2{
+			width: 250px !important;
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+	</style>
+	
+	<script>
+	     crear_indices();
+	     blur_indices();
+	     focus_indices();
+	     
+	   
+	     
+	$(document).ready(function(){	
+		
+			$(".formatincomexpenses").focus(function(){
+				if($(this).val()=="0"){
+					$(this).val("");
+				}
+				
+			});
+			$(".formatincomexpenses").blur(function(){
+				if($(this).val().trim() == ""){
+					$(this).val("0");
+				}
+				
+			});
+	});
+	
+	</script>
+
+	<div>
+		<h:form prependId="false">
+			<div id="dataBusiness" style="height: auto;">
+				<div class="contPR"
+					style="position: relative; margin-right: 0px; min-height: 0 !important; background-color: #FFFFFF;">
+					<div class="contFrm"
+						style="padding-right: 0px; width: auto; margin: 0px auto;">
+						<div class="clTitle" style="width: 70%;">
+							<h:outputText
+								value="#{msg.Analyzing_your_sales_and_expenses_title}" />
+						</div>
+						
+						<div class="regParag" style="width: 99%; text-align: justify;">
+							Explícanos cómo funciona tu negocio.<br /> Describe tus ventas y
+							compras, por ejemplo, dinos si vendes a crédito o al contado,
+							cómo te surtes, cómo le pagas a tus proveedores. Esto te ayudará
+							a planificarte y a calcular efectivamente la utilidad de tu
+							negocio.
+						</div>
+						<br />
+						<fieldset>
+							<div class="dvContent2">
+								<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.My_sales_are}"
+											styleClass="labelsStl"></h:outputText>
+									</div>
+									<p></p>
+									<div class="dvElementLength">
+									
+										<div class="styled-select-Month"
+											>
+											
+											<h:selectOneMenu id="cbo_my_sales"
+											
+												styleClass="elementStlSelAddress"
+												value="#{addIncomeExpenses.sales_type}">
+												<f:selectItem itemValue="" itemLabel="" />
+												<f:selectItem itemValue="C" itemLabel="Contado" />
+												<f:selectItem itemValue="A" itemLabel="Abonos" />
+												<f:selectItem itemValue="M" itemLabel="Mixto" />
+												<p:ajax event="blur"
+													listener="#{addIncomeExpenses.saveIncomeDetail}"
+													oncomplete="updateBusinessIncome();"></p:ajax>
+											</h:selectOneMenu>
+										</div>
+									</div>
+								</div>
+								<div class="dvContent">
+									<div class="dvLabel">
+										<h:outputText value="#{msg.My_purchases_are}"
+											styleClass="labelsStl"></h:outputText>
+									</div>
+									<p></p>
+									<div class="dvElementLength">
+										<div class="styled-select-Month"
+											>
+											<h:selectOneMenu id="cbo_my_purchases"
+												
+												styleClass="elementStlSelAddress"
+												value="#{addIncomeExpenses.provider_type}">
+												<f:selectItem itemValue="" itemLabel="" />
+												<f:selectItem itemValue="C" itemLabel="Contado" />
+												<f:selectItem itemValue="A" itemLabel="Abonos" />
+												<f:selectItem itemValue="M" itemLabel="Mixto" />
+												<p:ajax event="blur"
+													listener="#{addIncomeExpenses.saveIncomeDetail}"
+													oncomplete="updateBusinessIncome();"></p:ajax>
+											</h:selectOneMenu>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<br />
+						<div id="slidedetails"
+							style="display: #{addIncomeExpenses.dispSlideDetails}">
+							<fieldset>
+								<div class="dvContent2">
+									<div class="dvContent">
+										<div class="dvLabel">
+											<h:outputText id="valueDinamic"
+												value="#{msg.How_often_is_supplied}" styleClass="labelsStl"></h:outputText>
+										</div>
+										<p></p>
+										<div class="dvElementLength"
+											>
+											<h:inputText id="inp_how_often"
+												onkeypress="return isNumberKey(event);"
+												style="border:solid 1px #9f9f9f !important;"
+												maxlength="3" styleClass="elementAddres1 calShoppingMonth"
+												valueChangeListener="#{addIncomeExpenses.setValuesDetail}"
+												value="#{addIncomeExpenses.times_refillStr}">
+												<p:ajax onstart="return fieldNotEmpty('inp_how_often')"
+													event="blur"></p:ajax>
+												<f:attribute name="field" value="times_refill"></f:attribute>
+											</h:inputText>
+										</div>
+									</div>
+									<div class="dvContent">
+										<div class="dvLabel">
+											<h:outputText value="#{msg.Shopping_monthly}"
+												styleClass="labelsStl"></h:outputText>
+										</div>
+										<p></p>
+										<div class="dvElementLength"
+											>
+											<h:panelGroup id="totalShoppingMonthly">
+												<table>
+													<tr>
+														<td style="padding-left: 5px;">
+														<span style="margin-left: -7px;">$</span>
+														</td>
+														<td>
+															<h:inputText id="inp_shopping_monthly"
+																style=" font-weight:bold;  border:solid 1px #9f9f9f !important;"
+																styleClass="elementAddres1 formatincomexpenses"
+																value="#{addIncomeExpenses.provider_totalStr}"
+																valueChangeListener="#{addIncomeExpenses.setValuesDetail}">
+																<p:ajax event="blur"
+																	onstart="return fieldNotEmpty('inp_shopping_monthly')"></p:ajax>
+																<f:attribute name="field" value="provider_total"></f:attribute>
+															</h:inputText>
+														</td>
+													</tr>
+												</table>
+											</h:panelGroup>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<br />
+							<fieldset>
+								<div class="dvContent2">
+									<div class="clTitleDetailsIncome">Ventas</div>
+									<div class="dvContent">
+										<div class="dvLabel">
+											<h:outputText value="#{msg.Sales}" styleClass="labelsStl"></h:outputText>
+										</div>
+										<p></p>
+										<div class="dvElementLength">
+											<div class="styled-select-Month"
+											
+>
+												<h:selectOneMenu id="cbo_sales"
+													
+													styleClass="elementStlSelAddress"
+													value="#{addIncomeExpenses.sales_freq}">
+													<f:selectItem itemValue="" itemLabel="" />
+													<f:selectItem itemValue="1" itemLabel="Mensual" />
+													<f:selectItem itemValue="2" itemLabel="Quincenal" />
+													<f:selectItem itemValue="4" itemLabel="Semanal" />
+													<f:selectItem itemValue="30" itemLabel="Diario" />
+													<p:ajax event="change"
+														listener="#{addIncomeExpenses.changeSalesFreq}"
+														async="false"
+														oncomplete="loadScriptFormat();updateBusinessIncome();"
+														update="section-selling-details"></p:ajax>
+												</h:selectOneMenu>
+											</div>
+										</div>
+									</div>
+									<h:panelGroup id="section-selling-details">
+										<ui:repeat id="uisell" var="selling"
+											value="#{addIncomeExpenses.lstSellingDetails}"
+											varStatus="status">
+											<div class="dvContent">
+												<div class="dvLabel">
+													<h:outputText value="#{selling.name}"
+														styleClass="labelsStl"></h:outputText>
+												</div>
+												<p></p>
+												<div class="dvElementLength"
+												>
+													<table>
+														<tr>
+															<td style="padding-left: 5px;">
+																<span style="margin-left: -7px;">$</span>
+															</td>
+															<td>
+																<h:inputText id="selling-field"
+																	style="border:solid 1px #9f9f9f !important;"
+																	styleClass="elementAddres1 formatincomexpenses"
+																	value="#{selling.ammount_modified}">
+																	<p:ajax event="blur"
+																		onstart="return fieldNotEmpty('uisell\:#{status.index}\:selling-field')"
+																		oncomplete="updateBusinessIncome();"
+																		listener="#{addIncomeExpenses.saveOrUpdate(selling)}" />
+																</h:inputText>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</ui:repeat>
+									</h:panelGroup>
+									<p:separator />
+
+									<div class="dvContent">
+										<div class="dvLabel">
+											<p:outputPanel autoUpdate="true">
+												<h:outputText value="#{msg.Total_Sales_Week}"
+													rendered="#{addIncomeExpenses.incomedetail.sales_freq=='30'}"
+													style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+												<h:outputText value="Ventas al mes:"
+													rendered="#{addIncomeExpenses.incomedetail.sales_freq!='30'}"
+													style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+											</p:outputPanel>
+										</div>
+										<p></p>
+										<p:outputPanel autoUpdate="true" id="totalDailySales">
+											<div class="dvElementLength"
+												style="font-weight: bold;">
+												<table>
+													<tr>
+														<td style="padding-left: 5px;">
+															<span style="margin-left: -7px;">$</span>
+														</td>
+														<td>
+															<h:inputText id="inp_value_total_daily_Sales"
+																disabled="true"
+																style="font-weight:bold !important;  border:solid 1px #9f9f9f !important;"
+																styleClass="elementAddres1 formatincomexpenses"
+																value="#{addIncomeExpenses.sales_totalStr}" />
+														</td>
+													</tr>
+												</table>
+											</div>
+										</p:outputPanel>
+									</div>
+									<p:outputPanel autoUpdate="true">
+										<h:panelGroup id="totalDailySalesMonthly"
+											rendered="#{addIncomeExpenses.incomedetail.sales_freq=='30'}">
+											<p:separator />
+											<div class="dvContent">
+												<div class="dvLabel">
+													<h:outputText value="#{msg.Total_Monthly_Sales}"
+														style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+												</div>
+												<p></p>
+												<div class="dvElementLength"
+													style=" font-weight: bold;">
+													<table>
+														<tr>
+															<td style="padding-left: 5px;">
+																<span style="margin-left: -7px;">$</span>
+															</td>
+															<td>
+																<h:inputText id="inp_value_total_daily_monthly_Sales"
+																	disabled="true"
+																	style="font-weight:bold !important; border:solid 1px #9f9f9f !important;"
+																	styleClass="elementAddres1 formatincomexpenses"
+																	value="#{addIncomeExpenses.sales_totalMonthlyStr}" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</h:panelGroup>
+									</p:outputPanel>
+
+								</div>
+							</fieldset>
+							<br />
+							<fieldset>
+								<div class="dvContent2">
+									<div class="dvContent">
+										<div class="dvLabel">
+											<h:outputText value="#{msg.Gross_utility}"
+												style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+										</div>
+										<p></p>
+										<p:outputPanel autoUpdate="true" id="pnlProfitBeforeCosts" onclomplete="init_listeners();">
+											<div class="dvElementLength"
+												style="font-weight: bold;">
+												<table>
+													<tr>
+														<td style="padding-left: 5px;">
+															<span style="margin-left: -7px;">$</span>
+														</td>
+														<td>
+															<h:inputText id="inp_value_gross"
+																onkeydown="fieldNumericValue(event);" disabled="true"
+																style=" font-weight:bold !important; border:solid 1px #9f9f9f !important;"
+																styleClass="elementAddres1 formatincomexpenses"
+																value="#{addIncomeExpenses.profit_before_costsStr}" />
+														</td>
+														
+														
+													</tr>
+												</table>
+											</div>
+										
+										</p:outputPanel>
+									
+									</div>
+								</div>
+							</fieldset>
+							<br />
+							<div id="detailsOp">
+								<fieldset style="padding: 0pt; margin: 0pt;">
+									<div class="dvContent2">
+										<div class="clTitleDetailsIncome">#{msg.Operating_expenses}</div>
+										<ui:repeat id="uiopert" var="operaCost"
+											value="#{addIncomeExpenses.lstOpertCostDetails}"
+											varStatus="status">
+											<div class="dvContent">
+												<div class="dvLabel">
+													<h:outputText value="#{operaCost.name}"
+														styleClass="labelsStl"></h:outputText>
+												</div>
+												<p></p>
+												<div class="dvElementLength"
+													>
+													<table>
+														<tr>
+															<td style="padding-left: 5px;">
+																<span style="margin-left: -7px;">$</span>
+															</td>
+															<td>
+																<h:inputText id="opert-field"
+																	style=" border:solid 1px #9f9f9f !important;"
+																	styleClass="elementAddres1 formatincomexpenses"
+																	value="#{operaCost.ammount_modified}">
+																	<p:ajax event="blur"
+																		onstart="return fieldNotEmpty('uiopert\:#{status.index}\:opert-field')"
+																		oncomplete="updateBusinessIncome();"
+																		listener="#{addIncomeExpenses.saveOrUpdate(operaCost)}" />
+																</h:inputText>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</ui:repeat>
+										<p:separator />
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputText value="Total Gastos operativos"
+													style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+											</div>
+											<p></p>
+											<p:outputPanel autoUpdate="true" id="totalOperativeCost">
+												<div class="dvElementLength"
+													style="font-weight: bold;">
+													<table>
+														<tr>
+															<td style="padding-left: 5px;">
+																<span style="margin-left: -7px;">$</span>
+															</td>
+															<td>
+																<h:inputText id="inp_value_opExpenses" disabled="true"
+																	style="margin-bottom: 0 !important;font-weight:bold !important; border:solid 1px #9f9f9f !important;"
+																	styleClass="elementAddres1 formatincomexpenses"
+																	value="#{addIncomeExpenses.operative_costsStr}" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</p:outputPanel>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+							<br />
+							<fieldset>
+								<div class="dvContent2">
+									<div class="dvContent">
+										<div class="dvLabel">
+											<h:outputText value="#{msg.Net_income}"
+												style="font-weight:bold;" styleClass="labelsStl"></h:outputText>
+										</div>
+										<p></p>
+										<p:outputPanel autoUpdate="true" id="pnlProfilAfterCostsStr">
+											<div class="dvElementLength"
+												style="font-weight: bold;">
+												<table>
+													<tr>
+														<td style="padding-left: 5px;">
+															<span style="margin-left: -7px;">$</span>
+														</td>
+														<td>
+															<h:inputText id="inp_value_net"
+																onkeydown="fieldNumericValue(event);" disabled="true"
+																style="font-weight:bold !important;  border:solid 1px #9f9f9f !important;"
+																styleClass="elementAddres1 formatincomexpenses"
+																value="#{addIncomeExpenses.profil_after_costsStr}" />
+														</td>
+													</tr>
+												</table>
+											</div>
+										</p:outputPanel>
+									</div>
+								</div>
+							</fieldset>
+
+						</div>
+						<p />
+						<h:panelGroup rendered="#{!sessionBean.mobile}">
+						<div class="dvContent">
+							<div class="dvElementLength"
+								style="margin-left: auto; margin-right: auto;">
+								<div class="btndetails" id="btn_end_business_helpme"
+									style="text-align: center; margin-left: auto; margin-right: auto;">
+									#{msg.Btn_end}</div>
+
+
+							</div>
+						</div>
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{sessionBean.mobile}" >
+							
+							<div class="buttonPR" onclick="jsTerminaDetail();" >
+								Termina
+							</div>
+							
+							<div style="display: none;">
+								<h:inputText id="inp_business_company" tabindex="2" maxlength="8" styleClass="elementAddres1 calculeIncome validatorClass formatincomexpenses" style="border:solid 1px #9f9f9f !important;" value="#{addIncomeExpenses.ammountBusComStr}">
+									<p:ajax event="blur" onstart="return validateNumberIncome('inp_business_company')" listener="#{addIncomeExpenses.updateOrSaveIncome}" ></p:ajax>
+								</h:inputText>
+								
+								<div id="dvMobileBackAction">
+									<a href="registro.xhtml;jsessionid=#{sessionBean.sessionID}"  data-role="button" data-transition="slide" data-direction="reverse" style="border: 0px !important;" />
+								</div>
+								
+							</div>
+							
+						</h:panelGroup>
+						
+						
+					</div>
+				</div>
+			</div>
+			<h:inputHidden id ="isMobile"  value="${sessionBean.mobile}" />
+		</h:form>
+
+	</div>
+
+<h:panelGroup>
+	<script>
+	
+	
+
+		
+
+		
+		
+		function jsTerminaDetail(){
+			
+			$("#opert-field").blur();
+			$("#selling-field").blur();
+			
+			var totalValor=$("#inp_value_net").val();
+			//alert("total: "+totalValor);
+			if(totalValor!=""){
+				$("#inp_business_company").val(totalValor);
+				$("#inp_business_company").blur();
+			}	
+			
+			$("#dvMobileBackAction a").click();
+			
+		}
+	</script>
+	
+</h:panelGroup>
+
+</ui:composition>

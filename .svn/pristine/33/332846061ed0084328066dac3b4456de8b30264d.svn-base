@@ -1,0 +1,61 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				
+				
+				
+	<div class = "field tipo_credencial ContenedorImagenMuestra">
+		<div class="dvLabel">
+		<label class="labelsStl">	<p>¿Qué tipo de credencial tienes? *<span class="imagenDescripcion"><i onclick = "abrir_imagenreferencia(this);" class = "fa fa-question-circle"></i></span></p></label>
+		</div>
+				
+				
+				<fieldset class="conjuntoChecks full">
+				   <div class="btnN fullBtn" data-opcion="1">
+			        	<span>	<strong>IFE:</strong>  Instituto Federal Electoral</span>
+			       </div>
+			       <div class="btnN fullBtn" data-opcion="2">
+			        	<span>	<strong>INE:</strong>  Instituto Nacional Electoral</span>
+			       </div>
+			       
+					<h:selectOneRadio id = "ine_ife" immediate = "true"
+									  layout = "pageDirection" 
+									  value  = "#{addPldDocument.naturalperson.identification_type_id}"
+					 				  styleClass = "elementStlLbl validatorClass ocultaSelect" >
+					 				  
+	<!-- 
+			             <f:selectItem itemValue = "0" itemLabel = "IFE - Instituto Federal Electoral"/>
+			             <f:selectItem itemValue = "1" itemLabel = "INE - Instituto Nacional Electoral"/>
+	-->		             
+	
+						<f:selectItems value = "#{addPldDocument.lista_tipo_credencial}" 
+									   var = "tipo_credencial"
+									   itemLabel = "#{tipo_credencial.description}"
+									   itemValue = "#{tipo_credencial.pk.identification_type_id}" />
+									   
+						<p:ajax event = "change" 
+							    oncomplete = "listener_tipo_credencial(xhr, status, args);"
+								listener   = "#{addPldDocument.listener_tipo_credencial}"/>
+			             
+	       			</h:selectOneRadio>
+			</fieldset>
+		<div class = "imagen_referencia">
+			
+			
+			<div class = "blindAction" onclick = "cerrar_imagenreferencia(this);"  >
+				X
+			</div>
+			
+			<figure>
+			<img src = "../resources/img/credencial/IFEsamall.jpg"/>
+				<img src = "../resources/img/credencial/INEsmall.jpg"/>
+
+
+			</figure>		
+		</div>
+	</div>				
+</ui:composition>				

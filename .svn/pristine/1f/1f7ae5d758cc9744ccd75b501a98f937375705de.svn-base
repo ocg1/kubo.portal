@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<div id="container_search">
+				<div class="clTitle" style="width: 450px;">Búsqueda de solicitud<br /></div>
+				<fieldset style="width:500px;">
+				<h:form id="frm_search_request" prependId="false" >
+					<div class="dvContent">					
+						<div class="dvLabel" style="width: 485px !important; margin-right: 0px; ">	
+							<h:outputLabel  styleClass="labelsStl" style="float:left;" value="#{msg.Folio_number_text}"/>		
+						</div>
+						<p/>
+						<div  class="dvElementAddres1" >
+								<h:inputText  id="inp_search" style="width:280px !important;" styleClass="elementAddres1 validatorClass" value="#{searchRequest.search}" >
+									<p:ajax event="blur"></p:ajax>
+								</h:inputText>							
+							</div>
+							
+							<p:commandLink  style="text-decoration: none;"										
+											actionListener="#{searchRequest.search_Request}"
+											onstart="displayMessageProcessing('msgprocessing',false);"
+											oncomplete="completSearch(xhr, status, args);"
+											update=":update_summary">
+											
+								<div class="buttonPR" style="margin:0;">	
+									<h:outputText value="Buscar" />					
+								</div>
+							</p:commandLink>
+						</div>
+					
+					<div class="dvContent">					
+						<div class="dvLabel" style="width: 485px !important; margin-right: 0px; ">	
+							<h:outputLabel id="error_msg" style="color: red;" styleClass="labelsStl" value=""/>					
+						</div>
+					</div>
+					</h:form>								
+				</fieldset>
+			</div>
+			<div class="tab">
+				<div class="search">
+					<span id="toggle">
+						<a href="#" class="open" id="open" style="display: block;">Buscar solicitud</a>
+						<a href="#" class="close" style="display: none;" id="close">Ocultar</a>			
+					</span>
+				</div> 
+			</div>
+</html>

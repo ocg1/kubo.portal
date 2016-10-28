@@ -1,0 +1,25 @@
+<ui:composition  	
+	xmlns	 = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h  = "http://java.sun.com/jsf/html">	
+		
+	<div id   = "frm_content" 
+	    class = "formFrm"  
+	    style = "position: absolute !important; top: 84px;">
+	    	
+		<h:panelGroup id = "actualPage">
+		
+			<ui:include src = "secciones/#{navigationBean.paginaActual}.xhtml"  />
+			
+			<script>
+				if( $("#frm_content").height() > $(".helpFrm").height() + 50 )
+				{
+					$("#contFrmReg").height( ($("#frm_content").height() + 50) + "px");
+				} else {
+					$("#contFrmReg").height( ($(".helpFrm").height() + 150) + "px");
+				}							
+			</script>
+		
+		</h:panelGroup>
+	</div>
+</ui:composition>	

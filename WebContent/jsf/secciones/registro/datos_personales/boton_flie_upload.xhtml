@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui" >
+	
+	<h:panelGroup rendered="#{sessionBean.area=='M'||sessionBean.area=='L'}">
+		<div style="opacity:0.0;filter:alpha(opacity=0); height:1px">
+			<h:form id="actionFrm" enctype="multipart/form-data">
+			
+				<p:fileUpload 
+					value="#{basicData.file}" 
+					widgetVar="wloadAction33" 
+					id="loaderCont33" 
+					onstart="uploadStart();"  
+					mode="simple" 
+					styleClass="loader" />  
+				
+				<h:commandButton value="Submit" id="loadAction33" ajax="false" styleClass="loader" 
+						                action="#{basicData.upload}"/>
+				
+			</h:form>
+		</div>
+	</h:panelGroup>
+</ui:composition>	

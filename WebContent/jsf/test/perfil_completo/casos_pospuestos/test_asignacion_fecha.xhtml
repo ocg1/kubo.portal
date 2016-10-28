@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+ <html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:p  = "http://primefaces.org/ui"
+	  xmlns:f  = "http://java.sun.com/jsf/core">	  
+	<h:head>		
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/tipografia/tipografia.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/secciones/fichas_producto/fluid_grid.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/header.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/label_menu_items.css" />	
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/label_bienvenido_usuario.css" />
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/header/secciones_menu_items.css" />					
+		<link rel = "stylesheet" type = "text/css" href = "../../../../resources/css/templates/footer/footer.css" />				
+	</h:head>
+	
+	<h:body>
+		<script>
+			$("input[type='radio'][name='selectStatus1']").change(function()
+			{
+				var POSPUESTO        = 5;
+				var estatus_selected = $(this).val();
+				
+				if(estatus_selected == POSPUESTO)
+				{						
+					$("#main_select_fecha").show("fast");
+				} else {
+					$("#main_select_fecha").hide("fast");
+				}
+				
+			});
+		</script>	
+		
+		<style>
+			p.titulo_prueba_unitaria
+			{
+				font-size: 24px;
+				text-align: center;
+				border: 0px solid black;
+			}
+			
+			div.main_prueba_unitaria
+			{
+				width: 300px;
+				margin: 0 auto;
+				margin-bottom: 50px;
+				border: 0px solid black;
+			}
+			
+			div#main_select_fecha
+			{
+				width: auto; 
+				height: auto; 
+				display: block; 
+				border: 0px solid black
+			}
+		</style>
+	
+		<p:layout fullPage = "true">		
+			<p:layoutUnit position = "center">		
+				<p class = "titulo_prueba_unitaria">Test Asignación de Fecha de Casos Pospuestos</p>
+				
+				<div class = "main_prueba_unitaria">
+					<h:form>
+						<div id = "main_select_fecha">
+							<h:panelGroup>
+								<table>
+									<tr>
+										<td>
+											<div class = "styled-select-Day">
+												<h:selectOneMenu  value 			  = "#{casosPospuestos.selected_day}" 
+																  valueChangeListener = "#{casosPospuestos.listener_day_selected}"											  											  
+																  styleClass          = "elementStlSelDay">			
+																
+													<f:selectItems  value = "#{casosPospuestos.list_of_days}"/>
+					
+													<p:ajax event = "change" />
+													
+												</h:selectOneMenu>
+											</div>
+										</td>
+										
+										<td>
+											<div class = "styled-select-Month">
+												<h:selectOneMenu value				 = "#{casosPospuestos.selected_month}"
+																 valueChangeListener = "#{casosPospuestos.listener_month_selected}"
+																 styleClass          = "elementStlSelMonth" 
+																 style 			     = "width: 180px !important;">	
+																 							
+													<f:selectItems value = "#{casosPospuestos.list_of_months}" />
+													
+													<p:ajax event = "change" />
+													
+												</h:selectOneMenu>
+											</div>
+										</td>
+										
+										<td>
+											<div class = "styled-select-Year">
+												<h:selectOneMenu value               = "#{casosPospuestos.selected_year}" 
+															     valueChangeListener = "#{casosPospuestos.listener_year_selected}"
+																 styleClass          = "elementStlSelYear">			
+																 				
+													<f:selectItems  value = "#{casosPospuestos.list_of_years}" />
+													
+													<p:ajax event = "change" />
+													
+												</h:selectOneMenu>
+											</div>
+										</td>
+									</tr>
+								</table>				
+							</h:panelGroup>
+						</div>					
+					</h:form>			
+				</div>
+					
+					<div class = "float_divider"/>
+					
+					<div class = "south_column">					
+						<ui:include src = "../../../templates/footer/footer.xhtml" />
+					</div>	
+			</p:layoutUnit>		
+			
+			<p:layoutUnit position = "north" >			
+				<div class = "main_header">
+					<ui:include src = "../../../templates/header/header.xhtml" />					
+				</div>	
+			</p:layoutUnit>
+		</p:layout>			
+	</h:body>
+</html>

@@ -1,0 +1,32 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<ui:repeat var = "movimiento" 
+				 value    = "#{movimientosInversionista.cancelacion.lista_movimientos}"
+				 rendered = "#{movimientosInversionista.cancelacion.lista_movimientos.size() > 0}">
+			<ul class="cancelacion"> 
+					<li>
+						<strong>Folio:</strong>
+			        	<h:outputText value = "#{movimiento.folio}" />
+			    	</li>
+				 
+				    <li>
+				    	<strong>Cuenta:</strong>
+				        <h:outputText value = "#{movimiento.pk.safi_account_id}" />
+				    </li>
+				 
+				    <li>
+				    	<strong>Motivo:</strong>
+				        <h:outputText value = "#{movimiento.description}" />
+				    </li>
+				 
+				    <li>
+				    	<strong>Fecha:</strong>
+				        <h:outputText value="#{movimiento.fecha}" />
+				    </li>
+	    </ul>	
+	</ui:repeat>				
+</ui:composition>

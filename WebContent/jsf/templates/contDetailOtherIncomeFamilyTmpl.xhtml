@@ -1,0 +1,842 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<script>
+		var flagScrollB1= false;
+	
+	</script>
+	<div>
+		<div class="contPR" style="position: relative; margin-right: 0px; background-color: #FFFFFF;">
+			<div class="contFrm" style="padding-right: 0px; width: auto; margin: 0px;">
+				<div id="general">
+					<div class="backStyle" style="margin-top: 0px;">
+						<div id="contFrmPre">
+
+							<h:form id="frm_other_income_family" prependId="false">
+								<div class="clTitle" style="width: 70%;">
+									<h:outputLabel value="Ingresos de otro miembro de la familia"></h:outputLabel>
+								</div>
+								
+								
+										<div class="dvContent">
+											<div class="dvLabel">
+
+												<h:outputLabel styleClass="labelsStl" value="Nombre" />
+
+											</div>
+											<p />
+											<div class="dvElementLength">
+												<h:inputText id="inp_name"
+													styleClass="elementAddres1 validatorClass"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.first_name}">
+													<p:ajax event="blur"
+														onstart="return validaNombre('inp_name')"
+														listener="#{addNaturaPersonOtherFamily.addNewNaturalPerson}"></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Segundo nombre" />
+											</div>
+											<p />
+											<div class="dvElementLength">
+												<h:inputText id="inp_second_name"
+													styleClass="elementAddres1"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.middle_name}">
+													<p:ajax event="blur"
+														listener="#{addNaturaPersonOtherFamily.addNewNaturalPerson}"></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl"
+													value="Apellido paterno" />
+											</div>
+											<p />
+											<div class="dvElementLength">
+												<h:inputText id="inp_ap_paterno"
+													styleClass="elementAddres1 validatorClass"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.father_last_name}">
+													<p:ajax event="blur"
+														listener="#{addNaturaPersonOtherFamily.addNewNaturalPerson}"></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl"
+													value="Apellido materno" />
+											</div>
+											<p />
+											<div class="dvElementLength">
+												<h:inputText id="inp_ap_materno"
+													styleClass="elementAddres1 validatorClass"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.mother_last_name}">
+													<p:ajax event="blur"
+														listener="#{addNaturaPersonOtherFamily.addNewNaturalPerson}"></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Genero" />
+											</div>
+											<p />
+											<div class="dvElement">
+												<h:selectOneRadio id="genero"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.gender_id}"
+													styleClass="elementStlLbl validatorClass requiredVerify">
+													<f:selectItem itemValue="1" itemLabel="Masculino" />
+													<f:selectItem itemValue="2" itemLabel="Femenino" />
+													<p:ajax event="click"
+														listener="#{addNaturaPersonOtherFamily.addNewNaturalPerson}"></p:ajax>
+												</h:selectOneRadio>
+											</div>
+										</div>
+
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl"
+													value="Fecha de nacimiento: " />
+											</div>
+											<p></p>
+											<div class="dvElement">
+												<h:panelGroup id="comboDate">
+													<table  style="width:100% !important;">
+														<tr>
+															<td valign="top">
+																<div class="styled-select-Day">
+																	<h:selectOneMenu id="day"
+																		value="#{addNaturaPersonOtherFamily.day}"
+																		styleClass="elementStlSelDay validatorClass requiredVerify">
+																		<f:selectItem itemLabel="Día: " itemValue="0" />
+																		<f:selectItems
+																			value="#{addNaturaPersonOtherFamily.days}" />
+																		<p:ajax event="change"
+																			listener="#{addNaturaPersonOtherFamily.generateDate}"
+																			update="rfc comboDate curp"></p:ajax>
+																	</h:selectOneMenu>
+																</div>
+															</td>
+															<td valign="top">
+																<div class="styled-select-Month"
+																	style=" margin-left: 7px;">
+																	<h:selectOneMenu id="month"
+																		value="#{addNaturaPersonOtherFamily.month}"
+																		styleClass="elementStlSelMonth validatorClass requiredVerify"
+																		style="">
+																		<f:selectItem itemLabel="Mes: " itemValue="0" />
+																		<f:selectItems
+																			value="#{addNaturaPersonOtherFamily.months}" />
+																		<p:ajax event="change"
+																			listener="#{addNaturaPersonOtherFamily.generateDate}"
+																			update="rfc comboDate curp"></p:ajax>
+																	</h:selectOneMenu>
+																</div>
+															</td>
+															<td valign="top">
+																<div class="styled-select-Year"
+																	style="margin-left: 7px;">
+																	<h:selectOneMenu id="year"
+																		value="#{addNaturaPersonOtherFamily.year}"
+																		
+																		styleClass="elementStlSelYear validatorClass requiredVerify">
+																		<f:selectItem itemLabel="Año: " itemValue="0" />
+																		<f:selectItems
+																			value="#{addNaturaPersonOtherFamily.years}" />
+																		<p:ajax event="change"
+																			listener="#{addNaturaPersonOtherFamily.generateDate}"
+																			update="rfc comboDate curp"></p:ajax>
+																	</h:selectOneMenu>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</h:panelGroup>
+
+											</div>
+										</div>
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Nacionalidad: " />
+											</div>
+											<div class="dvElement">
+												<h:selectOneRadio id="nacionalidad"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.citizenship}"
+													styleClass="elementStlLbl validatorClass requiredVerify">
+													<f:selectItem itemValue="1" itemLabel="Mexicana" />
+													<f:selectItem itemValue="0" itemLabel="Extranjero" />
+													<p:ajax event="click" update="nacmex, nacext"></p:ajax>
+												</h:selectOneRadio>
+											</div>
+										</div>
+										<h:panelGroup id="nacmex">
+											<div id="show_state" class="dvContent"
+												style="display: #{addNaturaPersonOtherFamily.mexDisp}">
+												<div class="dvLabel">
+													<h:outputLabel styleClass="labelsStl"
+														value="Estado de nacimiento: " />
+												</div>
+												<p />
+												<div class="dvElementLength">
+													<div class="selectNuevo">
+														<h:selectOneMenu id="edoNac"
+															value="#{addNaturaPersonOtherFamily.thisNaturalPerson.state_id}"
+															styleClass="elementStlSelAddress mapOff validatorClass requiredVerify">
+															<f:selectItem itemLabel="" itemValue="" />
+															<f:selectItems
+																value="#{addNaturaPersonOtherFamily.stateList}"
+																var="state" itemLabel="#{state.name}"
+																itemValue="#{state.stateCatPK.state_id}" />
+															<p:ajax event="change"
+																listener="#{addNaturaPersonOtherFamily.getCURP}"
+																update="curp"></p:ajax>
+														</h:selectOneMenu>
+													</div>
+												</div>
+											</div>
+										</h:panelGroup>
+										<h:panelGroup id="nacext">
+											<div id="show_country" class="dvContent"
+												style="display: #{addNaturaPersonOtherFamily.extDisp}">
+												<div class="dvLabel">
+													<h:outputLabel styleClass="labelsStl"
+														value="País de nacimiento: " />
+												</div>
+												<p />
+												<div class="dvElementLength">
+													<div class="selectNuevo">
+														<h:selectOneMenu id="countryNac"
+															styleClass="elementStlSelAddress mapOff validatorClass">
+															<f:selectItem itemLabel="" itemValue="" />
+															<f:selectItems
+																value="#{addNaturaPersonOtherFamily.countryList}"
+																var="country" itemLabel="#{country.name}"
+																itemValue="#{country.pk.country_id}" />
+															<p:ajax event="change"></p:ajax>
+														</h:selectOneMenu>
+													</div>
+												</div>
+											</div>
+										</h:panelGroup>
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="RFC: " />
+											</div>
+											<p />
+											<div class="dvElement"
+												>
+												<h:inputText id="rfc"
+													styleClass="elementAddres1 stlDisabled"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.mx_rfc}"
+													disabled="true"></h:inputText>
+											</div>
+										</div>
+
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="CURP: " />
+											</div>
+											<p />
+											<div class="dvElement"
+												>
+												<h:inputText id="curp"
+													styleClass="elementAddres1 stlDisabled"
+													value="#{addNaturaPersonOtherFamily.thisNaturalPerson.mx_curp}"
+													disabled="true"></h:inputText>
+											</div>
+										</div>
+
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Parentesco" />
+											</div>
+											<p />
+											<div class="dvElementLength">
+												<h:inputText styleClass="elementAddres1 validatorClass"
+													value="#{addNaturaPersonOtherFamily.thisRelationShip.relationship}">
+													<p:ajax event="blur"
+														listener="#{addNaturaPersonOtherFamily.saveKinship}"></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl"
+													value="¿Vive en el mismo domicilio que tú?" />
+											</div>
+											<p />
+											<div class="dvElement">
+												<h:selectOneRadio id="address_you"
+													value="#{addNaturaPersonOtherFamily.thisProspectus.same_address}"
+													styleClass="elementStlLbl validatorClass">
+													<f:selectItem itemValue="S" itemLabel="Si" />
+													<f:selectItem itemValue="N" itemLabel="No" />
+													<p:ajax event="click"
+														listener="#{addNaturaPersonOtherFamily.saveSameAddress}"></p:ajax>
+												</h:selectOneRadio>
+											</div>
+										</div>
+
+										<div id="show_address"
+											style="display: #{addNaturaPersonOtherFamily.addressDisp}">
+											<br />
+									
+												<div class="clTitle">
+													<h:outputLabel value="Domicilio" />
+												</div>
+
+												<h:panelGroup styleClass="sectionAddress">
+													<div class="dvContent">
+														<div class="dvLabel">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.Zipcode_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputText id="zip_code"
+																onkeypress="return isNumberKey(event);"
+																value="#{addNaturaPersonOtherFamily.zip_code}"
+																maxlength="5"
+																styleClass="elementAddres1 zipcode validatorClass">
+																<p:ajax event="blur"
+																		immediate ="true"
+																		onstart="return validateZipCode('zip_code');"
+																		oncomplete="zipCodeComplete(xhr, status, args)"
+																		listener="#{addNaturaPersonOtherFamily.cpFunctionAndSave}">
+																</p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													<div class="dvContent">
+														<div class="dvLabel">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.Neighborhood_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<div class="selectNuevo">
+																<h:selectOneMenu id="coloniaEmp"
+																	value="#{addNaturaPersonOtherFamily.neighborhood_id}"
+																	styleClass="elementStlSelAddress validatorClass neighborhood"
+																	style="height: 30px;">
+																	<f:selectItem itemLabel="" itemValue="" />
+																	<f:selectItems
+																		value="#{addNaturaPersonOtherFamily.listAsents}"
+																		var="asents" itemLabel="#{asents.name}"
+																		itemValue="#{asents.neighborhoodCatPK.neighborhood_id}" />
+																	<p:ajax event="change"
+																		onstart="return validateMyLoanCombo('coloniaEmp');"
+																		listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="dvContent">
+														<div class="dvLabel">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.City_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputText id="delegMun"
+																value="#{addNaturaPersonOtherFamily.delegMun}"
+																readonly="true" styleClass="elementAddres1 town"></h:inputText>
+														</div>
+													</div>
+
+													<div class="dvContent">
+														<div class="dvLabel">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.State_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputText id="estado"
+																value="#{addNaturaPersonOtherFamily.estado}"
+																disabled="true" styleClass="elementAddres1 state"></h:inputText>
+														</div>
+													</div>
+
+													<div class="dvContent">
+														<h:inputHidden id="address" styleClass="elementAddres1" />
+													</div>
+
+													<div class="dvContent">
+														<div class="dvLabel" style="width: 70px; float: left;">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.Street_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputText id="street"
+																value="#{addNaturaPersonOtherFamily.thisAddress.street}"
+																styleClass="elementAddres1 validatorClass">
+																<p:ajax event="blur"
+																	onstart="return fieldNotEmpty('street');"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													<div class="calle_numeros">
+													<div class="dvContent stlCntNumExt" style="float: left; width: 180px">
+														<div class="dvLabel" style="width: 160px; float: left;">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.ExtNumber_text}" />
+														</div>
+														<p />
+														
+												
+														<div class="dvElement" style="width: 120px; float: left;">
+															<h:inputText id="address_number"
+																onkeypress="return isNumberKey(event);"
+																value="#{addNaturaPersonOtherFamily.thisAddress.address_number}"
+																styleClass="elementAddresMin address_number">
+																<p:ajax event="blur"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													<div class="dvContent stlCntNumInt" style="float: left;">
+														<div class="dvLabel"
+															style="width: 160px; float: left; margin-left: 10px;">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.IntNumber_text}" />
+														</div>
+														<p />
+														<div class="dvElement" style="width: 120px; float: left;">
+															<h:inputText id="address_intNumber" size="4"
+																value="#{addNaturaPersonOtherFamily.thisAddress.apt_number}"
+																styleClass="elementAddresMin">
+																<p:ajax event="blur"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													
+													<div class="dvContent stlCntNumApple" style="float: left; width: 180px">
+														<div class="dvLabel" style="width: 120px; float: left;">
+															<h:outputLabel styleClass="labelsStl"
+																value="${msg.Block_text}" />
+														</div>
+														<p />
+														<div class="dvElement" style="width: 120px; float: left;">
+															<h:inputText id="address_block" size="4"
+																value="#{addNaturaPersonOtherFamily.thisAddress.mx_manzana}"
+																styleClass="elementAddresMin">
+																<p:ajax event="blur"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													<div class="dvContent stlCntNumLote">
+														<div class="dvLabel"
+															style="width: 120px; float: left; margin-left: 10px;">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.Lt_text}" />
+														</div>
+														<p />
+														<div class="dvElement" style="width: 120px; float: left;">
+															<h:inputText id="address_lote" size="4"
+																value="#{addNaturaPersonOtherFamily.thisAddress.mx_lote}"
+																styleClass="elementAddresMin">
+																<p:ajax event="blur"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													</div>
+													<div class="dvContent">
+														<div class="dvLabel" style="width: 120px; clear: both;">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.BetweenStreet1_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputText id="betweenStreet1"
+																value="#{addNaturaPersonOtherFamily.thisAddress.first_street_reference}"
+																styleClass="elementAddres1 validatorClass">
+																<p:ajax event="blur"
+																	onstart="return fieldNotEmpty('betweenStreet1');"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+													
+													<div class="dvContent">
+														<div class="dvLabel" style="width: 120px; clear: both;">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.BetweenStreet2_text}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputText id="betweenStreet2"
+																value="#{addNaturaPersonOtherFamily.thisAddress.second_street_reference}"
+																styleClass="elementAddres1 validatorClass">
+																<p:ajax event="blur"
+																	onstart="return fieldNotEmpty('betweenStreet2');"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputText>
+														</div>
+													</div>
+
+
+													<div class="dvContent">
+														<div class="dvLabel">
+															<h:outputLabel styleClass="labelsStl"
+																value="#{msg.Point_of_reference}" />
+														</div>
+														<p />
+														<div class="dvElementLength">
+															<h:inputTextarea id="point_ref" rows="5"
+																styleClass="elementTextArea validatorClass"
+																value="#{addNaturaPersonOtherFamily.thisAddress.description}">
+																<p:ajax event="blur"
+																	onstart="return fieldNotEmpty('point_ref');"
+																	listener="#{addNaturaPersonOtherFamily.updateAddressBlur}"></p:ajax>
+															</h:inputTextarea>
+														</div>
+													</div>
+												</h:panelGroup>
+										
+											<br />
+										
+												<div class="clTitle">
+													<h:outputLabel value="Teléfonos"></h:outputLabel>
+												</div>
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="#{msg.Telephone_particular_text}" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+													<!-- 
+														<h:inputText id="lada_phoneFixed_employ" maxlength="3"
+															onkeypress="return isNumberKey(event);"
+														
+															styleClass="elementAddresMin validatorClass"
+															value="#{addNaturaPersonOtherFamily.ladaFixedProspectus}">
+															<p:ajax event="blur"
+																onstart="return fieldNotEmpty('lada_phoneFixed_employ');"></p:ajax>
+														</h:inputText>
+														 -->
+														<h:inputText id="phoneFixed_employ" maxlength="10"
+															onkeypress="return isNumberKey(event);"
+														
+															styleClass="elementAddres1 validatorClass"
+															value="#{addNaturaPersonOtherFamily.phoneFixedPropectus}">
+															<p:ajax event="blur"
+																onstart="return validateNumberPhone('phoneFixed_employ','phoneFixed_employ');"
+																listener="#{addNaturaPersonOtherFamily.updatePhoneProspectus}" ></p:ajax>
+														</h:inputText>
+														
+														<p class="clsLada" style="margin-top: -5px; margin-bottom: 1px;">10 dígitos</p>
+														
+														
+													</div>
+												</div>
+
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="#{msg.Telephone_cell_text}" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+													<!-- 
+														<h:inputText id="lada_phoneCel_employ" maxlength="3"
+															onkeypress="return isNumberKey(event);"
+																
+															styleClass="elementAddresMin validatorClass"
+															value="#{addNaturaPersonOtherFamily.ladaCelProspectus}">
+															<p:ajax event="blur"
+																onstart="return fieldNotEmpty('lada_phoneFixed_employ');"></p:ajax>
+														</h:inputText>
+														 -->
+														 
+														<h:inputText id="phoneCel_employ" maxlength="13"
+															onkeypress="return isNumberKey(event);"
+																
+															styleClass="elementAddres1 validatorClass"
+															value="#{addNaturaPersonOtherFamily.phoneCellProspectus}">
+															<p:ajax event="blur"
+																onstart="return validateNumberPhone('phoneCel_employ','lada_phoneCel_employ','phoneCel_employ');"
+																listener="#{addNaturaPersonOtherFamily.updatePhoneCellProspectus}"></p:ajax>
+														</h:inputText>
+														<p class="clsLada">13 dígitos</p>
+													</div>
+												</div>
+									
+										</div>
+
+
+										<div class="dvContent">
+											<div class="dvLabel" >
+												<h:outputLabel styleClass="labelsStl"
+													value="¿Cuál es su principal actividad económica? " />
+											</div>
+											<p />
+											<div class="dvElementLength">
+												<div class="selectNuevo">
+													<h:selectOneMenu id="activityEconomic"
+														value="#{addNaturaPersonOtherFamily.economicActivity}"
+														styleClass="elementStlSelAddress validatorClass">
+														<f:selectItem itemLabel="" itemValue="" />
+														<f:selectItems
+															value="#{addNaturaPersonOtherFamily.economicActivityCustom}"
+															var="activity" itemLabel="#{activity.description}"
+															itemValue="#{activity.economicActivityPK.economic_activity_id}" />
+														<p:ajax event="change"
+															onstart="return validateMyLoanCombo('activityEconomic')"
+															listener="#{addNaturaPersonOtherFamily.selectEconomicActivity}"
+															update="updateEmployOrBusiness"></p:ajax>
+													</h:selectOneMenu>
+												</div>
+											</div>
+										</div>
+										
+										<h:panelGroup id="updateEmployOrBusiness">
+											<div id="show_employment" style="display: #{addNaturaPersonOtherFamily.employDisp}">
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="Nombre de la empresa" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														<h:inputText id="value_employerr"
+															styleClass="elementAddres1 validatorClass"
+															value="#{addNaturaPersonOtherFamily.thisEmployment.employer}">
+															<p:ajax event="blur"
+																onstart="return fieldNotEmpty('value_employerr')"
+																listener="#{addNaturaPersonOtherFamily.updateEmployment}"></p:ajax>
+														</h:inputText>
+													</div>
+												</div>
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl" value="Sueldo total" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														$
+														<h:inputText id="inp_wagessalary" maxlength="8"
+															styleClass="elementAddres1 formatincomexpenses validatorClass"
+															style="text-align: right;"
+															value="#{addNaturaPersonOtherFamily.ammountWagesSalStr}">
+															<p:ajax event="blur"
+																onstart="return validateNumberIncome('inp_wagessalary')"
+																listener="#{addNaturaPersonOtherFamily.updateOrSaveIncome}"></p:ajax>
+														</h:inputText>
+														<span class="labelsStl"
+															style="font-size: 1.1em ! important;">Mensual</span>
+													</div>
+												</div>
+
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="Cuanto aporta al ingreso familiar" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														$
+														<h:inputText id="inp_income_otherfamilyE" maxlength="8"
+															styleClass="elementAddres1 formatincomexpenses validatorClass"
+															style="text-align: right;"
+															value="#{addNaturaPersonOtherFamily.ammountOtherFamEStr}">
+															<p:ajax event="blur"
+																onstart="return validateNumberIncome('inp_income_otherfamilyE')"></p:ajax>
+														</h:inputText>
+														<span class="labelsStl"
+															style="font-size: 1.1em ! important;">Mensual</span>
+													</div>
+												</div>
+											</div>
+
+											<div id="show_bussines" style="display: #{addNaturaPersonOtherFamily.businessDisp}">
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="Giro del negocio" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														<p:autoComplete id="acSimple"
+															
+															value="#{addNaturaPersonOtherFamily.actDescription}"
+															completeMethod="#{addNaturaPersonOtherFamily.autocomplete}">
+															<p:ajax event="itemSelect"
+																listener="#{addNaturaPersonOtherFamily.handleSelect}" />
+															<f:attribute name="activity" value="1" />
+														</p:autoComplete>
+													</div>
+												</div>
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="Tiempo de operación" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														<h:inputText id="inp_time_ope" maxlength="2"
+															onkeypress="return isNumberKey(event);"
+															
+															styleClass="elementAddres1 validatorClass"
+															value="#{addNaturaPersonOtherFamily.thisBusiness.years_since_when}">
+															<p:ajax event="blur"
+																listener="#{addNaturaPersonOtherFamily.updateBusiness}" />
+														</h:inputText>
+														<span> Años</span>
+													</div>
+												</div>
+
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="Ingreso mensual aproximado" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														$
+														<h:inputText id="inp_businesscompany" maxlength="8"
+															styleClass="elementAddres1 formatincomexpenses validatorClass"
+															style="text-align: right;"
+															value="#{addNaturaPersonOtherFamily.ammountBusComStr}">
+															<p:ajax event="blur"
+																onstart="return validateNumberIncome('inp_businesscompany')"
+																listener="#{addNaturaPersonOtherFamily.updateOrSaveIncome}"></p:ajax>
+														</h:inputText>
+														<span class="labelsStl"
+															style="font-size: 1.1em ! important;">Mensual</span>
+													</div>
+												</div>
+												<div class="dvContent">
+													<div class="dvLabel">
+														<h:outputLabel styleClass="labelsStl"
+															value="Cuanto aporta al ingreso familiar" />
+													</div>
+													<p />
+													<div class="dvElementLength">
+														$
+														<h:inputText id="inp_income_otherfamilyN" maxlength="8"
+															styleClass="elementAddres1 formatincomexpenses validatorClass"
+															style="text-align: right;"
+															value="#{addNaturaPersonOtherFamily.ammountOtherFamNStr}">
+															<p:ajax event="blur"
+																onstart="return validateNumberIncome('inp_income_otherfamilyN')"></p:ajax>
+														</h:inputText>
+														<span class="labelsStl"
+															style="font-size: 1.1em ! important;">Mensual</span>
+													</div>
+												</div>
+											</div>
+										</h:panelGroup>
+
+
+
+							
+								<br></br>
+								<p />
+								<h:panelGroup rendered="#{!sessionBean.mobile}">
+									
+								
+								
+									<div class="dvContent">
+										<div class="dvElementLength" style="float: right;">
+											<div class="buttonPR" id="btn_cancel_otherIncomef"
+												style="float: left; margin-right: 10px;">
+												#{msg.Btn_return}
+											</div>
+
+											<div class="buttonPR" id="btn_end_otherIncomef" style="float: left;">#{msg.Btn_end}</div>
+
+										</div>
+									</div>
+								</h:panelGroup>
+								
+								<h:panelGroup rendered="#{sessionBean.mobile}">
+									
+										<div class="buttonPR" onclick="finalizaDetail();" >
+											#{msg.Btn_end}
+										</div>
+									
+									<div style="display: none;">
+									
+										<div id="dvMobileBackAction">
+											<a href="registro.xhtml;jsessionid=#{sessionBean.sessionID}"  data-role="button" data-transition="slide" data-direction="reverse" style="border: 0px !important;" />
+										</div>
+									
+										<h:inputText id="inp_income_other_family" tabindex="3"
+											maxlength="8"
+											styleClass="elementAddres1 calculeIncome validatorClass formatincomexpenses"
+											style="text-align: right; "
+											value="#{addIncomeExpenses.ammountOtherFamStr}">
+											<p:ajax event="blur"
+												listener="#{addIncomeExpenses.updateOrSaveIncome}"></p:ajax>
+										</h:inputText>
+									</div>
+								</h:panelGroup>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+<h:panelGroup rendered="#{sessionBean.mobile}">
+
+<script>
+		
+		
+		
+			function finalizaDetail(){
+				var valueActivity=$('#activityEconomic').val();
+				//alert( "entrar finalizaDetail " + valueActivity );
+				if(validateFields()){
+					
+					var sumTotal="0.00";
+					
+					if(valueActivity!=''){
+						
+						switch (valueActivity) {
+							case '1':
+								sumTotal=$("#inp_income_otherfamilyN").val();
+								break;
+							case '2':
+								sumTotal=$("#inp_income_otherfamilyE").val();
+								break;
+							case '3':
+								sumTotal=parseFloat(Number($("#inp_income_otherfamilyE").val().replace(",",""))+Number($("#inp_income_otherfamilyN").val().replace(",",""))).toFixed(2);
+								break;
+				
+							default:
+								break;
+						}
+						
+						//parent.$.fancybox.close();
+					}
+					//alert( "finalizaDetail: total: "+sumTotal );
+					$("#inp_income_other_family").val(sumTotal).blur();
+					$("#dvMobileBackAction a").click();
+				}
+			}
+		
+		</script>
+		
+
+</h:panelGroup>
+
+</ui:composition>

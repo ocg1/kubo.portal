@@ -1,0 +1,79 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+								
+	<p:panel header            = "Ya hice mi pago" 
+			 toggleSpeed       = "250"
+			 rendered          = "true"
+		     toggleable 	   = "true" 
+		     toggleOrientation = "vertical"
+		     collapsed         = "true"			     
+		     styleClass        = "credito_INFO panel-referencia-pago callActionMedium btnVede"
+		     style = "margin:0 auto; border: 1px solid #f1f1f1;">	
+		     
+		<p:ajax event = "toggle" />	
+		
+		<div id = "ya-hice-mi-pago">
+		
+			<div style = "padding:10px; font-size:16px; border: solid 1px #f1f1f1">				
+				<table cellspadding="0" cellspacing="0" width="100%">					
+					<tr class="encabezado_gris">
+						<td colspan = "2" align = "center">
+							<p style = "margin: 10px 0"><b>Datos del pago</b></p>
+						</td>
+					</tr>
+					
+					<tr>
+						<td style = "text-align: center"><p>Fecha del pago:</p></td>
+						<td>							
+        					<p:inputMask immediate = "true" 
+        								 required  = "true"
+        								 value     = "#{liquidar_credito.fecha_del_pago}" 
+        								 mask      = "99/99/9999">
+        								         								 
+        						<p:ajax event = "blur" 
+        								listener   = "#{liquidar_credito.listener_fecha_del_pago}"
+        								oncomplete = "listener_fecha_del_pago(xhr, status, args);"/>
+        					</p:inputMask>
+        					
+        					<p id = "msg_fecha_de_pago" style = "color:red; display: none;">
+        					Ingrese una fecha válida.
+        					</p>
+						</td>
+					</tr>
+					
+					<tr class = "encabezado_gris">
+						<td style = "text-align: center"><p><b>Monto del pago:</b></p></td>
+						
+						<td>
+							<h:inputText id = "monto_del_pago"
+										 immediate  = "true" 
+									     required   = "true" 
+									     onkeypress = "return isNumberKey(event);"
+									     value = "#{liquidar_credito.monto_del_pago}">
+								<p:ajax event = "blur" listener = "#{liquidar_credito.listener_monto_del_pago}"/>
+							</h:inputText>
+						</td>
+					</tr>
+				</table>
+			</div>	
+		
+			<div style = "text-align: right;">
+				<h:commandLink value  = "Notificar" 
+					   styleClass = "call_action" 
+					   style = "margin:10px auto 0 auto; width: 70px; float:none; color: #fff;">
+					<p:ajax event = "click"
+							onstart    = "return mostar_modal_notificacion();"
+							oncomplete = "listener_modal_notificacion(xhr, status, args);" 
+							listener   = "#{liquidar_credito.listener_notificar_pago}"/>
+				</h:commandLink>	
+			</div>						
+		</div>							
+	</p:panel>				
+	
+	<script>
+		ini_panel_liquidacion();
+	</script>
+</ui:composition>				

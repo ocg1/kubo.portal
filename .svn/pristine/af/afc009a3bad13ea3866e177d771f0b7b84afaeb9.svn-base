@@ -1,0 +1,40 @@
+ <ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+ 
+ <div id="light22" class="lightbox white" data-div="22">
+                  <div class="close_lightbox"></div>
+                <div class="lightbox_requisitos">
+                	<a class="close_lightbox" href="#"></a>
+                	
+                	<h3>Requisitos para invertir</h3>
+                	
+                    <div class="head-tab">
+                        <a href="javascript:void(0);" class="active" data-div="1">Quiero un préstamo</a>
+                         <a style="display:none;"  href="javascript:void(0);" data-div="2">Quiero invertir</a>
+                    </div>
+                    <div class="body-tab">
+                        <div class="tab active" id="tab1" data-div="1">
+                            <ul>
+                                <li><span>1. Monto mínimo de inversión $10mil.</span></li>
+                                <li><span>2. Identificación oficial vigente con fotografía.</span></li>
+                                <li><span>3. Comprobante de domicilio no mayor a tres meses.</span></li>
+                                <li><span>4. Cuenta bancaria a tu nombre y CLABE para transferencias.</span></li>
+                               
+                          
+
+                            </ul>
+                            
+                             <h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+                            			<p:commandLink  styleClass="callAction btnVerde investment" action="inicio_preregistro_inversionista" immediate="true" onclick="ga('send', 'event', 'Leads', 'Solicita Inversion', 'Solicita Inversion Home');">Invierte con nosotros</p:commandLink>
+                       		</h:panelGroup>
+                        
+                        </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+</ui:composition> 

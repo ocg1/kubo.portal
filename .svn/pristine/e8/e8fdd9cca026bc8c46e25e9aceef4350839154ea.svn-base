@@ -1,0 +1,1067 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+<section class="sectionImprimir">
+	<div class="containerPrint">
+	
+				 <div class="btnImprimirEstado" onclick="window.print();">
+				<img src="images/imprimir.png" border="0"/>
+			</div>
+	
+	</div>
+
+</section>
+
+  <section class="top">
+    <div class="container">
+      <div class="logoTitulos">
+      
+          <div class="logo">
+          		<h:graphicImage library="img" name= "logo_kubo.png"  />  
+      
+          </div>
+          <div class="encabezado">
+          
+      
+            <h2>TIPO DE OPERACIÓN</h2>
+            <h3>Contrato de garantía líquida e irrevocable</h3>
+          
+          </div>
+        </div>
+  
+  
+  <div class="numeroCuenta">
+
+      
+          <h5>Número de cuenta: <span>#{contractData.data.cliCuentaAhoID}</span></h5>
+          <h5>Número de cliente: <span>#{contractData.data.cliNumeroCliente}</span></h5>
+          
+           <h5>Registro de Contrato: <span class="recaMedios">#{contractData.data.kboReca}</span></h5>
+           <h5>Nombre del Cliente:<span class="variable"> #{contractData.data.cliNombreCompleto}</span></h5>
+          
+  </div>
+     </div>
+</section>
+
+  <section class="sectionCaratula">
+    <div class="container">
+    	<table>
+	    	<tr>
+		    	<td>
+		          <h4>COMISIONES RELEVANTES</h4>
+		          <p >Recuperación del crédito garantizado: 10% del monto recuperado de préstamos vendidos por cuenta del inversionista a terceros. Para otras comisiones consulte el Portal.Kubo<a href="https://www.kubofinanciero.com"> www.kubofinanciero.com</a></p>
+		        </td>
+	       </tr>
+			<tr>
+				<td>
+	         <h4> CONSULTA DE MOVIMIENTOS</h4>
+	          <div class="dosfirmas"><p>Consulta vía internet: <span class="variable borde" style="width:40px;">X<!--#{contractData.data.pendPConsultaSaldoViaInternet} --></span>    Envío por correo electrónico: <span class="variable borde" style="width:120px;">#{contractData.data.pendPEnvioSaldoPorCorreoElectronico}</span></p></div>
+	
+	
+	       
+				</td>
+		</tr>
+		<tr class="otroDato">
+		<td>
+		      <p>Fondo de Protección</p>
+				<p>Producto garantizado por el Fondo de Protección hasta por 25 mil UDIs.</p>
+				<p>Titular Garantizado:<span class="variable borde"> #{contractData.data.cliNombreCompleto}</span>.</p>
+		</td>
+		</tr>
+		<tr>
+		<td>
+        <h4> ACLARACIONES Y RECLAMACIONES:</h4>
+      
+
+<p>
+    Unidad Especializada de Atención a Usuarios de KU-BO Financiero, S.A. de C.V. S.F.P.
+</p>
+
+<p>
+    Domicilio: Av. Barranca del Muerto 92, Colonia Florida, C.P. 01030, Delegación Álvaro Obregón, México, Distrito Federal.
+</p>
+
+<p>
+    Teléfono: (55) 62690024 correo electrónico: <a href="mailto:soporte@kubofinanciero.com">soporte@kubofinanciero.com</a>
+</p>
+
+<p>
+    Página de Internet: <a href="https://www.kubofinanciero.com/Kubo/Portal/index.xhtml">www.kubofinanciero.com</a>
+</p>
+	</td>
+</tr>
+<tr>
+	<td>
+		<p>Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF). En el territorio nacional 01 800 999 80 80. En el Distrito Federal y Área Metropolitana (55) 53 40 09 99 Página de Internet www.condusef.gob.mx o al correo electrónico <a href="mailto:opinion@condusef.gob.mx">opinion@condusef.gob.mx</a>, o bien, podrá acudir a la siguiente dirección Av. Insurgentes Sur No. 762, Col. Del Valle, Delegación Benito Juárez, C.P. 03100, México, D. F.
+</p>
+	</td>
+
+</tr>
+</table>
+    </div>
+  </section>
+
+ 
+<div class="pagebreak"></div>
+<section>
+  <div class="container">
+  
+<p><strong>
+  
+  CONTRATO DE GARANTÍA LÍQUIDA E IRREVOCABLE (EN LO SUCESIVO EL “CONTRATO”) QUE CELEBRAN POR UNA PARTE 
+
+KU-BO FINANCIERO, S.A. DE C.V., SOCIEDAD FINANCIERA POPULAR (EN LO SUCESIVO “KUBO”) REPRESENTADA EN ESTE 
+
+ACTO POR LA PERSONA IDENTIFICADA EN EL CAPÍTULO IV DEL PRESENTE CONTRATO COMO SU APODERADO LEGAL Y POR 
+
+OTRA PARTE, LA PERSONA FÍSICA O MORAL QUE TAMBIÉN ESTÁ IDENTIFICADA EN EL CAPÍTULO IV DEL PRESENTE 
+
+CONTRATO, QUIEN ACTÚA POR SU PROPIO DERECHO O TRAVÉS DE SU REPRESENTANTE O APODERADO LEGAL, SEGÚN 
+
+SEA EL CASO (EN LO SUCESIVO EL “INVERSIONISTA”), Y A QUIENES CONJUNTAMENTE EN LO SUCESIVO SE LES 
+
+DENOMINARÁ COMO LAS PARTES, AL TENOR SIGUIENTE:
+</strong>
+</p>
+
+<p >
+    <strong>INDICE</strong>
+</p>
+<p >
+    <strong>CAPITULO I. CLAUSULAS.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. GARANTÍA LIQUIDA E IRREVOCABLE.
+</p>
+<p >
+    SECCIÓN SEGUNDA. PAGOS Y RECUPERACIÓN.
+</p>
+<p >
+    SECCIÓN TERCERA. USO DE LOS PRODUCTOS Y SERVICIOS DE KUBO.
+</p>
+<p >
+    SECCIÓN CUARTA. SERVICI AL INVERSIONISTA.
+</p>
+<p >
+    SECCIÓN QUINTA. COMISIONES Y GASTOS.
+</p>
+<p >
+    SECCIÓN SEXTA. DISPOSICIONES GENERALES.
+</p>
+<p >
+    <strong>CAPÍTULO II. DEFINICIONES.</strong>
+</p>
+<p >
+    <strong>CAPÍTULO III. DECLARACIONES.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. DECLARACIONES DE KUBO.
+</p>
+<p >
+    SECCIÓN SEGUNDA. DECLARACIONES DEL CLIENTE.
+</p>
+<p >
+    <strong>CAPÍTULO IV. DATOS GENERALES DE LAS PARTES CONTRATANTES.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. DATOS GENERALES DEL CLIENTE.
+</p>
+<p >
+    SECCIÓN SEGUNDA. DATOS GENERALES DE KUBO.
+</p>
+<p >
+    <strong>CAPÍTULO V. TRANSCRIPCIÓN DE DISPOSCIONES LEGALES EXPRESAMENTE REFERIDAS EN EL CONTRATO.</strong>
+</p>
+<p >
+    SECCIÓN PRIMERA. CODIGO CIVIL PARA EL DISTRITO FEDERAL.
+</p>
+<p >
+    SECCIÓN SEGUNDA. LEY GENERAL DE TITULOS Y OPERACIONES DE CRÉDITO.
+</p>
+<p >
+    <strong>ANEXO 1. PODER ESPECIAL</strong>
+</p>
+
+<p>
+Expuesto lo señalado en el capítulo III de declaraciones del presente Contrato, las partes manifiestan que es su libre voluntad celebrar el mismo y están de acuerdo en otorgar las cláusulas que se establecen en el capítulo I, y reconocer las definiciones establecidas en el capítulo II, los datos generales señalados en el capítulo IV y la transcripción de disposiciones legales referidas en el capítulo V, que a continuación se señalan: 
+</p>
+
+  </div>
+</section>
+
+
+
+
+<section>
+    <div class="container">
+       <h4> CAPÍTULO I. CLÁUSULAS</h4>
+
+
+        <h4>SECCIÓN PRIMERA. GARANTÍA LIQUIDA E IRREVOCABLE.</h4>
+
+         
+        <p><strong>PRIMERA.</strong> OBJETO DEL CONTRATO. Las partes acuerdan celebrar el presente Contrato en virtud del cual, el Inversionista garantiza de manera líquida e irrevocable a Kubo el pago total y oportuno de la parte proporcional de los Créditos que forman parte del Portafolio. </p>
+
+        <p><strong>SEGUNDA.</strong> DE LA CONSTITUCIÓN DE LA GARANTÍA. El Inversionista garantiza a Kubo con el principal y los intereses de la inversión otorgada en garantía, los montos y los porcentajes de los créditos seleccionados por el Inversionista de acuerdo con su Perfil de Inversión, los cuales integran el Portafolio, mismos que se relacionan en el  resumen de Garantías en el Portal.Kubo. </p>
+
+        <p>Al efecto, el Inversionista constituye prenda por el depósito de los recursos que se encuentran depositados en Kubo en cuentas de depósito retirables en días preestablecidos denominada kubo.impulso, por lo que El Inversionista se obliga a mantener la Garantía otorgada hasta su liberación o aplicación al pago de los Créditos. </p>
+
+        <p><strong>TERCERA.</strong> DETERMINACIÓN DEL PORTAFOLIO. El Inversionista para determinar los créditos que integrarán su Portafolio, habrá de analizar a los diversos Acreditados que se publiquen en el Portal.Kubo, considerando su Perfil de Inversión.
+        </p>
+        <p>
+        <strong>CUARTA.</strong> PLAZO DE LA GARANTÍA. Las partes están de acuerdo que los recursos depositados en la Cuenta kubo.impulso y que constituyen la prenda materia del presente Contrato se mantendrán en Garantía hasta en tanto se liquiden las obligaciones pendientes pago de los Créditos que integran el Portafolio. </p>
+
+        <p><strong>QUINTA.</strong> LIBERACION DE LA GARANTÍA. Las partes están de acuerdo que los recursos que se mantienen en garantía se irán liberando, al igual que los intereses que se generen, en la misma proporción en que se vayan pagando por el acreditado cada uno de los porcentajes de créditos que integran el Portafolio. Los recursos liberados de la Garantía se transferirán a la Cuenta del Inversionista </p>
+      
+
+    </div>
+
+</section>
+
+
+
+<section>
+<div class="container">
+
+<h4>SECCIÓN SEGUNDA. PAGOS Y RECUPERACIÓN</h4>
+
+  <p><strong>SEXTA. </strong>APLICACIÓN DE PAGO DE LA GARANTÍA. En caso de que el Acreditado no liquide en tiempo y forma el o los créditos que se encuentran garantizados por el Inversionista y que integran su Portafolio, aplicará lo dispuesto en el artículo 336 Bis de la Ley General de Títulos y Operaciones de Crédito conforme a la cláusula segunda del presente contrato.  </p>
+
+  <p>Tratándose de la constitución de garantías líquidas e irrevocables en dinero, las mismas se sujetarán a la regulación aplicable a la prenda, de conformidad con la Sección Sexta del Capítulo IV Título Segundo de la Ley General de Títulos y Operaciones de Crédito y de manera supletoria el artículo 2856 del Código Civil para el Distrito Federal. </p>
+  <p>Dichos recursos se aplicarán al crédito correspondiente en el siguiente orden: al importe de contribuciones e impuestos, gastos, honorarios, intereses moratorios, intereses ordinarios y capital.</p>
+
+
+
+<p>
+<strong>SÉPTIMA.</strong> PAGOS ANTICIPADOS. En el supuesto que el Crédito garantizado sea pagado de manera anticipada, parcial o totalmente, las partes están de acuerdo en que Kubo liberará de manera anticipada la Garantía constituida en el porcentaje del saldo insoluto que la garantía representa de dicho Crédito. Cuando el importe del pago anticipado no fuere suficiente para amortizar el saldo insoluto del Crédito garantizado, Kubo reducirá el número de los depósitos periódicos pendientes a realizar al Inversionista empezando desde el último que se deba realizar. Kubo calculará el importe de los rendimientos por pagar, con base en el nuevo saldo insoluto del Crédito garantizado. Kubo informará al Inversionista de la liberación de la Garantía a través del “Detalle de Movimientos” que se presenta en el Portal.Kubo.
+</p>
+<p><strong>OCTAVA.</strong> MORA DE LOS CRÉDITOS. Las partes acuerdan que en el supuesto de que alguno de los Créditos que constituyen el Portafolio, cayera en mora, es decir que llegado el momento de realizar el pago de intereses y/o de su amortización, el Acreditado del Crédito no la efectuará total o parcialmente, tendrá como consecuencia que los recursos otorgados en Garantía no podrán ser liberados y se mantendrán en ese estado por los 120 días siguientes; una vez transcurridos los mencionados 120 días y no se hubiere cubierto el respectivo pago, la Garantía se dará por ejecutada en la proporción del pago no efectuado, reduciéndose en la misma proporción el monto de los recursos depositados por el Inversionista; lo anterior, en el entendido que Kubo estará obligado a liberar el resto de los recursos dados en Garantía correspondientes a los otros Créditos que sí se hubieren honrado, por lo que la extensión de plazo a que se refiere esta cláusula solo aplicará a la parte correspondiente a las amortizaciones que representen los Créditos en mora; obligándose Kubo a liberar las Garantías otorgadas al registro del pago del respectivo Crédito. Las partes acuerdan que en la extensión del plazo de pago a que se refiere esta cláusula no traerá consigo el pago de intereses moratorios, obligándose Kubo a pagar una sobre tasa de 1.5. (uno punto cinco) veces a la tasa ordinaria de interés durante el periodo previsto en la presente cláusula.</p>
+
+
+<p>En el caso que se verifique el supuesto a que se refiere el párrafo anterior, Kubo notificará al Inversionista a través del Portal.Kubo tal situación, por lo que durante la vigencia de la Garantía el Inversionista deberá estar verificando el comportamiento de los Créditos garantizados a través del Portal.Kubo. </p>
+
+<p>Una vez verificada la mora en cualquiera de los Créditos que integran el Portafolio, Kubo hará las gestiones necesarias para comenzar el procedimiento de cobranza de los Créditos que se encuentren en mora para lo cual podrá contratar los servicios de terceras personas especialistas en materia de cobranza de crédito. </p>
+
+
+<p><strong>NOVENA.</strong>  REESTRUCTURA DE CRÉDITOS. Para los casos en los que Kubo considere que un crédito debe ser reestructurado a fin de mejorar las posibilidades de cobro del mismo, el Inversionista acepta desde este momento que la Garantía aquí otorgada se mantendrá vigente durante la vigencia del Crédito reestructurado, en los mismos términos de plazo, frecuencia de pago, y proporción de tasa a recibir del Crédito reestructurado. </p>
+
+
+<p><strong>DÉCIMA.</strong> QUITAS. Para los casos de Créditos en Mora en los que Kubo considere que lo conveniente sea su cobro parcial, El Inversionista en este acto manifiesta su conformidad para que en caso de que Kubo conceda quitas a favor del Acreditado se realizarán primero a  intereses moratorios, después intereses ordinarios y en su caso finalmente a capital, y se aplicarán contra la Garantía otorgada.</p>
+
+<p><strong>DÉCIMA PRIMERA.</strong> TRANSMISIÓN DE DERECHOS. Una vez hecha efectiva la Garantía, Kubo transmitirá a favor del Inversionista la titularidad de los derechos de cobro sobre el porcentaje del Crédito respecto del cual se haya hecho efectiva, reconociéndose el Inversionista como cotitular de los mencionados derechos de forma conjunta con la de todos los demás inversionistas que hayan garantizado el Crédito que corresponda, y en adelante se regirán por dispuesto en materia de copropiedad en el artículo 938 del Código Civil Federal.</p>
+
+<p>Lo anterior será notificado al Inversionista a través de Portal.Kubo, especificándole de manera clara e indubitable de cuál de los Créditos se trata.</p>
+
+
+  
+
+<p><strong>DÉCIMA SEGUNDA.</strong> PODER ESPECIAL. Las partes acuerdan que en el caso de que se verifique el supuesto previsto en la cláusula inmediata anterior, y una vez que Kubo haya transmitido la cotitularidad los derechos de cobro al Inversionista, éste otorgará poder especial amplio y suficiente que en derecho proceda a favor Kubo, para que éste durante el plazo de 60 (sesenta) días siguientes al de su otorgamiento, realice la cobranza extrajudicial de las cantidades adeudadas, y para que a partir del día 61 (sesenta y uno), Kubo pueda vender al mejor postor dichos derechos de cobro. El poder especial que al efecto se suscriba, forma parte integrante del presente Contrato como Anexo 1 del mismo. </p>
+
+<p> Kubo, en el ejercicio del poder a que se refiere la presente cláusula, hará su mayor esfuerzo para llevar a cabo la venta de los derechos de cobro en el plazo máximo de 90 días naturales; una vez transcurrido dicho plazo, sin haberse logrado la venta de los derechos de cobro, el poder especial antes referido quedará sin efectos, y el Inversionista liberará a Kubo de cualquier responsabilidad relacionada con la recuperación del Crédito de que se trate. Las partes convienen en que a Kubo le estará prohibido adquirir para sí o para interpósita persona los derechos de cobro del Crédito. </p>
+
+<p> Si con objeto de obtener un mejor precio a juicio de Kubo se considera que un Crédito debe ser vendido antes del plazo señalado en el párrafo inmediato anterior, el Inversionista manifiesta desde este momento su conformidad con la venta de dicho Crédito, en el entendido de que el mismo deberá encontrarse con al menos 60 días de mora. Kubo notificará a través del Portal.Kubo todos los créditos en mora que se han puesto en venta.</p>
+
+<p>En el caso que Kubo logre realizar la venta de los derechos de cobro a que se refiere la presente cláusula, de la parte proporcional que a Kubo le corresponda entregar al Inversionista, Kubo descontará la parte proporcional de los gastos de cobranza extrajudicial que se hayan generado, tales como honorarios, comisiones y/o mensajería, entre otros, y la diferencia se le entregará al Inversionista. En ningún caso los gastos serán mayores a la Garantía señalada en la cláusula segunda del presente contrato. </p>
+
+<p> En caso de que el Inversionista omita algunas de las acciones y obligaciones que adquiere en esta cláusula, de tal forma que Kubo se vea imposibilitado a cumplir con la venta de los derechos de cobro pactados en la misma, Kubo quedará liberado de cualquier responsabilidad.</p>
+
+<p>Para efectos de lo establecido en la presente cláusula, el Inversionista reconoce que al ser cotitular de los derechos de crédito, deberá actuar de manera conjunta con los demás cotitulares de dichos derechos, por lo que reconoce en este acto que Kubo actuará como representante común de los mismos en todo los temas relativos a la venta de los mencionados derechos de cobro, así como para el pago de los impuestos y demás contribuciones que se deriven de la venta de los multicitados derechos de crédito. Asimismo reconoce que para remover a Kubo como su representante común se requerirá de la conformidad de la totalidad de los cotitulares del respectivo crédito.</p>
+<p>
+Para efectos del ejercicio del poder referido en la presente cláusula, el Inversionista manifiesta su conformidad en que Kubo pueda contratar los servicios de terceros. </p>
+
+
+
+  <p><strong>DÉCIMA TERCERA.</strong> EJERCICIO DEL DERECHO DEL TANTO DE LOS COTITULARES. El Inversionista reconoce que al ser cotitular de derechos de cobro de un crédito, en caso de que se desee vender el mismo a terceros distintos a los cotitulares, todos los cotitulares tendrán el derecho de adquirir dicho crédito de manera preferente a cualquier tercero, por lo que en este acto está de acuerdo en que, previamente a la venta a que se refiere la cláusula inmediata anterior, se deberá llevar a cabo el procedimiento siguiente:</p>
+
+
+</div>
+</section>
+
+<section>
+  <div class="container">
+<ul class="latin">
+    <li>Kubo se obliga a notificar a todos los cotitulares a través del Portal.Kubo la disposición a la venta del Crédito.</li>
+
+    <li>Los cotitulares del Crédito, tendrán un plazo de cinco días naturales a partir de que se les notifique la mencionada venta para ejercer el derecho de preferencia para la compra del 100% del Crédito, debiendo señalar el precio al que se desea comprar.</li>
+
+    <li>En caso de que más de uno de los cotitulares ejerza el derecho de preferencia aquí señalado, Kubo asignará la venta a quien haya hecho la mayor oferta y en caso de que haya empate en la oferta, les hará saber tal situación a través del Portal.Kubo para que en un plazo de dos días naturales contados a partir de la fecha en la que se les notifique tal situación, los que lo deseen puedan hacer una nueva oferta.</li>
+
+    <li>En el supuesto que nuevamente haya más de uno que hubiesen ofertado el mismo precio, el Crédito le será asignado a quien haya presentado primero su oferta.</li>
+
+    <li>En caso de que ninguno de los cotitulares hubiese efectuado alguna oferta de compra, Kubo procederá a declarar desierto el derecho de preferencia previsto en la presente cláusula, debiendo efectuar la venta del Crédito en términos de lo señalado en la cláusula inmediata anterior. </li>
+</ul>
+
+<p>
+  <strong>DÉCIMA CUARTA.</strong> REPORTE A SOCIEDADES DE INFORMACIÓN CREDITICIA. Kubo reportará la información del comportamiento crediticio de los acreditados  a alguna de las Sociedades de Información Crediticia, incluyéndose entre otros los desembolsos de crédito, pagos, atrasos, quitas, condonaciones, reestructuras y quebrantos.
+
+</p>
+
+ 
+<h4 >
+    <strong>SECCIÓN TERCERA. USO DE LOS PRODUCTOS Y SERVICIOS DE KUBO</strong>
+</h4>
+<p >
+    <strong>DÉCIMA QUINTA.</strong>
+    FIRMA ELECTRÓNICA. La Firma Electrónica u otros medios de identificación que Kubo establezca conforme a lo previsto en el Contrato, en sustitución de la
+    firma autógrafa, producirá los mismos efectos que las leyes otorgan a los documentos correspondientes y, en consecuencia, tendrán el mismo valor
+    probatorio; por lo tanto, las partes concederán valor probatorio pleno a los Comprobantes expedidos por Kubo a través de equipos, medios electrónicos,
+    ópticos, sistemas automatizados, redes de telecomunicaciones y los emitidos por establecimientos autorizados por Kubo por lo que el Cliente deberá
+    conservar y presentar los mismos en caso de alguna inconformidad.
+</p>
+<p >
+    <strong>DÉCIMA SEXTA.</strong>
+    FIRMA AUTOGRAFA. Las partes reconocen que la constitución de las Garantías del presente Contrato, así como el otorgamiento del Poder Especial referido en
+    el mismo, se llevarán a cabo mediante el uso de la Firma Autógrafa.
+</p>
+<p >
+    <strong>DÉCIMA SÉPTIMA</strong>
+    <strong>.</strong>
+    INFORMACIÓN DE CREDITOS GARANTIZADOS. Kubo proporcionará al Inversionista, toda la información relativa a las Garantías otorgadas así como de los Créditos
+    garantizados a través del “Resumen de Saldos y Movimientos”, el cual se encontrará a disposición del Inversionista en el Portal.Kubo. El Inversionista
+    podrá ingresar al Portal.Kubo mediante el uso de la clave de acceso y contraseña que al efecto le proporcione Kubo.
+</p>
+<p >
+    <strong>DÉCIMA OCTAVA.</strong>
+    COMPROBANTES DE OPERACIÓN. Kubo generará a favor del Inversionista un comprobante electrónico que documente cada operación que realice dentro del
+    Portal.Kubo respecto del presente Contrato, el cual estará a su disposición vía el propio Portal.Kubo.
+</p>
+
+<h4>
+    <strong>SECCIÓN CUARTA. SERVICIO AL INVERSIONISTA.</strong>
+</h4>
+<p >
+    <strong>DÉCIMA NOVENA</strong>
+    <strong>. </strong>
+    HORARIOS.<strong> </strong>Kubo prestará los servicios objeto de este contrato en los horarios que sean informados en el Portal.Kubo, con excepción de los
+    días inhábiles que establezca la Comisión Nacional Bancaria y de Valores, los cuales estarán disponibles para conocimiento del Inversionista en el
+    Portal.Kubo.
+</p>
+<p >
+    <strong>VIGÉSIMA.</strong>
+    CONTRATACIÓN DE SERVICIOS FINANCIEROS ELECTRÓNICOS. El Inversionista podrá contratar los servicios financieros electrónicos que Kubo le ofrece, mediante
+    los cuales podrá conforme a los términos y condiciones convenidos en el presente Contrato y lo dispuesto el Contrato de Servicios Digitales
+    correspondiente, acceder a diversos servicios y operaciones que Kubo le ofrece a través de medios electrónicos; sin perjuicio de su facultad de afiliarse a
+    los servicios con o sin costo que Kubo le ofrece o pudiese ofrecer en cualquier momento. En caso de que el Cliente no celebre el Contrato de Servicios
+    Digitales referido anteriormente, éste podrá proporcionar instrucciones sobre el presente Contrato en las oficinas de Kubo, previa identificación y
+    verificación que Kubo aplique con los procedimientos que considere adecuados para ello.
+</p>
+<p >
+    <strong>VIGÉSIMA PRIMERA.</strong>
+    ENTREGA DE CONTRATO Y CONTRATACIÓN POSTERIOR DE SERVICIOS. El Cliente podrá solicitar la entrega del presente Contrato y su Carátula de manera física o
+    electrónica, el cual incluye los productos que se contratan en el mismo. Para el caso de la contratación posterior de otros productos o servicios que se
+    incluyen en el presente Contrato, la documentación relacionada con dicha contratación podrá enviarse al correo electrónico que el Cliente proporciona a
+    Kubo para tales efectos el cual se incluye en el Capítulo IV, Datos Generales de las partes contratantes
+</p>
+<p >
+    <strong>VIGÉSIMA SEGUNDA. </strong>
+    PRESENTACIÓN DE ACLARACIONES E INCONFORMIDADES. Para cualquier aclaración, el Inversionista deberá ponerse en contacto con la Unidad Especializada de Kubo
+    dentro de los noventa días naturales siguientes a que se efectúe el acto que se requiere aclarar. Cualquier solicitud de aclaración deberá presentarse con
+    acuse de recibo en el Domicilio de Kubo, a través del correo electrónico de la Unidad Especializada Kubo señalado en el encabezado en el Contrato o a
+    través del Portal.Kubo, en la inteligencia de que transcurrido dicho plazo, cualquier transacción, movimiento o cargo realizado se entenderá aceptado por
+    el Inversionista, quedando Kubo libre de toda responsabilidad.
+</p>
+<p >
+    <strong>VIGÉSIMA TERCERA. </strong>
+    INFORMACIÓN DE CONTACTO DE LA UNIDAD ESPECIALIZADA DE ATENCIÓN PARA ACLARACIONES Y RECLAMACIONES Y DE LA COMISIÓN NACIONAL PARA LA PROTECCIÓN Y DEFENSA DE
+    LOS USUARIOS DE SERVICIOS FINANCIEROS.<strong> </strong>En cumplimiento a lo dispuesto por la legislación aplicable Kubo señala como datos adicionales de
+    identificación, localización y contacto de la Unidad Especializada de Kubo, los siguientes:
+</p>
+<p >
+Teléfono: (55) 62690024. Página de Internet: <u><a href="http://www.kubofinanciero.com/">www.kubofinanciero.com</a></u>. Correo:    <u><a href="mailto:soporte@kubofinanciero.com">soporte@kubofinanciero.com</a></u>.
+</p>
+<p >
+    Domicilio: Av. Barranca del Muerto 92, Colonia Florida, Delegación Álvaro Obregón, C.P. 01030, México, D.F.
+</p>
+<p >
+    En caso de consultas, reclamaciones o aclaraciones, el Inversionista podrá acudir a la Comisión Nacional para la Protección y Defensa de los Usuarios de
+    Servicios Financieros (CONDUSEF) con domicilio en Insurgentes Sur 762, Colonia del Valle, Delegación Benito Juárez, Código Postal 03100, México, Distrito
+Federal, en los teléfonos lada sin costo 01800 999 8080 y 53 40 09 99, enviar un correo electrónico a<u><a href="mailto:opinion@condusef.gob.mx">opinion@condusef.gob.mx</a></u> o consultar la página electrónica en Internet    <u><a href="http://www.condusef.gob.mx/">www.condusef.gob.mx</a></u>.
+</p>
+<p >
+    <strong>VIGÉSIMA CUARTA.</strong>
+    REDES SOCIALES. El Cliente podrá consultar las cuentas que Kubo mantenga activas en redes sociales de internet accesando al Portal.Kubo.
+</p>
+<p >
+    <strong>SECCIÓN QUINTA. COMSIONES Y GASTOS.</strong>
+</p>
+<p >
+    <strong>VIGÉSIMA QUINTA</strong>
+    . COMISIONES. Como contraprestación por los servicios prestados por Kubo de conformidad con la cláusula décima segunda, Kubo cobrará al Inversionista una
+    comisión del 10% del monto recuperado.
+</p>
+<p >
+    <strong>VIGÉSIMA SEXTA. </strong>
+    GASTOS. El Inversionista manifiesta su conformidad de que los gastos que se generen por la cobranza extrajudicial, negociaciones de reestructura, y ventas
+    de los créditos serán a su cargo en la proporción que su Garantía representa del Crédito; gastos que serán cubiertos de su Cuenta kubo.global.
+</p>
+<h4 >
+    <strong>SECCIÓN SEXTA. DISPOSICIONES GENERALES.</strong>
+</h4>
+<p >
+    <strong>VIGÉSIMA SÉPTIMA</strong>
+    . VIGENCIA. El presente contrato tendrá la vigencia indefinida a partir de su fecha de firma. No obstante su terminación, este contrato producirá todos sus
+    efectos legales, hasta que el Inversionista haya liquidado en su totalidad todas las cantidades a su cargo.
+</p>
+<p >
+    <strong>VIGÉSIMA OCTAVA.</strong>
+    MODIFICACIONES. Para la modificación del presente Contrato, las partes acuerdan que la misma se llevará a cabo mediante la celebración del Convenio
+    Modificatorio correspondiente.
+</p>
+<p >
+    <strong>VIGÉSIMA NOVENA.</strong>
+    TRATAMIENTO DE DATOS PERSONALES. Kubo hace del conocimiento del Inversionista que sus datos personales y el tratamiento de estos, se hará de acuerdo al
+    aviso de privacidad que está a disposición del Inversionista para su consulta en el Portal.Kubo; asimismo, se entenderá que el Inversionista otorga su
+    consentimiento al tratamiento de sus datos personales al no realizar el ejercicio de los derechos ARCO (Acceso, Rectificación, Cancelación y Oposición).
+</p>
+<p >
+    <strong>TRIGÉSIMA. </strong>
+    TOTALIDAD DE ACUERDOS. El presente instrumento, su anexo, así como las publicaciones realizadas en el Portal vinculadas con los acuerdos adoptados por las
+    partes en el presente Contrato, contienen la totalidad de los acuerdos celebrados entre Kubo y el Inversionista.
+</p>
+<p >
+    Las partes acuerdan que la información generada a través del Portal.Kubo, o de cualquier otro medio electrónico tendrá todos los efectos legales y
+    vinculantes que el presente Contrato les reconoce.
+</p>
+<p >
+    <strong>TRIGÉSIMA PRIMERA</strong>
+    <strong>.</strong>
+    IMPUESTOS. Las partes se obligan a cumplir con sus obligaciones fiscales en términos de las leyes y regulaciones aplicables.
+</p>
+<p >
+    <strong>TRIGÉSIMA SEGUNDA</strong>
+    <strong>. </strong>
+    NOTIFICACIONES. Todas las notificaciones, avisos y en general cualquier comunicación que las partes deban hacerse para los efectos del presente Contrato,
+    se harán a través de correo electrónico.
+</p>
+<p >
+    <strong>TRIGÉSIMA TERCERA.</strong>
+    TITULOS. Los títulos de las cláusulas se incluyen únicamente como referencia y no pretenden definir, limitar o describir el alcance o intención de las
+    disposiciones de este contrato.
+</p>
+<p >
+    <strong>TRIGÉSIMA CUARTA.</strong>
+    DISPOSICIONES LEGALES REFERENCIADAS. En el capítulo V del presente Contrato se encuentra la transcripción de disposiciones legales expresamente
+    referenciadas en el mismo.
+</p>
+<p >
+    <strong>TRIGÉSIMA QUINTA.</strong>
+    LEYES Y TRIBUNALES COMPETENTES. Para todo lo relativo a la interpretación y cumplimiento de este contrato, las partes se someten a las leyes de los Estados
+    Unidos Mexicanos y la jurisdicción de los tribunales competentes de la Ciudad de México, Distrito Federal, renunciando el Inversionista, a cualquier fuero
+    que por razón de su domicilio presente o futuro pudiera corresponderle.
+</p>
+ </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <h4>CAPITULO II. DEFINICIONES</h4>
+    <p>
+    Los términos que se utilizan en el Contrato y que se relacionan a continuación, tendrán los significados siguientes, los cuales serán igualmente aplicables
+    a las formas plural o singular de los mismos:
+</p>
+<ol>
+    <li>
+        <p >
+            Acreditado. Tercero que celebra un contrato de apertura de Crédito con Kubo.
+        </p>
+    </li>
+    <li>
+        <p>
+            Centro de Atención Kubo: Es el centro telefónico de atención que Kubo pone a disposición del Cliente para brindar los servicios contenidos en el
+            presente Contrato y en los términos y condiciones del Portal.Kubo.
+        </p>
+    </li>
+    <li>
+        <p >
+            Comprobante: Son las constancias o comprobantes de depósito o inversión de los depósitos realizados por el Cliente que emitirá Kubo por cada
+            operación que se efectúe al amparo de cada producto de que se trate, los que son electrónicos y están a disposición del Cliente en el Portal.Kubo y
+            que el Cliente solicite a Kubo en los términos y condiciones estipulados en el Contrato de Captación.
+        </p>
+    </li>
+    <li>
+        <p >
+            Contrato de Captación: Contrato único de inversión con depósitos a la vista, depósitos retirables en días preestablecidos y depósitos a plazo fijo
+            mediante el cual el Inversionista realiza depósitos en Kubo .
+        </p>
+    </li>
+    <li>
+        <p >
+            Convenio Modificatorio: Es el convenio que en su caso celebren las partes para la modificación de los acuerdos establecidos en el presente
+            contrato.
+        </p>
+    </li>
+    <li>
+        <p >
+            Crédito. Al otorgado por Kubo con el carácter de acreedor y del cual se derivan derechos de cobro a su favor.
+        </p>
+    </li>
+    <li>
+        <p >
+            Crédito en Mora: Al Crédito que no ha sido pagado por el Acreditado conforme a la tabla de amortización del contrato de Crédito respectivo.
+        </p>
+    </li>
+    <li>
+        <p >
+            Cuenta kubo.global o Cuenta del Inversionista: Es la cuenta que tiene contratada el Inversionista con Kubo, misma que se señala en el capítulo IV
+            del presente Contrato, en la cual se depositarán los recursos otorgados en garantía una vez liberados los mismos.
+        </p>
+    </li>
+    <li>
+        <p >
+            Cuenta kubo.impulso: Es la cuenta en la que el Inversionista podrá realizar operaciones de depósito de dinero retirables en días preestablecidos
+          para garantizar los Créditos que Kubo otorga a los Acreditados.
+        </p>
+    </li>
+    <li>
+        <p >
+            Firma Autógrafa: Es el trazo que el Inversionista estampa en el presente contrato con el objetivo de obligarse a responder de su contenido y
+            manifestar su entendimiento y aceptación del mismo con su puño y letra la cual se podrá plasmar en papel o en dispositivos ópticos que producen la
+            imagen de la firma.
+        </p>
+    </li>
+    <li>
+        <p >
+            Firma Electrónica: Significan los datos en forma electrónica y clave electrónica de seguridad utilizados por el Inversionista para identificarse
+            con Kubo y aceptar las características, términos y condiciones, así como los derechos y obligaciones, y Medios de Disposición de los Productos
+            contratados mediante el Contrato, incluyendo su Carátula, capítulos, anexo y Comprobantes
+        </p>
+    </li>
+    <li>
+        <p >
+            Garante: El Inversionista que otorga la garantía prendaria liquida e irrevocable definida en el siguiente inciso.
+        </p>
+    </li>
+    <li>
+        <p >
+            Garantía. La garantía prendaria líquida e irrevocable que se constituye a favor de Kubo a través del presente Contrato.
+        </p>
+    </li>
+    <li>
+        <p >
+            Perfil de Inversión: Es la composición del Portafolio que el Inversionista conforma de acuerdo a su tolerancia al riesgo.
+        </p>
+    </li>
+    <li>
+        <p >
+            Porcentaje de Garantía. Es la parte proporcional que la garantía otorgada representa del Crédito garantizado al momento de constituir la Garantía.
+        </p>
+    </li>
+    <li>
+        <p >
+            Poder Especial. Poder que otorga el Inversionista a favor de Kubo, para que este último pueda realizar la cobranza y vender los derechos de cobro
+            que, en su caso, Kubo ceda al Inversionista.
+        </p>
+    </li>
+    <li>
+        <p >
+            Portafolio o Portafolios. Conjunto de garantías de Créditos otorgadas por el Inversionista en términos del presente Contrato.
+        </p>
+    </li>
+    <li>
+        <p >
+            Portal.Kubo. Sistema electrónico propiedad de Kubo, el cual es accesible por el Inversionista a través del uso de Internet como medio de
+            comunicación, cuya utilización le permite convenir mediante instrucciones y eligiendo las opciones habilitadas en dicho sistema, los servicios
+            financieros, utilizando la Firma Electrónica como medio de expresión de la voluntad y pleno consentimiento del Inversionista, a través de la cual
+            podrá consultar toda la información relativa al Portafolio de Garantías otorgadas y recibir todas las notificaciones por parte de Kubo referentes
+            al mismo.
+        </p>
+    </li>
+    <li>
+        <p >
+            Saldo bloqueado. El monto asignado por El Inversionista como intención de Garantía de un crédito entre la fecha de selección y el desembolso del
+            crédito.
+        </p>
+    </li>
+    <li>
+        <p >
+            Transmisión de Derechos de Cobro. A la transmisión de la propiedad que hace Kubo a favor del Inversionista respecto de los derechos de cobro sobre
+            los Créditos vencidos.
+        </p>
+    </li>
+</ol>
+</div>
+</section>
+<section>
+  <div class="container">
+
+      <h4>
+    <strong>CAPÍTULO III. DECLARACIONES.</strong>
+</h4>
+<h4>
+    <strong>SECCIÓN PRIMERA. DECLARACIONES DE KUBO.</strong>
+</h4>
+<p>
+    Declara Kubo, a través de su representante legal que:
+</p>
+<ul class="latin">
+    <li>
+        <p >
+            Es una Sociedad Anónima de Capital Variable debidamente constituida ante fedatario público e inscrita en el Registro Público de Comercio, que
+            cuenta con la autorización de la Comisión Nacional Bancaria y de Valores para operar como Sociedad Financiera Popular y que por lo tanto cuenta con
+            la autorización y capacidad para asumir y dar cumplimiento a las obligaciones que se establecen en el Contrato.
+        </p>
+    </li>
+    <li>
+        <p >
+            Su representante cuenta con las facultades legales necesarias para representarla en el presente Contrato y que las mismas no le han sido
+            modificadas ni revocadas en forma alguna, tal como consta en el instrumento público que al efecto se detalla en el capítulo IV del presente
+            Contrato.
+        </p>
+    </li>
+    <li>
+        <p>
+            Dentro de su objeto social tiene permitido recibir depósitos de dinero a la vista, de ahorro, a plazo, retirables en días preestablecidos y
+            retirables con previo aviso, así como otorgar créditos y recibir garantías de conformidad con lo dispuesto en las disposiciones legales aplicables.
+        </p>
+    </li>
+    <li>
+        <p >
+            Su domicilio y datos generales se señalan en el capítulo IV del presente contrato.
+        </p>
+    </li>
+    <li>
+        <p>
+            Ha verificado de manera remota la legal existencia del Acreditado cuyo Crédito se garantiza en términos del presente Contrato, no habiéndose
+            obligado a llevar a cabo la verificación física del Acreditado.
+        </p>
+    </li>
+    <li>
+        <p >
+            Para la consecución de su objeto social podrá recibir en garantía irrevocable los depósitos que reciba de los Clientes.
+        </p>
+    </li>
+    <li>
+        <p >
+            Ha desarrollado el Portal.Kubo, a través de la cual, tendrá comunicación con el Inversionista y le hará llegar toda la información y notificaciones
+            a que hace referencia el presente instrumento.
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>SECCIÓN SEGUNDA. DECLARACIONES DEL INVERSIONISTA.</strong>
+</p>
+<p>
+    Declara el Inversionista por su propio derecho o a través de su representante o apoderado legal que:
+</p>
+<ul class="latin">
+    <li>
+        <p >
+            Cuenta con la capacidad para obligarse en términos del presente Contrato y sus generales son los que se detallan en su capítulo IV.
+        </p>
+    </li>
+    <li>
+        <p >
+            Que su domicilio y datos generales y de localización se señalan en el capítulo IV del presente contrato.
+        </p>
+    </li>
+    <li>
+        <p >
+            Cuenta con pleno conocimiento de quien es Kubo y de los servicios financieros que ofrece.
+        </p>
+    </li>
+    <li>
+        <p >
+            Ha celebrado con Kubo un Contrato de Captación de recursos, respecto de los cuales tiene interés de constituir garantía líquida e irrevocable de
+            una parte proporcional del pago de Créditos que Kubo haya otorgado en favor de diversos Acreditados y que sean seleccionados por el Inversionista.
+        </p>
+    </li>
+    <li>
+        <p >
+            Los recursos objeto del presente Contrato son de su propiedad y producto de sus actividades y por lo tanto no tienen un origen ilícito, conoce y
+            entiende claramente las regulaciones relativas a las operaciones realizadas con recursos de procedencia ilícita y financiamiento al terrorismo y
+            sus consecuencias.
+        </p>
+    </li>
+    <li>
+        <p >
+            Ha sido informado por parte de Kubo del perfil de inversión que le corresponde y con el cual ha mostrado su conformidad, mismo que se encuentra en
+            su expediente electrónico en el portal.kubo, perfil que debe ser tomado en consideración para determinar la selección de Créditos que está
+            dispuesto a garantizar.
+        </p>
+    </li>
+    <li>
+        <p >
+            Tiene pleno conocimiento de que puede perder los recursos que está dando en garantía en caso de que se haga efectiva la garantía materia del
+            presente contrato, en caso de que el Acreditado incumpla con su obligación de pago de los Créditos.
+        </p>
+    </li>
+</ul>
+  </div>
+</section>
+
+  
+<div class="pagebreak"></div>
+<section>
+  <div class="container">
+      <h4>CAPÍTULO IV. DATOS GENERALES DE LAS PARTES CONTRATANTES.</h4>
+      <h4>SECCIÓN PRIMERA. DATOS GENERALES DEL INVERSIONISTA</h4>
+
+
+El Cliente ratifica por su propio derecho o a través de su representante o apoderado legal que los siguientes son sus datos generales:
+
+
+
+
+  <div class="bloqueCuestionario">
+       <h3>En el caso de Inversionista persona física:</h3>
+    
+        <p>Nombre: <span class="variable borde anexo">#{contractData.data.cliNombre}</span> </p>
+        <p>Apellido Paterno: <span class="variable borde anexo">#{contractData.data.cliApellidoPaterno}</span> </p>
+        <p>Apellido Materno:<span class="variable borde anexo">#{contractData.data.cliApellidoMaterno}</span> </p>
+        <p>Nacionalidad:<span class="variable borde anexo">#{contractData.data.cliNacionalidad}</span></p>
+
+        <p>Lugar de nacimiento:<span class="variable borde anexo">#{contractData.data.cliLugarNacimiento}</span></p>
+        <p>Fecha de nacimiento: <span class="variable borde anexo">#{contractData.data.cliFechaNacimiento}</span></p>
+        <p>RFC:<span class="variable borde anexo">#{contractData.data.cliRFC}</span></p>
+        <p>CURP: <span class="variable borde anexo">#{contractData.data.cliCurp}</span></p>
+ </div>
+  <div class="bloqueCuestionario">
+        <h3>En el caso de Inversionista persona moral:</h3>
+        <p>Denominación social o razón social: <span class="variable borde anexo">#{contractData.data.cliMorDenRazonSocial} </span></p>
+        <p>RFC: <span class="variable borde anexo"> #{contractData.data.cliMorRFC} </span></p>
+  </div>
+   <div class="bloqueCuestionario">
+       <h3>Datos del instrumento público donde consta el apoderado del Cliente que firma el Contrato:</h3>
+        <p>Nombre(s) y apellidos del fedatario público: <span class="variable borde anexo">#{contractData.data.cliMorNombreCompletoFedPub}</span></p>
+        <p>Tipo de fedatario público: <span class="variable borde anexo"><!-- #{contractData.data.cliMorTipoFedPub} --></span></p>
+        <p>Número: <span class="variable borde anexo">#{contractData.data.cliMorNumero}</span></p>
+        <p>Entidad Federativa: <span class="variable borde anexo">#{contractData.data.cliMorEntidadFederativa}</span></p>
+        <p>Número de instrumento público:<span class="variable borde anexo"> <!--  #{contractData.data.cliMorNumInstPublico}--> </span></p>
+        <p>Fecha de otorgamiento:<span class="variable borde anexo">#{contractData.data.cliMorFechaOtorgamiento}</span></p>
+        <p>Datos de inscripción en el Registro Público de Comercio:<span class="variable borde anexo">#{contractData.data.cliMorDatoInscripcionRPC}</span></p>
+        <p>Fecha de inscripción:<span class="variable borde anexo">#{contractData.data.cliMorFechaInscripcion}</span></p>
+    
+        <p>Lugar:<span class="variable borde anexo">#{contractData.data.cliMorLugarInscripcion}</span></p>
+ </div>
+  <div class="bloqueCuestionario">
+      <h3>Domicilio Particular  de la Persona Física o Domicilio Principal de la Persona Moral:</h3>
+      <p>Calle: <span class="variable borde anexo">#{contractData.data.cliCalle}</span></p>
+      <p>Número Exterior: <span class="variable borde anexo">#{contractData.data.cliNumeroExterior}</span></p>
+      <p>Número Interior: <span class="variable borde anexo">#{contractData.data.cliNumeroInterior}</span></p>
+      <p>Manzana*: <span class="variable borde anexo">#{contractData.data.cliManzana}</span></p>
+      <p>Lote*: <span class="variable borde anexo">#{contractData.data.cliLote}</span> </p>
+      <p>Colonia: <span class="variable borde anexo">#{contractData.data.cliColonia}</span></p>
+      <p>Delegación/Municipio: <span class="variable borde anexo">#{contractData.data.cliDelegacionMun}</span></p>
+      <p>CP: <span class="variable borde anexo">#{contractData.data.cliCP}</span></p>
+      <p>Entidad Federativa: <span class="variable borde anexo">#{contractData.data.cliEstado}</span></p>
+     <p>Teléfono fijo: <span class="variable borde anexo"></span></p>
+      <p>Teléfono móvil: <span class="variable borde anexo"></span></p>
+      <p>Correo electrónico: <span class="variable borde anexo"></span></p>
+       
+       <p><small>*En su caso</small></p>
+    </div>
+
+     <div class="bloqueCuestionario"> 
+     
+
+
+      <h3>Ocupación o Giro del Negocio:<span class="variable borde anexo"></span></h3>
+      <p>Teléfono fijo: <span class="variable borde anexo">#{contractData.data.cliTelefonofijo}</span></p>
+      <p>Teléfono fijo 2: <span class="variable borde anexo">#{contractData.data.cliTelefonofijo2}</span></p>
+      <p>Teléfono móvil: <span class="variable borde anexo">#{contractData.data.cliTelefonoMovil}</span></p>
+       <p>Teléfono móvil 2: <span class="variable borde anexo">#{contractData.data.cliTelefonoMovil2}</span></p>
+      <p>Teléfono de trabajo: <span class="variable borde anexo">#{contractData.data.cliTelefonoTrabajo}</span> </p>
+      <p>Teléfono de trabajo 2:<span class="variable borde anexo">#{contractData.data.cliTelefonoTrabajo2}</span> </p>
+      <p>Correo electrónico:<span class="variable borde anexo">#{contractData.data.cliCorreo}</span> </p>
+     
+      <p>Correo electrónico 2: <span class="variable borde anexo">#{contractData.data.cliCorreo2}</span></p>
+    </div>
+
+ <div class="bloqueCuestionario"> 
+     
+       <h3>Información de Redes Sociales: </h3>
+      <p>Cuenta facebook: <span class="variable borde anexo">#{contractData.data.cliFacebook}</span></p>
+      <p> Cuenta twitter: <span class="variable borde anexo">#{contractData.data.cliTwitter}</span></p>
+      <p>Cuenta linkedin:<span class="variable borde anexo">#{contractData.data.cliLinkedIn}</span> </p>
+  </div>
+ <div class="bloqueCuestionario"> 
+      <h3>Cuenta Bancaria del Inversionista:</h3>
+      <p>Banco: <span class="variable borde anexo">#{contractData.data.cliNombreBanco}</span></p>
+      <p>Número de Cuenta: <span class="variable borde anexo">#{contractData.data.cliNumeroCuenta}</span></p>
+      <p>Clabe de la Cuenta*: <span class="variable borde anexo">#{contractData.data.cliCuentaClabe}</span></p>
+  </div>
+
+   <div class="bloqueCuestionario tresColumnas"> 
+      <h4>SECCIÓN SEGUNDA. DATOS GENERALES DE KUBO.
+</h4>
+      <p>Kubo ratifica a través de su representante o apoderado legal que los siguientes son sus datos generales:</p>
+     <article>
+         <p>Banco: <span class="variable anexo2">BANCA MIFEL</span> </p>
+        <p>Número de cuenta: <span class="variable anexo2">01600096474</span> </p>
+        <p>CLABE de la cuenta: <span class="variable anexo2">042180016000964746</span> </p>
+    </article>
+    <article>
+      <p>Banco: <span class="variable anexo2"></span> </p>
+      <p>Número de cuenta: <span class="variable anexo2"></span> </p>
+      <p>CLABE de la cuenta:<span class="variable anexo2"></span> </p>
+    </article>
+    <article>
+      <p>Banco: <span class="variable anexo2"></span> </p>
+      <p>Número de cuenta: <span class="variable anexo2"></span> </p>
+      <p>CLABE de la cuenta: <span class="variable anexo2"></span> </p>
+    </article>
+    </div>
+<p>Domicilio: Av. Barranca del Muerto 92, Colonia Florida, Delegación Álvaro Obregón, C.P. 01030, México, D.F.</p>
+
+<p>Datos del instrumento público donde consta el apoderado de Kubo que firma el Contrato:
+ Escritura pública número 124,480 pasada ante la fe del Lic. José Ángel Villalobos Magaña, titular de la Notaría Pública número 9 del D.F., inscrita
+en el Registro Público de Comercio bajo el folio mercantil 478728-1, de fecha 16 de enero de 2014.</p>
+
+
+</div>
+</section>
+ <section>
+  
+    <div class="container">
+    
+    <h4>CAPÍTULO V. TRANSCRIPCIÓN DE DISPOSICIONES LEGALES EXPRESAMENTE REFERIDAS EN EL CONTRATO</h4>
+
+      <h4>SECCIÓN PRIMERA. CODIGO CIVIL PARA EL DISTRITO FEDERAL.</h4>
+
+<p>Artículo 938.- Hay copropiedad cuando una cosa o un derecho pertenecen pro-indiviso a varias personas.</p>
+<p>Artículo 2856.- La prenda es un derecho real constituido sobre un bien mueble enajenable para garantizar el cumplimiento de una obligación y su preferencia en el pago.</p>
+
+<h4>SECCIÓN SEGUNDA. LEY GENERAL DE TITULOS Y OPERACIONES DE CRÉDITO.</h4>
+
+
+<p>Artículo 334.- En materia de comercio, la prenda se constituye:</p>
+<p>I.- Por la entrega al acreedor, de los bienes o títulos de crédito, si éstos son al portador;</p>
+<p>II.- Por el endoso de los títulos de crédito en favor del acreedor, si se trata de títulos nominativos, y por este mismo endoso y la correspondiente anotación en el registro, si los títulos son de los mencionados en el artículo 24;
+</p>
+
+<p>III.- Por la entrega, al acreedor, del título o del documento en que el crédito conste, cuando el título o crédito materia de la prenda no sean negociables, con inscripción del gravamen en el registro de emisión del título o con notificación hecha al deudor, según que se trate de títulos o créditos respecto de los cuales se exija o no tal registro;</p>
+<p>IV.- Por el depósito de los bienes o títulos, si éstos son al portador, en poder de un tercero que las partes hayan designado y a disposición del acreedor;</p>
+
+<p>V.- Por el depósito de los bienes, a disposición del acreedor, en locales cuyas llaves queden en poder de éste, aun cuando tales locales sean de la propiedad o se encuentren dentro del establecimiento del deudor;</p>
+
+<p>VI.- Por la entrega o endoso del título representativo de los bienes objeto del contrato, o por la emisión o el endoso del bono de prenda relativo;</p>
+
+<p>VII.- Por la inscripción del contrato de crédito refaccionario o de habilitación o avío, en los términos del artículo 326;</p>
+
+<p>VIII.- Por el cumplimiento de los requisitos que señala la Ley General de Instituciones de Crédito, si se trata de créditos en libros.</p>
+<p>Artículo 335.- Cuando se den en prenda bienes o títulos fungibles, la prenda subsistirá aun cuando los títulos o bienes sean sustituidos por otros de la misma especie.</p>
+
+<p>Artículo 336.- Cuando la prenda se constituya sobre bienes o títulos fungibles, puede pactarse que la propiedad de éstos se transfiera al acreedor, el cual quedará obligado, en su caso, a restituir al deudor otros tantos bienes o títulos de la misma especie. Este pacto debe constar por escrito.</p>
+
+<p>Cuando la prenda se constituya sobre dinero, se entenderá transferida la propiedad, salvo convenio en contrario.</p>
+<p>Artículo 336 Bis.- En los casos en los que las partes hubieren pactado la transferencia de propiedad del efectivo cuando exista un incumplimiento de las obligaciones garantizadas, de presentarse éste el acreedor prendario conservará el efectivo, hasta por la cantidad que importen las obligaciones garantizadas, sin necesidad de que exista un procedimiento de ejecución o resolución judicial, extinguiéndose éstas por dicho monto.</p>
+
+<p>Si el monto de la prenda y la obligación garantizada no fueren de igual cantidad, queda expedita la acción por el resto de la deuda.
+En estos casos, se entenderá que la transferencia de propiedad del efectivo se llevó a cabo por el consentimiento de las partes como una forma de pago de las obligaciones del deudor y no en ejecución de la prenda.</p>
+
+<p>Artículo 337.- El acreedor prendario está obligado a entregar al deudor, a expensas de éste, en los casos a que se refieren las fracciones I, II, III, V y VI del artículo 334, un resguardo que exprese el recibo de los bienes o títulos dados en prenda y los datos necesarios para su identificación.</p>
+<p>
+Artículo 338.- El acreedor prendario, además de estar obligado a la guarda y conservación de los bienes o títulos dados en prenda, debe ejercitar todos los derechos inherentes a ellos, siendo los gastos por cuenta del deudor, y debiendo aplicarse, en su oportunidad, al pago del crédito, todas las sumas que sean percibidas, salvo pacto en contrario. Es nulo todo convenio que limite la responsabilidad que para el acreedor establece este artículo.</p>
+
+<p>Artículo 339.- Son aplicables al acreedor y al deudor, en lo conducente, las prevenciones establecidas en relación con el reportador y el reportado, respectivamente, en los artículos 261 y 263, primera parte.</p>
+
+<p>Artículo 340.- Si el precio de los bienes o títulos dados en prenda baja de manera que no baste a cubrir el importe de la deuda y un 20% más, el acreedor podrá proceder a la venta de la prenda, en los términos del artículo 342.</p>
+
+<p>Artículo 341.- El acreedor podrá pedir al Juez que autorice la venta de los bienes o títulos dados en prenda, cuando se venza la obligación garantizada.</p>
+
+<p>El juez correrá traslado de inmediato al deudor de dicha petición, notificándole que contará con un plazo de quince días, contados a partir de la petición del acreedor, para oponer las defensas y excepciones que le asistan a efecto de demostrar la improcedencia de la misma, en cuyo caso, el juez resolverá en un plazo no mayor a diez días. Si el deudor no hace valer este derecho, el juez autorizará la venta. En caso de notoria urgencia, y bajo la responsabilidad del acreedor que determine el juez, éste podrá autorizar la venta aun antes de hacer la notificación al deudor.</p>
+
+<p>El corredor o los comerciantes que hayan intervenido en la venta, deberán extender un certificado de ella al acreedor.</p>
+
+<p>El producto de la venta será conservado en prenda por el acreedor, en substitución de los bienes o títulos vendidos.</p>
+
+<p>Artículo 342.- Igualmente podrá el acreedor pedir la venta de los bienes o títulos dados en prenda, en el caso del artículo 340, o si el deudor no cumple la obligación de proporcionarle en tiempo los fondos necesarios para cubrir las exhibiciones que deban enterarse sobre los títulos.</p>
+
+<p>El deudor podrá oponerse a la venta, haciendo el pago de los fondos requeridos para efectuar la exhibición, o mejorando la garantía por el aumento de los bienes dados en prenda o por la reducción de su adeudo.</p>
+
+<p>Artículo 343.- Si antes del vencimiento del crédito garantizado, se vencen o son amortizados los títulos dados en prenda, el acreedor podrá conservar en prenda las cantidades que por esos conceptos reciba, en substitución de los títulos cobrados o amortizados.</p>
+
+<p>Artículo 344. El acreedor prendario no podrá hacerse dueño de los bienes o títulos dados en prenda, sin el expreso consentimiento del deudor.</p>
+
+<p>Artículo 345.- Lo dispuesto en esta Sección no modifica las disposiciones relativas a los bonos de prenda, ni las contenidas en la Ley General de Instituciones de Crédito o en otras leyes especiales.</p>
+
+<p>Estamos enterados de las disposiciones legales expresamente referidas en el Contrato del cual el presente anexo forma parte integrante.</p>
+
+
+<p>Las partes están enteradas del contenido del presente Contrato sujetándose al cumplimiento de las obligaciones contenidas en el mismo del cual forman parte integrante su Carátula, sus capítulos I en el que se establece su clausulado, II en el que se consignan sus definiciones, III en el que Kubo y el Cliente formalizan sus declaraciones, IV en el que se señalan los datos generales de las partes contratantes, y V en el que se transcriben las disposiciones legales expresamente referidas en las cláusulas del Contrato, así como su anexo 1 en el que se otorga poder especial.</p>
+
+<p>El Contrato se firma por duplicado, entregándose en este acto un tanto a Kubo y otro al Cliente, el cual se entregará a su elección, de manera física o electrónica vía correo electrónico, mismo que estará disponible en la sección “contratos” del Portal.Kubo, a la cual el Cliente tiene acceso, una vez que el Cliente se ha autenticado.
+</p>
+
+
+<p>De manera que, enteradas las partes de su fuerza y valor legal suscriben el presente Anexo sujetándose al cumplimiento de las obligaciones contenidas en las cláusulas que se indican en el Contrato, firmando de conformidad el día <span class="variable fechaPersonalizada">#{contractData.data.kboFechaFirma}</span>.</p>
+    </div>
+
+
+</section>
+ 
+<section class="dosColumnas">
+  <div class="container">
+     <div class="bloqueFirmar">
+		<table>
+			<tr>
+				<td class="tipoFirmaCelda">
+	     		    <h4> El Cliente</h4>
+	        	 </td>
+	         </tr>
+        	<tr>
+        
+     		  <td class="firmaCelda">	
+	     		  <div class="container firmas center">
+		     		  <span class="unaFirma">
+							<span class="firmaCliente"></span>
+					  </span>	
+				  </div>	
+			  </td>
+		
+			</tr>
+			<tr>
+				<td class="nombreCompleto">
+			        <div>
+				          <p><span class="variable"> #{contractData.data.cliNombreCompleto}</span></p>
+				      
+			        </div>
+        		</td>
+       		 </tr>
+        </table>
+        
+      </div>
+
+      <div class="bloqueFirmar">
+	      <table>
+			<tr>
+				<td class="tipoFirmaCelda">
+	        		 <h4> Kubo</h4>
+	       		 </td>
+	        </tr>
+	        <tr>
+	     		<td class="firmaCelda">	
+		           	<div class="unaFirma">
+						<h:graphicImage library="img" name= "firmaRodrigoMg.png"  />    
+					</div>
+				</td>
+		    </tr>
+				<tr>
+					<td class="nombreCompleto">
+				         <div>
+				             <p><strong>KU-BO FINANCIERO, S.A. DE C.V., S.F.P.</strong> </p>
+				         
+				            <p><strong>Rodrigo Martínez González</strong></p>
+				            
+				          </div>
+		         	 </td>
+	          </tr>
+	          </table>
+      </div>
+    </div>
+</section>
+<div class="pagebreak"></div>
+ <section>
+  <div class="container">
+  <h4>ANEXO 1.PODER ESPECIAL</h4>
+
+<div class="right clear">México, D.F. a <span class="variable borde fechaPersonalizada" style="width:235px;"> #{contractData.data.kboFechaFirma}</span>. </div>
+
+<p><strong>A quien corresponda.</strong></p>
+<p><strong>PRESENTE</strong></p>
+
+<P>Por medio de la presente otorgo Poder especial, amplio y suficiente a KU-BO FINANCIERO, S.A. de C.V., S.F.P. (Kubo) de conformidad con las facultades que a continuación se detallan:</P>
+<ol>
+  <li>
+  1. Poder para pleitos y cobranzas, con todas las facultades generales y aún las especiales que de acuerdo con la ley requieran poder o cláusula especial, en los términos del párrafo primero del Artículo dos mil quinientos cincuenta y cuatro del Código Civil para el Distrito Federal y sus correlativos de los Códigos Civiles de los demás Estados de la República Mexicana.</li>
+</ol>
+
+<p>De manera enunciativa y no limitativa se mencionan entre otras las facultades siguientes:</p>
+
+ <ul class="latin">
+    <li>Para intentar y desistirse de toda clase de procedimientos, inclusive del Amparo.</li>
+    <li>Para transigir.</li>
+    <li>Para comprometer en árbitros.</li>
+    <li>Para absolver y articular posiciones.</li>
+    <li>Para recusar.</li>
+    <li>Para hacer cesión de bienes.</li>
+    <li>Para recibir pagos.</li>
+    <li>Para presentar denuncias y querellas en materia penal y para otorgar el perdón cuando lo permita la ley.</li>
+</ul>
+
+<p>2. Poder para actos de dominio, de acuerdo con el párrafo tercero del mismo artículo y su correlativo de los Códigos Civiles de los demás Estados de la República Mexicana.</p>
+
+<p>El presente Poder lo otorga a favor de Kubo para que éste, durante el plazo de 60 (sesenta) días naturales siguientes a que se actualicen las condiciones suspensivas, realice la cobranza extrajudicial de las cantidades adeudadas no pagadas de los Proyectos, de acuerdo con lo establecido en este contrato, y que a partir del día 61 (sesenta y uno), Kubo realice todo lo que esté dentro de sus posibilidades por obtener las mejores condiciones para la venta de dichos derechos de cobro que Kubo me ha cedido.</p>
+
+<p>Kubo, en el ejercicio del presente poder, hará su mayor esfuerzo para llevar a cabo la venta de los derechos de cobro en el plazo máximo de 90 días naturales; una vez transcurrido dicho plazo, sin haberse logrado la venta de los derechos de cobro, el presente poder especial quedará sin efectos.</p>
+<p>El presente Poder que en este acto se suscribe está sujeto a que se actualicen el incumplimiento de pago del Acreditado y se hayan cedido los derechos de cobro de Kubo a favor del otorgante del presente poder.</p>
+
+
+  </div>
+
+</section>
+
+
+ 
+<section class="dosColumnas">
+  <div class="container">
+     <div class="bloqueFirmar">
+		<table>
+			<tr>
+				<td class="tipoFirmaCelda">
+	     		    <h4> El Cliente</h4>
+	        	 </td>
+	         </tr>
+        	<tr>
+        
+     		  <td class="firmaCelda">	
+	     		  <div class="container firmas center">
+		     		  <span class="unaFirma">
+							<span class="firmaCliente"></span>
+					  </span>	
+				  </div>
+			  </td>
+		
+			</tr>
+			<tr>
+				<td class="nombreCompleto">
+			        <div>
+				          <p><span class="variable"> #{contractData.data.cliNombreCompleto}</span></p>
+				     
+			        </div>
+        		</td>
+       		 </tr>
+        </table>
+        
+      </div>
+
+      <div class="bloqueFirmar">
+	      <table>
+			<tr>
+				<td class="tipoFirmaCelda">
+	        		 <h4> Kubo</h4>
+	       		 </td>
+	        </tr>
+	        <tr>
+	     		<td class="firmaCelda">	
+		           	<div class="unaFirma">
+						<h:graphicImage library="img" name= "firmaRodrigoMg.png"  />    
+					</div>
+				</td>
+		    </tr>
+				<tr>
+					<td class="nombreCompleto">
+				         <div>
+				             <p><strong>KU-BO FINANCIERO, S.A. DE C.V., S.F.P.</strong> </p>
+				           
+				            <p><strong>Rodrigo Martínez González</strong></p>
+				           
+				          </div>
+		         	 </td>
+	          </tr>
+	          </table>
+      </div>
+    </div>
+</section>
+<div class="pagebreak"></div>
+
+  
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</ui:composition>

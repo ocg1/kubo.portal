@@ -1,0 +1,28 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+		<span id="lada-phone-cell" style = "display: none;">044 </span>
+		
+		<!-- <h:inputText id = "addladaphone" 
+					 value      = "#{summaryRequest.newAddPhone.ladaPhone}"
+					 maxlength  = "3"  
+					 onkeypress = "return isNumberKey(event);" 
+					 style      = "width:50px !important;" 
+					 styleClass = "elementAddres1">	
+			<p:ajax event = "blur" onstart = "return fieldNotEmpty('addladaphone');"/>					
+		</h:inputText> -->
+		
+		<h:inputText id = "addnumphone"  
+					 value      = "#{summaryRequest.telefono.newAddPhone.numPhone}"
+					 maxlength  = "13"  
+					 onkeypress = "return isNumberKey(event);"  
+					
+					 styleClass = "elementAddres1">
+			<p:ajax event = "blur" onstart = "return fieldNotEmpty('addnumphone');"/>
+		</h:inputText>
+
+</ui:composition>				

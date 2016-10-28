@@ -1,0 +1,42 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 	
+	<div class = "field">
+		<div class = "dvLabel" >
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.Question_benefi_has_address} "/>
+		</div>
+		
+		
+		
+		<div id = "mismo_domicilio_#{benefic.beneficiarie_id}" >
+		<fieldset class="conjuntoChecks">
+				   <div class="btnN dosBtnChecks"  data-opcion="S">
+			        	<span>	<i class="fa fa-check"></i> Sí</span>
+			       </div>
+			       <div class="btnN dosBtnChecks btnR" data-opcion="N">
+			        	<span>	<i class="fa fa-times"></i> No</span>
+			       </div>
+					<h:selectOneRadio value = "#{benefic.same_address}"  styleClass = "elementStlLbl validatorClass requiredVerify ocultaSelect">
+					
+					    <f:selectItem itemValue = "S" itemLabel = "Si"/>
+					    <f:selectItem itemValue = "N" itemLabel = "No"/>
+					    	
+						<f:attribute name = "beneficiarie_id" value = "#{benefic.beneficiarie_id}"/>
+						
+						<p:ajax event = "click"
+						        listener   = "#{ibeneficiaries.beneficiario.init_same_addres}"
+						        oncomplete = "Beneficiario.callback_mismo_domicilio(xhr, status, args);"/>	
+		<!-- 			    
+						<p:ajax event      = "click" 
+						        listener   = "#{ibeneficiaries.updateOrSaveBenefic(benefic)}"
+						        oncomplete = "Beneficiario.callback_mismo_domicilio(xhr, status, args);"
+						        update     = ":frm_beneficiaries:beneficiaries"/>	
+		-->
+					</h:selectOneRadio>	
+			</fieldset>					
+		</div>
+	</div>				 
+</ui:composition>				 

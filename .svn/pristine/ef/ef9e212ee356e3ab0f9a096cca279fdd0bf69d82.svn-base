@@ -1,0 +1,65 @@
+
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				<div class="descripcionOferta">
+
+	
+<h3>#{sessionBean.nombre}, en kubo puedes pagar menos con un préstamo adicional.</h3>
+
+<p>Cuando llenaste tu solicitud notamos que tienes un saldo pendiente
+
+con otra institución por #{checkScoreProcessed.promoValues[0]} y te faltán realizar #{checkScoreProcessed.promoValues[1]} pagos #{checkScoreProcessed.promoValues[4] != null ? checkScoreProcessed.promoValues[4] : '' }  </p>
+
+<p><strong>Líquida este saldo y obtén una mejor tasa:</strong></p>
+
+
+
+
+		<div class="oferta">
+			<h:panelGroup rendered = "#{sessionBean.area == 'M'}" >
+				<h:panelGroup rendered ="#{checkScoreProcessed.offer != null and checkScoreProcessed.offer.option_selected == 1}">
+					<span class="cintillo">
+						
+						
+								<i class="fa fa-check"></i>
+							 
+						</span>
+				</h:panelGroup>
+			</h:panelGroup>
+			<figure>
+				
+				
+			<h:graphicImage library="img/nuevosProductos" name= "MejorTasa.jpg"  /> 
+			</figure>
+			
+			<h4>Mejor tasa</h4>
+
+			<p>Tasa actual:</p>
+
+			<h5>#{checkScoreProcessed.promoValues[2]}%</h5>
+
+			<p>Tasa kubo:</p>
+
+			<h6>#{checkScoreProcessed.promoValues[3]}%</h6>
+
+			
+
+			<p><strong>Sin comisión por apertura</strong></p>
+			<p><strong>Sin penalización por liquidación</strong></p>
+
+			<p><strong>Abonos a capital en cualquier momento</strong> </p>
+			<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+				<div class="callAction btnVerde" onclick="recibirOferta(1)">Recibir oferta</div>
+			</h:panelGroup>
+		
+
+		</div>
+		<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+			<div class="callAction btnGris"  onclick="noGracias(2);">No gracias</div>
+		</h:panelGroup>
+</div>
+</ui:composition>

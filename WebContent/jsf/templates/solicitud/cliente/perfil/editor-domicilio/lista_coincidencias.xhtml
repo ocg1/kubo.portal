@@ -1,0 +1,68 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<p:outputPanel id = "panel_lista_coincidencias" >
+		<div id = "lista_coincidencias" style = "display: none; margin-top:10px;">
+			<table style = 'width: 550px;color:#333333; border: solid 1px #e6e6e6;'>
+				<tr>
+					<td>
+						<h:outputLabel value = "Domicilio reportado previamente por #{summaryRequest.editor_domicilio.lista_coincidencias.size() > 1 ? 'los siguientes prospectos:' : 'el siguiente prospecto:'}"/>
+					</td>
+				</tr>
+				
+				<ui:repeat var = "coincidencia" value = "#{summaryRequest.editor_domicilio.lista_coincidencias}">
+					<tr>		
+						<td style = "border-top:solid 1px #333">						
+						
+							<span style="font-weight: bold;">#{coincidencia.natural_person.NombreCompletoNPM()}</span>
+							
+							<div style = "margin-left:30px;">
+								<span>Tipo de domicilio: </span>
+								<h:outputLabel value = "#{coincidencia.address_type}" style = "font-weight: bold;"/>
+							</div>
+							
+							<div style = "margin-left:30px;">
+								<span>
+									<h:outputLabel value = "#{coincidencia.address_TOKEN}"/>
+								</span>
+							</div>			
+							
+							<h:panelGroup rendered = "#{coincidencia.proyect_loan != null and coincidencia.proyect_loan.proyect != null}">
+								<div style = "margin-left:30px;">
+									<span>Proyecto: </span>
+									<h:outputLabel value = "#{coincidencia.proyect_loan.proyect.name}" style = "font-weight: bold;"/>
+								</div>
+																
+								
+								<div style = "margin-left:30px; color:#{coincidencia.proyect_loan.status_id == 3 ? '#439539' : ''}#{coincidencia.proyect_loan.status_id == 4 ? 'orange' : ''}">
+									<span>Estatus: </span> 
+									<h:outputLabel value = "#{coincidencia.proyect_loan.statusProyect.name}" style = "font-weight: bold;"/>
+								</div>																
+							</h:panelGroup>	
+							
+							<h:panelGroup rendered = "#{coincidencia.proyect_loan == null and coincidencia.proyect_loan.proyect == null}">
+								<div style = "margin-left:30px;">
+									<span>Proyecto: </span>
+									<h:outputLabel value = "No publicado" style = "font-weight: bold;"/>
+								</div>
+								
+								<div style = "margin-left:30px;">
+									<span>Estatus: </span>
+									<h:outputLabel value = "No publicado" style = "font-weight: bold;"/>
+								</div>		
+							</h:panelGroup>		
+							
+							<div style = "margin-left:30px;">
+								<span>Número de folio: </span>
+								<h:outputLabel value = "#{coincidencia.natural_person.prospectus.tracking_id}" style = "font-weight: bold;"/>
+							</div>	
+						</td>
+					</tr>										
+				</ui:repeat>
+			</table>
+		</div>
+	</p:outputPanel>		
+</ui:composition>				

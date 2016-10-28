@@ -1,0 +1,71 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">		
+							
+	<h:inputText id    = "selectStatus2"
+				 ajax  = "true"
+			     value = "#{summaryRequest.statusChangeID}">
+		<p:ajax event = "blur"/>
+	</h:inputText>
+		
+	<h:inputText id        = "txt-reason-status-proyect2"
+				 ajax      = "true" 
+			     immediate = "true"
+			     value     = "#{summaryRequest.changeStatusProyect !=null ? summaryRequest.changeStatusProyect.whyChangeData : ''}">
+		<p:ajax event = "blur"/>
+	</h:inputText>	
+	
+	<h:inputText id        = "input_listener_day_selected"
+				 ajax      = "true" 
+			     immediate = "true"
+			     value     = "#{summaryRequest.casosPospuestos.selected_day}">
+		<p:ajax event      = "click" 
+			 	listener   = "#{summaryRequest.casosPospuestos.listener_selected_day}"
+			 	oncomplete = "procesar_validacion_fecha(xhr, status, args);"/>
+	</h:inputText>	
+	
+	<h:inputText id        = "input_listener_month_selected"
+				 ajax      = "true" 
+			     immediate = "true"
+			     value     = "#{summaryRequest.casosPospuestos.selected_month}">
+		<p:ajax event      = "click" 										   
+				listener   = "#{summaryRequest.casosPospuestos.listener_selected_month}"
+				oncomplete = "procesar_validacion_fecha(xhr, status, args);"/>
+	</h:inputText>	
+	
+	<h:inputText id        = "input_listener_year_selected"
+				 ajax      = "true" 
+			     immediate = "true"
+			     value     = "#{summaryRequest.casosPospuestos.selected_year}">
+		<p:ajax event      = "click" 
+			    listener   = "#{summaryRequest.casosPospuestos.listener_selected_year}"
+			    oncomplete = "procesar_validacion_fecha(xhr, status, args);"/>
+	</h:inputText>	
+	
+	<h:inputText id        = "btnChangeStatus"
+				 ajax      = "true" 
+				 immediate = "true">
+		<p:ajax listener = "#{summaryRequest.saveNewStatusProyect}" 
+				event    = "click" 
+				update   = "pnlEditStatusProyect"/>
+	</h:inputText>
+	
+	<h:inputText id        = "input_listener_estatus_SELECTED"
+				 ajax      = "true" 
+				 immediate = "true"
+				 value	   = "#{summaryRequest.estatus_SELECTED}" >
+		<p:ajax listener   = "#{summaryRequest.listener_estatus_SELECTED}" 
+				event    = 	"click" 
+				onstart	 = "return onstartMotive();"
+				oncomplete = "asignar_lista_motivos_de_cambio(xhr, status, args);" />
+	</h:inputText>
+	
+	<h:inputText id        = "input_listener_motive_selected"
+				 ajax      = "true" 
+				 immediate = "true"
+				 value	   = "#{summaryRequest.motive_selected}" >
+		<p:ajax  event    = "click" />
+	</h:inputText>
+</ui:composition>		

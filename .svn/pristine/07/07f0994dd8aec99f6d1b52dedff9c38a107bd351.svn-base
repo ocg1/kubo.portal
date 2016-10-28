@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<li>					    
+		<h4>¿Cuánto necesitas?</h4>
+		
+		<!-- onkeyup = "format(this,'simulator');" -->
+		
+		<h:inputText id = "simulador_ammount" immediate = "true" 
+					 value   = "#{ofertaRenovacion.simulador.ammount_value}" 
+					 >
+										 			 								 		
+		<p:ajax event = "blur" 
+				onstart    = "return simOnStartVal('simulador_ammount', 'simulador_term_id');"
+				oncomplete = "Simulador.info_oncomplete(xhr, status, args);" 
+				listener   = "#{ofertaRenovacion.simulador.init_input_text}" />							
+		</h:inputText>		
+	</li>
+</ui:composition>				

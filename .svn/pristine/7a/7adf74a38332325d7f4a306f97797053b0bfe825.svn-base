@@ -1,0 +1,18 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="containerTitleUpload">
+		<div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'cornerDisabled':'corner'}"/>
+		
+		<div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">				
+			<!-- div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCredFm2}</div -->
+			<!-- div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'titleDisabled':'title'}">#{addPldDocument.tiCredFm2}*</div-->
+			<p:graphicImage id         = "checkCredFm2" 
+							styleClass = "validatorClass" 
+							style      = "float:right; display:#{addPldDocument.dispCheckCredFm2}"  
+							url        = "../resources/img/check.png" />
+		</div>			
+	</div>					
+</ui:composition>				

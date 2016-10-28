@@ -1,0 +1,132 @@
+@CHARSET "UTF-8";
+
+.div_tabFormContentLeft{
+	height: auto;
+	overflow: auto;
+	float: none;
+	vertical-align: bottom;
+	margin-top: 10px;
+}
+
+.div_tabFormContentRight{
+	border: 1px solid #000000;
+}
+.div_tabEtiqueta{
+	width: 200px;
+	float: left;
+	height:auto;
+	padding-top: 6px;
+	text-align: right;
+}
+.div_tabElemento{
+	float: left;
+    margin-bottom: 0;
+    padding-left: 10px;
+    text-align: left;
+    vertical-align: bottom;
+    width: 500px;
+}
+
+.div_tabFooter{
+	border: 1px solid #000000;
+}
+
+.div_tabNavBtn{
+    margin: 50px 10px 10px 400px;
+    position: relative;
+    text-align: center;
+    width: 350px;
+}
+
+.nomLemaProy{
+	font-family: Helvetica,Arial,sans serif;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 3px;	
+}
+
+.nomLema{
+	font-family: Helvetica,Arial,sans serif;
+    font-size: 20px;
+    color: #6e6e6e;
+    font-weight: bold;
+    margin-bottom: 3px;	
+    text-align: center;
+}
+
+
+.logPrin{
+	width: 400px;
+	height: 400px;
+	float: left;
+	padding-left: 100px;
+}
+
+.infoMonto{
+	display: inline;
+    float: left;
+    margin-left: 200px;
+    margin-right: 10px;
+    width: 350px;
+}
+
+.infoMontoRigth{	
+	background-color: #BCE053;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 1em 20px 0;
+    position: relative;
+    background-image: url("../img/nivo/fondo-sim-1.jpg");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+}
+h5 {
+	font-family: Helvetica,Arial,sans serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    }
+
+.num{
+	color: #FFFFFF;
+    display: block;
+    font-size: 40px;
+    line-height: 30px;
+    }
+    
+.dvContentViewProy{
+	clear: both;
+    content: "";
+    display: table
+}
+#contenido{
+	padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.dvRightElement{
+	width: 550px;
+	float: left;
+	height:100%;
+	overflow: auto;
+	text-align: left;
+}
+.dvBtnPag{
+	float: left;
+	width: 300px;
+}
+
+.infoMonto h5{
+	color: #666A51
+}
+
+.dvElementInput{
+	/*border: solid 1px #c6FFc6;*/
+	float: left;
+	width: 350px;
+	text-align: left;
+	vertical-align: bottom;
+	overflow: auto;
+	margin-bottom: 0px;
+	padding-left: 10px;
+}

@@ -1,0 +1,45 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+			<!-- div class="dvContent">
+				<br />
+				<div class="dvContent">
+					<div class="dvLabel" style="width: 390px;">
+					<h:outputLabel styleClass="labelsStl" value="Proporciona los números en donde sea posible localizarte, ya que kubo se pondrá en contacto contigo" />
+				</div>
+			</div -->
+			<div class="field">
+			<div class="dvLabel">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_business}*" />
+			</div>
+		
+			
+			<div class="dvElementAddres1">
+				<!-- <h:inputText id="lada_phoneFixed_business" tabindex="59" maxlength="3" onkeypress="return isNumberKey(event);" style="width:50px !important;" styleClass="elementAddres1 " value="#{business.phonebeanFixed.ladaPhone}">	
+				<p:ajax event="blur" onstart="return fieldNotEmpty('uibus\:#{status.index}\:lada_phoneFixed_business');"></p:ajax>					
+				</h:inputText> -->
+				<h:inputText id="phoneFixed_business" tabindex="60" maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"  styleClass="elementAddres1  telephone hs_class" value="#{business.phonebeanFixed.numPhone}">
+					<p:ajax event="blur"  listener="#{addMyLoan.updatePhoneBusinessFixed(business)}"  /> 
+					<!--  <p:ajax event="blur" listener="#{addMyLoan.updatePhoneBusinessFixed(business)}"  ></p:ajax> -->
+				</h:inputText>
+				<p:watermark  for="phoneFixed_business" value="Son 10 dígitos"/>
+				
+			</div>
+		</div>
+		
+		<!-- div class="field">
+			<div class="dvLabel">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_cell_business}" />
+			</div> 
+			
+			<div class="dvElementAddres1" >
+				<h:outputLabel styleClass="labelsStl" value="044" style="margin-right: 5px;"/>
+			
+				<h:inputText id="phoneCel_business" tabindex="62"  maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);" styleClass="elementAddres1 telephone" value="#{business.phonebeanCel.numCelPhone}">
+					<p:ajax event="blur" listener="#{addMyLoan.updatePhoneBusinessCel(business)}"  />
+				</h:inputText>
+				<p class="clsLada" style="margin-left: 32px !important;">10 dígitos</p>
+			</div>
+		</div -->				
+</ui:composition>				

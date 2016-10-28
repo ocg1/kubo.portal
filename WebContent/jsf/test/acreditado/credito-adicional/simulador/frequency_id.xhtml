@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div>
+		<h:selectOneMenu id  = "simulador-frequency-id" immediate = "true"
+						 value = "#{testAdditionalCredit.simulador.frequency_id}" >
+							 
+			<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "" />
+				
+			<f:selectItems  value = "#{testAdditionalCredit.simulador.listFrequency}" 
+							var = "frequency" 
+							itemLabel = "#{frequency.name}" 
+							itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+							
+				<p:ajax event      = "change" 
+						onstart    = "return simOnStartVal('simulador_ammount', 'simulador_term_id');" 
+						oncomplete = "simulator_ammount_oncomplete(xhr, status, args);"  
+						listener   = "#{testAdditionalCredit.simulador.init_frequency_id}" />  
+		</h:selectOneMenu>	
+	</div>	
+</ui:composition>

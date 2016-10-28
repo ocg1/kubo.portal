@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/frmStyle.css" />
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/preregistro2.css" />
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/loanListStyle.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/main-resumen.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/buttonSyles.css" /> 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" />
+	<script type = "text/javascript" src = "../../resources/js/loanListScript_complements.js" /> 
+    <script type = "text/javascript" src = "../../resources/js/loanListScript_contadorToken.js"/>	
+    <script type = "text/javascript" src = "../../resources/js/loanListScript_movimentos.js"/>	
+    <script type = "text/javascript" src = "../../resources/js/loanListScript_botonRegreso.js"/>	
+    <script type = "text/javascript" src = "../../resources/js/urlParameters.js"/>	
+
+<style>
+ .btnVerde-3{
+					width: 280px !important ;
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: 50px;
+				}
+</style>
+</h:head>
+
+<h:body style="margin:10px 0 0 ; padding:0;">
+	
+	<div class="clTitle" style="text-align: center; width: 100%; margin: 0px; padding: 0px;">
+		<h:outputText value="Consulta EFL"  />
+	</div>
+	
+	<h:form id="frm_elf_result" prependId="false">
+	
+			<table class="formato_tablas bitacoras" cellspacing="0" cellpadding="0" style="margin-left: auto !important; margin-right: auto !important;">
+				<thead>
+				<tr>
+					<th>Fecha Consulta </th>
+					<th>EFL-ID</th>
+					<th>Score</th>
+					<th>Fecha Entrega EFL</th>
+				</tr>
+				</thead>
+				<tbody>
+				<ui:repeat var="change" value="#{eFLProgressSession.eflprogresslist}" varStatus="status">
+					
+					<h:panelGroup rendered="#{change.estado == 1 }" >
+					
+						<tr >
+							<td>
+								<h:outputText value="#{change.consulting_date}">
+									
+								</h:outputText>							
+							</td>
+							
+							<td style="padding-right: 10px;">
+								#{change.eflId} 
+							</td >
+							<td>
+								#{change.score}
+							</td>
+							<td>
+								#{change.dateCreated}
+							</td>
+							
+						</tr>
+					
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{change.estado != 1 }" >
+					
+						<tr >
+							<td>
+								<h:outputText value="#{change.consulting_date}">
+									
+								</h:outputText>							
+							</td>
+							
+							<td colspan="3" style="padding-right: 10px;">
+								#{change.estado} .- #{change.mensajeEstado} 
+							</td >
+							
+						</tr>
+					
+					</h:panelGroup>
+					
+				</ui:repeat>
+			</tbody>
+		</table>
+		
+		<div class="callAction  btnVerde-3" onclick="creaConsultaEFL();" >
+			<i class="fa fa-check"></i> Consultar Resultado EFL
+		</div>
+		
+		<div style="display: none;" >
+		
+			<h:commandLink id="cmdConsultaEFL" immediate="true" >
+				<p:ajax event="click" listener="#{summaryRequest.consultaEFL}" update=":frm_elf_result"  />
+			</h:commandLink>
+			
+		</div>
+		
+		<script>
+		
+			function creaConsultaEFL(){
+				$("#cmdConsultaEFL").trigger( "click" );
+			}
+		
+			par();
+		</script>
+	
+	</h:form>
+	
+</h:body>
+</html>

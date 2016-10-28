@@ -1,0 +1,177 @@
+@CHARSET "UTF-8";
+.cont{
+	
+}
+.corner{
+	
+}
+.nombrePerfil{
+	padding-top: 0px;
+	font-size: 1.8em;
+	font-weight: bold;
+    margin-bottom: 3px;	
+	overflow: auto;
+	height: auto;
+	line-height: 40px;
+	position: absolute;
+	bottom: 5px;
+	left: 215px;
+	vertical-align: bottom;
+}
+
+.nombreHead{
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	overflow: auto;
+	text-align: center;
+}
+
+.imgPhoto{
+	display: inline;
+	float: left;
+}
+
+#contNomPerfil{
+	height: auto;
+	overflow: auto;
+	margin-top: 0px;
+	padding-top: 0px;
+	float: left;
+	display: inline;
+}
+
+#contPerfil{
+	position: relative;
+	padding-left: 25px;
+	font-size: 1.1em;
+	margin-left: 0px;
+	margin-right: 0px;
+	height: auto;
+	overflow: auto;
+	width: 97%;
+}
+.dvRichElement{
+	width: auto;
+	float: left;
+	height:100%;
+	overflow: auto;
+	text-align: center;
+}
+.richStyle{
+	width: 96%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.dvContenttRich{
+	clear: both;
+	padding-left: 10px;
+}
+
+/*Stly datos de la pestaña Capacidad de pago*/
+.content_capPago{
+	float: left;
+}
+.content_left{
+	float: left;
+	width: 615px;
+}
+.content_rigth{
+	float: right;
+}
+.tag_label{
+	
+}
+.tag_component{
+	
+}
+.content_elements{
+	clear: both;
+	fon
+    height: 25px;
+    margin: 0 10px 10px 0;
+    width: 470px;
+}
+.content_elements div.tag_label{
+	float:left;
+	margin: 2px 10px 10px 0;
+    padding: 3px 0;
+    text-align: right;
+    width: 160px;
+}
+.content_elements div.tag_component{
+	float: right;
+	margin-bottom: 10px;
+    text-align: left;
+    width: 300px;
+}
+.empleoContent{
+	border-top: 1px dotted #606060;
+    padding-bottom: 30px;
+    height: 30px;
+}
+.edit_delete{
+	float: right;
+    vertical-align: top;
+}
+.elemento_textual{
+	color: #6E6E6E;
+    font-size: 1em;
+    padding: 2px 0;
+    vertical-align: top;
+}
+.employer_data{
+	float: left;
+}
+
+.empleoContent:hover{
+	background-color: #F3DDA4;
+}
+.content_left_editor{
+	width: 600px;
+	font-size: 0.9em;
+	
+}
+.content_left_editor .question_editor{
+    float: left;
+    height: 100%;
+    text-align: left;
+    width: 550px;
+    padding-top: 10px;
+}
+.content_left_editor .tooltip_question_editor{
+	 float: right;
+    width: 550px;
+}
+
+
+#bannersup_sim {
+	width: 100%; 
+	height: auto; 
+	position: absolute;
+}
+.formInfologo {
+	width: 60%; 
+	height: auto; 
+	position: absolute;
+}
+#elementsContainer {
+	width: 100%;
+}
+#divBtnFounding {
+	float:left;
+	width: 10%;
+}
+#addBtn {
+	width:200%;
+	font-size: 0.81em;
+}
+.BannerMid {
+	width: 100%; 
+	height: auto;
+}
+
+#header, #footer {
+	width: 100%; 
+	magin-right: 0px;	
+} 

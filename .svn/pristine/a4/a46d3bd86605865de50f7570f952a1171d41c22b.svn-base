@@ -1,0 +1,29 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.Zipcode_text}" />
+		</div>
+		
+				
+		<div class = "dvElementAddres1">					
+			<h:inputText maxlength = "5" immediate = "true"
+					     onkeypress = "return isNumberKey(event);"  
+					     value      = "#{basicData.fiscal.zipcode}" 
+					     onfocus    = "Domicilio.init_focus_date(9);"					   
+					     styleClass = "elementAddres1 validatorClass mapClass zipcode hs_class"
+					     id="zipCode2"
+					     > 
+				<p:ajax event     	= "blur"
+						oncomplete	= "Domicilio.zipcode_on_complete(xhr, status, args, '#street2');" 
+						listener  	= "#{basicData.fiscal.init_zipcode}" />
+						
+			</h:inputText>
+			<p:watermark for="zipCode2" value="Escribe tu código postal"/>	
+		</div>
+	</div>				 
+</ui:composition>		

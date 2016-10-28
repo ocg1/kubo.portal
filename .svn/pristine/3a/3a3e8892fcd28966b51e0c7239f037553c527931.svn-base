@@ -1,0 +1,74 @@
+<ui:composition
+	xmlns	 = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+	<div>														
+		<h:panelGroup rendered="#{chartBackBean.transunion != null}" >
+			<div id="dvContTScore" class="#{chartBackBean.validTransUnion?'importantClsB':''}" style="cursor: pointer; height: auto;overflow: hidden;width: auto;" >
+				<b>
+					<h:outputText value="#{chartBackBean.transunion.transunion_bc_score == null ? 'Sin Score':chartBackBean.transunion.transunion_bc_score}" />
+				</b>
+	  		</div>
+	 	</h:panelGroup>
+			      					
+		<h:panelGroup rendered="#{chartBackBean.transunion == null}" >
+			<div id="dvContTScoreTmp">
+				<b><h:outputText value="No Asignado"></h:outputText></b>
+			</div>
+		</h:panelGroup>
+	</div>
+			      				
+	<div id="dvContDetTScore" style="display: none;">			      				
+		<div style="position: absolute;top: -14px;right: -18px; width: 30px; height: 30px; z-index: 180;" >
+   			<p:graphicImage url="../resources/img/close.png"  style="cursor: pointer;" onclick="hideDetTScore();" ></p:graphicImage>
+   		</div>
+			      				
+	<!-- BC Score inicial: #{summaryRequest.actualProyect.bc_score}<br /> -->
+	 	<h:panelGroup rendered="#{chartBackBean.transunion!=null}">
+		 	<div style="height: auto; overflow: auto;margin-top: 4px;margin-bottom: 1px;">
+		 		Incremento 1: #{chartBackBean.transunion.transunion_mod1}
+		 	</div>
+	 	</h:panelGroup>
+	 	
+	 	<h:panelGroup rendered="#{chartBackBean.transunion!=null and chartBackBean.transunion.ajuste1!=null}">
+		 	<div style="height: auto; overflow: auto;margin-top: 1px;margin-bottom: 6px;color:#6e6e6e;">
+		 		#{chartBackBean.transunion.ajuste1.description}
+		 	</div>
+	 	</h:panelGroup>
+	 	
+	 	<h:panelGroup rendered="#{chartBackBean.transunion!=null}">
+		 	<div style="height: auto; overflow: auto;margin-top: 4px;margin-bottom: 1px;">
+		 		Incremento 2: #{chartBackBean.transunion.transunion_mod2}
+		 	</div>
+	 	</h:panelGroup>
+	 	
+	 	<h:panelGroup rendered="#{chartBackBean.transunion!=null and chartBackBean.transunion.ajuste2!=null}">
+		 	<div style="height: auto; overflow: auto;margin-top: 1px;margin-bottom: 6px;color:#6e6e6e;">
+		 		#{chartBackBean.transunion.ajuste2.description}
+		 	</div>
+	 	</h:panelGroup>
+	 	
+	 	<h:panelGroup rendered="#{chartBackBean.transunion!=null}">
+		 	<div style="height: auto; overflow: auto;margin-top: 4px;margin-bottom: 4px;">
+		 		BC Score final: #{chartBackBean.transunion.transunion_bc_score}
+		 	</div>
+	 	</h:panelGroup>
+										 	
+	 	<h:panelGroup rendered="#{chartBackBean.transErrorMsg!=null}">
+		 	<div style="height: auto; overflow: auto;margin-top: 4px;color: #FF0000;margin-bottom: 4px;">
+		 		#{chartBackBean.transErrorMsg}
+		 	</div>
+	 	</h:panelGroup>										 											 
+	</div>
+			      				
+	<h:panelGroup rendered="#{chartBackBean.transunion!=null}" >
+		<script>
+		$("#dvContTScore").click(function(){
+			$("#dvContDetTScore").show();
+		});
+		</script>
+	</h:panelGroup>	
+</ui:composition>	

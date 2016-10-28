@@ -1,0 +1,68 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "negotiationDv" class = "centrar_h" style = "display: none;">						
+		<p:outputPanel id = "negotiationCont">
+			<h:panelGroup id = "contNegontiationSim">
+				<div id = "negotiationDisWait" style = "display: none; margin-left: auto; margin-right: auto; margin-top: 40px;" >
+					<p:graphicImage url="../resources/img/ajax-loader.gif" width="24px" height="24px"/>
+				</div>
+				
+				<script>
+					$("#sim_table_neg").attr("style", "");				
+				</script>
+				 				
+				<h:panelGroup id = "contSimRegNeg">
+					
+					<div class = "close_negotiation" onclick = "closeNegotiation();">
+						<img src = "../resources/img/close.png"/>
+					</div>
+					
+					<div id = "thisSimNeg">
+			
+						<h:inputHidden id="montoMax" value="#{simulator.montoMax}" />
+						<h:inputHidden id="montoMin" value="#{simulator.montoMin}" />
+						<h:inputHidden id="termMax"  value="#{simulator.termMax}" />
+						
+						<div class = "sim_cont_back">
+							<div class = "sim_cont">
+			
+								<h3>
+									Condiciones del préstamo
+								</h3>
+								
+								<h:panelGroup id = "pnlAmmountNeg">
+									<ui:include src = "loan-negotiation/monto.xhtml"/>
+								</h:panelGroup>
+			
+						
+								<ui:include src = "loan-negotiation/plazo.xhtml"/>
+								<ui:include src = "loan-negotiation/frecuencia.xhtml"/>		
+										
+								<h:panelGroup id = "resSimRegNeg">
+								
+									<ui:include src = "loan-negotiation/payment.xhtml"/>
+												
+								</h:panelGroup>
+								
+								<ui:include src = "loan-negotiation/modificar-condiciones.xhtml"/>
+				
+							</div>										
+						</div>
+					</div>
+						
+					<div class = "labelsStl">
+					 	<h:panelGroup id = "catSimRegNeg"> 
+			      			<span><b>Costo Anual Total (CAT) #{simulator.catStr}% sin IVA.</b></span> Tasa fija. Para fines informativos y de comparación. 
+			      			Fecha de cálculo: #{simulator.fechaInicio}.
+		      			</h:panelGroup>
+		      		</div> 														
+				</h:panelGroup>
+
+			</h:panelGroup>
+		</p:outputPanel>
+	</div>
+</ui:composition>				

@@ -1,0 +1,91 @@
+div.administracion-panel.container a
+{
+	text-decoration: none;
+	color: #262322;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.ui-chkbox .ui-chkbox-box {
+	border: solid 1px #A6A6BD;
+}
+
+.clsMenuSel{
+	background-color: #439539; 
+	color: #FFFFFF;
+}
+
+span.tab1{
+    padding: 0 0 15px 40px; /* Or desired space*/
+    font-weight: bold;
+    border-top: 0px !important;
+}
+
+div.administracion-panel.container
+{
+	border: solid 1px #E3E3E3; 
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 15px; 
+	width: 82%; 
+	height: auto; 
+	overflow: auto; 
+	padding: 10px;
+}
+
+div.gestion-sesiones.container
+{
+	border: solid 0px #E3E3E3;
+	margin:0 auto;
+	width: 100%;
+	height:auto;
+	overflow: auto;
+	padding: 0px;
+}
+
+
+
+#admCont
+{
+	width: 840px; 
+	float: left; 
+	margin-left: 10px;
+	overflow: scroll;
+	border: solid 1px #E3E3E3; 	
+}
+
+#admMenu
+{
+	width: 20%; 
+	float: left;
+	border: solid 1px #E3E3E3; 
+}
+
+#dvMenuPerf
+{
+	height: 40px;
+	width: 95%; 
+	margin-left: auto;
+	margin-right: auto; 
+	margin-top: 5px; 
+	border: solid 1px #E3E3E3;
+	
+}
+
+#dvMenuPerfRole,
+#dvMenuPantRole,
+#gestion-sesiones,
+#reinversion_automatica,
+#ping_buro
+{
+	height: 40px; 
+	width: 95%; 
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: solid 1px #E3E3E3;
+}
+	 

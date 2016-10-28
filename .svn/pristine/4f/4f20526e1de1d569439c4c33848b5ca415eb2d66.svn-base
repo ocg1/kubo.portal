@@ -1,0 +1,33 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">
+	<p:columnGroup rendered = "#{sessionBean.area == 'M'}" type = "header" >	
+		<p:row>																
+			<p:column style = "text-align:center; ">
+				<f:facet name = "header">		
+				 	<div style = "font-weight:bold;" >Tipo de nota</div>										
+				</f:facet>
+			</p:column>
+			
+			<p:column style = "text-align:center;">
+				<f:facet name = "header">
+					<div style = "font-weight:bold;" >Nota</div>													
+				</f:facet>
+			</p:column>
+			
+			<p:column style = "text-align:center;">
+				<f:facet name = "header">
+					<div style = "font-weight:bold;" >Agregó</div>
+				</f:facet>
+			</p:column>	
+				
+			<p:column colspan = "2">
+				<f:facet name = "header">
+					<div style = "font-weight:bold;" >Fecha</div>
+				</f:facet>
+			</p:column>										
+		</p:row>
+	</p:columnGroup>	
+</ui:composition>	

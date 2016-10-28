@@ -1,0 +1,27 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="field">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="¿Cuánto crees que será el monto máximo que tendrás depositado en tu cuenta?*"/>
+		</div>
+		<div class="leyendas italic">Este monto no limita lo que puedes ahorrar en kubo</div>
+		<div  class="dvElementAddres1">
+			<h:panelGroup rendered="#{sessionBean.area == 'L'}">
+				<h:inputText id="montomaxsal" maxlength="10" onkeyup="format(this);" style="text-align: right;"  value="#{addPldDocument.maximum_balanceStr}" styleClass="elementAddres1 formatpld validatorClass hs_class" >
+					<p:ajax event="blur" listener="#{addPldDocument.savePrevencionLD('maximum_balanceStr')}" ></p:ajax>
+					<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />
+				</h:inputText>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{sessionBean.area == 'I'}">
+				<h:inputText id="montomaxsalInv" maxlength="10" onkeyup="format(this);" style="text-align: right;"  value="#{addPldDocument.maximum_balanceStr}" styleClass="elementAddres1 formatpld validatorClass" >									
+					<p:ajax event="blur"  oncomplete="validaMontoMax(xhr, status, args);" ></p:ajax>
+					<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />
+				</h:inputText>
+			</h:panelGroup>
+		</div>
+	</div>				
+</ui:composition>				

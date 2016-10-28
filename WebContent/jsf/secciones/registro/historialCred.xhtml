@@ -1,0 +1,80 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+	<h:panelGroup rendered = "#{!creditHistoryController.muestraPreaprobacion}">
+		<script>				
+			$(document).ready(function()
+			{
+				init_function_events();	
+				fieldCount();
+			});
+		</script>
+	</h:panelGroup>
+
+	<h:form id = "frmHistCred" prependId = "false">
+		<div id = "llenadoHistorial">
+		<!-- 
+			<h:panelGroup>		 
+				<h6 class="encabezado_6">  Listo</h6>
+					<p>Continúa llenando tus datos de historial crediticio.</p>
+			</h:panelGroup>
+			 -->
+		</div>
+				
+		<div class = "section historial" onclick="tab_section(this);">Historial crediticio  <i class=" fa fa-angle-down"></i></div>
+		 
+		<section class = "historial_crediticio">
+			<div id = "contador" style = "position: fixed; top: 0px; left: 200px; background-color: #e7e706;"/>
+			
+		 	<h:panelGroup rendered = "#{navigationBean.flagBCScore == 'null'}" >
+		 
+				<div id = "general">
+					<div class = "backStyle"   style = "padding-top: 0px !important; margin-top: 0px !important;">	
+						<div id = "contFrmPre" style = "padding-top: 0px !important; margin-top: 0px !important;">
+						
+						 <h:panelGroup rendered = "false">
+					       	<ui:include src = "historial_crediticio/title_historial_crediticio.xhtml"/>													
+							<ui:include src = "historial_crediticio/credito_obtenido_year_anterior.xhtml"/>																			
+							<ui:include src = "historial_crediticio/credito_obtenido_semestre_anterior.xhtml"/>							
+						</h:panelGroup>
+						
+							<ui:include src = "historial_crediticio/titular_tarjeta_vigente.xhtml"/>
+							<ui:include src = "historial_crediticio/tarjeta_credito_vigente_INFO.xhtml"/>
+							<ui:include src = "historial_crediticio/tienda_departamental_tarjeta_vigente.xhtml"/>
+							<ui:include src = "historial_crediticio/credito_hipotecario.xhtml"/>
+							<ui:include src = "historial_crediticio/credito_hipotecario_INFO.xhtml"/>
+							<ui:include src = "historial_crediticio/credito_automotriz.xhtml"/>
+							<ui:include src = "historial_crediticio/credito_automotriz_INFO.xhtml"/>							
+							<ui:include src = "historial_crediticio/autorizacion.xhtml"/>
+							<ui:include src = "historial_crediticio/nota_del_coach.xhtml"/>
+							<ui:include src = "historial_crediticio/remote-command.xhtml"/> 																											
+							<ui:include src = "historial_crediticio/boton_siguiente.xhtml"/>
+							
+ 							<script>
+				   		 		
+				   		 		conjuntoCombos();
+							</script>
+						</div>
+					</div>
+				</div>
+	 		</h:panelGroup>
+	 	 
+		<ui:include src = "historial_crediticio/verificar_datos_consulta_buro.xhtml"/>
+		
+			
+		<div id = "dvContPreaprobacion" style = "overflow: hidden;"/>
+		
+	
+		<h:panelGroup rendered = "#{creditHistoryController.muestraPreaprobacion}">
+			<script>
+				creaConsulta();
+				actualizar_porcentaje(100);
+			</script>
+		</h:panelGroup>	
+		</section>
+	</h:form>
+</ui:composition>

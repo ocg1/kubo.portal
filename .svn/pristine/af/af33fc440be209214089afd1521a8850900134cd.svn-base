@@ -1,0 +1,145 @@
+.tablero-control.container
+{
+	height: 510px; 
+	width:1088px; 
+	margin:0 auto;  			
+	border-top: solid 3px #439539;
+
+}
+
+.tablero-control.menu-item
+{
+    background: #E3E3E3;
+    color: #666;
+}
+
+.tablero-control.menu-item:hover
+{
+	color: white;
+	background-color: #439539;
+	cursor:pointer;
+}
+
+.tablero-control.menu-item p
+{
+	padding: 5px;
+	margin: 0 auto; 
+	text-align: center;
+	border: 0px solid black; 
+}
+
+.tipografia
+{
+	font-family: 'Open Sans', sans-serif;
+	color: #565b59;
+	line-height: 18px;
+}
+
+
+
+.tablero-control input, .tablero-control textarea{
+	box-shadow:none !important;
+	padding: 5px 10px !important; 
+	font-size: 16px !important; 
+	text-align: left;
+	border: solid 1px #9f9f9f !important;
+	background-color: #FFFFFF;
+	text-transform: uppercase;
+	color: #999 !important;
+	font-weight: normal !important;
+	height:auto !important;
+}
+
+
+
+
+.alta-partner.guardar.btn_naranja {
+	width:150px;
+	margin: 10px;
+	float:right;
+	
+
+	display: none;
+	padding: 6px  0;
+}
+
+.ui-radiobutton-icon.ui-icon ui-icon-bullet  {
+	background:url(../img/check_nuevo.png) no-repeat left top !important;
+	background-size:cover !important;
+	box-shadow:none !important;
+	border:none !important;
+	height: 15px !important;
+	width: 15px;
+	-webkit-appearance: none;
+	border:solid 1px #ccc;
+}
+
+.tablero-control .ui-state-active, 
+.tablero-control .ui-widget-content .ui-state-active, 
+.tablero-control .ui-widget-header .ui-state-active {
+	background:url(../../img/checkactive.png) no-repeat left top !important;
+
+	background-size:100% 100% !important;
+	
+}
+
+
+.tablero-control label {
+	font-size:15px !important;
+	margin:4px 7px 0 0;
+	font-weight:bold;
+}
+
+.tablero-control .ui-radiobutton-icon.ui-icon.ui-icon-bullet {
+	display:none;
+
+}
+
+.tablero-control .ui-icon.ui-icon-triangle-1-s {
+	margin:10px 0 0 0 !important;
+}
+
+.tablero-control .ui-layout-unit  {
+	
+}
+
+.tablero-control .colIzq {
+	width: 20% !important;
+	position:relative !important;
+	float:left;
+	top:auto;
+	left: auto !important;
+	margin: 0 2% 0 0 !important;
+	border-bottom: none !important;
+}
+
+
+.tablero-control  .colIzq  .ui-layout-unit .ui-layout-unit-content {
+	padding: 28px 3% 20px;
+	border: 0px none;
+	overflow: auto;
+	width: 94%;
+}
+
+.tablero-control .colDer {
+	width: 54% !important;
+	position:relative !important;
+	float:left !important;
+	top:auto !important;
+	left:auto !important;
+	margin: 9px 0 0 0  !important;
+	border: none !important;
+}
+
+.tablero-control  .colIzq  .tablero-control.menu-item {
+	width:94%;
+	margin:0 auto;
+}
+
+
+
+
+.tablero-control input, .tablero-control select,  .tablero-control textarea{
+	font-size:15px !important;
+	font-weight:normal !important;
+}

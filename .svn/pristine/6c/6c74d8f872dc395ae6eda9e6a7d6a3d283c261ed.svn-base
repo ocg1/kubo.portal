@@ -1,0 +1,20 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+	<div class="tex">
+<h2>¡Felicidades!</h2>
+
+
+
+
+<p>Tu préstamo.kubo ha sido <strong>PRE-APROBADO</strong>, sujeto a que completes unos pocos trámites más</p>
+
+<p><strong>¡Adelante!</strong></p>
+
+	<span class="flecha"><i class="fa fa-arrow-down"></i></span>
+
+<div class="callAction btnNaranja" onclick="closePopCaramelo()"> Completa tu solicitud aquí</div>
+	</div>
+</ui:composition>

@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<table style="display:none; margin-left: auto; margin-right: auto;"> 							                 	
+		<tr>
+			<td colspan="2">
+				<h:panelGroup >
+			 		<p:commandLink oncomplete = "selectionAct();" 
+			 		               update     = ":frmCierre:contOfrt" 
+			 		               style      = "text-shadow: 0 0px 0 #F3F3F3 !important;" >
+						<div class="dvContent btnAgree" style="">
+							<div class="buttonPR" id="selBtn">
+								Aceptar esta oferta
+							</div>
+						</div>
+						
+						<f:setPropertyActionListener value="#{deal.selectedDeal}" target="#{deal.selectedDeal}" />  
+             		</p:commandLink>  
+        		</h:panelGroup>
+        	</td>
+        </tr>
+	</table>  				
+</ui:composition>				

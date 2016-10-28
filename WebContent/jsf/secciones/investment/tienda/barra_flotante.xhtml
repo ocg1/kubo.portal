@@ -1,0 +1,249 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+
+
+<div id="dvContInvFlot" style="visibility: #{sessionBean.area == 'I' ? 'visible': 'hidden'}"  class="flotanteMarketPlace modoLista">
+	 			
+	<h:form id="frmInvFlot" prependId="false" onsubmit="return false;">
+	
+	<div style="display:none;" >
+	
+	<p:inputText id="btnValorActual22" value="#{investmentList.newBiteInv}" immediate="true" >
+		<p:ajax event="blur" listener="#{investmentList.setNewBiteInvManual}"  />
+	</p:inputText>
+
+</div>
+	
+	<div class="clssMssgAlrt" >
+				 
+	 	Actualizaciones en proceso, espere un momento
+	 
+	 </div>
+	
+	<h:panelGroup id="pnlInvButtonFlot">
+	
+			<div class="datos_barradesplegable"> 
+			
+				
+			
+				 <h:panelGroup id="pnlInvestmentInfoFlot" rendered="#{sessionBean.area=='I' }">
+			
+					  <div id="dvCntInvDesc" class="clsCntInvDesc">
+			
+					  	<ul>
+					  	
+					  		
+					  		
+					  		
+					  			
+					  			<li class="monto_celda">Monto a <p:commandLink id="tooltip_inversiones6"  styleClass="tooltip_text" >invertir:</p:commandLink>
+					  			
+					  			
+					  						<p:tooltip for="tooltip_inversiones6" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
+										<ui:include src="../../../templates/content_tooltip.xhtml" />
+									
+									</p:tooltip>
+									 $
+					  				<h:inputText id="ammountToInvFlot" styleClass="elementAddres1" value="#{investmentList.ammoutToInvStr}" onkeyup="validateEnterFlot( event , this );" >
+										<p:ajax event="blur"  listener="#{investmentList.validaMontoAInvertir}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="resNewValToInvFloat(xhr, status, args);"   update="pnlInvButtonFlot, :table_proyect_list:pnlContTableCreditos, :table_proyect_list:pnlInvestmentInfo " />
+									</h:inputText>
+					  			</li>
+					  			
+					  			<!-- li class="monto_caja_celda">
+						  			
+					  				
+						  			
+					  			</li-->
+					  			
+					  			<li class="proyectos_celda">
+					  				Proyectos:
+					  				<h:outputText id="valCountInvFlot" value="#{investmentList.proyectListForInvesInd.size()}"  />
+					  				<div class="limites" onclick="limites();">Ver límites</div>
+					  			</li>
+					  			<!-- li class="proyectos_cifra_celda">
+					  				
+					  			</li-->
+					  		
+					  			<li class="monto_seleccionado_celda">
+					  				Monto seleccionado:
+					  				<h:outputText id="valAmmountInvFlot" value="#{investmentList.ammountFoundedInv}" >
+										<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									</h:outputText>
+					  			</li>
+					  			
+					  			<!-- li class="monto_seleccionado_caja_celda" >
+					  			
+					  			</li-->
+					  			<li class="saldo_disponible_celda">
+						  			<div class="saldo_disponible">
+											<h:outputLabel styleClass="label" value="Disponible:"/>
+										
+											<span class="disponible_val val_bold">
+											 
+											</span>
+									
+									</div>
+					  			
+					  			</li>
+					  
+					  	</ul>
+					  
+					  </div>
+					  
+					  
+					  <script>
+					  if($("#ammountToInvFlot").length) {
+							 disponible ();
+						 }
+						 
+					
+						function validateEnterFlot(e, element) {
+							    if (e.keyCode === 13) { 
+							    	$("#ammountToInvFlot").trigger("blur");
+							    }else{
+							    	format( element );
+							    }
+							    e.preventDefault();
+						}
+					</script>
+					  
+				 </h:panelGroup >
+				 	<div class="btns_barraFlotante">
+				 		<div class="btnCambiarFilaMosaico callActionMedium btnVerde" onclick="filaMosaico();"><span>Mosaico</span><i class="fa fa-th"></i></div>
+				 	<div onclick="abrir_panel_filtros();" class="filtrar2 callActionMedium  btnVerde-2">
+						<span>Filtros</span> <i class="fa fa-search"></i>
+					</div>
+				 	<div onclick="distribuirQuitar();" class="distribuir_quitar callActionMedium  btnGris">
+						 <span>Distribuir</span> <i class="fa fa-repeat"></i>
+					</div>
+					<div class="btnDistribuirSel callActionMedium btnGris" onclick="distribuirEnSeleccionados();"><span>Distribuir en seleccionados</span><i class="fa fa-repeat absoluto"></i> <i class="fa fa-thumb-tack"></i></div>
+					
+				  <h:panelGroup rendered="#{investmentList.displayInvButton and sessionBean.area=='I' and investmentList.blnPaquete }">
+				 	
+				 	<div class="btn_invertirflotante callActionMedium  btnNaranja"  onclick="bridgeFunctionInvPaq();" >
+						 <span>Invertir Paquete</span> <i class="fa">$</i>
+					</div>
+				 
+				 	
+
+				 	
+				 	<script>
+				 	//<![CDATA[
+				
+				 		function bridgeFunctionInvPaq(){
+				 			console.log("click inversiones");
+				 			validacion_fondeadoPrevio();
+				 				
+				 		}
+				 	
+				 		function showUpdatedPnl(){
+				 			$("#cmdConfirmInvActionFlot").trigger("click");
+						
+				 					
+				 		}
+				 		//]]>
+				 	</script>
+				 	
+				 	<div style="display: none;">
+				 		<p:commandLink id="cmdConfirmInvActionFlot_01" update=":table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot " oncomplete="showUpdatedPnl();" />
+					 	<p:commandLink id="cmdConfirmInvActionFlot" actionListener="#{investmentList.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" />
+					</div>
+				 </h:panelGroup>
+				 
+				 <h:panelGroup rendered="#{sessionBean.area=='I' and !investmentList.blnPaquete }">
+				 		<div class="btn_invertirflotante btn_naranja" onclick="bridgeFunctionInvPaq();" >
+							 Invertir <i class="fa fa-money"></i>
+						</div>
+				 </h:panelGroup>
+				 </div>
+				 
+				 </div>
+				 <div class="encabezadoFlotante">
+				 <div class="tablaTienda modoLista">
+				 	<ol class="encabezado">
+						<li class="enc_numberRegistro">Registro</li>
+						<li class="enc_invPrev"   rendered="#{sessionBean.area=='I'}"  >
+								Previa / Disponible
+						</li>
+						
+						<li class="enc_catTil">
+							<div rendered="#{sessionBean.area!='M'}">
+								#{msg.ll_title_Column1}
+								#{msg.ll_title_Column2}
+							</div>
+						</li>
+						
+						<li class="enc_origActual">
+								<div rendered="#{sessionBean.area=='I'}">
+								
+								#{msg.ll_ammountInv1}/&#160;<br />#{msg.ll_ammountInv2}
+								</div>
+						</li>
+						<li class="enc_PlazoOrigActual">
+							<div rendered="#{sessionBean.area=='I'}">
+								#{msg.ll_termInv1}/&#160;<br />#{msg.ll_termInv2}
+							</div>
+						</li>
+						<li class="enc_kuboScoreCelda">
+							<div>
+								Kubo <br/> Score
+							</div>
+						</li>
+						
+						<li class="enc_tasaAnualCelda">
+							<div>
+								#{msg.ll_term1}<br /> #{msg.ll_term2}
+							</div>
+						</li>
+						
+						<li class="enc_porcFondeo">
+							<div>
+								#{msg.ll_percent_Funding}
+							</div>
+						</li>
+						<li class="enc_dispVenc">
+							<div>
+								#{msg.ll_available}<br />#{msg.ll_expiration}
+							</div>
+						</li>
+
+						<li class="enc_verificacionCelda">
+							<div>
+								#{msg.ll_verification}
+								
+							</div>
+						</li>
+						
+						<li class="enc_inversionCelda">
+								<div  rendered="#{sessionBean.area=='I' and investmentList.displayInvestAction }">
+								#{msg.ll_invertion}
+								</div>
+						
+						</li>
+		
+			
+				</ol>
+				</div>
+				</div>
+				 <h:panelGroup rendered="#{!investmentList.displayInvButton and sessionBean.area=='I' and investmentList.blnPaquete }">
+				 	<div class="saldoMinimo">
+				 		<div class="inner">
+					 		El saldo mínimo para realizar la inversión es de 
+					 		<h:outputText  value="#{investmentList.montoMaximo}" styleClass="labelsStl">
+					     		<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							</h:outputText>, 
+							por favor primero haz un depósito que al menos complete ésta cantidad para poder continuar
+						</div>
+				 	</div>
+				 </h:panelGroup>
+				
+			</h:panelGroup>
+			
+		</h:form> 	
+	
+</div>
+</ui:composition>

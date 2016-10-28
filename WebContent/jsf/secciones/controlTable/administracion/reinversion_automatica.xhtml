@@ -1,0 +1,328 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+<script>
+
+	function validaInversionesPorRealizar(){
+		
+		//alert( "Validando ... " );
+		return true;
+		
+	}
+	
+	function oncompleteInversionesPorRealizar(){
+		cargaInversionistas();
+	}
+	
+	function validaEjecutaInversion(){
+		
+		$(".dvValidaEjecutaInversion").addClass("show");
+		
+	}
+	
+	function cancelaEjecutaInversion(){
+		
+		$(".dvValidaEjecutaInversion").removeClass("show");
+		
+	}
+	
+	function cargaInversionistas(){
+		$(".clsContBtnInvPend").fadeOut
+									("slow",
+											function(){
+														$(".clsContPendInv").fadeIn("slow")
+														}
+									);
+	}
+	
+	function fncRealizaInversion(){
+		
+		$(".clsContInvRealizadas").hide();
+		$(".clsContBtnInvPend").hide();
+		$(".clsContPendInv").hide();
+		$(".clsLoader").show();
+		$(".dvValidaEjecutaInversion").removeClass("show");
+		$(".btnEjecutaReinversion").click();
+		
+		
+	}
+	
+	function oncompleteEjecutaReinversion(){
+		$(".btnCargaReinversiones").click();
+	}
+	
+	function fncCargaInversionesRealiza(){
+		
+		$(".clsContBtnInvPend").hide();
+		$(".clsContPendInv").hide();
+		$(".dvValidaEjecutaInversion").removeClass("show");
+		$(".clsLoader").fadeOut("slow",function(){ $(".clsContInvRealizadas").fadeIn(); });
+	}
+
+</script>
+
+<style>
+	.clsContPendInv{
+		display: none;
+	}
+	.clsContPendInv{
+		border: solid 1px #d6d6d6;
+	    margin: 10px auto;
+	    width: 99%;
+	    padding: 8px;
+	    overflow: hidden;
+	}
+	
+	.clsColumInvReal,.clsColumInvRealImg{
+		width: 11%;
+    	border: solid 1px #e6e6e6;
+    	float: left;
+    	padding: 5px;
+    	border-left: 0px;
+    	border-top: solid 2px #333333;
+	}
+	
+	.clsColumInvRealImg{
+		
+		width: 22px;
+		border-right: 0px;
+		border-left: solid 1px #e6e6e6;
+	}
+	
+	
+	.clsColumPendInv{
+		width: 15%;
+    	border: solid 1px #e6e6e6;
+    	float: left;
+    	padding: 5px;
+    	border-left: 0px;
+    	border-top: 0px;
+    	border-bottom: solid 1px #d6d6d6;
+	}
+	
+	.clsBorderLeft{
+		border-left: solid 1px #e6e6e6 !important;
+	}
+	
+	.clsColumLarge{
+	
+		width: 45%;
+	
+	}
+	
+	.clsMessageInv{
+		clear: both;
+		width: 95%;
+		border-top: 0px;
+		margin-bottom: 5px;
+		border-left: solid 1px #e6e6e6;
+		border-bottom: solid 2px #333333;
+		padding: 4px;
+		padding-right: 3px;
+	}
+	
+	.clsTitInvPend{
+		font-weight: bold;
+		border-top: solid 1px #d6d6d6;
+	}
+	
+	.clsLoader{
+		display:none;
+		width: 49px;
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+	
+	.clsColumInvRealFecha{
+		width: 25% !important;
+	}
+	
+	.clsColumInvRealLarge{
+		width: 29% !important;
+	}
+	
+	.clsContInvRealizadas{
+		width: 1000px;
+		
+	}
+	
+</style>
+
+<h:panelGroup id = "reinversion_automatica" rendered = "#{administrationProfile.actualPage == 'reinversion_automatica.xhtml'}">
+
+	<div style="border: solid 0px #E3E3E3; margin-left: auto; margin-right: auto; margin-top: 15px; width: 90%; height: auto;  padding: 10px;" >
+			
+		<div style="width: 99%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+			
+			<span style="color: #439539;font-size: 1.3em; font-weight: bold;" >
+				
+				Reinversión Automática
+				
+			</span>
+		
+		</div>
+		<div class="clsContBtnInvPend" >
+			<p:commandLink 	
+							immediate="true" 
+							onstart="return validaInversionesPorRealizar();" 
+							update="pnlPendientes" 
+							actionListener="#{administrationProfile.cargaListInversionesPorRealizar}" 
+							oncomplete="oncompleteInversionesPorRealizar()" >
+							
+				<div id="inv_paq" class="callActionMedium  btnNaranja" style="width: 30%;" >
+				
+					Checar Pendientes
+				
+				</div>
+			</p:commandLink>
+		
+		</div>
+		<h:panelGroup id="pnlPendientes">
+		
+			<div class="clsContPendInv" >
+					
+					<div class="clsColumPendInv clsBorderLeft clsTitInvPend"   >
+						Cliente Safi
+					</div>
+					
+					<div class="clsColumPendInv clsColumLarge clsTitInvPend">
+						Nombre
+					</div>
+					
+					<div class="clsColumPendInv clsTitInvPend">
+						Cuenta
+					</div>
+					
+					<div class="clsColumPendInv clsTitInvPend">
+						Frecuencia
+					</div>
+		
+			<ui:repeat var="investor" value="#{administrationProfile.listaInversionistas}">
+					
+					<div class="clsColumPendInv clsBorderLeft"   >
+						#{investor.safi_client_id}
+					</div>
+					
+					<div class="clsColumPendInv clsColumLarge">
+						#{investor.membership.person.NombreCompletoNPM()}
+					</div>
+					
+					<div class="clsColumPendInv">
+						#{investor.safi_account_id}
+					</div>
+					
+					<div class="clsColumPendInv">
+						#{investor.frequency=='D'?'Diaria':investor.frequency=='S'?'Semanal':investor.frequency=='C'?'Catorcenal':investor.frequency=='Q'?'Quincenal':investor.frequency=='M'?'Mensual':'Personal'}
+					</div>
+				
+			</ui:repeat>
+			
+			<div class="clsContBtnInvPend" style="clear: both;" >
+			
+							
+				<div id="inv_paq" class="callActionMedium  btnNaranja" style="width: 30%;" onclick="validaEjecutaInversion();" >
+				
+					Ejecutar Reinversión
+				
+				</div>
+				
+			<div style="display:none;" >
+				<p:commandLink 	styleClass="btnCargaListInversiones"
+								immediate="true" 
+								onstart="return validaInversionesPorRealizar();" 
+								update="pnlPendientes" 
+								actionListener="#{administrationProfile.cargaListInversionesPorRealizar}" 
+								oncomplete="oncompleteInversionesPorRealizar()" >
+				</p:commandLink>
+				
+				<p:commandLink 	styleClass="btnEjecutaReinversion"
+								immediate="true" 
+								onstart="return validaInversionesPorRealizar();" 
+								update="pnlPendientes" 
+								actionListener="#{administrationProfile.ejecutaInversion}" 
+								oncomplete="oncompleteEjecutaReinversion()" >
+				</p:commandLink>
+				
+				<p:commandLink 	styleClass="btnCargaReinversiones"
+								immediate="true" 
+								update="pnlInvRealizadas" 
+								actionListener="#{administrationProfile.cargaListInversionesRealizadas}" 
+								oncomplete="fncCargaInversionesRealiza();" >
+				</p:commandLink>
+				
+			</div>
+		
+		</div>
+			
+			</div>
+		
+		</h:panelGroup>
+		
+		<div class="clsLoader" >
+			<h:graphicImage library="img" name="loader.gif"  ></h:graphicImage>
+		</div>
+		
+		<h:panelGroup id="pnlInvRealizadas">
+		
+			<div class="clsContInvRealizadas">
+			
+				<ui:repeat var="investment" value="#{administrationProfile.listaInversionesRealizadas}">
+					
+					<div class="clsColumInvRealImg">
+						<h:graphicImage library="img" name="#{investment.status_progress==1?'checkactive.png':investment.status_progress==99?'error2.png':investment.status_progress==97?'denegate.png':investment.status_progress==98?'denegate.png':'pause.png'}" width="19px" height="19px"  ></h:graphicImage>
+					</div>
+					
+					<div class="clsColumInvReal clsBorderLeft"   >
+						#{investment.automaticInvestment.safi_client_id}
+					</div>
+					
+					<div class="clsColumInvReal clsColumInvRealLarge">
+						#{investment.automaticInvestment.membership.person.NombreCompletoNPM()}
+					</div>
+					
+					<div class="clsColumInvReal">
+						#{investment.automaticInvestment.safi_account_id}
+					</div>
+					
+					<div class="clsColumInvReal">
+						#{investment.automaticInvestment.frequency=='D'?'Diaria':investment.automaticInvestment.frequency=='S'?'Semanal':investment.automaticInvestment.frequency=='C'?'Catorcenal':investment.automaticInvestment.frequency=='Q'?'Quincenal':investment.automaticInvestment.frequency=='M'?'Mensual':'Personal'}
+					</div>
+					
+					<div class="clsColumInvReal clsColumInvRealFecha">
+						#{investment.end_execute_date}
+					</div>
+					
+					<div class="clsColumInvReal clsMessageInv">
+						#{investment.message}
+					</div>
+					<p style="clear:both; float: none;" />
+			</ui:repeat>
+			
+			</div>
+		
+		</h:panelGroup>
+	
+	</div>
+	
+	<div class="alerts dvValidaEjecutaInversion">
+
+			<p>¿Deseas ejecutar la inversión automática?</p>	
+       
+
+			<div class="botones_lightbox">
+					
+						<div class="callActionMedium  btnGris" id="cancelaEjecutaInversion" onclick="cancelaEjecutaInversion();" >
+							Cancelar
+						</div>
+							<div class="callActionMedium  btnNaranja" id="aceptaEjecutaInversion" onclick="fncRealizaInversion();" >
+							Invertir
+						</div>
+					</div>
+		</div>
+
+</h:panelGroup>
+
+</ui:composition>

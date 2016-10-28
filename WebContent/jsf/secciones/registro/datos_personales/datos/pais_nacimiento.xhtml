@@ -1,0 +1,40 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "nacext">
+		<div class = "field" style = "display: #{basicData.extDis}">
+		
+			<div class = "dvLabel">
+				<h:outputLabel styleClass = "labelsStl" value = "#{msg.birth_country} "/>
+			</div>
+			
+	
+			
+		
+				<div class = "selectNuevo">
+					<h:selectOneMenu id = "countryNac" immediate = "true" 
+					                 value       = "#{basicData.naturalPerson.country_id}" 
+					                 disabled    = "#{navigationBean.disabledComponent('countryNac')}"
+					                 onfocus    = "DatosPersonales.init_focus_date(6);"  
+					                 styleClass = "elementStlSelAddress validatorClass hs_class">
+					                
+						<f:selectItem itemLabel = "	Selecciona..." itemValue = "" />
+							 
+						<f:selectItems value     = "#{basicData.countryList}" 
+									   var       = "country" 
+									   itemLabel = "#{country.name}" 
+									   itemValue = "#{country.pk.country_id}"/>
+									   
+						<p:ajax event      = "change"  
+								oncomplete = "DatosPersonales.country_id_on_complete(xhr, status, args);" 
+								listener   = "#{basicData.country.init_change}" 
+								update     = "panel-rfc-curp domicilio_pais_origen" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+	
+	</h:panelGroup>				
+</ui:composition>				

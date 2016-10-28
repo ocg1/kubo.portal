@@ -1,0 +1,75 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<script>
+		$(document).ready(function ()
+		{
+			init_security_request();
+		});
+		
+		function init_security_request()
+		{
+			
+		}
+		
+		function init_security_ajax_request()
+		{				
+			var request_url  = "https://demo.vusecurity.com/vuserver/connector/tokens/totp/login.php";	
+			request_url       = "https://demo.vusecurity.com/";
+			var request_config = { passcode: "123456", user: "rogelio", password: "Vusecurity2015" };
+			var response;
+			
+			console.log("init_security_ajax_request(): ");
+			
+			response = $.post(request_url, request_config, function(data)
+			{
+				console.log("> " + data);
+			});
+			
+			response = $.ajax(
+			{
+			    type: "POST",
+			    dataType: 'text',
+			    url: request_url,
+			    username: 'rogelio',
+			    password: 'Vusecurity2015'
+			    
+			}).done(function( data ) 
+			{
+				console.log("done");
+				
+			}).fail(function(xhr, textStatus, errorThrown) 
+			{
+				console.log(xhr.responseText);
+				console.log(textStatus);
+			});
+		}	 
+		
+
+	</script>									
+			
+	<div>			
+		<p:panel header = "Security Mobile Token" collapsed = "false" toggleable = "false">	
+			<form id = "security_form" action = "https://demo.vusecurity.com/vuserver/connector/tokens/hotp/login.php" method = "post">
+				<div class = "ui-corner-all" 
+					 style = "margin:0;
+							  padding:10px 0;
+					 		  text-align:center; 					 		  					 		 
+					 		  border:1px solid #a8a8a8;">	
+					 <h3>PassCode</h3>		
+					 
+					 <p id = "msg_response_INFO"/>									
+				
+					<input type = "text"   name = "passcode" maxlength = "6" />			
+					<input type = "hidden" name = "username" value = "rogelio" />
+					<input type = "hidden" name = "password" value = "Vusecurity2015" />
+					
+					<input type = "submit" value = "Post"/>
+				</div>	
+			</form>
+		</p:panel>	
+	</div>
+</ui:composition>				

@@ -1,0 +1,114 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+		
+	<script>
+		function validaMontoRetirar()
+		{		
+			var val = $( "#ammountRet" ).val().replace(",","");
+			val = val.replace(",","");
+			val = val.replace(",","");
+			val = val.replace(",","");
+			
+			var lim = $("#limiteSaldo").val();
+			
+			if(parseFloat( val ) > parseFloat( lim ) )
+			{
+				alert( "El monto a retirar debe ser menor o igual al saldo disponible" );
+				
+				$( "#ammountRet" ).val("");
+				
+				return false;
+			
+			} else {
+				
+				return true;				
+			}			
+		}
+		
+		function resRet(xhr, status, args)
+		{
+			
+			if(args.success)
+			{
+				
+				$("#dvContValRet").fadeOut("slow",function()
+				{					
+					$("#dvSuccess").fadeIn( "slow" );									
+				});
+				
+			} else {
+				
+				alert("Ocurriò un error al crear la notificación de retiro de efectivo. Por favor intente más tarde o comuniquese al centro de atenciòn de kubo.financiero al telèfono 62-69-00-24");
+				
+				$( "#ammountRet" ).val("");				
+			}
+			
+			closeFancy();
+		}
+		
+		function retiroActionClick()
+		{			
+			$("#ammountRet").val( $("#ammountRet_001").val() );			
+			$("#ammountRet").blur();
+			
+			$("#retiroAction" ).click();	
+		} 
+	</script>
+		
+	<h:form id="FPDispoEfe" prependId="false">
+			
+		<div id="dvContentLoanLst" class="container_movimiento">	
+			
+			<div id="providing_table">
+			
+				<FIELDSET>
+				
+					<div id="dvContValRet" style="overflow: auto;">
+					
+						<h:inputHidden id="limiteSaldo" value="#{disposicionEfectivo.saldoActual}" />
+						
+						<div class="disposicion_efectivo">
+								
+							<h3>Retiro de Efectivo</h3>
+								
+							<ul class="formGenerico">
+								
+								<ui:include src = "inversionista/movimientos/disposicion/cuenta.xhtml" />
+								<ui:include src = "inversionista/movimientos/disposicion/saldo.xhtml" />																
+								<ui:include src = "inversionista/movimientos/disposicion/monto.xhtml" />
+								<ui:include src = "inversionista/movimientos/disposicion/cuenta-clabe.xhtml" />								
+								
+								<li>
+									<label class="etiqueta">Banco:</label>
+									<div class="campo">
+											<h:outputText id = "nombreBanco" value="#{disposicionEfectivo.bnkStr}" styleClass="labelsStl"/>
+									</div>
+								
+								</li>
+										
+																
+																	
+															
+							</ul>	
+										<div id="retirarBtn"
+											 class   = "callActionMedium  btnNaranja"
+											 onclick = "javascript:retiroActionClick()"
+											 style	 =  "cursor: pointer; ">Retirar</div>							
+						</div>						
+					</div>
+					
+					<ui:include src = "inversionista/movimientos/disposicion/confirmacion.xhtml" />
+														
+				</FIELDSET>
+						
+			</div>
+			
+		</div>
+			
+	</h:form>
+	
+</ui:composition>	

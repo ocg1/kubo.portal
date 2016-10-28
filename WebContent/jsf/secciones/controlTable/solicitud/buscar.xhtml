@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<style>
+		#container_buscar 
+		{
+			float: left; 
+			margin-left: 40px; 
+			margin-top: 44px;
+			border: 0px solid silver;
+		}	
+	</style>				
+	
+	<div id = "container_buscar">																		
+		<p:commandLink id             = "link_search"  
+					   style          = "text-decoration: none;float:left;"										
+					   actionListener = "#{searchRequest.listener_buscar_solicitud}"
+					   onstart        = "return displayMessageProcessing('msgprocessing',false);"
+					   oncomplete     = "Busqueda.completSearch(xhr, status, args);"
+					   update         = ":update_summary :pnlCancel">											
+			<div class = "buttonPR" style="margin:5px 0;width: 100px;">	
+				<h:outputText value="Buscar" />					
+			</div>
+		</p:commandLink>
+	</div>	
+	
+	<div style = "clear: both;" />				
+</ui:composition>				

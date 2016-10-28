@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class="field">		
+				
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.society_type}"/>
+		</div>
+			
+		
+			<div class = "selectNuevo">
+					<h:selectOneMenu immediate  = "true" value = "#{basicData.naturalPerson.society_type_id}"  
+							 		 styleClass = "elementStlSelAddress validatorClass requiredVerify"
+							 		 id="businessName"
+							 		 >
+							 
+				<f:selectItem itemLabel = "Escribe la razón social" itemValue = "0" />
+				
+				<f:selectItems value     = "#{basicData.moral.lista_society_type}"
+							   var       = "type"
+							   itemLabel = "#{type.name}"
+							   itemValue = "#{type.pk.society_type_id}"/>
+
+			    
+				<p:ajax event = "change"
+						oncomplete = "PersonaMoral.society_type_on_complete(xhr, status, args);" 
+						listener   = "#{basicData.moral.init_society_type_id}" />
+				
+			</h:selectOneMenu>
+			
+			</div>
+	
+	</div>			
+</ui:composition>				

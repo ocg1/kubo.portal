@@ -1,0 +1,47 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">	
+					    			
+		<h:outputScript name="jquery.formatCurrency-1.4.0.min.js" library="js/utilerias" target="head"/>
+		<h:outputScript name="charCount.js" library="js/utilerias" target="head"/>
+		<h:outputScript name="hubSpot_analytics.js" library="js" target="head"/>
+		<h:outputScript name="alertify.js" library="js" target="head"/>
+		<h:outputScript name="codigo_postal.js" library="js/mx.com.kubo.registro" target="head"/>
+		<h:outputScript name="general.js" library="js" target="head"/>
+		<h:outputScript name="reloj.js" library="js" target="head"/>
+		<h:outputScript name="jquery.fancybox-1.3.4.pack.js" library="js/fancybox" target="head"/>
+		<h:outputScript name="jquery.easing-1.3.pack.js" library="js/fancybox" target="head"/>
+		<h:outputScript name="jquery.mousewheel-3.0.4.pack.js" library="js/fancybox" target="head"/>
+		<h:outputScript name="jquery.scrollTo.js" library="js" target="head"/>
+		<h:outputScript name="scroll_superior.js" library="js" target="head"/> 					
+		<h:outputScript name="controlTable.js" library="js" target="head"/>
+		<h:outputScript name="contenido.js" library="js" target="head"/>
+		<h:outputScript name="require.js" library="js/mx.com.kubo.core" target="head"/>
+		<h:outputScript name="main.js" library="js/mx.com.kubo.mesa" target="head"/>
+		<h:outputScript name="administracion.js" library="js/mx.com.kubo.mesa" target="head"/>
+		<h:outputScript name="gestor-sesiones.js" library="js/mx.com.kubo.mesa" target="head"/>
+		<h:outputScript name="busqueda.js" library="js/mx.com.kubo.mesa/solicitud/" target="head"/>
+		<h:outputScript name="search-request.js" library="js/mx.com.kubo.mesa/solicitud/" target="head"/>
+		<h:outputScript name="investor-category.js" library="js/mx.com.kubo.mesa/solicitud/" target="head"/>
+		<h:outputScript name="documentacion.js" library="js/mx.com.kubo.mesa/solicitud/" target="head"/>
+		<h:outputScript name="reporte-inusual.js" library="js/mx.com.kubo.mesa/solicitud/" target="head"/>
+		<h:outputScript name="telefonos.js" library="js/mx.com.kubo.mesa/solicitud/" target="head"/>
+		
+		<h:outputScript name="init_modal_cambio_estatus.js"       library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="listener_seleccion_fecha.js"        library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="listener_estatus_selected.js"       library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="listener_guardar_cambios.js"        library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="listener_cambio_estatus_TOKEN.js"   library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="procesar_validacion_fecha.js"       library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="asignar_lista_motivos_de_cambio.js" library="js/templates/proyect_loan/estatus" target="head"/>
+		<h:outputScript name="estado_cuenta.js"                   library="js/secciones/estado_cuenta" target="head"/>
+		<h:outputScript name="creditos.js"                        library="js/secciones/estado_cuenta" target="head"/>
+		<h:outputScript name="tablero-control.js"                 library="js/mx.com.kubo.mesa" target="head"/>
+		<h:outputScript name="tablero-autenticacion.js"           library="js/mx.com.kubo.mesa" target="head"/>
+		<h:outputScript name="loanListScript_complements.js"      library="js" target="head"/>
+		<h:outputScript name="loanListScript_contadorToken.js"    library="js" target="head"/>
+		<h:outputScript name="loanListScript_movimentos.js"       library="js" target="head"/>
+		<h:outputScript name="loanListScript_botonRegreso.js"     library="js" target="head"/>
+		<h:outputScript name="urlParameters.js"                   library="js" target="head"/>	
+		<h:outputScript name="loanListScript_resumenSaldos.js"    library="js" target="head"/>		
+</ui:composition>				

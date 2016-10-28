@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	
+		<link rel="icon" href="https://www.kubofinanciero.com/Kubo/resources/img/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="https://www.kubofinanciero.com/Kubo/resources/img/favicon.ico" type="image/x-icon" /> 
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		
+		<script type="text/javascript"  src="../resources/js/general.js"></script>
+		
+		<script type="text/javascript"  src="../resources/js/frmScriptMbl.js"></script>
+		
+		<!-- MS --> 
+		
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+			
+		<link rel="stylesheet" href="../resources/css/mobile/kubo-01.min.css" />
+		
+		<link rel="stylesheet" href="../resources/css/mobile/frmStlMbl.css" />
+		
+		<link rel="stylesheet" href="../resources/css/mobile/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" /> 
+		
+		<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
+		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+		
+		<!-- <script type="text/javascript" src="../resources/js/utilerias/charCount.js"></script> -->
+		<!-- <script type="text/javascript" src="../resources/js/utilerias/jquery.formatCurrency-1.4.0.min.js"></script> -->
+		<script type="text/javascript" src="../resources/js/registro/miPrestamo.js"></script>	
+		<!-- <script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"></script>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"></script>
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" /> -->
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		<link   type="text/css"       href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" media="screen" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />	
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/mobile/documentpldMobile.css" />		
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		
+		
+		
+		 <style>
+           /* custom icons */
+			.ui-icon-custom{
+				background-image: url(../resources/img/kubo-mbl-ini.png);
+				background-repeat: no-repeat;
+			}
+			.ui-icon-custom {
+				background-position: 0px 50%;
+			}
+           
+        </style>
+		
+		<script>
+		var flagScrollB1 = false;
+		</script>
+		
+	</h:head>
+<h:body>
+
+<h:inputHidden id="area" value="#{sessionBean.area}" ></h:inputHidden>
+<h:inputHidden id="thisMail" value = "#{sessionBean.email}" ></h:inputHidden>
+
+<div data-role="page" id="pageone" style="overflow: hidden;">
+ <div data-role="header" data-position="fixed">
+    <a href="#" onclick="javascript:$('#inicioBtn').click();" data-role="button" class="ui-btn-left"  data-icon="home" data-transition="pop"  data-iconpos="notext" style="border: 0px !important;" />
+    <h1>Registro</h1>
+    <a href="#" onclick="javascript:$('#exitBtn').click();" data-role="button" class="ui-btn-right" data-icon="delete" data-iconpos="notext" style="border: 0px !important;"  />
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#nav-panel" data-icon="bars">Menú</a></li>
+        <li><a href="#" data-icon="star">Perfil</a></li>
+        <li><a href="#sim-panel" data-icon="grid">Simulador</a></li>
+      </ul>
+    </div>
+    
+  </div>
+
+  <div data-role="content" style="padding-left: 0px !important; padding-right: 0px !important;">
+  
+   <h:panelGroup id="actualPage" >
+	   <div id="header" style="height: auto; width: auto;overflow: auto;" >
+	   		<ui:include src="../jsf/secciones/#{navigationBean.paginaActual}.xhtml" /> 
+	    </div>
+    </h:panelGroup>
+  </div>
+  
+  
+  
+  <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+	
+		
+		<div style="width: auto; height: auto; overflow: auto; position: relative;">
+			<a href="#" data-rel="close" data-role="button" data-icon="arrow-l" data-iconpos="right" >Cerrar Menú</a>
+		</div>
+		
+		<div style="width: auto; height: auto; overflow: auto; position: relative;">
+		<!-- <ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px; padding: 0px !important;" class="nav-search"> -->
+			<h:form prependId="false" id="form_menu_mbl" >
+			<ui:repeat  var="m" value="#{navigationBean.menus}" varStatus="myVarStatus" >
+									
+				<!-- <li data-filtertext="wai-aria voiceover accessibility screen reader" style="margin: 0px !important; padding: 0px !important;"> -->
+					<div data-role="button" data-rel="close" >
+					
+					<h:panelGroup rendered="#{m.isblocked == 'block' }">
+					
+						<div id="#{m.idItem}" class="#{m.classItem}" style="text-align: center; display: #{m.isblocked}; " >
+							<div style="float: left; overflow: hidden; height: 34px;margin-left: 10px; padding-top: 10px; width: 40px;">
+								<!-- <div class="#{m.numItem}" style="width: 28px; text-align: center;">Paso</div> -->
+								<div class="#{m.numItem}" style="width: 38px; margin-top: 0px; padding-top: 5px; *padding-top: 10px; *padding-bottom: 10px; text-align: center; font-size: 3.4em;">#{m.position}</div>
+							</div>		
+							<div style="float: right; overflow: auto; height: auto;">
+								<div class="#{m.classItem}Cont">#{m.nameItem}</div>
+								<div id="block#{m.idItem}" style="text-align: right; display: #{m.isblocked}; ">
+									<div style="margin-left: auto; margin-right: auto;"> <p:graphicImage style="border: 0px;" url="../resources/img/Lock-green-32.png"></p:graphicImage></div>
+								</div>
+							</div>
+							 
+						</div>
+					
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{m.isblocked != 'block' }">
+						<p:commandLink
+								id="btnMenu"
+								onstart="return itemFunctionMbl( '#{m.idItem}' );"																	
+								actionListener="#{navigationBean.cambiaPagina}"	
+								ajax="true"
+								update=":actualPage"
+								oncomplete="location.reload();"
+								style="text-decoration: none !important;">
+									
+									<div id="#{m.idItem}" class="#{m.classItem}">
+										<div style="float: left; overflow: hidden; height: 34px;margin-left: 10px; padding-top: 10px; width: 40px;">
+											<!-- <div class="#{m.numItem}" style="width: 28px; text-align: center;">Paso</div> -->
+											<div class="#{m.numItem}" style="width: 38px; margin-top: 0px; padding-top: 5px; *padding-top: 10px; *padding-bottom: 10px; text-align: center; font-size: 3.4em;">#{m.position}</div>
+										</div>		
+										<div style="float: right; overflow: auto; height: auto;">
+											<div class="#{m.classItem}Cont">#{m.nameItem}</div>
+											<h:panelGroup rendered="#{m.displayBar}" >
+												<div id="#{m.idItem}ItemBar" class="displayNone">
+													<!-- <p:progressBar  value="#{m.porcItem}"></p:progressBar> -->
+													<div id="#{m.idItem}Porcent" class="#{m.porcClassItem}">#{m.porcItem}% de avance</div>
+												</div>
+											</h:panelGroup>
+										</div>
+												
+										<f:attribute name="section" value="#{m.targetItem}::#{m.screenid}::#{m.idItem}" />
+									
+									</div>
+									
+						</p:commandLink>
+						
+						</h:panelGroup>
+						
+					</div>
+				<!-- </li> -->
+				
+			</ui:repeat>
+			
+			<h:panelGroup id="hiddenactios">
+				<input type="hidden" id="selected" value="#{navigationBean.menuSel}ItemBar"></input>
+				<input type="hidden" id="selectedPor" value="#{navigationBean.menuSel}Porcent"></input>
+				<input type="hidden" id="anterior" value="#{navigationBean.menuSel}"></input>
+			</h:panelGroup>
+			
+			</h:form>
+		<!-- </ul> -->
+		
+			
+		
+		</div>
+	
+	</div><!-- /panel MENU -->
+	
+	<!-- PANEL SIMULADOR -->
+	
+	<div data-role="panel" data-position="right" data-position-fixed="false" data-display="reveal" id="sim-panel" data-theme="a">
+		<div style="position: relative; height: auto;overflow: auto;width: auto;" >
+			<a href="#" data-rel="close" data-role="button" data-icon="arrow-r" data-iconpos="left" >Cerrar Simulador</a>
+		</div>	
+		
+		<!-- ++++++++ SIMULADOR ++++++++ -->
+		<div style="position: relative; height: auto;overflow: auto;width: auto;" >
+		<h:panelGroup id="contSimReg" >
+			<h:panelGroup rendered="#{navigationBean.displaySim}" >
+			<h:panelGroup rendered="#{sessionBean.area ne 'I' and sessionBean.area ne 'M'}">
+			<h:form id="simReg" prependId="false">
+				<div id="thisSim" style="min-height: 370px; width: 285px; overflow: hidden; font-size: 0.75em; margin-top: 10px;" >
+			
+					<div class="sim_cont_back" style="width: 230px; min-height: 270px;">
+					
+					<!-- las variables montomax montomin termmax estan declarados en registro.xhtml  -->
+					
+						<div class="sim_cont" style="padding-top: 30px; padding-left: 0px; width: 205px; margin-right: auto; margin-left: auto; overflow: hidden; ">
+							<div style="height: 32px; z-index: 1; border: solid 1px #FFF200; position: absolute; top: #{navigationBean.loaner?'55':'20'}px; left: 9px;width: 268px;
+							background-image: url('../resources/img/backButtH.png'); background-repeat: repeat-x; opacity:0.9; filter:alpha(opacity=90);"> 
+							  <div style="width: 10px; height: 15px;  position: absolute; top: 32px; left: 0px; background-image: url('../resources/img/bkTitle-1.png'); background-repeat: no-repeat; "></div>
+							  <div style="width: 10px; height: 15px;  position: absolute; top: 32px; right:0px; background-image: url('../resources/img/bkTitle-2.png'); background-repeat: no-repeat; "></div>
+							</div>
+							<div style="height: 32px; z-index: 2; font-size: 1.5em; font-weight: bold; padding-top: 7px; border: solid 0px #000000; position: absolute; top: #{navigationBean.loaner?'55':'21'}px; left: 9px;width: 281px;text-align: center;">
+								Tu préstamo
+							</div>
+							<table id="sim_table" style="margin-left: 0px; width: 200px !important;" >
+								<tr>
+									<td class="sim_desc">Monto</td>
+								</tr>
+								<tr>
+									<!-- <td class="sim_value">$#{simulator.ammountStr}</td> -->
+									 <td class="sim_value">
+									 	<h:inputText id="ammount" styleClass="elementAddres1" onkeyup="format(this,'simulator');"  style="width: 175px !important; font-size: .98em !important;"  value="#{simulator.ammountStr}">
+									 		<p:ajax event="blur" listener="#{simulator.simulaCred}" update="resSimReg catSimReg" onstart="return simOnStartVal();" oncomplete="return showRes();"  />
+									 	</h:inputText>
+									 </td>
+								</tr>
+								<tr  style="margin-bottom: 0px !important; padding-bottom: 0px !important;">
+									<td class="sim_desc" style="margin-bottom: 0px; padding-bottom: 0px;" >Plazo</td>
+								</tr>
+								<tr  style="margin-top: 0px !important; padding-top: 0px !important;" >
+									<td class="sim_value" style="margin-top: 0px !important; padding-top: 0px !important;">
+										<!-- <h:inputText id="rfc" styleClass="elementAddres1" style="width: 130px !important;" value="#{simulator.numCuota}"></h:inputText> -->
+										<!-- #{simulator.numCuota} pagos #{simulator.frequencyStr} -->
+										
+										 <table style="margin-left: auto; margin-right: auto; font-size: 0.8em;">
+										   	<tr>
+			                            		<td>
+			                            			<h:inputText styleClass="elementAddresMin" style="width: 40px !important;" maxlength="3"  required="true" id="term" value="#{simulator.term_id}"   >
+														 <p:ajax event="change" onstart="return simOnStart();" oncomplete="return showRes();"  listener="#{simulator.simulaCred}" update="resSimReg catSimReg"  />  
+													</h:inputText>
+			                            		</td>
+	
+			                            		<td>
+			                            			<div class="styled-select-Month"  style="width: 125px !important; height: 35px !important;" >
+			                            			<p:selectOneMenu id="frecuProyect" value="#{simulator.frequency_id}"  style="width: 140px !important; position: relative;"  styleClass="elementStlSelMonth"  >
+														<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+														<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+														<p:ajax event="change" onstart="return simOnStart();" oncomplete="return showRes();" listener="#{simulator.simulaCred}" update="resSimReg catSimReg" />  
+													</p:selectOneMenu>	
+													</div>
+			                            		</td>
+			                            	</tr>
+									    </table>
+										
+									</td>
+								</tr>
+								<h:panelGroup rendered="true">
+									<tr>
+										<td class="sim_desc">Tu tasa</td>
+									</tr>
+								
+									<tr>
+										<td class="sim_value">#{simulator.tasaTotal}% sin IVA<sup>(a)</sup></td>
+									</tr>
+									
+									<tr>
+										<td class="sim_desc" style="width: 100%; text-align: center; padding-top: 3px;">
+											Comisión por apertura
+										</td>
+									</tr>
+									
+									<tr>
+										<td class="sim_value couta">
+											#{simulator.comisionApertura}% incluye IVA
+										</td>
+									</tr>
+									
+								</h:panelGroup>
+								
+								<tr>
+									<td>
+										<h:panelGroup id="resSimReg">
+										<div id="loaderSim" style="display: none;">
+											<p:graphicImage url="../resources/img/ajax-loader.gif" width="24px" height="24px"></p:graphicImage>
+										</div>
+										<div id="resultadosSim">
+											
+														<table style="margin-left: 3px; width: 100% ">
+															
+															
+														
+															<tr>
+																<td class="sim_desc" style="width: 100%; text-align: center; padding-top: 3px;">
+																	Total a recibir
+																</td>
+															</tr>
+															<tr>
+																<td class="sim_value couta">
+																	#{simulator.totalRecibir}
+																</td>
+															</tr>
+														
+															<tr>
+																<td class="sim_desc" style="width: 100%; text-align: center; padding-top: 3px;">
+																	Pagos de
+																</td>
+															</tr>
+															<tr style="padding-bottom: 0px;">
+																<td class="sim_value couta" style="padding-bottom: 0px;" >
+																	$#{simulator.montoCuotaStr}
+																</td>
+															</tr>
+															<tr style="padding-top: 0px;">
+																<td style="font-size: 0.65em; padding-top: 0px !important; font-weight: bold; ">Los pagos incluyen IVA</td>
+															</tr>
+															<tr>
+																<td style="width: 100%; text-align: center;">
+																	Total a pagar
+																</td>
+															</tr>
+															<tr>
+																<td class="sim_value total">
+																	$#{simulator.totalPagarStr}
+																</td>
+															</tr>
+															
+															<tr>
+																<td style="padding-bottom: 10px;">
+																	<a class="refTbAmort" href="/Kubo/jsf/tabla_de_amortizacion.xhtml?monto=#{simulator.ammountStr}&amp;term=#{simulator.numCuota}&amp;rate=#{simulator.tasaTotal}&amp;payment=#{simulator.montoCuotaStr}&amp;frequency=#{simulator.frequencyStr}&amp;comision=#{simulator.comisionApertura}&amp;totalPayment=#{simulator.totalPagarStr}&amp;cat=#{simulator.catStr}" target="popup" onClick="window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+																		Ver Tabla de Amortización
+																	</a>
+																</td>
+															</tr>
+															
+														</table> 
+													
+											
+										</div>
+										</h:panelGroup>
+									</td>
+								</tr>
+								
+								<h:panelGroup rendered="false">
+									<tr>
+										<td  class="sim_button" id="againSim"  >
+											 <div class="buttonPR" onclick="muestraCont();"  style="margin-bottom: 0px !important; margin-top: 0px !important;">
+												Simula de nuevo
+											</div>
+										</td>
+									</tr>
+								</h:panelGroup>
+							</table>
+						</div>
+					
+					<h:panelGroup id="catSimReg">
+						<div class="labelsStl" style="text-align: center; font-size: 1.4em; width: 215px; margin-left: auto; margin-right: auto; padding: 5px; border: solid 0px #000000;"> 
+		      				<span style=" font-weight: bold; font-size: 1.1em;"> CAT: #{simulator.catStr}% sin IVA<sup style="font-size: 0.9em !important;">(b)</sup></span>
+			      		</div>
+						
+					 	<div class="labelsStl" style="text-align: justify; font-size: 1.0em; width: 167px; margin-left: auto; margin-right: auto; padding: 5px;height: auto;border: solid 0px #000000;">
+					 	
+					 		<div class="labelsStl" style="text-align: justify; clear: both; font-size: 1.1em; width: 165px; margin-left: 0px; margin-top: 10px; padding: 5px; border: solid 0px #000000;"> 
+					    			 <b>(a)</b>:Tasa fija anual simple.<br />
+									 <b>(b)</b>:Costo Anual Total. Para fines informativos y de comparación. 
+						    		Fecha de cálculo: #{simulator.fechaInicio}. Los <a  href="avisolegal.jsf?page=condiciones"  >términos, condiciones</a> y <a href="leyTransparencia.jsf?page=comisiones" >comisiones</a> aplicables al 
+						    		Crédito Personal kubo.financiero son los incluidos en el <a href="leyTransparencia.xhtml?page=contrato" >Contrato de Adhesión</a> relacionado en la solicitud. Puedes consultar nuestros <a  href="avisolegal.jsf?page=requisitos" >requisitos y modalidades de contratación</a>.	
+						   		</div>
+						   		
+						   		<div style="margin-left: 5px;margin-right: auto;width:80px;cursor: pointer;">
+					   				<a class="refTbAmrt" href="/Kubo/jsf/secciones/creditos_personales_ref/avisoslegales.xhtml" target="popup" onClick="window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+										Advertencias
+									</a>
+						   		</div>
+						   		
+			      			
+			      		</div>
+		      		</h:panelGroup>
+				 	
+				 	</div>
+				 	
+				</div>
+			</h:form>
+			</h:panelGroup>
+			
+			</h:panelGroup>
+			
+		</h:panelGroup>
+		</div>
+		<!-- ++++++ FIN SIMULADOR ++++++ -->
+		
+	</div>
+	
+	<!-- /PANEL SIMULADOR -->
+	
+	<!-- <div data-role="panel" data-position="right" data-position-fixed="false" data-display="reveal" id="incomeExpense" data-theme="a">
+		<div style="position: relative; height: auto;overflow: auto;width: auto;" >
+			<a href="#" data-rel="close" data-role="button" data-icon="arrow-r" data-iconpos="left" >Cerrar Simulador</a>
+		</div>
+		<ui:include src="../jsf/secciones/registro/detailIncome.xhtml" />
+	</div> -->
+	
+	<div id="footer"  style="width: 100%; magin-right: 0px; position: relative;">
+		<ui:include src="../jsf/templates/footerContenido.xhtml" />
+	</div> 
+ 
+ <ui:include src="../jsf/templates/msgProcessing.xhtml" />
+ 
+</div> 
+
+<div style="display: none;" >
+	<h:form prependId="false" id="form_mbl" >
+		<p:commandLink id="exitBtn" onstart="return onExit();"  action ="#{headerBean.SignOut}">
+			SALIR
+		</p:commandLink>
+		<p:commandLink id="inicioBtn"  action ="kubofinanciero">
+			INICIO
+		</p:commandLink>
+		
+	</h:form>
+</div>
+<script>
+	
+	function changePage(index){
+		//alert("elemento "+index+": "+$("#j_idt183:"+index+":btnMenu"));
+		$("#j_idt183:"+index+":btnMenu").click();
+	}
+	
+	
+</script>
+
+<div style="display: none;">
+		 <h:form id="hdNext">
+			<!-- <p:commandLink
+					id="siguienteBASICOS"
+					onstart="return  validaSigCreditHistory();"
+					oncomplete="closeMessageProcessing();"				
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg">
+					<f:attribute name="section" value="registro/historialCred::3::menu2" />
+			</p:commandLink> -->
+			
+			<p:commandLink
+					id="siguienteBASICOS"
+					onstart="return  validaSigCreditHistory();"
+					actionListener="#{basicData.validaRelationship}"  
+					oncomplete="validaRelationShipBasic(xhr, status, args);" 
+					immediate="true"
+					update=":contSimReg" 
+					ajax="true" >
+			</p:commandLink>
+			
+			<p:commandLink
+					id="siguienteBASICOSACTION"
+					oncomplete="location.reload();"				
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/historialCred::3::menu2" />
+			</p:commandLink>
+			
+			<p:commandLink
+					id="siguientePrep"
+					onstart="return validateNextMenu('S');"
+					oncomplete="location.reload();"				
+					actionListener="#{navigationBean.cambiaPaginaAceptado}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/miPrestamo::4::menu3" />
+			</p:commandLink>
+
+			<p:commandLink
+					id="siguienteIncomeExpense"
+					onstart="return validateNextMenu('N');"
+					oncomplete="location.reload();"				
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/incomeExpense::5::menu4" />
+			</p:commandLink>
+			
+			<p:commandLink
+					id="siguienteMasInfo"
+					onstart="return  validateNextMenu('N');"
+					oncomplete="location.reload();"				
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/moreInfo::7::menu5" />
+			</p:commandLink>
+			
+			<p:commandLink
+					id="siguienteDocPLD"
+					onstart="return  validateNextMenu('N');"
+					oncomplete="location.reload();"
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/documentationAndPld::8::menu6" />
+			</p:commandLink>
+			
+			<!-- oncomplete="closeMessageProcessing();" -->
+			
+			<p:commandLink
+					id="siguienteCierre"
+					onstart="return  validateFileUpload('S');"
+					oncomplete="location.reload();"
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/cierre::6::menu7" />
+			</p:commandLink>
+			
+			<p:commandLink
+					id="siguienteBasicosReview"
+					onstart="return  validateNextMenu('N');"
+					oncomplete="location.reload();"
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/basicdata::2::menu1" />
+			</p:commandLink>
+			
+			<p:commandLink
+					id="nextInvestor"
+					onstart="return  validateNextMenu('N');"
+					oncomplete="location.reload();"
+					actionListener="#{navigationBean.cambiaPagina}"
+					immediate="true" 
+					ajax="true"
+					update=":actualPage :form_menu_mbl:hiddenactios">
+					<f:attribute name="section" value="registro/investor/Ibeneficiaries::2::menu2" />
+			</p:commandLink>
+
+			</h:form>
+			<h:form id="changeButtons">
+				<p:commandLink
+						id="countPorcent"
+						actionListener="#{navigationBean.cambiaPorcentBasicos}"
+						immediate="true" 
+						update=":form_menu_mbl"
+						ajax="true"
+						>
+				</p:commandLink>
+				<p:inputText value="#{navigationBean.porcentBasic}" id="porcBasic">
+					<p:ajax event="blur"></p:ajax>
+				</p:inputText>
+			</h:form>
+		</div>
+
+</h:body>
+</html>

@@ -1,0 +1,40 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">			
+					
+	<style>
+	#select-type-note, 
+	#select-note-priority,
+	#select-motive-note
+	{
+		width: 360px ! important;
+		font-size: 1em ! important; 
+		height: 28px ! important; 
+		background: none repeat scroll 0% 0% transparent ! important;
+		box-shadow: 0px 0px 0px 0px rgb(194, 194, 194) ! important; 		
+	}
+	</style>
+	
+	<p>Seleccione el tipo de nota</p>
+	
+	<div class = "main_selectmenu_tipo_nota" style = "width: 344px !important; border: solid 0px; height: 28px !important;" >															
+		<h:selectOneMenu id = "select-type-note" value = "#{summaryRequest.notas.tipo_nota_SELECTED}">
+						 
+			<f:selectItem itemValue = ""  itemLabel = ""/>
+					
+			<f:selectItems value        = "#{summaryRequest.notas.lista_tipo_nota}" 
+						   var          = "notetype" 
+						   itemLabel    = "#{notetype.name}" 
+						   itemValue    = "#{notetype.noteTypePk.note_type_id}"
+						   itemDisabled = "#{notetype.noteTypePk.note_type_id == 5}"/>	
+						   										
+			<p:ajax event      = "change" 
+				    listener   = "#{summaryRequest.notas.listener_tipo_nota_SELECTED}" 
+				    oncomplete = "checkNoteType(xhr, status, args);" 
+				    update     = "pnlMotiveNote" />		
+																
+		</h:selectOneMenu>																							
+	</div>	
+</ui:composition>	

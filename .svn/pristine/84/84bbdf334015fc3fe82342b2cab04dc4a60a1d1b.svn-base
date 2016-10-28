@@ -1,0 +1,84 @@
+/*
+ * ----------------------------------------------
+  	FdC:         [11.Junio.2014]
+  	Folder:      css/templates/header/header.css
+  	Programador: Damián Tapia Nava
+ * -----------------------------------------------
+ */
+
+@CHARSET "UTF-8";
+
+div.main_secciones
+{
+	width:auto;	
+	
+	margin: -1px auto 0;		
+	
+	background-color: rgba(255,255,255,1.0);
+	
+	border:0px solid black;	
+}
+
+div.main_lista_secciones
+{
+	width:790px;
+	
+	margin:1px auto;	
+			
+	overflow:hidden;
+	
+	border:0px solid black;
+	
+	margin-right: 330px !important;
+}
+
+div.main_lista_secciones div
+{		
+	margin:0 auto;
+	padding:0px 1em;
+	padding-top:2px;
+	
+	float:right;
+	cursor:pointer;
+	
+	font-family: "Helvetica_Neue";
+	font-size: 11.3pt;
+	
+	border:0px solid black;
+}
+
+div.main_lista_secciones div:hover
+{		
+	margin:0 auto;
+	padding:0px 1em;
+	padding-top:2px;
+	
+	float:right;
+	
+	font-family: "Helvetica_Neue";
+	font-size: 11.3pt;
+	
+	background-color: #0f75bd;
+}
+
+div.main_lista_secciones p
+{
+	margin:0 auto;
+	padding:0px 2px;
+	
+	float:right;
+	
+	border:0px solid black;
+}
+
+div.main_lista_secciones div a
+{		
+	color: black;
+	text-decoration: none;
+}
+
+div.main_lista_secciones div a:hover
+{		
+	color:white;
+	text-decoration: none;
+}

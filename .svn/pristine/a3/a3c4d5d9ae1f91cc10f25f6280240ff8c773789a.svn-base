@@ -1,0 +1,204 @@
+<ui:composition
+	xmlns	 = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/secciones/diagnostico_financiero/diagnostico.css" />
+
+<script>
+var graphicRevolventes = null;
+var graphic4 = new Array();
+</script>
+
+<script type = "text/javascript" src = "../resources/js/diagnostico.js" />
+
+<div    id = "dvContPersonalData" 
+		     class = "detailsControlTable clssControlBuro" 
+		     style = "display: block; min-height: auto !important; margin-bottom: 20px !important; " >
+		 
+<h:panelGroup id="pnlCntDgnstc">
+		 
+	<div id = "diagnostico_financiero_container" class = "centerPosition">
+	
+	
+		
+		
+		<div class="avatar_colDer">
+			<h3 class="titulo_verde">Diagnóstico Financiero</h3>
+			<div id = "avatar_cliente">
+				<img class="left" alt="avatar cliente" src="../resources#{diagnostico.imagenProspecto}" />
+			</div>
+			
+			<div class="diagnostico_colDer">
+				
+					<h4 class="titulo_negro">#{diagnostico.proyectloan.proyect.name}</h4>
+				
+				<div>
+					<table>
+						
+						<tr>
+							<td colspan="4" >Fecha de Consulta: #{diagnostico.fecConsulStr}</td>
+						</tr>
+					
+						<tr>
+							<td width="40%" colspan="2"><strong>Crédito solicitado:</strong></td>
+							<td  colspan="2"><strong>Actividad económica:</strong></td>
+						</tr>
+						<tr>
+							<td style="width: 15px !important;">
+								
+								<i class="fa fa-usd"></i>
+							</td>
+							<td>
+							
+								<h:outputText value="#{diagnostico.proyectloan.ammount}">
+								    <f:convertNumber currencySymbol="$" groupingUsed="true"
+								                     maxFractionDigits="2" type="currency" locale="es_MX" />
+								</h:outputText>
+								
+							</td>
+							<td style="width: 15px !important;">
+								<i class="fa fa-child"></i>
+							
+								
+							</td>
+							<td><div>#{diagnostico.actividad_economica}</div></td>
+						</tr>
+						<tr>
+							<td>
+								<i class="fa fa-calendar"></i>
+							</td>
+							<td>
+								#{diagnostico.proyectloan.term_id} #{diagnostico.frequencyStr}
+							</td>
+							<td>
+								<i class="fa fa-clock-o"></i>
+							
+							</td>
+							<td>#{diagnostico.experiencia}</td>
+						</tr>
+						<tr>
+							<td>
+								<i class="fa fa-money"> </i>
+							
+							</td>
+							<td>Cuota Kubo: 
+								<h:outputText value="#{diagnostico.proyectloan.payment}">
+								    <f:convertNumber currencySymbol="$" groupingUsed="true"
+								                     maxFractionDigits="2" type="currency" locale="es_MX" />
+								</h:outputText>
+								
+							</td>
+							<td>
+								<i class="fa fa-wrench"></i>	
+							</td>
+							<td>#{diagnostico.proyectloan.proyect.purpose.name}</td>
+						</tr>
+					</table>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div class="graphsHistorialCredito" style="position: relative; width: 100%; margin-top: 10px;" >
+			<div class="bloqIzq" >
+				<div class="DBloques BCredito">
+							<h4>Buró de Crédito</h4>
+							
+							<h6>Score: <strong>#{diagnostico.proyectloan.bc_score}</strong></h6>
+					
+				</div>
+				
+				<div class="DBloques KFCredito">
+
+					
+						<h4 >kubo.financiero</h4>
+						
+						<h6>Score:<strong>#{diagnostico.proyectloan.kubo_score_a}#{diagnostico.proyectloan.kubo_score_b}</strong> </h6>
+						
+						
+					</div>
+				
+				<div id="bloqueDiagnostico" class="risk#{diagnostico.proyectloan.kubo_score_a}">
+					#{diagnostico.proyectloan.kubo_score_a}#{diagnostico.proyectloan.kubo_score_b}
+				
+				</div>
+				
+				
+			</div>
+			
+			<div class="bloqDer">
+					<h4>Historial de créditos</h4>
+					<div id="creditosGrp"></div>
+			</div>
+		
+		</div>
+		
+		<div id = "nivel_endeudamiento_container">
+		
+			<p><strong class="orange" style = "color: #439539; font-size: 1.15em;">Nivel de endeudamiento</strong></p>
+			
+			<div id="chart_div_area3"></div>
+			
+		</div>
+		
+		<div class="creditosRevolventes">
+			<p><strong class="orange" >Créditos Revolventes</strong></p>
+			
+			<h:panelGroup rendered="#{diagnostico.limite_cred>0}">
+				<div class="limiteCredito">
+					Límite total de crédito: 
+					<strong>
+						<h:outputText value="#{diagnostico.limite_cred}">
+						    <f:convertNumber currencySymbol="$" groupingUsed="true"
+						                     maxFractionDigits="2" type="currency" locale="es_MX" />
+						</h:outputText>
+					</strong>
+				</div>
+				
+				<div>
+					Tienes <b>#{diagnostico.lineas_credito} de crédito</b> abiertas<br />
+					De estas <b>#{diagnostico.lineas_credito} de crédito</b> estás ocupando el <b>#{diagnostico.porc_usado_credito}</b> de tu límite total de crédito
+				</div>
+				
+				<div style="overflow:hidden;" id="chart_div_rev" ></div>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{diagnostico.limite_cred==0}">
+			
+				<div class="lineasCuenta">
+					El usuario no cuenta con líneas de crédito abiertas
+				</div>
+			
+			</h:panelGroup>
+			
+		</div>		
+	</div>
+	
+	<div class = "imprimir_panel_container" onclick = "imprimir_panel('diagnostico_financiero_container');">		 
+		<img src = "../resources/img/imprimir.png" border = "0" />
+	</div>	
+	
+	<h:outputText value="#{diagnostico.scriptGrp}"  escape="false" />
+	<h:outputText value="#{diagnostico.scriptGrp2}" escape="false" />
+	<h:outputText value="#{diagnostico.scriptGrp3}" escape="false" />
+	
+</h:panelGroup>
+	
+	<div style = "display: none;">	
+		<p:commandLink id             = "btnInitDagns" 
+					   immediate      = "true" 
+				       actionListener = "#{diagnostico.inicializaDaignostico}" 
+				       update         = "pnlCntDgnstc" 
+				       oncomplete     = "drawChartsDgn();" 
+				       onstart        = "return displayMessageProcessing('msgprocessing', false);" />	
+	</div>
+		 
+		     
+</div>
+	
+</ui:composition>

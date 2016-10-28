@@ -1,0 +1,178 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	
+	       
+	<div class="containerTitleUpload ingresosTitulo">
+		<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'cornerDisabled':'corner'}"></div>
+		<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">
+			<!-- div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCompIncome}</div -->
+			<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Comprobantes de ingreso</h3></div>
+			<p:graphicImage styleClass = "validatorClass" 
+							style      = "float:right;display:#{addPldDocument.dispCheckCompIncome}" 
+							id         = "checkTypeLoan" 
+							url        = "../resources/img/check.png" />
+								<div class="leyendas3Meses">
+					
+					
+				</div>	
+					<!-- >h4 class="notaVerde">Obligatorio subir los últimos 3 más recientes.</h4-->	
+		</div>	
+		
+	</div>
+
+	<div class="dvContent2">
+	
+			
+		<h:form id="frm_loan" enctype="multipart/form-data" prependId="false">
+			<div class="field selectsDocumentos" style="margin:0;">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl"  value="Elige el tipo de comprobante que tienes a la mano:" />							
+				</div>
+			
+				
+		
+				
+				<div  class="dvElementLength"  style="clear:both;" >
+					<div class="selectNuevo" >
+						<h:selectOneMenu  id="type_loan"   styleClass="elementStlSelAddress comboSelAction" value="#{addPldDocument.typeCompIncome}" onchange="comprobantesMultiples('#type_loan', '#rubroIngresos', '#listloan', '#file_compIncome' )">
+							<f:selectItem itemValue=""  itemLabel="Selecciona"/>
+							<f:selectItems value="#{addPldDocument.listCboIncome}" var="type" itemLabel="#{type.name}" itemValue="#{type.fileTypePk.file_type_id}"/>
+							<p:ajax event="change" onstart="return validateFileUploadCombo('type_loan');" ></p:ajax>
+
+						</h:selectOneMenu>	
+					</div>
+				
+					<div id="dvtype_loan" style="display: none;width: 97%;position: relative;">
+						<span style="position: absolute; left: 112px;top: -3px;"></span>
+						<p:fileUpload id="file_compIncome" styleClass="#{sessionBean.mobile?'custumStlFileUpload':'custumStlFileUploadPreview'}  btnFileHidden" fileUploadListener="#{addPldDocument.handleFileUpload}"  style="margin-top:10px;"									    									    
+							    invalidSizeMessage="Tamaño del archivo inválido"
+							    invalidFileMessage="Tipo de archivo no válido."
+							    showButtons="false" 
+					            mode="advanced" 
+					            auto="#{sessionBean.mobile}"  
+					            label="+ Subir"
+					            sizeLimit="5242880"  
+					            allowTypes="/(\.|\/)(gif|jpe?g|png|pdf|PDF)$/"/>
+					        <div id="rubroIngresos" class="comprobantes_multiple">
+					        		<div class="dvLabel">
+											<h:outputLabel styleClass="labelsStl tituloTipo"  >Sube <sup></sup> <span>3</span> <strong></strong> <u>más recientes</u></h:outputLabel>							
+									</div>
+									<!-- 
+								<div class="btn_comprobante" onclick="btn_comprobante(this, '#file_compIncome')">
+								<p>1.</p>
+									  <label><strong class="textBtn" >+ Subir</strong></label>
+									
+								</div>
+								<div class="btn_comprobante" onclick="btn_comprobante(this, '#file_compIncome')">
+									<p>2. </p>
+									  <label><strong class="textBtn">+ Subir</strong></label>
+								</div>
+								<div class="btn_comprobante" onclick="btn_comprobante(this, '#file_compIncome')">
+									<p>3.</p>
+										  <label><strong class="textBtn">+ Subir</strong></label>
+								</div>
+								 -->
+								<div class="inputDocuMultiples">
+					
+									<h:inputText value="#{addPldDocument.typeCompIncome}"  id="inputDocuMultiples"  >
+										<p:ajax event="blur" />
+									</h:inputText>
+								</div>	
+			
+							</div>    					        						
+					</div>	
+							<div class="avisoDocs">
+						<i class="fa fa-caret-up"></i>
+							Obligatorio subir los últimos 3 más recientes.
+						
+						</div>							
+				</div>
+			</div>
+			
+		
+				<div  class="dvElementLength"  >
+					<h:panelGroup  id="listloan" class="contenedor_docs">
+					<ui:include src = "../../subir_otrodoc.xhtml"/>
+						<script>
+							actualizacionListadoDocumentos ("#listloan");
+							resetar_indices();
+							$("#type_loan").removeClass("lleno");
+							$("#type_loan").removeClass("vacio");
+					
+							setTimeout(function(){	
+							 	
+								valorSelect("#type_loan", "#listloan" );
+							
+							},500);
+						
+							
+							
+						</script>
+					 <h:panelGroup rendered="#{addPldDocument.displayBussiness=='block'}">
+						 <script>
+						 /*
+						 	setTimeout(function(){	
+						 
+
+						 	var valueOptions = ['9','48','49','50','51','52','53', '54', '55','56'];
+						 	eliminarOpciones (valueOptions, "Factura o nota de compra (01)", "Factura o nota de compra (2)", "Factura o nota de compra (3)", 9, 48, 49, "Factura o nota de compra");
+
+
+							},300);
+						 */
+						 </script>
+						
+					</h:panelGroup>
+				     <h:panelGroup rendered="#{addPldDocument.displayBussiness=='none'}">
+						  <script>
+						  	<!--
+						 	setTimeout(function(){	
+
+
+						 		var valueOptions = ['10','57','58'];
+						 		eliminarOpciones (valueOptions, "Recibo de nómina (01)", "Tu recibo de nómina (2)", "Tu recibo de nómina (3)", 10, 57, 58, "Recibo de nómina");
+
+							},300);
+						  	-->
+						 </script>
+					</h:panelGroup>
+					<h:panelGroup   rendered ="#{addPldDocument.lDocAddedCompIncome.size() eq 1 }" >
+						<span class="doc_proporcionado" >
+							Has proporcionado el siguiente documento
+						</span>
+					</h:panelGroup>	
+					<h:panelGroup   rendered ="#{addPldDocument.lDocAddedCompIncome.size() gt 1 }" >
+						<span class="doc_proporcionado" >
+						Has proporcionado los siguientes documentos
+						</span>
+					</h:panelGroup>	
+						
+						<ui:repeat   var="loopLoan" value="#{addPldDocument.lDocAddedCompIncome}">
+	
+							
+							  <div>
+							  		<figure><img src="../resources#{loopLoan.location_thump}" /></figure>
+									<small><i class="fa fa-check"></i>#{loopLoan.uploaded_text}</small>
+									<fieldset class="btn_imagenes">
+										<span onclick="return ejecutaAccion(this, '#{loopLoan.file_type_id}','#{loopLoan.proyect_loan_id}')" class="cambiar"><i class="fa fa-pencil-square-o"></i> </span>
+										<span onclick="return eliminarElemento(this, '#{loopLoan.company_id}','#{loopLoan.file_id}', '#{loopLoan.file_type_id}', '#{loopLoan.prospectus_id}', '#{loopLoan.proyect_loan_id}', '#{loopLoan.location}')" class="eliminar"><i class=" fa fa-trash"></i></span>
+									</fieldset>
+								</div>
+
+
+						</ui:repeat>
+						
+						
+						
+						
+					</h:panelGroup>														
+				</div>
+			
+		</h:form>
+	</div>
+	
+</ui:composition>	

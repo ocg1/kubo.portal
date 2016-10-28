@@ -1,0 +1,109 @@
+doctype html
+mixin input-horizontal(col_label, label, col_input, type, placeholder, id, name)
+  .form-group
+    label(class="labelform control-label col-md-#{col_label}") #{label}
+    div(class="col-md-#{col_input}")
+      input.form-control(type=type, name=name, id=id, placeholder=placeholder)
+  
+html(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='user-scalable=false')
+    title Signature Hola Banco
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/signature.css')
+    link(rel='stylesheet', href='/stylesheets/animate.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500italic,500,700italic,700,900,900italic', rel='stylesheet', type='text/css')
+    //- meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    style(type='text/css').
+      img.wp-smiley,
+      img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+      }
+  body#body.body.single.single-post.postid-863.single-format-standard
+
+
+
+    #animatedModal
+      #tarjeta-modal.tarjeta-login-modal
+        center
+          img.close-animatedModal.btn-close(src="/images/close.png")
+        .container
+          .row
+            .col-xs-12.col-md-6.col-md-offset-3
+              .row.alerta-modal
+                .col-xs-12
+                  | Podrás borrar tu firma las veces que quieras antes de firmar tu contrato.
+
+                .col-xs-8.col-xs-offset-2.col-md-6.col-md-offset-3
+                  a#form-next.btn.btn-primary.btn-respon-form.btn-modal() Entendido
+
+    #containerApp.container
+      .col-md-10.col-md-offset-1.col-xs-12
+        #tarjeta-login.tarjeta-login
+          .titulo.Bold
+            .col-md-6
+              .img-logo-cont
+                img.logo_header(src="/images/logo_kubo.png")
+            .col-md-6
+               br
+               .img-firma
+                img#img-firma.der(src="/images/sig2.png")
+            h1 &nbsp
+          .contenido
+            .container-form
+              #formApp.col-md-8.col-md-offset-2
+                #wrapper.hfeed: .firma: #main: #container: #content(role='main'): div
+                  h1 Firma de contrato
+                  h2.
+                    Ingresa los siguientes datos para continuar con tu registro.
+                  .row
+                    form#form-datos.form-horizontal(action='./datos?id=#{id}' method='POST')
+                      +input-horizontal(3, "Nombre *", 9, "text", "Nombre", "nombre", "nombre")
+                      //- +input-horizontal(3, "Segundo nombre", 9, "text", "Segundo nombre", "segundo", "segundo")
+                      //- +input-horizontal(3, "Apellido paterno *", 9, "text", "Apellido paterno", "paterno", "paterno")
+                      //- +input-horizontal(3, "Apellido materno *", 9, "text", "Apellido materno", "meterno", "materno")
+                      //- +input-horizontal(3, "Código Postal *", 9, "text", "#", "cp", "cp")
+                      //- +input-horizontal(3, "Teléfono celular *", 9, "text", "044/045 - 10 dígitos", "telefono", "telefono")
+                      +input-horizontal(3, "", 9, "hidden", "", "sizeScreen", "sizeScreen")
+                      +input-horizontal(3, "", 9, "hidden", "", "sizeScreenX", "sizeScreenX")
+
+                      .txt-ob
+                        | * Campos obligatorios
+                      center
+                        //- input.btn.btn-primary.btn-respon-form#sendBtn(type='submit', value='Continuar')
+
+
+                        a.btn.btn-primary.btn-respon-form-sub#sendBtn(href="#animatedModal") Continuar
+
+
+
+    script(type='text/javascript', src='/javascripts/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.mobile.custom.min.js')
+    script(type='text/javascript', src='/javascripts/detectmobilebrowser.js')
+    script(type='text/javascript', src='/javascripts/responsive.js')
+    script(type='text/javascript', src='/javascripts/bootstrap.js')
+    script(type='text/javascript', src='/javascripts/animatedModal.min.js')
+    script(type='text/javascript').
+
+      $("#sendBtn").animatedModal({
+          color: "rgba(255, 255, 255, 0.8)"
+        }
+        );
+
+      $("#form-next").click(function(){
+          $("#form-datos").submit();
+      }
+      );
+
+
+
+                

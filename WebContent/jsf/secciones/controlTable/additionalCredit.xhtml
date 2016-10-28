@@ -1,0 +1,48 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	<link rel = "stylesheet" type = "text/css" href="../resources/css/secciones/credito_adicional/credito_adicional.css" />
+
+	<script type = "text/javascript" src = "../resources/js/secciones/credito_adicional/credito_adicional.js" />
+
+	<h:form prependId = "false" >
+				
+		<h:panelGroup id = "pnlContPersonalData" >		
+			<ui:include src = "credito_adicional/informacion_del_acreditado.xhtml"/>
+		</h:panelGroup>
+		
+		<br />
+		
+		<ui:include src = "credito_adicional/estatus_del_credito.xhtml" />	
+		
+		<h:panelGroup id = "panel_continuar_generar_solicitud">	
+				
+			<h:panelGroup id = "pnlGralDocuments" rendered = "#{!additionalCredit.restructure}" >	
+			
+				<h:panelGroup id = "pnlContDocuments" rendered = "#{additionalCredit.renderDocuments}" >				
+					<ui:include src = "credito_adicional/generacion_de_nueva_solicitud.xhtml" />							
+				</h:panelGroup>
+				
+				<h:panelGroup id = "pnlContSuccess" rendered = "#{additionalCredit.renderSuccess}" >
+					<ui:include src = "credito_adicional/boton_ver_solicitud.xhtml" />	
+				</h:panelGroup>					
+				
+				<h:panelGroup id = "pnlContError" rendered = "#{additionalCredit.renderError}" >			
+					<ui:include src = "credito_adicional/error_al_generar_nuevo_credito.xhtml" />							
+				</h:panelGroup>
+				
+			</h:panelGroup>
+			
+			<h:panelGroup id = "pnlIsReestructure" rendered = "#{additionalCredit.restructure}">		
+				<ui:include src = "credito_adicional/reestructura_de_credito.xhtml"/>		
+			</h:panelGroup>
+					
+		</h:panelGroup>
+				
+		<ui:include src = "credito_adicional/panel_informacion_tipos_credito.xhtml"/>
+						
+	</h:form>			
+</ui:composition>

@@ -1,0 +1,41 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+	<p style = "clear: both;" />
+	
+	<div class = "dvContent" style = "float: left;  width: 180px">
+		<div class = "dvLabel" style = "width: 120px; float: left; margin:0">
+			<h:outputLabel value = "${msg.Block_text}" styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<div class="dvElement" style="width: 120px; float: left; padding: 0">
+			<h:inputText id = "actividad-mx-manzana" size = "4" 
+						 value = "#{summaryRequest.domicilio_actividad.address.mx_manzana}" 
+						 styleClass = "elementAddresMin editor-domicilio input-text">
+						 
+				<p:ajax event = "change"
+						oncomplete = "ActividadDomicilio.address_field_oncomplete(xhr, status, args);"  
+						listener = "#{summaryRequest.domicilio_actividad.init_address_field}"/>
+			</h:inputText>
+		</div>
+	</div>		
+	
+	<div class = "dvContent" style = "float: left; width: 135px">
+		<div class="dvLabel" style="width: 160px; float: left; margin: 0;">
+			<h:outputLabel value = "#{msg.Lt_text}" styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<div class="dvElement" style="width: 120px; float: left; padding: 0">
+			<h:inputText id = "actividad-mx-lote" size="4" 
+						 value = "#{summaryRequest.domicilio_actividad.address.mx_lote}" 
+						 styleClass = "elementAddresMin editor-domicilio input-text">
+						 
+				<p:ajax event = "change"
+						oncomplete = "ActividadDomicilio.address_field_oncomplete(xhr, status, args);" 
+						listener = "#{summaryRequest.domicilio_actividad.init_address_field}"/>
+			</h:inputText>
+		</div>
+	</div>	     
+</ui:composition>	

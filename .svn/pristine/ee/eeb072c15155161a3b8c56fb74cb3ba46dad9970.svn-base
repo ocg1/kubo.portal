@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets">
+				
+	<div style="display:none;" class="funciona_filosofia">
+		<article>
+			<a class='tip' title='Patrocinador' href="javascript:void(0);">
+				<img alt="patrocinador" src="resources/images/patrocinador.png" />
+			</a>
+            	            	 	
+			<h2>¿Qué es kubo.financiero?</h2>
+			
+             <div class="imagen">  
+             	<img alt=" Filosofía Kubo"  src="resources/images/kuboWEB.png" />		
+             </div>
+             
+             <div class="texto">                 
+				<p><i class="fa fa-check"></i><span>Somos la primer comunidad financiera en México especializada en Crowdfunding y Peer (P2P) Lending regulada por la Comisión Nacional Bancaria y de Valores.</span></p>
+				<p><i class="fa fa-check"></i><span>Nuestro objetivo es crear relaciones productivas que impulsen el desarrollo de las familias mexicanas a través de la oferta de servicios éticos y responsables.</span></p>
+				<p><i class="fa fa-check"></i><span>Para el equipo kubo.financiero es prioritario que los acreditados recciban menores tasas de interés y los inversionistas mayores rendimientos por su dinero.</span></p>
+            
+             </div>
+		</article>
+	</div>      				
+</ui:composition>				

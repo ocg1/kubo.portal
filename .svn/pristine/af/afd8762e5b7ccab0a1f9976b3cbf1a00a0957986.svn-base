@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:ui = "http://java.sun.com/jsf/facelets"
+		        xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">						
+	<h:panelGroup rendered = "#{sessionBean.prospectus_id != null}">
+		<div class = "main_bienvenido">
+			<p:commandLink  action  = "#{headerBean.getAction}">
+				<h:outputLabel  style = "cursor:pointer">
+					<span>¡Bienvenido </span> 
+					#{headerBean.name}!
+				</h:outputLabel>
+			</p:commandLink>
+		</div>
+		
+		<div class = "main_folio">
+			Folio: #{headerBean.trackId}
+		</div>
+		
+		<div style = "overflow: hidden; top: 0px; position: absolute; right: 10px; border: 0px solid black; margin-top: 3px !important; margin-bottom: 0px !important;font-size: 0.89em;">
+			<p style = "font-weight: bold; float: left; margin-right: 5px;  margin-top: 0px !important; margin-bottom: 0px !important;">Fecha Actual: </p>
+			<p style = "float: left;  margin-top: 0px !important; margin-bottom: 0px !important;">#{headerBean.fecha_acceso_ACTUAL}</p>
+			<!--<p style= "float: left">5 / 12 / 2014 11:41 a.m.</p>-->
+		</div>
+		
+	</h:panelGroup>
+</ui:composition>		

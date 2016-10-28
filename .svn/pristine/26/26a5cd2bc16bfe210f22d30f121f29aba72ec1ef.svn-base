@@ -1,0 +1,42 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
+		<div class = "orange">
+			<strong>#{summaryRequest.actualProyect.loantype.loan_type_desc} </strong>
+		</div>			
+	</h:panelGroup>			
+															
+	<div class = "clear smallGray" style = "width: 180px; overflow: visible; margin-top: 5px; ">
+		<div style = "overflow: visible; float: left;">						
+			<ui:include src = "editor-tipo-credito/bitacora.xhtml" />
+		</div>		
+										
+		<p:inplace widgetVar = "editorTipoCredito"
+				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
+		 		   label     = "#{summaryRequest.editor_tipo_credito.tipo_de_credito}" >
+		
+			<p:ajax event = "save" 
+					immediate = "true"
+				    update   = "editor-tipo-credito"
+				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+					listener   = "#{summaryRequest.editor_tipo_credito.listener_guardar_cambios}"/>
+		 	
+		 	<ui:include src = "editor-tipo-credito/tipo-de-credito.xhtml" /> 							 	
+			<ui:include src = "editor-tipo-credito/motivo.xhtml" />
+			<ui:include src = "editor-tipo-credito/guardar-cancelar.xhtml" />
+		</p:inplace>							
+	</div> 		
+	
+	<script>
+		function listener_guardar_cambios(xhr, status, args)
+		{
+			$("#editor-tipo-credito-motivo").val("");				
+			
+			console.log("listener_guardar_cambios(): OK");
+
+		}
+	</script>
+</ui:composition>	

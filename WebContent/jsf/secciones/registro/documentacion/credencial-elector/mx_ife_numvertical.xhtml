@@ -1,0 +1,38 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field ContenedorImagenMuestra">
+		<div class = "dvLabel" style = "width: 418px; clear: both;">
+			<h:outputLabel styleClass = "labelsStl" value = "Número OCR*" />
+			<span class="imagenDescripcion"><i onclick = "abrir_imagenreferencia(this);" class = "fa fa-question-circle nOCR"></i></span>
+		</div>
+
+		
+		<div class="dvElementAddres1">
+			<h:inputText id = "numero_vertical"  maxlength="13" 
+						 onkeypress = "return isNumberKey(event);"   
+						 value = "#{addPldDocument.naturalperson.mx_ife_numvertical}"
+						 styleClass = "elementAddres1  validatorClass hs_private hs_class numero_vertical" 
+						
+						>
+				<p:ajax event = "blur" listener = "#{addPldDocument.saveData}"/>
+			</h:inputText>
+			<p:watermark for = "numero_vertical" value="Son 13 números"/>
+		</div>
+		<div class = "imagen_referencia">
+			
+			
+				
+			<div class = "blindAction" onclick = "cerrar_imagenreferencia(this);"  >
+				X
+			</div>
+		        				 <figure>
+				 					<img src="../resources/img/credencial/OCRsmall.jpg" alt= "numero vertical"/>
+				 				</figure>
+				   		
+				   	</div>
+	</div>				
+</ui:composition>				

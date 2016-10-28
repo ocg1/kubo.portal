@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">	
+						
+						
+	<h:outputScript target="head" name="actividad-economica.js"          library="js/mx.com.kubo.mesa/solicitud/domicilio" />						
+	<h:outputScript target="head" name="listener_lista_coincidencias.js" library="js/mx.com.kubo.mesa/solicitud/domicilio"/>	
+	<h:outputScript target="head" name="zipcode.js"                      library="js/mx.com.kubo.mesa/solicitud/domicilio" />	
+	<h:outputScript target="head" name="guardar_edicion_vivienda.js"     library="js/mx.com.kubo.mesa/solicitud/domicilio" />
+	
+	<h:outputScript target="head" name="init_edicion_vivienda.js"                  library="js/templates/perfil_completo/perfil_del_cliente/vivienda" />
+	<h:outputScript target="head" name="validacion_formulario_edicion_vivienda.js" library="js/templates/perfil_completo/perfil_del_cliente/vivienda" />
+	<h:outputScript target="head" name="asignar_address_TOKEN.js"                  library="js/templates/perfil_completo/perfil_del_cliente/vivienda" />	
+	<h:outputScript target="head" name="mapa.js"                                   library="js/templates/perfil_completo/perfil_del_cliente/vivienda" />
+	<h:outputScript target="head" name="init_mapa_edicion_vivienda.js"             library="js/templates/perfil_completo/perfil_del_cliente/vivienda" />		
+	<h:outputScript target="head" name="listener_mapa_ubicacion.js"                library="js/templates/perfil_completo/perfil_del_cliente/vivienda" />				
+	
+	<h:outputStylesheet name="edicion_vivienda.css" library = "css/templates/perfil_completo" />	
+</ui:composition>				

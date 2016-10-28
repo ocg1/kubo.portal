@@ -1,0 +1,43 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "sectionDocuments">
+		
+		<p style="width: 200px; float: left;">
+			<strong class="orange">Documentación</strong>
+		</p>	
+		
+		<br style="clear:both;" />
+		<br style="clear:both;" />
+		
+		Selecciona los documentos que deseas volver a solicitar:
+		
+		<div style="font-size: 1.0em; margin-top: 20px;" >
+						
+			<ui:repeat var = "fileCat" value = "#{additionalCredit.listFiles}">
+			
+				<li>
+					<p>#{fileCat.nameCategory}</p>
+				
+					<ul>
+						<ui:repeat var = "file" value = "#{fileCat.listFiles}">
+					
+							<li>
+								<input id    = "#{file.file_id}::#{file.typeFile}::#{file.prospectus_id}"
+									   type  = "checkbox"
+									   class = "clCheck" />
+									   
+								<a href = "../jsf/templates/showpicture.xhtml?url=#{file.urlImg}" target = "_blank">
+									#{file.description}
+								</a>
+							</li>									  
+						</ui:repeat>
+				  	</ul>				  	
+				 </li>				 
+			</ui:repeat>					
+		</div>		
+	</h:panelGroup>
+</ui:composition>						

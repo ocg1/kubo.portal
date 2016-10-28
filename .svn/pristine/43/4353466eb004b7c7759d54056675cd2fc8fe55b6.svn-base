@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div class = "selectNuevo">
+		<h:selectOneMenu id         = "year" immediate = "true"
+					     value      = "#{basicData.birthday.year}" 
+					     disabled   = "#{navigationBean.disabledComponent('year')}"  
+					     onfocus    = "DatosPersonales.init_focus_date(2);"
+					     styleClass = "elementStlSelYear mapOff validatorClass requiredVerify hs_class">
+					     
+			<f:selectItem itemLabel = "Año " itemValue="0" />
+			
+			<f:selectItems value = "#{basicData.birthday.lista_years}"/>
+			
+			<p:ajax event = "change" update = "rfc comboDate curp"
+					listener   = "#{basicData.birthday.init_year}" 					 
+					oncomplete = "DatosPersonales.birthdate_on_complete(xhr, status, args);"/>
+		</h:selectOneMenu>
+	</div>
+</ui:composition>							

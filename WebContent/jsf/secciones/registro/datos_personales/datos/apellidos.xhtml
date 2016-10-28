@@ -1,0 +1,51 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="field">		
+				
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "Apellido paterno*"/>
+		</div>
+
+			<p:inputText id = "aPaterno" immediate = "true" 
+						 value = "#{basicData.naturalPerson.father_last_name}"
+						 onblur  = "actualizarNombre();"
+						 onfocus = "DatosPersonales.init_focus_date(1);"					  
+						 styleClass = "elementStl validatorClass validate[required,minSize[5]] text-input hs_class">
+						 
+				<p:ajax event = "blur"
+						oncomplete = "DatosPersonales.father_last_name_on_complete(xhr, status, args);"  
+						listener   = "#{basicData.guardaApellidoPaterno}"/>
+			</p:inputText>
+		
+			<p:watermark for = "aPaterno" value = "Escribe tu apellido paterno" />	
+	</div>
+	
+		<div class = "field">		
+				
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "Apellido materno*"/>
+		</div>
+			
+			<p:inputText id = "aMaterno" immediate = "true" 
+						 value      = "#{basicData.naturalPerson.mother_last_name}"
+					     onfocus = "DatosPersonales.init_focus_date(1);" 					      
+					     styleClass = "elementStl validatorClass hs_class" >
+					 
+				<p:ajax event = "blur"
+						oncomplete = "DatosPersonales.mother_last_name_on_complete(xhr, status, args);"  
+						listener   = "#{basicData.guardaApellidoMaterno}"/>
+			
+		   </p:inputText>
+		
+			<p:watermark for = "aMaterno" value = "Escribe tu apellido materno" />	
+				   <h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
+				   		<script>
+				   				$("#aMaterno").removeClass("validatorClass");
+				   		</script>
+				   </h:panelGroup>
+	</div>			
+		
+</ui:composition>				

@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="photo_perfil">
+		<div class="relativeLoad33">
+	   		<p:graphicImage id="myphoto" url="../resources/#{basicData.photo}" alt="Cambia tu imagen de perfil"  />
+	   	</div>
+	   	
+	
+	    	
+	    		<p:fileUpload id = "file_logos" styleClass="custumStlFileUpload"  style="float:left;width:120px;"
+	    			fileUploadListener = "#{basicData.changePicture}"
+	    			oncomplete = "window.location.reload();"																   
+				    invalidSizeMessage = "Tamaño del archivo inválido." 
+				    invalidFileMessage = "Tipo de archivo no válido." 									    
+		            mode  = "advanced"   							            
+		            auto  = "true"            
+		            label = "Cambiar"					            
+		            sizeLimit  = "5242880" 								           											                                   
+		            allowTypes = "/(\.|\/)(gif|jpe?g|png)$/">						 
+				</p:fileUpload>
+			
+
+	</div>				
+</ui:composition>

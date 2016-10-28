@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"				
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "change-clabe-inter">
+		<p:commandLink rendered = "#{summaryRequest.changeBankData.hasChange}" immediate = "true" 
+					   actionListener = "#{summaryRequest.setListChanges(summaryRequest.changeBankData)}" 
+					   oncomplete = "showPopUpChanges();" 
+					   style="cursor:pointer;">
+					   
+				<h:graphicImage styleClass="change_icon"  
+						rendered="#{summaryRequest.changeBankData.hasChange}" url="../resources/img/change-icon.png" >
+				</h:graphicImage>
+		</p:commandLink>
+	</h:panelGroup>					
+</ui:composition>				

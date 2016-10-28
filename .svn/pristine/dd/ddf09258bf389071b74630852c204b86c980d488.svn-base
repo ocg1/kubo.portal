@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<p:commandLink styleClass = "bitacoraCambios" immediate = "true"
+				   rendered = "#{summaryRequest.documentacion.changedocument.hasChange}" 								   
+				   actionListener = "#{summaryRequest.setListChanges(summaryRequest.documentacion.changedocument)}" 
+				   oncomplete = "showPopUpChanges();" 
+				   style = "cursor:pointer;">
+			<h:graphicImage rendered = "#{summaryRequest.documentacion.changedocument.hasChange}" url = "../resources/img/change-icon.png" />
+	</p:commandLink>
+
+	<br style = "clear:both;" />	
+					
+</ui:composition>					

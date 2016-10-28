@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../../resources/favicon.ico"/> 
+
+        
+        <!-- CSS --> 
+        <link rel="stylesheet" type="text/css" href="../../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_formulario.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../../resources/css/laptop_medium.css" />        
+
+        <!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+
+        <script type="text/javascript" src="../../resources/js/jquery.slides.min.js"></script>
+         <script type="text/javascript" src="../../resources/js/banners_footer.js"></script>
+    	<script type="text/javascript" src="../../resources/js/scripts.js"></script>
+		<script src="../../resources/js/scripts_interior.js"></script>
+		<script type="text/javascript" src="../../resources/js/ga_event.js"></script>
+		<script data-cfasync="false" type='text/javascript' src="../../resources/js/chat.js" ></script>
+        <script type="text/javascript" src="../../resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="../../resources/js/browserDetect.js"/>
+        <script type="text/javascript" src="../../resources/js/easyscroll.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../../resources/js/mousewheel.js"></script>
+
+     
+		
+		<script type="text/javascript" >
+			 
+			
+			/******************GOOGLE*ANALYTICS**************************************/  
+			
+			  var _gaq = _gaq || [];
+
+			  _gaq.push(['_setAccount', 'UA-40649010-1']);
+
+			  _gaq.push(['_trackPageview']);
+
+			 
+
+			  (function() {
+
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+			  })();
+
+			  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+			
+			
+		
+		</script>
+		<script>
+		$(document).ready(function(){
+			$(".push_header").addClass("interior").show();
+			$(".sesion_expirada").stop().delay("2000").addClass("opacity");
+		});
+		
+		
+		
+		</script>
+</h:head>
+
+
+
+    <h:body>
+    	<noscript>
+			<!--  div style="display:none;">
+				<img height="1" width="1" style="border-style:none; display:none;" alt="" src="//www.googleadservices.com/pagead/conversion/979877773/?value=0&amp;label=Nsl7COuE2AgQjf-e0wM&amp;guid=ON&amp;script=0"/>
+			</div-->
+		</noscript>
+    
+    	<div class="kubo_container activa no_mapasitio">
+        	<h:form id="form_Prin">
+        	
+         <!-- chat -->
+          
+       	   <!-- header -->
+       	   <ui:include src="../../templates/header.xhtml" /> 
+  
+            <div class="content">
+            	
+                
+                <div class="inner_content">
+            	
+						<div class="sesion_expirada" id="meta-sim">
+							<figure>
+								<p:graphicImage url="../../resources/images/Gracias-01.png" ></p:graphicImage>
+							</figure>
+							
+						
+				
+								<h3>Próximamente iniciaremos con inversión y podrás comenzar a disfrutar de los beneficios que te da kubo.financiero para generar 
+								mejores rendimientos.</h3>
+								<h4>Te mantendremos informado sobre los proyectos en los que podrás invertir.</h4>
+							
+
+								<h3>Atentamente:</h3>
+								<div>
+								<p:graphicImage url="../../resources/images/firma-01.png" ></p:graphicImage>
+							</div>
+							</div>
+							
+						</div>
+                
+              
+           </div>
+            
+           
+        <!--footer mapa de sitio-->
+        <ui:include src="../../templates/footer_mapa.xhtml" />        
+        
+        <!--lightbox abrir sesion-->
+        <ui:include src="../../templates/modal_iniciar_sesion.xhtml" />
+         
+         <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+	 	<ui:include src="../../templates/modal_condusef.xhtml" />    
+	 	<ui:include src="../../templates/modal_cat.xhtml" />    
+	 	<ui:include src="../../templates/modal_gat.xhtml" />  
+        <!--lightbox sesion sin actividad-->
+        <ui:include src="../../templates/modal_sesion_inactiva.xhtml" />  
+        <!--Requisitos-->
+        <ui:include src="../../templates/modal_requisitos.xhtml" />
+      <!-- img border="0" src="http://r.turn.com/r/beacon?b2=cwqVjhy17fB71rs53qUiVJCy9z-Nks0hZdMSrGU9S6Egp1wj57Plw7FfebHAu3QLV11UC-CV5f0z1uBRV55udQ&amp;cid="/ -->
+          	<script>
+				setChat();
+			</script>	
+        </h:form>
+    </div>
+    </h:body>
+			<script type="text/javascript">
+			
+			_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+			
+			(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+			
+		</script>
+		
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+			<noscript>
+		<img border="0" src="https://r.turn.com/r/beacon?b2=cwqVjhy17fB71rs53qUiVJCy9z-Nks0hZdMSrGU9S6Egp1wj57Plw7FfebHAu3QLV11UC-CV5f0z1uBRV55udQ&amp;cid="/>
+		</noscript>
+		
+		
+	<!-- End Alexa Certify Javascript -->
+
+
+<!-- Pixel Invent -->
+	<noscript>
+		<img border="0" src="https://r.turn.com/r/beacon?b2=cwqVjhy17fB71rs53qUiVJCy9z-Nks0hZdMSrGU9S6Egp1wj57Plw7FfebHAu3QLV11UC-CV5f0z1uBRV55udQ&amp;cid;="/>
+	</noscript>
+	
+</html>

@@ -1,0 +1,291 @@
+@CHARSET "UTF-8";
+
+@font-face{
+   font-family: "lapiz";
+   font-style: normal;
+   font-weight: normal;
+   src: url(../fonts/WC_RoughTrad.otf);
+   
+}
+
+.backHeader{
+	margin: 0px;
+	width: 100%;
+	/* background-image: url("../img/banner_superior_sl.png"); 
+	background-color: #4ca330;*/
+	background-color: #439539;
+	
+	/* background-position: top;
+	background-repeat: repeat-x; */
+	height: auto;
+	overflow: auto;
+}
+.backHeaderRegistro{
+	margin: 0px;
+	width: 100%;
+	/* background-image: url("../img/banner_superior_sl.png"); 
+	background-color: #4ca330;*/
+	background-color: #FFFFFF;
+	
+	/* background-position: top;
+	background-repeat: repeat-x; */
+	height: 129px;
+	overflow: auto;
+}
+.barra{
+	margin: 0px;
+	width: 100%;
+	height: 30px;
+	/*background-color: #3670ac; /*azul*/
+	background-color: #333333;
+	overflow: auto;
+	
+}
+.barGreen{
+	margin: 0px;
+	width: 100%;
+	height: 1px;
+	/*background-color: #3670ac; /*azul*/
+	background-color: #C1D82F;
+	overflow: auto;
+	*overflow: hidden;
+	
+}
+
+.descBarra{
+	color: #EEEEEE;
+	margin-top: 0px;
+	font-size: .98em;
+}
+
+.descBarra span{
+	font-weight: bold;
+	font-size: 1.1em;
+}
+.marca{
+	color: #ff6405;
+}
+#entrar a{
+	font-size: 2.5em !important;
+	font-weight: bold !important;
+}
+
+.descBarra a{
+	color: #ffff00;
+	text-decoration: none;
+	font-weight: bold;
+}
+.descBarra a:hover{
+	text-decoration: underline;
+}
+.logo{
+	margin-top: 13px;
+	margin-bottom: 15px;
+	width: 200px !important;
+}
+.logo, .descBarra{
+	margin-left: 100px;
+}
+.post-it{
+	position: absolute;
+	z-index: 10;
+	right: 450px;
+	top: 110px;
+}
+.reloj{
+	/*font: 19px/1.231 lapiz,helvetica,arial,clean,sans-serif;*/
+	color: #439539;
+	/*position: absolute;
+	z-index: 11;
+	right:10px;
+	top: 50px;
+	width:100px;
+	height: 137px;*/
+}
+
+#navlistReg li
+{
+	display: inline;
+	list-style-type: none;
+	padding-right: 10px;
+	color:#222222;
+}
+.linksMenuSupReg, #navlistReg li a, #navlist2 li a{
+	text-decoration: none;
+	color:#000000;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.linksMenuSupReg:hover,#navlistReg li a:hover{
+	text-decoration: none;
+	color:#C1D82F;
+	cursor: pointer;
+}
+
+.tracking{
+	position: absolute;
+	top: 58px;
+	right: 335px;
+	width: 200px;
+	color: #C1D82F;
+	border: solid 0px #000000;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.mi_perfil{
+	position: absolute !important;
+	top: 58px !important;
+	right: 236px !important;
+	width: 100px !important;
+	color: #C1D82F !important;
+	border: solid 0px #000000 !important;
+	font-size: 0.6em !important;
+	font-weight: normal !important;
+}
+
+.mi_perfil a{
+	color: #C1D82F !important;
+	font-size: 0.6em !important;
+	font-weight: normal !important;
+}
+
+.perfilH{
+	color: #C1D82F !important;
+	font-size:  0.6em !important;
+	font-weight: normal !important;
+}
+.mi_perfil a:hover{
+	color: #C1D82F !important;
+	cursor: pointer !important;
+	font-size:  0.6em !important;
+	font-weight: normal !important;
+}
+
+#navlist,#navlistReg{
+	margin-top: 0px !important;
+	padding-top: 0px !important;
+}
+
+
+#navlist li
+{
+	display: inline;
+	list-style-type: none;
+	padding-right: 10px;
+	color:#222222;
+}
+
+.linksMenuSup, #navlist li a, #navlist2 li a{
+	text-decoration: none;
+	color:#FFFFFF;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+#navlist2 li a{
+	font-weight: normal;	
+}
+
+.linksMenuSup:hover,#navlist li a:hover{
+	text-decoration: none;
+	color:#C1D82F;
+	cursor: pointer;
+}
+
+.listMenu
+{
+	width: 700px;
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	z-index: 12;
+	padding: 3px;	
+}
+.listMenu2{
+	position: absolute;
+	top: 45px;
+	right: 10px;
+	z-index: 12;
+}
+
+.listMenuReg{
+	position: relative;
+	top: 0;
+	right: 0;
+	z-index: 12;
+	width: auto;
+	color: #000000 !important;
+	float: right;
+	margin: 0 0 2px;
+}
+
+#navlist2 li
+{
+	display: inline;
+	list-style-type: none;
+	padding-right: 20px;
+	color:#222222;
+}
+#navlist2 li a:hover{
+	cursor: pointer;
+	text-decoration: none;
+	color:#C1D82F;
+}
+.puntero:hover{
+	cursor: pointer;
+}
+.pipe{
+	color: #f1f2f2;
+}
+#headout{
+	position: absolute;
+	top: 45px ;
+	right: 10px;
+}
+
+.headTitleOut{
+	color: #C1D82F !important;
+}
+#menu{
+	height: 25px;
+	padding: 2px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+.clBeta{
+	color: #FCFCFC; 
+	position: absolute; 
+	left: 310px;
+	font-size: 0.98em; 
+	font-weight: 600;
+	top: 26px;
+}
+.accesoActualUltimo {
+	clear:both;
+	width: 236px;	
+	float:right;
+	color: #666;
+}
+
+.accesoActualUltimo > div{
+	clear:both;
+}
+.opcionesMesa  {
+	clear:both;
+	margin: 0;
+	margin-top: 7px;
+	padding: 0;
+	width: 380px;
+	float: right;
+	color: #666;
+}
+.opcionesMesa li {
+	font-size:20px;
+}
+
+.opcionesMesa li label, .opcionesMesa li a {
+		color: #C1D82F;
+			
+		font-size: 18px;
+}

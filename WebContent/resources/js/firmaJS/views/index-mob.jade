@@ -1,0 +1,124 @@
+doctype html
+html(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    title Signature Hola Banco
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/animate.min.css')
+    link(rel='stylesheet', href='/stylesheets/signature.css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500italic,500,700italic,700,900,900italic', rel='stylesheet', type='text/css')
+    style(type='text/css').
+      img.wp-smiley,
+      img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+      }
+  body.single.single-post.postid-863.single-format-standard
+    #animatedModal
+      #tarjeta-modal.tarjeta-login-ios-resp
+        center
+          img.close-animatedModal.btn-close(src="/images/close.png", width="40px;")
+        .container
+          .row.alerta-modal
+            .col-xs-12
+              | ¿Aceptas firmar el contrato?
+
+            .col-xs-5.col-xs-offset-1
+              a#form-next.btn.btn-primary.btn-respon-form.btn-modal-close.close-animatedModal() Cancelar
+            .col-xs-5
+              a#continueBtn.btn.btn-primary.btn-respon-form.btn-modal() Aceptar
+
+
+    #containerApp.containerp
+       //- .col-md-10.col-md-offset-1.col-xs-12
+       //-   #tarjeta-login.tarjeta-login
+       //-     //- .titulo.Bold
+       //-     //-  .col-md-6
+       //-     //-    .img-logo-cont
+       //-     //-      img.logo_header(src="/images/logo_kubo.png")
+       //-     //-  .col-md-6
+       //-     //-     br
+       //-     //-     .img-firma
+       //-     //-      img.der(src="/images/sig2.png", height="70px;")
+       //-     //-  h1  &nbsp
+       //-     .contenido
+       //-       .row
+       //-         .col-sm-12
+      .tarjeta-login-ios
+       #wrapper.hfeed: .firma: #main: #container: #content(role='main'): div
+         //- h1  Firma tu solicitud - mobi
+         //- h2.
+         //-   Para registrar tu firma, es necesario que firmes en este espacio, 
+         //-   utilizando tu mouse o el mouse pad.
+         .entry-content
+          p
+              script(type='text/javascript', src='/javascripts/jquery.min.js')
+              //- script(type='text/javascript', src='/javascripts/jquery.mobile.custom.min.js')
+              script(type='text/javascript', src='/javascripts/easeljs.min.js')
+              script(type='text/javascript', src='/javascripts/script.js')
+              script(type='text/javascript', src='/javascripts/bootstrap.js')
+              script(type='text/javascript', src='/javascripts/animatedModal.min.js')
+              script(type='text/javascript').
+                // <![CDATA[
+                $(document).ready(function() {
+                  init('canvas1');
+                  $('#continueBtn').on('click', function() {
+                    $('#signature').val(record.serialize());
+                    $('#firmaData').val(cacheCanvas.toDataURL());
+                    $('#playback').submit();
+                  });
+                  $('#clearBtn').on('click', clear);
+                });
+                // ]]&gt;
+           #drawingDiv
+             canvas#canvas1(height=canvasy, width=canvasx)
+             form(action='playback' method='POST' id='playback')
+               input.btn.btn-warning.btn-respon#clearBtn(type='button', value='Borrar')
+               input(type='hidden' name='signature' id='signature')
+               input(type='hidden' name='firma' id='firmaData')
+               input(type='hidden' name='id' value='#{id}')
+               //-  input.btn.btn-warning.btn-respon#playBtn(type='button', value='Reproducir')
+               //- input.btn.btn-primary.btn-respon#continueBtn(type='button', value='Continuar')
+               a.btn.btn-primary.btn-respon#btnSend(href="#animatedModal") Continuar
+               script(type='text/javascript').
+
+                $("#btnSend").animatedModal({
+                    color: "rgba(255, 255, 255, 0.8)"
+                });
+             //- input.btn.btn-default.btn-respon#deserializeBtn(type='button', value='Deserialize')
+             .btnsActions
+               
+               //- img#playBtn(src="images/play.png", height="40px;")
+               //- img#pauseBtn(src="images/pause.png", height="40px;")
+               //- .row
+               //-  .col-xs-6
+               //-    input.btn.btn-default#recordBtn(type='button', value='Record')
+               //-  .col-xs-6
+               //-    input.btn.btn-default#playBtn(type='button', value='Play')
+               //-  .col-xs-6
+               //-    input.btn.btn-default#pauseBtn(type='button', value='Pause')
+                //- input.btn.btn-default#clearBtn(type='button', value='Clear')
+             
+                br
+                form(action='playback' method='POST' id='playback')
+                   input(type='hidden' name='signature' id='signature')
+                   input(type='hidden' name='firma' id='firmaData')
+                   input(type='hidden' name='id' value='#{id}')
+                   .col-xs-6
+                    input.btn.btn-primary#continueBtn(type='button', value='Continuar')
+             br
+             //- input.btn.btn-default#serializeBtn(type='button', value='Serialize')
+           div
+           #serializerDiv(style='display: none;')
+             textarea#serDataTxt(cols='80', rows='8')
+             br
+             input.btn.btn-default.btn-respon#cancelBtn(type='button', value='Close')
+             input.btn.btn-default.btn-respon#okBtn(type='submit', value='Submit')

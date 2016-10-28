@@ -1,0 +1,35 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+<!--
+	<fieldset>  
+		<div class="dvContent2"> 
+			<div class="dvContent">
+				 <div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Purpose_loan}"/>
+				</div>
+			
+				<div  class="dvElementLength">
+				
+					<div class="styled-select-Address">	
+								
+						<h:selectOneMenu id="selectDestino" tabindex="1" styleClass="elementStlSelAddress  validatorClass" value="#{addMyLoan.purpose_id}">
+							
+							<f:selectItem itemValue=""  itemLabel=""/>
+							<f:selectItems value="#{addMyLoan.listPurpose}" var="purpose" itemLabel="#{purpose.name}" itemValue="#{purpose.purposePK.purpose_id}"/>
+							<p:ajax event="change" onstart="return validateMyLoanCombo('selectDestino');" listener="#{addMyLoan.updateProyectBlur}"></p:ajax>
+			
+						
+						</h:selectOneMenu>
+															
+					</div>
+						
+				</div
+			</div>	
+			<br/>
+		</div>							
+		</fieldset> 
+-->				
+</ui:composition>				

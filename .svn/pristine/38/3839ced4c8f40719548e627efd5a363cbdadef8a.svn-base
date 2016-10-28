@@ -1,0 +1,157 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+<div class="col_lateral">
+					<h2>Diseña tu portafolio</h2>
+              
+                    <form>
+                        <div class="nivel">
+                       		<h3>1ºNivel de riesgo / rendimiento</h3> 
+                       
+                       		<div>
+                           
+                                
+                                     <p:selectManyCheckbox>
+										 <f:selectItem itemLabel="A" itemValue="8%" />
+										 <f:selectItem itemLabel="B" itemValue="10%" />
+									     <f:selectItem itemLabel="C" itemValue="12" />
+										 <f:selectItem itemLabel="D" itemValue="14%" />
+									     <f:selectItem itemLabel="E" itemValue="16" />
+								    </p:selectManyCheckbox>
+								    
+								    <ul class="porcentajes">
+	                                    <li><label><span>8%</span></label></li>
+	                                    <li><label><span>10%</span></label></li>
+	                                    <li><label><span>12%</span></label></li>
+	                                    <li><label><span>14%</span></label></li>
+	                                    <li><label><span>16%</span></label></li>
+                                
+                                	</ul>
+                                
+                               
+                                
+                                <h5>Bajo <span>Alto</span></h5>
+                        	</div>	
+                        </div>
+                        
+                        <div class="proposito">
+                       		<h3>Monto</h3> 
+                       		
+                            <div>
+                                <p:selectManyCheckbox  layout="pageDirection" >
+									 <f:selectItem itemLabel="Para el negocio" itemValue="" />
+									 <f:selectItem itemLabel="Consolidar deudas" itemValue="" />
+									 <f:selectItem itemLabel="Mejorar tu casa" itemValue="" />	
+									 <f:selectItem itemLabel="Impulsar proyectos" itemValue="" />	
+							    </p:selectManyCheckbox>
+                             </div>   
+                          
+                        
+                        </div>
+                        <div class="monto">
+                      	  <h3>Finalidad</h3> 
+                          <div>
+                                <ul>
+                                    <li>
+                                    	<p:inputText id="monto_minimo"  type="text"></p:inputText>
+                                    	<p:watermark for="monto_minimo" value="00 000 000" /> 
+                                    	<span>Mínimo</span>
+                                    </li>
+                                    <li>
+                                    	<p:inputText id="monto_maximo"  type="text"></p:inputText>
+                                      	<p:watermark for="monto_maximo" value="00 000 000" /> 
+                                    	<span>Máximo</span>
+                                   </li>
+                                </ul>
+                                		
+                          </div>
+                         
+                        </div>
+                        <div class="tipo_cliente">
+                        	  <h3>Tipo de cliente</h3> 
+                              <div>	
+                             
+                                    
+	                                <p:selectManyCheckbox  layout="pageDirection" >
+										 <f:selectItem itemLabel="Es su primer crédito" itemValue="" />
+										 <f:selectItem itemLabel="Es cliente cumplido" itemValue="" />
+										 <f:selectItem itemLabel="También invierte" itemValue="" />	
+									
+								    </p:selectManyCheckbox>
+                                    
+                              </div>
+                        </div>
+                        
+                
+                        <div class="edad">
+                        	<h3>Edad</h3>
+                        	<div>
+                            	<ul>
+                                    <li>
+                                        <span>De </span>
+                                      
+                                      
+                                  
+                                        	<label class="selects">
+                                                  <i class="fa fa-angle-down"></i>
+                                                   <p:selectOneMenu value="" effect="fade">
+														   <f:selectItem itemLabel="22" itemValue="22" />
+														   <f:selectItem itemLabel="23" itemValue="23" />
+														   <f:selectItem itemLabel="24" itemValue="24" />
+														   <f:selectItem itemLabel="25" itemValue="25" />
+												   </p:selectOneMenu>
+											</label>
+                                        
+                                        	
+                                    	<small>Años</small>
+                                    </li>
+                                    
+                                     <li>
+                                        <span>A</span>
+                                       <label class="selects">
+                                                  <i class="fa fa-angle-down"></i>
+                                                   <p:selectOneMenu value="" effect="fade">
+														   <f:selectItem itemLabel="22" itemValue="22" />
+														   <f:selectItem itemLabel="23" itemValue="23" />
+														   <f:selectItem itemLabel="24" itemValue="24" />
+														   <f:selectItem itemLabel="25" itemValue="25" />
+												   </p:selectOneMenu>
+									    </label>
+                                    	<small>Años</small>
+                                    </li>
+                            	</ul>
+                            </div>
+                        </div>
+                        <div class="sexo">
+                        	<h3>Sexo</h3>
+                        	<div>
+                                    <p:selectManyCheckbox  layout="pageDirection" >
+										 <f:selectItem itemLabel="Femenino" itemValue="" />
+										 <f:selectItem itemLabel="Masculino" itemValue="" />
+								    </p:selectManyCheckbox>
+                            </div>
+                        </div>
+                 		<div class="botones_col">
+                        	
+                            <div>
+                                <fieldset>
+                               	 	<p:commandLink styleClass="search-btn" value="Buscar" onclick="ga('send','event', 'Filtros','Buscar')"></p:commandLink>
+                                    <p:commandLink styleClass="filtrar_ahora_mobile"  value="Filtrar ahora" onclick="ga('send','event', 'Filtros','Filtrar ahora')" />
+                                    <p:commandLink styleClass="cerrar_mobile"  value="Cerrar" onclick="ga('send','event', 'Filtros','Cerrar')" />
+                                    <p:commandLink styleClass="limpiar"  value="limpiar" onclick="ga('send','event', 'Filtros','Limpiar')" />
+                                    <p:commandLink styleClass="guardar_filtro"  value="guardar filtro" onclick="ga('send','event', 'Filtros','Guardar Filtro')" />
+                                    <p:commandLink styleClass="mis_filtros"  value="mis filtros" onclick="ga('send','event', 'Filtros','Mis filtros')" />
+                                    <p:commandLink styleClass="busqueda_avanzada" value="búsqueda avanzada" onclick="ga('send','event', 'Filtros','Búsqueda avanzada')" />
+                                   
+                                 </fieldset>
+                            </div>
+                        </div>       
+                 
+                        
+                    	
+                    </form>
+            
+                </div>
+</ui:composition>

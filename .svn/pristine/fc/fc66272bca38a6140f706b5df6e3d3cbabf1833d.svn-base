@@ -1,0 +1,47 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+ 
+
+<div id="conCondiciones" class="lightbox white">
+ <div class="close_lightbox"></div>
+	 	<div class="declaracion_portal">
+	 	
+                <a class="close_lightbox" href="#"></a>
+			<img class="logo_condiciones" src="#{configManaged.location}resources/images/logo_kubo.png"/>
+			<h2>Términos y condiciones <strong>kubo.financiero</strong> </h2>
+			
+			<div class="container1">
+
+<div class="div_scroll" >
+				<ui:include src="modal_condiciones_contenido.xhtml" />
+			</div>
+				
+			</div>
+	
+			
+			<div class="condiciones_btns">
+			    <p:commandLink styleClass="no_acepta callActionMedium btnGris"  value="No acepto" onclick="noAcepta();" />
+				<p:commandLink styleClass="si_acepta callActionMedium btnNaranja"  value="Acepto" onclick="acepta();" />
+				
+			</div>
+			
+			
+			
+			
+			
+			</div>
+			
+		    <div class="cargando">
+						<div class="loader">
+                        		<img src="#{configManaged.location}resources/images/loader.gif"/>
+                        		
+                        	</div>
+			</div>
+			
+		</div>
+		
+</ui:composition>

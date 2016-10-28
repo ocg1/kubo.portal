@@ -1,0 +1,569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<!-- MS --> 
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		
+		
+		
+		<!-- <script type="text/javascript" src="../resources/js/jquery-1.7.1.js"></script> -->
+		<script type="text/javascript" src="../resources/js/contenido.js"></script>
+
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script> 
+	
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	
+	<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		
+	<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script>
+	<script language="javascript" type="text/javascript" src="../resources/js/general.js"></script>
+	
+	<script language="javascript" type="text/javascript" src="../resources/js/preregfrm.js"></script>
+		
+	<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+	<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/ayudaStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capitulo1.css" />
+		<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="../resources/css/proyectos.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/inicio.css" />
+		
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />	
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/inicioResponsive.css" />
+		
+		<script type="text/javascript" src="../resources/js/backgroundJS.js"></script>
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css' />
+		<script>
+			
+			var msg;
+		
+			function validaResp(){
+				
+				if( typeof marcamillion === 'undefined' ){
+				
+				}else
+					if ( ($('#confPass').val()).length>0 ){
+				
+						if( $('#pass').val() != $('#confPass').val() ){
+							
+							alert("El valor de los campos es diferente. Por favor vuelva a intentarlo.");
+							$('#pass').val("");
+							$('#confPass').val("")
+							return false;
+							
+						}
+						
+					}
+				
+				displayMessageProcessing('msgprocessing',false);
+				return true;
+				
+			}
+			
+			
+			function saveAction(xhr, status, args){
+				
+				if(args.saveAction){
+					
+					$("#clickAction").click();
+					
+				}else{
+					
+					$("#errorAction").click();
+					$("#dvMsg").html( args.message );
+					closeMessageProcessing();
+				}
+				
+			}
+			
+			function showMsg(){
+				//alert( msg )
+				//$("#dvMsg").html(msg);
+				$("#dvMsg").show();
+				
+			}
+			
+			function hideMsg(){
+				
+				$("#dvMsg").hide();
+				$("#dvMsg").html("");
+				
+			}
+			
+			$(document).ready(function() {
+				
+				updateBackground() ;
+				
+			});
+			
+			function showResp(xhr, status, args){
+				
+				closeMessageProcessing();
+				
+				if(args.isvalid){
+					$("#dvButtonCheck").hide( "slow", function(){
+						
+						$("#dvChangeMailCont").slideDown('slow');
+						
+					});
+				}
+				else{
+					
+					$("#msgError").slideDown('slow',function(){
+						setTimeout(function(){
+								$("#msgError").hide( "slow");
+							}
+							,3500);
+					});
+					
+				}
+				
+			}
+			
+		</script>
+		<script>
+		
+		/******************GOOGLE*ANALYTICS**************************************/  
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-40649010-1', 'auto');
+		  ga('require', 'linkid');
+		  ga('require', 'displayfeatures');
+		  ga('send', 'pageview');
+
+	  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		
+		
+
+		
+		</script>
+		
+		<style>
+		
+			#dvChangeMailCont{
+				display: none;
+			}
+		
+			.contPR{
+			
+				min-height: 140px important;
+				
+			}
+			
+			#dvMsg{
+			
+				font-size: 0.9em;
+				color: #FF0000;
+				
+			}
+			
+			.bg {
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			display: none;
+		} 
+		
+		.barraMenu_ok{
+			background-color: rgba(255,255,255,0.5) !important; 
+		}
+		
+		#msgError{
+			color: #ff0000;
+			display: none;		
+		}
+			
+		</style>
+		
+		<title>kubo.financiero | Cambio de correo electrónico</title>
+		
+		<meta name="Description" content="Cambio de correo para usuarios registrados"/>
+		
+		
+	</h:head>
+	<h:body >
+		
+		<div id="header" style="width: 100%; margin: 0px;">
+			<ui:include src="templates/headContenido.xhtml" />
+		</div>
+		
+		<div id = "bg01" class="bg bgCl " style="display: block !important ;" > 
+			<img src="../resources/img/fotoshome-06-PC.jpg" />
+		</div>
+			
+		<h:form id="form_Prin" prependId="false" >	
+		
+			<div class="contFormPre" style="min-height: 200px important; position: relative; margin-right: 0px; height: auto !important; margin-left: auto; margin-right: auto;width: 400px; margin-top: 0px; margin-bottom: 80px; font-size: 0.95em; color: #333333; ">
+				
+				<div style="font-size: 1.25em; background-color: #FFFFFF; width: 99%; height: auto; overflow: auto; margin-left: auto; margin-right: auto; padding: 10px; padding-top: 25px;padding-bottom: 25px; " >
+				
+					<div style="font-size: 1.3em; color: #439539; font-weight: bold; width: auto; text-align: center; margin-left: auto; margin-right: auto;" >Cambio de Correo Electrónico</div>
+					<br />
+					<div class="dvContent" style="width: 99% !important;margin-bottom: 10px !important;" >
+						<div class="dvLabel">
+							<h:outputText value="Correo Actual" styleClass="labelsStl" ></h:outputText>
+						</div> 
+						
+						<div class="dvLabel">
+							<h:outputText      value = "#{changeMail.member.email}" 
+										  styleClass = "labelsStl" 
+										       style = "font-weight: bold;" />
+						</div>
+						
+					</div> 
+					
+					
+					<div class="dvLabel">
+						<h:outputText value="¿Recuerdas la contraseña de tu cuenta Kubo? " styleClass="labelsStl" ></h:outputText>
+					</div>
+					
+					<div class="dvElement">
+						
+						<h:selectOneRadio styleClass="labelsStl" style="font-size: 1.3em !important;" value="#{changeMail.rememberPass}" >  
+				            
+				            <f:selectItem itemLabel="Si" itemValue="1" />
+				            <f:selectItem itemLabel="No"  itemValue="2" />  
+				            
+				            <p:ajax event="change" listener="#{changeMail.validachange}" update="pnlCont" />
+				        </h:selectOneRadio>  
+						
+					</div>
+					
+					
+					<h:panelGroup id = "pnlCont">
+					
+					<h:panelGroup rendered = "#{changeMail.showPass}">						
+						<div class="dvContent">
+							<div class="dvLabel">
+								<h:outputText value = "#{msg.log_pwd}" styleClass="labelsStl"></h:outputText>
+							</div>
+							<div  class="dvElement clPassElement" >
+								
+								<p:inputText id   			 = "yourpass" 
+											 value 			 = "#{changeMail.yourpassword}" 
+											 onfocus		 = "$(this).removeClass('requiredClass');"  
+											 styleClass 	 = "elementStl"  
+											 type 			 = "password" 
+											 required        = "true" 
+											 requiredMessage = "Favor de introducir tu contraseña">
+											 
+									<p:ajax event="blur" ></p:ajax>
+								</p:inputText>
+								
+							</div>
+						</div>
+						
+						<div id="msgError" >
+							Lo sentimos, la información proporcionada es incorrecta.<br /> Inténtelo de nuevo.
+						</div>
+						
+						<div id="dvButtonCheck">
+								
+							<p:commandLink onstart        = "return displayMessageProcessing('msgprocessing',false);" 
+										   oncomplete     = "showResp(xhr, status, args);" 
+										   immediate      = "true" 
+										   update         = "pnlContEmail" 
+										   actionListener = "#{changeMail.validaMailPass}"  
+										   style = "text-decoration: none;" >
+										   
+								<div class="buttonPR">
+									<h:outputText value="Validar" />
+								</div>
+							</p:commandLink>
+						
+						</div>
+						
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{changeMail.showName}">
+							<div class="dvContent" style="width: 99% !important;margin-bottom: 10px !important;" >
+								
+								<div id="dvMsg">
+								</div>
+								<div class="dvLabel" style="width: 95% !important;" >
+									<h:outputText value="Favor de proporcionar los siguientes datos para corroborar tu identidad." styleClass="labelsStl" ></h:outputText>
+								</div>
+							</div>
+						
+							<div class="dvContent">
+								
+								<div id="dvMsg">
+								</div>
+								<div class="dvLabel">
+									<h:outputText value="#{msg.pr_name}" styleClass="labelsStl" ></h:outputText>
+								</div>
+								<div class="dvElement">
+									
+									<p:inputText id="name" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.newNaturalPerson.first_name}"  styleClass="elementStl validatorClass" >
+										<p:ajax event="blur" listener="#{changeMail.validachange}"></p:ajax>
+									</p:inputText>
+									
+								</div>
+								
+								
+								<div class="dvLabel">
+									<h:outputText value="#{msg.pr_secondName}" styleClass="labelsStl" ></h:outputText>
+								</div>
+								<div  class="dvElement">
+									<p:inputText id="second_name" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.newNaturalPerson.middle_name}" styleClass="elementStl" ><p:ajax event="blur"></p:ajax></p:inputText>
+									<p:tooltip for="second_name" styleClass="tooltipStl" value="Escribe aquí tu(s)  nombre(s) siguente(s), en caso de no contar con algún otro, deje este elemento vacio " showEvent="focus" hideEvent="blur"  showEffect="slide" hideEffect="slide" />
+								</div>
+								
+								
+								<div class="dvLabel">
+									<h:outputText value="#{msg.pr_lastName}" styleClass="labelsStl" ></h:outputText>
+								</div>
+								<div  class="dvElement">
+									<p:inputText id="aPaterno" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.newNaturalPerson.father_last_name}" styleClass="elementStl validatorClass validate[required,minSize[5]] text-input">
+										<p:ajax event="blur"></p:ajax>
+									</p:inputText>
+								</div>
+								
+								
+								<div class="dvLabel">
+									<h:outputText value="#{msg.pr_surName}" styleClass="labelsStl" ></h:outputText>
+								</div>
+								<div  class="dvElement">
+									<p:inputText id="aMaterno" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.newNaturalPerson.mother_last_name}" styleClass="elementStl validatorClass" >
+									<p:ajax event="blur"></p:ajax>
+									</p:inputText>
+								</div>
+								
+								<h:panelGroup id="pnlPhone" rendered="#{changeMail.displayPhone}">
+								
+									<div class="dvLabel">
+										<h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_cell_text}" />
+									</div>
+									<p />
+									<div style="width:280px !important; margin-left: 10px;" >
+										<h:outputLabel styleClass="labelsStl" value="044" style="font-size: 1.02em;"/>
+										<h:inputText id="lada_phoneCel_employ" maxlength="3" onkeypress="return isNumberKey(event);"  style="width:50px !important; margin-left: 5px !important;" styleClass="elementAddres1 validatorClass" value="#{changeMail.ladaCelProspectus}">						
+											<p:ajax event="blur" ></p:ajax>
+										</h:inputText>
+										<h:inputText id="phoneCel_employ" maxlength="8" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"   style="width: 172px !important;margin-left:5px !important;" styleClass="elementAddres1 validatorClass" value="#{changeMail.phoneCellProspectus}">
+											<p:ajax event="blur" ></p:ajax>
+										</h:inputText>
+									</div>
+								
+								</h:panelGroup>
+								
+								<h:panelGroup id="pnlZipCode" rendered="#{changeMail.displayZipCode}">
+								
+									<div class="dvLabel">
+										<h:outputLabel styleClass="labelsStl" value="Código Postal" />
+									</div>
+									<p />
+									<div style="width:280px !important; margin-left: 10px;" >
+										<p:inputText id="zip_code" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.zip_code}" styleClass="elementStl validatorClass" >
+											<p:ajax event="blur"></p:ajax>
+										</p:inputText>
+									</div>
+								
+								</h:panelGroup>
+								
+								<div id="msgError" >
+									Lo sentimos, la información proporcionada es incorrecta.<br /> Inténtelo de nuevo.
+								</div>
+								
+								<div id="dvButtonCheck">
+								
+									<p:commandLink onstart="return displayMessageProcessing('msgprocessing',false);" oncomplete="showResp(xhr, status, args);" immediate="true" update="pnlContEmail" actionListener="#{changeMail.validaInfo}"  style="text-decoration: none;" >
+										<div class="buttonPR">
+											<h:outputText value="Validar" />
+										</div>
+									</p:commandLink>
+								
+								</div>
+								
+							
+							</div>
+							
+						</h:panelGroup>
+								
+								<h:panelGroup id="pnlContEmail">
+									
+									<div class="dvContent">
+									
+									<div id="dvChangeMailCont">
+									
+										<h:panelGroup rendered="${changeMail.canShow}">
+									
+											<div class="dvLabel">
+												<h:outputText value="Tu nuevo correo electrónico" styleClass="labelsStl" ></h:outputText>
+											</div>
+											<div  class="dvElement">
+											
+												<h:panelGroup id="warningMail">
+													<div  >
+															
+														<div style="color: #FF0000; font-size: 0.9em;" >
+															
+															<h:outputText escape="false" value="#{changeMail.warningMail}"></h:outputText>
+															
+														</div>
+														
+													</div>
+												</h:panelGroup>
+											
+												<p:inputText id="email"  onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.email}" styleClass="elementStl" >
+													<p:ajax event="blur" listener="#{changeMail.validaEmail}" update="warningMail pnlButtonChange " ></p:ajax>
+												</p:inputText>
+											</div>
+											
+											<div class="dvLabel" style="width: 380px;">
+												<h:outputText value="Confirma tu nuevo correo electrónico" styleClass="labelsStl" ></h:outputText>
+											</div>
+											<div  class="dvElement">
+											
+												<h:panelGroup id="warningConfMail">
+						
+													<div >
+														<div style="color: #FF0000; font-size: 0.9em;" >
+															<h:outputText escape="false" value="#{changeMail.warningConfMail}"></h:outputText>
+														</div>
+													</div>
+													
+												</h:panelGroup>
+											
+												<p:inputText id="confemail" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.confMail}" styleClass="elementStl validatorClass validate[required,minSize[5],equals[email]] text-input" >
+													<p:ajax event="blur" listener="#{changeMail.confirmMail}" update="warningConfMail pnlButtonChange"></p:ajax>
+												</p:inputText>
+											</div>
+									
+										</h:panelGroup>
+									
+										<h:panelGroup rendered="#{changeMail.showName}" >
+											
+											<div class="dvLabel">
+												<h:outputText value="#{msg.pr_pwd}" styleClass="labelsStl"></h:outputText>
+											</div>
+											<div  class="dvElement clPassElement" >
+												
+												<p:inputText id="pass" value="#{changeMail.password}" onfocus="$(this).removeClass('requiredClass');"  styleClass="elementStl validatePass"  type="password" required="true" requiredMessage="Favor de introducir tu contraseña">
+													<p:ajax event="blur" ></p:ajax>
+												</p:inputText>
+												
+											</div>
+										
+										
+									
+											<div class="dvLabel">
+												<h:outputText value="#{msg.pr_confirmPwd}" styleClass="labelsStl"></h:outputText>
+											</div>
+											<div  class="dvElement">
+												
+												<h:panelGroup id="warningConfPass">
+							
+													<div >
+														
+														<div style="color: #FF0000; font-size: 0.9em;" >
+															<h:outputText escape="false" value="#{changeMail.warningConfPass}"></h:outputText>
+														</div>
+														
+													</div>
+												</h:panelGroup>
+												
+												<p:inputText id="confpass" onfocus="$(this).removeClass('requiredClass');" value="#{changeMail.confPass}"  styleClass="elementStlPwd validatorClass validate[required,minSize[5],equals[pass_input]] text-input"  type="password" style="font-size: 1.3em !important;"  required="true" requiredMessage="Favor de confirmar tu contraseña">
+													<p:ajax  event="blur" listener="#{changeMail.validaPass}" update="warningConfPass pnlButtonChange"  ></p:ajax>
+												</p:inputText>
+												
+											</div>
+											
+											<script>
+												inicializaValores();
+											</script>
+											
+										</h:panelGroup>
+										
+										<h:panelGroup id="pnlButtonChange">
+											<div id="dvButtonActivation" style="margin-left: auto; margin-right: auto;">
+												<p:commandLink onstart  = "return validaResp();" 
+															   disabled = "#{!changeMail.isChangeable()}" 
+															   style    = "text-decoration: none;" 
+															   action   = "#{changeMail.actualizaMail}" >
+													<div class="buttonPR">
+														<h:outputText value="Aceptar" />
+													</div>
+												</p:commandLink>
+											</div>
+										</h:panelGroup>
+										
+									
+									</div>
+									</div>
+									
+								
+								</h:panelGroup>
+								
+							
+						
+					</h:panelGroup>
+					
+					
+					
+				</div>
+			
+			</div>
+			
+			<div id="passHelp"  style="opacity: 1.87; position: absolute; display: none; border: 2px solid #CCCCCC; width:405px;height: auto;overflow: auto;">
+				<div class="arrow_leftHelp" style="top: 80px;  " ></div>
+				<div id="message" style="width:380px; padding: 8px 8px 8px 12px; height:auto; overflow: auto; background-color: #FFFFFF; ">
+					<div id="passTitle" style="font-size: 1.2em;" ><b>Tu contraseña debe contener:</b></div>
+					<div id="valLength" class="descVal" style="font-size: 1.07em;" >Al menos 8 caracteres.</div>
+					<div id="valVoc" class="descVal" style="font-size: 1.07em;">Al menos una vocal.</div>
+					<div id="valCnsnt" class="descVal" style="font-size: 1.07em;">Al menos una consonante.</div>
+					<div id="valNum" class="descVal" style="font-size: 1.07em;">Al menos un número</div>
+					<div id="passTitle2" style="margin-top: 7px;font-size: 1.2em;"><b>Tu contraseña NO debe contener:</b></div>
+					<div id="valName" class="descVal" style="font-size: 1.07em;">Tu nombre</div>
+					<div id="valUsr" class="descVal" style="font-size: 1.07em;">Tu nombre de usuario del correo electrónico</div>
+					<div id="valInst" class="descVal" style="font-size: 1.07em;">El nombre de la institución</div>
+					<div id="valCharCon" class="descVal" style="font-size: 1.07em;">Caracteres consecutivos</div>
+					<div id="valNumCon" class="descVal" style="font-size: 1.07em;">Números consecutivos</div>
+					<div id="valRepChar" class="descVal" style="font-size: 1.07em;">Un caracter repetido más de 2 veces consecutivas</div>
+					<div id="valMaxLength" class="descVal" style="font-size: 1.07em;">Más de 12 caracteres</div> 
+				</div>
+			</div>
+			
+		</h:form>
+		
+		<div id="header" style="width: 100%; magin-right: 0px; margin-bottom: 0px;">
+			<ui:include src="templates/footerContenido.xhtml" />
+		</div>
+		
+		<ui:include src="templates/msgProcessing.xhtml" />
+		
+	</h:body>
+</html>

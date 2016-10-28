@@ -1,0 +1,452 @@
+@CHARSET "UTF-8";
+
+.nombrePerfil
+{
+	font-size: 2.3em;
+	font-weight: bold;
+	color: #439539;
+	line-height: 41px;
+}
+
+.e-mail
+{
+	margin-top: 15px;
+}
+
+
+.password:hover
+{
+	cursor: pointer;
+}
+
+select
+{
+	height: 28px;
+}
+.target
+{
+	display: none;
+	font-size: 0.9em !important;
+}
+
+.menuSup li#perfil a
+{
+	/* background-color: #0f75bd; */
+	/* color: #FFFFFF; */
+	text-decoration: none;
+}
+
+.menuSup li.creditos a
+{
+	display: none;
+}
+	
+.pipememu
+{
+	display: none;
+}
+
+.panel_pregunta_seguridad
+{
+	font-size: 0.70em; 
+	clear: both; 
+	margin-left: 0; 
+	overflow: hidden; 
+	padding: 15px 0;
+}
+
+.photo_perfil {
+
+	float:left;
+	display:block;
+	width:17%;
+}
+
+.photo_perfil  .relativeLoad33 {
+	border: none !important;
+
+
+}
+
+
+.photo_perfil  .relativeLoad33 img {
+
+	width:100%;
+	height:auto;
+	display:block;
+
+
+}
+
+
+.photo_perfil  .fileupload-buttonbar {
+	width:100% !important;
+}
+
+.photo_perfil  .custumStlFileUpload .fileupload-buttonbar .ui-button {
+	
+		color:#fff;
+	text-transform:uppercase;
+	font-size:15px;
+	
+		padding: 2px 0;
+	margin:0 0 10px;
+	text-decoration:none;
+	text-align:center;
+	font-weight:400;
+	background-image:none !important;
+	
+		background: #fff !important;
+	text-decoration:none !important;
+	cursor: pointer;
+	display:block !important;
+	width:100% !important;
+
+		box-shadow: none !important;
+		border: none !important;
+		border-radius: 0;
+}
+
+.photo_perfil  .custumStlFileUpload .fileupload-buttonbar .ui-button:hover {
+			background: #548f39 !important;
+}
+.photo_perfil  #file_logos {
+	clear:both;
+	width: 100% !important;
+}
+
+.nombre_correo_contrasenia {
+	float:left;
+	display:block;
+	width: 44%;
+	margin:0 0 0 4%;
+	 font-family: 'Open Sans', sans-serif; 
+}
+.correo_electronico {
+	clear:both;
+	color: #666;
+	font-size:15px;
+	margin: 0;
+	overflow: hidden;
+}
+.correo_electronico label {
+	margin:0 10px 0 0;
+}
+.contrasenia  {
+	overflow:hidden;
+	margin: 0 0 15px;
+	color: #666;
+}
+.contrasenia p {
+	float:left;
+	color: #666;
+	font-size:15px;
+	margin: 10px 50px  0 0;
+}
+.nombre_correo_contrasenia  .nombrePerfil {
+	width: 100% !important;
+	line-height:30px;
+	margin: 0 0 25px;
+	font-size: 21px !important;
+	
+}
+.opciones_cambiar {
+	width: 30%;
+	float:right;
+	border-top:#548f39 solid 1px;
+	
+}
+.opciones_cambiar ul {
+	margin:0 0 20px;
+	padding:0;
+}
+.opciones_cambiar ul li {
+	list-style:none;
+	background: #fff;
+	padding:10px 3%;
+	border-bottom:solid 1px #ccc;
+	color:#666;
+	font-size: 15px;
+}
+
+
+.opciones_cambiar ul li:hover, .opciones_cambiar ul li.active {
+	background:#f1f1f1;
+}
+.opciones_cambiar a{
+	width:100%;
+
+	display: block;
+}
+.content_perfil {
+	padding: 30px 0 0;
+	border: none;
+	margin: 0 auto;
+	width: 1024px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.wrapper-perfil {
+	width: 1024px;
+	margin:0 auto;
+	
+}
+
+
+#section-update-data-pass, #section-display-message, #section-update-mail, #section-update-pass, #section-update-questions {
+	clear:both;
+}
+
+
+.nombre_correo_contrasenia .label {
+	width:100%;
+	display: block;
+	/* margin: 0 0 3px; */
+}
+.nombre_correo_contrasenia input {
+	width: 96% !important;
+
+}
+.btn_aceptar_cancelar .btn_verde, .btn_aceptar_cancelar .btn_naranja{
+    float: left;
+	
+    width: 120px;
+    margin: 0 10px 0 0;
+}
+.btn_aceptar_cancelar {
+	overflow:hidden;
+	margin: 9px 0 22px;
+}
+
+.btn_aceptar_cancelar .callActionMedium{
+	width:47%;
+	float:left;
+
+}
+
+.btn_aceptar_cancelar .callActionMedium.btnNaranja{
+	width:47%;
+	float:right;
+
+}
+
+
+.nombre_correo_contrasenia .clTitle {
+	margin: 0px 0 9px !important;
+	color:#000 !important;
+	font-size: 16px;
+	border-bottom: dotted 2px #ccc;
+	width: 100%;
+}
+
+.nombre_correo_contrasenia .styled-select {
+	background-color:#fff !important;
+
+}
+
+#section-update-questions input{
+	margin:0 !important;
+
+}
+
+.alertify-buttons {
+	width:100% !important;
+	margin:0 !important
+}
+#section-update-questions .dvLabel{
+	margin:0 0 7px!important;
+
+}
+
+#dvButtonActivation {
+	width:150px;
+	float:right;
+	margin:10px 0 10px;
+}
+
+#section-update-questions .styled-select select{
+	border:none;
+	width:107% !important;
+	 font-family: 'Open Sans', sans-serif; 
+}
+
+#section-update-questions  .descColor {
+	font-size:15px;
+
+}
+
+
+#general #panel_respuesta_confirmacion span.labelsStl{
+	margin: 0 0 6px !important;
+
+	display: block;
+}
+#file_logos {
+		cursor:pointer !important;
+}
+#file_logos span {
+	color:#439539;
+	text-transform: none;
+	text-align: left;
+	text-decoration: underline;
+
+	cursor: pointer;
+}
+
+.photo_perfil  .custumStlFileUpload .fileupload-buttonbar .ui-button:hover {
+	background:none !important;
+	border:none !important; 
+}
+
+#general .custumStlFileUpload .fileupload-buttonbar .ui-button input {
+	right:0 !important;
+	cursor: pointer;
+		 font-family: 'Open Sans', sans-serif; 
+}
+
+.panel_pregunta_seguridad p{
+	margin:0;
+	
+
+	cursor: pointer;
+	color: #548f39;
+	text-decoration: underline;
+	font-size: 14px;
+}
+
+#section-update-mail {
+	display: none;
+}
+
+#section-notification-preference
+{
+	padding-bottom: 5px;
+}
+
+#section-update-mail, 
+#section-update-pass, 
+#section-update-completename, 
+#section-update-questions,
+#section-notification-preference
+{
+	background:#f1f1f1;
+	padding: 20px 3% 0px;
+	margin: 0 0 12px;
+	overflow: hidden;
+}
+
+.ligaModulo {
+	color: #8FC450 !IMPORTANT;
+	margin: 0;
+	font-weight:bold;	
+	text-decoration: underline;
+	display:block !important;
+	margin: 0 0 9px;
+	cursor: pointer;
+	width: 320px;
+	font-size: 15px;
+}
+
+
+
+.push_header {
+	top:0;
+	position:relative;
+	/* height: 120px; */
+	width:100%;
+}
+
+.interiorPagina #logo{
+	display:none !important;
+}
+
+#confirmacion_cambio_OK {
+	overflow:hidden;
+	clear: both;
+	height: auto;
+}
+
+
+#confirmacion_cambio_OK #update_frm-change-data{
+	width:100px;
+	padding: 6px 18px;
+	display: block;
+}
+
+.alertify-button-ok{
+	margin:0 auto !important;
+	float:none !important;
+}
+
+@media (max-width: 1024px) {
+.content_perfil {
+	width: 100%;
+	margin:0 auto;	
+}
+.wrapper-perfil {
+	width:96%;
+	margin:0 auto;	
+	
+	overflow: hidden;
+}
+.photo_perfil {
+
+	width:20%;
+}
+.nombre_correo_contrasenia {
+	width: 65%;
+
+}
+
+}
+@media (max-width: 800px) {
+.content_perfil {
+	width: 100%;
+	margin:0 auto;	
+}
+.wrapper-perfil {
+	width:96%;
+	margin: 0 auto;	
+	
+	padding: 0 !important;
+}
+.nombre_correo_contrasenia {
+	width: 74%;
+
+
+}
+.ligaModulo { 
+
+width:100%;
+}
+
+}
+@media (max-width: 650px) {
+	.photo_perfil {
+
+		width: 144px;
+		margin:0 auto !important;
+	
+
+		float: none;
+
+}
+
+.nombrePerfil {
+	text-align: center !important;
+}
+	.nombre_correo_contrasenia {
+		width: 100%;
+
+		margin: 0;
+}
+.nombre_correo_contrasenia input {
+	width: 95% !important;
+
+}
+}
+
+
+#link-edit-completname {
+	display:none;
+}

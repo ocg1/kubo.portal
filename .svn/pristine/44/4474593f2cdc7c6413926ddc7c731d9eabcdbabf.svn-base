@@ -1,0 +1,101 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				<h:panelGroup id="resSimReg2">
+	<div class="tablaVerde">
+	<i class="fa fa-caret-down "></i>
+	<table cellspacing="0" cellpadding="0" border="0">
+	
+	<tr>
+			<td style="text-align:right;">
+				
+				<h:outputText value="Número de pagos:" 	styleClass="labelsStl clLabelTable" />
+	            
+			</td>
+			
+			<td style="text-align:left;">
+			
+				<h:outputText value="#{simulator.term_id} pagos" 	styleClass="labelsStl  clLabelTableVal" />
+			
+			</td>
+		</tr>
+		 
+		<tr>
+			<td style="text-align:right; vertical-align: top; ">
+			
+				<h:outputText value="Pagos #{simulator.frequencyStr} de: " 	styleClass="labelsStl clLabelTable"  />
+				
+			</td>
+	                	
+			<td style="text-align:left;">
+				<h:outputText value="$ #{simulator.montoCuotaStr}"	styleClass="labelsStl  clLabelTableVal" />
+			</td>
+		</tr> 
+	
+	</table>
+</div>
+	<table class="propuesta_tblPropuesta" id = "propuesta tblPropuesta">	           
+		
+	    <tr>
+			<td style="text-align: right; padding-top: 15px; ">
+	        	<h:outputText value="Tasa: " styleClass="labelsStl clLabelTable" />
+			</td>
+	                	
+			<td style="text-align:left; padding-top: 15px;">
+				<span class="labelsStl  clLabelTableVal">#{simulator.tasaTotal}%<sup class="super">(a)</sup></span>
+			</td>
+		</tr>    
+			<tr>
+			<td style="text-align:right; vertical-align: top; ">
+			
+				<h:outputText value="Comisión por apertura: " 	styleClass="labelsStl clLabelTable"  />
+				
+			</td>
+			
+			<td style="text-align:left;">
+				<h:outputText value = "#{simulator.comisionApertura}%"	styleClass="labelsStl clLabelTableVal" />
+			</td>
+		</tr>   
+		<tr>
+			<td style="text-align:right; ">
+	                	
+				<h:outputText value="Monto a recibir: " 	styleClass="labelsStl clLabelTable" />
+				
+			</td>
+			
+			<td style="text-align:left;">
+	        	<h:outputText value = "#{simulator.totalRecibir}" styleClass="labelsStl  clLabelTableVal" />
+			</td>
+		</tr>	
+		
+		
+		
+		<tr>
+			<td style="text-align:right;">
+				    
+				<h:outputText value="Total a pagar: " 	styleClass="labelsStl clLabelTable" />
+			</td>
+			
+			<td style="text-align:left;">
+				<h:outputText value="$ #{simulator.totalPagarStr}"  	styleClass="labelsStl  clLabelTableVal" />
+			</td>
+		</tr>
+		
+		<tr>
+		<td style="text-align:right;">
+			<h:outputText value="CAT:" 	styleClass="labelsStl clLabelTable CAT_end"  />
+		</td>
+		<td style="text-align:left;">
+		<h:panelGroup id="catSimReg2">
+			 <div class="clLabelTableVal CAT_end">#{simulator.catStr} sin IVA<sup style="font-size: 0.9em !important;">(b)</sup></div>
+	  </h:panelGroup>
+	    </td>
+		
+		</tr>
+		              
+	
+	</table> 
+	</h:panelGroup>
+</ui:composition>			                	 

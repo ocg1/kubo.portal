@@ -1,0 +1,20 @@
+
+@media (max-width: 1024px) and (min-width: 1023px)  {
+#sidebar + #providing_table {
+	float: right;
+    
+	width: 719px;
+	overflow: auto;
+}
+}
+
+
+
+@media (max-width: 769px) and (min-width: 767px)  {
+#sidebar + #providing_table {
+	float: right;
+    
+	width: 463px;
+	overflow: auto;
+}
+}

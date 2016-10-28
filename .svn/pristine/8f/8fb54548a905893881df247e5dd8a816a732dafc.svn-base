@@ -1,0 +1,514 @@
+/* CARACTERISTICAS GENERALES */
+body {
+	width: 100%;
+	height: 100%;
+	font: normal 1em Arial, Helvetica, Tahoma, sans-serif;
+	/*font-family: 'Droid Sans', sans-serif;*/	
+	/*font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;*/
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 1.5em;
+	color: #2166B2;	
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+h6 {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+a { 
+	text-decoration: none;
+	color: #0066ff;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+strong {
+	font-weight: bold;
+}
+
+table {
+	width: 480px;
+	vertical-align: middle;
+	/*border:1px solid green;*/
+	/*background: #ff0;*/
+}
+
+td, th {
+	vertical-align: middle;
+}
+
+
+.accountTable {
+	background: #fff;	
+}
+
+.accountTable tr {
+	height: 40px;
+	valign: middle;
+}
+
+.clear {
+	clear: both;
+}
+
+/* CARACTERISTICAS PARTICULARES */
+.wrapper {
+	margin: 0 auto;
+	width: 980px;
+	height: 100%;
+	/*background:rgba(255,0,0,.1);*/
+}
+
+.detailBoxes {
+	margin-bottom: 20px;
+}
+
+.mainHeader {
+	/*background: rgba(0,0,0,.1);*/
+	padding-bottom: 15px;
+}
+
+.mainHeader img {
+	display: block;
+	float: left;
+	width: 200px;
+}
+
+.welcome {
+	width: 780px;
+	float: left;
+}
+
+.welcometext {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: right;
+	background: #FFF;
+}
+
+.date {
+	font-size: 1.0em;
+	font-weight: bold;	
+	text-align: right;
+	color: #FF6600;
+	/*background: #FF0;*/
+}
+
+.mainHeader nav {
+	margin-top: 15px;
+}
+
+.mainHeader nav a {
+	text-decoration: none;
+	color: #b3b3b3;
+	padding: 4px 4px 4px 12px;
+	margin-right: 11x;
+}
+
+
+.mainHeader nav a:hover {
+	text-decoration: none;
+	margin-top: 1px;
+	color: #E86421;
+}
+
+.mainHeader nav a.selected {
+	color: #000;
+	font-weight: bold;	
+	background: #CCCCCC url(../img/orange-square.jpg) no-repeat 1px 9px;
+}
+
+
+section header {
+	padding: 5px 0;
+}
+
+section header h1 {
+	width: 250px;
+	float: left;
+}
+
+section header h2 {
+	width: 480px;
+	text-align: center;
+	float: left;
+}
+
+.secondaryMenu, .detailBox {
+	background: #EEE;
+}
+
+
+.summaryTitle {
+	display: block;
+	height:25px;
+	/*padding: 4px 0px;*/
+	padding: 8px 4px 4px 25px;
+	/*color: #000;
+	font-weight: bold;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;*/
+	border: 1px solid #c7c7c7;
+	background: #EEE url(../img/orange-square.jpg) no-repeat 8px 13px;	
+}
+
+.summary {
+	display: block;
+	float: left;
+	width: 230px;
+	/*margin-top: 40px;*/
+}
+
+.summaryBox {
+	margin-bottom: 5px;
+}
+
+.summaryTable {
+	width: 220px;
+	font-size: 0.7em;
+}
+
+.summaryTable tr {
+	height: 25px;
+}
+
+.secondaryMenu {
+	background: #FFF;
+}
+
+.secondaryMenu {
+	display: block;
+	padding: 10px 0;	
+}
+
+.secondaryMenu a {
+	text-decoration: none;
+	font-size: 0.9em;
+	color: #b3b3b3;
+	margin-right: 10px;
+}
+
+.secondaryMenu a:hover {
+	/*text-decoration: underline;*/
+	color: #E86421;
+}
+
+.secondaryMenu a.selected {
+	color: #000;
+	font-weight: normal;
+}
+
+#numNotifications {
+	background: #b3b3b3;
+	color: white;
+	font-weight: bold;
+	padding: 0px 5px;
+	font-size: 0.8em;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;				
+}
+
+.secondaryMenu a:hover > #numNotifications {
+	background: #E86421;
+}
+
+.content {
+	/*width: 700px;*/
+	/*background: rgba(0,0,0,.1);*/
+	float: left;
+}
+
+.aside {
+	width: 230px;
+	background: rgba(255,255,255,.3);
+	float: left;
+	margin-left: 20px;
+}
+
+.ads {
+	width: 100%;
+	height: 150px;
+	background: #EEE;
+}
+
+#graph {
+	width: 100%;
+	margin-top: 15px;
+}
+
+.faq {
+	margin-top: 15px;
+	/*background: rgba(255,255,0,.3);*/
+}
+
+.faq ul {
+	margin-top: 10px;
+}
+
+.detailBox {
+	margin: 10px 20px 0px 0px;
+	width: 230px;
+	height: 100px;
+	float: left;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+}
+
+.detailBox p {
+	text-align: center;
+	margin-top: 8px;
+}
+
+.detailBoxMiddle {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#detailBoxLast {
+	margin-right: 0px;
+}
+
+.toAccountDetails {
+	background: #FFF;
+	
+}
+/*
+.myAccount {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: inline;
+}*/
+
+.detailValue {
+	color: #FF6600;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.detailBottomValue {
+	color: #4d4d4d;
+	font-size: 0.8em;
+}
+
+.detailBottomValueLeft {
+
+}
+
+.detailTitle {
+	font-size: 0.9em;
+	/*font-weight: bold;
+	color: #4d4d4d;*/
+}
+
+.orange {
+	color: #FF6600;
+	font-size: 1.3em;
+}
+
+.gray {
+	color: #4d4d4d;
+	font-size: 1.3em;
+}
+
+.bigBlack {
+	color: #000;
+	font-size: 1.4em;
+}
+
+.black {
+	color: #000;
+	font-weight: bold;
+}
+
+
+.blueBtn {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 0.8em;
+	text-align: center;
+	background: #0066ff;
+	color: white;
+	padding: 10px 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	float: left;
+	width: 140px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;			
+}
+
+.blueBtn:hover {
+	background: #FF6600;
+	color: white;
+}
+
+.blueBtnMiddle {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.buttons {
+	background: transparent; /*#0066ff;*/
+	margin-top: 15px;
+}
+
+.account {
+	display: block;
+	float: left;
+	/*background: #CCC;*/
+	width: 480px;
+	margin-right: 20px;
+}
+
+.summaryContent {
+	display: nones;
+	background: #FFF;
+	margin-top: 10px;
+}
+
+
+.accountTable tr td:nth-child(1), .accountTable tr th:nth-child(1) {
+	text-align: left;
+	width: 220px;
+}
+
+.accountTable tr td:nth-child(2), .accountTable tr th:nth-child(2) {
+	text-align: right;
+}
+
+.accountTable tr td:nth-child(3), .accountTable tr th:nth-child(3) {
+	text-align: center;
+	width: 80px;
+}
+
+/*.accountTable tbody tr:nth-child(odd), .accountTable tfoot tr{
+	background: #f4f4f4;
+}*/
+
+.accountTable tbody tr:hover, .accountTable tfoot tr:hover  {
+	background: #EEEEEE;
+}
+
+
+/*.summaryTable tr:nth-child(odd) {
+	background: #f4f4f4;
+}*/
+
+.summaryTable tr td:nth-child(2) {
+	text-align: right;
+}
+
+.summaryTable tbody tr:hover {
+	background: #EEEEEE;
+}
+
+/** Accordion **/
+
+.st-accordion{
+    width:100%;
+    min-width:270px;
+    margin: 0 auto;
+}
+
+.st-accordion ul li{
+    height: 100px;
+    border-bottom: 1px solid #c7deef;
+    border-top:1px solid #fff;
+    overflow: hidden;
+}
+
+.st-accordion ul li:first-child{
+    border-top:none;
+}
+
+.st-accordion ul li > a{
+    font-family: 'Josefin Slab',Georgia, serif;
+    text-shadow: 1px 1px 1px #fff;
+    font-size: 46px;
+    display: block;
+    position: relative;
+    line-height: 100px;
+    outline:none;
+    -webkit-transition:  color 0.2s ease-in-out;
+    -moz-transition:  color 0.2s ease-in-out;
+    -o-transition:  color 0.2s ease-in-out;
+    -ms-transition:  color 0.2s ease-in-out;
+    transition:  color 0.2s ease-in-out;
+}
+.st-accordion ul li > a:hover{
+    color: #1693eb;
+}
+
+.st-accordion ul li > a span{
+    background: transparent url(../img/down.png) no-repeat center center;
+    text-indent:-9000px;
+    width: 26px;
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    right: -26px;
+    margin-top: -7px;
+    opacity:0;
+    -webkit-transition:  all 0.2s ease-in-out;
+    -moz-transition:  all 0.2s ease-in-out;
+    -o-transition:  all 0.2s ease-in-out;
+    -ms-transition:  all 0.2s ease-in-out;
+    transition:  all 0.2s ease-in-out;
+}
+
+.st-accordion ul li > a:hover span{
+    opacity:1;
+    right: 10px;
+}
+
+.st-accordion ul li.st-open > a{
+    color: #1693eb;
+}
+.st-accordion ul li.st-open > a span{
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    transform:rotate(180deg);
+    right:10px;
+    opacity:1;
+}
+
+.st-content{
+    padding: 5px 0px 30px 0px;
+}
+.st-content p{
+    font-size:  16px;
+    font-family:  Georgia, serif;
+    font-style: italic;
+    line-height:  28px;
+    padding: 0px 4px 15px 4px;
+}
+.st-content img{
+    width:125px;
+    border-right:1px solid #fff;
+    border-bottom:1px solid #fff;
+}
+
+@media screen and (max-width: 320px){
+    .st-accordion ul li > a{
+        font-size:36px;
+    }
+}

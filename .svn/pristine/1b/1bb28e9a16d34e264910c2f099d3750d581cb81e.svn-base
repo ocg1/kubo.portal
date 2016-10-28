@@ -1,0 +1,54 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="field">
+
+	
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="¿Con qué frecuencia harás depósitos, retiros o pagos en tu cuenta?*"/>
+		</div>
+	
+		<div  class="selectNuevo">
+			<h:selectOneMenu id         = "movfrecdep"    
+							 value      = "#{addPldDocument.prevencionld.movement_frequency}" 
+							 maxlength  = "30"
+							 styleClass = "elementStlSelAddress validatorClass hs_class movfrecdep_select">
+							<f:selectItem 	itemLabel="Seleccione Frecuencia" itemValue="0" />
+							<f:selectItem 	itemLabel="Diario" itemValue="Diario" />
+							<f:selectItem 	itemLabel="Semanal" itemValue="Semanal" />
+							<f:selectItem 	itemLabel="Catorcenal" itemValue="Catorcenal" />
+							<f:selectItem 	itemLabel="Quincenal" itemValue="Quincenal" />
+							<f:selectItem 	itemLabel="Mensual" itemValue="Mensual" />
+							<f:selectItem 	itemLabel="Bimestral" itemValue="Bimestral" />
+							<f:selectItem 	itemLabel="Semestral" itemValue="Semestral"  />
+							<p:ajax			 event="blur" listener="#{addPldDocument.savePrevencionLD('movement_frequency')}"/>
+	        </h:selectOneMenu>	
+			<!-- 
+			<h:inputText id         = "movfrecdep" 
+						 value      = "#{addPldDocument.prevencionld.movement_frequency}" 
+						 maxlength  = "30"
+						 styleClass = "elementAddres1 validatorClass hs_class" >
+			<p:ajax event="blur" listener="#{addPldDocument.savePrevencionLD('movement_frequency')}"/>
+			</h:inputText>
+			 -->
+		</div>
+	</div>	
+		<script>
+			setTimeout(function(){	
+				opciones_investor ();
+			}, 1500);
+			
+			function opciones_investor () {
+				if($(".pld_investor").length) {
+				}else {
+					$(".movfrecdep_select option[value='Bimestral']").remove();
+					$(".movfrecdep_select option[value='Semestral']").remove();
+				}
+
+			}
+			
+	</script>	
+			
+</ui:composition>				

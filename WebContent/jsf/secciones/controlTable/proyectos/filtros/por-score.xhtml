@@ -1,0 +1,135 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org">
+				 
+				<h:panelGroup id="filter_by_type" >	
+				
+				
+					
+				<div class="dvContent">
+					<div style="margin-top: 0px !important;">
+						<h2  class="expand_heading"><a  href="#">#{msg.ll_filter_risk}</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+						<div   class="toggle_container" style="width: 233px;">
+						<div class="box">
+							<table style="border-spacing: 0; width: auto;">														
+								<tbody align="left">
+								
+								<tr>
+									<td colspan="6" style="color:#439539; text-align: center;font-size: 0.9em;" >
+										
+										<div id="dvSelAllRisk" style="width: 99%; margin-left: auto; margin-right: auto; text-align: center; cursor: pointer;" onclick="seleccionAll();" >
+											Quitar Selección
+										</div>
+									</td>
+								</tr>
+								
+								<h:panelGroup rendered="false">
+									<tr>
+										<td colspan="6" style="color:#439539; text-align: center;padding-bottom: 7px;font-size: 0.9em;" >
+											<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+												<p:commandLink actionListener="#{listaCreditos.setFlagNumberProy(true)}" update="filter_by_type :pnlScriptStatus" style="color:#439539 !important;" >
+													Ver por número
+												</p:commandLink>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+												<p:commandLink actionListener="#{listaCreditos.setFlagNumberProy(false)}" update="filter_by_type :pnlScriptStatus" style="color:#439539 !important;" >
+													Ver por porcentaje
+												</p:commandLink>
+											</h:panelGroup>
+										</td>
+									</tr>
+								</h:panelGroup>
+								<tr>
+							      <td style="width: 10px !important;"><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkA"/></td>
+							      <td style="width: 22px !important;"><span id="BCscoringTestSpan" class="AStestScoringSpan">A</span></td>
+								  <td style="width: 60px !important;">
+								  	<span id="BCscoringTestSpan" class="porcentKS">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('A')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('A')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								  <td style="width: 10px !important;">
+								  	<input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkB"/>
+								  </td>
+								  <td style="width: 22px !important;">
+								  	<span id="BCscoringTestSpan" class="BStestScoringSpan">B</span>
+								  </td>
+								  <td style="width: 60px !important;">
+								  	<span id="BCscoringTestSpan" class="porcentKSR">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('B')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('B')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								</tr>
+								<tr>
+								  <td style="width: 10px !important;"><input  	type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkC"/></td>
+								  <td style="width: 22px !important;"><span 	id="BCscoringTestSpan" class="CStestScoringSpan">C</span></td>
+								  <td style="width: 30px !important">
+								  	<span 		id="BCscoringTestSpan" class="porcentKS">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('C')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('C')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								  <td style="width: 10px !important;"><input 	type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkD"/></td>
+								  <td style="width: 22px !important;"><span 	id="BCscoringTestSpan" class="DStestScoringSpan">D</span></td>
+								  <td style="width: 30px !important;">
+								  	<span 	id="BCscoringTestSpan" class="porcentKSR">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('D')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('D')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								</tr>
+								<tr>
+								  <td style="width: 10px !important;"><input  type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkE"/></td>
+								  <td style="width: 22px !important;"><span id="BCscoringTestSpan" class="EStestScoringSpan">E</span></td>
+								  <td style="width: 30px !important;">
+								  	<span id="BCscoringTestSpan" class="porcentKS">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('E')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('E')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								</tr>
+															
+							</tbody>
+						</table>
+						<div class="buttonPR" style="width: 130px; float: left; margin: 5px !important; display: none;">
+							<p:commandLink id="selectAllOrNothing" style=" text-decoration: none;" value="#{msg.ll_link_check}" onclick="checkUncheck();" immediate="true"/>
+						</div>
+						<div class="buttonPR" style=" width: 85px;">
+							<p:commandLink style="margin-left:3px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();" />
+						</div>
+						<input type="hidden" id="cadena1" value="" name="cadena1"></input>
+						<input type="hidden" id="cadena2" value="" name="cadena2"></input>
+						<input type="hidden" id="cadena3" value="" name="cadena3"></input>
+						<input type="hidden" id="cadenaGender" value="" name="cadenaGender"></input>
+						<div style="display:none;">
+							<p:commandLink id="callBean" update=":table_proyect_list:creditos, pnlNumCredito , lblForFundedFilter, filter_by_status, :table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot :pnlScriptStatus " actionListener="#{listaCreditos.updateByFiltering}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" ></p:commandLink>
+						</div>
+						</div>
+						</div>										
+					</div>
+				</div>	
+				</h:panelGroup>		 
+</ui:composition>				 

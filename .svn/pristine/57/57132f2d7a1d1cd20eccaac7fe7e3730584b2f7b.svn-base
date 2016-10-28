@@ -1,0 +1,16 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+	<div id = "authentication-id-6"> 		 
+		<div>
+			<h:inputText styleClass = "elementStlSelAddress">							
+								
+				<p:ajax event      = "blur" 
+						listener   = "#{tablero_autenticacion.cuenta.init_email}"  
+						oncomplete = "email_on_complete(xhr, status, args);"  />
+			</h:inputText>
+		</div>	
+	</div>			 
+</ui:composition>	

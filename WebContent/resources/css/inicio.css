@@ -1,0 +1,283 @@
+@CHARSET "UTF-8";
+
+#fraseGral{
+	height: 25px;
+	background-color: #ececee;
+	color: #ff6405;
+	margin: 0px 0px 0px 0px;
+	padding-bottom: 5px;
+	padding-top: 6px
+	padding-left: 30px;
+	font-size: 1.3em;
+}
+
+#fraseGral2{
+	width: 85%;
+	text-align: right;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 2.8em;
+	color: #333333;
+}
+
+
+#frase1{
+	font-size: 4.1em;
+	font-weight: bold;
+	color: #333333;
+	display: none;
+	margin: 8px 0px 0px 0px;
+	float: left;
+	height: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#frase2{
+	font-size: 2.3em;
+	font-weight: bold;
+	color: #333333;
+	display: none;
+	margin: 24px auto 0px 15px; 
+	float: left;
+}
+
+#contVideoAndSim{
+	height: auto;
+	overflow: auto;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#contVideoAndFraseWMax,#contVideoAndFraseWMin{
+	clear: both;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	width: 52.0%;
+	height: auto;
+	margin-bottom: 30px;
+	border: solid 0px #000000;
+}
+#contVideoAndFraseWMin{
+	margin-bottom: 25px;
+	display: none;
+}
+#dvVideo{
+	clear: both;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	padding: 10px 10px 10px 10px;
+	background-color:  rgba(240, 243, 195, 1.0);
+}
+
+#fraseInner1{
+	font-weight: normal;
+	text-align: right;
+	padding-top: 20px;
+}
+
+#fraseInner2{
+	font-weight: bold;
+	text-align: right;
+	padding-top: 20px;
+}
+
+#dvFrase{
+	clear: both;
+	height: 110px;
+	overflow: auto;
+	border-left: solid 6px #C1D82F;
+	border-right: solid 6px #C1D82F;
+	margin-right: 2px;
+	padding-right: 5px;
+}
+
+#content{
+	height: auto;
+	overflow: auto;
+	width: 85%;
+	border: solid 0px #000000;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+#content #cont{
+	/*width: 950px;*/
+	height: 70px;
+	overflow: auto;
+	margin-top: 0px;
+	margin-left: 0px;
+	
+}
+
+.cont-sim-complete{
+	height: auto;
+	overflow: auto;
+	width: 455px;
+	float: right;
+}
+
+#cont-sim{
+	height: auto;
+	overflow: hidden;
+	margin: 0px 0px 00px 0px;
+	padding: 10px 10px 10px 10px;
+	/* background-image: url("../../resources/img/backWhiteTrans.png"); */
+	background-color:  rgba(240, 243, 195, 1.0);
+	/* background-repeat: repeat; */
+	position: relative;
+	border: solid 0px #D6D6D6;
+}
+
+#meta-sim{
+	width: auto;
+	/* background-color: #bce053;
+	background-image: url("../img/nivo/fondo-sim-1.jpg");
+	background-position: left bottom;
+	background-repeat: no-repeat; */
+	
+	background-color: #C1D82F;
+	border: solid 0px #D6D6D6;
+	
+	height: auto;
+	overflow: hidden;
+	padding: 10px 20px 20px 20px;
+	margin-left: 0px;
+	/* border: solid 1px #8fbd04; */
+	border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+#meta_img{
+	height: auto;
+	overflow: auto;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	z-index: 4;
+}
+
+#meta-sim #titulosim{
+	left: 25px;
+	top: 20px;
+	/*margin-bottom: 15px; 
+	margin-top:0px; 
+	margin-left: auto;
+	margin-right: auto;*/
+	font-size: 1.2em; 
+	font-weight: bold; 
+	text-align: center; 
+	color: #000000; 
+	/*background-color: #000000;*/ 
+	width: auto; 
+	padding-bottom: 8px; 
+	padding-top: 8px;
+	border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 3px 0px 0px;
+    position: absolute;
+}
+
+#meta-sim #contFormSim{
+	margin-top: 50px;
+}
+
+span#valor{
+	font-weight: bold;
+	color: #000000;
+	font-size: 1.3em;
+}
+
+span#sim{
+	font-weight: bold;
+	color: #000000;
+	font-size: 2.2em;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+#general{
+	height: auto;
+	overflow: auto;
+}
+
+#descripciones{
+	height: auto;
+	overflow: auto;
+	margin: 20px auto 20px auto;
+	width: 80%;
+	padding-left: 100px;
+}
+
+#queeskubo{
+	margin-right: 8px;
+	
+}
+
+#queeskubo, #comotrabaja{
+	float: left;
+	width: 40%;
+	min-height: 250px;
+	border: solid 1px #d6d6d6;
+	background-color: #e6e6e6;
+	padding: 20px 20px 20px 20px;
+	font-size: 1.6em;
+	color: #ff6405;
+	font-weight: bold;
+}
+
+.simulatorAction{
+	color: inherit;
+	text-decoration: none;
+}
+
+.sim-back02{
+	display: inline; 
+	border-left: 65px solid transparent;
+	border-top: 65px solid rgba(240, 243, 195, 1.0);
+	float: left;
+	position: relative; 
+	top: 350px;
+	height: 0;
+	width: 0;
+	right: 0px;
+}
+
+.contFormAllSim{
+	width: auto; 
+	margin-left: 20px !important; 
+	border: solid 0px #000000;
+}
+
+.btnRegSim{
+	position: relative !important; 
+	margin-left: auto; 
+	margin-right: auto;   
+	padding-left: 0px; 
+	font-size: 1.4em;
+	width: 95%;
+
+}
+
+
+.btnRegSim a{
+	color: #000000 !important; 
+	text-decoration: none !important;	
+}
+
+.contLabel{
+	
+	margin-top: 5px; 
+	width: 270px;
+	
+}
+
+
+#thisProperties{
+	display: none;
+}

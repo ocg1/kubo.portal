@@ -1,0 +1,123 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div id    = "dvContDocuments" 
+		 class = "detailsControlTable clssControlBuro" 
+		 style = "clear: both; 
+		 	      float: none !important; 
+		 	      display: block; 
+		 	      min-height: auto !important; 
+		 	      margin-bottom: 20px !important; 
+		 	      margin-left: auto !important; 
+		 	      margin-right: auto; 
+		 	      font-size: 1.1em !important; ">
+					
+		<div class = "centerPosition">	
+			<div style = "font-size: 1.0em; margin-top: 20px;" >							
+				<table>					
+					<h:panelGroup rendered = "#{not additionalCredit.ver_nueva_solicitud_ENABLED}">	
+							<tr>
+								<td colspan = "4" 
+									style = "text-align: left; 
+										     padding-top: 15px; 
+										     padding-bottom: 15px;" >
+									<p>Este crédito cuenta con atrasos</p> 
+								</td>
+							</tr>
+						
+						<h:panelGroup rendered = "#{not additionalCredit.saldo_deudor_superior_al_MIN}">
+							<tr>
+								<td>
+									<p>Favor de realizar la reestructura a través del módulo del SAFI.</p>
+								</td>
+							</tr>
+						</h:panelGroup>
+						
+						<h:panelGroup rendered = "#{additionalCredit.saldo_deudor_superior_al_MIN}">
+							<tr>
+								<td>
+									<p>El crédito lleva el #{additionalCredit.indice_saldo_capital}% del crédito pagado</p>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<div style = "width: 300px; 
+												  height: auto; 
+												  overflow: auto; 
+												  margin-top: 15px;">
+									
+										<p:commandLink actionListener = "#{additionalCredit.renovar_solicitud_de_credito}"
+													   onstart        = "return displayMessageProcessing('msgprocessing',true);" 
+													   oncomplete     = "closeFancy();"
+													   update         = "panel_continuar_generar_solicitud">
+											
+											<div class = "buttonPR" 
+												 style = "width: 200px; 
+												 		  font-size: 0.9em; 
+												 		  margin: 7px;">
+											
+												<p>Renovar Solicitud de Crédito</p>
+													
+											</div>									
+										</p:commandLink>									
+									</div>
+								</td>
+							</tr>
+						</h:panelGroup>											
+								
+						<h:panelGroup rendered = "#{additionalCredit.reestructAction}" >
+							<tr>
+								<td colspan = "4">
+									<div style = "width: 270px; height: auto; overflow: auto;">
+									
+										<p:commandLink	actionListener = "#{menuControlTableBean.toRestructurePage}" 
+														onstart        = "return displayMessageProcessing('msgprocessing', true);" 
+														oncomplete     = "closeFancy();" 
+														update         = ":actualPage :form_Prin">
+														
+											<f:attribute name = "proyect"    value = "#{additionalCredit.restructurebean}" />
+											<f:attribute name = "fromAction" value = "EdoCuenta" />
+											
+											<div class = "buttonPR" style="width: 250px; font-size: 0.9em; float: left; margin: 7px;">
+												Reestructura
+											</div>
+										</p:commandLink>
+										
+									</div>
+								</td>
+							</tr>	
+						</h:panelGroup>
+					</h:panelGroup>						
+					
+					<h:panelGroup rendered = "#{additionalCredit.ver_nueva_solicitud_ENABLED}">
+						<tr>
+							<td>
+								<p:commandLink actionListener = "#{additionalCredit.cargar_solicitud_de_credito}" 
+											   onstart        = "return displayMessageProcessing('msgprocessing',true);" 
+											   immediate      = "true" 
+											   oncomplete     = "closeFancy();" 
+											   update         = ":actualPage" >
+											
+									<f:attribute name = "proyectAtrr" value = "#{additionalCredit.proyect_loan_id}::#{additionalCredit.proyect_id}::#{additionalCredit.prospectus_id}::#{additionalCredit.company_id}" />
+								
+									<div class = "buttonPR" 
+										 style = "width: 200px; 
+										 		  font-size: 0.9em; 
+										 		  margin: 7px;">
+									
+										<p>Ver Nueva Solicitud</p>
+											
+									</div>						
+								</p:commandLink>	
+							</td>
+						</tr>				
+					</h:panelGroup>					
+				</table>					
+			</div>					
+		</div>				
+	</div>
+</ui:composition>			

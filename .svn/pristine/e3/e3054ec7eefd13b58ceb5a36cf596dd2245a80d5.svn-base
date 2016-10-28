@@ -1,0 +1,76 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+	
+			
+	<h:form styleClass="areaL" id = "frm_questPLD">
+		<ui:include src = "pld/titulo.xhtml"/>
+		<div class = "dvContent2">
+
+				<ui:include src = "pld/aprox_monthly_income.xhtml"/>
+				<ui:include src = "pld/has_previous_account.xhtml"/>
+				<ui:include src = "pld/has_kubo_relative.xhtml"/>					
+																									
+				<h:panelGroup id="pnlKuboRelative">
+					<div style = "height: auto; overflow: auto; display: #{addPldDocument.displayKuboRelative}">					
+						<ui:include src = "pld/relative/nombre.xhtml"/>
+						<ui:include src = "pld/relative/apellidos.xhtml"/>
+						<ui:include src = "pld/relative/parentesco.xhtml"/>
+					</div>
+				</h:panelGroup>
+			
+				<ui:include src = "pld/politic/descripcion.xhtml"/>
+				<ui:include src = "pld/politic/relative.xhtml"/>			
+				
+				<h:panelGroup id = "pepRelative">
+					
+					<div style = "height: auto; overflow: auto; display: #{addPldDocument.displayPepRelative};">					
+						<ui:include src = "pld/politic/relative/nombre.xhtml"/>
+						<ui:include src = "pld/politic/relative/apellidos.xhtml"/>
+						<ui:include src = "pld/politic/relative/parentesco.xhtml"/>							
+						<ui:include src = "pld/politic/relative/funcion.xhtml"/>					
+					</div>
+				</h:panelGroup>
+				
+				<ui:include src = "pld/third_party.xhtml"/>
+										
+				<h:panelGroup id = "pnlThirdPartyPerson">
+					<h:panelGroup rendered = "#{addPldDocument.prevencionld.for_third_party == 'T'}">																	
+						<div style = "height: auto; overflow: auto;">						
+							<ui:include src = "pld/third_party/nombre.xhtml"/>
+							<ui:include src = "pld/third_party/apellidos.xhtml"/>												
+						</div>
+					</h:panelGroup>
+				</h:panelGroup>		
+				
+				<h:panelGroup id = "sectionpldupdate">			
+					<ui:include src = "pld/movement_frequency.xhtml"/>
+					<ui:include src = "pld/deposit_method.xhtml"/>		
+					<ui:include src = "pld/maximum_deposit.xhtml"/>
+					<ui:include src = "pld/maximum_withdraw.xhtml"/>	
+					<ui:include src = "pld/maximum_balance.xhtml"/>
+					<ui:include src = "pld/resource_origin.xhtml"/>																						
+				</h:panelGroup>
+										
+														
+			</div>
+	
+	
+			<h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+	
+				<div style="display:none;" class="solicitud callAction btnNaranja mapOff hideIFE nextPLD pld_investor" onclick="validationBtn ('Adicionales')">
+						Guardar y continuar
+				</div>
+				
+				<ui:include src = "../../../templates/datos_protegidos.xhtml" />
+			
+			</h:panelGroup>
+			
+			
+			
+			
+	</h:form>
+</ui:composition>

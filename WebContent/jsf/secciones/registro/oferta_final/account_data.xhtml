@@ -1,0 +1,73 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "accountData">
+				
+		<div style = "display: #{deal.accountDisp};">
+	
+			<div class = "field">
+				<div class = "dvLabel">
+					<h:outputLabel value = "Institución*" styleClass = "labelsStl"/>
+				</div>
+							
+				<P />
+							
+				<div  class = "dvElementAddres1">
+<!-- 
+					<h:inputText id="inst" styleClass="elementAddres1"  ></h:inputText> 
+-->
+								
+					<p:autoComplete id             = "acSimple" 
+									value          = "#{deal.thisClabe.bank_description}" 
+									styleClass     = "validatorClass auocmpleStl hs_class"  
+									completeMethod = "#{deal.autocomplete}" >
+					 	<p:ajax event = "itemSelect" listener = "#{deal.handleSelect}" /> 
+					 	<p:ajax event = "blur"       listener = "#{deal.updateClabe}" /> 
+					</p:autoComplete>  
+								
+				</div>
+			</div>
+						
+			<div class = "field">
+				<div class = "dvLabel">
+					<h:outputLabel value = "Cuenta Clabe*" styleClass = "labelsStl"/>
+				</div>
+				<div class="leyendas">
+					<p>18 dígitos, buscalos en tu estado de cuenta</p>
+				</div>
+				
+		
+				
+				<div  class = "dvElementAddres1">
+					<h:inputText id         = "clabe" 
+								 value      = "#{deal.thisClabe.mx_clabe}"  											 
+								 onkeypress = "return isNumberKey(event);"
+								 maxlength  = "18"
+								 styleClass = "elementAddres1 validatorClass hs_class">
+						<p:ajax event    = "blur" 
+							    onstart  = "return validaClabe();" 
+							    listener = "#{deal.updateClabe}"/>
+					</h:inputText>
+				</div>
+			</div>	
+			<div class="field">
+			
+					<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.nickname}" />
+						</div>
+						<div  class="dvElementAddres1">
+							<h:inputText id="sobrenombre" styleClass="elementAddres1 hideIFE validatorClass hs_class" value="#{basicData.membership.nickname}" >
+								<p:ajax event="blur" listener="#{basicData.saveMembership}"></p:ajax>
+							</h:inputText>
+						</div>
+				</div>					
+		</div>
+		<script>
+			asterisk(".labelsStl");
+			resetar_indices();
+		</script>
+	</h:panelGroup>				
+</ui:composition>				

@@ -1,0 +1,24 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+	<p>Nombre</p>
+	
+	<p:inputText id = "person_first_name"
+				 immediate  = "true"
+				 value      = "#{summaryRequest.editor_nombre.first_name}"  
+				 styleClass = "elementStl" >
+		<p:ajax event = "blur" listener = "#{summaryRequest.editor_nombre.listener_first_name}" />
+	</p:inputText>		
+	
+						
+	<p>Segundo Nombre</p>
+	
+	<p:inputText id = "person_middle_name"
+				 immediate  = "true"
+				 value      = "#{summaryRequest.editor_nombre.middle_name}"  
+				 styleClass = "elementStl" >
+		<p:ajax event = "blur" listener = "#{summaryRequest.editor_nombre.listener_middle_name}" />
+	</p:inputText>					 
+</ui:composition>				 

@@ -1,0 +1,16 @@
+package mx.com.kubo.mesa.solicitud.perfil.domicilio;
+
+import mx.com.kubo.model.Address;
+import mx.com.kubo.model.Residence;
+
+public interface AddressTokenIMO 
+{
+	String getInvestor_TOKEN();
+	String getAddress_TOKEN();
+	String getAddress_empresa_TOKEN();
+	String getAddress_beneficiario_TOKEN();
+	
+	void setResidence(Residence residence);
+	void setAntiguedad(Integer length_residence);
+	void setAddress(Address address);
+}

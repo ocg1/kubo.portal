@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"			
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:dataTable id = "uiphone" var = "p"  value = "#{editor_telefono.lista_phone_view}" rowClasses = "custumTdEditPhone" styleClass = "formato_tablas">
+							 
+		<h:column>
+			<div>#{p.phone.phoneType.name}</div>
+		</h:column>
+		
+		<h:column>				
+			<ui:include src = "change-phone.xhtml"/>																		
+		</h:column>							 
+	 </h:dataTable>				
+</ui:composition>				

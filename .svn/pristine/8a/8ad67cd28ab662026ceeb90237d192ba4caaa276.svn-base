@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "getTotal" style="font-weight: bold;color: #4F4F4F;display: none;">
+		<div style="float: left; margin-left: 10px;">Total</div>
+		<div style="float: right;">
+			<div style="float:left;">
+				<h:outputText value="#{incomesExpenses.totalIncome}" >
+					<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+				</h:outputText>
+			</div>
+			
+			<h:panelGroup>
+				<div style="float: left; margin-left: 10px;">
+					<h:outputText value="#{incomesExpenses.totalIncomeControl}" >
+						<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+					</h:outputText>
+				</div>
+			</h:panelGroup>
+		</div>								
+	</div>					
+</ui:composition>				

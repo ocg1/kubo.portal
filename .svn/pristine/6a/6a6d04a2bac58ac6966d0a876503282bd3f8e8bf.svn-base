@@ -1,0 +1,20 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+													
+	<p>Buscar por nombre completo</p>
+	
+	<p:autoComplete id = "inp_search" converter = "viewFullNameConverter"
+				    completeMethod = "#{tablero_autenticacion.buscador.init_auto_complete}"
+				    value 		   = "#{tablero_autenticacion.buscador.auto_complete_TOKEN}"
+					var            = "client" 
+					itemLabel      = "#{client.full_name}" 
+					itemValue      = "#{client}">												
+		<p:ajax event = "blur" />
+	</p:autoComplete>	
+											
+	<p:watermark id="water_id_search" for="inp_search"  value="Escribe el nombre"/>
+	
+</ui:composition>

@@ -1,0 +1,60 @@
+<ui:composition xmlns	 = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/jquery-ui/css/redmond/jquery-ui-1.8.4.custom.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/jquery-ui/css/ui-lightness/jquery-ui-1.8.4.custom.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/jquery-ui/css/smoothness/jquery-ui-1.8.4.custom.css"/>	
+	<link rel = "stylesheet" type = "text/css" href = "../resources/js/tableFix/css/base.css" />
+	
+	<script type = "text/javascript" src = "../resources/js/tableFix/highlighter/codehighlighter.js" />
+	<script type = "text/javascript" src = "../resources/js/tableFix/highlighter/javascript.js" />  
+	<script type = "text/javascript" src = "../resources/js/tableFix/javascript/jquery.fixheadertable.min.js" />
+
+	<div id = "dvContPersonalData" class = "detailsControlTable clssControlBuro">
+		 
+		<h:panelGroup id = "pnlCntActivity">
+			 
+			<div class = "centerPosition" style = " width: 95% !important;">		
+				<p style = "width: 200px; float: left;"><strong class="orange">Actividad</strong></p>
+				<p  style = "width: 200px; float: none; clear: both;"/>			
+			</div>
+				
+			<div class = "centerPosition">
+				
+				<h:panelGroup id = "sectionActivityPersonalData">
+				
+					<p style = "width: 200px; float: left;">
+						<strong class="orange">Datos personales</strong>
+					</p>
+						
+					<br style = "clear:both;" />
+					
+					<div style = "font-size:1.0em; margin-top:20px;" >				
+						<ui:include src = "actividad/datos_personales.xhtml"/>
+						<ui:include src = "actividad/fecha_registro.xhtml"/>													
+					</div>
+									
+				</h:panelGroup>		
+			</div>
+		
+			<ui:include src = "actividad/consultas_buro_credito.xhtml"/>		
+			<ui:include src = "actividad/publicacion.xhtml"/>
+					
+		</h:panelGroup>			     
+	</div>
+
+	<div style = "display:none;">
+	
+		<p:inputText id = "valActivity"  value = "#{activityPerson.datosInit}" >
+					<p:ajax event = "blur" 
+							listener   = "#{activityPerson.listener_init_actividad}"
+							onstart    = "return displayMessageProcessing('msgprocessing',false)"  					
+							oncomplete = "returnActivityAction();" 
+							update     = "pnlCntActivity"/>
+		</p:inputText>
+	</div>
+	
+</ui:composition>

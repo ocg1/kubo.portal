@@ -1,0 +1,270 @@
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<body>
+		<h:form>
+		<div class="wrapper">			
+			<!--section myInvestments -->
+			<section class="myInvestments">
+				<header>
+					
+					<!-- navMyInvestments -->
+					<nav class="secondaryMenu">
+						<!-- <a class="selected" title="Resumen" href="#" >Resumen</a> -->
+						<p:commandLink action="resumenInversion" id="resumen" styleClass="actionSim">
+							Resumen
+						</p:commandLink> 
+						<a title="Invertir" href="#" >Invertir</a>
+						<a title="Selecciona proyectos" href="#" >Selecciona proyectos</a>
+						<a title="Alertas" href="#" >Alertas</a>
+						<a title="Depositar" href="#" >Depositar</a>
+					</nav>
+				
+					<h1>Detalle de mis inversiones</h1> 
+					<strong class="bigBlack">Cuenta </strong> 							
+					<strong class="orange">#</strong>   
+					<strong class="gray">#{myInvestments.selectedAccountAux}</strong>
+					<div class="clear"></div>
+				</header>
+				<div class="container">
+					<div class="content">
+						
+						
+
+						<div class="details">							
+							<strong class="black">Resumen de Mis Inversiones</strong> <a href="#">***(41)***</a>
+							<table class="detailTable detailsTableLeft">
+								<tbody>
+									<tr>
+										<td>Activas y sin mora</td>
+										<td><span class="monTopInv">#{myInvestments.active_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.active_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>En proceso</td>
+										<td><span class="monTopInv">#{myInvestments.in_process_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.in_process_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>Atrasadas de 16-30 días</td>
+										<td><span class="monTopInv">#{myInvestments.backward16_30_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.backward16_30_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>Atrasadas de 31-90 días</td>
+										<td><span class="monTopInv">#{myInvestments.backward31_90_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.backward31_90_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>Vencidas de 91-120 días</td>
+										<td><span class="monTopInv">#{myInvestments.expired91_120_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.expired91_120_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>Vencidas de 121-180 días</td>
+										<td><span class="monTopInv">#{myInvestments.expired121_180_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.expired121_180_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>Quebrantadas</td>
+										<td><span class="monTopInv">#{myInvestments.broken_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.broken_number}</a></span></td>
+									</tr>
+									<tr>
+										<td>Pagadas totalmente</td>
+										<td><span class="monTopInv">#{myInvestments.fully_paid_amount}</span>
+										<span class="numTopInv"><a href="#">#{myInvestments.fully_paid_number}</a></span></td>
+									</tr>								
+								</tbody>
+								<tfoot>
+									<tr>
+										<td></td>
+										<td><a id="summaryLinkTop" href="#">Ver por cantidad</a></td>
+									</tr>
+								</tfoot>											
+							</table>							
+						</div> <!-- details Resumen mis Inversiones -->
+						
+						<div class="details detailsMiddle">	
+							<strong class="black">Portafolio total</strong>
+							<div id="graphPie"> </div>
+							<div id="graphPie2"> </div>
+							<a id="detailsPortfolioLink" href="#">Ver detalle de retornos</a>
+						</div> <!-- details Graph -->
+						
+						<div class="details">
+							<strong class="black">Detalle operativo</strong>
+							<table class="detailTable detailsTableRight">
+								<tbody>
+									<tr>
+										<td>Tasa ponderada</td>
+										<td><a href="#">#{myInvestments.tasaPonderada}%</a></td>
+									</tr>
+									<tr>
+										<td>Intereses devengados</td>
+										<td><a href="#">#{myInvestments.balances_accrued_interest}</a></td>
+									</tr>
+									<tr>
+										<td>Pagos recibidos</td>
+										<td><a href="#">#{myInvestments.numPagosRecibidos}</a></td>
+									</tr>
+									<tr>
+										<td>Pagos de capital</td>
+										<td><a href="#">#{myInvestments.numPagosCapital}</a></td>
+									</tr>
+									<tr>
+										<td>Pagos de intereses ordinarios</td>
+										<td><a href="#">#{myInvestments.numPagosInterOrdi}</a></td>
+									</tr>
+									<tr>
+										<td>Pagos de intereses moratorios</td>
+										<td><a href="#">#{myInvestments.numPagosInteMora}</a></td>
+									</tr>
+									<tr>
+										<td>Impuestos</td>
+										<td><a href="#">#{myInvestments.impuestos}</a></td>
+									</tr>
+									<tr>
+										<td>Comisiones pagadas</td>
+										<td><a href="#">#{myInvestments.comisPagadas}</a></td>
+									</tr>								
+									<tr>
+										<td>Comisiones recibidas</td>
+										<td><a href="#">#{myInvestments.numComisRecibidas}</a></td>
+									</tr>								
+								</tbody>
+							</table>																										
+						</div> <!-- details Detalle Operativo -->
+												
+						<div class="details detailsBottom"> 
+						
+							<!--<strong class="black">Posición actual</strong>-->
+							<table class="accountTable">							
+								<thead>
+									<tr>
+										<th><strong class="black">Posición actual</strong></th>
+										<th>Saldos</th>
+										<th>Notas</th>
+									</tr>
+								</thead>								
+								<tbody>
+									<tr>
+										<td>Efectivo disponible</td>
+										<td>#{myInvestments.balances_cash}</td>
+										<td><a title="Efectivo disponible" href="#" >#{myInvestments.notes_cash}</a></td>
+									</tr>
+
+									<tr>
+										<td>Inversiones en proceso</td>
+										<td>#{myInvestments.balances_investment_process}</td>
+										<td><a title="Inversiones en proceso" href="#" >#{myInvestments.notes_investment_process}</a></td>
+									</tr>
+
+									<tr>
+										<td>Inversiones activas</td>
+										<td>#{myInvestments.balances_active_investments}</td>
+										<td><a title="Inversiones activas" href="#" >#{myInvestments.notes_active_investments}</a></td>
+									</tr>								
+
+									<tr>
+										<td>Intereses devengados</td>
+										<td>#{myInvestments.balances_accrued_interest}</td>
+										<td><a title="Intereses devengados" href="#" >#{myInvestments.notes_accrued_interest}</a></td>
+									</tr>								
+								</tbody>
+								
+								<tfoot>
+									<tr>
+										<td><strong>Saldo total</strong></td>
+										<td class="black">#{myInvestments.total_balance}</td>
+										<td></td>
+									</tr>
+								</tfoot>
+							</table>							
+						</div>	<!-- details Account -->																		
+
+						<div class="details detailsMiddle detailsBottom">	
+							<div id="graphPie3"> </div>
+						</div> <!-- details Graph -->
+						
+						<div class="details detailsBottom">
+							<strong class="black">Detalle efectivo</strong>
+							<table class="detailTable">
+								<tbody>
+									<tr>
+										<td>Depósitos</td>
+										<td>#{myInvestments.depositos}</td>
+									</tr>
+									<tr>
+										<td>Inversiones realizadas</td>
+										<td>#{myInvestments.inverRealiz}</td>
+									</tr>
+									<tr>
+										<td>Pagos capital recibidos</td>
+										<td>#{myInvestments.pagCapRecib}</td>
+									</tr>
+									<tr>
+										<td>Intereses ordinarios recibidos</td>
+										<td>#{myInvestments.intOrdRec}</td>
+									</tr>
+									<tr>
+										<td>Intereses moratorios recibidos</td>
+										<td>#{myInvestments.intMoraRec}</td>
+									</tr>
+									<tr>
+										<td>Recuperación de morosos</td>
+										<td>#{myInvestments.recupMorosos}</td>
+									</tr>
+									<tr>
+										<td>ISR retenido</td>
+										<td>(#{myInvestments.retenidoISR})</td>
+									</tr>
+									<tr>
+										<td>Comisiones cobradas</td>
+										<td>#{myInvestments.comisCobrad}</td>
+									</tr>								
+									<tr>
+										<td>Comisiones pagadas</td>
+										<td>#{myInvestments.comisPagad}</td>
+									</tr>								
+									<tr>
+										<td>Ajustes</td>
+										<td>#{myInvestments.ajustes}</td>
+									</tr>								
+									<tr>
+										<td>Quebrantos</td>
+										<td>#{myInvestments.quebrantos}</td>
+									</tr>								
+									<tr>
+										<td>Quebrantos por aplicar</td>
+										<td>#{myInvestments.quebranXapli}</td>
+									</tr>								
+									<tr>
+										<td>Premios por recomendación</td>
+										<td>#{myInvestments.premiosRecom}</td>
+									</tr>								
+								</tbody>
+								
+								<tfoot>
+									<tr>
+										<td><strong>Disponible para invertir</strong></td>
+										<td><strong>#{myInvestments.balances_cash}</strong></td>
+									</tr>
+								</tfoot>
+							</table>																										
+						</div> <!-- details Detalle Operativo -->						
+						
+						<div class="clear"></div>						
+						
+					</div> <div class="clear"></div> <!-- content -->
+					
+				</div> <!-- container -->
+			</section>		
+		</div> <!-- wrapper -->	
+		</h:form>
+	</body>	
+</html>

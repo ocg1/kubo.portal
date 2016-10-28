@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+div#main_edicion_nota
+{
+	width: 400px;
+	margin-top: 0;
+	margin-left: 0;
+	display: none; 
+	clear:both;
+	overflow:hidden;
+	
+	border: 0px solid black;
+	font-size: 16px;
+	color: #666;
+}
+
+#section-notes #main_edicion_nota select{
+	font-size:16px !important;
+
+	padding: 10px 2% 0;
+	color: #666;
+}
+
+.observaciones_nota {
+
+	padding:10px 0%;
+	color:#333;
+}

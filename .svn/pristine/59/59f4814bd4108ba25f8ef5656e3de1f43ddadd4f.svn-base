@@ -1,0 +1,299 @@
+@CHARSET "UTF-8";
+
+
+	
+	/* body {
+			font-family: helvetica,arial,clean,sans-serif !important; 
+		} */
+	
+	   <!-- styles for chrome and safari -->
+	   ::-webkit-input-placeholder {
+	      color: #808080 !important;
+	      font-weight: normal !important;
+	      font-size: 0.9em !important;
+	   }
+	   <!-- styles for firefox -->
+	   :-moz-placeholder {
+	      color: #808080 !important;
+	      font-weight: normal !important;
+	      font-size: 0.9em !important;
+	   }
+	       <!-- styles for internet explorer -->
+	   .ui-watermark {
+	         color: #808080 !important;
+	         font-weight: normal !important;
+	         font-size: 0.9em !important;
+	   }
+	   #txt-mxcurp.ui-state-default{
+	   		border: 1px solid #FFF200 !important;
+	   }
+	    #txt-mxcurp.ui-state-default:focus{
+	   		border: 1px solid #4AA432 !important;
+	   }
+	   #acSimple_input.ui-state-default,#dvSummaryCont .classAuto .ui-state-default{
+	   		/* border: 1px solid #FFF200 !important; */
+	   		padding-left: 3px; 
+	   		width: 300px ! important; 
+	   		font-size: 1em ! important;
+	   }
+	   #acSimple_input.ui-state-default:focus,#dvSummaryCont .classAuto .ui-state-default:focus{
+	   		border: 1px solid #4AA432 !important;
+	   }
+	   
+	   .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield, .elementStlSel{
+	   width: 293px !important;
+	   }
+	   
+	   	.backRow{
+			background: none repeat scroll 0 0 #F2F5F9 !important
+		}
+		
+		.tbDetailIncome{
+			border-collapse: collapse;
+			font-size: 1.0em;
+			color: #333333
+		}
+	   	
+	   	.tbDetailIncome td{
+	   		padding: 5px;
+	   	}
+	   	
+	   	.resultTotal{
+	   		border-top: solid 2px #333333;
+	   	}
+	   	
+	   	h2.expandTemp {
+		    background: none repeat scroll 0 0 #4CA330;
+		    border-radius: 3px 3px 3px 3px;
+		    float: left;
+		    font-size: 1em;
+		    font-weight: normal;
+		    height: 25px;
+		    margin: 0 0 5px;
+		    padding: 0 0 0 20px;
+		    width: 480px;
+		}
+		h2.expandTemp span {
+			    color: #FFFFFF;
+			    display: block;
+			    float: left;
+			    text-decoration: none;
+			}
+			
+		.wrapperControlTable{
+			/* font-size: 0.97em !important; */
+		}
+		
+		.custumTdEditPhone td{
+			vertical-align: top; 
+			padding: 5px 0 0 10px;
+		}
+		
+		.styleradiolocal input{
+			width: auto !important;
+			height: auto !important;
+		}
+		
+		.clPointer:hover{
+			cursor: pointer;
+		}
+		
+		.clGraphicTitle{
+			font-size: 0.88em;
+		}
+		
+		.ui-widget{
+			/* font: 0.985em helvetica,arial,clean,sans-serif !important; */  
+		} 
+		
+		.clssControlBuro{
+		
+			font-size: 0.87em !important;
+		
+		}
+		
+		.clssTablesBuro{
+			font-size: 0.66em !important;
+		}
+		
+		.dvContChangeStatus{
+		
+			width: 400px !important;
+		
+		}
+		
+		#descStatus:HOVER{
+			cursor: pointer;
+			background-color: #E3E3E3;
+		}
+		
+		.principal{
+				border: 0px black solid;
+				width: 290px;
+				float: left;
+				
+				white-space: pre; /* CSS 2.0 */
+				white-space: pre-wrap; /* CSS 2.1 */
+				white-space: pre-line; /* CSS 3.0 */
+				white-space: -pre-wrap; /* Opera 4-6 */
+				white-space: -o-pre-wrap; /* Opera 7 */
+				white-space: -moz-pre-wrap; /* Mozilla */
+				white-space: -hp-pre-wrap; /* HP */
+				word-wrap: break-word; /* IE 5+ */
+				text-align: justify;
+			}
+			
+			#changeBurSolNum input[type="radio"]{
+				width: 30px !important;
+				height: 13px !important;
+				-webkit-box-shadow: 0px 0px 10px 0px #c2c2c2 !important;
+				-moz-box-shadow: 0px 0px 0px 0px #c2c2c2 !important;
+				box-shadow: 0px 0px 0px 0px #c2c2c2 !important;
+			}
+			
+			#detailsTransUnion{
+				
+				cursor: pointer;
+				
+			}
+			
+			#detailsTransUnion:HOVER {
+			
+				text-decoration: underline;
+				
+			}
+			
+			.dvContPersonalData{
+				
+				font-size:0.89em !important;
+				
+			}
+			
+			#dvDetalleTransUnion{
+				
+				background-color: #FFFFFF !important;
+				border: solid 1px #E6E6E6;
+				width: 305px;
+				height: auto;
+				display: none;
+				position: absolute;
+				font-size: 0.8em;
+				padding: 5px;
+				right: 6px;
+				top: 60px;
+				-webkit-box-shadow: 1px 1px 10px -3px #c2c2c2 !important;
+			  	-moz-box-shadow: 	1px 1px 10px -3px #c2c2c2 !important;
+			  	box-shadow: 		1px 1px 10px -3px #c2c2c2 !important;
+			  	
+			}
+			
+			.clEdoCtaInv{
+			
+				text-decoration: none;
+				cursor: pointer;
+				/* color: #0066FF !important; */
+				
+			}
+			
+			.clSolInv{
+				text-decoration: none;
+				cursor: pointer;
+				left: 828px !important;
+			}
+			
+			
+			.clCntProfileWidth{
+				margin-left: 0px !important;
+			}
+			
+			.clCntSearchProfile{
+				margin-left: 110px !important;
+			}
+			
+			.clsDiagNosticoButt
+			{		
+				width: 149px;	
+			    height:	24px;	
+			    float: right;
+			    background: none repeat scroll 0 0 #FFFFFF;
+			    
+				/* border: 1px solid #CCCCCC; */
+			    border-radius: 0;
+			    
+			    
+			    			    			    
+			}
+			
+			.clsActivityButt
+			{
+				width: 89px;
+				height: 24px;
+			    background: none repeat scroll 0 0 #FFFFFF;			    
+			    border-radius: 0;
+			    font-size: 0.8em;			    			    
+				padding-top: 4px;			    
+				float: right;
+			    text-align: center;		
+			    border: 1px solid #CCCCCC;	    
+			}
+			
+			.importantCls{
+				font-size:0.83em;
+				color: #ff0000;
+			}
+			
+			#dvContSummaryComplete
+			{
+				min-height: 650px; 
+				height: 	auto; 
+				position: 	relative; 
+				border: 	solid 0px #000000;
+			
+				font-weight: 400;
+}
+			
+			#detailsFundingLast:hover {
+			    background-color: rgba(193,216,47,0.5);
+			} 
+			
+					.ui-icon {
+			    border-radius: 5px;
+			}
+			
+			.ui-button-icon-only .ui-icon, .ui-button-text-icon-left .ui-icon, .ui-button-text-icon-right .ui-icon {
+				    margin-top: 1px;
+				    position: absolute;
+				    top: 4px;
+				}
+				
+				.ui-state-default {
+				    box-shadow: 0 0px 0 #FFFFFF inset;
+				}
+				
+				.clsEdoCuentaForInvButt {
+				    background: none repeat scroll 0 0 #FFFFFF;
+				    border: 1px solid #CCCCCC;
+				    border-radius: 0;
+				    height: 24px;
+				    left: 769px;
+				    padding-top: 4px;
+				    float: right;
+				    text-align: center;
+				    width: 149px;
+				    z-index: 1;
+				}
+
+div#dvCntMyInvestment
+{
+	display: none; 
+	width: 99%;
+	height: 1625px;
+	margin-left: auto; 
+	margin-right: auto;
+	z-index: 3; 
+	background-color: #ffffff;
+	border: solid 1px #cccccc; 
+	position: relative; 
+	/* top: -300px; */
+}				 				
+			

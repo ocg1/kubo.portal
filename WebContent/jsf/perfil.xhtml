@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui">
+	  
+	<h:head>
+		
+		<meta name = "viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<!-- MS --> 
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		
+		 <meta name="format-detection" content="telephone=no"/>
+		
+		<!-- <script type="text/javascript" src="../resources/js/jquery-1.7.1.js"></script> -->
+		<script type="text/javascript" src="../resources/js/contenido.js"/>
+		<script type="text/javascript" src="../resources/js/general.js"/>		
+		<script type="text/javascript" src="../resources/js/reloj.js"/>		
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"/>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"/>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"/>
+		<script type="text/javascript" src="../resources/js/preregfrm.js"/>
+		<script type="text/javascript" src="../resources/js/alertify.js"/>
+		<script type="text/javascript" src="../resources/js/secciones/forgot_password/forgot_password.js"/>
+		<script type="text/javascript" src="../resources/js/editperfil.js"/>
+		<script type="text/javascript" src="../resources/js/secciones/perfil/cambiar_preguntas_seguridad.js"/>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />		
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capitulo1.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/proyectos.css" media="screen" charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="../resources/css/inicio.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/perfil.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />		
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+       	<script type="text/javascript" src="../resources/js/alertify.js"/>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+       	<script type="text/javascript" src="../resources/js/alertify.js"/>
+		<script type='text/javascript' src="../resources/js/variasFuncionesFormulario.js" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700'    rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Karla'                   rel='stylesheet' type='text/css' />
+	 
+    	<title>kubo.financiero | Tu perfil</title>				
+        <meta name="Description" content="Aquí puedes modificar el correo electrónico y la contraseña, con la que accedes a tu cuenta asi como agregar/cambiar tu imagen de perfil de usuario"/>
+		<script>
+	$(document).ready(function(){
+
+			$('.opciones_cambiar ul li').click(function(){
+				$('.opciones_cambiar ul li').removeClass("active");
+				$(this).toggleClass("active");
+				
+				
+			});
+			
+			$(".relativeLoad33").click(function()
+					{		
+						$(".custumStlFileUpload").click();
+						
+					});
+		
+	});
+		</script>	
+	</h:head>
+	<!-- <h:body onload="javascript:cambiaReloj();"> -->
+	<h:body styleClass="clBody interiorPagina">
+		<div id="header" style="width: 100%; magin-right: 0px; margin-bottom: 0px;">
+			<ui:include src="templates/headContenido.xhtml" />
+		</div>
+		
+		<div class="titulo"><h2>Editar perfil</h2></div>
+		
+		<h:form id="frm-change-data" prependId="false">
+	
+			<div class="contPR" style="position: relative;margin-right: 0px;">
+				<div class="wrapper-perfil" style="padding: 5px; overflow: hidden; ">
+			
+					<div   style="width: 100%; background-color: #FFFFFF; padding-top: 0px !important; margin-top: 0px !important;" >	
+		
+						<div id="general"  style="width:100%">
+							<div class="backStyle"  style="padding-top: 0px !important; margin-top: 0px !important;">
+								<fieldset class="content_perfil">
+							
+									<ui:include src = "secciones/perfil/editar_imagen_perfil.xhtml"/>
+									
+									<h:panelGroup  rendered="#{!perfilController.hasScoring}">
+			 							<div id="link-edit-completname" class="password" style="vertical-align: bottom !important;" >Editar nombre</div>
+			 						</h:panelGroup>
+
+	
+									<div class="nombre_correo_contrasenia">
+										<div class="nombrePerfil">#{perfilController.completeName}</div>
+										
+										<div class="correo_electronico">
+											<label>Correo electrónico:</label>
+											<p:outputPanel autoUpdate="true">#{perfilController.membership.email}</p:outputPanel>	
+										</div>
+											
+										<div class="contrasenia">
+											<p>Contraseña:</p>
+										 	<p>***************</p>
+										</div>							 									    					     
+<!-- 
+										<h:panelGroup id="section-edit-name">
+											<div class="nombrePerfil" style="float: left;">
+											 	#{perfilController.completeName}										 	
+											 </div>																		 
+										</h:panelGroup>
+									 
+										<h:panelGroup  rendered="#{!perfilController.hasScoring}">
+											<div id="link-edit-completname" class="password" style="float: right; margin: 5px;">Editar nombre</div>
+										</h:panelGroup>
+-->									 									 
+																		 
+									 	<p:outputPanel autoUpdate="true" id="section-update-data-pass">
+									 		<input type="hidden" id="name" value="#{perfilController.person.first_name}" />
+									 		<input type="hidden" id="email" value="#{perfilController.membership.email}" />
+										</p:outputPanel>
+									 
+										<div id = "section-display-message" class = "dvContent2" style="margin-left: 8px;display: none;">
+											<div class = "dvContent" style = "width: 500px;">													
+												<div class = "dvLabel" style = "width: auto; margin: 0px;">
+													<h:graphicImage id="img-bullet-true"  style="float:left" width="18" height="18" url="../resources/img/Bullet.png" />
+													<h:graphicImage id="img-bullet-error" style="float:left" width="18" height="18" url="../resources/img/error2.png" />
+													<h:outputLabel id="lbl-msg-server" style="float: left; margin-left: 6px;" styleClass="labelsStl"  value=""/>
+												</div>
+											</div>
+										</div>
+									 
+								    	<div id="link-mail" class="password ligaModulo especificar" >Cambiar correo electrónico <i class="fa fa-angle-down" ></i></div>	
+										<ui:include src = "secciones/perfil/editar_email.xhtml"/>	
+									
+										<div id="link-pass" class="password ligaModulo especificar" >Cambiar contraseña  <i class="fa fa-angle-down" ></i></div>					 							
+										<ui:include src = "secciones/perfil/editar_password.xhtml"/>	
+									
+										<div id = "link_preguntas_seguridad" class="password ligaModulo especificar" >Cambiar preguntas de seguridad <i class="fa fa-angle-down" ></i></div>								
+										<ui:include src = "secciones/perfil/editar_nombre_completo.xhtml"/>
+																			
+										<ui:include src = "#{perfilController.pantalla_a_mostrar}"/>
+									
+										<div id = "link_notification_preference" class="password ligaModulo especificar" >Cambiar el medio de notificación<i class="fa fa-angle-down" ></i></div>								
+										<ui:include src = "secciones/perfil/editar_notification_preference.xhtml"/>
+									
+								<!-- p:commandLink   onstart="displayMessageProcessing('msgprocessing',false);"  action="registrar"  immediate="true" styleClass="btn_verde" >
+							
+									Regresar al formulario
+				
+								</p:commandLink -->
+									
+									</div>
+						 			
+						 			<ui:include src = "secciones/perfil/datos_del_prospecto.xhtml"/>
+						 			
+								</fieldset>
+							</div>
+						</div>					
+					</div>			
+				</div>
+			</div>	
+		</h:form>
+	
+		<div id = "footer" style = "width: 100%; magin-right: 0px;">
+			<ui:include src = "templates/footerContenido.xhtml" /> 
+		</div>
+		
+		<ui:include src = "secciones/perfil/password_validation_msg.xhtml"/>
+	
+		<ui:include src = "templates/msgProcessing.xhtml" />
+		
+	</h:body>
+</html>

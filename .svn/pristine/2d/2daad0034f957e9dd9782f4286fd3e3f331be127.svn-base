@@ -1,0 +1,59 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+	<div class="dvContent">
+		<div class="dvLabel" style = "margin: 0;">
+			<h:outputLabel value = "#{msg.Neighborhood_text}" styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<p />
+		
+		<div id="dvNeighborhoodSel">
+			
+			<div id = "lista_colonias_por_codigo_postal" class = "styled-select" >
+			
+				<h:selectOneMenu id = "selColonia"  style = "height: 30px;"
+								 value      = "#{summaryRequest.editor_domicilio.colonia_id}" 
+								 styleClass = "validatorClass mapClass neighborhood editor-domicilio input-text" >
+								 
+					<f:selectItem  itemLabel = "" itemValue = "0" />
+			  
+					<f:selectItems value     = "#{summaryRequest.editor_domicilio.colonias_por_codigo_postal}" 
+								   var       = "colonia" 
+								   itemLabel = "#{colonia.name}" 
+								   itemValue = "#{colonia.neighborhoodCatPK.neighborhood_id}" />
+								   
+					<p:ajax event = "change"  listener = "#{summaryRequest.editor_domicilio.listener_colonia_SELECTED}"/>
+					                					 
+				</h:selectOneMenu>
+			</div>					
+			
+			<div class = "neighborhood-text-vivienda" onclick = "showNeighText()">		  		  
+				<p>Da click aquí si la colonia no se encuentra en la lista</p>		
+			</div>
+			
+		</div>
+		
+		<div id = "dvNeighborhoodText" style = "display: none">
+			
+			<div class="dvElementAddres1" style = "margin:0; padding:0; width:100%;">
+				
+				<h:inputText id    = "neighborhood_text_control" immediate = "true" 
+							 value = "#{summaryRequest.editor_domicilio.colonia_Text}"  
+							 styleClass = "elementAddres1 mapClass neighborhood_text editor-domicilio input-text" >
+								
+					<p:ajax event = "blur" listener = "#{summaryRequest.editor_domicilio.listener_colonia_TEXT}"  />
+					
+				</h:inputText>											
+			</div>
+					
+			
+			<div class = "neighborhood-text-vivienda" onclick = "showNeighSel()" >		  		  
+				<p>Da click aqui si prefieres elegir de la lista</p>		
+			</div>			
+		</div>		
+	</div>					
+</ui:composition>

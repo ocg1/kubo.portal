@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+      xmlns:h  = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f  = "http://java.sun.com/jsf/core"
+      xmlns:p  = "http://primefaces.org/ui">
+        
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	        
+    	<title>Préstamos personales | kubo.financiero </title>
+        <meta name="description" content="" />    	      
+       	<meta name ="viewport"         content="width=device-width, minimum-scale=1, maximum-scale=1,  initial-scale=1"/>     	
+        <meta name="format-detection"  content="telephone=no"/>        
+        <meta name="apple-mobile-web-app-capable"          content="yes" />            
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />       
+        <meta property="og:title" content=""/>
+        <meta property="og:url"   content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+        <meta name="apple-mobile-web-app-title" content="Kubo.Financiero"/>   
+        <meta http-equiv="cleartype"       content="on" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 	
+        
+	    <link rel="shortcut icon" href="resources/favicon.ico"/> 
+        <link rel="apple-touch-icon-precomposed" href="resources/images/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/apple-touch-icon72.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/apple-touch-icon144.png"/>                    
+        <link rel="apple-touch-startup-image"  media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="resources/images/320_460.png" />        
+		<link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="resources/css/laptop_medium.css"/>              
+		
+        <link rel="stylesheet" type="text/css" href="resources/css/reset.css" />        
+        <link rel="stylesheet" type="text/css" href="resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/desbloquear-password.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="resources/css/frmStyle.css" />	
+        <link rel="stylesheet" type="text/css" href="resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="resources/css/alertify.default.css" />
+       	<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css" />
+      	<link rel="stylesheet" type="text/css" href="resources/css/flaticon.css" />
+   	   	<link rel="stylesheet" type="text/css" href="resources/css/flaticon2.css" />
+       	<link rel="stylesheet" type="text/css" href="resources/css/smart_tab_vertical.css" />
+       	
+       <script data-cfasync="false" type='text/javascript' src="resources/js/chat.js" />
+    	
+    	<script>
+    		setTimeout(function(){ setChat(); }, 2000);
+		</script>
+		
+  	    <script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"/>       
+        <script type="text/javascript" src="resources/js/jquery.slides.min.js"/>
+        <script type="text/javascript" src="resources/js/js_slideshome.js"/>
+        
+    	<script type="text/javascript" src="resources/js/scripts.js"/>
+    	<script type="text/javascript" src="resources/js/scripts_interior.js"/>  	
+   		<script type="text/javascript" src="resources/js/ga_event.js"/>    	
+		<script type="text/javascript" src="resources/js/alertify.js"/>	
+		<script type="text/javascript" src="resources/js/general.js"/>
+		<script type="text/javascript" src="resources/js/preregfrm.js"/>
+		<script type="text/javascript" src="resources/js/preregfrm2.js"/>
+		<script type="text/javascript" src="resources/js/validar_cambio_correo.js"/>
+		<script type="text/javascript" src="resources/js/envio_correo_preregistro.js"/>		
+        <script type="text/javascript" src="resources/js/forgot_password.js"/>	
+        <script type="text/javascript" src="resources/js/desbloqueo-password.js"/>
+        <script type="text/javascript" src="resources/js/desbloqueo-password/security-question.js"/>
+        <script type="text/javascript" src="resources/js/desbloqueo-password/security-answer.js"/>
+        <script type="text/javascript" src="resources/js/desbloqueo-password/por-correo.js"/>
+		<script type="text/javascript" src="resources/js/browserDetect.js"/>
+		<script type="text/javascript" src="resources/js/easyscroll.js"/>
+	    <script type="text/javascript" src="resources/js/mousewheel.js" charset="utf-8"/>
+	    <script type="text/javascript" src="resources/js/jquery.viewport.mini.js" charset="utf-8"/>
+	    <script type="text/javascript" src="resources/js/jquery.smartTab.js"/>
+        <script type = "text/javascript" >
+        /******************GOOGLE*ANALYTICS**************************************/  
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+            	  ga('require', 'linkid');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+        </script>	    
+	</h:head>
+
+    <h:body>
+	    <div class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+	    	<h:form prependId = "false" >
+	    		
+	
+	       	    <ui:include src = "templates/header.xhtml" />
+	       	    
+	           	<div class = "banner bannerFondo">    
+	           	
+		           	<div id = "display_desbloqueo_MSG" class = "sesion_expirada" style = "display: #{desbloqueo_password.display_desbloqueo_MSG}">									    							
+						<h2 style = "text-align: center;">Se ha desbloqueado tu contraseña</h2>
+					
+						<p style = "font-size: 17px;"> Da click
+							<p:commandLink action = "#{desbloqueo_password.init_login_redirect}" value = "aquí" immediate = "true"/>
+							 para ingresar.
+						</p>					
+					</div>	              
+	            </div>
+	            
+	            <div style = "display: none;">				
+					<h:inputText id = "init-access-CONFIG" immediate = "true" ajax = "true">
+						<p:ajax event = "blur"
+							   	oncomplete = "DesbloqueoPassword.init_access_on_complete(xhr, status, args);"
+							   	listener   = "#{desbloqueo_password.auditor.init_access_CONFIG}"/>
+					</h:inputText>
+					
+					<script>
+						DesbloqueoPassword.init_access_CONFIG();
+					</script>
+				</div>
+	            
+		        <ui:include src="templates/footer_mapa.xhtml" />       
+	        </h:form>
+		</div>
+    </h:body>		
+</html>

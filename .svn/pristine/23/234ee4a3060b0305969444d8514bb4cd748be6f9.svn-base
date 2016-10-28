@@ -1,0 +1,50 @@
+<ui:component xmlns    = "http://www.w3.org/1999/xhtml"
+			  xmlns:h  = "http://java.sun.com/jsf/html"
+			  xmlns:ui = "http://java.sun.com/jsf/facelets"
+			  xmlns:f  = "http://java.sun.com/jsf/core"
+			  xmlns:p  = "http://primefaces.org/ui">
+			  		
+	<h:panelGroup id = "panel-desbloquear-password">
+		<h:panelGroup rendered = "#{tablero_autenticacion.desbloquear_password_ENABLED}">			  		
+			<p:layout styleClass = "tablero-control container">
+			    <p:layoutUnit position = "west"
+			    			  size = "200"
+			    			  style = "border: solid 1px #E3E3E3;"
+			    			  styleClass = "colIzq">
+			        <div class = "tablero-control menu-item">
+			        	<p>Autenticación</p>
+			        </div>
+			    </p:layoutUnit>
+			 
+			    <p:layoutUnit position = "center" style = "border: solid 1px #E3E3E3;" styleClass="colDer">
+			    	<h:form prependId = "false">
+			    	
+			    		<div id = "desbloqueo-password-icon" class = "autenticacion_icon">
+			    			<span class = "ui-icon ui-icon ui-icon-check" />
+			    		</div>
+			    			  
+						<div onclick = "init_desbloquear_password();" class = "alta-partner guardar btn_naranja" style = "display: block; margin:0">Desbloquear</div>	
+						
+						<div style = "display: none">
+							<h:inputText id = "init-desbloquear-password" immediate = "true" ajax = "true">
+								<p:ajax event = "click"
+										onstart    = "return displayMessageProcessing('msgprocessing',false);"
+										oncomplete = "desbloquear_password_on_complete(xhr, status, args);" 
+										listener   = "#{tablero_autenticacion.init_desbloquear_password}"/>
+							</h:inputText>
+						</div>	  
+					</h:form>
+			    </p:layoutUnit>
+			</p:layout>
+		</h:panelGroup>
+	</h:panelGroup>			
+	
+	<div style = "display: none;">
+		<h:inputText id = "init-panel-desbloquear-password" immediate = "true" ajax = "true">
+			<p:ajax event = "click" 
+					listener   = "#{tablero_autenticacion.init_panel_desbloquear_password}" 
+					oncomplete = "panel_desbloquear_password_on_complete(xhr, status, args);" 
+					update     = ":panel-desbloquear-password" />
+		</h:inputText>
+	</div>
+</ui:component>			  

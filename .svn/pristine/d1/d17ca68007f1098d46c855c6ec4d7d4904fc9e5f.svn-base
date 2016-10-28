@@ -1,0 +1,8 @@
+package mx.com.kubo.managedbeans;
+
+public interface SimulatorIMO 
+{	
+	void simulaCred(boolean isSafi);
+	
+	void calculaCat( boolean isSafiSimulation );
+}

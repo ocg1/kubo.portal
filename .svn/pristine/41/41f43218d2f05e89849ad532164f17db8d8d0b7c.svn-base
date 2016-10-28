@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">		
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.TelExt_text}" />
+		</div>
+	
+		
+		<div class="dvElementAddres1">
+			<h:inputText id = "value_telExt" 
+						 value      = "#{employment.phonebeanFixed.extension}"
+						 tabindex   = "39" 
+						 onkeypress = "return isNumberKey(event);" 
+						 styleClass = "elementAddres1" >
+				<p:ajax event    = "blur" 						
+						listener = "#{addMyLoan.updatePhoneFixed(employment)}" />
+			</h:inputText>
+			
+<!--
+onstart  = "return validatePhoneExt('uiemp\:#{status.index}\:value_telExt','uiemp\:#{status.index}\:lada_phoneFixed_employ','uiemp\:#{status.index}\:phoneFixed_employ')" 
+ -->			
+		</div>
+	</div>
+</ui:composition>		

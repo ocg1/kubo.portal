@@ -1,0 +1,87 @@
+package mx.com.kubo.services.fondeo.cliente;
+
+import mx.com.kubo.model.IdentificationCollector;
+import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.ProyectLoan;
+import mx.com.kubo.services.fondeo.ServiceFondeoDMO;
+import mx.com.kubo.tools.Utilities;
+
+public abstract class AltaClienteDMO extends ServiceFondeoDMO
+{
+	protected NaturalPerson person;
+	
+	protected IdentificationCollector objIFE;
+			
+	protected Integer nacionalidad;
+	protected Integer tipo_identificacion;
+		
+	protected final String SAFI_ALTA_CLIENTE_INIT;
+	protected final String SAFI_ALTA_CLIENTE_OK;
+	protected final String SAFI_ALTA_CLIENTE_ERROR;
+	protected final String SAFI_ALTA_CLIENTE_ERROR_INFO;
+	protected final String SAFI_ALTA_CLIENTE_ERROR_RESP;
+	
+	protected final int EXTRANJERO;
+	
+	protected AltaClienteDMO()
+	{
+		service_calling        = Utilities.findBean("serviceCallingServiceImp");
+		service_natural_person = Utilities.findBean("naturalPersonServiceImp");		
+		
+		SAFI_ALTA_CLIENTE_INIT       = "Invocando el procedimiento almacenado microfin.IDENTIFICLIENTEALT";
+		SAFI_ALTA_CLIENTE_OK         = "Regresando Satisfactoriamente de invocar el procedimiento almacenado microfin.IDENTIFICLIENTEALT: ";
+		SAFI_ALTA_CLIENTE_ERROR      = "Error al invocar el procedimiento almacenado microfin.IDENTIFICLIENTEALT";
+		SAFI_ALTA_CLIENTE_ERROR_INFO = "El objeto es null. Error en el DAO NaturalPerson.getIdentificationCollector()";
+		SAFI_ALTA_CLIENTE_ERROR_RESP = "Error al dar de alta los datos de identificación en Safi.";
+		
+		EXTRANJERO = 0;
+	}
+	
+	public void setAcreditado(ProyectLoan proyect_loan) 
+	{	
+		this.proyect_loan  = proyect_loan;
+		
+		if(proyect_loan != null)
+		{		
+			person = proyect_loan.getPerson();
+			
+			company_id    = person.getNatPerPK().getCompany_id();
+			prospectus_id = person.getNatPerPK().getProspectus_id();
+			
+			nacionalidad        = person.getCitizenship();
+			SAFI_client_id      = person.getSafi_client_id();
+			tipo_identificacion = person.getIdentification_type_id();
+			
+			if(tipo_identificacion != null)
+			{
+				switch(tipo_identificacion)
+				{
+					case IFE:
+						acreditado_IFE = person.getMx_ife_cveelector();
+					break;
+					
+					case INE:
+						acreditado_IFE = person.getMx_ine_cic();
+					break;
+				}
+			}
+		}
+		
+		alta_cliente_ENABLED = false;
+		
+		if(acreditado_IFE == null)
+		{							
+			lista_errores.add("El cliente no cuenta con la clave de elector.");
+		}
+		
+		if(SAFI_client_id == null)
+		{							
+			lista_errores.add("No existe el id del cliente en Safi.");
+		}
+		
+		if(acreditado_IFE != null && SAFI_client_id != null)
+		{
+			alta_cliente_ENABLED = true;
+		}						
+	}
+}

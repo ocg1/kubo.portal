@@ -1,0 +1,127 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+		
+		<script>
+		
+			function validaMontoDepositado(){
+				
+				var val = $( "#ammountDep" ).val().replace(",","");
+				
+				val = val.replace(",","");
+				val = val.replace(",","");
+				val = val.replace(",","");
+				
+				var lim = $("#limiteSaldo").val();
+				
+				if(parseFloat( val ) > parseFloat( lim ) ){
+					
+					$( "#dvContMsgCapNet" ).show();
+					return false;
+					
+				}else{
+					
+					if( $( "#dvContMsgCapNet" ).is(":visible") ){
+						$( "#dvContMsgCapNet" ).hide();
+					}
+					
+					return true;
+					
+				}
+				
+			}
+			
+			function validaFecha(){
+				
+				var fec1 = $("#fechaDeposito").val();
+				if(fec1 != null ){
+					if(fec1 != ''){
+						var campos = fec1.split("/");
+							
+						var miFecha = new Date(campos[2],( parseInt(campos[1]) -1 ),campos[0]); 
+						
+						var FechaHoyD = new Date();
+						
+						var FechaHoy =  new Date( FechaHoyD.getFullYear() , FechaHoyD.getMonth() , FechaHoyD.getDate() );
+						
+						//alert(  "fecha1: " + miFecha.getTime() +"  fechaHoy: "+  FechaHoy )
+						
+						if(miFecha.getTime() > FechaHoy.getTime() ){
+							alert( "La fecha no debe ser superior al dia de hoy" );
+							$("#fechaDeposito").val( FechaHoyD.getDate() + "/" + FechaHoyD.getMonth() + "/" + FechaHoyD.getFullYear()   );
+							$("#fechaDeposito").blur();
+							return false;
+						}
+						return true;
+					}
+				}
+				
+			} 
+			
+			function resDeposito(xhr, status, args){
+				
+				if(args.success){
+					
+					$("#dvContValRet").fadeOut("slow",function(){
+						
+						$("#dvSuccess").fadeIn( "slow" );
+						
+					});
+					
+				}else{
+					
+					alert("Ocurriò un error al crear la notificación de retiro de efectivo. Por favor intente más tarde o comuniquese al centro de atenciòn de kubo.financiero al telèfono 62-69-00-24");
+					$( "#ammountRet" ).val("");
+				}
+				
+				closeFancy();
+			}
+		
+		</script>
+		
+	<h:form id = "FPDepositoEfe" prependId = "false">				
+		<div id = "dvContentLoanLst" class = "container_movimiento" >	
+			<div id = "providing_table">
+	
+				<FIELDSET>
+		
+					<div id = "dvContValRet" style = "overflow: auto;">
+					
+						<h:inputHidden id = "limiteSaldo" value = "#{disposicionEfectivo.saldotope}" />
+					
+						<div class = "disposicion_efectivo">
+					
+							<h3>Notificacion de Depósito</h3>
+
+							<ul class="formGenerico">
+					
+								<ui:include src = "inversionista/movimientos/deposito/cuenta-clabe.xhtml" />
+													
+								<li>
+									<label class="etiqueta">Mi Banco:</label>
+									
+										<div class="campo">
+											<h:outputText id = "nombreBanco" value = "#{disposicionEfectivo.bnkStr}" styleClass="labelsStl"/>
+										</div>
+									
+								</li>
+					
+								<ui:include src = "inversionista/movimientos/deposito/fecha.xhtml" />
+								<ui:include src = "inversionista/movimientos/deposito/monto.xhtml" />
+								<ui:include src = "inversionista/movimientos/deposito/cuenta.xhtml" />							 							 							 							
+								<ui:include src = "inversionista/movimientos/deposito/descripcion.xhtml" />														
+								<ui:include src = "inversionista/movimientos/deposito/notificar.xhtml" />													
+							</ul>
+						</div>
+					</div>
+					
+					<ui:include src = "inversionista/movimientos/deposito/confirmacion.xhtml" />
+															
+				</FIELDSET>				
+			</div>
+		</div>		
+	</h:form>	
+</ui:composition>	

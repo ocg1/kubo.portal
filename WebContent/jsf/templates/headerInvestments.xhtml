@@ -1,0 +1,49 @@
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+				
+		<body>
+			<header class="mainHeader">
+				<div>
+					<img class="logoKubo" alt="Logo Kubo" src="../resources/img/kubo-logo.jpg"/> 
+					<div class="welcome">
+						<p class="welcometext">¡Buenos días, #{myInvestments.client}!</p>
+						<p class="date">21 de mayo de 2012</p>
+					</div>				
+					<div class="clear"></div>
+				</div>
+				<nav>
+					<a class="selected" title="Mi Kubo" href="#" >Mi Kubo</a>
+					<a title="Notas" href="#" >Notas</a>
+					<a title="Portafolios" href="#" >Portafolios</a>
+					<a title="Historial" href="#" >Historial</a>
+					<a title="Detalle de actividad" href="#" >Detalle de actividad</a>
+					<a title="Cuenta bancaria" href="#" >Cuenta bancaria</a>
+					<a title="Documentación" href="#" >Documentación</a>
+					<a title="Estadísticas" href="#" >Estadísticas</a>
+				</nav>
+			</header>
+
+			<!--section myInvestments -->
+			<section class="myInvestments">
+				<header>
+					<h1>Mis inversiones</h1>
+					<div class="clear"></div>
+				</header>
+				<div class="container">
+					<div class="content">
+						<!-- navMyInvestments -->
+						<nav class="secondaryMenu">
+							<a class="selected" title="Resumen" href="#" >Resumen</a>
+							<a title="Invertir" href="#" >Invertir</a>
+							<a title="Selecciona proyectos" href="#" >Selecciona proyectos</a>
+							<a title="Alertas" href="#" >Alertas</a>
+							<a title="Depositar" href="#" >Depositar</a>
+						</nav>
+					</div>
+				</div>
+			</section>
+		</body>
+</html>

@@ -1,0 +1,40 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+																	
+	<div class="field">
+		<div class="dvLabel" style="width:365px">
+			<h:outputLabel value="#{msg.Question_receipt_payroll_text}" styleClass="labelsStl" />
+		</div>
+	<fieldset class="conjuntoChecks" id="receipt_payrollField"  >
+				   <div class="btnN dosBtnChecks" data-opcion="1">
+			        	<span>	<i class="fa fa-check"></i> Sí</span>
+			       </div>
+			       <div class="btnN dosBtnChecks btnR"  data-opcion="2">
+			        	<span>	<i class="fa fa-times"></i> No</span>
+			       </div>
+			<h:selectOneRadio id="receipt_payroll" tabindex="16" styleClass="elementStlLbl validatorClass hs_class ocultaSelect"  value="#{employment.employment.not_outsourcing}" >
+            	<f:selectItem   itemValue="1" itemLabel="Si"/>
+             	<f:selectItem   itemValue="2" itemLabel="No"/>	 
+             	<p:ajax event="click" onstart="return questionReceiptPayroll('uiemp\:#{status.index}\:receipt_payroll')" listener="#{addMyLoan.updateEmployment(employment)}"   oncomplete="conjuntoCombos();" ></p:ajax>  						 
+        		</h:selectOneRadio>
+       </fieldset>
+		
+	</div>
+	
+	<div id="ref_question_receipt_payroll" class="field" style="display: #{employment.employment.not_outsourcing == 2 ? 'block;' : 'none;'  }" >
+	
+			<div class="dvLabel" style="width:365px">
+				<h:outputLabel value="#{msg.Who_receipt_payroll_text}" styleClass="labelsStl" />
+			</div>
+			
+		
+				<h:inputText id="value_who_receipt_payroll" tabindex="17" styleClass="elementAddres1" value="#{employment.employment.who_pays}">
+					<p:ajax event="blur"  listener="#{addMyLoan.updateEmployment(employment)}"/>
+				</h:inputText>
+				<p:watermark for="value_who_receipt_payroll" value="Escribe"/>
+	
+	</div>	
+</ui:composition>				

@@ -1,0 +1,231 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">
+			
+	
+		<div class="contEdoCuentafieldset"  >
+			<div>
+			<div class="pediodo_consultar">
+							<div class="labelsStl"> Periodo: </div>
+	    			
+  							<div class="styled-select-Month">
+							<h:selectOneMenu id="month" value="#{estadoCuenta.mesStr}" styleClass="elementStlSelMonth" style="width: 180px !important;">
+								<f:selectItem itemLabel="Mes: " itemValue="0" />
+								<f:selectItems  value="#{estadoCuenta.months}"/>
+								<p:ajax event="change" ></p:ajax>
+							</h:selectOneMenu>
+							</div>
+							<div class="styled-select-Year">
+							<h:selectOneMenu id="year" value="#{estadoCuenta.year}" styleClass="elementStlSelYear">
+								<f:selectItem itemLabel="Año: " itemValue="0" />
+								<f:selectItems  value="#{estadoCuenta.years}"/>
+								<p:ajax event="change" ></p:ajax>
+							</h:selectOneMenu>
+							</div>
+							
+							<!-- update         = "pnlConMovAho , pnlResumenCreditos, :pnlConAmortCre"  -->
+							<p:commandLink id="completeActionEdo"
+							
+										   actionListener = "#{estadoCuenta.inicializaEdoCuenta}" 
+										   update         = "pnlConMovAho , :pnlConAmortCre" 
+										   onstart        = "return displayMessageProcessing('msgprocessing', false);" 
+										   oncomplete     = "completeActionEdo();" 
+										   styleClass	  = "callActionMedium btnNaranja"
+										   value          = "Consultar"
+										   >
+																	
+								
+							</p:commandLink>
+							
+						</div>
+			<div class="datos_cliente">
+				
+					<div class="logoEstadoImprimir">	
+						<img alt="" src="#{configManaged.location}resources/images/logo_kubo.png" />			
+					</div>
+			
+            		<table class="labelsStl" >
+            			<tr>
+            				<td class="num_cliente" >Número de Cliente: <span style="font-weight: bold;">#{estadoCuenta.prospectus.prospectusPK.prospectus_id}</span> </td>
+            			</tr>
+            			<tr>
+            				<td style="padding-bottom: 0px; padding-top: 8px;">
+            					<h:panelGroup rendered="#{sessionBean.area!='I'}">
+            						<b>#{estadoCuenta.nombre}</b>
+            					</h:panelGroup>
+            				</td>
+            			</tr>
+            			<tr>
+            				<td>
+            					<h:panelGroup rendered="#{sessionBean.area!='I'}">
+            						<h:outputText escape="false" value="#{estadoCuenta.addressStr}"  ></h:outputText>
+            					</h:panelGroup>
+            				</td>
+            			</tr>
+            		</table>
+				</div>
+			
+			
+			<div>
+				
+		    	<div class="datos_creditos">
+		    		
+		    		<table cellspadding="0"  cellspacing="0" >
+		    			<!-- <tr>
+		    				<td>
+		    					<div class="labelsStl" > Número de cliente: </div>
+		    				</td>
+		    				<td style="text-align: right;" >
+		    					<div class="labelsStl" > <span style="color: #439539;" > #{estadoCuenta.numCliente} </span> </div>
+		    				</td>
+		    			</tr> -->
+		    			<tr>
+		    				<td>
+		    					<div class="labelsStl" > Créditos vigentes: </div>
+		    				</td>
+		    				<td>
+		    					<div class="labelsStl" > <span style="color: #439539;" > #{estadoCuenta.contador_creditos_vigentes} </span> </div>
+		    				</td>
+		    			</tr>
+		    			<tr>
+		    				<td>
+		    					<div class="labelsStl" > Créditos en mora: </div>
+		    				</td>
+		    				<td>
+		    					<div class="labelsStl" > <span style="color: #439539;" > #{estadoCuenta.contador_creditos_mora} </span> </div>
+		    				</td>
+		    			</tr>
+		    			
+		    			<tr>
+		    				<td>
+		    					<div class="labelsStl" > Créditos vencidos: </div>
+		    				</td>
+		    				<td>
+		    					<div class="labelsStl" > <span style="color: #439539;" > #{estadoCuenta.contador_creditos_vencidos} </span> </div>
+		    				</td>
+		    			</tr>
+		    			
+		    			<tr>
+		    				<td>
+		    					<div class="labelsStl" > Créditos liquidados: </div>
+		    				</td>
+		    				<td>
+		    					<div class="labelsStl" > <span style="color: #439539;" > #{estadoCuenta.contador_creditos_liquidados} </span> </div>
+		    				</td>
+		    			</tr>
+		    			
+		    			<tr class="total_creditos">
+		    				<td>
+		    					<div class="labelsStl" > Total de créditos: </div>
+		    				</td>
+		    				<td>
+		    					<div class="labelsStl" > <span style="color: #439539;" > #{estadoCuenta.creditos_totales} </span> </div>
+		    				</td>
+		    			</tr>
+		    			
+		    		</table>
+		    		
+		    		
+		    		
+		    	</div>
+		    	
+		    	<!-- <div style="width: auto; height: auto; overflow: hidden; float: right; margin-right: 5px;" >
+		    	
+		    		<img alt="Cerrar" src="../resources/img/LOGO.png" width="100px" height="100px" border="0px" />
+		    	
+		    	</div> -->
+	    	</div>
+	    	<p style="clear: both; float: none;" />
+		    	
+		    <div >
+				<h:panelGroup id = "pnlResumenCreditos" >
+					<table class="tableAmortCl resumen_creditos" >
+						<tbody>
+							<tr>
+								<td>
+								<div class="tabla_scroll">	
+									<table>
+										<thead>
+											<tr class="encabezado">
+												<th>Número de Crédito</th>
+												<th><sup style=" font-size: 0.8em !important; margin-right: 5px;">(b)</sup>CAT<br />Sin IVA</th>
+												<th><sup style=" font-size: 0.8em !important; margin-right: 5px;">(a)</sup>Tasa de Interés Ordinaria Anual </th>
+												<th>Tasa de Interés Moratoria Anual</th>
+												<th>Interés Pagado</th>
+												<th>Comisiones Cargadas</th>
+												<th>Estatus</th>
+												<th>Monto a Pagar</th>
+												<th>Fecha Límite<br />de Pago</th>
+												<th>Saldo para Liquidar</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat var="creditHead" value="#{estadoCuenta.creditlst}" varStatus="status" >
+												<tr class="#{!status.even?'tableAmortCl-even':''}">
+													
+													<td > <h:outputText value="#{creditHead.numCredito}"></h:outputText> </td>
+													<td style="text-align: right;padding-right: 25px;font-weight: bold;" >#{creditHead.cat}%</td>
+													<td style="text-align: right;padding-right: 25px;" >#{creditHead.tasa}%</td>
+													<td style="text-align: right;padding-right: 25px;" >#{creditHead.tasaMora}%</td>
+													<td style="text-align: right;padding-right: 25px;" >#{creditHead.interesesCobrados}</td>
+													<td style="text-align: right; background-color: #F3F3F3;font-weight: bold;" >#{creditHead.comisiones}</td>
+													<td style="text-align: center;" >#{creditHead.status == null?'': creditHead.status == 'P'?'PAGADO':creditHead.status == 'V'?'VIGENTE':creditHead.status == 'A'?'ATRASADO':creditHead.status == 'B'?'VENCIDO':creditHead.status == 'RV'?'VIGENTE (RENOVACIÓN)':creditHead.status == 'RB'?'VENCIDO (RENOVACIÓN)':creditHead.status} </td>
+													<td style="text-align: right;" >#{creditHead.montoProxCuota}</td>
+													<td style="text-align: center;" >#{creditHead.fecProxCuotaResumen}</td>
+													<td style="text-align: right;" >#{creditHead.saldoLiquidar}</td>
+											
+												</tr>
+											</ui:repeat>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+
+									<!-- <tr class="tableAmortCl-even" >
+											
+										<td > <h:outputText value="1000000"></h:outputText> </td>
+										<td style="text-align: right;padding-right: 25px;" >34.8%</td>
+										<td style="text-align: right;padding-right: 25px;" >52.60%</td>
+										<td style="text-align: right;padding-right: 25px;" >105.2%</td>
+										<td style="text-align: right;background-color: #E6E6E6 !important;font-weight: bold;" >$1,056.28</td>
+										<td style="text-align: center;" >VIGENTE</td>
+										<td style="text-align: right;" >$3,715.00</td>
+										<td style="text-align: center;" >INMEDIATA</td>
+										<td style="text-align: right;" >$23,550.25</td>
+										
+									</tr> -->
+									
+								<!-- </ui:repeat> -->
+								
+								
+							<!-- <h:panelGroup rendered="#{estadoCuenta.tableMovs.size()==null or estadoCuenta.tableMovs.size() == 0 }" >
+							
+								<tr>
+									<td style="text-align: center; font-weight: bold;" colspan="6" >
+										<h:outputText value="Sin movimientos realizados en éste periodo " />
+									</td>
+								</tr>
+							
+							</h:panelGroup> -->
+							
+						</tbody>
+						
+					</table>
+					
+											<div class="montos_expresados">
+												<p style="font-size:14px !important">*Todos los montos son expresados en pesos mexicanos</p>
+									    		 <p style="font-size:14px !important"><sup style=" margin-right: 5px;">(a)</sup>Tasa fija anual simple.</p>
+												 <p style="font-size:14px !important"><sup style="margin-right: 5px;">(b)</sup>Costo Anual Total. Para fines informativos y de comparación. </p>
+									    		<p style="font-size:14px !important">Los <a  href="avisolegal.jsf?page=condiciones" class="ahref" >términos, condiciones</a> y <a href="leyTransparencia.jsf?page=comisiones" class="ahref">comisiones</a> aplicables al 
+									    		Crédito Personal kubo.financiero son los incluidos en el <a href="leyTransparencia.xhtml?page=contrato" class="ahref">Contrato de Adhesión</a> relacionado en la solicitud. Puedes consultar nuestros <a  href="avisolegal.jsf?page=requisitos" class="ahref" >requisitos y modalidades de contratación</a>.</p>
+									   		</div>
+					</h:panelGroup>
+				</div>				    	
+		    </div>			    	 
+		</div>				
+	
+</ui:composition>

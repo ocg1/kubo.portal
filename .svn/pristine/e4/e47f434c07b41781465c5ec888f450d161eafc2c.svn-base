@@ -1,0 +1,58 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "dvContent2">
+		<h:outputText value = "#{msg.Registration_razon}" styleClass = "etiqueta" />
+		
+		<h:panelGroup rendered = "#{!inicioValues.renderLogoPartner and !addNaturalPerson.fbview}" >
+		
+				<div class = "styled-select" style = "padding-top: 0px !important; background-color: #FFFFFF !important;">
+					<h:selectOneMenu id = "selectRegistration_Razon"
+									 value      = "#{addNaturalPerson.registration_reason_id}" 					
+									 onchange   = "validateSelect(this);" 
+									 disabled   = "#{addNaturalPerson.disabledRegistration}" 
+									 styleClass = "elementStlSel validatorClass">
+									 
+						<f:selectItem itemValue=""  itemLabel="Seleccionar..."/>
+						
+						<f:selectItems value = "#{addNaturalPerson.reasonsLst}" 
+									   var = "reason" 
+									   itemDisabled = "#{empty reason.is_active or reason.is_active == 'N'}"
+									   itemLabel    = "#{reason.name}" 
+									   itemValue    = "#{reason.regPK.registration_reason_id}"/>
+						
+						<f:selectItem itemValue = "7" itemLabel = "Otro"/>
+						
+						<p:ajax event      = "change" 
+								listener   = "#{addNaturalPerson.changeReason}" 
+								oncomplete = "returnSelRegitration();" 
+								update = "otherReasonpnl" />																	
+					</h:selectOneMenu>
+				</div>
+	
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{addNaturalPerson.fbview}">
+		
+			<div style="margin-left: 10px;margin-top: 30px;">
+					<p:graphicImage url = "/resources/img/facebook-01.jpg" style="border: 0px; width: 30px; height: 30px; "/>
+					facebook
+			</div>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{inicioValues.renderLogoPartner}" >
+		
+				<div style="margin-left: 61px;">
+						<p:graphicImage
+							url="/resources/img/logo_barared01.png"
+							style="border: 0px; width: 152px; height: 50px; "
+						/>
+				</div>
+			
+		</h:panelGroup>
+	</div>				
+</ui:composition>				

@@ -1,0 +1,49 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup id = "panel-pool-autenticacion">
+		<h:panelGroup rendered = "#{tablero_autenticacion.pool_autenticacion_ENABLED}">
+			<h:form prependId = "false" >
+				<div id = "tablero-autenticacion">
+					<h2>Servicios Financieros - Autenticación</h2>
+					
+					<div class = "autenticacion-INPUT">
+						<p>#{tablero_autenticacion.lista_preguntas[0].description}</p>		
+						<div id = "autenticacion-INPUT-1" />					
+						<ui:include src = "autenticacion/boton-init-1.xhtml" />					
+					</div>			
+					
+					<div class = "autenticacion-INPUT">
+						<p>#{tablero_autenticacion.lista_preguntas[1].description}</p>
+						<div id = "autenticacion-INPUT-2" />						
+						<ui:include src = "autenticacion/boton-init-2.xhtml" />					
+					</div>		
+					
+					<div class = "autenticacion-INPUT">
+						<p>#{tablero_autenticacion.lista_preguntas[2].description}</p>
+						<div id = "autenticacion-INPUT-3" />							
+						<ui:include src = "autenticacion/boton-init-3.xhtml" />					
+					</div>	
+					
+					<div id = "autenticacion-id-TOKEN" style = "display: none;">
+						<h:inputText value = "#{tablero_autenticacion.autenticacion_id_TOKEN}" />
+													
+						<ui:include src = "autenticacion/fecha-nacimiento.xhtml" />	
+						<ui:include src = "autenticacion/lugar-nacimiento.xhtml" />
+						<ui:include src = "autenticacion/domicilio/delegacion-municipio.xhtml" />
+						<ui:include src = "autenticacion/domicilio/zipcode.xhtml" />
+						<ui:include src = "autenticacion/telefono-celular.xhtml" />
+						<ui:include src = "autenticacion/email.xhtml" />		
+					</div>			
+				</div>			
+			</h:form>	
+			
+			<script>
+				init_autenticacion_TOKEN();
+			</script>
+		</h:panelGroup>
+	</h:panelGroup>			
+</ui:composition>	

@@ -1,0 +1,199 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+<h:panelGroup id="pnlComprobanteDomicilio"  >
+
+	<h:panelGroup rendered="#{addPldDocument.sameAddress != null and addPldDocument.sameAddress != 'S'}" >
+	
+	<div class="containerTitleUpload">
+	
+		<INPUT type="hidden" id="comprobante_domicilio" class="hs_class" value="#{addPldDocument.dispCheckCompDomi =='inline'}" />
+	
+		<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'cornerDisabled':'corner'}"></div>
+		<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">
+			<!-- div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCompDomi}</div -->
+			<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Comprobante de domicilio</h3></div>
+			<p:graphicImage styleClass = "validatorClass"  
+					        style      = "float:right;display:#{addPldDocument.dispCheckCompDomi}" 
+					        id         = "checkCompDomi" 
+					        url        = "../resources/img/check.png" />
+		</div>			
+	</div>
+	
+	<div class="dvContent2" >
+		<h:form id="frm_compDomi" enctype="multipart/form-data" prependId="false">
+			<div class="dvContent" style="margin:0;">
+			<div class="field selectsDocumentos">
+				<div class="dvLabel" style="width:400px;" >
+					<h:outputLabel  styleClass="labelsStl" value="#{msg.Select_one_more_document}*" />							
+				</div>
+
+							
+			
+					<div class="selectNuevo">
+						<h:selectOneMenu  id="type_compDomi"    styleClass="elementStlSelAddress combo_tipo_doc" value="#{addPldDocument.typeCompDomi}" >
+							<f:selectItem itemValue=""  itemLabel="Selecciona"/>
+							<f:selectItems value="#{addPldDocument.listCompDomi}" var="type" itemLabel="#{type.name}" itemValue="#{type.fileTypePk.file_type_id}"/>
+							<p:ajax event="change" onstart="return validateFileUploadCombo('type_compDomi');"></p:ajax>
+							
+						</h:selectOneMenu>
+						
+					
+						
+					</div>
+						<div class="avisoDocs" style="display:block; overflow:initial !important; margin:20px 0 20px;" >
+						<i class="fa fa-caret-up"></i>
+					
+						<p><strong>Es necesario que tu comprobante:</strong></p>
+						<p>1. Sea de los últimos 3 meses</p>
+						<p>2. No esté vencido.</p>
+						<p>3. Esté completo con sello digital o liga.</p>
+						</div>
+									
+					<div id="dvtype_compDomi" style="display: none;width: 97%;position: relative;">
+					
+			
+						
+						<span style="position: absolute; left: 112px;top: -3px;">.</span>	
+						<p:fileUpload 
+								id="file_compDomi" 
+								styleClass="#{sessionBean.mobile?'custumStlFileUpload':'custumStlFileUploadPreview'}"  
+								fileUploadListener="#{addPldDocument.handleFileUpload}"  
+								style="margin-top:10px;"									    									   
+							    invalidSizeMessage="Tamaño del archivo inválido"
+							    invalidFileMessage="Tipo de archivo no válido."
+							    showButtons="false" 
+					            mode="advanced"  
+					            auto="#{sessionBean.mobile}" 
+					            label="+ Subir"
+					            sizeLimit="5242880"  
+					            allowTypes="/(\.|\/)(gif|jpe?g|png|pdf|PDF)$/"
+					          onstart="hola();"
+					            >
+					            
+					           
+					            </p:fileUpload> 	
+					</div>																			
+										
+					</div>		
+				<div  class="dvElementLength">
+					<h:panelGroup id="listacompDomi" class="contenedor_docs">
+					
+					
+					
+					<ui:include src = "../../subir_otrodoc.xhtml"/>
+						
+					
+					<script>
+					$("#type_compDomi").removeClass("lleno");
+					$("#type_compDomi").removeClass("vacio");
+					actualizacionListadoDocumentos ("#listacompDomi");
+					resetar_indices();
+					</script>
+					
+						<h:panelGroup  rendered ="#{addPldDocument.lDocAddedCompDomi.size() eq 1 }" >
+							<span class="doc_proporcionado">
+								Has proporcionado el siguiente documento
+							</span>
+					</h:panelGroup>	
+					<h:panelGroup   rendered ="#{addPldDocument.lDocAddedCompDomi.size() gt 1 }" >
+							<span class="doc_proporcionado">
+								Has proporcionado los siguientes documentos
+							</span>
+					</h:panelGroup>	
+
+							<ui:repeat   var="loopcompDomi" value="#{addPldDocument.lDocAddedCompDomi}">
+					
+								<div>
+									 <figure><img src="../resources#{loopcompDomi.location_thump}" /></figure>
+									 <small><i class="fa fa-check"></i>#{loopcompDomi.uploaded_text}</small>
+									<fieldset class="btn_imagenes">
+										<span onclick="return ejecutaAccion(this, '#{loopcompDomi.file_type_id}','#{loopcompDomi.proyect_loan_id}')" class="cambiar"><i class="fa fa-pencil-square-o"></i> </span>
+										<span onclick="return eliminarElemento(this, '#{loopcompDomi.company_id}','#{loopcompDomi.file_id}', '#{loopcompDomi.file_type_id}', '#{loopcompDomi.prospectus_id}', '#{loopcompDomi.proyect_loan_id}', '#{loopcompDomi.location}')" class="eliminar"><i class=" fa fa-trash"></i></span>
+									</fieldset>
+								</div>
+							</ui:repeat>
+
+					</h:panelGroup>													
+				</div>
+			</div>	
+			
+			<div class = "field">
+				<div class = "dvLabel">
+					<h:outputLabel value = "Fecha de tu comprobante de domicilio " styleClass = "labelsStl"/>
+				</div>
+								
+				<p/>
+				
+				<div class = "dvElement dvDateElement" >
+					
+					<table>
+						<tr>
+							<td>
+							
+								<div class = "selectNuevo">
+									<h:selectOneMenu id         = "dayD" 
+													value="#{addPldDocument.dayD}"
+													 styleClass = "elementStlSelDay mapOff requiredVerify">
+													 
+										<f:selectItem itemLabel = "Día " itemValue = "0" />
+										<f:selectItems value = "#{addPldDocument.lista_dias}"/>
+										<p:ajax listener="#{addPldDocument.initValidityDate}" />
+												
+									</h:selectOneMenu>
+								</div>	
+							
+							</td>						
+							<td>
+							
+								<div class = "selectNuevo">
+									<h:selectOneMenu id         = "monthD"  
+														value="#{addPldDocument.monthD}"
+												     styleClass = "elementStlSelMonth mapOff requiredVerify" >
+												     
+										<f:selectItem itemLabel = "Mes " itemValue = "0" />
+										<f:selectItems value = "#{addPldDocument.lista_meses}"/>
+										<p:ajax   listener="#{addPldDocument.initValidityDate}" />
+										
+									</h:selectOneMenu>
+								</div>		
+							
+							</td>
+							<td>
+							
+								<div class = "selectNuevo">
+									<h:selectOneMenu id         = "yearD" 
+												    value="#{addPldDocument.yearD}"
+												     styleClass = "elementStlSelYear mapOff requiredVerify">
+												     
+										<f:selectItem itemLabel = "Año " itemValue="0" />
+										<f:selectItems value = "#{addPldDocument.lista_years}"/>
+										
+										<p:ajax listener="#{addPldDocument.initValidityDate}" />
+									</h:selectOneMenu>
+								</div>
+							
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+				
+			</div>
+			
+				
+							
+		</h:form>
+	</div>
+					
+					
+	</h:panelGroup>
+
+</h:panelGroup>
+					
+					
+</ui:composition>					

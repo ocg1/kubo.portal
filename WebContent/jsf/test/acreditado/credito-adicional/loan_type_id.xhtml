@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<div class = "selects styled-select">
+		<h:selectOneMenu immediate = "true" value = "#{testAdditionalCredit.loan_type_id}" styleClass = "elementStlSelAddress">
+		
+			<f:selectItem itemValue = "#{null}" itemLabel = "Tipo de crédito..." />
+			
+			<f:selectItems value = "#{testAdditionalCredit.lista_loan_type}" 
+						   var = "type" 								   
+						   itemLabel    = "#{type.loan_type_desc}" 
+						   itemValue    = "#{type.pk.loan_type_id}" />
+									   
+			<p:ajax event = "change"
+			  		oncomplete = "loan_type_id_oncomplete(xhr, status, args);"
+					listener = "#{testAdditionalCredit.init_loan_type_id}"/>
+		</h:selectOneMenu>		
+	</div>					
+</ui:composition>				

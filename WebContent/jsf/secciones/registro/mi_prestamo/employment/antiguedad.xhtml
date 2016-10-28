@@ -1,0 +1,47 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup rendered = "false">
+		<div class="field">
+			<div class="dvLabel">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.Company_time_catalog}" />
+			</div>
+			
+		
+			
+			<div class="dvElementLength">
+				<h:inputText id = "inp_company_time" 
+							 value      = "#{employment.employment.tenure}"
+						     tabindex   = "19" 
+						     maxlength  = "2" 
+						     onkeyup    = "changeNextValYear(event,this);" 
+						     onkeypress = "return isNumberKey(event);" 
+						     style      = "width:100px !important" 
+						     styleClass = "elementAddres1 validatorClass many_years">
+					<p:ajax event = "blur" 
+						    onstart  = "return validateYears('uiemp\:#{status.index}\:inp_company_time')" 
+						    listener = "#{addMyLoan.updateEmployment(employment)}" />
+				</h:inputText>
+				
+				<span style="margin: 2px;">#{employment.yearOrYears}</span>
+				
+				<h:inputText id = "inp_company_time_month" 
+						     value      = "#{employment.employment.tenure_month}"
+							 tabindex   = "20" 
+							 maxlength  = "2" 
+							 onkeyup    = "changeNextValMonth(event,this);" 
+							 onkeypress = "return isNumberKey(event);" 
+							 style      = "width:100px !important" 
+							 styleClass = "elementAddres1 validatorClass many_months">
+					<p:ajax event = "blur" 
+							onstart  = "return validateYears('uiemp\:#{status.index}\:inp_company_time_month')" 
+							listener = "#{addMyLoan.updateEmployment(employment)}" />
+				</h:inputText>
+				
+				<span>#{employment.monthOrMonths}</span>
+			</div>
+		</div>
+	</h:panelGroup>
+</ui:composition>					

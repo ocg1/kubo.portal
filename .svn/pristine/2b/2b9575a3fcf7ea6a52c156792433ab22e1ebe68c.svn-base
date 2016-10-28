@@ -1,0 +1,62 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:h  = "http://java.sun.com/jsf/html"
+			    xmlns:ui = "http://java.sun.com/jsf/facelets">
+			    
+	<h:panelGroup id="pnlBtnNextBasic">
+		
+			<h:panelGroup>
+				
+				<script type="text/javascript">
+				
+					$(document).ready(function() 
+					{
+									
+						$('#nextCHBASICOS01').click(function(event)
+						{
+							
+							
+							$("#hdNext\\:siguienteBASICOS").click();
+							event.preventDefault();
+							return false;
+						});
+						
+						$('#nextInv').click(function()
+						{
+							firstStepValidation ();
+						});
+					
+					
+				
+					});
+				
+					
+				</script>
+				
+				<h:panelGroup rendered="#{basicData.dispAcred=='block'}">
+				<div >	 
+			<!-- Cambios UX 2.41.2 Gabriel Martínez se cambio en java la palabra siguiente por continua-->
+					
+						<div class=" mapOff solicitud callAction btnNaranja" id="nextCHBASICOS01" onclick="mapOnOff();">
+								#{msg.Btn_next}
+						</div>
+					
+				</div>
+				</h:panelGroup> 
+				
+				<h:panelGroup rendered="#{basicData.dispInvestor=='block'}">
+					<div>
+					
+							<div class="mapOff solicitud callAction btnNaranja" id="nextInv" onclick="mapOnOff();">
+									#{msg.Btn_next}
+							</div>
+						</div>
+	
+				</h:panelGroup> 
+				 
+				 
+		        <ui:include src = "../../../templates/datos_protegidos.xhtml" />
+				
+				
+			</h:panelGroup> 
+		</h:panelGroup>
+</ui:composition>	

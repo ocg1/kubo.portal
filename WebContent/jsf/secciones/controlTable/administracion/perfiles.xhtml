@@ -1,0 +1,440 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{administrationProfile.actualPage == 'asignaPerfil.xhtml'}" >
+				
+		<div style = "border: solid 0px #E3E3E3; margin-left: auto; margin-right: auto; margin-top: 15px; width: 460px; height: auto; overflow: auto; padding: 10px;" >
+			<div style = "width: 99%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+				<span style="color: #439539;font-size: 1.3em; font-weight: bold;" >
+					Asignación de Perfiles
+				</span>						
+			</div>
+						
+			<div class = "dvLabel" style = "float: none; clear: both;">
+				<h:outputText value = "Persona:" styleClass = "labelsStl" />
+			</div>
+						
+			<div style = "width: auto; margin-bottom: 15px;" >
+				
+				<div class = "styled-select-Address">
+					<h:selectOneMenu value = "#{assignProfile.thisProspectus}" styleClass = "elementStlSelAddress">
+						<f:selectItem itemLabel = "" itemValue = "" />
+						<f:selectItems value = "#{assignProfile.lstmembers}" 
+									   var   = "perKubo" 
+									   itemLabel = "#{perKubo.person.NombreCompletoNPM()}" 
+									   itemValue = "#{perKubo.person.prospectus.prospectusPK.prospectus_id}"/>
+									   
+						<p:ajax event="change"  listener="#{assignProfile.selectPerson}" update="pnlRadioRole pnlFunctions pnlDatosGen "  ></p:ajax>
+					</h:selectOneMenu>
+				</div>				
+			</div>
+						
+			<h:panelGroup id = "pnlDatosGen">
+				<h:panelGroup rendered="#{assignProfile.membership != null }" >
+					<div>
+						<div>
+							Nombre: <br />
+							<span class="tab1">#{assignProfile.membership.person.NombreCompletoNPM()}</span>
+						</div>
+									
+						<div>
+							Fecha de Nacimiento: <br />
+							<span class="tab1">#{assignProfile.membership.person.getBirthDayStr()}</span>
+						</div>
+									
+						<div>
+							RFC: <br />
+							<span class="tab1">#{assignProfile.membership.person.mx_rfc}</span>
+						</div>
+									
+						<div>
+							CURP: <br />
+							<span class="tab1">#{assignProfile.membership.person.mx_curp}</span>
+						</div>
+									
+						<div>
+							Rol Actual: <br />
+							<span class="tab1">#{assignProfile.roleActual == null ? 'No Asignado' : assignProfile.roleActual.role.name }</span>
+						</div>
+									
+						<div>
+							Fecha Inicio: <br />
+							<span class="tab1">#{assignProfile.roleActual.getDate_applicationStr()}</span>
+						</div>
+									
+						<div class="dvLabel" style="font-size: 1.10em; width: 100%; float: none; clear: both;">
+							<h:panelGroup rendered="#{assignProfile.lstFuncRolActual != null }">
+								<table>
+								 	<tr>
+							 			<td width="333px" colspan="2" >
+							 				<b>Funciones que puede realizar:</b>
+							 			</td>
+							 		</tr>
+							 		
+									<ui:repeat value="#{assignProfile.lstFuncRolActual}" var="rolefunction" >
+									 	<tr>
+								 			<td width="25px" >
+								 				<img src="../resources/img/Bullet.png" border="0" />
+								 			</td>
+								 			
+								 			<td width="308px" >
+								 				<div>
+											 		#{rolefunction.function.name}
+											 	</div>
+								 			</td>
+								 		</tr>
+									</ui:repeat>											 	
+								</table>
+																				
+								<div style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="tab" />	
+																		
+									<table>
+									 	<tr>
+								 			<td width="333px" colspan="2" >
+								 				Pantallas a las que tiene acceso:
+								 			</td>
+								 		</tr>
+								 		
+										<ui:repeat value="#{assignProfile.lstScreenRolActual}" var="roleaccess" >
+										 	<tr>
+									 			<td width="25px" >
+									 				<img src="../resources/img/Screen.png" width="20px" height="20px" border="0" />
+									 			</td>
+									 			<td width="308px" >
+									 				<div>
+												 		#{roleaccess.screen.name}
+												 	</div>
+									 			</td>
+									 		</tr>
+										</ui:repeat>											 	
+									</table>
+								</h:panelGroup>
+							</div>
+									
+							<h:panelGroup rendered="#{assignProfile.rolepending != null }" >
+								<div style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="tab" />
+									<div>
+										Rol Pendiente: <br />
+										<span class="tab1">#{assignProfile.rolepending.role.name}</span>
+									</div>
+										
+									<div style = "float: none; clear: both; ">										
+										<div class = "dvLabel" style = "font-size: 1.1em; width: 335px; " >
+											<table>
+												<tr>
+											 		<td width="333px" colspan="2" >
+										 				Funciones que puede realizar:
+										 			</td>
+										 		</tr>
+										 		
+											<ui:repeat value="#{assignProfile.lstFuncRolPendding}" var="rolefunction" >
+											 	<tr>
+										 			<td width="25px" >
+										 				<img src="../resources/img/Bullet.png" border="0" />
+										 			</td>
+										 			<td width="308px" >
+										 				<div>
+													 		#{rolefunction.function.name}
+													 	</div>
+										 			</td>
+										 		</tr>
+											</ui:repeat>											 	
+											</table>
+										 </div>
+										 	
+										<br />											
+											
+										<div style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="tab" />
+											
+										<!-- </div>
+										
+										<div style="float: none; clear: both; " > -->
+											<div class="dvLabel" style="font-size: 1.10em; width: 335px; " >
+												<table>
+												 	<tr>
+											 			<td width="333px" colspan="2" >
+											 				Pantallas a las que tiene acceso:
+											 			</td>
+											 		</tr>
+												<ui:repeat value="#{assignProfile.lstScreenRolPendding}" var="roleaccess" >
+												 	<tr>
+											 			<td width="25px" >
+											 				<img src="../resources/img/Screen.png" width="20px" height="20px" border="0" />
+											 			</td>
+											 			<td width="308px" >
+											 				<div>
+														 		#{roleaccess.screen.name}
+														 	</div>
+											 			</td>
+											 		</tr>
+												</ui:repeat>
+												 	
+												</table>
+											 </div>	
+										</div>
+										
+										<div style="float: none; clear: both; " >
+											Fecha Inicio: <br />
+											<span class="tab1">#{assignProfile.rolepending.getDate_applicationStr()}</span>
+										</div>
+										
+										<div style="float: none; clear: both; " >
+											<div id="dvBtnsUpdtRem" style="text-align: right; font-size: 0.9em;color: #439539; width: 280px;" >
+												<table style="width: 278px;">
+													<tr>
+														<td style="text-align: left;" >
+															
+															<p:commandLink actionListener="#{assignProfile.deleteProspectusRole}" onstart="return confirm('¿Esta seguro que quiere eliminar esta asignación de Rol?');" oncomplete="completeDisplayElements('resWaitPer','resMesgPer');"  update="pnlResMesgPer pnlResMesgPer"  immediate="true" >
+																
+																<div class="buttonPR" style="margin:5px 0;width: 100px;">	
+																	
+																	<h:outputText value="Borrar" />
+																						
+																</div>
+																
+															</p:commandLink>
+															
+														</td>
+														<td style="text-align: right;" >
+															
+															<p:commandLink onstart="return displayElements('dvBtnsUpdtRem','dvAsignCont','dvBtnUpdt');"  immediate="true" >
+															
+																<div class="buttonPR" style="margin:5px 0;width: 100px;">	
+															
+																	<h:outputText value="Modificar" />					
+															
+																</div>
+															
+															</p:commandLink>
+															
+														</td>
+													</tr>
+												</table>
+												
+											</div>
+										</div>
+									</h:panelGroup>
+										
+									<h:panelGroup rendered="#{assignProfile.rolepending == null }" >
+										
+										<div id="dvBtnAsign" style="text-align: right; font-size: 0.9em;color: #439539; width: 280px;" >
+											
+											<p:commandLink onstart="return displayElements('dvBtnAsign','dvAsignCont','dvBtnSave');"  immediate="true" >
+												<div class="buttonPR" style="margin:5px 0;width: 200px;">	
+													<h:outputText value="Asignar nuevo rol" />					
+												</div>
+											</p:commandLink>
+													
+										</div>
+									
+									</h:panelGroup>
+										
+										<div id="dvAsignCont" style="display: none;">
+										
+											<div id="borderCont" style="border: solid 1px #e6e6e6; width: auto; height: auto; overflow: auto; padding: 8px; position: relative; "  >
+												<div id="contValuesRolPer" >
+												<div style="position: absolute; right: 2px; top: 2px;  cursor: pointer;" >
+													<img src="../resources/img/close.png" onclick="return displayElements('dvAsignCont','dvBtnAsign');" />
+												</div>
+												
+												<div class="dvLabel"  style="float: none; clear: both;">
+													<h:outputText value="Rol:" styleClass="labelsStl" ></h:outputText>
+												</div>
+												
+												<h:panelGroup id="pnlRadioRole" >
+													<div class="styled-select-Address">
+														<h:selectOneMenu value="#{ assignProfile.thisRole }"  styleClass="elementStlSelAddress" >
+															<f:selectItem itemLabel="" itemValue="0" />  
+													       	<f:selectItems value="#{assignProfile.lstroles}" var="roles" itemValue="#{roles.rolepk.role_id}" itemLabel="#{roles.name}" />
+															<f:selectItem itemLabel="Sin Permisos" itemValue="100" />
+															<p:ajax event="change"  listener="#{assignProfile.setFuctionsByRoleSel}" update="pnlFunctions pnlScreensPendding"  ></p:ajax>
+													    </h:selectOneMenu>
+													</div>
+												</h:panelGroup>
+												
+												<div style="border: solid 0px #e6e6e6; width: 450px; height: auto; overflow: auto; " >
+													
+													<div class="dvLabel">
+														<h:outputText value="Fecha de Inicio:" styleClass="labelsStl" ></h:outputText>
+													</div>
+													
+													<div style="clear: both; float: none; " >
+														
+														<div style="float: left; margin-right: 15px; margin-top: 8px; " >
+														
+															<!-- <p:calendar mode="popup" showOn="button" value="#{assignProfile.fecIni}" pattern="dd/MM/yyyy" id="datepicker" >
+																<p:ajax event="change" ></p:ajax>
+															</p:calendar>	 -->
+															
+															<h:panelGroup id="comboDate" >
+																<table>
+																	<tr>
+																		<td>
+																			<div class="styled-select-Day">
+																			<h:selectOneMenu id="day" value="#{assignProfile.day}"  styleClass="elementStlSelDay">
+																				<f:selectItem itemLabel="Día: " itemValue="0" />
+																				<f:selectItems  value="#{assignProfile.days}"/>
+																				<p:ajax event="change" listener="#{assignProfile.generateDate}"  update="comboDate" ></p:ajax>
+																			</h:selectOneMenu>
+																			</div>
+																		</td>
+																		<td>
+																			<div class="styled-select-Month" style="margin-left: 2px;">
+																			<h:selectOneMenu id="month" value="#{assignProfile.month}"   styleClass="elementStlSelMonth " style="width: 180px !important;">
+																				<f:selectItem itemLabel="Mes: " itemValue="0" />
+																				<f:selectItems  value="#{assignProfile.months}"/>
+																				<p:ajax event="change" listener="#{assignProfile.generateDate}" update="comboDate" ></p:ajax>
+																			</h:selectOneMenu>
+																			</div>
+																		</td>
+																		<td>
+																			<div class="styled-select-Year" style="margin-left: 2px;">
+																			<h:selectOneMenu id="year" value="#{assignProfile.year}"   styleClass="elementStlSelYear">
+																				<f:selectItem itemLabel="Año: " itemValue="0" />
+																				<f:selectItems  value="#{assignProfile.years}"/>
+																				<p:ajax event="change" listener="#{assignProfile.generateDate}"  update="comboDate" ></p:ajax>
+																			</h:selectOneMenu>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</h:panelGroup>
+															
+														</div>
+														
+														<div id="dvBtnSave" style="display:none; float: left; width: 104px; margin-left: 15px; margin-left: auto; margin-right: auto;" >
+														
+															<p:commandLink actionListener="#{assignProfile.saveProspectusRole}" onstart="return initAction('contValuesRolPer', 'resWaitPer' );" oncomplete="completeDisplayElements('resWaitPer','resMesgPer');" update="pnlResMesgPer"  immediate="true" >
+																
+																<div class="buttonPR" style="margin:5px 0;width: 100px;">	
+																
+																	<h:outputText value="Asignar" />
+																						
+																</div>
+																
+															</p:commandLink>
+															
+														</div>
+														
+														<div id="dvBtnUpdt" style="display:none; float: left; width: 104px; margin-left: 15px; margin-left: auto; margin-right: auto;" >
+														
+															<p:commandLink actionListener="#{assignProfile.mergeProspectusRole}" onstart="return initAction('contValuesRolPer', 'resWaitPer' );" oncomplete="completeDisplayElements('resWaitPer','resMesgPer');" update="pnlResMesgPer"  immediate="true" >
+																
+																<div class="buttonPR" style="margin:5px 0;width: 100px;">	
+																
+																	<h:outputText value="Modificar" />
+																						
+																</div>
+																
+															</p:commandLink>
+															
+														</div>
+														
+													</div>
+													
+													<h:panelGroup id="pnlFunctions"   >
+														
+														<h:panelGroup rendered="#{ assignProfile.lstFunction != null and assignProfile.lstFunction.size() > 0 }" >
+														
+															<div class="dvLabel">
+																<h:outputText value="Funciones:" styleClass="labelsStl" ></h:outputText>
+															</div>
+															<div class="dvLabel" style="font-size: 1.20em; width: 335px; " >
+																<table>
+																 	
+																<ui:repeat value="#{assignProfile.lstFunction}" var="rolefunction" >
+																 	<tr>
+															 			<td width="25px" >
+															 				<img src="../resources/img/Bullet.png" border="0" />
+															 			</td>
+															 			<td width="308px" >
+															 				<div>
+																		 		#{rolefunction.function.name}
+																		 	</div>
+															 			</td>
+															 		</tr>
+																</ui:repeat>
+																 	
+																</table>
+															 </div>
+														</h:panelGroup>
+														
+													</h:panelGroup>
+													
+													<p style="float: none; clear: both;" />
+													<div style="width: 100%; margin-top: 10px; margin-bottom: 10px;" class="tab" ></div>
+													<br />
+													
+													<h:panelGroup id="pnlScreensPendding"   >
+														
+														<h:panelGroup rendered="#{ assignProfile.lstScreen != null and assignProfile.lstScreen.size() > 0 }" >
+														
+															<div class="dvLabel" style="font-size: 1.20em; width: 335px; " >
+																<table>
+																 	<tr>
+															 			<td width="333px" colspan="2" >
+															 				Pantallas que éste rol tiene acceso:
+															 			</td>
+															 		</tr>
+																<ui:repeat value="#{assignProfile.lstScreen}" var="roleaccess" >
+																 	<tr>
+															 			<td width="25px" >
+															 				<img src="../resources/img/Screen.png" width="20px" height="20px" border="0" />
+															 			</td>
+															 			<td width="308px" >
+															 				<div>
+																		 		#{roleaccess.screen.name}
+																		 	</div>
+															 			</td>
+															 		</tr>
+																</ui:repeat>
+																 	
+																</table>
+															 </div>
+														</h:panelGroup>
+														
+														<h:panelGroup rendered="#{ assignProfile.lstScreen == null or assignProfile.lstScreen.size() == 0 }" >
+															<div class="dvLabel" style="font-size: 1.20em; width: 400px; " >
+																<table>
+																 	<tr>
+															 			<td width="99%" colspan="2" >
+															 				Este perfíl no cuenta con pantallas asignadas.
+															 			</td>
+															 		</tr>
+															 	</table>
+															 </div>
+														</h:panelGroup>
+														
+													</h:panelGroup>
+													
+													<div style="height: 200px;" ></div>
+													
+												</div>
+												
+												</div>
+												
+								<h:panelGroup id="pnlResMesgPer" >
+								
+									<div id="resMesgPer" style="display: none; float: none; clear: both;color: #439539; " >
+										
+										#{assignProfile.msgRes}
+										
+									</div>													
+								</h:panelGroup>
+								
+								<div id="resWaitPer" style="display: none;" >
+									
+									<img src="../resources/img/ajax-loader.gif"  />
+									
+								</div>												
+							</div>										
+						</div>																							
+					</div>
+				</h:panelGroup>
+			</h:panelGroup>					
+		</div>			
+	</h:panelGroup>								
+</ui:composition>				

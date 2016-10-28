@@ -1,0 +1,25 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">	
+	
+	<h:panelGroup rendered = "false" >
+		<div class = "subtituloMenu">
+			<h:outputLabel style="vertical-align: bottom;">Diagnóstico Financiero</h:outputLabel>
+		</div>
+		
+		<p:commandLink actionListener = "#{menuController.cambiaPagina}"
+				       styleClass     = "links" 
+				       immediate      = "true" 
+				       update         = ":form_Prin:contPage">
+			<div id      = "dvdiagnostico" 
+				 class   = "dvMenu" 
+				 onclick = "javascipt:selecciona('dvdiagnostico');">
+				<h:outputLabel value = "Diagnóstico Financiero"  styleClass = "elmnt"/>
+				<f:attribute name = "capitulo" value = "diagnostico" />
+			</div>
+		</p:commandLink>
+	</h:panelGroup>
+</ui:composition>

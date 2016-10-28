@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{summaryRequest.editor_domicilio.coincidencias_NIVEL_2 gt 0 and sessionBean.area == 'M'}">
+			
+		<p:commandLink id = "alarma_coincidencias_NIVEL_2" onclick = "init_listener_lista_coincidencias('NIVEL_2', 'CASA'); ">
+	
+			<i title  = "#{summaryRequest.editor_domicilio.alarma_NIVEL_2}"
+				
+				class=" mapaSitio fa fa-exclamation-circle "/>			 				
+		</p:commandLink>
+													
+	</h:panelGroup>			
+	
+	<p:commandLink id = "listener_lista_coincidencias_NIVEL_2"
+			   immediate = "true" 
+	 		   actionListener = "#{summaryRequest.editor_domicilio.listener_lista_coincidencias_NIVEL_2}"
+	 		   onstart    = "displayMessageProcessing('msgprocessing',false);"
+	 		   oncomplete = "listener_lista_coincidencias(xhr, status, args);"
+	 		   update     = "panel_lista_coincidencias"
+	 		   style      = "display: none"/>	 		 
+		
+</ui:composition>	

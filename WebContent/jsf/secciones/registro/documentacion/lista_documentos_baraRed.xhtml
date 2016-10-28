@@ -1,0 +1,80 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered="#{sessionBean.partner != null and sessionBean.partner == 'ALIANZA BARARED'}">
+	
+	<fieldset>
+	
+		<div class="dvContent" style="padding-right: 0px;">
+					
+			<div class="dvLabel" style=" margin-right: 0px; ">
+				<div  class="labelsStl" align="justify" style="width: 100% !important; margin-right: 0px;">
+					<h2 class="expand_heading" style="cursor: pointer;  margin-left: 5px;">
+						<a href="#">Documentación y prevención de lavado de dinero</a>
+						<span class="collapse change" >Collapse/Expand</span>
+					</h2>	
+															 
+					<div   class="toggle_container" style="width: 98%; margin-left: 5px;">
+						<div class="box" style="width: 98%; padding-right: 5px; ">
+							A continuación te solicitamos nos envíes la siguiente documentación
+							al correo <b>soporte@kubofinanciero.com</b> <br />
+							La información que envíes sera confidencial y nos ayudará a validar tu proyecto.
+						</div>
+					</div>
+				</div>
+			</div>
+					
+		</div>			
+		
+	</fieldset>
+	<br />
+		<div align="justify" style="width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+			El siguiente documento es obligatorio.
+		</div>
+		<div class="labelsStl" style="margin-bottom: 10px;"><b>Hasta 3 fotos de tu proyecto*</b></div>		
+		<h:panelGroup rendered="#{addPldDocument.displayBussiness=='block'}" >
+			<div align="justify" style="width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+				Recuerda que por lo menos una foto debe mostrarte a ti en tu negocio. Queremos conocerte en tu actividad, esto es muy importante para que podamos evaluar si te autorizamos el crédito.
+			</div>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{addPldDocument.displayBussiness=='none'}" >
+			<div align="justify" style="width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+				Recuerda que esta foto debe mostrarte a ti y para que quieres tu prestamo. Esto es muy importante para que podamos evaluar si te autorizamos el crédito.
+			</div>
+		</h:panelGroup>
+		<br />
+		<div align="justify" style="width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+			El siguiente documento es obligatorio.
+		</div>
+		
+		<div class="labelsStl"><b>#{addPldDocument.tiCredFm2}*</b></div>
+			<p:dataList value="#{addPldDocument.listCREFM2}" var="type">						
+				#{type.name}
+			</p:dataList>
+		<div align="justify" style="width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+			Proporciona al menos uno de los siguientes documentos.
+		</div>
+	   	<div class="labelsStl"><b>#{addPldDocument.tiCompDomi}*</b></div>
+			<p:dataList value="#{addPldDocument.listCompDomi}" var="type">						
+				#{type.name}
+			</p:dataList>
+		<div align="justify" style="width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+			Proporciona al menos uno de los siguientes documentos.
+		</div>
+		<div class="labelsStl !important;"><b>#{addPldDocument.tiCompIncome}</b></div>
+			<p:dataList value="#{addPldDocument.listCboIncome}" var="type" rows="4">						
+				#{type.name}
+			</p:dataList>
+		<div class="labelsStl"><b>#{addPldDocument.tiCompActEcon}</b></div>
+			<p:dataList value="#{addPldDocument.listCompActEcon}" var="type">						
+				#{type.name}
+			</p:dataList>
+		<div class="labelsStl"><b>#{addPldDocument.tiAcredProBusiness}</b></div>
+			<p:dataList value="#{addPldDocument.listAcredProBusiness}" var="type">						
+				#{type.name}
+			</p:dataList>
+	</h:panelGroup>				
+</ui:composition>				

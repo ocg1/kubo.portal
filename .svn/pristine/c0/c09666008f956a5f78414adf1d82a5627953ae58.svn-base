@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:rc="http://www.kubofinanciero.com/rc">
+	<h:head> 				
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		<!-- <script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+		<script type="text/javascript" src="../resources/js/registro/registro.js"></script>
+		<script type="text/javascript" src="../resources/js/utilerias/charCount.js"></script>
+		<script type="text/javascript" src="../resources/js/utilerias/jquery.formatCurrency-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../resources/js/general.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.blockUI.js"></script> -->
+
+<!--		<script type="text/javascript" src="../resources/js/frmscript.js"></script>	-->
+		
+		<!--	 <script type="text/javascript" src="../resources/watermark3.1.3/jquery.watermark.min.js"></script> -->
+	<!-- 	<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"></script>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/infoBasica.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capacidadPago.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/miPrestamo.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/incomeExpenses.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/customAcoordeon.css" />
+		
+		
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+     <title>kubo.financiero | Genera tu CURP y RFC automaticamente</title>				
+     <meta name="Description" content="Ingresa los datos necesarios para generar automáticamente tu CURP y RFC"/>
+
+
+	<script>
+	//<![CDATA[
+
+	$(document).ready(function(){
+		$.get("http://ipinfo.io", function(response) {
+			$("#ip_input").val(response.ip);
+		}, "jsonp");
+		
+	});
+	/*comentado hubspot  
+	function  mandodatos_hs() {
+		
+			
+			var ip  = $("#ip_input").val();
+			var URI = "";
+			
+			var str = "";
+			
+	        jason = [];
+	        hs_context = [];
+	         $(".hs_class").each(function() {
+	        	var id = "";
+	        	var flag1 = true;
+	        	 if($(this).attr("id") == "name" ){
+	        		 id = "firstname";
+	        		 flag1 = false;
+	        	 }else{
+	        		 id = $(this).attr("id");
+	        		 flag1 = false;
+	        	 }
+	        	 if( flag1 && ( $(this).attr("id") ).indexOf("email") != (-1)  ){
+	        		 id = "email";
+	        	 }else{
+	        		 id = $(this).attr("id")
+	        	 }
+	        	 
+	        	 str += id + "=" + $(this).val() + "&";
+	        	
+	        });
+	         
+	        context = {}
+	    	context ["hutk"] = $.cookie('hubspotutk')
+	    	context ["ipAddress"] = ip
+	        context  ["pageUrl"] = "http://www.kubofinanciero.com/Kubo/Portal/acreditado/preregistro/comenzar-registro.xhtml"
+	        context ["pageName"] = "Preregistro"
+	        context ["redirectUrl"] = "http://www.kubofinanciero.com/Kubo/Portal/acreditado/preregistro/bienvenida_prestamo.xhtml"
+	        
+	        	
+	        
+	        hs_context.push(context);
+	        	        
+	        var campo = {}
+	    	campo ["hs_context"] = hs_context;
+	        jason.push(campo);
+	               
+	        console.log(JSON.stringify(hs_context));
+	        console.log("");
+	        console.log("");
+	        console.log("");
+	        	                	        
+	        
+	        	    
+	        URI = encodeURIComponent(JSON.stringify(hs_context));
+	        
+	        URI = URI.substring(3,(URI.length - 3) )
+	        
+	        console.log(str + "hs_context="+URI );
+	        console.log("");
+	        console.log("");
+	        console.log("");
+	         
+	        
+	        $.ajax({
+	        	type: "POST",
+	        	url: "https://forms.hubspot.com/uploads/form/v2/477732/883b3749-cbe7-47a0-9bdd-9a66d9464f84",
+	        	data: URI,
+	        	success: function(){},
+	        	dataType: "text"
+	        });     
+	       
+	 		return true; 
+	}
+	*/ 
+	//]]>
+
+	</script>
+
+	</h:head>
+	<h:body >
+		
+		<h:outputScript library="js" name="hubSpot_analytics.js" target="head" />
+		
+		<div id="header" style="width: 100%; margin: 0px;">
+			<ui:include src="templates/headContenido.xhtml" />
+		</div>
+		
+		<!-- <div id="tester" style="position: fixed; top: 100px; right: 0px; background-color: #22CC33; z-index: 20;"></div> -->
+		<div style="margin-left: auto; margin-right: auto;" >
+		<b>Mi IP : #{sessionBean.getIP_address_client()}</b>
+		</div>
+		<div class="contPR" style="position: relative;margin-right: 0px;">
+			<div class="contFrm" style="padding-right: 0px; overflow: auto;">
+				
+				
+				
+				<div class="formFrm"  >
+					<h:form id="frmBasicos" prependId="false" >
+	
+						<h:inputHidden id = "ip_input"  ></h:inputHidden>
+	
+						<div   style="width: 100%; background-color: #FFFFFF;">	
+							<br />
+							<div style="height: auto; overflow: auto; margin-left: 20px; margin-right: 20px;">
+								<fieldset>
+								
+									<div class="dvContent2">
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Nombre "/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="name" styleClass="elementAddres1 hs_class" value="#{generaCurpRfc.naturalPerson.first_name}" >
+													<p:ajax event="blur" listener="#{generaCurpRfc.getRFC}"  update="rfc curp" ></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Segundo nombre  "/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="secondname" styleClass="elementAddres1" value="#{generaCurpRfc.naturalPerson.middle_name}" >
+													<p:ajax event="blur" listener="#{generaCurpRfc.getRFC}"  update="rfc curp" ></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Apellido Paterno"/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="fatherLast" styleClass="elementAddres1" value="#{generaCurpRfc.naturalPerson.father_last_name}" >
+													<p:ajax event="blur" listener="#{generaCurpRfc.getRFC}"  update="rfc curp" ></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Apellido Materno"/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="motherLast" styleClass="elementAddres1" value="#{generaCurpRfc.naturalPerson.mother_last_name}" >
+													<p:ajax event="blur" listener="#{generaCurpRfc.getRFC}"  update="rfc curp" ></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+				
+										<div class="dvContent">
+											<div  class="dvElement" style="width: 300px;">
+												<h:selectOneRadio id="genero" value="#{generaCurpRfc.naturalPerson.gender_id}"  styleClass="elementStlLbl validatorClass requiredVerify">
+												    <f:selectItem itemValue="1" itemLabel="Masculino"/>
+												    <f:selectItem itemValue="2" itemLabel="Femenino"/>
+												    <p:ajax event="click" listener="#{generaCurpRfc.getRFC}"  update="rfc curp" ></p:ajax>
+												</h:selectOneRadio>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="Correo Electrónico"/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="email" styleClass="elementAddres1 hs_class" value="#{generaCurpRfc.naturalPerson.father_last_name}" >
+													<p:ajax event="blur" listener="#{generaCurpRfc.getRFC}"  update="rfc curp" ></p:ajax>
+												</h:inputText>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="#{msg.birthday} "/>
+											</div>
+											<p></p>
+											<div  class="dvElement" style="width: 450px;">
+											
+												<h:panelGroup id="comboDate">
+													<table>
+														<tr>
+															<td>
+																<h:selectOneMenu id="day" value="#{generaCurpRfc.day}"  styleClass="elementStlSelDay mapOff validatorClass requiredVerify">
+																	<f:selectItem itemLabel="Día: " itemValue="0" />
+																	<f:selectItems  value="#{generaCurpRfc.days}"/>
+																	<p:ajax event="change" listener="#{generaCurpRfc.generateDate}" update="rfc comboDate curp" ></p:ajax>
+																</h:selectOneMenu>
+															</td>
+															<td>
+																<h:selectOneMenu id="month" value="#{generaCurpRfc.month}"  styleClass="elementStlSelMonth mapOff validatorClass requiredVerify">
+																	<f:selectItem itemLabel="Mes: " itemValue="0" />
+																	<f:selectItems  value="#{generaCurpRfc.months}"/>
+																	<p:ajax event="change" listener="#{generaCurpRfc.generateDate}" update="rfc comboDate curp" ></p:ajax>
+																</h:selectOneMenu>
+															</td>
+															<td>
+																<h:selectOneMenu id="year" value="#{generaCurpRfc.year}"  styleClass="elementStlSelYear mapOff validatorClass requiredVerify">
+																	<f:selectItem itemLabel="Año: " itemValue="0" />
+																	<f:selectItems  value="#{generaCurpRfc.years}"/>
+																	<p:ajax event="change" listener="#{generaCurpRfc.generateDate}" update="rfc comboDate curp" ></p:ajax>
+																</h:selectOneMenu>
+															</td>
+														</tr>
+													</table>
+												</h:panelGroup>
+												
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="#{msg.citizenship} "/>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div  class="dvElement" style="width: 300px;">
+												<h:selectOneRadio id="nacionalidad" value="#{generaCurpRfc.naturalPerson.citizenship}"  styleClass="elementStlLbl mapOff validatorClass requiredVerify">
+												    <f:selectItem itemValue="1" itemLabel="Mexicana"/>
+												    <f:selectItem itemValue="0" itemLabel="Extranjero"/>
+												    <p:ajax event="click" update="nacmex, nacext , curp"  listener="#{generaCurpRfc.changeNation}" oncomplete="fieldCount();" ></p:ajax>
+												</h:selectOneRadio>
+											</div>
+										</div>
+										
+										<h:panelGroup id="nacmex">
+											<div class="dvContent" style="display: #{generaCurpRfc.mexDis}">
+												<div class="dvLabel">
+													<h:outputLabel styleClass="labelsStl" value="#{msg.birth_place} "/>
+												</div>
+												<p />
+												<div  class="dvElementAddres1">
+													
+													<h:selectOneMenu id="edoNac" value="#{generaCurpRfc.naturalPerson.state_id}"  styleClass="elementStlSelAddress mapOff validatorClass requiredVerify">
+														<f:selectItem itemLabel="" itemValue="" />
+														<f:selectItems  value="#{generaCurpRfc.stateList}" var="state" itemLabel="#{state.name}" itemValue="#{state.stateCatPK.state_id}"/>
+														<p:ajax event="change" listener="#{generaCurpRfc.getCURP}"  oncomplete="fieldCount();" update="curp" ></p:ajax>
+													</h:selectOneMenu>
+													
+												</div>
+											</div>
+										</h:panelGroup>
+										
+										<h:panelGroup id="nacext">
+											<div class="dvContent" style="display: #{generaCurpRfc.extDis}">
+												<div class="dvLabel">
+													<h:outputLabel styleClass="labelsStl" value="#{msg.birth_country} "/>
+												</div>
+												<p />
+												<div  class="dvElementAddres1">
+													
+													<h:selectOneMenu id="countryNac" value="#{generaCurpRfc.naturalPerson.country_id}"   styleClass="elementStlSelAddress mapOff validatorClass">
+														<f:selectItem itemLabel="" itemValue="" />
+														<f:selectItems  value="#{generaCurpRfc.countryList}" var="country" itemLabel="#{country.name}" itemValue="#{country.pk.country_id}"/>
+														<p:ajax event="change"  oncomplete="fieldCount();" listener="#{generaCurpRfc.getCURP}"   ></p:ajax>
+													</h:selectOneMenu>
+													
+												</div>
+											</div>
+										</h:panelGroup>
+									</div>
+								
+								</fieldset>
+								<br />
+								<fieldset>
+									<div class="dvContent2">
+										<div class="dvContent">
+											<div class="dvLabel" style=" width: 420px;">
+												<h:outputLabel styleClass="labelsStl" value="El RFC y el CURP se generan automáticamente con los datos anteriores."/>
+											</div>
+										</div>
+										<br /> 
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="#{msg.mx_rfc} "/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="rfc" styleClass="elementAddres1" value="#{generaCurpRfc.naturalPerson.mx_rfc}" disabled="true"></h:inputText>
+											</div>
+										</div>
+										
+										<div class="dvContent">
+											<div class="dvLabel">
+												<h:outputLabel styleClass="labelsStl" value="#{msg.mx_curp} "/>
+											</div>
+											<p />
+											<div  class="dvElementAddres1">
+												<h:inputText id="curp" styleClass="elementAddres1" value="#{generaCurpRfc.naturalPerson.mx_curp}" disabled="true"></h:inputText>
+											</div>
+										</div>
+										
+									</div>
+							</fieldset>
+								
+							</div>
+						</div>
+						<h:panelGroup rendered="true" >
+						
+						<h:inputText id="burSoNum" styleClass="elementAddres1" value="#{generaCurpRfc.bursolnum}">
+							<p:ajax event="blur"  ></p:ajax>
+						</h:inputText>
+							<p:commandLink id="access" actionListener="#{generaCurpRfc.sendMail}">
+									Envia Correo
+							</p:commandLink>	
+						</h:panelGroup>
+						<br />
+						<br />
+							<p:commandLink id="test01" actionListener="#{generaCurpRfc.sendTest}">
+									Prueba envio correo
+							</p:commandLink>	
+						<br />
+						<br />
+						<br />
+						
+						<p:commandLink id="test">
+							
+									Prueba HubSpot
+							</p:commandLink>
+							
+							<br />
+						<br />
+						<br />
+							
+							<p:commandLink id="ammort" actionListener="#{tablaAmortizacion.generaDocTablas}">
+							
+								Genera tabla de Amortización
+									
+							</p:commandLink>
+							
+						<!-- 
+						<div id="recaptcha">
+							<!- -  <p:captcha id="inp_captcha"  label="Captcha"  language="es"  theme="white" required="true" secure="true"   requiredMessage="Error capcha" validatorMessage="Captcha incorrecto" /> - ->				
+							<div style="font-size: 1.0em;" >
+								<rc:recaptcha  id = "inp_captcha"
+										publicKey="#{addNaturalPerson.publicKey}"
+	      								privateKey="#{addNaturalPerson.privateKey}" 
+	      						></rc:recaptcha>
+      						</div>
+      						<!- - 
+      							++++ IMPORTANTE 
+      							cuando se implemente el captcha en otro lado, llevarse 
+      							también el siguiente panelGroup con el id para 
+      							actualizar los mensajes de éxito o error
+      						 - ->
+      						 <div style="margin-top: 10px;" >
+      							<h:panelGroup id="pnlCaptchaMsg" > 
+	      							<div id="msgCaptcha" >
+	      						 		<h:message for="inp_captcha" style="color: #FF0000; font-size: 1.0em;" />
+	      						 	</div>
+	      						 	<script>
+	      						 		Recaptcha.reload();
+	      						 		$("#msgCaptcha").delay(4800).hide(800);
+	      						 		
+	      						 	</script>
+	      						 </h:panelGroup>
+      						 
+      						 </div>
+							<p:commandLink id="prAction" action="kubofinanciero" value="captcha" />
+							
+						</div>
+						-->
+						
+					</h:form>
+					
+					
+					
+					
+					
+				</div>
+
+								   
+				   		
+			</div>
+		</div>		 
+		<div id="footer"  style="width: 100%; magin-right: 0px; position: relative;">
+			 <ui:include src="templates/footerContenido.xhtml" /> 
+		</div>
+	
+	</h:body>
+</html>
+ 

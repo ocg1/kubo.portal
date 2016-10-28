@@ -1,0 +1,53 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 				 
+	<div class = "field">
+		<div id = "cardDesc" class = "dvLabel dvLablWidth">
+			<div class = "tarjeta">
+				<h:outputLabel value = "Escribe los 4 últimos dígitos de tu tarjeta de crédito *" styleClass = "labelsStl"/>
+			</div>
+					
+			<div class = "numero_credito">
+				<h:outputLabel value = "Escribe los 4 últimos dígitos de tu Número de Crédito" styleClass = "labelsStl"/>
+			</div>
+		</div>
+	
+		<div id = "creditDesc" class = "dvLabel dvLablWidth" style = "display: none;" >
+			<h:outputLabel value = "Últimos 4 dígitos del NÚMERO DE TU CRÉDITO" styleClass = "labelsStl"/>
+		</div>
+				
+		
+				
+			<div class = "leyendas">
+				<p>Tus datos están seguros.</p>
+			</div>
+			
+			<div id = "creditcard_four_digits" style = "padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px; float: left;">
+			
+				<i class = "fa fa-lock"></i>
+				
+				<h:inputText id = "fourDig" maxlength = "4" immediate = "true" 							 
+							 onfocus    = "Historial.init_focus_date(1); ayuda('.ayuda3');"
+							 onkeypress = "return isNumberKey(event);"
+							 value = "#{creditHistoryController.credithistory.creditcard_four_digits}"
+							 styleClass = "elementAddres1 validatorClass showMessage hs_private"
+							 onblur		= " ayudaQuitar();"
+							 >
+								     						   
+							<p:ajax event = "blur" 
+									onstart    = "remove_error_required_input('hidden1'); hideMessage();" 
+									oncomplete = "Historial.creditcard_four_digits_oncomplete(xhr, status, args);" 
+									listener   = "#{creditHistoryController.creditcard.init_four_digits}"/>
+				</h:inputText>
+			</div>
+<!-- 
+			<div style="padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px; float: left;">
+				<p:graphicImage style="border: 0px;" url="../resources/img/padlock.png"/>
+			</div>
+-->
+
+	</div>				 
+</ui:composition>				 

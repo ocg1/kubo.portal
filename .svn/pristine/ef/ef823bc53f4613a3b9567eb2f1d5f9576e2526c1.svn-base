@@ -1,0 +1,44 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html">	
+
+
+	
+
+		<div class="pantallas_segmento">
+				
+				<div class="mensajeAprobacion">
+        			
+        			<div class="bT">
+	        			<h3>¡Felicidades!</h3>
+	        			<p>Gracias a tu buen historial de crédito tienes un préstamo.kubo<strong> PRE-APROBADO*</strong>.</p>
+	        			<p>Tienes 48 hrs para terminar tu solicitud  y recibir tu dinero.</p>
+        			</div>
+        			
+        			<figure><h:graphicImage library="img/nuevoRegistro" name= "carameloBuenos.jpg"  />        </figure>
+        		</div>
+        	    
+        	    <h:panelGroup rendered="#{!checkScoreProcessed.btnOffer}">
+        				<div style="display:block; clear:both; width:250px; margin:0 auto 20px;" class="callAction btnNaranja"  onclick="cerrarLienzoPreaprobacion();">Termina tu solicitud</div>
+        		</h:panelGroup>
+        		<h:panelGroup rendered="#{checkScoreProcessed.btnOffer}">		
+		        	<ui:include src = "#{checkScoreProcessed.pageBtn}"/>
+        			<div class="mostrarOferta">	
+	        				<ui:include src = "#{checkScoreProcessed.pagePromo}"/>
+	        					
+	        					
+	        				
+	        		</div>
+	        		<ui:include src = "nuevosProductos/aceptoOferta.xhtml"/>
+	        		<ui:include src = "nuevosProductos/noAceptoOferta.xhtml"/>	
+	        	</h:panelGroup>
+	        	<small>*Sujeto a que cubras algunos requisitos sencillos.</small>
+        	
+		</div>
+		
+	
+		
+		
+			
+	
+</ui:composition>	

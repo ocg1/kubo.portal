@@ -1,0 +1,27 @@
+
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+<div id="light7" class="lightbox white" data-div="7" >
+            	<div class="close_lightbox"></div>
+
+<div class="tabla_modal">
+<a href="#" class="close_lightbox"></a>
+
+
+
+<!-- p:commandLink styleClass="regresar close_lightbox"  >Cerrar</p:commandLink -->
+
+		 <iframe scrolling="no" id="myiFrame" data-src="http://my.url" src="about:blank" height="460px" width="100%" style="clear:both; width:100%;"> </iframe>
+<span class="regresar_simulador">
+	<i class="fa fa-angle-left"></i>regresar simulador
+</span>
+                    </div>
+         
+            
+                    
+</div>
+</ui:composition>

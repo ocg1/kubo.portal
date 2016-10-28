@@ -1,0 +1,252 @@
+	<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+			
+<section class="espacio">
+<div class="container">
+		<div>	
+			<div class="referenciaPago_encabezado">  		
+				<div class="col_logo logoReferencias">	
+				
+				
+						<h:graphicImage library="img" name= "logo_kubo.png"  /> 	
+				</div>		
+					<div class="col_acreditado">
+		
+						<h3>REFERENCIAS BANCARIAS</h3>
+					
+						<h4>Pago en banco o tienda de conveniencia</h4>
+				
+						<h5><span>#{contractData.contratoCredito.creditoID} </span>- #{contractData.contratoCredito.nombreCliente}</h5>
+				
+							<h2 class="montoCenter"><strong><label>$ 
+					               <h:outputText value="#{contractData.segrep.montoCuota + contractData.segrep.comGralDep}" >
+					   					<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+									</h:outputText>
+						
+								</label></strong>
+						     </h2>
+						<h6>El pago incluye el monto de tu cuota + $15 pesos del costo del depósito</h6>
+					
+					</div>
+		     </div>
+			<div class="conceptoFila">
+			    <div class="col_referencia_logo">
+			    	<h:graphicImage library="img" name= "logo_banorte.png"  /> 
+				</div> 		
+				<div class="col_referencia_concepto_panel">
+			
+					<ul>     	 			
+						<li>
+							<span><label>
+			Razón Social</label></span>
+							<strong><label>
+			KU-BO FINANCIERO, S.A. DE C.V., S.F.P.</label></strong>
+						</li>
+						<li>		
+							<span><label>
+			Número de Empresa</label></span>
+							<strong><label>
+			#{contractData.segrep.banorteConv}</label>	</strong>
+						</li>
+							<li>
+								<span><label>
+			Referencia</label></span>
+								<strong><label>
+			#{contractData.segrep.referenciaBanorte}</label></strong>
+							</li>
+		
+					</ul>
+				</div>							
+			</div>
+			<br/>
+								
+										
+		<div class="conceptoFila">
+		    <div class="col_referencia_logo telcomm"> 
+		    
+		    	<h:graphicImage library="img" name= "telcomm_logo.png"  /> 
+			</div> 		
+			<div class="col_referencia_concepto_panel">
+		
+					<ul>     	 			
+						<li>
+							<span><label>
+			Razón Social</label></span>
+							<strong><label>
+			KU-BO FINANCIERO, S.A. DE C.V., S.F.P.</label></strong>
+						</li>
+						<li>		
+							<span><label>
+			Número de Empresa</label></span>
+							<strong><label>
+			#{contractData.segrep.banorteConv}</label>	</strong>
+						</li>
+							<li>
+								<span><label>
+			Referencia</label></span>
+								<strong><label>
+			#{contractData.segrep.referenciaBanorte}</label></strong>
+							</li>
+							
+					</ul>
+			</div>							
+		</div>
+	<br/>
+										
+										
+		<div class="conceptoFila">
+		    <div class="col_referencia_logo">
+		        <h:graphicImage library="img" name= "logo_seven_eleven.png"  /> 
+		    	
+			</div> 		
+			<div class="col_referencia_concepto_panel">
+		
+				<ul>     	 			
+					<li>
+						<span><label>
+		Nombre empresa</label></span>
+						<strong><label>
+		#{contractData.segrep.elevenEmp}</label></strong>
+					</li>
+						<li>
+							<span><label>
+		Número de convenio </label></span>
+							<strong><label>
+		#{contractData.segrep.elevenConv }</label>	</strong>
+						</li>
+						<li>
+							<span><label>
+		Referencia</label></span>
+							<strong><label>
+		#{contractData.segrep.referenciaBanorte}</label></strong>
+						</li>
+						
+						<li>
+							<p></p>
+						
+						</li>
+				</ul>
+				<br/>
+									
+				<div  class="ui-panel ui-widget ui-widget-content ui-corner-all nota_panel">
+					<div class="ui-panel-content ui-widget-content">
+				
+								<ul>
+									<li>
+											<p >
+												<span><b>Nota: </b></span> 
+												<span>7-eleven cobrará $8 pesos adicionalmente por recibir el pago</span>
+											</p></li>
+								
+									<li>
+										<p>
+											<span><b>Paso 1: </b></span> 
+											<span>Buscar en el sistema "Pago de Servicio"</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											<span><b>Paso 2: </b></span> 
+											<span>Ingresar número de convenio ó empresa: 1787</span>
+										</p>
+									</li>
+									<li>
+										<p >
+											<span><b>Paso 3: </b></span> 
+											<span>Verificar el nombre de la empresa: KU BO FINANCIERO</span>
+										</p>
+									</li>
+									<li>
+									
+										<p>
+											<span><b>Paso 4: </b></span> 
+											<span>Ingresar monto</span>
+										</p>
+								   </li>
+								
+
+							</ul>
+				
+			</div>
+		</div>
+</div>							
+		</div>
+		<br/>
+			   <div class="pagebreak"></div>						
+		<div class="ui-panel ui-widget ui-widget-content ui-corner-all SPEI_titulo">
+			<div class="ui-panel-content ui-widget-content">
+				<h3>INFORMACIÓN PARA TRANSFERENCIA ELECTRÓNICA (SPEI)</h3>
+				   
+	
+				<div class="conceptoFila">
+				   		 <div class="col_referencia_logo">
+				   		    <h:graphicImage library="img" name= "logo_banorte.png"  /> 
+				   		 	
+						</div>
+						<div class="col_referencia_concepto_panel">
+				
+								<ul>     	 			
+									<li>
+										<span><label>
+						Razón Social</label></span>
+										<strong><label>
+						KU-BO FINANCIERO, S.A. DE C.V., S.F.P.</label></strong>
+									</li>
+										<li>
+											<span><label>
+						Cuenta CLABE</label></span>
+											<strong><label>
+							#{contractData.segrep.clabeBanorte}</label></strong>		
+										</li>
+										<li>
+											<span><label>
+						Referencia</label></span>
+											<strong><label>
+						#{contractData.segrep.referenciaBanorte}</label></strong>
+										</li>
+									<li>
+										<span><label>
+						Cliente</label></span>
+										<strong><label>
+						#{contractData.contratoCredito.nombreCliente}</label></strong>						
+									</li>
+										<li>
+											<span><label>
+						Pago</label></span>
+											<strong><label>
+						$ 
+								               <h:outputText value="#{contractData.segrep.montoCuota}" >
+								   					<f:convertNumber pattern="###,###,###,###.00" locale="es_MX" />
+												</h:outputText></label></strong>
+										</li>
+								</ul>					
+						</div>
+				  </div>
+    		 </div>
+ 		</div> 	
+</div>	
+				
+	</div>
+			
+</section>
+			<section class="abajoMargen">
+
+		
+					<div class="container firmas center">
+						
+					<aside class="unaFirma">
+							  <span class="firmaCliente"></span>
+						</aside>
+			          			<hr/>
+							  <p><span class="variable"> #{contractData.contratoCredito.nombreCliente}</span></p>
+							  <p><strong>Recibí referencias de pago
+						</strong></p>		
+						
+					</div>
+
+				</section>
+</ui:composition>

@@ -1,0 +1,155 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:f  = "http://java.sun.com/jsf/core"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+	<div class=" left como_entero">
+		<p class="left"><strong>Cómo se enteró de nosotros</strong></p>
+		
+		<div class="left">
+			<p:commandLink rendered="#{summaryRequest.changeReasons.hasChange}" immediate="true" actionListener="#{summaryRequest.setListChanges(summaryRequest.changeReasons)}" oncomplete="showPopUpChanges();" style="cursor:pointer;">
+				<h:graphicImage style="float: left; width: 30px; margin: 0px 0px 0px; height: 30px;"  
+						rendered="#{summaryRequest.changeReasons.hasChange}" url="../resources/img/change-icon.png" >
+				</h:graphicImage>
+			</p:commandLink>
+		</div>
+		
+		<div class="left">
+		
+			<p:commandLink rendered="#{summaryRequest.changeReferred.hasChange}" immediate="true" actionListener="#{summaryRequest.setListChanges(summaryRequest.changeReferred)}" oncomplete="showPopUpChanges();" style="cursor:pointer;">
+				<h:graphicImage style="float: left; width: 30px; margin: 0px 0px 0px; height: 30px;"  
+						rendered="#{summaryRequest.changeReferred.hasChange}" url="../resources/img/change-icon.png" >
+				</h:graphicImage>
+			</p:commandLink>
+			
+		</div>
+		
+		<h:panelGroup id="pnlComoSeEntero">
+			<div  style="float:none !important; clear: both !important;">
+			
+				<p:inplace id="sectionEditPromotor" label='#{summaryRequest.registrationReason}' widgetVar="editPromotor" rendered="#{summaryRequest.asignaCartera}" >
+					<p:ajax event="save" update="pnlEditPromotor" listener="#{summaryRequest.savePromotorData}"/>										
+				 	
+				 	<div class="styled-select">
+						<h:selectOneMenu value="#{summaryRequest.member.registration_reason_id}" id="selectRegistration_Razon"  >
+							<f:selectItem itemValue=""  itemLabel=""/>
+							<f:selectItems  value="#{summaryRequest.reasonsService.loadRegistrationReasonWithoutOtherList()}" var="reason" itemLabel="#{reason.name}" itemValue="#{reason.regPK.registration_reason_id}"/>
+							<f:selectItem itemValue="7"  itemLabel="Otro"/>
+							<p:ajax event="change" update="pnlOtherReasons" listener="#{summaryRequest.changeRegistationReason}" ></p:ajax>																	
+						</h:selectOneMenu>
+					</div>
+				 	
+					<h:panelGroup id="pnlOtherReasons" >
+					
+						<p><strong>Promotor</strong></p>
+						
+					 	<div class="styled-select">
+                         			<h:selectOneMenu id="selPromotor" value="#{summaryRequest.member.promotor_id}">
+								<f:selectItem itemValue=""  itemLabel=""/>
+									<f:selectItem itemValue="0"  itemLabel="Sin Promotor" itemDisabled="#{summaryRequest.member.registration_reason_id==6}" />
+									<f:selectItems  value="#{summaryRequest.service_membership.getListPromotors()}" var="promotor" itemLabel="#{promotor.name}" itemValue="#{promotor.promotorPk.promotor_id}"/>
+									<p:ajax event="change"></p:ajax>	
+							</h:selectOneMenu>	
+						</div>
+											
+						<h:panelGroup rendered="#{summaryRequest.member.registration_reason_id == 8}" >
+					
+							<p><strong>Número de socio</strong></p>
+							
+							<p:inputText id="priceshoes_number" value="#{summaryRequest.member.priceshoes_number}"  styleClass="elementAddres1"   style="font-size: 1.0em !important; width: 300px !important; border: solid 1px #FFF200 !important;"   >
+								<p:ajax  event="blur"  ></p:ajax>
+							</p:inputText>						
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{summaryRequest.member.registration_reason_id==3}">
+							
+							<p><strong>Nombre de la persona que te recomendó</strong></p>
+								
+							<p:inputText id="kubo_member" value="#{summaryRequest.member.who_recommends}"  styleClass="elementAddres1"  style="font-size: 1.0em !important; width: 300px !important; border: solid 1px #FFF200 !important;" >
+								<p:ajax  event="blur"  />
+							</p:inputText>														
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{ summaryRequest.member.registration_reason_id==7 }">							
+							<p><strong>¿De qué manera?</strong></p>
+								
+							<p:inputText id="otherReason" value="#{summaryRequest.member.other_registration_reason}"  styleClass="elementAddres1"   style="font-size: 1.0em !important; width: 300px !important; border: solid 1px #FFF200 !important;" >
+								<p:ajax  event="blur" />
+							</p:inputText>															
+						</h:panelGroup>						
+					</h:panelGroup>
+				 											 	
+				 	<h:inputTextarea id="txt-reason-promotor" styleClass="elementTextArea" style="margin:5px 0; width:200px; height:100px; font-size: 1em ! important;" cols="25" rows="3" value="#{summaryRequest.whyChangeDataPromotor}">
+				 		<p:ajax event="blur"></p:ajax>
+				 	</h:inputTextarea>
+				 	
+				 	<p:watermark for="txt-reason-promotor" value="Motivo del cambio" />
+				 	
+				 	<div class="buttonPR" onclick="editPromotor.save()" style="width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">
+							Guardar
+					</div>
+				 	
+				 	<div class="buttonPR"  onclick="editPromotor.cancel()" style="margin: 0; width: 71px;font-size:0.9em;float: left;">
+							Cancelar
+					</div>
+				</p:inplace>
+				
+				<h:panelGroup rendered="#{!summaryRequest.asignaCartera}" >					
+					<p>
+						#{summaryRequest.registrationReason}
+						<h:panelGroup rendered="#{summaryRequest.hasReferred}">
+							Recomendado por <b>#{summaryRequest.referredIni.membership.person.NombreCompletoNPM()}</b>
+						</h:panelGroup>					
+					</p>					
+				</h:panelGroup>			
+			</div>
+		</h:panelGroup>
+		
+		<p style="float: none; clear: both;" />
+		
+		<h:panelGroup rendered="#{summaryRequest.displayReferredChange}">
+					<div  onclick="showRecommended();" class="quien_recomendo">
+						Quien lo Recomendó
+						
+					</div>
+								
+		
+			
+			<div  id = "dvContRecommended" > 
+			
+				
+					<div>
+					
+						<p:autoComplete id				= "inp_recommended_search" 
+										value   		= "#{summaryRequest.refered_search}"
+										completeMethod 	= "#{summaryRequest.completeinfoclientRefered}"
+			                			widgetVar      	= "inpAutocompleteRefered"  
+										var            	= "c" 
+										itemValue      	= "#{c}"
+										itemLabel      	= "#{ c == '' ? '' : c.full_name }" 
+										converter      	= "viewFullNameConverter"
+									
+										styleClass		= "classAuto auocmpleStl" >
+							
+							<p:ajax event = "blur" />
+							<p:ajax event="itemSelect" listener="#{summaryRequest.onItemReferredSelect}" />
+							
+						</p:autoComplete>
+					</div>
+			
+				
+				<p style="float: none;clear: both;" />	
+											
+				<h:commandLink style="text-decoration:none;" ajax="true"  >
+					<p:ajax event="click" listener="#{summaryRequest.asignarRecomendado}" immediate="true" update="pnlComoSeEntero" oncomplete="returnRecomended(xhr, status, args);"  />
+					<div class="buttonPR"  style="margin: 0; width: 71px;font-size:0.9em;float: left; margin-left: 10px;"> Asignar </div>
+				</h:commandLink>
+								
+				<div class="buttonPR"  style="margin: 0; width: 71px;font-size:0.9em;float: left; margin-left: 15px;" onclick="showRecommended();" >
+						Cancelar
+				</div>				
+			</div>				
+		</h:panelGroup>
+	</div>			     
+</ui:composition>			     

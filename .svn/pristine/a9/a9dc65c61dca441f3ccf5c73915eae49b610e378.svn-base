@@ -1,0 +1,65 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<fieldset style="display:none;">
+		<div class = "dvContent2">
+			<div class = "dvContent">
+				<div class = "dvLabel">
+					<h:outputLabel styleClass = "labelsStl" value = "Monto mínimo: "/>
+				</div>
+				
+				<P />
+				
+				<div  class = "dvElementAddres1">
+					<h:inputText id         = "montoMinCierre"
+								 value      = "#{deal.montoMinStr}" 
+								 onkeyup    = "format(this,'');"  
+								 styleClass = "elementAddres1 validatorClass formatincomexpenses hs_class">
+						<p:ajax event = "blur" onstart = "return validateAmmount();"/>
+					</h:inputText>
+				</div>
+			</div>
+			
+<!-- 
+			<div class="dvContent">
+				<div class="dvLabel">
+						<h:outputLabel value="Tiempo de publicación:" styleClass="labelsStl" ></h:outputLabel>
+					</div>
+					
+	  				<div  class="dvElementAddres1">
+					<h:selectOneMenu id = "tmpoPubliProy" 
+								 	 value = "#{deal.publishTime}" 
+									 styleClass = "elementStlSelAddress ">
+						<f:selectItem itemValue="5" itemLabel="5 Dias"/>
+						<f:selectItem itemValue="10" itemLabel="10 Dias"/>
+						<f:selectItem itemValue="15" itemLabel="15 Dias"/>
+						<f:selectItem itemValue="20" itemLabel="20 Dias"/>
+						<f:selectItem itemValue="25" itemLabel="25 Dias"/>
+						<f:selectItem itemValue="30" itemLabel="30 Dias"/>
+						<p:ajax event="change"></p:ajax>
+					</h:selectOneMenu>
+				</div>
+			</div>  
+
+			<div class="dvContent">
+				<div class="dvLabel">
+ 					<h:outputLabel value = "Tipo de fondeo:" styleClass="labelsStl"/>
+ 				</div>
+ 				
+   				<div  class="dvElement" style="width: 300px;" >
+					<h:selectOneRadio id         = "rdTypeFun"  
+									  value      = "#{deal.fundingType}" 
+									  styleClass = "elementStlLbl validatorClass">
+	            		<f:selectItem itemValue="T" itemLabel="Por tiempo"/>
+	             		<f:selectItem itemValue="I" itemLabel="Por mejor tasa"/>
+	             		<p:ajax event="click"></p:ajax>
+	         		</h:selectOneRadio>
+				</div>
+			</div>
+-->
+		</div>
+	</fieldset>				
+</ui:composition>				
+				

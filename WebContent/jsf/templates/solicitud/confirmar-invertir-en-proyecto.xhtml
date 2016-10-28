@@ -1,0 +1,129 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+		<div style="display:none">
+		
+			<div id="dvPreInvestmentInterno">
+			
+				<div id="dvWaitConfInvInterno" style="margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px; width: 99%;display: none;" >
+				
+					<img src="../resources/img/ajax-loader.gif" style=" margin:0 auto; display:block;" />
+				
+				</div>
+				
+				<div id="dvSuccessInvInterno" style="display: none;" >
+				
+					<p>Tu inversión ha sido realizada con éxito</p>
+					
+					<div  class="callActionMedium  btnNaranja"  onclick="aceptaInverSuccess();">
+						Aceptar
+					</div>
+				
+				</div>
+				
+				<div id="dvErrorInvInterno" style="display: none;" >
+				
+					<p>No se pudo realizar tu inversión </p>
+					<div id="dvMsgErrorInv" ></div>
+					
+					<div  class="btn_naranja"  onclick="aceptaInverError();">
+						Aceptar
+					</div>
+				
+				</div>
+			
+				<div id="dvContTableConfInvInterno" >
+				
+				<h:panelGroup id = "pnlConfirmInvestInterno" >
+				
+				
+				<h3 class="encabezado_3">Confirma Inversión</h3>
+					<table style="margin-left: auto; margin-right: auto;" >
+					
+				
+					
+						<tr>
+							<td>Monto a invertir</td>
+							<td style="padding-left: 20px;text-align: right; font-weight: bold; ">
+								<h:outputText value="#{summaryRequest.ammounttoInv}">
+									<f:convertNumber maxFractionDigits="2" minFractionDigits="2" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>									
+								</h:outputText>
+							</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td colspan="3">
+								
+								<div >
+									<table class="confirmarInversion">
+										
+										<tr>
+											<td>
+												Tasa: 
+											</td>
+											<td>
+												#{summaryRequest.itemSel.rate_investor}%
+											</td>
+										</tr>
+										
+										<tr>
+											<td >
+												Calificación Buró: 
+											</td>
+											<td>
+												#{summaryRequest.actualProyect.bc_score}
+											</td>
+										</tr>
+										
+										<tr>
+											<td>
+												Kubo-score:
+											</td>
+											<td>  
+												
+												<div class="statusModulo detailsMiddleStatusData #{summaryRequest.scoreClass}">
+														<p class="statusLeft" style="line-height:  20px;">#{summaryRequest.kuboScoreLetter}</p>
+														<p class="statusRight" style="line-height:  20px;">#{summaryRequest.kuboScoreNumber}</p>
+												</div>
+												
+											</td>
+										</tr>
+										
+									</table>
+								</div>
+								
+							</td>
+						</tr>
+					</table>
+					
+					</h:panelGroup>
+					<div class="botones_lightbox">
+					<div class="callActionMedium  btnGris" onclick="cancelInv();">
+						Cancelar
+					</div>
+					<div class="callActionMedium  btnNaranja" onclick="aceptaInvertirInter();">
+						Invertir
+					</div>
+					
+					</div>
+				</div>
+			
+				<script>
+				
+					function cancelInv(){
+		
+						$(".clsCntInvDesc").css("visibility","visible");
+						$.fancybox.close();
+						
+					}
+				
+				</script>
+			
+			</div>
+		
+		</div>				
+</ui:composition>				

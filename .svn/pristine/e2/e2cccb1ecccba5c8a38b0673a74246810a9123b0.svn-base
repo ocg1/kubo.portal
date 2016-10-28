@@ -1,0 +1,36 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				<div id="light13" class="lightbox white" data-div="13">
+            		<div class="close_lightbox"></div>
+		 			<div class="lightbox_1 centrar_modal condusef">
+	                	<a class="close_lightbox"></a>
+	                	<h2>Unidad Especializada de Atención a Usuarios</h2>
+	                	<ul>
+	                        <li>Unidad especializada kubo:</li>
+	                        <li>Barranca Del Muerto 92, Col. Florida,</li>
+	                        <li> C.P. 01030, México D.F.</li>
+	                        <li><a href="#"> #{msg.Kubo_telefono}</a></li>
+	                        <li>Correo electrónico:</li>
+	                        <li><a href="#">soporte@kubofinanciero.com</a></li>
+	                     </ul>   
+	                       <div>
+	                          <h3>CONDUSEF</h3>
+	                          <ul>  
+	                            <li>Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros</li>
+	                            <li>Centro de Atención Telefónica</li>
+	                            <li><a href="#">53-40-09-99</a></li>
+	                            <li><a href="#">01-800-999-80-80</a></li>
+	                            <li><a href="#">www.condusef.gob.mx</a></li>
+	                          </ul>
+	                      </div>     						
+					</div>
+			</div>
+	
+
+				
+</ui:composition>

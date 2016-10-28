@@ -1,0 +1,247 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+					<p>Tú eliges:</p>
+				
+				
+					<ol>
+						<li><p><strong>Plazos personalizados.</strong> Desde 4 hasta 18 meses.</p></li>
+						
+						<li><p><strong>Pagos flexibles.</strong> Realiza pagos semanales, catorcenales, quincenales o mensuales.</p></li>
+						
+						
+						<li><p><strong>Liquídalo cuando quieras.</strong> Realiza pagos adelantados sin penalizaciones ni cargos extra.</p></li>
+						
+						<li><p>Valoramos tu esfuerzo:</p></li>
+						
+						<li><p><strong>Premiamos tu puntualidad.</strong> Si realizas puntualmente los pagos de tu primer préstamo.kubo, tu tasa de interés puede mejorar en tu siguiente solicitud.</p> </li>
+						
+						<!-- li><p><strong>Seguridad para ti y tu familia.</strong> Al contratar cualquier préstamo.kubo obtienes un seguro de vida completamente gratis.</p></li-->
+					
+						<li class="sobreendeudamiento"><p><strong>Te cuidamos del sobreendeudamiento.</strong> Ajustamos el plazo de tu crédito, para que tus pagos sean accesible y lo puedas pagar sin problemas.</p></li>
+					</ol>	
+					
+					<p>No esperes más y súmate a la comunidad kubo.financiero.</p>
+               
+               <h3 style="font-size:18px !important;">Tasas Activas</h3>
+               						<p>Estimado Cliente ponemos a su disposición nuestras tasas activas, las cuales se asignan a partir de la información proporcionada por el solicitante y la registrada en las Sociedades de Información Crediticia.  </p>
+<p>Las calificaciones se dividen en siete letras de la A a la G (A Excelente, B Superior, C Muy bueno, D Bueno, E Adecuado, F Adecuado y G Adecuado), y cada una se subdivide a su vez en cinco números del 1 al 5, excepto por la F y G que solo cuentan con un nivel.</p>
+<p>A mejor comportamiento crediticio en las sociedades de información crediticia, la calificación es más cercana a la A.</p>
+               
+                 <div class="content_tabs">
+                  <div class="tasasActivas">
+					
+						
+						
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<th>Kubo.score</th>
+								<th><strong>Tasa Fija Anual Simple </strong>sobre saldos insolutos, no Incluye IVA.*</th>
+							</tr>
+							<tr>
+								<td>A1</td>
+								<td><strong>17.90%</strong></td>
+							</tr>
+							
+							<tr>
+								<td>A2</td>
+								<td><strong>18.82%</strong></td>
+							</tr>
+							<tr>
+								<td>A3</td>
+								<td><strong>21.14%</strong></td>
+							</tr>
+							<tr>
+								<td>A4</td>
+								<td><strong>22.06%</strong></td>
+							</tr>
+							<tr>
+								<td>A5</td>
+								<td><strong>23.78%</strong></td>
+							</tr>
+							
+							<tr>
+								<td>B1</td>
+								<td><strong>25.30%</strong></td>
+							</tr>
+							<tr>
+								<td>B1</td>
+								<td><strong>25.30%</strong></td>
+							</tr>
+							
+							<tr>
+								<td>B2</td>
+								<td><strong>26.56%</strong></td>
+							</tr>
+							<tr>
+								<td>B3</td>
+								<td><strong>27.02%</strong></td>
+							</tr>
+							<tr>
+								<td>B4</td>
+								<td><strong>28.18%</strong></td>
+							</tr>
+							<tr>
+								<td>B5</td>
+								<td><strong>28.64%</strong></td>
+							</tr>
+							<tr>
+								<td>C1</td>
+								<td><strong>29.80%</strong></td>
+							</tr>
+							<tr>
+								<td>C2</td>
+								<td><strong>30.26%</strong></td>
+							</tr>
+							<tr>
+								<td>C3</td>
+								<td><strong>31.72%</strong></td>
+							</tr>
+							<tr>
+								<td>C4</td>
+								<td><strong> 32.18%</strong></td>
+							</tr>
+							<tr>
+								<td>C5</td>
+								<td><strong> 33.74%</strong></td>
+							</tr>
+							<tr>
+								<td>D1 </td>
+								<td><strong>35.30%</strong></td>
+							</tr>
+							<tr>
+								<td>D2 </td>
+								<td><strong>37.20%</strong></td>
+							</tr>
+							<tr>
+								<td>D3 </td>
+								<td> <strong>37.70%</strong></td>
+							</tr>
+							<tr>
+								<td>D4</td>
+								<td> <strong>39.60%</strong></td>
+							</tr>
+							<tr>
+								<td>D5</td>
+								<td> <strong>40.10%</strong></td>
+							</tr>
+							<tr>
+								<td>E1</td>
+								<td><strong>42.80%</strong></td>
+							</tr>
+							<tr>
+								<td>E1</td>
+								<td><strong>42.80%</strong></td>
+							</tr>
+							<tr>
+								<td>E2</td>
+								<td> <strong>43.30%</strong></td>
+							</tr>
+							<tr>
+								<td>E3</td>
+								<td><strong>46.60%</strong></td>
+							</tr>
+							<tr>
+								<td>E4</td>
+								<td><strong>47.10%</strong></td>
+							</tr>
+							<tr>
+								<td>E5</td>
+								<td><strong> 52.60%</strong></td>
+							</tr>
+							<tr>
+								<td>F1</td>
+								<td> <strong> 57.90%</strong></td>
+							</tr>
+								<tr>
+								<td>G1</td>
+								<td> <strong> 61.50%</strong></td>
+							</tr>
+						
+						</table>
+
+ 
+ 
+
+ 
+
+
+
+						
+						</div>
+						</div>
+                <div class="content_tabs">   
+                   <div class="requisitos_modalidades">
+                   		<p><strong>Nombre del Producto: tumeta.kubo</strong></p>
+                  		 <p>No. de Registro del Contrato de Adhesión en el RECA de CONDUSEF: 13544-­140-­025452/01­-01255­-0616</p>
+                   		
+                   		
+			<h2>Requisitos para solicitud de crédito</h2>
+			<ul>
+				<li>Contar con buen historial crediticio validado en Buró o Círculo de Crédito</li>
+				<li>Tener domicilio en la República Mexicana</li>
+				<li>Tener más de 18 años</li>
+				<li>Credencial de elector</li>
+				<li>Comprobante de domicilio</li>
+				<li>Contar con ingresos</li>
+				<li>Acceso a internet</li>
+			</ul>
+			
+			<h2>Tipo de Moneda de la Contratación</h2>
+			<ul>
+			
+				<li>Pesos Mexicanos (Moneda Nacional)</li>
+			</ul>
+			<h2>Cobertura Geográfica</h2>
+			<ul>
+			
+				<li>Estados  Unidos Mexicanos</li>
+			</ul>
+			<h2>Modalidad de Contratación</h2>
+			<ul>
+				<li>La solicitud de crédito se realizará a través del Portal kubo en <a href="https://www.kubofinanciero.com">www.kubofinanciero.com </a></li>
+				
+			
+				<li>La contratación será de manera presencial pudiendo ser en el domicilio del solicitante ya sea su vivienda, negocio o trabajo, o bien en las oficinas de kubo.financiero; para ello se acordará una cita entre el solicitante y algún representante de kubo.financiero.</li>
+			</ul>
+		</div>
+ </div>
+ 
+ 
+ 
+ 
+                   <div class="mas_informacion">
+                   
+                   	
+                   		<h3 class="CATP"><strong>Costo Anual Total (CAT) Promedio #{msg.CAT_general} sin IVA.</strong></h3>
+                   		
+                   		<p>Para fines informativos y de comparación exclusivamente.</p>
+                   		
+                   		<p>#{msg.CAT_info_general}
+</p>
+<p>Créditos sujetos a aprobación.</p>
+
+						<div class="leyendasCat">
+							<ol>
+								<li><p>Contratar créditos que excedan tu capacidad de pago afecta tu historial crediticio.</p></li>
+								<li><p>Incumplir tus obligaciones te puede  general comisiones e intereses moratorios. </p></li>
+							</ol>
+						</div>
+                   		<h3>Más información</h3>
+		                <ul>
+		                
+		                	<li><p:commandLink action="tasas-activas" immediate="true">Checa nuestras tasas. </p:commandLink></li>
+							<li><p:commandLink action="comisiones" immediate="true">Consulta nuestras comisiones.</p:commandLink></li>
+							
+							<!-- li><p:commandLink action="seguro-vida" immediate="true">Características del seguro</p:commandLink></li -->
+							<li><p:commandLink action="lugares-pago" immediate="true">Consulta los lugares de pago</p:commandLink></li>
+							           <li ><a href="#condusef" class="open_lightbox" data-div="13" >Unidad especializada kubo/CONDUSEF</a></li>
+							<li><a href="https://www.kubofinanciero.com/blog">blog</a></li>
+		                
+		                </ul> 
+				</div>
+</ui:composition>

@@ -1,0 +1,2137 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">	
+		
+		
+<script type="text/javascript" src="../resources/js/loanListScript.js"></script>
+
+<style>
+	
+	.clDescTitHT2{
+			border: solid 1px #e6e6e6;
+			font-weight: bold;
+			text-align: center;
+			font-size: 0.8em;
+	
+		}
+	
+	.clsTerm{
+			width: 40px;
+			height: 20px;
+			border: solid 1px #e6e6e6;
+			cursor: pointer;
+		}
+		
+		.itemCheck{
+			background-image: url("../resources/img/sim_check.gif");
+		    background-repeat: no-repeat;
+		    background-position: center; 
+		}
+
+</style>
+
+<script>
+
+
+
+
+	$(document).ready(function(){
+		
+		$('body').click(function(){
+			 if ($(".ui-tooltip").is(':visible')) {
+			 setTimeout(function(){
+			 $(".ui-tooltip").hide();
+			 }, 500);
+			 }
+		 });
+		/*
+		 $(window).scroll(function()
+					{
+			 			if( $("#pnlContTableCreditos").offset() != null ){
+			 			
+							 var offset = $("#pnlContTableCreditos").offset();
+							
+				 
+				 			if( (parseInt($(this).scrollTop())+92) > parseInt(offset.top) ){
+				 				
+				 				if( $( "#dvContInvFlot" ).is(":hidden") ){
+				 				
+				 				 	$( "#dvContInvFlot" ).slideDown( "slow" );
+				 				 
+				 				}
+				 			}
+				 			
+				 			if( parseInt( offset.top ) > (parseInt($(this).scrollTop())+92) ){
+				 				
+				 				if( !$( "#dvContInvFlot" ).is(":hidden") ){
+				 				
+				 					$( "#dvContInvFlot" ).slideUp( "slow" );
+				 				
+				 				}
+				 			}
+			 			}
+
+					});
+		 */
+		$(".profileId").click(function(){
+			$("#descProfile").toggle();
+		});
+		
+		$(".clsTerm").click( function(){
+			/*
+			if($(this).hasClass("itemCheck")){
+				$(this).removeClass("itemCheck");
+			}else{
+				$(this).addClass("itemCheck");
+			}
+			*/
+			
+			var this_id = $(this).attr("id");
+			
+			var this_sec = this_id.split("_")[1];
+			var i = 0;
+			
+			var valMax = this_id.split("_")[0];
+			
+			$(".clsTerm").each(function(){
+				if($(this).hasClass("itemCheck")){
+					$(this).removeClass("itemCheck")
+				}
+			});
+			/*
+			if( i == 0){
+				$(this).addClass("itemCheck");
+				return;
+			}
+			*/
+			$("#cadena2").val("");
+			
+			$(".clsTerm").each(function(){
+				
+				var this_id_2 = $(this).attr("id");
+				
+				var this_sec_2 = this_id_2.split("_")[1];
+				
+				if( parseInt(this_sec) >=  parseInt(this_sec_2) ){
+					$(this).addClass("itemCheck")
+				}
+				/*
+				if($(this).hasClass("itemCheck")){
+					
+					var valId = $(this).attr("id");
+					valId = (valId.split("_")[0]) + "::";
+					var val = $("#cadena2").val()+valId;
+					$("#cadena2").val(val);
+				}
+				*/
+			});
+			
+			$("#cadena2").val( valMax );
+			
+			$("#cadena2").trigger("blur");
+			
+			//alert( $("#cadena2").val() );
+			
+			// setTimeout(function(){ $("#lnkAction").click(); } , 80);
+			
+		} );
+		
+		
+		
+	});
+	
+/* 	function validaKey( element ){
+		
+		if (element.keyCode === 13) {  //checks whether the pressed key is "Enter"
+			$(element).trigger("blur");
+	    
+		}else{
+		
+		format(element);
+		
+	    }
+	} */
+	
+	
+	
+	function showConfirmInv(){
+		
+		setTimeout('actionconfirm();',250);
+	}
+		
+	function actionconfirm(){
+		//alert("");
+		$("#dvWaitConfInv").fadeOut(500,function(){
+			$("#dvContTableConfInv").fadeIn(500,function(){
+				$.fancybox.center();
+			});
+		});
+		
+		
+			
+	}
+	
+	function cargaValorActual(element){
+		console.log("valor Actual: "+ $(element).val() );
+		tmpInv= false;
+		$("#btnValorActual").val( $(element).val() );
+		$("#btnValorActual").trigger("blur");
+	}
+	
+	function showLigthInv(){
+		
+		$("#dvWaitConfInv").show();
+		$("#dvContTableConfInv").hide();
+		
+		$.fancybox({
+			'showCloseButton': true,
+			'width': 350,
+			'height': 450,
+			'type':'inline',
+			'speedIn': 20,
+			'speedOut': 10,
+			'modal': true,
+			'scrolling': 'auto',
+			'centerOnScroll': true,
+			'href': '#dvPreMyInvestments',
+			'overlayColor': '#333333',
+			'hideOnOverlayClick': true,
+			'enableEscapeButton': true,
+			'onStart': function(){
+								
+							},
+			'onComplete' : function(){
+								 $('#fancybox-content').height('auto');
+								 $('#fancybox-content').children().eq(0).css('height','auto');
+								 $('#fancybox-content').width('359px');
+								 $('#fancybox-content').children().eq(0).css('width','359px');
+								 $('#fancybox-content').children().eq(0).css('background-color','#FFFFFF');
+								 $.fancybox.center();
+						    }
+		});
+		
+		return true;
+	}
+	
+	function aceptaInvertir(){
+		$.fancybox.close();
+		setTimeout(function(){ $("#cmdInvestmentAction").trigger("click") },250)
+	}
+	
+	function fncChckInv(){
+		
+		flagChckInv = false;
+		return true;
+		
+	}
+	
+	function seleccionAll(){
+		
+		var f = false;
+		
+		if($("#dvSelAllRisk").html() == 'Seleccionar todos')
+			f = true;
+		
+		$(".ui-checkbox-filter").each(function(){
+			
+				$(this).attr('checked', f);
+			
+		});
+		
+		if($("#dvSelAllRisk").html() == 'Seleccionar todos')
+		{
+			$("#dvSelAllRisk").html( 'Quitar Selección' );
+		
+		}else
+			{
+				$("#dvSelAllRisk").html('Seleccionar todos')
+			}
+		
+	}
+	
+	
+
+</script>
+
+<style>
+	.withBackGround{
+		background-color: #439539 !important;
+	}
+	.withOutBackGround{
+		background-color: #FFFFFF !important;
+	}
+	#descProfile{
+		display: none;
+	}
+</style>
+
+<div id="dvContInvFlot" style="width: 100%; position: fixed; height: 55px; background-color: #FFFFFF; z-index: 1000; top: 40px; display: none; border: solid 1px #439539; visibility: #{sessionBean.area == 'I' ? 'visible': 'hidden'}" >
+	
+	<h:form id="frmInvFlot" prependId="false" onsubmit="return false;">
+	
+	<div class="clssMssgAlrt" style="color: #FF0000;width: 400px; position: absolute; top: 32px; text-align: center; right: 416px;z-index: 100; display: none; " >
+				 
+	 	Actualizaciones en proceso, espere un momento
+	 
+	 </div>
+	
+	<h:panelGroup id="pnlInvButtonFlot" >
+	
+			<div style="position: relative; width: 900px; margin-left: auto; margin-right: auto;"> 
+			
+				
+			
+				 <h:panelGroup id="pnlInvestmentInfoFlot" rendered="#{sessionBean.area=='I' }">
+			
+					  <div id="dvCntInvDesc" class="clsCntInvDesc" style="width: 680px; height: auto; margin-top:1px; background-color: #FFFFFF; position: absolute; left: 1px; " >
+			
+					  	<table style=" border: solid 0px #439539; ">
+					  	
+					  		<tr>
+					  			
+					  			<td style="width: 130px;">Monto a <p:commandLink id="tooltip_inversiones6"  styleClass="tooltip_text" >invertir:</p:commandLink>
+					  			
+					  			
+					  						<p:tooltip for="tooltip_inversiones6" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
+										<ui:include src="templates/content_tooltip.xhtml" />
+									
+									</p:tooltip>
+					  			</td>
+					  			
+					  			<td>
+						  			
+					  				 $
+					  				<h:inputText id="ammountToInvFlot" style="width: 150px !important;font-size: 1.02em !important;" styleClass="elementAddres1" value="#{listaCreditos.ammoutToInvStr}" onkeyup="validateEnterFlot( event , this );" >
+										<p:ajax event="blur" immediate="true"  listener="#{listaCreditos.validaMontoAInvertir}" oncomplete="resNewValToInvFloat(xhr, status, args);" onstart="displayMessageProcessing('msgprocessing',false);"  update="pnlInvButtonFlot, :table_proyect_list:pnlContTableCreditos, :table_proyect_list:pnlInvestmentInfo " />
+									</h:inputText>
+						  			
+					  			</td>
+					  			
+					  			<td style="padding-left: 10px;">
+					  				Proyectos:
+					  			</td>
+					  			<td>
+					  				<h:outputText id="valCountInvFlot" value="#{listaCreditos.proyectListForInvesInd.size()}" style="font-weight: bold;"   />
+					  			</td>
+					  		
+					  			<td style="padding-left: 10px;">
+					  				Monto seleccionado:
+					  			</td>
+					  			
+					  			<td>
+					  				<h:outputText id="valAmmountInvFlot" value="#{listaCreditos.ammountFoundedInv}" style="font-weight: bold;" >
+										<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									</h:outputText>
+					  			</td>
+					  		</tr>
+					  	</table>
+					  
+					  </div>
+					  
+					  <div id="dvCntInvPaqDesc-loader" class="clsloaderInv" style="width: 30px; height: 30px; margin-left: auto; margin-right: auto; margin-top: 20px; display: none;position: absolute; left: 15px;" >
+					  
+					  	<img src="../resources/img/ajax-loader.gif" />
+					  
+					  </div>
+					  
+					  <script>
+					
+						function validateEnterFlot(e, element) {
+							 	//e.preventDefault();
+							    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+							    
+							    	//alert("enter");
+							    	$("#ammountToInvFlot").trigger("blur");
+							    	
+							    
+							    }else{
+							    	format( element );
+							    }
+							    
+							    e.preventDefault();
+						}
+					</script>
+					  
+				 </h:panelGroup >
+				 
+				  <h:panelGroup rendered="#{listaCreditos.displayInvButton and sessionBean.area=='I' and listaCreditos.blnPaquete }">
+				 	
+				 	<div class="buttonPR" style="float: right; margin-left: 10px; clear: both; margin-top: 8px;" onclick="bridgeFunctionInvPaq();" >
+						 
+						 Invertir Paquete
+					 
+					</div>
+				 	
+				 	<script>
+				 		function bridgeFunctionInvPaq(){
+				 			console.log("click inversiones");
+				 			setTimeout(function(){ delayFuncInv(); }, 3);
+				 			
+				 		}
+				 		
+				 		
+				 		
+				 		function showUpdatedPnl(){
+				 			$("#cmdConfirmInvActionFlot").trigger("click");
+						
+				 					
+				 		}
+				 		
+				 	</script>
+				 	
+				 	<div style="display: none;">
+				 	
+				 		<p:commandLink id="cmdConfirmInvActionFlot_01" update=":table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot " oncomplete="showUpdatedPnl();" >
+					 		
+						</p:commandLink>
+				 	
+					 	<p:commandLink id="cmdConfirmInvActionFlot" actionListener="#{listaCreditos.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" >
+					 		
+						</p:commandLink>
+					</div>
+				 </h:panelGroup>
+				 
+				 <h:panelGroup rendered="#{sessionBean.area=='I' and !listaCreditos.blnPaquete }">
+					
+					<!-- <p:commandLink id="cmdConfirmInvActionIndFlot" actionListener="#{listaCreditos.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" > -->
+				 		<div class="buttonPR" style="float: right; margin-left: 10px; clear: both;  margin-top: 8px; " onclick="bridgeFunctionInvPaq();" >
+						 
+							 Invertir
+						 
+						</div>
+					<!-- </p:commandLink> -->
+					
+				 </h:panelGroup>
+				 
+				 </div>
+				 
+				 <h:panelGroup rendered="#{!listaCreditos.displayInvButton and sessionBean.area=='I' and listaCreditos.blnPaquete }">
+				 	<div style="width: 99%; margin-left: auto; margin-right: auto; background-color:  #FFB266; padding: 10px;" >
+				 		El saldo mínimo para realizar la inversión es de 
+				 		<h:outputText  value="#{listaCreditos.montoMaximo}" styleClass="labelsStl" style="font-size: 1.11em !important;">
+				     		<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+						</h:outputText>, 
+						por favor primero haz un depósito que al menos complete ésta cantidad para poder continuar
+				 	</div>
+				 </h:panelGroup>
+				
+			</h:panelGroup>
+			
+		</h:form> 	
+	
+</div>
+
+<div style="overflow: auto;">
+
+<h:panelGroup rendered="false">
+
+	<div class="dvContent">
+
+		<div class="dvLabel" style="width:500px;">
+
+			<h:outputLabel styleClass="labelsStl" value="#{msg.ll_expected_perfomance}"/>
+			<h:outputText styleClass="labelsStl" value="#{listaCreditos.getExpectedPerformanceByInvestorId(sessionBean.prospectus_id)}">
+				<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+			</h:outputText>
+
+		</div>
+
+	</div>
+
+	<br/>
+
+</h:panelGroup>	
+
+<h:panelGroup id="pnlMsgSug" rendered = "#{listaCreditos.maxInvBiteRecomded != null and listaCreditos.maxInvBiteRecomded != ''}">
+	
+		<!-- <h:panelGroup id="pnlMsgSugMin" rendered="#{listaCreditos.displayMsgMinSug}" > -->
+		<h:panelGroup id="pnlMsgSugMin" >
+		
+			<div style="overflow: hidden; width: 99%; margin-left: auto; margin-right: auto; border-solid: solid 1px #E6E6E6; padding: 10px; color: #555555; position: relative; background-color: #F6F6F6; " >
+				
+				<div>
+					<div style=" width: 99%; font-weight: bold; " >
+						 <h:form>
+						 <div style="float: left;"><p:commandLink  id="tooltip_inversiones7"  styleClass="tooltip_text">Inversión</p:commandLink> máxima recomendada: #{listaCreditos.maxInvBiteRecomded}</div> <div style="float: left; margin-left: 5px;cursor: pointer; " class="ui-icon ui-icon-info profileId"></div>
+					
+							<p:tooltip for="tooltip_inversiones7" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
+										<ui:include src="templates/content_tooltip.xhtml" />
+									
+									</p:tooltip>
+					</h:form>
+					
+					
+					
+					</div>
+				</div>
+							
+				<div id="descProfile" style="width: 99%; float: none; clear: both;">
+					Dado que tu perfil es <span style="font-weight: bold;">#{listaCreditos.profileStr}</span> te recomendamos que tu inversión máxima sea de <span style="font-weight: bold;"> #{listaCreditos.maxInvBiteRecomded}</span>.
+				</div>
+				
+			</div>
+		
+		</h:panelGroup>
+		
+		<!-- <h:panelGroup id="pnlMsgSugMAx" rendered="#{listaCreditos.displayMsgMaxSug}" >
+		
+			
+			<div style="overflow: hidden; width: 99%; margin-left: auto; margin-right: auto; border-solid: solid 1px #E6E6E6; padding: 10px; color: #D5D5D5;display: none;" >
+			</div>
+		
+		
+		</h:panelGroup> -->
+	
+	</h:panelGroup>
+		
+<div id="dvContentLoanLst" class="container_loanlist" style=" width: 1300px !important; overflow: hidden;  border: solid 0px #FF0000;">	
+	<div id="sidebar" style="width:247px !important;margin: 0 10px 0 0px;float: left;" class="" >	
+		<h:form id="formLL" prependId="false">
+			<FIELDSET style="padding-top: 0px !important;">	
+				<h:panelGroup id="section_account" rendered="#{sessionBean.area=='I'}">	
+					<div style="position: relative; width: 240px; height: 125px;">				
+						<div class="dvContent" 
+								id="dvBackSectionAccount" 
+								style="height: 160px !important; overflow: auto; position: absolute; width: 240px !important; z-index: 1;  top: 0px; left: 0px;">
+						<!-- </div>
+						<div id="dvSectionAccount" 
+								style="height: 160px !important; overflow: auto; position: absolute; width: 240px !important; z-index: 50; top: 0px; left: 0px;"> -->
+							<div class="dvLabel" style="width: 200px !important;">
+								<h:outputLabel styleClass="labelsStl" value="#{msg.ll_credit_available}"/>
+							</div>
+							<p/>
+							<div class="dvLabel" style="width: 200px !important;">
+								<h:outputText id="creditOfAccount" value="#{listaCreditos.saldoActual}" styleClass="labelsStl">
+								     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+								</h:outputText>
+							</div>
+							<p/>
+							<div class="dvLabel" style="width: 200px !important;">
+								<h:outputLabel styleClass="labelsStl" value="#{msg.ll_account} #{listaCreditos.tagAccount}"/>
+							</div>
+							<p/>
+							<div class="dvElementLength">
+								<div class="styled-select-Address" style="width: 230px;">
+									<h:selectOneMenu  id="cuentasUsr" tabindex="1" styleClass="elementStlSelAddress" style="width:250px !important" value="#{listaCreditos.cuentaActual}">  
+								        <f:selectItem itemValue="" itemLabel="Todas las cuentas" />
+								        <f:selectItems value="#{listaCreditos.listInvAccounts}" var="account" itemLabel="#{account.accountName}" itemValue="#{account.account}"/>
+								        <p:ajax event="change" listener="#{listaCreditos.changeAccount}" update="section_account :frm_select_account:section_account_popup" />    
+								    </h:selectOneMenu>
+								</div>
+							</div>						
+							
+						</div>
+					</div>	
+				</h:panelGroup>
+				
+				
+				
+				<h:panelGroup id="filter_by_status" rendered="#{sessionBean.area=='M'}" >	
+					<div class="dvContent">
+						<div style="margin-top: 0px !important;">
+							<h2  class="expand_heading"><a  href="#">Filtro por estatus</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+							<div   class="toggle_container" style="width: 233px;">
+								<div class="box">
+									<table style="border-spacing: 0; width: auto;">														
+										<tbody align="left">
+											<!-- <tr>
+												<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_creado"  /></td>
+												<td style="padding:0 7px 5px 0;"><h:graphicImage width="20" height="20" title="En construcción" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/construction.png" /></td>
+												<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(0)}%</p:outputPanel></td>
+												<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_nopublic" /></td>
+												<td style="padding:0 7px 5px 0;"><h:graphicImage width="25" height="25" title="Verificaciones" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/search02.png" /></td>
+												<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(1)}%</p:outputPanel></td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_fond" /></td>
+												<td><h:graphicImage width="20" height="20" title="Fondeado" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/Bullet.png" /></td>
+												<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(3)}%</p:outputPanel></td>
+												<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_cancel" /></td>
+												<td><h:graphicImage width="20" height="20" title="Cancelado" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/error.png" /></td>
+												<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(4)}%</p:outputPanel></td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="status_public" /></td>
+												<td><h:graphicImage width="20" height="20" title="Publicado" style="margin:0;padding:0;background:none;border:none;" url="../resources/img/pig.png" /></td>
+												<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(2)}%</p:outputPanel></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr> -->
+											
+											<ui:repeat var="status" varStatus="indexVal" value="#{listaCreditos.lstStatus}">
+												
+												<h:panelGroup rendered="#{(indexVal.index%2)==0}" >
+													<h:outputText escape="false" value="#{listaCreditos.tr}" ></h:outputText>
+												</h:panelGroup>
+												
+													<td><input type="checkbox" class="ui-checkbox-filter statusclss" name="checkbox-filter" id="status_#{status.statusPK.status_id}" /></td>
+													<td style="padding:0 7px 5px 0;"><h:graphicImage width="20" height="20" title="#{status.name}" style="margin:0;padding:0;background:none;border:none;" url="../resources#{status.url_img}" /></td>
+													<td><p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByStatus(status.statusPK.status_id)}%</p:outputPanel></td>
+													
+												<h:panelGroup rendered="#{(indexVal.index%2)==1}" >
+													<h:outputText escape="false" value="#{listaCreditos.tr1}" ></h:outputText>
+												</h:panelGroup>
+											
+											</ui:repeat>
+											
+										</tbody>
+									</table>
+									
+									<div class="buttonPR" style=" width: 85px;">
+										<p:commandLink style="margin-left:3px; text-decoration: none;" onclick="buildQueryFilter();"  value="#{msg.ll_link_filter}" update=":pnlScriptStatus"  />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</h:panelGroup>
+				
+				<h:panelGroup id="pnlNumCredito" rendered="#{sessionBean.area=='I'}" >
+				   <div style="width: 99%; margin-left: auto; margin-right: auto; text-align: center; color: #439539;font-weight: bold; font-size: 1.0em; margin-bottom: 10px;margin-top: 5px;">
+						<h:outputText value="Proyectos Disponibles: #{listaCreditos.proyectList.size()}" />
+					</div>
+				</h:panelGroup>
+				
+				<h:panelGroup id="filter_by_type" >	
+				
+				
+					
+				<div class="dvContent">
+					<div style="margin-top: 0px !important;">
+						<h2  class="expand_heading"><a  href="#">#{msg.ll_filter_risk}</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+						<div   class="toggle_container" style="width: 233px;">
+						<div class="box">
+							<table style="border-spacing: 0; width: auto;">														
+								<tbody align="left">
+								
+								<tr>
+									<td colspan="6" style="color:#439539; text-align: center;font-size: 0.9em;" >
+										
+										<div id="dvSelAllRisk" style="width: 99%; margin-left: auto; margin-right: auto; text-align: center; cursor: pointer;" onclick="seleccionAll();" >
+											Quitar Selección
+										</div>
+									</td>
+								</tr>
+								
+								<h:panelGroup rendered="false">
+									<tr>
+										<td colspan="6" style="color:#439539; text-align: center;padding-bottom: 7px;font-size: 0.9em;" >
+											<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+												<p:commandLink actionListener="#{listaCreditos.setFlagNumberProy(true)}" update="filter_by_type :pnlScriptStatus" style="color:#439539 !important;" >
+													Ver por número
+												</p:commandLink>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+												<p:commandLink actionListener="#{listaCreditos.setFlagNumberProy(false)}" update="filter_by_type :pnlScriptStatus" style="color:#439539 !important;" >
+													Ver por porcentaje
+												</p:commandLink>
+											</h:panelGroup>
+										</td>
+									</tr>
+								</h:panelGroup>
+								<tr>
+							      <td style="width: 10px !important;"><input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkA"/></td>
+							      <td style="width: 22px !important;"><span id="BCscoringTestSpan" class="AStestScoringSpan">A</span></td>
+								  <td style="width: 60px !important;">
+								  	<span id="BCscoringTestSpan" class="porcentKS">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('A')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('A')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								  <td style="width: 10px !important;">
+								  	<input type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkB"/>
+								  </td>
+								  <td style="width: 22px !important;">
+								  	<span id="BCscoringTestSpan" class="BStestScoringSpan">B</span>
+								  </td>
+								  <td style="width: 60px !important;">
+								  	<span id="BCscoringTestSpan" class="porcentKSR">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('B')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('B')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								</tr>
+								<tr>
+								  <td style="width: 10px !important;"><input  	type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkC"/></td>
+								  <td style="width: 22px !important;"><span 	id="BCscoringTestSpan" class="CStestScoringSpan">C</span></td>
+								  <td style="width: 30px !important">
+								  	<span 		id="BCscoringTestSpan" class="porcentKS">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('C')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('C')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								  <td style="width: 10px !important;"><input 	type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkD"/></td>
+								  <td style="width: 22px !important;"><span 	id="BCscoringTestSpan" class="DStestScoringSpan">D</span></td>
+								  <td style="width: 30px !important;">
+								  	<span 	id="BCscoringTestSpan" class="porcentKSR">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('D')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('D')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								</tr>
+								<tr>
+								  <td style="width: 10px !important;"><input  type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkE"/></td>
+								  <td style="width: 22px !important;"><span id="BCscoringTestSpan" class="EStestScoringSpan">E</span></td>
+								  <td style="width: 30px !important;">
+								  	<span id="BCscoringTestSpan" class="porcentKS">
+								  		<h:panelGroup rendered="#{listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getNumByKuboScore('E')}</p:outputPanel>
+								  		</h:panelGroup>
+								  		<h:panelGroup rendered="#{!listaCreditos.flagNumberProy}">
+								  			<p:outputPanel autoUpdate="true">#{listaCreditos.getPorcentByKuboScore('E')}%</p:outputPanel>
+								  		</h:panelGroup>
+								  	</span>
+								  </td>
+								</tr>
+															
+							</tbody>
+						</table>
+						<div class="buttonPR" style="width: 130px; float: left; margin: 5px !important; display: none;">
+							<p:commandLink id="selectAllOrNothing" style=" text-decoration: none;" value="#{msg.ll_link_check}" onclick="checkUncheck();" immediate="true"/>
+						</div>
+						<div class="buttonPR" style=" width: 85px;">
+							<p:commandLink style="margin-left:3px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();" />
+						</div>
+						<input type="hidden" id="cadena1" value="" name="cadena1"></input>
+						<input type="hidden" id="cadena2" value="" name="cadena2"></input>
+						<input type="hidden" id="cadena3" value="" name="cadena3"></input>
+						<input type="hidden" id="cadenaGender" value="" name="cadenaGender"></input>
+						<div style="display:none;">
+							<p:commandLink id="callBean" update=":table_proyect_list:creditos, pnlNumCredito , lblForFundedFilter, filter_by_status, :table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot :pnlScriptStatus " actionListener="#{listaCreditos.updateByFiltering}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" ></p:commandLink>
+						</div>
+						</div>
+						</div>										
+					</div>
+				</div>	
+				</h:panelGroup>
+				
+				
+				<!-- Fondeados y sin fondear -->
+				
+				<h:panelGroup id="filter_by_funding" rendered="#{sessionBean.area=='I'}" >	
+					<div class="dvContent">
+						<div style="margin-top: 0px !important;">
+							<h2  class="expand_heading"><a  href="#">Filtro por fondeo</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+							<div   class="toggle_container" style="width: 233px;">
+								<div class="box">
+									<table style="border-spacing: 0; width: auto;">														
+										<tbody align="left">
+											
+											
+											<h:selectOneRadio value="#{listaCreditos.typeSearch}" layout="pageDirection" >
+											   	<f:selectItem itemValue="1" itemLabel="Fondeados previamente" />
+											   	<f:selectItem itemValue="2" itemLabel="Sin fondeo previo" />
+											   	<f:selectItem itemValue="0" itemLabel="Todos" />
+											   	<p:ajax event="click" />
+											</h:selectOneRadio>
+											
+											
+										</tbody>
+									</table>
+									
+									<div class="buttonPR" style=" width: 85px;">
+										<p:commandLink style="margin-left:3px; text-decoration: none;" onclick="buildQueryFilter();" update=":pnlScriptStatus"  value="#{msg.ll_link_filter}"  />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</h:panelGroup>
+				
+				<!-- Fin Fondeados y sin fondear -->
+				
+				
+				<!-- Filtro por género -->
+				<h:panelGroup rendered="#{sessionBean.area!='M'}" >
+				<div class="dvContent">
+					<h2  class="expand_heading"><a  href="#">Filtro por Género</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+					<div   class="toggle_container" style="width: 233px;">
+						<div class="box">
+							
+							<div class="chkGender">
+							   	<input type="checkbox" id="chk1" class="chkStl" value="1" checked="checked" />
+							   		<label for="chk1">HOMBRES</label>
+								<input type="checkbox" id="chk2"  class="chkStl" value="2" checked="checked" />
+							   		<label for="chk2">MUJERES</label>
+							</div>
+							
+							<div class="buttonPR" style=" width: 80px; ">
+								<p:commandLink style="margin-left:5px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();"/>
+							</div>
+							<div id="labelForGenderFilter">
+								<h:outputLabel id="lblForGenderFilter" value="#{listaCreditos.labelOnFilteringByAmmount}" update=":pnlScriptStatus" ></h:outputLabel>
+							</div>
+						</div>
+					</div>
+				</div>
+				</h:panelGroup>
+				<!-- FIN Filtro por género -->
+				
+				<h:panelGroup rendered="true" >
+				<div class="dvContent">
+					<h2  class="expand_heading"><a  href="#">#{msg.ll_filter_ammount}</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+					<div   class="toggle_container">
+						<div class="box">
+							<div class="dvLabel" style="width: 70px ! important;">
+								<h:outputLabel styleClass="labelsStl" value="#{msg.ll_filter_from}"></h:outputLabel>
+							</div>
+								<input id="inputFrom" type="text" maxlength="6" name="inputFromBtn" style="width: 100px !important;" class="elementStl"  onkeypress="return esInteger(event)"/>
+							</div>
+							<div class="dvLabel" style="width: 70px ! important;">
+								<h:outputLabel id="inputToLabel" styleClass="labelsStl" value="#{msg.ll_filter_to}"></h:outputLabel>
+							</div>
+							<div  class="dvElementLength">
+								<input type="text" maxlength="6" name="inputToBtn"  id="inputTo" style="width: 100px !important;" class="elementStl" onkeypress="return esInteger(event)"/>
+							</div>
+							<div class="buttonPR" style=" width: 80px; ">
+								<p:commandLink style="margin-left:5px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();" update=":pnlScriptStatus" />
+							</div>
+							<div id="labelForFundedFilter">
+								<h:outputLabel id="lblForFundedFilter" value="#{listaCreditos.labelOnFilteringByAmmount}"></h:outputLabel>
+							</div>
+						</div>
+					</div>
+			
+				</h:panelGroup>
+				<!-- 
+					SE ELIMINA EL FILTRO DE BUSQUEDA POR FRASE
+				<div class="dvContent" style=" padding: 2px; overflow: hidden;" >
+					<h2  class="expand_heading" style="cursor: pointer; width: 215px;"><a  href="#">#{msg.ll_filter_word}</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+					<div   class="toggle_container" style="width: 233px;">
+						<div class="box">
+							<div class="dvLabel" style="width: 200px !important;">
+								<h:outputText id="inputPhraseLabel" styleClass="labelsStl" value="#{msg.ll_phrase_filter}"></h:outputText>
+							</div>
+							<p style="margin:0;padding: 0;"/>
+							<div  class="dvElement" style="width: 210px; float: left;">
+								<input id="inputPhrase" type="text" maxlength="16" name="inputPhrase" class="elementStl" style="width: 200px !important;" />
+							</div>
+							<div class="buttonPR" style=" width: 80px; ">
+								<p:commandLink style="margin-left:5px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				 -->
+				 <h:panelGroup rendered="#{sessionBean.area =='I'}" >
+				<div class="dvContent" >
+					
+					<h2  class="expand_heading"><a  href="#">#{msg.ll_filter_term}</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+					
+					<div   class="toggle_container">
+						<div class="box">
+							<div id="">
+								
+								<div style="margin-top: 1px;height: auto; overflow: hidden; margin-bottom: 8px;">
+									<table style="margin-left: 3px; margin-right: auto; border-collapse: collapse; ">
+										
+										<tr>
+											<th colspan="5" style="text-align: center; font-size: 0.8em;">Plazo en meses</th>
+										</tr>
+										
+										<tr>
+											<td  class="clDescTitHT2"> 4 - 6  </td>
+											<td  class="clDescTitHT2"> 7 - 9  </td>
+											<td  class="clDescTitHT2">10 - 12 </td>
+											<td  class="clDescTitHT2">13 - 15 </td>
+											<td  class="clDescTitHT2">16 - 36 </td>
+										</tr>
+										
+										<tr>
+											<td id="4T6_1"   class="itemCheck clsTerm"></td>
+											<td id="7T9_2"   class="itemCheck clsTerm"></td>
+											<td id="10T12_3" class="itemCheck clsTerm"></td>
+											<td id="13T15_4" class="itemCheck clsTerm"></td>
+											<td id="16T36_5" class="itemCheck clsTerm"></td>
+										</tr>
+										
+									</table>
+								</div>
+								
+								<div class="buttonPR" style=" width: 80px; ">
+									<p:commandLink style="margin-left:5px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();" update=":pnlScriptStatus"/>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div> 
+				
+						
+				
+				</h:panelGroup>														
+			</FIELDSET>					
+	</h:form>
+</div>
+
+<div id="providing_table" >
+
+	<h:form id="table_proyect_list" prependId="false">
+	
+		<FIELDSET class="invClasFld" style="padding: 2px; position: relative;">
+		
+		<!-- <h:panelGroup id="pnlMsgSug" rendered="#{sessionBean.area == 'I'}" > -->
+		
+		<div class="dvClsContInv" style="overflow: hidden; width: 99%; margin-left: auto; margin-right: auto;" >
+	
+		 <h:panelGroup rendered="#{sessionBean.area=='I' and listaCreditos.displayInvestAction  }" >
+		 	<div style="float: left; margin-left: 10px; clear: both; width: 300px; margin-top: 10px; ">
+			<h:selectOneRadio value="#{listaCreditos.blnPaquete}"  styleClass="radio elementStlLbl">
+			    <f:selectItem itemValue="true" itemLabel="Paquete"/>
+			    <f:selectItem itemValue="false" itemLabel="Individual"/>
+			    <p:ajax event="change"  update=":table_proyect_list:creditos, :formLL:pnlNumCredito,:table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot" ></p:ajax>
+			</h:selectOneRadio>
+		 	</div>
+		 </h:panelGroup>
+		 
+		  <div class="clssMssgAlrt" style="color: #FF0000;width: 360px; position: absolute; top: 105px; text-align: center; display: none;" >
+				 
+		 	Actualizaciones en proceso, espere un momento
+		 
+		 </div>
+		 
+			<h:panelGroup id="pnlInvButton" >	
+				 <h:panelGroup rendered="#{listaCreditos.displayInvButton and sessionBean.area=='I' and listaCreditos.blnPaquete }">
+				 	
+				 	<!-- <p:commandLink id="cmdConfirmInvAction" actionListener="#{listaCreditos.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" > -->
+				 		<div class="buttonPR" style="float: left; margin-left: 10px; clear: both; " onclick="bridgeFunctionInvPaq();" >
+						 
+							 Invertir Paquete
+						 
+						</div>
+					<!-- </p:commandLink> -->
+					
+				 </h:panelGroup>
+				 
+				 <div style="display: none;">
+					<p:commandLink id="cmdInvestmentAction" value="Datos personales" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',true);" oncomplete="closeFancy();" update=":panelContentListProyect" >
+						<f:attribute name="seccionInv" value="investment_Action" />
+					</p:commandLink>
+				</div>
+				 
+				 <h:panelGroup rendered="#{sessionBean.area=='I' and !listaCreditos.blnPaquete }">
+				 	<!-- <div class="buttonPR" style="float: left; margin-left: 10px; clear: both; ">
+						<p:commandLink onstart="return initInvestmentSel()" 	style="text-decoration: none;"  value="Invertir" 		 actionListener="#{listaCreditos.invierteListSel}" update=":formLL:section_account , :table_proyect_list:creditos, :pnlResInv, :table_proyect_list:pnlInvButton" oncomplete="initPopup();"  />
+					</div> -->
+					
+					<!-- <p:commandLink id="cmdConfirmInvActionInd" actionListener="#{listaCreditos.calculaConfirm}" update=":pnlConfirmInvest" onstart="return showLigthInv();" oncomplete="showConfirmInv();" > -->
+				 		<div class="buttonPR" style="float: left; margin-left: 10px; clear: both; " onclick="bridgeFunctionInvPaq();" >
+						 
+							 Invertir
+						 
+						</div>
+					<!-- </p:commandLink> -->
+					
+				 </h:panelGroup>
+				 
+				
+				 
+				 <!-- 
+				 <div class="buttonPR" style="float: none; margin-left: 10px; clear: both; ">
+					<p:commandLink onstart="return displayMessageProcessing('msgprocessing',true);" style="text-decoration: none;"  value="Normalizar" actionListener="#{listaCreditos.pruebaTienda}" update=":formLL:section_account , :table_proyect_list:creditos, :pnlResInv, :table_proyect_list:pnlInvButton" oncomplete="initPopup();"  />
+				</div>
+				  -->
+				 <h:panelGroup id="pnlInvestmentInfo" rendered="#{sessionBean.area=='I' }">
+				 
+				 	<div id="dvCntInvPaqDesc-loader" class="clsloaderInv" style="width: 30px; height: 30px; margin-left: auto; margin-right: auto; margin-top: 20px; display: none;position: absolute; right: 15px;" >
+					  
+					  	<img src="../resources/img/ajax-loader.gif" />
+					  
+					  </div>
+				 
+					  <div class="clsCntInvDesc" style="width: 316px; height: auto; margin-top:1px; background-color: #FFFFFF; position: absolute; right: 1px; " >
+					  	<table style=" border: solid 1px #439539; ">
+					  	
+					  		<tr>
+					  			
+					  			<td style="width: 130px;">Monto a <p:commandLink id="tooltip_inversiones5"  styleClass="tooltip_text" >invertir:</p:commandLink></td>
+					  				<p:tooltip for="tooltip_inversiones5" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
+										<ui:include src="templates/content_tooltip.xhtml" />
+									
+									</p:tooltip>
+					  			<td>
+					  			<!-- 
+					  				<h:inputText id="ammountToInv" value="#{listaCreditos.ammoutToInv}" />
+					  				 -->
+					  				 $
+					  				<h:inputText id="ammountToInv" style="width: 150px !important" styleClass="elementAddres1" value="#{listaCreditos.ammoutToInvStr}" onkeyup="validateEnter( event , this );"  >
+										<p:ajax event="blur" listener="#{listaCreditos.validaMontoAInvertir}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="resNewValToInv(xhr, status, args)" update="pnlContTableCreditos, pnlInvestmentInfo, :frmInvFlot:pnlInvButtonFlot"   />
+									</h:inputText>
+					  				
+					  			</td>
+					  			
+					  		</tr>
+					  	
+					  		<tr>
+					  			<td>Proyectos:</td>
+					  			<td>
+					  				<h:outputText id="valCountInv" value="#{listaCreditos.proyectListForInvesInd.size()}" style="font-weight: bold; font-size: 1.1em;"  />
+					  			</td>
+					  		</tr>
+					  		<tr>
+					  			<td>Monto seleccionado:</td>
+					  			<td>
+					  				<h:outputText id="valAmmountInv" value="#{listaCreditos.ammountFoundedInv}" style="font-weight: bold; font-size: 1.1em; " >
+										<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									</h:outputText>
+					  			</td>
+					  		</tr>
+					  	</table>
+					  	
+					  	<div style="margin-top: 1px; margin-left: auto; margin-right: auto; width: 99%; text-align: center;" >
+					  		
+					  		<h:panelGroup  rendered="#{listaCreditos.proyectListForInvesInd.size() > 0}" >
+					  			<p:commandLink value="Quitar selección a todos" actionListener="#{listaCreditos.quitarSeleccion}" update="pnlContTableCreditos pnlInvestmentInfo :frmInvFlot:pnlInvButtonFlot" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" style=" color: #439539 !important;" />
+					  		</h:panelGroup>
+					  		
+					  		<h:panelGroup rendered="#{listaCreditos.proyectListForInvesInd.size() == 0}" >
+					  			<p:commandLink value="Distribuir inversión" actionListener="#{listaCreditos.calculaInvestmentBite}" update="pnlContTableCreditos pnlInvestmentInfo :frmInvFlot:pnlInvButtonFlot" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" style=" color: #439539 !important;" />
+					  		</h:panelGroup>
+					  		
+					  	</div>
+					  	
+					  </div>
+					  
+					<script>
+					
+						function validateEnter(e, element) {
+							 	
+							    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+							    	$("#ammountToInv").trigger("blur");
+							    }else{
+							    	format( element );
+							    }
+							    
+							    //e.preventDefault();
+						}
+					</script>
+					  
+				 </h:panelGroup >
+				 <h:panelGroup rendered="#{!listaCreditos.displayInvButton and sessionBean.area=='I' and listaCreditos.blnPaquete }">
+				 	<div style="width: 99%; margin-left: auto; margin-right: auto; background-color:  #FFB266; padding: 10px;" >
+				 		El saldo mínimo para realizar la inversión es de 
+				 		<h:outputText  value="#{listaCreditos.montoMaximo}" styleClass="labelsStl" style="font-size: 1.11em !important;">
+				     		<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+						</h:outputText>, 
+						por favor primero haz un depósito que al menos complete ésta cantidad para poder continuar
+				 	</div>
+				 </h:panelGroup>
+				 
+				 
+			</h:panelGroup>
+			
+			 <p  style="float: none;clear: both;" />
+			<div style="float: none;clear: both; margin-top: #{sessionBean.area!='I'?'10px;':'40px;'}" >
+			<!-- <p:dataTable id="creditos" emptyMessage="#{msg.ll_empty_message}" style="width:98% !important;" 
+                     scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="450" value="#{listaCreditos.proyectList}" var="proList" resizable="true" styleClass="dataTableSelProject" cellspacing="7" cellpadding="7">
+			  --> 	
+			  
+			  <h:panelGroup id="pnlContTableCreditos" >
+			  
+			  <p:dataTable	id="creditos" emptyMessage="#{msg.ll_empty_message}"  ajax="false" style="width:98% !important;" paginator="#{sessionBean.area!='I'}" value="#{listaCreditos.proyectList}" var="proList" resizable="false" styleClass="dataTableSelProject" rows="#{sessionBean.area=='I'? listaCreditos.proyectList.size() : 15 }" cellspacing="10" cellpadding="10" rowsPerPageTemplate="15,20,30" rowIndexVar="rowIndex" widgetVar="tbl1" >
+			  	
+			  	<p:columnGroup type="header" style="width:99% !important;"  >
+			  	
+					<p:row >
+					
+						<p:column  rendered="#{sessionBean.area=='M'}" style="background-color: #439539 !important;  color: #FFFFFF !important; width: 65px !important; " >
+						
+							<f:facet name="header">
+							
+								Estatus
+								
+							</f:facet>
+							
+						</p:column>
+
+						<p:column  rendered="#{sessionBean.area!='M'}" style="background-color: #439539 !important; color: #FFFFFF !important; width: 200px !important; " >
+						
+							<f:facet name="header">
+							
+								#{msg.ll_title_Column1}&#160;/&#160;
+								#{msg.ll_title_Column2}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column rendered="#{sessionBean.area=='M'}" sortBy="#{proList.completeName}" style="background-color: #439539 !important; color: #FFFFFF !important; width: 200px !important;">
+						
+							<f:facet name="header">
+								
+								#{msg.ll_title_Column_Pros1}/&#160;<br />
+								#{msg.ll_title_Column_Pros2}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="#{sessionBean.area=='I'}">
+							
+							<f:facet name="header" align="center">
+								
+								#{msg.ll_ammountInv1}/&#160;<br />#{msg.ll_ammountInv2}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important; width: 150px !important;" rendered="#{sessionBean.area=='M'}" >
+							
+							<f:facet name="header" align="center">
+								
+								#{msg.ll_ammount}/&#160;<br /> #{msg.ll_active_rate}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="#{sessionBean.area=='I'}" >
+						
+							<f:facet name="header">
+							
+								#{msg.ll_termInv1}/&#160;<br />#{msg.ll_termInv2}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="#{sessionBean.area=='M'}" >
+						
+							<f:facet name="header">
+							
+								#{msg.ll_term}&#160;&#160;
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header">
+							
+								#{msg.ll_kubo_scoring}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headerC">
+							
+								#{msg.ll_term1}<br /> #{msg.ll_term2}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headerE">
+							
+								#{msg.ll_percent_Funding}
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headerF">
+							
+								#{msg.ll_available}<br />#{msg.ll_expiration}
+							
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headerG">
+							
+								#{msg.ll_verification}
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="#{sessionBean.area=='I' and listaCreditos.displayInvestAction }" >
+						
+							<f:facet name="header" id="headerG">
+								
+								#{msg.ll_invertion}
+								
+							</f:facet>
+						
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="#{listaCreditos.fundingFunction}" >
+							
+							<f:facet name="header" id="headerG">
+								
+								Fondear
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="false" > <!--  rendered="#{sessionBean.area=='I'}" > -->
+						
+							<f:facet name="header">
+							
+								#{msg.ll_expectedPerformance1}<br /> #{msg.ll_expectedPerformance2}
+								
+							</f:facet>
+							
+						</p:column>
+						
+					</p:row>
+				</p:columnGroup>
+			  	
+			  	<p:column id="imgStatus"  sortBy="#{proList.status_id}" rendered="#{sessionBean.area=='M'}" styleClass="borderCell proyectTitle" >
+			  			
+			  			<!--  
+				  		<p:graphicImage url="../resources/img/pig.png"  	height="25px" width="25px"	rendered="#{proList.status_id==2}" alt="Publicado" title="Publicado" />
+				  		
+				  		<p:graphicImage url="../resources/img/Bullet.png"	height="25px" width="25px" 	rendered="#{proList.status_id==3}" alt="Fondeado" title="Fondeado" />
+				  		
+				  		<p:graphicImage url="../resources/img/search02.png" height="35px" width="35px"	rendered="#{proList.status_id==1}" alt="Verificaciones" title="Verificaciones" />
+				  		
+				  		<p:graphicImage url="../resources/img/error.png" 	height="25px" width="25px"	rendered="#{proList.status_id==4}" alt="Cancelado" title="Cancelado" />
+				  		
+				  		<p:graphicImage url="../resources/img/construction.png" 	height="25px" width="25px"	rendered="#{proList.status_id==0}" alt="En construcción" title="En construcción" />
+			  			
+			  			<p:graphicImage url="../resources/img/liquidado.png" width="25" height="25" rendered="#{proList.status_id==6}" title="Liquidado" ></p:graphicImage>
+						
+						<p:graphicImage url="../resources/img/pause.png" 	 width="25" height="25" rendered="#{proList.status_id==9}" title="En Proceso de Autorizacion"  ></p:graphicImage>	
+			  			-->
+			  			<p:graphicImage width="25" height="25" title="#{proList.name}" url="../resources#{proList.url_img}"></p:graphicImage>
+			  			
+			  	</p:column>
+			  	
+				<p:column id="colNameTag"  sortBy="#{proList.proyect_name}" rendered="#{sessionBean.area!='M'}" styleClass="borderCell proyectTitle">
+				
+					<!-- <div id="yui-gen62" class="yui-dt-liner proyectDetailOnLink">
+					
+						<div id="yui-gen66" class="titleAndPurposeDiv">
+						
+							<strong id="yui-gen65" class="browseNotesStrong breakWord">
+							
+								<span  id="yui-gen64" class="expand-loan-details pDLink"> -->
+								
+						<div id="yui-gen62Pros" class="yui-dt-liner proyectDetailOnLink">
+						
+							<div id="yui-gen66Pros" class="titleAndPurposeDiv">
+							
+								<strong id="yui-gen65Pros" class="browseNotesStrong breakWord">
+								
+									<span  id="yui-gen64Pros" class="expand-loan-details pDLink" style="font-size: 1.2em;">
+								
+										<p:commandLink id="cmdLinkDetail" value="#{proList.proyect_purpose_name}" actionListener="#{listaCreditos.initSearch}" onstart="return displayMessageProcessing('msgprocessing',true);" immediate="true" oncomplete="closeFancy();" update=":pnlCancel" >
+										
+											<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+											
+										</p:commandLink>
+										
+									</span>
+								
+								</strong>
+								
+								<div id="proyectNameTag">
+								
+									<span id="yui-gen211" >#{proList.proyect_name}</span>
+									
+								</div>
+								
+							</div>
+						
+						</div>
+					
+				</p:column>
+				
+				<p:column id="colNameProsTag"   rendered="#{sessionBean.area=='M'}" styleClass="borderCell proyectTitle">
+					
+						<div id="yui-gen62Pros" class="yui-dt-liner proyectDetailOnLink">
+						
+							<div id="yui-gen66Pros" class="titleAndPurposeDiv">
+							
+								<strong id="yui-gen65Pros" class="browseNotesStrong breakWord">
+								
+									<span  id="yui-gen64Pros" class="expand-loan-details pDLink">
+									
+										<p:commandLink id="cmdLinkDetailPros" value="#{proList.completeName}" actionListener="#{listaCreditos.initSearch}" action="#{listaCreditos.redireNavigation}" onstart="displayMessageProcessing('msgprocessing',true);" immediate="true" oncomplete="closeFancy();" update=":pnlCancel" >
+										
+											<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+											
+										</p:commandLink>
+										
+									</span>
+									
+								</strong>
+								
+								<div id="proyectNameTag">
+								
+									<span id="yui-gen211Pros" >#{proList.proyect_name}</span>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					
+				</p:column>
+				
+				<p:column sortBy="#{proList.ammount}" styleClass="borderCell" rendered="#{sessionBean.area == 'M'}" >
+				
+					
+						<div align="center" id="yui-gen130" class="yui-dt-liner">
+						
+							<div align="center" id="yui-gen209" class="timeDisplay">
+							
+								<h:outputText value="#{proList.ammount}">
+								
+									<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									
+								</h:outputText>
+								
+							</div>
+							
+							<strong id="yui-gen137" class="rate"> &#160;&#160;&#160;#{proList.rate}%</strong>
+							
+						</div>
+					
+				</p:column> 
+				
+				<!--  -->
+				
+				<p:column sortBy="#{proList.ammount}" styleClass="borderCell" rendered="#{sessionBean.area == 'I'}" >
+					
+						<div align="center" id="yui-gen130" class="yui-dt-liner">
+							
+							<div align="center" id="yui-gen209" class="timeDisplay">
+							
+								<h:outputText value="#{proList.ammount}">
+								
+									<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									
+								</h:outputText>
+								
+							</div>
+							
+							<div align="center" id="yui-gen209" class="timeDisplay">
+							
+								<b>
+								
+									<h:outputText value="#{proList.actualAmmount}">
+									
+										<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										
+									</h:outputText>
+									
+								</b>
+								
+							</div>
+							
+						</div>
+					
+				</p:column> 
+				
+				<!--  -->
+						               
+				<p:column styleClass="borderCell" sortBy="#{proList.term_months}" rendered="#{sessionBean.area == 'M'}" >
+					
+					<div class="termForProyect" id="yui-gen163">
+					
+						<span id="yui-gen162" class="loanTypeAndLength">#{proList.term_months} #{proList.frequency_id==1?'Semanas':(proList.frequency_id==2?'Catorcenas':(proList.frequency_id==3?'Quincenas':'Meses'))}</span>
+						
+					</div>
+					
+				</p:column>
+				
+				<!--  -->
+				
+				<p:column styleClass="borderCell" sortBy="#{proList.actualTerm}" rendered="#{sessionBean.area =='I'}" >
+					
+					<div class="termForProyect" id="yui-gen163">
+					
+						<span id="yui-gen162" class="loanTypeAndLength">#{proList.actualTerm}</span>
+						
+					</div>
+					
+					<div class="termForProyect" id="yui-gen163">
+					
+						<span id="yui-gen162" class="loanTypeAndLength"><b> #{proList.availableDays} </b> </span>
+						
+					</div>
+						
+				</p:column>
+				
+				<!--  -->
+						                
+				<p:column  styleClass="borderCell" sortBy="#{proList.kubo_score_a}">
+					
+					<div align="center" id="yui-gen257" class="yui-dt-liner">
+					
+						<h:panelGroup rendered="false">
+						
+							<div class="ficoDisplay" align="center">#{proList.bc_score_range}</div>
+							
+							<br />
+							
+						</h:panelGroup>
+						
+						<div id="testForScores">
+						
+							<h:panelGroup rendered="#{sessionBean.area=='I'}">
+							
+								<div  class="#{proList.kubo_score_a=='A'? 'AstyleList':(proList.kubo_score_a=='B'? 'BstyleList':(proList.kubo_score_a=='C'? 'CstyleList':(proList.kubo_score_a=='D'? 'DstyleList':'EstyleList')))} riskLoanList">
+								
+									<p class="statusLeftLoanList">#{proList.kubo_score_a}</p>
+									
+									<p class="statusRightLoanList">#{proList.kubo_score_b}</p>
+									
+								</div>
+								
+							</h:panelGroup>
+							
+							<p:commandLink style="text-decoration:none;" rendered="#{sessionBean.area=='M'}" onstart="return displayMessageProcessing('msgprocessing', false);" oncomplete="closeFancy();" actionListener="#{listaCreditos.goToLogs}" action="#{listaCreditos.actionNavLogs}" update=":pnlCancel" >
+							
+								<div  class="#{proList.kubo_score_a=='A'? 'AstyleList':(proList.kubo_score_a=='B'? 'BstyleList':(proList.kubo_score_a=='C'? 'CstyleList':(proList.kubo_score_a=='D'? 'DstyleList':'EstyleList')))} riskLoanList">
+								
+									<p class="statusLeftLoanList #{proList.kubo_score_a=='A'? 'AstyleList':(proList.kubo_score_a=='B'? 'BstyleList':(proList.kubo_score_a=='C'? 'CstyleList':(proList.kubo_score_a=='D'? 'DstyleList':'EstyleList')))}">#{proList.kubo_score_a}</p>
+									
+									<p class="statusRightLoanList #{proList.kubo_score_a=='A'? 'AstyleList':(proList.kubo_score_a=='B'? 'BstyleList':(proList.kubo_score_a=='C'? 'CstyleList':(proList.kubo_score_a=='D'? 'DstyleList':'EstyleList')))}">#{proList.kubo_score_b}</p>
+									
+								</div>
+								
+								<f:attribute name="gotypeLog" value="EVA" ></f:attribute>
+								
+								<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+								
+							</p:commandLink>
+							
+						</div>
+																			
+					</div>	
+					
+				</p:column>
+						                
+				<p:column styleClass="borderCell" sortBy="#{proList.rate_investor}">
+					
+					<div id="rate_investorDiv">
+					
+						<h:outputText id="rateInvestorValue" value="#{proList.rate_investor}%" ></h:outputText>
+						
+					</div>	
+																
+				</p:column>
+						               
+				<p:column id="foundedPorc#{proList.proyect_loan_id}"  sortBy="#{proList.bottomPorcent}" styleClass="borderCell">
+					
+					<div class="yui-dt-liner">
+					
+						<div id="fpercent1138170" class="divForPercentFounded">
+						
+							<div id="mixedBarContainer" class="mixedContainerClass">
+							
+								<div id="progressBarMixed" style="width: 6.0em;" class="progressBarMixedClass">
+								
+									<div id="progressBarTotal" style="#{proList.barPorcentTotal}" class="progressBarTotalClass"></div>
+									
+									<div id="progress" style="#{proList.kuboBarPorcent}"></div>
+									
+								</div>
+								
+							</div>
+							
+							<h:outputLabel value="#{proList.bottomPorcent}%"></h:outputLabel><br />
+							
+							<div id="investorsOnLoan" style="width:80px !important; cursor: pointer;" onclick="showInvestors_#{proList.proyect_loan_id}_#{proList.proyect_id}_#{proList.prospectus_id}_#{proList.company_id}();" >
+							
+								<h:outputLabel style="cursor: pointer;" value="#{proList.numInvestors} #{msg.ll_row_investor}." onclick="showInvestors_#{proList.proyect_loan_id}_#{proList.proyect_id}_#{proList.prospectus_id}_#{proList.company_id}();" ></h:outputLabel>
+								
+							</div>
+							
+							<script>
+									
+									function showInvestors_#{proList.proyect_loan_id}_#{proList.proyect_id}_#{proList.prospectus_id}_#{proList.company_id}(){
+										$.fancybox({
+											'showCloseButton': true,
+											'width': 680,
+											'height': '90%',
+											'type':'iframe',
+											'speedIn': 20,
+											'speedOut': 10,
+											'modal': false,
+											'scrolling': 'auto',
+											'centerOnScroll': true,
+											'href': 'templates/perfil_completo/listaInversionistas/listaInversionistas.xhtml?proyectLoan=#{proList.safi_credit_id }_#{proList.safi_solicitud_id}',
+											'overlayColor': '#333333',
+											'hideOnOverlayClick': true,
+											'enableEscapeButton': true
+										});
+									}
+									
+									</script>
+							
+						</div>
+						
+					</div>
+					
+				</p:column>
+				
+				<p:column sortBy="#{proList.ammountLeft}" styleClass="borderCell" rendered="#{sessionBean.area=='M'}" >
+					
+					<div id="yui-gen190" class="yui-dt-liner">
+					
+						<div id="atLeft11396" class="timeDisplay">
+								
+							<h:outputText id="valAmmountLeft" value="#{proList.ammountLeft}">
+							
+								<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+								
+							</h:outputText>
+							
+						</div>
+						
+						<div id="yui-gen2" class="timeDisplay normal">#{proList.daysLeft} #{msg.ll_row_expiration}</div>
+						
+					</div>
+					
+				</p:column>
+				
+				<!--  -->
+				
+				<p:column sortBy="#{proList.availableAmmount}" styleClass="borderCell" rendered="#{sessionBean.area=='I'}">
+					
+					<div id="yui-gen190" class="yui-dt-liner">
+					
+						<div id="atLeft1139616" class="timeDisplay">
+							
+							<h:outputText id="valAmmountLeftInv" value="#{proList.availableAmmount}">
+							
+								<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+								
+							</h:outputText>
+								
+						</div>
+						
+						<div id="yui-gen227" class="timeDisplay normal">#{proList.daysLeftStrInv}</div>
+						
+					</div>
+					
+				</p:column>
+				
+				<!--  -->
+				
+				<p:column sortBy="#{proList.verification_score}" styleClass="borderCell">
+					
+					<div id="providing_invertion">
+					
+						<p:commandLink id="this" onstart="return displayMessageProcessing('msgprocessing', false);" disabled="#{sessionBean.area == 'M' ? false:true}" oncomplete="closeFancy();" actionListener="#{listaCreditos.goToLogs}" action="#{listaCreditos.actionNavLogs}" update=":pnlCancel" >
+						
+							<div id="verificationTestDiv">
+							
+								<div id="externalFrameVerification" class="#{proList.verificationClass}-externalFrameVerification">
+								
+									<!-- <div id="internalFrameVerification">
+									
+										#{proList.verification_score}
+										
+									</div> -->
+									
+									<div style="margin-left: auto; margin-right: auto;" >
+										<p:graphicImage url="../resources/img/N#{proList.verification_score}.png"  	height="25px" width="25px" />
+									</div>
+									
+								</div>
+								
+							</div>
+							
+							<p:overlayPanel showEffect="fade" hideEffect="fade"  my="right bottom" for="this" at="right top" dynamic="true">
+							
+								Verificacion #{proList.verificationRange}
+								
+							</p:overlayPanel>
+							
+							<f:attribute name="gotypeLog" value="SOL" ></f:attribute>
+							
+							<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+							
+						</p:commandLink>
+						
+					</div>
+					
+				</p:column>
+						               
+				<p:column styleClass="borderCell columnInvertionsWidth"  rendered="#{sessionBean.area=='I' and listaCreditos.displayInvestAction }" >
+				
+				
+					<div id="detailFounded#{proList.proyect_loan_id}" class="foundedDetail" style="display: #{(proList.proyectFunding.size()>0)?'block':'none'}"  >
+									
+						<p:commandButton id="this2" icon="ui-icon-xls" style="height:auto !important;width:22px !important; padding:0 !important;margin:0 !important;background: none !important;" disabled="#{proList.enabledFundingDetailBtn}">
+							
+							<p:overlayPanel showEffect="fade" hideEffect="fade" my="right bottom" for="this2" at="right top" dynamic="true">
+								<div style="width: 99%; margin-left: auto; margin-right: auto; background-color: #EEEEFF;" >
+									<div style="font-weight: bold;" >
+										<table style="width: 240px !important;border-collapse: collapse;">
+											<tr>
+												<td style="text-align: left;width: 190px; padding: 2px !important; padding-bottom: 1px !important; ">Monto Total fondeado :</td><td style="text-align: right; width: 50px; padding: 2px !important; padding-bottom: 1px !important;"> <h:outputText value="#{proList.montoTotalFondeo()}" /> </td>
+											</tr>
+											<tr>
+												<td style="text-align: left;padding: 2px !important;padding-top: 1px !important;">Porcentaje de participación:</td><td style="text-align: right ;padding: 2px !important;padding-top: 1px !important;"> <h:outputText value="#{proList.porcTotalFondeo()}" /> </td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<ui:repeat var="listFunding" value="#{proList.proyectFunding}">
+								
+									<p style="width: 300px;font-size: 1em">
+									
+										En la fecha
+										 
+										<h:outputText value="#{listFunding.funding_date}" >
+										  
+											<f:convertDateTime  pattern="d-M-yyyy" />
+											
+										</h:outputText>
+										
+										 invertiste la cantidad de
+										  
+										<h:outputText value="#{listFunding.amount}" >
+										  
+											<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+											
+										</h:outputText>
+										
+									</p>
+									
+								</ui:repeat>
+								
+								
+								
+							</p:overlayPanel>
+							
+						</p:commandButton>
+						
+					</div>
+				
+				
+					<div align="center" id="yui-gen130" class="yui-dt-liner"  style="width:90px;">
+						
+						<div id="invertion_value">
+							<div id="dvBiteInput_#{proList.proyect_loan_id}" style="display: #{proList.blnChck?'block':'none'}"  >
+								$
+								<h:inputText style="width: 50px !important" styleClass="elementAddres1" onkeyup="validateEnterInvestmentBite(event, this );" value="#{proList.investment_bite}" onfocus="cargaValorActual(this);" >
+									<p:ajax event="blur" listener="#{listaCreditos.asignaBite}" onstart="return returnTemp();" oncomplete="resNewVal(xhr, status, args)" update=":table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot"  />
+									<f:attribute name="proyectloanItem" value="#{proList}"></f:attribute>
+								</h:inputText>
+							</div>
+					
+							<div id="dvBiteDesc_#{proList.proyect_loan_id}" style="display: #{proList.blnChck?'none':'block'}" >
+								<h:outputText value="$0.00">
+								
+								</h:outputText>
+							</div>
+						</div>
+					</div>	
+						<!-- <h:panelGroup rendered="#{!listaCreditos.blnPaquete }" > -->
+							<div id="dvContentLoanLst">
+								<h:selectBooleanCheckbox value="#{proList.blnChck}" style="border: 1px solid red; width: 13px; height: 13px;"  >  
+									<p:ajax event="change" listener="#{listaCreditos.generaListForInv}" onstart="return fncChckInv();" oncomplete="muestraInput(xhr, status, args)" update=":table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot" />
+									<f:attribute name="proyectloanItem" value="#{proList}"></f:attribute>
+								</h:selectBooleanCheckbox> 
+							</div> 
+						<!-- </h:panelGroup> -->
+						
+						<h:panelGroup rendered ="false"> <!-- rendered="#{sessionBean.area=='I'}"> -->
+						
+							<div id="invertion_value">
+							
+								<h:outputText value="#{proList.investment_bite}">
+								
+									<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									
+								</h:outputText>
+							</div>
+						</h:panelGroup>		
+								
+						<h:panelGroup rendered ="false">	
+							
+						
+							<p:commandLink style="text-decoration:none;" onstart="return initInvestment(this);" actionListener="#{listaCreditos.updateRow}" update=":formLL:section_account" oncomplete="initPopup();"   disabled="#{proList.enabledFundingBtn}" styleClass="#{proList.enabledFundingBtn ? '': 'invest_list'}">
+																						
+								<div class="buttonPR" style='margin: 0pt; line-height: 1; height: 20px; width: 55px;#{proList.enabledFundingBtn ? "cursor: default;": ""} '>
+								
+									<h:outputText value="#{msg.ll_row_btn_funding}" />
+									
+								</div>
+								
+								<f:attribute name="investmentBite" value="#{proList.investment_bite}"></f:attribute>
+								
+								<f:attribute name="proyectId" value="#{proList.proyect_id}"></f:attribute>
+								
+								<f:attribute name="proyectloanid" value="#{proList.proyect_loan_id}"></f:attribute>
+								
+								<f:attribute name="prospectusid" value="#{proList.prospectus_id}"></f:attribute>
+								
+								<f:attribute name="companyid" value="#{proList.company_id}"></f:attribute>
+								
+								<f:attribute name="investorId" value="#{sessionBean.prospectus_id}"></f:attribute>
+								
+							</p:commandLink>
+							
+							
+						</h:panelGroup>
+					<!-- </div> -->
+				</p:column>
+				
+				<p:column styleClass="borderCell columnInvertionsWidth" rendered="#{listaCreditos.fundingFunction }" >
+					<div align="center" id="yui-gen130" class="yui-dt-liner"  style="width:90px;">
+						<h:panelGroup rendered="#{sessionBean.area=='M' and proList.status_id==2 and listaCreditos.fundingFunction }">
+							
+							<p:commandLink  actionListener="#{creaCreditoService.creaCliente}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="completeTransationFunding(xhr, status, args)" update=":table_proyect_list" >
+							
+								<f:attribute name="prospectus_id" 	value="#{proList.prospectus_id}"></f:attribute>
+								
+								<f:attribute name="company_id" 		value="#{proList.company_id}"></f:attribute>
+								
+								<f:attribute name="proyect_id" 		value="#{proList.proyect_id}"></f:attribute>
+								
+								<f:attribute name="proyect_loan_id" value="#{proList.proyect_loan_id}"></f:attribute>
+								
+								<div class="buttonPR" style="width: 80px !important; ">
+								
+									Fondear
+									
+								</div>
+								
+							</p:commandLink>		
+							
+						</h:panelGroup>
+						
+            		</div>	
+            		
+				</p:column>
+				
+			
+				
+				<p:column styleClass="borderCell" rendered="false" ><!-- rendered="#{sessionBean.area=='I'}" > -->
+					
+					<div id="expectedPerformanceByProyect">
+					
+						<h:outputText value="#{proList.expectedPerformanceForProyect}" >
+						  
+							<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							
+						</h:outputText>
+						
+					</div>
+					
+				</p:column>
+				 
+		</p:dataTable>
+		
+		<script>
+			
+		function validateEnterInvestmentBite(e, element) {
+		 	
+		 		
+		 		console.log("valor: "+e.keyCode);
+			    
+		 		if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+			    	
+			    	$(element).delay( 300 ).trigger("blur");
+			    
+			    }
+			     
+			}
+		var tmpInv = false;
+		var flagValAmmInv = true;
+		var flagChckInv = true;
+		
+		function returnTemp(){
+			
+			tmpInv = !tmpInv;
+			
+			if(tmpInv){
+				flagValAmmInv = false;
+			}
+			
+			return tmpInv; 
+		}
+			
+		 	
+		 </script>
+		
+		</h:panelGroup>
+		
+			</div>
+		</div>
+		<br/>
+		<!-- 
+		<div class="buttonPR" style="float: left; margin-right: 10px;">
+			<p:commandLink style="text-decoration: none;"  value="Incrementar saldo"/>
+		</div>
+		 -->
+		<div class="buttonPR" style="float: left;">
+			<p:commandLink style="text-decoration: none;" value="Recargar proyectos"/>
+		</div>
+		</FIELDSET>
+		<div style="display: none;">
+		
+			<p:commandLink id="buttonTable" update="creditos, :formLL:pnlNumCredito"  ></p:commandLink>
+			<h:inputText id="btnValorActual" value="#{listaCreditos.newBiteInv}">
+				<p:ajax event="blur" />
+			</h:inputText>
+			
+		</div>
+		
+	</h:form>
+	</div>
+	
+	<div id="footer" class="footerLoanList" >
+			<!-- <ui:include src="templates/footerContenido.xhtml" /> -->
+	</div>
+	
+	<div style="display: none;" >
+	
+		<h:form prependId = "false" >
+		
+			<p:inputText id="inputTimer" value = "#{listaCreditos.timer}" >
+				<p:ajax event="blur" />
+			</p:inputText>
+		
+		</h:form>
+	
+	</div>
+	
+	
+		<div style="display: none;background-color: #FFFFFF;">
+		
+			<div id="dvPreMyInvestments" style="font-size: 1.2em; background-color: #FFFFFF;">
+			
+				<div id="dvWaitConfInv"  >
+				
+					<img src="../resources/img/ajax-loader.gif" />
+				
+				</div>
+			
+				<div id="dvContTableConfInv" >
+				
+				<h:panelGroup id = "pnlConfirmInvest" >
+				
+					<table style="margin-left: auto; margin-right: auto;" >
+					
+						<tr>
+							
+							<td colspan="3" style="text-align: center; font-weight: bold; color: #439539; padding: 15px;" >Confirma Inversión</td>
+							
+						</tr>
+					
+						<tr>
+							<td>Monto a invertir</td>
+							<td style="padding-left: 20px;text-align: right; font-weight: bold; ">
+								<h:outputText value="#{listaCreditos.monto_a_invertir_total}">
+									<f:convertNumber maxFractionDigits="2" minFractionDigits="2" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>									
+								</h:outputText>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Número de proyectos </td>
+							<td style="padding-left: 20px; padding-right: 23px; text-align: right; font-weight: bold; ">${listaCreditos.proyectListForInvesInd.size()}</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3" style="padding-top: 15px;" >
+								
+									<div >
+									<table style="margin-left: auto; margin-right:  auto;" >
+										
+										<tr>
+											<th style="text-align: center;padding-right: 12px;">
+												Riesgo
+											</th>
+											<th style="text-align: center;padding-right: 12px;">#Proyectos</th>
+											<th style="text-align: center;padding-right: 12px;">%</th>
+										</tr>
+									
+										<tr>
+											<td style="padding-left: 10px;">
+												<div class="dvRiskA" style="margin-left: auto; margin-right: auto;">
+													<p class="statusLeft">A</p>
+												</div>
+											</td>
+											<td style="padding-right: 30px;text-align: right; ">${listaCreditos.aToInv}</td>
+											<td style="padding-right: 5px;text-align: right; ">
+												<h:outputText value="${(listaCreditos.aToInv*100)/listaCreditos.proyectListForInvesInd.size()}">
+													<f:convertNumber pattern="#0.00"  locale="es_MX" />										
+												</h:outputText>%
+											</td>
+										</tr>
+										<tr>
+											<td style="padding-left: 10px;">
+												<div class="dvRiskB" style="margin-left: auto; margin-right: auto;">
+													<p class="statusLeft">B</p>
+												</div>
+											</td>
+											<td style="padding-right: 30px;text-align: right; ">${listaCreditos.bToInv}</td>
+											<td style="padding-right: 5px;text-align: right; ">
+												<h:outputText value="${(listaCreditos.bToInv*100)/listaCreditos.proyectListForInvesInd.size()}">
+													<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+												</h:outputText>%
+											</td>
+										</tr>
+										<tr>
+											<td style="padding-left: 10px;">
+												<div class="dvRiskC" style="margin-left: auto; margin-right: auto;">
+													<p class="statusLeft">C</p>
+												</div>
+											</td>
+											<td style="padding-right: 30px;text-align: right; ">${listaCreditos.cToInv}</td>
+											<td style="padding-right: 5px;text-align: right; ">
+												<h:outputText value="${(listaCreditos.cToInv*100)/listaCreditos.proyectListForInvesInd.size()}">
+													<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+												</h:outputText>%
+											</td>
+										</tr>
+										<tr>
+											<td style="padding-left: 10px;">
+												<div class="dvRiskD" style="margin-left: auto; margin-right: auto;">
+													<p class="statusLeft">D</p>
+												</div>
+											</td>
+											<td style="padding-right: 30px;text-align: right; ">${listaCreditos.dToInv}</td>
+											<td style="padding-right: 5px;text-align: right; ">
+												<h:outputText value="${(listaCreditos.dToInv*100)/listaCreditos.proyectListForInvesInd.size()}">
+													<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+												</h:outputText>%
+											</td>
+										</tr>
+										<tr>
+											<td style="padding-left: 10px;">
+												<div class="dvRiskE" style="margin-left: auto; margin-right: auto;" >
+													<p class="statusLeft">E</p>
+												</div>
+											</td>
+											<td style="padding-right: 30px;text-align: right; ">${listaCreditos.eToInv}</td>
+											<td style="padding-right: 5px;text-align: right; ">
+												
+												
+												<h:outputText value="${(listaCreditos.eToInv*100)/listaCreditos.proyectListForInvesInd.size()}">
+													<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+												</h:outputText>%
+												
+											</td>
+										</tr>
+									</table>
+								</div>
+								
+							</td>
+						</tr>
+					</table>
+					</h:panelGroup>
+					<div class="buttonPR" style="float: left;"  onclick="aceptaInvertir();">
+						Invertir
+					</div>
+					<div class="buttonPR" style="float: left; margin-left: 10px;" onclick="cancelInv();">
+						Cancelar
+					</div>
+				</div>
+			
+				<script>
+				
+					function cancelInv(){
+						$(".clsCntInvDesc").css("visibility","visible");
+						$.fancybox.close();
+					}
+				
+				</script>
+			
+			</div>
+		
+		</div>
+	
+<div style="display: none;" >
+	<div id="popupfunding" style="border: solid 10px #333333;padding: 10px;">
+		<div class="contPR" style="position: relative;margin-right: 0px;min-height: 0 !important;background-color: #FFFFFF;">
+		<div class="contFrm" style="padding-right: 0px;width: auto; margin: 0px auto;">	
+		<div class="clTitle" style="margin: 5px; width: auto; text-align: center;">
+			<h:outputText value="Resultado del fondeo"  />
+		</div>
+		<fieldset>
+			<div class="dvContent">					
+				<div id="content-result-funding" >
+							
+				</div>					
+			</div>						
+		</fieldset>
+			<div class="dvContent">
+				<div class="dvElementLength" style="float: right;">						
+					<div class="btndetails" onclick="$.fancybox.close();" style="margin:0;" >
+						Aceptar
+					</div>									 
+				</div>	
+			</div>
+		</div>
+		</div>
+	</div>
+</div>	
+	
+<div style="display: none;" >
+	
+	<div id="popupData" style="border: solid 10px #333333;padding: 10px;">
+	<div class="contPR" style="position: relative;margin-right: 0px;min-height: 0 !important;background-color: #FFFFFF;">
+	<div class="contFrm" style="padding-right: 0px;width: auto; margin: 0px auto;">
+	
+	<h:form id="frm_select_account" prependId="false">
+	
+		<div class="clTitle" style="width:300px">
+			<h:outputText value="#{msg.ll_title_hover}"  />
+		</div>
+		
+		<fieldset>		
+			<div class="dvContent">		
+			<h:panelGroup id="section_account_popup">
+					<div class="dvLabel" style="width: 200px !important;">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.ll_credit_available}"/>
+					</div>
+					<p/>
+					<div class="dvLabel" style="width: 200px !important;">
+						<h:outputText  value="#{listaCreditos.saldoActual}" styleClass="labelsStl">
+						     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+						</h:outputText>
+					</div>
+					<p/>
+					<div class="dvLabel" style="width: 200px !important;">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.ll_account} #{listaCreditos.tagAccount}"/>
+					</div>
+					<p/>					
+					<div  class="dvElementLength" style="width:250px;">
+						<div class="styled-select-Address" style="width: 247px;">
+							<h:selectOneMenu  id="cuentasUsrPop-up" styleClass="elementStlSelAddress" value="#{listaCreditos.cuentaActual}">  
+								<f:selectItem itemValue="" itemLabel="Todas las cuentas" />
+								<f:selectItems value="#{listaCreditos.listInvAccounts}" var="account" itemLabel="#{account.accountName}" itemValue="#{account.account}"/>
+								<p:ajax event="change" listener="#{listaCreditos.changeAccount}" update=":formLL:section_account section_account_popup" />    
+							</h:selectOneMenu>
+						</div>
+					</div>						
+				</h:panelGroup>
+			</div>
+			<div class="dvContent">
+				<div class="dvElementLength" style="float: right;">
+					<div class="btndetails" id="btn_cancel"  style="float: left; margin-right: 10px;">
+						#{msg.Btn_return}
+					</div>								
+					<div class="btndetails" id="btn_aceptar" style="float: left;" >
+						Invertir
+					</div>									 
+				</div>	
+			</div>
+		</fieldset>
+		</h:form>
+	</div>
+	</div>
+	</div>
+</div>
+
+</div>
+</div>
+<script>
+	window.onload = function () {
+		$('.ui-datatable-even').attr('style', 'background-color: #EAF1BE !important'); // code to execute here
+		}
+	
+	$(document).ready(function(){
+		$('.ui-datatable-even').attr('style', 'background-color: #EAF1BE !important');
+		//$('#buttonTable').click();
+	});
+</script>
+<h:panelGroup id="pnlResInv">
+<div id = "dvResInv" style="display:none; position: fixed; z-index: 1000; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); top: 0px; left: 0px;" >
+<div style="position: fixed; z-index: 1001; width: auto; height: auto; background-color: #FFFFFF; border: solid 1px #e6e6e6; top: 50%; left: 50%; margin-top: -100px; margin-left: -250px; padding: 15px;  " >
+	<div style="position: absolute; z-index: 101; top: -13px;right: -13px; width: 30px; height: 30px; cursor: pointer;" >
+		<p:graphicImage url="../resources/img/close.png" onclick="hideMessageRes();" ></p:graphicImage>
+	</div>
+	
+	<table style="margin-left: auto; margin-right: auto; border: solid 1px #439539;">
+		<tr>
+			<td colspan="2" style="text-align: center;background-color: #439539; color: #FFFFFF; font-weight: bold;padding-top: 7px; padding-bottom: 7px;" > Inversión </td>
+		</tr>
+		<tr>
+			<td style="padding-top: 15px;" >Total de proyectos:</td>
+			<td style="text-align: right;padding-top: 15px;" >
+				<h:outputText  value="#{listaCreditos.creditFounded}" styleClass="labelsStl" style="font-size: 1.11em !important;">
+				</h:outputText>
+			</td>
+		</tr>
+		<!-- <tr>
+			<td style="padding-top: 8px;" >Monto invertido en cada proyecto:</td>
+			<td style="text-align: right;padding-top: 8px;">
+				<h:outputText  value="#{listaCreditos.investmentBite}" styleClass="labelsStl" style="font-size: 1.11em !important;">
+				     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+				</h:outputText>
+			</td>
+		</tr> -->
+		<tr>
+			<td style="padding-top: 8px;" >Total invertido:</td>
+			<td style="text-align: right;padding-top: 8px;">
+				<h:outputText  value="#{listaCreditos.ammountFounded}" styleClass="labelsStl" style="font-size: 1.11em !important;">
+				     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+				</h:outputText>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="display: #{(listaCreditos.creditNotFounded gt 0)?'block':'none'} ">
+				<table style="background-color:  #FFB266; ">
+					<tr>
+						<td colspan="2" style="text-align: center;" > No se pudo invertir en #{listaCreditos.creditNotFounded} #{(listaCreditos.creditNotFounded gt 1)?'proyectos':'proyecto'} proyectos <br /> ya que han alcanzado su límte máximo de inversión </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="padding-top: 10px; padding-bottom: 10px;">
+			
+				<div class="btndetails" onclick="hideMessageRes();" style="margin:0; margin-left: auto; margin-right: auto;" >
+					Aceptar
+				</div>
+			
+			</td>
+		</tr>
+	</table>
+	
+</div>	
+<input type="hidden" id="montoMaxInv" value="#{listaCreditos.montoMaxStr()}"  />
+<input type="hidden" id="montoInv" value="#{listaCreditos.montoinvertirStr()}"  />
+	
+</div>
+</h:panelGroup>
+
+<!-- Script checkbox -->
+				<h:panelGroup id="pnlScriptStatus">
+				<h:outputText escape="false" value="#{listaCreditos.scriptStatus}"  ></h:outputText>
+				</h:panelGroup>
+				<!--  Fin Script check-box-->
+</ui:composition>

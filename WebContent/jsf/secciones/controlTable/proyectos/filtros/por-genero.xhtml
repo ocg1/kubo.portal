@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+
+	<h:panelGroup rendered="#{sessionBean.area!='M'}" >
+		<div class="dvContent">
+			<h2  class="expand_heading"><a  href="#">Filtro por Género</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+			<div   class="toggle_container" style="width: 233px;">
+				<div class="box">
+					
+					<div class="chkGender">
+					   	<input type="checkbox" id="chk1" class="chkStl" value="1" checked="checked" />
+					   		<label for="chk1">HOMBRES</label>
+						<input type="checkbox" id="chk2"  class="chkStl" value="2" checked="checked" />
+					   		<label for="chk2">MUJERES</label>
+					</div>
+					
+					<div class="buttonPR" style=" width: 80px; ">
+						<p:commandLink style="margin-left:5px; text-decoration: none;" value="#{msg.ll_link_filter}" onclick="buildQueryFilter();"/>
+					</div>
+					<div id="labelForGenderFilter">
+						<h:outputLabel id="lblForGenderFilter" value="#{listaCreditos.labelOnFilteringByAmmount}" update=":pnlScriptStatus" ></h:outputLabel>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+</ui:composition>

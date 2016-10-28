@@ -1,0 +1,38 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+									
+	<table style = "margin-left: auto; margin-right: auto;">
+		<tr><td style = "font-size:12px">(créditos + tanda + cuota kubo)</td></tr>
+		
+		<tr>
+			<td>Monto de deudas:</td>
+			
+			<td style = "border-bottom: solid 2px #333333;">			
+				<h:outputText value    = "#{incomesExpenses.indicador.monto_deudas_control}" 
+							  rendered = "#{incomesExpenses.negotiation != null and incomesExpenses.negotiation.payment != null and incomesExpenses.negotiation.payment > 0}">
+					
+					<f:convertNumber maxFractionDigits = "0" minFractionDigits = "0" currencySymbol = "$" type = "currency" groupingUsed = "true" locale  = "es_MX"/>														
+				</h:outputText>																																
+				
+			</td>
+			
+			<td rowspan = "2" valign = "middle" style = "vertical-align: middle !important; padding-left: 4px;">
+				
+				= <b class = "#{incomesExpenses.indicador.clase_por_rango_indice}">#{incomesExpenses.indicador.indice_pago_deudas_control}</b>				
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="175px;">Ingreso neto personal:</td>
+			
+			<td>			
+				<h:outputText value = "#{incomesExpenses.indicador.ingreso_neto_control}">				
+					<f:convertNumber maxFractionDigits = "0" minFractionDigits = "0" currencySymbol = "$" type = "currency" groupingUsed = "true" locale = "es_MX"/>									
+				</h:outputText>
+			</td>
+		</tr>				
+	</table>				
+</ui:composition>				

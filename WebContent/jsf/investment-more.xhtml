@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<script type="text/javascript" src="../resources/js/utilerias/browserDetect.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>kubo.financiero</title>	
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<!-- MS --> 
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />		
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/inicio_2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		
+		<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm.js"></script>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"></script>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.blockUI.js"></script>
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../resources/css/responsive/preregistroResponsive.css" /> -->
+		
+		
+		<script type="text/javascript" src="../resources/js/backgroundJS.js"></script>
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css' />
+		
+		<style>
+			select {
+			margin-top: 0px !important;
+			height: 28px  !important;
+			}
+			.linkMail{
+				text-decoration: underline;
+				color: #ff8428;
+			}
+			.linkMail:HOVER {
+				cursor: pointer;
+			}
+			.dvContent2{
+				margin-left: 15px;
+			}
+			.bg {
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			display: none;
+		} 
+		
+		.dvLabel{
+			width: 280px !important;
+		}
+		
+		#fancybox-frame{
+		 -webkit-overflow-scrolling: touch !important;
+    overflow: scroll !important;
+		}
+			.fancybox-inner {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: scroll !important;
+  }
+	.fancybox-inner {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: scroll !important;
+  }
+			
+			.barraMenu_ok{
+			background-color: rgba(255,255,255,0.5) !important; 
+		}
+		
+		.smallCl{
+			display: none;
+		}
+		
+		
+			@media screen and (max-width: 600px) {
+			/*tablet Horizontal*/
+						
+				.wideCl{
+					display: none;
+				}
+					
+				.smallCl{
+					display: block;
+					position: relative !important;
+					margin-top: 120px;
+					margin-left: auto !important;
+					margin-right: auto !important;
+					
+				}
+					
+				#cont,#contFrases,#frase01,#frase02{
+					width: 90%;
+					float: none;
+					clear: both;
+					/* position: relative !important; */
+					
+				}
+				
+				#contFrases{
+					top: 135px !important;
+					left: 10px !important;
+					width: 75%;
+					border: solid 0px #FF0000;
+					
+				}
+				
+				#frase01 ,#frase02{
+					line-height: 1.15em;
+					font-size: 1.8em;
+				}
+			}
+			
+		</style>
+		<script>
+		
+		/* $(document).ready(function() {
+			$("#email").oncopy(function(){
+				alert("oncopy");
+			});
+		}); */
+		
+		var imgSig;
+		var fraseSig;
+		var interval;
+		
+		var proper;
+		
+		$(document).ready(function() {
+			
+			updateBackground() ;
+			
+			$(window).load(function(){
+				var proper ="";
+				proper+="width: "+$(window).width();
+				proper+="       screen: "+screen.width;
+				
+				
+				$("#thisProperties").html(proper);
+			});
+			  
+			  $(window).resize(function(){
+					var proper ="";
+					proper+="width: "+$(window).width();
+					proper+="      screen: "+screen.width;
+					
+					$("#thisProperties").html(proper);
+				});
+		});
+			
+		function checkClick() {
+			document.oncontextmenu = function(){return false}
+			}
+		
+		
+		
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		
+		
+		</script>
+		
+</h:head>
+<h:body onload="checkClick();">
+
+	<div id="header" style="width: 100%; margin: 0px;">
+		<ui:include src="templates/headContenido.xhtml" />
+	</div>
+	
+	<div id = "bg01" class="bg bgCl " style="display: block !important ;" > 
+		<img src="../resources/img/fotoshome-02-PC.jpg" />
+	</div>
+	
+	
+	<h:form id="form_Prin" prependId="false;">	
+
+		<div id="general">
+			
+			<div id="content"  >
+				
+				<div id="cont" >
+					
+					<div id="contFrases">
+						<div id = "frase01" style="padding-top: 3px !important;" >
+							PERSONAS INVIRTIENDO EN PERSONAS
+						</div>
+						<div id = "frase02">
+							INVERSIONES CON ALTO RENDIMIENTO FINANCIERO Y SOCIAL
+						</div>
+					</div>
+					
+				</div>
+			
+			</div>
+			<div class="wideCl" >
+			
+				<div style="width: 682px; margin-left: 100px; margin-top: 10px; margin-bottom: 15px;  height: auto; overflow: auto; background-color: rgba(250,250,250,0.6); padding: 5px !important;" >
+					<div style="width: auto; height: auto; overflow: auto; background-color: #000000;" >
+						
+						<div class="contFormAllSim" style="float: right; margin-top: 15px; font-size: 11.3pt; margin-right: 33px !important; margin-bottom: 0px;" >
+							<a href="preregistro.jsf?role=investment" class="textHelNeueBold shadowletter" style="text-decoration: none !important;"  >
+								<div class="bottonBn" style="margin-top: 0px !important; margin-bottom: 0px !important; width: 168px !important;"  >
+									PRE-REGÍSTRATE
+								</div>
+							</a>
+						</div>
+						
+						<p:graphicImage url="../resources/img/infografiaInversion-02.jpg" ></p:graphicImage>
+						
+						<div class="contFormAllSim" style="float: right; margin-top: 0px; font-size: 11.3pt; margin-right: 33px !important; margin-bottom: 20px;" >
+							<a href="preregistro.jsf?role=investment" class="textHelNeueBold shadowletter" style="text-decoration: none !important;"  >
+								<div class="bottonBn" style="margin-top: 0px !important; margin-bottom: 0px !important; width: 168px !important;"  >
+									PRE-REGÍSTRATE
+								</div>
+							</a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="smallCl" >
+			
+				<div style="width: 320px; margin-left: 0px; margin-top: 10px; margin-bottom: 15px;  height: auto; overflow: hidden;  padding: 0px !important;background-color: rgba(250,250,250,0.6); padding: 5px !important;" >
+					<div style="width: auto; height: auto; overflow: auto; background-color: #000000;" >
+						
+						<div class="contFormAllSim" style="float: right; margin-top: 15px; font-size: 11.3pt; margin-right: 33px !important; margin-bottom: 0px;" >
+							<a href="preregistro.jsf?role=investment" class="textHelNeueBold shadowletter" style="text-decoration: none !important;"  >
+								<div class="bottonBn" style="margin-top: 0px !important; margin-bottom: 0px !important; width: 168px !important;"  >
+									PRE-REGÍSTRATE
+								</div>
+							</a>
+						</div>
+						
+						<p:graphicImage url="../resources/img/infografia_320-02.jpg" ></p:graphicImage>
+						
+						<div class="contFormAllSim" style="float: right; margin-top: 0px; font-size: 11.3pt; margin-right: 33px !important; margin-bottom: 20px;" >
+							<a href="preregistro.jsf?role=investment" class="textHelNeueBold shadowletter" style="text-decoration: none !important;"  >
+								<div class="bottonBn" style="margin-top: 0px !important; margin-bottom: 0px !important; width: 168px !important;"  >
+									PRE-REGÍSTRATE
+								</div>
+							</a>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</h:form>
+	
+	<div id="footer" style="width: 100%; margin: 0px;">
+		 <ui:include src="templates/footerContenido.xhtml" /> 
+	</div>
+	
+	<ui:include src="templates/msgProcessing.xhtml" />
+</h:body>
+</html>

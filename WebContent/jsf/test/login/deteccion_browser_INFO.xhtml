@@ -1,0 +1,36 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+			
+	<script>
+		$(document).ready(function ()
+		{
+			init_browser_INFO();
+		});
+		
+		function init_browser_INFO()
+		{
+			var browser_INFO = 'you are using ' + platform.description + ' on an ' + (platform.manufacturer || 'unknown vendor');
+	
+			console.log(browser_INFO);
+	
+			$("p#msg_browser_INFO").html(browser_INFO).slideDown();
+		}	 
+	</script>		
+	
+	<div>	
+		<p:panel header = "Login" collapsed = "false" toggleable = "false">	
+			<div class = "ui-corner-all" 
+				 style = "margin:0;
+						  padding: 0;
+				 		  text-align:center; 					 		  					 		 
+				 		  border:1px solid #a8a8a8;">	
+				 <h3>Detection Browser INFO</h3>		
+				 
+				 <p id = "msg_browser_INFO"/>			
+			</div>	
+		</p:panel>	
+	</div>			
+</ui:composition>	

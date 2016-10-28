@@ -1,0 +1,65 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:f  = "http://java.sun.com/jsf/core"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+	<script>		
+		function parse_label_INFO(id)
+		{
+			console.log("parse_label_INFO(): " + id);
+			
+			var label_INFO = $( "div.label_INFO_" + id + " div").html();
+			
+			$("span.inplace_INFO_" + id + " span").eq(0).html(label_INFO);
+		}
+		
+		function actividad_economica_parse()
+		{
+			console.log("actividad_economica_parse():" + $("div.label_INFO").length);								
+
+			$("div.label_INFO").trigger("click");
+		}
+		
+		function cancelar_edicion_actividad(id)
+		{			
+			$("span.inplace_INFO_" + id + " span.ui-inplace-content").css("display","none");
+			$("span.inplace_INFO_" + id + " span.ui-inplace-display").show();
+		}
+	</script>			     
+			     
+	<h:panelGroup id = "section-edit-economic-activity">		
+		<div class="clear left">									
+			<div>			
+				<p class="left">
+					<strong>Actividad económica (Banco de México)</strong>
+				</p>	
+					
+				<ui:include src = "bitacora_cambios.xhtml"/>						
+			</div>	
+			
+			<div style = "float:none !important; clear: both !important;">				
+				<ul style="list-style: none;margin-left: 0;">
+				
+					<ui:repeat id    = "uiactivity" 
+						       var   = "econAct" 
+						       value = "#{summaryRequest.actividad_economica.lista_actividad_economica}" 
+						       varStatus = "status">
+					
+						<li>
+																					
+							<!--<ui:include src = "descripcion_readable.xhtml"/>--> 																																														
+							<ui:include src = "descripcion_editable.xhtml"/>
+																								
+						</li>
+					</ui:repeat>
+				</ul>
+			</div>	
+			
+			<script>
+				actividad_economica_parse();
+			</script>
+																		
+		</div>															
+	</h:panelGroup>				     
+</ui:composition>

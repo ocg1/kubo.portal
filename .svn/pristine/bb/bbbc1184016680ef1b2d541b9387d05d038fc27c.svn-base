@@ -1,0 +1,179 @@
+
+<html>
+
+	<head>
+		
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		
+		<script>
+		
+			function imprimirTicket(){
+					
+					var header = '' 
+						+ '<html><head>'
+						
+						+ '<style>.comprobante,.datos_1{clear:both}.datos_1 li,.tablPlanPagos ol,.ticketpagos ul li{list-style:none;overflow:hidden}#dvEdoCuenta{padding:0 20px 20px;display:block}.detalle tr:first-child{background:#439539!important;-webkit-print-color-adjust:exact;color:#fff;font-weight:700}.detalle tr td{padding:7px 5px;font-size:13px}.detalle tr td:first-child{text-align:left!important}.detalle tr td:last-child{text-align:right!important}.detalle tr:last-child td{font-weight:700;font-size:17px;border-top:dotted 1px #333}.detalle tr:last-child{background:0 0!important}.titulo_comprobante{color:#439539!important;font-size:18px}.sello_digital{padding:20px 0 0!important;text-align:center}.comprobante td{padding:5px 0}.tabla_pagos{font-size:17px;text-transform:uppercase;font-weight:700}.comprobante_container{border:1px solid #439539!important}.detalle tr.par{background-color:#f1f1f1;-webkit-print-color-adjust:exact}.name_field{width:250px;text-align:right;padding:0 30px 0 0!important}@media print and (color){*{-webkit-print-color-adjust:exact;print-color-adjust:exact}#dvEdoCuenta{padding:0 20px 20px;display:block}.detalle tr:first-child{background:#439539!important;color:#fff;font-weight:700}.detalle tr td{padding:7px 5px;font-size:13px}.detalle tr td:first-child{text-align:left!important}.detalle tr td:last-child{text-align:right!important}.detalle tr:last-child td{font-weight:700;font-size:17px;border-top:dotted 1px #333}.detalle tr:last-child{background:0 0!important}.titulo_comprobante{color:#439539!important;font-size:18px}.sello_digital{padding:20px 0 0!important;text-align:center}.comprobante td{padding:5px 0}.tabla_pagos{font-size:17px;text-transform:uppercase;font-weight:700}.comprobante_container{border:1px solid #439539!important}.detalle tr.par{background-color:#f1f1f1}.name_field{width:250px;text-align:right;padding:0 30px 0 0!important}}.ticket_cerrar{float:right;clear:both;display:block;margin:10px -10px 0 0}.tablPlanPagos ul li sub,.totalesPlan li sub{display:none}.comprobanteTablas{padding:20px 2%;color:#666;font-weight:400}.comprobanteTablas h3{color:#439539;text-align:left;margin:0}.comprobanteTablas h5{color:#333;font-size:15px;text-align:left;margin:0 0 10px}.comprobanteTablas h6{margin:0 auto 20px;text-align:center;color:#439539;font-size:14px}.logoMail{width:14%;float:left;margin:0 0 20px}.logoMail img{width:100%;height:auto}.titulosComprobante{width:78%;float:right;text-align:left;margin:20px 0 0}.datos_1{font-size:15px;overflow:hidden;padding:0}.datos_1 li{margin:0 0 10px;padding:0 0 4px}.datos_1 li span{float:left;width:36%}.datos_1 li strong{float:right;width:63%}.datos_1 li.selloDigital span,.selloDigital strong{width:100%!important;margin:0 0 9px}.tablPlanPagos ol{padding:0;margin:0;width:100%;background:#666}.tablPlanPagos ol li{float:left;color:#fff;width:20%;text-align:center;padding:5px 0;font-size:14px;font-weight:700}.comprobanteTablas.pagos .tablPlanPagos ol li{width:16.6%!important}.tablPlanPagos{margin:0 0 20px;border:1px solid #999}.tablPlanPagos ul{overflow:hidden;padding:9px 0;font-size:14px;border-bottom:solid 1px #f1f1f1}.totalesPlan li{font-weight:700;min-height:10px}.tablPlanPagos ul li{float:left;width:20%;text-align:center}.comprobanteTablas.pagos .tablPlanPagos ul li{width:16.6%}.imprimirComprobanda{margin:0 auto;display:block;width:70px}.datosInferiores{width:85%}.datosInferiores p{font-size:14px;margin:0 0 6px}.folioFechaPago{float:right;font-weight:700}.folioFechaPago p{margin:0;padding:0}.ticketpagos ul{width:200px;margin:0 auto}.ticketpagos ul li{width:100%}.ticketpagos ul li span{float:left}.ticketpagos ul li strong{float:right}</style>'
+						
+						+ '</head><body style="font: 13px/1.231 helvetica,arial,clean,sans-serif; font-size: 1.1em;" >';
+					
+					var header_fin  = '</body></html>';
+					
+					var panel = $('#dvContTicket');
+	
+					var pop_up = window.open('','popimpr');
+					
+					pop_up.document.write(header);
+					
+					pop_up.document.write(panel.html());
+					
+					pop_up.document.write(header_fin);
+					
+					pop_up.print();
+					pop_up.close();	
+					
+				}
+		
+		</script>
+		
+	</head>
+
+	<body>
+	<div id="dvContTicket">
+	<form>
+	<div class="comprobanteTablas">			
+		<div class="logoMail">
+			<img src="http://www.kubofinanciero.com/Kubo/resources/img/logo_for_mail2.png" width="75px" height="75px">
+		</div>			
+		<div class="titulosComprobante">
+			<h3>COMPROBANTE DE PAGO DE CRÉDITO </h3>					
+			<h5>   COMPROBANTE SIN VALIDEZ OFICIAL</h5>			
+		</div>	
+			<ul class="datos_1">	
+									
+								
+			<li class="filaFolio">
+			
+					<div class="folioFechaPago">
+				   		 <p>Folio: ###FOLIO###</p>
+					 	 <p>###FECHAPAGO###</p>			
+					</div>
+			</li>
+			<li>
+				<span>Nombre:</span>
+				<strong> ###NOMBRE###</strong>
+			</li>
+			<li>
+				<span>RFC:</span>
+				<strong>###RFC###</strong>
+			</li>
+			<li>
+				
+										
+								<span>Cliente:</span> 
+								<strong>###CLIENTE###	</strong>		
+			 </li>	
+			 <li>
+								<span>Número de crédito:</span>
+								<strong>
+								  ###NUMCREDITO###	
+								  </strong>		
+			</li>
+			<li>
+			<span>
+								Cuota Pagada:</span>
+								<strong> ###CUOTAS_PAGADAS###	de 	###TOTALCUOTAS###  ###STATUS###	
+								
+								</strong>	
+								</li>
+								
+								
+								###TRANSFERENCIA###
+								
+			<li>
+			
+			
+			
+					<span>Tipo de operación:</span>
+					<strong>
+					 ###OPERACION###		
+					 </strong>	
+				</li>
+			
+			<li>
+				
+					<span>Importe:</span>
+					 <strong> ###IMPORTE_PAGADO###	 <br/>
+					(###IMPORTE_LETRA### ###CENTAVOS###/100  M.N.)***	
+					</strong>			
+				</li>
+			<li>
+				<span>Hora de aplicación:</span> 
+				<strong>###HORAPAGO###</strong>
+			</li>
+			
+			</ul>
+			
+			<h6>PLAN DE PAGOS</h6>
+				<div class="tablPlanPagos ticketpagos">
+				
+			<ul class="detalle">
+						###DETALLE###
+				</ul>	
+						<ul class="totalesPlan">
+							
+							<li><span>TOTAL PAGADO</span> <strong>###TOTAL_PAGADO###</strong></li>
+					
+						</ul>
+				
+						
+			
+						
+					</div>
+			
+				<div class="datosInferiores">
+			
+				<p>Recuerde que su pago puntual le da acceso a más créditos y servicios.</p>
+			
+			
+			
+			
+							<p><b>###RAZON_SOCIAL###</b>  R.F.C.:  <b>###RFC_KUBO###</b></p>
+							
+							<p>Barranca Del Muerto 92, Col. Florida, C.P. 01030, México
+							Distrito Federal, Tel: ###TELEFONO###  </p>
+							
+							<p>###FECHA_PAGO###</p>
+					
+				
+					</div>
+					
+					<div class="imprimirComprobanda" onclick="javascript:imprimirTicket()" >
+						<img src="../resources/img/imprimir.png" border="0px" />
+					</div>
+		</div>
+		<script>
+		 $(document).ready(function() {
+				
+		
+			 	
+			 $("#dvEdoCuenta").closest('#fancybox-content').addClass("comprobante_container");
+			 $("#dvEdoCuenta").closest('#fancybox-wrap').addClass("comprobante_containerPrincipal");
+			
+			 
+			 
+			  $(".detalle tr:odd").addClass("par");
+		
+			  
+			  
+			
+			
+			});
+		
+		
+		</script>
+		</form>
+		
+		</div>
+		
+	</body>
+</html>

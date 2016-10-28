@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<h:panelGroup id="filter_by_funding" rendered="#{sessionBean.area=='I'}" >	
+		<div class="dvContent">
+			<div style="margin-top: 0px !important;">
+				<h2  class="expand_heading"><a  href="#">Filtro por fondeo</a>
+				<span class="collapse change" >Collapse/Expand</span></h2>											 
+				<div   class="toggle_container" style="width: 233px;">
+					<div class="box">
+						<table style="border-spacing: 0; width: auto;">														
+							<tbody align="left">
+								
+								
+								<h:selectOneRadio value="#{listaCreditos.typeSearch}" layout="pageDirection" >
+								   	<f:selectItem itemValue="1" itemLabel="Fondeados previamente" />
+								   	<f:selectItem itemValue="2" itemLabel="Sin fondeo previo" />
+								   	<f:selectItem itemValue="0" itemLabel="Todos" />
+								   	<p:ajax event="click" />
+								</h:selectOneRadio>
+								
+								
+							</tbody>
+						</table>
+						
+						<div class="buttonPR" style=" width: 85px;">
+							<p:commandLink style="margin-left:3px; text-decoration: none;" onclick="buildQueryFilter();" update=":pnlScriptStatus"  value="#{msg.ll_link_filter}"  />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+</ui:composition>				

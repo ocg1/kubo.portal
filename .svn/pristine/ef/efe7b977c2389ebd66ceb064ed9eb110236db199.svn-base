@@ -1,0 +1,51 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "init-file-upload" style = "display: none;">
+			<h:panelGroup id = "section-botton-upload">
+			
+				<p:fileUpload rendered = "#{editor_documentos.gestor.file_type_id == 0 or editor_documentos.gestor.file_type_id > 0}"  
+				              disabled = "#{editor_documentos.gestor.file_type_id == 0}"  				               
+				              fileUploadListener = "#{editor_documentos.gestor.handleFileUpload}"  
+				              oncomplete = "Documentacion.file_upload_oncomplete();"
+				              styleClass = "custumStlFileUpload"
+				              update = "panel-file-view" 
+							  mode   = "advanced" auto = "true"																												   
+						      invalidSizeMessage = "Tamaño del archivo inválido."
+						      invalidFileMessage = "Tipo de archivo no válido." 									    				                       
+				              label = "Subir archivo"							            
+				              sizeLimit  = "#{editor_documentos.gestor.size_limit}"  
+				              allowTypes = "/(\.|\/)(gif|jpe?g|png|pdf)$/">							 
+				 </p:fileUpload>
+				 
+				<p:fileUpload rendered = "#{editor_documentos.gestor.logo_ENABLED}" 
+							  disabled = "#{editor_documentos.gestor.file_type_id == 0}" 
+							  styleClass = "custumStlFileUpload" 
+							  fileUploadListener = "#{editor_documentos.gestor.handleFileUpload}"  
+							  oncomplete = "Documentacion.file_upload_oncomplete();"  
+							  update = "panel-file-view"
+							  style  = "margin-top:10px;width:480px;"																													   
+						      invalidSizeMessage = "Tamaño del archivo inválido."
+						      invalidFileMessage = "Tipo de archivo no válido." 									    
+				              mode = "advanced" auto = "true"            
+				              label = "Subir archivo"							            
+				              sizeLimit = "#{editor_documentos.gestor.size_limit}"  
+				              allowTypes = "/(\.|\/)(gif|jpe?g|png)$/">							 
+				 </p:fileUpload>
+				 
+				 <!-- p:messages id = "file-upload-MSG" autoUpdate = "true" showDetail = "true" /-->
+			 </h:panelGroup>
+		</div>		 	
+		
+		<div onclick = "Documentacion.init_file_upload();" class = "callActionMedium btnNaranja">
+			Subir Archivo
+		</div>	
+		
+		<p/>
+		
+		<div onclick = "Documentacion.cancel_add_file();" class = "callActionMedium btnGris">
+			Cancelar
+		</div>		
+</ui:composition>				

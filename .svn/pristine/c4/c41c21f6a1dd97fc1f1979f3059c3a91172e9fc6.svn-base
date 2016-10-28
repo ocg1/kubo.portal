@@ -1,0 +1,43 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<div id = "container_titular_tarjeta" class = "field">
+		<div class = "dvLabel dvLablWidth" >
+			<h:outputLabel value = "¿Actualmente manejas una tarjeta de crédito a tu nombre?*"  styleClass = "labelsStl"/>
+		</div>
+		
+		
+		   <fieldset class="conjuntoChecks">
+			   <div class="btnN dosBtnChecks"  data-opcion="1">
+		        	<span>	<i class="fa fa-check"></i> Sí</span>
+		       </div>
+		       <div class="btnN dosBtnChecks btnR"  data-opcion="0">
+		        	<span>	<i class="fa fa-times"></i> No</span>
+		       </div>
+	       
+	        		
+	        		
+			<h:selectOneRadio  id = "titularTarjetaVig" immediate  = "true"
+							   value = "#{creditHistoryController.credithistory.creditcard_is_principal}"
+							   onfocus    = "Historial.init_focus_date(1);" 
+							   styleClass = "elementStlLbl validatorClass ocultaSelect">
+							   
+	             <f:selectItem itemValue = "1" itemLabel = "Si"/>
+	             <f:selectItem itemValue = "0" itemLabel = "No"/>
+	             
+	             <p:ajax event = "click" update = "elementhidden1"
+	             		  onstart    = "return remove_error_required_input('container_titular_tarjeta');"	             		   
+	             		  oncomplete = "Historial.creditcard_is_principal_oncomplete(xhr, status, args);"
+	             		  listener   = "#{creditHistoryController.creditcard.init_is_principal}"/>
+	         </h:selectOneRadio>
+	         </fieldset>
+		
+	</div>
+	
+	<script>
+		resetar_indices();					
+	</script>					
+</ui:composition>				 

@@ -1,0 +1,83 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+<div class="menu_interior menu_aviso_legal">
+		<div class="contentMenu">
+                    	<h6><span>menu</span></h6>
+                    	<ul>
+                    		 	<li class="opcion_creditos"><p:commandLink>Crédito</p:commandLink>
+                            
+                            		<ul>
+			                            <li><p:commandLink  styleClass="caratula_credito" action="caratula-credito" immediate="true" >Carátula de crédito</p:commandLink></li>
+			                            <li><p:commandLink  styleClass="condiciones_generales" action="condiciones-generales-contratacion" immediate="true">Condiciones generales de contratación</p:commandLink></li>
+			                            <li><p:commandLink  styleClass="comisiones" action="comisiones" immediate="true">Comisiones</p:commandLink></li>
+			                            <li><p:commandLink  styleClass="tasas_activas" action="tasas-activas" immediate="true">Tasas activas</p:commandLink></li>
+                          				<li><p:commandLink  styleClass="formatos_aclaracion" action="formatos-aclaracion" immediate="true" >Formatos de aclaración</p:commandLink></li>
+                          				<li><p:commandLink  styleClass="contrato_credito"  action="contrato-credito" immediate="true">Contrato de crédito</p:commandLink></li>   
+               							<li><p:commandLink  styleClass="lugares_pago" action="lugares-pago" immediate="true" >Lugares de pago</p:commandLink></li>
+                          				
+
+
+                          			</ul>	
+                           		</li>
+                           		
+                           			<li class="temaPrincipal"><p:commandLink>Inversiones</p:commandLink>
+                           				<ul>
+				                            <li class="sinContenido"><p:commandLink  styleClass="TkuboGlobal"  immediate="true" >kubo.global</p:commandLink>
+				                            	
+				                            	<ul>
+				                            		<li><p:commandLink  styleClass="TkuboGlobalCaratula" action="TkuboGlobalCaratula" immediate="true">Carátula</p:commandLink></li>
+				                                	<li><p:commandLink styleClass="TkuboGlobalComisiones" action="TkuboGlobalComisiones" immediate="true">Comisiones</p:commandLink></li>
+				                                    <li><p:commandLink  styleClass="TkuboGlobalTasas" action="TkuboGlobalTasas"  immediate="true">Tasas Pasivas</p:commandLink></li>
+				                            	</ul>
+				                            
+				                            </li>
+				                            <li class="sinContenido"><p:commandLink   styleClass="TkuboImpulso"  immediate="true">kubo.impulso</p:commandLink>
+				                            	<ul>
+				                            		<li><p:commandLink  styleClass="TkuboImpulsoCaratula" action="TkuboImpulsoCaratula" immediate="true">Carátula</p:commandLink></li>
+				                                	<li><p:commandLink styleClass="TkuboImpulsoComisiones" action="TkuboImpulsoComisiones" immediate="true">Comisiones</p:commandLink></li>
+				                                    <li><p:commandLink  styleClass="TkuboImpulsoTasas" action="TkuboImpulsoTasas"  immediate="true">Tasas Pasivas</p:commandLink></li>
+				                            	</ul>
+				                            
+				                            </li>
+				                            <li class="sinContenido"><p:commandLink  styleClass="TkuboPlazo"   immediate="true">kubo.plazofijo	</p:commandLink>
+				                            	<ul>
+				                            	
+				                            		<li><p:commandLink  styleClass="TkuboPlazoCaratula" action="TkuboPlazoCaratula" immediate="true">Carátula</p:commandLink></li>
+				                                	<li><p:commandLink styleClass="TkuboPlazoComisiones" action="TkuboPlazoComisiones" immediate="true">Comisiones</p:commandLink></li>
+				                                    <li><p:commandLink  styleClass="TkuboPlazoTasas" action="TkuboPlazoTasas"  immediate="true">Tasas Pasivas</p:commandLink></li>
+				                            	</ul>
+				                            
+				                            </li>
+
+                          				   <li><p:commandLink  styleClass="TContratoCaptacion" action="TContratoCaptacion"  immediate="true">Contrato de captación	</p:commandLink></li>
+                          				   <li><p:commandLink  styleClass="TContratoGarantias" action="TContratoGarantias"  immediate="true">Contrato de garantías	</p:commandLink></li>
+                          				   <li class="sinContenido"><p:commandLink  styleClass="TContratoMedios" action="TContratoMedios"  immediate="true">Contrato de medios electrónicos	</p:commandLink>
+                          				          <ul>
+				                            	
+					                            		<li><p:commandLink  styleClass="TContratoMediosCaratula" action="TContratoMediosCaratula" immediate="true">Carátula</p:commandLink></li>
+					                                	<li><p:commandLink styleClass="TContratoMediosComisiones" action="TContratoMediosComisiones" immediate="true">Comisiones</p:commandLink></li>
+                          						  </ul>
+                          				   
+                          				   </li>
+
+
+                          				</ul>
+                          			</li>
+                           		
+                          
+                           
+                                
+                       
+                    	
+                    	</ul>	  
+                    
+                    
+                    
+                    </div>
+                    </div>
+                    
+                    </ui:composition>

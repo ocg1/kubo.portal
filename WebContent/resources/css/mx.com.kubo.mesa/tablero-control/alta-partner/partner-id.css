@@ -1,0 +1,56 @@
+div.alta-partner.partner-id.label
+{
+	width: 153px;
+	margin: 10px; 
+	text-align: left; 
+	float: left; 
+	font-weight: bold;
+}
+
+div.alta-partner.partner-id.label p
+{ 
+	padding: 0; 
+}
+
+div.alta-partner.partner-id.input
+{
+	float: left; 
+	padding: 5px 0;
+}
+
+div.alta-partner.partner-id.input input
+{
+	width: 60px !important; 
+	height: 30px; 
+	padding: 5px 0; 
+	font-size: 22px; 
+	text-align: left;
+	border: 1px solid #E3E3E3;
+	background-color: #FFFFFF;
+	text-transform: uppercase;
+}
+
+div.alta-partner.partner-id.msg-confirmacion
+{
+	display: none;
+	width: 91%;
+	float: left; 
+	margin-top: 10px;
+	margin-left: 0;
+	text-align: left;
+	padding: 10px 4%;
+	color: #548f39; 
+	border: 1px solid #E3E3E3;
+}
+
+div.alta-partner.partner-id.search-icon:hover
+{
+	cursor: pointer;
+}
+
+div.alta-partner.partner-id.search-icon img
+{
+	width: 38px;
+	height: auto;
+}
+

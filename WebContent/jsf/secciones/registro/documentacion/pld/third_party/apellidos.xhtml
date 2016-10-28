@@ -1,0 +1,42 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class="dvContentPLD field">
+		<div class="dvLabel">
+			<h:outputText value="Apellido paterno*" styleClass="labelsStl" />
+		</div>
+		
+		
+			<p:inputText id = "aPaternoThird"
+						 value = "#{addPldDocument.prevencionld.pr_father_last_name}" 
+						 styleClass = "elementAddres1 validatorClass">
+						 
+				<p:ajax event = "blur"
+						listener   = "#{addPldDocument.savePrevencionLD}"  
+						oncomplete = "Documentacion.pr_father_last_name_on_complete(xhr, status, args);"/>
+				
+				<f:validateLength minimum="2" />
+			</p:inputText>
+	
+	</div>
+
+	<div class="dvContentPLD field">
+		<div class="dvLabel">
+			<h:outputText value = "Apellido materno*" styleClass = "labelsStl" />
+		</div>
+		
+		<div class = "dvElementAddres1">
+			<p:inputText id = "aMaternoThird"
+						 value = "#{addPldDocument.prevencionld.pr_mother_last_name}"
+						 styleClass = "elementAddres1 validatorClass" >
+						 
+			<p:ajax event = "blur"
+					listener   = "#{addPldDocument.savePrevencionLD}"  
+					oncomplete = "Documentacion.pr_mother_last_name_on_complete(xhr, status, args);" />
+			</p:inputText>
+		</div>
+	</div>				
+</ui:composition>				

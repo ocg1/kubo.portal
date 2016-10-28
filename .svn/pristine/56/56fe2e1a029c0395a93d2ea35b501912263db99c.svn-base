@@ -1,0 +1,81 @@
+<ui:composition
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui" >
+	
+	<div class=" telefonos_paso1">
+	
+	
+				<div class="dvContent">
+					<div class="dvLabel" style="width: 390px;">
+						<!-- Cambios UX 2.41.2 Gabriel Martínez se modifico la leyenda inferior-->
+					<h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
+					
+						<!-- h:outputLabel styleClass="leyendas" value="Con tu teléfono celular te contactaremos para darle seguimiento a tu solicitud de inversión" / -->
+					</h:panelGroup>
+					
+					<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+					
+						<!-- h:outputLabel styleClass="leyendas" value="Te llamaremos para que darle seguimiento a tu préstamo." / -->
+					</h:panelGroup>
+					</div>
+				</div>
+				
+				<!-- Cambios UX 2.41.2 Gabriel Martínez se cambio el orden entre los telefonos, el telefono celular primero, y el fijo despues de este-->
+				<div class="field">
+					<div class="dvLabel">
+						<!-- h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_cell_text}" /-->
+						<label class="labelsStl">Tu teléfono celular <span style="color:red">(obligatorio)</span></label>
+					</div>
+					<div class="leyendas">Ejemplo:0445589273234</div>
+					<div class=" validacionLadaContainer" >
+								<i class="fa fa-mobile"></i>
+								
+									<!-- h:outputLabel styleClass="labelsStl" value="044/045"/-->
+									<input type="text" class="validacionLadaField  validatorClass" id="usuarioTelCel" onkeyup="validacionLada(this)" onblur="validacionLada2(this)" maxlength="13" onkeypress="return validateTelephono(event, this);" placeholder="Escribe LADA y teléfono" />
+									<!-- Cambios UX 2.41.2 Gabriel Martínez quito la clase para que  este campo se considere opcional, en java se modifco en el texto -->
+									<h:inputText style="display:none"  id="phoneCel_employ" maxlength="20" onfocus="abrirSiguiente()" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"   styleClass="elementAddres1  phone_box_big hs_class validatorClass telephone" value="#{basicData.phoneCellProspectus}">
+										<p:ajax event="blur" listener="#{basicData.updatePhoneCellProspectus}"  ></p:ajax>
+									</h:inputText>
+									<p:watermark for="phoneCel_employ" value="Escribe LADA y teléfono"></p:watermark>
+								<script>
+									resetMirrorTelefono(".validacionLadaContainer");
+								</script>
+					</div>
+						<div class="avisoDocs">
+						<i class="fa fa-caret-up"></i>
+							<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+Tiene que ser un número válido, al cual te contactaremos para entregarte tu préstamo.
+						</h:panelGroup>
+							<h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
+								Tiene que ser un número válido, al cual te contactaremos para confirmarte tu inversión.
+							</h:panelGroup>
+						</div>
+					 <div class="alerta"></div>
+				</div>	
+				
+				<div  class="field validacionLadaContainer">
+					<div class="dvLabel">
+						<h:outputLabel styleClass="labelsStl" value="Teléfono fijo (casa u oficina)" />
+					</div>
+			
+					<div class="leyendas">Ejemplo:5589273234</div>
+					<i class="fa fa-phone"></i>
+									<!-- Cambios UX 2.41.2 Gabriel Martínez quito la clase para que  este campo se considere opcional, en java se modifco en el texto -->
+									<h:inputText id="phoneFixed_employ" maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"   styleClass="elementAddres1 phone_box_big2 hs_class" value="#{basicData.phoneFixedPropectus}">
+										<p:ajax event="blur"  listener="#{basicData.updatePhoneProspectus}"  ></p:ajax>
+									</h:inputText>
+									<p:watermark for="phoneFixed_employ" value="LADA y teléfono"/>
+									
+						
+						
+					</div>
+				
+				
+			
+
+	
+	</div>
+</ui:composition>	

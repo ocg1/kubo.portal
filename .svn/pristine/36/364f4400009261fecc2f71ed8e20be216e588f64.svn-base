@@ -1,0 +1,73 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.Neighborhood_text}" />
+		</div>
+		
+
+	
+		<h:panelGroup rendered = "#{not basicData.domicilio.neighborhood_text_ENABLED}">
+			<div id = "dvNeighborhoodSel">
+				
+				
+					<!-- <h:selectOneMenu id="coloniaEmp" value="#{basicData.id_Asentamiento}" styleClass="elementStlSelAddress  mapClass" onchange="generateStringAddress();"  style="height: 30px;"> -->
+					
+					<div class = "selectNuevo">
+					
+						<h:selectOneMenu id = "coloniaEmp" immediate = "true" 
+										 value = "#{basicData.domicilio.neighborhood_id}" 
+										 onfocus = "Domicilio.init_focus_date(1);"
+										 styleClass = "elementStlSelAddress validatorClass mapClass neighborhood hs_class" 
+										 style = "height: 30px;">
+										 
+							<f:selectItem  itemLabel = "Selecciona..." itemValue = "0" />
+							  
+							<f:selectItems value     = "#{basicData.domicilio.colonias_por_codigo_postal}" 
+										   var       = "asents" 
+										   itemLabel = "#{asents.name}" 
+										   itemValue = "#{asents.neighborhoodCatPK.neighborhood_id}" />
+										   
+							<p:ajax event       = "change"  
+									onstart		= "return validaAddress();"
+									listener    = "#{basicData.domicilio.init_neighborhood_id}"  
+									oncomplete  = "Domicilio.neighborhood_on_complete(xhr, status, args);"/>                					 
+						</h:selectOneMenu>
+					</div>
+				
+								
+				<div onclick = "Domicilio.init_neighborhood_text_ENABLED(true, 8);" class = "change_field">		  		  
+					<p>Da click aquí si tu colonia no se encuentra en la lista</p>		
+				</div>
+								
+			</div>
+		</h:panelGroup>
+				
+		<h:panelGroup rendered = "#{basicData.domicilio.neighborhood_text_ENABLED}">
+			<div id = "dvNeighborhoodText">
+				
+				
+					<h:inputText id = "neighborhood_text" immediate = "true"
+								 value = "#{basicData.domicilio.address.neighborhood_text}"
+								 onfocus = "Domicilio.init_focus_date(1);"  
+								 styleClass = "elementAddres1 validatorClass mapClass neighborhood_text hs_class">
+								 
+						<p:ajax event = "blur"
+								oncomplete = "Domicilio.neighborhood_text_on_complete(xhr, status, args);"  
+								listener   = "#{basicData.domicilio.init_neighborhood_text}"  />
+					</h:inputText>							
+			
+	
+				<div onclick = "Domicilio.init_neighborhood_text_ENABLED(false, 8);" class = "change_field">		  		  
+					<p>Da click aquí si prefieres elegir de la lista</p>		
+				</div>
+			</div>
+		</h:panelGroup>
+		
+	</div>
+					 
+</ui:composition>				 

@@ -1,0 +1,23 @@
+/*
+----------------------------------------
+FdC:        [29.Abril.2014]
+Folder:     css/secciones/estado_cuenta/
+Programmer: Damián Tapia Nava
+---------------------------------------
+*/
+
+@CHARSET "UTF-8";
+
+.col_referencia_concepto_llave
+{		
+	width:40%;
+	min-width:200px;
+	font-weight: bold;
+	border-bottom:1px solid gray;
+}
+
+.col_referencia_concepto_valor
+{				
+	font-weight: bold;
+	border-bottom:1px solid gray;
+}

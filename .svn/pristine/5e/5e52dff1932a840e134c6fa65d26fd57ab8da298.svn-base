@@ -1,0 +1,167 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+
+	<style>
+		#mapa 
+		{
+			display:block !important;
+			position:relative !important;
+			left:auto !important;
+			top:auto !important;
+		}
+		
+		 #mapa .blindAction 
+		 {
+			top: 30px !important;
+			right:30px !important;
+			z-index:9;
+			display:none;
+		}	
+	</style>
+		
+	<script>
+	
+		$(document).ready(function()
+		{			
+			inicia_mapa();
+		});		
+	</script>
+	<h:panelGroup id="domicilioNacional">
+	<h:panelGroup rendered = "#{basicData.naturalPerson.country_of_residence == 0 or  basicData.naturalPerson.country_of_residence == 2 or sessionBean.area == 'L'}">			
+	<ui:include src = "title.xhtml" />	
+				
+
+		<div class = "dvContent2">						
+				
+			<h:panelGroup id = "updateSectionAddress" styleClass = "sectionAddress">	
+			   																				
+				<ui:include src = "codigo_postal.xhtml"/>									
+						
+				<ui:include src = "calle.xhtml"/>
+			
+				<div class = "calle_numeros">
+				
+					<div class="field">
+						<ui:include src = "numero_exterior.xhtml"/>									 										
+						<ui:include src = "numero_interior.xhtml"/>
+					</div>
+					
+					<div class="field">
+						<ui:include src = "manzana.xhtml"/>
+						<ui:include src = "lote.xhtml"/>  		
+					</div>					
+				</div>
+						
+							
+				<h:panelGroup id = "coverage-zone-ENABLED">			
+						<script>
+						asterisk(".labelsStl");
+						asterisk(".numberAndTitle");
+						asterisk(".titleDisabled");
+						
+						
+						</script>
+					<h:panelGroup rendered = "#{basicData.domicilio.coverage_zone_ENABLED}" >
+						<div class="loaderCP">
+						
+                        		<img src="#{configManaged.location}resources/images/loader.gif"/>
+                        
+						</div>
+					<div class="colDelEst ">
+						<ui:include src = "colonia.xhtml"/>
+						<!-- ui:include src = "ciudad_poblacion.xhtml"/ -->
+  						
+						<ui:include src = "delegacion.xhtml"/>	
+						<ui:include src = "estado.xhtml"/>
+					</div>	
+					<h:panelGroup  rendered = "#{sessionBean.area == 'L'}">
+						<ui:include src = "tipo_de_vivienda.xhtml"/>	
+					</h:panelGroup>					
+						<ui:include src = "entre_la_calle.xhtml"/>
+						<ui:include src = "y_la_calle.xhtml"/>
+						<ui:include src = "punto_de_referencia.xhtml"/>										
+																		
+<!-- 
+					<div class="dvContent">
+						<div>
+							<div id="contMap" style="width: auto; height: auto; overflow: auto;">
+								<div id="map_canvasFijo" style="width:450px;height:350px;">
+					   				<p style="text-align:center"><strong>Cargando..</strong></p>
+					   			</div>
+				   			</div>
+						</div>
+					</div> 
+					
+-->			   			
+	<script type = "text/javascript">																							    					
+		$(document).ready(function()
+		{
+/*			
+			init_mapa();
+								
+			var map_id = window[$('#map_canvas').attr('id')];
+			
+			$('.mostrar_mapa').click(function()
+			{
+				$('#map_canvas').toggleClass("active");
+				
+				setTimeout(function()
+				{
+					google.maps.event.trigger(map_id, 'resize');
+					
+				}, 300);
+										
+				if( $('#map_canvas').hasClass("active")) 
+				{
+					$('.mostrar_mapa').html("Ocultar mapa");
+					
+				} else {
+					
+					$('.mostrar_mapa').html("Mostrar mapa");					
+				}										
+			});
+*/			
+		});																										
+
+		isValidZipCode = true;
+		resetar_indices();
+	</script>
+				
+			</h:panelGroup>
+			</h:panelGroup>
+				
+			<h:panelGroup rendered = "#{!basicData.domicilio.coverage_zone_ENABLED}" >
+				<script>				    
+					isValidZipCode = false;				    
+				</script>				
+				
+				<div style = "padding-top: 20px; width: 350px; padding-bottom: 20px; padding-left: 15px; margin-top: 20px; margin-bottom: 20px; background-color: rgb(255, 211, 105);">
+					Lo sentimos #{basicData.membership.person.first_name } #{basicData.membership.person.middle_name}, por ahora no contamos con servicio en tu zona.
+				</div>
+	
+			</h:panelGroup>
+									
+			</h:panelGroup>	
+		</div>
+</h:panelGroup>
+	</h:panelGroup>
+		
+	<div id = "mapa"  style = "opacity: 1.87; position: absolute; display: none; border: 2px solid #CCCCCC; margin:0 0 20px;">
+		<div class = "punto_rojo">
+			<span class = "mostrar_mapa">Mostrar mapa</span>
+				
+			<p>Si el punto rojo no muestra tu ubicación exacta, da clic donde corresponda.</p>
+		</div>	
+		
+		<div class = "blindAction" style = "position: absolute;top: -10px;right: -10px; width: 30px; height: 30px;" >
+			<p:graphicImage url = "../resources/img/close.png" style = "position: absolute; left: 20px;" onclick = "mapOnOff();" />
+		</div>
+		          		
+		<div id = "map_canvas" style="width:100%; height:350px;">
+				<p style = "text-align:center"><strong>Cargando..</strong></p>			   							   		
+		</div>			   		
+	</div>	
+</ui:composition>		

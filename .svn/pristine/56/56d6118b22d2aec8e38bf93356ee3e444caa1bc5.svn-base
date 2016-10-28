@@ -1,0 +1,216 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+
+	<!-- ++++++++ SIMULADOR ++++++++ -->
+	<h:panelGroup id="contSimReg" >
+		<h:panelGroup rendered="#{navigationBean.displaySim}" >
+			<h:panelGroup rendered="#{sessionBean.area ne 'I' and sessionBean.area ne 'M'}">
+			<script>
+				acordeon_responsivo();
+				
+			</script>
+				<h:form id="simReg" prependId="false">
+					<div id="thisSim" style="min-height: 370px;  overflow: hidden; font-size: 0.75em; margin-top: 10px;" >
+		
+						<div class="sim_cont_back" style="width: 230px; min-height: 270px;">
+				
+						<!-- las variables montomax montomin termmax estan declarados en registro.xhtml  -->
+				
+						<div class="sim_cont">
+							<div style="height: 32px; z-index: 1; position: absolute; top: #{navigationBean.loaner?'55':'20'}px; left: 9px;
+								"> 
+						  		<div class="esq_left" style="width: 10px; height: 15px;  position: absolute; top: 32px; left: 0px; background-image: url('../resources/img/bkTitle-1.png'); background-repeat: no-repeat; "></div>
+						  		<div class="esq_right" style="width: 10px; height: 15px;  position: absolute; top: 32px; right:0px; background-image: url('../resources/img/bkTitle-2.png'); background-repeat: no-repeat; "></div>
+							</div>
+							
+							<div class="pleca_simulador pestania" style="height: 32px; z-index: 2; font-size: 1.5em; font-weight: bold; padding-top: 7px; border: solid 0px #000000; top: #{navigationBean.loaner?'55':'21'}px; left: 9px; text-align: center;">
+							Diseña tu préstamo aquí
+							</div>
+							
+						<table id="sim_table" >
+							
+							<tr>
+								<td class="sim_desc">¿Cuánto necesitas?</td>
+							</tr>
+							<tr>
+								<!-- <td class="sim_value">$#{simulator.ammountStr}</td> -->
+								 <td class="sim_value">
+								 	<h:inputText id="ammount" styleClass="elementAddres1" style="width: 175px !important; font-size: .98em !important;" value="#{simulator.ammount}" onkeyup="return format(this,'simulator');" >
+								 		<p:ajax event="blur" listener="#{simulator.simulaCred(false)}" update="resSimReg catSimReg :actualPage" onstart="return simOnStartVal();" oncomplete="return showRes();"  />
+								 		<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />
+								 		<!-- <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX" /> -->
+								 	</h:inputText>
+								 </td>
+							</tr>
+							<tr  style="margin-bottom: 0px !important; padding-bottom: 0px !important;">
+								<td class="sim_desc" style="margin-bottom: 0px; padding-bottom: 0px;" >¿A qué plazo?</td>
+							</tr>
+							<tr  style="margin-top: 0px !important; padding-top: 0px !important;" >
+								<td class="sim_value" style="margin-top: 0px !important; padding-top: 0px !important;">
+									<!-- <h:inputText id="rfc" styleClass="elementAddres1" style="width: 130px !important;" value="#{simulator.numCuota}"></h:inputText> -->
+									<!-- #{simulator.numCuota} pagos #{simulator.frequencyStr} -->
+									
+									 <table style="margin-left: auto; margin-right: auto; font-size: 0.8em;">
+									   	<tr>
+		                            		<td>
+		                            			<h:inputText styleClass="elementAddresMin" style="width: 40px !important;" maxlength="3"  required="true" id="term" value="#{simulator.term_id}"   >
+													 <p:ajax event="change" onstart="return simOnStart();" oncomplete="return showRes();"  listener="#{simulator.simulaCred(false)}" update="resSimReg catSimReg"  />  
+												</h:inputText>
+		                            		</td>
+
+		                            		<td>
+		                            			<div class="styled-select-Month"  style="width: 125px !important;" >
+		                            			<h:selectOneMenu id="frecuProyect" value="#{simulator.frequency_id}"  style="width: 140px !important; position: relative;"  styleClass="elementStlSelMonth"  >
+													<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+													<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+													<p:ajax event="change" onstart="return simOnStart();" oncomplete="return showRes();" listener="#{simulator.simulaCred(false)}" update="resSimReg catSimReg" />  
+												</h:selectOneMenu>	
+												</div>
+		                            		</td>
+		                            	</tr>
+								    </table>
+									
+								</td>
+							</tr>
+							</table>
+							<div class="pestania tu_tasa">Tu tasa</div>
+							<table>
+							<h:panelGroup rendered="true">
+							
+								<tr>
+									<td class="sim_desc bord">Tu tasa</td>
+								</tr>
+							
+								<tr>
+									<td class="sim_value">#{simulator.tasaTotal}% sin IVA<sup>(a)</sup></td>
+								</tr>
+								
+								<tr>
+									<td class="sim_desc" style="width: 100%; text-align: center; padding-top: 3px;">
+										Comisión por apertura
+									</td>
+								</tr>
+								
+								<tr>
+									<td class="sim_value couta">
+										#{simulator.comisionApertura}% incluye IVA
+									</td>
+								</tr>
+								
+							</h:panelGroup>
+							
+							<tr>
+								<td>
+									<h:panelGroup id="resSimReg">
+									<div id="loaderSim" style="display: none;">
+										<p:graphicImage url="../resources/img/ajax-loader.gif" width="24px" height="24px"></p:graphicImage>
+									</div>
+									<div id="resultadosSim">
+										
+													<table>
+														
+														
+													
+														<tr>
+															<td class="sim_desc" style="width: 100%; text-align: center; padding-top: 3px;">Total a recibir
+															</td>
+														</tr>
+														<tr>
+															<td class="sim_value couta">#{simulator.totalRecibir}</td>
+														</tr>
+													
+														<tr>
+															<td class="sim_desc" style="width: 100%; text-align: center; padding-top: 3px;">
+																Pagos de
+															</td>
+														</tr>
+														<tr style="padding-bottom: 0px;">
+															<td class="sim_value couta" style="padding-bottom: 0px;" >
+																$#{simulator.montoCuotaStr}
+															</td>
+														</tr>
+														<tr style="padding-top: 0px;">
+															<td style="font-size: 0.65em; padding-top: 0px !important; font-weight: bold; ">Los pagos incluyen IVA</td>
+														</tr>
+														<tr>
+															<td style="width: 100%; text-align: center;">
+																Total a pagar
+															</td>
+														</tr>
+														<tr>
+															<td class="sim_value total">
+																$#{simulator.totalPagarStr}
+															</td>
+														</tr>
+														
+														<tr>
+															<td style="padding-bottom: 10px;">
+																<a class="refTbAmort" href="/Kubo/jsf/tabla_de_amortizacion.xhtml?monto=#{simulator.ammountStr}&amp;term=#{simulator.numCuota}&amp;rate=#{simulator.tasaTotal}&amp;payment=#{simulator.montoCuotaStr}&amp;frequency=#{simulator.frequencyStr}&amp;comision=#{simulator.comisionApertura}&amp;totalPayment=#{simulator.totalPagarStr}&amp;cat=#{simulator.catStr}" target="popup" onClick="window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+																	Ver Tabla de Amortización
+																</a>
+															</td>
+														</tr>
+														
+													</table> 
+												
+										
+									</div>
+									</h:panelGroup>
+								</td>
+							</tr>
+							
+							<h:panelGroup rendered="false">
+								<tr>
+									<td  class="sim_button" id="againSim"  >
+										 <div class="buttonPR" onclick="muestraCont();"  style="margin-bottom: 0px !important; margin-top: 0px !important;">
+											Simula de nuevo
+										</div>
+									</td>
+								</tr>
+							</h:panelGroup>
+						</table>
+					</div>
+				
+					<table>
+					<tr>
+					<td>
+				<h:panelGroup id="catSimReg">
+					<div class="labelsStl" style="text-align: center; font-size: 1.4em; width: 215px; margin-left: auto; margin-right: auto; padding: 5px; border: solid 0px #000000;"> 
+	      				<span style=" font-weight: bold; font-size: 1.1em;"> CAT: #{simulator.catStr}% sin IVA<sup style="font-size: 0.9em !important;">(b)</sup></span>
+		      		</div>
+					
+				 	<div class="labelsStl" style="text-align: justify; font-size: 1.0em; width: 167px; margin-left: auto; margin-right: auto; padding: 5px;height: auto;border: solid 0px #000000;">
+				 	
+				 		<div class="labelsStl" style="text-align: justify; clear: both; font-size: 1.1em; width: 165px; margin-left: 0px; margin-top: 10px; padding: 5px; border: solid 0px #000000;"> 
+				    			 <b>(a)</b>:Tasa fija anual simple.<br />
+								 <b>(b)</b>:Costo Anual Total. Para fines informativos y de comparación. 
+					    		Fecha de cálculo: #{simulator.fechaInicio}. Los <a  href="avisolegal.jsf?page=condiciones"  >términos, condiciones</a> y <a href="leyTransparencia.jsf?page=comisiones" >comisiones</a> aplicables al 
+					    		Crédito Personal kubo.financiero son los incluidos en el <a href="leyTransparencia.xhtml?page=contrato" >Contrato de Adhesión</a> relacionado en la solicitud. Puedes consultar nuestros <a  href="avisolegal.jsf?page=requisitos" >requisitos y modalidades de contratación</a>.	
+					   		</div>
+					   		
+					   		<div style="margin-left: 5px;margin-right: auto;width:80px;cursor: pointer;">
+				   				<a class="refTbAmrt" href="/Kubo/jsf/secciones/creditos_personales_ref/avisoslegales.xhtml" target="popup" onClick="window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+									Advertencias
+								</a>
+					   		</div>
+					   		
+		      			
+		      		</div>
+	      		</h:panelGroup>
+			 	</td>
+			 	</tr>
+			 	</table>
+			 	</div>
+			 	
+			</div>
+		</h:form>
+		</h:panelGroup>
+		
+		</h:panelGroup>
+		
+		</h:panelGroup>
+		<!-- ++++++ FIN SIMULADOR ++++++ -->
+</ui:composition>		

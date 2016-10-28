@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+	
+	.ui-chkbox .ui-chkbox-box{
+		border: solid 1px #e3e3e3 !important;
+	}
+	
+	#helpCont{
+		display: none;
+		z-index: 300;
+		position: absolute;
+		background-color: #FFFFFF;
+		border: solid 1px #E6E6E6;
+		padding: 6px;
+		width: 400px;
+	}
+	
+	span#help{
+		cursor: pointer;
+	}
+	
+	p.desc {   
+		  text-indent: -25px; 
+		  margin-top: 5px;
+		}

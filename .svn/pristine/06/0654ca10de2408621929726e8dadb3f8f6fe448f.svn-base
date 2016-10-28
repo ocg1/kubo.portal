@@ -1,0 +1,63 @@
+	.watermark {
+	   color: #AAA!important;
+	   opacity:  0.4 !important;  /* FF sets opacity to 0.54 by default */
+	 }
+	
+	#dvNeighborhoodText{
+		display: block;
+	}
+	 .dvContent{
+	 	margin-top: 10px;
+	 }
+
+	#dvRelPerson,#dvSamePerson{
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		z-index: 99;
+		background-color: rgba(51,51,51,0.4);
+		height: 100%;
+		width: 100%;
+		display: none;
+	}
+	#dvRelPersonCont,#dvSamePersonCont{
+		background-color: #FFFFFF;
+		-webkit-box-shadow: 0px 0px 5px #333;
+  		-moz-box-shadow: 0px 0px 5px #333;
+  		box-shadow: 0px 0px 5px #333;
+  		width: 580px !important;
+  		height: auto !important;
+  		position: relative;
+  		z-index: 100;
+  		margin: 200px auto auto auto; 
+ 
+  	}
+  	
+  	#dvKuboPerson{
+  		
+  		display: none;
+  		background-color: rgba(61,61,61,0.5) !important;
+  		position: absolute;
+  		width: 100%;
+  		height: 100%;
+  		z-index: 150;
+  		top: 0px;
+  		left: 0px;
+  	}
+  	
+  	.cntLeyendaKuboPer{
+  		background-color: #FFFFFF;
+  		margin-left: auto;
+  		margin-right: auto;
+  		top: 90px;
+  		width: 300px;
+  	}
+  	
+	
+
+
+@media only screen and (min-width:600px) and (max-width: 850px)  {
+.menuFrm, .menuFrmFixed, .menuFrmTop, .menuFrmBottom {
+    /* width: 590px !important; */
+}
+}

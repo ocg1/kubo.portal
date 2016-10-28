@@ -1,0 +1,89 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+
+	<script>
+		
+	
+		$(document).ready(function()
+		{	
+			var menu_disposicion_efectivo = false;
+	 		
+			init_event_listeners();				
+		 });
+		
+		function init_event_listeners()
+		{
+			 $('.tipos_movimiento').click(function()
+			 {		
+				 console.log("listener_tipos_movimiento(): " + menu_disposicion_efectivo);
+				 
+				 if (menu_disposicion_efectivo == false) 
+				 {					
+					 $('.clsContMenuMovsInv').animate({left:"0"}, 300);
+					 
+					 menu_disposicion_efectivo = true;
+					 
+				 } else {
+			
+					 $('.clsContMenuMovsInv').animate({left:"-250px"}, 300);
+					 
+					 menu_disposicion_efectivo = false;					 
+				 }					
+			 });
+		}
+		
+		function callback_movimiento_cancelacion(xhr, status, args)
+		{						
+			var lista_movimientos_OK = args.lista_movimientos_OK;
+			
+			console.log("callback_movimiento_cancelacion(): " + lista_movimientos_OK);
+			
+			if(lista_movimientos_OK)
+			{
+				$("div#dvContValRet").hide();
+				$("#log-movimientos").show();
+				
+			} else {
+				
+				$("div#dvContValRet").show();
+				$("#log-movimientos").hide();
+			}
+			
+			closeFancy();
+			resetMov();
+		}
+		
+		function cancelar_otra_cuenta()
+		{
+			$("div#dvContValRet").slideDown();
+		}
+	 </script>
+
+		
+
+				<div class="content top">
+                <div class="inner_content">	
+               		
+		
+		
+				<ui:include src = "inversionista/movimientos.xhtml" />
+			
+				<div class = "clsContElemntSel col_derecha_productos">
+					<h:panelGroup id = "pnlMovsPaginaActual" styleClass = "movimientos" >
+					
+						<ui:include src = "#{movimientosInversionista.movimientoActual}" />
+				
+					</h:panelGroup>					
+				</div>													
+	
+		</div>
+		</div>		
+
+				
+	<ui:include src = "inversionista/navegacion_ajax_listeners.xhtml" />
+	
+</ui:composition>	

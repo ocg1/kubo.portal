@@ -1,0 +1,15 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+	<div class="field">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="#{msg.State_text}" />
+		</div>
+	
+		<div class="dvElementAddres1">
+			<h:inputText id="estado" value="#{business.addressbean.stateName}" disabled="true" styleClass="elementAddres1 state"/>
+		</div>
+	</div>				
+</ui:composition>				

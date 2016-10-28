@@ -1,0 +1,164 @@
+@CHARSET "UTF-8";
+#wrapper {
+	width: auto;
+}
+
+
+h2.accordion {
+	background: #4ca330;
+    font-size: 1em;
+    font-weight: normal;
+    height: 38px;
+    margin: 0 0 5px;
+    padding: 0 0 0 20px;
+    width: auto;
+    height: 25px;
+    cursor:pointer;
+    border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	
+}
+
+h2.accordion a {
+	color: #fff;
+    text-decoration: none;
+    float: left;
+    display: block;
+}
+
+h2.accordion a:hover {
+	color: #ccc;
+	
+}
+
+.accContainer {
+	width:auto;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: solid 1px #EFEFEF;
+    -moz-border-radius: 3px; 
+    padding: 5px;
+ 	margin: 0 0 5px;          
+    overflow: hidden;
+    width: auto;
+    clear: both;
+	
+}
+
+.accContainer .block {
+	padding: 0;
+}
+
+.accordion .collapse.change {
+    background-position: 0 0;
+}
+
+.accordion .collapse{
+	background: url("../../resources/img/collapse.png") no-repeat scroll 0 -14px transparent;
+	float: right;
+    height: 14px;
+    margin: 4px;
+    text-indent: -9999px;
+    width: 10px;
+}
+
+h2.expand_heading,h2.expand_togle,h2.expand_basic {
+   	background: #4ca330;
+    float: left;
+    font-size: 1em;
+    font-weight: normal;
+    height: 38px;
+    
+   	margin: 0;
+    padding: 0 0 0 20px;
+    width: 480px;
+    height: 25px;
+    border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	
+   	-webkit-border-radius: 0;
+	-khtml-border-radius: 3px;
+   	cursor: pointer;
+}
+
+h2.expand_heading a,h2.expand_togle a,h2.expand_basic a{
+    color: #fff;
+    text-decoration: none;
+    float: left;
+    display: block;
+}
+h2.expand_heading a:hover,h2.expand_togle a:hover,h2.expand_basic a:hover{
+    color: #ccc;
+}
+ 
+h2.active {
+	background-position: left bottom;
+	}
+.toggle_container {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #d6d6d6;
+    background: #ffffff;
+    overflow: hidden;
+    width: 500px;
+    clear: both;
+}
+.toggle_container .box {
+    /* padding: 9px; */
+}
+.toggle_container .box p {
+    padding: 5px 0;
+    margin: 5px 0;
+}
+.toggle_container h3 {
+    font: 2.0em normal Georgia, "Times New Roman", Times, serif;
+    margin: 0 0 5px;
+    padding: 0 0 5px 0;
+    color:#000000;
+    border-bottom: 1px dotted #ccc;
+}
+.toggle_container img {
+    float: left;
+    margin: 10px 15px 15px 0;
+    padding: 5px;
+    background: #ddd;
+    border: 1px solid #ccc;
+}
+
+.expanded
+{
+background-position:bottom left;
+}
+
+.expand_heading .collapse.change,.expand_togle .collapse.change,.expand_basic .collapse.change {
+    background-position: 0 0;
+}
+
+.expand_heading .collapse,.expand_togle .collapse,.expand_basic .collapse{
+	background: url("../../resources/img/collapse.png") no-repeat scroll 0 -14px transparent;
+	float: right;
+    height: 14px;
+    margin: 4px;
+    text-indent: -9999px;
+    width: 10px;
+}
+
+.expand_heading .collapse.activo,.expand_togle .collapse.activo,.expand_basic .collapse.activo{
+    background-position: 0 0;
+}
+
+.arrow_leftHelp {
+    background-image: url("../../resources/img/arrow_left.gif");
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 23px;
+    left: -12px;
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    z-index: 101;
+}

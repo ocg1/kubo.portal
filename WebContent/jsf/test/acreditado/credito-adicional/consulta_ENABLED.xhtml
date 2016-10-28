@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "selects styled-select">
+		<h:selectOneMenu immediate = "true" value = "#{testAdditionalCredit.consulta_ENABLED}" styleClass = "elementStlSelAddress">
+		
+			<f:selectItem itemValue = "#{null}" itemLabel = "Tipo de consulta..." />
+			
+			<f:selectItem itemLabel = "Con Nueva Consulta" itemValue = "1" />
+			<f:selectItem itemLabel = "Sin Nueva Consulta" itemValue = "2" />
+			<f:selectItem itemLabel = "Renovación Aprobación Automática" itemValue = "3" />
+									   
+			<p:ajax event = "change"
+			  		oncomplete = "consulta_ENABLED_oncomplete(xhr, status, args);"
+					listener = "#{testAdditionalCredit.init_consulta_ENABLED}"/>
+		</h:selectOneMenu>		
+	</div>					
+</ui:composition>				

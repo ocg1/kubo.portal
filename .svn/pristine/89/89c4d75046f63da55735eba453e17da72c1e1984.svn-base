@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="containerTitleUpload">
+		<div class="#{addPldDocument.dispCheckImgLog =='inline'? 'cornerDisabled':'corner'}"/>
+		
+		<INPUT type="hidden" id="foto_proyecto" class="hs_class" value="#{addPldDocument.dispCheckImgLog =='inline'}" />
+		
+		<div class="#{addPldDocument.dispCheckImgLog =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">				
+			<!-- div class="#{addPldDocument.dispCheckImgLog =='inline'? 'numberDisabled':'number'}" >1</div -->
+			<div class="#{addPldDocument.dispCheckImgLog =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Foto en tu negocio o empleo *</h3></div>
+			<p:graphicImage id         = "checkImgLogo" 
+						    styleClass = "validatorClass" 
+						    style      = "float:right; display:#{addPldDocument.dispCheckImgLog}"  
+						    url        = "../resources/img/check.png" />
+		</div>	
+		<h4 class="notaVerde"> Tómate una foto en donde salgas trabajando en tu negocio o empleo.</h4>		
+	</div>	
+	
+				
+</ui:composition>				

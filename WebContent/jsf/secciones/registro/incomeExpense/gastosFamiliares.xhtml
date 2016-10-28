@@ -1,0 +1,258 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+       	
+       	<h:panelGroup id="bnlContentExpense">
+       
+       	<h2 class="encabezado_2">Gastos</h2> 
+       	<div class="dvContent">
+			<div class="dvLabel preguntaBold">
+				<h:outputText value="¿Cuánto gastas mensualmente? *" styleClass="labelsStl"></h:outputText>
+			</div>
+			 <div class="leyendas italic">
+			 	<p>De despensa, servicios, colegiaturas, deudas etc.</p>
+			 </div>
+			<div class="gastoTotalContainer">
+			 	<span class="signoPesos" >$</span>
+			 	<h:inputText id="gastoTotal" styleClass="elementAddres1 validatorClass hs_class" value="#{addIncomeExpenses.totalExpensesStr}" >
+			 		<p:ajax event="blur" listener="#{addIncomeExpenses.setTotalExpensesFnc}" onstart="dineroDisponibleNegocio();" />
+			 	</h:inputText>
+			</div>
+								
+		</div>
+		<div class="introduccion">
+				<p>Especificar tus gastos nos ayuda a entender mejor tu situación y facilita tu trámite.</p>		
+		</div>	
+								
+		<span class="especificar tab_gastosFam" onclick="especificarIE(this);"> <small>Especificar gastos familiares (opcional)</small><i class="fa fa-angle-down" ></i></span>
+								
+								
+		<fieldset class="gastos_total especificacionesBloque">   
+		  
+			<div class="dvContent2">
+				<div class="dvContent">		
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Food_text}" styleClass="labelsStl"></h:outputText>
+					</div>			
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_food" tabindex="6"  styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountFoodStr}" >
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_food')" listener="#{addIncomeExpenses.updateOrSaveExpenses}"   ></p:ajax>
+						<f:attribute name="expenseTypeID" value="1" />
+					</h:inputText>
+						
+				</div>		
+				<div class="dvContent">			
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Light_text}" styleClass="labelsStl"></h:outputText>
+					</div>			
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_light" tabindex="8" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountLightStr}" size="15">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_light')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+						<f:attribute name="expenseTypeID" value="3" />
+					</h:inputText>
+					
+				</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Gas_text}" styleClass="labelsStl"></h:outputText>
+					</div>
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_gas" tabindex="9" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses  hs_class" value="#{addIncomeExpenses.ammountGasStr}" size="15">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_gas')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+							<f:attribute name="expenseTypeID" value="13" />
+					</h:inputText>
+					
+									
+				</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Phone_text}" styleClass="labelsStl"></h:outputText>
+					</div>
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_phone" tabindex="10" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountPhoneStr}" size="15">
+							<p:ajax event="blur" onstart="return validateNumberExpenses('inp_phone')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+							<f:attribute name="expenseTypeID" value="4" />
+					</h:inputText>				
+				</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Income_text}" styleClass="labelsStl"></h:outputText>
+					</div>		
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_income" tabindex="11" maxlength="8" onfocus="hideShowPromt();" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountIncomeStr}" size="15">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_income')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+						<f:attribute name="expenseTypeID" value="5" />
+					</h:inputText>
+								
+				</div>
+				<div class="dvContent">
+						<div class="dvLabel" style="width: 300px;">
+							<h:outputText value="Mantenimiento" styleClass="labelsStl"></h:outputText>
+							<div class="leyendas italic">
+								<p>Reparaciones</p>
+							</div>	
+						</div>
+								
+						<span class="signoPesos" >$</span>
+						<h:inputText id="inp_maintenance_house_or_apartment" tabindex="7" onfocus="hideShowPromt();" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class"  value="#{addIncomeExpenses.ammountMaintenancHousStr}" size="15">
+							<p:ajax event="blur" onstart="return validateNumberExpenses('inp_maintenance_house_or_apartment')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+							<f:attribute name="expenseTypeID" value="2" />
+						</h:inputText>
+										
+				</div>
+								
+				<div class="dvContent">			
+					<div class="dvLabel">
+							<h:outputText value="#{msg.Credits_text}" styleClass="labelsStl"></h:outputText>
+					</div>			
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_credits" tabindex="13" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class"  value="#{addIncomeExpenses.ammountCreditsStr}" size="15">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_credits')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+							
+						<f:attribute name="expenseTypeID" value="7" />
+					</h:inputText>
+					
+					<!-- 
+					<div  class="dvElement">
+						<p:commandButton id="btn_helpme" value="#{msg.Btn_captura_detail}" />
+					</div>
+					 -->
+				</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Series_text}" styleClass="labelsStl"></h:outputText>
+					</div>		
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_series" tabindex="12" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class"  value="#{addIncomeExpenses.ammountSeriesStr}" size="15">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_series')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+					  <f:attribute name="expenseTypeID" value="6" />
+					</h:inputText>
+									
+				</div>
+								<!-- 
+								<div class="dvContent">	
+									<div class="dvLabel"  style="width: auto;">
+										<h:outputText value="#{msg.Owe_family_friends}" styleClass="labelsStl"></h:outputText>
+									</div>
+									<p/>
+									<div  class="dvElement" style="width: auto;">
+										<h:selectOneRadio id="radio-question-owe" value="#{addIncomeExpenses.thisProyect.owe_family}"  styleClass="radio elementStlLbl validatorClass requiredVerify otras_deudas hs_class">
+								   	 		<f:selectItem itemValue="S" itemLabel="Si"/>
+								    		<f:selectItem itemValue="N" itemLabel="No"/>
+								    		<p:ajax event="click" listener="#{addIncomeExpenses.updateProyect}" oncomplete="setPorcent();"  update="show-show-question-yes" ></p:ajax>
+										</h:selectOneRadio>
+									</div>
+								</div>
+								<h:panelGroup id="show-show-question-yes">
+									<h:panelGroup rendered="#{addIncomeExpenses.thisProyect.owe_family=='S'}">
+									<script>
+									   asterisk(".labelsStl");
+									   resetar_indices();
+									</script>
+									<div class="dvContent">
+										<div class="dvLabel" style="width: auto; clear: both;">
+											<h:outputLabel styleClass="labelsStl" value="#{msg.How_much_owe}" />
+										</div>
+										<p/>
+										<div class="dvElementLength">
+											<h:inputText id="txt_question-yes"   maxlength="8" styleClass="elementAddres1  validatorClass  hs_class medium_input" value="#{addIncomeExpenses.thisProyect.owe_family_text}" > 
+												<p:ajax event="blur" oncomplete="setPorcent();" listener="#{addIncomeExpenses.updateProyect}"></p:ajax>									
+											</h:inputText>
+										</div>
+									</div>	
+									</h:panelGroup>
+								</h:panelGroup>
+							 -->
+			     <div class="dvContent">
+			  		<div class="dvLabel">
+			  			<h:outputText value="#{msg.Entertainment_text}" styleClass="labelsStl"></h:outputText>
+			  			<div class="leyendas italic">Cine, paseos, cable…</div>
+			  		</div>
+			
+			  	
+			  		<span class="signoPesos" >$</span>
+			  		<h:inputText id="inp_entertainment" tabindex="16" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class"  value="#{addIncomeExpenses.ammountEntertainmentStr}">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_entertainment')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+						<f:attribute name="expenseTypeID" value="10" />
+					</h:inputText>
+															
+				</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputText value="#{msg.Medical_text}" styleClass="labelsStl"></h:outputText>
+					</div>				
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_medical" tabindex="15" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountMedicalStr}">
+							<p:ajax event="blur" onstart="return validateNumberExpenses('inp_medical')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+						    <f:attribute name="expenseTypeID" value="9" />
+					</h:inputText>
+									
+				</div>
+				<div class="dvContent">
+								
+					<div class="dvLabel">
+						<h:outputText value="#{msg.School_text}" styleClass="labelsStl"></h:outputText>
+						<div class="leyendas italic">Colegiaturas, material escolar…</div>	
+					</div>
+							
+					<span class="signoPesos" >$</span>
+						<h:inputText id="inp_school" tabindex="14" maxlength="8" onfocus="hideShowPromt();" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountSchoolStr}" size="15">
+							<p:ajax event="blur" onstart="return validateNumberExpenses('inp_school')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+							<f:attribute name="expenseTypeID" value="8" />
+						</h:inputText>
+						
+								
+				</div>			
+				<div class="dvContent">
+					<div class="dvLabel"  style="width: 305px;">
+						<h:outputText value="#{msg.Gasoline_transport}" styleClass="labelsStl"></h:outputText>
+					</div>			
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_gasoline_transport" tabindex="18" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class"  value="#{addIncomeExpenses.ammountGasolineTranspStr}">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_gasoline_transport')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+						<f:attribute name="expenseTypeID" value="12" />
+					</h:inputText>
+														
+				</div>
+				<div class="dvContent">			
+					<div class="dvLabel"  style="width: 305px;">
+						<h:outputText value="#{msg.Food_at_work}" styleClass="labelsStl"></h:outputText>
+					</div>		
+					<span class="signoPesos" >$</span>
+					<h:inputText id="inp_food_at_work" tabindex="17" maxlength="8" styleClass="elementAddres1 calculeExpense validatorClass formatincomexpenses hs_class" value="#{addIncomeExpenses.ammountFoodWorkStr}" size="15">
+						<p:ajax event="blur" onstart="return validateNumberExpenses('inp_food_at_work')" listener="#{addIncomeExpenses.updateOrSaveExpenses}" ></p:ajax>
+						<f:attribute name="expenseTypeID" value="11" />
+					</h:inputText>
+					
+																	
+			   </div>			
+				<div class="finalGastosFam">
+					<div class="dvLabel">  
+						<h:outputLabel styleClass="labelsStl"  value="Gastos familiares totales"/>
+					</div>			
+					<span class="signoPesos bold" ><strong>$</strong></span>
+					<h:inputText id="inp_total_expense" styleClass="elementStl"  disabled="true" value="#{addIncomeExpenses.totalExpensesStr}" />
+															
+				</div>	
+	       	</div>
+	     
+	   </fieldset>	
+	      	<script>
+       		
+       
+	 	 /*----funcion inicial----*/
+	 	setTimeout(function(){
+	 		resetFunctionIncome();
+	 		 
+		},1000);
+	
+       	</script>
+       	
+	   </h:panelGroup>
+	   	<h:commandLink id="CMD_clear_expenses">
+	       		<p:ajax event="click" listener="#{addIncomeExpenses.clearExpenses}" oncomplete="cerrarGastosFamiliares();" immediate="true" update="bnlContentExpense" />
+	       	</h:commandLink>
+</ui:composition>
+	       			

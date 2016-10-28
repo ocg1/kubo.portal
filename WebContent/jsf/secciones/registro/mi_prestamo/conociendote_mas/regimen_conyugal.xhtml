@@ -1,0 +1,44 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id = "maritalPnl">
+	
+		<!-- div class = "dvContent" style = "display: #{addMyLoan.regimen_conyugal_ENABLED};">
+			<div class = "dvLabel">
+				<h:outputLabel value = "Régimen conyugal*" styleClass = "labelsStl"/>
+			</div>
+			
+			<P />
+			
+			<div class = "dvElementAddres1">
+				<div class = "styled-select-Address">
+				
+				<script>
+				resetar_indices();
+				</script>
+				
+				<h:selectOneMenu id    = "regCon" 
+								 value = "#{addMyLoan.naturalperson.marital_status_id}" 
+								 styleClass = "elementStlSelAddress validatorClass hs_class"  
+								 style = "width: 160px;">
+								 
+					<f:selectItem itemLabel = "" itemValue = "0" />
+					
+					<f:selectItems value = "#{addMyLoan.lista_regimen_conyugal}" 
+								   var = "maritalstatus" 
+								   itemLabel = "#{maritalstatus.description}" 
+								   itemValue = "#{maritalstatus.maritalStatusPK.marital_status_id}"/>
+								   
+					<p:ajax event = "change" 
+							listener   = "#{addMyLoan.listener_regimen_conyugal}"
+					        onstart    = "hideIFEjs()" 
+					        oncomplete = "fieldCount();"/>
+				</h:selectOneMenu>
+				</div>
+			</div>
+		</div -->
+	</h:panelGroup>				
+</ui:composition>				

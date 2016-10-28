@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<ul>
+		<li class="list_vacia"/>
+		
+		<li class="quiero">								
+			<p:selectManyCheckbox value = "#{addNaturalPerson.selectedSuscribe}" styleClass = "checkStl check_quiero" >
+				<f:selectItem  itemValue = "S" itemLabel = "Acepto que me envíen información ocasionalmente."  />
+				<p:ajax event = "change" listener = "#{addNaturalPerson.setSubscribe}"/>
+			</p:selectManyCheckbox>																
+		</li>
+	</ul>
+</ui:composition>			

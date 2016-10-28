@@ -1,0 +1,51 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+			    xmlns:h  = "http://java.sun.com/jsf/html"				
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">		
+	<tr>
+		<td class = "titulo_tabla_simulador">Plazo</td>
+	</tr>
+	
+	<tr>
+		<td>
+			<table class = "tabla_plazo">
+				<tr>
+	           		<td>
+	           			<h:inputText id         = "term"
+	           						 styleClass = "input_plazo" 	           						 
+	           						 maxlength  = "3"  
+           						     required   = "true"            						     
+           						     value      = "#{simulator.term_id}">
+           						     
+							 <p:ajax event      = "change" 
+							         onstart    = "return simOnStart();" 
+							         oncomplete = "return showRes();"  
+							         listener   = "#{simulator.simulaCred(false)}" 
+							         update     = "resSimReg catSimReg"  />  
+						</h:inputText>
+	                 </td>
+	
+					<td>
+						<div class = "select_frecuencia" style = "background-image: url('../resources/img/selImg.png');">
+							<h:selectOneMenu id         = "frecuProyect" 
+	                        				 value      = "#{simulator.frequency_id}">
+								<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "" />
+								<f:selectItems value     = "#{simulator.listFrequency}" 
+											   var       = "frequency" 
+											   itemLabel = "#{frequency.name}" 
+											   itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+											   
+								<p:ajax event      = "change" 
+								        onstart    = "return simOnStart();" 
+								        oncomplete = "return showRes();" 
+								        listener   = "#{simulator.simulaCred(false)}" 
+								        update     = "resSimReg catSimReg" />  
+							</h:selectOneMenu>	
+						</div>
+					</td>
+				</tr>
+		    </table>								
+		</td>
+	</tr>
+</ui:composition>						

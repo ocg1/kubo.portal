@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 	xmlns    = "http://www.w3.org/1999/xhtml"
+		xmlns:h  = "http://java.sun.com/jsf/html"
+		xmlns:ui = "http://java.sun.com/jsf/facelets"
+		xmlns:f  = "http://java.sun.com/jsf/core"
+		xmlns:p  = "http://primefaces.org/ui">
+		
+	<h:head> 				
+		
+		<meta name="MobileOptimized"       content="320"/>
+		<meta name="viewport"              content="width=device-width, initial-scale=1"/>
+		<meta name="tipo_contenido"        content="text/html;" http-equiv="content-type" charset="utf-8" />
+		
+		<meta http-equiv="cleartype"       content="on"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta http-equiv="cache-control"   content="max-age=0" />
+		<meta http-equiv="cache-control"   content="no-cache" />
+		<meta http-equiv="expires"         content="0" />
+		<meta http-equiv="expires"         content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma"          content="no-cache" />
+		<meta name="format-detection"      content="telephone=no"/>
+						
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />		
+		<link rel="stylesheet" type="text/css" href="../resources/css/fontStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/infoBasica.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capacidadPago.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/miPrestamo.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/incomeExpenses.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/customAcoordeon.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/simulator.css" />		
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />		
+		<link rel="stylesheet" type="text/css" href="../resources/css/doumentpld.css" />			
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/registroResponsive.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/mx.com.kubo.acreditado.registro.datos/basicdata.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+
+		<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' />
+	
+		<link rel="stylesheet" type="text/css" href="../resources/css/registro_css_embebed.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/secciones/registro/menu_items.css" />
+		<link rel="stylesheet" href="../resources/css/font-awesome.css"/> 
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer_registro.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preaprobacion_pantallas.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/buttonSyles.css" />
+		
+		<script type = "text/javascript" src = "../resources/js/hubSpot_analytics.js"/>
+		
+		<script>
+		//<![CDATA[
+		
+	
+
+		function ejecutaInicio(){
+			
+				var vars = {};
+			
+			    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			
+			        vars[key] = value;
+			
+			    });
+			
+			    var prospectus_id = vars["prospectus_id"];
+			    var coach = vars["coach"];
+			    var company = vars["company_id"];
+			    var from = vars["from"];
+			
+				if(prospectus_id != null && coach != null && company != null && from ){
+					
+					console.log( "Ejecutando ...... inicio" );
+					
+					$("#valProspectus").val(prospectus_id).blur();
+					$("#valCoach").val(coach).blur();
+					$("#valCompany").val(company).blur();
+					$("#valFrom").val(from).blur();
+				
+					$("#cmdChargeInf").click();
+				
+				}else{
+					
+					console.log( "No ejecuto...... inicio" );
+					
+				}
+				
+		}
+	
+	
+		//]]>
+		
+		</script>
+		<script>
+		    var flagScrollB1 = false;
+		    
+			function claseMsgPerKubo()
+			{
+				$("#dvKuboPerson").hide();
+			}
+		</script>
+		
+		<script>
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m)
+			  {
+				  i['GoogleAnalyticsObject'] = r;
+				  
+				  i[r] = i[r] || function() 
+				  {
+					  (i[r].q = i[r].q || []).push(arguments)
+					  
+				  }, i[r].l = 1 * new Date();
+					  a = s.createElement(o),
+			  		  m = s.getElementsByTagName(o)[0];
+					  a.async = 1;
+					  a.src = g;
+					  m.parentNode.insertBefore(a,m)
+					  
+				}) (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		</script>
+	<style>
+	
+
+	@media only screen and (max-width: 1024px)  {
+	
+			div#dvContMenuREG {
+	
+			top: 70px;
+		
+					}
+						.content {
+			width: 96% !important;
+			margin: 0 2% s20px;
+			overflow: visible;
+		}
+		}
+	</style>
+	<title>kubo.financiero | Registro acreditado</title>				
+       
+    <meta name="Description" content="Para solicitar tu crédito continua con tu registro"/>
+	
+	
+	
+	<script>
+		$(document).ready(function(){
+			
+			// $("#cmdChargeInf").click();
+			
+			ejecutaInicio();
+			
+		});
+	</script>
+	
+</h:head>
+	
+<h:body style="background:#EAEAEC">
+
+#{registroCoach.successInfo}
+
+<div id="headCoach" style="height:1px; position:absolute; width:100%; top:0;"></div>
+<h:outputStylesheet library="css"  name="generales_estructura_menu.css" />
+	<ui:include src = "scripts/registro.xhtml"/>
+	
+	 <h:panelGroup rendered = "#{sessionBean.area != 'I'}" >
+					 <link  type = "text/css"  href = "../resources/css/basicosHistorial.css"  rel = "stylesheet" />	
+	 </h:panelGroup>
+	<h:form prependId="false">
+		<div id="header" class="head_coach">
+		
+			<div class="inner_block">
+				  	<div class="datos_prospecto">
+					  	<p>Acceso con el Cliente:<strong>#{registroCoach.mProspectus.person.NombreCompletoNPM()}</strong> </p>
+					    <p>Coach:<strong> #{registroCoach.mCoach.person.NombreCompletoNPM()} </strong> </p>
+					</div>
+					<p:commandLink immediate    = "true"
+							   action 		    = "#{registroCoach.backSession}" 
+							   onstart          = "return displayMessageProcessing('msgprocessing', true);" 
+							   style			= "text-decoration: none;"
+							   value	        = "Regresar a mi cuenta"
+							   styleClass		= "callActionMedium btnNaranja regresar_cuenta"	
+							   >
+						
+						<f:attribute name="proyect" value="#{summaryRequest.actualProyect}" />
+						
+						<f:attribute name="fromAction" value="EdoCuenta" />
+						
+					</p:commandLink>	
+			</div>
+		</div>
+		<div style="display:none">
+		
+			<p:commandLink id="cmdChargeInf" actionListener="#{registroCoach.initSession}" update=":pnlContRegCoach" ></p:commandLink>
+		
+			<h:inputHidden id="valProspectus" value="#{registroCoach.prospectus_id}" />
+			<h:inputHidden id="valCoach" value="#{registroCoach.coach}" />
+			<h:inputHidden id="valCompany" value="#{registroCoach.company_id}" />
+			<h:inputHidden id="valFrom" value="#{registroCoach.from}" />
+		
+		</div>
+		
+	</h:form>
+	<!-- 
+	<div id="dvBtnMenu" class="rotarTexto" onclick="showMenu();">
+		Proceso
+	</div>
+	
+	<div id="dvBtnSimulador" class="rotarTexto" onclick="showSimulador();">
+		Simulador
+	</div>
+	-->
+	
+<!-- 
+		<div id="tester" style="position: fixed; top: 100px; right: 0px; background-color: #22CC33; z-index: 20;"></div> 
+-->
+
+	<h:panelGroup id="pnlContRegCoach" >
+	
+		<h:panelGroup rendered="#{!registroCoach.successInfo}" >
+			
+			<div style="width: 50px; height: 50px; margin-bottom: 0px; margin-left: auto;margin-right: auto; margin-top: 150px; display: block; position: relative; ">
+				<img src="../resources/img/ajax-loader.gif" />
+			</div>
+			
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{registroCoach.successInfo}" >
+			<h:form prependId="false" >
+				<h:inputHidden id="montoMax" value="#{simulator.montoMax}" />
+				<h:inputHidden id="montoMin" value="#{simulator.montoMin}" />
+				<h:inputHidden id="termMax"  value="#{simulator.termMax}" />
+			</h:form>
+			
+			<div id="contFrmReg" class="contPR" style="margin-right: 0px;">
+			<div class="velo"></div>
+				<div class="contFrm coachMenu content" style="min-height: 800px !important; overflow: hidden; ">
+					<ui:include src = "secciones/registro/menu/menu.xhtml" />
+					
+					<ui:include src = "secciones/navegacion_ajax_listeners.xhtml"/>
+					<ui:include src = "secciones/navegacion_ajax_templates.xhtml"/>
+									
+					<ui:include src = "secciones/registro/help_panel/panel.xhtml"/>
+					<ui:include src = "secciones/registro/help_panel/img_IFE.xhtml"/>
+					<ui:include src = "secciones/registro/help_panel/msg_consulta_buro.xhtml"/>	
+				</div>
+			</div>
+		
+			<ui:include src="templates/msgProcessing.xhtml" />
+			
+			<div id="ids" ></div>
+		</h:panelGroup>
+	
+	</h:panelGroup>
+	
+
+		<h:panelGroup id="pnlCancel" >
+		</h:panelGroup>
+
+</h:body>
+</html>

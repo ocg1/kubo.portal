@@ -1,0 +1,203 @@
+<ui:composition 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	<script type="text/javascript">
+	$(function() {
+		$("#bar_menu_logs a").click(function(){
+			$(this).parents("#bar_menu_logs").find("a").removeClass("selectedMenu");
+			$(this).addClass("selectedMenu");
+		});
+	
+		
+		$('#regresarTablaProyectos').click(function(){	
+			actionBotonRegresar = true;
+			console.log(actionBotonRegresar);
+			$("#resumenInvest").trigger("click");
+		
+	   });
+		
+	});
+
+	</script>
+	<style type="text/css">
+	  tr{
+	  	height: 0 !important;
+	  }
+	 .ui-state-default{
+	 	background: #FFFFFF !important;
+	 }
+	</style>
+	<h:form id="FLog" prependId="false">
+	
+	<div class="content top logsContent">
+                <div class="inner_content">
+	<div class="col_izquierda_productos">	
+		<div  class="menu_interior FloatingMenu">	
+		<div class="contentMenu">
+			<h6>Bitacora</h6>
+			<ul id="bar_menu_logs">	
+				<h:panelGroup rendered="#{sessionBean.area == 'M'}">
+					<li><p:commandLink	styleClass="#{searchSummaySession.typeLog=='EVA' ? 'selectedMenu':''} menuitem"								
+										onstart="return displayMessageProcessing('msgprocessing', false);"																	
+										actionListener="#{logBean.changeLogs}"	
+										oncomplete="closeFancy();"
+										update="container_regLogs"
+										rendered="#{sessionBean.area=='M'}"
+										>	
+										Bitácora de evaluación de riesgo								
+										<f:attribute name="section" value="EVA" />									
+						</p:commandLink>
+					</li>						
+					<li><p:commandLink	styleClass="#{searchSummaySession.typeLog =='SOL' ? 'selectedMenu':''} menuitem"								
+										onstart="return displayMessageProcessing('msgprocessing', false);"																	
+										actionListener="#{logBean.changeLogs}"	
+										oncomplete="closeFancy();"
+										update="container_regLogs">	
+										Bitácora de solicitud								
+										<f:attribute name="section" value="SOL" />									
+						</p:commandLink>
+					</li>					
+					<li><p:commandLink	styleClass="#{searchSummaySession.typeLog == 'CRE' ? 'selectedMenu':''} menuitem"								
+										onstart="return displayMessageProcessing('msgprocessing', false);"																	
+										actionListener="#{logBean.changeLogs}"	
+										oncomplete="closeFancy();"
+										update="container_regLogs">	
+										Bitácora del credito								
+										<f:attribute name="section" value="CRE" />									
+						</p:commandLink>
+					</li>					
+					<li><p:commandLink	styleClass="#{searchSummaySession.typeLog == 'EVE' ? 'selectedMenu':''} menuitem"								
+										onstart="return displayMessageProcessing('msgprocessing', false);"																	
+										actionListener="#{logBean.changeLogs}"	
+										oncomplete="closeFancy();"
+										update="container_regLogs">	
+										Bitácora de eventos								
+										<f:attribute name="section" value="EVE" />									
+						</p:commandLink>
+					</li>			
+				</h:panelGroup>
+				<li><p:commandLink	styleClass="#{searchSummaySession.typeLog == 'COB'  ? 'selectedMenu':''} menuitem"								
+									onstart="return displayMessageProcessing('msgprocessing', false);"																	
+									actionListener="#{logBean.changeLogs}"	
+									oncomplete="closeFancy();"
+									update="container_regLogs">	
+									Bitácora de cobranza								
+									<f:attribute name="section" value="COB" />									
+					</p:commandLink>
+				</li>
+				
+												
+			</ul>	
+			
+			            <h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
+	                               	<p:commandLink id="regresarTablaProyectos" styleClass="callActionMedium btnVerde"> Regresar a listado de proyectos</p:commandLink>
+			                 
+	                    </h:panelGroup>  
+				 
+		</div>
+	</div>
+	</div>
+	
+		<h:panelGroup id="container_regLogs" styleClass="col_derecha_productos">
+		<fieldset style="margin-top: 5px;">
+			<div class="datosGeneralesBitacora">
+				
+				<h:panelGroup rendered="#{sessionBean.area == 'M'}">
+					<b>
+						<h:outputText value="Acreditado: "></h:outputText>
+					</b>
+					<p:commandLink actionListener="#{logBean.gotoSummary}" onstart="return displayMessageProcessing('msgprocessing', false);" oncomplete="closeFancy();">				
+						<h:outputText value="#{logBean.appLog.header.clientName}"></h:outputText> 
+					</p:commandLink>
+					<br/>
+					<b>
+						<h:outputText value="Ubicacion: "></h:outputText>
+					</b>
+					<h:outputText value="#{logBean.appLog.header.clientAddress}"></h:outputText> 
+					<br/>
+				</h:panelGroup>
+				
+				<b>
+					<h:outputText value="Cuota: "></h:outputText>
+				</b>	
+				<h:outputText value="#{logBean.proyectLoan.payment}">
+					<f:convertNumber currencySymbol="$" groupingUsed="true" locale="es_MX" type="currency"></f:convertNumber>
+				</h:outputText> 
+				<h:outputText value="#{logBean.termAndFrequency}"/>   
+				<br/>
+				<b>
+					<h:outputText value="Monto: "></h:outputText>
+				</b>		
+				<h:outputText value="#{logBean.proyectLoan.ammount}">
+					<f:convertNumber currencySymbol="$" groupingUsed="true" locale="es_MX" type="currency"></f:convertNumber>
+				</h:outputText>	
+			</div>
+		</fieldset>		
+
+		<fieldset>
+	
+			<p:dataTable styleClass="tablaBitacora" var="log" value="#{logBean.lstLogs}" rendered="#{logBean.lstLogs.size() >0 }" tableStyle="background: #FFFFFF !important;"  rowStyleClass="noBorder">
+					<p:columnGroup type="header" >
+			  	
+					<p:row >
+					
+					<p:column style="width:26%">
+						
+							<f:facet name="header">
+							
+								Fecha
+								
+							</f:facet>
+							
+						</p:column>
+					
+
+					
+						
+						<p:column style="width:14%">
+						
+							<f:facet name="header">
+							
+								Horario
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="width:50%">
+						
+							<f:facet name="header">
+							
+								Acción
+								
+							</f:facet>
+							
+						</p:column>
+						
+						
+					</p:row>
+				</p:columnGroup>
+				
+				
+					<p:column style="width:26%">
+						<h:outputText value="#{log.dateTxt}"></h:outputText>
+					</p:column>
+					<p:column style="width:14%">
+						<h:outputText value="#{log.hour}"></h:outputText>
+					</p:column>
+					<p:column style="width:50%">
+						<h:outputText value="#{log.text}"></h:outputText>
+					</p:column>
+			</p:dataTable>
+		</fieldset>					
+		</h:panelGroup>				
+	</div>
+	</div>
+	<script>
+	 $('html, body').animate({scrollTop:0}, '3000');
+	</script>
+
+	</h:form>
+</ui:composition>

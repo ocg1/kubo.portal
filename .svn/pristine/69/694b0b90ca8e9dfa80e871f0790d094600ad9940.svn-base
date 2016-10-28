@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml" 
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+	<div class = "boton_agregar_nota">		
+		<div id      = "btn-add-notes" 
+			 class   = "btn_verde" 
+			 onclick = "agregar_nota();"  
+		 	 style   = "margin: 0; width:150px">		
+			 														
+			<h:outputText value = "Agregar nota" />
+																			
+		</div>
+	</div>
+</ui:composition>	

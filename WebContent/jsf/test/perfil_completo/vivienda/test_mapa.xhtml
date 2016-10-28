@@ -1,0 +1,84 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:ui = "http://java.sun.com/jsf/facelets"
+		        xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+	<style>
+			div#mapa_edicion_vivienda
+			{
+				/*
+				display: none;								
+				position: absolute; 				 
+				top :  595px;
+				left : 336px;
+				z-index: 100;
+				*/
+				width:450px;
+				height:350px;
+				
+				position: relative;
+				opacity: 1.87; 
+				border: 2px solid #CCCCCC;
+			}
+			
+			div.cerrar_mapa_icon
+			{		
+				width: 30px; 
+				height: 30px;		
+				position: absolute;
+				top: -10px;
+				right: -10px; 	
+				z-index: 1;			
+			}
+			
+			div#mapa_canvas
+			{
+				width:450px;
+				height:350px;
+			}
+			
+			div#mapa_canvas p
+			{
+				text-align:center;
+			}
+	</style>
+	
+	<script>
+		$(document).ready(mostrar_mapa_edicion_vivienda);
+	</script>
+						    		    
+	<p:panel id = "panel_test_mapa" header = "Test asignación de ubicación en mapa" collapsed = "false" toggleable = "true">
+		<h:form>			    					 				 	
+		 	<div style = "text-align: left; margin-bottom:5px;">
+				<p:commandButton update = ":panel_test_mapa" icon = "ui-icon-refresh" oncomplete = "mostrar_mapa_edicion_vivienda"/>
+			</div> 
+		</h:form>				 	
+		 	<!-- 
+		 	<h:panelGroup rendered = "#{login_test.sesion_ENABLED}">
+		 	-->
+				<div id = "mapa_ubicacion" style = "display:none;">
+					<h:inputText immediate = "true" value = "#{test_vivienda.editor_vivienda.map_ubication}">
+								 
+						<p:ajax event = "blur" listener = "#{test_vivienda.editor_vivienda.listener_mapa_ubicacion}"/>
+						
+					</h:inputText>
+				</div>	
+									
+				<div id = "mapa_edicion_vivienda">
+			        <div class = "arrow_left" />
+			        
+			      	<div class = "blindAction cerrar_mapa_icon">
+						<p:graphicImage url = "#{resources}/img/close.png" onclick = "cerrar_mapa_edicion_vivienda();" />
+			      	</div>
+			      	
+					<div id = "mapa_canvas">
+						<p><strong>Cargando..</strong></p>
+					</div>
+			  			
+					<div class = "msgHelpMap" >Si el mapa no te muestra tu ubicación exacta, da un click sobre el mapa para ajustar la ubicación</div>
+				</div>								
+			<!-- 
+			</h:panelGroup>    
+			-->															    	
+	</p:panel>			
+</ui:composition>				

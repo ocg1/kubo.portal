@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<li>	
+		<label>Correo electrónico <sup>*</sup></label>
+	</li>
+			
+	<li>                               
+		<h:panelGroup id = "warningMail">
+			<div>
+				<div style="color: #FF0000; font-size: 0.9em;" >												
+					<h:outputText value = "#{addNaturalPerson.warningMail}" escape="false" />
+				</div>
+			</div>
+		</h:panelGroup>
+				
+		<p:inputText id = "email4"  
+					 onfocus      = "$(this).removeClass('requiredClass'); 	 $('#confemail').slideDown('fast');" 
+					 value        = "#{addNaturalPerson.email}" 							 
+					 disabled     = "#{addNaturalPerson.disabledMail}"
+					 data-enhance = "false" 
+					 styleClass   = "validatorClass email_val hs_class ">
+								 
+			<p:ajax event = "blur" 
+					listener   = "#{addNaturalPerson.listener_email}"
+					oncomplete = "listener_email(xhr, status, args)" />
+		</p:inputText>
+				
+		<p:watermark for = "email4" value = "maría@correovalido.com" /> 
+                             
+
+		<ui:include src = "email_confirmar.xhtml"/>		                             		
+	</li>
+</ui:composition>			

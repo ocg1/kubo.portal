@@ -1,0 +1,85 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+	
+	<script>
+		function set_status_selected(select_one_menu)
+		{		
+			$("#input_status_id_selected input").val(select_one_menu.value).trigger("blur");
+		}
+	</script>
+	
+	<h:form id = "form_seleccion_proyect_loan">	 
+	
+		<div style = "text-align: left; margin-bottom:5px;">
+	  		<p:commandButton update = "form_seleccion_proyect_loan" icon = "ui-icon-refresh"/>
+	  	</div> 
+	  	
+	  	<div id = "input_status_id_selected" style = "display: none">
+	  		<h:inputText  ajax      = "true"
+			              value     = "#{panel_seleccion.status_id_selected}">
+	  			<p:ajax event    = "blur" 
+	  					listener = "#{panel_seleccion.listener_status_id_selected}"
+	  					onclomplete = "alert('complete ajax');"/>
+	  		</h:inputText>
+	  	</div>		 
+	  		
+		<p:dataTable rows          = "10"
+					 selectionMode = "single"	
+	  			     editable      = "true"
+	  			     var = "proyect_loan" 			     	    			 	    			                 
+	                 rowKey    = "#{proyect_loan.proyectloanPk.proyect_loan_id}"
+	  			     value     = "#{panel_seleccion.lista_proyect_loan}"
+	  			     selection = "#{panel_seleccion.proyect_loan_selected}">
+	                 
+	   		<p:ajax event = "rowSelect" listener = "#{panel_seleccion.listener_proyect_loan_selected}"/>
+	   		<p:ajax event = "rowEdit"   listener = "#{panel_seleccion.listener_proyect_loan_edited}" />            
+	 	       
+			<p:column style = "width:32px">
+				<p:rowEditor />
+			</p:column>  
+			 
+	        <p:column headerText = "Proyect_id" style = "width:50px">
+	            <h:outputText value = "#{proyect_loan.proyectloanPk.proyect_loan_id}" />
+	        </p:column>
+               
+	        <p:column headerText = "Estatus">
+	        	<p:cellEditor>
+			        <f:facet name = "output">
+			        	<h:outputText value = "#{proyect_loan.status_id} - #{proyect_loan.statusProyect.name}"/>
+			        </f:facet>
+			        
+					<f:facet name = "input">						
+						<h:selectOneMenu value     = "#{panel_seleccion.status_id_selected}" 
+									     immediate = "true"
+										 onchange = "set_status_selected(this);">		
+									  
+							<f:selectItems value = "#{panel_seleccion.lista_status}" 
+										   var = "status" 
+										   itemLabel = "#{status.statusPK.status_id} - #{status.name}" 
+										   itemValue = "#{status.statusPK.status_id}" />							   
+						</h:selectOneMenu>
+					</f:facet>	
+				</p:cellEditor> 				         
+	        </p:column> 
+	        
+	       <p:column headerText = "Motivo" style = "width:32px">
+	        	<h:outputText value = "#{proyect_loan.motive_id}" />
+	        </p:column>
+	        
+	        <p:column headerText = "Publicación">
+	        	<h:outputText value = "#{proyect_loan.day_published}">
+					<f:convertDateTime pattern = "dd / MM / yyyy" />
+	        	</h:outputText>
+	        </p:column>
+	        
+	       	<p:column headerText = "Pospuesto">
+	        	<h:outputText value = "#{proyect_loan.posposed_date}">
+	        		<f:convertDateTime pattern = "dd / MM / yyyy" />
+	        	</h:outputText>
+	        </p:column>
+		</p:dataTable>								    			   		  				
+	</h:form>	
+</ui:composition>	

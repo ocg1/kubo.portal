@@ -1,0 +1,38 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+	<tr>
+	<td>				
+	<h:panelGroup id = "resSimReg">
+		<div id = "loaderSim" style = "display: none;">
+			<p:graphicImage url = "../resources/img/ajax-loader.gif" width="24px" height="24px"/>
+		</div>
+	
+		<div id = "resultadosSim">									
+			<table style = "margin-left: 3px; width: 100% ">
+				<tr><td class = "titulo_tabla_simulador">Total a recibir</td></tr>			
+				<tr><td class = "valor_tabla_simulador"><b>#{simulator.totalRecibir}</b></td></tr>
+						
+				<tr><td class = "titulo_tabla_simulador">Pagos de</td></tr>			
+				<tr><td class = "valor_tabla_simulador"><b>$#{simulator.montoCuotaStr}</b></td></tr>
+				
+				<tr><td class = "titulo_pagos_incluyen_IVA"><b>Los pagos incluyen IVA</b></td></tr>
+				
+				<tr><td class= "titulo_tabla_simulador">Total a pagar</td></tr>				
+				<tr><td class = "valor_tabla_simulador" style = "color: #439539;"><b>$#{simulator.totalPagarStr}</b></td></tr>
+				
+				<tr>
+					<td style = "padding-bottom: 10px;">
+						<a class = "refTbAmort" 
+						   href  = "/Kubo/jsf/tabla_de_amortizacion.xhtml?monto=#{simulator.ammountStr}&amp;term=#{simulator.numCuota}&amp;rate=#{simulator.tasaTotal}&amp;payment=#{simulator.montoCuotaStr}&amp;frequency=#{simulator.frequencyStr}&amp;comision=#{simulator.comisionApertura}&amp;totalPayment=#{simulator.totalPagarStr}&amp;cat=#{simulator.catStr}" target="popup" onClick="window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+							Ver Tabla de Amortización
+						</a>
+					</td>
+				</tr>												
+			</table> 
+		</div>
+	</h:panelGroup>	
+	</td>
+	</tr>					
+</ui:composition>

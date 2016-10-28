@@ -1,0 +1,89 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:p  = "http://primefaces.org/ui">	
+	
+	<style>
+		div#mapa_edicion_vivienda
+		{			
+			/*
+			var t = $("#vivienda_codigo_postal").offset().top - 10;				
+			$('#mapa_edicion_vivienda').css({'top' :  595 + 'px', 'left' : '336px'});	
+			*/
+			width:450px;
+			height:392px;
+			
+			position: absolute; 				 
+			top :  126px;
+			left : 331px;
+			
+			display: none;	
+										
+			opacity: 1.87; 
+			overflow: visible;
+			
+			border: 2px solid #CCCCCC;
+		}
+		
+		div.cerrar_mapa_icon
+		{
+			width: 30px; 
+		 	height: 30px;
+		 	
+			position: absolute;
+      		top: -10px;
+		    right: -10px; 
+		    z-index: 1;
+
+		}
+		
+		div#mapa_canvas
+		{
+			width:450px;
+			height:350px;
+		}
+			
+		div#mapa_canvas p
+		{
+			text-align:center;
+		}
+		
+		div.mapa_msg_help
+		{
+			width: 448px;
+			background-color: #FFFFFF;
+			border: solid 1px #f4f4f4 !important;			
+		}
+		
+		div.mapa_msg_help p
+		{
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	
+				 
+	<div id = "mapa_ubicacion" style = "display:none;">
+		<h:inputText immediate = "true" value = "#{summaryRequest.editor_domicilio.map_ubication}">					 
+			<p:ajax event = "blur" listener = "#{summaryRequest.editor_domicilio.listener_mapa_ubicacion}"/>			
+		</h:inputText>
+	</div>	
+							
+	<div id = "mapa_edicion_vivienda">
+        <div class = "arrow_left" />
+        
+      	<div class = "cerrar_mapa_icon blindAction">
+			<p:graphicImage url = "../resources/img/close.png" onclick = "cerrar_mapa_edicion_vivienda();"/>
+      	</div>
+      	
+		<div id = "mapa_canvas">
+			<p><strong>Cargando..</strong></p>
+		</div>  				
+		
+		<div class = "mapa_msg_help" style = "clear: both;">
+			<p>Si el mapa no te muestra tu ubicación exacta, da un click sobre el mapa para ajustar la ubicación</p>
+		</div>	
+	</div>	
+	
+
+</ui:composition>			

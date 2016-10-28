@@ -1,0 +1,106 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<ul class="menuSup">
+		<h:panelGroup >
+				<li class="bienvenido"></li>
+			<li class="fecha_actual"></li>
+			<li class="ultima_sesion"></li>
+	
+			<li class="folio_info"></li>
+			<h:panelGroup rendered="#{sessionBean.prospectus_id != null }" >
+			
+			<li class="textHelNeueBold puntero inicio" style="font-size: 11.3pt !important;">
+				<p:commandLink  action="#{headerBean.getAction}">
+					INICIO
+				</p:commandLink>
+			</li>
+			
+			<li class="pipememu" style="font-size: 1.4em;">|</li>
+			
+			</h:panelGroup>
+			
+			<li style="font-size: 1.4em; display:none;" ><h:outputLabel class="pipememu">|</h:outputLabel></li>
+			<h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
+			<li class="textHelNeueBold puntero creditos trigger_invertir" style="font-size: 11.3pt !important;" >
+				<a href="" target="_blank" >INVERTIR</a>
+			</li>
+				<li style="font-size: 1.4em;" ><h:outputLabel class="pipememu">|</h:outputLabel></li>
+			</h:panelGroup>
+			<h:panelGroup rendered="#{sessionBean.prospectus_id != null}" >
+			
+				<li class="textHelNeueBold puntero notificaciones" style="font-size: 11.3pt !important;"  >
+					<p:commandLink immediate="true" action="notificaciones-autorizacion-supervision">NOTIFICACIONES</p:commandLink>
+				</li>
+				<li class="pipememu salir_mobile" style="font-size: 1.4em;">|</li>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{sessionBean.prospectus_id != null}" >
+				<li class="textHelNeueBold puntero salir_mobile" style="font-size: 11.3pt !important;">
+					<p:commandLink action ="#{headerBean.SignOut}">
+						SALIR
+					</p:commandLink>
+				</li>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{sessionBean.prospectus_id != null}" >
+			<li class="pipememu" style="font-size: 1.4em;">|</li>
+			<li class="textHelNeueBold puntero" style="font-size: 11.3pt !important;" id="perfil" >
+				<a href="perfil.jsf">PERFIL</a>
+			</li>
+			
+			</h:panelGroup>
+			<li style="font-size: 1.4em;" ><h:outputLabel class="pipememu">|</h:outputLabel></li>
+			
+			<li class="textHelNeueBold puntero creditos" style="font-size: 11.3pt !important;" >
+				<a href="creditos_personales.jsf">CRÉDITOS</a>
+			</li>
+		
+				<li class="pipememu" style="font-size: 1.4em;">|</li>
+			<h:panelGroup rendered = "#{leyTransparencia.menu_captacion_ENABLED}">
+				<li class="textHelNeueBold puntero creditos" style="font-size: 11.3pt !important;" >
+					<p:commandLink immediate="true" action="productos-captacion">INVERSIÓN</p:commandLink>
+				</li>
+					<li style="font-size: 1.4em;" ><h:outputLabel class="pipememu">|</h:outputLabel></li>
+			
+				</h:panelGroup>
+
+			
+			<li class="textHelNeueBold puntero creditos" style="font-size: 11.3pt !important;" >
+				<a href="https://www.kubofinanciero.com/blog" target="_blank" >BLOG</a>
+			</li>
+						<li style="font-size: 1.4em;" ><h:outputLabel class="pipememu">|</h:outputLabel></li>
+			<!-- 
+			<li class="textHelNeueBold puntero creditos" style="font-size: 11.3pt !important;" >
+			
+				<a href="#sugerencia" class="open_lightbox" data-div="16" >IDEAS DE MEJORA</a>
+			</li>
+			 -->
+			
+			<!-- li class="textHelNeueBold puntero creditos" style="font-size: 11.3pt !important;" >
+				<a href="https://www.talentprocess.com/jobs/kubofinanciero" target="_blank" >BOLSA DE TRABAJO</a>
+			</li -->
+			
+			<!--li style="font-size: 1.4em;" ><h:outputLabel class="pipememu">|</h:outputLabel></li-->
+			
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{sessionBean.prospectus_id == null}" >
+			<li style="font-size: 1.4em;" ><h:outputLabel class="pipememu">|</h:outputLabel></li>
+			<li class="textHelNeueBold puntero" style="font-size: 11.3pt !important;">
+				<a href="access.jsf">ENTRAR</a>
+			</li>
+		</h:panelGroup>
+
+		<h:panelGroup  rendered="#{sessionBean.prospectus_id != null}" >
+				<li class="textHelNeueBold puntero salir_escritorio" style="font-size: 11.3pt !important;">
+					<p:commandLink action ="#{headerBean.SignOut}">
+						SALIR
+					</p:commandLink>
+				</li>
+		</h:panelGroup>
+	</ul>
+</ui:composition>		

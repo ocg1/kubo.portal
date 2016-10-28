@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"				
+				xmlns:p  = "http://primefaces.org/ui">
+											
+	<div class = "sim_button" id = "againSim">
+		<h:panelGroup id = "btnCondiciones">
+			<h:panelGroup rendered = "#{incomesExpenses.modifier.dispBotCondiciones}" >
+				<p:commandLink id = "saveNegotiation" value = "Modificar condiciones"
+							   onstart = "return confirmCondiciones002();" 											
+							   styleClass = "callActionMedium btnVerde">
+				</p:commandLink>
+			</h:panelGroup>
+		</h:panelGroup>
+	</div>	
+</ui:composition>							

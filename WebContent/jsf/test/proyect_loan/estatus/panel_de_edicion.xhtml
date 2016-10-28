@@ -1,0 +1,86 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+	<h:form id = "form_cambio_estatus">				    		
+   		<div style = "float: left; margin-bottom:5px;">
+	  		<p:commandButton update = "form_cambio_estatus" icon = "ui-icon-refresh" actionListener = "#{panel_seleccion.listener_update_panel_cambio_de_estatus}"/>
+	  	</div> 
+	  	
+	  	<div style = "float: left; margin-bottom:5px;">				  								
+			<p:commandButton value = "Guardar" icon = "ui-icon-disk" actionListener = "#{panel_seleccion.guardar_cambio_de_estatus}"/>	
+		</div>	
+		
+		<div class = "float_divider"/>
+		
+		<p:panelGrid columns = "1">
+			<h:outputLabel value = "Catálogo de Estatus"/>
+			
+			<h:selectOneMenu value = "#{panel_seleccion.status_id_selected}" style = "width:250px;">																				 
+				<f:selectItem itemLabel = "4 - Cancelado" itemValue = "4"/>
+				<f:selectItem itemLabel = "5 - Pospuesto" itemValue = "5"/>
+				<f:selectItem itemLabel = "7 - Deistido"  itemValue = "7"/>
+				<f:selectItem itemLabel = "8 - Duplicado" itemValue = "8"/>							   
+			</h:selectOneMenu>
+		
+			<h:outputLabel value = "Catálogo de Motivos"/>
+			
+   			<h:selectOneMenu value = "#{panel_seleccion.motivo_id_selected}" style = "width:250px;">										
+				  
+				<f:selectItems value     = "#{panel_seleccion.lista_motivos}" 
+							   var       = "motivo" 
+							   itemLabel = "#{motivo.pk.motive_id} - #{motivo.description}" 
+							   itemValue = "#{motivo.pk.motive_id}" />							   
+			</h:selectOneMenu>
+			
+			<h:outputLabel value = "Fecha Pospuesta"/>
+
+			<h:panelGroup>
+				<h:panelGrid columns = "3" 
+						     cellpadding = "0"
+						     cellspacing = "0" 
+						     columnClasses = "grid_fecha_pospuesta, grid_fecha_pospuesta, grid_fecha_pospuesta">
+						     									
+					<h:selectOneMenu value               = "#{panel_seleccion.caso_pospuesto.selected_day}"
+									 valueChangeListener = "#{panel_seleccion.caso_pospuesto.listener_selected_day}"
+									 immediate = "true">			
+									
+						<f:selectItems  value = "#{panel_seleccion.caso_pospuesto.list_of_days}"/>						
+						<p:ajax />
+					</h:selectOneMenu>
+																			
+					<h:selectOneMenu value               = "#{panel_seleccion.caso_pospuesto.selected_month}"
+									 valueChangeListener = "#{panel_seleccion.caso_pospuesto.listener_selected_month}"
+									 immediate = "true">	
+									 							
+						<f:selectItems value = "#{panel_seleccion.caso_pospuesto.list_of_months}" />																
+						<p:ajax />
+					</h:selectOneMenu>
+				
+					<h:selectOneMenu value               = "#{panel_seleccion.caso_pospuesto.selected_year}"
+					                 valueChangeListener = "#{panel_seleccion.caso_pospuesto.listener_selected_year}"
+					                 immediate = "true">			
+									 				
+						<f:selectItems  value = "#{panel_seleccion.caso_pospuesto.list_of_years}" />																
+						<p:ajax />
+					</h:selectOneMenu>									
+				</h:panelGrid>
+			</h:panelGroup>
+							
+			<h:outputLabel value = "Descripción del Motivo"/>
+										
+			<h:inputTextarea id         = "text_descripcion_motivo"
+							 value      = "#{panel_seleccion.descripcion_motivo}"
+							 rows		= "3" 
+							 immediate  = "true" 			
+							 style      = "width:245px; 
+								 		   height:100px; 
+								 		   margin:5px 0; 
+								 		   padding:5px;
+								 		   font-size: 1.05em !important;
+								 		   border:1px solid #a8a8a8;"/>
+
+   		</p:panelGrid>
+	</h:form>
+</ui:composition>

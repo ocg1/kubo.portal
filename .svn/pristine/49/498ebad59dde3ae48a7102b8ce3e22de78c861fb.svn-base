@@ -1,0 +1,657 @@
+<ui:composition 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+		
+		<style>
+			.contFrm{
+				width: 99% !important;
+			}
+			
+			.ui-datatable th, .ui-datatable tfoot td{
+				padding: 4px 5px !important;
+			}
+			.tblColSell{
+				font-size: 1.2em !important;
+			}
+			
+			#dvContentLoanLst .ui-datatable table{
+				width: 1000px !important;
+			}
+			
+		</style>
+		
+		<script>
+		
+			function selProyect( obj,name ){
+				
+				$("#elementRegSel").val(""+obj.value+"::"+obj.checked);
+				$("#elementRegSel").change();
+				
+			    if (!obj.checked) 
+			    	return;
+				
+				var elem=document.getElementsByName(name);
+				
+				for(i=0;elem.length>i;i++){ 
+			        elem[i].checked=false;
+			    }
+			    
+			    obj.checked=true;
+			}
+			
+			function calculaMonto(){
+				
+				if($("#porcenPropuesto").val().trim() == ''){
+					$("#montoPropuesto").val("");
+					$("#montoPropuesto").change();
+					return;
+				}
+				
+				 var monto = parseFloat($("#hdnMonto").val());
+				 
+				 var porc = parseFloat($("#porcenPropuesto").val());
+				 
+				 if( porc > 100 ){
+					 
+	 					$("#porcenPropuesto").val("");
+	 					$("#montoPropuesto").val("")
+	 					$("#montoPropuesto").change();
+	 					$("#porcenPropuesto").change("");
+	 					alert("El porcentaje no debe sobrepasar el 100%");
+	 					
+	 			 }else{
+				 
+						 var mnt = (parseFloat($("#porcenPropuesto").val()) * monto )/100;
+						 
+						 mnt = Math.round(mnt * 100 ) / 100;
+						 
+						 if( parseFloat($("#hdnUltOfer").val()) > mnt ){
+							 $("#porcenPropuesto").val("");
+			 					$("#montoPropuesto").val("")
+			 					$("#montoPropuesto").change();
+			 					$("#porcenPropuesto").change("");
+			 					
+			 					alert( "El monto propuesto es menor a la última propuesta." );
+			 					return;
+						 }
+						 
+						 $("#montoPropuesto").val(mnt);
+						 
+						 $("#montoPropuesto").keyup();
+						 
+						 $("#montoPropuesto").change();
+		 					$("#porcenPropuesto").change("");
+						 
+	 			 }
+				 
+			}
+			
+			function calculaPorcen(){
+				
+				if($("#montoPropuesto").val().trim() == ''){
+					$("#porcenPropuesto").val("");
+					$("#porcenPropuesto").change();
+					return;
+				}
+				
+ 				var monto = parseFloat($("#hdnMonto").val());
+				
+ 				var montoProp = parseFloat($("#montoPropuesto").val().replace(",","") );
+ 				
+ 				if( montoProp > monto ){
+ 					$("#porcenPropuesto").val("");
+ 					$("#montoPropuesto").val("");
+ 					$("#montoPropuesto").change();
+ 					$("#porcenPropuesto").change("");
+ 					alert("El monto no debe sobrepasar "+monto);
+ 				}else{
+ 					
+ 					if( parseFloat($("#hdnUltOfer").val()) > montoProp ){
+						 $("#porcenPropuesto").val("");
+		 					$("#montoPropuesto").val("")
+		 					$("#montoPropuesto").change();
+		 					$("#porcenPropuesto").change("");
+		 					
+		 					alert( "El monto propuesto es menor a la última propuesta." );
+		 					return;
+					 }
+ 				
+					 var porc = (montoProp * 100) / monto;
+					 
+					 porc = Math.round (porc * 100) / 100;
+					 
+					 $("#porcenPropuesto").val(porc);
+					 
+					$("#montoPropuesto").change();
+	 				$("#porcenPropuesto").change("");
+ 				}
+			}
+			
+			function aceptaOferta(){
+				
+				var banderaAviso = true;
+				
+				if( banderaAviso ){
+					
+					$.fancybox({
+						'width' : "80%",
+						'padding' : '0',
+						'margin' : '0',
+						'autoDimensions':false,
+						'transitionIn' : 'none',
+						'transitionOut' : 'none',
+						'speedIn' : '20',
+						'speedOut' : '10',
+						'modal' : true,
+						'type' : 'inline',
+						'scrolling' : 'no',
+						'overlayColor': '#333333',
+						'centerOnScroll' : true,
+						'href': '#dvAvisoConfidencial',
+						'onStart':function() {
+							 var testframe = document.createElement("iframe");
+							    testframe.id = "testframe";
+							    testframe.src = "../jsf/templates/aviso_Priv_Inv_VentaCartera.html";
+							    $("#contAvisoConf").empty();
+							    $("#contAvisoConf").append(testframe);
+							    var styles = {
+							    		width : "100%",
+							    		border: "0px",
+							    		height: "370px",
+							    		overflow: "auto"
+							    		};
+							    $("#testframe").css(styles);
+						},
+						'onComplete' : function(){
+							 $('#fancybox-content').height('auto');
+							 $('#fancybox-content').children().eq(0).css('height','auto');
+					    }
+						
+					});
+					
+				}
+				
+				//return confirm("¿Está seguro que quiere realizar la oferta?");
+				
+			}
+			
+			function returnAceptOferta(){
+				$("#porcenPropuesto").val("");
+				$("#montoPropuesto").val("")
+			}
+		
+		</script>
+		
+		<h:form id="FPyInv" prependId="false">
+		
+		<div style="width: 99%; margin-left: auto; margin-right: auto; text-align: center; color: #439539;font-weight: bold; font-size: 1.3em; margin-bottom: 20px;">
+			<h:outputText value="Créditos en Venta" />
+		</div>
+		
+		<div id="dvContentLoanLst" class="container_loanlist">	
+		<div id="providing_table">
+	
+		<FIELDSET style="padding: 2px;">
+		
+		<div style="overflow: auto; width: 1004px; border: solid 0px #00ff00;   margin-left: auto; margin-right: auto;" >
+		
+			<div style="width: 300px; border: solid 0px #ff0000; height: 150px; float: left;" >
+			
+				<div style="position: relative; width: 240px; ">				
+					<div class="dvContent" 
+							id="dvBackSectionAccount" 
+							style="overflow: auto; position: absolute; width: 240px !important; z-index: 1;  top: 0px; left: 0px;">
+						<div class="dvLabel" style="width: 200px !important;">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.ll_credit_available}"/>
+						</div>
+						<p/>
+						<div class="dvLabel" style="width: 200px !important;">
+							<h:outputText id="creditOfAccount01" value="#{listaCreditos.saldoActual}" styleClass="labelsStl">
+							     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							</h:outputText>
+						</div>
+						<p/>
+						<div class="dvLabel" style="width: 200px !important;">
+							<h:outputLabel styleClass="labelsStl" value="#{msg.ll_account} #{listaCreditos.tagAccount}"/>
+						</div>
+						<p/>
+						<div  class="dvElementLength">
+							<div class="styled-select-Address" style="width: 230px;">
+								<h:selectOneMenu  id="cuentasUsr01" tabindex="1" styleClass="elementStlSelAddress" style="width:250px !important" value="#{listaCreditos.cuentaActual}">  
+							        <f:selectItem itemValue="" itemLabel="Todas las cuentas" />
+							        <f:selectItems value="#{listaCreditos.listInvAccounts}" var="account" itemLabel="#{account.accountName}" itemValue="#{account.account}"/>
+							        <p:ajax event="change" listener="#{listaCreditos.changeAccount}" />    
+							    </h:selectOneMenu>
+							</div>
+						</div>						
+						
+					</div>
+				</div>
+			
+			</div>
+			<h:panelGroup id="pnlContIfoCredit">
+			
+				<h:panelGroup rendered="#{myInvestments.valCredit != null and myInvestments.valCredit != ''}" >
+				
+					<div style="width: 300px; border: solid 0px #ff0000; height: 150px; float: left;" >
+						<table>
+							<tr>
+								<td colspan="2" style="color: #439539; text-align: center; font-weight: bold;">Crédito Seleccionado</td>
+							</tr>
+							<tr>
+								<td>Crédito</td>
+								<td><div style="width: 80px;text-align: right; font-weight: bold;">#{myInvestments.valCredit}</div></td>
+							</tr>
+							<tr>
+								<td>Saldo</td>
+								<td>
+									<div style="width: 80px;text-align: right;font-weight: bold;">#{myInvestments.valMontoStr}</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Última Oferta</td>
+								<td>
+									<div style="width: 80px;text-align: right;font-weight: bold;">#{myInvestments.valMontoUltOferStr}</div>
+								</td>
+							</tr>
+						</table>
+						<h:inputHidden id="hdnMonto" value="#{myInvestments.valMonto}" />
+						<h:inputHidden id="hdnUltOfer" value="#{myInvestments.valMontoUltOfer}" />
+					</div>
+				
+				</h:panelGroup>
+				
+			
+			
+			
+			<h:panelGroup rendered="#{myInvestments.valCredit != null and myInvestments.valCredit != ''}" >
+				<div style="width: 300px; border: solid 0px #0000ff; height: 150px; float: right ;" >
+					<table>
+					
+						<tr>
+							<td>$</td>
+							<td>
+								<h:inputText
+									 id 		= "montoPropuesto"
+									 value      = "${myInvestments.montoProp}"
+									 styleClass = "elementAddres1" 
+									 style		= "width: 150px !important;" 
+									 onkeyup	= "format(this,'');"
+									 onblur		= "calculaPorcen();">
+									 
+									 <p:ajax event="change" />
+									 
+									 </h:inputText>
+							</td>
+							<td style="padding-left: 8px;">
+								<div class="buttonPR" style=" width: 85px; padding-left: 6px; padding-right: 4px;">
+								
+									<p:commandLink
+										onstart = "return aceptaOferta();"
+										update	= ":FPyInv"
+										actionListener = "${myInvestments.realizarOferta}"
+										oncomplete = "returnAceptOferta();"
+										>
+										<div style=" width: 85px;">
+											Hacer Oferta
+										</div>
+										
+									</p:commandLink>
+								</div>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>%</td>
+							<td>
+								<h:inputText
+									 id 		= "porcenPropuesto"
+									 value      = "${myInvestments.porcProp}"
+									 styleClass = "elementAddres1" 
+									 style		= "width: 150px !important;" 
+									 onblur		= "calculaMonto();" >
+								
+									<p:ajax event="change" />
+									 
+								</h:inputText>
+							</td>
+							<td>
+								
+							</td>
+						</tr>
+						
+					</table>
+				</div>
+			</h:panelGroup>
+			
+			</h:panelGroup>
+		
+		</div>
+		
+		
+		<div style="overflow: auto; width: 1004px;   margin-left: auto; margin-right: auto;" >	
+			 
+			<p:dataTable id="proyectInvest" emptyMessage="#{msg.ll_empty_message}"  ajax="false" style="width:1000px !important;" paginator="true" value="#{myInvestments.proyecSellingLst}" var="proList" resizable="false" styleClass="dataTableSelProject" rows="15" cellspacing="10" cellpadding="10" rowsPerPageTemplate="15,20,30" rowIndexVar="rowIndex">
+			  	
+			  	<p:columnGroup type="header" >
+			  	
+					<p:row >
+						
+						<p:column  rendered="#{sessionBean.area!='M'}" style="background-color: #439539 !important; color: #FFFFFF !important;" >
+						
+							<f:facet name="header">
+							
+								Crédito
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column  rendered="#{sessionBean.area!='M'}" style="background-color: #439539 !important; color: #FFFFFF !important;" >
+						
+							<f:facet name="header">
+							
+								Fecha Límite<br />para Comprar
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header">
+							
+								Días<br /> Restantes
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;" rendered="#{sessionBean.area=='I'}">
+							
+							<f:facet name="header" align="center">
+								
+								Saldo de<br />Capital
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column  rendered="#{sessionBean.area!='M'}" style="background-color: #439539 !important; color: #FFFFFF !important;" >
+						
+							<f:facet name="header">
+							
+								Días de<br /> Atraso
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column  rendered="#{sessionBean.area!='M'}" style="background-color: #439539 !important; color: #FFFFFF !important;" >
+						
+							<f:facet name="header">
+							
+								Coutas<br />Atrasadas
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headerC1">
+							
+								Ofertantes
+								
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headerE1">
+								Estatus
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="header222">
+							
+								Última<br />
+								Oferta
+							
+							</f:facet><!-- 
+		<p:commandLink id="buttonTable1"  ></p:commandLink>
+		 -->
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						
+							<f:facet name="header" id="headeRRR">
+							
+								% de última<br />
+								oferta
+							
+							</f:facet>
+							
+						</p:column>
+						
+						<p:column style="background-color: #439539 !important; color: #FFFFFF !important;">
+						</p:column>
+						
+					</p:row>
+				</p:columnGroup>
+			  	
+			  	<p:column styleClass="borderCell proyectTitle" >
+						
+					<div id="yui-gen62Pros" class="yui-dt-liner proyectDetailOnLink">
+					
+						<div id="yui-gen66Pros" class="titleAndPurposeDiv">
+						
+							<strong id="yui-gen65Pros" class="browseNotesStrong breakWord">
+							
+								<span  id="yui-gen64Pros" class="expand-loan-details pDLink" style="font-size: 1.2em;">
+							
+									<p:commandLink id="cmdLinkDetail1" value="#{proList.credit_id}" actionListener="#{listaCreditos.initSearch}"  onstart="displayMessageProcessing('msgprocessing',true);" immediate="true" oncomplete="closeFancy();">
+									<!-- 
+										<f:attribute name="proyectatrr" value="#{prolist.proyectloanpk.proyect_loan_id}::#{prolist.proyectloanpk.proyect_id}::#{prolist.proyectloanpk.prospectus_id}::#{prolist.proyectloanpk.company_id}" />
+										 -->
+									</p:commandLink>
+									
+								</span>
+							
+							</strong>
+							
+							
+						</div>
+					
+					</div>
+					
+				</p:column>
+				
+				<p:column id="colNameTag1" rendered="#{sessionBean.area!='M'}" styleClass="borderCell proyectTitle">
+						
+					
+					<h:outputText styleClass="tblColSell"  value="#{proList.fec_limit}" ></h:outputText>
+					
+				</p:column>
+				
+				<p:column  styleClass="borderCell">
+					
+					<h:outputText styleClass="tblColSell"   value="#{proList.dias_rest}" ></h:outputText>
+					
+				</p:column>
+			  	
+			  	<p:column styleClass="borderCell" rendered="#{sessionBean.area == 'I'}" >
+					
+						
+						<h:outputText styleClass="tblColSell"  value="#{proList.saldo_cap}" ></h:outputText>
+					
+				</p:column>
+				
+				<p:column  rendered="#{sessionBean.area!='M'}" styleClass="borderCell proyectTitle" >
+						
+						
+						<h:outputText styleClass="tblColSell"  value="#{proList.dias_atraso}" ></h:outputText>
+					
+				</p:column>
+			  	
+			  	
+			  	<p:column  rendered="#{sessionBean.area!='M'}" styleClass="borderCell proyectTitle" >
+						
+						
+						
+						<h:outputText styleClass="tblColSell"  value="#{proList.cuotas_atrasadas}" ></h:outputText>
+					
+				</p:column>
+			  	
+				<p:column styleClass="borderCell" >
+					
+					
+					<h:outputText styleClass="tblColSell"  value="#{proList.num_ofertas}" ></h:outputText>
+																
+				</p:column>
+						               
+				<p:column id="foundedPorc#{proList.proyect_loan_id}1"  styleClass="borderCell">
+					
+					<h:outputText styleClass="tblColSell"  value="#{proList.status_str}" ></h:outputText>
+					
+				</p:column>
+				
+				<p:column  styleClass="borderCell">
+					
+					<h:outputText styleClass="tblColSell"  value="#{proList.ultima_oferta}" ></h:outputText>
+				</p:column>
+				
+				<p:column styleClass="borderCell" >
+						
+					
+					<h:outputText styleClass="tblColSell"  value="#{proList.porc_ult_oferta}" ></h:outputText>
+						
+				</p:column>
+				
+				<p:column styleClass="borderCell" >
+						
+					<input type="checkbox" name="checkListSell" id="chk_#{ proList.credit_id}" value="#{ proList.credit_id}::#{proList.saldo_cap}::#{proList.ultima_oferta}" onchange="selProyect(this,'checkListSell' )" />
+						
+				</p:column>
+								
+		</p:dataTable>
+		</div>
+		<br/>
+		
+		<div style="display: none;">
+		
+			<h:inputText id="elementRegSel" value="#{myInvestments.valueClick}">
+				<p:ajax event="change" listener="#{myInvestments.clickEvent}" update="pnlContIfoCredit" />
+			</h:inputText>
+		
+		</div>
+		
+		</FIELDSET>
+		<!-- 
+		<p:commandLink id="buttonTable1"  ></p:commandLink>
+		 -->
+	</div>
+		
+		</div>
+		</h:form> 
+		
+		<h:form  prependId="false" >
+		
+			<div  id="dvContHtml" >
+			
+				<div style="display:none">
+				
+					<div id="dvEdoCuenta" style="background-color: #FFFFFF !important;font-size: 1.15em !important; position: relative;">
+						
+						<div style="width: 30px; height: 30px; position: absolute; top: 0px; left: 0px; z-index: 100; cursor: pointer; border: solid 0px #990000; " onclick="clasefnTckt();" >
+							<img src="../resources/img/close.png" />
+						</div>
+						
+						<div style="display: none;">
+						
+							<p:inputText id="btnTicket" value="#{listaCreditos.valuesforticket}"  > 
+								
+								<p:ajax event="blur" onstart="return showWaitCount();" listener="#{listaCreditos.getTicket}"  oncomplete="showTicket(xhr, status, args);" update="pnlEdoCta"  />
+								
+							</p:inputText>	
+							
+							<p:inputText id="btnGarantia" value="#{listaCreditos.valuesforGarantia}"  > 
+								
+								<p:ajax event="blur" onstart="return showWaitCount();" listener="#{listaCreditos.getGarantia}"  oncomplete="showGarant(xhr, status, args);" update="pnlEdoCta"  />
+								
+							</p:inputText>					
+							
+						</div>
+						<div id="dvWaitEdo" style="display: none; width: 100%;" >
+							<img src="../resources/img/ajax-loader.gif" style="margin-top: 40px; margin-left: auto; margin-right: auto;" />
+						</div>
+						
+						<div id="dvshow" >
+							<h:panelGroup id="pnlEdoCta" >
+								
+									<h:outputLabel escape="false" id="lblHtml" value="#{listaCreditos.ticketStr}" ></h:outputLabel>
+								
+							</h:panelGroup>
+						</div>
+						
+					</div>
+					
+				</div>
+			
+		
+		
+		
+				
+		</div>
+		
+		<div style="display: none;">
+		
+			<div id="dvAvisoConfidencial" >
+				<div style="width: 50%; margin-left: auto; margin-right: auto;text-align: center;color: #439539; font-size: 1.9em; font-weight: bold; margin-top: 20px;" >
+					
+				</div>
+				<div id="contAvisoConf" style="margin: 10px; overflow-y: hidden; overflow-x: hidden;box-shadow: 3px 3px 3px #CCCCCC; border: solid 2px #e6e6e6; width: 850px; margin-left: auto; margin-right: auto; font-size: 0.7em;" >
+				</div>
+			
+				<div style="width: 220px; margin-left: auto; margin-right: auto;border: solid 0px #00FF00; height: auto; overflow: auto;margin-bottom: 20px; " >
+				
+				
+					<div class="buttonPR" style=" width: 85px; padding-left: 6px; padding-right: 4px; float: left;">
+						Aceptar
+					</div>
+					
+					<div class="buttonPR" style=" width: 85px; padding-left: 6px; padding-right: 4px; margin-left: 20px; float: left;">
+					
+						Cancelar
+					
+					</div>
+				
+				
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		</h:form>
+		
+		<script>
+		
+		$(document).ready(function(){
+			var obj01 = document.getElementById("chk_" + #{myInvestments.valCredit} + "");
+			
+			if( obj01 != null){
+				obj01.checked=true;
+			}
+		});
+			
+		
+		</script>
+
+</ui:composition>

@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+					<div class="field compo-porcentaje">
+							<span>%</span>
+							<div class="dvLabel"><strong><label class="labelsStl">
+									Porcentaje asignado<small class="small">*</small></label></strong>
+								</div>
+							  <input type="text"  class="validatorClass porcentaje-bene" placeholder="Ingresa porcentaje"  onkeypress="return isNumberKey2(event)" />
+							
+					</div>
+						<div class="avisoDocs" style="display: block;">
+						<i class="fa fa-caret-up"></i>
+						Es el porcentaje de dinero que le otorgas del total que hay en tu cuenta.
+						
+						</div>
+					<script>
+					porcentajeReset ();
+					porcentajeReset2 ();
+					</script>
+				</ui:composition>

@@ -1,0 +1,21 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+	
+	<div id="dvRelPerson" >
+		<div id="dvRelPersonCont">
+			<div style="position: relative; padding-top: 10px;" >
+			
+		  		<div id="dvResp" style="width: 90%; margin-left: auto; margin-right: auto; margin-top: 10px;position: relative;" >
+			  		Lo sentimos, por  el momento no podemos ofrecerle el servicio de crédito. <br />  <br /> 
+			  		Si considera que esto es un error, por favor mándenos un correo con su caso a <span style="color: #439539;" >soporte@kubofinanciero.com</span>
+				</div><br/>
+				
+				<div class="buttonPR" id="btnRelPerson" onclick="msgOff();">
+					Cerrar
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</ui:composition>	

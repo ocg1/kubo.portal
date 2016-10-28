@@ -1,0 +1,79 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:p  = "http://primefaces.org/ui">
+			
+	
+		<div class="contEdoCuentafieldset" >
+			<div class="periodo_estadocuenta">
+				<span class="labelsStl" style="color: #000000;" >
+					PERIODO: DEL #{estadoCuenta.fechaInicioStr} AL #{estadoCuenta.fechaFinStr}
+				</span>
+			</div>
+			<div class="detalle_movimientos">
+				<span class="labelsStl" style="color: #FFFFFF;" >
+					DETALLE DE MOVIMIENTOS
+				</span>
+			</div>
+			
+			<div>
+				
+				<table class="tableAmortCl" >
+												
+					<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>Descripción del movimiento</th>
+							<th>Abono</th>
+							<th>Cargo</th>
+							<th>Banco Receptor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<h:panelGroup rendered="#{estadoCuenta.tableMovs.size()!=null and estadoCuenta.tableMovs.size() gt 0 }" >
+							<ui:repeat var="mov" value="#{estadoCuenta.tableMovs}" varStatus="status">
+								
+								<tr class="#{!status.even?'tableAmortCl-even':''}" >
+										
+									<td > <h:outputText value="#{mov.fecha}">
+										 <f:convertDateTime pattern="dd/MMM/yyyy" locale="es_MX" />
+									</h:outputText> </td>
+									<td style="text-align: left;" ><h:outputText escape="false" value="#{mov.descripcion}" ></h:outputText> </td>
+									<td style="text-align: #{mov.naturaleza=='A'?'right':'center'};" >#{mov.naturaleza=='A'?mov.monto:''}</td>
+									<td style="text-align: #{mov.naturaleza=='C'?'right':'center'};;" >#{mov.naturaleza=='C'?mov.monto:''}</td>
+									<td style="text-align: left;" >#{mov.institucion_receptora}</td>
+									
+								</tr>
+								
+							</ui:repeat>
+						
+						<tr>
+							<td colspan="5"> 
+								<div class="labelsStl" style="text-align: justify; clear: both; font-size: .90em; margin-left: 20px; margin-top: 10px; padding: 5px; border: solid 0px #000000;">
+									*Todos los montos son expresados en pesos mexicanos
+								</div>
+							</td>
+						</tr>
+						
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{estadoCuenta.tableMovs.size()==null or estadoCuenta.tableMovs.size() == 0 }" >
+						
+							<tr>
+								<td style="text-align: center; font-weight: bold;" colspan="6" >
+									<h:outputText value="Sin movimientos realizados en este periodo " />
+								</td>
+							</tr>
+						
+						</h:panelGroup>
+						
+					</tbody>
+					
+				</table>
+				
+			</div>						
+		</div>
+		
+</ui:composition>

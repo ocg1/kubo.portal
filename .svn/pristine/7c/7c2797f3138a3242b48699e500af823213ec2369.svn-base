@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+					<div class="velo"></div>
+					
+					
+				
+				<!-- 
+				    <h:outputStylesheet library="css"  name="footerStyles.css" />
+				    <h:outputScript library="js" target="head" name="footerScripts.js" />
+				    -->
+<div class="alerts terminosCondiciones" style="width:349px;" >
+		<small class="cerrarAlert" onclick="cerrarAlert();">X</small>
+		<!-- style="position: fixed; opacity: 1;transform: scale(1);" -->
+		<div  class="terminosCondicionesInner">
+			<h2>Términos y condiciones</h2>
+		<ui:include src="modal_condiciones_contenido.xhtml" />
+	
+	
+	</div>
+
+
+</div>
+<div class="fix captacion"></div>
+	<ui:include src ="contentFooter.xhtml"/> 	
+	<ui:include src ="popUpLeads.xhtml"/> 	
+</ui:composition>

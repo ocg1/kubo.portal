@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div style = "font-size: 0.9em; width: 815px;margin-left: auto; margin-right: auto;margin-top: 20px;">
+			
+		<h:panelGroup id = "consulta-buro-credito" rendered = "#{activityPerson.panel_consulta_ENABLED and !activityPerson.panel_inversionista_ENABLED}">		
+			
+			<ui:include src = "intentos-consulta/tabla.xhtml"/>	
+					
+			<h:panelGroup rendered = "#{activityPerson.borrar_intentos_ENABLED}">
+			
+				<div style = "overflow: hidden; margin-top:7px">								
+					<ui:include src = "intentos-consulta/borrar.xhtml"/>
+					<ui:include src = "intentos-consulta/bitacora.xhtml"/>					
+				</div>
+			</h:panelGroup>			
+		</h:panelGroup>
+			
+		<h:panelGroup rendered = "#{!activityPerson.panel_consulta_ENABLED and !activityPerson.panel_inversionista_ENABLED}">
+			<div class = "centerPosition">
+				<div style="margin-top: 20px; font-size: 1.20em; margin-bottom: 10px; margin-left: auto; margin-right: auto; width: 99%; height: auto; overflow: auto; padding-top: 5px; padding-bottom: 5px; border: solid 0px #FF0000; ">
+					No existen intentos de consulta a Buró de Crédito.
+				</div>
+			</div>
+		</h:panelGroup>			
+	</div>
+</ui:composition>

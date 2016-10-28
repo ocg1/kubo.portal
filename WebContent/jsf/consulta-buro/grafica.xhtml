@@ -1,0 +1,71 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class="detailsControlTable clssControlBuro"  >
+		
+		<div style="display: none;">
+			<p:inputText id="valGraphic"  value="#{chartBackBean.burSolNum}" >
+				<p:ajax event="blur" 
+				onstart="return validaSolNum();"  
+				listener="#{chartBackBean.initChart}" 
+				oncomplete="drawChartBuro();" 
+				update="pnlGraphic titleGraphic pnlBurResumeData pnlContCredVig pnlContPersonalData pnlContAddressBuro pnlContConsulBuroUlt6M pnlContConsulBuroMas6M pnlContCredVigCom pnlContCredCerrUlt6M pnlContCredCerrMas6M pnlContAlertas01 pnlContAlertas02 pnlBuroConsultationBur pnlTableNetes pnlWidthVal pnlSaldosdeuda pnlKuboRules " />
+			</p:inputText>
+			<h:panelGroup id = "pnlWidthVal">
+				<p:inputText id="maxWidthTableVig" value="#{chartBackBean.maxWidthTableVig}" ></p:inputText>
+			</h:panelGroup>
+			
+		</div>
+		
+		<div id="chart_data"></div>
+		<h:panelGroup id="titleGraphic">
+			<div  id="chart_divCont" style="display: none;" >
+				<!-- <div class="clGraphicTitle">
+					<div>Fecha de Consulta: <b>#{chartBackBean.fecConsult}</b></div>
+					<div>Han transcurrido <b>#{chartBackBean.diasTrans}</b> días desde la fecha de consulta</div>
+					<div>Número de folio consulta: <b>#{chartBackBean.folioNum}</b></div>
+					<div></div>
+				</div> -->
+				<div style="height:500px; width:700px; margin-top: 20px;" id="chart_div"/>
+	
+				<div>
+				
+				<ui:include src = "../templates/buro_de_credito/tooltip/grafica_MOP.xhtml"/>
+				<ui:include src = "../templates/buro_de_credito/tooltip/grafica_MOP_lineas.xhtml"/>
+				<h:panelGroup rendered="#{sessionBean.area != 'M'}">
+				<script>
+					mostrar_tooltip_reporte();
+				</script>
+				</h:panelGroup>
+					<!-- <h:panelGroup rendered="#{summaryRequest.displayReport}"> -->
+					<h:panelGroup rendered="false">
+						<div class="buttonPR" style="font-size: 0.85em; width: 290px;" >
+							<!-- <a href="../resources/#{summaryRequest.report}" target="_blank"> -->
+								Ver reporte detallado de Buró
+							<!-- </a> -->
+						</div>
+					</h:panelGroup>
+				 
+				</div>
+				
+			</div>
+		</h:panelGroup>
+		<h:panelGroup id="pnlGraphic" >
+			
+			<div id="hVal" style="display: none;" >
+				<h:outputText escape="false"   value="#{chartBackBean.chartModel}" ></h:outputText>
+				
+				<h:outputText escape="false"   value="#{chartBackBean.identifyStr}" ></h:outputText>
+				<input type="text" value="#{chartBackBean.maxGrid}" id ="maxGrid" />
+			</div>
+			
+		 	<div style=" display: none; " id="chart_warning">
+		 		Usuario sin datos de Buró de Crédito
+		 	</div>
+		 	
+ 		</h:panelGroup>
+		</div>
+		<p></p>				
+</ui:composition>				

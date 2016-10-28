@@ -1,0 +1,35 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "dvSuccess" style="font-size: 1.2em; display: none;" >					
+		<div>							
+			<div class = "solicitud_retiro">							
+				<div class = "dvContent clContDescBack1">								
+					<div class = "clContDescBack2">
+										
+						<table>							
+							<tr>							
+								<td colspan = "2" >
+									<h3>Solicitud de Retiro de Efectivo</h3>																	
+								</td>							
+							</tr>
+								
+							<tr>							
+								<td>																	
+									<span>
+		
+										Se ha enviado una notificación al departamento de Tesorería para informarles sobre el retiro que deseas realizar.<br />
+											
+									</span>							
+								</td>								
+							</tr>							
+						</table> 											
+					</div>								
+				</div>								
+			</div>						
+		</div>						
+	</div>				
+</ui:composition>				

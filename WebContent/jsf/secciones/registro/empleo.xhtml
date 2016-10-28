@@ -1,0 +1,499 @@
+<ui:insert xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<div class="remove" >
+<SCRIPT type="text/javascript">
+
+$(document).ready(function() {	
+	$("#frm_data_company").validationEngine('attach', {promptPosition : "centerRight",autoPositionUpdate : true});
+	$('.buttonPR').click(function(){
+		var parentNext=$(this).parent().next('.accordion');
+		if(parentNext.length==0){
+			$("#hdNext\\:siguienteIncomeExpense").click();
+		}else{
+			parentNext.click();
+		}
+		//$.scrollTo('#header', 800, { axis:'y' });
+	});
+	
+	
+$("input[name=receipt_payroll]:radio").click(function() {
+    if($(this).val() == '1') {
+    	$("#ref_question_receipt_payroll").slideUp();    	 
+    } else if($(this).val() == '2') {    	
+    	$("#ref_question_receipt_payroll").slideDown();	        	
+    }
+  });
+  
+$(".countCharacter").charCount({
+	limit: 140,
+	warning: 20,
+	css: 'counter',
+	cssWarning: 'warning',
+    counterText: 'Caracteres restantes: '
+});
+
+$("#street").blur(function(event){
+	generateStringAddress();
+	event.preventDefault();
+});
+$("#address_number").blur(function(event){
+	generateStringAddress();
+	event.preventDefault();
+});
+
+$(".mapClass").focus(function(event){		
+	
+	var t = $('#zip_code').offset().top-135;
+	var l = $(this).offset().left+230;
+	$('#mapa').css({'top' :  t+'px', 'left' : '630px'})
+	if(flag==0){
+		if(flagIni==0){
+			initialize();			
+			flagIni=1;
+		}
+		generateStringAddress();
+		$('#mapa').slideDown();	
+		flag=1;
+	}
+	var scroll = $(this).offset().top;
+	scroll = scroll -40;
+	//$.scrollTo(scroll, 800, { axis:'y' });
+	event.preventDefault();
+	
+});
+
+$(".mapOff").focus(function(event){
+mapOnOff();	
+event.preventDefault();
+});
+
+$(".mapOff").click(function(event){	
+	mapOnOff();	
+	event.preventDefault();
+});
+
+});
+</SCRIPT>
+
+<h:form id="frm_data_company" prependId="false">
+<div  class='regParag' align='justify'>
+El siguiente proceso te llevará paso a paso para que construyas “tu historia”, es muy importante que seas claro y 
+conciso, la información la puedes ir agregando conforme la obtienes, no es necesario seguir en la mayoría de los casos 
+el orden, pero si es muy importante llenar todos los datos para poder crear adecuadamente tu solicitudproyecto.
+Si tienes dudas cuentas con botones de ayuda que te explicarán que hacer, además te guiaran por todo el proceso de la 
+creación de tu proyecto  y si lo necesitas nos encantará hablar contigo en nuestro centro de ayuda.kubo.
+<p:separator />
+</div>				
+<br/>
+
+	<div class="dvContent2">
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel value="#{msg.What_do_you_do_text}" styleClass="labelsStl" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<!-- <h:inputText id="value_whatDoYouDo" styleClass="elementAddres1 validate[required,minSize[5]]" value="#{addEmployment.thisEmployment.about_my_job}">
+						<p:ajax event="blur"    listener="#{addEmployment.updateEmployment}"></p:ajax>
+					</h:inputText>  -->
+					<h:inputTextarea id="value_whatDoYouDo" tabindex="1" style="width: 453px ! important;" styleClass="elementTextArea countCharacter validatorClass mapOff" rows="4" cols="66" value="#{addEmployment.thisEmployment.about_my_job}" > 
+						<p:ajax event="blur" onstart="return validateTextArea('value_whatDoYouDo');" listener="#{addEmployment.updateEmployment}"></p:ajax>
+					</h:inputTextarea>	
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel value="#{msg.Company_name_text}" styleClass="labelsStl" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:inputText id="value_employer" tabindex="2" styleClass="elementAddres1 validatorClass mapOff" value="#{addEmployment.thisEmployment.employer}">
+						<p:ajax event="blur" onstart="return validateTextField('value_employer')" listener="#{addEmployment.updateEmployment}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel value="#{msg.Question_receipt_payroll_text}" styleClass="labelsStl" />
+				</div>
+				<p />
+				<div class="dvElement">
+					<h:selectOneRadio id="receipt_payroll" tabindex="3" styleClass="elementStlLbl validate[required] validatorClass"  value="#{addEmployment.thisEmployment.not_outsourcing}" >
+		            	<f:selectItem   itemValue="1" itemLabel="Si"/>
+		             	<f:selectItem   itemValue="2" itemLabel="No"/>	 
+		             	<p:ajax event="click" onstart="mapOnOff();" listener="#{addEmployment.updateEmployment}" oncomplete = "conjuntoCombos();"></p:ajax>        						 
+	         		</h:selectOneRadio>
+				</div>
+			</div>
+			<div id="ref_question_receipt_payroll" style="display: none;" >
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel value="#{msg.Who_receipt_payroll_text}" styleClass="labelsStl" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:inputText id="value_who_receipt_payroll" tabindex="4" styleClass="elementAddres1 validatorClass mapOff" value="#{addEmployment.thisEmployment.who_pays}">
+						<p:ajax event="blur"  listener="#{addEmployment.updateEmployment}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			</div>			
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Joblevel_text}" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:inputText id="inp_value_joblevel" tabindex="5" styleClass="elementAddres1 validatorClass mapOff" value="#{addEmployment.thisEmployment.position}">
+						<p:ajax event="blur" onstart="return validateTextField('inp_value_joblevel')" listener="#{addEmployment.updateEmployment}" />
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Company_time_text}" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:inputText id="inp_company_time" tabindex="6" maxlength="2" onkeypress="return isNumberKey(event);" style="width:150px !important" styleClass="elementAddres1 validatorClass mapOff" value="#{addEmployment.thisEmployment.tenure}">
+						<p:ajax event="blur" onstart="return validateYears('inp_company_time')" listener="#{addEmployment.updateEmployment}" />
+					</h:inputText>
+					<span> Años</span>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Social_security_number_text}" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:inputText id="id_social_security" tabindex="7" maxlength="11" onkeypress="return isNumberKey(event);" styleClass="elementAddres1 validatorClass mapOff" value="#{addEmployment.thisEmployment.nss}">
+						<p:ajax event="blur" onstart="return validateDigitIMSS('id_social_security')" listener="#{addEmployment.updateEmployment}" />
+					</h:inputText>
+				</div>
+			</div>			
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Contract_type_text}" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:selectOneMenu id="id_contract_type" tabindex="8" styleClass="elementStlSelAddress validate[required] validatorClass mapOff" value="#{addEmployment.thisEmployment.contract_type_id}">
+						<f:selectItem itemValue="" itemLabel="" />
+						<f:selectItems value="#{addEmployment.listContractType}" var="contractType" itemLabel="#{contractType.name}" itemValue="#{contractType.contract_typeCatPK.contract_type_id}" />
+						<p:ajax event="change" onstart="return validateMyLoanCombo('id_contract_type');" listener="#{addEmployment.updateEmployment}" />						
+					</h:selectOneMenu>
+				</div>
+			</div>			
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Working_hours_text}" />
+				</div>
+				<p />
+				<div class="dvElementLength">
+					<h:selectOneMenu id="id_hour1" tabindex="9" style="width:61px !important;" styleClass="elementStlSelAddress mapOff" value="#{addEmployment.check_inH1}">
+						<f:selectItem itemValue="00" itemLabel="00" />
+						<f:selectItem itemValue="01" itemLabel="01" />
+						<f:selectItem itemValue="02" itemLabel="02" />
+						<f:selectItem itemValue="03" itemLabel="03" />
+						<f:selectItem itemValue="04" itemLabel="04" />
+						<f:selectItem itemValue="05" itemLabel="05" />
+						<f:selectItem itemValue="06" itemLabel="06" />
+						<f:selectItem itemValue="07" itemLabel="07" />
+						<f:selectItem itemValue="08" itemLabel="08" />
+						<f:selectItem itemValue="09" itemLabel="09" />
+						<f:selectItem itemValue="10" itemLabel="10" />
+						<f:selectItem itemValue="11" itemLabel="11" />
+						<f:selectItem itemValue="12" itemLabel="12" />
+						<f:selectItem itemValue="13" itemLabel="13" />
+						<f:selectItem itemValue="14" itemLabel="14" />
+						<f:selectItem itemValue="15" itemLabel="15" />
+						<f:selectItem itemValue="16" itemLabel="16" />
+						<f:selectItem itemValue="17" itemLabel="17" />
+						<f:selectItem itemValue="18" itemLabel="18" />
+						<f:selectItem itemValue="19" itemLabel="19" />
+						<f:selectItem itemValue="20" itemLabel="20" />
+						<f:selectItem itemValue="21" itemLabel="21" />
+						<f:selectItem itemValue="22" itemLabel="22" />
+						<f:selectItem itemValue="23" itemLabel="23" />
+						<f:selectItem itemValue="24" itemLabel="24" />		
+						<p:ajax event="change" onstart="return validateCheckInCheckOut('id_minuts2','id_hour1','id_hour2');" listener="#{addEmployment.updateCheckInCheckOutEmployment}" ></p:ajax>									
+					</h:selectOneMenu>
+					:
+					<h:selectOneMenu id="id_minuts1" tabindex="10" style="width:61px !important;" styleClass="elementStlSelAddress mapOff" value="#{addEmployment.check_inM1}">
+						<f:selectItem itemValue="00" itemLabel="00" />
+						<f:selectItem itemValue="15" itemLabel="15" />
+						<f:selectItem itemValue="30" itemLabel="30" />
+						<f:selectItem itemValue="45" itemLabel="45" />		
+						<p:ajax event="change" onstart="return validateCheckInCheckOut('id_minuts2','id_hour1','id_hour2');" listener="#{addEmployment.updateCheckInCheckOutEmployment}" ></p:ajax>																		
+					</h:selectOneMenu>
+					
+					<h:outputLabel value="a" style="font-size: 1.1em; margin: 10px;" styleClass="labelsStl" />
+					
+					<h:selectOneMenu id="id_hour2" tabindex="11" style="width:61px !important;" styleClass="elementStlSelAddress mapOff" value="#{addEmployment.check_outH1}">
+						<f:selectItem itemValue="00" itemLabel="00" />
+						<f:selectItem itemValue="01" itemLabel="01" />
+						<f:selectItem itemValue="02" itemLabel="02" />
+						<f:selectItem itemValue="03" itemLabel="03" />
+						<f:selectItem itemValue="04" itemLabel="04" />
+						<f:selectItem itemValue="05" itemLabel="05" />
+						<f:selectItem itemValue="06" itemLabel="06" />
+						<f:selectItem itemValue="07" itemLabel="07" />
+						<f:selectItem itemValue="08" itemLabel="08" />
+						<f:selectItem itemValue="09" itemLabel="09" />
+						<f:selectItem itemValue="10" itemLabel="10" />
+						<f:selectItem itemValue="11" itemLabel="11" />
+						<f:selectItem itemValue="12" itemLabel="12" />
+						<f:selectItem itemValue="13" itemLabel="13" />
+						<f:selectItem itemValue="14" itemLabel="14" />
+						<f:selectItem itemValue="15" itemLabel="15" />
+						<f:selectItem itemValue="16" itemLabel="16" />
+						<f:selectItem itemValue="17" itemLabel="17" />
+						<f:selectItem itemValue="18" itemLabel="18" />
+						<f:selectItem itemValue="19" itemLabel="19" />
+						<f:selectItem itemValue="20" itemLabel="20" />
+						<f:selectItem itemValue="21" itemLabel="21" />
+						<f:selectItem itemValue="22" itemLabel="22" />
+						<f:selectItem itemValue="23" itemLabel="23" />
+						<f:selectItem itemValue="24" itemLabel="24" />	
+						<p:ajax event="change" onstart="return validateCheckInCheckOut('id_minuts2','id_hour1','id_hour2');" listener="#{addEmployment.updateCheckInCheckOutEmployment}" ></p:ajax>										
+					</h:selectOneMenu>
+					:
+					<h:selectOneMenu id="id_minuts2" tabindex="12" style="width:61px !important;" styleClass="elementStlSelAddress validatorClass mapOff" value="#{addEmployment.check_outM1}">
+						<f:selectItem itemValue="00" itemLabel="00" />
+						<f:selectItem itemValue="15" itemLabel="15" />
+						<f:selectItem itemValue="30" itemLabel="30" />
+						<f:selectItem itemValue="45" itemLabel="45" />	
+						<p:ajax event="change" onstart="return validateCheckInCheckOut('id_minuts2','id_hour1','id_hour2');" listener="#{addEmployment.updateCheckInCheckOutEmployment}" ></p:ajax>																			
+					</h:selectOneMenu>					
+					
+					<!-- <h:inputText id="id_working_hours_in" styleClass="elementStlMin" value="#{addEmployment.thisEmployment.check_in}">
+						<p:ajax event="blur" listener="#{addEmployment.updateEmployment}" />
+					</h:inputText>
+
+					<h:outputLabel value="a" style="font-size: 1.1em; margin: 10px;" styleClass="labelsStl" />
+
+					<h:inputText id="id_working_hours_out" style="width: 5px;" styleClass="elementStlMin" value="#{addEmployment.thisEmployment.check_out}">
+						<p:ajax event="blur" listener="#{addEmployment.updateEmployment}" />
+					</h:inputText> -->
+				</div>
+			</div>
+	</div>
+
+
+<br />
+
+
+	<div class="dvContent2">
+	<div class="clTitle">
+		<h:outputLabel value="#{msg.Data_domicile_employ}" />
+	</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.Zipcode_text}" />
+					</div>
+					<p />
+					<div class="dvElementAddres1">					
+						<h:inputText id="zip_code" tabindex="13" onkeypress="return isNumberKey(event);" value="#{addEmployment.zip_code}" maxlength="5"  styleClass="elementAddres1 validatorClass mapClass">
+							<p:ajax event="blur" onstart="return validateZipCode('zip_code');" oncomplete="zipCodeComplete(xhr, status, args);" listener="#{addEmployment.zipCodeFunctionAndSave}"   update="updatePanelAdrress"></p:ajax>
+						</h:inputText>
+					</div>
+				</div>
+				<p:outputPanel id="updatePanelAdrress" >
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.Neighborhood_text}" />
+					</div>
+					<p />
+					<div class="dvElementAddres1">
+						<h:selectOneMenu id="coloniaEmp" tabindex="14" value="#{addEmployment.neighborhood_id}" styleClass="elementStlSelAddress validate[required] validatorClass mapClass" style="height: 30px;">
+							<f:selectItem itemLabel="" itemValue="" />
+							<f:selectItems value="#{addEmployment.listAsents}" var="asents" itemLabel="#{asents.name}" itemValue="#{asents.neighborhoodCatPK.neighborhood_id}" />
+							<p:ajax event="change" onstart="return validateMyLoanCombo('coloniaEmp');" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+						</h:selectOneMenu>
+
+					</div>
+				</div>
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.City_text}" />
+					</div>
+					<p />
+					<div class="dvElementAddres1">
+						<h:inputText id="delegMun" value="#{addEmployment.delegMun}" readonly="true" styleClass="elementAddres1"></h:inputText>
+					</div>
+				</div>
+
+				<div class="dvContent">
+					<div class="dvLabel">
+						<h:outputLabel styleClass="labelsStl" value="#{msg.State_text}" />
+					</div>
+					<p />
+					<div class="dvElementAddres1">
+						<h:inputText id="estado" value="#{addEmployment.estado}" disabled="true" styleClass="elementAddres1"></h:inputText>
+					</div>
+				</div>
+				</p:outputPanel>
+				<div class="dvContent">
+	   				<h:inputHidden id="address"  styleClass="elementAddres1"  />
+	   			</div>
+			
+			<div class="dvContent">
+				<div class="dvLabel" style="width: 70px; float: left;">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Street_text}" />
+				</div>
+				<P />
+				<div class="dvElementAddres1">
+					<h:inputText id="street" tabindex="15" value="#{addEmployment.thisAddress.street}" styleClass="elementAddres1 validate[required] validatorClass mapClass">
+						<p:ajax event="blur" onstart="return validateNotEmpty('street');" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent" style="float: left; width: 180px">
+				<div class="dvLabel" style="width: 160px; float: left;">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.ExtNumber_text}" />
+				</div>
+				<P />
+				<div class="dvElement" style="width: 120px; float: left;">
+					<h:inputText id="address_number" tabindex="16" onkeypress="return isNumberKey(event);" value="#{addEmployment.thisAddress.address_number}" styleClass="elementAddresMin mapClass">
+						<p:ajax event="blur" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent" style="float: left;">
+				<div class="dvLabel" style="width: 160px; float: left; margin-left: 10px;">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.IntNumber_text}" />
+				</div>
+				<P />
+				<div class="dvElement" style="width: 120px; float: left;">
+					<h:inputText id="address_intNumber" tabindex="17" value="#{addEmployment.thisAddress.apt_number}" styleClass="elementAddresMin mapClass">
+						<p:ajax event="blur" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<P style="clear: both;" />
+			<div class="dvContent" style="float: left; width: 180px">
+				<div class="dvLabel" style="width: 120px; float: left;">
+					<h:outputLabel styleClass="labelsStl" value="${msg.Block_text}" />
+				</div>
+				<P />
+				<div class="dvElement" style="width: 120px; float: left;">
+					<h:inputText id="address_block" tabindex="18" value="#{addEmployment.thisAddress.mx_manzana}" styleClass="elementAddresMin mapClass">
+						<p:ajax event="blur" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel" style="width: 120px; float: left; margin-left: 10px;">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Lt_text}" />
+				</div>
+				<P />
+				<div class="dvElement" style="width: 120px; float: left;">
+					<h:inputText id="address_lote" tabindex="19" value="#{addEmployment.thisAddress.mx_lote}" styleClass="elementAddresMin mapClass">
+						<p:ajax event="blur" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>			
+			<div class="dvContent" style="width: 380px;">
+				<div class="dvLabel" style="width: 120px; clear: both;">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.BetweenStreet1_text}" />
+				</div>
+				<P />
+				<div class="dvElementAddres1">
+					<h:inputText id="betweenStreet1" tabindex="20" value="#{addEmployment.thisAddress.first_street_reference}" styleClass="elementAddres1 mapClass">
+						<p:ajax event="blur" onstart="return validateNotEmpty('betweenStreet1');" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent" style="width: 380px;">
+				<div class="dvLabel" style="width: 120px; clear: both;">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.BetweenStreet2_text}" />
+				</div>
+				<P />
+				<div class="dvElementAddres1">
+					<h:inputText id="betweenStreet2" tabindex="21" value="#{addEmployment.thisAddress.second_street_reference}" styleClass="elementAddres1 mapClass">
+						<p:ajax event="blur" onstart="return validateNotEmpty('betweenStreet2');" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+					
+   			
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Point_of_reference}" />
+				</div>
+				<p />
+				<div class="dvElementAddres1">
+					<h:inputTextarea id="point_ref" tabindex="22" rows="5" styleClass="elementTextArea mapOff" value="#{addEmployment.thisAddress.description}">
+						<p:ajax event="blur" onstart="return validateNotEmpty('point_ref');" listener="#{addEmployment.updateAddressBlur}"></p:ajax>
+					</h:inputTextarea>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_fixed_text}" />
+				</div>
+				<P />
+				<div class="dvElementAddres1">
+					<p:inputMask id="lada_phoneFixed_employ" tabindex="23" mask="(99)" style="font-size: 1.2em !important;width:50px !important;" styleClass="elementAddresMin mapOff validatorClass" value="#{addEmployment.ladaFixedEmploy}">	
+					<p:ajax event="blur"></p:ajax>					
+					</p:inputMask>
+					<p:inputMask id="phoneFixed_employ" tabindex="24" mask="99 99 99 99"  style="font-size: 1.2em !important;width: 240px !important;margin-left:5px !important;" styleClass="elementAddres1 validatorClass mapOff" value="#{addEmployment.phoneFixedEmploy}">
+						<p:ajax event="blur" onstart="return validatePhone('phoneFixed_employ','lada_phoneFixed_employ','phoneFixed_employ');" listener="#{addEmployment.updatePhoneEmploymenFixed}"  ></p:ajax>
+					</p:inputMask>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.TelExt_text}" />
+				</div>
+				<P />
+				<div class="dvElementAddres1">
+					<h:inputText id="value_telExt" tabindex="25" onkeypress="return isNumberKey(event);" styleClass="elementAddres1 mapOff " value="#{addEmployment.extFixedEmploy}">
+						<p:ajax event="blur" onstart="return validatePhoneExt('value_telExt','lada_phoneFixed_employ','phoneFixed_employ')" listener="#{addEmployment.updatePhoneEmploymenFixed}" ></p:ajax>
+					</h:inputText>
+				</div>
+			</div>
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_cell_employment}" />
+				</div>
+				<P />
+				<div class="dvElementAddres1">
+					<p:inputMask id="lada_phoneCel_employ" tabindex="26" mask="(99)" style="font-size: 1.2em !important;width:50px !important;" styleClass="elementAddresMin mapOff" value="#{addEmployment.ladaCelEmploy}">						
+						<p:ajax event="blur"></p:ajax>
+					</p:inputMask>
+					<p:inputMask id="phoneCel_employ" tabindex="27" mask="99 99 99 99"  style="font-size: 1.2em !important;width: 240px !important;margin-left:5px !important;" styleClass="elementAddres1  mapOff" value="#{addEmployment.phoneCelEmploy}">
+						<p:ajax event="blur" onstart="return validatePhone('phoneCel_employ','lada_phoneCel_employ','phoneCel_employ');" listener="#{addEmployment.updatePhoneEmploymentCel}"  ></p:ajax>
+					</p:inputMask>
+				</div>
+			</div>		
+			<h:inputText style="display:none;" id="latLong" ajax="true" value="#{addEmployment.latLong}"  >
+				<p:ajax event="blur"></p:ajax>
+			</h:inputText>	
+			<!-- 
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel styleClass="labelsStl" value="#{msg.Social_network_text}" />
+				</div>
+				<P />
+				<div class="dvElement">
+					<p:graphicImage style="margin:3px"  url="../resources/img/Facebook-32.png"></p:graphicImage>
+					<p:graphicImage style="margin:3px"  url="../resources/img/Twitter-32.png"></p:graphicImage>
+					<p:graphicImage style="margin:3px"  url="../resources/img/google+.png"></p:graphicImage>
+				</div>
+				 
+			</div>
+			-->
+		
+	</div>
+
+<br />
+</h:form>
+</div>
+</ui:insert>

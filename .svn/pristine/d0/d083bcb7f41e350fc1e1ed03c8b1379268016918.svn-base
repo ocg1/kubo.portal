@@ -1,0 +1,12 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:ui = "http://java.sun.com/jsf/facelets">	
+			    
+	<div class = "main_labels">
+		<div class = "left_phoneHead" >
+			Llámanos: <span >62-69-00-24</span>
+		</div>
+		
+		<ui:include src = "label_bienvenido_usuario.xhtml"/>
+				
+	</div>				
+</ui:composition>				

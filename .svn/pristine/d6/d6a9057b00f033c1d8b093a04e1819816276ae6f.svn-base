@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div style = "padding:5px; border: 1px solid #cccccc; margin: 10px auto 0 auto;" >
+	
+		<div class="centerPosition">
+		
+			<p><strong>Platícanos para qué vas a utilizar tu préstamo</strong></p>				
+		</div>
+		
+		<table border = "0" style = "width: 100%">
+			<tr>
+				<td>Agregó</td>
+				<td>#{chartBackBean.coach_nombre}</td>
+			</tr>			
+			<tr>	
+				<td>Fecha</td>
+				<td>#{chartBackBean.coach_fecha_nota}</td>
+			</tr>
+			<tr>
+				<td>Nota</td>
+				<td>#{chartBackBean.nota_del_coach.note}</td>
+			</tr>
+		</table>
+
+					
+	</div>				
+</ui:composition>				

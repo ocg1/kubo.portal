@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	
+	<title>Tu Firma Kubo.Financiero </title>
+	
+	<link rel="stylesheet" href="../resources/js/firmaJS/public/stylesheets/bootstrap.css" />
+	<link rel="stylesheet" href="../resources/js/firmaJS/public/stylesheets/signature.css" />
+	<link rel="stylesheet" href="../resources/js/firmaJS/public/stylesheets/animate.min.css" />
+	<link
+		href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500italic,500,700italic,700,900,900italic"
+		rel="stylesheet" type="text/css" />
+		
+	<style type="text/css">
+		img.wp-smiley, img.emoji {
+			display: inline !important;
+			border: none !important;
+			box-shadow: none !important;
+			height: 1em !important;
+			width: 1em !important;
+			margin: 0 .07em !important;
+			vertical-align: -0.1em !important;
+			background: none !important;
+			padding: 0 !important;
+		}
+	</style>
+
+</h:head>
+
+<h:body id="body"
+	class="single single-post postid-863 single-format-standard">
+	
+	<div id="animatedModal">
+		<div id="tarjeta-modal" class="tarjeta-login-modal">
+			
+			<img src="../resources/js/firmaJS/public/images/close.png" class="close-animatedModal btn-close" />
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-md-offset-3">
+						<div class="row alerta-modal">
+							<div class="col-xs-12">¿Aceptas firmar el contrato?</div>
+							<div class="col-xs-5 col-xs-offset-1">
+								<a id="form-next"
+									class="btn btn-primary btn-respon-form btn-modal-close close-animatedModal">Cancelar</a>
+							</div>
+							<div class="col-xs-5">
+								<a id="continueBtn"
+									class="btn btn-primary btn-respon-form btn-modal close-animatedModal">Aceptar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div id="containerApp" class="containerp">
+		<div class="col-md-8 col-md-offset-2 col-xs-12">
+			<div id="tarjeta-login" class="tarjeta-login">
+				
+				<div class="titulo Bold">
+					<div class="col-md-6">
+						<div class="img-logo-cont">
+							<img src="../resources/js/firmaJS/public/images/logo_kubo.png" class="logo_header" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<br />
+						<div class="img-firma">
+							<img src="../resources/js/firmaJS/public/images/sig2.png" height="77px;" class="der" />
+						</div>
+					</div>
+					<h1></h1>
+				</div>
+				
+				<div class="contenido">
+					<div class="row">
+						<div class="col-sm-12">
+							<div id="wrapper" class="hfeed">
+								<div class="firma">
+									<div id="main">
+										<div id="container">
+											<div id="content" role="main">
+												<div>
+													<h1>Firma tu solicitud</h1>
+													<h2>Para registrar tu firma, es necesario que firmes
+														en este espacio, utilizando tu mouse o el mouse pad.</h2>
+													<div class="entry-content">
+														<p>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/jquery.min.js"></script>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/easeljs.min.js"></script>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/script.js"></script>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/bootstrap.js"></script>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/detectmobilebrowser.js"></script>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/responsive.js"></script>
+															<script type="text/javascript"
+																src="../resources/js/firmaJS/public/javascripts/animatedModal.min.js"></script>
+															<script type="text/javascript">
+																
+																// <![CDATA[ 
+																$(document).ready(
+																		
+																	function() {
+														
+																		
+																		$('#continueBtn').on('click',
+																								function() {
+																									// Serialización de la firma
+																									$('#signature').val(record.serialize());
+																									$('#signature').blur();
+																									// Base64 de render en formato png
+																									$('#firmaData').val(cacheCanvas.toDataURL());
+																									$('#firmaData').blur();
+																									$('#cmdSendDataSignature').click();
+																							});
+																		
+																		$('#clearBtn').on('click',clear);
+																		
+																	});
+																//]]>
+															</script>
+														</p>
+														<div id="drawingDiv">
+														
+															<canvas id="canvas1" height="400" width="500">
+															</canvas>
+														
+															<img id="clearBtn" src="../resources/js/firmaJS/public/images/borrar2.png" />
+															
+															<br />
+														
+															<h:form action="playback" method="POST" id="playback" prependId="false" >
+																<div style="display:none;">
+																	<h:inputTextarea name="signature" id="signature" cols="50" rows="25" value="#{signatureManaged.serialize_str}" >
+																		<p:ajax event="blur"  ></p:ajax>
+																	</h:inputTextarea>
+																	<h:inputTextarea name="firma" 	  id="firmaData" cols="50" rows="25" value="#{signatureManaged.data_url_str}" >
+																		<p:ajax event="blur"  ></p:ajax>
+																	</h:inputTextarea>
+																	<input type="hidden" name="id" value="0" />
+																</div>	
+																	<a id="continueBtn2" href="#animatedModal"
+																		class="btn btn-primary btn-respon">Continuar</a>
+																		
+																<div style="display:none;" >
+																
+																	<h:commandLink id="cmdSendDataSignature" >
+																		<p:ajax event="click" listener="#{signatureManaged.getData}"  ></p:ajax>
+																	</h:commandLink>
+																
+																</div>
+																		
+															</h:form>
+															
+															<script type="text/javascript">
+																$("#continueBtn2").animatedModal({
+																								    color: "rgba(255, 255, 255, 0.8)"
+																								});
+															</script>
+															<br />
+														</div>
+														<div>
+															<div id="serializerDiv" style="display: none;">
+																<textarea id="serDataTxt" cols="80" rows="8"></textarea>
+																<br />
+																<input id="cancelBtn" type="button" value="Close"
+																	class="btn btn-default btn-respon" />
+																<input
+																	id="okBtn" type="submit" value="Submit"
+																	class="btn btn-default btn-respon" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</h:body>
+
+</html>

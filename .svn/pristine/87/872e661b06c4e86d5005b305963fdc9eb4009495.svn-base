@@ -1,0 +1,68 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="dvContent total_disponible_mes" >  
+			
+					<h2 class="encabezado_2">
+						<h:outputLabel   value="#{msg.Surplus_expense_text}"/>
+						<div class="leyendas italic" style="display: #{addIncomeExpenses.wagesSalaryDisp}">
+							<p>Ingresos menos gastos</p>
+						</div>
+						<div  class="leyendas italic" style="display:#{addIncomeExpenses.businessCompanyDisp}">
+							<p>Es la uilidad neta de tu negocio menos tus gastos</p>
+						</div>
+			</h2>	
+	
+									
+			<div class="operacionNegocio  ContenedorImagenMuestra" style="display:#{addIncomeExpenses.businessCompanyDisp}">
+				<ul>
+				    <li>
+					  	<span>Utilidad neta</span> 
+					    <i onclick="abrir_imagenreferencia(this);" class="fa fa-question-circle"></i>            
+					   
+					   
+					   <strong class="utilidadNeta"> $ 0</strong>
+					   
+					   </li>
+					 <li>
+						<span>Otros ingresos</span>       
+						<strong class="otrosIngresos"> $ 0</strong>
+					 </li>
+					 <li>
+						<span>Total de gastos</span>      
+						<strong class="totalGastos"></strong>
+						
+					 </li>
+				</ul>
+									
+				<div class="imagen_referencia utilidad">
+				<i class="fa fa-sort-asc"></i>
+					<img id="j_idt1632" class="close" src="../resources/img/close.png" alt="" onclick="cerrar_imagenreferencia(this);"/>
+					<figure>
+						La utilidad neta de tu negocio la calculamos descontando a tus ventas los gastos de tu negocio.
+					</figure>
+				</div>
+																
+		</div>
+		<div class="operacionEmpleo" style="display: #{addIncomeExpenses.wagesSalaryDisp}">
+			<ul>
+				<li>
+					<span>Total de ingresos </span>       
+					<strong class="IngresosEmpleo" > 0</strong>
+				</li>
+				<li>
+					<span>Total de gastos  </span>      
+					<strong class="totalGastosEmpleo"></strong>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<div  id="total_incomeExpense" class="formatincomexpenses" style="display: #{addIncomeExpenses.wagesSalaryDisp}" ><span></span></div>		
+		<div  id="total_incomeExpense" class="formatincomexpenses" style="display:#{addIncomeExpenses.businessCompanyDisp}" ><span></span></div>
+	
+		<h:inputText id="inp_difenrent_income_expense" style="display:none;" styleClass="elementStl formatincomexpenses"  disabled="true" value="#{addIncomeExpenses.excessStr}" />					
+		</div>
+</ui:composition>

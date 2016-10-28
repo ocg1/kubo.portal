@@ -1,0 +1,49 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	<style>
+		.visita_domiciliaria_INFO
+		{
+			width:16px;
+			height:16px;
+		    border: 1px solid #a8a8a8;
+		    background: #c4c4c4 -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
+		}
+		
+		.visita_domiciliaria_INFO .ui-chkbox,
+		.visita_domiciliaria_INFO .ui-chkbox-box,
+		.visita_domiciliaria_INFO .ui-icon
+		{
+			margin:0 !important;
+		}
+		
+		.visita_domiciliaria_INFO .ui-chkbox,
+		.visita_domiciliaria_INFO .ui-chkbox-box
+		{
+			width:16px !important;
+			height:16px !important;;
+		}
+	</style>
+	
+	<div id = "meta_INFO_visita_domiciliaria" style = "display:none">
+		<h:panelGrid columns     = "2" 
+					 cellpadding = "5"			     
+				     style       = "margin-bottom:10px">
+				     
+	        <p:selectBooleanCheckbox value = "#{summaryRequest.notas.datos_documentos_OK}" styleClass = "visita_domiciliaria_INFO">
+	        	<p:ajax listener = "#{summaryRequest.notas.listener_datos_documentos_OK}"/>
+	        </p:selectBooleanCheckbox>
+	        
+	        <h:outputText value = "Los datos y los documentos son correctos" />	        
+	 
+	 		<p:selectBooleanCheckbox value = "#{summaryRequest.notas.domicilio_OK}" styleClass = "visita_domiciliaria_INFO">
+	 			<p:ajax listener = "#{summaryRequest.notas.listener_domicilio_OK}"/>
+	 		</p:selectBooleanCheckbox>
+	 		
+	        <h:outputText value = "El domicilio es correcto" />	        
+		</h:panelGrid>	
+	</div>
+</ui:composition>

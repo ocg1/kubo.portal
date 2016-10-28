@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+      xmlns:h  = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f  = "http://java.sun.com/jsf/core"
+      xmlns:p  = "http://primefaces.org/ui">
+      
+	<h:head>
+		<title>#{editor_telefono.page_title}</title>			       
+    	
+		<meta http-equiv = "Content-Type" content = "text/html; charset=UTF-8" />	
+		
+		<script type = "text/javascript" src = "resources/js/editor-telefonos.js"/>
+		<script type = "text/javascript" src = "resources/js/editor-telefonos/audtitoria-access.js"/>
+		<script type = "text/javascript" src = "resources/js/editor-telefonos/add-phone.js"/>
+		<script type = "text/javascript" src = "resources/js/editor-telefonos/change-phone.js"/>
+		
+		<link type = "text/css" rel = "stylesheet" href = "resources/css/editor-telefonos.css" />
+		<link type = "text/css" rel = "stylesheet" href = "resources/css/reset.css" />        
+        <link type = "text/css" rel = "stylesheet" href = "resources/css/kubo_styles.css" />
+      
+		<script>
+			$(document).ready(function()
+			{
+				EditorTelefono.init_access_CONFIG();
+				
+				EditorTelefono.init_change_phone(#{editor_telefono.phone_id});
+			});					
+		</script>
+				
+	</h:head>
+	
+	<h:body style = "background:#f1f1f1;">
+		
+		<div class = "veloE"></div>
+		
+		<h:outputStylesheet library="css"  name="buttonSyles.css" />
+		<h:outputStylesheet library="css"  name="generales_estructura_menu.css" />
+	
+		<h:form prependId = "false">
+			<div class = "content pantallaTelefonos">
+				<img style = "width:80px; height:auto; margin:0 0 15px;" src="https://www.kubofinanciero.com/Kubo/Portal/resources/images/logo_kubo.png"/>
+				
+				<h3>#{editor_telefono.page_title}</h3>
+				
+				<h:panelGroup id = "panel-phone-view">		
+					<div class = "encabezado">
+						<p>Listado de teléfonos</p>											
+					</div>		
+					
+					 <ui:include src = "editar-telefono/lista-phone-view.xhtml"/>				 
+				 </h:panelGroup>
+						 			
+				<ui:include src = "editar-telefono/add-phone.xhtml"/>
+				<ui:include src = "editar-telefono/remote-command.xhtml"/>	
+			</div>	
+		</h:form>	
+		
+		<script>				
+				$(".formato_tablas tr:odd").addClass("par");
+		</script>	
+	</h:body>
+</html>

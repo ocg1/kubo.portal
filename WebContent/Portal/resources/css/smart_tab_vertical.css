@@ -1,0 +1,540 @@
+/*
+ * SmartTab plugin v2.0
+ * jQuery Tab Control Plugin
+ * 
+ * by Dipu Raj
+ * http://techlaboratory.net/smarttab
+ * 
+ * License 
+ * http://creativecommons.org/licenses/by-sa/3.0/  
+ */
+.stMain {
+  display:block;
+  color: #666666;
+  width: 1024px;
+  margin: 30px auto;
+  position: relative;
+  z-index: 99999;
+}
+
+
+
+.stContainer {
+  display:block;
+  padding:0;
+  border-left: 1px solid #CCC; 
+  height:450px;
+  overflow:hidden;  
+  position: relative;
+  -webkit-border-radius: 0;
+  height: 100px !important;    
+}
+.stMain div.tabContent { 
+
+  position: absolute;
+  background-color: #FFF;
+  
+
+  height: 100px;
+  
+
+  width: 100%;
+
+}
+.stMain div.tabContent ol{
+  overflow:hidden;
+   
+  margin: 0px 0 0 2%;
+  width: 98%;
+  height: 100%;
+}
+.stMain div.tabContent ol li{ 
+  margin: 0;
+  width: auto;
+  display: block;
+  float: left;
+  background: url(../images/logos_AMS/Logos_AMS.jpg) no-repeat;
+  height: 100%;
+}
+
+
+
+.stMain div.tabContent ol li a{
+	display:block;
+	width:100%;
+	height:100%;
+	opacity: 1;
+	
+}
+.stMain div.tabContent ol li a:hover{
+	opacity: 0.6;
+}
+
+.stMain div.tabContent ol li img{
+   width: 100%;
+   height: auto;
+}
+
+.stMain ul.tabAnchor {
+  display: inline-block;
+  list-style-type: none;
+  position:relative;
+  padding:0;
+  margin:0;    
+  clear: both;
+  margin-right: -1px;
+  margin-top: 0;
+  z-index: 100;
+  float: left;
+  width: 118px;
+}
+.stMain ul.tabAnchor li{ 
+  position: relative; 
+  margin: 0;
+  padding: 0;
+}
+.stMain ul.tabAnchor li a { 
+  display:block;
+  margin:0;
+  margin-bottom: 0;
+  padding: 10px 0 2px;  
+  font-size: 16px;
+  color:#666;
+  text-decoration: none;
+  outline-style:none;
+ 
+  border: none;
+}
+.stMain ul.tabAnchor li a small {
+  font-size:15px;
+}
+.stMain ul.tabAnchor li a.sel {
+  border-right-color: #FFF;
+  cursor:text;
+  font-weight: bold;
+  border-right: solid 5px #8FC450;
+}
+
+a.stLinks { 
+  margin:0;
+  padding:5px;
+  color:#666;
+  text-decoration: none;
+  outline-style:none;
+  border: 1px solid #D4D4D4;
+  background-color: #f6f6f6;
+ }
+a.stLinks:hover {
+  color:#FFF;
+  background-color: #00A7DB;
+}
+
+
+
+.stMain div.tabContent ol li.proDesarrollo{
+    width: 174px;
+ 
+	
+    background-position: -2135px -50px;
+    margin: 0 35px 0 0;
+}
+
+.stMain div.tabContent ol li.buro_credito {
+	    width: 90px;
+	  background-position: -2370px -40px;
+	    margin: 0 35px 0 0;
+}
+
+
+.stMain div.tabContent ol li.circulo_credito {
+	   width: 90px;
+	  background-position: -2540px -40px;
+	   margin: 0 35px 0 0;
+}
+.stMain div.tabContent ol li.cnbv {
+	   width: 210px;
+	  background-position: -2700px -55px;
+	   margin: 0 35px 0 0;
+}
+.stMain div.tabContent ol li.condusef {
+	width: 170px;
+	  
+	background-position: -2960px -25px;
+
+}
+.stMain div.tabContent ol li.cnn {
+		width: 76px;
+		background-position: -1070px -45px;
+}
+
+.stMain div.tabContent ol li.financiero {
+	width: 248px;
+	background-position: -1175px -40px;
+}
+.stMain div.tabContent ol li.economista {
+		width: 250px;
+	background-position: -1455px -45px;
+}
+.stMain div.tabContent ol li.entrepreneur {
+	width: 200px;
+	background-position: -1730px -45px;
+}
+.stMain div.tabContent ol li.forbes {
+	width: 113px;
+	background-position: -1953px -45px;	
+}
+.stMain div.tabContent ol li.ashoka {
+	width: 103px;
+	background-position: -24px -40px;		
+	margin: 0 13px  0 0;
+}
+.stMain div.tabContent ol li.endeavor {
+	width: 183px;
+	background-position: -180px -40px;	
+}
+.stMain div.tabContent ol li.kiva {
+	width: 183px;
+	background-position: -405px -40px;	
+}
+
+
+
+
+
+.stMain div.tabContent ol li.unreasonable {
+	width: 213px;
+	background-position: -600px -40px;
+	margin: 0 16px 0 0;
+}
+
+
+
+
+.stMain div.tabContent ol li.wayra {
+	width: 173px;
+	background-position: -860px -40px;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+.stMain {
+  width: 100%;
+ 
+}
+
+.stMain div.tabContent ol li.proDesarrollo{
+   	width: 21%;
+	
+	
+   	background-position: 72%  98%;
+	
+   	background-size: 1602% auto;
+   
+   	margin: 0 4% 0 0;
+}
+
+.stMain div.tabContent ol li.buro_credito {
+	  	width: 11%;
+	
+	
+   	
+	  	background-position: 78%  80%;
+	
+   	
+	  	background-size: 2836% auto;
+   
+   	
+	  	margin: 0 4% 0 0;
+}
+
+
+.stMain div.tabContent ol li.circulo_credito {
+	  	width: 11%;
+	
+	
+   	
+	  	background-position: 83.5%  80%;
+	
+   	
+	  	background-size: 2836% auto;
+   
+   	
+	  	margin: 0 4% 0 0;
+}
+.stMain div.tabContent ol li.cnbv {
+	width: 19%;
+	
+	
+   	
+	  	
+	background-position: 91.5%  44%;
+	
+   	
+	  	
+	background-size: 1432% auto;
+   
+   	
+	margin: -2% 5% 0 0;
+}
+.stMain div.tabContent ol li.condusef {
+	width: 17%;
+	
+	
+   	
+	  	
+	background-position: 99.5%  57%;
+	
+   	
+	  	
+	background-size: 1863% auto;
+   
+   	
+
+}
+.stMain div.tabContent ol li.cnn {
+		width: 9%;
+		background-position: 35%  66%;
+		background-size: 3754% auto;
+		margin: 0 2% 0 0;
+}
+
+.stMain div.tabContent ol li.financiero {
+		width: 25%;
+		background-position: 40.5%  55%;
+		background-size: 1334% auto;
+		margin: 0 2% 0 0;
+}
+.stMain div.tabContent ol li.economista {
+		width: 25%;
+		background-position: 50%  62%;
+		background-size: 1254% auto;
+		margin: 0 2% 0 0;
+}
+.stMain div.tabContent ol li.entrepreneur {
+	width: 20%;
+		
+	background-position: 58.5%  61%;
+		
+	background-size: 1761% auto;
+		margin: 0 2% 0 0;
+}
+.stMain div.tabContent ol li.forbes {
+		width: 10%;
+		
+	
+		background-position: 64.2%  61%;
+		
+	
+		background-size: 2958% auto;
+		margin: 0;	
+}
+.stMain div.tabContent ol li.ashoka {
+	width: 11%;
+	background-position: 1% 65%;		
+	margin: 0 3%  0 0;
+	background-size: 2958% auto;
+}
+.stMain div.tabContent ol li.endeavor {
+		width: 22%;
+	background-position: 6% 65%;		
+	margin: 0 3%  0 0;
+	
+		background-size: 1755% auto;	
+}
+.stMain div.tabContent ol li.kiva {
+	width: 13%;
+	background-position: 14% 65%;		
+	margin: 0 3%  0 0;
+	
+		
+	background-size: 2672% auto;	
+}
+
+.stMain div.tabContent ol li.unreasonable {
+	width: 25%;
+	background-position: 20.5% 65%;		
+	margin: 0 3%  0 0;
+	
+		
+	background-size: 1417% auto;
+	margin: 0 16px 0 0;
+}
+.stMain div.tabContent ol li.wayra {
+	width: 15%;
+	background-position: 29% 65%;		
+	margin: 0 3%  0 0;
+	
+		
+	background-size: 2192% auto;
+	margin: 0 16px 0 0;
+}
+}
+@media (max-width: 850px) {
+	
+
+.stMain ul.tabAnchor {
+ 
+
+  width: 100%;
+   clear:both;
+  padding: 0 0 0px 0;
+}
+
+.stMain ul.tabAnchor li{
+  display: block;
+ 
+  width: 33.3%;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.stContainer {   
+  position: relative;
+  height: 90px !important;    
+  border: solid 1px #ccc;
+}
+
+.stMain ul.tabAnchor li a {
+  text-align:center;
+  background: #ccc;
+  padding: 13px 0;
+}
+.stMain ul.tabAnchor li a.sel {
+  border-right-color: #FFF;
+
+  font-weight: bold;
+  border-right: none;
+  background:#8FC450;  
+  color:#fff;
+}
+.stMain div.tabContent ol{
+   
+  margin: 3px 0 0 1%;
+
+}
+
+}
+
+@media (max-width: 650px) {
+	.stMain div.tabContent { 
+
+  height: 70px;
+
+}
+
+
+.stMain div.tabContent ol li.proDesarrollo, .stMain div.tabContent ol li.circulo_credito { 
+	display:none;
+}
+
+.stMain div.tabContent ol li {
+
+	margin: 0 !important;
+	
+}
+
+
+.stMain div.tabContent ol li.buro_credito { 	
+	background-position: 79%  46%;
+	background-size: 1282% auto;
+		
+	width: 19% !important;
+	
+	padding: 0 7%;
+}
+
+.stMain div.tabContent ol li.cnbv {
+	background-position: 93.5%  56%;
+	background-size: 1032% auto;
+
+		
+	width: 27% !important;
+	
+	padding: 0px 3%;
+
+}
+.stMain div.tabContent ol li.condusef {
+	background-position: 99.5%  27%;   
+	background-size: 1363% auto;
+		
+	width: 27% !important;
+	
+	padding: 0px 3%;
+}
+
+.stMain div.tabContent ol li.financiero, .stMain div.tabContent ol li.economista  {
+	display:none;
+}
+
+
+
+
+.stMain div.tabContent ol li.cnn {
+		width: 19% !important;
+	
+	    padding: 0 7%;
+		background-position: 35%  54%;
+		background-size: 2434% auto;
+	
+}
+
+
+.stMain div.tabContent ol li.entrepreneur {
+	background-position: 58.5%  51%;
+	background-size: 1461% auto;
+	width: 23% !important;
+	
+	padding: 0px 5%;
+	
+}
+.stMain div.tabContent ol li.forbes {
+		background-position: 64%  55%;
+		background-size: 1958% auto;	
+		width: 17% !important;
+	    padding: 0 8%;
+}
+
+
+.stMain div.tabContent ol li.ashoka, .stMain div.tabContent ol li.wayra {
+	display:none;
+}
+
+.stMain div.tabContent ol li.endeavor {
+		width: 27% !important;
+	    
+		padding: 0 3%;
+	background-position: 6% 45%;		
+
+	
+		background-size: 1615% auto;	
+}
+
+.stMain div.tabContent ol li.kiva {
+	width: 19% !important;
+	    
+	padding: 0 7%;		
+	background-position: 13% 45%;	
+	background-size: 1562% auto;	
+}
+.stMain div.tabContent ol li.unreasonable {
+	width: 29% !important;
+	    
+	padding: 0 2%;	
+	background-position: 20.5% 47%;		
+	background-size: 1357% auto;
+	
+}
+
+
+@media (max-width: 500px) {
+
+
+
+}

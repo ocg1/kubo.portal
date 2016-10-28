@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+      xmlns:h  = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f  = "http://java.sun.com/jsf/core"
+      xmlns:p  = "http://primefaces.org/ui">
+
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />         
+      <title>kubo.financiero</title>
+        <meta name="description" content="" />            
+        <meta name ="viewport"         content="width=device-width, minimum-scale=1, maximum-scale=1,  initial-scale=1"/>       
+        <meta name="format-detection"  content="telephone=no"/>        
+        <meta name="apple-mobile-web-app-capable"          content="yes" />            
+         <meta name="apple-mobile-web-app-status-bar-style" content="black" />       
+        <meta property="og:title" content=""/>
+        <meta property="og:url"   content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+        <meta name="apple-mobile-web-app-title" content="Kubo.Financiero"/>   
+        <meta http-equiv="cleartype"       content="on" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+  <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"/>
+    <script type="text/javascript" src="js/fecha.js"/>
+       
+
+  <link rel="icon" type="image/png" href="images/favicon.ico"/>
+<style>
+    
+    .noDisponibleContrato {
+		display:none;
+	}
+    </style>
+</head>
+<body>
+<div class="noDisponibleContrato">
+	<h1 style="font-size:20px; text-align:center;">No podemos mostrar los datos de este contrato.</h1>
+</div>
+  <div class="disponiblecontrato" style="opacity:0;">
+ 		 <ui:include src = "garantia/contenidoContratoGarantia.xhtml"/>
+ </div>
+</body>
+</html>

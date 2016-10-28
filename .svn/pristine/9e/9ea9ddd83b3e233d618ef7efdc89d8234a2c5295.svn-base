@@ -1,0 +1,16 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html">
+			     
+			     <div class="mensaje_preaprobacion" >
+			     	<h:panelGroup id="pnlMsgConsulName" >
+			      		<h2 class="encabezado_2">#{sessionBean.nombre}:</h2>
+			      	</h:panelGroup>
+					<p>¡Tus resultados están listos!</p>
+					
+					<span onclick="muestraLienzo();" class="callActionMedium btnNaranja">Ver resultado</span>	
+					
+				</div>
+	
+			 
+</ui:composition>				 

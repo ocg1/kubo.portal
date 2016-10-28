@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+		
+		<h:head>
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type"  />
+			
+			<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+			
+			<script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+			
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			
+			<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+	    	<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+	    	<link rel="stylesheet" type="text/css" href="../resources/css/infoBasica.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+			
+			<link rel="stylesheet" type="text/css" href="../resources/css/resumen-inversion.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/main-resumen.css" />
+				
+			
+			<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+					
+			<script type="text/javascript" src="../resources/js/kubo.js"></script>
+			<script type="text/javascript" src="../resources/js/general.js"></script>
+			<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"></script>
+			<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"></script>
+			<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />	
+			<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />
+				
+			<!-- <script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script> -->
+			
+			<script type="text/javascript" src="../resources/js/frmscript.js"></script>	
+			
+			<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script> 
+			<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+			<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+			<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+			
+			
+			<!-- Proyect List -->
+			<link rel="stylesheet" type="text/css" href="../resources/css/loanListStyle.css" /> 
+			<link rel="stylesheet" type="text/css" href="../resources/css/customAcoordeon.css" />	
+			
+			<!-- Bitacora css -->
+			<link rel="stylesheet" type="text/css" href="../resources/css/Logs.css" />
+			<script>
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		</script>
+			<script>
+			
+			google.load("visualization", "1", {packages:["corechart"]});
+			
+				$(document).ready(function(){
+					$(".menu01Invest").click(function(){
+						var elementSelect = ($(this).parents(".secondaryMenuInv")).find(".selectedMenuInv");
+						
+						elementSelect.removeClass("selectedMenuInv");
+						$(this).addClass("selectedMenuInv");
+						
+					});
+				});
+				
+				
+				
+			</script>
+			
+		<style>
+		
+
+.investFrm ,.investFrmFixed, .investFrmTop, .investFrmBottom{
+	
+	background:transparent; 
+	height: 118 !important; 
+	background-color: transparent !important; 
+	overflow: auto;
+	border: solid 0px #EFEFEF;
+	
+	width: 189px !important; margin: 0px; 
+	position: absolute;
+	left: 925px; 
+	top: 140px;
+	border: solid 0px #00FF00; 
+}
+
+/* 
+.investFrmBottom a, .investFrmBottom a:HOVER, .investFrmBottom a:VISITED,
+.investFrmFixed a, .investFrmFixed a:HOVER, .investFrmFixed a:VISITED,
+.investFrm a, .investFrm a:HOVER, .investFrm a:VISITED{
+	text-decoration: none;
+	color: inherit;
+}
+
+.investFrm{
+	position: absolute;
+	left: 925px; 
+	top: 140px;
+	border: solid 0px #00FF00; 
+}
+
+.investFrmTop{
+	position: relative;
+	left: 925px; 
+	top: 50px;
+}
+.investFrmBottom{
+
+	position: absolute;
+	bottom: 0px !important;
+	margin-bottom: 0px !important;
+}
+.investFrmFixed{
+	top: 10px;
+	left: 1035px; 
+	position: fixed;
+} */
+		
+			.wrapper002{
+				clear: both !important;
+				width: 1100px;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				overflow: hidden;
+			}
+			.invClasFld{
+				width: 975px !important;
+			}
+		
+			.dvClsContInv{
+				width: 970px !important;
+			}
+			.container_loanlist{
+				min-width: 1260px !important;
+			}
+			#dvCntBuroReport{
+				font-size: 1.3em !important;
+			}
+			
+			.tdVal{
+				padding-left: 10px;
+			}
+			
+		</style>
+		
+		<title>kubo.financiero | Subasta de credito</title>				
+        <meta name="Description" content=""/>
+		
+		
+		</h:head>
+		<h:body>
+			<div id="header" style="width: 100%; margin: 0px;">
+				<ui:include src="templates/headContenido.xhtml" />
+			</div>
+		
+			<div class="contPR" style="position: relative;margin-top: -71px;">
+			<div class="contFrm" style="padding-right: 0px; overflow: hidden !important;">
+			
+			<h:form prependId="false">
+			<div class="wrapperInv">	
+				<!--section myInvestments -->
+				<div class="myInvestmentsInv">
+					<div>
+						<!-- navMyInvestments -->
+							<div class="secondaryMenuInv">
+								<div class="cornerFillMin"></div>
+								<div class="menu01Invest" >
+									<p:commandLink id="resumenInvest" value="Estado de Cuenta" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" update=":pnlContentInvest :panelContentListProyect">
+										<f:attribute name="seccionInv" value="investments" />
+									</p:commandLink>
+								</div>
+								
+								<div class="cornerFillMin"></div>
+								<div class="menu01Invest">
+									<p:commandLink id="projectListAction" value="Buscar proyectos" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" update=":pnlContentInvest :panelContentListProyect" >
+										<f:attribute name="seccionInv" value="proyectList" />
+									</p:commandLink>
+								</div>
+								
+								<div class="cornerFillMin"></div>
+								<div class="menu01Invest">
+									<p:commandLink id="personalData" value="Datos personales" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" update=":pnlContentInvest :panelContentListProyect" >
+										<f:attribute name="seccionInv" value="menuregistro" />
+									</p:commandLink>
+								</div>
+								
+								<div class="cornerFillMin"></div>
+								<div class="menu01Invest selectedMenuInv" >
+									<p:commandLink id="ventaCartera" value="Venta de Cartera" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" update=":pnlContentInvest :panelContentListProyect">
+										<f:attribute name="seccionInv" value="investments" />
+									</p:commandLink>
+								</div>
+							</div>
+						
+						<div class="clear"></div>
+					</div>
+				</div>
+				
+				</div>
+				</h:form>
+				<br/>
+				<br/>
+			
+				<div id="frm_content"  style="width: auto; margin-top: 0px !important; height: auto; ">
+					
+					<h:panelGroup id="pnlContentInvest">
+						
+						
+						<div style="width: 600px; border: solid 1px #e6e6e6; margin-left: auto; margin-right: auto;padding-top: 25px; padding-bottom: 25px;" >
+							
+							<table style="margin-left: auto; margin-right: auto;" >
+								
+								<tr style="display: block;">
+									<td style="font-size: 1.4em; color: #439539;text-align: center; font-weight: bold; padding: 12px;" colspan="2"  >Crédito Vendido</td>
+								</tr>
+								
+								<tr>
+									<td>Crédito</td>
+									<td style="width: 300px; font-weight: bold;" class="tdVal" >100002395</td>
+								</tr>
+								<tr>
+									<td>Fecha Límite para comprar:</td>
+									<td class="tdVal" >Miércoles 17 de mayo del 2014</td>
+								</tr>
+								<tr>
+									<td>Días restantes:</td>
+									<td class="tdVal" >0 Días</td>
+								</tr>
+								
+								<tr>
+									<td>Saldo de Capital del Crédito:</td>
+									<td class="tdVal" >$14,750.00</td>
+								</tr>
+								
+								<tr>
+									<td>Días de Atraso:</td>
+									<td class="tdVal" >121 Días</td>
+								</tr>
+								
+								<tr>
+									<td>Cuotas Atrasadas:</td>
+									<td class="tdVal" >9</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div style="display: none;" >
+											<table>
+											
+												<tr>
+													<td colspan="2" style="padding-top: 10px;" >Tu Oferta:</td>
+												</tr>
+												
+												<tr>
+													<td style="padding: 0px;"  >
+														<span style="font-size: 1.3em;color: #439539;">
+															$
+														</span>
+														<h:inputText value="" styleClass="elementAddresMin" style="width: 170px !important; text-align: right;" onkeyup="return format(this);" />
+													</td>
+													<td style="padding: 0px;" >
+														<div class="buttonPR" style="margin: 0px; margin-left: 10px; cursor: pointer;" onclick="alert('El saldo disponible de tu cuenta debe ser al menos igual al monto que quieras ofertar.')" >
+															Hacer Oferta
+														</div>
+													</td>
+												</tr>
+											
+											</table>
+										</div>
+										
+										<div style="background-color: #C1D82F; border: solid 1px #439539; box-shadow: 1px 1px 10px -3px #C2C2C2 !important;padding: 10px; margin-top: 20px; display: none; " >
+											<table style="margin-left: auto; margin-right: auto;">
+											
+												<tr>
+													<td colspan="2" style="padding-top: 10px;" >Tu oferta ha sido igualada por otro Inversionista, <br /> por favor especifica una nueva oferta:</td>
+												</tr>
+												
+												<tr>
+													<td style="padding: 0px;" colspan="2"  >
+														<div style="width: 99%; margin-left: auto; margin-right: auto; text-align: center;">
+															<span style="font-size: 1.3em;color: #439539;">
+																$
+															</span>
+															<h:inputText value="" styleClass="elementAddresMin" style="width: 170px !important; text-align: right;" onkeyup="return format(this);" />
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td style="padding: 0px;" >
+														<div class="buttonPR" style="margin: 0px; margin-right: 5px;cursor: pointer;" >
+															Hacer Oferta
+														</div>
+													</td>
+													
+													<td style="padding: 0px;" >
+														<div class="buttonPR" style="margin: 0px; margin-left: 5px;cursor: pointer;" >
+															Desistir
+														</div>
+													</td>
+													
+												</tr>
+											
+											</table>
+										</div>
+										
+									</td>
+								</tr>
+								
+								
+							</table>
+							
+							<div style="width: 400px; margin-left: auto; margin-right: auto; margin-top: 30px;">
+								<div style="border: solid 1px #FFF200; box-shadow: 1px 1px 10px -3px #C2C2C2 !important;padding: 10px; color: #439539; font-weight: bold;position: relative;" >
+									Última Oferta: $5,000.00<br />
+									Ofertado el 14 de mayo del 2014 14:25:43
+									<div style="width: 30px; height: 30px; position: absolute; top: 10px; right: 20px;display: block;">
+										<img style="border:solid 0px #FFFFFF;" src="../resources/img/check.png" />
+									</div>
+								</div>
+								<div>
+									<div style="border: solid 1px #E6E6E6; padding: 10px; background-color: #F3F3F3; " >
+										Oferta: $4,900.00<br />
+										Ofertado el 14 de mayo del 2014 12:55:36
+									</div>
+								</div>
+								<div>
+									<div style="border: solid 1px #E6E6E6; padding: 10px; background-color: #F3F3F3; " >
+										Oferta: $4,500.00<br />
+										Ofertado el 14 de mayo del 2014 09:15:19
+									</div>
+								</div>
+								<div>
+									<div style="border: solid 1px #E6E6E6; padding: 10px; background-color: #F3F3F3; " >
+										Oferta: $4,000.00<br />
+										Ofertado el 13 de mayo del 2014 20:13:03
+									</div>
+								</div>
+								<div>
+									<div style="border: solid 1px #E6E6E6; padding: 10px; background-color: #F3F3F3; " >
+										Oferta: $3,000.00<br />
+										Ofertado el 13 de mayo del 2014 18:42:21
+									</div>
+								</div>
+							</div>
+							
+							
+						</div>
+						
+						
+					</h:panelGroup>
+					
+				</div>
+					
+				</div>		
+				<h:panelGroup id="panelContentListProyect">	
+						
+					<h:panelGroup rendered="#{navigationInvest.listProyectDisp}">			
+						<ui:include src="proyectList.xhtml" />
+					</h:panelGroup>
+						
+				</h:panelGroup>
+			</div>
+			
+			<div id="footer" style="width: 100%; margin: 0px;">
+				<ui:include src="templates/footerContenido.xhtml" />
+			</div>
+			
+		<ui:include src="templates/msgProcessing.xhtml" />
+			
+			<div style="display:none;">
+			
+				<h:form prependId="false">
+					<p:commandLink
+						id="btnUpdateInvest"
+						onstart="return  iniUpdateInv();"
+						immediate="true" 
+						actionListener="#{myInvestments.webService}"
+						ajax="true"
+						update=":pnlContentInvest"
+						oncomplete="finishInv();"
+						>
+					</p:commandLink>
+				</h:form>
+				
+			</div>
+			
+		</h:body>
+</html>

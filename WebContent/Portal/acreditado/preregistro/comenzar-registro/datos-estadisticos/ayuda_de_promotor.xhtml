@@ -1,0 +1,58 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<li>                                	
+		<h:outputText value="¿Te está ayudando algún promotor?" />
+	</li>
+                         	
+	<li>
+		<h:selectOneRadio id    = "havePromotor"  
+						  value = "#{addNaturalPerson.promotorDisp}"  
+                          styleClass = "radio elementStlLbl validatorClass requiredVerify" 
+                          style      = "border: solid 0px #FFFFFF !important;">
+                          
+			    <f:selectItem itemValue = "true"  itemLabel = "Si"/>
+			    <f:selectItem itemValue = "false" itemLabel = "No"/>
+			    
+			    <p:ajax event="change"  oncomplete="validapromotor()" />			    
+		</h:selectOneRadio>		
+	</li>
+                         	
+	<li class="no_promotor">
+		<label> Ingresa la clave de tu Coach</label>                           				
+	</li>
+                             
+	<li class="no_promotor">                                                            
+		<p:inputText id   = "cbo-promotor" 
+		     		 value = "#{addNaturalPerson.codeID}" 
+					 onfocus    = "$(this).removeClass('requiredClass');"  
+					 styleClass = "elementStl validatorClass" >
+			<p:ajax event = "blur" 
+				    listener   = "#{addNaturalPerson.getPromotorByCodeID_portal}" 
+					update     = "warningPromotor" 
+					oncomplete = "validaregistration();" />
+		</p:inputText>
+                             									    				
+		<h:panelGroup id="warningPromotor">
+			<div id="dvMsgPromotor" style = "display: #{addNaturalPerson.warningPromotorOff == 'La clave del promotor no existe'?'block':'none'};" >
+				<div>
+					<h:outputText escape = "false"  value = "#{addNaturalPerson.warningPromotorOff}"/>
+				</div>
+				
+				<div>
+					<h:outputText escape = "false"  value = "#{addNaturalPerson.warningPromotorOn}"/>
+				</div>
+			</div>
+		</h:panelGroup>
+			
+			<h:panelGroup rendered="#{(addNaturalPerson.area != null and addNaturalPerson.area == 'L') or ( addNaturalPerson.area != null and addNaturalPerson.area == 'I' and addNaturalPerson.isActiveInvestmentSection == 'S' ) }">
+				<script>
+					varPass=false;
+				</script>
+		</h:panelGroup>         
+		 <div class="alerta"></div>                    
+	</li>				
+</ui:composition>				

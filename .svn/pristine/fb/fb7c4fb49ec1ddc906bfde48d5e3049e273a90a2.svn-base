@@ -1,0 +1,221 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+<ul class="filaTienda">
+			  <li class="numberRegistro">	 <!-- #{st.index+1}--></li>
+			  		<li class="invPrev">
+						<div class="celda" rendered="#{sessionBean.area=='I' and investmentList.displayInvestAction }" >
+				<sup class="titleMosaico">Inversión<br/> Previa</sup>
+					<div id="detailFounded#{proList.proyect_loan_id}" class="foundedDetail" style="display: #{(proList.proyectFunding.size()>0)?'block':'none'}"  >
+							
+						<p:commandButton styleclass="tool_fondeado" id="this2" icon="ui-icon-xls"  disabled="#{proList.enabledFundingDetailBtn}">
+								
+							<p:overlayPanel showEffect="fade" hideEffect="fade" my="right bottom" for="this2" at="right top" dynamic="true" >
+								
+								<p:graphicImage styleClass="close_dvResInv" url="../resources/img/close.png" onclick="hideMessageRes();" ></p:graphicImage>	
+								
+											<p>Monto Total fondeado : <h:outputText styleClass="montoTotalFondeado" value="#{proList.montoTotalFondeo()}" /></p>
+											<p class="porcentajePartcipacion">Porcentaje de participación:<h:outputText  value="#{proList.porcTotalFondeo()}" /> </p>
+										
+									<ui:repeat var="listFunding" value="#{proList.proyectFunding}">
+										<p class="fechaInvertiste">
+											En la fecha
+											<h:outputText styleClass="fundingDate" value="#{listFunding.funding_date}">
+												<f:convertDateTime  pattern="d-M-yyyy" />
+											</h:outputText>
+											 invertiste la cantidad de
+											<h:outputText styleClass="fundingAmmount" value="#{listFunding.amount}">
+												<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+											</h:outputText>
+										</p>
+									</ui:repeat>
+							</p:overlayPanel>
+						</p:commandButton>
+					</div>
+					<div class="numero_inversiones">
+							<ui:repeat var="listFunding" value="#{proList.proyectFunding}">
+										<p class="listFundingAmmount">
+											<strong>
+												<h:outputText value="#{listFunding.amount}">
+													<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+												</h:outputText>
+											</strong>
+										</p>
+						   </ui:repeat>
+						   <h6 class="numeroInv"><span></span><small>Inversiones</small></h6>
+	
+					</div>
+					<div class="monto_inversiones" ><small>Monto total</small> <h:outputText styleClass="montoTotalFondeado" value="#{proList.montoTotalFondeo()}" /> </div>				
+					</div>
+				</li>
+			  	
+				<li class="catTil">
+				
+					<i class="perfilUsuario fa fa-user"></i>
+					<p:commandLink id="cmdLinkDetail" value="#{proList.proyect_purpose_name}" actionListener="#{investmentList.initSearch}" onstart="return displayMessageProcessing('msgprocessing',true);" immediate="true" oncomplete="closeFancy();" update=":pnlContentInvest , :panelContentListProyect">
+						<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+					</p:commandLink>
+					<div id="proyectNameTag">
+						<span id="yui-gen211" >#{proList.proyect_name}</span>			
+					</div>
+				</li>
+		
+				
+				<li class="origActual">
+				<sup class="titleMosaico">$ Original / <br/>$ Actual</sup>
+					<div sortBy="#{proList.ammount}"  rendered="#{sessionBean.area == 'I'}" >
+							<div  id="yui-gen209" class="timeDisplay montoFondear">
+								<h:outputText value="#{proList.ammount}">
+									<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+								</h:outputText>
+							</div>
+							<div  id="yui-gen209" class="timeDisplay">
+									<h:outputText value="#{proList.actualAmmount}">
+										<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									</h:outputText>
+							</div>
+						</div>
+				</li> 
+				<li class="PlazoOrigActual">
+						<sup class="titleMosaico">Plazo Original / <br/>Plazo Actuall</sup>
+						<span id="yui-gen162" class="loanTypeAndLength">#{proList.actualTerm}</span>
+						<span id="yui-gen162" class="loanTypeAndLength"><b> #{proList.availableDays} </b> </span>
+				</li>	                
+				<li class="kuboScoreCelda">
+					<sup class="titleMosaico">Kubo.score</sup>
+						<h:panelGroup rendered="false">
+							<div class="ficoDisplay" align="center">#{proList.bc_score_range}</div>
+							<br />
+						</h:panelGroup>
+						<div id="testForScores" class="testForScores">
+							
+							<h:panelGroup rendered="#{sessionBean.area=='I'}">
+								<div  class="#{proList.kubo_score_a=='A'? 'AstyleList':(proList.kubo_score_a=='B'? 'BstyleList':(proList.kubo_score_a=='C'? 'CstyleList':(proList.kubo_score_a=='D'? 'DstyleList':(proList.kubo_score_a=='E'? 'EstyleList':(proList.kubo_score_a=='F'? 'FstyleList':'GstyleList')))))} riskLoanList">
+									<p class="statusLeftLoanList">#{proList.kubo_score_a}</p>
+									<p class="statusRightLoanList">#{proList.kubo_score_b}</p>
+								</div>
+							</h:panelGroup>
+							
+						</div>
+				</li>
+						                
+				<li class="tasaAnualCelda">
+				
+					<sup class="titleMosaico">Tu Tasa Anual</sup>
+					
+					
+						<div id="rate_investorDiv">
+							
+							<h:outputText value="#{proList.rate_investor}" >
+								<f:convertNumber pattern="#0.00"  locale="es_MX" />									
+							</h:outputText>%
+						</div>	
+						<small class="nuevoRepetido"></small>							
+				</li>
+						               
+				<li class="porcFondeo">
+					<sup class="titleMosaico">% Fondeo</sup>
+							<div id="mixedBarContainer" class="mixedContainerClass">
+								<div id="progressBarMixed" class="progressBarMixedClass">
+									<div id="progressBarTotal"  class="progressBarTotalClass progresoFondeo"></div>
+									<div id="progress"  style="#{proList.kuboBarPorcent}"></div>
+									<!--  div id="progress" style="#{proList.kuboBarPorcent}"></div-->
+								</div>
+							</div>
+							<h:outputLabel styleClass="progresoFondeoLetra" ></h:outputLabel><br />
+							<div id="investorsOnLoan"  onclick="showInvestors_#{proList.proyect_loan_id}_#{proList.proyect_id}_#{proList.prospectus_id}_#{proList.company_id}();" >
+								<h:outputLabel value="#{proList.numInvestors} #{msg.ll_row_investor}." onclick="showInvestors_#{proList.proyect_loan_id}_#{proList.proyect_id}_#{proList.prospectus_id}_#{proList.company_id}();" ></h:outputLabel>
+							</div>
+							<script>
+									
+									function showInvestors_#{proList.proyect_loan_id}_#{proList.proyect_id}_#{proList.prospectus_id}_#{proList.company_id}(){
+										$.fancybox({
+											'showCloseButton': true,
+		
+											'width': 680,
+											'height': '90%',
+											'type':'iframe',
+											'speedIn': 20,
+											'speedOut': 10,
+										
+											
+											'modal': false,
+											'scrolling': 'auto',
+											'centerOnScroll': false,
+											'href': 'templates/perfil_completo/listaInversionistas/listaInversionistas.xhtml?proyectLoan=#{proList.safi_credit_id }_#{proList.safi_solicitud_id}',
+											'overlayColor': '#333333',
+											'hideOnOverlayClick': true,
+											'enableEscapeButton': true
+										});
+									}
+									
+									</script>
+				</li>
+				<li class="dispVenc">
+				<sup class="titleMosaico">Disponible / <br/>Vencimiento</sup>
+						<div id="atLeft1139616" class="timeDisplay disponibleFondear">
+							<h:outputText id="valAmmountLeftInv" value="#{proList.availableAmmount}">
+								<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							</h:outputText>
+						</div>
+						<div id="yui-gen227" class="timeDisplay normal tipoCreditoget" >#{proList.getTipoCrédito()}</div>
+				</li>
+				<li class="verificacionCelda">
+					<sup class="titleMosaico">Verificación</sup>
+					<div id="providing_invertion">
+						<p:commandLink id="this" onstart="return displayMessageProcessing('msgprocessing', false);" disabled="#{sessionBean.area == 'M' ? false:true}" oncomplete="closeFancy();" actionListener="#{investmentList.goToLogs}" action="#{investmentList.actionNavLogs}" update=":pnlCancel" >
+							<div id="verificationTestDiv">
+								<div id="externalFrameVerification" class="#{proList.verificationClass}-externalFrameVerification">
+									<div class="verification_score" onclick="verificationScore(this, '#{proList.verification_score}' );" >
+										<p:graphicImage url="../resources/img/N#{proList.verification_score}.png" styleClass="verificationScoreImge"  	/>
+									</div>
+									<div class="nivel_verificacion">
+									<a  onclick="closeVerificationScore();"><img src="../resources/img/close.png" alt=""/></a>
+										<p class="nivel_1"><strong>Nivel 1</strong> - La identidad ha sido verificada mediante una consulta a Buró de Crédito. El cliente existe en las sociedades de información crediticia y cuenta con un historial de crédito con alguna de las entidades que reportan a Buró de Crédito.</p>
+										<p class="nivel_2"><strong>Nivel 2</strong> -  El cliente proporcionó su Credencial de Elector vigente, y ésta fue validada en el portal del INE.  Esta validación consiste en verificar la vigencia de la credencial, legibilidad y validez de la misma.</p>
+										<p class="nivel_3"><strong>Nivel 3</strong> - Al cliente ya se le ha realizado una entrevista telefónica, y por tanto se han terminado de verificar ciertos datos informados en su solicitud de préstamo. </p>
+										<p class="nivel_4"><strong>Nivel 4</strong> - El cliente ya ha tenido préstamo(s) con Kubo, y estos han sido pagados. Esta es una renovación de préstamo.</p>
+									</div>
+								</div>
+							</div>
+							<f:attribute name="gotypeLog" value="SOL" ></f:attribute>
+							<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+						</p:commandLink>
+					</div>
+				</li>
+						               
+				<li  class="inversionCelda">
+				<i class="fa fa-thumb-tack"></i>
+					<div class="montoSugerido">Monto sugerido</div>
+					<div class="celda columnInvertionsWidth"  rendered="#{sessionBean.area=='I' and investmentList.displayInvestAction }" >
+					<div align="center" id="yui-gen130" class="yui-dt-liner">
+						<div id="invertion_value">
+							<div id="dvBiteInput_#{proList.proyect_loan_id}" style="display: #{proList.blnChck?'block':'none'}"  >
+								<span>$</span>
+								<INPUT type="number" class="elementAddres1 inversion_input" value="#{proList.investment_bite}"  onkeyup="validateEnterInvestmentBite(event, this );" onfocus="cargaValorActualTMP(this);" onblur="reflejaValor(this);" />
+								<p:inputText styleClass="secondInput" type="number"  value="#{proList.investment_bite}" style="display:none" onfocus="cargaValorActual(this);"  >
+									<p:ajax event="blur" listener="#{investmentList.asignaBite}" onstart="return returnTemp();"  oncomplete="resNewVal(xhr, status, args)" update=":table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot"  />
+									<f:attribute name="proyectloanItem" value="#{proList}"></f:attribute>
+								</p:inputText>
+							</div>
+					
+							<div class="valReset" id="dvBiteDesc_#{proList.proyect_loan_id}" style="display: #{proList.blnChck?'none':'block'}" >
+								<h:outputText value="$0.00"></h:outputText>
+							</div>
+					
+						</div>
+					</div>	
+							<div id="dvContentLoanLst">
+								<h:selectBooleanCheckbox value="#{proList.blnChck}"  >  
+									<p:ajax event="change" listener="#{investmentList.generaListForInv}" onstart="return fncChckInv();" oncomplete="muestraInput(xhr, status, args)" update=":table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot" />
+									<f:attribute name="proyectloanItem" value="#{proList}"></f:attribute>
+								</h:selectBooleanCheckbox> 
+							</div> 
+					
+					</div>
+				</li>
+				</ul>
+</ui:composition>

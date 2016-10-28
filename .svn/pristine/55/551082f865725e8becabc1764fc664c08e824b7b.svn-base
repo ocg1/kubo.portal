@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<p:column>
+		<div>
+			<h:outputText  rendered="#{listIncome.income_type_id != 4 and listIncome.income_type_id != 2 and listIncome.income_type_id !=6}"  value="#{listIncome.name}" />
+			<h:outputText  rendered="#{listIncome.income_type_id == 4 and listIncome.ammount == 0}"  value = "#{listIncome.name}" />
+			
+			<p:commandLink rendered="#{listIncome.income_type_id == 4 and listIncome.ammount > 0}"           onclick = "IncomesExpenses.show_other_income();"   value="#{listIncome.name}"/>
+			<p:commandLink rendered="#{listIncome.income_type_id == 2 and  incomesExpenses.hasIncomeDeatil}" onclick = "IncomesExpenses.show_detail_income();"  value="#{listIncome.name}"/>
+			<h:outputText  rendered="#{listIncome.income_type_id == 2 and !incomesExpenses.hasIncomeDeatil}"  value="#{listIncome.name}" />
+			<h:outputText  rendered="#{listIncome.income_type_id == 6}"  value="#{listIncome.name}" />
+		</div>
+	</p:column>				
+</ui:composition>				

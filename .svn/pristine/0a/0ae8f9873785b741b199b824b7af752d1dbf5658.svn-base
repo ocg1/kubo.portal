@@ -1,0 +1,87 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	
+	<script>
+	
+		
+		function mostrar_edicion_curp()
+		{			
+			$("#edited_mx_curp").val($("#curp").val());
+			
+			$('#edicion_curp').show('slow');
+			$(".cajaRFCCURP.curp").hide();
+			$(".link_editar_curp").hide();
+		
+		  		
+		  		$("#edited_mx_curp").trigger("focus");
+		}
+	
+		function guardar_edicion_CURP()
+		{
+			var edited_mx_curp = $("#edited_mx_curp").val().trim();
+			
+			if(edited_mx_curp.length > 0)
+			{							
+				$("#input_listener_edited_mx_curp").val(edited_mx_curp).click();
+			}	
+			$(".cajaRFCCURP.curp").show();
+			$(".link_editar_curp").show();
+			
+		}
+		
+		function complete_edicion_CURP()
+		{
+			$('#edicion_curp').hide('slow');
+			$(".cajaRFCCURP.curp").show();
+			$(".link_editar_curp").show();
+			setTimeout(function(){ 
+		  	
+   		   	},700);
+		}
+		function cancelar_edicion_CURP(){
+			$(".cajaRFCCURP.curp").show();
+			$(".link_editar_curp").show();
+			$('#edicion_curp').hide('slow')
+			setTimeout(function(){ 
+		  		
+   		   	},700);
+		}
+	</script>			
+				
+	<div onclick = "mostrar_edicion_curp();" class   = "link_editar_curp">		  		  
+		<p><i class="fa fa-pencil-square-o"></i> Editar</p>		
+	</div>
+	
+	<div id = "edicion_curp" style = "display:none">
+		<div >
+			<h:inputText id = "edited_mx_curp" styleClass = "elementAddres1 mayus">
+				 <p:ajax event="blur" onstart="mayusculas();"/>
+			</h:inputText>									 				 									
+		</div>										 
+		
+		<div class = "container_botones_editar_curp">
+		
+			
+			
+			<div class   = "callActionMedium btnGris"  	
+			     onclick = "cancelar_edicion_CURP();">Cancelar</div>
+			     <div class = "callActionMedium btnVerde-2" 
+				 onclick = "guardar_edicion_CURP();">Guardar</div>
+				 	
+			<div style = "display: none"> 
+				<h:inputText  id    = "input_listener_edited_mx_curp" 
+						      value = "#{basicData.edited_mx_curp}">
+					<p:ajax event      = "click" 
+							listener   = "#{basicData.listener_edited_mx_curp}"
+							oncomplete = "complete_edicion_CURP();"
+							update = "curp"/>
+				</h:inputText>
+			</div>
+		</div>
+	</div>				
+				
+</ui:composition>	

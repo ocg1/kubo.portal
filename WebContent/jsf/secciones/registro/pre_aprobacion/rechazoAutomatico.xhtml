@@ -1,0 +1,54 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+			
+
+			<div class="rechazoAutomaticoReal" >
+			<h:graphicImage  styleClass="loaderImage" library="img/nuevoRegistro" name= "ajax-loader.gif"   /> 			
+			<div class="mensajeAprobacion">
+        			
+        			<div class="bT">
+	        			<h3>Lo sentimos</h3>
+	        			<p>Por el momento no podemos otorgarte el préstamo..</p>
+	        			<p>Puedes terminar tu solicitud o ver otra opción con nuestra red de aliados.</p>
+	        			
+	        		
+        			</div>
+        			<figure><h:graphicImage library="img/nuevoRegistro" name= "Rechazado.jpg"  />        </figure>
+        		</div>
+			
+			
+			
+		
+				<div class="dosBotones" >
+					 <div  onclick="cerrarLienzoPreaprobacion();"  class="callActionMedium btnGris">
+					 		Terminar solicitud
+					 </div>
+					  <h:panelGroup rendered="#{checkScoreProcessed.partner_id eq 'RLA' }">
+						 <a id="otraOpcion" target="_blank" class="callActionMedium btnNaranja" href="https://rocket.la?utm_source=kubofinanciero&amp;utm_medium=rechazado"  onclick="aceptaSalir();">
+						 		Ver otra opción
+						 </a>
+					 </h:panelGroup>
+					 
+					 <h:panelGroup rendered="#{checkScoreProcessed.partner_id != 'RLA' }">
+						 <a id="otraOpcion" target="_blank" class="callActionMedium btnNaranja" href="https://kueski.com/?utm_source=kubo&amp;utm_medium=display"  onclick="aceptaSalir();">
+						 	Sí, ver otra opción
+						 </a>
+					 </h:panelGroup>
+					 
+					 <p:commandLink style="display:none;" id="rechazoPantalla"  action="rechazadoPantalla"  immediate="true"> </p:commandLink>
+				</div>
+		
+				<script>
+				
+						
+						
+			
+				</script>
+			 </div>
+			 	
+</ui:composition>

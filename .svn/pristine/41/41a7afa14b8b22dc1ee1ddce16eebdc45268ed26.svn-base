@@ -1,0 +1,998 @@
+.container-sg{
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
+.box-sg{
+  padding: 20px;
+}
+
+.der{
+  text-align: right;
+  float: right;
+}
+
+.titulo_header{
+    margin-top: -40px;
+    background-color: #c1d53e;
+
+}
+.txt-ob{
+  margin-top: 30px;
+  margin-bottom: -10px;
+  text-align: center;
+  color: #568e3e;
+}
+
+label{
+  color: #568e3e;
+  font-weight: 400;
+}
+
+
+.firma h1{
+  color: #568e3e;
+  text-align: center;
+  font-size:  30px;
+  font-weight: 300;
+}
+
+.logo_header{
+  height:  100px;
+}
+
+.firma h2{
+  text-align: center;
+  margin-top:  -10px;
+  margin-bottom:  40px;
+  font-size:  16px;
+  color: #000;
+  font-weight: 200;
+}
+
+.entry-content{
+  text-align: center;
+}
+
+#canvas1{
+  border: medium;
+  border-color: #aaa;
+
+  margin-left: -5px;
+border-radius: 5px;
+border-style: dashed;
+border-width: 3px;
+}
+
+#clearBtn{
+  border-radius:  50px;
+  position: relative;
+  margin-left:  -50px;
+  margin-top: -50px;
+  height:  40px;
+}
+
+
+#clearBtn:hover{
+  cursor: pointer
+}
+
+
+
+
+/*#playBtn{
+  border-radius:  50px;
+  position: relative;
+  margin-left:  -75px;
+  margin-top: -50px;
+}
+
+
+#playBtn:hover{
+  cursor: pointer
+}
+
+
+#pauseBtn{
+  border-radius:  50px;
+  position: relative;
+  margin-left:  -35px;
+  margin-top: -50px;
+}
+
+
+#pauseBtn:hover{
+  cursor: pointer
+}*/
+
+
+.btnsActions{
+  position: relative;
+  margin: 0 auto;
+  margin-top: -400px;
+  margin-bottom: 380px;
+  text-align: right;
+  width: 500px;
+}
+
+
+#serializeBtn{
+  width: 500px;
+  margin-bottom:  70px;
+}
+
+
+.tarjeta-login {
+  margin: 80px 0px 120px 0px;
+  box-shadow: 1px 1px 5px #ccc;
+  width: 100%;
+}
+
+.tarjeta-login-modal {
+  margin: 80px 0px 120px 0px;
+  width: 100%;
+}
+
+.tarjeta-login .titulo {
+  background-color: #c1d53e;
+  color: #fff;
+  margin-bottom: -33px;
+}
+
+.tarjeta-login .titulo h1 {
+  font-size: 30px;
+  color: #fff;
+}
+
+.tarjeta-login .contenido {
+  background-color: #fff;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 50px;
+  color: #555;
+}
+
+.tarjeta-login .nota {
+  margin-top: 60px;
+}
+
+#img-firma{
+  height:  70px;
+}
+
+.btn-respon2{
+  margin-top: 30px;
+  font-size:  18px;
+  padding-top: 5px;
+  width: 500px;
+  height: 40px;
+}
+
+.btn-respon3{
+  margin-top: 30px;
+  font-size:  18px;
+  padding-top: 5px;
+  width: 500px;;
+  height: 40px;
+}
+
+.btn-respon-form{
+  margin-top: 60px;
+  font-size:  18px;
+  padding-top: 5px;
+  width: 100%;
+  height: 40px;
+}
+#img-firma2{
+  height: 77px;
+}
+.btn-100{
+  width: 100%;
+}
+/*@media screen and (max-width: 980px) {
+
+
+  .tarjeta-login {
+    margin: 10px 0px 120px 0px;
+    box-shadow: 1px 1px 5px #ccc;
+    width: 100%;
+  }
+
+  .tarjeta-login .titulo {
+    background-color: #c1d53e;
+    color: #fff;
+    margin-bottom: -83px;
+  }
+
+  .tarjeta-login .titulo h1 {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .tarjeta-login .contenido {
+    background-color: #fff;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 50px;
+    color: #555;
+  }
+
+  .tarjeta-login .nota {
+    margin-top: 60px;
+  }
+
+
+  .logo_header{
+    height:  200px;
+  }
+
+  .firma h1{
+    color: #568e3e;
+    text-align: center;
+    font-size:  70px;
+    font-weight: 300;
+  }
+
+  .firma h2{
+    text-align: center;
+    margin-top:  -10px;
+    margin-bottom:  40px;
+    font-size:  40px;
+    color: #000;
+    font-weight: 200;
+  }
+
+  .btn-respon{
+    font-size:  30px;
+    width: 100%;
+    height: 110px;
+  }
+
+  .btn-respon2{
+    margin-top: 80px;
+    font-size:  35px;
+    padding-top: 25px;
+    width: 100%;
+    height: 110px;
+  }
+
+  #serializeBtn{
+    width: 100%;
+      margin-top:  80px;
+    margin-bottom:  40px;
+  }
+
+
+  #clearBtn{
+    border-radius:  50px;
+    position: absolute;
+    margin-left:  -50px;
+    margin-top: 350px;
+    height:  100px;
+  }
+
+
+  #clearBtn:hover{
+    cursor: pointer
+  }
+
+
+  .btnsActions{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    width: 100%;
+  }
+
+.btnsActions input{
+  height:  100px;
+  padding-left:  50px;
+  padding-right:  50px;
+  font-size:  30px;
+}
+
+  }*/
+
+
+
+  .tarjeta-login-ios .btn-primary {
+  color: #fff;
+  background-color: #4E8C41;
+  border-color: #4E8C41;
+}
+.tarjeta-login-ios .btn-primary:focus,
+.tarjeta-login-ios .btn-primary.focus {
+  color: #fff;
+  background-color: #4E8C41;
+  border-color: #4E8C41;
+}
+.tarjeta-login-ios .btn-primary:hover {
+  color: #fff;
+  background-color: #4E8C41;
+  border-color: #4E8C41;
+}
+.tarjeta-login-ios .btn-primary:active,
+.tarjeta-login-ios .btn-primary.active,
+.tarjeta-login-ios .open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #4E8C41;
+  border-color: #4E8C41;
+}
+.tarjeta-login-ios .btn-primary:active:hover,
+.tarjeta-login-ios .btn-primary.active:hover,
+.tarjeta-login-ios .open > .dropdown-toggle.btn-primary:hover,
+.tarjeta-login-ios .btn-primary:active:focus,
+.tarjeta-login-ios .btn-primary.active:focus,
+.tarjeta-login-ios .open > .dropdown-toggle.btn-primary:focus,
+.tarjeta-login-ios .btn-primary:active.focus,
+.tarjeta-login-ios .btn-primary.active.focus,
+.tarjeta-login-ios .open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #4E8C41;
+  border-color: #4E8C41;
+}
+
+
+
+
+  .containerApp{
+      margin: 0px 0px 0px 0px;
+      padding: 0px 0px 0px 0px;
+      width: 100%;
+    }
+
+
+    .bodyApp {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #333;
+      background-color: #fff;
+    }
+
+
+
+
+
+  .tarjeta-login-ios {
+
+    margin: 0px 0px 0px 0px;
+    margin-right:  -200px;
+    width: 100%;
+  }
+
+    .tarjeta-login-ios .btn-respon3{
+    margin-top: 30px;
+    padding-top: 5px;
+    font-size:  30px;
+    width: 100%;
+    height: 110px;
+  }
+
+    .tarjeta-login-ios .titulo {
+    /*background-color: #c1d53e;*/
+    margin-top: 40px;
+    color: #fff;
+    margin-bottom: -83px;
+  }
+
+  .tarjeta-login-ios .titulo h1 {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .tarjeta-login-ios .contenido {
+    background-color: #f5f5f5;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    color: #555;
+  }
+
+  .tarjeta-login-ios .nota {
+    margin-top: 60px;
+  }
+
+
+    .tarjeta-login-ios .logo_header{
+    height:  200px;
+  }
+
+  .tarjeta-login-ios #img-firma{
+    margin-top:  -185px;
+    height:  150px;
+  }
+
+  .tarjeta-login-ios #img-firma2{
+    margin-top:  -185px;
+    height:  150px;
+  }
+
+
+
+.tarjeta-login-ios .img-logo-cont{
+  margin: 0 auto;
+  text-align: center;
+}
+    .tarjeta-login-ios .firma h1{
+    color: #568e3e;
+    text-align: center;
+    font-size:  70px;
+    font-weight: 300;
+  }
+
+    .tarjeta-login-ios .firma h2{
+    text-align: center;
+    margin-top:  -10px;
+    margin-bottom:  40px;
+    font-size:  40px;
+    color: #000;
+    font-weight: 200;
+  }
+
+    .tarjeta-login-ios  .btn-respon{
+    font-size:  15px;
+    width: 32%;
+    margin: 1px;
+    height: 35px;
+    border-radius: 2px;
+  }
+
+  .tarjeta-login-ios  .btn-respon2{
+    margin-top: 80px;
+    font-size:  35px;
+    padding-top: 25px;
+    width: 100%;
+    height: 110px;
+  }
+
+    .tarjeta-login-ios #serializeBtn{
+    width: 100%;
+      margin-top:  20px;
+    margin-bottom:  40px;
+  }
+
+.tarjeta-login-ios #sendBtn{
+    width: 100%;
+    height: 130px;
+    font-size: 45px;
+      margin-top:  20px;
+    margin-bottom:  0px;
+  }
+
+
+    .tarjeta-login-ios #clearBtn{
+    border-radius:  2px;
+    margin-left: 0px;
+    margin-top: 0px;
+    font-size: 15px;
+    height:  36px;
+  }
+
+
+
+    .tarjeta-login-ios #clearBtn:hover{
+    cursor: pointer
+  }
+
+
+     .tarjeta-login-ios .btnsActions{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .tarjeta-login-ios .btnsActions input{
+  height:  100px;
+  padding-left:  50px;
+  padding-right:  50px;
+  font-size:  30px;
+}
+
+
+.tarjeta-login-ios .container-form label{
+  font-size: 45px;
+  color: #568e3e;
+  font-weight: 300;
+}
+
+.tarjeta-login-ios .container-form .form-control {
+  height: 100px;
+  font-size: 45px;
+  font-weight: 300;
+}
+
+.tarjeta-login-ios .container-form .form-control {
+  height: 100px;
+  font-size: 45px;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+.tarjeta-login-ios .container-form{
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+
+
+.tarjeta-login-ios{
+  margin-bottom: 0px;
+}
+
+.tarjeta-login-ios .txt-ob{
+  margin-top: 30px;
+  font-size: 40px;
+  margin-bottom: -10px;
+  text-align: center;
+  color: #568e3e;
+}
+
+.tarjeta-login-ios #drawingDiv{
+  width: 100%;
+}
+
+
+.tarjeta-login-ios .img-firma-cont{
+
+}
+
+
+.tarjeta-login-ipad {
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+}
+.tarjeta-login-ipad #playBtn{
+  font-size:  20px;
+  width: 400px;;
+  height: 60px;
+}
+  .tarjeta-login-ipad .titulo {
+  background-color: #c1d53e;
+  color: #fff;
+  margin-bottom: -83px;
+}
+
+.tarjeta-login-ipad .titulo h1 {
+  font-size: 30px;
+  color: #fff;
+}
+
+.tarjeta-login-ipad .contenido {
+  background-color: #fff;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 50px;
+  color: #555;
+}
+
+.tarjeta-login-ipad .nota {
+  margin-top: 60px;
+}
+
+
+  .tarjeta-login-ipad .logo_header{
+  height:  100px;
+}
+
+  .tarjeta-login-ipad #img-firma{
+    margin-top:  -115px;
+    height:  90px;
+  }
+
+
+  .tarjeta-login-ipad #img-firma2{
+    margin-top:  -115px;
+    height:  90px;
+  }
+
+  .tarjeta-login-ipad .firma h1{
+  color: #568e3e;
+  text-align: center;
+  font-size:  40px;
+  font-weight: 300;
+}
+
+  .tarjeta-login-ipad .firma h2{
+  text-align: center;
+  margin-top:  -10px;
+  margin-bottom:  40px;
+  font-size:  25px;
+  color: #000;
+  font-weight: 200;
+}
+
+  .tarjeta-login-ipad  .btn-respon{
+  font-size:  20px;
+  width: 400px;;
+  height: 60px;
+}
+
+
+.tarjeta-login-ipad  .btn-respon2{
+  margin-top: 80px;
+  padding-top: 15px;
+  font-size:  20px;
+  width: 400px;;
+  height: 60px;
+}
+
+  .tarjeta-login-ipad #serializeBtn{
+    font-size:  20px;
+    width: 400px;;
+    height: 60px;
+    margin-top:  -10px;
+  margin-bottom:  10px;
+}
+
+.tarjeta-login-ipad #sendBtn{
+    font-size:  20px;
+    width: 400px;;
+    height: 60px;
+    margin-top:  -10px;
+  margin-bottom:  10px;
+}
+
+  .tarjeta-login-ipad #clearBtn{
+  border-radius:  50px;
+  position: absolute;
+  margin-left:  -50px;
+  margin-top: 350px;
+  height:  100px;
+}
+
+
+  .tarjeta-login-ipad #clearBtn:hover{
+  cursor: pointer
+}
+
+
+   .tarjeta-login-ipad .btnsActions{
+  position: relative;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.tarjeta-login-ipad .btnsActions input{
+height:  100px;
+padding-left:  50px;
+padding-right:  50px;
+font-size:  30px;
+}
+
+
+.tarjeta-login-ipad .container-form label{
+  font-size: 22px;
+  color: #568e3e;
+  font-weight: 300;
+}
+
+
+.tarjeta-login-ipad .container-form .form-control {
+  height: 50px;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.tarjeta-login-ipad .container-form{
+  margin-top: 10px;
+  margin-bottom: 1300px;
+}
+
+
+
+.tarjeta-login-ipad{
+  margin-bottom: 50px;
+}
+
+.tarjeta-login-ipad .txt-ob{
+  margin-top: 30px;
+  font-size: 25px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #568e3e;
+}
+
+.formApp{
+}
+
+
+.canvasMob{
+  height: 640px;
+  width:  800px;
+}
+
+.canvasMob2{
+  height: 500px;
+  width:  500px;
+}
+
+
+.container-form{
+  margin-top: 10px;
+  margin-bottom: 570px;
+}
+
+
+.tarjeta-login-ios .alerta-modal{
+  border-style: solid;
+  margin:50px;
+  margin-top: 200px;
+  border-width: 2px;
+  border-color: #4E8C41;
+  padding: 50px;
+  font-size: 46px;
+  background: #fff;
+  text-align: center;
+  font-weight: 200;
+}
+
+.tarjeta-login-ios .btn-close{
+  width: 100px;
+  margin-top: 20px;
+}
+
+
+.tarjeta-login-modal .btn-close{
+  width: 50px;
+  margin-top: 20px;
+}
+
+.tarjeta-login-ios .btn-modal{
+  height: 80px;
+  font-size: 40px;
+  padding-top: 10px;
+}
+
+
+.tarjeta-login-ios .btn-respon-form-sub{
+  margin-top: 60px;
+  font-size:  18px;
+  padding-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+
+
+
+
+.tarjeta-login-modal .alerta-modal{
+   border-style: solid;
+  margin-bottom:150px;
+  margin-top: 100px;
+  border-width: 1px;
+  border-color: #4E8C41;
+  padding: 50px;
+  font-size: 20px;
+  background: #fff;
+  text-align: center;
+  font-weight: 200;
+}
+
+
+
+
+
+
+
+.tarjeta-login-ios-resp .alerta-modal{
+  border-style: solid;
+  margin:9px;
+  margin-top: 80px;
+  border-width: 1px;
+  border-color: #4E8C41;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 17px;
+  background: #fff;
+  text-align: center;
+  font-weight: 200;
+}
+
+.tarjeta-login-ios-resp .btn-close{
+  margin-top: 10px;
+}
+
+.tarjeta-login-ios-resp .btn-modal{
+  height: 30px;
+  font-size: 15px;
+  margin-top: 28px;
+  background: #4E8C41;
+  border-color: #4E8C41;}
+
+
+.tarjeta-login-ios-resp .btn-modal:active{
+  height: 30px;
+  font-size: 15px;
+  margin-top: 28px;
+  background: #4E8C41;
+}
+
+.tarjeta-login-ios-resp .btn-modal-close{
+  height: 30px;
+  font-size: 15px;
+  margin-top: 28px;
+  background: #AAAAAA;
+  border-color: #AAAAAA;}
+
+
+.tarjeta-login-ios-resp .btn-modal-close:active{
+  height: 30px;
+  font-size: 15px;
+  margin-top: 28px;
+  background: #AAAAAA;
+}
+
+
+.tarjeta-login-ios-resp .btn-respon-form-sub{
+  margin-top: 60px;
+  font-size:  18px;
+  padding-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+
+
+
+
+.tarjeta-login .btn-respon-form-sub{
+  margin-top: 12px;
+  font-size:  18px;
+  padding-top: 6px;
+  width: 100%;
+  height: 40px;
+}
+
+.marca{
+  position: relative;
+  z-index: 9999999;
+  margin-top: -300px;
+  margin-bottom: 215px;
+  color: #a8a8a8;
+  font-size: 25px;
+  font-weight: 100;
+}
+
+.marca img{
+  width: 60%;
+}
+
+
+
+
+/*
+
+
+
+
+/*****************************************************/
+@media  (max-width: 500px) {
+
+    .tarjeta-login-ios .logo_header{
+    height:  80px;
+  }
+
+  .tarjeta-login-ios .img-logo-cont{
+    margin: 0 auto;
+    margin-top: -30px;
+    margin-bottom: -20px;
+    text-align: center;
+  }
+      .tarjeta-login-ios .firma h1{
+      color: #568e3e;
+      text-align: center;
+      font-size:  25px;
+      font-weight: 300;
+    }
+
+      .tarjeta-login-ios .firma h2{
+      text-align: center;
+      margin-top:  -10px;
+      margin-bottom:  40px;
+      font-size:  20px;
+      color: #000;
+      font-weight: 200;
+    }
+
+    .tarjeta-login-ios .contenido {
+      background-color: #f5f5f5;
+      margin-top: 40px;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      color: #555;
+    }
+    .tarjeta-login-ios .container-form label{
+      font-size: 20px;
+      color: #568e3e;
+      font-weight: 300;
+    }
+
+    .tarjeta-login-ios .container-form .form-control {
+      height: 50px;
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    .tarjeta-login-ios .txt-ob{
+      margin-top: -20px;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #568e3e;
+    }
+    .tarjeta-login-ios .btn-respon-form-sub{
+      margin-top: 20px;
+      font-size:  10px;
+      padding-top: 5px;
+      width: 100%;
+      height: 25px;
+    }
+
+    .tarjeta-login-ios #sendBtn{
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+          margin-top:  20px;
+        margin-bottom:  10px;
+      }
+
+
+
+
+  
+.tarjeta-login-ios {
+  margin: 20px 0px 20px 0px;
+  width: 100%;
+}
+
+
+.tarjeta-login-ios .alerta-modal{
+  border-style: solid;
+  margin:10px;
+  margin-top: 20px;
+  border-width: 1px;
+  border-color: #4E8C41;
+  padding: 20px;
+  font-size: 18px;
+  background: #fff;
+  text-align: center;
+  font-weight: 200;
+}
+
+.tarjeta-login-ios .btn-close{
+  width: 30px;
+  margin-top: 5px;
+}
+
+.tarjeta-login-ios .btn-modal{
+  height: 40px;
+  font-size: 13px;
+  padding-top: 9px;
+}
+
+
+
+}

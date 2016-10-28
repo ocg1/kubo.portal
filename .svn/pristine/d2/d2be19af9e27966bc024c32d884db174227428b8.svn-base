@@ -1,0 +1,557 @@
+console.log("js/registro/fileUpload.js");
+$(window).load(function(){
+	fileUploadPreview (); 
+	drop_upload ();
+	
+});
+
+/* funcion  ocultar botones credencial, reset al desplegar el paso, y al cargar los documentos  */
+function ocultar_botones_credencial () {
+	
+	console.log("revision en credencial");
+	
+	if($("#listCredFm2 div").text().indexOf("Frente") != (-1)) {
+		$(".cred_image:eq(0)").addClass("opacity");
+	}
+	
+	if($("#listCredFm2 div").text().indexOf("Reverso") != (-1)) {
+		$(".cred_image:eq(1)").addClass("opacity");
+	}
+	
+	if($("#listCredFm2 div").text().indexOf("Pasaporte") != (-1)) {
+		$(".cred_image:eq(2)").addClass("opacity");
+	}
+}
+
+/*intercalar documentos de la credencial conforme se cargan los docs */
+var acomodoBtnCredencial = function () {
+
+	var pasaporte_text =  $(".frente_vuelta:contains('Sube una foto de tu Pasaporte ')")
+	    frente_text =     $(".frente_vuelta:contains('Sube una foto del frente de tu credencial de elector')"),
+		reverso_text =    $(".frente_vuelta:contains('Sube una foto del reverso de tu credencial de elector')");
+	
+	var pasaporte_btn = pasaporte_text.closest("form"),
+		frente_btn =    frente_text.closest("form"),
+		reverso_btn = 	reverso_text.closest("form");
+		
+	
+		$("#btns_credencial .fileupload-buttonbar").find(".ui-button-text").html("+ Subir");
+		/*
+		pasaporte_btn.find(".ui-button-text").html("Clic aquí para subir tu pasaporte");
+		frente_btn.find(".ui-button-text").html("Clic aquí para subir el frente de tu credencial");
+		reverso_btn.find(".ui-button-text").html("Clic aquí para subir el reverso de tu credencial");
+	*/
+
+	var pasaporte_doc = $("#listCredFm2 div:contains('Pasaporte')");
+		frente_doc = 	$("#listCredFm2 div:contains('Frente')");	 
+		reverso_doc = 	$("#listCredFm2 div:contains('Reverso')");
+
+		pasaporte_doc.addClass("pasaporte_doc");
+		frente_doc.addClass("frente_doc");
+		reverso_doc.addClass("reverso_doc");
+		
+		acomodoBtnCredencial_docs("frente", frente_btn, frente_doc); 
+		acomodoBtnCredencial_docs("reverso", reverso_btn, reverso_doc); 
+		acomodoBtnCredencial_docs("pasaporte", pasaporte_btn, pasaporte_doc ); 
+	
+}
+
+var acomodoBtnCredencial_docs = function (categoria, btn, doc) {
+	
+	if($('#btns_credencial .'+ categoria +'_doc').length > 0) {
+		$('#listCredFm2 .' + categoria +'_doc img').each(function() {
+			if($(this).attr("src") != $('#btns_credencial .'+categoria+'_doc img').attr("src")) {
+				$(this).parent().parent().insertAfter($(btn));
+				$(this).parent().parent().siblings('.'+categoria+'_doc').remove();
+			}else {
+				$(this).parent().parent().remove();
+			}
+		});
+	}else {
+		$(doc).insertAfter($(btn));
+	}
+}
+
+/*funcion principal para cargar documentos mediante el click */
+function fileUploadPreview () {
+	$(".custumStlFileUploadPreview").on('change', function() {
+		upload_automatic ();
+	    $('.combo_tipo_doc').removeClass("seleccionar_tipo");
+	});	
+} 
+/*funcion principal para cargar documentos mediante el drop */
+var drop_upload = function () {
+$('.custumStlFileUploadPreview').on(
+	    'drop',
+	    function(e){
+	        if(e.originalEvent.dataTransfer){
+	        		  upload_automatic ();
+	
+	        }
+	    }
+	)
+}
+/*funcion para quitar la imagen que aparece por default, cuando todavia no hay imagen cargada */
+function sinimagen () {
+	setTimeout(function(){
+	
+		if($(".imgLogoProyect img").attr("src") == "../resources/img/sinimagen.jpg") {
+			$(".imgLogoProyect img").attr("src", "../resources/img/sinimagen.jpg").hide();
+		}else {
+		}
+  	},300);
+}
+/* funcion para cambiar una imagen */
+function ejecutaAccion(elemt, type, proyect ){
+
+	 if( $(elemt).closest("div").text().indexOf("Frente") != (-1)) {
+		$(".cred_image:eq(0) input.custumStlFileUploadPreview").trigger("click");
+		$(".cred_image:eq(0)").addClass("opacity"); 
+	}
+		
+    if( $(elemt).closest("div").text().indexOf("Reverso") != (-1)) {
+		console.log($(elemt).closest("div").text());
+		$(".cred_image:eq(1) input.custumStlFileUploadPreview").trigger("click");
+		$(".cred_image:eq(1)").addClass("opacity");
+	} 
+    if( $(elemt).closest("div").text().indexOf("Pasaporte") != (-1)) {
+		 console.log($(elemt).closest("div").text());
+		$(".cred_image:eq(2) input.custumStlFileUploadPreview").trigger("click");
+		$(".cred_image:eq(2)").addClass("opacity");
+    } 
+	$(elemt).closest("form").find("select").val(type);
+	$(elemt).closest("form").find("select").change();
+	$(elemt).closest("form").find("select").blur();
+	$(elemt).closest("form").find(".custumStlFileUploadPreview input").trigger("click");
+}
+
+/* funcion para eliminar una imagen onstart */
+function eliminarElemento(elemt, compania, file, filetype, prospectus, proyect, location){
+	$(".velo").fadeIn();
+	$(".borrarDoc").addClass("show");
+
+	  $('#cancelaBorrar').click(function(){
+			$(".velo").fadeOut();
+			$(".borrarDoc").removeClass("show");
+	  });
+      $('#aceptaBorrar').click(function(){
+  		$(".velo").fadeOut();
+		$(".borrarDoc").removeClass("show");
+    	  displayMessageProcessing('msgprocessing',false);
+			var y = $(window).scrollTop(); 
+			 $("html, body").animate({ scrollTop: y -120 }, 800);
+			 $("#datos_eliminar").val("");
+			 $("#datos_eliminar").val(compania+"::"+file+"::"+filetype+"::"+prospectus+"::"+proyect+"::"+location);
+			 $("#datos_eliminar").blur();
+			 console.log("se esta eliminando");	 
+		
+	  });
+	
+
+}	
+/* funcion para eliminar una imagen oncomplete */ 
+function borradoElemento () {
+	closeFancy();
+	init_listener_file_upload();
+	$(".combo_tipo_doc").val("");
+	fileUploadPreview ();
+	
+}
+
+/* funcion que da el click automatico en el boton de subir, con condiciones */ 
+function upload_automatic () {
+	if($("#fancybox-wrap").is(":hidden")) {
+		displayMessageProcessing('msgprocessing',false);
+	}
+	 var testimoniosInterval = setInterval(function(){
+		  if($(".template-upload").length || $(".template-upload").is(":visible")) {
+			  if(!$(".template-upload").hasClass("ui-state-error")) {
+				  $(".start button").click();
+				  $('.combo_tipo_doc').prop('selectedIndex',0);
+		          $('.combo_tipo_doc').change();
+		          $('.combo_tipo_doc').removeClass("seleccionar_tipo");
+		    	  ocultar_botones_credencial();
+		    	  clearInterval(testimoniosInterval);
+			  }else {
+				  closeFancy();
+				  alertify.alert("Este archivo tiene un formato no válido. Recuerda que solo puedes subir archivos en formato JPG, PNG, o PDF.");
+				  clearInterval(testimoniosInterval);
+			  }
+		    		 
+		  }else {
+		  	
+		  }
+	}, 1000); 
+}
+
+/* funcion que se ejecutan al llegar a este paso y cada vez que se termine de actualizar la lista de documentos cargados */ 
+function actualizacionListadoDocumentos (contenedorDocumentos) {
+	console.log("actualizacionListadoDocumentos");
+	var resizeId;
+		clearTimeout(resizeId);
+		resizeId = setTimeout(acomodoBtnCredencial, 500);
+		asterisk(".labelsStl");
+		asterisk(".numberAndTitle");
+		asterisk(".titleDisabled");
+	sinimagen ();
+	fileUploadPreview ();
+	ocultar_botones_credencial ();
+	drop_upload ();
+    $('.combo_tipo_doc').removeClass("seleccionar_tipo");
+  	
+	if($("#fancybox-wrap").is(":visible")) {
+		closeFancy();
+	}
+	setTimeout(function(){
+		if($(contenedorDocumentos+ " div").length) {
+			$(contenedorDocumentos).closest("form").find(".avisoDocs").hide();
+			
+			if(contenedorDocumentos == "#listloan") {
+				if($("#listloan div").length == 3){
+					$("#listloan").closest("form").find(".selectsDocumentos").addClass("ocultaS");
+				
+				}
+				
+				}else{
+					$(contenedorDocumentos).closest("form").find(".selectsDocumentos").addClass("ocultaS");
+					if($("#listloan div").length >= 1){
+						$("#frm_loan .avisoDocs").hide();
+					}
+				}
+			
+			}
+		listoPaso ();
+		fieldCount();
+  	},300);
+	
+	
+		
+		
+		  /* if( facturaUno.indexOf("Factura o nota de compra (01)")  == (-1) &&  $("#listloan div small").text().indexOf("Factura o nota de compra (02)")  == (-1) && $("#listloan div small").text().indexOf("Factura o nota de compra (3)") == (-1)) {
+		  addOption ("#type_loan option[value='9']",9);
+	  }*/
+}
+/*
+function eliminarOpcionesIndependiente() {
+	var valueOptions = ['9','48','49','50','51','52','53', '54', '55','56'];
+	var facturaUno   = $("#listloan div small:contains('Factura o nota de compra (01)')");
+	var facturaDos   = $("#listloan div small:contains('Factura o nota de compra (2)')")
+	var facturaTres  = $("#listloan div small:contains('Factura o nota de compra (3)')")
+
+	$("#type_loan option").each(function() {
+		  if($.inArray( $(this).val(), valueOptions) >= 0) {
+			  $(this).remove();
+		  }
+	});
+
+	 if( facturaUno.length ){
+		  if(!facturaDos.length ){
+			  addOption ("#type_loan option[value='48']", 48, "Factura o nota de compra");
+		  }else{
+			  if(!facturaTres.length ){
+				  addOption ("#type_loan option[value='49']", 49, "Factura o nota de compra");
+			  }
+		  }
+	  }else{
+		  addOption ("#type_loan option[value='9']", 9, "Factura o nota de compra");
+	  }
+	
+}
+
+
+function  eliminarOpcionesEmpleado() {
+	var valueOptions = ['10','57','58'];
+	var facturaUno   = $("#listloan div small:contains('Recibo de nómina (01)')");
+	var facturaDos   = $("#listloan div small:contains('Tu recibo de nómina (2)')")
+	var facturaTres  = $("#listloan div small:contains('Tu recibo de nómina (3)')")
+
+	 $("#type_loan option").each(function() {
+		  if($.inArray( $(this).val(), valueOptions) >= 0) {
+			  $(this).remove();
+		  }
+	});
+	
+	if( facturaUno.length ){
+		  if(!facturaDos.length ){
+			  addOption ("#type_loan option[value='57']", 57, "Recibo de nómina");
+		  }else{
+			  if(!facturaTres.length ){
+				  addOption ("#type_loan option[value='58']", 58, "Recibo de nómina");
+			  }
+		  }
+	  }else{
+		  addOption ("#type_loan option[value='10']", 10, "Recibo de nómina");
+	  }
+	
+}
+*/
+function eliminarOpciones  (valueOptions, docUno, docDos, docTres, option1, option2, option3, text) {
+
+	var doc1   = $("#listloan div small:contains('"+docUno+"')");
+	var doc2   = $("#listloan div small:contains('"+docDos+"')");
+	var doc3  =  $("#listloan div small:contains('"+docTres+"')");
+
+	$("#type_loan option").each(function() {
+		  if($.inArray( $(this).val(), valueOptions) >= 0) {
+			  $(this).remove();
+		  }
+	});
+	  if( doc1.length ){
+		  if(!doc2.length ){
+			  addOption ("#type_loan option[value='"+option2+"']", option2, text);
+		  }else{
+			  if(!doc3.length ){
+				  addOption ("#type_loan option[value='"+option3+"']", option3, text);
+			  }
+		  }
+	  }else{
+		  addOption ("#type_loan option[value='"+option1+"']", option1, text);
+	  }
+
+}
+function addOption (optionValue, valueNumber, text){
+	  if(!$(optionValue).length) {
+		    var x = document.getElementById("type_loan");
+		    var option = document.createElement("option");
+		    option.text = text;
+		    option.value = ""+valueNumber+""
+		    x.add(option);
+		  }
+}
+
+function init_listener_file_upload(){	
+	$(".custumStlFileUploadPreview").on('change', 'drop', function() 
+	{
+		
+		if($.mobile == null)
+		{		
+				var fileThis=this;
+				var objectUpload=$(this).parents(".custumStlFileUploadPreview");
+				var sectionFiles=objectUpload.find(".files");		
+				sectionFiles.find(".template-upload").remove();		
+				sectionFiles.hide();
+				
+				var nameFile   = $(this).val();
+				var fileFormat = nameFile.substring(nameFile.lastIndexOf(".")+1).toLowerCase();
+				
+				if((fileFormat=="pdf" || fileFormat=="png" || fileFormat=="jpg" || fileFormat=="jpeg" || fileFormat=="gif") && window.FileReader)
+				{
+					
+						
+					upload_automatic (); // agrgegado gabriel
+				
+					if(fileThis.files[0].size<=5242880)
+					{
+						objectUpload.delay(100).show('fast', function() 
+						{
+							
+							var preview= sectionFiles.find(".preview");
+						
+							preview.parent().addClass("validatorClass");
+						
+						if (fileThis.files && fileThis.files[0]) 
+						{											
+						        var reader = new FileReader();
+						        
+						        reader.onload = function (e) 
+						        {
+						        	
+						        	 
+						        	if(fileFormat!="pdf")
+						        	{
+						        		var imgObject = $("<img class='img_complet_view' id='show_"+fileThis.name+"'></img>");	
+						        		
+						        		var widthWindows=Number($(window).width())-30;
+						        		var heightWindows=Number($(window).height())-30;				        		
+						        		var divWidth=550;
+						        		var divHeight=510;
+						        		var flag=false;		
+						        		
+							        	$(imgObject).load(function () 
+							        	{							        		
+							        		if(this.width>widthWindows && this.height>heightWindows)
+							        		{
+							        			divWidth=widthWindows-100;
+							        			divHeight=heightWindows-50;
+							        			flag=true;
+							        		}else if(this.width<widthWindows){
+							        			divWidth=this.width;
+							        			if(this.height<heightWindows)
+							        				divHeight=this.height;
+							        			else{
+							        				divHeight=heightWindows-50;	
+							        				flag=true;
+							        			}		        									        			
+							        		}					        		
+							        		preview.html("<a class='showScreen' title='Ver imagen completa' href='#img_"+fileThis.name+"'>" +
+								        			"<img  width='150' height='150'  src='"+e.target.result+"'></img></a>"+
+								        			"<div style='display:none;' ><div class='parent-content' style='border:10px solid #444;width:"+divWidth+"px;height:"+divHeight+"px;' id='img_"+fileThis.name+"'></div></div>");					        		
+							        		$("div.parent-content").append(imgObject);		
+							        		sectionFiles.show();
+							        		
+							        			
+								        
+							        	     
+							        	       
+							        	
+							        		if(flag)
+							        		{
+								        		$(this).imgscale({ 
+								    			    parent : '.parent-content',
+								    			    scale: 'fit'
+								    			  });		
+							        		}
+							        		
+							        		$(".showScreen").fancybox({		
+							        			padding : 	0,
+							        			margin 	:	0,
+							        			transitionIn: 'none',
+							        			transitionOut : 'none',	
+							        			scrolling : 'auto',
+							        			centerOnScroll : true,
+							        			titleShow:false,
+							        			overlayColor: '#444'
+		
+							        		});
+							        		$("div.parent-content").width("auto").height("auto");
+							        		
+							        	}).attr("src",e.target.result);
+							        	
+						        	}else{
+						        		
+						        	 if(fileThis.files[0].size<=1048576)
+						        	 {
+						        		preview.html("<a class='showScreen' title='Ver archivo completo' href='#frame_"+fileThis.name+"'>ver archivo</a>" +
+							        			"<embed width='150' height='150' src='"+e.target.result+"'></embed>"	+
+							        			"<div style='display:none;' ><div id='frame_"+fileThis.name+"' style='border:10px solid #444;' ><embed width='600' height='500'  src='"+e.target.result+"'></embed></div></div>"
+							        			);
+						        		}else{
+						        			preview.html("<img width='150' height='150' src='../resources/img/icon-pdf.png' ></img>"
+								        			//"<div style='display:none;' ><div id='frame_"+fileThis.name+"' style='border:10px solid #444;' ><iframe width='600' height='500'  src='"+e.target.result+"'></iframe></div></div>"
+								        			);
+						        		}
+						        		sectionFiles.show();
+						        		$(".showScreen").fancybox({		
+						        			padding : 	0,
+						        			margin 	:	0,
+						        			transitionIn: 'none',
+						        			transitionOut : 'none',	
+						        			scrolling : 'auto',
+						        			centerOnScroll : true,
+						        			titleShow:false,
+						        			overlayColor: '#444'
+						        		});
+						        	}
+						        					        	
+						        };
+						        reader.readAsDataURL(fileThis.files[0]);
+						    }else{
+						    	sectionFiles.show();
+						    }
+						});
+						
+					} else {
+						
+						sectionFiles.show();
+					}
+						
+						
+				}else{
+					objectUpload.delay(100).show('fast', function() {
+						sectionFiles.show();
+						var tdName=sectionFiles.find(".name");
+						var nameFile=tdName.text();
+						
+						if(nameFile.length>=10)
+						{
+							tdName.attr("title",nameFile);
+							if(nameFile.length-13>5){
+								tdName.text(nameFile.substring(0,10)+"...."+nameFile.substring(nameFile.lastIndexOf(".")-5)).removeClass("name");
+							}else{
+								tdName.removeClass("name");
+							}					
+						}else{
+							tdName.removeClass("name");
+						}				
+					});
+				}		
+				return false;
+				
+		}
+		 
+	});
+	
+	
+}
+
+function oncompleterequest(component){
+	if(component!=null){
+	var element=$("#"+component);
+	$('.template-upload.ui-state-error').remove();
+	element.css("display","inline");							 
+	var elementChild=element.parents(".containerTitleUpload");
+	if(elementChild.children().eq(0).hasClass("corner")){
+		elementChild.find(".corner").removeClass("corner").addClass("cornerDisabled");
+		elementChild.find(".numberAndTitle").removeClass('numberAndTitle').addClass("numberAndTitleDisabled");
+		elementChild.find(".number").removeClass("number").addClass("numberDisabled");
+		elementChild.find(".title").removeClass("title").addClass("titleDisabled");
+	}	
+	fieldCount();
+	}
+
+}
+
+function validateSelectDocument(component) {
+	var element=$("#"+component);
+	if(element.val()==""){
+		   element.validationEngine('showPrompt', 'Seleccione un documento','error','centerRight', true);		   
+		   return false;	   
+	   }
+	   else{
+		   element.parent().children('.formError').remove(); 
+		   return true;
+	   }
+	
+}
+
+function validateFileUploadCombo(component) {
+
+	
+
+	var element=$("#"+component);
+	var parent=element.parent();
+	
+	var text="Presiona para subir tu "+element.find('option:selected').text();
+	if(element.val()!=""){	
+		
+		   //parent.parent().children('.formError').remove();
+		   //parent.next().show();
+		   //parent.next().stop();
+		
+		$("#dv"+component).delay(400).show();
+	
+//		   parent.next().children().eq(0).validationEngine('showPrompt',text,'error','centerRight', true).prev().delay(5000).hide(800, function () {
+//		        $(this).remove();
+//		   });
+		
+		  // agregado gabriel
+		   $('.combo_tipo_doc').removeClass("seleccionar_tipo"); 
+		   element.closest('.selectsDocumentos').find('.avisoDocs').hide();
+		   return true;	   
+			
+	   }
+	   else{
+		   parent.next().hide();
+		// agregado gabriel
+		   element.closest('.selectsDocumentos').find('.avisoDocs').show();
+		    if ($("#"+component).closest("form").find(".contenedor_docs div").is(":visible")) {
+			}else {
+				$("#"+component).closest("form").find(".contenedor_docs article").hide();
+			}
+		   return false;
+		   
+		   
+	   }
+}
+
+

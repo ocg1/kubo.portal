@@ -1,0 +1,56 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+					<div class="ayudaDocs elementoCentrar">
+						<div class="ayudaDoc1">
+	        				<figure>
+									<h:graphicImage library="img/ayudaDocs" name= "001big-01.png"  />  
+							</figure>
+        					<h4>Veo que estás subiendo tus documentos.</h4>
+									
+										<h3>¡Ya te falta muy poco!:</h3>
+									
+										<p>Si necesitas ayuda no dudes en contactarme: da clic en el botón y te llamo de inmediato.</p>
+        	
+        				<div class="callAction btnNaranja" onclick="abrirAyudaDoc2()">Quiero ayuda de un asesor.</div>
+
+						<div class="callAction btnGris" onclick="cerrarAyudaDoc()">No gracias, continúo por mi cuenta</div>
+        
+       				 </div>
+       				 
+       				 
+       				 
+       				 <div class="ayudaDoc_a">
+       				 		<figure>
+								<h:graphicImage library="img/ayudaDocs" name= "002big-01.png"  />  
+						</figure>
+        		<h4>Así que necesitas un poco de ayuda ....</h4>
+									
+										<h3>Me pondré en contacto contigo de inmediato.</h3>
+									
+										<p>Recuerda que nuestro horario de atención es de lunes a viernes de 9 am a 6 pm..</p>
+        	
+        				<div class="callAction btnNaranja"  onclick="cerrarAyudaDoc()">OK</div>
+       				 
+       				 </div>
+       				 
+       				  <div class="ayudaDoc2_b">
+       				 		<figure>
+								<h:graphicImage library="img/ayudaDocs" name= "001-01.jpg"  />  
+						</figure>
+        		<h4>Así que necesitas un poco de ayuda ...</h4>
+									
+										<h3>Me pondré en contacto contigo dentro de nuestro horario de atención, el cual es de lunes a viernes de 9am a pm.</h3>
+									
+        	
+        				<div class="callAction btnNaranja"  onclick="cerrarAyudaDoc()">OK</div>
+       				 
+       				 </div>
+       				 
+        			</div>	
+        	
+        	
+				</ui:composition>

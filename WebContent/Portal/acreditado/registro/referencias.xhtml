@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../../resources/favicon.ico"/> 
+
+        <!-- CSS --> 
+        <link rel="stylesheet" type="text/css" href="../../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../resources/css/interior_formulario.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../../resources/css/laptop_medium.css" />        
+  		<link rel="stylesheet" type="text/css" href="../../resources/css/font-awesome.css" />
+        <!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+
+
+        <script type="text/javascript" src="../../resources/js/jquery.slides.min.js"></script>
+    	<script type="text/javascript" src="../../resources/js/scripts.js"></script>
+		<script src="../../resources/js/scripts_interior.js"></script>
+	    <script src="../../resources/js/ga_event.js"></script>
+	
+
+        <script type="text/javascript" language="javascript">
+        
+    	/******************GOOGLE*ANALYTICS**************************************/ 
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+        
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+         </script>
+
+</h:head>
+ <h:body>
+    
+    
+    
+    	<div class="kubo_container privado">
+        	<h:form>
+       	   <!-- header -->
+       	   <ui:include src="../../templates/header_acreditados_inversionistas.xhtml" />
+            <div class="titulo"><h2>Proceso de solicitud de préstamo</h2></div>	
+            <div class="content">
+            	
+                
+                <div class="inner_content">
+            		<ui:include  src="../../templates/procedimiento_acreditados.xhtml" />
+                <div class="col_derecha inscripcion">
+           
+                
+                
+                
+                
+                   <div class="formulario tipo_2 lab">
+                   
+                   
+                   
+
+              <h3><strong>1.</strong>Referencias</h3> 
+                                  
+                                  <h6>Tus referencias - Parientes</h6>
+                             <article class="referencias">
+                             		<h4>referencia 1</h4>
+                                	<ul>
+                                    	<li>
+                                        	<label>Nombres</label>
+                                            <p:inputText  id="pariente_nombre_a" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_a" value="Nombre"/>
+                                            <p:inputText id="pariente_nombre_otros_a" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_otros_a" value="Segundo nombre"/>
+                                        </li>
+                                        <li>
+                                        	<label>Apellidos</label>
+                                            <p:inputText  id="pariente_apellido_paterno_a" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_paterno_a" value="Apellido Paterno"/>
+                                            <p:inputText  id="pariente_apellido_materno_a" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_materno_a" value="Apellido Materno"/>
+                                        </li>
+                                          <li>
+                                        	<label>Parentesco</label>
+                                            <div>
+                                            	<div class="selects">
+                                                     <i class="fa fa-angle-down"></i>
+                                                     <p:selectOneMenu value="" effect="fade">
+														     <f:selectItem itemLabel="Parentesco" itemValue="" />
+													</p:selectOneMenu>
+                                        		 </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="medio_contacto">
+                                        	<label>Medio de contacto</label>
+                                            <div>
+                                            	<p:inputText styleClass="caja_1"  id="telefono_contacto_a" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto_a" value="+52"/>
+                                                
+                                                <p:inputText styleClass="caja_2" id="telefono_contacto2_a" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto2_a" value="(55)"/>
+                                                
+                                                <p:inputText styleClass="caja_3" id="telefono_contacto3_a" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto3_a" value="#{msg.Kubo_telefono}"/>
+                                            </div>
+                                            
+                                        </li>
+                                		
+                                
+                                	</ul>
+                                    <h4>referencia 2</h4>
+                                	<ul>
+                                    	<li>
+                                        	<label>Nombres</label>
+                                            <p:inputText  id="pariente_nombre_b" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_b" value="Nombre"/>
+                                            <p:inputText id="pariente_nombre_otros_b" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_otros_b" value="Segundo nombre"/>
+                                        </li>
+                                        <li>
+                                        	<label>Apellidos</label>
+                                            <p:inputText  id="pariente_apellido_paterno_b" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_paterno_b" value="Apellido Paterno"/>
+                                            <p:inputText  id="pariente_apellido_materno_b" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_materno_b" value="Apellido Materno"/>
+                                        </li>
+                                          <li>
+                                        	<label>Parentesco</label>
+                                            <div>
+                                            	<div class="selects">
+                                                     <i class="fa fa-angle-down"></i>
+                                                     <p:selectOneMenu value="" effect="fade">
+														     <f:selectItem itemLabel="Parentesco" itemValue="" />
+													</p:selectOneMenu>
+                                        		 </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="medio_contacto">
+                                        	<label>Medio de contacto</label>
+                                            <div>
+                                            	<p:inputText styleClass="caja_1"  id="telefono_contacto_b" typbe="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto_b" value="+52"/>
+                                                
+                                                <p:inputText styleClass="caja_2" id="telefono_contacto2_b" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto2_b" value="(55)"/>
+                                                
+                                                <p:inputText styleClass="caja_3" id="telefono_contacto3_b" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto3_b" value="#{msg.Kubo_telefono}"/>
+                                            </div>
+                                            
+                                        </li>
+                                		
+                                
+                                	</ul>
+                            	
+                             	 <p:commandLink styleClass="btn_cont" value="Continuar"></p:commandLink>
+                             
+                             </article>
+                             
+                             
+                                 <h6>Tus referencias - No parientes</h6>
+                             <article class="referencias">
+                             		<h4>referencia 3</h4>
+                                	<ul>
+                                    	<li>
+                                        	<label>Nombres</label>
+                                            <p:inputText  id="pariente_nombre_c" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_c" value="Nombre"/>
+                                            <p:inputText id="pariente_nombre_otros_c" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_otros_c" value="Segundo nombre"/>
+                                        </li>
+                                        <li>
+                                        	<label>Apellidos</label>
+                                            <p:inputText  id="pariente_apellido_paterno_c" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_paterno_c" value="Apellido Paterno"/>
+                                            <p:inputText  id="pariente_apellido_materno_c" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_materno_c" value="Apellido Materno"/>
+                                        </li>
+                                          <li>
+                                        	<label>Parentesco</label>
+                                            <div>
+                                            	<div class="selects">
+                                                     <i class="fa fa-angle-down"></i>
+                                                     <p:selectOneMenu value="" effect="fade">
+														     <f:selectItem itemLabel="Parentesco" itemValue="" />
+													</p:selectOneMenu>
+                                        		 </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="medio_contacto">
+                                        	<label>Medio de contacto</label>
+                                            <div>
+                                            	<p:inputText styleClass="caja_1"  id="telefono_contacto_c" typbe="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto_c" value="+52"/>
+                                                
+                                                <p:inputText styleClass="caja_2" id="telefono_contacto2_c" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto2_c" value="(55)"/>
+                                                
+                                                <p:inputText styleClass="caja_3" id="telefono_contacto3_c" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto3_c" value="#{msg.Kubo_telefono}"/>
+                                            </div>
+                                            
+                                        </li>
+                                		
+                                
+                                	</ul>
+                                    <h4>referencia 4</h4>
+                                	<ul>
+                                    	<li>
+                                        	<label>Nombres</label>
+                                            <p:inputText  id="pariente_nombre_d" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_d" value="Nombre"/>
+                                            <p:inputText id="pariente_nombre_otros_d" type="text"></p:inputText>
+                                            <p:watermark for="pariente_nombre_otros_d" value="Segundo nombre"/>
+                                        </li>
+                                        <li>
+                                        	<label>Apellidos</label>
+                                            <p:inputText  id="pariente_apellido_paterno_d" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_paterno_d" value="Apellido Paterno"/>
+                                            <p:inputText  id="pariente_apellido_materno_d" type="text"></p:inputText>
+                                            <p:watermark for="pariente_apellido_materno_d" value="Apellido Materno"/>
+                                        </li>
+                                          <li>
+                                        	<label>Parentesco</label>
+                                            <div>
+                                            	<div class="selects">
+                                                     <i class="fa fa-angle-down"></i>
+                                                     <p:selectOneMenu value="" effect="fade">
+														     <f:selectItem itemLabel="Parentesco" itemValue="" />
+													</p:selectOneMenu>
+                                        		 </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="medio_contacto">
+                                        	<label>Medio de contacto</label>
+                                            <div>
+                                            	<p:inputText styleClass="caja_1"  id="telefono_contacto_d" typbe="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto_d" value="+52"/>
+                                                
+                                                <p:inputText styleClass="caja_2" id="telefono_contacto2_d" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto2_d" value="(55)"/>
+                                                
+                                                <p:inputText styleClass="caja_3" id="telefono_contacto3_d" type="text"></p:inputText>
+                                                <p:watermark for="telefono_contacto3_d" value="#{msg.Kubo_telefono}"/>
+                                            </div>
+                                            
+                                        </li>
+                                		
+                                
+                                	</ul>
+                            	
+                             	 <p:commandLink styleClass="btn_cont" value="Continuar"></p:commandLink>
+                             
+                             </article>
+                              <h6>Tu situación de familia</h6>
+                              <article class="situacion_familiar">
+                              	  <ul>
+                                 	<li>
+                                      <label>Estado civil</label>
+	                                    <div class="selects">
+	                                         <i class="fa fa-angle-down"></i>
+	                                         <p:selectOneMenu value="" effect="fade">
+													<f:selectItem itemLabel="Estado Civil" itemValue="" />
+											 </p:selectOneMenu>
+	                                     </div>
+                                      </li>
+                                      <li class="depenedientes_econocmicos">
+                                      	<label>Número de dependientes económicos</label>
+                                       	<ul>
+                                        	<li class="dep_1">
+                                        		<p:inputText id="no_dependientes_economicos" type="text"></p:inputText>
+                                        		<p:watermark for="no_dependientes_economicos" value="00"/>
+                                            
+                                            </li>
+                                            <li class="dep_2"><label>Nivel máximo de estudios</label></li>
+                                            <li class="dep_3">
+                                            	<div class="selects">
+			                                         <i class="fa fa-angle-down"></i>
+			                                         <p:selectOneMenu value="" effect="fade">
+															<f:selectItem itemLabel="Nivel máximo de estudios" itemValue="" />
+													 </p:selectOneMenu>
+	                                   			  </div>
+                                           </li>
+                                        
+                                        </ul> 	
+                                      </li>
+                                          <li class="checks">
+                                      	  	<label>¿Cuentas con computadora?</label>
+                                      		 <div class="formcheckbox line">
+                                             	  <p:selectManyCheckbox  styleClass="checks"  >
+										            <f:selectItem itemLabel="Casa" itemValue="" />
+										            <f:selectItem itemLabel="Empleo" itemValue="" />
+										            <f:selectItem itemLabel="Negocio" itemValue="" />
+									           </p:selectManyCheckbox>
+                                             </div>
+                                      
+                                      </li>
+                                         <li class="checks">
+                                      	  	<label>¿Tienes acceso a internet?</label>
+                                      		<div>
+                                              
+                                                
+                                                 <p:selectManyCheckbox  styleClass="checks"  >
+										            <f:selectItem itemLabel="Casa" itemValue="" />
+										            <f:selectItem itemLabel="Empleo" itemValue="" />
+										            <f:selectItem itemLabel="Negocio" itemValue="" />
+									           </p:selectManyCheckbox>
+                                      	    </div> 
+                                      
+                                      </li>
+                                       <li class="radios">
+                                      	  	<label>¿Cuentas con impresora?</label>
+                                      		 <div class="formcheckbox line">
+                                             	<ol>
+                                                	<li>Si</li>
+                                                    <li>No</li>
+                                                
+                                                </ol>
+                                             </div>
+                                      
+                                      </li>
+                                      
+                                      
+                                  </ul>
+                                  
+                             <p:commandLink styleClass="btn_cont" value="Continuar"></p:commandLink>
+                              
+                              </article>
+                             
+                      
+
+                        
+                        
+                       
+                    </div>
+                
+                
+                
+                  
+                  
+               </div>
+                
+              
+           </div>
+            
+           </div>
+        <!--footer mapa de sitio-->
+        <ui:include src="../../templates/footer_mapa.xhtml" />        
+        
+        <!--lightbox abrir sesion-->
+        <ui:include src="../../templates/modal_iniciar_sesion.xhtml" />
+         
+        <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+        <ui:include src="../../templates/modal_condusef_cat_gat.xhtml" />  
+        
+        <!--lightbox sesion sin actividad-->
+        <ui:include src="../../templates/modal_sesion_inactiva.xhtml" />  
+        <!--Requisitos-->
+        <ui:include src="../../templates/modal_requisitos.xhtml" />
+       
+         
+        </h:form>
+        
+    </div>
+    </h:body>
+		<script type="text/javascript">
+		/** Start Alexa Certify Javascript **/
+		_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+		
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+		
+		/* End Alexa Certify Javascript */
+		  
+		
+		</script>
+	<!-- Alexa Certify Javascript -->
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+	<!-- End Alexa Certify Javascript -->
+</html>

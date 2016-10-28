@@ -1,0 +1,100 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "#{addPldDocument.naturalperson.getEdad() > 18}">
+			
+			
+													
+		<div class="containerTitleUpload">
+			<div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'cornerDisabled':'corner'}"></div>
+				<div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">				
+					<!-- div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCredFm2}</div -->
+					<div class="#{addPldDocument.dispCheckCredFm2 =='inline'? 'titleDisabled':'title'}">#{addPldDocument.tiCredFm2}*</div>
+						<p:graphicImage id         = "checkCredFm2" 
+										styleClass = "validatorClass" 
+										style      = "float:right; 
+										              display:#{addPldDocument.dispCheckCredFm2}"  
+										url        = "../resources/img/check.png" />
+				</div>			
+		</div>	
+						
+		<div class="dvContent2" >				
+			<div class="dvContent" style="margin:0;">				
+			
+			<p/>						
+					
+				<div id="btns_credencial" class="dvElementLength">
+						
+<!-- 
+					<div class="styled-select-Address">
+						<h:selectOneMenu  id="cbo_CredFm2" style="width: 360px !important; height: 28px !important;  background: transparent !important;border: 0px !important; box-shadow: 0px 0px 0px 0px #C2C2C2 !important;"  styleClass="elementStlSelAddress" value="#{addPldDocument.typeCredFm2}" >
+							<f:selectItem itemValue=""  itemLabel=""/>
+							<f:selectItems value="#{addPldDocument.listCREFM2}" var="type" itemLabel="#{type.name}" itemValue="#{type.fileTypePk.file_type_id}"/>
+							<p:ajax event="change" onstart="return validateFileUploadCombo('cbo_CredFm2');"></p:ajax>
+						</h:selectOneMenu>
+					</div>
+-->	
+					<div class="leyendas"><p>Tienen que ser a color</p></div>		 
+					<ui:repeat var = "type" value = "#{addPldDocument.listCREFM2}">	
+						<h:form id = "frm_credFm2" enctype = "multipart/form-data" prependId = "false" styleClass="cred_image clsFrmIdentification">
+									<h:outputLabel class="frente_vuelta"   value="#{type.name}" />				
+																	
+									<p:fileUpload id                 = "file_credFm2" 
+												  styleClass         = "custumStlFileUploadPreview" 
+												  fileUploadListener = "#{addPldDocument.handleFileCredFmDos}"																													   
+												  invalidSizeMessage = "Tamaño del archivo inválido"
+											      invalidFileMessage = "Tipo de archivo no válido."
+											      showButtons        = "false" 
+									              mode               = "advanced"  
+									              label              = "+ Subir"
+									              update             = ":listCredFm2 :panelScript"
+									              sizeLimit          = "5242880"  												                                   
+									              allowTypes         = "/(\.|\/)(gif|jpe?g|png|pdf|PDF)$/">
+										<f:attribute name = "typefile" value = "#{type.fileTypePk.file_type_id}"/>						 
+									 </p:fileUpload> 								 
+								</h:form>
+					</ui:repeat>						
+				</div>
+	
+				<div  class="dvElementLength">	
+					<h:panelGroup  id = "listCredFm2" class="contenedor_docs"  >
+					<script>
+					
+					actualizacionListadoDocumentos ("#listCredFm2");
+					
+					</script>
+						<h:panelGroup   rendered ="#{addPldDocument.lDocAddedCredFm2.size() eq 1 }" >
+							<span class="doc_proporcionado">
+								Has proporcionado el siguiente documento
+							</span>
+						</h:panelGroup>	
+						<h:panelGroup rendered ="#{addPldDocument.lDocAddedCredFm2.size() gt 1 }" >
+							<span class="doc_proporcionado">
+								Has proporcionado los siguientes documentos
+							</span>
+						</h:panelGroup>	
+							
+						<ui:repeat   var="loopCredFm2" value = "#{addPldDocument.lDocAddedCredFm2}">
+
+							     <div>
+							     	<figure><img src="../resources#{loopCredFm2.location_thump}" /></figure>
+									<small><i class="fa fa-check-circle"></i>#{loopCredFm2.uploaded_text}</small> 
+									<fieldset class="btn_imagenes">
+										<span onclick="return ejecutaAccion(this, '#{loopCredFm2.file_type_id}','#{loopCredFm2.proyect_loan_id}')" class="cambiar"><i class="fa fa-pencil-square-o"></i></span>
+										<span onclick="return eliminarElemento(this, '#{loopCredFm2.company_id}','#{loopCredFm2.file_id}', '#{loopCredFm2.file_type_id}', '#{loopCredFm2.prospectus_id}', '#{loopCredFm2.proyect_loan_id}', '#{loopCredFm2.location}')"  class="eliminar"><i class=" fa fa-trash"></i></span>
+									</fieldset>
+								</div>
+							
+						</ui:repeat>
+					</h:panelGroup>														 						
+				</div>						
+			</div>
+		</div>	
+		
+		
+			
+	</h:panelGroup>
+</ui:composition>				

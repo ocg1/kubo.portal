@@ -1,0 +1,195 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<script type="text/javascript" src="../resources/js/registro/fileUpload.js"/>
+	<script type="text/javascript" src="../resources/js/mx.com.kubo.acreditado/registro/documentacion.js"/>
+	<script type="text/javascript" src="../resources/js/mx.com.kubo.acreditado/registro/documentacion/tipo-credencial.js"/>
+	<script type="text/javascript" src="../resources/js/imgscale/imgscale.jquery.min.js"/>
+	
+	<script type = "text/javascript">
+	
+	// window.history.pushState(null, null, "#documentacion")
+
+	
+		$(document).ready(function() 
+		{			
+			init_listeners_documentacion();
+			init_listener_file_upload();
+			
+		    setTimeout(function()
+    	    {
+    	    	comienza_a_contar();
+    	    	listoPaso ();
+    	    	
+    	    }, 150);
+		});
+	</script>
+	<div class="plecaForm docu">
+        			<h3>Sube tus documentos</h3>
+        			
+        				<p class="light">También puedes enviar tus documentos por:</p>
+	        			<p class="light"><i class="fa fa-whatsapp "><img src="../resources/img/whatsapp2.png"/> Whatsapp: <strong>(55) 3281 4533</strong></i></p>
+	        			<p class="light"><i class="fa fa-envelope-o"></i>Correo: <a href="mailto:informes@kubofinanciero.com">informes@kubofinanciero.com</a></p>
+        			
+     	<span class="triangle"><i class="fa fa-caret-down"></i></span>
+    </div>
+	<div id="general"  style="padding-top: 0px !important; margin-top: 0px !important;">
+	  <ui:include src = "borrarDoc.xhtml"/>
+	  
+	  
+		<div class="backStyle"  style="padding-top: 0px !important; margin-top: 0px !important;">	
+			<div id="contFrmPre"  style="padding-top: 0px !important; margin-top: 0px !important;">
+				<h:panelGroup styleClass="areaL" id="documentosActualizar" >
+			
+					<ui:include src = "documentacion/sube_tus_fotos.xhtml"/>	
+										
+					
+					<div class="dvContent sigDocumentsBtn" style="margin-left: auto; margin-right: auto;" >
+						<div class="mapOff solicitud callAction btnNaranja" onclick="sigDocuments();">
+							Guardar y continuar
+						</div>
+						
+						 
+					</div>
+					
+					<ui:include src = "documentacion/lista_documentos_baraRed.xhtml"/>
+				</h:panelGroup>		
+			</div>
+		</div>
+	</div>
+
+	
+
+<script type="text/javascript">
+
+/* if($.mobile != null)
+	 $.mobile.ajaxEnabled = true; */
+	 
+	$("#frm_questPLD\\:movfrecdep").blur();
+	$("#frm_questPLD\\:movfrecdep").trigger("blur");
+
+</script>
+
+	<!-- pixelprogramatic paso 6, 11 marzo 2015 -->
+	
+	
+	<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+		<script>
+		$(document).ready(function()
+				{
+			    	$(".documentacion").trigger("click");
+			    	
+			    	
+			    	setTimeout(function()
+			        	    {
+			    				//clickCheckSegment ();
+			    				clickCheckSGBHelp ();
+			        	    	
+			        	    }, 250);
+			    	
+				});
+	
+
+				     crear_indices();
+				     blur_indices();
+				     focus_indices();
+				   
+				
+			    function clickCheckSegment (){
+			    
+			    	$("#cmdCheckSegmentPubli").trigger("click");
+			    
+			    }
+			    
+			    function clickCheckSGBHelp (){
+			    	$("#cmdCheckSGBHelp").trigger("click");
+			    }
+				function muestreBotonAyuda( ) {
+					$(".columaNecesitas").show();
+					
+				} 
+				function returnCheckSegment (xhr, status, args)
+				{
+					console.log(" return  checaSegmentoPublicacion: ");
+					console.log("args.flagRepeat: " +  args.flagRepeat);
+					console.log("args.pageSend: " + args.pageSend);
+					
+					if(args.isvalid){
+					
+						//iniciaPopCaramelo();
+						
+					}
+					
+				}
+				
+				function returnCheckSGBHelp( xhr, status, args ){
+					
+					console.log(" return  returnCheckSGBHelp: ");
+					console.log("args.isValid: " +  args.isValid);
+					console.log("args.isHabil: " + args.isHabil);
+					
+					if(args.isValid){
+						
+						if(args.isHabil){
+							console.log("args"+args);
+							//Muestra POP Habil
+							$(".ayudaDoc_b").remove();
+						}else{
+							$(".ayudaDoc_a").remove();
+							//Muestra POP Fuera de Servicio
+							
+						}
+						muestreBotonAyuda();
+						//Muestra POP AYUDA
+					
+						
+					}
+				}
+		  
+				//abrirAyudaDoc();
+		</script>
+		
+		<a class="documentacion" href="#" onclick="ga('send', { 'hitType': 'pageview', 'page': '/registro/paso6.html', 'title': 'Paso 6' });"> </a>
+
+		<img border="0" src="https://r.turn.com/r/beacon?b2=RsmXAulyjPevBb3THTWzhNp9NsxeNCTSE1wR19DdnNggp1wj57Plw7FfebHAu3QLFizxeN087AT6jx3GiEyU-Q&amp;cid="/>
+          			 
+        <h:form prependId="false" >
+        
+        	<div style="display: none;">
+        	
+       			<h:commandLink id="cmdCheckSegmentPubli" immediate="true" >
+       				<p:ajax event="click"  listener="#{addPldDocument.checaSegmentoPublicacion}" oncomplete="returnCheckSegment(xhr, status, args);" update=":pnlPorCaramelo"  ></p:ajax>
+       			</h:commandLink>
+       			
+       			<h:commandLink id="cmdCheckSGBHelp" immediate="true" >
+       				<p:ajax event="click"  listener="#{addPldDocument.checaSGBHelp}" oncomplete="returnCheckSGBHelp(xhr, status, args);" update=":pnlSGBHelp"  ></p:ajax>
+       			</h:commandLink>
+       			
+       			<h:commandLink id="cmdNeedSGBHelp" immediate="true" >
+       				<p:ajax event="click"  listener="#{addPldDocument.needSGBHelp}" oncomplete="returnCheckSGBHelp(xhr, status, args);" update=":pnlSGBHelp"  ></p:ajax>
+       			</h:commandLink>
+       			<h:commandLink id="cmdNoSGBHelp" immediate="true" >
+       				<p:ajax event="click"  listener="#{addPldDocument.noSGBHelp}" oncomplete="returnCheckSGBHelp(xhr, status, args);" update=":pnlSGBHelp"  ></p:ajax>
+       			</h:commandLink>
+        			
+        	</div>
+        	
+        </h:form>
+        	
+        <h:panelGroup id="pnlPorCaramelo" >
+        
+        	<ui:include src ="popCaramelo.xhtml"/>
+        
+        </h:panelGroup>
+        
+        <h:panelGroup id="pnlSGBHelp" >
+        </h:panelGroup>
+        	<ui:include src ="documentacion/ayudaDocPop/ayudaDocPop.xhtml"/>
+        
+        
+          			          
+   </h:panelGroup>  
+</ui:composition>

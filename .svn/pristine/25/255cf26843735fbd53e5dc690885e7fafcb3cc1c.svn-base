@@ -1,0 +1,92 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup id = "vivienda">
+		<div style = "float: none; 
+					  clear: both; 
+					  position: relative;
+					  overflow: hidden;
+					  border: 0px solid black;">
+					  
+			<div style = "float: left; 
+					      font-weight: bold;
+					      height: 25px;
+					      padding-top: 5px">#{summaryRequest.editor_domicilio.person_type_title}</div>
+			
+					      
+			<ui:include src = "editor-domicilio/bitacora_de_cambios.xhtml"/>				
+			<ui:include src = "editor-domicilio/alarmas/coincidencias.xhtml"/>	
+			<ui:include src = "editor-domicilio/alarmas/coincidencias_nivel_2.xhtml"/>				      
+		</div>				      
+	
+		<h:panelGroup rendered = "#{summaryRequest.editor_domicilio_ENABLED}">
+			<div id = "container_vivienda_TOKEN">
+				<p>#{summaryRequest.editor_domicilio.vivienda_TOKEN}</p>
+			</div>
+			
+			<h:outputText value="#{summaryRequest.editor_domicilio.scriptColonia}" escape="false" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered = "#{!summaryRequest.editor_domicilio_ENABLED}">				
+			<p>#{summaryRequest.editor_domicilio.vivienda_TOKEN}</p>				
+		</h:panelGroup>	
+		
+		<h:panelGroup rendered = "#{summaryRequest.editor_domicilio != null}">
+			<div id = "container_editar_vivienda_TOKEN">
+				<ui:include src = "editor-domicilio/codigo_postal.xhtml"/>	
+				<ui:include src = "editor-domicilio/colonia.xhtml"/>
+				<ui:include src = "editor-domicilio/delegacion_municipio.xhtml"/>
+				<ui:include src = "editor-domicilio/estado.xhtml"/>	
+				<ui:include src = "editor-domicilio/calle.xhtml"/>
+				<ui:include src = "editor-domicilio/numero_exterior.xhtml"/>
+				<ui:include src = "editor-domicilio/numero_interior.xhtml"/>
+				<ui:include src = "editor-domicilio/manzana.xhtml"/>
+				<ui:include src = "editor-domicilio/lote.xhtml"/>
+				<ui:include src = "editor-domicilio/entre_la_calle.xhtml"/>
+				<ui:include src = "editor-domicilio/y_la_calle.xhtml"/>
+				<ui:include src = "editor-domicilio/punto_de_referencia.xhtml"/>
+				<ui:include src = "editor-domicilio/tipo_de_vivienda.xhtml"/>
+				<ui:include src = "editor-domicilio/motivo_del_cambio.xhtml"/>
+				<ui:include src = "editor-domicilio/guardar_cancelar_edicion.xhtml"/>
+			</div>	
+			
+			<ui:include src = "editor-domicilio/mapa.xhtml"/>
+			<ui:include src = "editor-domicilio/lista_coincidencias.xhtml"/>
+		</h:panelGroup>
+	</h:panelGroup>
+	
+	<script>
+		$("div#container_vivienda_TOKEN").click(function()
+		{		
+			$("#container_editar_vivienda_TOKEN").toggle("slow");
+		});
+	</script>
+	
+	<style>
+		.editor-domicilio.label
+		{
+			font-size: 15px;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 300;
+			color: #262322;
+			line-height: 17px;
+			margin:0;
+		}
+		
+		.editor-domicilio.input-text
+		{
+			font-family: 'Open Sans', sans-serif;
+			border: solid 1px #9f9f9f;
+			font-size: 14px !important;
+			color: #000;
+			font-weight: 300 !important;
+			box-shadow: none !important;
+			font-family: 'Open Sans', sans-serif;
+			resize: none;
+			font-size: 14px !important;
+		}
+	</style>
+</ui:composition>				 

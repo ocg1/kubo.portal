@@ -1,0 +1,24 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+
+	<div class = "styled-select-Month" >
+		<h:selectOneMenu id  = "frecuProyectNeg" immediate = "true"
+						 value = "#{incomesExpenses.negotiation.frequency_id}"  
+						 styleClass = "elementStlSelMonth">
+			<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "" />
+			
+			<f:selectItems  value = "#{simulator.listFrequency}" 
+							var = "frequency" 
+							itemLabel = "#{frequency.name}" 
+							itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+			<p:ajax event      = "change" 
+					onstart    = "return simOnStartVal();" 
+					oncomplete = "return showRes();" 
+					listener   = "#{incomesExpenses.modifier.modificaCondiciones}" 
+					update     = "resSimRegNeg catSimRegNeg pnlIndicadoresControl btnCondiciones indice_pago_deudas indice_pago_deudas_mesa_control" />  
+		</h:selectOneMenu>	
+	</div>				
+</ui:composition>

@@ -1,0 +1,291 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+			
+				<script>
+				
+					function showWaitToken(){
+						
+						$("#dvContToken").fadeOut("slow",function(){ $("#dvContWaitToken").fadeIn("slow") });
+							
+					}
+					
+					
+				
+				</script>
+				
+				
+<h:form prependId="false" >
+				
+	<div class="alerts contenedorToken">
+			
+			<a class="close_lightbox" href="javascript:void(0);" onclick="cerrar_fondeados ();"></a>
+			
+			<h:panelGroup id="pnlToken" styleClass="clsPnlToken" >
+			
+				<h:panelGroup styleClass="clsContToken clsPnlToken" rendered="#{generaToken.status == 0}" >
+					
+					<div id="dvContToken" >
+				
+						<p style="width: 99% !important; background-color: #FFFFFF !important;" >
+							Por tu seguridad se enviará un código de verificación de identidad al teléfono #{generaToken.cell_num} 
+						</p>	
+			          	<br />
+					
+						 <h:commandLink 
+						 	styleClass="alertify-button alertify-button-ok" 
+						 	value="Genera código" 
+						 
+						 	id="alertify-ok"
+						 	>
+						 	
+						 	<p:ajax event="click" listener="#{generaToken.generaToken}" onstart="return showWaitToken();" update="pnlToken" immediate="true"  ></p:ajax>
+						 	
+						 	<f:attribute name="eventToken" value="datosBasicos" />
+						 	
+						 </h:commandLink>
+				
+					 </div>
+					 
+					 <div id="dvContWaitToken" >
+					 
+					 	<div style="width: 50px; height: 50px; margin-left: auto; margin-right: auto;" >
+					 		<p:graphicImage value="../resources/img/ajax-loader.gif" ></p:graphicImage>
+					 	</div>
+					 	<div style="width: 99%; height: 50px; margin-left: auto; margin-right: auto; text-align: center;" >
+					 		Generando código de seguridad
+					 	</div>
+					 </div>
+				</h:panelGroup>
+				
+			
+				
+				<h:panelGroup  rendered="#{generaToken.status == 1}" styleClass="clsPnlToken" >
+				
+				
+					<h:panelGroup  rendered="#{generaToken.envioToken}" styleClass="clsPnlToken" >
+							<script>
+							contador();
+							</script>
+							<div class="botonesTiempo" style="display:none">
+							
+								<span class="start">start</span>
+								<span  class="pause">pause</span>
+								<span class="reset">reset</span>
+							
+							</div>
+							
+							
+						<div class="containerMessage">
+							<div class="iconoBloque">
+							
+							<i class="fa fa-phone-square"></i> 
+							
+							</div>
+							<div class="textoBloque">
+								Hemos enviado un código de seguridad a tu teléfono #{generaToken.cell_num}
+							</div>
+						</div>
+						
+						<div style="display: block;width: 99%; margin-top: 15px; clear: both; float: none;font-size: 1.15em;">
+						
+							<div style="margin: 3px auto 7px; ">
+								Ingresa tu código:
+							</div>
+							
+							<div style="margin: 3px auto 7px; " >
+								<h:inputText id="CodigoIngresar" value="#{generaToken.token}"  maxlength = "8" >
+									<p:ajax event="blur" ></p:ajax>
+								</h:inputText>
+							</div>
+							
+							<div class="dosMinutosMensaje" >
+							
+								Recuerda que este código será válido durante los siguientes 2 minutos
+							
+								<div class="DosMinutos time">
+									
+								</div>
+								
+								<div class="mensajeFinTiempo">El tiempo válido para ingresar el codigo a expirado. Intenta nuevamente dando click en el boton "Generar nuevo código"</div>
+							</div>
+							
+							<nav class="alertify-buttons clstokenbut">
+								<h:commandLink 
+								 	styleClass="alertify-button alertify-button-ok validarCode" 
+								 
+								 	value="Validar" 
+								 	>
+								 	
+								 	<p:ajax event="click" listener="#{generaToken.validaToken}" update="pnlToken" immediate="true"  ></p:ajax>
+								 	
+								 </h:commandLink>
+								 
+								 <h:commandLink 
+								 	styleClass="alertify-button alertify-button-cancel" 
+								 	value="Generar nuevo código" 
+								 	>
+								 	
+								 	<p:ajax event="click" listener="#{generaToken.muestraGeneraToken}" update="pnlToken" immediate="true"  ></p:ajax>
+								 	
+								 </h:commandLink>
+							</nav>
+						</div>
+					
+					</h:panelGroup>
+					
+					
+					
+					<h:panelGroup rendered="#{!generaToken.envioToken}" styleClass="clsPnlToken" >
+					
+						<div class="containerMessage" >
+							<div class="iconoBloque">
+							
+								<i class="fa fa-exclamation-triangle"></i>
+							
+							</div>
+							<div class="textoBloque" >
+								Ocurrió un error al generar el código 
+							</div>
+						</div>
+						
+						
+						<nav class="alertify-buttons clstokenbut">
+						
+							<h:commandLink 
+							 	styleClass="alertify-button alertify-button-ok"
+					
+							 	value="Generar nuevo código" 
+							 	>
+							 	
+							 	<p:ajax event="click" listener="#{generaToken.muestraGeneraToken}" update="pnlToken" immediate="true"  ></p:ajax>
+							 	
+							 </h:commandLink>
+						
+						</nav>
+					
+					</h:panelGroup>
+				
+				
+				</h:panelGroup>
+				
+				
+				<h:panelGroup  rendered="#{generaToken.status == 2}" styleClass="clsPnlToken" >
+			
+					<script>
+						$("#personalDataVerificationToken").click();
+					</script>
+					
+					<div style="display: none;">
+						<h:panelGroup rendered="#{generaToken.validToken}" styleClass="clsPnlToken"  >
+						
+								<div class="containerMessage" >
+										<div class="iconoBloque" >
+								
+									<i class="fa fa-check"></i>
+								
+								</div>
+								<div class="textoBloque"  >
+									El código es correcto: #{generaToken.msg}
+								</div>
+								
+								<p:commandLink id="personalDataVerificationToken" value="Continuar" actionListener="#{navigationInvest.changePage}" onstart="return tokenVerifiOk();" oncomplete="closeFancy();" styleClass="alertify-button alertify-button-ok" update=":pnlContentInvest :panelContentListProyect pnlToken" >
+									<f:attribute name="seccionInv" value="menuregistro" />
+								</p:commandLink>
+								
+							</div>
+						
+						</h:panelGroup>
+					</div>
+					
+					
+					<h:panelGroup rendered="#{!generaToken.validToken}" styleClass="clsPnlToken" >
+					
+						<div class="containerMessage" >
+							<div class="iconoBloque" >
+							
+								<i class="fa fa-times"></i>
+							
+							</div>
+							<div class="textoBloque" >
+								El código es incorrecto<!-- : #{generaToken.msg} -->
+							</div>
+							
+							<h:panelGroup rendered="#{generaToken.blockedToken}" styleClass="clsPnlToken" >
+							
+								<div class="textoBloque" >
+									Debido a que has excedido el número de intentos fallidos, tu contraseña ha sido bloqueada.
+								</div>
+							
+							</h:panelGroup>
+							
+							
+						</div>
+						
+							<nav class="alertify-buttons clstokenbut">
+								
+								<h:panelGroup rendered="#{!generaToken.blockedToken}" styleClass="clsPnlToken" >
+								
+									<h:commandLink 
+									 	styleClass="alertify-button alertify-button-ok"
+									 	
+									 	value="Validar nuevamente" 
+									 	>
+									 	
+									 	<p:ajax event="click" listener="#{generaToken.muestraIntroduceToken}" update="pnlToken" immediate="true"  ></p:ajax>
+									 	
+									 </h:commandLink>
+									
+									
+									<h:commandLink 
+									 	styleClass="alertify-button alertify-button-cancel"
+		
+									 	value="Generar nuevo código" 
+									 	>
+									 	
+									 	<p:ajax event="click" listener="#{generaToken.muestraGeneraToken}" update="pnlToken" immediate="true"  ></p:ajax>
+									 	
+									 </h:commandLink>
+								 
+								 </h:panelGroup>
+								 
+								 <h:panelGroup rendered="#{generaToken.blockedToken}" styleClass="clsPnlToken" >
+									<script>
+										bloquedAccount();
+									</script>
+									<h:commandLink styleClass="alertify-button alertify-button-ok"  
+									 	value="SALIR"
+									 	>
+									 	
+									 	<p:ajax event="click" onstart="return tokenVerifiExit();" /> 
+									 	
+									 </h:commandLink>
+									 
+									 <p:commandLink 
+									 	action ="#{headerBean.SignOut}" 
+									 	
+									 	id="btnExitToken" 
+									 	
+									 	  >
+									 
+									</p:commandLink>
+									 
+									 
+								</h:panelGroup>
+							
+							</nav>
+						
+					
+					</h:panelGroup>
+				
+				</h:panelGroup>
+			
+			</h:panelGroup>
+		
+		</div>
+		
+</h:form>
+</ui:composition>

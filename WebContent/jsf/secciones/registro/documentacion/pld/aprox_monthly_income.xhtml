@@ -1,0 +1,38 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup rendered="#{sessionBean.area=='I'}" >
+		<div class="field">
+			<div class="dvLabel">
+				<h:outputLabel styleClass="labelsStl" value="Ingresos aproximados por mes*"/>
+			</div>
+			<fieldset class="conjuntoChecks">
+				   <div class="btnN fullBtn" onclick="btnCheck(this);" data-opcion="Ing1">
+			        	<span>	 Menos de $20,000</span>
+			       </div>
+			       <div class="btnN fullBtn" onclick="btnCheck(this);" data-opcion="Ing2">
+			        	<span>	Entre $20,001 y $50,000</span>
+			       </div>
+			     
+			       <div class="btnN fullBtn" onclick="btnCheck(this);" data-opcion="Ing3">
+			        	<span>	Entre $50,001 y $100,000</span>
+			       </div>
+			          <div class="btnN fullBtn" onclick="btnCheck(this);" data-opcion="Ing4">
+			        	<span>	Más de $100,000</span>
+			       </div>
+			 
+				<h:selectOneRadio id="ingMaxMen"  value="#{addPldDocument.prevencionld.aprox_monthly_income}" layout="pageDirection"  styleClass="elementStlLbl validatorClass elementStlRd ocultaSelect">
+				    <f:selectItem itemValue="Ing1" itemLabel="Menos de $20,000"/>
+				    <f:selectItem itemValue="Ing2" itemLabel="Entre $20,001 y $50,000"/>
+				    <f:selectItem itemValue="Ing3" itemLabel="Entre $50,001 y $100,000"/>
+				    <f:selectItem itemValue="Ing4" itemLabel="Más de $100,000"/>
+				    <p:ajax event="click" oncomplete="fieldCount();" listener="#{addPldDocument.savePrevencionLD}" />
+				</h:selectOneRadio>
+				</fieldset>
+			</div>
+	
+	</h:panelGroup>
+</ui:composition>					

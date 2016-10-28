@@ -1,0 +1,48 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:c  = "http://java.sun.com/jsp/jstl/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<style>		
+		div.link_mostrar_modal_motive
+		{
+			position: relative;
+			height: 10px;
+			margin-top: 46px;
+		}
+		
+		div.mostar_modal_motive
+		{
+			clear:both; 
+			float: none; 
+			font-size: 0.7em !important; 
+			color: #439539; 
+			cursor: pointer;
+			text-decoration: underline;
+			margin-left: 15px;		
+		}
+	</style>
+
+				
+	<h:panelGroup rendered = "#{not empty summaryRequest.actualProyect.motive_id}">
+		<div class = "link_mostrar_modal_motive">
+			<div onclick = "muestraMotive('#tooltip_motivo_del_cambio');"  
+				 class   = "mostar_modal_motive" 
+				 align   = "left">
+				Ver motivo
+			</div>
+		
+			<div id = "tooltip_motivo_del_cambio" class = "tooltip tooltip_motivo_del_cambio">
+				
+				<div class = "cerrar_modal_motive" >
+          			<p:graphicImage url     = "../resources/img/close.png"  
+          							style   = "cursor: pointer;" 
+          							onclick = "hideMotive('#tooltip_motivo_del_cambio');" />
+          		</div>
+          		<p>#{ summaryRequest.notas.getMotiveDescription( summaryRequest.actualProyect.motive_id)}</p>
+			</div>
+		</div>			
+	</h:panelGroup>					
+</ui:composition>				

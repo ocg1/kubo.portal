@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">	
+		
+		<link rel="stylesheet" type="text/css" href="../Portal/resources/css/interior_styles.css" />
+
+<script>
+
+ $(document).ready( function(){
+	 
+	 $(".sesion_expirada").addClass("opacity");
+	 
+ } );
+		
+	
+</script>
+
+
+
+<div >
+	      			
+            			<div class="sesion_expirada" style="margin-top:50px">
+            				<h2>Hola #{headerBean.name}</h2>
+            				
+           					
+           						<p>
+           						Nos encontramos actualizando la lista de proyectos disponibles, en unos minutos, estará nuevamente activa.
+           						</p>
+           						
+           						<p>
+								Te invitamos a intentarlo más tarde.
+								</p>
+								<p>
+								Cualquier duda, estamos a tus órdenes.
+								</p>
+								<p>
+							Saludos
+								</p>
+								
+								<p>
+							El equipo kubo.financiero
+								</p>
+            				
+            			</div>
+                 
+          
+	
+	
+</div>
+</ui:composition>

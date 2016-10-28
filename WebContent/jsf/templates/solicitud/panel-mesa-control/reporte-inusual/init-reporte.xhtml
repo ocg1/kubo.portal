@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:commandLink immediate = "true">
+		
+		<div class = "callActionMedium btnGris" style = "margin-top: 15px;"> Notificar</div>
+		
+		<p:ajax event = "click" 
+				oncomplete = "Inusual.reporte_on_complete(xhr, status, args);"
+				listener = "#{summaryRequest.inusual.init_reporte}"/>
+	</h:commandLink>
+			
+	<div class = "callActionMedium btnNaranja" onclick = "Inusual.close_modal();" style = "margin-top: 15px;"> Cancelar</div>				
+</ui:composition>				

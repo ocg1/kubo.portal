@@ -1,0 +1,186 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">		
+					
+	
+			<div id="dataBusiness" style="display:#{addIncomeExpenses.businessCompanyDisp}">				
+		<div class="preguntaBold dvLabel" >
+       			 <h:outputLabel styleClass="labelsStl" value="¿Cuánto gastas mensualmente en tu negocio? *"  ></h:outputLabel> 
+       	   </div>
+       	   <div class="gastoNegocioContainer">
+	       	   <div class="leyendas italic">
+	       			 <p>De servicios, mantenimiento, empleados, etc.</p>
+	       		</div>  		
+	       				
+				<h:inputText id="gastosNegocio" styleClass="elementAddres1  formatincomexpenses validatorClass" value="#{addIncomeExpenses.operative_costsStr}">
+					<p:ajax event="blur" listener="#{addIncomeExpenses.setTotalOperativeCostValue}"/>
+				</h:inputText>
+			</div>
+			<div class="introduccion">
+       			 	<p>Si especificas de dónde provienen los gastos de tu negocio, nos ayudas a analizar más rápido tu caso.</p>
+       		</div> 
+       			 		
+       		<span class="especificar tab_gastosNegocio" onclick="especificarIE(this);"> <small>Especificar gastos de negocio (opcional)</small><i class="fa fa-angle-down"></i></span>
+				<div id="slidedetails" class="especificacionesBloque" >
+						
+							<div id="detailsOp" >
+									<div class="dvContent2">
+										<ul>
+											<ui:repeat id="uiopert" var="operaCost"
+											   value="#{addIncomeExpenses.lstOpertCostDetails}"
+											   varStatus="status">
+													<li>
+														<div class="dvLabel">
+															<h:outputText value="#{operaCost.name}" styleClass="labelsStl"></h:outputText>
+														</div>
+														<span class="signoPesos">$</span>									
+														<h:inputText id="opert-field"
+					                                                 styleClass="elementAddres1 formatincomexpenses"
+					                                                                    value="#{operaCost.ammount_modified}">
+					 
+					                                                                    <p:ajax event="blur"
+					 
+					                                                                        oncomplete="opExpenses_a_gastosNegocio ();"
+					                                                                        listener="#{addIncomeExpenses.saveOrUpdate(operaCost)}" />
+					 
+					 
+					 
+					                                                                </h:inputText>
+												    </li>								
+					</ui:repeat>
+					</ul>
+									
+										<div class="totalGastosNegocio">
+					<div class="dvLabel">
+						<h:outputText value="Total Gastos mensuales en tu negocio"
+													style="font-weight:bold" styleClass="labelsStl"></h:outputText>
+					</div>
+					<ol>
+					
+					<p:outputPanel autoUpdate="true" id="totalOperativeCost">					
+						<li>					
+							<span class="signoPesos bold">$</span>								
+							<h:inputText id="inp_value_opExpenses" 
+							             disabled="true"
+										 styleClass="elementAddres1 formatincomexpenses"
+										  value="#{addIncomeExpenses.operative_costsStr}" />
+						</li>			
+					</p:outputPanel>
+					
+					
+					<!-- input id="recolector" type="text" value=""/ -->
+					
+					</ol>
+				</div>	
+									</div>
+								
+
+							</div>
+					
+							<!-- fieldset>
+								<div class="dvContent2">
+									<div class="dvContent">
+										<div class="dvLabel">
+											<h:outputText value="#{msg.Net_income}"
+												style="font-weight:bold;" styleClass="labelsStl"></h:outputText>
+										</div>
+										<p></p>
+										<p:outputPanel autoUpdate="true" id="pnlProfilAfterCostsStr">
+											<div class="dvElementLength"
+												style="font-weight: bold;">
+												<table>
+													<tr>
+														<td style="padding-left: 5px;">
+															<span style="margin-left: -7px;">$</span>
+														</td>
+														<td>
+															<h:inputText id="inp_value_net"
+																onkeydown="fieldNumericValue(event);" disabled="true"
+																style="font-weight:bold !important;  border:solid 1px #9f9f9f !important;"
+																styleClass="elementAddres1 formatincomexpenses"
+																value="#{addIncomeExpenses.profil_after_costsStr}" />
+														</td>
+													</tr>
+												</table>
+											</div>
+										</p:outputPanel>
+									</div>
+								</div>
+							</fieldset -->
+
+						</div>
+						<p />
+				
+						
+						
+						
+						
+			<div class="dvContent">
+       		
+       			<h6 class="encabezado_6">Compras para tu negocio</h6>
+				<div class="dvLabel">
+					<h:outputText value="¿Cómo realizas tus compras?" styleClass="labelsStl"></h:outputText>
+				</div>				
+				<div class="styled-select-Month">
+					<h:selectOneMenu id="cbo_my_purchases"
+												
+						styleClass="elementStlSelAddress"
+						value="#{addIncomeExpenses.provider_type}">
+						<f:selectItem itemValue="" itemLabel="" />
+						<f:selectItem itemValue="C" itemLabel="Contado" />
+						<f:selectItem itemValue="A" itemLabel="Abonos" />
+						<f:selectItem itemValue="M" itemLabel="Mixto" />
+						<p:ajax event="blur"
+							listener="#{addIncomeExpenses.saveIncomeDetail}"
+							oncomplete="updateBusinessIncome();"></p:ajax>
+					</h:selectOneMenu>
+				</div>				
+			</div>			
+			<div class="dvContent2">
+					<div class="dvContent">
+						<div class="dvLabel">
+							<h:outputText id="valueDinamic"
+								value="#{msg.How_often_is_supplied}" styleClass="labelsStl"></h:outputText>
+						</div>			
+						<h:inputText id="inp_how_often"
+								onkeypress="return isNumberKey(event);"
+								style="border:solid 1px #9f9f9f !important;"
+								maxlength="3" styleClass="elementAddres1 calShoppingMonth"
+								valueChangeListener="#{addIncomeExpenses.setValuesDetail}"
+								value="#{addIncomeExpenses.times_refillStr}">
+								<p:ajax onstart="return fieldNotEmpty('inp_how_often')"
+									event="blur"></p:ajax>
+								<f:attribute name="field" value="times_refill"></f:attribute>
+						</h:inputText>
+								
+					</div>
+					<div class="dvContent">
+						<div class="dvLabel">
+							<h:outputText value="Compras Mensuales*"
+								styleClass="labelsStl"></h:outputText>
+						</div>			
+						<h:panelGroup id="totalShoppingMonthly">
+								<span  class="signoPesos">$</span>
+								<h:inputText id="inp_shopping_monthly"
+									styleClass="elementAddres1 formatincomexpenses  validatorClass"
+									value="#{addIncomeExpenses.provider_totalStr}"
+									valueChangeListener="#{addIncomeExpenses.setValuesDetail}">
+									<p:ajax event="blur"
+										onstart="return fieldNotEmpty('inp_shopping_monthly')"></p:ajax>
+									<f:attribute name="field" value="provider_total"></f:attribute>
+								</h:inputText>
+						</h:panelGroup>
+									
+				</div>
+			</div>	
+						
+						
+					</div>
+			
+			<!-- h:inputHidden id ="isMobile"  value="${sessionBean.mobile}" / -->
+		 	<h:commandLink id="CMD_clear_costOperating">
+	       		<p:ajax event="click" listener="#{addIncomeExpenses.clearOperativeCost}" oncomplete="cerrarGastosNegocio();" immediate="true" />
+	       	</h:commandLink>
+</ui:composition>

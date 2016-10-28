@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+td.titulo_tabla_simulador
+{	
+	font-size: 16px !important;
+}
+
+td.valor_tabla_simulador
+{
+	padding:2px 0;
+	font-size: 16px !important;	
+}
+
+td.titulo_pagos_incluyen_IVA
+{	 
+	padding:4px 0;
+	font-size: 12px;
+}
+
+
+.input_monto,
+.input_plazo
+{
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+	padding: 3px 2px 3px 2px;
+
+	font-size: 16px !important;
+	font-weight: normal;
+	color: #2e2e2e;
+
+	border-radius: 0px;
+	-ms-border-radius: 0px;
+	-moz-border-radius:0px;
+	-webkit-border-radius: 0px;
+	-khtml-border-radius: 0px;
+	
+	-webkit-box-shadow: 1px 1px 10px -3px #c2c2c2;
+  	-moz-box-shadow: 	1px 1px 10px -3px #c2c2c2;
+  	box-shadow: 		1px 1px 10px -3px #c2c2c2;
+	
+	background-color: white;
+	border: solid 1px #FFF200;
+}
+
+.input_monto
+{
+	height: 20px;
+	width: 175px;
+}

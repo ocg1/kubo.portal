@@ -1,0 +1,20 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<p>Monto</p>
+		
+	<div class = "sim_value">		
+		<h:inputText id = "simulador_ammount" immediate = "true" 
+					 value   = "#{testAdditionalCredit.simulador.ammount_value}" 
+					 onkeyup = "format(this,'simulator');">
+										 			 								 		
+		<p:ajax event = "blur" 
+				onstart    = "return simOnStartVal('simulador_ammount', 'simulador_term_id');"
+				oncomplete = "simulator_ammount_oncomplete(xhr, status, args);" 
+				listener   = "#{testAdditionalCredit.simulador.init_input_text}" />							
+		</h:inputText>						 	
+	</div>					
+</ui:composition>				

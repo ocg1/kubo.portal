@@ -1,0 +1,38 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+	<h:panelGroup id = "uirepeatBusiness">
+		<ui:repeat id    = "uibus" 
+				   var   = "business" 
+				   value = "#{addMyLoan.businessList}" 
+				   varStatus = "status">
+		
+					<h3 class="encH3">Sobre tu negocio</h3>	
+			
+			<div class = "clTitle">
+	  			<h:outputLabel rendered="#{addMyLoan.listBusiness.size() >1}"  value="Háblanos de tu negocio #{status.index+1}"  />
+	  			<h:outputLabel rendered="#{addMyLoan.listBusiness.size()==1}"  value="Háblanos de tu negocio"  />
+    		</div>
+    		
+			<fieldset class = "clssMyBusiness" >
+				<div class = "dvContent2">	
+					<ui:include src = "business/nombre.xhtml"/>			
+					<!-- ui:include src = "business/descripcion.xhtml"/ -->													
+<!--                <ui:include src = "business/desde_cuando.xhtml"/> -->
+					<ui:include src = "business/antiguedad.xhtml"/>
+					<ui:include src = "business/antiguedad_catalogo.xhtml"/>		
+				    <ui:include src = "business/empleados.xhtml"/>
+					<!-- ui:include src = "business/logros_y_retos.xhtml"/-->
+					<ui:include src = "business/abarrotes_miscelania.xhtml"/>		
+						<ui:include src = "business/telefono.xhtml"/>															
+				</div>
+			</fieldset>
+
+			
+			<ui:include src = "business/domicilio.xhtml"/>								
+					   		  			   		  			   		  		
+		</ui:repeat>    		  		   		  				       		  	
+	</h:panelGroup>				
+</ui:composition>				

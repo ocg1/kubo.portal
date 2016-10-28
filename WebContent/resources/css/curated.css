@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+#contentCurated{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	height: auto;
+	overflow: auto;
+}
+#imgCurated{
+	float: left;
+	margin-left: 200px;
+	margin-right: auto;
+	
+}
+#curatedDesc{
+	float: left;
+	margin-left: 40px;
+	margin-top: 40px;
+}
+#curatedDesc #curatedName{
+	font-size: 3em;
+	font-weight: bold;
+	color: #4D4D4D;
+}
+#curatedDescrip{
+	width: 500px;
+	text-align: justify;
+	font-size: 1.15em;
+}
+.separador{
+	width: 85%;
+	color: #E6E6E6;
+	margin-left: auto;
+	margin-right: auto;
+}
+#proyCont{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	overflow: auto;
+	
+	text-align: center;
+}
+#curatedLink{
+	margin-top: 15px;
+	color: #556699;
+}
+#curatedLink:hover{
+	color: #996655;
+}

@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		<div class="field">
+			<div class="dvLabel">
+				<h:outputLabel styleClass="labelsStl" value="#{msg.referencia_nombre} "/>
+			</div>
+			
+			
+				<h:inputText  id="inp_name_ref4" styleClass="elementAddres1 hideIFE" value="#{moreInfo.reference4.first_name}" >
+					<p:ajax event="blur" onstart="return validaNombre('inp_name_ref4');"  listener="#{moreInfo.saveReference4}" />
+				</h:inputText>							
+		
+		</div>				
+</ui:composition>				

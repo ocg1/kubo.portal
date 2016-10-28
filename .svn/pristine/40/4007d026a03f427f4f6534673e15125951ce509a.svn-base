@@ -1,0 +1,50 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.Neighborhood_text}" />
+		</div>
+		
+	
+		
+		<div id = "dvNeighborhoodSel_#{benefic.beneficiarie_id}" class = "dvElementAddres1"  style = "display: #{benefic.addressbean.neighborhood_id_ENABLED}">
+			
+			<div id = "lista_colonias_#{benefic.beneficiarie_id}" class = "selectNuevo vecindario">
+			
+				<h:selectOneMenu id	= "selColonia" immediate  = "true"
+								 value      = "#{benefic.addressbean.neighborhood_id}" 
+								 onfocus    = "Beneficiario.Domicilio.init_focus_date(#{benefic.beneficiarie_id});"
+								 styleClass = "elementStlSelAddress validatorClass mapClass neighborhood" 
+								 style      = "height: 30px;">
+								 
+					<f:selectItem  itemLabel = "" itemValue = "0" />
+			  
+					<f:selectItems value     = "#{benefic.addressbean.listNeighborhood}" 
+								   var       = "neighborhood" 
+								   itemLabel = "#{neighborhood.name}" 
+								   itemValue = "#{neighborhood.neighborhoodCatPK.neighborhood_id}" />
+								   
+					<f:attribute name = "beneficiarie_id" value = "#{benefic.beneficiarie_id}"/>								   
+								   
+					<p:ajax event      = "change"  
+							listener   = "#{ibeneficiaries.domicilio.init_neighborhood_id}"
+							oncomplete = "Beneficiario.Domicilio.neighborhood_id_oncomplete(xhr, status, args);" />
+					                					 
+				</h:selectOneMenu>
+			</div>
+			
+		
+			
+			<div onclick = "Vivienda.showNeighText('#{benefic.beneficiarie_id}')"
+				 class   = "editar_colonia"
+			     style   = "cursor: pointer;" >		  		  
+				<p>Da click aquí si la colonia no se encuentra en la lista</p>		
+			</div>			
+		</div>
+	</div>
+					 
+</ui:composition>

@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:selectOneMenu immediate = "true" 
+					 value = "#{summaryRequest.editor_tipo_credito.loan_type_id}"
+					 style = "height: 24px;">
+	
+		<f:selectItems value = "#{summaryRequest.editor_tipo_credito.lista_loan_type}"
+					   var       = "loanType" 
+					   itemLabel = "#{loanType.loan_type_desc}" 
+					   itemValue = "#{loanType.pk.loan_type_id}"/>
+					  
+		<p:ajax event = "change" listener = "#{summaryRequest.editor_tipo_credito.listener_tipo_credito}" />
+				   
+	</h:selectOneMenu>				
+</ui:composition>				

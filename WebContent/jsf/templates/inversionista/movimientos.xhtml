@@ -1,0 +1,84 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+								 				 					
+	<div class = "clsContMenuMovsInv col_izquierda_productos containerFloatingMenu">
+					
+		<h:form prependId = "false">
+						
+			<h:panelGroup id = "pnlMovsInver" styleClass = "menu_interior FloatingMenu">
+	
+				<div class="contentMenu">
+                    	<h6>Movimientos</h6>
+                    	<ul>
+                    	<li>				
+				<p:commandLink id = "tipo-movimiento-deposito"
+							   styleClass     = "btnMenuInvMovs #{movimientosInversionista.menuSelActual=='1' ?'btnInvMovSel':''}" 
+							   actionListener = "#{movimientosInversionista.cambiaMovimiento}" 
+							   update         = "pnlMovsInver :pnlMovsPaginaActual" 
+							   immediate      = "true" 
+							   oncomplete     =  "resetMov();"
+							   >
+					
+					<f:attribute name="movimiento" value="deposito" />
+					
+	
+			Depósitos		
+				</p:commandLink>
+					</li>
+					<li>				
+				<p:commandLink id = "tipo-movimiento-disposicion"
+							   styleClass     = "btnMenuInvMovs #{movimientosInversionista.menuSelActual=='2' ?'btnInvMovSel':''}" 
+							   actionListener = "#{movimientosInversionista.cambiaMovimiento}" 
+							   update         = "pnlMovsInver :pnlMovsPaginaActual" 
+							   immediate      = "true" 
+							   oncomplete     =  "resetMov();">
+					
+					<f:attribute name="movimiento" value="retiro" />
+					
+				
+				Retiros
+					
+				</p:commandLink>
+				</li>
+				<li>
+				<p:commandLink id = "tipo-movimiento-detalle_Movs"
+							   styleClass     = "btnMenuInvMovs #{movimientosInversionista.menuSelActual=='3' ?'btnInvMovSel':''}" 
+							   actionListener = "#{movimientosInversionista.cambiaMovimiento}" 
+							   update         = "pnlMovsInver :pnlMovsPaginaActual" 
+							   immediate      = "true" 
+							   oncomplete     =  "resetMov();"
+							   >
+					
+					<f:attribute name="movimiento" value="detalle" />
+					
+
+				Detalle Movimientos
+					
+				</p:commandLink>
+			   </li>	
+			   <li>						
+				<p:commandLink id = "tipo-movimiento-cancelacion"
+							   styleClass     = "btnMenuInvMovs #{movimientosInversionista.menuSelActual=='4' ?'btnInvMovSel':''}"
+							   onstart        = "displayMessageProcessing('msgprocessing',false);" 
+							   oncomplete     = "callback_movimiento_cancelacion(xhr, status, args);"
+					           actionListener = "#{movimientosInversionista.cambiaMovimiento}" 
+					           update         = "pnlMovsInver :pnlMovsPaginaActual" 
+					           immediate      = "true" >
+					
+					<f:attribute name = "movimiento" value = "cancelacion" />
+					
+					Cerrar mi Cuenta
+					
+				</p:commandLink>	
+				</li>
+				</ul>
+				</div>
+		
+											
+			</h:panelGroup>							
+		</h:form>					
+	</div>							
+</ui:composition>				

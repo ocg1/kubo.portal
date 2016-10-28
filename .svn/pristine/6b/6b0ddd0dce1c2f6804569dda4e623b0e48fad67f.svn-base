@@ -1,0 +1,67 @@
+package mx.com.kubo.managedbeans.home;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
+import org.primefaces.context.RequestContext;
+
+import mx.com.kubo.managedbeans.SessionBean;
+
+@ManagedBean (name = "inicioValues") @SessionScoped
+public class InicioValuesIMP extends InicioValuesAMO
+implements Serializable 
+{		
+	private static final long serialVersionUID = 8112488787001164841L;
+
+	@PostConstruct
+	public void init()
+	{					
+		try
+		{	
+			faces    = FacesContext.getCurrentInstance();
+			context  = faces.getELContext();
+			external = faces.getExternalContext();
+			resolver = faces.getApplication().getELResolver();
+			
+			sesion = null;
+			sesion = (SessionBean) resolver.getValue(context, null, "sessionBean");
+			
+			init_sesion();
+			
+			init_external_params();							
+			
+			init_origin_campaign();														
+			
+			init_partner();		
+			
+			statistics = service_access.getHomeStatistics();
+		
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			area = "L";
+		}		
+	}
+		
+	public void validaSession()
+	{
+		faces     = FacesContext.getCurrentInstance();	
+		external  = faces.getExternalContext();
+		
+		sessionUsed = (HttpSession) external.getSession(false);
+				 		
+		//System.out.println("Validando session: " + sessionUsed.getId() + "  "+ formatter.format(new Date()));	
+		
+		RequestContext requestContext   = RequestContext.getCurrentInstance();
+		
+		
+		requestContext.addCallbackParam("validSession", "válida");
+		
+	}
+}

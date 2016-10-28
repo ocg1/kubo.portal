@@ -1,0 +1,61 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup  rendered ="#{summaryRequest.actualProyect != null}">
+	
+	<!-- <div class="#{sessionBean.area=='M'?'profileControlTable':'profile'}" style="display: none;"> -->
+	
+		<div class="profileControlTable fondeadores" style="display: none;">
+	
+			<div class="centerPosition">
+								
+				<h3 class="tab"><strong class="orange">Fondeadores (#{summaryRequest.listInvestors.size()})</strong></h3>
+			
+				<h:outputText escape="false" value="#{summaryRequest.fondeadorestxt}"></h:outputText>
+			
+				<ui:repeat var="listInvestors" value="#{summaryRequest.listInvestor_lst}">
+					<div class="funderSmall">
+						<div class="funderAvatar">
+							<h:panelGroup rendered="#{listInvestors.membership.membershipPK.prospectus_id != 0}" >
+							
+								<h:panelGroup rendered="#{listInvestors.membership.person.prospectus.image == null}" > 
+									<img 
+										class="funderAvatarImg" 
+										alt="#{listInvestors.membership.nickname}" 
+										width="50px" height="50px"
+										src="../resources/img/sinimagen.jpg"/>
+								</h:panelGroup>
+							
+								<h:panelGroup rendered="#{listInvestors.membership.person.prospectus.image != null}" > 
+								
+									<img class="funderAvatarImg" 
+										alt="#{listInvestors.membership.nickname}" 
+										width="50px" height="50px"
+										src="../resources/documents/cia_1/pros_#{listInvestors.membership.membershipPK.prospectus_id}/photo/#{listInvestors.membership.person.prospectus.image}"/>
+								
+								</h:panelGroup>							
+							</h:panelGroup>	
+						
+							<h:panelGroup rendered="#{listInvestors.membership.membershipPK.prospectus_id == 0}" >
+							
+								<img 
+									class="funderAvatarImg" 
+									alt="#{listInvestors.membership.nickname}" 
+									src="../resources/img/LOGO.png" width="50px" height="50px" />
+									
+							</h:panelGroup>							
+						</div>
+						
+						<div class="funderDescription">
+							<p><strong>#{listInvestors.membership.nickname}</strong></p>
+							<p class="small">Fondea otros <a href="#">proyectos</a></p>
+						</div>
+					</div>
+				</ui:repeat>			
+			</div>																										
+		</div>
+	</h:panelGroup>
+</ui:composition>	

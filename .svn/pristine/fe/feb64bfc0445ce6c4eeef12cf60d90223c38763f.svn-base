@@ -1,0 +1,25 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+		<fieldset>		
+			
+			<div class="dvContent">						
+				<h:outputLabel styleClass="labelsStlTitle" style=" font-weight: bold !important;" value="Otra recomendación (opcional)"/>						
+			</div>
+			
+				<div class="dvContent2" >
+					<ui:include src = "referencia_4/nombre.xhtml"/>
+					<ui:include src = "referencia_4/segundo_nombre.xhtml"/>
+					<ui:include src = "referencia_4/apellido_paterno.xhtml"/>	
+					<ui:include src = "referencia_4/apellido_materno.xhtml"/>
+					<ui:include src = "referencia_4/telefono.xhtml"/>
+					<ui:include src = "referencia_4/email.xhtml"/>
+					<ui:include src = "referencia_4/parentesco.xhtml"/>				
+			</div>
+		</fieldset>
+		
+		<br />				
+</ui:composition>				

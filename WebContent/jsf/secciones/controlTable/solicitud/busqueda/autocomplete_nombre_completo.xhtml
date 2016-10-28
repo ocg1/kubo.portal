@@ -1,0 +1,44 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<style>
+		#container_autocomplete 
+		{
+			width: 313px; 
+			float: left;
+			border:0px solid silver;
+			margin: 7px;
+		}
+		
+		#input_autocomplete
+		{
+			width:320px !important;
+			float:left;
+			margin:10px 0;
+		}
+	</style>
+	
+	<div id = "container_autocomplete" class = "dvContent">					
+			
+		<p style="padding: 0pt; margin: 0pt;"/>
+		
+			<h:outputLabel value = "Buscar por nombre completo" />
+				
+			<div id = "input_autocomplete">
+				<p:autoComplete var = "c" widgetVar = "inpAutocomplete"
+								value = "#{searchRequest.coach_engine.search}"
+								completeMethod  = "#{searchRequest.coach_engine.init_search}"					
+								itemLabel = "#{c.full_name}" 
+								itemValue = "#{c.email}">												
+								
+					<p:ajax event = "itemSelect"
+							oncomplete = "Busqueda.init_membership_oncomplete(xhr, status, args);" 
+							listener = "#{searchRequest.coach_engine.init_membership}"/>
+					
+				</p:autoComplete>	
+			</div>													
+		</div>
+</ui:composition>	

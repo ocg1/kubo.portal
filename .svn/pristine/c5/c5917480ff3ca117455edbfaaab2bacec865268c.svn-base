@@ -1,0 +1,62 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+
+	<script type = "text/javascript" >
+		loadEvent();
+		
+		
+		
+	</script>	
+	<div class="block_form">
+		<h:selectOneRadio id    = "question-one" 
+					      value = "#{forgotPass.options}"
+						  >
+		   <f:selectItem itemLabel = "#{msg.Text_option_one}" itemValue = "1" />
+		   
+		   <p:ajax event="click"/>
+		</h:selectOneRadio>
+	<div id = "section-security-question" style = "display:none; ">
+			<span> Introduce el correo electrónico con el que te registraste.</span>
+			<h:inputText value = "#{forgotPass.email}" styleClass = " validatorClass key_enter" id="email6">
+				<p:ajax event = "blur"/>
+			</h:inputText>
+			
+			 
+											
+	</div>										
+		<h:selectOneRadio id         = "question-two"
+					      value      = "#{forgotPass.options}"
+					      >
+
+			<f:selectItem itemLabel = "#{msg.Text_option_two}"  itemValue="2" />
+			
+			<p:ajax event = "click" />
+		</h:selectOneRadio>
+	
+	<div id = "section-confirmation-mail" style = "display:none; ">
+			<span>Introduce el correo electrónico con el que te registraste.</span>	
+			<h:inputText value = "#{forgotPass.email}" id="conf-email6" styleClass = "validatorClass key_enter">
+				<p:ajax event="blur"/>
+			</h:inputText>
+			
+	</div>
+	
+	<p:commandLink immediate  = "true"
+				   action     = "#{forgotPass.validateInformation}"  																     
+				   onstart    = "return showloader();"																   
+				   oncomplete = "hideloader();"
+				   update     = "gral-validation error"
+				   styleClass="cont link-login"  
+				   >
+				   
+		<div class = "buttonPR" >
+			<h:outputText value = "#{msg.Btn_next_next}" />
+		</div>
+		
+	</p:commandLink>
+	</div>
+</ui:composition>	

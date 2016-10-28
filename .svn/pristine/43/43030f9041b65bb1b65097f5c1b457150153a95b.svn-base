@@ -1,0 +1,113 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:form prependId = "false" >	
+		<div id = "admMenu">
+			<p:commandLink oncomplete     = "setClassMenu('dvMenuPerf');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update = ":pnlCntProfile">
+			
+				<div id = "dvMenuPerf">								
+					<f:attribute name = "section" value = "profile" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px; " >
+						Perfiles
+					</div>				
+				</div>				
+			</p:commandLink>
+			
+			<p:commandLink oncomplete     = "setClassMenu('dvMenuPerfRole');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update=":pnlCntProfile">
+			
+				<div id = "dvMenuPerfRole">
+								
+					<f:attribute name = "section" value = "permissionRole" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
+						Permisos por rol
+					</div>				
+				</div>			
+			</p:commandLink>
+			
+			<p:commandLink oncomplete     = "setClassMenu('dvMenuPantRole');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update = ":pnlCntProfile"  >
+			
+				<div id = "dvMenuPantRole">
+								
+					<f:attribute name="section" value="screenRole" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
+						Pantallas por rol
+					</div>				
+				</div>			
+			</p:commandLink>						
+			
+			<p:commandLink oncomplete     = "setClassMenu('reinversion_automatica');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update = ":pnlCntProfile"  >
+			
+				<div id = "reinversion_automatica">
+									
+					<f:attribute name="section" value="reinversion_automatica" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
+						Reinversión Automática
+					</div>	
+								
+				</div>
+				
+			</p:commandLink>
+			
+			<p:commandLink oncomplete     = "setClassMenu('alta_masiva');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update = ":pnlCntProfile"  >
+			
+				<div id = "reinversion_automatica">
+									
+					<f:attribute name="section" value="alta_masiva" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
+						Consulta Prospector Masiva
+					</div>	
+								
+				</div>
+				
+			</p:commandLink>	
+			
+			<p:commandLink oncomplete     = "setClassMenu('ping_buro');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update = ":pnlCntProfile"  >
+			
+				<div id = "ping_buro">
+									
+					<f:attribute name="section" value="ping_buro" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
+						Ping Buró de Crédito
+					</div>	
+								
+				</div>
+				
+			</p:commandLink>		
+			
+			<div style="height: 40px; width: 95%; margin-left: auto;margin-right: auto; margin-top: 5px; border: solid 1px #E3E3E3; display: none; " >
+				<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px; " >
+					Roles
+				</div>
+			</div>
+			<div style="height: 40px; width: 95%; margin-left: auto;margin-right: auto; margin-top: 5px; border: solid 1px #E3E3E3; margin-bottom: 5px; display: none; " >
+				<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px; " >
+					Funciones
+				</div>
+			</div>
+		</div>
+		
+
+	
+	</h:form>
+</ui:composition>	

@@ -1,0 +1,23 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<div class = "selects styled-select">
+		<h:selectOneMenu immediate = "true" value = "#{summaryRequest.editor_identification.identification_type_id}" styleClass = "elementStlSelAddress">
+		
+			<f:selectItem itemValue = "#{null}" itemLabel = "Seleccionar..." />
+			
+			<f:selectItems value = "#{summaryRequest.lista_identification_type}" 
+						   var = "type" 
+						   itemDisabled = "#{type.is_enabled == 'N'}"
+						   itemLabel    = "#{type.description}" 
+						   itemValue    = "#{type.pk.identification_type_id}" />
+									   
+			<p:ajax event = "change"
+			  		oncomplete = "IdentificationType.type_id_oncomplete(xhr, status, args);"
+					listener = "#{summaryRequest.editor_identification.init_type_id}"/>
+		</h:selectOneMenu>		
+	</div>				 
+</ui:composition>

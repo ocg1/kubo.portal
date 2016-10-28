@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+		<div  class="full max_study">
+			<p><strong>Grado máximo de estudios</strong></p>
+			<p>#{summaryRequest.studyLevel}</p>
+			<p>#{summaryRequest.persona.study_area}</p>
+		</div>	
+		<h:panelGroup rendered="false">			
+			<div  class="details3 left">
+				<p><strong>Ocupación</strong></p>
+				<p></p>
+			</div>
+		</h:panelGroup>											
+			
+</ui:composition>				

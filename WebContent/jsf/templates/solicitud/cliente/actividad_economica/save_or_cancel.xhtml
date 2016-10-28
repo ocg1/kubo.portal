@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+ 	<div>
+	
+	 	<p:commandLink immediate  = "true"
+	 				   onstart    = "return validateChangeEconActivity('uiactivity\:#{status.index}\:acSimple_input','uiactivity\:#{status.index}\:txt-reason-econ-act','#{econAct.activityDesc}');"
+	 				   oncomplete = "actividad_economica_parse()" 	 				    
+	 				   actionListener = "#{summaryRequest.actividad_economica.save(econAct)}" 	 				   
+					   update = ":frmQuest:section-edit-economic-activity">
+		 	<div class="buttonPR"  style="width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;clear:left;">
+					Guardar
+			</div>
+		</p:commandLink>
+	 	
+	 	<div class   = "buttonPR" 
+	 		 onclick = "cancelar_edicion_actividad(#{econAct.index})" 
+	 		 >
+				Cancelar
+		</div>									
+	</div>					
+</ui:composition>				

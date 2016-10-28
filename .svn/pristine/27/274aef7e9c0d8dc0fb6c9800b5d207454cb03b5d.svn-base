@@ -1,0 +1,50 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+				 
+	<h:panelGroup id = "panel-domicilio-fiscal">	
+		<h:panelGroup rendered = "#{basicData.fiscal_ENABLED}">				 
+			<div class = "dvContent">
+		
+					<div class="sectionInv" style="display:block;" >Domicilio Fiscal</div>	
+			</div>
+			
+			<fieldset>
+				<div class = "dvContent2">		
+					<ui:include src = "domicilio-fiscal/zipcode.xhtml"/>
+					
+					<h:panelGroup id = "fiscal-coverage-zone-ENABLED">		
+						<script>
+						asterisk(".labelsStl");
+						asterisk(".numberAndTitle");
+						asterisk(".titleDisabled");
+						
+						
+						</script>			
+						<h:panelGroup rendered = "#{basicData.fiscal.coverage_zone_ENABLED}" >
+							<ui:include src = "domicilio-fiscal/calle.xhtml"/>
+						
+							<div class = "calle_numeros">
+		
+								<ui:include src = "domicilio-fiscal/numero_exterior.xhtml"/>									 										
+								<ui:include src = "domicilio-fiscal/numero_interior.xhtml"/>
+								<ui:include src = "domicilio-fiscal/manzana.xhtml"/>
+								<ui:include src = "domicilio-fiscal/lote.xhtml"/>  							
+							</div>
+							<ui:include src = "domicilio-fiscal/colonia.xhtml"/>
+							<ui:include src = "domicilio-fiscal/delegacion.xhtml"/>	
+							<ui:include src = "domicilio-fiscal/estado.xhtml"/>
+							
+											
+							<ui:include src = "domicilio-fiscal/entre_la_calle.xhtml"/>
+							<ui:include src = "domicilio-fiscal/y_la_calle.xhtml"/>
+							<ui:include src = "domicilio-fiscal/punto_de_referencia.xhtml"/>		
+						</h:panelGroup>
+					</h:panelGroup>						
+				</div>
+			</fieldset>
+		</h:panelGroup>
+	</h:panelGroup>
+</ui:composition>				 

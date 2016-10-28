@@ -1,0 +1,205 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				
+
+<section class="top">
+  <div class="container">
+  <h4>CAPÍTULO IV. DATOS GENERALES DE LAS PARTES CONTRATANTES</h4>
+<h4>SECCIÓN PRIMERA. DATOS GENERALES DEL CLIENTE.</h4>
+<p>El Cliente ratifica por su propio derecho o a través de su representante o apoderado legal que los siguientes son sus datos generales, personas autorizadas para disponer de los recursos de sus Cuentas, y en caso de que el Cliente sea persona física, beneficiarios asignados:</p>
+  
+
+<h3>1. Datos Generales del Cliente</h3>
+  <div class="bloqueCuestionario">
+       <h3>En el caso de Inversionista persona física:</h3>
+    
+        <p>Nombre: <span class="variable borde anexo">#{contractData.data.cliNombre}</span> </p>
+        <p>Apellido Paterno: <span class="variable borde anexo">#{contractData.data.cliApellidoPaterno}</span> </p>
+        <p>Apellido Materno:<span class="variable borde anexo">#{contractData.data.cliApellidoMaterno}</span> </p>
+        <p>Nacionalidad:<span class="variable borde anexo">#{contractData.data.cliNacionalidad}</span></p>
+
+        <p>Lugar de nacimiento:<span class="variable borde anexo">#{contractData.data.cliLugarNacimiento}</span></p>
+        <p>Fecha de nacimiento: <span class="variable borde anexo">#{contractData.data.cliFechaNacimiento}</span></p>
+        <p>RFC:<span class="variable borde anexo">#{contractData.data.cliRFC}</span></p>
+        <p>CURP: <span class="variable borde anexo">#{contractData.data.cliCurp}</span></p>
+ </div>
+  <div class="bloqueCuestionario">
+        <h3>En el caso de Inversionista persona moral:</h3>
+        <p>Denominación social o razón social: <span class="variable borde anexo">#{contractData.data.cliMorDenRazonSocial} </span></p>
+        <p>RFC: <span class="variable borde anexo"> #{contractData.data.cliMorRFC} </span></p>
+  </div>
+   <div class="bloqueCuestionario">
+       <p>Datos del instrumento público donde consta el apoderado del Cliente que firma el Contrato:</p>
+        <p>Nombre(s) y apellidos del fedatario público: <span class="variable borde anexo">#{contractData.data.cliMorNombreCompletoFedPub}</span></p>
+        <p>Tipo de fedatario público: <span class="variable borde anexo"><!-- #{contractData.data.cliMorTipoFedPub} --></span></p>
+        <p>Número: <span class="variable borde anexo">#{contractData.data.cliMorNumero}</span></p>
+        <p>Entidad Federativa: <span class="variable borde anexo">#{contractData.data.cliMorEntidadFederativa}</span></p>
+        <p>Número de instrumento público:<span class="variable borde anexo"> <!--  #{contractData.data.cliMorNumInstPublico}--> </span></p>
+        <p>Fecha de otorgamiento:<span class="variable borde anexo">#{contractData.data.cliMorFechaOtorgamiento}</span></p>
+        <p>Datos de inscripción en el Registro Público de Comercio:<span class="variable borde anexo">#{contractData.data.cliMorDatoInscripcionRPC}</span></p>
+        <p>Fecha de inscripción:<span class="variable borde anexo">#{contractData.data.cliMorFechaInscripcion}</span></p>
+    
+        <p>Lugar:<span class="variable borde anexo">#{contractData.data.cliMorLugarInscripcion}</span></p>
+ </div>
+  <div class="bloqueCuestionario">
+      <h3>Domicilio Particular  de la Persona Física o Domicilio Principal de la Persona Moral:</h3>
+      <p>Calle: <span class="variable borde anexo">#{contractData.data.cliCalle}</span></p>
+      <p>Número Exterior: <span class="variable borde anexo">#{contractData.data.cliNumeroExterior}</span></p>
+      <p>Número Interior: <span class="variable borde anexo">#{contractData.data.cliNumeroInterior}</span></p>
+      <p>Manzana*: <span class="variable borde anexo">#{contractData.data.cliManzana}</span></p>
+      <p>Lote*: <span class="variable borde anexo">#{contractData.data.cliLote}</span> </p>
+      <p>Colonia: <span class="variable borde anexo">#{contractData.data.cliColonia}</span></p>
+      <p>Delegación/Municipio: <span class="variable borde anexo">#{contractData.data.cliDelegacionMun}</span></p>
+      <p>CP: <span class="variable borde anexo">#{contractData.data.cliCP}</span></p>
+      <p>Entidad Federativa: <span class="variable borde anexo">#{contractData.data.cliEstado}</span></p>
+    
+       <p><small>*En su caso</small></p>
+    </div>
+
+     <div class="bloqueCuestionario"> 
+     
+
+
+      <h3>Ocupación o Giro del Negocio:<span class="variable borde anexo"></span></h3>
+      <p>Teléfono fijo: <span class="variable borde anexo">#{contractData.data.cliTelefonofijo}</span></p>
+      <p>Teléfono fijo 2: <span class="variable borde anexo">#{contractData.data.cliTelefonofijo2}</span></p>
+      <p>Teléfono móvil: <span class="variable borde anexo">#{contractData.data.cliTelefonoMovil}</span></p>
+       <p>Teléfono móvil 2: <span class="variable borde anexo">#{contractData.data.cliTelefonoMovil2}</span></p>
+      <p>Teléfono de trabajo: <span class="variable borde anexo">#{contractData.data.cliTelefonoTrabajo}</span> </p>
+      <p>Teléfono de trabajo 2:<span class="variable borde anexo">#{contractData.data.cliTelefonoTrabajo2}</span> </p>
+      <p>Correo electrónico:<span class="variable borde anexo">#{contractData.data.cliCorreo}</span> </p>
+     
+      <p>Correo electrónico 2: <span class="variable borde anexo">#{contractData.data.cliCorreo2}</span></p>
+    </div>
+
+ <div class="bloqueCuestionario"> 
+     
+       <h3>Información de Redes Sociales: </h3>
+      <p>Cuenta facebook: <span class="variable borde anexo">#{contractData.data.cliFacebook}</span></p>
+      <p> Cuenta twitter: <span class="variable borde anexo">#{contractData.data.cliTwitter}</span></p>
+      <p>Cuenta linkedin:<span class="variable borde anexo">#{contractData.data.cliLinkedIn}</span> </p>
+  </div>
+ <div class="bloqueCuestionario"> 
+      <h3>Cuenta Bancaria del Inversionista:</h3>
+      <p>Banco: <span class="variable borde anexo">#{contractData.data.cliNombreBanco}</span></p>
+      <p>Número de Cuenta: <span class="variable borde anexo">#{contractData.data.cliNumeroCuenta}</span></p>
+      <p>Clabe de la Cuenta*: <span class="variable borde anexo">#{contractData.data.cliCuentaClabe}</span></p>
+  </div>
+<div class="bloqueCuestionario"> 
+      <h3>2. Personas Autorizadas para disponer de los recursos de las Cuentas del Cliente</h3>
+     
+        <p>Nombre: <span class="variable borde anexo"></span></p>
+        <p>Apellido Paterno:<span class="variable borde anexo"></span></p>
+        <p>Apellido Materno:<span class="variable borde anexo"></span></p>
+        <p>Nacionalidad:<span class="variable borde anexo"></span></p>
+
+        <p>RFC: <span class="variable borde anexo"></span></p>
+        <p>CURP: <span class="variable borde anexo"></span></p>
+  </div>
+  <div class="bloqueCuestionario"> 
+      <h3>Domicilio Particular: </h3>
+
+
+
+       <p>Calle: <span class="variable borde anexo"></span></p>
+      <p>Número Exterior: <span class="variable borde anexo"></span></p>
+      <p>Número Interior: <span class="variable borde anexo"></span></p>
+      <p>Manzana*: <span class="variable borde anexo"></span></p>
+      <p>Lote*: <span class="variable borde anexo"></span></p>
+      <p>Colonia: <span class="variable borde anexo"></span></p>
+      <p>Delegación/Municipio:<span class="variable borde anexo"></span></p>
+      <p>CP: <span class="variable borde anexo"></span></p>
+      <p>Entidad Federativa: <span class="variable borde anexo"></span></p>
+     <p>Teléfono fijo: <span class="variable borde anexo"></span></p>
+     
+      <p>Teléfono móvil: <span class="variable borde anexo"></span></p>
+          
+      <p>Correo electrónico: <span class="variable borde anexo"></span></p>
+       <p><small>*En su caso</small></p>
+  </div>
+
+		  <div class="bloqueCuestionario"> 
+		 <h3>3. Beneficiarios (Solo para Cliente persona física) </h3>
+		 </div>
+		 <ui:repeat value="#{contractData.lstBen}" var="ben"  varStatus="st">
+    <div class="bloqueCuestionario"> 
+        
+        <h3>Beneficiario #{st.index+1}</h3>
+
+		<p>Nombre: <span class="variable borde anexo">#{ben.benNombre}</span></p>
+        <p>Apellido Paterno: <span class="variable borde anexo">#{ben.benApellidoPaterno}</span></p>
+        <p>Apellido Materno: <span class="variable borde anexo">#{ben.benApellidoMaterno}</span> </p>
+        <p>Fecha de nacimiento: <span class="variable borde anexo">#{ben.benFechaNacimiento}</span></p>
+  </div>
+
+
+
+    <div class="bloqueCuestionario"> 
+      <h3>Porcentaje: <span class="variable borde anexo">#{ben.benPorcentaje}</span> </h3>
+      		<h3>Domicilio Particular: </h3>
+
+
+       <p>Calle: <span class="variable borde anexo">#{ben.benCalle}</span></p>
+      <p>Número Exterior: <span class="variable borde anexo">#{ben.benNumeroExt}</span></p>
+      <p>Número Interior: <span class="variable borde anexo">#{ben.benNumeroInt}</span></p>
+      <p>Manzana*: <span class="variable borde anexo">#{ben.benManzana}</span></p>
+      <p>Lote*: <span class="variable borde anexo">#{ben.benLote}</span></p>
+      <p>Colonia: <span class="variable borde anexo">#{ben.benColonia}</span></p>
+      <p>Delegación/Municipio: <span class="variable borde anexo">#{ben.benDelegacionMunicipio}</span></p>
+      <p>CP: <span class="variable borde anexo">#{ben.benCodigoPostal}</span></p>
+      <p>Entidad Federativa: <span class="variable borde anexo">#{ben.benEstado}</span></p>
+     <p>Teléfono fijo: <span class="variable borde anexo">#{ben.benTelefonoFijo}</span></p>
+     
+      <p>Teléfono móvil: <span class="variable borde anexo">#{ben.benTelefonoMovil}</span></p>
+          
+      <p>Correo electrónico: <span class="variable borde anexo">#{ben.benCorreo}</span></p>
+       <p><small>*En su caso</small></p>
+  </div>
+</ui:repeat>
+    
+			
+			
+		
+			
+			
+		
+    
+   <div class="bloqueCuestionario tresColumnas"> 
+ <h4>SECCIÓN SEGUNDA. DATOS GENERALES DE KUBO.</h4> 
+<p>Kubo ratifica a través de su representante o apoderado legal que los siguientes son sus datos generales:</p>
+ <p><strong> 1. Datos Generales de Kubo:</strong> </p>
+ <p><strong>Cuentas Bancarias de Kubo: </strong> </p>
+   
+     <article>
+         <p>Banco:<span class="variable anexo2">BANCA MIFEL</span> </p>
+        <p>Número de cuenta:<span class="variable anexo2"></span></p>
+        <p>CLABE de la cuenta:<span class="variable anexo2">042180016000964746</span></p>
+    </article>
+    <article>
+      <p>Banco: <span class="variable anexo2"></span></p>
+      <p>Número de cuenta: <span class="variable anexo2"></span></p>
+      <p>CLABE de la cuenta: <span class="variable anexo2"></span></p>
+    </article>
+    <article>
+      <p>Banco:<span class="variable anexo2"></span></p>
+      <p>Número de cuenta:<span class="variable anexo2"></span></p>
+      <p>CLABE de la cuenta:<span class="variable anexo2"></span></p>
+    </article>
+    </div>
+<p>Domicilio: Av. Barranca del Muerto 92, Colonia Florida, Delegación Álvaro Obregón, C.P. 01030, México, D.F.</p>
+
+<p>Datos del instrumento público donde consta el apoderado de Kubo que firma el Contrato:
+ Escritura pública número 124,480 pasada ante la fe del Lic. José Ángel Villalobos Magaña, titular de la Notaría Pública número 9 del D.F., inscrita
+en el Registro Público de Comercio bajo el folio mercantil 478728-1, de fecha 16 de enero de 2014.</p>
+
+ </div>
+ </section>
+ 
+
+  
+				</ui:composition>

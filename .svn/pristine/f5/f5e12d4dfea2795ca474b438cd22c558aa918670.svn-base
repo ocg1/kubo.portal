@@ -1,0 +1,42 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+		<div>	
+			<h:panelGroup id = "section-botton-upload">
+			
+				<p:fileUpload rendered = "#{summaryRequest.documentacion.file_type_id == 0 or summaryRequest.documentacion.file_type_id > 0}"  
+				              disabled = "#{summaryRequest.documentacion.file_type_id == 0}"  				               
+				              fileUploadListener = "#{summaryRequest.documentacion.handleFileUpload}"  
+				              oncomplete = "finalizeAddDocument()" 
+				              styleClass = "custumStlFileUpload"
+				              update = "sectionDocumentaction pnlAdjuntarDoc" 
+							  mode   = "advanced" auto = "true"																												   
+						      invalidSizeMessage = "Tamaño del archivo inválido."
+						      invalidFileMessage = "Tipo de archivo no válido." 									    				                       
+				              label = "Subir archivo"							            
+				              sizeLimit  = "#{summaryRequest.documentacion.size_limit}"  
+				              allowTypes = "/(\.|\/)(gif|jpe?g|png|pdf)$/">							 
+				 </p:fileUpload>
+				 
+				<p:fileUpload rendered = "#{summaryRequest.documentacion.logo_ENABLED}" 
+							  disabled = "#{summaryRequest.documentacion.file_type_id == 0}" 
+							  styleClass = "custumStlFileUpload" 
+							  fileUploadListener = "#{summaryRequest.documentacion.handleFileUpload}"  
+							  oncomplete = "finalizeAddDocument();refreshLogos();"  
+							  update = "pnlAdjuntarDoc"
+							  style  = "margin-top:10px;width:480px;"																													   
+						      invalidSizeMessage = "Tamaño del archivo inválido."
+						      invalidFileMessage = "Tipo de archivo no válido." 									    
+				              mode = "advanced" auto = "true"            
+				              label = "Subir archivo"							            
+				              sizeLimit = "#{summaryRequest.documentacion.size_limit}"  
+				              allowTypes = "/(\.|\/)(gif|jpe?g|png)$/">							 
+				 </p:fileUpload>
+				 
+				 <!-- p:messages id = "file-upload-MSG" autoUpdate = "true" showDetail = "true" /-->
+			 </h:panelGroup>
+		</div>		 				
+</ui:composition>				

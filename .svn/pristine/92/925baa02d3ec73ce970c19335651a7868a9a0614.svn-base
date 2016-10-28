@@ -1,0 +1,32 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.Zipcode_text}" />
+		</div>
+		
+		
+		
+		<div id = "business-zipcode" class = "dvElementAddres1">			
+
+			<h:inputText id = "zip_code" immediate = "true" maxlength = "5" tabindex = "50" 
+						 onkeypress = "return isNumberKey(event);" 
+						 value = "#{business.addressbean.zip_code}"
+						 onfocus = "ActividadEconomica.Domicilio.init_focus_date(3);" 						 
+						 styleClass = "elementAddres1 validatorClass mapClass zipcode hs_class">
+						 
+				<p:ajax event = "change" 
+						onstart    = "return validateZipCode('uibus\:#{status.index}\:zip_code');" 
+						oncomplete = "ActividadEconomica.Domicilio.zipcode_oncomplete(xhr, status, args);"  
+						listener   = "#{addMyLoan.domicilio_negocio.init_zipcode}" />
+			</h:inputText>
+			
+			<h:inputText style = "display:none;" styleClass = "latlongClass" value = "#{business.addressbean.latLong}"  >
+				<p:ajax event = "blur" listener = "#{addMyLoan.domicilio_negocio.setSplitLatLongBusiness(business)}"/>
+			</h:inputText>
+		</div>
+	</div>
+</ui:composition>			

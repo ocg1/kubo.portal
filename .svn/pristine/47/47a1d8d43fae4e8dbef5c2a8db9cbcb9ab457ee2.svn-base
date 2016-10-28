@@ -1,0 +1,58 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+ <div class="dvContent bloque_texto_frm" style="margin:0;">	
+		<div>
+			<div class="dvDescPhotoProyect">
+			<!-- 
+				<h:outputLabel rendered="#{addPldDocument.totalEmploy!=0 and addPldDocument.totalBusiness!=0 or addPldDocument.totalEmploy==0}" value="#{msg.Text_business_or_BusinessEmployment_logo_proyect}"/>
+				<h:outputLabel rendered="#{addPldDocument.totalBusiness==0 and addPldDocument.totalEmploy!=0}" value="#{msg.Text_employment_logo_proyect}"/>							
+			 -->
+			 
+				
+		
+			</div>
+		</div>
+	</div>
+	<h:form id = "frm_proyect_image1" 
+	        method    = "post" 
+	        enctype   = "multipart/form-data" 
+	        prependId = "false"  
+	        data-ajax = "false">
+	        
+		<p:fileUpload id = "file_other_logo"  					 
+					  label    = "#{addPldDocument.otherTitle ?'+ Subir':'+ Subir'}"
+					  rendered = "#{addPldDocument.listImgLogos.size()!=3 }"  
+					  fileUploadListener = "#{addPldDocument.uploadFileLogo}" 
+					  update = ":sectionLogos #{addPldDocument.listImgLogos.size() == 1 ? ' :panelScript' : ''}"																											  
+				      invalidSizeMessage = "Tamaño del archivo inválido."
+				      invalidFileMessage = "Tipo de archivo no válido."				     									    
+		              mode  = "advanced"   							            
+		              auto  = "true"            		            					           
+		              sizeLimit = "5242880"		            		                								           											                                  
+		              allowTypes = "/(\.|\/)(gif|jpe?g|png)$/"
+		              styleClass = "custumStlFileUpload"
+		              style = "margin-top:10px;">							           						 
+		</p:fileUpload>
+				
+<!-- 
+	<div class="bottonUpload" id="otherLogo" >#{addPldDocument.otherTitle ?'Subir otra imagen':'Subir imagen'}</div>
+
+		<p:fileUpload value="#{addPldDocument.fileLogo}" 
+					  widgetVar="wloadOtherLogoAction33" 
+			  		  id="loaderOtherLogoCont33" 
+					  label="#{addPldDocument.otherTitle ?'Subir otra imagen':'Subir imagen'}"
+					  mode="simple" 
+					  styleClass="custumStlFileUpload" />  
+			
+		<div style="display: none;">		
+				<h:commandButton value="Submit" id="loadOtherLogoAction33" ajax="false" styleClass="loader" 
+						                action="#{addPldDocument.editFileLogo(100)}"/>
+		
+		</div>
+				
+-->						
+	</h:form>				
+</ui:composition>				

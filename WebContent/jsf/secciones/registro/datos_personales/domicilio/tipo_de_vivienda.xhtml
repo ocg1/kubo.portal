@@ -1,0 +1,42 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui"
+			     xmlns:f  = "http://java.sun.com/jsf/core">
+			     
+	<h:panelGroup rendered = "#{basicData.domicilio.residence_ENABLED}">
+		<div class = "field">
+		
+			<div class = "dvLabel" >
+				<h:outputLabel styleClass = "labelsStl" value = "#{msg.residence_type} " />
+			</div>
+			
+		
+			
+			
+				<div class = "selectNuevo">
+					<h:selectOneMenu id = "tipoVivienda" immediate = "true"  
+									 value      = "#{basicData.naturalPerson.residence_id}" 
+									 styleClass = "elementStlSelAddress validatorClass mapOff tipoVivienda"
+									 onchange = "ultimoCampo(this)"
+									 >
+									 
+						<f:selectItem itemLabel = "Selecciona..." itemValue = "0" />
+						
+						<f:selectItems  value     = "#{basicData.domicilio.residencelist}" 
+										var       = "residence" 
+										itemLabel = "#{residence.description}" 
+										itemValue = "#{residence.residencePK.residence_id}"/>
+										
+						 <p:ajax event = "change"
+						 		 oncomplete = "Domicilio.residence_on_complete(xhr, status, args);" 
+						 		 listener   = "#{basicData.guardaTipoVivienda}"/>
+						 
+					</h:selectOneMenu>
+				</div>
+				
+				<input style="opacity:0;" class="tipoVivienda" type="text" />
+			
+		</div>	
+	</h:panelGroup>		     
+</ui:composition>			     

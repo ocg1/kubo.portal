@@ -1,0 +1,58 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				<script>
+					
+					function returnCompleteSemaAddress(){
+						conjuntoCombos();
+						fieldCount();
+					}
+				
+				</script>
+				
+				
+	<div class = "field tipo_credencial ContenedorImagenMuestra">
+		<div class="dvLabel">
+		
+		<label class="labelsStl">
+			<p>
+				¿La  dirección <b>#{addPldDocument.direccion}</b> es la que aparece en tu identificación?
+			</p>
+		</label>
+		
+		</div>
+				
+				<h:panelGroup id="pnlSameAddress" >
+				
+				<fieldset class="conjuntoChecks full">				  
+			     	<div class="btnN fullBtn" data-opcion="S"> <span>Sí</span></div>
+			       		<div class="btnN fullBtn"  data-opcion="N"><span>No</span></div>
+			       			<div class="btnN fullBtn" data-opcion="NT"><span>Mi identificación NO cuenta con domicilio</span></div>
+					<h:selectOneRadio id = "mismo_domicilio" immediate = "true"
+									  layout = "pageDirection" 
+					 				  styleClass = "elementStlLbl validatorClass ocultaSelect" value="#{addPldDocument.sameAddress}" >
+					 	
+			             <f:selectItem itemValue = "S" itemLabel = "Sí"/>
+			             <f:selectItem itemValue = "N" itemLabel = "No"/>
+			             <f:selectItem itemValue = "NT" itemLabel = "Mi identificación NO cuenta con domicilio"/>
+			   
+						 <p:ajax event = "change" 
+							    update=":pnlComprobanteDomicilio"
+							    listener="#{addPldDocument.changeSameAddress}"
+							    oncomplete= "returnCompleteSemaAddress();"
+								/>
+			             
+	       			</h:selectOneRadio>
+			</fieldset>
+			
+				</h:panelGroup>
+			
+		<div class = "imagen_referencia">
+			
+		</div>
+	</div>				
+</ui:composition>				

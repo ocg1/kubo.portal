@@ -1,0 +1,58 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	
+	<ui:include src = "foto-de-proyecto/titulo.xhtml"/>
+							
+	<div class="dvContent2" >						
+		<div class="dvContent" style="margin:0;">										
+			<div  class="dvElementLength">
+		
+			<h:panelGroup id = "sectionLogos" rendered = "#{addPldDocument.listImgLogos != null}">
+			
+
+		
+				<ui:repeat var = "images" value = "#{addPldDocument.listImgLogos}" varStatus = "status">	
+					<h:form id = "frm_proyect_image"  enctype = "multipart/form-data" data-ajax = "false">						
+						<!-- h:panelGroup rendered = "#{status.index == 0}">
+							<div align = "justify" style = "width: 96%; background-color: #f0f3c3; height: auto; overflow: auto;">
+								Recuerda que esta foto debe mostrarte a tí en tu negocio.  Queremos conocerte en tu actividad, esto es muy importante para que podamos evaluar si te autorizamos el crédito.
+							</div>
+						</h:panelGroup -->
+						
+						<div class = "imgLogoProyect">
+						    <p:graphicImage  style = "width: #{images.width}px; height : #{images.height}px;" 
+						    				 url   = "../resources#{images.urlImgThumb}" />
+						</div>		
+							
+				
+						<fieldset class="btn_imagenes" >
+							<ui:include src = "foto-de-proyecto/cambiar.xhtml" />
+							<h:panelGroup rendered = "#{status.index != 0}">
+								<ui:include src = "foto-de-proyecto/eliminar.xhtml" />
+							</h:panelGroup>
+						</fieldset>			
+					</h:form>
+					
+							
+									
+				</ui:repeat>
+				
+				<ui:include src = "foto-de-proyecto/subir-otra.xhtml" />
+				<script>
+				listoPaso ();
+				</script>
+			</h:panelGroup>				
+		</div>	
+		
+		</div>
+	</div>	
+	
+	<!-- div class="dvContent2" >
+		<div class="msgDoc">Se aceptarán únicamente comprobantes no alterados, documentos legibles y a
+
+color.</div>
+	</div -->
+</ui:composition>				

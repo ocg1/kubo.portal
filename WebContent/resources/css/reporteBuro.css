@@ -1,0 +1,219 @@
+	
+	.contValues{
+		float: left;
+		width: 160px;
+		height: auto;
+		margin-top: 12px;
+		margin-right: 4px;
+	}
+	
+	.contValues:hover{
+		background-color: #E0EC97;
+	} 
+	
+	.descBurAttr{
+		width: 158px;
+		text-align: center;
+		padding: 3px 0px 3px 0px;
+	}
+	
+	.valBurAttr{
+		width: 158px;
+		text-align: center;
+		padding: 3px 0px 3px 0px;
+		font-weight: bold;
+	}
+	
+	.buroAttr{
+			width: 100%;
+			height: auto;
+			overflow: auto;
+			font-size: 1.25em;
+			padding: 7px;
+		}
+	
+	.fixme{
+		text-align: center !important;
+	}
+	
+	.clCenter{
+		text-align: center;
+	}
+	
+	 .moneyClass{
+	 	text-align: right !important;
+	 	padding-right: 10px !important;
+	 }
+	 
+	 #dvContTScore :HOVER{
+	 	text-decoration: underline;
+	 }
+	 
+	 .clRowChng:HOVER{
+	 	background-color: #C1D82F !important;
+	 }
+	 
+	 #dvContDetTScore
+	 {
+		width:180px; 
+		height: 120px; 
+		
+		position: absolute;
+		top: 175px; 
+		left:535px;
+	 	z-index: 100;
+	 	
+	 	border: 1px solid #E6E6E6;
+	    bottom: 1px;
+	    padding: 7px;
+	    
+	    
+	    background-color: #FFFFFF !important;
+	    
+	    -webkit-box-shadow: 1px 1px 10px -3px #c2c2c2 !important;
+	  	-moz-box-shadow: 	1px 1px 10px -3px #c2c2c2 !important;
+	  	box-shadow: 		1px 1px 10px -3px #c2c2c2 !important;
+	    
+	 }
+	 
+	 #btnRecommen{
+	 	margin-top: 20px !important;
+	 	margin-bottom: 20px !important;
+	 }
+	 
+	 #dvContRecommendationNote{
+	 	display: none;
+	 }
+		
+	.dvContTableNotes{
+		clear: both !important;
+		float: none !important;
+		margin-top: 20px !important;
+	}
+	
+	.dvContTableNotes table{
+	
+		width: 95%;
+	
+	}
+	
+	#dvFrmChange{
+		
+		font-size: 1.2em !important;
+		border: solid 8px #c1d82f;
+		padding: 10px;
+	}
+	
+	#acSimple_panel{
+		z-index: 3002 !important;
+	}
+	
+/**/
+
+		#dvNotesGrales .ui-datatable-odd{
+			background: none repeat scroll 0 0 #F2F5F9 !important;
+		}
+		
+		#dvNotesGrales .ui-datatable table{
+			background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+			border: 0px none !important;
+		}
+		
+		#dvNotesGrales .ui-datatable table{
+			border-collapse: collapse;
+			width: 99% !important;
+			border: 0px none !important;
+		}
+		
+		#dvNotesGrales .ui-state-default, 
+		#dvNotesGrales .ui-widget-content .ui-state-default, 
+		#dvNotesGrales .ui-widget-header .ui-state-default{
+			background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+			border: 0 none !important;
+		}
+		
+		#dvNotesGrales .ui-datatable th, 
+		#dvNotesGrales .ui-datatable tfoot td, 
+		#dvNotesGrales .ui-datatable tfoot tr{
+			border: 0 none !important;
+			color: #4f4f4f;
+			font-weight: bold;
+		}
+		
+		#dvNotesGrales .ui-datatable .ui-datatable-data td, 
+		#dvNotesGrales .ui-datatable .ui-datatable-data-empty td{
+			border: 0 none !important;
+		}
+		
+		#dvNotesGrales .ui-widget-content{
+			border: 0 none !important;
+		}
+		
+		.importantClsB{
+			color: #FF0000;
+			font-weight: bold;
+		}
+		
+		.alert-warning{
+			margin: 10px;
+		}
+		
+		div.kubo_score_A p
+		{
+			background-color: #003366; 
+			border: 1px solid #003366; 
+		}
+		
+		div.kubo_score_B p
+		{
+			background-color: #7BC9DC; 
+			border: 1px solid #7BC9DC; 
+		}
+		
+		div.kubo_score_C p
+		{
+			background-color: #83BA52; 
+			border: 1px solid #83BA52; 
+		}
+		
+		div.kubo_score_D p
+		{
+			background-color: #9DDF3D; 
+			border: 1px solid #9DDF3D; 
+		}
+		
+		div.kubo_score_E p
+		{
+			background-color: #FDC93D; 
+			border: 1px solid #FDC93D; 
+		}
+		
+		p.kubo_score_letter
+		{
+			color: white; 
+			float: left; 
+			padding:1px 5px;
+		}
+		
+		p.kubo_score_number
+		{
+			background-color: #FFFFFF !important; 
+			color: black; 
+			float: left; 
+			padding:1px 5px;
+		}
+		
+		.clsTblCnsl{
+		
+			text-align: right;
+			padding-right: 30px;
+		
+		}
+		.clsTblCnsl_tot{
+			text-align: right;
+			padding-right: 5px;
+		}
+		.clsTiTuloTblCnsl{
+			padding-left: 22px;
+		}	
+	

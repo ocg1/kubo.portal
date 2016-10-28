@@ -1,0 +1,250 @@
+		/* a.ahref{
+				color: #439539 !important;
+				text-decoration: none !important;
+			}
+			
+			a.ahref:HOVER{
+				text-decoration: underline !important;
+			}
+			a.ahref:VISITED{
+				color: #439539 !important;
+				text-decoration: none !important;
+			} */
+	
+		.arrow_leftCH {
+			    background-image: url("../resources/img/arrow_left.gif");
+			    background-position: left top;
+			    background-repeat: no-repeat;
+			    height: 23px;
+			    left: -12px;
+			    position: absolute;
+			    top: 22px !important;
+			    width: 10px;
+			    z-index: 101;
+			}
+			
+			  	#dvKuboPerson{
+  		
+			  		display: none;
+			  		background-color: rgba(61,61,61,0.5) !important;
+			  		position: absolute;
+			  		width: 100%;
+			  		height: 100%;
+			  		z-index: 150;
+			  		top: 0px;
+			  		left: 0px;
+			  	}
+			  	
+			  	.cntLeyendaKuboPer{
+			  		
+			  		background-color: #FFFFFF;
+			  		margin-left: auto;
+			  		margin-right: auto;
+			  		margin-top: 160px !important;
+			  		padding: 10px;
+			  		width: 300px;
+			  		font-size: 1.3em;
+			  		
+			  	}
+			  	
+			  	a.refTbAmort{
+					font-size: 0.8em;
+					text-decoration: none !important;
+					color:#439539;
+				}
+				a.refTbAmort:HOVER{
+					text-decoration: underline !important;
+				}
+				
+				.menuSup li.inicio a{
+					background-color: #C1D82F;
+					color: #FFFFFF;
+					text-decoration: none;
+				}
+				.menuSup li.creditos a{
+					display: none;
+				}
+				.pipememu{
+					display: none;
+				}
+				
+				.dvLabel .clContDescBack2{
+					width: 385px !important;
+				}
+				
+				p{
+					/* margin: 0px !important; */
+					/* padding: 0px !important; */
+				}
+				
+				a#hblink99, #olark-callout-bubble{
+					display: none !important;
+				}
+				
+				.requiredClass{
+					border: solid 1px #ff0000 !important;
+				}
+				
+				.rotarTexto{
+				
+					/* Chrome y Safari */
+				    -webkit-transform: rotate(-90deg);
+				
+				    /* Firefox */
+				    -moz-transform: rotate(-90deg);
+				
+				    /* Opera */
+				    -o-transform: rotate(-90deg);
+				
+				    /* IE 9 */
+				    -ms-transform: rotate(-90deg);
+				
+				    /* IE 8 */
+				    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+				
+				}
+				
+				
+
+#dvBtnSimulador{
+					position: fixed;
+					right: -57px;
+					top: 200px;
+					width: 140px;
+					height: 25px;
+					background: #C1D82F;  
+					z-index: 10;
+					cursor: pointer;
+					text-align: center;
+					color: #FFFFFF;
+					font-weight: bold;
+					display: none;
+				}
+				
+						.btnCloseSimulador
+		{
+			display: none;
+		}
+				
+				#dvBtnMenu{
+					position: absolute;
+					left: -57px;
+					top: 200px;
+					width: 140px ;
+					height: 25px;
+					background: #C1D82F;
+					z-index: 1000;
+					cursor: pointer;
+					text-align: center;
+					color: #FFFFFF;
+					font-weight: bold;
+					display: none;
+				}
+
+
+@media (max-width: 850px) {
+	
+	#dvBtnSimulador{
+					position: fixed;
+					right: -57px;
+					top: 200px;
+					width: 49.8%;
+					height: 25px;
+					background: #C1D82F;  
+					z-index: 10;
+					cursor: pointer;
+					text-align: center;
+					color: #FFFFFF;
+					font-weight: bold;
+					display: none !important;
+				}
+				
+						.btnCloseSimulador
+		{
+			display: none;
+		}
+				
+#dvBtnMenu{
+			
+	background:#ccc;
+	text-align: left;
+	padding: 10px 13px;
+	width: 83px;
+	height: 15px;
+	background: #fff url(../../resources/img/arrow_down.png) no-repeat 84px 12px !important;
+	background-size: 18px !important;
+	font-weight:bold;
+	border: solid 5px #a7a6a6;
+	color: #666;
+	z-index: 999999;
+	right: 4px !important;;
+	left: auto !important;
+	top: 42px !important;
+	text-transform: uppercase;
+}
+	
+	
+.rotarTexto{
+				
+					/* Chrome y Safari */
+				    -webkit-transform: rotate(0deg);
+				
+				    /* Firefox */
+				    -moz-transform: rotate(0deg);
+				
+				    /* Opera */
+				    -o-transform: rotate(0deg);
+				
+				    /* IE 9 */
+				    -ms-transform: rotate(0deg);
+				
+				    /* IE 8 */
+				    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+					
+					top: 38px !important;
+					width: 140px;
+					height: auto;
+					padding: 4px 0;
+					position: fixed;
+					background: #666!important;  
+					z-index: 10;
+					cursor: pointer;
+					text-align: center;
+					color: #FFFFFF;
+					font-weight: bold;
+					display: none;
+				}
+				
+				#dvBtnSimulador{
+			
+					right: 0px;
+					
+					
+					
+				
+				
+					visibility: visible !important;
+}
+				
+						.btnCloseSimulador
+		{
+			display: none;
+		}
+				
+				#dvBtnMenu{
+			
+					left:0px;
+					
+					
+				
+					visibility: visible !important;
+}
+
+#dvContMenuREG {
+	/* opacity:0; */
+}
+
+
+
+
+}

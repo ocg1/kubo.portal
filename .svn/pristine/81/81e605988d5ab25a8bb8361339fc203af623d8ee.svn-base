@@ -1,0 +1,277 @@
+/*estilos menu gris */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic);
+
+.ui-progressbar .ui-widget-header, .failBar{
+	height:10px;
+	display:block;
+	background: #ccc !important;
+	display:none !important;
+}
+
+
+
+
+#buttons .porcent {
+	display:none !important;
+}
+
+.displayNone {
+ 	display: none !important; 
+}
+
+.regresar_datos_personales {
+	padding:20px 10px;
+	text-align:right;
+	display:none;	
+}
+
+
+
+.regresar_datos_personales h4{
+	color:#999;
+	margin:0;
+	
+}
+
+
+.regresar_datos_personales a {
+	color:#8FC450;
+	margin:0;
+}
+
+.regresar_datos_personales a:hover {
+	text-decoration:underline;
+
+}
+
+	
+
+#contPerfil, 
+#frm-fileupload, 
+#frm_content #mapa, 
+.aviso_inicial, 
+#logo,
+.clTitle.vamos_iniciar, 
+#nextCHBASICOS01,
+#sendInfodisable,
+#sendInfo {
+	display: none;
+}
+ #frm_content #mapa{
+ display: none !important;
+ }
+.areaL {
+	margin:0 auto 0;
+	width: 470px;
+	padding: 30px 0 30px;
+}
+
+#pnlBtnNextBasic .datos_protegidos{
+	display:none;
+}
+.paso_1_2 {
+	position:relative;
+}
+.paso_1_2 .logo_12 {
+	width: 120px !important;
+	margin:0 auto;
+
+}
+
+
+.paso_1_2 .logo_12 img {
+	width:100%;
+
+}
+
+.paso_1_2 .encabezado12 {
+	text-align:center;
+	color: #439539 !important;
+text-transform:uppercase;
+line-height:25px;
+font-size:22px;
+}
+
+div.section {
+	background:#999;
+	padding:10px 2% 10px;
+	color:#fff;
+	font-size:18px;
+	display:block;
+	font-weight: 500;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#general div.section i, #historialCompleto div.section i {
+	float:right;
+	color:#fff;
+	font-size:30px;
+	margin:0;
+	width:20px;
+	line-height: 9px;
+	margin: 5px 0 0 0;
+	position:relative;
+	left:auto;
+	font-size:30px !important;
+}
+
+.paso_1_2 section {
+	height:0;
+	overflow: hidden;
+    -webkit-transition:.8s; 
+    -moz-transition:.8s;
+    -ms-transition:.8s;
+    -o-transition:.8s;
+    transition:.8s;
+	padding: 20px 0 0;
+}
+.paso_1_2 section.active {
+	
+	 -webkit-transition:.8s; 
+    -moz-transition:.8s;
+    -ms-transition:.8s;
+    -o-transition:.8s;
+    transition:.8s;
+    height:auto;
+    
+}
+
+.paso_1_2  .obten_diagnostico {
+	
+	width: 315px !important;
+	margin: 20px auto !important;
+	display: none;
+}
+
+.mensaje_campos_obligatorios {
+	display: none;
+	color:red;
+	margin: 20px auto 20px;
+	clear:both;
+	width: 371px;
+}
+
+section.monto_proposito {
+	height:auto !important;
+	margin: 0 0 20px;
+}
+
+
+.logo_12, .regresar_datos_personales, .obten_diagnostico, .encabezado12, .obten_diagnostico.solicitud.btn_continuar   {
+	display:block;
+}
+
+.paso_1_2 .dvLabel {
+	width:auto !important;
+}
+
+.paso_1_2 #general .backStyle {
+	margin:0 !important;
+}
+.paso_1_2 div.loader {
+	clear:both; 
+	display:block;
+}
+.paso_1_2 .loader img{
+	margin:0 auto; 
+}
+
+#frmBasicos, .section historial, .historial_crediticio {
+	/* width: 383px; */
+	margin:0 auto;
+}
+
+.section.historial {
+
+}
+
+.PrimerSegundoPaso .datos_protegidos {
+	margin:0 auto;
+}
+.revisa {
+	display:none;
+}
+ 
+
+
+
+
+#dvContMenuREG {
+	margin: 0px 0 0;
+}
+#dvContMenuREG, .helpFrm 
+	{
+		display:none;
+	}
+
+	
+	@media only screen and (max-width: 1024px)  {
+	#frm_content{
+			margin: 0 auto;
+			float: none;
+		}
+	} 
+
+#buttons .ui-progressbar {
+	display:none !important;
+}
+
+
+
+
+
+ 
+
+
+#dvBtnMenu, #dvBtnSimulador {
+	display:none;
+}
+@media (max-width: 1024px) {
+
+
+ .paso_1_2 {
+	margin:0 auto 0;
+	/* width: 100%; */
+}
+
+#frmBasicos, .section historial, .historial_crediticio {
+	width:100%;
+	margin:0 auto;
+}
+
+.section.historial {
+	/* width:92%; */
+}
+
+.paso_1_2  .obten_diagnostico {
+	width:80% !important;
+}
+.paso_1_2 .logo_12 {
+	width: 80px !important;
+}
+.mensaje_campos_obligatorios {
+	width: 90%;
+}
+.paso_1_2 .encabezado12 {
+
+	line-height:22px;
+	font-size:20px;
+	width:90%;
+	margin:20px auto 0;
+}
+}
+
+.envioCorreoWhatsApp.listoConsultaBreve {
+	background:#8FC450;
+	color: #fff;
+	margin: 0 auto 30px;
+	/* width: 331px; */
+}
+
+
+.edadFueraRango .edad_aviso {
+	margin:0 auto !important;
+
+}	
+

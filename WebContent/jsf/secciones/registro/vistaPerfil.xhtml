@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+<br />
+<fieldset>
+<div id="contPerfil">
+
+  <!-- 
+	<div class="cont">
+			<div id="imgPhoto">
+				<p:graphicImage id="photo" width="120px" height="120px" url="../resources/img/vicentefenoll.png"></p:graphicImage>
+			</div>
+	
+		
+		<div id="contNomPerfil">
+			<h:outputLabel styleClass="nombrePerfil" value="#{basicData.completeName}"></h:outputLabel>
+		</div>
+	</div> -->
+	<br />
+	<div class="dvContent">
+            	<div class="dvEtiqueta" style="padding-right: 5px; float: left;">
+			    <p:graphicImage id="photo" width="100px" height="100px" url="../resources/img/vicentefenoll.png"></p:graphicImage>
+			    </div>
+     		<div style="height:70px; float: left;">
+			<span class="nombrePerfil"> <h:outputLabel value="#{basicData.completeName}"></h:outputLabel></span>
+			<!-- <br/>
+			<span class="nomLema"><h:outputText  value="#{addProyect.tagline}"></h:outputText></span>-->	
+			</div> 
+     		
+	</div>
+	
+	<div align="left" style="text-align: justify; clear: both;">
+		<h:outputLabel id="lbAbout" value="Acerca de mi:" style="text-weight: bold;" /><br />
+	</div>
+	<div id="contAbout">
+		
+			
+		
+	</div>
+	
+</div>
+</fieldset>
+<script>
+document.getElementById('contAbout').innerHTML = '#{infoBasicaController.about_me}';
+</script>
+
+
+</html>

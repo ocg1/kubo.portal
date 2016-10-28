@@ -1,0 +1,35 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h3 class="encH3">Tu historia </h3>
+
+	
+	   
+	
+				
+
+			<div class="field">
+				<div class="dvLabel" style="width:365px">
+					<h:outputLabel styleClass="labelsStl" value="Cuéntanos un poco sobre ti *"/>
+				</div>
+					
+									
+			
+				<div class="dvElementLength">
+
+					<h:inputTextarea id="txt_about_me" 
+								     tabindex="2" rows="3" cols="66" 						  
+								     styleClass="elementTextArea countCharact text-area validatorClass hs_class" 
+								     value="#{addMyLoan.naturalperson.about_me}" > 
+						<p:ajax event="blur"  listener="#{addMyLoan.updateNaturalPersonBlur}"/>
+						<p:ajax event="keyup" onstart="return saveData('txt_about_me');" listener="#{addMyLoan.updateNaturalPersonBlur}"/>
+					</h:inputTextarea>	
+					
+					<p:watermark styleClass="texto_ayuda" for="txt_about_me" value="Dinos cuáles son tus actividades, retos, logros, situación familiar, etc."/>
+				</div>								
+			</div>															
+				
+</ui:composition>	

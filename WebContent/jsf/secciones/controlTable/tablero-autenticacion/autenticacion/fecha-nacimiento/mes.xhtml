@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class = "styled-select-Month">
+		<h:selectOneMenu id = "month"  immediate = "true" styleClass = "elementStlSelMonth">
+					     
+			<f:selectItem itemLabel = "Mes: " itemValue = "0" />
+			
+			<f:selectItems value = "#{tablero_autenticacion.birthdate.lista_meses}"/>
+			
+			<p:ajax event = "change"
+					oncomplete =  "comparar_birthday_on_complete(xhr, status, args);" 
+					listener   = "#{tablero_autenticacion.birthdate.listener_mes_SELECTED}" />
+			
+		</h:selectOneMenu>
+	</div>				
+</ui:composition>				

@@ -1,0 +1,32 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html">	
+				 
+	<h:panelGroup id = "fail" rendered = "#{preaprobacion.fail}">
+		<div style="height: auto; overflow: hidden; ">
+		
+			<div class="msgpreaprobado">
+				<b>¡Lo sentimos #{sessionBean.nombre}!</b>    
+			</div>
+			
+			<div class="msgpreaprobadoDesc resultado_buro">
+				<h3>Por el momento no te podemos ofrecer el servicio de prestamos.</h3>
+				<p> Hemos consultado tu historial de préstamos en las Sociedades de Información Crediticia y 
+				observamos que tu historial crediticio <b>No cubre los requisitos</b> que necesitamos para otorgarte el préstamo.</p>
+			</div>
+			
+			<div class="necesitas_ayuda">
+					<h5>¿Necesitas ayuda?</h5>
+					<a class="tel" href="tel:6269-0024" >(55)6260 00 24 </a>
+					<a class="mail" href="mailto:soporte@kubofinanciero.com">soporte@kubofinanciero.com </a>
+				
+			</div>
+			
+			<div class="dvContent" style="margin-left: auto; margin-right: auto; font-size: 1.19em;">
+				<div class="buttonPR" onclick="closeWindow();">
+						Siguiente
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>				 
+</ui:composition>				 

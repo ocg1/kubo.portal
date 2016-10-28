@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+.logContactCP{
+	padding: 10px 10px 10px 10px;
+	margin-left: 20px;
+	float: left;
+	width: 250px;
+	border: solid 0px #000000;
+}
+.imgSecure{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	text-align: center;
+}
+.buttonCP{
+	overflow: auto;
+	width: 153px;
+	border: solid 0px #ffff63;
+	height: 25px;
+	background-color: #ffcc33;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	padding-top: 5PX;
+	
+	border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	
+	text-align: center;
+	color: #fffbf7;
+	font-weight: bold;
+	font-size: 1.2em;
+	
+}
+.buttonCP:hover{
+	cursor: pointer;
+	background-color: #fbbf08;
+}

@@ -1,0 +1,794 @@
+<ui:composition 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core">
+		
+		
+		<style>
+			.contFrm{
+				width: 99% !important;
+			}
+			
+			.ui-datatable th, .ui-datatable tfoot td{
+				padding: 4px 5px !important;
+			}
+			
+		</style>
+		
+		<script>
+
+		
+		function showWaitCount(){
+			
+			$("#dvshow").hide();
+			
+			$("#dvWaitEdo").show();
+			return true;
+		}
+		
+		function showGarant(xhr, status, args){
+			
+			$("#dvWaitEdo").hide();
+			$("#dvshow").show();
+			$.fancybox.resize();
+		}
+		
+		function showTicket(xhr, status, args){
+			
+			$("#dvWaitEdo").hide();
+			$("#dvshow").show();
+			$.fancybox.resize();
+			
+		}
+		
+		function clasefnTckt(){
+			
+			$.fancybox.close();
+			$("#fancybox-content").removeClass("comprobante_container");
+		}
+		 $(document).ready(function() {
+			    
+				setTimeout(function(){
+		    		
+					$(".tablaTipoProyectos ul:odd").addClass("par");
+		
+					 $("body").removeAttr("style");
+			
+				 	},100);
+					setTimeout(function(){
+						 recuperaNoInversion ();
+					},500);
+				$(".lista .tablaTipoProyectos ul").click(function() {
+					$(".lista .tablaTipoProyectos ul").removeClass("filaSeleccionada");
+					$(this).addClass("filaSeleccionada");
+				});
+		 });
+		   
+			proyectos_activos_scroll ();
+			proyectos_activos_scroll2 ();
+		
+		</script>
+				<script>
+				$(".tablaTipoProyectos ul:odd").addClass("par");
+		
+				$(document).ready(function(){
+					$(".tablaTipoProyectos.sinMargen ul").each(function() {
+						var numeroProyecto = $(this).find($(".numProyecto"));
+						if(numeroProyecto.text() == "" ) {
+							numeroProyecto.hide();	
+						}
+					});
+				
+					
+				});
+				
+			</script>
+	<div class="menuComprobantesBox alerts">
+	<a class="close_lightbox" href="javascript:void(0);" onclick="cerrar_fondeados ();"></a>
+		<h3>Comprobantes disponibles:</h3>
+		
+		
+		<div class="callActionMedium btnVerde  compInversion">Inversion</div>
+		<div class="callActionMedium btnVerde compGarantia">Garantia</div>
+		<div class="callActionMedium btnVerde  compTuspagos">Tus pagos</div>
+	</div>
+	<div class="btn_backResumen">
+							
+							<div class="callActionMedium btnVerde" onclick="regresarResumenSaldos();">
+											<i class="fa fa-angle-left"></i> <span>Regresar a vista general</span>
+							</div>
+		</div>
+		<div class="barraSecundaria lista"  style="visibility: #{sessionBean.area == 'I' ? 'visible': 'hidden'}" >
+				<ol class="encabezado">
+			  	
+					
+						
+						<li class="enc_numProyecto">
+								#{myInvestments.labelDelinquent}
+						
+						</li>
+						<li class="enc_categoriaTitulo2">
+								#{msg.ll_title_Column1}&#160;/&#160;<br />
+								#{msg.ll_title_Column2}
+						</li>
+						<li class="enc_noInversion">
+								No. Inversión
+						</li>
+						
+						<li class="enc_enGarantia">
+								En Garantía
+						</li>
+						<li class="enc_scoring2">
+								kubo<br />score
+						</li>
+						<li class="enc_montoCredito">
+								Monto <br />del Crédito
+						</li>
+						<li class="enc_plazo2">
+								Plazo
+						</li>
+						<li class="enc_fechaInicio" >
+								Fecha Inicio
+						</li>
+						<li class="enc_anualPeriodoMoratorio">
+						
+						
+							
+								#{msg.ll_rate_anual}<br />/
+								#{msg.ll_rate_periodo}<br />/
+								#{msg.ll_rate_moratoria}<br />
+								
+				
+							
+						</li>
+						
+						<li class="enc_inversionParticipacion">
+								Tu inversión / <br />
+								% de Participación
+						
+							
+						</li>
+						
+						<li class="enc_saldoVigenteAtrasado">
+						
+								#{myInvestments.labelBalances}
+							
+						</li>
+						
+						<li class="enc_colStatus">
+						
+						
+								#{msg.ll_title_Column_Status}
+							
+							
+						</li>
+						
+						<li class="enc_atrasoCuotas">
+						
+							
+								#{msg.ll_dias_atraso} / <br /> #{msg.ll_cuotas_ven}
+								
+									
+						</li>
+						
+						<li class="enc_tusPagos">
+						
+							
+									Tus Pagos
+						
+						
+						</li>
+						
+						<li class="enc_tipoCredito">
+						
+							
+								
+									Tipo de <br />
+									crédito
+					
+						</li>
+						<!-- h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+							<li class="enc_tipoSolicitud">
+							
+								
+								#{msg.ll_Show_Sol}
+						
+							
+							</li>
+						</h:panelGroup -->
+						<h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+						<li class="enc_mostrarCobranza"> 
+
+						
+								#{msg.ll_Show_Cobranza}
+
+						
+							
+						</li>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{sessionBean.area != 'I'}">
+						<li class="enc_acreditadoTop"> 
+						
+						
+							
+								Acreditado
+								
+						
+							
+						</li>
+						</h:panelGroup>
+				
+				</ol>
+		</div>
+		<h:form id="FPyInv" prependId="false">
+			
+		<div  class="tituloRegistro" style="width: 99%; margin-left: auto; margin-right: auto; text-align: center; color: #439539;font-weight: bold; font-size: 1.3em; margin-bottom: 20px;margin-top: 30px;">
+			<h:outputText value="${myInvestments.pageName}" />
+		</div>
+		
+			<c:if test="#{myInvestments.status_delinquentinv == 'C'}">
+    			<div class="inicialNumeroRegistros">Número de clientes: <span class="totalRegistro">#{myInvestments.numberOfClients}</span></div>		
+			</c:if>
+			<c:if test="#{myInvestments.status_delinquentinv == 'I'}">
+    			<div class="inicialNumeroRegistros">Número de proyectos: <span class="totalRegistro">#{myInvestments.safiProyecLoanActiveLst.size()}</span></div>		
+			</c:if>	
+				<!--		
+		<div class="container_loanlist2">
+		 <div class="div1">
+    	</div>
+		</div>
+	-->
+	
+	<div class="lista-mosaico callActionMedium btnVerde" onclick="listaMosaico();"><i class="fa fa-th"></i></div>
+		<div id="dvContentLoanLst" class="tablaPro lista">	
+	
+
+
+		
+		<div class="tablaTipoProyectos sinMargen">
+		  	<ol id="encabezadoTablaTienda" class="encabezado">
+			  	
+					
+						
+						<li class="enc_numProyecto">
+						
+								#{myInvestments.labelDelinquent}
+						
+						</li>
+						<li class="enc_categoriaTitulo2">
+						
+					
+							
+								#{msg.ll_title_Column1}&#160;/&#160;<br />
+								#{msg.ll_title_Column2}
+								
+						
+							
+						</li>
+						<li class="enc_noInversion">
+						
+								No. Inversión
+								
+							
+						</li>
+						
+						<li class="enc_enGarantia">
+						
+								En Garantía
+					
+							
+						</li>
+						
+						
+						
+						<li class="enc_scoring2">
+						
+							
+							
+								kubo<br />score
+								
+						
+						</li>
+						
+						<li class="enc_montoCredito">
+							
+						
+								
+								Monto <br />del Crédito
+								
+					
+							
+						</li>
+						
+						<li class="enc_plazo2">
+				
+							
+								Plazo
+								
+							
+							
+						</li>
+						
+						<li class="enc_fechaInicio" >
+						
+						
+							
+								Fecha Inicio
+							
+						</li>
+						
+						<li class="enc_anualPeriodoMoratorio">
+						
+						
+							
+								#{msg.ll_rate_anual}<br />/
+								#{msg.ll_rate_periodo}<br />/
+								#{msg.ll_rate_moratoria}<br />
+								
+				
+							
+						</li>
+						
+						<li class="enc_inversionParticipacion">
+								Tu inversión / <br />
+								% de Participación
+						
+							
+						</li>
+						
+						<li class="enc_saldoVigenteAtrasado">
+						
+							#{myInvestments.labelBalances}	
+						</li>
+						
+						<li class="enc_colStatus">
+						
+						
+								#{msg.ll_title_Column_Status}
+							
+							
+						</li>
+						
+						<li class="enc_atrasoCuotas">
+						
+							
+								#{msg.ll_dias_atraso} / <br /> #{msg.ll_cuotas_ven}
+								
+									
+						</li>
+						
+						<li class="enc_tusPagos">
+						
+							
+									Tus Pagos
+						
+						
+						</li>
+						
+						<li class="enc_tipoCredito">
+						
+							
+								
+									Tipo de <br />
+									crédito
+					
+						</li>
+						<!-- h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+							<li class="enc_tipoSolicitud">
+							
+								
+								#{msg.ll_Show_Sol}
+						
+							
+							</li>
+						</h:panelGroup -->
+						<h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+						<li class="enc_mostrarCobranza"> 
+
+						
+								#{msg.ll_Show_Cobranza}
+
+						
+							
+						</li>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{sessionBean.area != 'I'}">
+						<li class="enc_acreditadoTop"> 
+						
+						
+							
+								Acreditado
+								
+						
+							
+						</li>
+						</h:panelGroup>
+				
+				</ol>
+		
+		<!-- div id="dvContTableProyectInv" class="proyectosLista" style="overflow: hidden; padding-right: 10px;" -->	
+			
+			<ui:repeat id="proyectInvest" emptyMessage="#{msg.ll_empty_message}"  ajax="false"  value="#{myInvestments.safiProyecLoanActiveLst}" var="proList" resizable="false" styleClass="dataTableSelProject" rowIndexVar="rowIndex">
+			  	
+			<ul>
+			 	<li class="numProyecto">
+			 	
+			 	#{proList.consecutivo}
+			 	
+			 	</li>
+			  	
+				
+				<li  class="categoriaTitulo2">
+						
+						
+			
+							
+								<span  id="yui-gen64Pros" class="expand-loan-details pDLink" style="font-size: 1.2em;">
+							
+									<p:commandLink id="cmdLinkDetail1" value="#{proList.proyect.purpose.name}" actionListener="#{myInvestments.initSearch}"  onstart="displayMessageProcessing('msgprocessing',true);" immediate="true" oncomplete="closeFancy();" rendered="#{sessionBean.area == 'I'}">
+									
+										<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+										
+									</p:commandLink>
+									
+									<h:outputText rendered="#{sessionBean.area == 'M'}" value="#{proList.proyect.purpose.name}"  />
+									
+								</span>
+							
+							
+							
+							<div id="proyectNameTag1">
+							
+								<span id="yui-gen211" >#{proList.proyect.name}</span>
+								
+							</div>
+							
+				
+					
+				</li>
+				<li class="noInversion" >
+						<sup class="titleMosaico">No. Inversión  </sup>
+						
+					
+					<sub class="fondeokuboid">#{proList.fondeokuboid}</sub>
+						
+					<h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+						
+							<i  onclick="showAmort#{proList.proyect_loan_id}_#{proList.fondeokuboid}()" class="ticketInv fa fa-search-plus ticket_#{amort.id}" style="cursor: pointer;" ></i>
+						
+						<script>
+							
+							function showAmort#{proList.proyect_loan_id}_#{proList.fondeokuboid}(){
+								comprobantesAlertas('#btnTicket', '#{proList.proyect_loan_id}::#{proList.fondeokuboid}');
+							}
+						</script>
+						
+					</h:panelGroup>
+				</li>
+				
+				<li class="enGarantia">
+						<sup class="titleMosaico">  	En Garantía</sup>
+					Si 
+					
+					<h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+					
+						<i  style="cursor: pointer;" onclick="showGarantia#{proList.proyect_loan_id}_#{proList.fondeokuboid}()" class="ticketGar fa fa-search-plus ticket_#{amort.id}" ></i>
+						
+						
+						<script>
+							
+							function showGarantia#{proList.proyect_loan_id}_#{proList.fondeokuboid}(){
+								comprobantesAlertas('#btnGarantia', '#{proList.proyect_loan_id}::#{proList.fondeokuboid}');
+							}
+						</script>
+						
+					</h:panelGroup>
+						
+				</li>
+				
+				<li class="scoring2">
+					<sup class="titleMosaico">	kuboscore  </sup>
+					
+						
+						<div id="testForScores">
+						
+							<h:panelGroup >
+							
+								<div  class="#{proList.kubo_score_a=='A'? 'AstyleList':(proList.kubo_score_a=='B'? 'BstyleList':(proList.kubo_score_a=='C'? 'CstyleList':(proList.kubo_score_a=='D'? 'DstyleList':'EstyleList')))} riskLoanList">
+								
+									<p class="statusLeftLoanList">#{proList.kubo_score_a}</p>
+									
+									<p class="statusRightLoanList">#{proList.kubo_score_b}</p>
+									
+								</div>
+								
+							</h:panelGroup>
+							
+						</div>
+																			
+				
+					
+				</li>
+			  	
+			  	<li class="montoCredito">
+					<sup class="titleMosaico">Monto del Crédito  </sup>
+					
+							
+							<div class="timeDisplay">
+							
+								<h:outputText value="#{proList.ammount}">
+								
+									<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									
+								</h:outputText>
+								
+							</div>
+							
+					
+					
+				</li>
+				
+				<li class="plazo2">
+						<sup class="titleMosaico">  	Plazo</sup>
+						#{proList.getPlazoStr()}
+					
+				</li>
+			  	
+			  	
+			  	<li class="fechaInicio">
+						<sup class="titleMosaico">Fecha Inicio  </sup>
+						
+						<h:outputText value = "#{proList.fechaInicioInv}">
+							<f:convertDateTime pattern = "dd 'de' MMMM 'de' yyyy" />
+						</h:outputText>
+					
+				</li>
+			  	
+				<li class="anualPeriodoMoratorio">
+					<sup class="titleMosaico">  #{msg.ll_rate_anual}<br />/
+								#{msg.ll_rate_periodo}<br />/
+								#{msg.ll_rate_moratoria}<br />
+					</sup>
+					<div id="rate_investorDiv">
+					
+						<h:outputText id="rateInvestorValue" value="#{proList.rate_investor}%" ></h:outputText> <br />
+						<h:outputText id="rateInvestorValue_P" value="#{proList.getPeriodRate()}%" >
+							<f:convertNumber minFractionDigits="2"  groupingUsed="true" locale="es_MX" pattern="#0.00" />
+						</h:outputText><br />
+						<h:outputText id="rateInvestorValue_M" value="#{proList.rate_investor*2}%" ></h:outputText>
+						
+					</div>	
+																
+				</li>
+						               
+				<li class="inversionParticipacion" id="foundedPorc#{proList.proyect_loan_id}1" >
+						<sup class="titleMosaico">Tu inversión / <br />
+								% de Participación </sup>
+						<div class="timeDisplay">
+							<h:outputText value="#{proList.montofondeoinv}" >
+						  		<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							</h:outputText>
+							<br />
+							<h:outputText value="#{proList.porcentajefondeo}" >
+								<f:convertNumber minFractionDigits="2"  groupingUsed="true" locale="es_MX" />
+							</h:outputText>%
+						</div>
+					
+					
+				</li>
+				
+				<li class="saldoVigenteAtrasado">
+					<sup class="titleMosaico">Saldo <br />
+								Vigente /<br/>
+								Atrasado </sup>
+						<div class="timeDisplay">
+						
+							<h:outputText value="#{proList.getSaldosVigAtrGar()}" >
+							<!--   <h:outputText value="#{proList.saldoCapVigenteInv}" > -->
+						  		<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							</h:outputText>
+							<br />
+							<h:outputText value="#{proList.getSaldosVigIntGar()}" >
+						  		<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+							</h:outputText>
+						</div>
+					
+				</li>
+				
+				<li class="colStatus">
+					<sup class="titleMosaico">#{msg.ll_title_Column_Status}</sup>
+					<div id="status_investorDiv">
+					
+						<h:outputText id="statusInvestorValue" value="#{proList.getEstatusStr()}" ></h:outputText>
+						
+					</div>
+					
+				</li>
+				
+				<li class="atrasoCuotas">
+					<sup class="titleMosaico">#{msg.ll_dias_atraso} / <br /> #{msg.ll_cuotas_ven}</sup>
+					<div id="providing_invertion">
+					
+						<div id="status_investorDiv">
+					
+							<h:outputText id="daysInvestorValue" value="#{proList.diasAtraso} #{proList.diasAtraso==1?'Día':'Días'}" ></h:outputText>
+							<br />
+							<h:outputText id="paymentInvestorValue" value="#{proList.noCuotasAtraso} #{proList.noCuotasAtraso==1?'Cuota':'Cuotas'}" ></h:outputText>
+						</div>
+						
+					</div>
+					
+				</li>
+				<!-- Saldo Vencido -->	
+				<!--                
+				<p:column styleClass="borderCell columnInvertionsWidth"  >
+				
+					<div align="center" id="yui-gen130" class="yui-dt-liner"  style="width:90px;">
+						
+						<h:panelGroup >
+						
+							<div id="invertion_value">
+							
+								
+								<h:outputText value="#{proList.montoFondeo}" >
+						  
+									<f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+									
+								</h:outputText>
+								
+								
+							</div>
+							
+						</h:panelGroup>
+					</div>
+				</p:column>
+				-->
+				
+				<li class="tusPagos">
+					<fieldset onclick="menuComp('#{proList.proyect_loan_id}_#{proList.fondeokuboid}')"><i class="fa fa-search-plus"></i></fieldset>
+						<sup class="titleMosaico">Tus Pagos </sup>
+						<i class="fa fa-search-plus ticketPagos" style="cursor: pointer;" onclick="showPagos#{proList.proyect_loan_id}_#{proList.fondeokuboid}();" ></i>
+						
+						<script>
+							function showPagos#{proList.proyect_loan_id}_#{proList.fondeokuboid}(){
+								comprobantesAlertas('#btnPagos', '#{proList.proyect_loan_id}::#{proList.fondeokuboid}');
+							}
+							
+							
+							
+							
+						</script>
+						
+				</li>
+				
+				<li class="tipoCredito">
+					<sup class="titleMosaico">Tipo de <br />
+									crédito  </sup>
+							<h:outputText value="#{proList.getTipoCrédito()}"  />
+				
+				</li>
+				
+				<!-- h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+					<li class="tipoSolicitud">
+						<div align="center" id="yui-gen130" class="yui-dt-liner"  style="width:90px;">
+							<p:commandLink style="text-decoration:none;" actionListener="#{myInvestments.initSearch}" onstart="displayMessageProcessing('msgprocessing',true);"  immediate="true" oncomplete="closeFancy();" styleClass="invest_list">
+								<div class="buttonPR" style="margin: 0px; line-height: 1; height: 22px; width: 90px;padding-top: 11px;">
+									<h:outputText value="Ver Solicitud" />
+								</div>
+								<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+								
+							</p:commandLink>
+						</div>
+						</li>
+				</h:panelGroup-->
+				<h:panelGroup rendered="#{sessionBean.area == 'I'}" >
+				<li class="mostrarCobranza">
+			
+
+						<p:commandLink styleClass="callActionMedium btnVerde" onstart="return clienteBitacora('#{proList.fondeokuboid}')" oncomplete="closeFancy();" actionListener="#{myInvestments.goToLogs}" >
+							
+								Ver <span>cobranza</span>
+							
+							
+							
+							<f:attribute name="gotypeLog" value="COB" ></f:attribute>
+							
+							<f:attribute name="proyectAtrr" value="#{proList.proyect_loan_id}::#{proList.proyect_id}::#{proList.prospectus_id}::#{proList.company_id}" />
+							
+							
+						</p:commandLink>
+				
+					
+				</li>
+						</h:panelGroup>
+								<h:panelGroup rendered="#{sessionBean.area != 'I'}">
+				<li class="acreditadoTop">
+				<sup class="titleMosaico">Acreditado </sup>	
+					#{proList.person.NombreCompletoNPM()}
+					
+				</li>
+				</h:panelGroup>
+				</ul>
+		</ui:repeat>
+		<!-- /div -->
+		</div>
+
+		<!-- 
+		<div class="buttonPR" style="float: left; margin-right: 10px;">
+			<p:commandLink style="text-decoration: none;"  value="Incrementar saldo"/>
+		</div>
+		 -->
+		 <!-- 
+		<div class="buttonPR" style="float: left;">
+			<p:commandLink style="text-decoration: none;" value="Recargar proyectos"/>
+		</div>
+		-->
+
+		
+		<p:commandLink id="buttonTable1"  ></p:commandLink>
+		
+
+		
+		</div>
+		</h:form> 
+		
+		<h:form  prependId="false" rendered="#{sessionBean.area == 'I'}" >
+		
+			<div  id="dvContHtml" >
+			
+		
+				
+					<div id="dvEdoCuenta" style="background-color: #FFFFFF !important;font-size: 1.15em !important; " class="alertsComprobantes comprobante_container centrar_h">
+							<a class="close_lightbox" href="javascript:void(0);" onclick="cerrar_fondeados ();"></a>
+					
+						
+						<div style="display: none;">
+						
+							<p:inputText id="btnPagos" value="#{myInvestments.valuesforticket}"  > 
+								
+								<p:ajax event="blur" onstart="return showWaitCount();" listener="#{myInvestments.getTicketPagos}"  oncomplete="showTicket(xhr, status, args);" update="pnlEdoCta"  />
+								
+							</p:inputText>	
+						
+							<p:inputText id="btnTicket" value="#{myInvestments.valuesforticket}"  > 
+								
+								<p:ajax event="blur" onstart="return showWaitCount();" listener="#{myInvestments.getTicket}"  oncomplete="showTicket(xhr, status, args);" update="pnlEdoCta"  />
+								
+							</p:inputText>	
+							
+							<p:inputText id="btnGarantia" value="#{myInvestments.valuesforGarantia}"  > 
+								
+								<p:ajax event="blur" onstart="return showWaitCount();" listener="#{myInvestments.getGarantia}"  oncomplete="showGarant(xhr, status, args);" update="pnlEdoCta"  />
+								
+							</p:inputText>					
+							
+						</div>
+						<div id="dvWaitEdo" style="display: none; width: 100%;" >
+							<img src="../resources/img/ajax-loader.gif" style="margin-top: 40px; margin-left: auto; margin-right: auto;" />
+						</div>
+						
+						<div id="dvshow" >
+							<h:panelGroup id="pnlEdoCta" >
+								
+									<h:outputLabel escape="false" id="lblHtml" value="#{myInvestments.ticketStr}" ></h:outputLabel>
+								
+							</h:panelGroup>
+						</div>
+						
+					</div>
+					
+				
+			
+		
+	
+		
+				
+		</div>
+		</h:form>
+		<script>
+
+		 </script>
+
+</ui:composition>

@@ -1,0 +1,60 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field vis">		
+				
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "Sexo"/>
+		</div>
+			
+	
+		<fieldset class="conjunto conjunto2">
+        	
+	        		<div class="btnN dosBtn" data-opcion="2" onclick="btnN(this);">
+	        			<small class="palomita">
+	        				<i class="fa fa-check"></i>
+	        				<i class="fa fa-female"></i>
+	        			</small>
+	        			
+	        			<span>Mujer</span>
+	        			<i class="fa fa-check checkMobile"></i>
+	        		</div>
+	        		<div class="btnN dosBtn btnR" data-opcion="1" onclick="btnN(this);">
+	        			<small class="palomita">
+	        					<i class="fa fa-male"></i>
+	        				<i class="fa fa-check"></i>
+	        			</small>
+	        			<span>Hombre</span>
+	        			<i class="fa fa-check checkMobile"></i>
+	        		</div>
+	        	<div class = "selectNuevo ocultaSelect">
+			
+				<h:selectOneMenu id = "genero" immediate = "true" 
+								 onfocus    = "DatosPersonales.init_focus_date(5);"
+							 	 disabled   = "#{navigationBean.disabledComponent('genero')}" 
+							 	 value      = "#{basicData.naturalPerson.gender_id}"  
+							     styleClass = "elementStlSelAddress  validatorClass requiredVerify hs_class">
+							 
+					<f:selectItem itemLabel = "" itemValue = "" />
+				
+					<f:selectItems value     = "#{basicData.lista_de_generos}"
+								   var       = "genero"
+								   itemLabel = "#{genero.description}"
+								   itemValue = "#{genero.genderPK.gender_id}"/>
+
+			    
+					<p:ajax event = "change" update = "panel-rfc-curp"
+						    listener   = "#{basicData.gender.init_change}"  
+					    	oncomplete = "DatosPersonales.gender_on_complete(xhr, status, args);" />
+				
+				</h:selectOneMenu>
+			</div>
+        		</fieldset>
+  			
+		</div>
+		
+		
+</ui:composition>				

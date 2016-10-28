@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		<meta name="format-detection" content="telephone=no"/>
+		
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		
+		<script type="text/javascript" src="../resources/js/contenido.js"></script>
+		<script type="text/javascript" src="../resources/js/general.js"></script>
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/fontStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />		
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		<link rel="stylesheet" href="../resources/css/font-awesome.css"/> 
+		<link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/simulatorInv.css" />
+		
+		<title>kubo.financiero | Simulador de inversiones</title>				   
+        <meta name="Description" content="Simulador de inversión. Condiciones. Comportamiento de pagos. Pago de intereses. Proyectos Activos. Distribución del portafolio"/>
+    
+	 
+	 <style>
+	 
+	 .grafica {
+		width:90% !important;
+	
+		float: left;
+		margin: 0 0 18px;
+}
+	 
+	 </style>
+		
+		
+		<script>
+		
+		//<![CDATA[
+		
+		           var chartB  = null;
+var chartA  = null;
+var chartAV = null;
+var chartARI = null;
+var chartAPIRI = null;
+var chartARenRI = null;
+var dataProyection  = null;
+		           
+			google.load("visualization", "1", {packages:["corechart"]});
+			
+			$(document).ready(function(){
+				$('.modificarValores').click(function(){
+					
+					if($(".colFiltros").hasClass("active")) {
+						$(".velo2").fadeOut();
+						$(".colFiltros").removeClass("active");
+						
+					}else {
+						$(".velo2").fadeIn();
+						$(".colFiltros").addClass("active");
+					}
+				});
+				
+				$('.velo2, .cerrarFiltrosInv').click(function(){
+					$(".velo2").fadeOut();
+					$(".colFiltros").removeClass("active");
+					
+				});
+			
+				////////////
+	
+	$("#ammountInv").focus(function() { $(this).select(); } );
+	
+	$(".clsRisk").click( function(){
+		
+		if($(this).hasClass("itemCheck")){
+			$(this).removeClass("itemCheck");
+		}else{
+			$(this).addClass("itemCheck");
+		}
+		
+		var i = 0;
+		$(".clsRisk").each(function(){
+			if($(this).hasClass("itemCheck")){
+				i++;
+			}
+		});
+		
+		if( i == 0){
+			$(this).addClass("itemCheck");
+			return;
+		}
+		
+		reiniciaGraficas();
+		$("#riskelement").val("");
+		
+		$(".clsRisk").each(function(){
+			if($(this).hasClass("itemCheck")){
+				var valId = $(this).attr("id")+"::";
+				var val = $("#riskelement").val()+valId;
+				$("#riskelement").val(val);
+			}
+		});
+		
+		$("#riskelement").blur();
+		setTimeout(function(){ $("#lnkAction").click(); } , 80);
+		
+	} );
+	
+	$(".clsTerm").click( function(){
+		
+		if($(this).hasClass("itemCheck")){
+			$(this).removeClass("itemCheck");
+		}else{
+			$(this).addClass("itemCheck");
+		}
+		
+		var i = 0;
+		$(".clsTerm").each(function(){
+			if($(this).hasClass("itemCheck")){
+				i++;
+			}
+		});
+		
+		if( i == 0){
+			$(this).addClass("itemCheck");
+			return;
+		}
+		
+		reiniciaGraficas();
+		$("#termelement").val("");
+		
+		$(".clsTerm").each(function(){
+			if($(this).hasClass("itemCheck")){
+				var valId = $(this).attr("id")+"::";
+				var val = $("#termelement").val()+valId;
+				$("#termelement").val(val);
+			}
+		});
+		
+		$("#termelement").blur();
+		setTimeout(function(){ $("#lnkAction").click(); } , 80);
+		
+	} );
+	
+	$(".clsGender").click( function(){
+		
+		if($(this).hasClass("itemCheck")){
+			$(this).removeClass("itemCheck");
+		}else{
+			$(this).addClass("itemCheck");
+		}
+		
+		var i = 0;
+		$(".clsGender").each(function(){
+			if($(this).hasClass("itemCheck")){
+				i++;
+			}
+		});
+		
+		if( i == 0){
+			$(this).addClass("itemCheck");
+			return;
+		}
+		
+		reiniciaGraficas();
+		$("#genderelement").val("");
+		
+		$(".clsGender").each(function(){
+			if($(this).hasClass("itemCheck")){
+				var valId = $(this).attr("id")+"::";
+				var val = $("#genderelement").val()+valId;
+				$("#genderelement").val(val);
+			}
+		});
+		
+		$("#genderelement").blur();
+		setTimeout(function(){ $("#lnkAction").click(); } , 80);
+		
+	} );
+	
+	$(".clItemTitT2").click( function(){
+		
+		if($(this).hasClass("itemCheck"))
+		{
+			$(this).removeClass("itemCheck");
+			
+		}else{
+
+			$(this).addClass("itemCheck");
+			
+		}
+		
+		
+		var i = 0;
+		$(".clItemTitT2").each(function(){
+			if($(this).hasClass("itemCheck")){
+				i++;
+			}
+		});
+		
+		if( i == 0)
+		{
+			$(this).addClass("itemCheck");
+			return;
+		}
+		
+		reiniciaGraficas();
+		
+		$("#destinolement").val("");
+		
+		$(".clItemTitT2").each(function(){
+			if($(this).hasClass("itemCheck")){
+				var valId = $(this).attr("id")+"::";
+				var val = $("#destinolement").val()+valId;
+				$("#destinolement").val(val);
+			}
+		});
+		
+		$("#destinolement").blur();
+		setTimeout(function(){ $("#lnkAction").click(); } , 80);
+		
+	} );	
+
+	
+	
+	chartB = new google.visualization.ComboChart (document.getElementById('chart_bar_div' ));
+	chartA = new google.visualization.AreaChart(document.getElementById('chart_area_div'));
+	chartAV = new google.visualization.AreaChart(document.getElementById('chart_area_vig_div'));
+	/*chartARI = new google.visualization.AreaChart(document.getElementById('chart_area_div_reinversion_total'));
+	chartAPIRI = new google.visualization.AreaChart(document.getElementById('chart_area_div_pagos_interes_reinversion_total'));
+	chartARenRI = new google.visualization.LineChart(document.getElementById('linechart_rendimientos'));
+	*/
+	
+	dataProyection  = new google.visualization.DataTable();
+	dataProyection.addColumn('string', 'Fecha');
+	dataProyection.addColumn( { type: 'string',  role: 'tooltip', 'p': {'html': true} } );
+	dataProyection.addColumn( { type: 'boolean', role: 'scope'});
+	dataProyection.addColumn('number', 'Py - Capital Perdido Proyectado ');
+	dataProyection.addColumn( { type: 'boolean', role: 'certainty' } );
+	dataProyection.addColumn('number', 'Py - Capital Pagado Proyectado');
+	dataProyection.addColumn( { type: 'boolean', role: 'certainty' } );
+	dataProyection.addColumn('number', 'Py - Interés Pagado Proyectado');
+	dataProyection.addColumn( { type: 'boolean', role: 'certainty' } );
+	dataProyection.addColumn('number', 'Capital Perdido');
+	dataProyection.addColumn('number', 'Capital Pagado');
+	dataProyection.addColumn('number', 'Interés Pagado');
+	dataProyection.addColumn( {  type: 'string',  role: 'annotation' });
+	dataProyection.addColumn('number', 'Saldo Disponible');
+	dataProyection.addRows([ 
+	 ['Feb - 2016', createCustomHTMLBarRendInv('Febrero - 2016', '$0.00','$4,029.51','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 0.0, 4029.51 ,null,3461.15] , 
+	 ['Mar - 2016', createCustomHTMLBarRendInv('Marzo - 2016', '$121,877.47','$14,614.30','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 121877.47, 14614.3 ,null,15687.95] , 
+	 ['Abr - 2016', createCustomHTMLBarRendInv('Abril - 2016', '$71,171.17','$7,752.11','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 71171.17, 7752.11 ,null,3461.15] , 
+	 ['May - 2016', createCustomHTMLBarRendInv('Mayo - 2016', '$101,700.95','$10,481.61','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 101700.95, 10481.61 ,null,3461.15] , 
+	 ['Jun - 2016', createCustomHTMLBarRendInv('Junio - 2016', '$78,385.94','$7,617.82','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 78385.94, 7617.82 ,null,3461.15] , 
+	 ['Jul - 2016', createCustomHTMLBarRendInv('Julio - 2016', '$58,009.22','$5,201.72','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 58009.22, 5201.72 ,null,3461.15] , 
+	 ['Ago - 2016', createCustomHTMLBarRendInv('Agosto - 2016', '$65,212.41','$5,703.84','$0.00'),   true,   -0.00, true, 0.00, true, 0.00,true, -0.0, 65212.41, 5703.84 ,'Hoy',3461.15] , 
+	 ['Sep - 2016', createCustomHTMLBarRendInv('Septiembre - 2016', '$48,594.49','$3,796.85','$0.00'),   true,   -0.0,true, 48594.49, true, 3796.85, true, -0.00, 0.00, 0.00 ,null,55852.49] , 
+	 ['Oct - 2016', createCustomHTMLBarRendInv('Octubre - 2016', '$37,393.98','$2,793.95','$0.00'),   true,   -0.0,true, 37393.98, true, 2793.95, true, -0.00, 0.00, 0.00 ,null,96040.42] , 
+	 ['Nov - 2016', createCustomHTMLBarRendInv('Noviembre - 2016', '$28,975.31','$2,151.48','$0.00'),   true,   -0.0,true, 28975.31, true, 2151.48, true, -0.00, 0.00, 0.00 ,null,127167.21] , 
+	 ['Dic - 2016', createCustomHTMLBarRendInv('Diciembre - 2016', '$20,749.44','$1,448.95','$0.00'),   true,   -0.0,true, 20749.44, true, 1448.95, true, -0.00, 0.00, 0.00 ,null,149365.6] , 
+	 ['Ene - 2017', createCustomHTMLBarRendInv('Enero - 2017', '$19,387.64','$1,256.45','$0.00'),   true,   -0.0,true, 19387.64, true, 1256.45, true, -0.00, 0.00, 0.00 ,null,170009.69] , 
+	 ['Feb - 2017', createCustomHTMLBarRendInv('Febrero - 2017', '$14,029.74','$791.92','$0.00'),   true,   -0.0,true, 14029.74, true, 791.92, true, -0.00, 0.00, 0.00 ,null,184831.35] , 
+	 ['Mar - 2017', createCustomHTMLBarRendInv('Marzo - 2017', '$9,659.29','$491.11','$0.00'),   true,   -0.0,true, 9659.29, true, 491.11, true, -0.00, 0.00, 0.00 ,null,194981.75] , 
+	 ['Abr - 2017', createCustomHTMLBarRendInv('Abril - 2017', '$4,424.95','$292.88','$0.00'),   true,   -0.0,true, 4424.95, true, 292.88, true, -0.00, 0.00, 0.00 ,null,199699.6] , 
+	 ['May - 2017', createCustomHTMLBarRendInv('Mayo - 2017', '$4,127.07','$285.06','$0.00'),   true,   -0.0,true, 4127.07, true, 285.06, true, -0.00, 0.00, 0.00 ,null,204111.71] , 
+	 ['Jun - 2017', createCustomHTMLBarRendInv('Junio - 2017', '$2,106.82','$179.07','$0.00'),   true,   -0.0,true, 2106.82, true, 179.07, true, -0.00, 0.00, 0.00 ,null,206397.6] , 
+	 ['Jul - 2017', createCustomHTMLBarRendInv('Julio - 2017', '$2,141.96','$133.64','$0.00'),   true,   -0.0,true, 2141.96, true, 133.64, true, -0.00, 0.00, 0.00 ,null,208673.2] , 
+	 ['Ago - 2017', createCustomHTMLBarRendInv('Agosto - 2017', '$2,015.81','$95.98','$0.00'),   true,   -0.0,true, 2015.81, true, 95.98, true, -0.00, 0.00, 0.00 ,null,210784.99] , 
+	 ['Sep - 2017', createCustomHTMLBarRendInv('Septiembre - 2017', '$741.26','$52.42','$0.00'),   true,   -0.0,true, 741.26, true, 52.42, true, -0.00, 0.00, 0.00 ,null,211578.67] , 
+	 ['Oct - 2017', createCustomHTMLBarRendInv('Octubre - 2017', '$811.62','$42.34','$0.00'),   true,   -0.0,true, 811.62, true, 42.34, true, -0.00, 0.00, 0.00 ,null,212432.63] , 
+	 ['Nov - 2017', createCustomHTMLBarRendInv('Noviembre - 2017', '$456.09','$29.91','$0.00'),   true,   -0.0,true, 456.09, true, 29.91, true, -0.00, 0.00, 0.00 ,null,212918.63] , 
+	 ['Dic - 2017', createCustomHTMLBarRendInv('Diciembre - 2017', '$468.07','$21.52','$0.00'),   true,   -0.0,true, 468.07, true, 21.52, true, -0.00, 0.00, 0.00 ,null,213408.22] , 
+	 ['Ene - 2018', createCustomHTMLBarRendInv('Enero - 2018', '$417.65','$14.35','$0.00'),   true,   -0.0,true, 417.65, true, 14.35, true, -0.00, 0.00, 0.00 ,null,213840.22] , 
+	 ['Feb - 2018', createCustomHTMLBarRendInv('Febrero - 2018', '$430.60','$7.27','$0.00'),   true,   -0.0,true, 430.6, true, 7.27, true, -0.00, 0.00, 0.00 ,null,214278.09]  
+	 ]); 
+	
+	drawChart();
+	
+});
+		
+		
+function drawChart() {
+	    	 
+                                 
+           /****************************************************************************************************/
+           
+           
+
+                                 var optionsB = {
+                                title: 'Comportamiento de pagos',
+                                isStacked : true,
+                                titleTextStyle: {fontSize: 15},
+                                'colors':[
+											'#7bc9dc',
+											'#ffc107',
+											'#9ddf3d',
+											'#003366',
+											'#ff9800',
+											'#afb42b',
+											'#FDC93D'],
+                                orientation: 'horizontal',
+                                tooltip: { isHtml: true },
+                                focusTarget: 'category',
+                                hAxis:	{slantedText: true, slantedTextAngle: 90},
+                                animation:{
+  							        duration: 500,
+  							        easing: 'out'
+  							      },
+                                
+                                annotations: {
+                             	   alwaysOutside: true,
+                             	   stem: {length:100}
+                                },
+                                   
+                                   seriesType: 'bars',
+                                   
+                                   series: {6: {type: 'area'}},
+                                   
+                                   pointShape: 'diamond',
+                                   pointSize: 8
+
+                                   
+                                 };
+
+                                
+									
+                                 
+                                 google.visualization.events.addListener(chartB, 'ready',
+                                         function() {
+                                           // button.disabled = false;
+                                         });
+                                 
+                                 chartB.draw(dataProyection, optionsB);
+
+                                
+			/****************************************************************************************************/
+			
+	      }
+
+		
+function createCustomHTMLBarRendInv(mes, capital, interes, total){
+	
+	var str = "<div style='padding: 8px;' > " +
+				"<table>" +
+				"	<tr>" +
+				"		<td style='text-align: center;' colspan='2' ><b>Comportamiento de pagos <br /> "+mes+"</b></td>" +
+				"   </tr>" +
+				"	<tr>" +
+				"		<td>Capital Pagado: </td><td style='text-align: right'><b>"+capital+"</b></td>" +
+				"   </tr>" +
+				"	<tr>" +
+				"		<td>Interés Pagado: </td><td style='text-align: right'><b>"+interes+"</b></td>" +
+				"   </tr>" +
+				"	<tr>" +
+				"		<td>Capital Perdido: </td><td style='text-align: right'><b>"+total+"</b></td>" +
+				"   </tr>" +
+				"</table>" +
+			  " </div>";
+	
+	return str;
+	
+}
+			
+			
+			
+			/**********************************************************************************************************/
+			
+		
+			
+			
+		//]]>
+		</script>
+		
+	</h:head>
+	<h:body>
+		
+		<div id="header" style="width: 100%; margin: 0px;">
+			<ui:include src="templates/headContenido.xhtml" />
+		</div>
+		<h:form prependId="false" >
+		   <div class="titulo"><h2>Test Gráfica</h2></div>	
+            <div class="content top">
+                <div class="inner_content">
+			<div>
+			
+			<div class="callActionMedium btnVerde modificarValores ">Modificar valores</div>
+				<!-- 
+				<h:panelGroup rendered="#{sessionBean.area != null}" >
+					<div style="display:none" >
+						<h:panelGroup rendered="#{sessionBean.area=='I'}" >
+							<div class="buttonPR">
+								<p:commandLink  id = "invScreen" value = "Regresar" action = "registrar" />
+							</div>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{sessionBean.area=='M'}" >
+							<div class="buttonPR">
+								<p:commandLink id = "controlScreen" value = "Regresar" action = "controlTable" onstart="return displayMessageProcessing('msgprocessing', false);" />
+							</div>
+						</h:panelGroup>
+					</div>
+				</h:panelGroup>
+				-  -> XX
+				<!-  - XX
+					<div class="col_izquierda_productos colFiltros">
+						
+						<div class="cerrarFiltrosInv">X</div>
+						<h3>Condiciones</h3>
+						<div class="categoriaFiltros">
+							<table cellspacing="0" cellpadding="0">
+							
+								<tr>
+									<td class="clDescT1" style="font-size: 1.1em;">Monto a invertir</td>
+									<td class="clValT1"> $
+										<h:inputText size="15" styleClass="elementAddres1 clsLblSim" onkeyup="format(this);" required="true" id="ammountInv" style="width:85px !important;text-align: right;" value="#{investmentSimulator.ammountStr}" >
+											 <p:ajax event="blur" listener="#{investmentSimulator.setAmmountValue}" onstart="return cambiaMontoSimInv();" update="pnlScriptGraphicInv pnlProjectSize" oncomplete="onCompleteAction();" />  
+										</h:inputText>
+									</td>
+								</tr>
+								<tr>
+									<td class="clDescT1" style="font-size: 1.1em;">Proyectos</td>
+									<td class="clValT1">
+										<h:panelGroup id="pnlProjectSize" >
+											<h:outputText size="15" onkeyup="format(this);" required="true" id="projectSize" style="width:85px !important;font-weight: bold;" value="#{investmentSimulator.numprojects}" >
+											</h:outputText>
+										</h:panelGroup>
+									</td>
+								</tr>
+								XX<!- - <tr>
+									<td class="clDescT1">Monto por Proyecto</td>
+									<td class="clValT1">$50</td>
+								</tr> -  -> XX
+								
+							</table>
+						</div>
+						<h3>Riesgo</h3>
+						
+						<div class="categoriaFiltros">
+							
+							<table cellspacing="0" cellpadding="0">
+							
+								
+								<tr>
+									<td class="clDescTitHT2">A</td>
+									<td class="clDescTitHT2">B</td>
+									<td class="clDescTitHT2">C</td>
+									<td class="clDescTitHT2">D</td>
+									<td class="clDescTitHT2">E</td>
+								</tr>
+								<tr>
+									<td id="A" class="itemCheck clsRisk"></td>
+									<td id="B" class="itemCheck clsRisk"></td>
+									<td id="C" class="itemCheck clsRisk"></td>
+									<td id="D" class="itemCheck clsRisk"></td>
+									<td id="E" class="itemCheck clsRisk"></td>
+								</tr>
+								
+							</table>
+							
+						</div>
+								<h3>Plazo en meses</h3>
+						<div class="categoriaFiltros">
+							<table cellspacing="0" cellpadding="0">
+								
+						
+								
+								<tr>
+									<td  class="clDescTitHT2"> 4 - 6  </td>
+									<td  class="clDescTitHT2"> 7 - 9  </td>
+									<td  class="clDescTitHT2">10 - 12 </td>
+									<td  class="clDescTitHT2">13 - 15 </td>
+									<td  class="clDescTitHT2">16 - 18 </td>
+								</tr>
+								
+								<tr>
+									<td id="4T6"   class="itemCheck clsTerm"></td>
+									<td id="7T9"   class="itemCheck clsTerm"></td>
+									<td id="10T12" class="itemCheck clsTerm"></td>
+									<td id="13T15" class="itemCheck clsTerm"></td>
+									<td id="16T18" class="itemCheck clsTerm"></td>
+								</tr>
+								
+							</table>
+						</div>
+						<h3>Género</h3>
+						<div class="categoriaFiltros">
+							<table cellspacing="0" cellpadding="0">
+					
+								
+								<tr>
+									
+									<td id="M" class="itemCheck clsGender"></td>
+									<td class="clDescTitVT2">Masculino</td>
+								</tr>
+								
+								<tr>
+								<td id="F" class="itemCheck clsGender"></td>
+									<td class="clDescTitVT2">Femenino</td>
+									
+								</tr>
+							
+							</table>
+						</div>
+						<h3>Destino</h3>
+						<div class="categoriaFiltros">
+						<table cellspacing="0" cellpadding="0">
+							
+							
+								
+								<tr>
+									<td class="clDescTitVT2 clsLeft">Compra de mercancía</td>
+									<td id="Compra de mercancía" class="clItemTitT2 itemCheck"></td>
+								</tr>
+								
+								<tr>
+									<td class="clDescTitVT2 clsLeft">Mejoras de vivienda</td>
+									<td id="Mejoras de vivienda" class="clItemTitT2 itemCheck"></td>
+								</tr>
+								
+								<tr>
+									<td class="clDescTitVT2 clsLeft">Pagar deudas</td>
+									<td id="Pagar deudas" class="clItemTitT2 itemCheck"></td>
+								</tr>
+								
+								<tr>
+									<td class="clDescTitVT2 clsLeft">Mejoras de negocio</td>
+									<td id="Mejoras de negocio" class="clItemTitT2 itemCheck"></td>
+								</tr>
+								
+								<tr>
+									<td class="clDescTitVT2 clsLeft">Otros</td>
+									<td id="otros" class="clItemTitT2 itemCheck"></td>
+								</tr>
+							
+							</table>
+						</div>
+					
+					</div>
+					
+					-->
+					
+					<div class="simInvGrsaficas">
+					<div class="grafica">
+					
+						<div id="chart_bar_div" style="width: 900px; height: 600px;" />
+					
+					</div>
+					
+					<div class="grafica">
+					
+						<div id="chart_area_div" style="width: 360px; height: 277px;" />
+					
+					</div>
+					
+					<div class="grafica">
+					
+						<div id="chart_area_vig_div" style="width: 360px; height: 277px;" />
+					
+					</div>
+					
+					<div class="grafica">
+					
+						<div id="piechart" style="width: 360px; height: 277px;" />
+					
+					</div>
+					
+					
+					
+				</div>
+				
+			</div>
+			
+			<h:panelGroup id="pnlScriptGraphicInv">
+				
+				<!-- <h:outputText value="#{myInvestments.scriptGraphicBar}" 		escape="false" /> -->
+				
+				
+				
+			</h:panelGroup>
+			
+			<ui:include src="templates/msgProcessing.xhtml" />
+			</div>
+			</div>
+		</h:form>
+		
+		<div id="footer" style="width: 100%; margin: 0px;">
+			 <ui:include src="templates/footerContenido.xhtml" /> 
+		</div>
+	
+		
+		
+	</h:body>
+</html>

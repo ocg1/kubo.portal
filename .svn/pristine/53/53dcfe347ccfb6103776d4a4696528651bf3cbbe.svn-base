@@ -1,0 +1,12 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<p:commandLink styleClass="cambiar"  rendered="#{images.urlImgThumb != '/img/sinimagen.jpg'}" update=":sectionLogos" actionListener="#{addPldDocument.removeFileLogo}" style="text-decoration: none; float: left; margin-top: 2px;text-shadow: 0px !important;">
+			Eliminar
+			
+		
+		<f:attribute name="valueTypeLogo" value="#{images.typeLogo}"></f:attribute>
+	</p:commandLink>				
+</ui:composition>				

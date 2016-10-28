@@ -1,0 +1,22 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     	
+	<div class="dvContent">
+		<div class="dvLabel" style="width: 70px; float: left; margin:0;">
+			<h:outputLabel value = "#{msg.Street_text}" styleClass = "editor-domicilio label"/>
+		</div>
+		
+		<P />
+		
+		<div>
+			<h:inputText id    = "edicion_vivienda_street" immediate = "true"
+					     value = "#{summaryRequest.editor_domicilio.address.street}"  
+					     styleClass = "elementAddres1 validatorClass mapClass street editor-domicilio input-text" >
+				<p:ajax event = "blur"  listener = "#{summaryRequest.editor_domicilio.listener_generar_vivienda_TOKEN}"/>
+			</h:inputText>							
+		</div>
+	</div>
+	
+</ui:composition>	

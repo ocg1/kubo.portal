@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8" />
+		<script type="text/javascript" src="../resources/js/utilerias/browserDetect.js"></script>
+		<script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+		<script type="text/javascript" src="../resources/js/utilerias/charCount.js"></script>
+		<script type="text/javascript" src="../resources/js/utilerias/jquery.formatCurrency-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="../resources/js/jquery.blockUI.js"></script>
+	
+		<script type="text/javascript" src="../resources/js/registro/miPrestamo.js"></script>	
+		<script type="text/javascript" src="../resources/js/frmscript.js"></script>	
+		<script type="text/javascript" src="../resources/js/dealJS.js"></script>	
+		
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"></script>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"></script>
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/infoBasica.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capacidadPago.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/miPrestamo.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/incomeExpenses.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/customAcoordeon.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/simulator.css" />
+		
+		
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		
+		<script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css' />
+		
+		
+		<script>
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		</script>
+	</h:head>
+	
+	<h:body>
+
+		<div id="header" style="width: 100%; margin: 0px;">
+			<ui:include src="templates/headContenidoReg.xhtml" />
+		</div>
+		
+		<div class="contPR" style="position: relative;margin-right: 0px;">
+			<!--
+			<div class="contFrm" style="padding: 5px; min-height: 800px !important; overflow: hidden; ">
+				
+				codetran: #{pagoPademovil.codetran} <br />
+				sign: #{pagoPademovil.sign} <br />
+				status: #{pagoPademovil.status} <br />
+				message: #{pagoPademovil.message} <br />
+				prospectus: #{pagoPademovil.prospectus}
+				
+			</div>
+			-->
+			
+			<h:form id="form_Prin">	
+					<div style="padding: 0px; margin-top: 120px !important; height: auto; overflow: hidden; width: 870px; margin-left: auto; margin-right: auto; margin-bottom: 220px;  padding-top: 0px !important; border: solid 0px #000000; position: relative; font-size: 0.8em !important; ">
+				
+						<div class="corner" style="width: 82px; height: 72px; margin-bottom: 0px;  overflow: hidden; float: left; border: solid 0px #f0f3c3; bottom: -1px; left: 7px; position: absolute;  ">
+				    		<div class="cornerFill"></div>
+				    	</div>
+				    	
+						<div class="msgBorder" style="height: auto; margin-left: auto; margin-right: auto; overflow: hidden; width: 700px;">
+				
+							
+							<h:panelGroup rendered="#{pagoPademovil.status=='true'}" >
+							<div class="msgBack" >
+							<span style="font-size: 1.6em;" >¡Muchas gracias!</span> <br></br><br />
+							Transacción <span style="font-size: 1.15em;" > #{pagoPademovil.codetran}</span>
+							<br></br><br />La transacción fue realizada con éxito, tu pago se verá reflejado en tu estado de cuenta a más tardar en 24 hrs.<br />Guarda tu número de transacción para cualquier duda.
+							</div>
+							</h:panelGroup>
+							
+							<h:panelGroup rendered="#{pagoPademovil.status=='false'}" >
+							<div class="msgBack" >
+							<br />La transacción no se concreto. 
+							<br />
+							</div>
+							</h:panelGroup>
+						</div>
+					
+					</div>
+						
+						
+				</h:form>
+			
+		</div>
+		
+		<div id="footer"  style="width: 100%; magin-right: 0px; position: relative;">
+			 <ui:include src="templates/footerContenido.xhtml" /> 
+		</div>
+		
+		<ui:include src="templates/msgProcessing.xhtml" />
+		
+		<script>
+		
+		var firma =   CryptoJS.HmacSHA1( '#{pagoPademovil.value}' , '#{pagoPademovil.key}');
+		
+		//alert( firma );
+		
+		</script>
+
+	</h:body>
+
+</html>

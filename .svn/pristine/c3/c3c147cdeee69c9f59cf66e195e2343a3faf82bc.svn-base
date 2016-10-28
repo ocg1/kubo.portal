@@ -1,0 +1,536 @@
+# WELCOME MESSAGES
+Welcome_text=¡Bienvenido!
+FillInformation_text=Por favor completa la siguiente información
+
+razon_social_kubo_sofom=ku-bo. financiero, S.A.P.I. de C.V., SOFOM, E.N.R.
+rfc_kubo_sofom=KFI120725GL1
+
+razon_social_kubo_sofipo=KU-BO FINANCIERO, S.A. DE C.V., S.F.P.
+rfc_kubo_sofipo=KFI120725GL1
+
+#MESSAGE LOADING POP-UP
+PopUp_loading_text=Estamos procesando tu información...
+
+Folio_number_text=Número de folio
+
+
+
+#REFERENCES
+ref_relationship=Parentesco*
+ref_relationship_norequired=Parentesco
+
+# KUBO / DIGITAL / CONTROL / ALTA DE PARTNER
+ln_partner_partner_id= Partner ID
+ln_partner_name=Nombre
+ln_partner_descripcion=Descripción
+gn_registration_reason_channel_id=Canal
+gn_registration_reason_name=Título en lista
+gn_registration_reason_order=Orden
+gn_registration_reason_is_active=Visible en pre-registro
+
+
+
+# KUBO / REGISTRO / PASO_3 / REFERENCIAS / NO_OBLIGATORIAS
+referencia_nombre=Nombre
+referencia_nombre_segundo=Segundo nombre
+referencia_apellido_paterno=Apellido paterno
+referencia_apellido_materno=Apellido materno
+referencia_telephone=Telefono Celular
+
+# PROSPECT GENERAL  DATA
+FullName_text=Nombre completo*
+Name_innerText=Nombre*
+SecondName_innerText=Segundo nombre
+LastName_innerText=Apellido paterno*
+SurName_innerText=Apellido materno
+Nickname_text=Alias o sobrenombre
+Nickname_innerText=Alias o sobrenombre
+Email_text=E-mail
+Email_innerText=Email
+ConfirmEmail_text=Confirma tu E-mail
+ConfirmEmail_innerText=Confirma tu e-mail
+Pwd_text=Contraseña
+Pwd_innerText=Contraseña
+ConfirmPwd_text=Confirma tu Contraseña
+ConfirmPwd_innerText=Confirma tu contraseña
+Registration_razon=¿Cómo te enteraste de nosotros?*
+Registration_select_promoter=¿Te está ayudando algún promotor?
+Registration_capture_promoter=Ingresa la clave del promotor
+
+SecurityQuestion_text = Pregunta de Seguridad
+SecurityQuestion_innerText=Seleccione pregunta
+Answer_text=Respuesta
+Answer_innerText=Respuesta
+Gender_text=Género*
+Percentage_text=Porcentaje*
+Question_benefi_has_address=¿Tu beneficiario tiene el mismo domicilio que tú?*
+Email_norequired_text=Correo electrónico
+
+Name_innerText_norequired=Nombre
+LastName_innerText_norequired=Apellido paterno
+SurName_innerText_norequired=Apellido materno
+Gender_text_norequired=Genero
+Percentage_text_norequired=Porcentaje
+Question_benefi_has_address_norequired=¿Tu beneficiario tiene el mismo domicilio que tú?*
+
+
+#PREREGISTER
+pr_you_want_to_do=¿Qué quieres hacer?*
+pr_name= Tu nombre*
+pr_secondName=Segundo nombre
+pr_lastName=Apellido paterno*
+pr_surName=Apellido materno*
+pr_email= Correo electrónico*
+pr_confirmEmail=Confirma tu correo electrónico*
+pr_pwd=Crea tu contraseña*
+pr_confirmPwd=Confirma tu contraseña*
+
+#INVESMENT TABLE HEADERS
+ll_title_Destiny=Destino
+ll_title_Column1=Categoria
+ll_title_Column2=Titulo
+ll_title_Column_Pros1=Nombre
+ll_title_Column_Pros2=Titulo
+il_alias_title=Alias
+ll_ammount=Monto
+ll_ammountInv1=$ Original 
+ll_ammountInv2=$ Actual 
+ll_active_rate=Tasa Anual
+ll_term=Plazo
+ll_termInv1=Plazo Original
+ll_termInv2=Plazo Actual
+ll_bc_scoring=BCScore/
+ll_kubo_scoring=KuboScore
+ll_term1=Tu Tasa
+ll_term2=Anual
+ll_rate_anual=Tasa Anual
+ll_rate_periodo=Tasa Periodo
+ll_rate_moratoria=Tasa Moratoria
+ll_percent_Funding=% Fondeo
+ll_available=Disponible/
+ll_loan_type=Tipo
+ll_expiration=Vencimiento
+ll_verification=Verificación
+ll_invertion=Inversión
+ll_expectedPerformance1=Rendimiento
+ll_expectedPerformance2=Esperado
+ll_title_Column_Status=Estatus
+ll_dias_atraso=Días Atraso 
+ll_cuotas_ven=Cuotas Vencidas
+ll_Saldo_ven=Saldo Vencido
+ll_Show_Sol=Ver Solicitud
+ll_Show_Cobranza=Ver Cobranza
+
+#INVESTMEN LIST CAPTIONS
+ll_proyect_select=Seleccionar Proyectos
+ll_expected_perfomance=Suma Del Rendimiento Esperado:
+ll_menu_resume=Resumen
+ll_menu_investmen=Invertir
+ll_menu_selectProyects=Seleccionar-proyectos
+ll_menu_alert=Alertas
+ll_menu_deposit=Depositar 
+ll_credit_available=Mi saldo:
+ll_account=Cuenta:
+ll_filter_risk=Filtro por kubo.score
+ll_link_filter=Buscar
+ll_link_check=Seleccione todo
+ll_filter_ammount=Filtro por Monto
+ll_filter_from=Desde: $
+ll_filter_to=Hasta: $
+ll_filter_word=Filtro por Palabras
+ll_phrase_filter=Escriba una frase
+ll_filter_term=Filtro por Plazo	
+ll_empty_message=No se encontraron registros con las opciones seleccionadas.
+
+#INVESTMEN TABLE CONTENT
+ll_row_term=meses
+ll_row_investor=inversionistas
+ll_row_expiration=días
+ll_row_btn_funding=Invertir
+
+
+#INVESTMEN HOVER FUNDING
+ll_btn_hover_funding=Confirmar
+ll_title_hover=Seleccione su cuenta bancaria.
+
+#LOGIN
+log_email= Correo electrónico*
+log_pwd=Contraseña*
+
+#ECONOMIC ACTIVITY
+
+economic_activity = ¿Cuál es tu principal actividad económica?*
+
+# SOCIAL NETWORK
+Social_network_text=Activa con redes sociales
+
+#BASIC DATA
+
+birthday= Fecha de nacimiento*
+birthday_norequired= Fecha de nacimiento
+citizenship = Nacionalidad*
+birth_place = Lugar de nacimiento*
+birth_country=País de nacimiento*
+mx_rfc = RFC*
+mx_curp = CURP*
+nickname = Escribe un sobrenombre para tí*
+question_statement_sent_electronically=¿Quieres que el estado de cuenta te llegue de manera electrónica?*
+person_type=Tipo de persona*
+legal_name=Nombre de la Empresa*
+society_type=Razón Social*
+mx_company_rfc=RFC de la Empresa*
+legal_address=¿Este domicilio también es fiscal?*
+
+# ADDRESS
+Street_text=Calle*
+BetweenStreet1_text=Entre la calle
+BetweenStreet2_text=y la calle
+ExtNumber_text=Número exterior
+IntNumber_text=Número interior
+Block_text=Manzana
+Lt_text=Lote
+Zipcode_text=Código postal*
+Neighborhood_text=Colonia*
+Neighborhood_innerText=Selecciona colonia
+Town=Ciudad o Población*
+City_text=Delegación o municipio*
+State_text=Estado*
+Point_of_reference=Ayúdanos con referencias para ubicar tu domicilio*
+residence_type= Tipo de vivienda*
+address_text = Dirección*
+
+
+# TELEPHONE
+Telephone_text=Telefono Celular*
+Telephone_fixed_text=Teléfono de tu trabajo*
+Telephone_particular_text=Teléfono particular
+Telephone_cell_text=Teléfono celular*
+TelExt_text= Extensión
+Telephone_business=Teléfono de tu negocio
+Telephone_cell_employment=Teléfono celular del empleo
+Telephone_cell_business=Teléfono celular del negocio
+
+#BUSINESS INFORMATION
+About_yourself_text=Escríbenos un poco sobre ti*
+Describe_your_business_text=Describe tu negocio*
+Since_when_text=¿Desde cuándo te dedicas a esto?*
+Many_years_text_catalog=¿Cuánto tiempo tienes con tu negocio?*
+Many_years_text=Antigüedad del negocio*
+When_you_started_text=¿Desde cuándo inició este negocio?
+Number_of_employees_text=¿Cuántos empleados tienes?*
+Question_achievements_and_challenges_text=¿Cuáles son tus logros y retos?*
+Business_name_text=¿Cuál es el nombre de tu negocio?*
+Business_sigma_sells_cold_cuts=¿Vendes carnes frías (embutidos)?*
+Business_sigma_sells_cold_milk=¿Vendes productos lácteos refrigerados (quesos, yogurth)?*
+Business_sigma_sells_other_cold_prods=¿Vendes otros productos refrigerados (café, pizza, gluten)?*
+Business_sigma_sells_sigma=¿Vendes cualquiera de las marcas de Sigma Alimentos?*
+Business_sigma_sigma_number=Danos tu número de cliente Sigma*
+Business_sigma_has_sigma_fridge=¿Cuentas con refrigeradores de Sigma Alimentos?*
+Business_sigma_sells_no_sigma=¿Qué otras marcas distintas a las de Sigma Alimentos maneja para carnes frías(embutidos), lacteos refrigerados (quesos y yogurth), y otros productos refrigerados(café, pizza,gluten)?*
+Business_job_is_same_address=¿El domicilio de tu negocio es diferente al de tu casa?*
+
+# JOB INFORMATION
+ConfirmIncome_text=¿Puedes comprobar tus ingresos?
+Company_name_text=¿Cómo se llama la empresa donde trabajas?
+Field_Activity_text=Giro/Actividad
+Sector_economic_text=Sector económico
+Capture_job_data_button=Capturar datos de empleo
+Joblevel_text=Puesto que desempeñas*
+Contract_type_text=¿Qué tipo de contrato tienes?*
+Social_security_number_text=Número de seguridad social
+Company_Sector_text=Sector
+Company_Sector_option1_text=Público
+Company_Sector_option2_text=Privado
+Company_time_catalog=¿Cuánto tiempo llevas en tu empleo?*
+Company_time_text= ¿Cuánto tiempo llevas en tu empleo?*
+Company_time_previous_text=Antiguedad en empleo anterior
+Working_hours_text=Horario Laboral*
+What_do_you_do_text=¿A qué te dedicas?*
+Question_receipt_payroll_text=¿Esta empresa emite tus recibos de nómina?*
+Who_receipt_payroll_text=¿Quién emite tus recibos de nomina?
+job_is_same_address=¿El domicilio de tu empleo es diferente al de tu casa?*
+
+# TITLE MENU ACCREDITED
+Data_basic_title=Pre-aprobacion
+Credit_history_title=Historial crediticio
+My_Loan_title=Sobre ti
+Capacity_payment_title=Capacidad de pago
+Income_expense_title=Ingresos y gastos
+Closure_title=Oferta final
+More_Info_title=Referencias
+Documentation_And_Pld_title=Documentación
+
+# TITLE MENU INVESTOR
+Data_basic_investor_title=Datos personales
+Beneficiaries_investo_title=Beneficiario
+profileInvestment=Perfil de Inversión
+welcomeInvestment=Bienvenida Inversionista
+MoreInfo_investor_title=Conociéndote más
+Pld_title=Datos adicionales
+ClabePageInv=Cuenta bancaria
+documentacionPageInv=Documentación
+
+# TITLE MENU CONTROL TABLE
+Search_request_title=Buscar solicitud
+Expedient_title=Expediente
+List_proyect_title=Proyectos
+Logs_title=Bitácoras
+Consult_title=Consultas
+Account_balance=Estado de Cuenta
+admProfile=Administración
+createReport=Reportes
+tablero-de-control=Tablero de Control
+tablero-de-autenticacion=Autenticación
+gestor-de-sesiones=Sesiones
+
+
+# TITLE MY LOAN
+Info_basic_loan_title=Sobre ti
+Financial_data_loan_title=Datos financieros
+On_your_loan_title=Sobre tu préstamo
+
+Txt_about_me_watermark=Ejemplo: Mi sueño es tener mi propio negocio, me gusta tocar la guitarra, quiero que mis hijos sean profesionistas
+
+
+# TITLE CAPACIDAD DE PAGO
+Data_company_title=Dinos dónde trabajas
+Data_domicile=Domicilio
+
+
+Data_income_title=Ingresos
+Data_expenses_title=Egresos
+Data_edit_now=Editando...
+Safe_household_expenditure=Gasto familiar y seguro (s)
+Credits_text_s=Crédito (s)
+Data_domicile_employ=Domicilio del empleo
+
+
+# TITLE BISNESS
+Data_domicile_business=Dirección de tu negocio
+
+
+# INCOME
+Brute_monthly_income=Ingreso mensual bruto
+Additional_revenue=Ingresos Adicionales(vales de despensa,fondo de ahorro)
+Bond_commissions=Comisiones o bonos
+Have_other_income_question=Tiene otros ingresos
+Other_income=Otros ingresos
+About_other_income=Describe otros ingresos
+Where_specified_other_income=Especifique de donde provienen los otros ingresos
+Wages_or_salary=¿Cuánto ganas?
+DeductionSalaryDisp=¿Cuánto te quitan por impuestos, seguro social, etc.?
+
+imssDeductionSalary=Couta IMSS (Empleado)
+infonavitDeductionSalary=Infonavit
+infonacotDeductionSalary=Infonacot
+isrDeductionSalary=Impuesto ISR
+creditsDeductionSalary=Créditos
+otherDeductionSalary=Otros
+
+TotalSalaryDisp=Esto es lo que te queda:
+Business_or_company=Utilidad mensual de tu negocio
+Income_other_family_member=¿Te ayuda en tu gasto algún familiar?
+Total_income=Total ingresos 
+Simbol_$=$
+
+# EXPENSES
+Food_at_work=Comida en el trabajo
+Gasoline_transport=Transporte y/o gasolina
+Owe_family_friends=¿Le debes dinero a familiares, amigos u otros prestamistas?*
+How_much_owe=¿Cuánto les debes?*
+
+
+#TITLE INCOME FAMILY
+Income_family_title=Ingresos y gastos
+
+#TITLE EXPENSE FAMILY
+Expense_family_title=Gastos mensuales
+Detail_food_title=Detalle de alimentación
+
+# HOUSEHOLD EXPENDITURE (Gasto Familiar)
+Food_text=Alimentos
+Maintenance_house_or_apartment_text=Mantenimiento y reparaciones
+Light_text=Luz
+Phone_text=Teléfono
+Income_text=Renta
+Series_text=Tandas
+Gas_text=Gas
+Credits_text=Créditos
+School_text=Escolares
+Medical_text=Médico
+Entertainment_text=Entretenimiento
+Feed_costs_home_text=Gastos de alimentación en casa
+Mortgage_text=Hipoteca
+Insurance_medical_car_educational_text=Seguro de gastos médicos, auto y educativo
+Monthly_text=Mensual
+Car_text=Auto
+Other_text=Otros
+Sum_total_text=Total
+Total_expense_text=Total Gastos
+Surplus_expense_text=Tu dinero disponible al final de mes es:
+
+# DETAILS FOOD
+Food_food_text=Desayuno
+Lunch_food_text=Comida
+Dinner_food_text=Cena
+Insurance_food_text=Seguros(médico,auto,educativo,etc.)
+Total_food_text=Total de gasto en alimentación
+
+#DETAILS CREDITS
+Credit_card_text=Tarjeta de crédito
+Payroll_credit_text=Crédito de nomina
+Payment_auto_text=Pago de automóvil
+Personal_loan_text=Prestamo personal
+Other_credit_text=Otros
+Total_credit_text=Total de créditos
+
+#DETAILS BUSINESS OR COMPANY
+Analyzing_your_sales_and_expenses_title=Analizando tus ventas y gastos del negocio
+Analyzing_description=Explica llenado las casillas adjuntas cómo funciona tu negocio. Dinos cómo funcionan tus ventas y compras, por ejemplo vendes a crédito o a contado, como te surtes, cómo le pagas a tus proveedores a contado a crédito, les pagas en efectivo, con tarjeta, cheques. Combinado.
+My_sales_are=¿Mis ventas son?:
+My_purchases_are=¿Mis compras son?:
+Sales=Ventas:
+FrquencySales=¿Cada cuando surte su negocio?:
+How_often_is_supplied=¿Cuántas veces te surtes al mes?
+How_shopping=Monto aproximado de compras al mes:
+Shopping_monthly=Total de compras mensuales:
+Day=Día:
+Sales=Ventas
+Monday=Lunes:
+Tuesday=Martes:
+Wednesday=Miércoles:
+Thursday=Jueves:
+Friday=Viernes:
+Saturday=Sábado:
+Sunday=Domingo:
+Total_Sales=Ventas al mes:
+Total_Sales_Week=Ventas semanales :
+Total_Monthly_Sales=Total de ventas mensuales:
+Week_1=Semana 1:
+Week_2=Semana 2:
+Week_3=Semana 3:
+Week_4=Semana 4:
+Fortnight_1=Quincena 1:
+Fortnight_2=Quincena 2:
+Month=Ventas mensuales:
+Gross_utility=Utilidad bruta:
+Operating_expenses=Gastos mensuales del negocio
+Net_income=Utilidad neta:
+Details_ope_expense=Renta:
+Details_ope_aeg=Agua+Electricidad+Gas:
+Details_ope_phone=Teléfono:
+Details_ope_tax=Impuestos:
+Details_ope_transbus=Gasolina y/o transporte:
+Details_ope_maint=Mantenimiento:
+Details_ope_conta=Contador:
+Details_ope_employ=Empleados:
+Details_ope_other=Otros:
+
+
+# SECTION DOCUMENTS AND PLD
+Select_one_more_document=Selecciona un tipo de comprobante
+Text_business_or_BusinessEmployment_logo_proyect=Tómate una foto en donde podamos verte trabajando en tu negocio o empleo. Es muy importante para evaluar tu solicitud. Puedes subir hasta 3 fotos.
+Text_employment_logo_proyect=Tómate una foto en donde podamos verte trabajando en tu negocio o empleo. Es muy importante para evaluar tu solicitud. Puedes subir hasta 3 fotos.
+
+# SECTION RECOVERY PASS
+Text_option_one=Responder mi pregunta de seguridad.
+Text_option_two=Enviarme una contraseña temporal.
+Text_lbl_help_option=Para restablecer tu contraseña, introduce el nombre de usuario que utilizas para iniciar sesión en kubofinanciero.com
+Text_suboption_email=Dirección de correo electrónico
+Text_new_pass=Nueva contraseña
+Text_conf_pass=Confirmar Contraseña
+Text_lbl_case_sensitive=La respuesta a la pregunta de seguridad no distingue entre mayúsculas y minúsculas.
+
+
+# BUTTONS
+Btn_cancel=Cancelar
+Btn_acept=Aceptar
+Btn_modif=Modificar
+Btn_next=Guardar y continuar
+Btn_next_simbol=Siguiente >>
+Btn_back=Anterior
+Btn_back_simbol=<< Anterior
+Btn_rotate_left=<<
+Btn_rotate_right=>>
+Btn_save=Guardar
+Btn_detail=Detalle
+Btn_edit=Editar
+Btn_remov=Eliminar
+Btn_end=Terminar
+Btn_clean_form=Limpiar
+Btn_return=Volver
+Btn_next_next=Continuar
+Btn_send_msj=Enviar
+
+
+Btn_capture_data_Job=Capturar datos de empleo
+Btn_captura_detail=Captura detallada
+
+# LINKS
+
+Ln_click=click
+Ln_click_here=click aquí
+
+#MY LOAN (PROYECT)
+Name_loan=Nombre del préstamo
+Tagline_loan=Lema o frase
+Type_loan=Tipo de préstamo que necesitas
+Tell_what_you_need=Platícanos para qué lo necesitas*
+Tell_what_you_need_watermark=Voy a comprar mercancía para mi negocio que está creciendo, voy a remodelar un cuarto de mi casa
+How_benefit_you=Cómo te beneficiará el préstamo*
+Purpose_loan=¿Para qué usarás tu préstamo?*
+Logo_perfil_loan=Logotipo
+Image_Loan=Imagen portada
+Why_credit_subject=¿Por qué consideras que eres sujeto de crédito?*
+Other_debts = ¿Qué empresas te han prestado dinero? ¿Has pagado puntualmente? Si has tenido algún atraso explica por qué *
+why_us_text=¿Por qué quieres contratar con nosotros tu préstamo?*
+From_where_text=¿Dónde estás llenado tu solicitud?
+From_where_other_text=Descripción*
+Who_answered_text=¿Alguién te está ayudando?
+Who_answered_other_text=Descripción*
+My_name_proyect=Escribe un nombre para tu préstamo*
+Tagline_my_proyect=Lema o frase que identifique tu proyecto
+
+Ammount_loan=Monto
+Min_ammount_loan=Monto mínimo
+Term_loan=Plazo
+Days_online_loan=Tiempo de publicación
+Frequency_loan=Frecuencia
+Funding_type_loan=Tipo de fondeo
+Payment_loan=Pago
+
+#FILE UPLOAD and BUTTON UPLOAD
+Choose_file=Examinar
+Cancel_file=Cancelar
+Upload_file=Subir
+Upload_load_file=Cargar
+Upload_send_file=Enviar
+Select_img_file=Seleccione imagen
+
+Kubo_telefono=(55)62690024
+
+#INVERSION
+investorList=Inversionistas
+
+
+# WARNING MESSAGES
+# ERROR MESSAGES
+cierre_del_dia_INVERSIONISTA   = Disculpe las molestias, por el momento estamos actualizando nuestro sistema.
+cierre_del_dia_MESA_DE_CONTROL = Disculpa las molestias, el cierre del día se está ejecutando.
+
+inversion_mensaje=Al seleccionar un proyecto de inversión para garantizarlo, autorizas que en caso de incumplimiento de pago del acreditado, tus recursos se utilicen para hacer frente a una minusvalía. <a href="#">hola</a>
+
+CAT_general =  64.7%
+CAT_negocio = 69.2%
+CAT_consolidacionDeudas = 58.9%
+CAT_vivienda =  65.5%
+CAT_otros = 64.0%
+
+CAT_info_general = Fecha de cálculo al 1 de Junio del 2016 con una tasa de interés ponderada del 41.60% (Sin IVA) Tasa Fija Anual Simple, con monto promedio de los créditos de $26,925.63
+CAT_info_negocio = Fecha de cálculo al 1 de Junio del 2016 con una tasa de interés ponderada del 42.73% (Sin IVA) Tasa Fija Anual Simple, con monto promedio de los créditos de $24,766.89
+CAT_info_consolidacion = Fecha de cálculo al 1 de Junio del 2016 con una tasa de interés ponderada del 39.63% (Sin IVA) Tasa Fija Anual Simple, con monto promedio de los créditos de $36,314.34
+CAT_info_vivienda = Fecha de cálculo al 1 de Junio del 2016 con una tasa de interés ponderada del 42.38% (Sin IVA) Tasa Fija Anual Simple, con monto promedio de los créditos de $23,684.99
+CAT_info_otros = Fecha de cálculo al 1 de Junio del 2016 con una tasa de interés ponderada del 42.16% (Sin IVA) Tasa Fija Anual Simple, con monto promedio de los créditos de $22,416.73
+
+
+

@@ -1,0 +1,294 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+<h:panelGroup id="pnlInvInterno" rendered="#{sessionBean.area=='I'  and summaryRequest.showInvestPnl }">
+		
+		<!-- <h:panelGroup rendered="false"> -->
+		
+		<script>
+		function validateEnterInvestmentBite(e, element) {
+		 	
+	 		
+	 		console.log("valor: "+e.keyCode);
+		    
+	 		if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+		    	
+		    	$(element).delay( 300 ).trigger("blur");
+		    
+		    }
+		     
+		}
+		
+		var tmpInv = false;
+		var flagValAmmInv = true;
+		var flagChckInv = true;
+		
+		function returnTemp(){
+			
+			tmpInv = !tmpInv;
+			
+			if(tmpInv){
+				flagValAmmInv = false;
+			}
+			
+			return tmpInv; 
+		}
+		
+
+		function resNewVal_interno(xhr, status, args){
+			if(args.hasError){
+				
+				if(parseInt(args.montoSugerido)==0)
+					$("#investInputBox").val( '0' );
+				else
+					$("#investInputBox").val( args.montoSugerido );
+				
+				
+				
+		
+				$(".errorInversion").addClass("show");
+				$(".velo").fadeIn();
+				$("#mensajeErrorMonto").html(args.msgInv);
+				
+				$("#investInputBox").trigger("focus");
+				$("#investInputBox").trigger("blur");
+			}
+			
+			flagValAmmInv = true;
+			
+		}
+		
+		function confirmToInvest(){
+			
+			if( confirm("¿Estás seguro de querer invertir $"+$("#investInputBox").val()+"?") ){
+				displayMessageProcessing('msgprocessing',false);
+				return true;
+			}
+			return false;
+		}
+		
+		function returnToInvvest(xhr, status, args)
+		{
+			
+			if(args.isSuccess == "0" ){
+		
+				$("#dvWaitConfInvInterno").hide("220",function(){
+					$("#dvMsgErrorInv").html(args.errorMsg);
+					$("#dvErrorInvInterno").show();
+				})
+				
+			}else if(args.isSuccess == "1" ){
+				
+				$("#dvWaitConfInvInterno").hide("220",function(){
+					$("#dvSuccessInvInterno").show();
+				})
+				
+			}else if(args.isSuccess == "2" ){
+				alertify.alert("repuesta 2");
+			}
+			
+		} 
+		
+		function showLigthInvInterno(){
+			
+			//$("#dvWaitConfInvInterno").show();
+			$("#dvContTableConfInvInterno").show();
+			
+			$.fancybox({
+				'showCloseButton': true,
+				'width': 350,
+				'height': 276,
+				'type':'inline',
+				'speedIn': 20,
+				'speedOut': 10,
+				'modal': true,
+				'scrolling': 'auto',
+				'centerOnScroll': true,
+				'href': '#dvPreInvestmentInterno',
+				'overlayColor': '#333333',
+				'hideOnOverlayClick': true,
+				'enableEscapeButton': true,
+				'border' : 0,
+				'onStart': function(){
+									
+								},
+				'onComplete' : function(){
+								     $('#fancybox-wrap').css("height", "0");
+					 				 $('#fancybox-content').css("border", "0");
+									
+									 $('#fancybox-content').children().eq(0).css('height','auto');
+									 $('#fancybox-content').width('320px');
+									 $('#fancybox-content').children().eq(0).css('width','100%');
+									 $('#fancybox-content').children().eq(0).css('background-color','#FFFFFF');
+									 $.fancybox.center();
+							    }
+			});
+			
+			return true;
+		}
+		
+		function modalInversionIndividual() {
+				$(".modalInversionIndividual").slideUp();
+				$(".modalInversionIndividualCompleto").slideDown();
+				$("#btnInversionIndividual").hide();	
+		
+		}
+		
+		function ocultarModalInversionIndividual() {
+			$(".modalInversionIndividual").slideDown();
+			$(".modalInversionIndividualCompleto").slideUp();
+			$("#btnInversionIndividual").show();	
+	
+	    }
+		</script>
+			
+			<div id="dvInvestSeccion" class="invest investPosition">
+				<div class="modalInversionIndividual">
+				
+					<!-- h3>¿Deseas invertir en este proyecto?</h3-->
+					  
+					<div id="btnInversionIndividual" class="callActionMedium btnGris" onclick="modalInversionIndividual();">
+										Invertir en Proyecto		
+					</div>
+			
+				</div>
+				
+				
+				<div class="detailsInvest  modalInversionIndividualCompleto">															
+					<div id="ocultarModalInversionIndividual" class="callActionMedium btnGris" onclick="ocultarModalInversionIndividual()">Ocultar</div>
+					<h3 class="encabezado_3">¿Cuánto quieres invertir?</h3>
+					
+					<div class="investInput"> 
+			
+						<p class="gray">
+							Tu saldo disponible: 
+							<span>
+								<h:outputText value="#{summaryRequest.saldoActualInv}">
+								     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+								</h:outputText>
+							</span>
+						</p>
+						
+						<strong class="peso">$</strong>
+						
+						<!-- 
+						<input 	id="investInputBox" 
+								value="#{summaryRequest.itemSel.investment_bite}"  
+								type="text" 
+								onblur="if (this.value == '') {this.value = 'Desde 100 pesos...';}"
+								onfocus="if (this.value == 'Desde 100 pesos...') {this.value = '';}" 
+						/> -->
+						
+						<h:inputText id="investInputBox"  styleClass="elementAddres1" value="#{summaryRequest.ammounttoInv}" immediate="true"  >
+							<p:ajax event="blur" listener="#{summaryRequest.asignaBite}" onstart="return returnTemp();" update="pnlInvInterno :pnlConfirmInvestInterno" oncomplete="resNewVal_interno(xhr, status, args);" immediate="true" />
+						</h:inputText>
+					
+					
+					
+					</div>
+					<h:panelGroup rendered="#{summaryRequest.itemSel.proyectFunding.size()>0}">
+						<div>
+							<p:commandButton 
+											id="this2" 
+											icon="ui-icon-xls" 
+										
+											value="Has invertido #{summaryRequest.itemSel.proyectFunding.size()} #{summaryRequest.itemSel.proyectFunding.size() == 1 ? 'vez' : 'veces' } un total de #{summaryRequest.itemSel.montoTotalFondeo()}" />
+						</div>
+					</h:panelGroup>
+					<div >
+						<h:panelGroup rendered="false" >
+						
+							Invierte en
+							
+							<br />
+							
+							<div>
+								#{summaryRequest.alias}
+							</div>
+						
+						</h:panelGroup>
+						
+						
+						
+						<div style="display: none;" >
+						
+							
+							<p:commandLink id="btnInvertirInterno" actionListener="#{summaryRequest.invierteEnProyectoActual}"  immediate="true" oncomplete="returnToInvvest(xhr, status, args)" >
+								
+								<div class="buttonPR">
+									<h:outputText value="Invertir" />
+								</div>
+								
+							</p:commandLink>
+						
+						</div>
+						
+					
+					</div>
+						
+						<!-- <ul style="margin-top: 10px; margin-left: 40px; line-height: 10px !important;">
+							<li><strong class="gray"> -->
+							<div class="tabla">
+									<table class="gray">
+										<tr>
+											<td>
+												Tasa: 
+											</td>
+											<td>
+												#{summaryRequest.itemSel.rate_investor}%
+											</td>
+										</tr>
+									<!-- </table>
+								</strong></li>
+							<li><strong class="gray">
+									<table> -->
+										<tr>
+											<td>
+												Calificación Buró: 
+											</td>
+											<td>
+												#{summaryRequest.actualProyect.bc_score}
+											</td>
+										</tr>
+									<!-- </table>
+								
+								</strong>
+							</li>
+							<li>
+								<strong class="gray">
+									<table> -->
+										<tr>
+											<td>
+												Kubo-score:
+											</td>
+											<td style="text-align: left;">  
+												<div>
+												<div class="detailsMiddleStatusData #{summaryRequest.scoreClass}">
+														<p class="statusLeft">#{summaryRequest.kuboScoreLetter}</p>
+														<p class="statusRight">#{summaryRequest.kuboScoreNumber}</p>
+												</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+									</div>
+										<div class="callActionMedium  btnNaranja"  onclick="showLigthInvInterno()" >
+								Invertir
+							</div>
+						
+								<!-- </strong>
+							</li>
+							
+						</ul> -->
+					
+					
+				</div>
+				
+			</div>
+			
+		</h:panelGroup>
+		
+</ui:composition>

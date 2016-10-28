@@ -1,0 +1,1627 @@
+body {
+	color:#222;
+}
+section {
+
+}
+.section-heading,
+.section-description {
+  margin-bottom: 1.2rem;
+}
+
+hr{
+  color: #999;
+  height: 1px;
+}
+
+h2 {
+  color: #4E8C41;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h3 {
+
+  font-weight: bold;
+    font-size: 18px;
+}
+
+
+
+h4 {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 0 0 16px;
+  text-align: center;
+}
+p {
+font-size: 16px;
+color: #222;
+margin: 0 0 12px;
+}
+a {
+  color: #222;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 7px;
+
+}
+.definiciones {
+	padding:0 0 0 20px;
+	margin:0 0 0 20px;
+	list-style: decimal;
+  
+}
+ul.latin {
+  padding: 0 0 0 25px;
+    list-style-type: lower-alpha !important;
+    dsiplay:block;
+    margin:0 0 0 10px;
+}
+
+
+
+ ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+ol li {
+  list-style: inherit;
+}
+.container {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+.logoTitulos {
+  float: left;
+  width: 60%;
+}
+
+.logoTitulos.Vportada {
+  width:30%;
+}
+
+.logo {
+  width: 97px;
+  float: left;
+  margin: 0 17px 0 0;
+}
+.logo img {
+  width: 80px;
+}
+.encabezado {
+   width: 300px;
+  float: left;
+  margin: 23px 0 0;
+}
+.encabezado h4{
+  text-align:left; 
+}
+.encabezado h6 {
+  font-size: 18px;
+  font-weight: normal;
+}
+.numeroCuenta {
+  float: right;
+  width: 172px;
+  font-size: 11px;
+  line-height: 21px;
+  margin: 42px 0 0;
+}
+
+.numeroCuenta h5 {
+  font-weight: bold;
+
+}
+.numeroCuenta span {
+  /* float: right; */
+  margin: 0 0 0 7px;
+  color: #9C9C9C;
+}
+ /* Bigger than 750 */
+.top {
+padding: 50px 0 20px;
+margin: 0 0 44px;
+}
+
+.dosfirmas small{
+  font-size: 16px;
+}
+
+.firmas.center {
+text-align: center;
+border-top-color: #222;
+border-top-style: solid;
+border-top-width: 1px;
+width: 290px;
+padding: 17px 0 0;
+margin: 30px auto;
+}
+
+.firmas.center p {
+
+  margin:0 0 5px;
+
+}
+
+.dosColumnas {
+  /*overflow: hidden;
+  margin: 30px 0 50px;*/
+}
+
+
+.dosColumnas .container > div.bloqueFirmar {
+  width: 320px;
+  float: left;
+  position: relative;
+}
+
+.dosColumnas .container > div.clsFirmaKubo{
+	float: right;
+}
+
+/*
+.dosColumnas article + article {
+
+  float: right;
+}*/
+.bloqueFirmar {
+  text-align: center;
+
+}
+
+
+.bloqueFirmar div p{
+  margin: 0 0 0;
+
+}
+.bloqueCuestionario {
+overflow: hidden;
+margin: 0 0 14px;
+}
+.bloqueCuestionario h3 {
+  margin: 20px 0 20px;
+}
+.tresColumnas {
+  margin: 0 0 20px;
+}
+
+.tresColumnas article {
+width: 33.3%;
+float: left;
+}
+
+.right {
+
+  }
+
+.clear {
+  clear: both;
+} 
+.gris {
+  background-color: #E0E0E0;
+  padding: 20px 20px 10px;
+  margin: 0 auto 30px;
+  border: solid 1px #666;
+
+}
+.parrafosLinea p {
+border-bottom: solid 1px #ccc;
+padding: 0 0 6px;
+}
+
+.parrafosLinea p span {
+  width: 200px;
+  border-bottom: solid 1px #222;
+  display: inline-block;
+}
+
+.formularioTypeA  p small{
+  border-bottom:solid #222 1px;
+  width:200px;
+  display:inline-block;
+}
+
+.tablaDosColumna {
+  width:100%;
+
+  margin: 0 0 35px;
+}
+
+.tablaDosColumna td, .tablaDosColumna th{
+  padding:5px 5px;
+  text-align:left;
+ 
+
+}
+.portada {
+  margin: 20px 0 0 0;
+}
+.portada .fila {
+  overflow:hidden;
+    border: solid 1px #222;
+}
+
+.filaSuperior {
+  height:81px;
+}
+.filaSuperior2  {
+  height: 89px;
+}
+.filaIntermedio ul, .comisionesRelevantes  {
+  overflow:hidden;
+  border-top: 0;
+  width: 100%;
+  height: 103px;
+  border-bottom: solid 1px #222;
+  margin: 0;
+}
+.filaIntermedio ul li {
+  width: 33%;
+  height:100%;
+  display:block;
+
+  float: left;
+}
+.filaIntermedio ul li + li {
+  border-left:solid 1px #222;
+}
+.izqCol {
+border-right:solid 1px #222;
+}
+.izqCol, .derCol {
+  float:left;
+  width: 49.5%;
+
+  padding: 0px 0;
+  height:100%;
+}
+.portada   p, .portada   h4{
+  padding:0px 3%; 
+  margin:10px 0 0 0;
+}
+.filaSuperior2 .izqCol {
+
+}
+.filaIntermedio {
+    height: 400px;
+}
+.tasaInteres {
+  width: 33%;
+  float:left;
+  display: block;
+
+  overflow: hidden;
+  border-right: solid 1px #222;
+  height: 100%;
+}
+.colIntDerecha {
+   width:66.3%;
+  float:left;
+}
+
+.colIntDerecha {
+   width: 66.6%;
+  float:left;
+   position: relative;
+   height: 50%;
+   /* overflow: hidden; */
+}
+.gatNominal {
+  border-right:solid 1px #222;
+}
+.gatNominal, .gatReal {
+  width: 49.5%;
+
+  height: 100%;
+  /* position: absolute; */
+  float: left;
+  min-height: 1px;
+  height: 60%;
+}
+.info {
+  height: 56%;
+  /* position:absolute; */
+  /* bottom:0; */
+  width:100%;
+  display: block;
+  clear: both;
+  min-height: 1px;
+  border-top: solid 1px #222;
+}
+.filaIntermedio2  {
+  height: 113px;
+}
+.filaIntermedio3  {
+  height: 113px;
+}
+.filaIntermedio4  {
+  height: 133px;
+}
+.filaIntermedio5  {
+  height: 133px;
+}
+
+.filaIntermedio6  {
+  height: 143px;
+}
+
+.containerPrint {
+	
+	margin:0 auto;
+}
+.sectionImprimir {
+	position:fixed;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	display:block;
+}
+
+.btnImprimirEstado {
+float: right;
+display: block;
+width: 69px;
+margin: 0px 0 0px;
+cursor: pointer;
+}
+
+.firmaBloque {
+	margin: 0px 0 0;
+	position: absolute;
+	width: 100%;
+	left: 0;
+}
+
+
+.variable {
+	font-weight:bold;
+	padding: 0 5px;
+}
+
+.borde {
+	border-bottom: 1px #222 solid; 
+	display: inline-block;
+}
+
+.anexo {
+	width:240px;
+	display: inline-block;
+}
+.anexo2 {
+	width: 94%;
+	display: inline-block;
+	padding: 0 3%;
+}
+.bloqueUnico {
+		margin: 0 auto;
+		display: block;
+		float: none;
+		clear: both;
+		height: 10px;
+		width: 300px;
+		text-align:center;
+}
+.filaIntermedio .derCol p{
+margin:0 0 5px;	
+}
+
+.celdaPortada {
+	padding: 7px 6%;
+	width: 90%;
+	display: block;
+}
+
+@media only screen and (max-width: 960px) {
+ .container {
+  width: 96%;
+ }
+ .sectionImprimir {
+ 	display:none;
+ }
+} 
+
+@media only screen and (max-width: 876px) {
+ 
+.filaSuperior .izqCol {
+  margin:0 0 10px;
+}
+  .filaSuperior .derCol {
+    border-top:solid 1px #222; 
+  }
+  .fila {
+  height:auto;
+  padding: 17px 0;
+}
+.fila.filaIntermedio  {
+  padding:0;
+}
+.fila.filaIntermedio  .izqCol {
+    height: 470px;
+
+}
+.fila.filaIntermedio .derCol {
+    border-top:solid 1px #222; 
+
+    padding: 0 0 39px;
+}
+
+.filaIntermedio2  .izqCol{
+  border-bottom:solid 1px #222; 
+  padding:0 0 20px 0;
+
+}
+  .izqCol, .derCol {
+  float:none;
+  width: 100%%;
+  clear:both;
+
+  overflow: hidden;
+  display: block;
+  height: auto;
+}
+ .container {
+  width: 96%;
+ }
+
+ .logo {
+  clear:both;
+  float:none;
+}
+h2 {
+  color: #4E8C41;
+  font-weight: bold;
+  font-size: 50px;
+}
+.logoTitulos {
+  width:100%;
+}
+.encabezado, .numeroCuenta  {
+  width:100%;
+  clear: both;
+}
+.numeroCuenta  {
+ background-color:#ECECEC;
+ font-size:30px;
+ padding:20px 4%;
+ width:92%;
+}
+
+.numeroCuenta.Vportada {
+  width:95%;
+  padding:10px 2%;
+  margin: 20px 0 0 0;
+}
+
+.numeroCuenta.Vportada p{
+  font-size:28px;
+  color:#222;
+  margin:0 0 15px;
+  line-height:32px;
+
+}
+.numeroCuenta h5 {
+  font-weight:normal;
+  font-size:30px;
+  margin:0 0 30px;
+
+}
+h3 {
+
+  font-weight: bold;
+    
+
+  font-size: 24px;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: 18px;
+}
+h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 16px;
+  text-align: center;
+}
+p, li {
+font-size: 18px;
+color: #222;
+margin: 0 0 12px;
+}
+.parrafosLinea {
+  width:92%;
+  padding:20px 2%;
+}
+} 
+
+@media only screen and  (max-width: 750px) {
+
+
+
+   .filaIntermedio ul, .comisionesRelevantes  {
+    height:100px;
+  }
+  .filaIntermedio ul h4{
+    font-size:17px;
+
+  }
+  .numeroCuenta  {
+ background-color:#ECECEC;
+ font-size:30px;
+ padding:20px 4% 0;
+ width:92%;
+}
+  .numeroCuenta h5 {
+    line-height:40px;
+  }
+.numeroCuenta h5 span {
+ width:100%;
+ display:block;
+
+}
+.dosColumnas article, .tresColumnas article  {
+  width: 100%;
+  float: left;
+  margin:0 0 20px;
+}
+.anexo, .anexo2  {
+	width: 96% !important;
+	padding: 5px 2%;
+}
+}
+/* Bigger than 550 */
+@media only screen and (max-width: 550px) {
+
+  .numeroCuenta.Vportada p{
+  font-size:20px;
+  color:#222;
+  margin:0 0 10px;
+  line-height:24px;
+
+}
+  
+  .logo {
+  width: 187px;
+  float: left;
+  margin: 0 17px 0 0;
+}
+ .container {
+  width: 94%;
+ }
+
+ 
+h2 {
+   font-size: 30px;
+}
+.numeroCuenta  {
+ font-size:30px;
+
+}
+.numeroCuenta h5 {
+  font-size: 22px;
+  margin: 0 0 0px;
+
+}
+h3 {
+
+
+  font-size: 24px;
+}
+
+h6 {
+
+  font-size: 18px;
+}
+h4 {
+  font-size: 22px;
+
+}
+.parrafosLinea {
+  width:92%;
+  padding:20px 2%;
+}
+p {
+line-height:24px;
+}
+}
+
+
+@media screen {
+    .pagebreak	{ height:10px; background:url(img/page-break.gif) 0 center repeat-x; border-top:1px dotted #999; margin-bottom:13px; }
+}
+
+
+@media print {
+
+.filaSuperior {
+  height: 65px;
+}
+.filaIntermedio ul, .comisionesRelevantes  {
+  height: 83px;
+}
+.filaSuperior2  {
+  height: 69px;
+}
+.filaIntermedio {
+    height: 320px;
+}
+.filaIntermedio2  {
+  height: 88px;
+}
+
+.btnImprimirEstado {
+	display:none;
+}	
+
+.filaIntermedio3  {
+  height: 100px;
+}
+
+.filaIntermedio4 {
+	height:110px;
+}
+.filaIntermedio5  {
+  height: 108px;
+}
+.filaIntermedio6  {
+  height: 108px;
+}
+.top {
+	padding: 30px 0 20px;
+	margin: 0 0 44px;
+
+}
+    .pagebreak { height:0; page-break-before:always; margin:0; border-top:none; }
+    .sectionImprimir {
+    	display:none;
+    }
+}
+
+
+.unaFirma, .dosFirma {
+	width: 220px;
+	margin: 0 auto !important;
+	display:block;
+	height: 104px;
+	
+}
+.unaFirma img, .dosFirma img{
+	
+	max-width:220px;
+	height:auto;
+}
+
+.sectionCaratula table {
+border-bottom:solid 1px #222;
+margin:0 0 20px;
+width: 675px;
+}
+
+.sectionCaratula table td  {
+	border-left:solid 1px #222;
+	border-right:solid 1px #222;
+	border-top:solid 1px #222;
+	font-size:16px;
+	padding:10px 7px;
+}
+
+.bloqueFirmar table {
+	width: 300px;
+}
+.bloqueFirmar table td {
+	vertical-align:top;
+}
+.tipoFirmaCelda {
+	height: 45px;
+}
+.firmaCelda {
+	height: 150px;
+	vertical-align:middle;
+}
+
+
+ .nombreCompleto {
+		height: 85px;
+		border-top: solid 1px #333;
+}
+
+
+.colIzq, .colDer {
+	width: 344px;
+	float:left;
+}
+
+.colIzq table, .colDer table{
+	
+	width: 344px;
+		
+}
+
+.nombre-cell, .tipoOperacion {
+	max-height:90px;
+	height:90px;
+	text-align:center;
+}
+.tasaGatCat, .comisionesRe {
+	max-height: 142px !important;
+	height: 142px ;
+}
+
+.tasa-gat-cat td {
+width: 112px;
+}
+.portadaTabla table {
+	margin:0 !important;
+}
+.portadaTabla table table td{
+	vertical-align: middle;
+	text-align: center;
+	padding: 4px 10px;
+	
+}
+.portadaTabla td h4{
+	margin:0; 
+}
+.tasa-gat-cat-det td{
+	max-height: 131px;
+	height: 131px;
+}
+
+.observaciones td {
+	height: 181px;
+	max-height: 181px;
+}
+.detalle_comisionesRe{
+	max-height: 332px;
+height: 312px;
+}
+.detalle_comisionesRe p{
+margin:0 !important;
+}
+.medios-lugares {
+	max-height:100px;
+	height:100px;
+}
+.estadoCuenta td, .otroDato td, .acla-recla td, .otroDato2 td {
+padding:10px 5px !important;	
+vertical-align:middle;
+height:130px;
+}
+ .clsTablaInferior {
+	float: none;
+	margin:0 auto 20px;
+	
+	display: block;
+
+}
+
+
+ .clsTablaInferior  > td {
+	 vertical-align:top !important;
+	
+ 
+ }
+ .clsTablaInferior .tablaInferior {
+	margin:0px 0 0 !important; 
+	width:690px;
+ }
+.clsTablaInferior .tablaInferior td{
+ padding:12px 0 !important;
+ 
+ }
+ .clsTablaInferior .tablaInferior h4{
+	margin:20px 0 10px ;
+ }
+  .clsTablaInferior .tablaInferior td p{
+	margin: 0 10px ;
+ }
+
+ .tablaInferior > td {
+	
+
+	display: block;
+	
+}
+
+
+
+
+
+
+
+.numeroCuenta.Vportada {
+   width: 362px;
+   margin: 0 0 30px;
+   font-size:12px !important;
+}
+
+.numeroCuenta.Vportada p, .numeroCuenta.Vportada h5{
+	margin:0 !important;
+	font-size:12px !important;
+	padding:0;
+ 
+}
+
+.abajoMargen {
+	margin:0 0 60px !important;
+	clear:both;
+	width:690px;
+}
+.arribaMargen {
+		margin:0 0 60px !important;
+	clear:both;
+	width:690px;
+}
+.logoTitulosCelda {
+	height:150px;
+}
+
+
+.logoCelda td, .noRegistro td{
+	height: 135px;
+	padding: 10px 10px 20px  !important;
+	text-align: left !important;
+}
+ .noRegistro td p, .logoCelda td p{
+ 	margin:0; 
+ 	font-size:14px;
+ }
+  .noRegistro td h5, .logoCelda td h5{
+ 	font-size:16px;
+ font-weight:bold;
+ }
+.logoCelda td{
+text-align:left !important;
+	
+}
+.logoCelda td img{
+	width: 80px;
+	height:auto;
+	margin:0 0 0 10px;
+}
+.logoCelda, .noRegistro {
+	
+}
+.logoCelda td > div.registro {
+    float: none;
+    clear: both;
+}
+
+  .pagebreak { height:0; page-break-before:always; margin:0; border-top:none; }
+  
+  .right.clear {
+   width: 690px;
+    float: none;
+    text-align: right;
+  }
+ 
+}
+section .container p {
+    font-size: 16px;
+    color: #222;
+    margin: 0 0 8px;
+    line-height: 21px;
+}
+.sectionCaratula  .container p {
+
+    margin: 0 0 7px;
+}
+
+section .container li {
+
+    margin: 0 0 5px !important;
+
+    line-height: 17px !important;
+}
+
+
+.container ol {
+	padding: 0 0 0 22px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*estilos contrato credito */
+.portadaContratoCredito {
+	margin:50px 0 0 0;
+}
+.portadaContratoCredito td{
+	vertical-align:top;
+	padding:5px;
+}
+.colIzquierda {
+	float:left;
+	width:340px;
+}
+.colDerecha {
+	float:left;
+	width:340px;
+}
+
+
+.colIzquierda table {
+	float:left;
+	width:339px;
+}
+.colDerecha  table {
+	float:left;
+	width:339px;
+}
+
+
+
+.encabezado2 {
+	height: 152px;
+}
+.detalle1 {
+	height: 166px;
+}
+
+.segundaTabla table, .tercerTabla table, .cuartaTabla  table{
+	width:680px;
+}
+
+
+
+.portadaContratoCredito .bloqueFirmar {
+	float:left;
+ 	 width: 470px;
+}
+.portadaContratoCredito .bloqueFirmar +  .bloqueFirmar {
+	float:right;
+
+}
+
+#sinBorder, #sinBorderFila td  {
+	padding:0;
+}
+#sinBorder table td{
+	padding:5px;
+}
+.infoCell {
+	height:500px;
+}
+
+.nombreFirma, .folioFecha {
+	height:250px
+}
+.center p {
+	text-align:center;
+}
+
+section .container p {
+    font-size: 16px;
+    color: #222;
+    margin: 0 0 8px !important;
+    line-height: 21px;
+}
+.sectionCaratula  .container p {
+
+    margin: 0 0 7px !important;
+}
+
+
+.columnaIzquierda2 {
+	width:420px;
+	float:left;
+}
+
+.columnaDerecha2 {
+	width: 250px;
+	float:right;
+}
+.columnaDerecha2 table {
+	width: 390px;
+}
+
+.costoAnual {
+	width:130px;
+}
+.contenidoTabla2 {
+	height:30px;
+}
+.listados ul.primeraLista li {
+	list-style: disc !important;
+	padding: 0 0 0 0px;
+}
+.listados ul {
+	margin: 0 0 0 20px !important;
+}
+.celdaIzquierda {
+	width: 210px;
+}
+.periodicidad {
+	width:130px;
+}
+.encabezado1 {
+	height:100px;
+}
+.seguros {
+	width:686px;
+}
+.tabla {
+	margin:20px 0;
+}
+.tabla table {
+	width:660px;
+}
+.tabla table td {
+	padding:7px 5px;
+}
+.upper-alpha {
+	list-style-type: upper-alpha;
+	margin:0 0 0 30px;
+}
+.lower-alpha {
+	list-style-type: lower-alpha !important;
+	padding:0 0 0 20px;
+}
+.disc li   {
+	list-style: disc !important;
+	margin: 0 0 0 20px !important;
+}
+
+.disc.noMargin {
+	margin:0;
+	padding: 0;
+}
+.bloqueDiv {
+	border:solid 1px #666;
+	padding: 20px;
+	margin:  0 0 40px;
+}
+.tablaIzquierda {
+	width:340px;
+	float:left;
+}
+.tablaDerecha {
+	width:340px;
+	float:left;
+}
+.tablaIzquierda {
+	width:338px;
+}
+.tablaDerecha {
+	width:338px;
+	
+}
+
+
+.espacio {
+	margin:30px 0 30px;
+}
+
+.logoAtlas {
+	width:686px;
+	text-align:right;
+}
+
+.logoAtlas img {
+	width:180px;
+	height:auto;
+}
+
+.tablaIzq, .tablaDer {
+	float:left;
+
+}
+.tablaIzq table, .tablaDer table{
+	float:left;
+	width: 339px;
+}
+
+.celdaGris {
+	background:#ccc;
+	text-align:center;
+}
+
+.tablaInf {
+	width:680px;
+	margin: 0 0 30px;
+}
+
+.tablaInf table {
+	width:678px;
+	margin: 0 0 30px;
+}
+.tablaIzq td, .tablaDer td , .tablaInf td{
+	padding: 7px 10px;
+}
+section .container table td.noPad {
+	padding:0 !important;
+}
+
+
+.tresCols {
+	margin:30px 0 ;
+	overflow:hidden;
+}
+
+.tresCols .col {
+	float:left;
+	width:220px;
+	margin:0 15px 0 0 !important;
+}
+.tresCols .col table {
+	width:210px;
+}
+.bordeCell {
+	border-top:solid 1px #222;
+	height:40px;
+}
+.seFi {
+	height: 29px;
+}
+.bloqueFir {
+height:80px;
+}
+
+.cuatro_cols {
+	overflow:hidden;
+	width:680px;
+	margin: 0 0 30px;
+}
+.cuatro_cols div {
+	width:150px;
+	float:left;
+	margin:0 10px 0 0;
+}
+
+.cuatro_cols div table {
+	width:158px;
+	float:left;
+}
+.cuatro_cols div table td{ 
+padding:7px 10px !important;
+
+}
+.cuatro_cols div table td p{font-size: 14px !important;}
+.primeraFila {
+	height: 40px;
+	padding: 0;
+}
+.primeraFila td {
+
+	padding: 0 !important;vertical-align: top;}
+
+.logoTexto {
+
+}
+.logoBanco {
+float:left;
+}
+.logoBanco img{
+width:130px;
+}
+.texto {
+	float:left;
+	margin: 57px 0 0 30px;
+}
+@media (max-width:1024px) { 
+.colIzquierda {
+	float:left;
+	width:99%;
+}
+.colDerecha {
+	float:left;
+	width:99%;
+}
+.segundaTabla table, .tercerTabla table {
+	width:99%;
+}
+ section .container .cuartaTabla .listados li {
+	font-size: 12px !important;
+}
+.tabla {
+	overflow:auto;
+}
+}
+
+
+
+
+
+.col_logo_kubo
+{			
+	width: 10%;
+	min-width:124px;
+	text-align:center;							
+	border:0px solid black;
+}
+
+.col_acreditado
+{
+	border:0px solid black;
+	float: right;
+	width: 84%;
+}
+
+.referenciaPago_encabezado .col_acreditado h3 {
+    color: #568e3e;
+	
+    font-size: 21px;
+    margin: 0 0 10px !important;
+    padding: 0;
+    text-align: center;
+}
+
+
+.referenciaPago_encabezado .col_acreditado h4 {
+	font-size: 18px;
+	margin: 0 0 10px !important;
+	padding: 0 0 9px;
+	font-weight:600;
+	color: #666;
+	border-bottom: dotted 2px #ccc;
+	text-align: center;
+}
+
+
+.referenciaPago_encabezado .col_acreditado h5 {
+	font-size: 14px;
+	margin: 0 0 10px !important;
+	padding:0;
+	color:#999;
+	font-weight:600;
+	text-align: center;
+}
+
+.SPEI_titulo {
+	border:none;
+	background:#f1f1f1;
+	margin:0 0 20px;
+	width:680px;
+}
+.SPEI_titulo h3{
+	margin:0 0 20px;
+}
+.referenciaPago_encabezado .col_acreditado h6 {
+	font-size: 16px;
+	margin:10px 0 20px 0;
+	padding:0;
+	color:#999;
+	font-weight:400;
+}
+
+.referenciaPago_encabezado {
+	margin: 20px 0 40px;
+
+	overflow: hidden;
+}
+.col_logo {
+	width: 10%;
+	float:left;
+}
+
+
+.col_logo img{
+	
+	height:auto;
+}
+table.acreditado_panel
+{
+	width:100%;
+	min-width:600px; 
+	border:0px solid black;	
+}
+
+td.referencias_bancarias p
+{	
+	padding:0;
+	
+	font-size: 16px;		
+	font-weight: bold;
+	text-align: center;
+	
+	border:0px solid gray;
+}
+
+td.referencias_bancarias_subtitulo p
+{	
+	margin:0;
+	padding-bottom:8px;
+	
+	font-size: 13px;
+	color: gray;
+	text-align: center;
+	
+	border-bottom:1px dotted black;
+}
+
+td.acreditado_titulo p
+{
+	padding:0;
+	
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	
+	border:0px solid black;
+}
+
+td.acreditado_subtitulo p
+{
+	text-align: center;
+	color: #333333;
+	margin:0;								
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+.col_referencia_logo
+{
+	width: 140px;
+	/* min-width:124px; */
+	
+	text-align: center;
+	
+	vertical-align: top;
+	padding-top: 15px;
+	float: left;
+}
+.col_referencia_logo img {
+	width:80px;
+}
+.col_referencia_concepto_panel
+{				
+	padding:0;
+	border: 0px solid black;
+	width: 540px;
+	float: right;
+	font-size:15px;
+	margin:0 0 30px !important;
+}
+
+
+
+.col_referencia_concepto_panel ul {
+	list-style:none;
+	margin:0 0 20px !important;
+	padding:0 !important;				
+
+}
+.col_referencia_concepto_panel ul li {
+	overflow:hidden;
+	padding: 2px 0 !important;
+	margin:0 0 5px !important;
+	border-bottom: solid 1px  #ccc;
+		list-style:none;
+}
+
+
+.col_referencia_concepto_panel ul li span{
+	margin:0 10px 0 0;
+}
+
+
+.col_referencia_concepto_panel ul li strong{
+
+}
+
+
+.conceptoFila {
+	clear:both;
+	overflow: hidden;
+	margin: 0 0 31px;
+	width:680px;
+}
+
+
+
+
+.nota_panel
+{
+	width:100%;
+	padding:0 !important;
+	margin: 20px 0 0 0;
+	border:0px solid black !important;
+}
+
+.nota_panel td {
+
+}
+.nota_panel td p {
+	padding:0;
+	
+	margin: 0 0 5px 0;
+	font-size: 15px;
+	font-weight:400;
+}
+
+.nota_panel div
+{
+	padding: 0 !important;
+}
+
+p.col_paso_id
+{
+	color:gray;
+	font-size:13px;
+	font-weight: normal;
+	text-align:left;
+	border:0px solid blue;
+}
+
+
+section .container .portadaTabla table  td.gananciaAnual {
+	padding:0 !important;
+	vertical-align: top !important;
+}
+
+.gananciaAnual table{
+	width:100%;
+	height: 128px;
+}
+
+section .container .gatN, section .container .gatN  {
+	width: 118px !important;
+}
+.tasaInteresAnual {
+	width: 110px;
+}
+.gananciaAnual {
+	height:65px;
+}
+
+.nominalReal {
+height:65px;
+}
+.tabla table td p {
+	line-height:17px;
+	font-size:15px;
+}
+
+.portadaContratoCredito .logoCelda td, .portadaContratoCredito .noRegistro td{
+	height: 147px !important;
+	padding: 10px 10px 20px  !important;
+	text-align: left !important;
+}
+
+.primeraLista.mgn {
+	padding: 0 0 0 20px;
+}
+
+.tabla ul {
+	margin:0 !important ;
+	padding:0  !important ;
+}
+.tabla ul li {
+	width:auto;	
+	padding:0 !important ;
+}
+.tabla ul li p {
+	margin:0 !important ;
+}
+
+.logoReferencias img {
+	width:80px !important;
+}
+
+.telcomm img{
+	width:120px;	
+}
+.firmaRodrigoMg img{
+	width:100px !important;
+	height:auto
+}
+
+@media (max-width:850px) { 
+
+.col_logo {
+	width: 100px !important;;
+	float: none !important;
+	clear:both;
+	margin: 0 auto 20px;
+}
+.col_referencia_logo {
+	width: 110px !important;;
+	float: none !important;
+	clear:both;
+	margin: 0 auto 20px;
+}
+
+.col_referencia_concepto_panel
+{				
+	padding:0;
+	border: 0px solid black;
+
+	float: right;
+	font-size:15px;
+}
+
+.col_acreditado
+{
+	border:0px solid black;
+	float: right;
+	width: 100%;
+}
+}
+
+.tablaPagare td, .tablaPagare td p{
+	font-size:12px !important;
+}
+.fila {
+	width:680px;
+	margin:0 0 20px;
+	display:block;
+}
+.latin680 {
+	display:block;
+	width:680px;
+}
+.columnaA {
+	width:35px;
+	floal:left;
+	display:block;
+	padding:0 20px 0 0;
+}
+.columnaB {
+	floal:right;
+	display:block;
+	width:600px;
+}
+
+ol, ol li, ul, ul li, ol li p,  ul li p  {
+	color:#222 !important;
+}
+
+.listados ul {
+	margin: 0 0 0 0px !important;
+	list-style:none;
+}
+
+.primeraLista.mgn {
+	padding: 0 0 0 20px;
+	list-style: none !important;
+}
+section table .listados ul { 
+	padding:0 ;
+}
+
+section .container h2.montoCenter {
+	text-align:center;
+	font-size: 68px;
+	line-height: 72px;
+}
+
+
+
+.nuevaFirma{
+	width: 220px;
+	margin: 0 auto !important;
+	display:block;
+	height: 104px;
+	
+}

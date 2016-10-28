@@ -1,0 +1,67 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"				
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:panelGroup>
+		
+		<ul>     	 			
+			<li>
+				<span><h:outputLabel value = "Razón Social"/></span>
+				<strong><h:outputLabel value = "#{referencia.razon_social}"/></strong>
+			</li>
+			<h:panelGroup  rendered = "#{not empty referencia.CLABE}">
+				<li>
+					<span><h:outputLabel value = "Cuenta CLABE"/></span>
+					<strong><h:outputLabel value = "#{referencia.CLABE}"/></strong>		
+				</li>
+			</h:panelGroup>
+			<h:panelGroup  rendered = "#{not empty referencia.no_empresa}">
+			<li>		
+				<span><h:outputLabel value = "Número de Empresa"          /></span>
+				<strong><h:outputLabel value = "#{referencia.no_empresa}"/>	</strong>
+			</li>
+			</h:panelGroup>
+			<h:panelGroup      rendered = "#{not empty referencia.pago_servicio}">
+				<li>
+					<span><h:outputLabel value = "Pago de servicio: no. convenio o empresa"  /></span>
+					<strong><h:outputLabel value = "#{referencia.pago_servicio}" />	</strong>
+				</li>
+			</h:panelGroup>	
+			<h:panelGroup      rendered = "#{not empty referencia.sucursal}">
+			<li>									
+				<span><h:outputLabel value = "Sucursal" 				     /></span>
+				<strong><h:outputLabel value = "#{referencia.sucursal}" />	</strong>
+			</li>	
+			</h:panelGroup>
+				
+			<h:panelGroup   rendered = "#{not empty referencia.no_cuenta}">
+			<li>									
+				<span><h:outputLabel value = "Número de Cuenta" 		     /></span>
+				<strong><h:outputLabel value = "#{referencia.no_cuenta}"  /></strong>	
+		
+			</li>
+			</h:panelGroup>
+			<h:panelGroup   rendered = "#{not empty referencia.no_referencia}">
+				<li>
+					<span><h:outputLabel value = "Referencia"				     /></span>
+					<strong><h:outputLabel value = "#{referencia.no_referencia}"/></strong>
+				</li>
+			</h:panelGroup>
+			<h:panelGroup   rendered = "#{not empty referencia.cliente}">
+			<li>
+				<span><h:outputLabel value = "Cliente"                     /></span>
+				<strong><h:outputLabel value = "#{referencia.cliente}" /></strong>						
+			</li>
+			</h:panelGroup>
+			<h:panelGroup      rendered = "#{not empty referencia.pago}">
+				<li>
+					<span><h:outputLabel value = "Pago"                     /></span>
+					<strong><h:outputLabel value = "#{referencia.pago}" /></strong>
+				</li>
+			</h:panelGroup>
+		</ul>	
+		<p:panel styleClass = "nota_panel" rendered = "#{not empty referencia.nota}">
+			<ui:include src = "nota.xhtml"/>
+		</p:panel>
+	</h:panelGroup>	
+</ui:composition>	

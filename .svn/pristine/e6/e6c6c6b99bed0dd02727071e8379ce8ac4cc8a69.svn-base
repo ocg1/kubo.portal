@@ -1,0 +1,30 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+<h:panelGroup rendered = "#{sessionBean.coachProspectus_id != null}" >		     
+	<div class = "dvContent">
+	
+		<div class = "dvLabel" style = "width: 400px;">
+			<h:outputLabel styleClass = "labelsStl" value = "#{msg.Point_of_reference}" />
+		</div>
+		
+		<p />
+		
+		<div class = "dvElementAddres1" style = "width: 370px;">
+			<h:inputTextarea id = "point_reference" rows = "5" immediate = "true"
+							 value = "#{basicData.domicilio.address.description}"
+							 onfocus = "Domicilio.init_focus_date(1);" 
+							 styleClass = "elementTextArea validatorClass hs_class">	
+							 						
+				<p:ajax event = "blur"
+						oncomplete = "Domicilio.description_on_complete(xhr, status, args);" 
+						listener   = "#{basicData.domicilio.init_description}"/>
+			</h:inputTextarea>
+			
+			<p:watermark for = "point_reference" styleClass = "texto_ayuda" value = "Ejemplos: Edificio verde, frente al parque..." />
+		</div>
+	</div> 		
+</h:panelGroup>
+</ui:composition>			     

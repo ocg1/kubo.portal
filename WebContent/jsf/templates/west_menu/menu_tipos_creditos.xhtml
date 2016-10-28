@@ -1,0 +1,15 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">	
+	<div class = "main_titulo_menu_items">
+		<p class = "titulo_menu" >Créditos</p>
+		<hr/>		
+		
+		<h:form prependId = "false">
+			<ui:include src = "/jsf/secciones/creditos_personales_ref/submenu_items_tipos_prestamos.xhtml"/>
+			<ui:include src = "/jsf/secciones/creditos_personales_ref/submenu_items_creditos.xhtml"/>					
+			<ui:include src = "/jsf/secciones/creditos_personales_ref/submenu_items_alianzas.xhtml"/>
+			<ui:include src = "/jsf/secciones/creditos_personales_ref/submenu_items_diagnostico.xhtml"/>
+		</h:form>												
+	</div>				
+</ui:composition>				

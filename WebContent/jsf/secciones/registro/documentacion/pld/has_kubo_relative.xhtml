@@ -1,0 +1,29 @@
+<ui:composition xmlns   = "http://www.w3.org/1999/xhtml"
+			    xmlns:h = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div class="dvContent">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl familiar_trabaja" value="¿Sabes si alguno de tus familiares trabaja en kubo.financiero?*"/>
+		</div>
+<fieldset class="conjuntoChecks famwork">
+				   <div class="btnN tresBtnChecks" style="width:22%;" data-opcion="S">
+			        	<span>	<i class="fa fa-check"></i> Sí</span>
+			       </div>
+			       <div class="btnN tresBtnChecks" style="width:22%;"  data-opcion="N">
+			        	<span>	<i class="fa fa-times"></i> No</span>
+			       </div>
+			       <div class="btnN tresBtnChecks btnR" style="width:48%; margin:0;"  data-opcion="D">
+			        	<span>	<i class="fa fa-question"></i> Lo desconoce</span>
+			       </div>
+			<h:selectOneRadio id="famwork" value="#{addPldDocument.prevencionld.has_kubo_relative}" styleClass="elementStlLbl validatorClass elementStlRd familiar_trabaja hs_class ocultaSelect">
+			    <f:selectItem itemValue="S" itemLabel="Si"/>
+			    <f:selectItem itemValue="N" itemLabel="No"/>
+			    <f:selectItem itemValue="D" itemLabel="Lo desconoce"/>
+			    <p:ajax event="click" oncomplete="fieldCount();" listener="#{addPldDocument.savePrevencionLD}" update="pnlKuboRelative" ></p:ajax>
+			</h:selectOneRadio>
+			</fieldset>
+		
+	</div>				
+</ui:composition>				

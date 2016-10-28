@@ -1,0 +1,108 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+														
+<!-- 
+	<div class="dvContent">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="#{msg.Working_hours_text}" />
+		</div>
+													
+		<p />
+													
+		<div class="dvElementLength">
+			<div class="styled-select-Address" style="width: 61px ! important; float: left;">
+				<h:selectOneMenu id="id_hour1" onchange="validateCheckInCheckOut(this);" tabindex="23" style="width:91px !important;" styleClass="elementStlSelAddress mapOff hour1" value="#{employment.check_inH1}">
+					<f:selectItem itemValue="00" itemLabel="00" />
+					<f:selectItem itemValue="01" itemLabel="01" />
+					<f:selectItem itemValue="02" itemLabel="02" />
+					<f:selectItem itemValue="03" itemLabel="03" />
+					<f:selectItem itemValue="04" itemLabel="04" />
+					<f:selectItem itemValue="05" itemLabel="05" />
+					<f:selectItem itemValue="06" itemLabel="06" />
+					<f:selectItem itemValue="07" itemLabel="07" />
+					<f:selectItem itemValue="08" itemLabel="08" />
+					<f:selectItem itemValue="09" itemLabel="09" />
+					<f:selectItem itemValue="10" itemLabel="10" />
+					<f:selectItem itemValue="11" itemLabel="11" />
+					<f:selectItem itemValue="12" itemLabel="12" />
+					<f:selectItem itemValue="13" itemLabel="13" />
+					<f:selectItem itemValue="14" itemLabel="14" />
+					<f:selectItem itemValue="15" itemLabel="15" />
+					<f:selectItem itemValue="16" itemLabel="16" />
+					<f:selectItem itemValue="17" itemLabel="17" />
+					<f:selectItem itemValue="18" itemLabel="18" />
+					<f:selectItem itemValue="19" itemLabel="19" />
+					<f:selectItem itemValue="20" itemLabel="20" />
+					<f:selectItem itemValue="21" itemLabel="21" />
+					<f:selectItem itemValue="22" itemLabel="22" />
+					<f:selectItem itemValue="23" itemLabel="23" />																																								
+				</h:selectOneMenu>
+			</div>
+														
+			<h:outputLabel value=":" style="font-size: 1.1em; float: left; margin: 10px 5px 10px 5px;" styleClass="labelsStl" />
+			
+			<div class="styled-select-Address" style="width: 61px ! important; float: left;">
+				<h:selectOneMenu id="id_minuts1" onchange="validateCheckInCheckOut(this);" tabindex="24" style="width:91px !important;" styleClass="elementStlSelAddress mapOff minuts1" value="#{employment.check_inM1}">
+					<f:selectItem itemValue="00" itemLabel="00" />
+					<f:selectItem itemValue="15" itemLabel="15" />
+					<f:selectItem itemValue="30" itemLabel="30" />
+					<f:selectItem itemValue="45" itemLabel="45" />																																
+				</h:selectOneMenu>
+			</div>
+														
+			<h:outputLabel value="a" style="font-size: 1.1em; float: left; margin: 10px 10px 10px 10px;" styleClass="labelsStl" />
+														
+			<div class="styled-select-Address" style="width: 61px ! important; float: left;">
+			<h:selectOneMenu id="id_hour2" onchange="validateCheckInCheckOut(this);" tabindex="25" style="width:91px !important;" styleClass="elementStlSelAddress mapOff hour2" value="#{employment.check_outH1}">
+				<f:selectItem itemValue="00" itemLabel="00" />
+				<f:selectItem itemValue="01" itemLabel="01" />
+				<f:selectItem itemValue="02" itemLabel="02" />
+				<f:selectItem itemValue="03" itemLabel="03" />
+				<f:selectItem itemValue="04" itemLabel="04" />
+				<f:selectItem itemValue="05" itemLabel="05" />
+				<f:selectItem itemValue="06" itemLabel="06" />
+				<f:selectItem itemValue="07" itemLabel="07" />
+				<f:selectItem itemValue="08" itemLabel="08" />
+				<f:selectItem itemValue="09" itemLabel="09" />
+				<f:selectItem itemValue="10" itemLabel="10" />
+				<f:selectItem itemValue="11" itemLabel="11" />
+				<f:selectItem itemValue="12" itemLabel="12" />
+				<f:selectItem itemValue="13" itemLabel="13" />
+				<f:selectItem itemValue="14" itemLabel="14" />
+				<f:selectItem itemValue="15" itemLabel="15" />
+				<f:selectItem itemValue="16" itemLabel="16" />
+				<f:selectItem itemValue="17" itemLabel="17" />
+				<f:selectItem itemValue="18" itemLabel="18" />
+				<f:selectItem itemValue="19" itemLabel="19" />
+				<f:selectItem itemValue="20" itemLabel="20" />
+				<f:selectItem itemValue="21" itemLabel="21" />
+				<f:selectItem itemValue="22" itemLabel="22" />
+				<f:selectItem itemValue="23" itemLabel="23" />																							
+			</h:selectOneMenu>
+			</div>
+														
+			<h:outputLabel value=":" style="font-size: 1.1em; float: left; margin: 10px 5px 10px 5px;" styleClass="labelsStl" />
+														
+			<div class="styled-select-Address" style="width: 61px ! important; float: left;">
+				<h:selectOneMenu id="id_minuts2" onchange="validateCheckInCheckOut(this);" tabindex="26" style="width:91px !important;" styleClass="elementStlSelAddress mapOff minuts2" value="#{employment.check_outM1}">
+					<f:selectItem itemValue="00" itemLabel="00" />
+					<f:selectItem itemValue="15" itemLabel="15" />
+					<f:selectItem itemValue="30" itemLabel="30" />
+					<f:selectItem itemValue="45" itemLabel="45" />																																			
+				</h:selectOneMenu>
+			</div>
+									
+			<h:inputText style="display:none" styleClass="check_in"  value="#{employment.employment.check_in}" >
+				<p:ajax event="blur" listener="#{addMyLoan.updateEmployment(employment)}"></p:ajax>
+			</h:inputText>	
+			
+			<h:inputText style="display:none" styleClass="check_out" value="#{employment.employment.check_out}" >
+				<p:ajax event="blur" listener="#{addMyLoan.updateEmployment(employment)}"></p:ajax>
+			</h:inputText>													
+		</div>
+	</div>
+-->					
+</ui:composition>				

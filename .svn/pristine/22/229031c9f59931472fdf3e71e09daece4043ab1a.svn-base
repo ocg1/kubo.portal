@@ -1,0 +1,100 @@
+<ui:composition
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui" >
+	
+		
+					<div class="field vis" >
+						<div class="dvLabel" >
+							<h:outputLabel styleClass="labelsStl" value="#{msg.economic_activity}" />
+						</div>
+				<fieldset class="conjunto conjunto2">
+        	
+	        		<div class="btnN dosBtn" onclick="btnN(this);"  data-opcion="1">
+	        			<small class="palomita">
+	        				<i class="fa fa-user"></i>
+	        				<i class="fa fa-check"></i>
+	        			</small>
+	        			
+	        			<span>Independiente</span>
+	        			<i class="fa fa-check checkMobile"></i>
+	        		</div>
+	        		<div class="btnN dosBtn btnR" onclick="btnN(this);"  data-opcion="2">
+	        			<small class="palomita">
+	        				<i class="fa fa-users"></i>
+	        				<i class="fa fa-check check"></i>
+	        			</small>
+	        			<span>Empleado</span>
+	        			<i class="fa fa-check checkMobile"></i>
+	        		</div>
+	        		<div class="selectNuevo ocultaSelect">
+							<h:selectOneMenu id="activityEconomic"  value="#{basicData.economicActivity}" styleClass="elementStlSelAddress validatorClass hs_class"  >
+								<f:selectItem itemLabel="" itemValue="0" />
+								<f:selectItems  value="#{basicData.economicActivityList}" var="activity" itemLabel="#{activity.description}" itemValue="#{activity.economicActivityPK.economic_activity_id}"/>
+								<p:ajax event="change" listener="#{basicData.selectEconomicActivity}" update="giroActivEcon" oncomplete="fieldCount();"></p:ajax>
+							</h:selectOneMenu>
+					</div>
+        		</fieldset>
+						
+					</div>
+				
+			
+			
+				<h:panelGroup id="giroActivEcon">
+					<h:panelGroup id="displayBusiness" rendered= "#{basicData.hasBusiness and sessionBean.area == 'I'}" >
+								<!-- 
+								<div class="dvContent" >
+									<div class="dvContent">
+										<div class="dvLabel" style="width: 400px;">
+											<h:outputLabel styleClass="labelsStl" value="Giro del negocio*"/>
+											
+										</div>
+									</div>
+									<div class="dvContent">
+										
+										<div  class="dvElement" style="width: 300px;">
+											<p:autoComplete id="acbusiSimple" value = "#{basicData.businessName}" styleClass="validatorClass" style="width: 300px; font-size: 1.13em" completeMethod="#{basicData.autocomplete}" >
+											 	
+											 	<p:ajax event="itemSelect" listener="#{basicData.handleSelect}" /> 
+												<f:attribute name="activityType" value="business" />
+												<p:ajax event="blur" oncomplete="fieldCount();" />
+											</p:autoComplete>  
+										</div>
+									</div>
+								</div>
+								-->
+					</h:panelGroup>
+				
+				
+					<h:panelGroup id="displayEmployment" rendered= "#{basicData.hasEmployment and sessionBean.area == 'I'}" >
+							<!-- 
+								<div class="dvContent" >
+									<div class="dvContent">
+										<div class="dvLabel" style="width: 400px;">
+											<h:outputLabel styleClass="labelsStl" value="Giro de la empresa*"/>
+											
+										</div>
+									</div>
+									<div class="dvContent">
+										
+										<div  class="dvElement" style="width: 300px;">
+											<p:autoComplete id="acemSimple" value = "#{basicData.employmentName}" styleClass="validatorClass" style="width: 300px; font-size: 1.13em" completeMethod="#{basicData.autocomplete}" >
+											 	
+											 	<p:ajax event="itemSelect" listener="#{basicData.handleSelect}" /> 
+												<f:attribute name="activityType" value="employment" />
+												<p:ajax event="blur" oncomplete="fieldCount();" />
+											</p:autoComplete>  
+										</div>
+									</div>
+								</div>
+								 -->
+					</h:panelGroup>
+					
+				</h:panelGroup>
+				 
+		
+		
+	
+</ui:composition>	

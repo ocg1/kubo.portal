@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">				
+<!-- 
+ 	<p:inputMask  id="txt-mxcurp"  
+ 				  maxlength="18"
+ 				  mask="aaaa999999aaaaaa*9" 
+ 				  styleClass="elementAddres1" 
+ 				  style="margin-top: 0pt !important; font-size: 1em !important; width: 200px !important;"
+ 				  value="#{summaryRequest.changecurp.origValue}">
+ 		<p:ajax event="blur"></p:ajax>
+ 	</p:inputMask>
+-->	
+		 			 
+ 	<p:inputText id = "txt-mxcurp" 
+ 				 value = "#{summaryRequest.editor_CURP.change_control_bean.newValue}"  
+ 				 styleClass = "elementAddres1"   
+ 				 >
+		<p:ajax event = "blur"  />
+	</p:inputText>					
+</ui:composition>				

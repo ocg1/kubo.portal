@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+				
+	<div id = "container-question-consolidate">
+		<div style = "float:left">
+			<h:outputText value = "¿Se van a consolidar deudas?" />
+		</div>
+		
+		<div class = "radio-question-consol">
+			<h:selectOneRadio id = "radio-question-consol" immediate = "true" 
+							   styleClass = "styleradiolocal"  value = "#{incomesExpenses.consolidate}">
+				<f:selectItem itemValue = "1" itemLabel = "Si"/>
+				<f:selectItem itemValue = "2" itemLabel = "No"/>
+						
+				<p:ajax event = "click" update = "section-ammount-consolidate"
+						oncomplete = "IncomesExpenses.ammount_minus_oncomplete(xhr, status, args);" 
+						listener = "#{incomesExpenses.setNullAmmuntMinus}" />
+<!--  
+							update=":frmQuest:section-ammount-consolidate :frmQuest:pnlIndicadores"		
+-->			    
+			</h:selectOneRadio>
+		</div>
+	</div>				
+</ui:composition>				

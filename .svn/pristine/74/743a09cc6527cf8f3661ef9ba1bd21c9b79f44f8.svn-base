@@ -1,0 +1,60 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 
+<!--
+	<br />
+	
+	 <div class="dvContent">
+		<div class="dvLabel" >
+			<h:outputLabel value="¿Tiene alguna Tarjeta de Crédito vigente con alguna tienda departamental como: Auchan, 
+									Comercial Mexicana, Credimático, Chedraui, Hermanos Vázquez, Home Mart, Julio, Julio Oro, 
+									MVS, Office Depot, Office Max, Platinum, Roberts, Soriana, Suburbia, Vistahermosa, 
+									Wall Mart, Etc.?" 
+							styleClass="labelsStl" ></h:outputLabel>
+		</div>
+		<div  class="dvElement">
+			<h:selectOneRadio  value="#{creditHistoryController.credithistory.depcc_is_principal}" styleClass="elementStlLbl">
+	             <f:selectItem itemValue="1" itemLabel="Si"/>
+	             <f:selectItem itemValue="0" itemLabel="No"/>
+	             <p:ajax listener="#{creditHistoryController.muestraTarjetaDepAndSave}" event="click" oncomplete="fieldCount();" update="elementhidden2"></p:ajax>
+	         </h:selectOneRadio>
+		</div>
+	</div>
+-->
+	
+	<h:panelGroup id="elementhidden2">
+		<div id="hidden2" style="display: #{creditHistoryController.hidden2};">
+			<div class="dvContent">
+				<div class="dvLabel dvLablWidth">
+					<h:outputLabel value="¿Con qué institución financiera? *" styleClass="labelsStl"/>
+				</div>
+				
+				<div  class="dvElement">
+					<h:inputText id="institucion_financiera" styleClass="elementStl validatorClass" value="#{creditHistoryController.credithistory.depcc_company}">
+						<p:ajax event      = "change" 
+								listener   = "#{creditHistoryController.saveCreditHistory}"
+						        oncomplete = "fieldCount();"
+						        immediate  = "true" />
+					</h:inputText>
+				</div>
+			</div>
+		
+		<!-- No borrar, posiblemente se pregunte despues
+			<div class="dvContent">
+				<div class="dvLabel">
+					<h:outputLabel value="Límite de crédito" styleClass="labelsStl"></h:outputLabel>
+				</div>
+				<div  class="dvElement">
+					<h:inputText styleClass="elementStl"></h:inputText>
+				</div>
+			</div>
+		-->
+			<script>
+				 resetar_indices();		
+			</script>
+		</div>
+	</h:panelGroup>				 
+</ui:composition>				 

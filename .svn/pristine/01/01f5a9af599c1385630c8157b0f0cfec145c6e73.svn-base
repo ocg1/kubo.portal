@@ -1,0 +1,43 @@
+/*
+----------------------------------------
+FdC:        [29.Abril.2014]
+Folder:     css/secciones/estado_cuenta/
+Programmer: Damián Tapia Nava
+---------------------------------------
+*/
+
+@CHARSET "UTF-8";
+
+.nota_panel
+{
+	width:100%;
+	padding:0 !important;
+	margin: 20px 0 0 0;
+	border:0px solid black !important;
+}
+
+.nota_panel td {
+
+}
+.nota_panel td p {
+	padding:0;
+	
+	margin: 0 0 5px 0;
+	font-size: 15px;
+	font-family:'Open Sans', sans-serif;
+	font-weight:400;
+}
+
+.nota_panel div
+{
+	padding: 0 !important;
+}
+
+p.col_paso_id
+{
+	color:gray;
+	font-size:13px;
+	font-weight: normal;
+	text-align:left;
+	border:0px solid blue;
+}

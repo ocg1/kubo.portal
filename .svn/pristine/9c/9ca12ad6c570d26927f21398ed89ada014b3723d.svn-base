@@ -1,0 +1,26 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+	 		<h:panelGroup  rendered="#{sessionBean.area == 'M'}" id="pnlContAddressBuro"   >
+				<div id="dvContAddressBuro" class="detailsControlTable clssControlBuro clssTablesBuro" style="margin-top: 15px;font-size: 0.9em;" >
+					<div class="centerPosition">
+						<h:panelGroup id="sectionAddressBuro">
+							<p style="width: 70%; float: left;"><strong class="orange">Direcciones</strong></p>	
+							<br style="clear:both;" />
+							
+							<div class="tabS" style="font-size: 1.0em; margin-top: 20px;" >
+								
+								<table class="tableDomicilios">
+									
+									<h:outputText escape="false"   value="#{chartBackBean.tableDomicilios}" ></h:outputText>
+									
+								</table>
+								
+							</div>	
+							
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>				
+</ui:composition>				

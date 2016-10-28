@@ -1,0 +1,26 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+			     xmlns:p  = "http://primefaces.org/ui">
+			     
+	<p style = "clear: both;" />
+	
+	<div class = "dvContent stlCntNumApple">
+		<div class = "dvLabel" >
+			<h:outputLabel styleClass = "labelsStl" value="${msg.Block_text}" />
+		</div>
+		
+	
+		<div class = "dvElement" >
+			<h:inputText immediate = "true" size = "4" 
+						 value = "#{basicData.fiscal.address.mx_manzana}"
+						 onfocus    = "Domicilio.init_focus_date(9);" 
+						 styleClass = "elementAddresMin">
+						 
+				<p:ajax event = "blur"  
+						oncomplete = "Domicilio.mx_manzana_on_complete(xhr, status, args);" 
+						listener   = "#{basicData.fiscal.init_mx_manzana}"/>
+			</h:inputText>
+		</div>
+	</div>			     
+</ui:composition>			     

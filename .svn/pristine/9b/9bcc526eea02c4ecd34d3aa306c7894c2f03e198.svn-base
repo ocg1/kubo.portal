@@ -1,0 +1,142 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+ 	<div style="display:none">
+ 		<div id="dvLoggin" style="font-size: 1.2em;" >
+ 		
+ 		 <a href="../Portal/index.xhtml?iniciarSesion=true" class="open_home"> <img  src="../resources/img/close.png" alt="" class="close_dvResInv"/></a>
+ 		
+ 		
+ 			<div id="contDvMsgDiferentUser" style="padding: 10px; display: #{(chartBackBean.diferentUsr)?'block':'none'};">
+	 			
+	 			La cuenta <b>#{chartBackBean.account1}</b> esta siendo utilizada en este equipo.
+	 			
+	 			<br /><br />
+	 			
+	 			Si deseas entrar con la cuenta  <b>#{chartBackBean.account2}</b> por favor 
+	 			
+	 			<!-- <a href="#" class="initClass" > -->
+	 			<p:commandLink onstart="return initDiferentUser();" immediate="false" actionListener="#{chartBackBean.deleteDiferentSession}"  ajax="true" >
+	 				inicia desde aquí
+	 			</p:commandLink>
+	 			<!-- </a> -->.
+	 			
+	 			<br /><br />
+	 			
+	 			Esto hará que la sesión de <b>#{chartBackBean.account1} se perderá.</b>
+	 			
+ 			</div>
+ 			<!-- <div id="contProcessing" style="display: none;">
+ 			
+	 			<h:graphicImage style="float: left; width: 30px; margin: 35px 0px 0px; height: 30px;"  
+						url="../resources/img/ajax-loader.gif" >
+				</h:graphicImage>
+ 			
+			</div> -->
+ 			<div id="contDvAccess" style="width: 320px; height: auto; overflow: hidden; float: left; border: solid 0px #FF0000;display: #{(chartBackBean.diferentUsr)?'none':'block'}; ">
+				<div style="padding: 0px; margin-top: 0px !important; height: auto; overflow: auto; width: 320px; margin-top: 0px;  padding-top: 0px !important; padding-bottom: 0px !important; position: relative; ">
+		    	
+				<div class="msgBorder" style="height: auto !important; overflow: auto !important; ">
+			
+						<div class="logPR">
+							<!-- <h:form id="login" prependId="false"> -->
+									
+								<!-- <h:inputHidden style="display:none" id="namebraw"  value=""></h:inputHidden>
+								<h:inputHidden style="display:none" id="verbraw" value=""></h:inputHidden>
+								<h:inputHidden style="display:none" id="osbraw" value=""></h:inputHidden> -->
+								
+								<h:inputHidden style="display:none" id="widthScr" value=""></h:inputHidden>
+								
+			
+									<h3 class="encabezado_3">Inicia tu sesión</h3>
+								
+								
+		   						<h:panelGroup id="warningUser">
+									<div style="display: #{addNaturalPerson.displayWarningUser};" >
+										
+										<div style="margin-left: 15px !important;" >
+											<h:outputText escape="false" value="#{addNaturalPerson.warningUser}"></h:outputText>
+										</div>
+										
+									</div>
+								</h:panelGroup>
+								
+								<h:panelGroup id="warningUserVal">
+									<h:panelGroup rendered="#{headerBean.warninguserdisp}">
+									<div style="margin-left: 15px !important;" >
+										<h:outputText escape="false" value="#{headerBean.warningUserMsg}"></h:outputText>
+									</div>
+									</h:panelGroup>
+									
+									<div id="strMsg" class="mensaje_error_superior"></div>
+									
+								</h:panelGroup>
+								
+								<h:panelGroup rendered="#{!chartBackBean.showInputId}">
+								
+											<h:outputText value="#{chartBackBean.naturalPersonOfMail.NombreCompletoNPM()}" styleClass="valor_predefinido" ></h:outputText>
+									
+								</h:panelGroup>
+								<h:panelGroup rendered="#{chartBackBean.showInputId}">
+								
+									<div class="dvContent">
+										<p class="etiqueta">
+											<!-- <h:outputText value="#{msg.log_email}" styleClass="labelsStl" ></h:outputText> -->
+											<h:outputText value="#{msg.log_email}"  ></h:outputText>
+										</p>
+									
+											
+											<p:inputText id="usr" value="#{chartBackBean.usr}" styleClass="estilo_input" required="true" theme="none" requiredMessage="Favor de introducir tu correo electrónico" style="font-size: 1.0em !important;">
+												<p:ajax event="blur" ></p:ajax>
+												<f:validateLength minimum="2" />
+											</p:inputText>
+									
+									</div>
+								
+								</h:panelGroup>
+									
+								<div class="dvContent">
+									<p class="etiqueta">
+										<h:outputText value="#{msg.log_pwd}"></h:outputText>
+									</p>
+								
+										<p:focus for="confpass" />
+						                <p:inputText id="confpass" styleClass="estilo_input"  onkeyup="keyEventIntro(event,this);" value="#{chartBackBean.password}"  type="password"  required="true" requiredMessage="Favor de introducir tu contraseña" style="font-size: 1.0em !important;">
+											<p:ajax event="blur" ></p:ajax>
+											<f:validateLength minimum="2" />
+										</p:inputText>
+									
+								</div>	
+								
+								<h:panelGroup id="warningUserBut">
+									<h:panelGroup rendered="#{headerBean.warninguserbut}">
+									
+											
+												<a class="olvidaste_contraseña" href="../jsf/forgotpass.xhtml">¿Olvidaste tu contraseña?</a>
+										
+											
+										<div id="btnLoggin" class="btn_verde" onclick="initLog();">
+											<h:outputText value="Entrar" />
+										</div>
+										
+									</h:panelGroup>
+								</h:panelGroup>
+							<!-- </h:form> -->
+						</div>
+						
+						<div style="display:none" class="contrasena_expirada">
+							<h3 class="encabezado_3">Contraseña expirada</h3>
+							<p><strong>Tu contraseña ha expirado</strong>, por favor cambialo en el sig acceso al portal</p>
+							
+							<a href="../Portal/index.xhtml" class="btn_verde">Regresar al home</a>
+						</div>
+						
+					</div>
+			
+				</div>
+			</div>
+ 		</div>
+ 	</div>				
+</ui:composition>				

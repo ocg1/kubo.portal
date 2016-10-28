@@ -1,0 +1,61 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	            xmlns:h  = "http://java.sun.com/jsf/html"
+	            xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "kubo_numeros" class = "kubo_numeros">
+		<span class = "oculto" style = "display:none;">oculto</span>
+		
+		<h2>Nuestros números</h2>
+		
+        <div>
+             <h3>
+             	<span class="Count">#{inicioValues.statistics.tasa_promedio}</span>
+             	<sub>#{inicioValues.statistics.tasa_promedio_parte_decimal}</sub>
+             </h3>
+             
+             <p>Tasa promedio</p>
+               
+             <small>
+              <i class="fa fa-bar-chart"></i>
+              <i class="fa fa-line-chart"></i>
+              <i class="fa fa-pie-chart"></i>
+              <i class="fa fa-area-chart"></i>
+           </small>
+         </div>
+         
+		<div>
+			<h3 class="Count">#{inicioValues.statistics.prestamos_otorgados}</h3>
+			<p>Préstamos otorgados</p>
+			<small>
+              <i class="fa fa-graduation-cap"></i>
+              <i class="fa fa-calculator"></i>
+              <i class="fa fa-car"></i>
+              <i class="fa fa-book"></i>
+           </small>                
+		</div>
+         
+          <div>
+             <h3 ><span class="Count">#{inicioValues.statistics.clientes}</span></h3>
+             <p>Clientes</p>
+             <small>
+              <i class="fa fa-user"></i>
+              <i class="fa fa-user"></i>
+              <i class="fa fa-user"></i>
+              <i class="fa fa-user"></i>
+             </small>
+         </div>
+         
+         <div>
+             <h3>$<span class="Count2">#{inicioValues.statistics.millones_prestados}</span><sub>MM</sub></h3> 
+             <p>millones prestados</p>   
+             <small>
+               <i class="fa fa-money"></i>
+               <i class="fa fa-money"></i>
+               <i class="fa fa-money"></i>
+               <i class="fa fa-money"></i>
+              </small>
+             </div>
+     </div>				
+</ui:composition>				

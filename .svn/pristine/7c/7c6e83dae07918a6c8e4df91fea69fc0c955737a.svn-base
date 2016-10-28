@@ -1,0 +1,38 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id="img_expedient" rendered="#{electronicFile.creden_fm2_dip}">
+		<fieldset>
+			<div class="dvContent" style="overflow: hidden;">
+				<div id="containerDoc" style="width: auto;height: auto;">	
+					<h:form>							
+					<ui:repeat var="document" value="#{electronicFile.listDocumentation}" varStatus="index">
+					<h:panelGroup rendered="#{document.flag}">
+						<div align="center" style="width: 100%; background-color: #f0f3c3; height: auto; overflow: auto;">
+					
+							<br></br>
+								Proyecto: #{document.proyect_loan_id} Estatus: #{document.status}
+							<br></br>
+						</div>
+					</h:panelGroup>
+							<div style="margin:15px;width: 870px;">
+								<div class="clTitle" style="width: 450px;">#{document.description}<br /></div>	
+								<!-- <p:commandLink actionListener="#{electronicFile.editDocument}" style="float:right;text-decoration:none;" oncomplete="showEditCropperImage(xhr, status, args);">
+									<div id="buttonNext" style="margin:0;"  class="buttonPR">
+										Editar documento
+									</div>								
+									<f:attribute name="documents" value="#{document.prospectus_id}::#{document.company_id}::#{document.originalPathImg}::#{document.typeFile}::#{document.file_id}"></f:attribute>
+								</p:commandLink>	 -->		
+								<iframe src="../resources#{document.urlImg}"  style="width:700px; height:600px;float: left;"></iframe>	
+							</div>
+							<p style="clear: both;"/>						
+					</ui:repeat>	
+					</h:form>					
+				</div>
+			</div>
+		</fieldset>
+	</h:panelGroup>					
+</ui:composition>				

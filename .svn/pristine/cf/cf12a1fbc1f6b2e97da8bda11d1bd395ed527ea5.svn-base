@@ -1,0 +1,34 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div id="passHelp"  style="opacity: 1.87; position: absolute; display: none; border: 2px solid #CCCCCC; width:405px;height: auto;overflow: auto;">
+	
+		<div class="arrow_leftHelp"></div>
+					<div class="passHelp_info">
+						
+				     </div>
+	                 <div class="close">X</div>
+					<ul id="message">
+						
+						<li id="passTitle"  ><b>Tu contraseña debe contener:</b></li>
+						<li id="valLength" class="item descVal" >Al menos 8 caracteres.</li>
+						<li id="valVoc" class="item descVal" >Al menos una vocal.</li>
+						<li id="valCnsnt" class="item descVal" >Al menos una consonante.</li>
+						<li id="valNum" class="item descVal" >Al menos un número</li>
+						<li id="passTitle2" ><b>Tu contraseña NO debe contener:</b></li>
+						<li id="valName" class="item descVal" >Tu nombre</li>
+						<li id="valUsr" class="item descVal" >Tu nombre de usuario del correo electrónico</li>
+						<li id="valInst" class="item descVal" >El nombre de la institución</li>
+						<li id="valCharCon" class="item descVal">Caracteres consecutivos</li>
+						<li id="valNumCon" class="item descVal" >Números consecutivos</li>
+						<li id="valRepChar" class="item descVal">Un caracter repetido más de 2 veces consecutivas</li>
+						<li id="valMaxLength" class="item descVal" >Más de 12 caracteres</li>
+					</ul>
+			
+	
+	</div>
+
+</ui:composition>

@@ -1,0 +1,34 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+
+	<div class="menu_interior  FloatingMenu">
+	<div class="contentMenu">
+                    	<h6><span>MENÚ</span></h6>
+                    	<ul>
+                    		<li>	<p:commandLink action="empezar-invertir" immediate="true"  styleClass="empezar-invertir">¿Cómo empezar a invertir?</p:commandLink></li>
+                    		<li>
+                    		<p:commandLink action="productos-captacion" immediate="true"  styleClass="tipo-productos">Tipo de productos</p:commandLink>
+                            <ul>
+                               <li><p:commandLink action="kubo-impulso" immediate="true"  styleClass="kubo-impulso" >Kubo.impulso</p:commandLink> </li>                          
+	                            <li><p:commandLink action="kubo-global" immediate="true"  styleClass="kubo-global" >Kubo.global</p:commandLink> </li>                          
+	                            <li><p:commandLink action="kubo-plazofijo" immediate="true"  styleClass="kubo-plazofijo" >Kubo.plazofijo</p:commandLink> </li>       
+	                         
+                    	
+                    		</ul>
+                    		</li>
+                    	</ul>	  
+                    	<aside>
+                    	   <h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+                            			<p:commandLink styleClass="callAction btnNaranja investment" immediate="true" action="inicio_preregistro_inversionista" >Registrarme</p:commandLink>
+                       		 </h:panelGroup>
+                       	</aside>
+                       	</div>
+                    </div>
+                    
+                   
+                    
+                    </ui:composition>

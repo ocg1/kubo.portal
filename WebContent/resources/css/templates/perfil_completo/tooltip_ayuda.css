@@ -1,0 +1,326 @@
+@CHARSET "UTF-8";
+
+div.tooltip
+{
+	width: 139px;
+	
+	top: -15px; 
+	left: 12px; 
+	z-index:200;
+	
+	padding: 10px; 
+	
+	display: none;
+	position: absolute;	
+	
+	text-align: center;								
+	
+				
+	background-color: #FFFFFF; 	
+	border: solid 1px #439539; 
+}
+
+p.tooltip_message
+{
+	font-size: 14px !important;
+	text-align: left;
+	line-height: 18px;
+}
+
+div.tooltip_icon
+{
+	border:0px solid black;
+	position: relative;
+	width: 16px; 
+	height: 16px;
+	cursor: pointer;
+	display: block;
+}
+
+div.cerrar_modal_motive
+{
+	position: absolute;
+	top: -13px;
+	right: -15px; 
+	width: 26px; 
+	height: 26px; 
+	z-index: 180;
+	border-radius: 32px;
+}
+
+div.cerrar_modal_motive img
+{
+	background-color: transparent;
+	border: 0;
+	width: 100%;
+}
+
+div.tooltip_icon_ver_perfil_completo
+{
+	top: -19px;
+	left: 2px; 
+}
+
+div.tooltip_icon_score_buro_credito
+{
+	top: -19px;
+	left: -19px; 
+}
+
+div.tooltip_icon_credito_personal
+{
+	top: -19px;
+	left: -4px; 
+}
+
+div.tooltip_icon_plazo
+{
+	top: -19px;
+	left: 26px; 
+}
+
+div.tooltip_icon_fondeadores
+{
+	top: -18px;
+	left: 3px; 
+}
+
+div.tooltip_icon_frecuencia_pago
+{
+	top: -80px;
+	left: -18px; 
+}
+
+div.tooltip_icon_actividad_economica
+{
+	top: -18px;
+	left: -19px; 
+}
+
+div.tooltip_icon_ingresos_mensuales
+{
+	top: 6px;
+	right: -247px; 
+}
+
+div.tooltip_icon_egresos_mensuales
+{
+	top: 16px !important;
+	right: 20px !important; 
+}
+
+div.tooltip_icon_excedente
+{
+	top: 16px !important;
+	right: 4px !important; 
+}
+
+div.tooltip_icon_liquidez_mesa_control
+{
+	top:144px;
+	left: 800px;
+}
+
+div.tooltip_icon_indice_pago_deudas
+{
+	top:40px;
+	left: 540px;
+}
+
+div.tooltip_icon_lista_de_telefonos
+{
+	top:-18px;
+	left:-38px;
+}
+
+div.tooltip_icon_acerca_del_proyecto
+{
+	top:-19px;
+	left:-19px;
+}
+
+div.tooltip_icon_buro_de_credito
+{
+	top:-19px;
+	left:1px;
+}
+
+div.tooltip_icon_nivel_de_endeudamiento
+{
+	top:-19px;
+	left:210px;
+}
+
+div.tooltip_icon_quebrantos
+{
+	top:-35px;
+	left:84px;
+}
+
+div.tooltip_icon_grafica_MOP
+{
+	top:-483px;
+	left:210px;
+}
+
+div.tooltip_icon_grafica_MOP_lineas
+{
+	top:-348px;
+	left:6px;
+}
+
+div.tooltip_buro_de_credito
+{
+	top: 26px; 
+	left: -214px;
+}
+
+div.tooltip_ver_perfil_completo
+{
+	top: 32px; 
+	left: 5px;
+}
+
+div.tooltip_icon_efectivo_disponible
+{
+	top: 0px; 
+	left: 130px;
+	position: absolute;
+}
+
+div.tooltip_icon_inversiones_proceso
+{
+	top: 0px; 
+	left: 158px;
+	position: absolute;
+}
+
+div.tooltip_icon_inversiones_proceso_2
+{
+	top: 0px; 
+	left:75px;
+	position: absolute;
+}
+
+div.tooltip_icon_inversiones_activas
+{
+	top: 0px; 
+	left: 128px;
+	position: absolute;
+}
+
+div.tooltip_icon_intereses_por_cobrar
+{
+	/* top: 0px; */ 
+	position: relative;
+	/* float: left; */
+	/* margin: -19px  20px 0 0; */
+	clear: both;
+	/* overflow: hidden; */
+	display: block;
+	float:right;
+}
+
+div.tooltip_icon_minusvalia
+{
+	top: 0px; 
+	left: 119px;
+	position: absolute;
+}
+
+div.tooltip_icon_int_moratorios
+{
+	top: 0px; 
+	left: 143px;
+	position: absolute;
+}
+
+div.tooltip_icon_int_plazofijo
+{
+	top: 0px; 
+	left: 66px;
+	position: absolute;
+}
+
+div.tooltip_icon_int_impulso
+{
+	top: 0px; 
+	left: 132px;
+	position: absolute;
+}
+
+div.tooltip_icon_int_global
+{
+	top: 0px; 
+	left:61px;
+	position: absolute;
+}
+
+div.tooltip_icon_capital
+{
+	top: 0px; 
+	left:47px;
+	position: absolute;
+}
+
+div.tooltip_icon_intereses_dev_plazofijo{
+	top: 0px; 
+	left: 149px;
+	position: absolute;
+}
+
+div.tooltip_icon_inversiones_plazofijo{
+	top: 0px; 
+	left: 130px;
+	position: absolute;
+}
+
+div.tooltip_score_buro_credito,
+div.tooltip_plazo,
+div.tooltip_credito_personal
+{
+	top:0;
+}
+
+div.tooltip_fondeadores
+{
+	top: -62px;
+}
+
+div.tooltip_motivo_del_cambio
+{
+	top: 30px; 
+	left: 90px; 
+}
+div.tooltip_icon_interese_garantia_impulso
+{
+	top: 0px; 
+	left:136px;
+	position: absolute;
+}
+.ui-icon {
+	background-image: url(../../../img/ui-icons_D5D5D5_256x240.png) !important;	
+}
+.ui-icon.gray { 
+	background-image: url(../../../img/ui-icons_D5D5D5_256x240.png) !important; 
+}
+
+@media (max-width: 600px){
+	div.tooltip {
+		width: 219px;
+
+		top: -20px; 
+		left: 12px;
+	
+	}
+}
+
+
+@media (max-width: 450px){
+	div.tooltip {
+	width: 110px;
+	
+	top: -30px; 
+	right: auto;
+}
+}

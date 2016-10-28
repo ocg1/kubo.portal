@@ -1,0 +1,318 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">	
+							
+	<h2  class="expand_togle">
+		<a  href="#">Egresos mensuales</a>
+		
+	</h2>											 
+	
+	<ui:include src = "../tooltip/egresos_mensuales.xhtml"/>
+	<ui:include src = "../tooltip/excedente.xhtml"/>
+	
+	<div>
+					
+		<div>							
+			<p:dataTable styleClass="expensetable"  
+				  var="listExpenses" 
+				  value="#{summaryRequest.listExpensesBean}" 
+				  style="font-size: 1.0em !important;
+				  table-layout: fixed" >		
+				  
+				<p:columnGroup type="header" rendered="#{sessionBean.area=='M'}">
+					<p:row>
+						
+						<p:column style="text-align:right; ">
+							<f:facet name="header">
+								
+							</f:facet>
+						</p:column>
+						<p:column style="text-align:right;">
+							<f:facet name="header">
+								<div style="font-weight: normal;font-size: 1.1em; float: left;" >Cliente</div>
+								<a href="#porcentClientDis" id="clientPorcent" ><span  class="porcenResumen" >%</span></a>
+							</f:facet>
+						</p:column>
+						<p:column style="text-align:right;" rendered="#{sessionBean.area=='M'}">
+							<f:facet name="header">
+								<div style="font-weight: normal;font-size: 1.1em; float: left;" >Mesa de control</div>
+								<a href="#porcentClientDis" id="mesaPorcent" ><span class="porcenResumen"  >%</span></a>
+							</f:facet>
+						</p:column>
+						
+					</p:row>
+				</p:columnGroup>
+	
+				<p:columnGroup type="header" rendered="#{sessionBean.area=='M'}">
+					<p:row >
+					  	<p:column  >
+							
+								<div style="font-weight: normal;font-size: 0.9em;text-align: center; margin-left: auto; margin-right: auto;" >
+									Ocultar Detalle de Gastos
+								</div>
+							
+						</p:column>
+						<p:column  ></p:column>
+						<p:column  ></p:column>
+					</p:row>
+				</p:columnGroup>
+				<p:column >
+					<div style="width: 145px !important;border: solid 0px #000000;">
+						<h:outputText value="#{listExpenses.name}" />
+					</div>
+				</p:column>
+		
+				<p:column style="text-align: right;" >
+					<div style="width: 65px !important;border: solid 0px #000000;">
+					<h:outputText value="#{listExpenses.ammount}">
+						<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>									
+					</h:outputText>
+					</div>
+				</p:column>
+		
+				<p:column style="text-align: right; padding-right: 3px; " rendered="#{sessionBean.area=='M'}"  >
+					<div>
+					<span>$</span>
+					<h:inputText rendered="#{summaryRequest.changeActions}"  size="7" styleClass="elementAddresMin" value="#{listExpenses.ammount_modified}" onkeyup="format(this,'otro');" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;">
+						<p:ajax event      = "blur" 
+								onstart    = "return funcWait();" 
+								oncomplete = "return funcWaitRes();" 
+								listener   = "#{summaryRequest.changeExpenses(listExpenses)}" 
+								update     = ":frmQuest:pnlIndicadores :frmQuest:lstExpensestb :frmQuest:indice_pago_deudas :frmQuest:indice_pago_deudas_mesa_control"/>
+					</h:inputText>
+					<h:panelGroup rendered="#{!summaryRequest.changeActions}" >
+						#{listExpenses.ammount_modified}
+					</h:panelGroup>
+					</div>
+				</p:column>
+		
+				<p:columnGroup type="footer">
+					<p:row>				
+						<p:column style="text-align:right;">
+							<f:facet name="footer">
+								<div style="text-align:left;">
+									Total
+								</div>
+							</f:facet>
+						</p:column>
+						
+						<p:column style="text-align:right;">
+							<f:facet name="footer">
+								<div style="text-align:right; border-top: solid 2px #9E9E9E;">
+									<div style="margin-right: 20px;">
+										<h:outputText value="#{summaryRequest.totalExpenses}" >
+											<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										</h:outputText>
+									</div>
+								</div>
+							</f:facet>
+						</p:column>
+						
+						<p:column style="text-align:right;" rendered="#{sessionBean.area=='M'}">
+							<f:facet name="footer">
+								
+								<div style="text-align:right; border-top: solid 2px #9E9E9E;" id="dvTotalExpensesRes" >
+									<div style=" width: 60px; margin-left: 69px;">
+										<h:outputText value="#{summaryRequest.totalExpensesControl}" >
+											<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										</h:outputText>
+									</div>
+								</div>
+								<div style="text-align:right; border-top: solid 2px #9E9E9E; display: none; margin-left: 40px;" id="dvTotalExpensesWait" >
+									<p:graphicImage height="20px" width="20px;" url="../resources/img/ajax-loader.gif" style="margin-left: auto; margin-right: auto;" ></p:graphicImage>
+								</div>
+								
+							</f:facet>
+						</p:column>				
+					</p:row>
+					
+					<p:row >
+						<p:column  colspan="#{(sessionBean.area=='M' )?3:2}" >
+							<f:facet name="footer">
+								<hr />
+							</f:facet>
+						</p:column>
+					</p:row>
+					
+					<p:row>				
+						<p:column style="text-align:right;">
+							<f:facet name="footer">
+								<div style="text-align:left;font-weight: bold; ">
+									Excedente
+								</div>																						
+							</f:facet>
+						</p:column>
+						
+						<p:column style="text-align:right;">
+							<f:facet name="footer">
+								<div style="text-align:right; ">
+									<div style="margin-right: 20px;">
+										<h:outputText value="#{sessionBean.area=='M'?summaryRequest.excedente:summaryRequest.excedenteControl}" >
+											<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										</h:outputText>
+									</div>
+								</div>
+							</f:facet>
+						</p:column>
+						
+						<p:column style="text-align:right;" rendered="#{sessionBean.area=='M'}">
+							<f:facet name="footer">
+								
+								<div style="text-align:right; " id="dvTotalExpensesRes" >
+									<div style=" margin-right: 33px;">
+										<h:outputText value="#{summaryRequest.excedenteControl}" >
+											<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										</h:outputText>
+									</div>
+								</div>
+								<div style="text-align:right; border-top: solid 2px #9E9E9E; display: none; margin-left: 40px;" id="dvTotalExpensesWait" >
+									<p:graphicImage height="20px" width="20px;" url="../resources/img/ajax-loader.gif" style="margin-left: auto; margin-right: auto;" ></p:graphicImage>
+								</div>
+								
+							</f:facet>
+						</p:column>				
+					</p:row>
+					
+					<p:row rendered="#{sessionBean.area=='M' }">
+						<p:column  colspan="3" >
+							<f:facet name="footer">
+								<hr />
+							</f:facet>
+						</p:column>
+					</p:row>
+					
+				</p:columnGroup>
+			</p:dataTable>			
+	
+			<h:panelGroup id="section-ammount-consolidate" rendered="#{summaryRequest.consolidate!=null}">
+				<div id="container-question-consolidate">
+					<div style="float:left"><h:outputText value="¿Se van a consolidar deudas?" /></div>
+					<div class="radio-question-consol">
+						<h:selectOneRadio id="radio-question-consol" styleClass="styleradiolocal"  value="#{summaryRequest.consolidate}"  >
+							<f:selectItem itemValue="1" itemLabel="Si"/>
+							<f:selectItem itemValue="2" itemLabel="No"/>		
+							<p:ajax event="click" listener="#{summaryRequest.setNullAmmuntMinus}" update=":frmQuest:section-ammount-consolidate :frmQuest:pnlIndicadores"></p:ajax>					    
+						</h:selectOneRadio>
+					</div>
+				</div>
+			
+				<h:panelGroup id="section-ammount-minus"  rendered="#{summaryRequest.consolidate==1}">
+				
+					<div >
+						<div class="monto_consolidar"><h:outputText value="Monto a consolidar" /></div>
+						<div style="float: right; width: 140px;">
+							<span>$</span>
+							<span>
+							<h:inputText id="txt-ammount-minus-consolidate" size="7" styleClass="elementAddresMin" onkeyup="format(this,'otro');showComment(this);" value="#{summaryRequest.ammountConsolidate.ammount_modified}" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;" rendered="#{summaryRequest.changeActions}" >														
+								<p:ajax event="blur"></p:ajax>
+							</h:inputText>
+							<h:panelGroup rendered="#{!summaryRequest.changeActions}" >
+								#{summaryRequest.ammountConsolidate.ammount_modified}
+							</h:panelGroup>
+							</span>
+							<span>
+								<p:commandLink  rendered="#{summaryRequest.changeConsolidate.hasChange}" actionListener="#{summaryRequest.setListChanges(summaryRequest.changeConsolidate)}" oncomplete="showPopUpChanges();" immediate="true" style="cursor:pointer;float:right;margin-top:3px;">
+									<h:graphicImage styleClass="change_icon"  url="../resources/img/change-icon.png" />
+								</p:commandLink>												
+							</span>
+						</div> 
+					</div>
+					
+					<div style="clear: both;">
+						<div id="text-comment-for-consolidate" style="display:none;">
+						 	<div>
+						 		<h:inputTextarea id="txt-reason-consolidate" styleClass="elementTextArea" style="margin:5px 0;width:404px !important;height:100px !important;font-size: 1em ! important;" cols="25" rows="3" value="#{summaryRequest.ammountConsolidate.whyChangeData}">
+								 	<p:ajax event="blur"></p:ajax>
+								</h:inputTextarea>
+								<p:watermark for="txt-reason-consolidate" value="Motivo del cambio" />
+								<p:commandLink immediate="true" style="text-decoration: none;" onstart="return validateChangeConsolidate(#{summaryRequest.ammountConsolidate.ammount})" oncomplete="inicializaModal();" update=":frmQuest:section-ammount-minus :frmQuest:pnlIndicadores"  actionListener="#{summaryRequest.updateAmmountMinus}">
+									<div class="buttonPR" style="width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">
+										Guardar
+									</div>		
+								</p:commandLink>		
+								<p:commandLink update=":frmQuest:section-ammount-consolidate" actionListener="#{summaryRequest.setConsolidate(2)}">									 	
+									<div class="buttonPR" style="margin: 0; width: 71px;font-size:0.9em;float: left;">
+										Cancelar
+									</div>	
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+				
+					<table class="edit-ammoun-minus">
+						<tbody>
+							<tr><td></td><td></td><td></td></tr>
+							<tr> <td colspan="3" ><hr /></td></tr>
+							<tr style="font-weight: bold;">
+								<td style="text-align:left;">Excedente</td>
+								<td style="text-align:right;padding-right:50px">
+									<div style="margin-right: 10px;">
+										<h:outputText value="#{sessionBean.area=='M'?summaryRequest.excedente:summaryRequest.excedenteControl}" >
+											<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										</h:outputText>
+									</div>
+								</td>
+								<td style="text-align:right;">
+									<div style=" margin-right: 33px;">
+										<h:outputText value="#{summaryRequest.ammountConsolidate.excedentConsolidate}" >
+											<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+										</h:outputText>
+									</div>
+								</td>
+							</tr>
+							<tr> <td colspan="3" ><hr /></td></tr>
+						</tbody>	
+					</table>
+				</h:panelGroup>									
+			</h:panelGroup>
+		</div>
+	</div>
+	
+	<div class="getTotal" style="font-weight: bold;color: #4F4F4F;display: none; width: #{sessionBean.area=='M'?410:320}px;">
+		<div style="float: left; margin-left: 10px;">Total</div>
+		<div style="float: right;">
+			<div style="float:left;">
+				<h:outputText value="#{summaryRequest.getTotalExpenses()}" >
+					<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+				</h:outputText>
+			</div>
+			<h:panelGroup rendered="#{sessionBean.area=='M'}">
+				<div style="float: left; margin-left: 10px;">
+					<h:outputText value="#{summaryRequest.totalExpensesControl}" >
+						<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+					</h:outputText>
+				</div>
+				
+			</h:panelGroup>
+		</div>
+	</div>
+	
+	<div class="getTotal" style=" clear:both; font-weight: bold; margin-bottom:15px; padding-top: 10px; color: #4F4F4F;display: none; width: #{sessionBean.area=='M'?410:320}px;">
+		<hr />
+	</div>
+	
+	<div class="getTotal" style=" clear:both; font-weight: bold;color: #4F4F4F;display: none; width: #{sessionBean.area=='M'?410:320}px;">
+		<div style="float: left; margin-left: 10px;">Excedente</div>
+		<div style="float: right;">
+			
+			<div style="float:left;">
+				<h:outputText value="#{sessionBean.area=='M'?summaryRequest.excedente:summaryRequest.excedenteControl}" >
+					<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+				</h:outputText>
+			</div>
+			
+			<h:panelGroup rendered="#{sessionBean.area=='M'}">
+			<div style="float:left;  margin-left: 15px;">
+				<div >
+					<h:outputText value="#{summaryRequest.excedenteControl}" >
+						<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+					</h:outputText>
+				</div>
+			</div>
+			</h:panelGroup>
+			
+		</div>
+	</div>				
+</ui:composition>				

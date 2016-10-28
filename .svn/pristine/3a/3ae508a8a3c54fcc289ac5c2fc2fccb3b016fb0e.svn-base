@@ -1,0 +1,28 @@
+	<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">			
+			
+					<div class="alerts sucesssPopUp elementoCentrar">
+						<i class="fa fa-times closePop" onclick="closeSucesssPopUp()"></i>
+						<div class="bT">
+	        				<p>Estamos revisando tu información de Buro de Crédito para poder darte el estatus de <strong>pre-aprobacion.</strong></p>
+
+							<p>Continúa llenando tu solicitud, nosotros te mostraremos los resultados en pantalla</p>
+
+							<div class="callAction btnNaranja">Continuar</div>
+	        			
+	        		
+        				</div>
+
+        				<figure class="imagen"> 
+        					<!-- h:graphicimage library="img/nuevoRegistro" name="Rechazado.jpg"></h:graphicimage -->
+        						<img src="../resources/img/analizando.png"/>
+        				</figure>
+        	
+					
+				
+					</div>
+				
+				</ui:composition>

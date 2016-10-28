@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup rendered = "#{summaryRequest.domicilio_actividad != null}">
+		<div id = "container-employment-address-TOKEN">
+			<ui:include src = "editor-domicilio/zipcode.xhtml"/>
+			<ui:include src = "editor-domicilio/neighborhood.xhtml"/>
+			<ui:include src = "editor-domicilio/town.xhtml"/>
+			<ui:include src = "editor-domicilio/state.xhtml"/>
+			<ui:include src = "editor-domicilio/street.xhtml"/>
+			<ui:include src = "editor-domicilio/numbers.xhtml"/>
+			<ui:include src = "editor-domicilio/manzana-lote.xhtml"/>
+			<ui:include src = "editor-domicilio/save-cancel.xhtml"/>			
+		</div>
+	</h:panelGroup>	
+	
+</ui:composition>	

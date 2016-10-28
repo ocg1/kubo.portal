@@ -1,0 +1,69 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered="#{electronicFile.dispListSIC}" >
+		
+		<!-- <h:panelGroup rendered="#{electronicFile.listDocSIC!=null and electronicFile.listDocSIC.size()>0}"> -->
+			<br />
+			<fieldset>
+				<div class="dvContent" style="overflow: hidden;">
+					<div id="containerDocSIC" style="width: auto;height: auto;">
+						
+						<div class="clTitle" style="width: 450px;">Autorización para Consulta<br /></div>
+						
+						<h:panelGroup rendered="#{electronicFile.idProvider}" >
+							<div style="margin-left: 20px;"> Cliente autenticado por medios electrónicos</div>
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{!electronicFile.idProvider}" >
+							<div style="margin-left: 20px;">
+								El cliente firmó una autorización de consulta a las 
+								Sociedades de Información Crediticia
+							</div>
+						</h:panelGroup>
+						
+						<ui:repeat var="document" value="#{electronicFile.listDocSIC}">
+								<div style="margin:15px;">
+								
+								<h:panelGroup rendered="#{document.flag}">
+									<div align="center" style="width: 100%; background-color: #f0f3c3; height: auto; overflow: auto;">
+										<br></br>
+											Proyecto: #{document.proyect_loan_id} Estatus: #{document.status}
+										<br></br>
+									</div>
+								</h:panelGroup>
+								
+									<div class="clTitle">#{document.description}<br /></div>				
+									<iframe src="../resources#{document.urlImg}"  style="width:700px; height:600px;"></iframe>	
+								</div>						
+						</ui:repeat>	
+						
+						<h:panelGroup rendered="#{!electronicFile.idProvider and electronicFile.listDocSIC != null and electronicFile.listDocSIC.size()==0}" >
+							<div style="margin-left: 20px;">
+								No ha sido adjuntado el documento
+							</div>
+							<br /><br />
+						</h:panelGroup>
+											
+					</div>
+				</div>
+			</fieldset>
+		<!--
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{electronicFile.listDocSIC==null or electronicFile.listDocSIC.size()==0}">
+			<br />
+			<fieldset>
+			<div class="clTitle" style="width: 450px;">#{electronicFile.titleStr}<br /></div>
+				<br />
+				<div style="margin-left: 20px;"> #{electronicFile.contMsgStr}</div>
+			</fieldset>
+		</h:panelGroup> -->
+		<br />
+		<br />
+		<br />
+	</h:panelGroup>				
+</ui:composition>				

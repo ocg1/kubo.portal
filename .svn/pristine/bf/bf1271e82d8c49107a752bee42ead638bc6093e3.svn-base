@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+div.cont_foto_perfil_nombre
+{
+	width:100%;
+	min-width:265px;
+	
+	overflow: hidden; 
+	
+	border:0px solid gray;	
+}
+
+
+div.nav_foto_perfil
+{
+	width:99%;
+	min-width:130px;
+	
+	margin:0 auto;
+	
+	float:left;	
+	
+	background-color: transparent;
+	border:1px solid silver;	
+	
+	border-radius:         4px;
+	-moz-border-radius:    4px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius:  4px;
+}
+
+div.main_nombre
+{
+	width:99%;	
+	min-width: 265px;
+	
+	margin:1px;	
+	
+	float:left;		
+	overflow:hidden;
+	border:0px solid gray;	
+}

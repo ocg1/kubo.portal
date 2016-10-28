@@ -1,0 +1,65 @@
+.ui-widget-header {
+	background:none;
+	/* color:#ffffff; */
+	font-size: 21px;
+	font-weight:normal;
+	margin:0 0 20px;
+	border-bottom: 1px solid #ccc !important;
+	padding: 0 0 5px 0 !important;
+	font-weight: 500;
+	letter-spacing: 0;
+
+}
+
+
+
+.ui-dialog {
+	width: 280px !important;
+	resize: none !important;
+	padding: 20px 20px !important;
+	border:2px #538b39 solid;
+	height: 192px !important;
+		font-family:'Open Sans', sans-serif;
+		z-index:9999999999 !important
+}
+
+.ui-dialog p{
+	font-size:15px;
+	margin:0 0 20px;
+}
+
+.ui-dialog-content {
+	padding:0 !important;
+}
+  .ui-dialog-title {
+	margin:0 !important;
+	padding:0;
+}
+
+.ui-resizable {
+	resize: none !important;
+}
+
+.ui-resizable-handle {
+	display:none !important;	
+}
+.ui-dialog .regresar_login{
+	background: #568e3e;
+	display:block;
+
+	width: 180px;
+	text-align:center;
+	margin: 0  auto 0  auto;
+	text-transform:uppercase;
+	color: #fff;
+	font-family:'Open Sans', sans-serif;
+	font-size:14px;
+	padding: 8px 0;
+	font-weight: 600;
+}
+
+.ui-widget-overlay {
+	background:rgba(255, 255, 255, 0.7);
+	opacity:1;
+	z-index: 999999999 !important;
+}

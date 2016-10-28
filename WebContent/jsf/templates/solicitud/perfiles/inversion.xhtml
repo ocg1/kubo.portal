@@ -1,0 +1,115 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<h:panelGroup rendered="#{summaryRequest.prospecto.area=='I'}" >
+	
+		<div class="profileControlTable" id="dvlstPyCont" style="display: none;">
+			
+			<div class="centerPosition">
+			
+				<h:panelGroup>
+					<h3 class="tab"><strong class="orange">Perfil de Inversión</strong></h3>
+				</h:panelGroup>
+				
+				<p>
+					<span class="orange">
+						Experiencia: ¿En qué ha invertido antes?
+					</span>
+				</p>
+				<div class="details4 left" style="position: relative; height: auto; overflow: auto;"> 
+					<p>
+						1. <strong>¿En cuál de estos instrumentos del mercado financiero has invertido? </strong>
+					</p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;">
+						<h:outputLabel escape="false" value="#{summaryRequest.inPreg1}" />
+					</p>
+				</div>
+				<br />
+				<br />
+				<div style="float: none; clear: both;margin-top: 20px;position: relative; height: auto; overflow: auto; padding-top: 5px; padding-right: 5px;">
+					<p style="float: none; clear: both;position: relative;">
+						<span class="orange">
+							Horizonte
+						</span>
+					</p>
+				</div>
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p>2. <strong>Aproximadamente, ¿en cuánto tiempo consideras que retirarás los recursos de tu inversión en kubo.financiero?</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel escape="false" value="#{summaryRequest.inPreg2}" /></p>
+				</div>
+				<br />
+				<br />
+				<div style="float: none; clear: both;margin-top: 20px;position: relative; height: auto; overflow: auto; padding-top: 5px; padding-right: 5px;">
+					<p style="float: none; clear: both;position: relative;">
+						<span class="orange">
+							Objetivo
+						</span>
+					</p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p>3. <strong>¿Cual es el principal objetivo de tu inversión?</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel escape="false" value="#{summaryRequest.inPreg3}" /></p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p>4. <strong>Sabiendo que no podemos garantizar el rendimiento, pero con la finalidad de seguir descubriendo tu perfil de riesgo, ponemos 4 escenarios hipotéticos en los que hay pérdidas y ganancias. ¿Con cuál de ellos te sientes más cómodo?</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel escape="false" value="#{summaryRequest.inPreg4}" /></p>
+				</div>
+				<br />
+				<br />
+				<div style="float: none; clear: both;margin-top: 20px;position: relative; height: auto; overflow: auto; padding-top: 5px; padding-right: 5px;">
+					<p style="float: none; clear: both;position: relative;">
+						<span class="orange">
+							Tolerancia al riesgo
+						</span>
+					</p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p>5. <strong>Teniendo en cuenta que en el tiempo “a mayor riesgo mayor rendimiento”, ¿estás dispuesto a asumir una posible pérdida en el corto plazo, con el objetivo de generar mayores rendimientos en el largo plazo?</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel escape="false" value="#{summaryRequest.inPreg5}" /></p>
+				</div>
+				
+				<br />
+				<br />
+				<div style="float: none; clear: both;margin-top: 20px;position: relative; height: auto; overflow: auto; padding-top: 5px; padding-right: 5px;">
+					<p style="float: none; clear: both;position: relative;">
+						<span class="orange">
+							Definición de perfil
+						</span>
+					</p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p><strong>Puntos obtenidos de acuerdo a las respuestas anteriores</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel value="#{summaryRequest.profile.total_points}" /></p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p><strong>Perfil asignado de acuerdo al puntaje obtenido</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel value="#{summaryRequest.profile.profile_cal.profile_category}" /></p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p><strong>Perfil elegido por el usuario</strong></p>
+					<p style="margin-top: 3px; padding-left: 10px; color: #333 !important;"><h:outputLabel value="#{summaryRequest.profile.profile_user_sel.profile_category}" /></p>
+				</div>
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p><strong> #{summaryRequest.profile.no_risk==null?'No Respondió':summaryRequest.profile.no_risk=='1'?'El usuario ESTÁ DISPUESTO en ':'El usuario NO está dispuesto en '}ahorrar solamente en productos sin riesgo con kubo.financiero</strong></p>
+				</div>
+				
+				<h:panelGroup rendered="#{summaryRequest.profile.no_risk=='1'}">
+				
+				<div class="details4 left"  style="position: relative; height: auto; overflow: auto;"> 
+					<p><strong> #{summaryRequest.profile.agree_no_risk==null?'No Respondió':summaryRequest.profile.agree_no_risk=='1'?'El usuario ESTÁ DE ACUERDO en ':'El usuario NO está de acuerdo en '}  no poder invertir en kubo.impulso</strong></p>
+				</div>
+				
+				</h:panelGroup>								
+			</div>							
+		</div>										
+	</h:panelGroup>				
+</ui:composition>				

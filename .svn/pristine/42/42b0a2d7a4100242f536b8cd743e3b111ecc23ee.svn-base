@@ -1,0 +1,28 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				<h:panelGroup id = "pnlTitleSelfie" >
+				
+	<div class="containerTitleUpload">
+		<div class="#{addPldDocument.dispSelfieIdentificacion =='inline'? 'cornerDisabled':'corner'}"/>
+		
+		
+		
+		<div class="#{addPldDocument.dispSelfieIdentificacion =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">				
+			<!-- div class="#{addPldDocument.dispCheckImgLog =='inline'? 'numberDisabled':'number'}" >1</div -->
+			<div class="#{addPldDocument.dispCheckImgLog =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Tómate una selfie con tu identificación*<span class="imagenDescripcion"><i onclick="abrir_imagenreferencia(this);" class="fa fa-question-circle Selfiee"></i></span> </h3></div>
+			<p:graphicImage id         = "checkImgSelfie" 
+						    styleClass = "validatorClass" 
+						    style      = "height:1px !important; width:1px !important; opacity:0 !important; float:right; display:#{addPldDocument.dispSelfieIdentificacion}"  
+						    url        = "../resources/img/check.png" />
+		</div>			
+	</div>	
+		<h4 class="notaVerde">
+								<!-- Una foto con tu identificación y súbela -->
+							</h4>
+	
+			</h:panelGroup>	
+</ui:composition>				

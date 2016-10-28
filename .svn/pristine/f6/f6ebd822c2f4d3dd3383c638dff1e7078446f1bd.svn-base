@@ -1,0 +1,575 @@
+package mx.com.kubo.managedbeans;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import mx.com.kubo.model.Frequency;
+import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.MembershipPK;
+import mx.com.kubo.model.Purpose;
+import mx.com.kubo.model.PurposePK;
+import mx.com.kubo.model.SimulationConfig;
+import mx.com.kubo.model.Simulation_Cache;
+import mx.com.kubo.model.Simulation_Cache_PK;
+
+public abstract class SimulatorAMO extends SimulatorDMO
+{
+	protected void init_partnerID() 
+	{
+		if(sesion != null && sesion.getProspectus_id() != null && sesion.getCompany_id() != null)
+		{			  
+			if(sesion.getArea() != null && (sesion.getArea()=='M' || sesion.getArea()=='I'))
+			{
+				area = sesion.getArea().toString();
+				   
+			} else {
+					
+				if(sesion.getArea() != null)
+				{
+					area = sesion.getArea().toString();
+				}
+					
+				proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(sesion.getProspectus_id(), sesion.getCompany_id());
+					
+				if(proyectLoan != null)
+				{						
+					setLoanTypeID(proyectLoan.getLoan_type());
+					
+					if(proyectLoan.getProyect().getPartner_id() != null && partnerID == null)
+					{
+						partnerID =	proyectLoan.getProyect().getPartner_id().toString();
+					}
+						
+				} else {
+					
+					membershipPK = new MembershipPK(sesion.getProspectus_id(), sesion.getCompany_id());
+					
+					membership = membershipservice.getMembershipById(membershipPK);
+					
+					if(membership.getRegistration_reason() != null)
+					{
+						partnerID = membership.getRegistration_reason().getPartner_id();
+					}					
+				}
+					
+				if(sesion != null && sesion.getPartner() != null && partnerID == null)
+				{
+					partnerID = "BRD";
+				}						
+			}
+			   
+	   	} else if(sesion != null && sesion.getPartner() != null) {
+				   		
+	   		if(sesion.getPartner().equals("10000034") || sesion.getPartner().equals("ALIANZA BARARED")){
+	   		
+	   			partnerID = "BRD";
+	   		
+	   		} else {
+	   			
+	   			partnerID = sesion.getPartner();
+	   		}
+		   
+		}
+		   
+		System.out.println( "\n\n******* SimulationConfig Partner: "+sesion.getPartner()+" *******\n\n" );
+	}
+	
+	protected void init_simulation_config() 
+	{
+		simulationConfig = new SimulationConfig();
+		
+		if(area == null)
+		{
+			area = "L";
+			
+			if(partnerID == null)
+			{
+				if( sesion == null || sesion.getCompany_id() == null)
+				{
+					simulationConfig = simulationConfigService.getSimulationByArea(area, 1);
+				} else {
+					simulationConfig = simulationConfigService.getSimulationByArea(area, sesion.getCompany_id());
+				}
+				
+			} else {
+				
+				if( sesion == null || sesion.getCompany_id() == null)
+				{
+					simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID,area, 1);
+				} else {
+					simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID,area, sesion.getCompany_id());
+				}
+			}
+			
+			area = null;
+			
+		} else if(getLoanTypeID() != null && partnerID != null && area != null){
+				
+			simulationConfig = simulationConfigService.getSimulationByLoanTypeIDandPartnerIDandArea(getLoanTypeID(), partnerID, area, sesion.getCompany_id());
+			
+			if( simulationConfig == null )
+			{				
+				simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID, area, sesion.getCompany_id());					
+			}
+			
+			if( simulationConfig == null )
+			{				
+				simulationConfig = simulationConfigService.getSimulationByLoanTypeIDandArea(getLoanTypeID(), area, sesion.getCompany_id());					
+			}
+			
+		} else if(getLoanTypeID() != null && area != null){
+				
+			simulationConfig = simulationConfigService.getSimulationByLoanTypeIDandArea(getLoanTypeID(), area, sesion.getCompany_id());
+				
+		} else if(partnerID != null && area != null){
+				
+			simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID, area, sesion.getCompany_id());
+			
+		} else if(area != null){
+				
+			simulationConfig = simulationConfigService.getSimulationByArea(area, sesion.getCompany_id());
+			
+		} else {
+			
+			simulationConfig = simulationConfigService.getSimulationByArea("L", 1);
+		}
+		
+		if(simulationConfig == null)
+		{			
+			area = "L";
+			
+			if( sesion == null || sesion.getCompany_id() == null)
+			{
+				simulationConfig = simulationConfigService.getSimulationByArea(area, 1);
+				
+			} else {
+				
+				simulationConfig = simulationConfigService.getSimulationByArea(area, sesion.getCompany_id());
+			}
+			
+			area = null;				
+		}
+	   			
+		if(simulationConfig != null)
+		{
+			setMontoMax(""+simulationConfig.getMax_amount());
+			setMontoMin(""+simulationConfig.getMin_amount());
+			setTermMax(""+simulationConfig.getMax_term());
+			
+		} else {
+			
+			setMontoMax("50000");
+			setMontoMin("5000");
+			setTermMax("18");
+		}
+	}
+	
+	protected void init_frequency() 
+	{
+		listFrequencyTmp = frequencyService.getFrequencyList();
+		
+		listFrequency = new ArrayList<Frequency>();
+		
+		for(Frequency ls :listFrequencyTmp )
+		{
+			switch (ls.getFrequencyPK().getFrequency_id())
+			{
+				
+				case 1://Semanal
+					ls.setName("Semanas");
+					break;
+					
+				case 2: //Catorcenal
+					ls.setName("Catorcenas");
+					break;
+					
+				case 3: //Quincenal
+					ls.setName("Quincenas");
+					break;
+					
+				case 4: //Mensual
+					ls.setName("Meses");
+					break;
+					
+			}
+			listFrequency.add(ls);
+		}
+	}
+	
+	protected void init_PLD() 
+	{
+		try
+		{		
+			prevencionld = null;
+			
+			if(sesion.getProspectus_id() != null )
+			{	
+				prevencionld = prevencionldservice.getPrevencionLDByProspectus(sesion.getProspectus_id() , sesion.getCompany_id() );
+			}
+			
+			if(prevencionld != null)
+			{				
+				setHasPLD(true);
+				
+			} else {
+				
+				setHasPLD(false);				
+			}
+		
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			setHasPLD(false);
+		}
+	}
+	
+	protected Double generaTasaPeriodo(boolean flagIva)
+	{
+		/*
+		double ta = getTasaTotal();
+		double n = Double.parseDouble(getFrequencyAnual()+"");
+		//return (double)Math.round((ta/n)*100)/100;
+		double tp = 0D;
+		if(flagIva){
+			tp = (double)Math.round((((ta/100)/n)*(1+getIva()))*10000)/10000;
+		}else{
+			tp = (double)Math.round((((ta/100)/n))*10000)/10000;
+		}
+		setTasaPeriodoPorc((double)Math.round((tp*100)*100)/100);
+		return tp;
+		*/
+		
+		double taP = getTasaTotal()/100;
+		double tp = 0D;
+		
+		if(flagIva){
+			
+			tp = (double)Math.round(((taP/360)*(1+getIva()))*100000000)/100000000;
+			
+		}else{
+			
+			tp = (double)Math.round((taP/360)*100000000)/100000000;
+			
+		}
+		
+		return tp*diasFreq;
+		
+	}
+	
+	public void setPurpose_id(int purpose_id) 
+	{
+		this.purpose_id = purpose_id;
+		
+		if(purpose_id != 0)
+		{
+			initPurpose(purpose_id);
+		}else{
+			setPurpose( new Purpose() );
+		}
+		
+		setPurposeName("");
+	}
+
+	public void setFrequency_id(int frequency_id) 
+	{
+		this.frequency_id = frequency_id;
+		
+		if(frequency_id!=0)
+		{
+			initFrequency(frequency_id);
+		}
+		
+		//setFrequencyName("");
+		frequencyName = frequency.getName();
+	}
+
+	private void initFrequency(int frequency_id)
+	{
+		setFrequency(frequencyService.getFrequencyById(frequency_id));
+	}
+	
+	private void initPurpose(int purpose_id){
+		
+		setPurpose(purposeService.getPurposeById(new PurposePK(purpose_id, 1)));
+	}
+
+	protected Double generaInteres()
+	{
+		Double i = ((getMontoCuota()* numCuota) - getAmmount());
+		double interes = i/(1+getIva());
+		double iva = (double)Math.round((i - interes)*100)/100;
+		setIvaInteres(iva);
+		return (double)Math.round(interes*100)/100;
+	}
+	
+	public String getFrequencyName() {
+		
+		int freq = getFrequency_id();
+		switch (freq){
+			case 1://Semanal
+				frequencyName="Semanal";
+				break;
+			case 2: //Catorcenal
+				frequencyName="Catorcenal";
+				break;
+			case 3: //Quincenal
+				frequencyName = "Quincenal";
+				break;
+			case 4: //Mensual
+				frequencyName = "Mensual";
+				break;
+		}
+		
+		
+		return frequencyName;
+	}
+
+	public String getInteresStr() 
+	{
+		return formatDec(dec.format(getInteres()));
+	}
+	
+	protected String formatDec(String valor)
+	{
+		String res;
+		valor = valor.replace("$", "");
+		
+		String[] arrayValor = valor.split("\\.");
+		
+		if(arrayValor.length < 2)
+		{
+			//res=valor+".00";
+			res = valor;
+			
+		} else {
+			
+			if(arrayValor[1].length() < 2)
+			{
+				arrayValor[1]= arrayValor[1] + "0";
+			}
+			
+			res = arrayValor[0]+"."+arrayValor[1];
+		}
+		
+		return res;
+	}
+	
+	public void setPurposeName(String purposeName) {
+		this.purposeName = getPurpose().getName();
+	}	
+
+	public String getAmmountStr() {
+		
+		ammountStr = formatDec(dec.format(this.ammount));
+		ammountStr = ammountStr.split("\\.")[0];
+		return ammountStr;
+	}
+
+	public void setAmmountStr(String ammountStr) 
+	{
+		this.ammountStr = ammountStr;
+		setAmmount(Float.parseFloat(ammountStr.replaceAll(",", "")));
+	}
+	
+	public String getTotalPagarStr() 
+	{
+		if(totalPagar != null && totalPagar > 0)
+		{
+			return formatDec(dec.format(totalPagar));
+			
+		} else {
+			
+			return "No disponible";
+		}
+	}
+	
+	public String getMontoCuotaStr() 
+	{
+		if(montoCuota != null && montoCuota > 0)
+		{
+			return formatDec(dec.format(montoCuota));
+		} else {
+			return "No disponible";
+		}
+	}
+	
+	public String getIvaInteresStr() 
+	{
+		return formatDec(dec.format(getIvaInteres()));
+	}
+	
+	public String getTotalRecibir() {
+		
+		Double d =  ammount - (ammount * (getComisionApertura()/100));
+		
+		d = (double) Math.round(d*100)/100;
+		
+		totalRecibir = dec.format(d);
+		
+		return totalRecibir;
+	}
+
+	public void setTotalRecibir(String totalRecibir) {
+		this.totalRecibir = totalRecibir;
+	}
+
+	public Double getComisionApertura() {
+		
+		if(sesion.getOpeningCommission()!=null){
+			comisionApertura = sesion.getOpeningCommission();
+		}
+		
+		return comisionApertura;
+	}
+
+	public void setComisionApertura(Double comisionApertura) {
+		this.comisionApertura = comisionApertura;
+	}
+	
+	public boolean isClientePriceShoes(){
+		
+		MembershipPK mpk = new MembershipPK();
+		
+		mpk.setCompany_id(sesion.getCompany_id());
+		mpk.setProspectus_id(sesion.getProspectus_id());
+		
+		Membership member =  membershipservice.getMembershipById(mpk);
+		
+		if( member.getRegistration_reason_id() != null && member.getRegistration_reason_id() == 8 ){
+			
+			return true;
+			
+		}else{
+			
+			return false;
+			
+		}
+		
+	}
+		
+	public Integer generaNumCuotas()
+	{
+		int freq = getFrequency_id();
+		int num  = getTerm_id();
+		
+		switch (freq)
+		{
+			case SEMANAL:
+				//num= (int)Double.parseDouble(Math.rint((getTerm_id()*52)/12)+"");
+				frequencyAnual = 52;
+				frequencyStr   = "semanales";
+				frequencyStr2  = "semanas";				
+				frequencyName  = frequency.getName();
+				//setFrequencyName("Semanal");
+				diasFreq = 7;
+				freqStr  = "S";
+			break;
+				
+			case CATORCENAL:
+				//num= (int)Double.parseDouble(Math.rint((getTerm_id()*26)/12)+"");
+				frequencyAnual = 26;
+				frequencyStr   = "catorcenales";
+				frequencyStr2  = "catorcenas";				
+				frequencyName  = frequency.getName();
+				//setFrequencyName("Catorcenal");
+				diasFreq = 14;
+				freqStr  = "C";
+			break;
+			
+			case QUINCENAL:
+				//num= getTerm_id()*2;
+				frequencyAnual = 24;
+				frequencyStr   = "quincenales";
+				frequencyStr2  = "quincenas";
+				frequencyName  = frequency.getName();
+				//setFrequencyName("Quincenal");
+				diasFreq = 15;
+				freqStr  = "Q";
+			break;
+			
+			case MENSUAL:
+				//num= getTerm_id();
+				frequencyAnual = 12;
+				frequencyStr   = "mensuales";
+				frequencyStr2  = "meses";				
+				frequencyName  = frequency.getName();
+				//setFrequencyName("Mensual");
+				diasFreq = 30;
+				freqStr  = "M";
+			break;
+		}
+		
+		return num;
+	}
+	
+	//TODO
+	protected Double getCuotaByFormula(boolean flagIva, boolean isSafiSimulation)
+	{
+		numCuota      = generaNumCuotas();
+		tasaPeriodo   = generaTasaPeriodo(flagIva);
+		Double intper = getTasaPeriodo();
+		//System.out.println( getNumCuota()+"  --  "+ intper);
+		
+		Double num = (Math.pow((1+intper), numCuota)) * intper;
+		Double den = (Math.pow((1+intper), numCuota)) - 1;
+		Double montoAPagar = getAmmount()*(num/den);
+//		System.out.println("Monto: "+getAmmount());
+//		System.out.println("Monto Cuota1: "+montoAPagar);
+		
+		Double payment = Math.ceil(montoAPagar);
+		
+		montoCuota = payment;
+//		System.out.println("Monto Cuota2: "+getMontoCuota());
+		
+		totalPagar = (double) Math.round((montoAPagar * numCuota) * 100) / 100;
+//		System.out.println("Total a pagar: "+getTotalPagar());
+		
+		interes = generaInteres();
+		
+		//TODO
+		calculaCat(isSafiSimulation );
+		
+		return (double)Math.round(montoAPagar*100)/100;
+		
+	}
+	
+	protected void saveSimulatorCache()
+	{
+		try
+		{
+			
+			Simulation_Cache_PK simulationCachePK = new Simulation_Cache_PK();
+			Simulation_Cache simulationCache = new Simulation_Cache();
+			
+			simulationCachePK.setCompany_id(1);
+			
+			simulationCache.setPk(simulationCachePK);
+			simulationCache.setAmmount(getAmmount());
+			simulationCache.setTerm_id(getTerm_id());
+			simulationCache.setPayment(getMontoCuota());
+			simulationCache.setFrequency_id(getFrequency_id());
+			simulationCache.setNum_payments(numCuota);
+			simulationCache.setTotal_payment(getTotalPagar());
+			simulationCache.setPeriod_rate(getTasaPeriodo());
+			simulationCache.setYearly_rate(getTasaTotal());
+			simulationCache.setMx_cat(getCat());
+			simulationCache.setCreation_date(new Date());
+			
+			simulationCacheService.add(simulationCache);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}						
+	}
+	
+	protected boolean isConnected(){
+		
+		if(sesion.getProspectus_id()!=null&&sesion.getProspectus_id()>0)
+			return true;
+		else
+			return false;
+		
+	}
+
+
+}

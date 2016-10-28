@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.0"
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+  <component>
+    <component-type>RecaptchaComponentFamily</component-type>
+    <component-class>mx.com.kubo.components.recaptcha.RecaptchaComponent</component-class>
+  </component>
+
+  <render-kit>
+    <renderer>
+      <description>Renderer.</description>
+      <component-family>RecaptchaComponentFamily</component-family>
+      <renderer-type>RecaptchaComponentRenderer</renderer-type>
+      <renderer-class>
+        mx.com.kubo.components.recaptcha.RecaptchaComponentRenderer
+      </renderer-class>
+    </renderer>
+  </render-kit>
+
+  <validator>
+    <validator-id>recaptchaValidator</validator-id>
+    <validator-class>
+      mx.com.kubo.components.recaptcha.RecaptchaValidator
+    </validator-class>
+  </validator>
+  
+</faces-config>

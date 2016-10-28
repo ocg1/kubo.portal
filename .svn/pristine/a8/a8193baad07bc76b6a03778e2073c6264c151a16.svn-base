@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		
+		<meta name="HandheldFriendly" content="True"> </meta>
+		<meta name="MobileOptimized" content="320"> </meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
+		<!-- MS --> 
+		<meta http-equiv="cleartype" content="on"> </meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+		
+		
+		
+		<!-- <script type="text/javascript" src="../resources/js/jquery-1.7.1.js"></script> -->
+		<script type="text/javascript"
+		src="../resources/js/contenido.js"></script>
+		
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"></script>
+		
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script> 
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"></script>
+		
+		
+	<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"></script>
+	<script language="javascript" type="text/javascript" src="../resources/js/general.js"></script>
+		
+	<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		
+	<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../resources/css/ayuda.css" /> -->
+		<link rel="stylesheet" type="text/css" href="../resources/css/ayudaStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/capitulo1.css" />
+		<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="../resources/css/proyectos.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/inicio.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/simulator.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />
+		
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"></script>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"></script>
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/responsive/footerResponsive.css" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css' />
+		
+		<style>
+			/* #bg {
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+		} */
+		
+		#legalString{
+			display: none;
+			font-size: 0.9em;
+			margin-left: auto;
+			margin-right: auto;
+			width: 700px;	
+		}
+		
+		.formError .formErrorContent {
+				background: #FDFDFD !important;
+				font-size: 1.1em !important;
+				}
+				
+				a.refTbAmort{
+					font-size: 1.0em;
+					text-decoration: none !important;
+					color:#439539;
+				}
+				a.refTbAmort:HOVER{
+					text-decoration: underline !important;
+				}
+		
+		a.ahref{
+				color: #439539 !important;
+				text-decoration: none !important;
+			}
+			
+			a.ahref:HOVER{
+				text-decoration: underline !important;
+			}
+			a.ahref:VISITED{
+				color: #439539 !important;
+				text-decoration: none !important;
+			}
+		
+		</style>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#mensaje2').click(function(){
+					
+					creaComparacion();
+					return false;
+					
+				});
+				
+				$("div.blindAction").click(function(){
+			         $("blindEffect").hide( "blind", 
+			                     {direction: "horizontal"}, 1000 );
+			      });
+				
+				$('#next').click(function() {
+				    $('#conCompara').scrollTo('+=250px', 800, { axis:'x' });
+				});
+				$('#back').click(function() {
+				    $('#conCompara').scrollTo('-=250px', 800, { axis:'x' });
+				});
+
+				/* $("#form_Prin").validationEngine('attach', {promptPosition : "centerRight",autoPositionUpdate : true}); */
+		
+				$(".help").focus(function(){
+					var t = $(this).offset().top;
+					var l = $(this).offset().left+200;
+					var desc = $(this).attr("title");
+					$('#helpStr').text(desc);
+					$('#helpDes').css({'top' :  t+'px', 'left' : l+'px','display':'block'});
+				});
+				
+				$(".help").blur(function(){
+					$('#helpStr').text("");
+					$('#helpDes').css({'display':'none'});
+				});
+				
+				/* updateBackground();
+				  
+				$(window).bind("resize", function() {
+				    updateBackground();
+				  }); */
+			});
+			
+			/* function updateBackground() {
+				  screenWidth = $(window).width();
+				  screenHeight = $(window).height();
+				  bg = $("#bg");
+				  
+				  // Proporcion horizontal/vertical
+				  ratio = 1;
+				  
+				  if (screenWidth/screenHeight > ratio) {
+				    $(bg).height("auto");
+				    $(bg).width("100%");
+				  } else {
+				    $(bg).width("auto");
+				    $(bg).height("100%");
+				  }
+
+				  if ($(bg).width() > 0) {
+				    $(bg).css('left', (screenWidth - $(bg).width()) / 2);
+				  }  
+				} */
+				
+				/******************GOOGLE*ANALYTICS**************************************/  
+				
+				  var _gaq = _gaq || [];
+
+				  _gaq.push(['_setAccount', 'UA-40649010-1']);
+
+				  _gaq.push(['_trackPageview']);
+
+				 
+
+				  (function() {
+
+				    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+				  })();
+
+				  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+				
+		</script>
+		
+		<script>
+			(function() {
+				var _fbq = window._fbq || (window._fbq = []);
+				if (!_fbq.loaded) {
+				var fbds = document.createElement('script');
+				fbds.async = true;
+				fbds.src = '//connect.facebook.net/en_US/fbds.js';;
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fbds, s);
+				_fbq.loaded = true;
+				}
+				_fbq.push(['addPixelId', '974610895889842']);
+				})();
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', 'PixelInitialized', {}]);
+		</script>
+		<noscript>
+			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=974610895889842&amp;ev=PixelInitialized" />
+		</noscript>
+		
+		<title>kubo.financiero | Comparador</title>
+		
+		<meta name="Description" content="En kubo.financiero ahorrarás mas en préstamos solicitados que en otras instituciones bancarias. Compara la oferta que te ofrece kubo.financiero."/>
+		
+		<script>
+		
+		/******************GOOGLE*ANALYTICS**************************************/  
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-40649010-1', 'auto');
+		  ga('require', 'linkid');
+		  ga('require', 'displayfeatures');
+		  ga('send', 'pageview');
+
+	  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		
+		
+		</script>
+		
+	</h:head>
+	<h:body >
+		<!-- <img src="../resources/img/image002.jpg" alt="Fondo" id="bg" /> -->
+			<div id="header" style="width: 100%; magin-right: 0px; margin-bottom: 0px;">
+				<ui:include src="templates/headContenido.xhtml" />
+			</div>
+		<h:form id="form_Prin">	
+		
+		<div id="titulo" style="width: 450px; color:#000000;border: solid 0px #FF0000;position: absolute; top: 123px;left: 400px;">Compara tus préstamos</div>
+		<h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
+			<div id="comparaLnk" style=" margin-bottom: 15px !important; height: auto !important; overflow: auto !important;">
+				<div style="float: left; margin-bottom: 10px !important; margin-top: 10px !important;color:#333333;">
+					&nbsp;
+					
+					Para obtener más beneficios 
+				</div>
+				<div style="float: left; margin-bottom: 0px; margin-left: 10px; margin-top: 5px;padding-bottom: 0px; padding-top: 0px;">
+					<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important;">
+						<p:commandLink action="preregistro" id="registro" styleClass="actionSim">
+							Regístrate
+						</p:commandLink> 
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+		
+			<div id="conCompara">
+				<div id="compara"></div>
+			</div>
+			<div id="legalString">
+				
+			</div>		
+			<div id="nav">
+				<div id="back"><p:graphicImage url="../resources/img/Symbol-Back-32.png" ></p:graphicImage>&nbsp;atrás</div>
+				<div id="next">siguiente&nbsp;<p:graphicImage url="../resources/img/Symbol-Next-32.png" ></p:graphicImage></div>
+			</div>
+			
+		
+		<div id="contMsj">
+			
+			<div id="mensaje4" class="buttonPR">
+				<p:commandLink action="simulator" id="simulador" styleClass="actionSim">
+					Realiza más simulaciones
+				</p:commandLink> 
+			</div>
+		
+			<div id="mensaje2" class="buttonPR">Realiza otra comparación<br></br></div>
+			<!-- <div id="mensaje3" class="buttonPR">Enviamos tus comparaciones por mail</div> -->
+			
+		</div>
+		
+		<input type="hidden" id="numero" value="1"></input>
+		</h:form>
+		<div id="header" style="width: 100%; magin-right: 0px; margin-bottom: 0px;">
+			<ui:include src="templates/footerContenido.xhtml" />
+		</div>
+		
+		<div style="display: none;">
+			<h:form id="frmSimHide">
+				<p:inputText value="#{comparison.cuotaInStr}" id="cuota">
+					<p:ajax event="blur"></p:ajax>
+				</p:inputText>
+				<p:inputText value="#{comparison.montoInStr}" id="monto">
+					<p:ajax event="blur"></p:ajax>
+				</p:inputText>
+				<p:inputText value="#{comparison.plazo}" id="plazo">
+					<p:ajax event="blur"></p:ajax>
+				</p:inputText>
+				<p:inputText value="#{comparison.frequency}" id="freq">
+					<p:ajax event="blur"></p:ajax>
+				</p:inputText>
+				<p:inputText value="#{comparison.nameInst}" id="nameInst">
+					<p:ajax event="blur"></p:ajax>
+				</p:inputText>
+				
+				<p:inputText id="comparaAction">
+					<p:ajax event="blur" listener="#{comparison.myComparison}" oncomplete="muestraComparacion();" update="resultado" ></p:ajax>
+				</p:inputText>
+				
+				<p:inputText value="#{comparison.cadenaResultado}" id="resultado" />
+				
+				<input type="hidden" id ="numeroSel" value=""></input>
+			</h:form>
+		</div>
+		
+	<script>
+		creaComparacion();
+	</script>
+	
+	<div id="helpDes" class="formError" style="top: 460px;left: 730px; display: none;" >
+		<div class="formErrorContent"  >
+			<div id="helpStr"></div>
+		</div>
+	</div>
+	
+	</h:body>
+</html>

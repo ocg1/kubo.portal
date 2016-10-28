@@ -1,0 +1,31 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "alerts dvValidaArchivo ui-inplace-content centrar_h">
+		<small class = "close_lightbox" onclick = "cerrar_modal_validaDoc();"/>
+					 
+		<p>¿Autorizar documento?</p>	
+					
+		<div class = "botones_lightbox">
+			<div class = "callActionMedium  btnRoja" id="dvRechazaDoc" onclick="rechaza_documento();" >
+				<i class = "fa fa-times"/>Rechazar
+			</div>
+			
+			<div class = "callActionMedium  btnVerde-3" id="dvAutorizaDoc" onclick="autoriza_documento();" >
+				<i class = "fa fa-check"/> Autorizar
+			</div>												
+		</div>
+		
+		<div class = "botones_lightbox_wait" style = "display: none;">
+		
+			<img src = "../resources/img/ajax-loader.gif" />		
+		</div>
+					
+		<div class = "botones_lightbox_message" style = "display: none;">
+			<p/>
+		</div>					
+	</div>			
+</ui:composition>				

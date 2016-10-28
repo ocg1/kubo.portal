@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+	<div style = "clear: both; padding: 0; margin: 0; height: 0;"/>
+		
+	<div onclick = "listener_guardar_partner();"
+		 class = "alta-partner guardar btn_naranja" 
+		 style= "display:none;"
+>
+		Guardar
+	</div>	
+	
+	<div style = "display: none">
+		<h:inputText id = "listener_alta_partner" immediate = "true" ajax = "true">
+			<p:ajax event = "click"
+					oncomplete = "procesar_alta_partner(xhr, status, args);" 
+				    listener   = "#{tablero_control.alta_partner.listener_guardar}"/>
+		</h:inputText>
+	</div>					
+</ui:composition>				

@@ -1,0 +1,100 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+	  			xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<script>
+		function reanudar_solicitud_CANCELADA()
+		{										
+			$("#input_listener_reanudar_solicitud_CANCELADA").click();
+		
+		}
+	</script>				
+					
+	<h:panelGroup rendered = "#{deal.proyecto_rechazado_automaticamente}">				
+	
+							
+			
+		    	
+		    
+							<h:panelGroup rendered = "#{not deal.reanudar_solicitud_ENABLED}">
+								<div class="propuesta_style">
+												
+												<h2>¡Hola, <b>#{deal.proyect_loan_reasignable.person.first_name} #{deal.proyect_loan_reasignable.person.middle_name}</b>!</h2>
+												
+											
+												<h3>Gracias por elegir a kubo.financiero</h3>
+												
+											
+												<p>Revisamos tu solicitud y lamentamos informarte que no podemos otorgarte el crédito en este momento. </p>
+												
+											
+												
+												<p>Esto es debido a que tienes un score de buro bajo y alguna de las siguientes razones:</p>
+												
+												<ul>
+													<li>tienes algun retraso en alguno de tus créditos de más de 90 días, ó</li>
+												
+													<li>tienes una observación negativa en tu historial de crédito, ó</li>
+												
+													<li>tienes historial crediticio con antigüedad menor a 3 meses.  </li>
+												</ul>
+												
+												<p>	Te recomendamos que sigas los siguientes consejos para mejorar tu historial crediticio y vuelvas a aplicar con nosotros dentro de seis meses.</p> 
+												
+													<p>Consejos para mejorar tu historial crediticio:</p>
+												
+												 <ul>
+													<li> Baja tu nivel de deuda antes de solicitar un crédito adicional.</li> 
+												
+													<li>Cuida el uso de tus tarjetas de crédito, no gastes más de lo que puedes pagar.</li>
+												
+													<li>Calendariza tus cuotas y págalas puntualmente.</li>
+												
+													<li>No destines más del 30% de tus ingresos al pago de deudas.</li>
+												
+													<li>No saques préstamos a nombre de otras personas.</li>
+												
+													<li>En tus tarjetas de crédito realiza pagos por encima del mínimo para disminuir tu deuda.</li>
+												</ul>
+												
+											
+						
+												<p>Cuando haya transcurrido el tiempo que te comentamos y hayas llevado a cabo las acciones recomendadas, 
+												puedes retomar tu solicitud y volver a solicitarnos crédito, 
+												con gusto volveremos a evaluarla.</p>
+										</div>	
+							</h:panelGroup>
+							
+							<h:panelGroup rendered = "#{deal.reanudar_solicitud_ENABLED}">
+									<div class="propuesta_style">										
+												<p>¡Ya puedes volver a solicitar crédito con nosotros!</p>
+																			
+											
+												<p>Si deseas reactivar tu solicitud en Kubo, 
+												y volver a solicitar crédito con nosotros, 
+												por favor da click en botón de Reanudar Solicitud.</p>
+											
+								
+											<div class="dvContent btnAgree">
+												<div onclick = "reanudar_solicitud_CANCELADA();" class = "solicitud callAction btnNaranja">
+													Reanudar Solicitud
+												</div>
+											</div>	
+								
+												<div style = "display: none"> 
+													<h:inputText  id = "input_listener_reanudar_solicitud_Rechazo_Automatico">
+														<p:ajax event      	= "click" 
+																onstart    	= "return displayMessageProcessing('msgprocessing',true);"
+																oncomplete 	= "closeMessageProcessing();"
+																listener   	= "#{deal.listener_reanudar_solicitud}"
+																update     	= ":actualPage :form_Prin:hiddenactios :form_Prin :contSimReg"
+																imediate	= "true"/>
+													</h:inputText>
+												</div>			
+								</div>					
+			        		</h:panelGroup>
+						
+	</h:panelGroup>			
+</ui:composition>	

@@ -1,0 +1,49 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "historial-remote-command" style = "display: none">		
+		<h:commandLink id = "focus-creditcard">
+			<p:ajax event = "click" 
+					oncomplete = "Historial.focus_on_complete(xhr, status, args);"					
+					listener   = "#{creditHistoryController.creditcard.init_focus_date}"/>
+		</h:commandLink>		
+		
+		<h:commandLink id = "focus-mortage">
+			<p:ajax event = "click" 
+					oncomplete = "Historial.focus_on_complete(xhr, status, args);"					
+					listener   = "#{creditHistoryController.mortage.init_focus_date}"/>
+		</h:commandLink>	
+		
+		<h:commandLink id = "focus-car">
+			<p:ajax event = "click" 
+					oncomplete = "Historial.focus_on_complete(xhr, status, args);"					
+					listener   = "#{creditHistoryController.car.init_focus_date}"/>
+		</h:commandLink>	
+		
+		<h:commandLink id = "focus-autorizar">
+			<p:ajax event = "click" 
+					oncomplete = "Historial.focus_on_complete(xhr, status, args);"					
+					listener   = "#{creditHistoryController.consulta.init_focus_date}"/>
+		</h:commandLink>	
+		
+		<h:inputText id = "init-company-name">
+			<p:ajax event = "click" 									
+					listener   = "#{creditHistoryController.creditcard.init_company_name}"
+					oncomplete = "Historial.creditcard_company_oncomplete(xhr, status, args);"/>
+		</h:inputText>	
+		
+		<h:inputText id = "init-mortage-company-name">
+			<p:ajax event = "click" 									
+					listener   = "#{creditHistoryController.mortage.init_company_name}"
+					oncomplete = "Historial.mortage_company_oncomplete(xhr, status, args);"/>
+		</h:inputText>	
+		
+		<h:inputText id = "init-car-company-name">
+			<p:ajax event = "click" 									
+					listener   = "#{creditHistoryController.car.init_company_name}"
+					oncomplete = "Historial.car_company_oncomplete(xhr, status, args);"/>
+		</h:inputText>	
+	</div>
+</ui:composition>				

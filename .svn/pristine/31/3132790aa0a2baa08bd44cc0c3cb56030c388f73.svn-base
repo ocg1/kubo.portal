@@ -1,0 +1,311 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				
+				
+
+<div class="footer_mapa captacion">
+
+
+	
+                            <div class="mapa_sitio">
+                                <div class="mapa_sitio_inner">
+                                 
+                                    <ul>
+                                        <li><p:commandLink onclick="ga('send','event', 'Prestamos','prestamos')" action="productos" immediate="true" ><span>Préstamos</span></p:commandLink></li>
+                                        <li><p:commandLink onclick="ga('send','event', 'Prestamos','Tipos de préstamos')" action="productos" immediate="true">Tipos de préstamo</p:commandLink></li>
+                                        <li><p:commandLink  onclick="ga('send','event', 'Prestamos','Crédito para tu negocio')" action="credito-negocio" immediate="true">Préstamo para tu negocio</p:commandLink></li>
+                                        <li><p:commandLink onclick="ga('send','event', 'Prestamos',' Consolidación de deudas')" action="consolidacion-deudas" immediate="true"> Préstamos para pago de deudas</p:commandLink></li>
+                                        <li><p:commandLink  onclick="ga('send','event', 'Prestamos','Mejora tu casa')" action="mejora-casa" immediate="true">Préstamo para tu hogar</p:commandLink></li>
+                                        <li><p:commandLink  onclick="ga('send','event', 'Prestamos','Prestamo para la salud')"  action="salud" immediate="true">Préstamo para la salud</p:commandLink></li>
+                                        <li><p:commandLink  onclick="ga('send','event', 'Prestamos','Prestamo para tu automovil')"  action="auto" immediate="true">Préstamo para tu automóvil</p:commandLink></li>
+                                        <li><p:commandLink  onclick="ga('send','event', 'Prestamos','Prestamo para eventos')"  action="eventos" immediate="true">Préstamos para eventos sociales</p:commandLink></li>
+                                        <li><p:commandLink   onclick="ga('send','event', 'Prestamos','Simulador')" action="simulador_acreditado" immediate="true">Simulador</p:commandLink> </li>
+                                   
+                                       </ul>
+                                
+                                   
+
+                                   <ul>   
+                                        <li><a class="external" target="_blank" href="https://kubofinanciero.com/blog/" onclick="ga('send','event', 'Nuestro Blog','Nuestro Blog')" ><span>Nuestro Blog</span></a></li>
+                                        <li><a href="https://kubofinanciero.com/blog/category/finanzas-emprendedores" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Finanzas personales')">Emprendimiento</a></li>
+                                        <li><a href="https://kubofinanciero.com/blog/category/finanzas-negocio" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Finanzas para el negocio')">Finanzas para el negocio</a></li>
+                                        <li><a href="https://kubofinanciero.com/blog/category/finanzas-personales" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Finanzas personales')">Finanzas personales</a></li>
+                                        <li><a href="https://kubofinanciero.com/blog/category/infografias-kubo" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Infografías financieras')">Infografías</a></li>
+                                        <li><a href="https://kubofinanciero.com/blog/category/noticias" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Noticias')">Noticias</a></li>
+                                      <!--
+                                        <li><a href="http://blog.kubofinanciero.com/topic/tendencias" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Noticias')">Tendencias</a></li>
+                                        <li><a href="http://blog.kubofinanciero.com/topic/historias-kubo" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Apariciones en medios')">Historias Kubo</a></li>         
+                                        <li><a href="http://blog.kubofinanciero.com/topic/momentos-kubo" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Momentos Kubo')">Momentos Kubo</a></li>
+                                        <li><a href="http://blog.kubofinanciero.com/topic/medios" target="_blank" onclick="ga('send','event', 'Nuestro Blog','Apariciones en medios')">Medios</a></li>
+                                     -->
+                                     </ul>   
+                                </div>
+                  
+                            </div>
+        		
+                            <div class="footer">
+                
+                                <div class="footer_inner">
+                                <!-- inputs reconocimiento mobile -->
+                                 <div  style=" display:none; color:#fff; font-size:30px;" class="info_mobile"> <span></span> <strong> </strong></div>
+						         <h:inputHidden   id="user_agent"/>
+						         <h:inputHidden id="device_info"/>
+        						 
+        						 <div style="display:none">
+        						 	<h:inputText value="#{inicioValues.url_value}"  id="url_parametros">
+        						 		<p:ajax event="blur"/>
+        						 	</h:inputText>
+        						 </div>
+                                
+                                
+                                <div class="observaciones_captacion">
+                                		<article>
+		                                		<p><strong>Nota 1.</strong>Todas las operaciones de captación, crédito e inversión son operadas por ku-bo financiero, S.A. de C.V. SFP (en adelante kubo), entidad autorizada y regulada por la CNBV (Comisión Nacional Bancaria y de Valores) bajo la Ley de Ahorro y Crédito Popular, con oficio número 210-27544/2013 y 120/044/2013 CNBV.311.311.16 (7740) "2013-04-12" <!--  <10>.--></p>
+												<p><strong>Nota 2.</strong>Fondo de Protección: De conformidad con el Artículo 105 de la Ley de Ahorro y Crédito Popular (LACP), las Sociedades Financieras Populares estarán obligadas a pagar al Fondo de Protección, las cuotas mensuales que determine el Comité de Protección al Ahorro. El Fondo de Protección tendrá como fin primordial, procurar cubrir los depósitos de dinero de cada ahorrador a que se refiere el inciso a) de la fracción I del Artículo 36 de la LACP, en los términos establecidos por el Artículo 112 de la misma, hasta por una cantidad equivalente a veinticinco mil UDIS, por persona física o moral, cualquiera que sea el número y clase de operaciones a su favor y a cargo de una misma Sociedad Financiera Popular, en caso de que se declare su disolución y liquidación, o se decrete su concurso mercantil. El Fondo de Protección no garantizará las operaciones siguientes:</p>
+													<ul>
+														<li>I.Las obligaciones o depósitos a favor de los miembros del Consejo de Administración y comisario, así como de funcionarios de los dos primeros niveles jerárquicos de la Sociedad Financiera Popular de que se trate.</li>
+														<li>II.Las operaciones que no se hayan sujetado a las disposiciones legales, reglamentarias, administrativas, así como a las sanas prácticas y usos entre las Sociedades Financieras Populares, en las que exista mala fe del titular y las relacionadas con actos u operaciones ilícitas que se ubiquen en los supuestos del Artículo 400 Bis del Código Penal para el Distrito Federal en Materia de Fuero Común y para toda la República en Materia de Fuero Federal. Las Sociedades Financieras Populares tendrán la obligación de informar a sus Clientes, así como al público en general, sobre los términos y condiciones del Fondo de Protección. Para mayor información sobre el Fondo de Protección consulta aquí: <a target="_blank" href="https://www.prosofipo.org.mx2">https://www.prosofipo.org.mx2</a>.</li>  
+													</ul>                                
+		                               		    <p><strong>Nota 3.</strong>El producto kubo.impulso permite a un inversionista-garante (en adelante inversionista), realizar depósitos en ku-bo financiero, S.A. de C.V. SFP bajo la modalidad de depósitos retirables en días preestablecidos y otorgar estos depósitos en garantía irrevocable de pago de créditos seleccionados por el inversionista a favor de ku-bo financiero, S.A. de C.V. SFP.</p>
+													<p><strong>Nota 4.</strong>Todos los créditos son otorgados a personas físicas o morales, de
+
+nacionalidad mexicana o con residencia permanente en México y deben ser
+
+mayores de edad. Todos los créditos son sujetos a una revisión crediticia y
+
+aprobación de conformidad las disposiciones vigentes por la Ley de Ahorro y
+
+Crédito Popular así como otras disposiciones aplicables, las políticas crediticias de
+
+kubo y son revisados en las Sociedades de Información Crediticia como Buró de
+
+Crédito y Círculo de Crédito. Así mismo la calidad de pago de los créditos es
+
+reportada a dichas sociedades reflejando la puntualidad o no de cada acreditado.
+
+Tanto las tasas de crédito como del producto kubo.impulso se asignan en función
+
+del Score de crédito, monto y plazo del crédito, destino del mismo y el análisis del
+
+comportamiento crediticio histórico del solicitante mediante metodologías
+
+desarrolladas por kubo y sus políticas de carácter general y de promociones para
+
+la asignación de tasas. Los créditos son otorgados directamente por ku-bo
+
+financiero, S.A. de C.V. SFP., los inversionistas no hacen inversiones directas en
+
+los créditos, sino que otorgan su garantía líquida e irrevocable a favor de kubo.</p>
+										</article>
+										<article>
+										
+											<p><strong>Nota 5.</strong>Como Inversionista se debe contar con una cuenta bancaria personal validada a través de la cuenta CLABE de la misma, no podrán recibirse cantidades de dinero sujetas a depósitos o inversiones en efectivo, deberán invariablemente ser realizadas mediante depósito con cheque nominativo o bien mediante transferencia electrónica a favor de ku-bo financiero, S.A. de C.V. SFP, los depósitos deberán realizarse exclusivamente a cuentas bancarias propiedad de ku-bo financiero, S.A. de C.V. SFP y no serán validados depósitos realizados a cuentas de terceros. Los Inversionistas deberán revisar el riesgo asociado y la información relativa a cada proyecto de crédito a través del portal.kubo; la garantía de proyectos es irrevocable, el Inversionista acepta y reconoce que ku-bo financiero, S.A. de C.V. SFP ha publicado información a partir de la proporcionada por el solicitante de crédito y aquella que le ha sido proporcionada por las Sociedades de Información Crediticia que haya consultado, ku-bo financiero, S.A. de C.V. SFP no se hará responsable de la veracidad de dicha información.</p>
+											<p id="captacionObservacion"><strong>Nota 6.</strong>Todos los préstamos o créditos presentados como proyectos de inversión son calificados a partir de la información proporcionada por el solicitante y la registrada en Sociedades de Información Crediticia. Las calificaciones que se dividen en siete letras de la A a la G (A Excelente, B Superior, C Muy bueno, D Bueno, E Adecuado, F Adecuado y G Adecuado), y cada una se subdivide a su vez en cinco números del 1 al 5. Cada proyecto tendrá una tasa asociada como rendimiento al proyecto, dicha tasa será fija durante la vigencia del periodo de inversión en el proyecto, las tasas corresponden a cada calificación de riesgo, siendo las tasas A1 las más bajas incrementándose hasta la G1 que será la mas alta. ku-bo financiero, S.A. de C.V. SFP revisa periódicamente sus tasas de conformidad con las condiciones de mercado prevalecientes en la fecha de revisión. ku-bo financiero, S.A. de C.V. SFP no garantiza los rendimientos a obtener por los inversionistas ya que podrán depender de la calidad de pago de los acreditados y los proyectos específicos a los que los Inversionistas hayan otorgado garantía. Los proyectos podrán generar pérdidas a los Inversionistas hasta por el monto total de la inversión particular realizada en cada proyecto incluidos los intereses generados por el mismo, el Inversionista limita la pérdida individual en cada proyecto a la suma de ambos conceptos. Las Inversiones garantizadas no se encuentran aseguradas salvo en caso de fallecimiento del Acreditado garantizado, dicho seguro será hasta por el monto del saldo insoluto por cobrar por la inversión garantizada a la fecha de fallecimiento del Acreditado, el seguro no cubre los intereses devengados los cuales serán castigados por el Inversionista. Los rendimientos será individuales por cada proyecto garantizado, estos rendimientos estarán sujetos a retenciones de impuestos de conformidad con las disposiciones vigentes, ku-bo financiero, S.A. de C.V. SFP realizará las retenciones correspondientes y proporcionará al inversionista constancias respectivas una vez al año, dichas constancias serán entregadas de manera agregada.</p>
+											<p>El Inversionista deberá revisar y analizar los riesgos de las garantías que otorgue a través de los proyectos, el inversionista deberá crear portafolios que le permitan diversificar los riesgos que asume al realizar las inversiones en los proyectos.</p>
+                               			</article>
+                                
+                                </div>
+                                
+                                
+                                   
+                                    
+                                    <ul id="menu_footer" class="menu_footer">
+                                       <li><p:commandLink styleClass="external" action="terminos-condiciones" immediate="true" value="Aviso Legal" onclick="ga('send','event','Menu footer','Aviso Legal')"></p:commandLink></li>
+                                        <li><p:commandLink styleClass="external"  action="caratula-credito" immediate="true" value="Ley de transparencia" onclick="ga('send','event','Menu footer','Ley de transparencia')" ></p:commandLink></li>
+                                     	<li><p:commandLink action="reportes-financieros-2016" immediate="true" onclick="ga('send','event','Menu footer','Reportes Financieros')"  >Reportes Financieros</p:commandLink></li>
+                                        <li ><a href="#condusef" class="open_lightbox" data-div="13" onclick="ga('send','event','footer lightboxs','CONDUSEF')" >Unidad especializada kubo/CONDUSEF</a></li>
+                                         <li><p:commandLink action="fondoAhorro" immediate="true" onclick="ga('send','event','Menu footer','Ipad')"  >Fondo de protección</p:commandLink></li>
+                                        
+                                        
+                                        <li class="inline"><a href="#cat" class="open_lightbox" data-div="14" onclick="ga('send','event','footer lightboxs','CAT')" >CAT</a></li>
+                                       
+                                        <li class="buro_financiero inline"><p:commandLink action="buro-entidades-financieras" immediate="true" data-div="2" onclick="ga('send','event','footer lightboxs','Buro Financiero')" ><img src="#{configManaged.location}/resources/images/LOGO_BURO.png" /></p:commandLink></li>
+          
+                                    </ul>	
+                                   <div class="direccion">  <img alt="" src="#{configManaged.location}/resources/images/kubo_gris.png" />
+                                        <p>#{msg.razon_social_kubo_sofipo} 	Barranca Del Muerto 92, Col. Florida,  
+			<br /> 	C.P. 01030, México D.F. </p>
+                        </div>
+                                    <div class="dudas">
+                                    	<p:commandLink action="ConsultaCostosComisiones" immediate="true" id="consultaCostosComisiones">Consulta los Costos y las Comisiones de nuestros productos.</p:commandLink>
+                                        <h2>¿Dudas?</h2>
+                                        <p>Llámanos <a href="tel:6269-0024" onclick="ga('send','event','Teléfono y correo footer','Teléfono')">#{msg.Kubo_telefono}</a></p>
+                                        <p>Escríbenos a <a href="mailto:informes@kubofinanciero.com" onclick="ga('send','event','Teléfono y correo footer','Correo')" >informes@kubofinanciero.com</a></p>
+                                           <div class="imgSecure" >
+							
+												<span id="siteseal">
+													<script type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=8HPF1Heq1pPkmz01JL4MTFpXy9IeyHbc49jtzi35Ll8Xmgi7dIrykMiExSQ2"></script>
+												</span>
+											
+										</div>
+                                    </div>
+                                    
+                    
+                    
+                    
+                    
+                    
+                                </div>
+                           
+                            </div>
+        </div>
+       
+       
+       <div style="display: none;" >
+       
+       		<input type="hidden" value="#{headerBean.enabledAnalytics}" id="enabledAnalytics" />
+       	
+			<!-- 
+			<h:panelGroup rendered="#{sessionBean.prospectus_id == null }" >
+			
+				<h:inputText styleClass="clsSessionReady" >
+				
+					<p:ajax event="blur" listener="#{inicioValues.validaSession}" oncomplete="validaSesion (xhr, status, args);" ></p:ajax>
+				
+				</h:inputText>
+				
+				<script type="text/javascript">
+	
+					$( document ).ready(function() {
+					    
+						$("body").click( function(){
+							
+							$(".clsSessionReady").blur();
+							
+						} );
+						
+					});
+					
+					function validaSesion (xhr, status, args) { 
+						
+						console.log( "args.validSession: " + args.validSession );
+						
+						if( args.validSession === undefined ){
+							location.reload();
+						}
+						
+					}
+					
+				</script>
+				
+			</h:panelGroup>
+			
+			-->
+			</div>
+       
+       	
+	
+				
+	
+<script>
+	var md = new MobileDetect(window.navigator.userAgent);
+	    // ... see below
+	console.log( md.mobile() );          // 'Sony'
+	console.log( md.phone() );           // 'Sony'
+	console.log( md.tablet() );          // null
+	console.log( md.userAgent() );       // 'Safari'
+	console.log( md.os() );              // 'AndroidOS'
+	console.log( md.is('iPhone') );      // false
+	console.log( md.is('bot') );         // false
+	console.log( md.version('Webkit') );         // 534.3
+	console.log( md.versionStr('Build') );       // '4.1.A.0.562'
+	console.log( md.match('playstation|xbox') ); // falses
+
+
+	$(document).ready(function(){
+		
+		<!--detectar modelo dispositivo USER AGENT-->
+			$("#user_agent").val(navigator.userAgent);
+			console.log($("#user_agent").val());
+    		 $(".info_mobile span").html(md.phone() );
+    		 $(".info_mobile strong").html( md.tablet() );
+    		 setTimeout(function(){
+    				if($(".info_mobile span").html().length>0) {
+    					$("#device_info").val($(".info_mobile span").html());
+    				}
+    				if($(".info_mobile strong").html().length>0) {
+    					$("#device_info").val($(".info_mobile strong").html());
+    					
+    				}
+    		},1000);
+    		 
+    		console.log($("#device_info").val());
+	
+             <!--detectar URL PARAMETROS-->	
+    				var pathname = window.location.pathname; // Returns path only
+    				var url      = window.location.href;     // Returns full URL
+    				console.log(pathname);
+    				console.log(url);
+    				var  getString = "";
+
+    		        if(url.indexOf('?')>0) {       
+    				        getString = url.split('?')[1]; 
+    				        setTimeout(function(){ 
+    				        	$("#url_parametros").val(url); // aqui solo obtengo los valores porteriores al signo de interrogacion
+    				        	$("#url_parametros").blur();
+    				        	
+    				        }, 2000);
+    				        
+    				 }
+    				
+	});
+</script>
+
+        
+        <script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 960029485;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/960029485/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    adroll_adv_id = "XWLLJ524UJAYPA3QTMLAOJ";
+    adroll_pix_id = "VRS4Z3AFRRHA3GPKPQIBN7";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+    /* ]]> */
+</script>
+
+
+<!-- h:panelGroup rendered="#{sessionBean.fb_New}" >
+
+	<script >
+	  alertify.alert( "Cliente nuevo de FB"  );
+		
+	
+	</script>
+
+</h:panelGroup -->
+
+	
+
+</ui:composition>

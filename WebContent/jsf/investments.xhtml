@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns    = "http://www.w3.org/1999/xhtml"
+	  xmlns:h  = "http://java.sun.com/jsf/html"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f  = "http://java.sun.com/jsf/core"
+	  xmlns:p  = "http://primefaces.org/ui">
+		
+	<h:head>		
+		<meta name = "HandheldFriendly" content = "True"/>
+		<meta name = "MobileOptimized"  content = "320"/>
+	    <meta name ="viewport"          content="width=device-width, minimum-scale=1, maximum-scale=1,  initial-scale=1"/>     
+		<meta name = "tipo_contenido"   content = "text/html;"       http-equiv = "content-type"      />
+		<meta                           content = "on"               http-equiv = "cleartype"/>
+		<meta                           content = "IE=edge,chrome=1" http-equiv = "X-UA-Compatible" />
+	    <meta name="format-detection" content="telephone=no"/>
+<!-- 
+		<script language="javascript" type="text/javascript" src="../resources/js/reloj.js"/> 
+-->
+			    <script type="text/javascript" src="../resources/js/alertify.js"/>		
+		<script type="text/javascript" src="../kubo/js/scriptUnidadEsp.js"/>
+		
+		<script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"/>
+		
+		<script type="text/javascript" src="https://www.google.com/jsapi"/>				
+		<script type="text/javascript" src="../resources/js/jquery.scrollTo.js"/>				
+		<script type="text/javascript" src="../resources/js/kubo.js"/>
+		<script type="text/javascript" src="../resources/js/general.js"/>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine-es.js"/>
+		<script type="text/javascript" src="../resources/js/validation/js/jquery.validationEngine.js"/>	
+		
+		<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.core/require.js" />
+		<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.core/registro-main-config.js" />		
+				
+		<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.registro/counter.js" />
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.registro/domicilio.js" />
+		<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.registro/documentacion.js" />	
+		<script type = 'text/javascript' src = "../resources/js/mx.com.kubo.acreditado/registro/historial.js" />
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.inversionista/registro/person-type.js" />
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.inversionista/registro/beneficiario.js" />
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.inversionista/registro/beneficiario/domicilio.js" />
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.inversionista/registro/beneficiario/zipcode.js" />
+		<script type = "text/javascript" src = "../resources/js/mx.com.kubo.inversionista/registro/beneficiario/neighborhood.js" /> 
+		<script type = "text/javascript" src = "../resources/js/frmscript.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_complements.js"/>
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_contadorToken.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_movimentos.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/loanListScript_botonRegreso.js"/>	
+	    <script type = "text/javascript" src = "../resources/js/urlParameters.js"/>	
+		<script type = "text/javascript" src = "../resources/js/loanListScript_resumenSaldos.js"/>	
+								
+		<script type = "text/javascript" src = "../resources/js/secciones/registro/menu/menu_item.js"/>		
+				
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.fancybox-1.3.4.pack.js"/> 
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.easing-1.3.pack.js"/>
+		<script type="text/javascript" src="../resources/js/fancybox/jquery.mousewheel-3.0.4.pack.js"/>
+		
+		<script type = "text/javascript" src = "../resources/js/scroll_superior.js"/>	<!-- scroll horizontal superior GABRIEL -->
+		<script type = "text/javascript" src = "../resources/js/reloj.js"/>
+		
+		<script type='text/javascript' src="../resources/js/explorer.js" />
+		<!--comentado hubspot script type='text/javascript' src="../resources/js/datos_hubspot.js" / -->
+		<script type='text/javascript' src="../resources/js/beneficiarios.js" />
+		<script type='text/javascript' src="../resources/js/perfil_inversionista.js" />
+		<script type='text/javascript' src="../resources/js/mayusculas.js" />
+		<script type='text/javascript' src="../resources/js/validacion_llenado.js" />
+		<script type='text/javascript' src="../resources/js/basicosHistorial.js" />
+		<script type='text/javascript' src="../resources/js/variasFuncionesFormulario.js" />
+		<script type='text/javascript' src="../resources/js/mx.com.kubo.registro/codigo_postal.js" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+    	<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+    	<link rel="stylesheet" type="text/css" href="../resources/css/infoBasica.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/preregistro2.css" />			
+		<link rel="stylesheet" type="text/css" href="../resources/css/resumen-inversion.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/main-resumen.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/js/validation/css/validationEngine.jquery.css" />	
+		<link rel="stylesheet" type="text/css" href="../resources/css/fileUpload/fileUpload.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/tienda_investments_ipad.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/secciones/registro/menu_items.css"/>
+		<link rel="stylesheet" type="text/css" href="../resources/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+			 
+			 <ui:include src="scripts/control-table.xhtml"/>
+			
+			<!-- Proyect List -->
+			<link rel="stylesheet" type="text/css" href="../resources/css/loanListStyle.css" /> 
+			<link rel="stylesheet" type="text/css" href="../resources/css/customAcoordeon.css" />	
+			
+			<!-- Bitacora css -->
+			<link rel="stylesheet" type="text/css" href="../resources/css/Logs.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/investments.css" />
+			
+			<link rel="stylesheet" type="text/css" href="../resources/css/responsive/headerResponsive2.css" />
+			<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="../resources/css/responsive/footerResponsive.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/responsive/edoCuentaInv.css" />
+			<link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.css"/> 
+			   <link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+           	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+       		<link rel="stylesheet" type="text/css" href="../resources/css/comprobante_pagos.css"/>
+			
+			<script>
+			
+			google.load("visualization", "1", {packages:["corechart"]});
+			
+				$(document).ready(function(){
+					$(".menu01Invest").click(function(){
+						var elementSelect = ($(this).parents(".secondaryMenuInv")).find(".selectedMenuInv");
+						
+						elementSelect.removeClass("selectedMenuInv");
+						$(this).addClass("selectedMenuInv");
+					
+					});
+					
+					
+				});
+				
+				
+				
+			</script>
+			<script>
+		/******************GOOGLE*ANALYTICS**************************************/  
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			  ga('create', 'UA-40649010-1', 'auto');
+			  ga('require', 'linkid');
+			  ga('require', 'displayfeatures');
+			  ga('send', 'pageview');
+
+		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
+		</script>
+
+		<title> Kubo.financiero | Gracias por registrarte Inversionista</title>				
+     <meta name="Description" content="El proceso de registro ha concluido éxitosamente, pronto te informaremos de los proyectos en los que podras invertir y de los que podrás obtener los mejores rendimientos"/>
+			
+		</h:head>
+		<h:body>
+	
+		<h:panelGroup rendered="#{sessionBean.area==null}">
+		
+			<script>
+				location.href="../Portal/sesion-expirada.xhtml";
+			</script>
+		
+		</h:panelGroup>
+		
+		<div class="velo"/>
+		
+		<ui:include src = "scripts/control-table.xhtml"/>
+		<ui:include src = "scripts/domicilio.xhtml"/>
+		
+		<ui:include src = "templates/obtenToken.xhtml"/>
+		
+		<ui:include src = "secciones/investment/tienda/fondeo_previo.xhtml"/>
+	
+		<ui:include src = "secciones/investment/tienda/sin_seleccionar.xhtml"/>
+		<ui:include src = "secciones/investment/tienda/InvMaxRecMovil.xhtml"/>
+		<ui:include src = "secciones/investment/tienda/alertInversionValor_error.xhtml"/>
+		
+		
+		<!-- 
+		<div id ="dvProperInve" style="position: fixed; top: 0px; left: 0px; width: 350px; height: 300px; background-color: #ff0000; color: #FFF; font-weight: bold; z-index: 999999;" ></div>
+		 -->
+		
+		
+			<div id="header" style="width: 100%; margin: 0px;">
+				<ui:include src="templates/headContenido.xhtml" />
+			</div>
+			        <h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
+		<div class="titulo tituloInv"><h2></h2></div>
+	
+		</h:panelGroup>
+			<div class="contPR">
+			<div class="contFrm" style="padding-right: 0px; overflow: hidden !important;">
+			
+			<ui:include src = "investments/menu.xhtml"/>
+			
+				<div class="investment"  style="width: auto; margin-top: 0px !important; height: auto; ">
+					
+					<h:panelGroup id="pnlContentInvest">
+						
+						<script>
+						
+								$(document).ready(function() 
+										{	
+										    $(".contFrm")			.css("padding-right", "0");
+											$(".contFrm")			.css("width", "auto" );
+											$(".contPR")			.css("width", "auto" );
+											$("#dvContentLoanLst")	.css("width", "auto" );
+											
+											$("#dvScroll")			.css("width", "auto" );
+										
+										});
+								
+								</script>
+						
+						<h:panelGroup rendered="#{navigationInvest.resumenDisp}">	
+							
+							<ui:include src="templates/myInvestments.xhtml" />
+							
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{navigationInvest.basicDataDisp}">
+							<div class="content  invests">
+								<!-- <ui:include src = "secciones/registro/menu/menu.xhtml" />
+								<ui:include src = "secciones/navegacion_ajax_listeners.xhtml"/>
+								<ui:include src = "secciones/navegacion_ajax_templates.xhtml"/>
+													
+								<ui:include src = "secciones/registro/help_panel/panel.xhtml"/>
+								<ui:include src = "secciones/registro/help_panel/img_IFE.xhtml"/>
+								<ui:include src = "secciones/registro/help_panel/msg_consulta_buro.xhtml"/>	 -->
+								
+								<ui:include src = "#{navigationInvest.basicDataDisp ? 'secciones/investment/datos_personales.xhtml' : 'cap1.xhtml' }"/>
+								
+							</div>
+						</h:panelGroup>
+						 
+						<h:panelGroup rendered="#{navigationInvest.summaryDisp}">	
+							<h:panelGroup rendered="#{navigationInvest.flagDispEdoCuenta}">
+							
+								<script>
+									$(".clInvEdoCta").css('display','block');
+								</script>
+								
+							</h:panelGroup>
+							
+							<h:panelGroup rendered="#{!navigationInvest.flagDispEdoCuenta}">
+								<script>
+									$(".clInvEdoCta").css('display','none');
+								</script>
+							</h:panelGroup>
+							
+							
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{navigationInvest.logsDisp}">	
+							
+							<ui:include src="templates/bitacorasForm.xhtml" />
+							
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{navigationInvest.proyectListInvestDisp}">	
+							
+							<ui:include src="#{navigationInvest.paginaActualIntInv}" />
+							
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{navigationInvest.cashWithdrawalDisp}">	
+							
+							<!-- <ui:include src="templates/disposicionEfectivo.xhtml" /> -->
+							<ui:include src="templates/investorMovs.xhtml" /> 
+							
+						</h:panelGroup>
+
+					</h:panelGroup>
+					
+				</div>
+					
+				</div>	
+					
+				<h:panelGroup id="panelContentListProyect">	
+						
+					<h:panelGroup rendered="#{navigationInvest.summaryDisp}">
+						
+						<h:form prependId="false">
+							<div class="btn_back" >
+							
+							<div class="callActionMedium btnVerde backButton" onclick="regresarSabana();">
+									<i class="fa fa-angle-left "></i> <span>Regresar a la lista de proyectos</span>
+							</div>
+							
+							<p:commandLink style="display:none" styleClass="callActionMedium btnVerde  backButton" id="backToListBtn"   actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="closeFancy();" update=":pnlContentInvest :panelContentListProyect" >
+								
+							
+
+								<f:attribute name="seccionInv" value="proyectList" />
+							</p:commandLink>
+							</div>
+						</h:form>
+					</h:panelGroup>
+						
+					<h:panelGroup rendered="#{navigationInvest.listProyectDisp}">			
+						<!-- <ui:include src="proyectList.xhtml" /> -->
+						<ui:include src="#{navigationInvest.paginaActualInt}" />
+					</h:panelGroup>
+						
+				</h:panelGroup>
+			</div>
+			
+			<div id="footer" style="width: 100%; margin: 0px;">
+				<ui:include src="templates/footerContenido.xhtml" />
+			</div>
+			
+		<ui:include src="templates/msgProcessing.xhtml" />
+			
+			<div style="display:none;">
+			
+				<h:form prependId="false">
+					<p:commandLink
+						id="btnUpdateInvest"
+						onstart="return  iniUpdateInv();"
+						immediate="true" 
+						actionListener="#{myInvestments.webService}"
+						ajax="true"
+						update=":pnlContentInvest"
+						oncomplete="finishInv();"
+						>
+					</p:commandLink>
+				</h:form>
+				
+			</div>
+			
+			
+			<h:panelGroup id = "pnlCancel">
+				<!--  Panel puesto para que no cree conflictos con la lista de proyectos ya que se actualiza esta parte para actualizar la parte de que si esta cancelada o no la cuenta   -->
+			</h:panelGroup>
+			
+		</h:body>
+</html>

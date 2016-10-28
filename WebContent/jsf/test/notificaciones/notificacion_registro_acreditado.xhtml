@@ -1,0 +1,105 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<p:panel header = "Notificación Registro Acreditado">					
+		<h:form>
+			<p:growl id = "growl" sticky = "true" showDetail = "true"/>
+		
+			<p:outputPanel id = "customPanel" >
+		        <p:selectOneRadio id = "customRadio" value = "#{notificacionesTest.receptor_email}" layout = "custom">
+		            <f:selectItem itemLabel = "analista"      itemValue = "extapia26@gmail.com" />
+		            <f:selectItem itemLabel = "jefatura"      itemValue = "rodrigomb@kubofinanciero.com" />
+		            <f:selectItem itemLabel = "gerencia"      itemValue = "rogelio@kubofinanciero.com" />
+		            <f:selectItem itemLabel = "acreditado"    itemValue = "#{c.email}" />
+		            <f:selectItem itemLabel = "prospectus_id" itemValue = "prospectus_id" />
+		        </p:selectOneRadio> 					            					            					 					           					            
+		
+			<p:panelGrid styleClass = "prospecto_panel_grid">
+				<p:row>
+					<p:column>
+						<p:radioButton id  = "analista" for = "customRadio" itemIndex = "0" />
+					</p:column>
+					
+					<p:column>
+						<h:outputLabel for = "analista" value = "extapia26@gmail.com" />       									
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+						<p:radioButton id  = "jefatura" for = "customRadio" itemIndex = "1" />
+					</p:column>
+					
+					<p:column>
+						<h:outputLabel for = "jefatura" value = "rodrigomb@kubofinanciero.com" />      									
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+						<p:radioButton id  = "gerencia" for = "customRadio" itemIndex = "2" />
+					</p:column>
+					
+					<p:column>
+						<h:outputLabel for = "gerencia" value = "rogelio@kubofinanciero.com" />  									
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>
+						<p:radioButton id  = "acreditado" for = "customRadio" itemIndex = "3" />
+					</p:column>
+					
+					<p:column>
+						<p:autoComplete id             = "prospectus_autocomplete" 
+								        widgetVar      = "inpAutocomplete"  
+										value          = "#{searchRequest.search}"
+										completeMethod = "#{searchRequest.completeinfoclient}"
+										var            = "c" 
+										itemLabel      = "#{c.full_name}" 
+										itemValue      = "#{c}"
+										converter      = "viewFullNameConverter"
+										size           = "30"
+										maxResults     = "20">												
+							<p:ajax event = "blur" />
+						</p:autoComplete>	
+								
+						<p:watermark id    = "water_id_search" 
+									 for   = "prospectus_autocomplete"  
+									 value = "Buscar por nombre"/>	
+					</p:column>
+				</p:row>
+					
+				<p:row>		
+					<p:column> 
+						<p:radioButton id  = "prospectus_id" for = "customRadio" itemIndex = "4" />										
+					</p:column>
+					
+					<p:column>
+						<p:inputText id       = "input_prospectus_id" 
+									 required = "false"
+									 size     = "30"
+									 value    = "#{notificacionesTest.prospectus_id}"/>
+									 
+						<p:watermark id    = "water_input_prospectus_id" 
+									 for   = "input_prospectus_id"  
+									 value = "Prospectus_ID"/>	
+					</p:column>											 
+				</p:row>											 
+					
+				<p:row>		 
+				<p:column colspan = "2">
+					<p:commandButton value          = "Notificar" 
+								     onstart        = ""
+								     actionListener = "#{notificacionesTest.registro_acreditado}"
+								     update         = "growl"/>		
+				</p:column>											     
+				</p:row>	 											    										 
+			</p:panelGrid>	 
+			</p:outputPanel>
+		</h:form>
+	</p:panel>				
+</ui:composition>

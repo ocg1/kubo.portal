@@ -1,0 +1,202 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+
+  
+
+
+
+<section>
+       
+        <div class="container portadaTabla">
+          <table class="clsTablaInferior" >
+      
+               
+        	<tr>
+        		<td>
+<div class="colIzq">
+<table cellpadding="0" cellspacing="0" border="1">
+	<tr class="logoCelda">
+               <td colspan="3">
+          <div class="logo">
+		<h:graphicImage library="img" name= "logo_kubo.png"  /> 
+		</div>
+       
+          </td>
+          </tr>
+	<tr class="nombre-cell">
+		  <td colspan="3" >
+			   <p><strong>Nombre del Contrato:</strong> kubo.captación</p>
+             <p><strong>Nombre Comercial del Producto:</strong> kubo.plazofijo</p>
+		  </td>
+        </tr>
+	<tr class="tasaGatCat">
+		<td class="tasaInteresAnual"><h4>TASA DE INTERÉS ANUAL FIJA</h4></td>
+		<td colspan="2" class="gananciaAnual">  
+		<table cellpadding="0" cellspacing="0" border="1">
+			<tr class="gananciaAnual">
+				<td colspan="2">
+					<h4>GANANCIA ANUAL TOTAL NETA</h4>
+				</td>
+			</tr>	
+			<tr class="nominalReal">
+				<td class="gatN">
+					<h4>GAT <p>Nominal</p></h4>
+				</td>
+				<td class="gatR">
+					<h4>GAT <p>Real</p></h4>
+				</td>
+				
+			</tr>
+		</table>
+		
+			
+			
+	    </td>
+	
+ 
+	</tr>
+	<tr class="tasa-gat-cat-det">
+		<td class="sin-borde-inf"><span class="variable celdaPortada"></span></td>
+		<td class="gatN">
+              	<span class="variable celdaPortada">La que se señale en la constancia que ampare en el depósito a plazo fijo. </span>
+        </td>
+		<td class="gatR">	
+			<span class="variable celdaPortada">La que se señale en la constancia que ampare en el depósito a plazo fijo. </span>
+		
+		</td>
+	
+              	
+	</tr>
+	<tr class="observaciones">
+		<td></td>
+		<td colspan="2">                <p>Antes de impuestos.</p>
+<p>La GAT real es el rendimiento que obtendría después de descontar la inflación estimada.</p>
+<p> Para fines informativos y de comparación.</p></td>
+	
+	</tr>
+	<tr class="medios-lugares">
+		<td colspan="3">
+		
+		<h4>MEDIOS DE DISPOSICIÓN</h4>
+	
+	       <p>Transferencias electrónicas de fondos.</p>
+		</td>	
+	</tr>
+</table>
+</div>
+	
+<div class="colDer">
+<table cellpadding="0" cellspacing="0" border="1">
+<tr class="noRegistro">
+	<td>
+ 		<div class="registro">
+  			  <p>No. de Registro del Contrato de Adhesión en el RECA de</p><p> CONDUSEF: #{contractData.data.kboReca} </p>
+	          <h5>Número de cuenta: <span>#{contractData.data.cliCuentaAhoID}</span></h5>
+	          <h5>Número de cliente: <span>#{contractData.data.cliNumeroCliente}</span></h5>
+	                    <h5>Nombre del Cliente: <span class="variable borde"> #{contractData.data.cliNombreCompleto}</span></h5>
+	          
+        </div>
+     </td>
+     </tr>
+<tr class="tipoOperacion">
+	<td>     <p><strong>Tipo de Operación:</strong> Depósito a Plazo Fijo</p></td>
+ 
+  </tr>
+<tr class="comisionesRe">
+	<td>
+	 <h4>COMISIONES RELEVANTES</h4>
+	</td>
+</tr>
+<tr class="detalle_comisionesRe">
+	<td>
+	
+	   <p >
+    Manejo de cuenta: $ 0
+</p>
+<p >
+    Transferencia Interbancaria del mismo cliente: Una disposición al mes sin costo, $ 15.00 más IVA por transacción a partir de la segunda.
+</p>
+<p >
+    Transferencia a Cuenta Eje: $ 0
+</p>
+<p >
+    Transferencia entre cuentas Kubo de diferente Cliente: $ 0
+</p>
+<p >
+    Consulta de saldo por celular: $ 0
+</p>
+<p >
+    Consulta de saldo vía internet: $ 0
+</p>
+<p >
+    Para otras comisiones consulte el Portal.Kubo <a href="http://www.kubofinanciero.com/">www.kubofinanciero.com</a> y la cláusula sexagésima cuarta del
+    presente contrato
+</p>
+	</td>
+</tr>
+<tr class="medios-lugares">
+	<td> 
+	   <h4>LUGARES PARA EFECTUAR RETIROS</h4>
+
+        <p>Los retiros de recursos son a través de transferencia electrónica.</p> 
+	</td>
+</tr>
+</table>
+</div>
+</td></tr>
+<tr>
+<td>
+<table class="tablaInferior" cellpadding="0" cellspacing="0" border="1">
+<tr class="estadoCuenta">
+<td>
+ <h4>ESTADOS DE CUENTA O CONSULTA DE MOVIMIENTOS</h4>
+
+          <p>Consulta vía internet:  <span class="variable borde" style="width:40px;"><!-- #{contractData.data.pendPConsultaSaldoViaInternet} --> X</span></p>
+              <p>Envío por correo electrónico: </p>
+</td>
+</tr>
+<tr class="otroDato">
+<td>
+      <p>Fondo de Protección</p>
+		<p>Producto garantizado por el Fondo de Protección hasta por 25 mil UDIs.</p>
+		<p>Titular Garantizado:<span class="variable borde"> #{contractData.data.cliNombreCompleto}</span>.</p>
+</td>
+</tr>
+<tr class="acla-recla">
+<td>
+ <h4>ACLARACIONES Y RECLAMACIONES:</h4>
+
+          <p>Unidad Especializada de Atención a Usuarios de KU-BO Financiero, S.A. de C.V. S.F.P.
+Domicilio: Av. Barranca del Muerto 92, Colonia Florida, C.P. 01030, Delegación Álvaro Obregón, México, Distrito Federal. 
+Teléfono: (55) 62690024 correo electrónico: <a href="mailto:soporte@kubofinanciero.com"> soporte@kubofinanciero.com</a> 
+Página de Internet:<a href="https://www.kubofinanciero.com"> www.kubofinanciero.com </a></p>
+</td>
+</tr>
+
+<tr class="otroDato2">
+<td>
+<p>Registro de Contratos de Adhesión Número <span class="variable borde" style="width:280px;"> #{contractData.data.kboReca}</span>.
+Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF). En el territorio nacional 01 800 999 80 80. En el Distrito Federal y Área Metropolitana (55) 53 40 09 99 Página de Internet www.condusef.gob.mx o al correo electrónico opinion@condusef.gob.mx, o bien, podrá acudir a la siguiente dirección Av. Insurgentes Sur No. 762, Col. Del Valle, Delegación Benito Juárez, C.P. 03100, México, D. F.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+</div>
+			
+       
+
+</section>
+
+
+  
+				</ui:composition>

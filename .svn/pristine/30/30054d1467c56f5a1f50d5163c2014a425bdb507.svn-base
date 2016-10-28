@@ -1,0 +1,23 @@
+/**
+ * PublicProyect.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package mx.com.kubo.kubows;
+
+public interface PublicProyect extends java.rmi.Remote {
+    public mx.com.kubo.kubows.WsResponse notificar(mx.com.kubo.kubows.NotificadorConfigRequest request) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse notificaDepositos() throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse enviaSMS(mx.com.kubo.kubows.SMSRequestService request) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse notificaSMSSinPublicar() throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse setEstatus_tienda(java.lang.String tienda_DISABLED) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse getEstatus_tienda() throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse publishProyect(mx.com.kubo.kubows.EditorEstatusRequest request) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse setProspectRisk(mx.com.kubo.kubows.ProspectRiskRequest request) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse getLista_publicaciones_pendientes() throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse getDatosModelo(java.lang.String prospectusId) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse verificationStatus(java.lang.String prospectus_id, java.lang.String company_id, java.lang.String proyect_id, java.lang.String status) throws java.rmi.RemoteException;
+    public mx.com.kubo.kubows.WsResponse setTransunionCalif(mx.com.kubo.kubows.TransUnionCalifRequest transunion) throws java.rmi.RemoteException;
+}

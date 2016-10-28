@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+			    xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = " dvContentPLD field">
+		<div class = "dvLabel">
+			<h:outputText value = "Nombre*" styleClass = "labelsStl" />
+		</div>
+		
+		<div class = "dvElementAddres1">
+			<p:inputText id = "nameThird" title = "nombre"
+						 value = "#{addPldDocument.prevencionld.pr_first_name}" 
+						 styleClass = "elementAddres1 validatorClass" >
+						 
+			<p:ajax event = "blur"
+					listener   = "#{addPldDocument.savePrevencionLD}" 
+				    oncomplete = "Documentacion.pr_first_name_on_complete(xhr, status, args);" />
+			
+			</p:inputText>
+		</div>
+	</div>				
+</ui:composition>				

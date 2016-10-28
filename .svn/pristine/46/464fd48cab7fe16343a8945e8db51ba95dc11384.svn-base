@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/ayudaStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/helpStyle.css" />
+</h:head>
+<h:body>
+<h:form>
+
+  		<div class="contHelp">
+  			<div style="background-color: #E2E2E2; width: 100%; padding-top: 5px; padding-bottom: 5px; border: 1px gray solid;">
+    			<h:outputLabel value="¿Cómo protege KUBO mi información personal y confidencial?" styleClass="headerHlp" />
+    		</div>
+  		
+  		<h:panelGrid>
+  			<h:panelGroup>
+  				<div >
+  					<h:outputLabel styleClass="contHlp">
+  					<br></br>
+  					
+  					Lo primero que KUBO realiza es corroboran la veracidad de la información de tus datos 
+  					antes de poder formar parte de nosotros. En segundo lugar  KUBO  resguarda tu información 
+  					utilizándola siempre y en cada momento como estrictamente confidencial. Otros miembros de 
+  					KUBO no  tendrán la posibilidad de realizar los traspasos correspondientes a través de la 
+  					adecuada utilización del listado que aparece en pantalla.  En tercer lugar nosotros 
+  					protegemos en todo momento la información.<br></br>
+					Utilizando la mejor marca de seguridad en línea como proveedor  considerado  que se la 
+					industria más confiable. Adicionalmente contamos con un sistema de supervisión para 
+					descripción de créditos  y un sitio web de comunicación para los miembros, lo que nos 
+					ayudara a prevenir fugas de información confidencial.
+  					 					
+  						
+  					</h:outputLabel>
+  				</div>
+  			</h:panelGroup>
+  		</h:panelGrid>
+  		</div>
+</h:form>
+</h:body>
+</html>
