@@ -6177,7 +6177,7 @@ position:absolute;right: 13px;top: 10px;}
 		#htmlContratoAcreditadoContenido .portadaContratoCredito table td, .tabla td{
 		border: 1px #666 solid;
 	}
-
+	
 	#htmlContratoAcreditadoContenido .colIzquierda, 
 	#htmlContratoAcreditadoContenido .colDerecha {
 		width:100%;
@@ -7745,4 +7745,34 @@ text-align:left;
 	left:2% !important;
 }
 
+}
+
+
+
+.textoCopys.renovacion-texto {
+	padding:20px 0 0;
+}
+
+.textoCopys.renovacion-texto  h2 {
+		color: #8FC450;
+	font-size:26px;
+	margin: 0 0 20px;
+	font-weight:700;
+}
+
+.pasos_generales.renovacion-texto h2 {
+	color:#333;
+	font-weight:700;
+	font-size:25px;
+}
+
+.pasos_generales.renovacion-texto .btnNaranja {
+	width:300px;
+}
+
+
+.pasos_generales.renovacion-texto article > figure {
+	height: 180px;
+	width: 180px;
+	margin: 0 auto 0px;
 }

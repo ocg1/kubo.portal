@@ -47,10 +47,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<p:commandLink styleClass="logoMobile" action="home" immediate="true">                    
 				<h:graphicImage library="img" name= "logokubo.png"  />            	        			
 			</p:commandLink>
-               		  			                                      
-			<ol>                                        
-				<li class="contenedorFecha actual"><span class="fechaAcesso actual"><strong>Fecha actual:</strong>#{headerBean.fecha_acceso_ACTUAL}</span></li>
-				<li class="contenedorFecha ultimo"><span class="fechaAcesso ultimo"><strong>Último Acceso:</strong>#{headerBean.fecha_acceso_LAST}</span></li>                                    
+            <!-- aside class="accesoN"  onclick="mensajeInicialAccesoNuevo ()"><small>Acceso</small><i class="fa fa-clock-o"></i></aside--> 		  			                                      
+			<ol>   
+				  <li></li>                                
+				
+				<li class="contenedorFecha actual" style="opacity:0"><span class="fechaAcesso actual"><strong>Fecha actual:</strong>#{headerBean.fecha_acceso_ACTUAL}</span></li>
+				<li class="contenedorFecha ultimo" ><span class="fechaAcesso ultimo"><strong>Último Acceso:</strong>#{headerBean.fecha_acceso_LAST}</span></li>   
+				
+		
+				                         
                 <li class="usuario" style="display:none"><strong class="reloj"></strong><span>#{headerBean.name}!</span></li>                        
 				<li style="display:none" class="n_folio"><strong></strong><span></span></li>          
 				<li class="logout">
@@ -75,11 +80,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li class="instagram"><a href="http://instagram.com/kubofinanciero" target="_blank"><i class="fa fa-instagram "></i></a></li>
                 </ul>                        
 			</div>
-                    
+                    	<h:panelGroup rendered = "#{sessionBean.area == 'L' and sessionBean.isClient ==true}" >
+							<aside class="nuevoPrestamoEnlace" onclick="misolicitud();">
+								<span>Nuevo Préstamo</span>
+								<div class="avisoIcon"><i class="fa fa-money"></i><small>1</small></div>
+							</aside>	
+					</h:panelGroup>		
 			<div class="menu_principal">
 				
 				<div>    
-										
+						
 					<article onclick="menuPrincipalHeader(event.stopPropagation());">								
 						<h:panelGroup rendered = "#{!sessionBean.haveUsrImg}" >
 							<figure><h:graphicImage library="img" name="sinimagen.jpg"  /> </figure> 
@@ -94,10 +104,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<small> ID de cliente: #{headerBean.trackId}</small>
 					</article>                	
                             
-					<ul>                                                            							
-						<li><p:commandLink  action="#{headerBean.getAction}" immediate="true" styleClass="perfilUsuario"> #{sessionBean.area != 'M'?'Resumen de saldos':'Mi tablero'}</p:commandLink></li>
-						                
-	                   	<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+					<ul>    
+					                                               							
+						<li><p:commandLink  action="#{headerBean.getAction}" immediate="true" styleClass="perfilUsuario"> #{sessionBean.area != 'M'?'Estado de cuenta':'Mi tablero'}</p:commandLink></li>
+						 <h:panelGroup rendered = "#{sessionBean.area == 'L'}" > 
+								<h:panelGroup rendered="#{sessionBean.isClient ==true}" >								
+									<li class="solicitud" >
+										<a href="#" onclick="misolicitud();">Mi solicitud</a>
+									</li>									
+								</h:panelGroup>      
+						</h:panelGroup>               
+	                   	<h:panelGroup rendered = "#{sessionBean.area == 'L' and sessionBean.isClient ==false}" >
                         	<li><p:commandLink action="productos" styleClass="opc_prestamos" immediate="true"> Tipos de préstamo</p:commandLink></li>
 		                </h:panelGroup>      
 	                    <!-- 
@@ -142,7 +159,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });  
             	
 
-
+				function misolicitud() {
+					$(".miSolicitud").trigger("click");
+					$(".miSolicitud").trigger("click");
+				}
 
             	//]]>
 			</script>

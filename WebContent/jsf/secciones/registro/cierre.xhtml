@@ -18,8 +18,8 @@
 
 </style>
 	<script type = "text/javascript">
-	
-	// window.history.pushState(null, null, "#publicacion")
+	//<![CDATA[
+
 
 	
 		function selectionAct()
@@ -44,15 +44,14 @@
 		{	
 			ga('send', 'event', 'Leads', 'Envia solicitud');
 	     alertify.labels.cancel = "Regresar";
-		 alertify.labels.ok = "Enviar solicitud";
+		 alertify.labels.ok = "Enviar";
 		 
 		
-		 
+		 var cadenita =  '<div class="confirmacion-modificado"> <h3 class="oferta-final-h3">¡#{sessionBean.nombre}tu solicitud está lista para ser enviada!</h3><p class="oferta-final-p">Un asesor verificará que todos tus documentos estén correctos y pueda pasarlos a el analista que aprobará tu préstamo.</p></div>'
 
 		 
 			if(validateformDeal()){	
-				
-				if(alertify.confirm( "#{sessionBean.nombre}, tu solicitud está lista para enviarse. Una vez que la envíes, nos comunicaremos contigo en un máximo de 2 días hábiles para informarte sobre la autorización de tu préstamo.", function (e) {
+				if(alertify.confirm( cadenita , function (e) {
 					
 					
 					if (e) {
@@ -212,7 +211,7 @@
 			
 			return true;
 		}
-		
+		//]]>
 	</script>
 	
 	<style>

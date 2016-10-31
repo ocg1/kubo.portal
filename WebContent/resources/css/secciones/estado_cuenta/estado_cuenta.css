@@ -584,11 +584,24 @@ ul#bar_menu{
 #btnImprimirEstado {
 	float:right;
 	display: block;
-	width: 69px;
+	width: 127px;
 	margin: 20px 0 9px;
 	cursor: pointer;
+	font-size: 19px;
+	text-decoration: underline;
 }
 
+#btnImprimirEstado i{
+	font-size:35px;
+	
+}
+
+#btnImprimirEstado span{
+	float:right;
+	text-decoration:underline;
+	font-weight:600;
+	
+}
 		#estadoCuentaImprimir {
 			clear:both;
 		}
@@ -634,4 +647,74 @@ ul#bar_menu{
 
 .edoCtaRegresar {
 	margin-bottom: 15px; width: 75px;
+}
+
+
+.nuevoPrestamoEnlace {
+	float:left;
+	margin: 20px 0 0 60%;
+	width: 168px;
+	cursor: pointer;
+}
+
+.nuevoPrestamoEnlace span {
+	font-size:15px;
+	font-weight:600;
+	
+}
+
+.nuevoPrestamoEnlace span {
+	font-weight:600;
+	font-size:15px;
+	height: 15px;
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	line-height: 14px;
+	width: 126px;
+	float: left;
+	margin: 10px 0 0;
+}
+.avisoIcon {
+	float: right;
+	position:relative;
+	width: 41px;
+	height:30px;
+}
+.avisoIcon i {
+	font-size:30px;
+	color:#999;
+}
+.avisoIcon small {
+	width: 12px;
+	height: 12px;
+	display:block;
+	border-radius:40px;
+	border: solid 2px #8FC450;
+	color:#8FC450;
+	background:#fff;
+	position:absolute;
+	text-align: center;
+	top: 5px;
+	right: 0;
+	font-weight: 600;
+} 
+
+
+
+@media only screen and (max-width: 1024px) {
+.nuevoPrestamoEnlace {
+
+	margin: 20px 0 0 40%;
+	
+}
+}
+
+
+@media only screen and (max-width: 880px) {
+.nuevoPrestamoEnlace {
+
+display:none;
+	
+}
 }

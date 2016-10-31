@@ -4,11 +4,11 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-				<div class="alerts mensajeInicialAcceso">
-					<a class="close_lightbox" href="javascript:void(0);" onclick="cerraAlert();"></a>
+				<div class="alerts mensajeInicialAcceso centrar_h">
+					<a class="fa fa-times close_gray" onclick="cerraAlert();"></a>
 					<div>
-				
-							<h2>Bienvenido <strong>#{sessionBean.nombre}!</strong></h2>
+				<h2><strong>Acceso</strong></h2>
+							<!-- h2>Bienvenido <strong>#{sessionBean.nombre}!</strong></h2-->
 							<p>Fecha Actual: <strong>#{headerBean.fecha_acceso_ACTUAL}</strong></p>
 							<p>Último Acceso: <strong>#{headerBean.fecha_acceso_LAST}</strong></p>
 					

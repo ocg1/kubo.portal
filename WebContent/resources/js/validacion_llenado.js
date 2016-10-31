@@ -900,16 +900,18 @@ var buttonClick;
 							$("#hdNext\\:siguienteDocPLD").click();
 						}
 						if($(".IncomeExpense").is(":visible")) {
-							$("#hdNext\\:siguienteMasInfo").click();
+					
+							$("#hdNext\\:siguientePrep").click();
 						}
 						if($("#frmMoreInfo").is(":visible")) {
 							hideIFEjs();
-							$("#hdNext\\:siguientePrep").click();
+							$("#hdNext\\:siguienteCierre").click();
 							$.scrollTo('#header', 800, { axis:'y' });
 						}
 						
 						if($("#buttons > #menu6").hasClass("menuItemSel") && $("#area").val() == "L"){
-							$("#hdNext\\:siguienteCierre").click();
+							//$("#hdNext\\:siguienteCierre").click();
+							$("#hdNext\\:siguienteMasInfo").click();
 							console.log("entro a esta que no tiene que ver");
 		
 						}

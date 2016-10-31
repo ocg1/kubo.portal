@@ -535,11 +535,11 @@ function validaPass()
 function validaClabe(flagDis)
 {
 	mandodatos_hs();
-	
+	console.log("valida clabe");
 	if($("#hasaccount\\:0").is(':checked')) 
 	{  
        
-	
+		/*
 		var valor = $("#clabe").val();
 		if(valor.length==0){
 			return false;
@@ -548,7 +548,7 @@ function validaClabe(flagDis)
 			alert("La cuenta clabe debe tener 18 dígitos ");
 			$("#clabe").focusin();
 			return false;
-		}
+		}*/
 		
 //	    if (tecla==8) return true; // 3
 //	    patron =/\d/; // Acepta números y letras

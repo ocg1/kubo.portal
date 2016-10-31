@@ -741,7 +741,6 @@ function pixel (){
         contenedorTracksacai.innerHTML = '<img src="https://clean.tracksacai.com/aff_l?offer_id=1665" width="1" height="1" />';
     	console.log("Pixel tracksacai"+contenedorTracksacai.innerHTML);
     	
-    	var prospectoID = $("#prospectoID").val();
 		
 		$("#goCloud").attr( "src", "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+""); 
 		console.log("Pixel se disparó al  pasar la consulta prospector: credy.go2cloud.org "+ "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+"");

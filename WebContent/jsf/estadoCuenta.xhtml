@@ -141,7 +141,8 @@
 			<ui:include src="templates/headContenido.xhtml" />
 		
 		</div>
-		<div class="menu_estadocuenta" >
+		<div class="titulo"><h2>Resumen de saldos</h2></div>
+		<div class="menu_estadocuenta" style="opacity:0; height:0px; width:0px; overflow:hidden;" >
 			<div id="menuContainer" style="margin-left: 0px">
 				<h:form prependId="false">
 				
@@ -163,7 +164,7 @@
 							<li>
 							
 								<p:commandLink	
-									styleClass="menuitem"								
+									styleClass="menuitem miSolicitud"								
 									onstart="return displayMessageProcessing('msgprocessing', false);"																	
 									oncomplete="closeFancy();"
 									immediate="true"

@@ -86,6 +86,13 @@
 		    	$(".velo").fadeOut();
 			}
 			
+			function solicitarNuevoPrestamo() {
+				ga('send','event', 'inversion','invierte ahora');
+				$("#input_listener_reanudar_solicitud_RECHAZO_AUTOMATICO").trigger("click");
+			}
+			
+			
+			
 		</script>
   	    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
        
@@ -159,7 +166,7 @@
  			#{deal.prospectus}
  		</div>
     	
-    	<div style="background:#EAEAEC;" class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+    	<div  class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
     	
         	<h:form id="signin" prependId="false" acceptcharset="UTF-8">
         		<h:inputHidden value="#{inicioValues.inicio}" />
@@ -203,8 +210,6 @@ Por el momento no podemos otorgarte el préstamo, ya que tienes varios atrasos e
 
 <p>¿Te interesa ver otra opción de préstamo?</p>
 							</div>
-							
-								
 								<div class="dosBotones" >
 					 <div  onclick="aceptaSalir();"  class="callAction btnGris">
 					 		No, salir
@@ -236,7 +241,7 @@ Por el momento no podemos otorgarte el préstamo, ya que tienes varios atrasos e
 				<!-- rendered="#{rechazado.retomar}"  --> 
 				
 				<h:panelGroup rendered="#{rechazado.retomar}" >
-				<div class="tituloNuevo noP rean">
+				<!-- div class="tituloNuevo noP rean">
             		<div class="inner-block">
 	            		<h2>¡Buenas noticias!</h2>
 	            		<p>
@@ -244,10 +249,57 @@ Puedes volver a realizar la solicitud de tu <strong>préstamo.kubo</strong></p>
 	            		<span class="triangle"><i class="fa fa-caret-down"></i></span>
             		</div>
             		
-            	</div>	
-            	
+            	</div -->
+            	<div class="titulares textoCopys renovacion-texto">
+            				<h2>¡ #{sessionBean.nombre} ya puedes solicitar tu nuevo préstamo!</h2>
+            				<h3>Sigue los siguientes pasos para conocer las ofertas personalizadas que tenemos para ti.</h3>
+        
+            		
+            			</div>
 				<div class="content" >            	               
                 	<div class="inner_content">
+                			<div class="pasos_generales renovacion-texto">
+               	<div class="inner_block">
+                	<article>
+							<figure><img src="resources/images/renovacion/01-01.jpg"/></figure>
+						
+                			<h2>Actualiza tu Búro de Crédito</h2>
+                		
+	                
+	            
+	                	
+	                	
+	                	
+                	</article>
+				                	
+                	<article >
+                	 	<figure><img src="resources/images/renovacion/02-01.jpg"/></figure>
+                		<h2>Selecciona la oferta que más te guste</h2>
+				                		
+                		
+				                		
+					
+				                		
+					</article>
+				            				                	
+           			<article>
+                	  <figure><img src="resources/images/renovacion/03-01.jpg"/></figure>
+                		<h2>Firma tu contrato</h2>
+                		
+                	</article>	
+                	<article>
+                	 <figure><img src="resources/images/renovacion/04-01.jpg"/></figure>
+                		<h2>Recibe una transferencia</h2>
+             
+                	</article>	
+                	
+                	<p:commandLink styleClass="callAction  btnNaranja" value="Solicitar nuevo préstamo" onclick="solicitarNuevoPrestamo()" immediate="true"  ></p:commandLink>
+                	
+                				                				               
+				</div>			                
+			</div>
+                		 
+                	<!-- 
             			<figure class="imagenEscritorio reanu" >
 								<h:graphicImage library="img/nuevoRegistro" name= "Reanudar.png"  />       
 						</figure>
@@ -262,7 +314,7 @@ Puedes volver a realizar la solicitud de tu <strong>préstamo.kubo</strong></p>
 									</div>
 								</div>	
 						</div>
-				
+				 -->
 				
 					</div>
 				</div>

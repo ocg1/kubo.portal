@@ -283,6 +283,10 @@ function mensajeInicialAcceso () {
 		 }
 	},300);
 }
+function mensajeInicialAccesoNuevo () {
+	$(".mensajeInicialAcceso").addClass("show");    
+	$(".velo2").fadeIn("slow");
+}
 
 function cerraAlert () {
 	$(".velo2").fadeOut();

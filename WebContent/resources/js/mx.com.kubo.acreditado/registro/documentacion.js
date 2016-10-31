@@ -28,7 +28,8 @@ function sigDocuments() {
 		buttonClick = true;
 		revision_pasos(); 
 	}else {
-		$("#hdNext\\:siguienteCierre").click();
+		$("#hdNext\\:siguienteMasInfo").click();
+		//$("#hdNext\\:siguienteCierre").click();
 	}
 }
 function init_listeners_documentacion()

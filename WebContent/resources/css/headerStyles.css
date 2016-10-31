@@ -196,7 +196,7 @@ span.fechaAcesso strong{
 span.fechaAcesso{
 	margin:10px 0 0;
 	display:block;
-
+	
 	color: #fff;
 	font-weight: 600;
 }
@@ -1184,4 +1184,35 @@ font-size:40px;
 
 #general fieldset.conjunto2 {
 	clear:both;
+}
+
+.accesoN {
+	color: #ccc;
+	position: absolute;
+	right: 350px;
+	top: 5px;
+	width: 100px;
+	cursor: pointer;
+	overflow: hidden;
+	z-index: 9;
+}
+
+.accesoN small{
+	font-size: 20px;
+	float:left;
+	display:block;
+	font-weight:500;
+	text-decoration:underline;
+	cursor: pointer;
+}
+.accesoN i{
+	font-size: 30px;
+	float:right;
+	display:block;
+}
+
+@media (max-width:870px) {
+	.accesoN {
+		display:none;
+	}
 }
