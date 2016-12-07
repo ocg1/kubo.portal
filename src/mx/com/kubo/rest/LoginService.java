@@ -32,9 +32,18 @@ public class LoginService extends LoginServiceDMO
 		init_log_out(request);
 		init_faces_context(request, response);
 		        
+		SimpleDateFormat date_format = new SimpleDateFormat("dd / MM / yyyy  hh:mm:ss a");
+		
+		NaturalPerson person = membership.getPerson();
+		
+		Prospectus prospectus = person.getProspectus();
+		
 		login = new LoginMembership();
+		login.setArea(prospectus.getArea().toString());
 		login.setProspectus_id(membership.getMembershipPK().getProspectus_id() + "");
-		login.setFull_name(membership.getPerson().NombreCompletoNPM());
+		login.setFull_name(person.NombreCompletoNPM());		
+		login.setLast_login_attempt(date_format.format(membership.getLast_login_attempt()));
+		login.setPassword_ENABLED(true);
         
         return login;        
 	}
@@ -80,9 +89,10 @@ public class LoginService extends LoginServiceDMO
 				
 				login = new LoginMembership();
 				login.setArea(prospectus.getArea().toString());
-				login.setProspectus_id(membership.getMembershipPK().getProspectus_id() + "");
-				login.setFull_name(person.NombreCompletoNPM());		
-				login.setLast_login_attempt(date_format.format(membership.getLast_login_attempt()));
+				login.setFull_name(person.NombreCompletoNPM());
+				login.setProspectus_id(membership.getMembershipPK().getProspectus_id() + "");					
+				login.setLast_login_attempt(date_format.format(membership.getLast_login_attempt()));				
+				login.setPassword_ENABLED(true);				
 			} 
 		}
 		

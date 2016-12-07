@@ -10,6 +10,8 @@ public class LoginMembership
     private String full_name;
     private String last_login_attempt;
     
+    private boolean password_ENABLED;
+    
     public LoginMembership(){}
 
     public String getProspectus_id() {
@@ -43,4 +45,12 @@ public class LoginMembership
 	public void setArea(String area) {
 		this.area = area;
 	}
+
+	public boolean isPassword_ENABLED() {
+		return password_ENABLED;
+	}
+
+	public void setPassword_ENABLED(boolean password_ENABLED) {
+		this.password_ENABLED = password_ENABLED;
+	}		
 }
