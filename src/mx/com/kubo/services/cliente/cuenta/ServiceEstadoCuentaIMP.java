@@ -31,7 +31,7 @@ implements ServiceEstadoCuentaIMO
 	{				
 		lista_creditos = new ArrayList<CreditoEMO>();
 		
-		for(int indice_posicion_SAFI = 0 ; indice_posicion_SAFI < posicion_SAFI.length; indice_posicion_SAFI++)
+		for(int indice_posicion_SAFI = 0 ; indice_posicion_SAFI < posicion_SAFI.size(); indice_posicion_SAFI++)
 		{					
 			init_credito_SAFI(indice_posicion_SAFI);
 			

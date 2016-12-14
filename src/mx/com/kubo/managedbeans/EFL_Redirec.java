@@ -157,7 +157,7 @@ public class EFL_Redirec implements Serializable {
 		
 		//url += Utilities.encodeBase64( prospectus_id );
 		
-		url_str_2 = "http://www.kubofinanciero.com/Kubo/Portal/efl2.xhtml?utm_source=EFL_PSYCHOMETRIC&utm_medium=PSYCHOMETRIC&prospectus_id=" + encode;
+		url_str_2 = "https://www.kubofinanciero.com/Kubo/Portal/efl2.xhtml?utm_source=EFL_PSYCHOMETRIC&utm_medium=PSYCHOMETRIC&prospectus_id=" + encode;
 		
 		String url_return = Utilities.decodeBase64( url_str_2 );
 		
@@ -173,7 +173,8 @@ public class EFL_Redirec implements Serializable {
 		
 		url += "&loanAmount=" 	+  Utilities.decodeBase64( proyect.getAmmount()+"" ) ; // - monto del préstamo en pesos, es un valor entero >= 1
 		url += "&currency=" 	+  Utilities.decodeBase64("MXN");// - es la cadena 'MXN'
-		url += "&analyticsId=" +  Utilities.decodeBase64( getUUID() );
+		url += "&analyticsId="  +  Utilities.decodeBase64( getUUID() );
+		url += "&language=ZXMtTVgteC1pbmZvcm1hbA==";
 		
 		url_str_1 = url;
 		

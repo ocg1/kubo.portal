@@ -153,7 +153,7 @@ public abstract class CreacionCreditoAMO extends CreacionCreditoDMO
 					
 					HubSpotController hs =  new HubSpotController();
 					
-					String properties = "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"formalizado\"}";
+					StringBuilder properties = new StringBuilder( "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"formalizado\"}" );
 					
 					hs.updateProspectus(person.getProspectus().getHs_vid(), properties);
 					

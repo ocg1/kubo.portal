@@ -735,9 +735,12 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 				
 				servicecallingService.saveServiceCall(srvCall);
 				
-				double monto_Solicitado = simulator.getAmmount();
+				//monto_solicitado = 0D;
+				if( simulator != null ){
+					monto_solicitado = simulator.getAmmount();
+				}
 				
-				System.out.println("PreaprobacionAMO(): " + monto_Solicitado);
+				System.out.println("PreaprobacionAMO(): " + monto_solicitado);
 
 				WsSgbResponse res = service.prospectAdmin
 						( user, password,
@@ -761,7 +764,7 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 						phone, // phoneNumber
 						naturalPerson.getMx_curp(),// curp
 						naturalPerson.getProspectus().getTracking_id(),
-						monto_Solicitado);
+						monto_solicitado);
 				
 				
 				if(res != null && res.getStatus().equals("0")){
@@ -954,7 +957,7 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 		///////en caso de que venga sim = null crear una simulacion nueva con los valores por defecto
 							
 		//Veficar si ya existe Poyect loan						
-			if( proyect_loan != null && proyect_loan.getMx_solicitud_buro() == null )
+			if( proyect_loan != null && (proyect_loan.getMx_solicitud_buro() == null || (proyect_loan.getStatus_id() != null && proyect_loan.getStatus_id().intValue() == 0 ) ) )
 			{				
 				monto_solicitado = simulacion_ACTUAL.getAmmount();
 				proyect_loan.setAmmount(simulacion_ACTUAL.getAmmount());
@@ -1019,11 +1022,16 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 				proyectService.update(proyect);				
 				proyectloanService.update(proyect_loan);
 				
-				if( service_notas == null  ){
-					service_notas = Utilities.findBean("notesServiceImp");
-				}
 				
-				is_nota_OK  = service_notas.updateNote(nota_del_coach);
+				if( nota_del_coach != null ){
+				
+					if( service_notas == null  ){
+						service_notas = Utilities.findBean("notesServiceImp");
+					}
+					
+					is_nota_OK  = service_notas.updateNote(nota_del_coach);
+				
+				}
 			
 			} else {//Creamos proyecto y proyect loan.
 				
@@ -1046,7 +1054,13 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 				proyect_loan.setVerification_score(1);
 				proyect_loan.setOpening_commission(score.getOpening_commission());
 				proyect_loan.setLiquidity(score.getLiquidity());
-				proyect_loan.setLoan_type("NVO");
+				
+				if( loan_type == null || loan_type.trim().length() == 0 ){
+					proyect_loan.setLoan_type("NVO");
+				}else{
+					proyect_loan.setLoan_type( loan_type );
+				}
+				
 				proyect_loan.setCci_score(score.getCci_score());
 				proyect_loan.setConsulting_date(new Date());
 			
@@ -1095,10 +1109,13 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 				
 				is_proyect_OK = proyectService.add(proyect);
 				
-				if( service_notas == null  ){
-					service_notas = Utilities.findBean("notesServiceImp");
+				if(nota_del_coach != null){
+				
+					if( service_notas == null  ){
+						service_notas = Utilities.findBean("notesServiceImp");
+					}
+					is_nota_OK    = service_notas.updateNote(nota_del_coach);
 				}
-				is_nota_OK    = service_notas.updateNote(nota_del_coach);
 				
 				if(is_proyect_OK)
 				{							

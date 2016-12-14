@@ -150,12 +150,12 @@ $(document).ready(function(){
 		        		*/
 		        });
 		      
-		  if($("#inputSegmentName").val() != ""){
+		  /*if($("#inputSegmentName").val() != ""){
 			   str += "tipo-cliente =" + $("#inputSegmentName").val()+"&";
-		  }
+		  }*/
 		  
 		  if($("#inputSegmentName").val() != ""){
-			   str += "KuboScore =" + $("#inputKuboScore").val()+"&KuboScore_int"+$("#inputKuboScore").val()+"&";
+			   str += "KuboScore =" + $("#inputKuboScore").val()+"&";
 		  }
 		    /*
 		    context = {}

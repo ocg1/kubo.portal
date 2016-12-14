@@ -1,11 +1,9 @@
 package mx.com.kubo.managedbeans;
 
-import java.io.PrintWriter;
 import java.io.Serializable;
-import java.io.StringWriter;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,22 +13,19 @@ import javax.faces.context.FacesContext;
 
 import mx.com.kubo.bean.ConsultingErrorBean;
 import mx.com.kubo.bean.TemporalBean;
+import mx.com.kubo.mesa.buro.ProspectRiskIMP;
 import mx.com.kubo.model.ClientView;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.RoleFunction;
-import mx.com.kubo.model.Scoring;
-import mx.com.kubo.model.ServiceCalling;
+
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.json.JSONArray;
-
-import com.soa.webServices.WsSgbRiskServiceLocator;
-import com.soa.webServices.request.BCRiskRequest;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -183,6 +178,55 @@ implements Serializable, ConsultingControllerIMO
 		createConsultingLst( memberSel  );
 	}
 	
+	public void createConsultingLst( Membership memberSel_tmp  )
+	{
+		consultaBuro         = false;
+		displayConsulSuccess = false;	
+		
+		califKubo = ""; 
+		bcscore   = ""; 
+		rate      = "" ;		
+		messageErrorConsulta = "";
+		
+		risk = new ProspectRiskIMP();
+		risk.setPerson(memberSel.getPerson());
+		risk.init();
+		
+		if(risk.isProspect_risk_ENABLED())
+		{		
+			score = risk.getScore();
+			
+			califKubo = score.getKubo_score_a() + score.getKubo_score_b(); 
+			bcscore   = score.getBc_score(); 
+			rate      = score.getRate() + "%" ;
+			
+			messageErrorConsulta = "";
+			displayConsulSuccess = true;				
+			consultaBuro         = true;
+			
+			intConsultas++;
+			
+			crear_proyect_loan( memberSel_tmp );
+			
+		} else {
+			
+			messageErrorConsulta = risk.getMessageErrorConsulta();
+			
+			ConsultingErrorBean errorbean = new ConsultingErrorBean();
+			
+			errorbean.setMember( memberSel_tmp );
+			errorbean.setError_descript( messageErrorConsulta );
+			
+			lstError.add( errorbean );
+			
+			evento = Evento.ERROR_DESARROLLO;
+			evento.setError(ERROR_MSG + messageErrorConsulta);
+			
+			notificar(evento, null, messageErrorConsulta, null);
+		}
+	}
+	
+/*	
 	public void createConsultingLst( Membership memberSel_tmp  )
 	{
 		System.out.printf("\nConsultingController.createConsulting(): " + memberSel_tmp.getPerson().NombreCompletoNPM());
@@ -360,6 +404,7 @@ implements Serializable, ConsultingControllerIMO
 			
 		}		
 	}
+*/	
 	
 	public void getDescritionPerson(){
 		
@@ -443,7 +488,7 @@ implements Serializable, ConsultingControllerIMO
 			for( String item : arrayClientToConsult ){
 			
 				
-				msg="";
+				messageErrorConsulta = "";
 				inttotal++;
 				
 				String[] peronalData =  item.split("::");
@@ -458,7 +503,7 @@ implements Serializable, ConsultingControllerIMO
 				if ( validaCURP_RFC( memberSel_tmp )){
 				
 					if( callSGBAltaUsuario( memberSel_tmp ) )
-					{
+					{						
 						createConsultingLst( memberSel_tmp  );
 					}
 				

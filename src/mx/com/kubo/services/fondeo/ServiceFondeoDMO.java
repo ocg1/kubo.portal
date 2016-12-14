@@ -109,6 +109,9 @@ implements ServiceFondeoIMO
 	protected boolean SAFI_solicitud_ENABLED;
 	
 	protected final String SUCCESS;
+	protected final String SUCCESS_PLD;
+	protected final String SUCCESS_PLD_2;
+	
 	protected final String SAFI_FINANZAS_ID;
 	
 	protected final int INIT;
@@ -126,7 +129,9 @@ implements ServiceFondeoIMO
 	
 	protected ServiceFondeoDMO()
 	{				
-		SUCCESS = "0";				
+		SUCCESS = "0";	
+		SUCCESS_PLD = "502";
+		SUCCESS_PLD_2 = "501";
 		
 		INIT     = 1;
 		RESPONSE = 2;

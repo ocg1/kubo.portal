@@ -26,13 +26,12 @@
 		<div class = "field">		
 				
 		<div class = "dvLabel">
-			<h:outputLabel styleClass = "labelsStl" value = "Apellido materno*"/>
+			<label class = "labelsStl">Apellido materno </label>
 		</div>
-			
 			<p:inputText id = "aMaterno" immediate = "true" 
 						 value      = "#{basicData.naturalPerson.mother_last_name}"
 					     onfocus = "DatosPersonales.init_focus_date(1);" 					      
-					     styleClass = "elementStl validatorClass hs_class" >
+					     styleClass = "elementStl hs_class" >
 					 
 				<p:ajax event = "blur"
 						oncomplete = "DatosPersonales.mother_last_name_on_complete(xhr, status, args);"  
@@ -44,6 +43,8 @@
 				   <h:panelGroup rendered = "#{sessionBean.area == 'I'}" >
 				   		<script>
 				   				$("#aMaterno").removeClass("validatorClass");
+				   				$(".invObligatorio").hide();
+				   				
 				   		</script>
 				   </h:panelGroup>
 	</div>			

@@ -117,6 +117,21 @@ public abstract class SearchRequestAMO extends SearchRequestDMO
 				sesion_search_request.setTypeLog(type_log);
 				sesion_search_request.setSearchSummary(acreditado_TOKEN);
 				
+				faces = FacesContext.getCurrentInstance();
+				
+				faces .getViewRoot().getViewMap().remove("summaryRequest");
+				
+				faces .getViewRoot().getViewMap().remove("chartBackBean");
+				
+				faces .getViewRoot().getViewMap().remove("checkScoreProcessed");
+				
+				
+				resolver  = faces.getApplication().getELResolver();	
+				
+				elContext = faces.getELContext();
+				
+				summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
+				
 		        summary_request.init();
 				//summary_request.cargaInfoCompleta();	
 		        //summary_request.initInvesmentData();
@@ -139,6 +154,20 @@ public abstract class SearchRequestAMO extends SearchRequestDMO
 				
 				sesion_search_request.setTypeLog(type_log);
 				sesion_search_request.setSearchSummary(acreditado_TOKEN);
+				
+				faces = FacesContext.getCurrentInstance();
+				
+				faces .getViewRoot().getViewMap().remove("summaryRequest");
+				
+				faces .getViewRoot().getViewMap().remove("chartBackBean");
+				
+				faces .getViewRoot().getViewMap().remove("checkScoreProcessed");
+				
+				resolver  = faces.getApplication().getELResolver();	
+				
+				elContext = faces.getELContext();
+				
+				summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
 				
 				summary_request.init();				
 			break;

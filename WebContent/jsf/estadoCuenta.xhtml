@@ -81,6 +81,8 @@
 			'centerOnScroll':	true
 		});
 		
+		$(".btnUpdateHeaderEdoCuentaa").trigger("click");
+		
 	});
 	
 	</script>
@@ -128,6 +130,7 @@
 		  function renuevaFnc(){
 			  $(".ofertasLnk").click();
 		  }
+		  
 		  
 		</script>
 	
@@ -183,13 +186,16 @@
 				</h:form>
 			</div>
 		</div>
-			<!-- <h:form  prependId="false" > -->
-		
-				<!-- <div id="dvSi_autorizoRN" class="callAction btnNaranja"  style="display: block;" onclick="renuevaFnc();">Solicita tu nuevo préstamo aquí</div> -->
+
+			<!-- div    id = "dvSi_autorizoRN" 
+				 class = "callAction btnNaranja"  
+				 style = "display: block;" 
+				 onclick="renuevaFnc();">
+				 Solicita tu nuevo préstamo aquí
+				 </div -->
 		
 				<ui:include src = "templates/contEdoCuenta.xhtml"/>
-			
-			<!-- </h:form> -->
+						
 		<div id="footer" style="width: 100%; magin-right: 0px; margin-bottom: 0px;">
 		
 			<ui:include src="templates/footerContenido.xhtml" />
@@ -200,8 +206,30 @@
 		
 		<h:form prependId="false"  >
 	
-		<h:commandLink styleClass="ofertasLnk" style="display:none;" action="renovacion4clk" ></h:commandLink>
-	
+		<div style = "display:none;">
+			<h:commandLink styleClass = "ofertasLnk"  action = "renovacion4clk" />
+			
+			<h:commandLink styleClass = "btnUpdateHeaderEdoCuentaa" >
+			 	<p:ajax event="click" update=":frmeadreIn:pnlHeaderIn  pnlPopUpRen" />
+			</h:commandLink>
+			
+		</div>
+		
+		<h:panelGroup id="pnlPopUpRen" >
+		
+			<h:panelGroup rendered = "#{sessionBean.area == 'L' and sessionBean.new_consulting}" >
+			   <h:panelGroup rendered = "#{sessionBean.enabled_Ren_4_Click}" >
+		
+				<ui:include src = "renovaciones-consulta/renovacion-popUp.xhtml"/>
+		
+				</h:panelGroup>
+			</h:panelGroup>
+		
+		</h:panelGroup>
+		
+		
+		
+		
 	</h:form>
 
 	</h:body>

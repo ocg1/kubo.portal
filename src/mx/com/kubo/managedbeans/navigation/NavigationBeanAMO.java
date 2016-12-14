@@ -1,16 +1,24 @@
 package mx.com.kubo.managedbeans.navigation;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.json.JSONObject;
 
+import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.bean.MenuRegBean;
 import mx.com.kubo.controller.efl_connect.EflConnect;
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.managedbeans.registro.documentacion.AddPldDocument;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AccessCollector;
@@ -18,9 +26,14 @@ import mx.com.kubo.model.EflScore;
 import mx.com.kubo.model.Fields;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
+import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.segment.SegmentProspectus;
+
 import mx.com.kubo.tools.Utilities;
 
 public abstract class NavigationBeanAMO extends NavigationBeanDMO
@@ -311,6 +324,14 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 							
 								is_efl =  validaEFL(  score.getProspectus_id()+"" , score.getMx_solicitud_buro() );
 							
+								if( !is_efl ){
+									score.setEfl_test("1");
+								}else{
+									score.setEfl_test("0");
+								}
+								
+								scoringService.updateScoring(score);
+								
 							}else{
 								
 								score.setEfl_test("1");
@@ -331,6 +352,14 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 					
 					is_efl =  validaEFL(  score.getProspectus_id()+"" , score.getMx_solicitud_buro() );
 				
+					if( !is_efl ){
+						score.setEfl_test("1");
+					}else{
+						score.setEfl_test("0");
+					}
+					
+					scoringService.updateScoring(score);
+					
 				}
 				
 			}
@@ -634,4 +663,170 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 			}									
 		}			
 	}
+	
+	
+	protected void actualizaHS_VID(){
+		
+		HttpServletRequest request = (HttpServletRequest) external.getRequest();
+		
+		String cookie = getCookieRequest( request );
+		
+		if( cookie != null ){
+			
+			Integer hs_vid =  getHSVID( cookie );
+		
+			//TODO TRAE utm_source utm_medium  registration_reason
+			
+			HubSpotController hs  = new HubSpotController();
+			
+			String json_str =hs.getJSONProperties( hs_vid );
+			
+			HS_OBJ hs_obj =hs.createHSOBJ( json_str );
+			
+			ProspectusPK ppk = new ProspectusPK();
+			
+			ppk.setCompany_id(getCompany());
+			ppk.setProspectus_id( getProspectus() );
+			
+			Prospectus prospectus = prospectusService.getProspectusById(ppk) ;
+			
+			prospectus.setHs_vid(hs_vid);
+			
+			membership = membershipService.getMembershipById(membership.getMembershipPK());
+			
+			membership.setRegistration_reason_id(hs_obj.getRegistration_reason_id());
+			
+			membership.setOrigin( hs_obj.getUrl_value() );
+			
+			StringBuilder properties = new StringBuilder();
+			
+			properties.append("{ \"property\" : \"prospectoid\" , \"value\" : \""+getProspectus() +"\"},");
+			
+			properties.append("{ \"property\" : \"prospectoid\" , \"value\" : \""+getProspectus() +"\"},");
+			
+			properties.append("{ \"property\" : \"alta_kubo\" ,\"value\":\"S\" }");
+			
+			properties.append(",{\"property\": \"tipo_cliente\" , 		 \"value\" : \""+
+					
+										( membership.getPerson().getProspectus().getArea().toString().equals("L")?"acreditado":membership.getPerson().getProspectus().getArea().toString().equals("I")?"inversionista":"" )
+				
+										+"\"}" );
+			
+			hs.updateProspectus(hs_vid, properties);
+			
+		}
+		
+	}
+	
+	
+	private String getCookieRequest( HttpServletRequest request ){
+		
+		Cookie[] cookies = request.getCookies();
+		
+		String hsutk = null;
+		
+		  if(cookies != null) {
+		      for (int i = 0; i < cookies.length; i++) {
+		         
+		    	  Cookie  cookie=cookies[i];
+		          
+		    	  String cookieName = cookie.getName();
+		          String cookieValue = cookie.getValue();
+		          
+		          if( cookieName.equals("hubspotutk") ){
+		        	  hsutk = cookieValue;
+		        	  break;
+		          }
+		          
+		       }
+		   }
+		
+		
+		  return hsutk;
+		  
+	}
+	
+	private Integer getHSVID( String cookie ){
+		
+		HttpURLConnection con = null;
+		Integer 	vid = null;
+		
+		
+		try{
+		
+		String url="http://api.hubapi.com/contacts/v1/contact/utk/"+cookie+"/profile/?hapikey=ab5f1f2f-bc79-4cbb-a280-e53c182b7f8d";
+		URL object=new URL(url);
+		
+		String charset = "UTF-8";
+
+		con = (HttpURLConnection) object.openConnection();
+		con.setDoOutput(true);
+		
+		con.setRequestProperty("Accept-Charset", charset);
+		con.setRequestProperty("Content-Type", "application/json;charset="+charset);
+		
+		con.setRequestMethod("GET");
+		
+		String  s  = "";
+		
+		System.out.println(s);
+		
+		/*OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+		
+		wr.write( s );
+		wr.close(); */
+		
+		//display what returns the POST request
+
+		StringBuilder sb = new StringBuilder();  
+		int HttpResult = con.getResponseCode();
+		
+		System.out.println(HttpResult);
+		
+		if (HttpResult == HttpURLConnection.HTTP_OK ) {
+			
+		    BufferedReader br = new BufferedReader(
+									            	new InputStreamReader(con.getInputStream(), charset)
+									            );
+		    
+		    String line = null;  
+		    
+		    while ((line = br.readLine()) != null) {  
+		        
+		    	sb.append(line + "\n");
+		    	
+		    }
+		    
+		    br.close();
+		    System.out.println("" + sb.toString());
+		    
+		    //JSONObject jsonObj = new JSONObject( sb.toString() );
+		    
+		    JSONObject json = new JSONObject( sb.toString() );
+			
+		    vid = (Integer) json.get("vid");
+			
+			//hs_email =getMailFromHS( sb.toString() );
+		    
+		} else {
+		    
+			System.out.println(con.getResponseMessage());
+		    
+		}  
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+		  
+		  if(con != null)
+			  con.disconnect();
+	  }
+	
+	 
+	return vid;
+			
+		
+	}
+	
 }

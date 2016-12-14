@@ -5,13 +5,14 @@
 				xmlns:p  = "http://primefaces.org/ui">							
 
 <h:panelGroup id="pnlComprobanteDomicilio"  >
+<div class="ContenedorImagenMuestra">
 	<h:panelGroup rendered="#{addPldDocument.sameAddress != null and addPldDocument.sameAddress != 'S'}" >
 
 	<div class="containerTitleUpload">
 		<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'cornerDisabled':'corner'}"></div>
 		<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">
 			<!--  div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCompDomi}</div-->
-			<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'titleDisabled':'title'}">#{addPldDocument.tiCompDomi}*</div>
+			<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'titleDisabled':'title'}">#{addPldDocument.tiCompDomi}* <span class="imagenDescripcion"> <i onclick="abrir_imagenreferencia(this);" class="fa fa-question-circle"></i></span></div>
 			<p:graphicImage styleClass="validatorClass"  style="float:right;display:#{addPldDocument.dispCheckCompDomi}" id="checkCompDomi" url="../resources/img/check.png" />
 		</div>			
 	</div>
@@ -180,6 +181,16 @@
 	</div>	
 	
 	</h:panelGroup>
+		<div class="imagen_referencia">
+					<div class="blindAction" onclick="cerrar_imagenreferencia(this);">
+						X
+					</div>
+						<figure>
+							<img src="../resources/img/domicilio.jpg"/>
+						</figure>
+					
+				</div>
+	</div>
 	</h:panelGroup>
-				
+			
 </ui:composition>				

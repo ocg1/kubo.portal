@@ -9,6 +9,7 @@ import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.Frequency;
+import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.portal.simulador.CreditSimulatorIMO;
 import mx.com.kubo.services.FrequencyService;
 import mx.com.kubo.tools.Utilities;
@@ -24,6 +25,8 @@ implements SimuladorIMO
 	protected HtmlSelectOneMenu select_one;
 	
 	protected SessionBean sesion;	
+	
+	protected SimulatorBean simulation;
 		
 	protected CreditSimulatorIMO credit_simulator;
 	
@@ -35,14 +38,18 @@ implements SimuladorIMO
 	protected String ammount_value;	
 	protected String term_frequency_TOKEN;
 	
-	protected Double ammount;
-	protected Double payment;
-	protected Double rate;
-	protected Double cat;
+	protected Double ammount;	
+	protected Double cat;	
+	
+	protected Double max_ammount;
+	protected Double max_payment;
 	
 	protected Integer purpose_id;
 	protected Integer frequency_id;
 	protected Integer term_id ;
+	
+	protected boolean max_ammount_ENABLED;
+	protected boolean max_payment_ENABLED;
 	
 	protected final int SEMANAL    = 1;
 	protected final int CATORCENAL = 2;
@@ -64,8 +71,24 @@ implements SimuladorIMO
 	public void setSesion(SessionBean sesion) 
 	{
 		this.sesion = sesion;
-		
-		rate = sesion.getRate();
+	}
+	
+	public void setRenovacion(RenovacionBean renovacion)
+	{		
+		try
+		{
+			max_ammount = Double.parseDouble(renovacion.getMax_ammount());
+			max_payment = Double.parseDouble(renovacion.getMax_payment());
+			
+		} catch (Exception e) {	
+			
+			e.printStackTrace();
+		}
+	}		
+
+	public boolean isMax_payment_ENABLED() 
+	{
+		return max_payment_ENABLED || max_ammount_ENABLED;
 	}
 
 	public List<Frequency> getListFrequency() 
@@ -107,24 +130,9 @@ implements SimuladorIMO
 		return ammount_value;
 	}
 	
-	public Double getRate()
+	public SimulatorBean getSimulation()
 	{
-		return rate;
-	}
-	
-	public Double getAmmount() 
-	{
-		return ammount;
-	}
-	
-	public Double getPayment()
-	{
-		return payment;
-	}
-	
-	public Double getCat()
-	{
-		return cat;
+		return simulation;
 	}
 		
 	public Integer getPurpose_id()
@@ -140,5 +148,5 @@ implements SimuladorIMO
 	public Integer getFrequency_id() 
 	{
 		return frequency_id;
-	}	
+	}		
 }

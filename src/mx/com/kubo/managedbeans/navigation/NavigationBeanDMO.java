@@ -23,6 +23,7 @@ import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.EflScoreService;
 import mx.com.kubo.services.FieldsService;
 import mx.com.kubo.services.MembershipService;
+import mx.com.kubo.services.ProspectusService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ScreenService;
@@ -59,6 +60,9 @@ implements NavigationBeanIMO
 	@ManagedProperty("#{eflScoreServiceImp}")
 	protected EflScoreService eflscoreservice;
 	
+	@ManagedProperty("#{prospectusServiceImp}")
+	protected ProspectusService prospectusService;
+	
 	
 	protected String paginaIni;
 		
@@ -77,7 +81,9 @@ implements NavigationBeanIMO
 	protected String screen_id;
 	protected String menu_item_selected;	
 	
-	protected String hs_values;
+	//protected String hs_values;
+	
+	protected StringBuilder sbHs;
 	
 	protected boolean flagBCScore;
 	
@@ -114,6 +120,9 @@ implements NavigationBeanIMO
 		
 		displaySim = true;
 		loaner     = false;
+		
+		sbHs = new StringBuilder();
+		
 	}
 	
 	protected final boolean isSesion_DISABLED()
@@ -341,15 +350,26 @@ implements NavigationBeanIMO
 	}
 
 	public String getHs_values() {
-		return hs_values;
+		if( sbHs!= null ){
+			return sbHs.toString();
+		}else{
+			sbHs = new StringBuilder();
+			return sbHs.toString();
+		}
 	}
 
 	public void setHs_values(String hs_values) {
-		System.out.println("");
-		System.out.println("");
-		System.out.println( "*HUBSPOT VALUES:  " + hs_values);
-		System.out.println("");
-		System.out.println("");
-		this.hs_values = hs_values;
+		
+		sbHs = null;
+		sbHs = new StringBuilder();
+		sbHs.append( hs_values );
+	}
+
+	public ProspectusService getProspectusService() {
+		return prospectusService;
+	}
+
+	public void setProspectusService(ProspectusService prospectusService) {
+		this.prospectusService = prospectusService;
 	}
 }

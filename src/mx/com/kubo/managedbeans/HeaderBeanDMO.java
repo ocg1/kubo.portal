@@ -494,4 +494,17 @@ implements HeaderBeanIMO
 	public void setEnabledAnalytics(String enabledAnalytics) {
 		this.enabledAnalytics = enabledAnalytics;
 	}
+	
+	public void setELContext( ELContext elContext ){
+		this.elContext  = elContext;
+	}
+	
+	public void setExternalContext( ExternalContext external ){
+		this.external = external;
+	}
+	
+	public void setELResolver( ELResolver resolver ){
+		this.resolver = resolver;
+	}
+	
 }

@@ -34,9 +34,7 @@ import mx.com.kubo.services.ProyectService;
 import mx.com.kubo.services.PurposeService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.SimulatorService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import mx.com.kubo.tools.Utilities;
 
 import com.soa.webServices.WsSgbRisk;
 import com.soa.webServices.WsSgbRiskServiceLocator;
@@ -46,40 +44,18 @@ import com.soa.webServices.util.InputParam;
 public abstract class ReasignadorDMO 
 implements ReasignadorIMO
 {
-	@Autowired @Qualifier("proyectLoanServiceImp")
-	protected ProyectLoanService proyectloanService;
+	protected ServiceCallingDao service_calling;	
 	
-	@Autowired @Qualifier("proyectServiceImp")
-	protected ProyectService proyectService;
-	
-	@Autowired @Qualifier("purposeServiceImp")
-	protected PurposeService purposeService;
-	
-	@Autowired @Qualifier("scoringServiceImp")
-	protected ScoringService scoreService;
-	
-	@Autowired @Qualifier("accessServiceImp")
-	protected AccessService accessService;
-	
-	@Autowired @Qualifier("membershipServiceImp")
-	protected MembershipService membershipservice;
-	
-	@Autowired @Qualifier("change_controlServiceImp")
+	protected    ProyectLoanService proyectloanService;
+	protected        ProyectService proyectService;
+	protected        PurposeService purposeService;
+	protected        ScoringService scoreService;
+	protected         AccessService accessService;
+	protected     MembershipService membershipservice;
 	protected Change_controlService changeControlService;
-	
-	@Autowired @Qualifier("filesServiceImp")
-	protected FilesService filesService;
-	
-	@Autowired @Qualifier("serviceCallingDaoImp")
-	protected ServiceCallingDao service_calling;
-	
-	@Autowired @Qualifier("copiar_archivos_service")
-	protected CopiarArchivosIMP copiar_archivos_service;
-	
-	@Autowired @Qualifier("simulatorServiceImp")
-	protected SimulatorService simulatorService;
-	
-	
+	protected          FilesService filesService;
+	protected      SimulatorService simulatorService;
+		
 	protected FacesContext    faces;
 	protected ExternalContext external;	
 	
@@ -92,7 +68,10 @@ implements ReasignadorIMO
 	protected ProyectPK     proyect_PK;
 	
 	protected Scoring score;
-	protected ScoreAllocIMO allocater;
+	
+	protected CopiarArchivosIMP copiar_archivos_service;
+	protected    ScoreAllocIMO allocater;
+	protected SGBNewProyectIMO publicator;
 	
 	protected MembershipPK  membershipPK;
 	protected Membership    membership;	
@@ -122,14 +101,15 @@ implements ReasignadorIMO
 	protected String formatDocument;
 	protected String file_type;
 	protected String url_img;
-	protected String real_path;	
-	protected String bursolnum;
+	protected String real_path;
 	protected String score_A;
 	protected String score_B;
 	protected String pago_inicial;
 	protected String url;
 	protected String partner_id;
 	protected String cci_score;
+	
+	protected String bursolnum;
 	protected String prospectId;
 	protected String projectId;
 	protected String productId;
@@ -141,6 +121,7 @@ implements ReasignadorIMO
 	protected String mxComisionApertura;
 	protected String loan_type;
 	protected String is_collection_solution;
+	protected String is_automatic_aproved;
 	
 	protected Double ammount;
 	protected Double min_ammount;
@@ -170,6 +151,7 @@ implements ReasignadorIMO
 	protected boolean bandera;
 	protected boolean error_al_mover;
 	protected boolean is_proyect_NEW_OK;
+	protected boolean max_payment_ENABLED;
 	
 	protected final boolean VALIDACION_VIGENCIA_DISABLED = false;
 	
@@ -180,24 +162,56 @@ implements ReasignadorIMO
 	protected ReasignadorDMO()
 	{
 		formatter_date = new SimpleDateFormat("dd/MM/yyyy");
+		
+		proyectloanService   = Utilities.findBean("proyectLoanServiceImp");
+		proyectService       = Utilities.findBean("proyectServiceImp");
+		purposeService       = Utilities.findBean("purposeServiceImp");
+		scoreService         = Utilities.findBean("scoringServiceImp");
+		accessService        = Utilities.findBean("accessServiceImp");
+		membershipservice    = Utilities.findBean("membershipServiceImp");
+		changeControlService = Utilities.findBean("change_controlServiceImp");
+		filesService         = Utilities.findBean("filesServiceImp");
+		service_calling      = Utilities.findBean("serviceCallingDaoImp");		
+		simulatorService     = Utilities.findBean("simulatorServiceImp");
+		
+		copiar_archivos_service = Utilities.findBean("copiar_archivos_service");
 	}
 	
-	public final void setSesionBean(SessionBean sesion) 
+	public void setSesionBean(SessionBean sesion) 
 	{
 		this.sesion = sesion;
 	}
 	
-	protected final void setDocumento_vigente_DISABLED(boolean disabled)
+	protected final void setProyectloan(ProyectLoan reasignable) 
+	{
+		proyect_loan = reasignable;
+	}
+	
+	protected void setDocumento_vigente_DISABLED(boolean disabled)
 	{
 		documento_vigente = disabled;
 	}
 	
-	protected final boolean isDocumento_vigente_DISABLED()
+	public void setMax_payment_ENABLED(boolean max_payment_ENABLED)
+	{
+		this.max_payment_ENABLED = max_payment_ENABLED;
+		
+		if(max_payment_ENABLED)
+		{
+			is_automatic_aproved = "N";
+			
+		} else {
+			
+			is_automatic_aproved = "S";
+		}
+	}
+	
+	protected boolean isDocumento_vigente_DISABLED()
 	{
 		return documento_vigente;
 	}
 	
-	protected final Date getFecha_vigente(Date fecha_de_carga, int dias_vigencia)
+	protected Date getFecha_vigente(Date fecha_de_carga, int dias_vigencia)
 	{
 		calendar = Calendar.getInstance();	
 		
@@ -213,69 +227,19 @@ implements ReasignadorIMO
 		return fecha_vigente;		
 	}
 	
-	protected final void setProyectloan(ProyectLoan reasignable) 
-	{
-		proyect_loan = reasignable;
-	}
-
-	public final void setProyectloanService(ProyectLoanService service) 
-	{
-		proyectloanService = service;
-	}
-
-	public final void setProyectService(ProyectService service) 
-	{
-		proyectService = service;
-	}
-
-	public final void setScoreService(ScoringService service) 
-	{
-		scoreService = service;
-	}
-
-	public final void setAccessService(AccessService service) 
-	{
-		accessService = service;
-	}
-
-	public final void setMembershipservice(MembershipService service) 
-	{
-		membershipservice = service;
-	}
-
-	public final void setChangeControlService(Change_controlService service) 
-	{
-		changeControlService = service;
-	}
-
-	public final void setFilesService(FilesService service) 
-	{
-		filesService = service;
+	public void setMembershipservice( MembershipService service_membership){
+		this.membershipservice = service_membership;
 	}
 	
-	public void setService_calling(ServiceCallingDao service) 
-	{
-		service_calling = service;
+	public void setFilesService( FilesService filesService){
+		this.filesService = filesService;
 	}
-
-	public final void setCopiar_archivos_service(CopiarArchivosIMP service) 
-	{
-		copiar_archivos_service = service;
+			
+	public void setProyect_loan_NEW( ProyectLoan actualProyect){
+		this.proyect_loan_NEW = actualProyect;
 	}
-
-	public SimulatorService getSimulatorService() {
-		return simulatorService;
-	}
-
-	public void setSimulatorService(SimulatorService simulatorService) {
-		this.simulatorService = simulatorService;
-	}
-
-	public PurposeService getPurposeService() {
-		return purposeService;
-	}
-
-	public void setPurposeService(PurposeService purposeService) {
-		this.purposeService = purposeService;
+			
+	public void setCopiar_archivos_service( CopiarArchivosIMP copiar_archivos_service ){
+		this.copiar_archivos_service = copiar_archivos_service;
 	}
 }

@@ -5,7 +5,7 @@
 				xmlns:p  = "http://primefaces.org/ui">
 
 	
-	       
+	    <div class="ContenedorImagenMuestra" >
 	<div class="containerTitleUpload ingresosTitulo">
 	
 		<INPUT type="hidden" id="comprobante_ingresos" class="hs_class" value="#{addPldDocument.dispCheckCompIncome =='inline'}" />
@@ -13,7 +13,7 @@
 		<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'cornerDisabled':'corner'}"></div>
 		<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">
 			<!-- div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCompIncome}</div -->
-			<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Comprobantes de ingreso</h3></div>
+			<div class="#{addPldDocument.dispCheckCompIncome =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Comprobantes de ingreso<span class="imagenDescripcion"> <i onclick="abrir_imagenreferencia(this);" class="fa fa-question-circle"></i></span></h3></div>
 			<p:graphicImage styleClass = "validatorClass" 
 							style      = "float:right;display:#{addPldDocument.dispCheckCompIncome}" 
 							id         = "checkTypeLoan" 
@@ -180,5 +180,17 @@
 			
 		</h:form>
 	</div>
+	<div class="imagen_referencia">
+					<div class="blindAction" onclick="cerrar_imagenreferencia(this);">
+						X
+					</div>
+						<figure>
+							<img src="../resources/img/ingresos.jpg"/>
+						</figure>
+					
+				</div>	
+	</div>  
+	
+	
 	
 </ui:composition>	

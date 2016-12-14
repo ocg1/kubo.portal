@@ -1,5 +1,6 @@
 package mx.com.kubo.services.impl;
 
+import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
@@ -39,5 +40,17 @@ implements ProspectusService
 	
 	public Prospectus getProspectusByHSId(Integer vid){
 		return dao.getProspectusByHSId( vid);	
+	}
+	
+	public boolean altaProspectoHS( HS_OBJ hs_obj ){
+		
+		return dao.altaProspectoHS( hs_obj );
+		
+	}
+	
+	public boolean updateProspectoHS( HS_OBJ hs_obj ){
+		
+		return dao.updateProspectoHS( hs_obj );
+		
 	}
 }

@@ -68,6 +68,7 @@ public class NotificacionPMO extends NotificacionDMO
         	body_text = NotificacionHTML.CUERPO_TEMP_PASS;
         	body_text = body_text.replaceAll("###Fecha###", getStrFecha());
             body_text = body_text.replaceAll("###TEMPASS###", getEncriptempass());
+            body_text = body_text.replaceAll("##name##", Utilities.capilizeString( getProspectName() ));
             
         } else if(isConsultaBC()){
         	

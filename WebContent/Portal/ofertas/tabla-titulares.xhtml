@@ -1,16 +1,21 @@
 <ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 				
 	<div class = "titulares textoCopys">
-		<h2>¡Buenas noticias!</h2>
-	            				
-		<h3>#{renovacion.ofert_TOKEN}</h3>
-	            				 
-		<h:panelGroup rendered = "#{!ofertaRenovacion.parser.same_rate_ENABLED}">           				
+		<h2>¡Buenas noticias!</h2>		
+					            			
+		<h3 class = "renovacion-ofert-TOKEN"/>
+		
+		<h2 class = "renovacion-ofert-rate-TOKEN" /> 		
+	
+<!-- 
+		<h:panelGroup rendered = "#{!ofertaRenovacion.same_rate_ENABLED}">           				
 			<h2>#{renovacion.ofert_rate_TOKEN}</h2>            		
 		</h:panelGroup>
+-->		
 	            						
 		<h3>#{renovacion.ofert_ammount_TOKEN}</h3>
 	</div>				

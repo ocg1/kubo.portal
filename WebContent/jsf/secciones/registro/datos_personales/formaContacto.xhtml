@@ -1,0 +1,80 @@
+<ui:composition
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui" >
+	
+			<div class="field"  >
+						<div class="dvLabel" >
+							<h:outputLabel styleClass="labelsStl" value="¿Cómo quieres ser contactado? *" />
+						</div>
+						<div class="leyendas italic">
+							Puedes seleccionar más de una opción.
+						</div>
+							<div class="checks-set conjuntoChecks" >
+							<table cellpadding="0" cellspacing="0" border="0" id="forma-contacto" class="validatorClass"> 
+								<tr>
+								<td>
+						
+							<ul>
+								<li>
+							     <label class="check-label inline--check ">
+							     	
+				                    <div class="input-checkbox-simple  small-check js-chexbox fa">
+				                        <input type="checkbox" id="contacto_1"  name="contacto" onclick="checksNuevos (this, '#contacto_1')" />
+				                    </div>
+				                    <i><img src="../resources/img/check-phone.png" /></i>
+				                    <span>Llamada teléfonica:</span>
+				                </label>
+			              	  </li>
+			              	  <li>
+							     <label class="check-label inline--check ">
+							     	
+				                    <div class="input-checkbox-simple  small-check js-chexbox fa">
+				                        <input type="checkbox" id="contacto_2" name="contacto" onclick="checksNuevos (this, '#contacto_2')" />
+				                    </div>
+				                          <i><img src="../resources/img/check-whatsapp.png" /></i>
+				                    <span>WhatsApp:</span>
+				                </label>
+			              	  </li>
+			              	   <li>
+							     <label class="check-label inline--check ">
+							     	
+				                    <div class="input-checkbox-simple  small-check js-chexbox fa">
+				                        <input type="checkbox" id="contacto_3"  name="contacto" onclick="checksNuevos (this, '#contacto_3')"/>
+				                    </div>
+				                     <i><img src="../resources/img/check-envelope.png" /></i>
+				                    <span>Mail:</span>
+				                </label>
+			              	  </li>
+			              	  
+			                </ul>
+			           
+			                   </td>
+			                </tr>
+			             
+			                </table>
+			                     </div>
+			                
+			                
+			</div>
+			
+			
+			<h:outputText value="#{basicData.scriptContactWay}" escape="false" ></h:outputText>
+			
+			<div style="display: none;" >
+			
+				<h:inputText value="#{basicData.contactWayValue}" id="contactWayValue" >
+					<p:ajax event="blur" ></p:ajax>
+				</h:inputText>
+				
+				<h:commandLink id ="cmdContactWay" >
+					<p:ajax event="click" listener="#{basicData.updateContactWayValue}" ></p:ajax>
+				</h:commandLink>
+			
+			</div>
+			
+			
+			
+</ui:composition>

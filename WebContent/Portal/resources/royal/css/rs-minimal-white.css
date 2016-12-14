@@ -46,8 +46,8 @@
 .rsMinW .rsArrow:hover {
 	opacity:1;
 }
-.rsMinW .rsArrowLeft { left: 0; bottom: 40%; background: url(../img/slider_esqleft.png) no-repeat left top;}
-.rsMinW .rsArrowRight {  right: 0; bottom: 40%; background: url(../img/slider_esqright.png) no-repeat left top;}
+.rsMinW .rsArrowLeft { left: 0; bottom: 40%;}
+.rsMinW .rsArrowRight {  right: 0; bottom: 40%; }
 
 .rsMinW .rsArrowIcn {		
 	width: 24px;
@@ -56,8 +56,6 @@
 	margin-left: 3px;
 	position: absolute;
 	cursor: pointer;	
-	background: url('rs-minimal-white.png') transparent;
-	
 	border-radius: 2px;
 }
 
@@ -202,7 +200,6 @@
 	margin-left: -8px;
 	position: absolute;	
 	cursor: pointer;	
-	background: url('rs-minimal-white.png');
 }
 
 .rsMinW.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn { background-position: -128px -32px; }
@@ -321,7 +318,6 @@
 	width: 32px;
 	height: 32px;
 
-	background: url('rs-minimal-white.png') 0 0 transparent;
 }
 .rsMinW .rsFullscreenIcn:hover {
 	opacity: 0.8;
@@ -359,7 +355,6 @@
 	-moz-transition: .3s;
 	transition: .3s;
 
-	background:url(rs-minimal-white.png) no-repeat 0 -32px;
 	background-color: #000;
 	background-color: rgba(0,0,0,0.75);
 	*background-color: #000;
@@ -395,7 +390,6 @@
 	margin: 6px;
 	width: 32px;
 	height: 32px;
-	background: url('rs-minimal-white.png') -64px 0;
 	background-color: #000;
 	background-color: rgba(0,0,0,0.75);
 	*background-color: #000;
@@ -415,7 +409,6 @@
 .rsMinW .rsPreloader {
 	width:20px;
 	height:20px;
-	background-image:url(../preloaders/preloader-white.gif);
 
 	left:50%;
 	top:50%;

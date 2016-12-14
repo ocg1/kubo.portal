@@ -5148,3 +5148,31 @@ margin:0 auto;
 	
 
 }
+.datosOnlyRa .nuevos-inversionistas {
+	display:none;
+	width: 100%;
+
+	font-weight: normal;
+}
+.datosOnlyRa .nuevos-inversionistas p { 
+	font-size: 15px !important;
+	line-height:22px
+}
+.datosOnlyRa .nuevos-inversionistas strong {
+
+	font-weight: normal;
+}
+.datosOnlyRa .ra_inversionistas {
+	display:none;
+}
+
+@media (max-width: 700px) {
+	.datosRa, .datosOnlyRa  {
+		width: 90%;
+		position:relative;
+		background: #EFEFEF;
+		overflow: hidden;
+		padding: 20px;
+		margin: 0 auto;
+	}
+}

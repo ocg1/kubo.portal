@@ -50,7 +50,10 @@ public abstract class SimuladorAMO extends SimuladorDMO
 												
 				ammount = Double.parseDouble(value.replace(",", "").replace("$",""));
 				
+				max_ammount_ENABLED = ammount > max_ammount ? true : false;
+				
 				request.addCallbackParam("ammount", ammount);
+				request.addCallbackParam("max_ammount_ENABLED", max_ammount_ENABLED);
 				
 			} catch (Exception e) {
 				
@@ -95,7 +98,8 @@ public abstract class SimuladorAMO extends SimuladorDMO
 		
 		credit_simulator.init_cuota_by_formula();
 		
-		cat     = credit_simulator.getCat();
-		payment = credit_simulator.getPayment();		
+		simulation = credit_simulator.getSimulation();
+		
+		max_payment_ENABLED = simulation.getPayment() > max_payment ? true : false;
 	}
 }

@@ -15,10 +15,8 @@ import mx.com.kubo.model.Files;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.RestructureBean;
 import mx.com.kubo.model.SystemParamPK;
+import mx.com.kubo.model.TSafiPagosCuota;
 import mx.com.kubo.tools.Utilities;
-
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.webServices.WsSgbRiskServiceLocator;
 
 public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 {					
@@ -45,12 +43,16 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 			inactivos  = 0;			
 			atrasadas  = 0;			
 			dias_atras = 0;
-			
+			/*
 			locator = new WsSgbRiskServiceLocator();		
 			service_SGB = locator.getWsSgbRisk();
 		
 			safi_lista_pagos      = service_SGB.getTSafiPagosCuota(prospectus_id  + "");			
 			safi_lista_posiciones = service_SGB.getTSafiPosicionInt(prospectus_id + "");
+			*/
+			safi_lista_pagos      = estadocuentaservice.getTSafiPagosCuota(prospectus_id );			
+			safi_lista_posiciones = estadocuentaservice.getTSafiPosicionInt(prospectus_id );
+			
 			
 			lista_safi_pagos = new ArrayList<TSafiPagosCuota>();
 			
@@ -58,22 +60,22 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 			
 			if(safi_lista_posiciones != null)
 			{
-				for(int i = 0 ; i < safi_lista_posiciones.length; i++)
+				for(int i = 0 ; i < safi_lista_posiciones.size(); i++)
 				{				
-					safi_posicion_credito_id = Integer.parseInt(safi_lista_posiciones[i].getCreditoid());
+					safi_posicion_credito_id = safi_lista_posiciones.get(i).getPk().getCreditoId();
 					
 					if(proyectloan_safi_credit_id == safi_posicion_credito_id)
 					{
-						posicion = safi_lista_posiciones[i];
+						posicion = safi_lista_posiciones.get(i);
 						break;
 					}				
 				}
 			}
 						
-			for(int i = 0 ; i < safi_lista_pagos.length ; i++)
+			for(int i = 0 ; i < safi_lista_pagos.size() ; i++)
 			{				
-				safi_pago_credito_id = Integer.parseInt(safi_lista_pagos[i].getCreditoid());
-				safi_pago_estatus    = safi_lista_pagos[i].getEstatus();
+				safi_pago_credito_id = safi_lista_pagos.get(i).getPk().getCreditoId();
+				safi_pago_estatus    = safi_lista_pagos.get(i).getEstatus();
 				
 				if(proyectloan_safi_credit_id == safi_pago_credito_id)
 				{					
@@ -101,7 +103,7 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 					{						
 						atrasadas++;
 																	
-						d1 =  fm1.parse(safi_lista_pagos[i].getFechaexigible()) ;
+						d1 =  safi_lista_pagos.get(i).getFechaExigible() ;
 						d2 =  new Date() ;
 						
 						ld1 = d1.getTime();
@@ -115,7 +117,7 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 						}
 					}
 					
-					lista_safi_pagos.add(safi_lista_pagos[i]);					
+					lista_safi_pagos.add(safi_lista_pagos.get(i));					
 				}				
 			}
 									
@@ -153,15 +155,15 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 		
 		restructurebean.setProyect(proyectloan);
 		
-		if(posicion.getFechainicio() != null)
+		if(posicion.getFechaInicio() != null)
 		{					
-			fec = formatStr1.format( fm1.parse( posicion.getFechainicio() ) );
+			fec = formatStr1.format(  posicion.getFechaInicio() );
 			restructurebean.setFechaInicio(fec);
 		}
 		
-		if(posicion.getFechavencimien() != null)
+		if(posicion.getFechaVencimien() != null)
 		{					
-			fec = formatStr1.format( fm1.parse( posicion.getFechavencimien() ) );
+			fec = formatStr1.format(  posicion.getFechaVencimien()  );
 			restructurebean.setFechaFin( fec );					
 		}
 		
@@ -176,12 +178,12 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 		
 		saldo_por_liquidar = 0D;
 		
-		saldo_capital_vigente     = ((posicion.getSaldocapvigent()) ==  null ? 0 : Double.parseDouble(posicion.getSaldocapvigent()));
-		saldo_interes_provi       = ((posicion.getSaldointerprovi()) == null ? 0 : Double.parseDouble(posicion.getSaldointerprovi()));
-		saldo_capital_atrasado    = ((posicion.getSaldocapatrasad()) == null ? 0 : Double.parseDouble(posicion.getSaldocapatrasad()));
-		saldo_interes_atrasado    = ((posicion.getSaldointeratras()) == null ? 0 : Double.parseDouble(posicion.getSaldointeratras()));
-		saldo_moratorios          = ((posicion.getSaldomoratorios()) == null ? 0 : Double.parseDouble(posicion.getSaldomoratorios()));
-		saldo_comision_falta_pago = ((posicion.getSaldcomfaltpago()) == null ? 0 : Double.parseDouble(posicion.getSaldcomfaltpago()));
+		saldo_capital_vigente     = ((posicion.getSaldoCapVigent()) ==  null ? 0 : posicion.getSaldoCapVigent());
+		saldo_interes_provi       = ((posicion.getSaldoInterProvi()) == null ? 0 : posicion.getSaldoInterProvi());
+		saldo_capital_atrasado    = ((posicion.getSaldoCapAtrasad()) == null ? 0 : posicion.getSaldoCapAtrasad());
+		saldo_interes_atrasado    = ((posicion.getSaldoInterAtras()) == null ? 0 : posicion.getSaldoInterAtras());
+		saldo_moratorios          = ((posicion.getSaldoMoratorios()) == null ? 0 : posicion.getSaldoMoratorios());
+		saldo_comision_falta_pago = ((posicion.getSaldoComFaltaPago()) == null ? 0 : posicion.getSaldoComFaltaPago());
 		
 		ivaIp = (saldo_interes_provi        * iva); 
 		ivaIa = (saldo_interes_atrasado     * iva);
@@ -202,11 +204,11 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 	
 	private void asignar_indice_de_pago() 
 	{
-		monto_credito          = ((posicion.getMontocredito())    == null ? 0 : Double.parseDouble(posicion.getMontocredito()));
-		saldo_capital_vigente  = ((posicion.getSaldocapvigent())  == null ? 0 : Double.parseDouble(posicion.getSaldocapvigent()));		
-		saldo_capital_atrasado = ((posicion.getSaldocapatrasad()) == null ? 0 : Double.parseDouble(posicion.getSaldocapatrasad()));
-		saldo_capital_vencido  = ((posicion.getSaldocapvencido()) == null ? 0 : Double.parseDouble(posicion.getSaldocapvencido()));
-		saldo_capital_vencido_no_exigible = ((posicion.getSaldcapvennoexi()) == null ? 0 : Double.parseDouble(posicion.getSaldcapvennoexi()));
+		monto_credito          = ((posicion.getMontoCredito())    == null ? 0 : posicion.getMontoCredito());
+		saldo_capital_vigente  = ((posicion.getSaldoCapVigent())  == null ? 0 : posicion.getSaldoCapVigent());		
+		saldo_capital_atrasado = ((posicion.getSaldoCapAtrasad()) == null ? 0 : posicion.getSaldoCapAtrasad());
+		saldo_capital_vencido  = ((posicion.getSaldoCapVencido()) == null ? 0 : posicion.getSaldoCapVencido());
+		saldo_capital_vencido_no_exigible = ((posicion.getSaldoCapVenNoExi()) == null ? 0 : posicion.getSaldoCapVenNoExi());
 		
 		saldo_capital = saldo_capital_vigente + saldo_capital_atrasado + saldo_capital_vencido + saldo_capital_vencido_no_exigible;
 		
@@ -393,7 +395,7 @@ public abstract class AdditionalCreditAMO extends AdditionalCreditDMO
 					
 					if(solicitado)
 					{								
-						error_al_mover = reasignador_service.copiar_archivos(doc);
+						error_al_mover = reasignador.copiar_archivos(doc);
 					}						
 				}
 				

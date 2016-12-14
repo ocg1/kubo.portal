@@ -1,11 +1,14 @@
 package mx.com.kubo.repositories.impl;
 
+import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.model.FullName;
 import mx.com.kubo.model.FullNamePK;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.SP_AltaProspectoCallector;
+import mx.com.kubo.model.SP_UpdateProspectoCallector;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.repositories.ProspectusDao;
 
@@ -140,10 +143,9 @@ implements ProspectusDao
 		
 		try{
 		
-			ProsByAreaPesonType = em.createQuery("from Prospectus p where p.hs_vid", Prospectus.class).setParameter(1, vid)
+			return em.createQuery("from Prospectus p where p.hs_vid = ? ", Prospectus.class).setParameter(1, vid)
 							        .getSingleResult();
 			
-			return ProsByAreaPesonType;
 			
 		}catch(Exception e){
 			
@@ -153,4 +155,68 @@ implements ProspectusDao
 		}
 		
 	}
+	
+	
+	@Transactional  
+	  public boolean updateProspectoHS( HS_OBJ hs_obj  ){
+		  try{
+		 
+			  //SystemParam res = em.createQuery(" from SystemParam where pk.system_param_id = ? ",SystemParam.class).setParameter(1, 79) .getSingleResult();
+			  
+			  SP_UpdateProspectoCallector s = em.createNamedQuery("collectorUpdateProspecto",SP_UpdateProspectoCallector.class)
+					  
+					  .setParameter("param_prospectus_id",hs_obj.getProspectus_id())
+					  .setParameter("param_primer_nombre",hs_obj.getFirstname_value())
+					  .setParameter("param_segundo_nombre",hs_obj.getSecond_name())
+					  .setParameter("param_ap_paterno",hs_obj.getLast_name())
+					  .setParameter("param_ap_materno",hs_obj.getLast_name2())
+					  .setParameter("param_hs_vid",hs_obj.getV_id())
+					  .setParameter("param_s_email",hs_obj.getEmail_value())
+					  .setParameter("param_url_origin",hs_obj.getUrl_value())
+					  .setParameter("param_phone_mobile",hs_obj.getMobil_value())
+					  
+	    		.getSingleResult();
+			  
+			  System.out.println( "Update Usuario HS: " + s );
+		  
+			  return true;
+		  
+		  }catch( Exception e ){
+			  e.printStackTrace();
+			  return false;
+		  }
+	  }
+	
+	  @Transactional  
+	  public boolean altaProspectoHS( HS_OBJ hs_obj  ){
+		  try{
+		 
+			  //SystemParam res = em.createQuery(" from SystemParam where pk.system_param_id = ? ",SystemParam.class).setParameter(1, 79) .getSingleResult();
+			  
+			  SP_AltaProspectoCallector s = em.createNamedQuery("collectorAltaProspecto",SP_AltaProspectoCallector.class)
+					  
+							.setParameter("par_primer_nombre", 		hs_obj.getFirstname_value() )
+							.setParameter("par_segundo_nombre", 	hs_obj.getSecond_name())
+							.setParameter("par_ap_paterno", 		hs_obj.getLast_name())
+							.setParameter("par_ap_materno",			hs_obj.getLast_name2())
+							.setParameter("par_hs_vid", 			hs_obj.getV_id())
+							.setParameter("par_hs_email",			hs_obj.getEmail_value())
+							.setParameter("par_url_origin",			hs_obj.getUrl_value())
+							.setParameter("par_phone_mobile", 		hs_obj.getMobil_value())
+							.setParameter("par_area", 				hs_obj.getArea())
+							.setParameter("par_registration_reason", 				hs_obj.getRegistration_reason_id())
+					  
+	    		.getSingleResult();
+			  
+			  System.out.println( "Alta Usuario HS: " + s );
+		  
+			  return true;
+		  
+		  }catch( Exception e ){
+			  e.printStackTrace();
+			  return false;
+		  }
+	  }
+	
+	
 }

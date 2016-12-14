@@ -22,7 +22,8 @@ implements AccessIMO
 				
 				version_description = systemparamservice.getVersion_description();
 				
-				if( access_CONFIG != null && access_CONFIG.length() > 3){
+				if( access_CONFIG != null && access_CONFIG.length() > 3)
+				{
 					init_access_CONFIG();
 					init_access();	
 				}

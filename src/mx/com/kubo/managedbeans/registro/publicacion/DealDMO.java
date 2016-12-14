@@ -137,11 +137,9 @@ implements DealIMO
 	protected NotificadorIMO notificador;
 	
 	@ManagedProperty("#{systemParamServiceImp}")
-	protected SystemParamServiceImp system_param_service;
-	
-	@ManagedProperty("#{reasignador_service}")
-	protected ReasignadorIMO reasignador_service;
+	protected SystemParamServiceImp system_param_service;			
 		
+	protected ReasignadorIMO reasignador;
 	protected NavigationBeanIMO  menu_registro_service;
 	
 	protected FacesContext faces;
@@ -419,11 +417,6 @@ implements DealIMO
 	public final void setNotificador(NotificadorIMO notificador) 
 	{
 		this.notificador = notificador;
-	}
-
-	public final void setReasignador_service(ReasignadorIMO service) 
-	{
-		reasignador_service = service;
 	}
 	
 	public final void setSystem_param_service(SystemParamServiceImp service) 

@@ -500,3 +500,13 @@ a.close_lightbox {
 	width:1085px;
 	margin:30px auto 0;
 }
+#btnImprimirEstado {
+	opacity:0;	
+}
+
+ @media print
+   {
+#menuContainer, .respMesa {
+	display:none !important;
+}
+}

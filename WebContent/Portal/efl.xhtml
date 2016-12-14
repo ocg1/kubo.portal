@@ -73,7 +73,7 @@
 			//setChat();
 			
 		
-			/*
+		    /*
 			function returnActionReanudar(){
 				
 				$("#cmmdAction").click();
@@ -207,15 +207,13 @@
 			</div>
             	<h:panelGroup>
             	
-            	<div class="tituloNuevo noP">
+         <div class="tituloNuevo noP efl-title">
             		<div class="inner-block">
-            		    <figure class="imagenEscritorio" >
-								<h:graphicImage library="img/nuevoRegistro" name= "efl_img.png"  />       
-						</figure>
-	            		<h2>#{headerBean.name}, necesitamos más información.</h2>
-	            		<p>
-Te invitamos a continuar con tu proceso de pre-aprobación de préstamo. </p>
-	            		<span class="triangle"><i class="fa fa-caret-down"></i></span>
+            		
+	            		<h2>#{headerBean.name}, necesitamos más información para 
+darte el resultado de tu Pre-Aprobación:</h2>
+		            		
+		            		<span class="triangle"><i class="fa fa-caret-down"></i></span>
             		</div>
             		
             	</div>	
@@ -223,29 +221,39 @@ Te invitamos a continuar con tu proceso de pre-aprobación de préstamo. </p>
 				<div class="content" >            	               
                 	<div class="inner_content">
            
-              			 	<div class="recomendacionRechazado">
-	              			 	<div class="links">
-									<p>Para esto sólo tienes que responder una serie de preguntas, lo cual te tomará no más de 25 minutos de tu tiempo, así es como miles de personas han aumentado sus posibilidades de recibir un préstamo. 
+              		
+              			 		<div class="efl-n">
+              			 		<h3>Contesta el siguiente cuestionario</h3>
+              			 		<figure><img src="resources/images/efl-01.png" /></figure>
+	              			 	<div class="links efl-text">
+									<p>1. Te tomará aprox. 25 minutos terminarlo.
 	</p>
+	<p>2. Te recomendamos realizarlo en una sola sesión.</p>
 	
 	
-	<p>Para continuar, sólo da clic en el siguiente botón:</p>
+	<p>3. La liga estará activa por 36 hrs, por lo cual es importante contestarlo antes de que termine este tiempo. </p>
+		<p>4. Revisa que tengas una conexión a internet estable. </p>
+				<p>5. Al finalizar la solicitud de Kubo, se te preguntará el plazo al que quieres tu crédito. Por favor, escribe el plazo que realmente prefieres. </p>
+	
+								</div>
+								
+					
+										<h:commandLink value="Contestar cuestionario" styleClass="callAction btnNaranja"  onclick="EFL(this)">
+										
+											<p:ajax listener="#{eFL_Redirec.registraRedirect}" oncomplete="redirectPage();" />
+											
+										</h:commandLink>
+								
 								</div>
 							
 								
 						
 					
 				
-				
-					
-										<h:commandLink value="Continuar" styleClass="callAction btnNaranja"  onclick="EFL(this)">
-										
-											<p:ajax listener="#{eFL_Redirec.registraRedirect}" oncomplete="redirectPage();" />
-											
-										</h:commandLink>
+									
 					 
 			
-								</div>
+						
               			 	
               		                          
            			</div>    

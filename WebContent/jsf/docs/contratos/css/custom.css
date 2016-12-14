@@ -1504,6 +1504,7 @@ section .container .gatN, section .container .gatN  {
 
 .telcomm img{
 	width:120px;
+	margin:0 0 30px;
 	
 }
 .tablaPagare td, .tablaPagare td p{
@@ -1544,3 +1545,5 @@ section .container h2.montoCenter {
 	font-size: 68px;
 	line-height: 72px;
 }
+
+

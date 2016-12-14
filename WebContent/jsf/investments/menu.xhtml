@@ -37,7 +37,7 @@
 		}
 		
 	</script>
-					
+	                
 	<h:form prependId = "false">
 		<div class="wrapperInv">
 		
@@ -47,19 +47,19 @@
 					<div class="invertirOtroBtn" onclick="tiendaBotonMovil();">INVERTIR</div>
 					<div class="menu_responsivo">MENÚ</div>
 						<ul>
-							<li class="menu01Invest #{navigationInvest.menuInveSel == 1 ? 'selectedMenuInv' : ''}" >
+							<li class="menu01Invest" >
 								<p:commandLink id="resumenInvest" value="Resumen de Saldos" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="resumen_saldos ();" update=":pnlContentInvest :panelContentListProyect ">
 									<f:attribute name="seccionInv" value="investments" />
 								</p:commandLink>
 							</li>
 					
-							<li class="menu01Invest #{navigationInvest.menuInveSel == 2 ? 'selectedMenuInv' : ''}">
+							<li class="menu01Invest">
 								<p:commandLink id="projectListAction" value="Invertir" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="invertir_function();" update=":pnlContentInvest :panelContentListProyect " >
 									<f:attribute name="seccionInv" value="returnProyectListInvest" />
 								</p:commandLink>
 							</li>
 										
-							<li class="menu01Invest #{navigationInvest.menuInveSel == 3 ? 'selectedMenuInv' : ''} ">
+							<li class="menu01Invest">
 								<p:commandLink id    = "cashWithdrawal" 
 											   value = "Movimientos" 
 											   actionListener = "#{navigationInvest.changePage}" 
@@ -76,7 +76,7 @@
 								
 							</li>
 										
-							<li class="menu01Invest #{navigationInvest.menuInveSel == 4 ? 'selectedMenuInv' : ''}">
+							<li class="menu01Invest">
 							
 								<h:panelGroup rendered="#{navigationInvest.flagTokenPersonalData}" >
 									<p:commandLink id="personalDataToken" value="Datos personales" onstart="return displayObtieneToken();"  >
@@ -92,8 +92,8 @@
 							
 							</li>
 							
-							<li class="menu01Invest #{navigationInvest.menuInveSel == 2 ? 'selectedMenuInv' : ''}">
-								<p:commandLink id="customAction" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="invertir_function();" update=":pnlContentInvest :panelContentListProyect " >
+							<li class="menu01Invest">
+								<p:commandLink id="customAction" actionListener="#{navigationInvest.changePage}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="completeConfiguration()" update=":pnlContentInvest :panelContentListProyect " >
 									<!-- <i class="fa fa-cog" /> -->
 									Configuración
 									<f:attribute name="seccionInv" value="ajustes" />

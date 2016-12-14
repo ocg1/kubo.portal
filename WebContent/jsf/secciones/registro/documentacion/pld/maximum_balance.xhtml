@@ -5,9 +5,10 @@
 				xmlns:p  = "http://primefaces.org/ui">
 	<div class="field">
 		<div class="dvLabel">
-			<h:outputLabel styleClass="labelsStl" value="¿Cuánto crees que será el monto máximo que tendrás depositado en tu cuenta?*"/>
+			<h:outputLabel styleClass="labelsStl" value="¿Cuál será el monto máximo aproximado que tendrás depositado 
+en tu cuenta?*"/>
 		</div>
-		<div class="leyendas italic">Este monto no limita lo que puedes ahorrar en kubo</div>
+		<div class="leyendas italic">Si necesitas depositar más, lo podrás hacer.</div>
 		<div  class="dvElementAddres1">
 			<h:panelGroup rendered="#{sessionBean.area == 'L'}">
 				<h:inputText id="montomaxsal" maxlength="10" onkeyup="format(this);" style="text-align: right;"  value="#{addPldDocument.maximum_balanceStr}" styleClass="elementAddres1 formatpld validatorClass hs_class" >

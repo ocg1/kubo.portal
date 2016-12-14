@@ -16,7 +16,7 @@ public class NotificacionPeticionCambioPassword extends NotificacionIMP
 		
 		setNameTo(emisor.getPerson().NombreCompletoNPM());
 		setClaveActivacion(emisor.getActivation_code());
-				
+		setProspectName(emisor.getPerson().getFirst_name());
 		setTemppass(true);							
 		setEncriptempass(emisor.getPassword());
 	}

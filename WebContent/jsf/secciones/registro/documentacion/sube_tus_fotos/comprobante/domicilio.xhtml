@@ -6,7 +6,7 @@
 
 
 <h:panelGroup id="pnlComprobanteDomicilio"  >
-
+	<div class="ContenedorImagenMuestra">
 	<h:panelGroup rendered="#{addPldDocument.sameAddress != null and addPldDocument.sameAddress != 'S'}" >
 	
 	<div class="containerTitleUpload">
@@ -16,7 +16,7 @@
 		<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'cornerDisabled':'corner'}"></div>
 		<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'numberAndTitleDisabled':'numberAndTitle'}">
 			<!-- div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'numberDisabled':'number'}" >#{addPldDocument.numCompDomi}</div -->
-			<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Comprobante de domicilio</h3></div>
+			<div class="#{addPldDocument.dispCheckCompDomi =='inline'? 'titleDisabled':'title'}"><h3 class="encH3">Comprobante de domicilio<span class="imagenDescripcion"> <i onclick="abrir_imagenreferencia(this);" class="fa fa-question-circle"></i></span></h3></div>
 			<p:graphicImage styleClass = "validatorClass"  
 					        style      = "float:right;display:#{addPldDocument.dispCheckCompDomi}" 
 					        id         = "checkCompDomi" 
@@ -189,10 +189,18 @@
 							
 		</h:form>
 	</div>
+				<div class="imagen_referencia">
+					<div class="blindAction" onclick="cerrar_imagenreferencia(this);">
+						X
+					</div>
+						<figure>
+							<img src="../resources/img/domicilio.jpg"/>
+						</figure>
 					
+				</div>	
 					
 	</h:panelGroup>
-
+</div>
 </h:panelGroup>
 					
 					

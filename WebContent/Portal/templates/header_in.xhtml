@@ -71,26 +71,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     	                                  
             <div class="media">                                                                    
             	<ul>
-                        	<li class="siguenos"></li>
-                            <li class="twitter"><a  href="https://twitter.com/kubofinanciero" target="_blank"><i class="fa fa-twitter-square "></i></a></li>
-                            <li class="facebook"><a href="https://es-la.facebook.com/Kubofinanciero" target="_blank"><i class="fa fa-facebook-square "></i></a></li>
-                            <li class="linkedin"><a href="https://mx.linkedin.com/company/kubo-financiero" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
-                            <li class="googleplus"><a href="https://plus.google.com/115044159775214711680/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
-                            <li class="pinterest"><a href="https://es.pinterest.com/kubofinanciero/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                            <li class="instagram"><a href="http://instagram.com/kubofinanciero" target="_blank"><i class="fa fa-instagram "></i></a></li>
+                	<li class="siguenos"></li>
+                    <li class="twitter">	<a  href="https://twitter.com/kubofinanciero" 					target="_blank"><i class="fa fa-twitter-square "></i></a></li>
+                    <li class="facebook">	<a href="https://es-la.facebook.com/Kubofinanciero" 			target="_blank"><i class="fa fa-facebook-square "></i></a></li>
+                    <li class="linkedin">	<a href="https://mx.linkedin.com/company/kubo-financiero" 		target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                    <li class="googleplus">	<a href="https://plus.google.com/115044159775214711680/about" 	target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+                    <li class="pinterest">	<a href="https://es.pinterest.com/kubofinanciero/" 				target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                    <li class="instagram">	<a href="http://instagram.com/kubofinanciero" 					target="_blank"><i class="fa fa-instagram "></i></a></li>
                 </ul>                        
 			</div>
-                    	<h:panelGroup rendered = "#{sessionBean.area == 'L' and sessionBean.isClient ==true}" >
-							<aside class="nuevoPrestamoEnlace" onclick="misolicitud();">
-								<span>Nuevo Préstamo</span>
-								<div class="avisoIcon"><i class="fa fa-money"></i><small>1</small></div>
-							</aside>	
-					</h:panelGroup>		
+                 	
+            <h:panelGroup rendered = "#{sessionBean.area == 'L' and sessionBean.new_consulting}" >
+			   <h:panelGroup rendered = "#{sessionBean.enabled_Ren_4_Click}" >
+			
+					<aside class="nuevoPrestamoEnlace" onclick="abrirAlertaRenovacion();">
+						
+						<span>Nuevo Préstamo</span>
+						<div class="avisoIcon">
+							<i class="fa fa-money"></i>
+							<small>1</small>
+						</div>
+						
+					</aside>
+				</h:panelGroup>	
+				  <h:panelGroup rendered = "#{!sessionBean.enabled_Ren_4_Click}" >
+			
+					<aside class="nuevoPrestamoEnlace" onclick="misolicitud();">
+						
+						<span>Nuevo Préstamo</span>
+						<div class="avisoIcon">
+							<i class="fa fa-money"></i>
+							<small>1</small>
+						</div>
+						
+					</aside>
+				</h:panelGroup>	
+			
+			
+			</h:panelGroup>
+					
 			<div class="menu_principal">
 				
 				<div>    
 						
 					<article onclick="menuPrincipalHeader(event.stopPropagation());">								
+						
 						<h:panelGroup rendered = "#{!sessionBean.haveUsrImg}" >
 							<figure><h:graphicImage library="img" name="sinimagen.jpg"  /> </figure> 
 						</h:panelGroup>  
@@ -102,6 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<span>#{headerBean.name}</span> 
 						<i class="fa fa-angle-down"/>
 						<small> ID de cliente: #{headerBean.trackId}</small>
+						
 					</article>                	
                             
 					<ul>    

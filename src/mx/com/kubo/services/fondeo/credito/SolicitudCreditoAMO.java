@@ -131,7 +131,7 @@ public abstract class SolicitudCreditoAMO extends SolicitudCreditoDMO
 	{
 		if(response != null)
 		{
-			if(codigo_respuesta.equals(SUCCESS))
+			if(codigo_respuesta.equals(SUCCESS) || codigo_respuesta.equals(SUCCESS_PLD) || codigo_respuesta.equals(SUCCESS_PLD_2) )
 			{									
 				service_calling.registrar(RESPONSE, prospectus_id, company_id, SAFI_SOLICITUD_CREDITO_OK + mensaje_respuesta);						
 				
@@ -152,7 +152,7 @@ public abstract class SolicitudCreditoAMO extends SolicitudCreditoDMO
 				
 				lista_errores.add(mensaje_respuesta);
 				
-				solicitud_credito_OK = false;			
+				solicitud_credito_OK = false;
 			}
 		}
 	}

@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import com.soa.model.businessobject.TSafiPosicionInt;
+import mx.com.kubo.model.TSafiPosicionInt;
 
 public abstract class CreditoSAFI_DMO 
 {
@@ -92,7 +92,7 @@ public abstract class CreditoSAFI_DMO
 
 	public String getFecha_prox_ven() throws ParseException 
 	{	
-		if(credito_fecha_prox_ven == null)
+		if(credito_fecha_prox_ven == null || credito_fecha_prox_ven.equals("null") )
 		{
 			return "";	
 		} else {
@@ -253,7 +253,7 @@ public abstract class CreditoSAFI_DMO
 
 	public Double getSaldo_interes_pro() 
 	{
-		return credito_saldo_interes_pro == null ? 0 : Double.parseDouble(credito_saldo_interes_pro);
+		return (credito_saldo_interes_pro == null || (credito_saldo_interes_pro.equals("null")) ) ? 0 : Double.parseDouble(credito_saldo_interes_pro);
 	}
 
 	public void setCredito_saldo_interes_pro(String saldo) 

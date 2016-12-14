@@ -42,14 +42,19 @@ function distribuirQuitar () {
 
 
 function invertir_function() {
+
 	if(!$(".resumen_saldos_cuenta").is(":visible")){
 		cerrarNotificacion();
 		console.log("cerrar notification");
+	}
+	if($("#sidebar").length ){
+		$(".tituloInv h2").html("Invertir");
 	}
 	closeFancy();
     var width = $(window).width();	
     var locacion = document.location.href; 
 	filtros ();
+	
 	fondeo_previo ();
 	n_boton_distribuir_quitar();
 	proyectosMovil ();
@@ -59,7 +64,8 @@ function invertir_function() {
 			   resizeId = setTimeout(proyectosMovil, 500);
 			   
 		});
-		 $(".tituloInv h2").html("Invertir");
+	
+	
 		 $(".invertirOtroBtn").hide();
 		 $(".saldosBtn").show();
 		 romperRegreso();
@@ -526,6 +532,7 @@ function filaMosaico() {
 
 
 $(document).ready(function(){	
+	
 	revisarSeleccionados ();
 	filtros ();
 	 fondeo_previo ();
@@ -553,7 +560,7 @@ $(document).ready(function(){
 	 numeracionTienda (); 
 	   recuperaIdBotonRegresar();
 	   recuperaIdURL ();  
-	  $(".tituloInv h2").html($(".selectedMenuInv > a").text());
+	   $(".tituloInv h2").html($(".selectedMenuInv > a").text());
 	   $(window).resize();
 	   centrarPnlInv ();
 	   $(window).resize(function() {
@@ -568,7 +575,8 @@ $(document).ready(function(){
 				 }
 		
 	   }
-	 
+
+	   encabezadosReset ();
 });
 
 
@@ -827,9 +835,21 @@ $(document).ready(function(){
 				 $("#dvContInvFlot").addClass("iphone");
 			 }, 300);
 		  }
-	}
+	} 
+	
+	raShow();
 });
 
+
+function raShow(){
+	setTimeout(function(){ 
+		if($( "#chart_area_div path[fill='#fdc93d']" ).length -2 > 4){
+			$(".datosOnlyRa .ra_inversionistas").show();
+		}else{
+			$(".datosOnlyRa .nuevos-inversionistas").show();
+		}
+	},300);
+}
 function nuevoRepetido () {
 	
 	setTimeout(function(){
@@ -909,7 +929,7 @@ function comprobantesAlertas(btn, proList){
 			$("#dvEdoCuenta").addClass("show");
 		},200);
 		
-		
+	
 }
 
 
@@ -983,4 +1003,43 @@ function mobileIphone (){
 }
 
 
+function completeConfiguration() {
+	$(".tituloInv h2").html("Configuración");
+	if(!$(".resumen_saldos_cuenta").is(":visible")){
+		cerrarNotificacion();
+		console.log("cerrar notification");
+	}
+	
+	closeFancy();
+	filtros ();
 
+}
+
+function encabezadosReset (){
+	if($("#pnlEdoCuentInv").length ){
+		$(".tituloInv h2").html("Resumen de saldos");
+		$("#resumenInvest").closest(".menu01Invest").addClass("selectedMenuInv");
+	}
+	if($("#sidebar").length ){
+		$(".tituloInv h2").html("Invertir");
+		$("#projectListAction").closest(".menu01Invest").addClass("selectedMenuInv");
+	}
+	if($("#pnlMovsInver").length ){
+		$(".tituloInv h2").html("Movimientos");
+		$("#cashWithdrawal").closest(".menu01Invest").addClass("selectedMenuInv");
+	}
+	if($("#buttons").length ){
+		$(".tituloInv h2").html("Datos personales");
+		$("#personalData").closest(".menu01Invest").addClass("selectedMenuInv");
+	}
+	if($("#confModulo").length ){
+		$(".tituloInv h2").html("Configuración");
+		$("#customAction").closest(".menu01Invest").addClass("selectedMenuInv");
+	}
+	
+	$(".menu01Invest").click(function(){
+		var elementSelect = ($(this).parents(".secondaryMenuInv")).find(".selectedMenuInv");
+		elementSelect.removeClass("selectedMenuInv");
+		$(this).addClass("selectedMenuInv");
+	});
+}

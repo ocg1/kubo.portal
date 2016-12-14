@@ -1,6 +1,7 @@
 package mx.com.kubo.portal.ofertas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -8,11 +9,11 @@ import mx.com.kubo.portal.simulador.CreditSimulatorIMP;
 
 public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAutomaticaDMO
 {
-	protected void init_R_data() 
+	protected void init_ofert_ENABLED() 
 	{
 		if(r_data != null)
 		{
-			r_data = r_data.trim();
+			r_data = r_data.trim().toUpperCase();
 			
 			r_data_split = r_data.split(" ", 5);
 			
@@ -22,37 +23,94 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 				
 				renovaciones_TOKEN = renovaciones_TOKEN.trim();
 								
-		        pattern = Pattern.compile("ren_auto_");
+		        pattern = Pattern.compile(REN_AUTO);
 		        
 		        matcher = pattern.matcher(renovaciones_TOKEN);		        		        
-
-		        int count = 0;
+	
+		        ofert_count = 0;
 		        
 		        while (matcher.find())
 		        {
-		            count++;
+		        	ofert_count++;
 		        }
 		        
-		        renovaciones = new ArrayList<RenovacionBean>(count);		        		        
-				
-		        for(int index = 1; index <= count; index++)
+		        ofert_ENABLED = ofert_count > 0 ? true : false; 
+		        
+		        loan_type_id = REN;
+		        
+		        if(ofert_count < 1)
 		        {
-		        	renovacion = new RenovacionBean();
-		        	
-		        	init_renovacion_TOKEN(index);		        	
-		    		init_ofert_ammount_TOKEN();
-		    		init_ofert_rate_TOKEN();		        			    				    				    		
-		    		
-		        	renovaciones.add(renovacion);
+			        pattern = Pattern.compile(RDC_AUTO);
+			        
+			        matcher = pattern.matcher(renovaciones_TOKEN);		        		        
+		
+			        ofert_count = 0;
+			        
+			        while (matcher.find())
+			        {
+			        	ofert_count++;
+			        }
+			        
+			        ofert_ENABLED = ofert_count > 0 ? true : false; 
+			        
+			        loan_type_id = RDC;
 		        }
 			}
-		}	
+		}
+	}
+		
+	protected void init_R_data()
+	{	       
+        renovaciones = new ArrayList<RenovacionBean>(ofert_count);
+        
+        diccionario = new HashMap<String, Integer>();
+        
+		max_ammount_from_offer = 0;
+		min_ammount_from_offer = 500000;
+		
+        for(int index = 1; index <= ofert_count; index++)
+        {
+        	renovacion = new RenovacionBean();
+        	
+        	init_renovacion_TOKEN(index);		        	
+    		init_ofert_ammount_TOKEN();			    				    		
+    		
+    		diccionario.put(renovacion.getSafi_credit_id(), index - 1);
+    		
+        	renovaciones.add(index -1, renovacion);
+        }		
 	}
 	
 	private void init_renovacion_TOKEN(int ren_auto_index) 
 	{	
-		String ren_auto_N = "ren_auto_" + ren_auto_index;
-		String ren_auto_M = "ren_auto_" + (ren_auto_index + 1);
+		String ren_auto_N = "";
+		
+		if(only_one_offert_ENABLED)
+		{
+			if(loan_type_id.equals(REN))
+			{
+				ren_auto_N = REN_AUTO;
+			}
+			
+			if(loan_type_id.equals(RDC))
+			{
+				ren_auto_N = RDC_AUTO;
+			}			
+			
+		} else {
+			
+			if(loan_type_id.equals(REN))
+			{
+				ren_auto_N = REN_AUTO + "_" + ren_auto_index;
+			}
+			
+			if(loan_type_id.equals(RDC))
+			{
+				ren_auto_N = RDC_AUTO + "_" + ren_auto_index;
+			}						
+		}
+				
+		String ren_auto_M = REN_AUTO + (ren_auto_index + 1);
 		
 		int ren_auto_N_index = renovaciones_TOKEN.indexOf(ren_auto_N);
 		int ren_auto_M_index = renovaciones_TOKEN.indexOf(ren_auto_M);
@@ -97,7 +155,6 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 		}
 	}
 	
-
 	private void init_credit_INFO(String renovacion_TOKEN) 
 	{		
 		beginIndex = renovacion_TOKEN.indexOf("[");
@@ -124,19 +181,13 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 		renovacion.setActual_term(actual_term);
 		renovacion.setMax_ammount(max_ammount);
 		renovacion.setMax_payment(max_payment);
-		
-/*		
-		     term_id = Integer.parseInt(actual_term);
-		frequency_id = init_frequency_id(actual_frequency);		
-		ammount = Double.parseDouble(actual_ammount);	 	
-*/		
 	}
 
 	private String init_oferta_TOKEN(int oferta_N) 
 	{
 		String term_frequency_TOKEN  = "";
 		
-		String oferta_to_process = "Oferta_" + oferta_N;
+		String oferta_to_process = OFERTA + oferta_N;
 				
 		beginIndex = ofertas_TOKEN.indexOf(oferta_to_process);
 		
@@ -144,7 +195,7 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 		{
 			case 1:
 			case 2:
-				String oferta_limit = "Oferta_" + (oferta_N + 1);
+				String oferta_limit = OFERTA + (oferta_N + 1);
 				
 				endIndex = ofertas_TOKEN.indexOf(oferta_limit);
 			break;
@@ -173,19 +224,28 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 	
 	private List<OfertaBean> init_tabla_ofertas()
 	{
-		List<OfertaBean> tabla_oferta_N = new ArrayList<OfertaBean>();
+		List<OfertaBean> tabla_oferta_N = new ArrayList<OfertaBean>();		
 		
 		for(int index = 2; index < ofert_data_split.length - 1; index = index + 2)
 		{
 			ofert_ammount = ofert_data_split[index];						
-			ofert_payment = ofert_data_split[index + 1];						
+			ofert_payment = ofert_data_split[index + 1];
 			
-			oferta = new OfertaBean();
-			oferta.setAmmount(format.format(Integer.parseInt(ofert_ammount)));
-			oferta.setPayment(format.format(Integer.parseInt(ofert_payment)));					
+			int ammount = Integer.parseInt(ofert_ammount);
+			int payment = Integer.parseInt(ofert_payment);					
 			
-			tabla_oferta_N.add(oferta);
-		}
+			if(ammount > 0 && payment > 0)
+			{
+				oferta = new OfertaBean();			
+				oferta.setAmmount(format.format(ammount));
+				oferta.setPayment(format.format(payment));
+				
+				tabla_oferta_N.add(oferta);
+				
+				max_ammount_from_offer = ammount > max_ammount_from_offer ? ammount : max_ammount_from_offer;			
+				min_ammount_from_offer = ammount < min_ammount_from_offer ? ammount : min_ammount_from_offer;
+			}						
+		}				
 		
 		return tabla_oferta_N;
 	}
@@ -222,79 +282,20 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 		return term_frequency_TOKEN;
 	}
 	
-/*	
-	private int init_frequency_id(String actual_frequency) 
-	{
-		int frequency_id = 0;
-		
-		switch(actual_frequency.charAt(0))
-		{
-			case 'S':
-				frequency_id = SEMANAL;
-			break;
-			
-			case 'C':
-				frequency_id = CATORCENAL;
-			break;
-			
-			case 'Q':
-				frequency_id = QUINCENAL;
-			break;
-			
-			case 'M':
-				frequency_id = MENSUAL;
-			break;
-		}
-		
-		return frequency_id;
-	}
-*/	
-	
 	private void init_ofert_ammount_TOKEN() 
 	{		
 		sb = new StringBuilder();
 		sb.append(MONTO_APROBADO);
-		sb.append("$").append(format.format(Integer.parseInt(renovacion.getActual_ammount())));
+		sb.append("$");		
+		sb.append(format.format(min_ammount_from_offer));
 		sb.append(HASTA);
-		sb.append("$").append(format.format(Integer.parseInt(renovacion.getMax_ammount())));
+		sb.append("$").append(format.format(max_ammount_from_offer));
 		sb.append(PLAZO);
 		
 		ofert_ammount_TOKEN = sb.toString();
 		
 		renovacion.setOfert_ammount_TOKEN(ofert_ammount_TOKEN);
-	}
-		
-	private void init_ofert_rate_TOKEN() 
-	{	
-		sb = new StringBuilder();
-		sb.append(PRESTAMO_APROBADO);
-		
-		if(!same_rate_ENABLED)
-		{
-			sb.append(MEJOR_TASA);
-		}
-		
-		ofert_TOKEN = sb.toString();
-		
-		renovacion.setOfert_TOKEN(ofert_TOKEN);
-		
-		if(!same_rate_ENABLED)
-		{
-			sb = new StringBuilder();
-			sb.append("Tasa anterior ");
-			sb.append(actual_rate.toString()).append("%");
-			sb.append(" Tasa Actual ");
-			sb.append(rate.toString()).append("%");
-/*			
-			sb.append("% CAT ");
-			sb.append(cat).append("%");
-*/
-			
-			ofert_rate_TOKEN = sb.toString();
-			
-			renovacion.setOfert_rate_TOKEN(ofert_rate_TOKEN);
-		}
-	}
+	}	
 	
 	protected void init_CAT_simulation() 
 	{		
@@ -305,7 +306,7 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 		
 		credit_simulator.init_cuota_by_formula();
 		
-		cat = credit_simulator.getCat();
+		simulation = credit_simulator.getSimulation();
 	}
 	
 	protected void init_CAT_simulation_SAFI() 
@@ -317,6 +318,6 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 		
 		credit_simulator.init_cat_SAFI();
 		
-		cat = credit_simulator.getCat();
+		simulation = credit_simulator.getSimulation();
 	}
 }

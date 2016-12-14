@@ -46,13 +46,17 @@ public class InvestorSession implements Serializable {
 	public void setListToInvestment(List<ItemLoanList> listToInvestment) {
 		this.listToInvestment = new ArrayList<ItemLoanList>();
 		
-		for( ItemLoanList item : listToInvestment ){
-			
-			ItemLoanList i = new ItemLoanList();
-			
-			i.setItemLoanList(item);
-			
-			this.listToInvestment.add(i);
+		if( listToInvestment != null ){
+		
+			for( ItemLoanList item : listToInvestment ){
+				
+				ItemLoanList i = new ItemLoanList();
+				
+				i.setItemLoanList(item);
+				
+				this.listToInvestment.add(i);
+			}
+		
 		}
 		
 		// this.listToInvestment = listToInvestment;

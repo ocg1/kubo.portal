@@ -1,0 +1,42 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">			
+				
+	<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_ofert_ENABLED or consultaRenovacion.redirect_to_registro_ENABLED}">
+		<div class="contFrm" style="padding:20px !important; text-align: center;" >
+			<img src="#{configManaged.location}resources/images/loader.gif"/>
+		</div>
+	</h:panelGroup>				
+				
+	<h:panelGroup id = "wait">		
+		<div id = "contFrmReg" class = "contPR" style = "margin-right: 0px;">
+		
+			<div class="velo"/>
+		
+			<div class="content menuVisible" style="min-height: 800px !important; overflow: hidden; ">
+			
+				<div id="dvContMenuREG" >
+					<div id = "menuRG" class = "menuFrm" style = "margin-right: 0px;">
+						</div>
+				</div>				
+						<div id = "frm_content" class = "formFrm contenidoForm">		
+							<div>															
+								<h:panelGroup>												
+									<ui:include src = "/jsf/secciones/registro/pre_aprobacion/procesando.xhtml"/>					
+								</h:panelGroup>												
+							</div>
+							
+							<ui:include src = "actualización-info.xhtml"/>	
+							<ui:include src = "no-hit.xhtml"/>	
+							<ui:include src = "error_consulta_buro.xhtml"/>	
+							
+						
+						</div>
+				
+			</div>
+		</div>			
+	</h:panelGroup>		
+				
+</ui:composition>				

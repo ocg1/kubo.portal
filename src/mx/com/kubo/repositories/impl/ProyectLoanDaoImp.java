@@ -368,6 +368,26 @@ implements ProyectLoanDao
 		
 		return proyectloan;		
 	}
+	
+	public ProyectLoan getMaxProyectLoanByProspectAndStatus(Integer prospectus_id, Integer company_id, Integer status_id) 
+	{	
+		log.info("getMaxProyectLoanByProspect.ProyectLoanDaoImp");
+		
+		String query="select MAX(pl.proyectloanPk.proyect_loan_id) from ProyectLoan pl where pl.proyectloanPk.prospectus_id = ? and pl.proyectloanPk.company_id = ? and status_id = ?";
+				
+		Integer proy_loan = (Integer) em.createQuery(query).setParameter(1, prospectus_id).setParameter(2,company_id).setParameter(3,status_id).getSingleResult();
+		
+		if(proy_loan == null)
+		{
+			return null;
+		}
+		
+		query="from ProyectLoan pl where pl.proyectloanPk.prospectus_id = ? and pl.proyectloanPk.company_id = ? and status_id = ? and pl.proyectloanPk.proyect_loan_id = ?";
+		
+		ProyectLoan proyectloan = em.createQuery(query,ProyectLoan.class).setParameter(1, prospectus_id).setParameter(2,company_id).setParameter(3,status_id).setParameter(4, proy_loan).getSingleResult();
+		
+		return proyectloan;		
+	}
 		
 	public String setInstitutionalFunding(ProyectLoanPK key)
 	{	

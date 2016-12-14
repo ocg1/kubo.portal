@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedProperty;
 
 import mx.com.kubo.bean.ConsultingErrorBean;
 import mx.com.kubo.bean.TemporalBean;
+import mx.com.kubo.mesa.buro.ProspectRiskIMO;
 import mx.com.kubo.model.ClientView;
 import mx.com.kubo.model.ConsultingManual;
 import mx.com.kubo.model.ConsultingManualPK;
@@ -24,7 +25,7 @@ import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.notificaciones.notificables.Evento;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.AddressService;
 import mx.com.kubo.services.ConsultingManualService;
 import mx.com.kubo.services.EventNotificationService;
@@ -51,10 +52,7 @@ import com.soa.webServices.request.BCRiskRequest;
 import com.soa.webServices.responses.ProspectBCRiskResponse;
 
 public abstract class ConsultingControllerDMO 
-{
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP  notificador;
-	
+{	
 	@ManagedProperty("#{membershipServiceImp}")
 	protected MembershipService membershipService;
 	
@@ -121,6 +119,9 @@ public abstract class ConsultingControllerDMO
 	protected ServiceCalling srvCall;
 	protected BCRiskRequest request;
 	protected ProspectBCRiskResponse prospect_bc_risk_response;	
+	
+	protected NotificadorIMO  notificador;
+	protected ProspectRiskIMO risk;
 		
 	protected Membership   memberSel;
 	protected Membership   membership;
@@ -162,6 +163,9 @@ public abstract class ConsultingControllerDMO
 	protected String valPerSelStr; 
 	protected String valores_a_consultar;
 	
+	protected final String ERROR_MSG;
+	
+	protected int consulting_prospectus_id;
 	protected int prospectus_id;
 	protected int company_id;
 	protected int proyect_id;
@@ -183,6 +187,103 @@ public abstract class ConsultingControllerDMO
 	protected ConsultingControllerDMO()
 	{
 		date_format = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy");
+		
+		ERROR_MSG = "Error ConsultingController.createConsulting (220)";
+	}
+	
+	public void setMembershipService(MembershipService service) 
+	{
+		membershipService = service;
+	}
+
+	public void setScoringService(ScoringService service) 
+	{
+		scoringService = service;
+	}
+
+	public void setServicecallingService(ServiceCallingService service) 
+	{
+		servicecallingService = service;
+	}
+
+	public void setEventnotificationservice(EventNotificationService service) 
+	{
+		eventnotificationservice = service;
+	}
+
+	public void setConsultingmanualservice(ConsultingManualService service) 
+	{
+		consultingmanualservice = service;
+	}
+
+	public void setProyectloanService(ProyectLoanService service) 
+	{
+		proyectloanService = service;
+	}
+
+	public void setProyectService(ProyectService service) 
+	{
+		proyectService = service;
+	}
+
+	public void setSimulatorService(SimulatorService service) 
+	{
+		simulatorService = service;
+	}
+
+	public void setViewclientinfoservice(ViewClientInfoService service) 
+	{
+		viewclientinfoservice = service;
+	}
+
+	public void setEventService(EventService service) 
+	{
+		eventService = service;
+	}
+
+	public void setMailService(MailLogService service) 
+	{
+		mailService = service;
+	}
+	
+	public void setReasonsService(RegistrationReasonService service) 
+	{
+		reasonsService = service;
+	}
+	
+	public void setSystemParamService(SystemParamService service) 
+	{
+		systemParamService = service;
+	}
+	
+	public void setPhoneService(PhoneService service) 
+	{
+		phoneService = service;
+	}
+
+	public void setTownService(TownService service) 
+	{
+		townService = service;
+	}
+
+	public void setNeighborhoodService(NeighborhoodService service) 
+	{
+		neighborhoodService = service;
+	}
+
+	public void setStateService(StateService service) 
+	{
+		stateService = service;
+	}
+
+	public void setAddressService(AddressService service) 
+	{
+		addressService = service;
+	}
+
+	public void setNaturalPersonService(NaturalPersonService service) 
+	{
+		naturalPersonService = service;
 	}
 	
 	public Membership[] getClientList() {
@@ -297,113 +398,6 @@ public abstract class ConsultingControllerDMO
 		this.loan_type = loan_type;
 	}
 
-	public NotificadorIMP getNotificador() {
-		return notificador;
-	}
-
-	public void setNotificador(NotificadorIMP notificador) {
-		this.notificador = notificador;
-	}
-
-	public MembershipService getMembershipService() {
-		return membershipService;
-	}
-
-	public void setMembershipService(MembershipService service) 
-	{
-		membershipService = service;
-	}
-
-	public ScoringService getScoringService() {
-		return scoringService;
-	}
-
-	public void setScoringService(ScoringService service) 
-	{
-		scoringService = service;
-	}
-
-	public ServiceCallingService getServicecallingService() {
-		return servicecallingService;
-	}
-
-	public void setServicecallingService(ServiceCallingService service) 
-	{
-		servicecallingService = service;
-	}
-
-	public EventNotificationService getEventnotificationservice() {
-		return eventnotificationservice;
-	}
-
-	public void setEventnotificationservice(EventNotificationService service) 
-	{
-		eventnotificationservice = service;
-	}
-
-	public ConsultingManualService getConsultingmanualservice() {
-		return consultingmanualservice;
-	}
-
-	public void setConsultingmanualservice(ConsultingManualService service) 
-	{
-		consultingmanualservice = service;
-	}
-	
-	public ProyectLoanService getProyectloanService() {
-		return proyectloanService;
-	}
-
-	public void setProyectloanService(ProyectLoanService service) 
-	{
-		proyectloanService = service;
-	}
-
-	public ProyectService getProyectService() {
-		return proyectService;
-	}
-
-	public void setProyectService(ProyectService service) 
-	{
-		proyectService = service;
-	}
-
-	public SimulatorService getSimulatorService() {
-		return simulatorService;
-	}
-
-	public void setSimulatorService(SimulatorService service) 
-	{
-		simulatorService = service;
-	}
-
-	public ViewClientInfoService getViewclientinfoservice() {
-		return viewclientinfoservice;
-	}
-
-	public void setViewclientinfoservice(ViewClientInfoService service) 
-	{
-		viewclientinfoservice = service;
-	}
-
-	public EventService getEventService() {
-		return eventService;
-	}
-
-	public void setEventService(EventService service) 
-	{
-		eventService = service;
-	}
-
-	public MailLogService getMailService() {
-		return mailService;
-	}
-
-	public void setMailService(MailLogService service) 
-	{
-		mailService = service;
-	}
-
 	public int getRegistration_reason_id() {
 		return registration_reason_id;
 	}
@@ -420,14 +414,6 @@ public abstract class ConsultingControllerDMO
 		this.reasonsLst = reasonsLst;
 	}
 
-	public RegistrationReasonService getReasonsService() {
-		return reasonsService;
-	}
-
-	public void setReasonsService(RegistrationReasonService reasonsService) {
-		this.reasonsService = reasonsService;
-	}
-
 	public List<TemporalBean> getListSearchingType() {
 		return listSearchingType;
 	}
@@ -442,14 +428,6 @@ public abstract class ConsultingControllerDMO
 
 	public void setSearchingType(int searchingType) {
 		this.searchingType = searchingType;
-	}
-
-	public SystemParamService getSystemParamService() {
-		return systemParamService;
-	}
-
-	public void setSystemParamService(SystemParamService systemParamService) {
-		this.systemParamService = systemParamService;
 	}
 
 	public String getOrigin_value() {
@@ -472,50 +450,6 @@ public abstract class ConsultingControllerDMO
 		return phoneService;
 	}
 
-	public void setPhoneService(PhoneService phoneService) {
-		this.phoneService = phoneService;
-	}
-
-	public TownService getTownService() {
-		return townService;
-	}
-
-	public void setTownService(TownService townService) {
-		this.townService = townService;
-	}
-
-	public NeighborhoodService getNeighborhoodService() {
-		return neighborhoodService;
-	}
-
-	public void setNeighborhoodService(NeighborhoodService neighborhoodService) {
-		this.neighborhoodService = neighborhoodService;
-	}
-
-	public StateService getStateService() {
-		return stateService;
-	}
-
-	public void setStateService(StateService stateService) {
-		this.stateService = stateService;
-	}
-
-	public AddressService getAddressService() {
-		return addressService;
-	}
-
-	public void setAddressService(AddressService addressService) {
-		this.addressService = addressService;
-	}
-
-	public NaturalPersonService getNaturalPersonService() {
-		return naturalPersonService;
-	}
-
-	public void setNaturalPersonService(NaturalPersonService naturalPersonService) {
-		this.naturalPersonService = naturalPersonService;
-	}
-
 	public SimulatorBean getSimulador() {
 		return simulador;
 	}
@@ -536,10 +470,6 @@ public abstract class ConsultingControllerDMO
 		return lstError;
 	}
 
-	public void setLstError(List<ConsultingErrorBean> lstError) {
-		this.lstError = lstError;
-	}
-
 	public int getIntConsultas() {
 		return intConsultas;
 	}
@@ -548,4 +478,89 @@ public abstract class ConsultingControllerDMO
 		this.intConsultas = intConsultas;
 	}
 
+/*	
+ 	public void setLstError(List<ConsultingErrorBean> lstError) {
+		this.lstError = lstError;
+	}
+	
+	public NotificadorIMP getNotificador() {
+		return notificador;
+	}
+
+	public void setNotificador(NotificadorIMP notificador) {
+		this.notificador = notificador;
+	}
+	
+	public MembershipService getMembershipService() {
+		return membershipService;
+	}
+	
+	public ScoringService getScoringService() {
+		return scoringService;
+	}
+	
+	public ServiceCallingService getServicecallingService() {
+		return servicecallingService;
+	}	
+	
+	public EventNotificationService getEventnotificationservice() {
+		return eventnotificationservice;
+	}
+	
+	public ConsultingManualService getConsultingmanualservice() {
+		return consultingmanualservice;
+	}
+	
+	public ProyectLoanService getProyectloanService() {
+		return proyectloanService;
+	}
+
+	public ProyectService getProyectService() {
+		return proyectService;
+	}
+	
+	public SimulatorService getSimulatorService() {
+		return simulatorService;
+	}
+	
+	public EventService getEventService() {
+		return eventService;
+	}
+
+	public MailLogService getMailService() {
+		return mailService;
+	}
+	
+	public ViewClientInfoService getViewclientinfoservice() {
+		return viewclientinfoservice;
+	}
+	
+	public SystemParamService getSystemParamService() {
+		return systemParamService;
+	}
+	
+		public NaturalPersonService getNaturalPersonService() {
+		return naturalPersonService;
+	}
+
+	public AddressService getAddressService() {
+		return addressService;
+	}
+	
+	public StateService getStateService() {
+		return stateService;
+	}
+	
+	public NeighborhoodService getNeighborhoodService() {
+		return neighborhoodService;
+	}
+	
+	public TownService getTownService() {
+		return townService;
+	}
+	
+	public RegistrationReasonService getReasonsService() {
+		return reasonsService;
+	}
+*/	
 }

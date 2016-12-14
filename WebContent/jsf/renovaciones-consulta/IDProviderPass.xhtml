@@ -1,0 +1,82 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">	
+				
+				
+	<div id = "dvPassIDProv" class="alertaModal pass-renovaciones centrar_h">
+		<i class="fa fa-times closePop" onclick="cerrarAlertPass();"></i>
+		
+		<div class="empezarRegistro">
+		<p>Para autorizar, ingresar nuevamente su contraseña:</p>
+            	<ul>
+            	<li>
+            	<div class="mostrar">
+            		<i class="fa fa-lock"></i>
+					<h:inputSecret immediate = "true" styleClass = "elementAddres1 phone_box_big">
+						<p:ajax event = "blur" 
+								oncomplete = "ConsultaRenovacion.password_oncomplete(xhr, status, args);"
+								listener   = "#{consultaRenovacion.init_password}"/>
+					</h:inputSecret>
+		</div>
+		</li>
+		</ul>
+		<div id = "dvNext_autorizoPass" class = "callAction btnNaranja">Continuar</div>
+		</div>											
+	</div>				
+				
+	<div id = "dvIDProviderPass">	
+		<div id = "contFrmReg" class = "contPR">			
+			
+	
+						
+<!-- 			
+				<div id = "dvContMenuREG">
+					<div id = "menuRG" class = "menuFrm" style = "margin-right: 0px;">
+					
+						<div id = "frm_content" class = "formFrm contenidoForm">
+ -->	
+					
+							<div class="plecaForm mG">
+        			<h3>Para recibir tu nueva oferta de préstamo necesitamos que autorices la siguiente consulta:</h3>
+
+        			<span class="triangle"><i class="fa fa-caret-down"></i></span>
+        		</div>
+								<div class = "dvContent">
+	
+	
+									<div class = "autenticador_buro">
+										
+			
+										<p>Por este conducto autorizo expresamente a #{msg.razon_social_kubo_sofipo}, para que por conducto de sus funcionarios facultados lleve a cabo Investigaciones, sobre mi comportamiento Crediticio en las Sociedades de Información Crediticia que estime conveniente. </p>
+										<p>Así mismo, declaro que conozco la naturaleza y alcance de la información que se solicitará, del uso que #{msg.razon_social_kubo_sofipo} hará de tal información y de que ésta podrá realizar consultas periódicas de mi historial crediticio, consintiendo que esta autorización se encuentre vigente por un período de 3 años contados a partir de la fecha de su expedición y en todo caso durante el tiempo que mantengamos relación jurídica. </p>
+			
+										<div id = "dvSi_autorizoPass" class="callAction btnNaranja" style="display: block;">Sí autorizo</div>
+										
+<!-- 										
+										<h:selectOneRadio id = "aceptar_consulta_2" immediate = "true" 
+														  layout = "pageDirection" 
+														  onfocus = "Historial.init_focus_date(4);"
+														  styleClass = "elementStlLbl validatorClass ocultaSelect" >
+														  
+									            <f:selectItem itemValue = "0" itemLabel = "Sí acepto la consulta"/>
+									            <f:selectItem itemValue = "1" itemLabel = "No acepto la consulta"/>
+									            
+									            <p:ajax event = "change"
+									            		oncomplete = "Historial.autorizar_consulta_oncomplete(xhr, status, args);" 
+									            		listener = "#{creditHistoryController.consulta.init_change}"/>
+										</h:selectOneRadio>
+-->															   
+									</div>																				
+								</div>
+<!-- 						
+						</div>
+					</div>
+				</div>
+-->			
+			
+			</div>	
+		
+	</div>				
+</ui:composition>				

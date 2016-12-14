@@ -1,6 +1,7 @@
 package mx.com.kubo.portal.ofertas;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -11,8 +12,8 @@ import javax.faces.component.html.HtmlInputText;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.managedbeans.SessionBean;
-import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.portal.simulador.CreditSimulatorIMO;
 
 public abstract class ParserRenovacionAutomaticaDMO 
@@ -22,11 +23,11 @@ implements ParserRenovacionAutomaticaIMO
 	
 	protected HtmlInputText input_text;
 	
-	protected SessionBean sesion;
-	
-	protected Scoring score;
+	protected SessionBean sesion;	
 	
 	protected CreditSimulatorIMO credit_simulator;
+	
+	protected SimulatorBean simulation;
 	
 	protected StringBuilder sb;
 	protected Pattern pattern;
@@ -40,44 +41,47 @@ implements ParserRenovacionAutomaticaIMO
 	protected List<OfertaBean> tabla_oferta_N;			
 	protected List<RenovacionBean> renovaciones;
 	
+	protected HashMap<String, Integer> diccionario; 
+	
 	protected String r_data;
 	protected String oferta_TOKEN;
 	protected String renovacion_TOKEN;
 	protected String renovaciones_TOKEN;
 	protected String ofertas_TOKEN;	
 	protected String ofert_data;
-	
-	protected String ofert_TOKEN;
-	protected String ofert_rate_TOKEN;
+
 	protected String ofert_ammount_TOKEN;	
 	protected String ofert_ammount;
 	protected String ofert_frequency;
 	protected String ofert_term;	
 	protected String ofert_payment;
 	protected String term_frequency_TOKEN;
+	protected String loan_type_id;
 		
-	protected final String PRESTAMO_APROBADO;
 	protected final String MONTO_APROBADO;
-	protected final String MEJOR_TASA;
 	protected final String HASTA;
 	protected final String PLAZO;
+	protected final String REN_AUTO;
+	protected final String RDC_AUTO;
+	protected final String REN;
+	protected final String RDC;
+	protected final String OFERTA;
 	
 	protected String       r_data_split [];	
 	protected String oferta_TOKEN_split [];
 	protected String   ofert_data_split [];		
 	
-	protected Double actual_rate;	
-	protected Double rate;
-	protected Double opening_commission;
 	protected Double ammount;
 	protected Double payment;
-	protected Double cat;
 	
 	protected Integer frequency_id;
 	protected Integer term_id;
+	protected Integer min_ammount_from_offer;
+	protected Integer max_ammount_from_offer;
 		
 	protected int beginIndex;
 	protected int endIndex;
+	protected int ofert_count;
 	
 	protected final int SAFI_CREDIT_ID = 0;
 	protected final int ACTUAL_AMMOUNT = 1;
@@ -94,60 +98,38 @@ implements ParserRenovacionAutomaticaIMO
 	protected final int MENSUAL = 4;
 	protected final int MAX_OFERT_NUMBER_PER_RENOVATION = 3;
 	
-	protected boolean same_rate_ENABLED;
+	protected boolean ofert_ENABLED;
+	protected boolean only_one_offert_ENABLED;
 	
 	protected ParserRenovacionAutomaticaDMO()
 	{						
-		PRESTAMO_APROBADO = "Tu nuevo préstamo ya está aprobado";
-		MEJOR_TASA = " con una mejor tasa:";
 		MONTO_APROBADO = "Solo tienes que escoger tu monto aprobado de ";
 		HASTA = " hasta ";
 		PLAZO = " y elegir tu plazo";
+		REN_AUTO = "REN_AUTO";
+		RDC_AUTO = "RDC_AUTO";
+		OFERTA   = "OFERTA_";
+		REN = "REN";
+		RDC = "RDC";
+		  
+		only_one_offert_ENABLED = true;
 		
 		format = NumberFormat.getNumberInstance(new Locale("es", "MX"));
 	}
 	
-	public void setProyect_loan(ProyectLoan proyect_loan) 
-	{						
-		if(proyect_loan != null)
-		{		
-			r_data = proyect_loan.getR_data();			
-			score  = proyect_loan.getScoring();
-			actual_rate = proyect_loan.getRate();
-			
-			if(score != null)
-			{
-				rate = score.getRate();
-				opening_commission = score.getOpening_commission();
-				
-				sesion.setOpeningCommission(opening_commission);				
-				sesion.setRate(rate);
-				
-				same_rate_ENABLED = actual_rate.toString().equals(rate.toString());
-			}
-		}
+	public void setScore(Scoring score)
+	{
+		r_data = score.getR_data();
 	}
-	
+		
 	public void setSesion(SessionBean sesion)
 	{
 		this.sesion = sesion;
-	}
+	}		
 	
-/*	
-	public void setSimulator(Simulator simulator) 
+	public String getLoan_type_id() 
 	{
-		this.simulator = simulator;
-	}
-*/	
-	
-	public boolean isSame_rate_ENABLED()
-	{
-		return same_rate_ENABLED;
-	}
-	
-	public String getOfert_TOKEN() 
-	{
-		return ofert_TOKEN;
+		return loan_type_id;
 	}
 
 	public String getOfert_ammount_TOKEN() 
@@ -155,34 +137,23 @@ implements ParserRenovacionAutomaticaIMO
 		return ofert_ammount_TOKEN;
 	}
 	
-	public String getOfert_rate_TOKEN() 
-	{
-		return ofert_rate_TOKEN;
-	}
-	
 	public String getTerm_frequency_TOKEN() 
 	{		
 		return term_frequency_TOKEN;
 	}
 	
-	public Double getAmmount() 
+	public SimulatorBean getSimulation()
 	{
-		return ammount;
+		return simulation;
 	}
 	
-	public Double getPayment() 
+	public RenovacionBean getRenovacion(String SAFI_credit_id)
 	{
-		return payment;
-	}
-	
-	public Double getCat() 
-	{
-		return cat;
-	}
-	
-	public Double getRate() 
-	{
-		return rate;
+		Integer indice = diccionario.get(SAFI_credit_id);
+		
+		renovacion = renovaciones.get(indice);
+		
+		return renovacion;
 	}
 	
 	public List<RenovacionBean> getRenovaciones()

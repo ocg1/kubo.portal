@@ -1255,7 +1255,7 @@ public abstract class PreregistroAMO extends PreregistroDMO
 	
 	
 private boolean callSaveHubspot( Membership membership ){
-		
+		/*
 		try{
 			
 			SystemParamPK system_param_PK_I = new SystemParamPK();
@@ -1273,24 +1273,33 @@ private boolean callSaveHubspot( Membership membership ){
 			
 					HubSpotController hs =  new HubSpotController();
 					
-					String properties = "";
+					StringBuilder properties = new StringBuilder();
 					
-					properties = "{ \"property\" : \"prospectoid\" , \"value\" : \""+membership.getMembershipPK().getProspectus_id()+"\"}," +
+					properties.append("{ \"property\" : \"prospectoid\" , \"value\" : \""+membership.getMembershipPK().getProspectus_id()+"\"}," +
 						 "{ \"property\" : \"email\" , 		 \"value\" : \""+membership.getEmail()+"\"}, "
-						 + "{\"property\": \"procedencia\", \"value\": \"portal_kubo\" }";
+						 + "{\"property\": \"procedencia\", \"value\": \"portal_kubo\" }");
 					
 					if( membership.getRegistration_reason() != null && membership.getRegistration_reason().getPartner_id() != null && membership.getRegistration_reason().getPartner_id().trim().length() > 0 ){
-						properties += ",{\"property\": \"source\" , 		 \"value\" : \""+membership.getRegistration_reason().getPartner_id()+"\"}";
+						properties.append( ",{\"property\": \"source\" , 		 \"value\" : \""+membership.getRegistration_reason().getPartner_id()+"\"}");
 					}
+					
 					if(membership.getUtm_medium() != null && membership.getUtm_medium().trim().length() > 0){
-						properties +=  ",{\"property\": \"medium\" , 		 \"value\" : \""+membership.getUtm_medium()+"\"}";
+						properties .append( ",{\"property\": \"medium\" , 		 \"value\" : \""+membership.getUtm_medium()+"\"}" );
 					}
+					
 					if(membership.getOrigin() != null && membership.getOrigin().trim().length() > 0){
-						properties +=  ",{\"property\": \"campaign\" , 		 \"value\" : \""+membership.getOrigin()+"\"}";
+						properties .append(  ",{\"property\": \"campaign\" , 		 \"value\" : \""+membership.getOrigin()+"\"}" );
 					}
+				
+					properties .append(  ",{\"property\": \"area\" , 		 \"value\" : \""+membership.getPerson().getProspectus().getArea()+"\"}" );
+					
+					properties .append(  ",{\"property\": \"tipo_cliente\" , 		 \"value\" : \""+
+					
+											( membership.getPerson().getProspectus().getArea().toString().equals("L")?"acreditado":membership.getPerson().getProspectus().getArea().toString().equals("I")?"inversionista":"" )
+					
+											+"\"}" );
 					
 					Integer l = hs.saveProspectus(properties);
-					
 					
 					prospectus.setHs_vid(l);
 					
@@ -1306,7 +1315,9 @@ private boolean callSaveHubspot( Membership membership ){
 			return false;
 			
 		}
-		
+		*/
+	
+	return true;
 	}
 
 private String validaUTMPartner( String partner_str ){

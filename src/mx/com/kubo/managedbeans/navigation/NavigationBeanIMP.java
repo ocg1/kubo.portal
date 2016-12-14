@@ -15,6 +15,8 @@ import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.model.Fields;
 import mx.com.kubo.model.Screen;
 import mx.com.kubo.model.ScreenPK;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 
 @ManagedBean(name = "navigationBean") 
 @SessionScoped
@@ -42,8 +44,6 @@ implements Serializable, NavigationBeanIMO
 		
 		if(isSesion_DISABLED())
 		{
-			
-			
 			
 			return;
 		}
@@ -85,6 +85,23 @@ implements Serializable, NavigationBeanIMO
 		asignar_pagina_actual();
 		
 		registrar_bitacora_acceso();
+		
+		SystemParamPK system_param_PK_I = new SystemParamPK();
+		
+		system_param_PK_I.setCompany_id( 1 );
+		system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
+		
+		 SystemParam system_param_I = systemparamservice.loadSelectedSystemParam(system_param_PK_I);
+		
+		if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+		
+			if( membership.getPerson().getProspectus().getHs_vid() == null ){
+				
+				actualizaHS_VID();
+				
+			}
+			
+		}
 		
 		if( is_EFL() ){
 			
@@ -202,13 +219,25 @@ implements Serializable, NavigationBeanIMO
 		
 		HubSpotController hsC =  new HubSpotController();
 		
-		 if( membership.getPerson().getProspectus().getHs_vid() != null ){
+		SystemParamPK sysid = new SystemParamPK(96,1);
 		
-			 hsC.updateProspectus(membership.getPerson().getProspectus().getHs_vid(), hs_values);
+		SystemParam systemParam =  systemparamservice.loadSelectedSystemParam(sysid);
+		
+		if( systemParam != null && systemParam.getValue().equals("S") ){
+		
+			 if( membership.getPerson().getProspectus().getHs_vid() != null ){
 			
-			//hsC.createField( hs_values);
+				 hsC.updateProspectus(membership.getPerson().getProspectus().getHs_vid(), sbHs);
+				
+				//hsC.createField( hs_values);
+			
+			}
+		 
+		}
+		 
+		 sbHs = null;
+		 /*else{
 		
-		}/*else{
 		
 			Integer vid = hsC.saveProspectus( hs_values);
 			membership.getPerson().getProspectus().setHs_vid(vid);

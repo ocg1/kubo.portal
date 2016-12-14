@@ -1,6 +1,7 @@
 package mx.com.kubo.portal.simulador;
 
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.model.SimulatorBean;
 
 public interface CreditSimulatorIMO 
 {
@@ -15,6 +16,10 @@ public interface CreditSimulatorIMO
 	void init_cuota_by_formula();		
 	void init_cat_SAFI();
 	
+/*	
 	Double getPayment();
 	Double getCat();
+*/	
+	
+	SimulatorBean getSimulation();
 }

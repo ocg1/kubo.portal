@@ -199,7 +199,7 @@ implements AddInvestorSafiRefactorizable, Serializable
 							
 							HubSpotController hs =  new HubSpotController();
 							
-							String properties = "{ \"property\" : \"estatus_inversionista\" , \"value\" : \"solicitud_finalizada\"}";
+							StringBuilder properties = new StringBuilder(  "{ \"property\" : \"estatus_inversionista\" , \"value\" : \"solicitud_finalizada\"}" ) ;
 							
 							//String properties = "estatus_inversionista=finalizo_solicitud&hbuhu&";
 							

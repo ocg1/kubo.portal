@@ -3213,7 +3213,9 @@ import org.primefaces.context.RequestContext;
 				}
 				if( item.getKubo_score_a().equals("D") ){
 					dToInv++;
+					if( item.getRate_investor() != null ){
 					tasaPon_D += (item.getInvestment_bite()/montoInv_D) * item.getRate_investor();
+					}
 				}
 				if( item.getKubo_score_a().equals("E") ){
 					eToInv++;
@@ -3228,7 +3230,11 @@ import org.primefaces.context.RequestContext;
 					tasaPon_G += (item.getInvestment_bite()/montoInv_G) * item.getRate_investor();
 				}
 				
-				tasaPonderada += (item.getInvestment_bite()/monto_a_invertir_total) * item.getRate_investor();
+				if(  item.getRate_investor() != null ){
+				
+					tasaPonderada += (item.getInvestment_bite()/monto_a_invertir_total) * item.getRate_investor();
+				
+				}
 				
 			}
 			

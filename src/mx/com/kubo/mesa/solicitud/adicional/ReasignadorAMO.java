@@ -1,7 +1,13 @@
 package mx.com.kubo.mesa.solicitud.adicional;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.faces.context.FacesContext;
 
 import mx.com.kubo.bean.ChangeBean;
 import mx.com.kubo.bean.DocumentationDMO;
@@ -16,6 +22,7 @@ import mx.com.kubo.model.ProyectPK;
 import mx.com.kubo.model.Purpose;
 import mx.com.kubo.model.PurposePK;
 import mx.com.kubo.model.SimulatorBean;
+import mx.com.kubo.tools.Utilities;
 
 public abstract class ReasignadorAMO extends ReasignadorDMO
 implements ReasignadorIMO
@@ -267,6 +274,49 @@ implements ReasignadorIMO
 		
 		simulatorService.add(sim);
 		
+	}
+	
+	protected String copy_proyect_photo(String file_location, int number_photo, int proyect_loan_id, int proyect_id) 
+	{
+		String file_format = file_location.split("\\.")[1];				
+		
+		String random_name = Utilities.getRandomName();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("/documents/cia_").append(company_id);
+		sb.append("/pros_").append(prospectus_id);
+		sb.append("/photo/proyectphoto").append(number_photo);
+		sb.append("_").append(proyect_loan_id);
+		sb.append("_").append(prospectus_id);
+		sb.append("_").append(proyect_id);
+		sb.append("_").append(random_name);
+		sb.append(".").append(file_format);	
+		
+		String pathDocument = sb.toString();
+		
+		String realPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("//resources//");
+		
+		//Utilities.createDirectory(realPath + pathDocument);								 
+		
+		File f = new File (realPath + file_location);
+		
+		try 
+		{
+			if(f.exists())
+			{
+				InputStream inStr = new FileInputStream(realPath + file_location);
+				
+				Utilities.copyFile(realPath + pathDocument, inStr);								
+			}
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+			
+			return null;
+		}
+		
+		return pathDocument;
 	}
 	
 	public final boolean copiar_archivos(DocumentationDMO documento)

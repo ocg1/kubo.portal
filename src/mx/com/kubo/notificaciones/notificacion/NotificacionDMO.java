@@ -556,7 +556,7 @@ public abstract class NotificacionDMO
 	public void setForwad(boolean forwad) {
 		this.forwad = forwad;
 	}
-
+	
 	public boolean isTemppass() {
 		return temppass;
 	}
@@ -564,7 +564,7 @@ public abstract class NotificacionDMO
 	public void setTemppass(boolean temppass) {
 		this.temppass = temppass;
 	}
-
+	
 	public boolean isBcFirma() {
 		return bcFirma;
 	}

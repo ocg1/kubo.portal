@@ -45,10 +45,10 @@ implements CreditSimulatorIMO
 	protected ProyectLoan proyectLoan;	
 	protected Frequency frequency;	
 	protected PrevencionLD prevencionld;
-	protected SimulatorPK pk;
-	protected SimulatorBean sim;
+	protected SimulatorPK   simulation_PK;
+	protected SimulatorBean simulation;
 	protected Simulation_Cache_PK simulationCachePK;
-	protected Simulation_Cache simulationCache;
+	protected Simulation_Cache    simulationCache;
 	
 	protected TablaAmortizacion amortization;
 	
@@ -76,6 +76,8 @@ implements CreditSimulatorIMO
 	protected Double interes     = 0d;
 	protected Double comisionApertura = 5D;
 	protected Double cat;
+	protected Double opening_commission_amount;
+	protected Double total_to_receive;
 	
 	protected double ammount = 50000;
 	
@@ -115,6 +117,26 @@ implements CreditSimulatorIMO
 		dec = NumberFormat.getCurrencyInstance(locale);
 	}
 	
+	public void setAmmount(double ammount)
+	{
+		this.ammount = ammount;
+		
+		opening_commission_amount = (ammount * (comisionApertura / 100));
+		
+		total_to_receive =  ammount - opening_commission_amount;
+		
+		total_to_receive = (double) Math.round( total_to_receive * 100) / 100;
+		
+		totalRecibir = dec.format(opening_commission_amount);
+	}
+	
+	public void setFrequency_id(int frequency_id) 
+	{
+		this.frequency_id = frequency_id;
+		
+		generaNumCuotas();
+	}
+	
 	public void setSesion(SessionBean sesion) 
 	{
 		this.sesion = sesion;
@@ -151,6 +173,17 @@ implements CreditSimulatorIMO
 		}
 	}
 	
+	public SimulatorBean getSimulation()
+	{
+		return simulation;
+	}
+	
+	public String getTotalRecibir()
+	{
+		return totalRecibir;
+	}
+	
+/*	
 	public Double getPayment()
 	{
 		return payment;
@@ -160,22 +193,5 @@ implements CreditSimulatorIMO
 	{
 		return cat;
 	}
-	
-	public void setAmmount(double ammount)
-	{
-		this.ammount = ammount;
-		
-		Double d =  ammount - (ammount * (comisionApertura / 100));
-		
-		d = (double) Math.round(d*100)/100;
-		
-		totalRecibir = dec.format(d);
-	}
-	
-	public void setFrequency_id(int frequency_id) 
-	{
-		this.frequency_id = frequency_id;
-		
-		generaNumCuotas();
-	}
+*/	
 }

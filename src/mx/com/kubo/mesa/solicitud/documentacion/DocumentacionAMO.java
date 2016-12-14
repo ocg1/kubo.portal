@@ -433,15 +433,15 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 				
 				HubSpotController hs =  new HubSpotController();
 				
-				String properties = "";
+				StringBuilder properties = new StringBuilder();
 				
 				if( person.getProspectus().getArea().toString().equals("L") ){
 				
-					properties = "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"firma_contrato_valida\"}";
+					properties.append("{ \"property\" : \"estatus_prospecto\" , \"value\" : \"firma_contrato_valida\"}");
 				
 				}else{
 				
-					properties = "{ \"property\" : \"estatus_inversionista\" , \"value\" : \"cuenta_activada\"}";
+					properties.append("{ \"property\" : \"estatus_inversionista\" , \"value\" : \"cuenta_activada\"}");
 				
 				}
 				

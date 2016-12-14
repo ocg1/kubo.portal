@@ -757,7 +757,7 @@ implements Serializable
 				res = "AGS";
 		
 			}else if(estado.indexOf("BAJA CALIFORNIA SUR")  !=  (-1) ){ 
-				res = "	BCS";
+				res = "BCS";
 			
 			}
 			else if(estado.indexOf("BAJA CALIFORNIA")  !=  (-1) ){ 	

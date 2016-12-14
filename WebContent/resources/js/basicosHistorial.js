@@ -146,13 +146,23 @@ function abrirSiguiente() {
 				else {
 		    		if($(this).find(":radio").is(":checked")) {
 			 
-				     	$(this).closest(".conjuntoChecks").removeClass("vacio");
-				    	$(this).closest(".conjuntoChecks").addClass("lleno");
+				     	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("vacio");
+				    	$(this).closest(".conjuntoChecks").find(".btnN").addClass("lleno");
 		    		}else {
 		    
-			    	 	$(this).closest(".conjuntoChecks").addClass("vacio");
-				    	$(this).closest(".conjuntoChecks").removeClass("lleno");
+			    	 	$(this).closest(".conjuntoChecks").find(".btnN").addClass("vacio");
+				    	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("lleno");
 		    		}
+				}
+		
+				if($(this).attr("id") == "forma-contacto" ){
+					if( !$("#forma-contacto input:checked").length == 0) {
+						$("#forma-contacto").removeClass("vacio");
+						$("#forma-contacto").addClass("lleno");
+					}else {
+						$("#forma-contacto").removeClass("lleno");
+						$("#forma-contacto").addClass("vacio");
+					}
 				}
 	    	}
 	    	if($(this).attr("id") == "nacionalidad" ) {
@@ -186,7 +196,7 @@ function abrirSiguiente() {
 			if(width <= 1024) { 
 				$(".columnaAyuda").hide();
 			}
-		  	var campos = $('.paso_1_2 .validatorClass[index]:visible, #acSimple input[index]:visible,  #acSimple2 input[index]:visible,  #acSimple3 input[index]:visible, .selectNuevo:visible, .conjuntoChecks:visible, .validacionLadaField:visible');
+		  	var campos = $('.paso_1_2 .validatorClass[index]:visible, #acSimple input[index]:visible,  #acSimple2 input[index]:visible,  #acSimple3 input[index]:visible, .selectNuevo:visible, .conjuntoChecks:visible .btnN, .validacionLadaField:visible');
 
 		  	var campos_vacios = campos.filter(function () {
 			    return $(this).hasClass('vacio');   

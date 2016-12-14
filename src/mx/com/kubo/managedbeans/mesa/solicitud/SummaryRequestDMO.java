@@ -75,6 +75,7 @@ import mx.com.kubo.model.Motive;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Offer;
 import mx.com.kubo.model.PhoneType;
+import mx.com.kubo.model.PospectusComment;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.ProfileFormValue;
 import mx.com.kubo.model.ProfileInv;
@@ -116,6 +117,7 @@ import mx.com.kubo.services.BankService;
 import mx.com.kubo.services.BusinessService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.ClabeAccountService;
+import mx.com.kubo.services.ContactWayProspectusService;
 import mx.com.kubo.services.CountryService;
 import mx.com.kubo.services.EflScoreService;
 import mx.com.kubo.services.EmploymentService;
@@ -142,6 +144,7 @@ import mx.com.kubo.services.OfferService;
 import mx.com.kubo.services.OperationCostHistoryService;
 import mx.com.kubo.services.OperationCostTypeService;
 import mx.com.kubo.services.PhoneService;
+import mx.com.kubo.services.PospectusCommentService;
 import mx.com.kubo.services.PrevencionLDService;
 import mx.com.kubo.services.ProfileFormValueService;
 import mx.com.kubo.services.ProfileInvService;
@@ -384,6 +387,12 @@ implements SummaryRequestIMO
 	@ManagedProperty("#{eflScoreServiceImp}")
 	protected EflScoreService eflscoreservice;
 	
+	@ManagedProperty("#{pospectusCommentServiceImp}")
+	protected PospectusCommentService pospectuscommentservice;
+	
+	@ManagedProperty("#{contactWayProspectusServiceImp}")
+	protected ContactWayProspectusService contactwayprospectusservice;
+	
 	protected RequestContext request;
 	protected FacesContext   faces;
 	protected ExternalContext external;
@@ -566,6 +575,8 @@ implements SummaryRequestIMO
 	protected List <IncomeDetailsBean> 	 listBusinessDetails;
 	protected List <ProfileFormValue> profileformvaluelist;	
 	protected List<Tutor> lstTutor;
+	
+	protected List<PospectusComment> lstcomm ;
 	
 	protected List<ApprovalCredit> lstApproval;
 	
@@ -786,6 +797,7 @@ implements SummaryRequestIMO
 	protected final int FUNCTION_EDICION_TIPO_CREDITO  = 27;
 	protected final int AUTORIZAR_CONTRATOS			   = 29;
 	protected final int SCREEN_CONSULTA_SOLICITUD      = 12;
+	protected final int COPIAR_DOCUMENTOS      = 30;
 	
 	protected final int IFE = 1;
 	protected final int INE = 2;
@@ -847,7 +859,8 @@ implements SummaryRequestIMO
 	protected boolean editor_tipo_credito_ENABLED;
 	protected boolean acreditado_sin_publicar_ENABLED;
 	protected boolean reporte_inusual_ENABLED;
-	protected boolean autorizar_contratos_ENABLED= false; 
+	protected boolean autorizar_contratos_ENABLED= false;
+	protected boolean copiar_documentos_ENABLED= false;
 	protected boolean hasReferred;	
 	protected boolean flagSolicitud = false;	
 	protected boolean showInvestPnl = false;
@@ -858,6 +871,12 @@ implements SummaryRequestIMO
 	protected boolean hasEflTest = false;
 	protected boolean efl_OK = false;
 	protected boolean efl_ERROR = false;
+	protected boolean blnComment = false ;
+	protected boolean haveContactWay = false;
+	
+	protected boolean contactWayPhone;
+	protected boolean contactWayWhatsApp;
+	protected boolean contactWayEmail;
 	
 	protected boolean flagSameAddress= false;
 	
@@ -1323,6 +1342,11 @@ implements SummaryRequestIMO
 		return autorizar_contratos_ENABLED;
 	}
 	
+	
+	public final boolean isCopiar_documentos_ENABLED() 
+	{
+		return copiar_documentos_ENABLED;
+	}
 	
 	public final boolean isAcreditado_sin_publicar_ENABLED() 
 	{
@@ -3540,6 +3564,24 @@ implements SummaryRequestIMO
 		automaticinvestmentservice = service ;
 	}
 	
+	public PospectusCommentService getPospectuscommentservice() {
+		return pospectuscommentservice;
+	}
+
+	public void setPospectuscommentservice(PospectusCommentService pospectuscommentservice) {
+		this.pospectuscommentservice = pospectuscommentservice;
+	}
+	
+	
+	
+	public ContactWayProspectusService getContactwayprospectusservice() {
+		return contactwayprospectusservice;
+	}
+
+	public void setContactwayprospectusservice(ContactWayProspectusService contactwayprospectusservice) {
+		this.contactwayprospectusservice = contactwayprospectusservice;
+	}
+	
 	public EflScoreService getEflscoreservice() {
 		return eflscoreservice;
 	}
@@ -3646,6 +3688,46 @@ implements SummaryRequestIMO
 		this. efl_OK = efl_OK;
 	}
 	
+	public boolean isBlnComment(){
+		return blnComment;
+	}
+	
+	public void setBlnComment( boolean blnComment ){
+		this. blnComment = blnComment;
+	}
+	
+	public boolean isContactWayPhone(){
+		return contactWayPhone;
+	}
+	
+	public void setContactWayPhone( boolean contactWayPhone ){
+		this. contactWayPhone = contactWayPhone;
+	}
+	
+	public boolean isContactWayWhatsApp(){
+		return contactWayWhatsApp;
+	}
+	
+	public void setContactWayWhatsApp( boolean contactWayWhatsApp ){
+		this. contactWayWhatsApp = contactWayWhatsApp;
+	}
+
+	public boolean isHaveContactWay(){
+		return haveContactWay;
+	}
+	
+	public void setHaveContactWay( boolean haveContactWay ){
+		this. haveContactWay = haveContactWay;
+	}
+	
+	public boolean isContactWayEmail(){
+		return contactWayEmail;
+	}
+	
+	public void setContactWayEmail( boolean contactWayEmail ){
+		this. contactWayEmail = contactWayEmail;
+	}
+	
 	public boolean isEfl_ERROR(){
 		return efl_ERROR;
 	}
@@ -3715,5 +3797,14 @@ implements SummaryRequestIMO
 	public void setOfferrejectionmotiveservice( OfferRejectionMotiveServiceImp offerrejectionmotiveservice ){
 		this.offerrejectionmotiveservice = offerrejectionmotiveservice;
 	}
+	
+	public List<PospectusComment> getLstcomm (){
+		return lstcomm;
+	}
+	
+	public void setLstcomm ( List<PospectusComment> lstcomm ){
+		this. lstcomm = lstcomm ;
+	}
+	
 	
 }

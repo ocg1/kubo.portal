@@ -60,6 +60,7 @@ import mx.com.kubo.services.AddressTypeService;
 import mx.com.kubo.services.BusinessService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.ClabeAccountService;
+import mx.com.kubo.services.ContactWayProspectusService;
 import mx.com.kubo.services.CountryService;
 import mx.com.kubo.services.EconomicActivityService;
 import mx.com.kubo.services.EmploymentService;
@@ -196,6 +197,9 @@ implements BasicDataIMO
 	@ManagedProperty("#{clabeAccountServiceImp}")
 	protected ClabeAccountService clabeaccountservice;
 	
+	@ManagedProperty("#{contactWayProspectusServiceImp}")
+	protected ContactWayProspectusService contactwayprospectusservice;
+	
 	protected Logger log = Logger.getLogger(getClass());
 	
 	protected RequestContext request;
@@ -284,6 +288,9 @@ implements BasicDataIMO
 	protected String is_legal_address;	
 	protected String RFC, CURP, comentario;					
 	protected String father_last_name;
+	
+	protected String scriptContactWay;
+	protected String contactWayValue;
 	
 	private String 	homaclave;
 	private String 	moreEmployment = "none";
@@ -1037,5 +1044,29 @@ implements BasicDataIMO
 
 	public void setClabeaccountservice(ClabeAccountService clabeaccountservice) {
 		this.clabeaccountservice = clabeaccountservice;
+	}
+
+	public ContactWayProspectusService getContactwayprospectusservice() {
+		return contactwayprospectusservice;
+	}
+
+	public void setContactwayprospectusservice(ContactWayProspectusService contactwayprospectusservice) {
+		this.contactwayprospectusservice = contactwayprospectusservice;
+	}
+
+	public String getScriptContactWay() {
+		return scriptContactWay;
+	}
+
+	public void setScriptContactWay(String scriptContactWay) {
+		this.scriptContactWay = scriptContactWay;
+	}
+
+	public String getContactWayValue() {
+		return contactWayValue;
+	}
+
+	public void setContactWayValue(String contactWayValue) {
+		this.contactWayValue = contactWayValue;
 	}
 }

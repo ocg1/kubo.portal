@@ -12,4 +12,5 @@ public interface RegistrationReasonService
 	List<RegistrationReason> loadRegistrationReasonList();	
 	List<RegistrationReason> loadRegistrationReasonWithoutOtherList();	
 	UtmPartnerConversion existUTM( String utm );
+	public RegistrationReason getRegistrationReasonByPartner( String partner_id );
 }

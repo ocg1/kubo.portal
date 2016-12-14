@@ -1,0 +1,53 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+						<h:form prependId="false">
+				<div class="problemas-doc">
+					<div class="pestana" onclick="acordeonN(this)"> 
+						<i class="fa fa-frown-o"></i> 
+						<span>No tengo los documentos</span>
+						<i class="iconoAbrirCerrar fa fa-angle-up"></i>
+					</div>
+					
+					<div class="pestana__contenido pestana-comentario-docs">
+						<div class="edicion-comentario">
+							<p>Describe los problemas que tienes para subir o enviar los documentos con las especificaciones que  te pedimos.</p>
+	 
+							<p>Es muy importante para poder ayudarte a terminar la solicitud de tu préstamo: </p>
+							<div class="campo-textarea-btn">
+							
+								<h:inputTextarea id="comentarioProblemaDocs"  styleClass="elementTextArea validatorClass " onblur="comentarioRealizado(this)" value="#{addPldDocument.prospectuscomment.comment}" rows="4" >
+										<p:ajax event="blur" />																														
+								</h:inputTextarea>
+				<!-- p:ajax event="blur" oncomplete="fieldCount();"  listener="#{addMyLoan.updateBusiness(business)}" ></p:ajax-->
+							<div class="callAction btnVerde" onclick="clicBtnGuardar()">Enviar comentario</div>
+							</div>
+						</div>
+						<div class="comentarioEnviado">
+							<div class="comentario-realizado">
+								<p></p>
+								<div class="enviadoSimbolo elementos-linea"><i class="fa fa-check"></i><span>Enviado</span></div>
+							</div>
+						
+							<div class="editarContenido elementos-linea" onclick="editarComentario()"><i class="fa fa-pencil"></i><span>Editar comentario</span></div>
+						</div>
+					
+					</div>
+			
+							<h:commandLink  styleClass="guardarProblemaDocs" immediate="true" style="display:none;" value="el boton">
+								<p:ajax event="click" 
+								
+										onstart ="return consolelog()"
+					 		    		listener="#{addPldDocument.saveProspectusComment}" oncomplete="enviarComentarioProblema()"/>
+							</h:commandLink>
+				
+				</div>
+				<script>
+				resetComentario();
+				</script>
+					</h:form>
+				
+</ui:composition>

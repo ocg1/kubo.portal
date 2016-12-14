@@ -72,6 +72,7 @@ import mx.com.kubo.model.Bank;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.ClabeAccount;
 import mx.com.kubo.model.ClabeAccountPK;
+import mx.com.kubo.model.ContactWayProspectus;
 import mx.com.kubo.model.CountryPK;
 import mx.com.kubo.model.Expenses;
 import mx.com.kubo.model.ExpensesPK;
@@ -102,6 +103,8 @@ import mx.com.kubo.model.ViewInvestmetInProyect;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.proyect_loan.documentacion.CopiarArchivosIMP;
+import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.mesa.solicitud.perfil.IndicePagoDeudasIMP;
 import mx.com.kubo.tools.ImageUtils;
 import mx.com.kubo.tools.Utilities;
@@ -214,7 +217,11 @@ implements SummaryRequestIMO,  Serializable
 				hasReinvestment = true; 
 				frequencyInvestment = lstAI.get(0).getFrequency();
 				lastInvestment = f1.format( lstAI.get(0).getLast_investment() );
-				nextInvestment = f2.format( lstAI.get(0).getNext_investment_apply());
+				if( lstAI.get(0).getNext_investment_apply() != null ){
+					nextInvestment = f2.format( lstAI.get(0).getNext_investment_apply());
+				}else{
+					nextInvestment = "Aún no realiza inversión automática.";
+				}
 				
 				if(lstAI.get(0).getIs_active().equals("0")){
 				
@@ -301,7 +308,7 @@ implements SummaryRequestIMO,  Serializable
 		mD01.setTime(new Date());				
 		
 		init_variables();
-		init_name_visible();
+		
 		
 		if(sesion.getRole_id() != null)
 		{
@@ -337,6 +344,10 @@ implements SummaryRequestIMO,  Serializable
 		init_direccion();				
 		init_membership();		
 		init_reporte_inusual();
+		
+		
+		
+		init_name_visible();
 	
 		if( actualProyect != null && actualProyect.getSafi_credit_id() != null ){
 			
@@ -711,6 +722,15 @@ implements SummaryRequestIMO,  Serializable
 			inicializaReferences();
 		
 		}
+		
+		blnComment = false;
+		
+		if( persona.getProspectus().getArea().toString().equals("L") )
+		{
+			inicializa_prospectus_comment();
+		}
+		
+		inicializa_Contact_Way();
 		
 	}
 
@@ -3187,6 +3207,32 @@ membershipTemp = new Membership();
 		}	
 	}
 	
+	public void fileUploadLastProyect(){
+		
+		ProyectLoan lastProyectloan = service_proyect_loan.getMaxProyectLoanByProspectAndStatus( actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id(), 3);
+		
+		ReasignadorIMP reasignador = new ReasignadorIMP();
+		
+		reasignador.setMembershipservice(service_membership);
+		
+		reasignador.setFilesService(filesService);
+		
+		reasignador.setProyect_loan_NEW(actualProyect);
+		
+		reasignador.init(lastProyectloan);
+		
+		CopiarArchivosIMP copiar_archivos  = Utilities.findBean("copiar_archivos_service");
+		
+		reasignador.setCopiar_archivos_service( copiar_archivos );
+		
+		reasignador.crear_lista_documentos(false);
+		
+		reasignador.copiar_documentos();
+		
+		init_documentacion();
+		
+	}
+	
 	public final void init_domicilio_actividad()
 	{
 		request = RequestContext.getCurrentInstance();
@@ -3256,6 +3302,52 @@ membershipTemp = new Membership();
 			references.init();
 		}
 		
+		
+	}
+	
+	private void inicializa_prospectus_comment(){
+		
+		lstcomm = pospectuscommentservice.getPospectusCommentByType(persona.getNatPerPK().getProspectus_id(), actualProyect.getProyectloanPk().getProyect_loan_id() , 1);
+		
+		blnComment = false;
+		
+		if( lstcomm != null && lstcomm.size() > 0 ){
+		
+			blnComment = true;
+			
+		}
+		
+	}
+	
+	private void inicializa_Contact_Way(){
+		
+		List<ContactWayProspectus> lstCntWayPrs =  contactwayprospectusservice.getContactWayProspectusList( persona.getNatPerPK().getCompany_id(), persona.getNatPerPK().getProspectus_id() );
+		
+		contactWayPhone = false;
+		contactWayWhatsApp = false;
+		contactWayEmail = false;
+		haveContactWay = false;
+		
+		if( lstCntWayPrs != null && lstCntWayPrs.size() > 0 ){
+			
+			for( ContactWayProspectus cntWayPrs : lstCntWayPrs ){
+				
+				if( cntWayPrs.getPk().getContact_way_id() == 1 ){
+					contactWayPhone = true;
+					haveContactWay = true;
+				}
+				if( cntWayPrs.getPk().getContact_way_id() == 2 ){
+					contactWayWhatsApp = true;
+					haveContactWay = true;
+				}
+				if( cntWayPrs.getPk().getContact_way_id() == 3 ){
+					contactWayEmail = true;
+					haveContactWay = true;
+				}
+				
+			}
+				
+		}
 		
 	}
 	

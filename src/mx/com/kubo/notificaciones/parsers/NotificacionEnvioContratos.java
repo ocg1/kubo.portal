@@ -110,6 +110,42 @@ implements NotificacionIMO
     	body_text = body_text.replaceAll("###Fecha###",           date_format_hora.format(new Date()));
     	body_text = body_text.replaceAll("###prospectus_id###",   prospectus_id  );        	
     	body_text = body_text.replaceAll("###prospectus_name###", prospectName);
+    	
+    	if( this.acreditado != null && this.acreditado.getPerson().getProspectus().getArea().toString().equals("I") ){
+    		
+    		body_text = body_text.replaceAll("###button_redirect###",  getBtnHtml( this.acreditado.getEmail() ) );
+    		
+    	}else{
+    		
+    		body_text = body_text.replaceAll( "###button_redirect###" , "" );
+    		
+    	}
+    	
+	}
+	
+	private String getBtnHtml( String correo ){
+		
+		return " <div style='display:block; border: solid 0px #000;  marigin-top: 10px; margin-bottom: 10px;' > "+
+									
+									"<table class='mcnButtonContentContainer' style='border-collapse: separate ! important;border-radius: 3px;background-color: #FF8A02; margin-left: auto; margin-right: auto;' border='0' cellpadding='0' cellspacing='0'>  "+
+
+									"	<tbody> "+
+
+									"	    <tr> "+
+									"	        <td style='font-family: Arial; font-size: 20px; padding: 15px;' class='mcnButtonContent' valign='middle' align='center'> "+
+                                
+									"				<a class='mcnButton ' title='Invierte Ahora' href = 'https://www.kubofinanciero.com/Kubo/Portal/index.xhtml?email_access="+correo+"&iniciarSesion=true' target='_blank' style='font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;'>INVIERTE AHORA</a> "+
+								
+									"			</td> "+
+
+									"		</tr> "+
+
+									"	</tbody> "+
+
+									"</table> "+
+
+								"</div> ";
+				
 	}
 }
 

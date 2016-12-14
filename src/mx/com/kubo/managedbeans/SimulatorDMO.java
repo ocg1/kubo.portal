@@ -111,7 +111,7 @@ public abstract class SimulatorDMO
 	protected double ammount =50000;
 	
 	private int frequencyAnual=12;
-	private int term_id =12;
+	private int term_id =18;
 	private int wsim;
 	private int wgral;
 	private int wcat;

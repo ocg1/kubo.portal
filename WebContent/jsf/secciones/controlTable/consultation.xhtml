@@ -4,408 +4,118 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui">
 
-<script type = "text/javascript" src = "../resources/js/consulting.js" />
-
-<script>
-
-	$("#dvCntCancel").hide();
-
-	function muestraDetalle(){
-		$("#dvmemberHtml").html("");
-		$("#dvWaitDetail").show();
-		document.getElementById("dvContMemberConsultados").innerHTML = "";
-		$("#detalleProspectus").show("blind",500);
-		$("#resConsulta").hide();
-		return true;
-	}
-	function muestraRes(){
-		$("#dvWaitDetail").hide("fade",500,function(){
-			$("#dvRes").show("fade",500);
-			$("#resConsulta").hide();
-		});
-	}
-	
-	function questConsult(){
-		var isChecked =  $("input[type='radio'][name='loanType']:checked");
-		
-		/*
-			if(isChecked.length > 0) {
-	            
-	        } else{
-	        	alert("Tienes que seleccionar un tipo de crédito.");
-	            return false;
-	        }
-		*/
-
-		
-		
-		
-		
-		
-		alertify.confirm("¿Cuentas ya con la copia de la credencial de elector y la hoja de autorización firmada?" , function (e) {
-			
-			if (e) {
-				$("#dvRes").hide("fade",500,function(){
-					$("#dvWaitDetail").show("fade",500);
-					$("#resConsulta").hide();
-				});
-				$("#showResConsul").trigger("click");
-				
-				return true;
-			} else { 
-				return false;
-			}
-			
-		
-		}); 
-	}
-	
-	function showResConsul(){
-		$("#dvWaitDetail").hide("fade",500,function(){
-			$("#resConsulta").show("fade",500,function(){
-					$("#dvWaitDetail").hide();
-					$("#dvWaitDetail").css( "display","none" );
-					return true;
-			});
-		});
-	}
-	
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {	
-	$("form").keypress(function(e) { if (e.which == 13) {return false;}});
-	$("h2.expand_heading").click(function(event){
-		var children=$(this).children();
-		if(children.hasClass('change')){$(this).next(".toggle_container").slideUp("slow");children.removeClass("change");}
-		else{$(this).next(".toggle_container").slideDown("slow");children.addClass("change");}
-		event.preventDefault();
-	});	
-});
-</script>
-
-
 <style>
-	.buttonPR:hover {
-		text-decoration: none;
-	}
+
+.clsContGral{
+
+	border: solid 0px #000;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 100px;
+
+}
+
+.clsTitleCons{
+
+	border: solid 0px #000;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px;
+	text-align: center;
+	color: #439539;
+	font-size: 2em;
+	font-weight: bold;
+
+}
+
+.clsContElemnt{
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+	float: none;
+	overflow: hidden;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.clsMenuCons{
+
+	width: 20%;
+	float: left;
+
+}
+.clsMenuItemCons{
+
+	border: solid 1px #439539;
+	background-color: #FFF;
+	margin-bottom: 3px;
+	text-align: left;
+	padding: 10px 7px 10px 7px;
+	color: #439539;
+	font-size: 1.2em;
+	cursor: pointer;
+	font-weight:normal;
+}
+
+.selection{
+
+	background-color: #439539;
+	color: #FFF;
+	font-size: 1.17em;
+
+}
+
+.clsPantallasCons{
+
+	width: 78%;
+	float: left;
+	border: solid 1px #439539;
+	margin-left: 3px;
+
+}
 </style>
 
-<div class="respMesa">
+<script>
+$(document).ready(function()
+		{
+  
+			$(".clsMenuItemCons").click(function(){
+			 
+				$(".selection").removeClass("selection");
+			  
+				$(this).addClass("selection");
+			 
+		  	});
+	
+		});
+  
+  
+</script>
 
-	<div class="contenedor_buscador">
-	
-		Usuarios que se pueden consultar una vez obtenida <b>la autorización firmada </b> y <b>la copia del IFE</b> <br /><br />
-			
-				<h2  class="expand_heading" style="cursor: pointer; width:500px;">
-					<a  href="#">Búsqueda de solicitud</a>
-					<span class="collapse #{searchSummaySession.searchSummary !=null ? '' : 'change'}" >Collapse/Expand</span>
-				</h2>											 
-				
-		<div class="toggle_container" style="width:auto;display: #{searchSummaySession.searchSummary !=null ? 'none;':'block;'}">
-				
-			<div class="box">
-				
-				<h:form id="frm_search_request" prependId="false" >
-					
-					<div class="dvContent">
-						<div  class="dvElement" style="width: 340px;padding:0;">
-					
-							<h:selectOneRadio  id="radio-type-search" value="#{consultingController.searchingType}"  styleClass="radio elementStlLbl">
-							    <f:selectItems  value="#{consultingController.listSearchingType}" var="type" itemLabel="#{type.description}" itemValue="#{type.value}"/>
-							    <p:ajax event="change" update="pnlSearchingType" />
-							</h:selectOneRadio>
-					
-						</div>
-					</div>
-					
-					<h:panelGroup id="pnlSearchingType" >
-					
-						<h:panelGroup rendered="#{consultingController.searchingType == 1}" >
-						
-							<div id="dvNombreCompletoConsult" >
-							
-								<div class="dvContent">					
-									
-									<div class="dvLabel" style="width: 485px !important;">	
-										<h:outputLabel id="text-search-type"  styleClass="labelsStl" style="float:left;font-size:1.5em;" value="Buscar por nombre completo"/>		
-									</div>
-									
-									<p style="padding: 0pt; margin: 0pt;" />
-									
-									<div  class="dvElementAddres1" style="width: 480px" >
-										
-										<div style="width:320px !important;float:left;margin:0px 0;">
-										
-											<p:autoComplete id="inp_search" widgetVar="inpAutocomplete"  
-															value="#{consultingController.search}"
-															completeMethod="#{consultingController.completeinfoclient}"
-															 var="c" itemLabel="#{c.full_name}" itemValue="#{c}"
-															 converter="clientconvert">												
-										
-												<p:ajax event="blur" ></p:ajax>
-										
-											</p:autoComplete>	
-										
-											<p:watermark id="water_id_search" for="inp_search"  value="Escribe el nombre"></p:watermark>	
-										
-										</div>
-										
-										<div style="float: left;">
-											
-											<p:commandLink style="text-decoration: none;float:left;"										
-														actionListener="#{consultingController.selectionAction}"
-														onstart="return muestraDetalle();"
-														oncomplete="muestraRes();"
-														update=":frm_consul_buro:pnlDetalleClient">											
-												<div class="buttonPR" style="margin:5px 0;width: 100px;">	
-													<h:outputText value="Buscar" />					
-												</div>
-											</p:commandLink>
-											
-										</div>
-										
-									</div>
-									
-								</div>
-								
-							</div>
-							
-						</h:panelGroup>
-								
-						<h:panelGroup rendered="#{consultingController.searchingType == 2}" >
-							
-							<div id="dvAlianzasConsult" >
-							
-								<div class="dvContent">					
-									
-									<div class="dvLabel" style="width: 485px !important;">	
-										<h:outputLabel styleClass="labelsStl" style="float:left;font-size:1.5em;" value="Nombre de la alianza"/>		
-									</div>
-									
-									<p style="padding: 0pt; margin: 0pt;"/>
-									
-									<div class="dvElement">
-										<div class="styled-select" style="padding-top: 0px !important; background-color: #FFFFFF !important;">
-											<h:selectOneMenu value="#{consultingController.registration_reason_id}" id="selectRegistration_Razon"  styleClass="elementStlSel validatorClass"  >
-												<f:selectItem itemValue=""  itemLabel=""/>
-												<f:selectItems  value="#{consultingController.reasonsLst}" var="reason" itemLabel="#{reason.name}" itemValue="#{reason.regPK.registration_reason_id}"/>
-												<p:ajax event="change" listener="#{consultingController.changeReason}" ></p:ajax>																	
-											</h:selectOneMenu>
-										</div>
-									</div>
-								
-								</div>
-								
-								<div class="dvContent" style="float: left;" >
-						
-									<div class="dvLabel">
-										<h:outputText value="Campaña" styleClass="labelsStl" ></h:outputText>
-									</div>
-									
-									<div  class="dvElement">
-										<p:inputText id="origin_value" value="#{consultingController.origin_value}" styleClass="elementStl" >	
-											<p:ajax event="blur" />
-										</p:inputText>
-									</div>
-									
-								</div>
-								
-								<div style="float: left; margin-top: 32px; margin-bottom: 10px;">
-											
-									<p:commandLink 
-												style			= "text-decoration: none;float:left;"										
-												actionListener	= "#{consultingController.selectionAction}"
-												onstart			= "return muestraDetalle();"
-												oncomplete		= "muestraResList(xhr, status, args);"
-												update			= ":frm_consul_buro:pnlDetalleClient"
-												immediate		= "true">	
-												
-										<div class="buttonPR" style="margin:5px 0;width: 100px;">	
-											<h:outputText value="Buscar" />					
-										</div>
-										
-									</p:commandLink>
-									
-								</div>
-								
-							</div>
-							
-						</h:panelGroup>
-						
-					</h:panelGroup>
-						
-				</h:form>
-			
-			</div>
-			
-		</div>
-			
-		
-		<h:form id="frm_consul_buro" prependId="false">
-			<!--  
-			   			 
-			   			 <ui:repeat var="m" value="#{consultingController.clientList}">
-			   			 
-			   			 	 <p:commandLink actionListener="#{consultingController.selectionAction(m)}" onstart="return muestraDetalle();" oncomplete="muestraRes();" update=":frm_consul_buro:pnlDetalleClient" >
-		                 			<div class="dvContent" style="margin-left: auto; margin-right: auto; font-size: 1.15em;">
-										#{m.person.prospectus.tracking_id}-#{m.person.NombreCompletoNPM()}
-									</div>
-									
-		                    </p:commandLink>  
-			   			 	
-			   			 </ui:repeat>
-			-->   			 
-			
-			<div id="detalleProspectus" style="display: none; width: 90%; margin-top: 10px;" >
-				<div style="width: 222px; height: 22px; margin-left: auto; margin-right: auto;display: none;" id="dvWaitDetail" >
-					<p:graphicImage height="20px" width="20px;" url="../resources/img/ajax-loader.gif" style="margin-left: auto; margin-right: auto;" ></p:graphicImage>
-				</div>
-				<div id ="dvContMemberHtml" style="display:none;">
-				
-					<div id="dvBtnConsultMasiva" style="display:none;">
-						<p:commandLink 
-									style			= "text-decoration: none;float:left;"
-									onstart			= "return onstartConsultaMasiva();"
-									actionListener	= "#{consultingController.realizaConsultaLst}"
-									immediate		= "true"
-									oncomplete		= "regresaConsultaMasiva(xhr, status, args);">	
-									
-							<div class="buttonPR" style="margin:5px 0;width: 100px;">	
-								<h:outputText value="Consultar" />					
-							</div>
-							
-						</p:commandLink>
-					</div>
-					<div id ="dvmemberHtml" style="display:none;">
-					
-					</div>
-					
-					<div id ="dvContMemberConsultados" style="display:none;">
-					
-					</div>
-					
-				</div>
-				
-				<div style="display: none;" >
-					
-					<h:inputText id="txtValAcreToConsul" value="#{consultingController.valPerSelStr}" >
-						<p:ajax event="blur" listener="#{consultingController.getDescritionPerson}" oncomplete="muestraDescriptionAction( xhr, status, args );" />
-					</h:inputText>
-					
-					<h:inputText id="txtValoresAcreditadosConsultarAction" value="#{consultingController.valores_a_consultar}" >
-						<p:ajax event="blur" />
-					</h:inputText>
-					
-				</div>
-				
-				<div id="dvRes" style="display:none; margin-left: auto; margin-right: auto; ">
-					<h:panelGroup id="pnlDetalleClient">
-						<div style="margin-left: auto; margin-right: auto; text-align: center; " >
-							Datos del cliente a consultar de forma manual 
-							
-							<br />
-							<table align="center" style="text-align: left;" >
-								<tr>
-									<td> Nombre completo: </td>
-									<td> <b>#{consultingController.memberSel.person.NombreCompletoNPM()} </b> </td>
-								</tr>
-								<tr>
-									<td> Fecha de nacimiento: </td>
-									<td> <b>#{consultingController.birthday}</b>  </td>
-								</tr>
-								<tr>
-									<td> RFC: </td>
-									<td> <b>#{consultingController.memberSel.person.mx_rfc} </b> </td>
-								</tr>
-								<tr>
-									<td> CURP: </td>
-									<td> <b>#{consultingController.memberSel.person.mx_curp} </b> </td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<h:panelGroup rendered="#{consultingController.displaydataSuccess}" >
-											
-											Se creara un proyecto nuevo.
-											<!--  
-											Tipo de crédito:
-												<div  class="dvElement" style="width: 500px; font-size: 0.8em !important; ">
-													<h:selectOneRadio id="loanType" value="#{additionalCredit.loanType}"  styleClass="radio elementStlLbl" >
-													    <f:selectItem itemValue="NVO" itemLabel="Nuevo"/>
-													    <p:ajax event="click" ></p:ajax>
-													</h:selectOneRadio>
-												</div>
-											-->
-											
-											<div class="callActionMedium btnNaranja" onclick   = "questConsult();"  >Realizar consulta</div>
-											<p:commandLink	id="showResConsul"
-															 immediate  = "true" 
-														   style="display:none;"
-														   oncomplete = "showResConsul();" 
-														   actionListener = "#{consultingController.createConsulting}"
-														   update         = ":frm_consul_buro:pnlResConsulta" >
-														   
-					                 			<div class="dvContent" style="margin-left: auto; margin-right: auto; font-size: 1.1em;">
-													<div class="buttonPR" id="selBtn">
-														
-													</div>#{consultingController.selectionAction()}
-												</div>
-												
-											</p:commandLink>
-											
-										</h:panelGroup>
-										
-										<h:panelGroup rendered="#{!consultingController.displaydataSuccess}" >
-											#{consultingController.messageErrorDatos}
-										</h:panelGroup>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</h:panelGroup>
-				</div>
-				
-				<div id="resConsulta" style="display:none">
-					<h:panelGroup id="pnlResConsulta">
-						<h:panelGroup rendered="#{consultingController.displayConsulSuccess}" >
-						
-							<div id="msg3" style="float: none; clear: both;color: #439539;  " >
-								Consulta realizada exitosamente.
-								<br />
-							</div>
-						
-							<table>
-								<tr>
-									<td> Cliente: </td>
-									<td> #{consultingController.memberSel.person.NombreCompletoNPM()}  </td>
-								</tr>
-								<tr>
-									<td> Calificación Kubo: </td>
-									<td> #{consultingController.califKubo}  </td>
-								</tr>
-								<tr>
-									<td> BC-Score: </td>
-									<td> #{consultingController.bcscore}  </td>
-								</tr>
-								<tr>
-									<td> Tasa: </td>
-									<td> #{consultingController.rate}  </td>
-								</tr>
-							</table>
-						</h:panelGroup>
-						<h:panelGroup rendered="#{!consultingController.displayConsulSuccess}" >
-							#{consultingController.messageErrorConsulta}
-						</h:panelGroup>
-					</h:panelGroup>
-				</div>
-				
-			</div>
-			
-		</h:form>
-			
-	</div>
-	
+<div class="clsContGral" >
+
+<div class="clsTitleCons" >
+  Consultas
 </div>
+
+	<div class="clsContElemnt" >
+		<div class="clsMenuCons" >
+			<div class="clsMenuItemCons selection" > Consulta manual por firma </div>
+			<div class="clsMenuItemCons" > Consulta masiva IDProvider </div>
+		</div>
+		
+		<div class="clsPantallasCons" >
+		
+			<ui:include src="consultas/idProvider_masiva.xhtml"></ui:include>
+		
+		</div>
+	</div>
+</div>
+
+
 
 
 </ui:composition>

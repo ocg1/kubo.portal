@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.faces.context.FacesContext;
 
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.managedbeans.util.ConvertCalendar;
 import mx.com.kubo.model.Access;
@@ -11,6 +12,8 @@ import mx.com.kubo.model.Prospector;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.ServiceCalling;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
 
@@ -33,6 +36,9 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 			servicecallingService.saveServiceCall(srvCall);
 			
 			bur_sol_num = response.getSolNum();
+			
+			//TODO
+			enviaHS( true );
 			
 			score = new Scoring();
 			prospectus_id = credithistory.getCreditHistoryPK().getProspectus_id();
@@ -63,15 +69,19 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 			
 			scoringService.saveScoring(score);
 			
-			faces     = FacesContext.getCurrentInstance();
-			elContext = faces.getELContext();
-			resolver  = faces.getApplication().getELResolver();
-
-			navigation = (NavigationBeanIMP) resolver.getValue(elContext, null, "navigationBean");
+			if( excecuteJSF ){
 			
-			navigation.setHasValidScore(true);
+				faces     = FacesContext.getCurrentInstance();
+				elContext = faces.getELContext();
+				resolver  = faces.getApplication().getELResolver();
+	
+				navigation = (NavigationBeanIMP) resolver.getValue(elContext, null, "navigationBean");
+				
+				navigation.setHasValidScore(true);
+				
+				navigation.setFlagBCScore(true);
 			
-			navigation.setFlagBCScore(true);
+			}
 			
 			success_OK = true;
 			
@@ -94,7 +104,9 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 			
 			updateProspector();
 			
+			if(excecuteJSF){
 			updateAccess();
+			}
 			
 		} else if(response.getStatus().equals("-2")||response.getStatus().equals("-3")||response.getStatus().equals("-4")||
 				   response.getStatus().equals("-5")||response.getStatus().equals("-6")||response.getStatus().equals("-7")||
@@ -110,6 +122,9 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 			srvCall.setStatus(3);
 			
 			servicecallingService.saveServiceCall(srvCall);
+			
+			//TODO
+			enviaHS( false );
 			
 			/*
 			if(resbur.getStatus().equals("-1")){
@@ -279,5 +294,48 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 		} catch (NotificacionException e) {			
 			e.printStackTrace();
 		}				
+	}
+	
+	protected void enviaHS( boolean esAutenticado ){
+		
+		if( naturalPerson != null && naturalPerson.getProspectus() != null && naturalPerson.getProspectus().getHs_vid() != null ){	
+			
+			SystemParamPK system_param_PK_I = new SystemParamPK();
+			
+			system_param_PK_I.setCompany_id( 1 );
+			system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
+			
+			 SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
+			
+			if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+				
+				HubSpotController hs =  new HubSpotController();
+				
+				StringBuilder properties = new StringBuilder();
+				
+				if( esAutenticado ){
+				
+				properties.append("{ \"property\" : \"tiene_id_provider\" , \"value\" : \"Si\"}," +
+									"{ \"property\" : \"autenticado\" , \"value\" : \"Si\"}"
+									);
+				
+				}else{
+					
+					properties.append("{ \"property\" : \"tiene_id_provider\" , \"value\" : \"No\"}," +
+							"{ \"property\" : \"autenticado\" , \"value\" : \"No\"}"
+							);
+					
+				}
+				
+					hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
+				
+				
+						
+						
+			 }
+			
+		}
+		
+		
 	}
 }

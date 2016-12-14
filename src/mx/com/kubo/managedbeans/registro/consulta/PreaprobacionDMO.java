@@ -232,6 +232,9 @@ implements PreaprobacionIMO
 	protected String tarjeta_credito_number;
 	protected String credit_company_name;
 	
+	protected String loan_type = null;
+	protected String is_call_to_client = null;
+	
 	protected String hid_value;
 	
 	String msgStr = "<b>No nos fue posible autenticarte ante Buro de Crédito con la información que nos proporcionaste.</b>"
@@ -284,6 +287,8 @@ implements PreaprobacionIMO
 	protected boolean nota_coach_ENABLED;
 	protected boolean success_OK = false;
 	protected boolean blocked_person_ENABLED;
+	
+	protected boolean excecuteJSF = true;
 	
 	protected boolean hid_flag = false;
 	protected int 	    i = 0;
@@ -743,6 +748,54 @@ implements PreaprobacionIMO
 
 	public void setMonto_solicitado(Double monto_solicitado) {
 		this.monto_solicitado = monto_solicitado;
+	}
+
+	public int getProspectus_id() {
+		return prospectus_id;
+	}
+
+	public void setProspectus_id(int prospectus_id) {
+		this.prospectus_id = prospectus_id;
+	}
+
+	public int getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
+	}
+
+	public ProyectLoan getProyect_loan() {
+		return proyect_loan;
+	}
+
+	public void setProyect_loan(ProyectLoan proyect_loan) {
+		this.proyect_loan = proyect_loan;
+	}
+
+	public boolean isExcecuteJSF() {
+		return excecuteJSF;
+	}
+
+	public void setExcecuteJSF(boolean excecuteJSF) {
+		this.excecuteJSF = excecuteJSF;
+	}
+
+	public String getLoan_type() {
+		return loan_type;
+	}
+
+	public void setLoan_type(String loan_type) {
+		this.loan_type = loan_type;
+	}
+
+	public String getIs_call_to_client() {
+		return is_call_to_client;
+	}
+
+	public void setIs_call_to_client(String is_call_to_client) {
+		this.is_call_to_client = is_call_to_client;
 	}
 
 }

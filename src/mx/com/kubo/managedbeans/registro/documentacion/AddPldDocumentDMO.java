@@ -27,6 +27,7 @@ import mx.com.kubo.model.Files;
 import mx.com.kubo.model.Investor;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.PospectusComment;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.PrevencionLDPK;
 import mx.com.kubo.model.Proyect;
@@ -51,6 +52,7 @@ import mx.com.kubo.services.InvestorService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.PhoneService;
+import mx.com.kubo.services.PospectusCommentService;
 import mx.com.kubo.services.PrevencionLDService;
 import mx.com.kubo.services.ProyectLoanInfoService;
 import mx.com.kubo.services.ProyectLoanService;
@@ -141,6 +143,9 @@ public abstract class AddPldDocumentDMO
 	
 	@ManagedProperty("#{infoScreenServiceImp}")
 	protected InfoScreenService infoscreenservice;
+	
+	@ManagedProperty("#{pospectusCommentServiceImp}")
+	protected PospectusCommentService pospectuscommentservice;
 	
 	@ManagedProperty("#{phoneServiceImp}")
 	protected PhoneService service_telefono;
@@ -299,6 +304,10 @@ public abstract class AddPldDocumentDMO
 	
 	protected String dispSelfieIdentificacion = "";
 	protected FileForScreenBean selfieIdentification;
+	
+	protected PospectusComment prospectuscomment;
+	
+	protected boolean has_prospectuscomment;
 	
 	protected AddPldDocumentDMO()
 	{		
@@ -999,6 +1008,22 @@ public abstract class AddPldDocumentDMO
 
 	public void setIdentifyTypeId(int identifyTypeId) {
 		this.identifyTypeId = identifyTypeId;
+	}
+
+	public PospectusCommentService getPospectuscommentservice() {
+		return pospectuscommentservice;
+	}
+
+	public void setPospectuscommentservice(PospectusCommentService pospectuscommentservice) {
+		this.pospectuscommentservice = pospectuscommentservice;
+	}
+
+	public PospectusComment getProspectuscomment() {
+		return prospectuscomment;
+	}
+
+	public void setPospectuscomment(PospectusComment prospectuscomment) {
+		this.prospectuscomment = prospectuscomment;
 	}
 	
 }

@@ -41,6 +41,7 @@ public interface ProyectLoanDao
 	ProyectLoan getMaxProyectLoanByProspectInReview   (Integer prospectus_id, Integer company_id);
 	ProyectLoan getMaxProyectLoanByProspect           (Integer prospectus_id, Integer company_id);
 	ProyectLoan getMaxProyectLoanByProspectInFunding  (Integer prospectus_id, Integer company_id);
+	ProyectLoan getMaxProyectLoanByProspectAndStatus(Integer prospectus_id, Integer company_id, Integer status_id);
 	
 	List<Byte> getOnlyTermId();
 	List<String> getSAFIAccount(String propectus_id);

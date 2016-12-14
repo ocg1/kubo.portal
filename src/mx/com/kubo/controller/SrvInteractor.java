@@ -58,16 +58,18 @@ public class SrvInteractor extends HttpServlet{
 //		  System.out.println( "" );
 		  
 		  
-		  StringBuffer jb = new StringBuffer();
+		  StringBuilder jb = new StringBuilder();
 		  String line = null;
 		  
 		  try {
 		  
 			  BufferedReader reader = request.getReader();
 		    
-			  while ((line = reader.readLine()) != null)
+			  while ((line = reader.readLine()) != null){
 		      
 				  jb.append(line);
+				  
+			  }
 		  
 		  } catch (Exception e) { 
 			  
@@ -91,8 +93,8 @@ public class SrvInteractor extends HttpServlet{
 		    
 			  FormAnalytics analytic = new FormAnalytics();
 			  
-			  String 	google_id		= (String) jsonObject.get("cliente");
-			  String 	prospectus_id	= (String) jsonObject.get("prospecto");
+			  String 	google_id		=  (String) jsonObject.get("cliente") ;
+			  String 	prospectus_id	=  (String) jsonObject.get("prospecto") ;
 			  
 			  analytic.setGoogle_id(	google_id	);
 			  
@@ -107,6 +109,12 @@ public class SrvInteractor extends HttpServlet{
 			  InteractorBean interactor =  new InteractorBean(  );
 			  
 			  interactor.saveFormAnalytics(analytic);
+			  
+			  analytic =  null;
+			  jsonObject = null;
+			  google_id		= null;
+			  prospectus_id	= null;
+			  jb = null;
 			  
 		  } catch (Exception e) {
 		    // crash and burn

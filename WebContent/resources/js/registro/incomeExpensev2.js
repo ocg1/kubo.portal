@@ -508,6 +508,10 @@ function cerrarIngresoFamiliar () {
 function abrir_imagenreferencia (btnImagen) {
 
 	$(btnImagen).closest(".ContenedorImagenMuestra").find(".imagen_referencia").show("normal");
+	
+	$('html, body').animate({
+	       scrollTop: ($(btnImagen).closest(".ContenedorImagenMuestra").find(".imagen_referencia").show("normal").offset().top - 100)
+	},1400);	
 
 	if($(btnImagen).hasClass("tipoCrede")){
 		console.log("tiene crede");

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.soa.model.businessobject.TSafiPagosCuota;
+import mx.com.kubo.model.TSafiPagosCuota;
 
 import mx.com.kubo.bean.TAmortizacionBean;
 import mx.com.kubo.managedbeans.cliente.Credito;
@@ -18,7 +18,9 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 {	
 	protected void init_credito_SAFI(int indice_posicion_SAFI) throws ParseException 
 	{
-		credito_safi = new CreditoSAFI_EMO(posicion_SAFI[indice_posicion_SAFI]);
+		credito_safi = new CreditoSAFI_EMO(posicion_SAFI.get(indice_posicion_SAFI));
+		
+		credito_LIQUIDADO_EN_FECHA = false;
 		
 		estatus                         =  credito_safi.getEstatus();
 		credito_id                      =  credito_safi.getCredito_id();	
@@ -133,21 +135,28 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 		
 		lista_amortizacion = new ArrayList<TAmortizacionBean>() ;								
 		
-		for(int indice_pago = 0; indice_pago < pagos_SAFI.length; indice_pago++)
+		for(int indice_pago = 0; indice_pago < pagos_SAFI.size(); indice_pago++)
 		{				
-			if(credito.getNumCredito().equals(pagos_SAFI[indice_pago].getCreditoid()))
+			
+			
+			//System.out.println( "credito: " + credito.getNumCredito() + " pagoSafi_credito: " + pagos_SAFI.get(indice_pago).getPk() .getCreditoId() );
+			
+			if(credito.getNumCredito().equals( (pagos_SAFI.get(indice_pago).getPk() .getCreditoId())+"") )
 			{						
 				amortizacion = new TAmortizacionBean();
 				
-				amortizacion.setCredit_id     (pagos_SAFI[indice_pago].getCreditoid());
-				amortizacion.setId            (pagos_SAFI[indice_pago].getAmortizacionid());
-				amortizacion.setCapital       (pagos_SAFI[indice_pago].getCapital()       == null ? "" : (dec.format(Double.parseDouble(pagos_SAFI[indice_pago].getCapital()))));
-				amortizacion.setCuota         (pagos_SAFI[indice_pago].getCuota()         == null ? "" : (dec.format(Double.parseDouble(pagos_SAFI[indice_pago].getCuota()))));
-				amortizacion.setCuotaComision (pagos_SAFI[indice_pago].getCuota_mas_com() == null ? "" : (dec.format(Double.parseDouble(pagos_SAFI[indice_pago].getCuota_mas_com()))));												
-				amortizacion.setInteres       (pagos_SAFI[indice_pago].getInteres()       == null ? "" : (dec.format(Double.parseDouble(pagos_SAFI[indice_pago].getInteres()))));
-				amortizacion.setIva           (pagos_SAFI[indice_pago].getIvainteres()    == null ? "" : (dec.format(Double.parseDouble(pagos_SAFI[indice_pago].getIvainteres()))));
-				amortizacion.setFecExigble    (pagos_SAFI[indice_pago].getFechaexigible() == null ? "" : formatStr.format(  fm1.parse  (pagos_SAFI[indice_pago].getFechaexigible())));
-				amortizacion.setFecPago       (pagos_SAFI[indice_pago].getFechaliquida()  == null ? "" : formatStr.format(  fm1.parse  (pagos_SAFI[indice_pago].getFechaliquida())));
+				amortizacion.setCredit_id     (pagos_SAFI.get(indice_pago).getPk() .getCreditoId()+"");
+				amortizacion.setId            (pagos_SAFI.get(indice_pago).getPk().getAmortizacionId()+"");
+				amortizacion.setCapital       (pagos_SAFI.get(indice_pago).getCapital()       == null ? "" : (dec.format(pagos_SAFI.get(indice_pago).getCapital())));
+				amortizacion.setCuota         (pagos_SAFI.get(indice_pago).getCuota()         == null ? "" : (dec.format(pagos_SAFI.get(indice_pago).getCuota())));
+				amortizacion.setCuotaComision (pagos_SAFI.get(indice_pago).getCuotaMasCom() == null ? ""   : (dec.format(pagos_SAFI.get(indice_pago).getCuotaMasCom())));												
+				amortizacion.setInteres       (pagos_SAFI.get(indice_pago).getInteres()       == null ? "" : (dec.format(pagos_SAFI.get(indice_pago).getInteres())));
+				amortizacion.setIva           (pagos_SAFI.get(indice_pago).getIvaInteres()    == null ? "" : (dec.format(pagos_SAFI.get(indice_pago).getIvaInteres())));
+				amortizacion.setFecExigble    (pagos_SAFI.get(indice_pago).getFechaExigible() == null ? "" : formatStr.format(  pagos_SAFI.get(indice_pago).getFechaExigible()));
+				
+				//System.out.println( " fecha liquida: " + pagos_SAFI.get(indice_pago).getFechaLiquida() );
+				
+				amortizacion.setFecPago       ( ( pagos_SAFI.get(indice_pago).getFechaLiquida()  == null || (  pagos_SAFI.get(indice_pago).getFechaLiquida() +"").equals("1900-01-01 00:00:00.0")  )  ? "" : formatStr.format(  pagos_SAFI.get(indice_pago).getFechaLiquida()));
 								
 				amortizacion.setFecCorte("");
 				
@@ -156,15 +165,15 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 								
 				if( !cuotas_vencidas_ENABLED )
 				{
-					cuotas_vencidas_ENABLED = pagos_SAFI[indice_pago].getEstatus() != null && (pagos_SAFI[indice_pago].getEstatus().equals("B") || estatus.equals("B"));
+					cuotas_vencidas_ENABLED = pagos_SAFI.get(indice_pago).getEstatus() != null && (pagos_SAFI.get(indice_pago).getEstatus().equals("B") || estatus.equals("B"));
 				}
 				
 				if(!credito_mora)
 				{
-					credito_mora            = pagos_SAFI[indice_pago].getEstatus() != null &&  pagos_SAFI[indice_pago].getEstatus().equals("A") && !cuotas_vencidas_ENABLED;
+					credito_mora            = pagos_SAFI.get(indice_pago).getEstatus() != null &&  pagos_SAFI.get(indice_pago).getEstatus().equals("A") && !cuotas_vencidas_ENABLED;
 				}
 				
-				if(pagos_SAFI[indice_pago].getEstatus().equals("A"))
+				if(pagos_SAFI.get(indice_pago).getEstatus().equals("A"))
 				{
 					System.out.println("ServiceEstadoCuentaAMO.init_lista_amortizacion()");
 				}
@@ -172,27 +181,27 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 				lista_amortizacion.add(amortizacion);
 			
 			
-				if(amortizacion_id != null && pagos_SAFI[indice_pago].getAmortizacionid() != null &&  amortizacion_id.equals(pagos_SAFI[indice_pago].getAmortizacionid()))
+				if(amortizacion_id != null && pagos_SAFI.get(indice_pago).getPk() .getAmortizacionId() != null &&  amortizacion_id.equals( (pagos_SAFI.get(indice_pago).getPk() .getAmortizacionId()+"") ))
 				{							
-					capitalDes = dec.format( Double.parseDouble(pagos_SAFI[indice_pago].getCapital()    == null ? "0" : pagos_SAFI[indice_pago].getCapital()));
-					interesDes = dec.format( Double.parseDouble(pagos_SAFI[indice_pago].getInteres()    == null ? "0" : pagos_SAFI[indice_pago].getInteres()));
-					ivaDes     = dec.format( Double.parseDouble(pagos_SAFI[indice_pago].getIvainteres() == null ? "0" : pagos_SAFI[indice_pago].getIvainteres()));							
+					capitalDes = dec.format( pagos_SAFI.get(indice_pago).getCapital()    == null ? 0D : pagos_SAFI.get(indice_pago).getCapital());
+					interesDes = dec.format( pagos_SAFI.get(indice_pago).getInteres()    == null ? 0D : pagos_SAFI.get(indice_pago).getInteres());
+					ivaDes     = dec.format( pagos_SAFI.get(indice_pago).getIvaInteres() == null ? 0D : pagos_SAFI.get(indice_pago).getIvaInteres());							
 				}
 				
 				calTemp = Calendar.getInstance();
 				calTemp.setTime(fechaCorte);
 				calTemp.add(Calendar.DATE, 1);
 				
-				//System.out.println("fechaCorte: "+calTemp.getTime()+"    ---    fechaExigible: "+ fm1.parse( pagos_SAFI[indice_pago].getFechaexigible() ));
-				if(calTemp.getTime() != null && calTemp.getTime().compareTo( fm1.parse( pagos_SAFI[indice_pago].getFechaexigible() ) ) == 0 && !pagos_SAFI[indice_pago].getEstatus().equals("P") && !pagos_SAFI[indice_pago].getEstatus().equals( "RP" ) )
+				//System.out.println("fechaCorte: "+calTemp.getTime()+"    ---    fechaExigible: "+ fm1.parse( pagos_SAFI.get(indice_pago).getFechaexigible() ));
+				if(calTemp.getTime() != null && calTemp.getTime().compareTo(  pagos_SAFI.get(indice_pago).getFechaExigible()  ) == 0 && !pagos_SAFI.get(indice_pago).getEstatus().equals("P") && !pagos_SAFI.get(indice_pago).getEstatus().equals( "RP" ) )
 				{										
-					if(pagos_SAFI[indice_pago].getCapital() == null)
+					if(pagos_SAFI.get(indice_pago).getCapital() == null)
 					{
 						tmpCapVen = Double.parseDouble("0");
 						
 					} else {
 						
-						tmpCapVen = Double.parseDouble(pagos_SAFI[indice_pago].getCapital());	
+						tmpCapVen = pagos_SAFI.get(indice_pago).getCapital();	
 					}	
 				}					
 			}
@@ -201,33 +210,33 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 	
 	private void asignar_status(int indice_pago) throws RemoteException 
 	{
-		if(!pagos_SAFI[indice_pago].getEstatus().equals("P") && !pagos_SAFI[indice_pago].getEstatus().equals( "RP" ) && status  )
+		if(!pagos_SAFI.get(indice_pago).getEstatus().equals("P") && !pagos_SAFI.get(indice_pago).getEstatus().equals( "RP" ) && status  )
 		{							
-			creditos_SAFI = web_service_SGB.getTSafiCreditosMovs(pagos_SAFI[indice_pago].getCreditoid(), pagos_SAFI[indice_pago].getAmortizacionid(), null, null,(prospectus_id+""));
+			creditos_SAFI = estadocuentaservice.getTSafiCreditosMovs(pagos_SAFI.get(indice_pago).getPk().getCreditoId(), pagos_SAFI.get(indice_pago).getPk().getAmortizacionId(), (prospectus_id));
 			
 			if(creditos_SAFI != null)
 			{
-				amortizacion.setStatus("PA_" + pagos_SAFI[indice_pago].getEstatus());
+				amortizacion.setStatus("PA_" + pagos_SAFI.get(indice_pago).getEstatus());
 				
 			} else {
 				
-				amortizacion.setStatus(pagos_SAFI[indice_pago].getEstatus());
+				amortizacion.setStatus(pagos_SAFI.get(indice_pago).getEstatus());
 			}
 			
 			status = false;
 			
 		} else {
 			
-			amortizacion.setStatus(pagos_SAFI[indice_pago].getEstatus());
+			amortizacion.setStatus(pagos_SAFI.get(indice_pago).getEstatus());
 		}
 	}
 
 	private void asignar_comportamiento(int indice_pago) throws ParseException 
 	{
-		if(pagos_SAFI[indice_pago].getFechaliquida() != null && pagos_SAFI[indice_pago].getFechaliquida().length() > 0 && pagos_SAFI[indice_pago].getFechaexigible()!= null && pagos_SAFI[indice_pago].getFechaexigible().length() > 0)
+		if(pagos_SAFI.get(indice_pago).getFechaLiquida() != null && (pagos_SAFI.get(indice_pago).getFechaLiquida()+"").length() > 0 && !((pagos_SAFI.get(indice_pago).getFechaLiquida()+"").equals("1900-01-01 00:00:00.0") ) && pagos_SAFI.get(indice_pago).getFechaExigible() != null && (pagos_SAFI.get(indice_pago).getFechaExigible()+"").length() > 0)
 		{
-			d1 =  fm1.parse( pagos_SAFI[indice_pago].getFechaexigible()) ;
-			d2 =  fm1.parse( pagos_SAFI[indice_pago].getFechaliquida()) ;
+			d1 =   pagos_SAFI.get(indice_pago).getFechaExigible() ;
+			d2 =   pagos_SAFI.get(indice_pago).getFechaLiquida() ;
 			
 			ld1 = d1.getTime();
 			ld2 = d2.getTime();
@@ -273,9 +282,9 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 			
 			diasT = dias_transcurridos.intValue();
 			
-		} else if((pagos_SAFI[indice_pago].getFechaliquida() == null || pagos_SAFI[indice_pago].getFechaliquida().length() > 0) && ((pagos_SAFI[indice_pago].getFechaexigible()!= null && pagos_SAFI[indice_pago].getFechaexigible().length() > 0 ) && (fm1.parse(pagos_SAFI[indice_pago].getFechaexigible()).getTime() < (new Date()).getTime()))) {
+		} else if((pagos_SAFI.get(indice_pago).getFechaLiquida() == null || (pagos_SAFI.get(indice_pago).getFechaLiquida()+"").length() > 0) && ((pagos_SAFI.get(indice_pago).getFechaExigible()!= null && (pagos_SAFI.get(indice_pago).getFechaExigible()+"").length() > 0 ) && (pagos_SAFI.get(indice_pago).getFechaExigible().getTime() < (new Date()).getTime()))) {
 			
-			d1 =  fm1.parse( pagos_SAFI[indice_pago].getFechaexigible() ) ;
+			d1 =   pagos_SAFI.get(indice_pago).getFechaExigible() ;
 			d2 =  new Date() ;
 			
 			ld1 = d1.getTime();
@@ -323,10 +332,10 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 			
 			diasT = dias_transcurridos.intValue();
 			
-			if(dias_transcurridos.intValue() > 0 && (pagos_SAFI[indice_pago].getEstatus().equals("V") || pagos_SAFI[indice_pago].getEstatus().equals("RV") ) )
+			if(dias_transcurridos.intValue() > 0 && (pagos_SAFI.get(indice_pago).getEstatus().equals("V") || pagos_SAFI.get(indice_pago).getEstatus().equals("RV") ) )
 			{									
-				capital_vigente_tmp =  Double.parseDouble( pagos_SAFI[indice_pago].getCapital() == null?"0":pagos_SAFI[indice_pago].getCapital()) ;
-				interes_vigente_tmp =  Double.parseDouble( pagos_SAFI[indice_pago].getInteres() == null?"0":pagos_SAFI[indice_pago].getInteres()) ; 
+				capital_vigente_tmp =   pagos_SAFI.get(indice_pago).getCapital() == null? 0D:pagos_SAFI.get(indice_pago).getCapital() ;
+				interes_vigente_tmp =   pagos_SAFI.get(indice_pago).getInteres() == null? 0D:pagos_SAFI.get(indice_pago).getInteres() ; 
 				
 				//System.out.println("capVigTemp: "+capVigTemp+"    intVigTemp: "+intVigTemp);									
 			}
@@ -563,7 +572,7 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 			
 		} else {
 			
-			String frecuencia_cap = posicion_SAFI[indice_posicion_SAFI].getFrecuenciacap();
+			String frecuencia_cap = posicion_SAFI.get(indice_posicion_SAFI).getFrecuenciaCap();
 						
 			if(frecuencia_cap != null &&  frecuencia_cap.equals("S")  )
 			{
@@ -917,17 +926,17 @@ public abstract class ServiceEstadoCuentaAMO extends ServiceEstadoCuentaDMO
 	
 	private void calculaProximoPago(){
 		
-			for(int indice_pago = 0; indice_pago < pagos_SAFI.length; indice_pago++)
+			for(int indice_pago = 0; indice_pago < pagos_SAFI.size(); indice_pago++)
 			{				
-				if(credito.getNumCredito().equals(pagos_SAFI[indice_pago].getCreditoid()))
+				if(credito.getNumCredito().equals( (pagos_SAFI.get(indice_pago).getPk().getCreditoId() +"") ))
 				{
-					TSafiPagosCuota amortizaciontemp = pagos_SAFI[indice_pago];
+					TSafiPagosCuota amortizaciontemp = pagos_SAFI.get(indice_pago);
 					
 					if( amortizaciontemp.getEstatus().equals("V") ){
 					
-						credito.setMontoProxCuota(dec.format( Double.parseDouble( amortizaciontemp.getCuota_mas_com() ) ));	
+						credito.setMontoProxCuota(dec.format(  amortizaciontemp.getCuotaMasCom()  ));	
 						try{
-							credito.setFecProxCuota( formato_ddMMyyyy.format( fm1.parse( amortizaciontemp.getFechaexigible() ) )   );
+							credito.setFecProxCuota( formato_ddMMyyyy.format(  amortizaciontemp.getFechaExigible() )    );
 						}catch(Exception e){
 							e.printStackTrace();
 						}

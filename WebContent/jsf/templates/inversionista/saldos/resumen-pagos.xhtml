@@ -1,0 +1,130 @@
+<ui:composition  xmlns    ="http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+				 xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+				 					<div class="summaryInv pagosCls">	
+						<div class="summaryBoxInv">
+							<h3 class="summaryTitleInv" title="Resumen de pagos">Resumen de pagos</h3>
+							<div class="summaryContentInv">
+								<table class="summaryTableInv">
+									<tbody>
+									
+										<tr>
+											<th></th>
+											<th>Monto</th>
+											<!-- <th>Proyectos</th> -->
+										</tr>
+									
+										<tr>
+											
+											<td colspan="2" style="font-size: 1.1em;" >
+												<b>kubo.global</b>
+											</td>
+											
+										</tr>
+									
+										<tr>
+											<td>
+												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
+													Intereses
+													<ui:include src="../secciones/investment/tooltip/tooltip_kuboglobal.xhtml" />
+												</div>
+											</td>
+											<td ><span>#{myInvestments.saldoIntGlobal}</span></td>
+											<!-- <td style="text-align: right;padding-right: 10px;"><span>#{myInvestments.ordinary_interests_number}</span></td> -->
+											
+										</tr>
+									
+										<tr>
+											
+											<td colspan="2" style="font-size: 1.1em;" >
+												<b>kubo.impulso</b>
+											</td>
+											
+										</tr>
+									
+										<tr>
+											<td>
+												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
+													Capital
+													<ui:include src="../secciones/investment/tooltip/tooltip_capital.xhtml" />
+												</div>	
+											</td>
+											<td ><span>#{myInvestments.capital_amount}</span></td>
+											<!-- <td style="text-align: right;padding-right: 10px;"><span>#{myInvestments.capital_number}</span></td> -->
+											
+										</tr>
+										
+										<tr>
+											<td>
+												
+												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
+													Intereses Recibidos
+													<ui:include src="../secciones/investment/tooltip/tooltip_kuboimpulso.xhtml" />
+												</div>
+											</td>
+											<td ><span>#{myInvestments.ordinary_interests_amount}</span></td>
+											<!-- <td style="text-align: right;padding-right: 10px;"><span>#{myInvestments.ordinary_interests_number}</span></td> -->
+											
+										</tr>
+										
+										<tr>
+											<td>
+												
+												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
+													Intereses moratorios
+													<ui:include src="../secciones/investment/tooltip/tooltip_moratorios.xhtml" />
+												</div>	
+											</td>
+											<td ><span>#{myInvestments.interest_on_arrears_amount}</span></td>
+											<!-- <td style="text-align: right;padding-right: 10px;"><span>#{myInvestments.interest_on_arrears_number}</span></td> -->
+											
+										</tr>
+										
+										<tr>
+											
+											<td colspan="2" style="font-size: 1.1em;" >
+												<b>kubo.plazofijo</b>
+											</td>
+											
+										</tr>
+										
+										<tr>
+											<td>
+												
+												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
+													Intereses
+													<ui:include src="../secciones/investment/tooltip/tooltip_kuboplazofijo.xhtml" />
+												</div>	
+											</td>
+											<td ><span>#{myInvestments.saldoIntPlazoFijo}</span></td>
+											<!-- <td style="text-align: right;padding-right: 10px;"><span>#{myInvestments.ordinary_interests_number}</span></td> -->
+											
+										</tr>
+										
+										<!-- <tr>
+											<td>Ingresos por venta de cartera</td>
+											<td ><span>$0.00</span></td>
+											<td style="text-align: right;padding-right: 10px;"><span>0</span></td>
+											
+										</tr> -->
+										
+										<tr >
+											<td width="200px" class="blackInv" style="font-size: 1.1em;" >Pagos recibidos</td>
+											<td class="blackInv" style="border-top: solid 2px #000000;font-size: 1.1em;" ><span>#{myInvestments.payments_received_amount}</span></td>
+											<!-- <td style="text-align: right;padding-right: 10px;"><span >#{myInvestments.payments_received_number}</span></td> -->
+											
+										</tr>
+										
+									</tbody>
+									<!-- <tfoot>
+										<tr>
+											<td colspan="2" style="text-align: right;"><a id="summaryLinkBottom" href="#">Ver por cantidad</a></td>
+										</tr>
+									</tfoot> -->
+								</table>									
+							</div> <!-- .summaryContent -->
+						</div>
+					</div>	
+</ui:composition>				 

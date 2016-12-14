@@ -326,7 +326,7 @@ implements InvestorListIMO, Serializable
 				
 				HubSpotController hs =  new HubSpotController();
 				
-				String properties = "{ \"property\" : \"estatus_inversionista\" , \"value\" : \"contratos_creados\"}";
+				StringBuilder properties = new StringBuilder( "{ \"property\" : \"estatus_inversionista\" , \"value\" : \"contratos_creados\"}");
 				
 				//String properties = "estatus_inversionista=finalizo_solicitud&hbuhu&";
 				

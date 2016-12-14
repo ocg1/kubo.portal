@@ -2,7 +2,7 @@ package mx.com.kubo.bean;
 
 import java.util.Date;
 
-import com.soa.model.businessobject.TSafiCuentasAhoMovDep;
+import mx.com.kubo.model.TSafiCuentasAhoMovDep;
 
 public class CuentasAhoMovDep implements Comparable<CuentasAhoMovDep> {
     
@@ -42,33 +42,33 @@ public class CuentasAhoMovDep implements Comparable<CuentasAhoMovDep> {
         if (cuenta == null )
             throw new NullPointerException();
         
-        this.cantidadMov = cuenta.getCantidadMov() ;
+        this.cantidadMov = cuenta.getCantidadMov() +"" ;
 
         this.concepto = cuenta.getConcepto();
 
-        this.cuentaAhoID  = cuenta.getCuentaAhoID();
+        this.cuentaAhoID  = cuenta.getCuentaAhoId()+"";
 
-        this.deposito  = cuenta.getDeposito();
+        this.deposito  = cuenta.getDeposito()+"";
 
         this.descripcionMov  = cuenta.getDescripcionMov();
         
         if(cuenta.getFecha()!= null)
-        	this.fecha = cuenta.getFecha().getTime();
+        	this.fecha = cuenta.getFecha();
         else
         	this.fecha = null;
         
         if(cuenta.getFechaActual()!= null)
-        	this.fechaActual = cuenta.getFechaActual().getTime();
+        	this.fechaActual = cuenta.getFechaActual();
         else
         	this.fechaActual = null;
         
         if(cuenta.getFechaAplica()!= null)
-        	this.fechaAplica = cuenta.getFechaAplica().getTime();
+        	this.fechaAplica = cuenta.getFechaAplica();
         else
         	this.fechaAplica = null;
 
         if(cuenta.getFechaCarga()!= null)
-        	this.fechaCarga = cuenta.getFechaCarga().getTime();
+        	this.fechaCarga = cuenta.getFechaCarga();
         else
         	this.fechaCarga = null;
 
@@ -78,7 +78,7 @@ public class CuentasAhoMovDep implements Comparable<CuentasAhoMovDep> {
 
         this.nombreCorto = cuenta.getNombreCorto();
 
-        this.numeroMov  = cuenta.getNumeroMov();
+        this.numeroMov  = cuenta.getNumeroMov()+"";
 
         this.referenciaMov = cuenta.getReferenciaMov();
 

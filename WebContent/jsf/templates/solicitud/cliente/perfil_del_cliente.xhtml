@@ -97,7 +97,69 @@
 				<div class="clear details12 left" id="details2"> 
 					<p><strong>Género</strong></p>
 					<p>#{summaryRequest.gender}</p>
-				</div>						
+				</div>
+				
+				<h:panelGroup rendered="#{sessionBean.area == 'M'}" >
+				<div class="clear details12" id="details2" style="clear: both; float: none; width: 250px;" > 
+					<strong>Forma de Contacto</strong>
+					<div class="checks-set conjuntoChecks" >
+							<table cellpadding="0" cellspacing="0" border="0" id="forma-contacto"> 
+								<tr>
+								<td>
+						
+							<h:panelGroup rendered="#{summaryRequest.haveContactWay}" >
+							<ul style ="margin: 0px !important;">
+							<h:panelGroup rendered="#{summaryRequest.contactWayPhone}" >
+								<li>
+							     <label class="check-label inline--check ">
+							     	
+				                    
+				                    <i><img src="../resources/img/check-phone.png" /></i>
+				                    <span>Llamada teléfonica:</span>
+				                </label>
+			              	  </li>
+			              	  </h:panelGroup>
+			              	  <h:panelGroup rendered="#{summaryRequest.contactWayWhatsApp}">
+			              	  <li>
+							     <label class="check-label inline--check ">
+							     	
+				                   
+				                          <i><img src="../resources/img/check-whatsapp.png" /></i>
+				                    <span>WhatsApp:</span>
+				                </label>
+			              	  </li>
+			              	  </h:panelGroup>
+			              	  <h:panelGroup rendered="#{summaryRequest.contactWayEmail}">
+			              	   <li>
+							     <label class="check-label inline--check ">
+				                     <i><img src="../resources/img/check-envelope.png" /></i>
+				                    <span>Mail:</span>
+				                </label>
+			              	  </li>
+			              	  </h:panelGroup>
+			                </ul>
+			           			</h:panelGroup>
+			           			
+			           			<h:panelGroup rendered="#{!summaryRequest.haveContactWay}" >
+			           				<ul style ="margin: 0px !important;">
+			           				 <li>
+							     <label class="check-label inline--check ">
+				                    <span>No Proporcionado</span>
+				                </label>
+			              	  </li>
+			              	  
+			                </ul>
+			           					
+			           			</h:panelGroup>
+			           			
+			                   </td>
+			                </tr>
+			             
+			                </table>
+			                     </div>
+					
+				</div>
+				</h:panelGroup>						
 		
 				<div class="details1 left">
 					<p><strong>Fecha de nacimiento</strong></p>

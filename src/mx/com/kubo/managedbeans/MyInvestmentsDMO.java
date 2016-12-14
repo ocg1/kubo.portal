@@ -421,9 +421,7 @@ public abstract class MyInvestmentsDMO
 	public void setSesion(SessionBean sesion) {
 		this.sesion = sesion;
 	}
-	public NaturalPersonService getPersonaNaturalService() {
-		return personaNaturalService;
-	}
+
 	public void setPersonaNaturalService(NaturalPersonService personaNaturalService) {
 		this.personaNaturalService = personaNaturalService;
 	}
@@ -561,9 +559,15 @@ public abstract class MyInvestmentsDMO
 		this.premiosRecom = premiosRecom;
 	}
 	
+/*	
 	public ProyectLoanService getServicioProyecto() {
 		return servicioProyecto;
 	}
+	
+	public NaturalPersonService getPersonaNaturalService() {
+		return personaNaturalService;
+	}
+*/	
 
 	public void setServicioProyecto(ProyectLoanService servicioProyecto) {
 		this.servicioProyecto = servicioProyecto;

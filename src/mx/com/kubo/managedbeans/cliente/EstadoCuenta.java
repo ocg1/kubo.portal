@@ -26,7 +26,6 @@ import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.ProyectLoan;
-import mx.com.kubo.model.RestructureBean;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.Ticket;
 import mx.com.kubo.model.TicketPk;
@@ -38,11 +37,9 @@ import mx.com.kubo.tools.NumberToLetterConverter;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.ToggleEvent;
 
-import com.soa.model.businessobject.TSafiCreditosMovs;
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.model.businessobject.TSafiPosicionInt;
-import com.soa.webServices.WsSgbRisk;
-import com.soa.webServices.WsSgbRiskServiceLocator;
+import mx.com.kubo.model.TSafiCreditosMovs;
+import mx.com.kubo.model.TSafiPagosCuota;
+import mx.com.kubo.model.TSafiPosicionInt;
 
 @ManagedBean(name = "estadoCuenta") @ViewScoped 
 public final class EstadoCuenta extends EstadoCuentaAMO
@@ -61,10 +58,12 @@ implements Serializable, EstadoCuentaIMO
 		setDisPnlScriptPade(false);
 		asignarCalendario();		
 		
-		
 		asignarHeadless();
 		
 		verificarSesion();
+		
+		
+		init_bandera_renovacion();
 		
 		asignarFechaSOFIPO();	
 		asignarRazonSocial();	
@@ -93,6 +92,7 @@ implements Serializable, EstadoCuentaIMO
 		asignarRestructure();
 		asignarFactorMora();
 		registrarAcceso();
+		
 	}
 
 	public final void racargaProyectos()
@@ -124,14 +124,16 @@ implements Serializable, EstadoCuentaIMO
 			
 			//lista_creditos = new ArrayList<CreditoEMO>();
 			
-			posicionInt = web_service_SGB.getTSafiPosicionInt(prospectus_id + "");
+//			posicionInt = web_service_SGB.getTSafiPosicionInt(prospectus_id + "");
 			
-			if(posicionInt != null && tamortizacion != null)
+			posicionInt = estadocuentaservice.getTSafiPosicionInt(prospectus_id );
+			
+			if(posicionInt != null && tamortizacion != null && posicionInt.size() > 0 && tamortizacion.size() > 0  )
 			{										
 				flagRenderEdoCuenta = true;				
 				displayMoreProyect  = !displayPag;			
 				
-				nombre = posicionInt[0].getNombrecompleto();
+				nombre = (posicionInt.get(0)).getNombreCompleto();
 				
 				service_estado_cuenta = new ServiceEstadoCuentaIMP();
 				
@@ -151,7 +153,50 @@ implements Serializable, EstadoCuentaIMO
 				contador_creditos_liquidados = service_estado_cuenta.getContador_creditos_liquidados();
 				contador_creditos_mora       = service_estado_cuenta.getContador_creditos_mora();				
 				contador_creditos_vencidos   = service_estado_cuenta.getContador_creditos_vencidos();				
-			}		   		   
+			
+			}	
+			
+			ProyectLoan proyect_loan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
+			
+			Date d1 =   proyect_loan.getConsulting_date() ;
+			Date d2 =   new Date() ;
+			
+			Long ld1 = d1.getTime();
+			Long ld2 = d2.getTime();
+			
+			Long dias_transcurridos = ( (ld2 - ld1) / MILLSECS_PER_DAY );
+			
+			sesion.setNew_consulting(false);
+			
+			if( dias_transcurridos > 30 || ( dias_transcurridos < 30 && proyect_loan.getStatus_id().intValue() == 0 ) ){
+			
+				boolean capital_pagado_superior_al_MIN = false;
+				
+				flag_In_for_min_100_per = false;
+				
+				for( TSafiPosicionInt pos : posicionInt ){
+				
+					capital_pagado_superior_al_MIN = asignar_indice_de_pago( pos ) ;
+					
+					System.out.println( "saldo_deudor_superior_al_MIN: " + capital_pagado_superior_al_MIN);
+					
+					if( capital_pagado_superior_al_MIN ){
+						break;
+					}
+				
+				}
+				
+				if( capital_pagado_superior_al_MIN ){
+					
+					sesion.setNew_consulting( capital_pagado_superior_al_MIN && contador_creditos_mora == 0 && contador_creditos_vencidos == 0 );
+				
+				}else if( !flag_In_for_min_100_per ) {
+					sesion.setNew_consulting( contador_creditos_mora == 0 && contador_creditos_vencidos == 0  && (contador_creditos_liquidados>0 || contador_creditos_vigentes > 0  ));
+				}else{
+					sesion.setNew_consulting( false );
+				}
+			
+			}
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -286,15 +331,12 @@ implements Serializable, EstadoCuentaIMO
 	         
 	         ntPk.setCompany_id(company_id);
 			 ntPk.setProspectus_id(prospectus_id);
-			 
-			 WsSgbRiskServiceLocator locator = new WsSgbRiskServiceLocator();
-		     WsSgbRisk service = locator.getWsSgbRisk();
 				
 	         NaturalPerson person = gnNaturalService.getNaturalPersonById(ntPk);	         
 
-	         TSafiPosicionInt[] posicionInt= service.getTSafiPosicionInt(prospectus_id+"");
+	         List<TSafiPosicionInt> posicionInt= estadocuentaservice.getTSafiPosicionInt(prospectus_id);
 					
-					TSafiPagosCuota[] tamortizacion = service.getTSafiPagosCuota(prospectus_id+"");
+					List<TSafiPagosCuota> tamortizacion = estadocuentaservice.getTSafiPagosCuota(prospectus_id);
 		         
 					TSafiPosicionInt pos  = null;
 					TSafiPagosCuota amort = null;
@@ -303,7 +345,7 @@ implements Serializable, EstadoCuentaIMO
 					String amrt = values.split("::")[1];
 					String status = values.split("::")[2];
 					
-					TSafiCreditosMovs[] movs = service.getTSafiCreditosMovs(crdt, amrt, null, null,(prospectus_id+""));
+					List<TSafiCreditosMovs> movs = estadocuentaservice.getTSafiCreditosMovs( Integer.parseInt( crdt ), Integer.parseInt(amrt) , prospectus_id);
 					
 					Hashtable<String,String> htMovs = new Hashtable<String,String>();
 					
@@ -313,9 +355,9 @@ implements Serializable, EstadoCuentaIMO
 					
 						for( TSafiCreditosMovs m : movs ){
 							
-							if(m.getNatmovimiento().equals("A") && m.getDescripcion_operacion().equals("PAGO DE CREDITO") ){
+							if(m.getNatMovimiento().equals("A") && m.getDecripcionOperacion().equals("PAGO DE CREDITO") ){
 							
-								Double d = Double.parseDouble((m.getTipomovcreid()+"") );
+								Double d = Double.parseDouble((m.getTipoMovCreId()+"") );
 								
 								String res = getTitleBySafiCode( d.intValue()  );
 								
@@ -334,25 +376,25 @@ implements Serializable, EstadoCuentaIMO
 								}
 								
 								
-								 if(fecha.before( m.getFechaaplicacion().getTime() ) ){
+								 if(fecha.before( m.getFechaAplicacion() ) ){
 									 
-									 fecha = m.getFechaaplicacion().getTime();
-									 fechaApli = m.getFechaoperacion().getTime();
+									 fecha = m.getFechaAplicacion();
+									 fechaApli = m.getFechaOperacion();
 									 
 								 }
 								 
 								 
-								 if( htDates.get(m.getFechaaplicacion().getTime()) == null ){
+								 if( htDates.get(m.getFechaAplicacion()) == null ){
 								 
-									 htDates.put(m.getFechaaplicacion().getTime(),m.getCantidad());
+									 htDates.put(m.getFechaAplicacion(),m.getCantidad());
 								 
 								 }else{
 									 
-									 Double dCantidad = htDates.get(m.getFechaaplicacion().getTime());
+									 Double dCantidad = htDates.get(m.getFechaAplicacion());
 									 
 									 dCantidad = dCantidad + m.getCantidad();
 									 
-									 htDates.put(m.getFechaaplicacion().getTime(),dCantidad);
+									 htDates.put(m.getFechaAplicacion(),dCantidad);
 									 
 								 }
 								 
@@ -397,7 +439,7 @@ implements Serializable, EstadoCuentaIMO
 						
 					for(TSafiPosicionInt tmpPos : posicionInt){
 						
-						if(tmpPos.getCreditoid().equals(crdt)){
+						if((tmpPos.getPk().getCreditoId()+"").equals(  crdt )){
 							
 							pos = tmpPos;
 							break;
@@ -409,9 +451,9 @@ implements Serializable, EstadoCuentaIMO
 					int totalAmort = 0;
 					for(TSafiPagosCuota tamor : tamortizacion){
 						
-						if(tamor.getCreditoid().equals(crdt) ){
+						if((tamor.getPk().getCreditoId()+"").equals(crdt) ){
 							totalAmort++;
-							if(tamor.getAmortizacionid().equals(amrt) && !flag ){
+							if((tamor.getPk().getAmortizacionId()+"").equals(amrt) && !flag ){
 						
 								amort = tamor;
 								flag = true;;
@@ -423,7 +465,7 @@ implements Serializable, EstadoCuentaIMO
 					
 		         if(pos != null && amort !=null ){
 		        	 
-		        	 Ticket ticket = ticketservice.getTiketbyCreditAndAmortId( amort.getCreditoid() , Integer.parseInt(amort.getAmortizacionid()) );
+		        	 Ticket ticket = ticketservice.getTiketbyCreditAndAmortId( amort.getPk().getCreditoId()+"" , amort.getPk().getAmortizacionId() );
 		     		
 		        	 String folio = "";
 		        	 
@@ -431,8 +473,8 @@ implements Serializable, EstadoCuentaIMO
 		        		 
 		        		 ticket = new Ticket();
 		        		 ticket.setGeneration_date(new Date());
-		        		 ticket.setPayment_number(Integer.parseInt(amort.getAmortizacionid()));
-		        		 ticket.setSafi_credit_id(amort.getCreditoid());
+		        		 ticket.setPayment_number(amort.getPk().getAmortizacionId());
+		        		 ticket.setSafi_credit_id(amort.getPk().getCreditoId()+"");
 		        		 ticket.setStatus("0");
 		        		 TicketPk ticketpk = new TicketPk();
 		        		 ticketpk.setCompany_id(sesion.getCompany_id()) ;
@@ -440,7 +482,7 @@ implements Serializable, EstadoCuentaIMO
 		        		 
 		        		 if(ticketservice.saveTicket(ticket,sesion.getProspectus_id() )){
 		        			 
-		        			 ticket = ticketservice.getTiketbyCreditAndAmortId( amort.getCreditoid() , Integer.parseInt(amort.getAmortizacionid()) );
+		        			 ticket = ticketservice.getTiketbyCreditAndAmortId( amort.getPk().getCreditoId()+"" , amort.getPk().getAmortizacionId() );
 		        			 
 		        			 if(ticket == null){
 		        				 
@@ -469,7 +511,7 @@ implements Serializable, EstadoCuentaIMO
 			         
 			         
 			         
-			         edoHtml = edoHtml.replaceAll("###CLIENTE###", pos.getProspectoidext());
+			         edoHtml = edoHtml.replaceAll("###CLIENTE###", (pos.getProspectoIdExt()+""));
 			         
 			         if(sesion.getArea().toString().equals("I") ){
 			        	 
@@ -477,14 +519,14 @@ implements Serializable, EstadoCuentaIMO
 				         edoHtml = edoHtml.replaceAll("###RFC###","NO DISPONIBLE" );
 			         
 			         }else{
-			        	 edoHtml = edoHtml.replaceAll("###NOMBRE###", pos.getNombrecompleto());
+			        	 edoHtml = edoHtml.replaceAll("###NOMBRE###", pos.getNombreCompleto());
 				         edoHtml = edoHtml.replaceAll("###RFC###",person.getMx_rfc() );
 			         }
 			        
 			         
 			         
-			         edoHtml = edoHtml.replaceAll("###NUMCREDITO###", pos.getCreditoid() );
-			         edoHtml = edoHtml.replaceAll("###CUOTAS_PAGADAS###", amort.getAmortizacionid());
+			         edoHtml = edoHtml.replaceAll("###NUMCREDITO###", (pos.getPk().getCreditoId() + "" ) );
+			         edoHtml = edoHtml.replaceAll("###CUOTAS_PAGADAS###", (amort.getPk().getAmortizacionId()+""));
 			         edoHtml = edoHtml.replaceAll("###TOTALCUOTAS###", totalAmort+"");
 			         edoHtml = edoHtml.replaceAll("###SALDOLIQUIDAR###", "");
 			         edoHtml = edoHtml.replaceAll("###OPERACION###", "PAGO DE CRÉDITO");
@@ -520,18 +562,18 @@ implements Serializable, EstadoCuentaIMO
 			         
 			         edoHtml = edoHtml.replaceAll("###IMPORTE_LETRA###", letter );
 			         
-			         importe = dec.format(Double.parseDouble(amort.getCapital()));
+			         importe = dec.format(amort.getCapital());
 			         importe = importe.replaceAll("\\$", "");
 			         
 			         edoHtml = edoHtml.replaceAll("###CAPITAL_ORDINARIO###","\\$"+importe );
 			         
-			         importe = dec.format(Double.parseDouble(amort.getInteres()));
+			         importe = dec.format(amort.getInteres());
 			         importe = importe.replaceAll("\\$", "");
 			         
 			         edoHtml = edoHtml.replaceAll("###INTERES_NORMAL###","\\$"+ importe );
 			         edoHtml = edoHtml.replaceAll("###INTERES_PROVI###", "");
 			         
-			         importe = dec.format(Double.parseDouble(amort.getIvainteres()));
+			         importe = dec.format(amort.getIvaInteres());
 			         importe = importe.replaceAll("\\$", "");
 			         
 			         edoHtml = edoHtml.replaceAll("###IVA_INTERES###","\\$"+ importe );
@@ -627,9 +669,10 @@ implements Serializable, EstadoCuentaIMO
 			        	 
 			        	 Date d2 = null;
 			        	 
-			        	 if( amort.getFechaliquida() != null ){
+			        	 if( amort.getFechaLiquida() != null ){
 			        		 
-			        		 d2 = fm1.parse(amort.getFechaliquida());
+			        		 //d2 = fm1.parse(amort.getFechaLiquida());
+			        		 d2 = amort.getFechaLiquida();
 			        		 
 			        	 }else{
 			        		 
@@ -841,7 +884,7 @@ implements Serializable, EstadoCuentaIMO
 					
 					//Comisiones
 					
-					System.out.println( "Comisiones: " + m.getDescripcion().toUpperCase() );
+					//System.out.println( "Comisiones: " + m.getDescripcion().toUpperCase() );
 					
 					if( (m.getDescripcion().toUpperCase().indexOf("COMISI")!= (-1)) 
 					&& !(m.getDescripcion().toUpperCase().indexOf("IVA ")!= (-1)))
@@ -861,7 +904,7 @@ implements Serializable, EstadoCuentaIMO
 									dc[0] = Double.parseDouble( m.getMonto().replace("$", "").replace(",", "") );
 								}
 								
-								System.out.println( "Comision Cargada if(): " + dc[0] );
+								//System.out.println( "Comision Cargada if(): " + dc[0] );
 								
 								htComisiones.put(m.getCreditoId(), dc);
 								
@@ -871,7 +914,7 @@ implements Serializable, EstadoCuentaIMO
 								
 								arrD[0] = Double.parseDouble( m.getMonto().replace("$", "").replace(",", "") );
 								
-								System.out.println( "Comision Cargada else: " + arrD[0] );
+								//System.out.println( "Comision Cargada else: " + arrD[0] );
 								
 								htComisiones.put(m.getCreditoId(), arrD);							
 							}	
@@ -981,5 +1024,59 @@ implements Serializable, EstadoCuentaIMO
 		System.out.println( " SAFI_CREDIT_ID: " + sesion.getCredito_SAFI() + "  --  " + sesion.getSaldo_liquidacion() );
 		
 		return "QUIERO_LIQUIDAR_MI_PRESTAMO";
-	}	
+	}
+	
+	
+	private boolean asignar_indice_de_pago( TSafiPosicionInt       posicion ) 
+	{
+		Double monto_credito          = ((posicion.getMontoCredito())    == null ? 0 : posicion.getMontoCredito());
+		Double saldo_capital_vigente  = ((posicion.getSaldoCapVigent())  == null ? 0 : posicion.getSaldoCapVigent());		
+		Double saldo_capital_atrasado = ((posicion.getSaldoCapAtrasad()) == null ? 0 : posicion.getSaldoCapAtrasad());
+		Double saldo_capital_vencido  = ((posicion.getSaldoCapVencido()) == null ? 0 : posicion.getSaldoCapVencido());
+		Double saldo_capital_vencido_no_exigible = ((posicion.getSaldoCapVenNoExi()) == null ? 0 : posicion.getSaldoCapVenNoExi());
+		
+		Double saldo_capital = saldo_capital_vigente + saldo_capital_atrasado + saldo_capital_vencido + saldo_capital_vencido_no_exigible;
+		
+		boolean saldo_deudor_superior_al_MIN = false;
+		
+		if(saldo_capital < monto_credito)
+		{
+			//montopagado                  //falta_por_pagar    
+			Double saldo_deudor = monto_credito - saldo_capital;
+			
+			//porcentaje_pagado      //montopagado
+			Double indice_saldo_capital_pagado =  (saldo_deudor / monto_credito) * 100;
+			
+			//porcentaje_de_monto_por_pagar
+			Double indice_saldo_deudor  = 100 - indice_saldo_capital_pagado;
+			
+			
+			
+			System.out.println( " monto_credito: " + monto_credito + "indice_saldo_deudor_MIN:  "  + indice_saldo_deudor_MIN + " indice_saldo_capital: " + indice_saldo_capital_pagado + " indice_saldo_deudor: " + indice_saldo_deudor);
+			
+			if( Math.round( indice_saldo_capital_pagado ) != 100L ){
+			
+				flag_In_for_min_100_per = true;
+				
+				    //porcentaje_pagado
+				if(indice_saldo_capital_pagado >= indice_saldo_deudor_MIN)
+				{
+					saldo_deudor_superior_al_MIN = true;
+					
+				} else {
+					
+					saldo_deudor_superior_al_MIN = false;
+				}
+			
+			}
+			
+			//setPorc_pag( (double) (indice_saldo_capital));
+			
+		}
+		
+		return saldo_deudor_superior_al_MIN;
+		
+	}
+	
+	
 }

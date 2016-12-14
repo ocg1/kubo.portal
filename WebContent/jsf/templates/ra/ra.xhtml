@@ -7,145 +7,6 @@
 			<sup class="cerrarRa" onclick="cerrarRa()"></sup>
 				<h2>Cálculo del RA (Retorno Anual) y RA Estimado(Retorno Anual Estimado)</h2>
 			
-				<!-- 
-				<h3>Cálculo de Pérdida Probable:</h3>
-				<div class=" tablasRa">
-				<table cellspacing="0"  cellpadding="0" border="0">
-					<tr>
-						<th>Dias</th>
-						<th>Saldo Vigente</th>
-						<th>Saldo Atrasado</th>
-						<th>Total</th>
-						<th>Perdida</th>
-					</tr>
-
- 
-					<tr>
-						<td><strong>Total</strong></td>
-						<td><strong>9,702</strong></td>
-						<td><strong>86</strong></td>
-						<td><strong>9,788 </strong></td>
-						<td><strong>96</strong></td>
-						
-					</tr>
-					<tr>
-						<td>0</td>
-						
-						<td>8,560</td>
-						<td>  0</td>
-						<td>8,560 </td>
-						<td> 21</td>
-					
-					</tr>
-					<tr>
-						<td>
-				1 a 15</td>
-					
-						<td>1,003S</td>
-					
-				
-					
-						<td>
-					82</td>
-					
-						<td>
-					
-					1,086  </td>
-					
-				
-					<td>
-					52</td>
-</tr>
-<tr>
-<td>
-				16 a 30 </td>
-				
-				<td>139</td>
-				
-				<td>10</td>
-				
-				<td>149</td>
-					<td>
-					
-					24
-					</td>
-				</tr>
-				<tr>
-					<td>
-					31 a 60
-					</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-				
-				</tr>
-				<tr>
-					<td>
-					61 a 90
-					</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-				
-				</tr>
-				<tr>
-					<td>
-					91 a 120
-					</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-				
-				</tr>
-				<tr>
-					<td>
-					121 o más
-					</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-				
-				</tr>
-				</table>
-				<table cellspacing="0"  cellpadding="0" border="0">
-					<tr>
-						<th>Dias</th>
-						<th>Probas</th>
-					</tr>	
-					<tr>
-					<td>0 </td>   <td> 5%</td>
-					</tr>
-					<tr>
-<td>1 a 15</td>  
-<td>30%</td> 
-</tr>
-<tr>
-<td>16 a 30</td> 
- <td>40% </td> 
-</tr>
-<tr>
-<td>31 a 60</td>
-  <td>50%</td> 
-</tr>
-<tr>
-<td>61 a 90</td>  <td>80%</td> 
-</tr>
-<tr>
-<td>91 a 120</td>  <td>100%</td> 
-</tr>
-<tr>
-<td>121 o más</td>  <td>100%</td> 
-</tr>
-				
-				</table>
-				
-				
-				</div>
-				 -->
 				<h3>Definiciones:</h3>
 
 <p><strong>RA</strong>(Retorno Anual) es una medición anual de la tasa de retorno sobre el capital invertido
@@ -154,29 +15,39 @@ durante la vida de una inversión. Se basa en los pagos reales recibidos cada me
 
 no es una proyección al futuro.</p>
 
-<p><strong>RA Estimado</strong> (Retorno Anual Estimado) es similar al RA, la única diferencia es que se
+<!--p><strong>RA Estimado</strong> (Retorno Anual Estimado) es similar al RA, la única diferencia es que se
 
 hace una estimación de las pérdidas futuras. Para calcular esta estimación se aplica una
 
-tasa de pérdida la cual se obtiene con datos históricos.</p>
+tasa de pérdida la cual se obtiene con datos históricos.</p-->
 
 			<ul>
 					<li>RA <strong> #{myInvestments.retornoAnual}%</strong>
 						<img src="../resources/img/formula1.png"/>
 					</li>
 	
-					<li>RA Estimado <strong>#{myInvestments.retornoAnual_Ajustado}%</strong>
+					<!--li>RA Estimado <strong>#{myInvestments.retornoAnual_Ajustado}%</strong>
 					
 						<img src="../resources/img/formula2.jpg"/>
-					</li>
+					</li-->
 				</ul>
 				
 				
 			</div>
 			<div class="ra" >  
-				<h2>información de rendimientos <small>(prueba*)</small></h2>
-				
-						<div class="datosRa">
+				<h2>información de rendimientos</h2>
+				<div class="datosOnlyRa">
+						
+						<div  class="ra_inversionistas">
+							<div class="ayudaInfo" onclick="detalleRa()">?</div>
+							<p>Retorno Anual:  <span>#{myInvestments.retornoAnual}%</span></p>
+						</div>
+							<div  class="nuevos-inversionistas">
+								<p><strong>Aún no podemos calcular tu Retorno Anual, ya que tus inversiones son demasiado recientes.
+Tras haber transcurrido cuatro meses desde tu primera inversión, podrás consultar este dato.</strong></p>
+							</div>
+					</div>
+						<!-- div class="datosRa">
 								<div>
 								<div class="ayudaInfo" onclick="detalleRa()">?</div>
 								<p>Retorno Anual:  <span>#{myInvestments.retornoAnual}%</span></p>
@@ -188,7 +59,7 @@ tasa de pérdida la cual se obtiene con datos históricos.</p>
 										<span >#{myInvestments.retornoAnual_Ajustado}%</span>
 								</p>
 								</div>
-							</div>
+							</div-->
 							
 								<div class="graficaRA" onclick="cerrarTooltip ();">
 			<div class="ayudaInfo" onclick="ayudaRaTooltip(event.stopPropagation())">?</div>

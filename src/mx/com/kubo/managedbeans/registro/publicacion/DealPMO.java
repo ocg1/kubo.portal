@@ -8,6 +8,7 @@ import javax.xml.rpc.ServiceException;
 
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
+import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.services.mesa.solicitud.estatus.EstatusProyectLoan;
 
 public abstract class DealPMO extends DealAMO
@@ -96,26 +97,28 @@ implements DealIMO
 	{
 		System.out.println(" > DealPMO.reasignar_proyecto()");
 		
-		reasignador_service.setSesionBean(sesion);
-		reasignador_service.setProyect_loan_reasignable(proyect_loan_reasignable);
-		reasignador_service.crear_nuevo_proyecto(NUEVA_CONSULTA_ENABLED, 4);		
+		reasignador = new ReasignadorIMP();		
+		reasignador.setSesionBean(sesion);
+		reasignador.setProyect_loan_reasignable(proyect_loan_reasignable);
+		reasignador.crear_nuevo_proyecto(NUEVA_CONSULTA_ENABLED, 4);		
 	}
 
 	private void reasignar_proyecto() 
 	{
 		System.out.println(" > DealPMO.reasignar_proyecto()");
 		
-		reasignador_service.setSesionBean(sesion);
-		reasignador_service.setProyect_loan_reasignable(proyect_loan_reasignable);
-		reasignador_service.crear_nuevo_proyecto(NUEVA_CONSULTA_DISABLED, 4);		
+		reasignador = new ReasignadorIMP();	
+		reasignador.setSesionBean(sesion);
+		reasignador.setProyect_loan_reasignable(proyect_loan_reasignable);
+		reasignador.crear_nuevo_proyecto(NUEVA_CONSULTA_DISABLED, 4);		
 	}
 	
 	private void reasignar_documentos() 
 	{
 		System.out.println(" > DealPMO.reasignar_documentos()");
 		
-		reasignador_service.crear_lista_documentos(VALIDACION_VIGENCIA_ENABLED);
-		reasignador_service.copiar_documentos();	
+		reasignador.crear_lista_documentos(VALIDACION_VIGENCIA_ENABLED);
+		reasignador.copiar_documentos();	
 	}
 	
 	private void reasignar_menu_registro() 

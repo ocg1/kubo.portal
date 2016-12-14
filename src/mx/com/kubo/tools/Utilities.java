@@ -75,7 +75,7 @@ implements ApplicationContextAware, Serializable
 			Utilities.context = context;
 			
 			System.out.println("\n\n++++++++++++++++++++ SI JALO ++++++++++++++++++++\n\n");
-			
+/*			
 //			Thread.sleep( 3000 );
 //			
 //			ThreadVerificacionInicial verficador =  new ThreadVerificacionInicial ();
@@ -83,7 +83,8 @@ implements ApplicationContextAware, Serializable
 //			System.out.println("\n\n++++++++++++++++++++ THREAD ++++++++++++++++++++\n\n");
 //			
 //			verficador.excecuteAction();
-//			
+//*/			
+			
 			System.out.println("\n\n++++++++++++++++++++ OK ++++++++++++++++++++\n\n");
 //			
 			
@@ -711,9 +712,9 @@ implements ApplicationContextAware, Serializable
 		
 		if( str != null ) {
 			
-			String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+			String original = "áàäéèëíìïóòöúùüuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
 		    // Cadena de caracteres ASCII que reemplazarán los originales.
-		    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+		    String ascii = "aaaeeeiiiooouuuunAAAEEEIIIOOOUUUNcC";
 		    
 		    for (int i=0; i<original.length(); i++) {
 		        // Reemplazamos los caracteres especiales.

@@ -10,6 +10,7 @@ function resumen_saldos () {
 		
 	 }
 	 $( ".header").css("position", "fixed");
+	 raShow();
 }
 
 function saldo_kubo_impulso (){

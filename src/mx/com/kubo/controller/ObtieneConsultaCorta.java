@@ -46,6 +46,7 @@ public class ObtieneConsultaCorta {
 	public ResponseShortScore generaConsultaCorta( RequestShortScore request , boolean regService ){
 		
 		HttpURLConnection conn = null;
+		boolean consultaErronea = false;
 		
 		try {
 			
@@ -126,42 +127,54 @@ public class ObtieneConsultaCorta {
 					
 					strRes = output;
 					
-					JSONObject jsonObj = new JSONObject( output );
-					// {"score":"0687","burSolNum":"0000014333","valido":true,"clientId":13203,"servicioActivo":true}
-					
-					String 	score=(String) jsonObj.get("score");
-					String 	burSolNum=(String) jsonObj.get("burSolNum");
-					Boolean valido=(Boolean) jsonObj.get("valido");
-					
-					Integer clientId = null;
+					if( output.indexOf("null") != (-1) && output.indexOf("null") < 50  ){
 						
-					if( request.getClientId() != null ){
-					
-						clientId=(Integer) jsonObj.get("clientId");
+						consultaErronea = true;
 						
 					}
 					
-					
-					Boolean servicioActivo=(Boolean) jsonObj.get("servicioActivo");
-					
-					System.out.println( score +" - " + burSolNum +" - " + valido +" - "+ clientId +" - " + servicioActivo +" - " );
-					
-					ResponseShortScore res = new ResponseShortScore();
-					 
-					res.setBurSolNum(burSolNum);
-					res.setClientId(clientId);
-					res.setScore(score);
-					res.setServicioActivo(servicioActivo);
-					res.setValido(valido);
-					
-					if( regService ){
-					
-						SAFI_SOLICITUD_CREDITO_INIT = "Respuesta PROSPECTOR: PrimerNombre: score: "+ score +" - burSolNum: " + burSolNum +" - valido: " + valido +" - clientId: "+ clientId +" - servicioActivo: " + servicioActivo ;
+					if( !consultaErronea ){
 						
-						service_calling.registrar(RESPONSE, Integer.parseInt( request.getClientId() ), COMPANY_ID, SAFI_SOLICITUD_CREDITO_INIT);
+						JSONObject jsonObj = new JSONObject( output );
+						// {"score":"0687","burSolNum":"0000014333","valido":true,"clientId":13203,"servicioActivo":true}
+						
+						String 	score=(String) jsonObj.get("score");
+						String 	burSolNum=(String) jsonObj.get("burSolNum");
+						Boolean valido=(Boolean) jsonObj.get("valido");
+						
+						Integer clientId = null;
+							
+						if( request.getClientId() != null ){
+						
+							clientId=(Integer) jsonObj.get("clientId");
+							
+						}
+						
+						
+						Boolean servicioActivo=(Boolean) jsonObj.get("servicioActivo");
+						
+						System.out.println( score +" - " + burSolNum +" - " + valido +" - "+ clientId +" - " + servicioActivo +" - " );
+						
+						ResponseShortScore res = new ResponseShortScore();
+						 
+						res.setBurSolNum(burSolNum);
+						res.setClientId(clientId);
+						res.setScore(score);
+						res.setServicioActivo(servicioActivo);
+						res.setValido(valido);
+						
+						if( regService ){
+						
+							SAFI_SOLICITUD_CREDITO_INIT = "Respuesta PROSPECTOR: PrimerNombre: score: "+ score +" - burSolNum: " + burSolNum +" - valido: " + valido +" - clientId: "+ clientId +" - servicioActivo: " + servicioActivo ;
+							
+							service_calling.registrar(RESPONSE, Integer.parseInt( request.getClientId() ), COMPANY_ID, SAFI_SOLICITUD_CREDITO_INIT);
+						
+						}
+						return res;
 					
+					}else{
+						return null;
 					}
-					return res;
 					
 				}catch(Exception e){
 					

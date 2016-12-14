@@ -1,7 +1,7 @@
 package mx.com.kubo.managedbeans.investor;
 
 import java.io.Serializable;
-import java.sql.Time;
+//import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,22 +15,22 @@ import javax.faces.context.FacesContext;
 
 import mx.com.kubo.bean.ItemInversion;
 import mx.com.kubo.bean.ItemLoanList;
-import mx.com.kubo.controller.ThreadInvestmentAction;
+//import mx.com.kubo.controller.ThreadInvestmentAction;
 import mx.com.kubo.controller.inversion.Inversion;
-import mx.com.kubo.managedbeans.ListaCreditos;
+//import mx.com.kubo.managedbeans.ListaCreditos;
 import mx.com.kubo.model.ProyectFunding;
-import mx.com.kubo.model.ProyectFundingPK;
-import mx.com.kubo.model.ServiceCalling;
+//import mx.com.kubo.model.ProyectFundingPK;
+//import mx.com.kubo.model.ServiceCalling;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.json.JSONArray;
 
 import safisrv.ws.InvKuboServicios.ConsultaInverRequest;
 import safisrv.ws.InvKuboServicios.ConsultaInverResponse;
-import safisrv.ws.InvKuboServicios.SAFIServicios;
+/*import safisrv.ws.InvKuboServicios.SAFIServicios;
 import safisrv.ws.InvKuboServicios.SAFIServiciosServiceLocator;
 import safisrv.ws.InvKuboServicios.SolicitudInversionRequest;
-import safisrv.ws.InvKuboServicios.SolicitudInversionResponse;
+import safisrv.ws.InvKuboServicios.SolicitudInversionResponse;*/
 
 @ManagedBean
 @ViewScoped
@@ -44,7 +44,7 @@ public class InvestmentAction implements Serializable {
 	private 			List<ItemLoanList>   			proyectList;
 	private 			List<String>   					storedString;
 	private 			int 							numProyectToInv;
-	private 			List<ServiceCalling> 			lstService;
+	//private 			List<ServiceCalling> 			lstService;
 	private				List<ProyectFunding>			lstProyectosFondeados;
 //	protected 			SAFIServiciosServiceLocator 	locatorSafi;
 //	protected 			SAFIServicios 					servicioSafi;
@@ -52,13 +52,13 @@ public class InvestmentAction implements Serializable {
 	protected 			String 							investor_id;
 	protected 			String							saldoActual;
 	protected 			String 							safiClientId;
-	static private 	Double 							montoinvertido 		= 0D;
-	static private 	Double							montoNOinvertido 	= 0D;
-	static private 	int 							proyectos 			= 0;
+	private 	Double 							montoinvertido 		= 0D;
+	private 	Double							montoNOinvertido 	= 0D;
+	private 	int 							proyectos 			= 0;
 	//static private 	int 							porcentaje 			= 0;
-	static private 	int 							proyectosNoFondeados = 0;
+	private 	int 							proyectosNoFondeados = 0;
 	private 			List<ItemInversion>				listToInv;
-	private				int								listSize;
+	//private				int								listSize;
 	private  		Double tasaPonderada = 0D;
 	
 	@PostConstruct
@@ -87,11 +87,13 @@ public class InvestmentAction implements Serializable {
 		
 		setSafiClientId( nav.getNaturalPerson().getSafi_client_id() );
 		
-		if( getProyectList() != null ){
+		nav.setProyectListForInvesInd( null );
+		
+		/*if( getProyectList() != null ){
 			listSize = getProyectList().size();
 		}else{
 			listSize = 1;
-		}
+		} */
 		
 		if( getProyectList() != null ){
 		
@@ -119,16 +121,21 @@ public class InvestmentAction implements Serializable {
 			List<ItemInversion> tmp = new ArrayList<ItemInversion>();
 			
 			Double suma = 0D;
-		    tasaPonderada = 0D;
 		    
-			for( ItemInversion item : listToInv ){
-				
-				if( item.getStatus().equals("1") ){
-					tmp.add(item);
-					suma +=	item.getAmmount();
+		    if( listToInv != null ){
+		    	
+		    	
+			    tasaPonderada = 0D;
+			
+		    	for( ItemInversion item : listToInv ){
+					
+					if( item.getStatus().equals("1") ){
+						tmp.add(item);
+						suma +=	item.getAmmount();
+					}
+					
 				}
-				
-			}
+		    }
 			
 			for( ItemInversion item : tmp ){
 				tasaPonderada += (item.getAmmount()/suma)*Double.parseDouble(item.getTasa());
@@ -149,12 +156,16 @@ public class InvestmentAction implements Serializable {
 			RequestContext requestContext = RequestContext.getCurrentInstance();
 			List<ItemInversion> tmp = new ArrayList<ItemInversion>();
 			
-			for( ItemInversion item : listToInv ){
-				
-				if( item.getStatus().equals("0") ){
-					tmp.add(item);
+			if( listToInv != null ){
+			
+				for( ItemInversion item : listToInv ){
+					
+					if( item.getStatus().equals("0") ){
+						tmp.add(item);
+					}
+					
 				}
-				
+			
 			}
 			
 			requestContext.addCallbackParam("invList", new JSONArray(tmp.toArray(),true).toString());
@@ -189,6 +200,8 @@ public class InvestmentAction implements Serializable {
 			
 			setProyectList( investorSession.getListToInvestment() );
 			
+			investorSession.setListToInvestment( null ) ;
+			
 			lstProyectosFondeados = investorSession.getInvestmentList();
 			
 			inversion.setLstProyectosFondeados( lstProyectosFondeados );
@@ -200,7 +213,7 @@ public class InvestmentAction implements Serializable {
 			inversion.setSafiClientId( getSafiClientId() );
 			
 			
-			if( proyectList !=null ){
+			if( proyectList !=null && proyectList.size() > 0  ){
 				
 				System.out.println("investmentActionFnc");
 				inicializaVariables();
@@ -548,7 +561,7 @@ public class InvestmentAction implements Serializable {
 	
 	
 	private void inicializaVariables(){
-		lstService = null;
+		//lstService = null;
 		storedString = null;
 	}
 	

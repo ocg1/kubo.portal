@@ -463,59 +463,300 @@ public class NotificacionHTML
 			"</body>	"	+	
 			"</html>	"	;	
 	
+	
 	public static String CUERPO_TEMP_PASS=
-			"			<html>				"	+		
-					"	 <body style='margin: 0; padding: 0; background: #ffffff;'>				"	+	
-					"	 	<table width='100%' cellpadding='0' cellspacing='0' border='0'>				"	+	
-					"			  <tr>				"	+	
-					"			  	<td align='center' bgcolor='#ffffff' style='margin: 0;'>				"	+	
-					"				    <table cellpadding='0' cellspacing='0' border='0' width='600' style='font-weight:200;font-size:14px;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333333;'>				"	+	
-					"	            <tr><td height='30'></td></tr>				"	+	
-					"	            <tr>				"	+	
-					"		              <td style='margin: 0px;width: 100%;' style='text-align: left;'>	"	+
-					"					          <table cellpadding='0' cellspacing='0' border='0' style='line-height:20px;'>	"	+	
-					"		                  <tr>	"	+	    			    
-					"	      			        <td colspan='3' width='100' height='100' align='left' style='text-align: left;' >				"	+	
-					"								<div style='float: left; width: auto; height: auto; overflow: auto; text-align: left;margin-bottom: 10px;'>			"	+			
-					"	                      			<a href='https://www.kubofinanciero.com'><img src='"+URL+"resources/img/logo_for_mail2.png' width='100px' height='100px' alt='kubofinanciero.com.mx'  border='0' /></a>				"	+
-					"								</div>	"	+
-					"	     			        </td>				"	+	
-					"		      			      </tr>	"	+	
-					"					          </table>	"	+	
-					"		              </td>	"	+	
-					"	            </tr>				"	+ 
-					"		            <tr>	"	+	
-					"		              <td bgcolor='#F2F3F2' style='padding-top:20px;padding-left:20px;padding-bottom:20px;font-size:1.4em;font-weight:200;color:#353535;'>	"	+	
-					"						<div style='font-size: 12px; text-align: right; margin-right: 10px;'>###Fecha###</div>	"	+					
-					"		              </td>	"	+	
-					"		            </tr>	"	+
-					"	            <tr>				"	+	
-					"	              <td bgcolor='#F2F3F2' style='padding-bottom:20px;padding-left:20px;'>				"	+	
-					"	                <p>Nos has solicitado restablecer tu contraseña de acceso al portal Kubo.financiero."+
-					"							Para que puedas asignar tu nueva contraseña, por favor da click en el siguiente link y sigue las instrucciones:</p>				"	+	
-					"	                <p> <a href='"+URL+"jsf/forgotpass.jsf?clave=ldsgeorufxhnvcvsbnfbvsxnnvsh&prospecto=098375372327563&counter=###TEMPASS###&valor=iskqwisdhfzncwertgfdfdsgnxbvc&clave1=8765209293847456233486&clave2=erdfcvbhjuiy6tfvbvfdr56y7uioijn2w' style='color:#439539;font-weight:bold;'>Click aquí para restablecer contraseña</a></p>				"	+	
-					"	                <p> Este acceso será válido durante 24 horas, si durante este tiempo no has cambiado tu contraseña, tendrás que volver a solicitarlo a través del portal.</p>				"	+	
-					"	                <p>Si no has solicitado por ningún medio el restablecimiento de tu contraseña, por favor notifícanoslo vía correo electrónico o vía telefónica.</p>				"	+
-					"					<p style='color:gray'>Para no caer en la carpeta de spam, por favor agrega soporte@kubofinanciero.com a tu libreta de direcciones.</p>					"	+
-					"	                <p>Atentamente,<br />El equipo <b>kubo.financiero</b></p>				"	+	
-					"	              </td>				"	+	
-					"	            </tr>				"	+	
-					"	            <tr>				"	+	
-					"	              <td>				"	+	
-					"	                <table width='600' cellpadding='0' cellspacing='0' border='0' align='center'>				"	+	
-					"	                  <tr>				"	+	
-					"				"	+	                    
-					"						<td colspan='2' align='center'><p> <br />Barranca del Muerto 92 Col. Florida Del. &Aacute;lvaro Obreg&oacute;n C.P. 01030 | 6269-0024</p></td>	"	+	
-					"	                  </tr>				"	+	
-					"	                </table>				"	+	
-					"	              </td>				"	+	
-					"	            </tr>				"	+	
-					"	          </table>				"	+	
-					"	        </td>				"	+	
-					"	      </tr>				"	+	
-					"	    </table>				"	+	
-					"	  </body>				"	+	
-					"	</html>				"	;
+			"           <html>              "   +       
+                    "    <body style='margin: 0; padding: 0; background: #ffffff;'>             "   +   
+"<center class=''>"+
+"            <table align='center' border='0' cellpadding='0' cellspacing='0' height='100%' width='100%'>"+
+"                <tbody><tr>"+
+"                    <td align='center' valign='top'>"+
+"                        "+
+"                        <table border='0' cellpadding='0' cellspacing='0' style='max-width:600px;'>"+
+"                            <tbody><tr>"+
+"                                <td align='center' valign='top'>"+
+"                                    "+
+"                                    <table border='0' cellpadding='0' cellspacing='0' style='max-width:600px;'>"+
+"                                        <tbody><tr>"+
+"                                           <td valign='top' style='padding-top:9px'></td>"+
+"                                        </tr>"+
+"                                    </tbody></table>"+
+"                                    "+
+"                                </td>"+
+"                            </tr>"+
+"                            <tr>"+
+"                                <td align='center' valign='top'>"+
+"                                    "+
+"                                    <table border='0' cellpadding='0' cellspacing='0' style='max-width:600px;'>"+
+"                                        <tbody><tr>"+
+"                                            <td valign='top'><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td style='padding:9px' valign='top'>"+
+"                "+
+""+
+""+
+""+
+"<table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody><tr>"+
+"        <td style='padding:0 9px' valign='top'>"+
+"            <table align='left' border='0' cellpadding='0' cellspacing='0'>"+
+"                <tbody><tr>"+
+"                    <td valign='top'>"+
+"                    "+
+"                        "+
+""+
+"                        <img alt='' src='https://gallery.mailchimp.com/7c666fe447050b12d0d818e59/images/2e501565-e941-48a5-b85c-5310a1822c11.jpg' style='max-width:100px' width='100'>"+
+"                        "+
+""+
+"                    "+
+"                    </td>"+
+"                </tr>"+
+"            </tbody></table>"+
+"            <table align='right' border='0' cellpadding='0' cellspacing='0' width='264'>"+
+"                <tbody><tr>"+
+"                    <td style='text-align:right' valign='top'>"+
+"                        "+
+"                    </td>"+
+"                </tr>"+
+"            </tbody></table>"+
+"        </td>"+
+"    </tr>"+
+"</tbody></table>"+
+""+
+""+
+""+
+""+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td valign='top'>"+
+"                "+
+"                <table border='0' cellpadding='0' cellspacing='0' width='100%' align='left'>"+
+"                    <tbody><tr>"+
+"                        "+
+"                        <td style='padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px' valign='top'>"+
+"                        "+
+"                            <div style='text-align:left'><strong><span style='font-size:19px'>Hola, ##name##. </span></strong><br>"+
+"<br>"+
+"<span style='font-size:19px'>Hemos recibido una solicitud para restablecer tu contraseña, da clic en el siguiente botón y sigue las instrucciones:</span><br>"+
+"<br>"+
+"&nbsp;</div>"+
+""+
+"                        </td>"+
+"                    </tr>"+
+"                </tbody></table>"+
+"                "+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table></td>"+
+"                                        </tr>"+
+"                                    </tbody></table>"+
+"                                    "+
+"                                </td>"+
+"                            </tr>"+
+"                            <tr>"+
+"                                <td align='center' valign='top'>"+
+"                                    "+
+"                                    <table border='0' cellpadding='0' cellspacing='0' style='max-width:600px;'>"+
+"                                        <tbody><tr>"+
+"                                            <td valign='top'><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td style='padding-top:0;padding-right:18px;padding-bottom:18px;padding-left:18px' align='center' valign='top'>"+
+"                <table style='border-collapse:separate!important;border-radius:3px;background-color:#ff8a02' border='0' cellpadding='0' cellspacing='0'>"+
+"                    <tbody>"+
+"                        <tr>"+
+"                            <td style='font-family:Arial;font-size:20px;padding:15px' align='center' valign='middle'>"+
+"                                <a style='color:#fff; text-decoration:none;' href='"+URL+"jsf/forgotpass.jsf?clave=ldsgeorufxhnvcvsbnfbvsxnnvsh&prospecto=098375372327563&counter=###TEMPASS###&valor=iskqwisdhfzncwertgfdfdsgnxbvc&clave1=8765209293847456233486&clave2=erdfcvbhjuiy6tfvbvfdr56y7uioijn2w'>Click aquí para restablecer contraseña</a>"+
+"                            </td>"+
+"                        </tr>"+
+"                    </tbody>"+
+"                </table>"+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td valign='top'>"+
+"                "+
+"                <table border='0' cellpadding='0' cellspacing='0' width='100%' align='left'>"+
+"                    <tbody><tr>"+
+"                        "+
+"                        <td style='padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px' valign='top'>"+
+"                        "+
+"                            <div style='text-align:left'><span style='font-size:16px'>Este acceso será válido durante 24 horas, pasado el tiempo tendrás que volver a solicitarlo a través del portal. Si no realizaste la solicitud, ignora este correo.</span><br></div>"+
+""+
+"                        </td>"+
+"                    </tr>"+
+"                </tbody></table>"+
+"                "+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td style='padding:18px'>"+
+"                <table style='border-top:1px dotted #e9e9e9' border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"                    <tbody><tr>"+
+"                        <td>"+
+"                            <span></span>"+
+"                        </td>"+
+"                    </tr>"+
+"                </tbody></table>"+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td valign='top'>"+
+"                "+
+"                <table border='0' cellpadding='0' cellspacing='0' width='100%' align='left'>"+
+"                    <tbody><tr>"+
+"                        "+
+"                        <td style='padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px' valign='top'>"+
+"                        "+
+"                            <div style='text-align:center'>"+
+"<div style='text-align:center'><span style='font-size:16px'><span lang='es'><span>¿Tienes dudas? </span><br>"+
+"<span>Llámanos al </span></span><span style='color:#3f963f'>6269 0024 </span><span lang='es'>o escríbenos a </span><span style='color:#3f963f'><a href='mailto:soporte@kubofinanciero.com' target='_blank'>soporte@kubofinanciero.com</a></span></span></div>"+
+""+
+"<div style='text-align:center'>&nbsp;</div>"+
+"</div>"+
+""+
+"                        </td>"+
+"                    </tr>"+
+"                </tbody></table>"+
+"                "+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td style='padding:9px' valign='top' align='center'>"+
+"                <table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody><tr>"+
+"        <td style='padding-left:9px;padding-right:9px' align='center'>"+
+"            <table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"                <tbody><tr>"+
+"                    <td style='padding-top:9px;padding-right:9px;padding-left:9px' valign='top' align='center'>"+
+"                        <table border='0' cellpadding='0' cellspacing='0'>"+
+"                            <tbody><tr>"+
+"                                <td valign='top'>"+
+"                                    "+
+"                                    "+
+"                                        "+
+"                                            <table border='0' cellpadding='0' cellspacing='0' align='left'>"+
+"                                                 "+
+"                                                <tbody><tr>"+
+"                                                    <td style='padding-right:10px;padding-bottom:9px' valign='top' align='center'>"+
+"                                                        <a href='https://www.facebook.com/Kubofinanciero?fref=ts' target='_blank'><img src='http://cdn-images.mailchimp.com/icons/social-block-v2/outline-gray-facebook-96.png' alt='Facebook' style='width:48px;max-width:48px;display:block' width='48'></a>"+
+"                                                    </td>"+
+"                                                </tr>"+
+"                                                "+
+"                                                "+
+"                                            </tbody></table>"+
+"                                        "+
+"                                        "+
+"                                    "+
+"                                        "+
+"                                            <table border='0' cellpadding='0' cellspacing='0' align='left'>"+
+"                                                 "+
+"                                                <tbody><tr>"+
+"                                                    <td style='padding-right:10px;padding-bottom:9px' valign='top' align='center'>"+
+"                                                        <a href='https://twitter.com/kubofinanciero' target='_blank'><img src='http://cdn-images.mailchimp.com/icons/social-block-v2/outline-gray-twitter-96.png' alt='Twitter' style='width:48px;max-width:48px;display:block' width='48'></a>"+
+"                                                    </td>"+
+"                                                </tr>"+
+"                                                "+
+"                                                "+
+"                                            </tbody></table>"+
+"                                        "+
+"                                        "+
+"                                    "+
+"                                        "+
+"                                            <table border='0' cellpadding='0' cellspacing='0' align='left'>"+
+"                                                 "+
+"                                                <tbody><tr>"+
+"                                                    <td style='padding-right:0;padding-bottom:9px' valign='top' align='center'>"+
+"                                                        <a href='https://www.youtube.com/user/KuboFinanciero' target='_blank'><img src='http://cdn-images.mailchimp.com/icons/social-block-v2/outline-gray-youtube-96.png' alt='YouTube' style='width:48px;max-width:48px;display:block' width='48'></a>"+
+"                                                    </td>"+
+"                                                </tr>"+
+"                                                "+
+"                                                "+
+"                                            </tbody></table>"+
+"                                        "+
+"                                        "+
+"                                    "+
+"                                    "+
+"                                </td>"+
+"                            </tr>"+
+"                        </tbody></table>"+
+"                    </td>"+
+"                </tr>"+
+"            </tbody></table>"+
+"        </td>"+
+"    </tr>"+
+"</tbody></table>"+
+""+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table></td>"+
+"                                        </tr>"+
+"                                    </tbody></table>"+
+"                                    "+
+"                                </td>"+
+"                            </tr>"+
+"                            <tr>"+
+"                                <td align='center' valign='top'>"+
+"                                    "+
+"                                    <table border='0' cellpadding='0' cellspacing='0' style='max-width:600px;'>"+
+"                                        <tbody><tr>"+
+"                                            <td valign='top' style='padding-bottom:9px'><table border='0' cellpadding='0' cellspacing='0' width='100%'>"+
+"    <tbody>"+
+"        <tr>"+
+"            <td valign='top'>"+
+"                "+
+"                <table border='0' cellpadding='0' cellspacing='0' width='100%' align='left'>"+
+"                    <tbody><tr>"+
+"                        "+
+"                        <td style='padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px' valign='top'>"+
+"                        "+
+"                            <div style='text-align:center'>"+
+"<div style='text-align:center'><span style='color:#a9a9a9'><span style='font-size:14px'>Enviado con <img src='https://ci6.googleusercontent.com/proxy/qsjmTX9ewR3rsS6TGhIj_4ZI9QbSil8BafCcF52ptrAM2PoEmjOEdx3aBpmwUhUxQOOeFi0U3XhRxvkegQQSLXwEztRK35o4hn8cUSUQCuVlK_K8OkGxH8R8rniqzEOXGsTlPiEkeamrX9aQI8biQ_-w4tg=s0-d-e1-ft#https://a1.muscache.com/airbnb/rookery/email/footer/heart-40429bf8c39010bbdf3a3037be994609.png' style='margin:0;padding:0;font-family:Helvetica Neue,Helvetica,Helvetica,Arial,sans-serif;max-width:100%' height='10' width='12'> desde la oficina central de <span>kubo.financiero</span></span><br>"+
+"<span style='font-size:14px'><em>Copyright © kubo.financiero. Todos los derechos reservados.</em><br>"+
+"Barranca Del Muerto 92, Col. Florida,<br>"+
+"C.P. 01030, México D.F.</span></span></div>"+
+"</div>"+
+""+
+"                        </td>"+
+"                    </tr>"+
+"                </tbody></table>"+
+"                "+
+"            </td>"+
+"        </tr>"+
+"    </tbody>"+
+"</table></td>"+
+"                                        </tr>"+
+"                                    </tbody></table>"+
+"                                    "+
+"                                </td>"+
+"                            </tr>"+
+"                        </tbody></table>"+
+"                        "+
+"                    </td>"+
+"                </tr>"+
+"            </tbody></table>"+
+"        </center>"+
+        "     </body>               "   +   
+                    "   </html>             "   ;
 	
 	public static String CUERPO_MAIL_CONFIRMACION=
 					"			<html>				"	+		

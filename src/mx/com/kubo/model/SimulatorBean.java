@@ -9,57 +9,40 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 
-@Entity
-@Table(name="ln_simulation")
-public class SimulatorBean implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity @Table(name = "ln_simulation")
+public class SimulatorBean implements Serializable
+{
+	private static final long serialVersionUID = -403849391092163534L;
 	
 	@EmbeddedId
-	private SimulatorPK simulatorPK;
-	@Column
-	private Integer sim_order;////	"tinyint(3) unsigned"
+	private SimulatorPK simulatorPK;	
 	
-	@Column
-	private Date date;//	date
-	@Column
-	private String title;//	varchar(35)
-	@Column
-	private char type;//	char(1)
-	@Column
-	private Integer type_id;//	"smallint(5) unsigned"
-	@Column
-	private Integer purpose_id;//	"smallint(5) unsigned"
-	@Column
-	private Double ammount;//	"decimal(12
-	@Column
-	private Integer bc_score;//	"smallint(5) unsigned"
-	@Column
-	private Integer term_id;//	"tinyint(3) unsigned"
-	@Column
-	private Double payment;//	"decimal(12
-	@Column
-	private Integer frequency_id;//	"tinyint(3) unsigned"
-	@Column
-	private Integer num_payments;//	"tinyint(3) unsigned"
-	@Column
-	private Double total_payment;//	"decimal(12
-	@Column
-	private Double period_rate;//	"decimal(12
-	@Column
-	private Double yearly_rate;//	"decimal(12
-	@Column
-	private Double total_interest;//	"decimal(12
-	@Column
-	private Double yearly_interest;//	"decimal(12
-	@Column
-	private Double mx_cat;//	"decimal(12
-	@Column
-	private String origin;//	"decimal(12
+	@Column private Date date;
 	
+	@Column private String origin;//	"decimal(12
+	@Column private String title;//	varchar(35)
+	
+	@Column private Integer sim_order;
+	@Column private Integer type_id;//	"smallint(5) unsigned"
+	@Column private Integer purpose_id;//	"smallint(5) unsigned"	
+	@Column private Integer bc_score;//	"smallint(5) unsigned"
+	@Column private Integer term_id;//	"tinyint(3) unsigned"	
+	@Column private Integer frequency_id;//	"tinyint(3) unsigned"
+	@Column private Integer num_payments;//	"tinyint(3) unsigned"
+	
+	@Column private Double ammount;//	"decimal(12
+	@Column private Double payment;//	"decimal(12
+	@Column private Double total_payment;//	"decimal(12
+	@Column private Double period_rate;//	"decimal(12
+	@Column private Double yearly_rate;//	"decimal(12
+	@Column private Double total_interest;//	"decimal(12
+	@Column private Double yearly_interest;//	"decimal(12
+	@Column private Double mx_cat;//	"decimal(12
+	
+	@Column private Double opening_commission_amount;
+	@Column private Double total_to_receive;	
+	
+	@Column private char type;//	char(1)
 	
 	public SimulatorBean(){
 		
@@ -193,6 +176,23 @@ public class SimulatorBean implements Serializable{
 		this.origin = origin;
 	}
 	
+	public Double getOpening_commission_amount()
+	{
+		return opening_commission_amount;
+	}
 	
+	public void setOpening_commission_amount(Double opening_commission_amount)
+	{
+		this.opening_commission_amount = opening_commission_amount;
+	}
 	
+	public Double getTotal_to_receive()
+	{
+		return total_to_receive;
+	}
+	
+	public void setTotal_to_receive(Double total_to_receive)
+	{
+		this.total_to_receive = total_to_receive;
+	}
 }

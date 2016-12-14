@@ -1,7 +1,8 @@
-package mx.com.kubo.repositories;
+package mx.com.kubo.repositories;	
 
 import java.util.List;
 
+import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
@@ -25,4 +26,9 @@ public interface ProspectusDao {
 	List<Prospectus> loadProspectsList();
 	
 	Prospectus getProspectusByHSId(Integer vid);
+	
+	public boolean altaProspectoHS( HS_OBJ hs_obj );
+	
+	public boolean updateProspectoHS( HS_OBJ hs_obj );
+	
 }

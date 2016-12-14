@@ -118,5 +118,32 @@ implements RegistrationReasonDao
 		}
 		
 	}
+	
+	public RegistrationReason getRegistrationReasonByPartner( String partner_id ){
+		
+		try{
+			
+			String query = " from RegistrationReason where partner_id = ? ";
+			RegistrationReason utmObj =em.createQuery(query, RegistrationReason.class).setParameter(1, partner_id).getSingleResult();
+			return utmObj;
+		
+		}catch( EntityNotFoundException nf){
+			
+			System.out.println( "No encontrado: " + partner_id );
+			return null;
+			
+		}catch(NoResultException nr){
+			
+			System.out.println( "No encontrado: " + partner_id );
+			return null;
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			return null;
+			
+		}
+		
+	}
 
 }

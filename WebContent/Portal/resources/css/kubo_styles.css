@@ -7368,29 +7368,29 @@ text-decoration:underline;color: #8FC450;}
 }
 
 .azul .tabla-header, .azul  .combo_checkBox.fa-check {
-	background: #64DBFE;
-	border: solid 1px #64DBFE;
+	background:#00BCD4;
+	border: solid 1px #00BCD4;
 }
 .morado .tabla-header, .morado  .combo_checkBox.fa-check {
-	background: #7073BE;
-	border: solid 1px #7073BE;
+	background: #20B166;
+	border: solid 1px #20B166;
 }
 .amarillo .tabla-header, .amarillo .combo_checkBox.fa-check{
-	background: #FFC107;
-	border: solid 1px #FFC107;
+	background: #FF7173;
+	border: solid 1px #FF7173;
 }
 
 .tablaUn.azul  .callAction { 
-background: #64DBFE;border-bottom: solid 3px #014C87;}
+background: #00BCD4; border-bottom: solid 3px #00BCD4;}
 
 .tablaUn.morado  .callAction {
-	background: #7073BE;
-	border-bottom: solid 3px #5C045C;
+	background: #20B166;
+	border-bottom: solid 3px #20B166;
 }
 
 .tablaUn.amarillo  .callAction {
-	background: #FFC107;
-	border-bottom: solid 3px #A8A808;
+	background: #FF7173;
+	border-bottom: solid 3px #FF7173;
 }
 
 .tabla-cont  {
@@ -7452,7 +7452,7 @@ background: #64DBFE;border-bottom: solid 3px #014C87;}
 	
 }
 
-.btn-oferta-continuar
+.btn-oferta-continuar, .renovacion-hidden, .mensajeConfirmacionPrestamo
 {
 	display: none;
 }
@@ -7493,15 +7493,16 @@ background: #64DBFE;border-bottom: solid 3px #014C87;}
 
 
 .prestamoAprobado.azul, .mensajeConfirmacionPrestamo.azul{
-	border: solid 2px #64DBFE;
+	border: solid 2px #00BCD4;
 }
 
 .prestamoAprobado.morado, .mensajeConfirmacionPrestamo.morado {
-	border: solid 1px #7073BE;
+	border: solid 1px #20B166;
 }
 
 .prestamoAprobado.amarillo, .mensajeConfirmacionPrestamo.amarillo {
-	background: #FFC107;
+		border: solid 1px  #FF7173;
+;
 }
 .prestamoAprobado .table_encabezado {
 	padding:20px;
@@ -7511,22 +7512,32 @@ background: #64DBFE;border-bottom: solid 3px #014C87;}
 }
 
 .prestamoAprobado.azul .table_encabezado {
-	background:#64DBFE;
+	background:#00BCD4;
 
 }
 
 
-.prestamoAprobado.azul .table_encabezado p{
+.prestamoAprobado .table_encabezado p{
 	font-size:20px;
 	font-weight:600;
 	
 
 }
 
-.prestamoAprobado.azul .table_encabezado h2{
+.prestamoAprobado .table_encabezado h2{
 	font-size: 38px;
 	font-weight:600;
 }
+
+.prestamoAprobado.amarillo .table_encabezado {
+		background: #FF7173;
+
+}
+.prestamoAprobado.morado .table_encabezado {
+		background: #20B166;
+
+}
+
 .contenidoTable {
 	padding: 15px 0 30px;
 }
@@ -7676,7 +7687,7 @@ text-align:left;
 	font-family: 'Lato', sans-serif;
     color:#666;}
 
-.alertaContrasena {
+.alertaModal {
 	background: #fff;
 	display:block;
 	position: absolute;
@@ -7687,8 +7698,7 @@ text-align:left;
 	-moz-box-shadow: 0px 2px 9px #999;
 	/* -webkit-box-shadow: 0px 2px 9px #999; */
 	border: solid 2px #8CC251;
-	top:150px;
-	max-width: 460px;
+
 	-webkit-transition: .4s;
 	-moz-transition: .4s;
 	-o-transition: .4s;
@@ -7700,7 +7710,11 @@ text-align:left;
 	opacity: 0;
 	padding:0;
 }
-.alertaContrasena.show {
+.pass-renovaciones {
+		top:150px;
+	max-width: 460px;
+}
+.alertaModal.show {
 	-webkit-transform:scale(1);
 	-moz-transform:scale(1);
 	-o-transform:scale(1);
@@ -7708,7 +7722,7 @@ text-align:left;
 	opacity: 1;
 }
 
-.alertaContrasena  .tituloNuevo {
+.pass-renovaciones  .tituloNuevo {
 	background: #8CC251;
 	color:#fff;
 	padding: 22px 40px 12px;
@@ -7717,13 +7731,13 @@ text-align:left;
 	height:auto;
 }
 
-.alertaContrasena .tituloNuevo h2 {
+.pass-renovaciones .tituloNuevo h2 {
 	font-weight:600;
 	margin:0 0 10px;
 }
 
 
-.alertaContrasena  .tituloNuevo p{
+.pass-renovaciones  .tituloNuevo p{
 	line-height:25px;
 }
 
@@ -7731,14 +7745,14 @@ text-align:left;
 	font-size:17px !important;
 }
 
-.alertaContrasena .contrasenaValida {
+.pass-renovaciones .contrasenaValida {
 	display:none;
 }
 
 
 
 @media (max-width:550px) { 
-.alertaContrasena {
+.pass-renovaciones {
 	top:50px;
 	position:absolute !important;
 	width: 93% !important;
@@ -7764,6 +7778,7 @@ text-align:left;
 	color:#333;
 	font-weight:700;
 	font-size:25px;
+	line-height: 22px;
 }
 
 .pasos_generales.renovacion-texto .btnNaranja {
@@ -7775,4 +7790,247 @@ text-align:left;
 	height: 180px;
 	width: 180px;
 	margin: 0 auto 0px;
+}
+
+.efl-title h2 {
+	width: 60%;
+	margin: 0 auto;
+}
+
+
+.efl-n {
+	overflow:hidden;
+	width: 620px;
+	margin:0 auto;
+}
+
+.efl-n figure {
+	width: 190px;
+	float:left;
+	/* background-color: white; */
+	margin: 0 0 20px;
+}
+
+
+.efl-n figure img {
+	width:100%;
+
+}
+
+.efl-text {
+	width: 400px;
+	float:right;
+	overflow:hidden;
+}
+
+.efl-text.links p{
+	text-align: left;
+	font-weight: 600;
+	color: #666;
+	font-size:17px;
+	margin: 0 0 20px;
+}
+
+.efl-n .callAction{
+	width:400px;
+	clear:both;
+	margin:0 auto;
+}
+
+.efl-n h3{
+	color:#8CC251;
+	font-size:22px;
+	margin:0 auto;
+	text-align:center;
+	margin: 0 0 40px;
+	font-weight: 800;
+	line-height: 27px;
+}
+
+
+
+@media (max-width:650px) { 
+.efl-n  {
+	width:100%;
+	margin:0 0 20px
+}
+.efl-text {
+	width: 100%;
+
+	margin: 0 auto 20px;
+}
+
+.efl-n figure {
+	width: 190px;
+	float:none;
+	/* background-color: white; */
+	margin: 0 auto 20px;
+}
+.efl-n .callAction{
+	width:280px;
+
+}
+
+.efl-title h2 {
+	width: 100%;
+	margin: 0 auto;
+}
+}
+
+
+
+
+.image-inv {
+	width:30%;
+	float:left;
+}
+
+.image-inv img{
+	width:100%;
+}
+.text-inv {
+	width: 61%;
+	float:right;
+}
+
+.text-inv h3{
+	color:#8FC450;
+	overflow:hidden;
+	clear: both;
+	margin: 0;
+}
+
+.text-inv h3 small{
+	display:block;
+
+	width:35px;
+	height:35px;
+	border-radius:20px;
+	background:#8FC450;;
+	color:#fff;
+	text-align:center;
+	line-height:34px;
+	font-size:22px;
+	float:left;
+	margin:0 10px 0 0;
+
+
+}
+.text-inv h3 span{
+		font-size:22px;
+	margin:7px 0 0;
+	display:block;
+}
+
+.text-inv p{
+	font-size:16px;
+	margin:0 0 30px;
+	width: 90%;
+	float: right;
+}
+
+@media (max-width:1024px) { 
+	.text-inv {
+		width:100%;
+		margin:0 0 20px;
+	}
+	
+	.image-inv  {
+		float:none;
+		width:200px;
+		margin:0 auto 20px;
+	}
+}
+
+#ofertas-panel-simulador .simulador {
+	margin:0 auto !important;
+	overflow: hidden;
+	max-width: 600px;
+	box-shadow: 0px 2px 7px #ccc;
+	background: #fff;
+	padding: 20px 0;
+}
+
+#ofertas-panel-simulador .simulador  .bloqueBanner {
+	width: 300px;
+	margin: 0 auto;
+	float: none;
+}
+
+ #ofertas-panel-simulador .simulador  .bloqueBanner  h2 {
+ 	display:none;
+ }
+
+ #ofertas-panel-simulador .simulador  .bloqueBanner    .solicitarPrestamo {
+ 	text-align:center;
+ 	width:100%;
+ 	display:block;
+ 	clear: both;
+ 	float: none;
+ }
+
+  #ofertas-panel-simulador .bloqueBanner  ol li {
+  	width:100%;
+  }
+
+  #ofertas-panel-simulador  #simulador_ammount {
+  	width:95%;
+  }
+
+
+.prestamoAprobado .callAction.underline:hover { 
+	border:none !important;
+
+}
+
+
+.contenidoTable table tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.contenidoTable table tr:nth-child(odd) {
+  background:#fff;
+}
+
+
+.pantalla-style-1 {
+	padding:0 10%;	
+}
+
+.pantalla-style-1 p{
+	font-size:24px !important;
+	font-weight:600 !important;
+	text-align:center !important;
+	line-height:30px !important;
+	color:#333 !important;
+	margin:0 0 50px !important;
+}
+.renovacionesPopUp {
+	max-width:950px;
+	top:50px;
+	padding:50px;	
+}
+
+
+.prestamoAprobado .labelsStl.clLabelCondiciones {
+	font-size:15px;
+	padding:10px;
+	line-height:20px;
+}
+
+.prestamoAprobado .labelsStl.clLabelCondiciones a {
+	text-decoration:underline;
+}
+
+#fancybox-outer #msgprocessing label {
+	display:block;
+	text-align:center;
+	margin:0 0 20px;
+	font-size:15px;
+}
+
+#fancybox-outer #msgprocessing img {
+	display:block;
+	text-align:center;
+	margin:0 auto;
 }

@@ -10,6 +10,7 @@ import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.kubows.SMSRequestService;
 import mx.com.kubo.kubows.WsResponse;
+import mx.com.kubo.model.AyudaDocumentos;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Change_controlPK;
 import mx.com.kubo.model.ClientesEnMora;
@@ -22,6 +23,7 @@ import mx.com.kubo.model.SafiDepositoRefere;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.services.AutomaticInvestmentService;
+import mx.com.kubo.services.AyudaDocumentosService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.ClientesEnMoraService;
 import mx.com.kubo.services.CobranzaPreventivaService;
@@ -51,6 +53,18 @@ public class VerificadorInicio extends Thread  {
 		private final int EVENT_COBRANZA_CLIENTES_MORA_75_80 = 53;
 		private final int EVENT_COBRANZA_CLIENTES_MORA_81_90 = 54;
 		
+		private final int EVENT_AYUDA_DOCUMENTACION_DIA_1 = 55;
+		private final int EVENT_AYUDA_DOCUMENTACION_DIA_2 = 56;
+		private final int EVENT_AYUDA_DOCUMENTACION_DIA_3 = 57;
+		private final int EVENT_AYUDA_DOCUMENTACION_DIA_4 = 58;
+		private final int EVENT_AYUDA_DOCUMENTACION_DIA_5 = 59;
+		
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_1 = 11;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_2 = 12;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_3 = 13;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_4 = 14;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_5 = 15;
+		
 		private final int KUBO_USER=0;
 		
 		private int int_VERIFICAPRIORITARIOSSINPUBLICAR = 1;
@@ -63,6 +77,12 @@ public class VerificadorInicio extends Thread  {
 		private int int_SMS_COBRANZA_CLIENTES_MORA_61_90 = 1;
 		private int int_SMS_COBRANZA_CLIENTES_MORA_75_80 = 1;
 		private int int_SMS_COBRANZA_CLIENTES_MORA_81_90 = 1;
+		
+		private int int_SMS_AYUDA_DOCUMENTACION_DIA_1 = 1;
+		private int int_SMS_AYUDA_DOCUMENTACION_DIA_2 = 1;
+		private int int_SMS_AYUDA_DOCUMENTACION_DIA_3 = 1;
+		private int int_SMS_AYUDA_DOCUMENTACION_DIA_4 = 1;
+		private int int_SMS_AYUDA_DOCUMENTACION_DIA_5 = 1;
 		
 		
 		private 	SystemParamService 	systemparamservice;
@@ -86,6 +106,8 @@ public class VerificadorInicio extends Thread  {
 		protected Change_controlService service_change_control;
 		
 		protected MembershipService service_membership;
+		
+		protected AyudaDocumentosService ayudadocumentosservice;
 		
 		private   	AutomaticInvestmentService service;
 		
@@ -119,6 +141,8 @@ public class VerificadorInicio extends Thread  {
 			cobranzaPreventivaService		=  Utilities.findBean("cobranzaPreventivaServiceImp");
 			
 			clientesenmoraservice			=  Utilities.findBean("clientesEnMoraServiceImp");
+			
+			ayudadocumentosservice			=  Utilities.findBean("ayudaDocumentosServiceImp"); 
 			
 			service = Utilities.findBean("automaticInvestmentServiceImp");
 			
@@ -748,6 +772,303 @@ public class VerificadorInicio extends Thread  {
 							
 							break;
 							
+						case SMS_AYUDA_DOCUMENTACION_DIA_1:
+							
+							try{
+								
+								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_SMS_AYUDA_DOCUMENTACION_DIA_1 ){
+								
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 11 - SMS_AYUDA_DOCUMENTACION_DIA_1 " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+											
+											llamadaServicioAyudaDocumentos( EVENT_AYUDA_DOCUMENTACION_DIA_1 );
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_1 = 1;
+											
+										}else{
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_1 = 1;
+											
+										}
+									
+									}
+									
+								}else{
+									
+									int_SMS_AYUDA_DOCUMENTACION_DIA_1 ++;
+									
+								}	
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+							
+							break;
+							
+						case SMS_AYUDA_DOCUMENTACION_DIA_2:
+							
+							try{
+								
+								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_SMS_AYUDA_DOCUMENTACION_DIA_2 ){
+								
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 11 - SMS_AYUDA_DOCUMENTACION_DIA_2 " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+											
+											llamadaServicioAyudaDocumentos( EVENT_AYUDA_DOCUMENTACION_DIA_2 );
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_2 = 1;
+											
+										}else{
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_2 = 1;
+											
+										}
+									
+									}
+									
+								}else{
+									
+									int_SMS_AYUDA_DOCUMENTACION_DIA_2 ++;
+									
+								}	
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+							
+							break;
+							
+							
+						case SMS_AYUDA_DOCUMENTACION_DIA_3:
+							
+							try{
+								
+								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_SMS_AYUDA_DOCUMENTACION_DIA_3 ){
+								
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 11 - SMS_AYUDA_DOCUMENTACION_DIA_3 " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+											
+											llamadaServicioAyudaDocumentos( EVENT_AYUDA_DOCUMENTACION_DIA_3 );
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_3 = 1;
+											
+										}else{
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_3 = 1;
+											
+										}
+									
+									}
+									
+								}else{
+									
+									int_SMS_AYUDA_DOCUMENTACION_DIA_3 ++;
+									
+								}	
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+							
+							break;
+							
+							
+						case SMS_AYUDA_DOCUMENTACION_DIA_4:
+							
+							try{
+								
+								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_SMS_AYUDA_DOCUMENTACION_DIA_4 ){
+								
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 11 - SMS_AYUDA_DOCUMENTACION_DIA_4 " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+											
+											llamadaServicioAyudaDocumentos( EVENT_AYUDA_DOCUMENTACION_DIA_4 );
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_4 = 1;
+											
+										}else{
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_4 = 1;
+											
+										}
+									
+									}
+									
+								}else{
+									
+									int_SMS_AYUDA_DOCUMENTACION_DIA_4 ++;
+									
+								}	
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+							
+							break;
+							
+						case SMS_AYUDA_DOCUMENTACION_DIA_5:
+							
+							try{
+								
+								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_SMS_AYUDA_DOCUMENTACION_DIA_5 ){
+								
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 11 - SMS_AYUDA_DOCUMENTACION_DIA_5 " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+											
+											llamadaServicioAyudaDocumentos( EVENT_AYUDA_DOCUMENTACION_DIA_5 );
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_5 = 1;
+											
+										}else{
+											
+											int_SMS_AYUDA_DOCUMENTACION_DIA_5 = 1;
+											
+										}
+									
+									}
+									
+								}else{
+									
+									int_SMS_AYUDA_DOCUMENTACION_DIA_5 ++;
+									
+								}	
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+							
+							break;
+							
 						default:
 							
 							System.out.println( " Default" );
@@ -912,7 +1233,6 @@ public class VerificadorInicio extends Thread  {
 				
 			}else{
 				
-				
 					List< MovementNotification > lst =  movement_notification_service.getMovementNotificationInStatusCeroList();
 					
 					if ( lst != null && lst.size() > 0  ) {
@@ -986,6 +1306,94 @@ public class VerificadorInicio extends Thread  {
 				
 			}catch( Exception e ){
 				e.printStackTrace();
+			}
+		}
+		
+		private void llamadaServicioAyudaDocumentos( int event_id ){
+			try{
+				
+				PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+				
+				PublicProyect py = locator.getPublicProyect();
+				
+				SMSRequestService request = new SMSRequestService() ;
+				
+				List<AyudaDocumentos> clientes = null;
+				
+				switch( event_id ){
+				
+					case EVENT_AYUDA_DOCUMENTACION_DIA_1 :
+						
+						clientes = ayudadocumentosservice.getAyudaDocumentosList(1);
+						
+						break;
+						
+					case EVENT_AYUDA_DOCUMENTACION_DIA_2 :
+						
+						clientes = ayudadocumentosservice.getAyudaDocumentosList(2);
+						
+						break;
+						
+					case EVENT_AYUDA_DOCUMENTACION_DIA_3 :
+						
+						clientes = ayudadocumentosservice.getAyudaDocumentosList(3);
+						
+						break;
+						
+					case EVENT_AYUDA_DOCUMENTACION_DIA_4 :
+						
+						clientes = ayudadocumentosservice.getAyudaDocumentosList(4);
+						
+						break;
+						
+					case EVENT_AYUDA_DOCUMENTACION_DIA_5 :
+						
+						clientes = ayudadocumentosservice.getAyudaDocumentosList(5);
+						
+						break;
+				
+				
+				}
+				
+				
+				
+				if( clientes != null && clientes.size() > 0 ){
+					
+					String[] prospectuslst = new String[ clientes.size() ];
+				
+					int i = 0;
+					
+					for( AyudaDocumentos c : clientes ){
+						
+						prospectuslst[i] = c.getProspectus_id()+"";
+						i++;
+						
+					}
+				
+				
+				request.setEmisor_id(KUBO_USER+"");
+				request.setProspectus_id(prospectuslst);
+				request.setEvent_id(""+event_id);
+				
+				request.setMessage( "AYUDA DOCUMENTOS" );
+				
+				
+				WsResponse res = py.enviaSMS(request);
+				
+				System.out.println( "res: " +res.getFolio() );
+				
+				System.out.println( "res: " +res.getMessage() );
+				
+				}else{
+					
+					System.out.println( "Sin prospectus que enviar" );
+					
+				}
+				
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
 			}
 		}
 		

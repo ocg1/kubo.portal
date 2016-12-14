@@ -14,6 +14,7 @@ import javax.faces.event.ActionEvent;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.mesa.MenuControlTableBean;
 import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
+import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.model.ProyectLoan;
 
 import org.primefaces.context.RequestContext;
@@ -114,9 +115,10 @@ implements AdditionalCreditIMO, Serializable
 		
 		try
 		{		
-			reasignador_service.setSesionBean(sesion);
-			reasignador_service.init(proyect_loan);
-			reasignador_service.renovar_solicitud_de_credito(RENOVACION);
+			reasignador = new ReasignadorIMP();
+			reasignador.setSesionBean(sesion);
+			reasignador.init(proyect_loan);
+			reasignador.renovar_solicitud_de_credito(RENOVACION);
 			
 			proyect_loan = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
 			
@@ -159,9 +161,10 @@ implements AdditionalCreditIMO, Serializable
 	{										
 		try
 		{		
-			reasignador_service.setSesionBean(sesion);
-			reasignador_service.setProyect_loan_reasignable(proyect_loan);
-			reasignador_service.crear_nuevo_proyecto(tipo_credito_adicional, getLoanType());
+			reasignador = new ReasignadorIMP();
+			reasignador.setSesionBean(sesion);
+			reasignador.setProyect_loan_reasignable(proyect_loan);
+			reasignador.crear_nuevo_proyecto(tipo_credito_adicional, getLoanType());
 							
 			copiar_archivos();
 			

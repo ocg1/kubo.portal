@@ -8,12 +8,13 @@
 		
 		
 		<div class = "field recibir_transferencia">
+		<!-- 
 			<div class = "dvLabel">
 					<h:outputLabel value = "¿Cómo quieres recibir tu dinero?" styleClass = "labelsStl"/>
 			</div>
-				
+				 -->
   		
-  				<fieldset id="sC" class="conjunto  conjuntoChecks">
+  				<fieldset id="sC" class="conjunto  conjuntoChecks"  style="opacity:0; height:1px; width:1px; overflow:hidden;">
 				   <div class="btnN dosBtn" data-opcion="1">
 				   <small class="palomita">
 	        				<i class="fa  fa-credit-card"></i>
@@ -32,7 +33,7 @@
 			       </div>
 					<h:selectOneRadio id         = "hasaccount"  
 									  value      = "#{deal.selAccount}"
-									  styleClass = "elementStlLbl validatorClass hs_class ocultaSelect">
+									  styleClass = "elementStlLbl  hs_class ocultaSelect">
 	            		<f:selectItem itemValue = "1" itemLabel = "Si"/>
 	             		<f:selectItem itemValue = "0" itemLabel = "No"/>
 	             		<p:ajax event    = "click" 
@@ -41,8 +42,9 @@
 	             				oncomplete="conjuntoCombos();" />
 	         		</h:selectOneRadio>
          		</fieldset>
-			
+				
+				
 		</div>
-	
+
 	</h:panelGroup>				
 </ui:composition>				

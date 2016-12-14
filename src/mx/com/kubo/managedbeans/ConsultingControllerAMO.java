@@ -6,7 +6,6 @@ import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import mx.com.kubo.bean.ConsultingErrorBean;
 import mx.com.kubo.model.Address;
@@ -32,6 +31,7 @@ import mx.com.kubo.model.TownCatPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 import com.soa.webServices.WsSgbRiskServiceLocator;
 import com.soa.webServices.responses.WsSgbResponse;
@@ -51,6 +51,7 @@ public abstract class ConsultingControllerAMO extends ConsultingControllerDMO
 				Integer frequency_id = 0;
 				Integer term_id      = 0;
 				
+				consulting_prospectus_id = memberSel_tmp.getMembershipPK().getProspectus_id();
 				prospectus_id = memberSel_tmp.getMembershipPK().getProspectus_id();
 				company_id    = memberSel_tmp.getMembershipPK().getCompany_id();
 				
@@ -182,25 +183,7 @@ public abstract class ConsultingControllerAMO extends ConsultingControllerDMO
 					proyect_loan = proyectloanService.getProyectLoanById(proyect_loan_PK);					
 				}
 				
-				consulting    = new ConsultingManual();
-				consulting_PK = new ConsultingManualPK();
-				
-				company_id    = membership.getMembershipPK().getCompany_id();
-				prospectus_id = membership.getMembershipPK().getProspectus_id();
-				
-				consulting_PK.setCompany_id(company_id);
-				consulting_PK.setProspectus_id(prospectus_id);
-				
-				prospectus_id = memberSel_tmp.getMembershipPK().getProspectus_id();
-				consulting.setConsulting_prospectus_id(prospectus_id);
-				
-				consulting.setConsulting_date(new Date());				
-				consulting.setMx_solicitud_buro(bur_sol_num);
-				consulting.setPk(consulting_PK);
-				
-				consultingmanualservice.saveConsultingManual(consulting);
-				
-				//notificar(Evento.CONSULTA_BC_MANUAL, score,"",proyect_loan );
+				init_manual_consulting(bur_sol_num);
 				
 			} catch(Exception e) {
 							
@@ -223,19 +206,36 @@ public abstract class ConsultingControllerAMO extends ConsultingControllerDMO
 				errorbean.setMember( memberSel_tmp );
 				errorbean.setError_descript( msg );
 				
-				if( lstError == null ){
-				
-					lstError = new ArrayList<ConsultingErrorBean>();
-					
+				if( lstError == null )
+				{				
+					lstError = new ArrayList<ConsultingErrorBean>();					
 				}
-					lstError.add( errorbean );
 				
-				
-				
+				lstError.add( errorbean );												
 			}			
 		}
 	}
 	
+	private void init_manual_consulting(String bur_sol_num) 
+	{
+		consulting    = new ConsultingManual();
+		consulting_PK = new ConsultingManualPK();
+		
+		company_id    = membership.getMembershipPK().getCompany_id();
+		prospectus_id = membership.getMembershipPK().getProspectus_id();
+		
+		consulting_PK.setCompany_id(company_id);
+		consulting_PK.setProspectus_id(prospectus_id);
+		
+		consulting.setPk(consulting_PK);		
+		consulting.setConsulting_prospectus_id(consulting_prospectus_id);		
+		consulting.setConsulting_date(new Date());				
+		consulting.setMx_solicitud_buro(bur_sol_num);
+		consulting.setIs_consulting_for_renovation("N");
+		
+		consultingmanualservice.saveConsultingManual(consulting);
+	}
+
 	protected boolean callSGBAltaUsuario( Membership membership_temp )
 	{
 		
@@ -531,6 +531,7 @@ public abstract class ConsultingControllerAMO extends ConsultingControllerDMO
 	{
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.setAcreditado(memberSel);
 			notificador.notificar(evento, score, proyect_loan, errormsg);

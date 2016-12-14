@@ -48,6 +48,7 @@ public interface ProyectLoanService
 	ProyectLoan getMaxProyectLoanByProspectDontPublish(Integer prospectus_id, Integer company_id) ;
 	ProyectLoan getMaxProyectLoanByProspect           (Integer prospectus_id, Integer company_id);
 	ProyectLoan getMaxProyectLoanByProspectInFunding  (Integer prospectus_id, Integer company_id);
+	ProyectLoan getMaxProyectLoanByProspectAndStatus(Integer prospectus_id, Integer company_id, Integer status_id) ;
 
 	ProyectLoan getProyectLoanByProyectLoanID(Integer proyectLoanID, Integer prospectusID, Integer companyID);	
 	ProyectLoan getProyectLoanListBySafiCreditID(String safi_credit_id);

@@ -1566,9 +1566,7 @@ td.clTdMontoStr{
 }
 
 
-
-#general  input[type="text"], #general  input[type="password"], #general  input[type="email"], #general  input[type="number"], #general  textarea {
-		width: 95% !important;
+	#general  input[type="text"], #general  input[type="password"], #general  input[type="email"], #general  input[type="number"], #general  textarea {		width: 95% !important;
 		padding: 7px 2% !important;
 		border-radius: 4px !important;
 		font-weight: 400 !important;
@@ -5558,6 +5556,12 @@ color: #8FC450;
 	background: #fff;
 	position: relative;
 }
+
+.btnN.vacio {
+	border: solid 1px red;
+	background:rgba(252, 218, 218, 0.6);
+
+}
 .btnN:hover, .btnN.active {
 	border: solid 1px #8FC450;
 		
@@ -5576,11 +5580,12 @@ color: #8FC450;
 }
 .btnN span{
 	text-align:center;
-    display:block;
-    color: #999;
-    font-size: 15px;
-    font-weight: 400 !important;
+	display:block;
+	color: #999;
+	font-size: 15px;
+	font-weight: 400 !important;
 	font-family: 'Lato', sans-serif;
+	clear: both;
 }
 #general fieldset.conjunto2 {
     width: 243px;
@@ -5598,6 +5603,7 @@ color: #8FC450;
      -ms-transition:.4s;
      -o-transition:.4s;
      transition:.4s;
+     min-height: 60px;
 }
 .dosBtn  i{
 	display:block;
@@ -5606,6 +5612,9 @@ color: #8FC450;
     text-align:center;
     font-size:35px;
     color: #999;
+}
+.dosBtn .palomita {
+	min-height:35px;
 }
 .independienteImg {
 	background:url("../img/nuevoRegistro/Independent_gray.png") no-repeat;
@@ -5643,10 +5652,11 @@ color: #8FC450;
 }
 .palomita {
 	position:relative;
-    width: 30px;
-    display: block;
-    margin: 0 auto 8px;
- }
+	width: 33px;
+	display: block;
+	margin: 0 auto 8px;
+	/* overflow: hidden; */
+	}
  .palomita sup {
 	width: 26px;
 	height:30px;
@@ -5657,7 +5667,7 @@ color: #8FC450;
      font-weight: 300;
      position:absolute;
      top:0;
-     right:-10px;
+     right: -12px;
      font-size: 28px;
      display: none;
      text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
@@ -5788,6 +5798,7 @@ height: 36px !important;
 .bT h3, .tienes48 h3{
 	font-size: 25px;
 	margin: 0  0 25px;
+	line-height: 32px;
 }
 
 .mensajeAprobacion  .figure {
@@ -6095,16 +6106,21 @@ table.ocultaSelect  label{
 	   width: 95%;
 	   padding: 9px 2%;
 	   margin: 0 0 12px;
+	      min-height: inherit !important;
 	 }
+
+
+
 	 .btnR {
     /* float: left; */
  }
 	.palomita {
 		position:relative;
-	    width: 30px;
-	    display: block;
-	    margin: 0 10px auto 0;
-	    float:left;
+		width: 30px;
+		display: block;
+		margin: 0 10px auto 0;
+		float:left;
+		min-height: initial !important;
 	}
 	.palomita i.fa-check{
 	    color: #ff8a02;
@@ -6118,7 +6134,8 @@ table.ocultaSelect  label{
 	.btnN span{
 	     text-align:left;
 	     display:block;
-	     float:left;
+	     float: left;
+	     clear: none;
 	}
 	.btnN.active .palomita i.fa-check{
 		display:none;
@@ -7895,3 +7912,341 @@ margin:0 0 20px;
 	
 }
  }
+ 
+ 
+ 
+ .check-label {
+  cursor: pointer;
+}
+
+.check-label i{
+  float:left;
+  margin: 0 10px 0 0;
+  width:20px;
+  height:20px;
+}
+
+.check-label i img{
+	width:100%;
+	height:auto;
+}
+.input-checkbox-simple {
+  border: solid 1px #999999;
+  background: #fff;
+  width:18px;
+  height: 18px;
+  border-radius: 5px;
+}
+.input-checkbox-simple input {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.input-checkbox-simple.fa-check {
+  background: #8CC251;
+  color: #fff;
+  border: solid 1px #8CC251;
+  text-align: center;
+  font-size:16px;
+  line-height:20px;
+}
+.inline--check {
+  overflow: hidden;
+}
+.inline--check .input-checkbox-simple {
+  float: left;
+  margin: 0 8px 0 0;
+  position: relative;
+}
+.inline--check span {
+  float: left;
+}
+.checks-set  {
+	padding: 0 10px;
+	clear: both;
+}
+.checks-set.vacio {border: solid 1px red;}
+.checks-set ul {
+	padding:0;
+	margin: 18px 0 0;
+	clear: both;
+	overflow: hidden;
+}
+.checks-set ul li {
+	overflow:hidden;
+	margin:0 0 10px;
+	clear: both;
+	list-style:none;
+}
+.checks-set ul li span{
+	font-size: 16px;
+}
+.comentarioEnviado {
+	display:none;
+}
+
+
+
+.problemas-doc {
+	margin:0 0 50px;
+}
+.pestana {
+	background:#ccc;
+	padding:5px 20px;
+	color:#fff;
+	font-weight:700;
+	overflow:hidden;
+	cursor:pointer;
+}
+
+.pestana .fa-angle-down {
+	position: relative !important;
+	top:auto !important;
+	left:auto !important;
+	right:auto !important;
+	
+}
+.pestana span{
+		font-size:22px;
+		float:left;
+		margin:6px 0 0 ;
+}
+
+ #general .iconoAbrirCerrar {
+	float:right;
+	font-size: 47px !important;
+	line-height: 28px !important;
+	color: #fff !important;
+}
+
+.fa-frown-o {
+	font-size:30px !important;
+	margin:0 10px 0 0 ;	
+	float:left;
+}
+
+.pestana__contenido {
+	margin:20px 0 ;
+}
+
+
+.pestana__contenido {
+	margin: 20px 0 100px;
+		display:none;
+}
+
+.edicion-comentario p {
+	font-weight:600 !important;
+	margin:0 0 20px !important;
+
+}
+.pestana__contenido .callAction {
+	width:290px;
+	margin:0 auto;
+}
+#general .edicion-comentario textarea {
+	margin:0 0 20px !important;
+	clear:both;
+
+}
+
+.comentario-realizado {
+	background:#f1f1f1;
+	padding:20px;
+	overflow: hidden;
+	margin: 0 0 15px 0;
+}
+.comentario-realizado p {
+	color:#999 !important;
+	margin: 0 0 20px;
+}
+.elementos-linea {
+	overflow:hidden;
+}
+.elementos-linea i {
+	font-size:15px;	
+	text-align:center;
+	line-height:20px;
+	margin:0 10px 0 0;
+}
+.elementos-linea span {
+	font-size:15px !important;
+	font-weight:600;
+}
+.enviadoSimbolo {
+	width:100px;
+	float:right;
+	clear:both;
+}
+.enviadoSimbolo span {
+	color:#8CC251 ;
+	font-size:15px !important;
+	font-weight:600;
+}
+.enviadoSimbolo i{
+	background:#8CC251 ;
+	color:#fff;
+	width:20px;
+	height:20px;
+	border-radius:20px;
+
+}
+
+.editarContenido {
+	cursor:pointer;
+}
+.editarContenido i {
+	color: #B9B9B9;
+	font-size:20px;
+}
+.editarContenido span {
+	color: #B9B9B9;
+	text-decoration:underline;
+}
+
+
+.alerta-simple {
+	background: #fff;
+	display:block;
+	position: absolute;
+	/* width:100%; */
+	font-family:'Open Sans', sans-serif;
+	font-size:12px;
+	z-index:9999999999999999999999999;
+	-moz-box-shadow: 0px 2px 9px #999;
+	/* -webkit-box-shadow: 0px 2px 9px #999; */
+	border: solid 2px #8CC251;
+	top:150px;
+
+	-webkit-transition: .4s;
+	-moz-transition: .4s;
+	-o-transition: .4s;
+	transition: .4s;
+	
+	-webkit-transform:scale(0);
+	-moz-transform:scale(0);
+	-o-transform:scale(0);
+	transform: scale(0);
+	opacity: 0;
+	padding: 20px;
+}
+.show-alert {
+	-webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	-o-transform:scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+.alerta-s {
+		max-width: 360px;
+}
+.alerta-simple h2{
+	margin:0 0 30px;
+	font-size:22px;
+	text-align:center;
+}
+
+.alerta-simple p{
+	margin:0 0 20px;
+	font-size:16px;
+	font-weight:500;
+	color:#666;
+	text-align:center;
+
+}
+
+
+
+.closePopUp {
+	width: 37px;
+	height: 34px;
+	position:absolute;
+	z-index:99;
+	top: -20px;
+	right: -20px;
+	background: #8CC251;
+	border-radius:30px;
+	color:#fff;
+	text-align:center;
+	font-size: 27px !important;
+	font-weight: 300 !important;
+	padding: 3px 0 0 0;
+	cursor:pointer;
+	border: solid 2px #fff;
+}
+
+
+#dvIDProviderPass .autenticador_buro {
+	width:80%;
+	margin: 20px auto;
+}
+
+#dvSi_autorizoPass, #dvNext_autorizoPass {
+	width:250px;
+	margin:0 auto 30px;
+}
+#dvPassIDProv p  {
+	text-align:center;
+	/* margin:0 !important; */
+	/* padding:0 0 10px 10px; */
+}
+
+#dvPassIDProv input {
+	margin:0 0 20px !important;
+}
+
+.modo_recepcion.border-no {
+	border:none;
+	margin: 0;
+	padding: 0;
+}
+
+.kubi-feliz {
+ 	width: 160px;
+ 	margin: 20px auto 30px;
+}
+.kubi-feliz img{
+ 	width:100%; 
+}
+
+.checks-set  .vacio  .input-checkbox-simple {
+	background-color: rgba(252, 218, 218, 0.6) ;
+	border: solid 1px red ;
+}
+
+#forma-contacto {
+	border:none !important;
+	background: none !important;
+}
+
+
+#seleccionDomicilio .btn3 {
+	overflow:hidden;
+}
+
+#seleccionDomicilio .btn3 .palomita {
+	float:left;
+	display: block;
+	width: 60px;
+	height: 20px;
+}
+
+#seleccionDomicilio .btn3 span {
+	float:left;
+	display: block;
+	clear: none;
+	text-align:center !important;
+	/* width: 100%; */
+	width:70%;
+}

@@ -12,8 +12,6 @@ public final class RenovacionBean
 	protected String max_ammount;
 	protected String max_payment;
 	
-	private String ofert_TOKEN;
-	private String ofert_rate_TOKEN;
 	private String ofert_ammount_TOKEN;
 	private String term_frequency_1_TOKEN;
 	private String term_frequency_2_TOKEN;
@@ -22,15 +20,7 @@ public final class RenovacionBean
 	private List<OfertaBean> tabla_oferta_1;
 	private List<OfertaBean> tabla_oferta_2;
 	private List<OfertaBean> tabla_oferta_3;
-
-	public void setOfert_TOKEN(String ofert_TOKEN) {
-		this.ofert_TOKEN = ofert_TOKEN;
-	}
-	
-	public void setOfert_rate_TOKEN(String ofert_rate_TOKEN) {
-		this.ofert_rate_TOKEN = ofert_rate_TOKEN;
-	}
-
+		
 	public void setOfert_ammount_TOKEN(String ofert_ammount_TOKEN) {
 		this.ofert_ammount_TOKEN = ofert_ammount_TOKEN;
 	}
@@ -113,14 +103,6 @@ public final class RenovacionBean
 
 	public String getMax_payment() {
 		return max_payment;
-	}
-
-	public String getOfert_TOKEN() {
-		return ofert_TOKEN;
-	}
-
-	public String getOfert_rate_TOKEN() {
-		return ofert_rate_TOKEN;
 	}
 	
 	public String getOfert_ammount_TOKEN() {

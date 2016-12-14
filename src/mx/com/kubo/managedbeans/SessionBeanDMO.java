@@ -62,6 +62,9 @@ public abstract class SessionBeanDMO
 	private boolean isLog_out_ENABLED;
 	private boolean haveUsrImg;
 	
+	private boolean new_consulting;
+	
+	private boolean enabled_Ren_4_Click;
 	
 	
 	private boolean fb_New;
@@ -628,5 +631,29 @@ public abstract class SessionBeanDMO
 
 	public void setMedium(String medium) {
 		this.medium = medium;
+	}
+
+
+
+	public boolean isNew_consulting() {
+		return new_consulting;
+	}
+
+
+
+	public void setNew_consulting(boolean new_consulting) {
+		this.new_consulting = new_consulting;
+	}
+
+
+
+	public boolean isEnabled_Ren_4_Click() {
+		return enabled_Ren_4_Click;
+	}
+
+
+
+	public void setEnabled_Ren_4_Click(boolean enabled_Ren_4_Click) {
+		this.enabled_Ren_4_Click = enabled_Ren_4_Click;
 	}
 }

@@ -9,8 +9,20 @@ public class ParserRenovacionAutomaticaIMP extends ParserRenovacionAutomaticaAMO
 implements ParserRenovacionAutomaticaIMO
 {
 	public void init()
-	{													
-		init_R_data();		
+	{						
+		init_ofert_ENABLED();
+		
+		if(ofert_ENABLED)
+		{
+			init_R_data();
+		}
+	}
+	
+	public boolean is_ofert_ENABLED()
+	{
+		init_ofert_ENABLED();
+		
+		return ofert_ENABLED;
 	}
 	
 	public void init_oferta(AjaxBehaviorEvent event)
@@ -65,6 +77,6 @@ implements ParserRenovacionAutomaticaIMO
 				
 		init_CAT_simulation();
 		
-		request.addCallbackParam("cat", cat);
+		request.addCallbackParam("cat", simulation.getMx_cat());
 	}
 }

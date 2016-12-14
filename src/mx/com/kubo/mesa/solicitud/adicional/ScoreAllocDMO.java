@@ -8,6 +8,7 @@ public abstract class ScoreAllocDMO
 implements ScoreAllocIMO
 {
 	protected ProyectLoan proyect_loan;
+	
 	protected Scoring score;
 	protected SimulatorBean simulation;
 	

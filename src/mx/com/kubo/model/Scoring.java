@@ -12,73 +12,47 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-@Entity
-@Table(name="gn_scoring_result")
-public class Scoring implements Serializable {
+@Entity @Table(name = "gn_scoring_result")
+public class Scoring implements Serializable 
+{
+	private static final long serialVersionUID = -3558943580777445433L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
 	@Column
-	private int 	scoring_result_id;//	"int(10) unsigned"
-	@Column
-	private Integer company_id;//	"tinyint(3) unsigned"
-	@Column
-	private Integer prospectus_id;//	"int(10) unsigned"
-	@Column
-	private Date result_datetime;//	datetime
-	@Column
-	private String bc_score;//	"int(10) unsigned"
-	@Column
-	private String mx_folio;//	"int(10) unsigned"
-	@Column
-	private String mx_solicitud_buro;//	"int(10) unsigned"
-	@Column
-	private String  kubo_score_a;//	varchar(1)
-	@Column
-	private String  kubo_score_b;//	varchar(2)
-	@Column
-	private Double  rate;//	"decimal(12
-	@Column
-	private Date bc_score_date;
-	@Column
-	private Double  rate_investor;//	"decimal(12
-	@Column
-	private String  cci_score;//	"decimal(12
-	@Column
-	private Double opening_commission;
-	@Column
-	private String kubo_rate;
-	@Column
-	private String risk_level;
-	@Column
-	private Double liquidity;
-
-	@Column
-	private Integer status = 0;
-	
-	@Column
-	private Integer risk_processed = 0;
-	
-	@Column
-	private Integer screen_viewed = 0;
-	
-	@Column
-	private String is_prospector = "N";
-	
-	@Column
-	private String efl_test = "0";
+	private int scoring_result_id;
 	
 	@ManyToOne
 	@JoinColumns(value = {
-	        @JoinColumn(name = "company_id", referencedColumnName = "company_id", insertable = false, updatable = false),
+	        @JoinColumn(name = "company_id",    referencedColumnName = "company_id",    insertable = false, updatable = false),
 	        @JoinColumn(name = "prospectus_id", referencedColumnName = "prospectus_id", insertable = false, updatable = false)
-	    })	
+	})	private NaturalPerson person;
 	
-	private NaturalPerson person;
+	@Column private String bc_score;
+	@Column private String mx_folio;
+	@Column private String mx_solicitud_buro;
+	@Column private String  kubo_score_a;
+	@Column private String  kubo_score_b;
+	@Column private String  cci_score;
+	@Column private String kubo_rate;
+	@Column private String risk_level;
+	@Column private String is_prospector = "N";	
+	@Column private String efl_test = "0";	
+	@Column private String r_data;
+	@Column private String is_consulting_for_renovation = "N";	
+	
+	@Column private Date result_datetime;	
+	@Column private Date bc_score_date;
 
+	@Column private Double  rate;	
+	@Column private Double  rate_investor;	
+	@Column private Double opening_commission;
+	@Column private Double liquidity;
+
+	@Column private Integer company_id;
+	@Column private Integer prospectus_id;
+	@Column private Integer status = 0;	
+	@Column private Integer risk_processed = 0;	
+	@Column private Integer screen_viewed = 0;
 	
 	public int getScoring_result_id() {
 		return scoring_result_id;
@@ -112,6 +86,12 @@ public class Scoring implements Serializable {
 	}
 	public String getKubo_score_b() {
 		return kubo_score_b;
+	}
+	public String getR_data() {
+		return r_data;
+	}
+	public void setR_data(String r_data) {
+		this.r_data = r_data;
 	}
 	public void setKubo_score_b(String kubo_score_b) {
 		this.kubo_score_b = kubo_score_b;
@@ -228,5 +208,10 @@ public class Scoring implements Serializable {
 	public void setEfl_test(String efl_test) {
 		this.efl_test = efl_test;
 	}
-	
+	public String getIs_consulting_for_renovation() {
+		return is_consulting_for_renovation;
+	}
+	public void setIs_consulting_for_renovation(String is_consulting_for_renovation) {
+		this.is_consulting_for_renovation = is_consulting_for_renovation;
+	}
 }

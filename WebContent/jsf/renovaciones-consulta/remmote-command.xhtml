@@ -1,0 +1,49 @@
+<ui:composition xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns    = "http://www.w3.org/1999/xhtml"	
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+		
+		<div id = "remote-command-renovaciones" style = "display: none;">			
+		
+			<h:commandLink styleClass = "init_prospect_BC_risk" immediate = "true">
+				<p:ajax event = "click" 
+						oncomplete = "ConsultaRenovacion.prospectBCRisk_oncomplete(xhr, status, args);"
+						listener   = "#{consultaRenovacion.init_prospect_BC_risk}"/>
+			</h:commandLink>
+			
+			<h:commandLink styleClass = "init_Id_Provider" immediate = "true">
+				<p:ajax event = "click" 
+						oncomplete = "ConsultaRenovacion.prospectBCRisk_oncomplete(xhr, status, args);"
+						listener   = "#{consultaRenovacion.consulta_Id_Provider}"/>
+			</h:commandLink>
+			
+			<h:commandLink styleClass = "check_isRisk_processed" immediate = "true">
+				<p:ajax event = "click" 
+						oncomplete = "ConsultaRenovacion.isRisk_processed_oncomplete(xhr, status, args);"
+						listener   = "#{consultaRenovacion.check_is_risk_processed}"/>
+			</h:commandLink>
+			
+			<h:commandLink styleClass = "ofertasLnk" action = "ofertaslnk" />
+			
+			<h:inputText styleClass = "init-access-CONFIG" immediate = "true">
+				<p:ajax event = "click"
+					   	oncomplete = "ConsultaRenovacion.init_access_on_complete(xhr, status, args);"
+					   	listener   = "#{consultaRenovacion.auditor.init_access_CONFIG}"/>
+			</h:inputText>	
+			
+			<h:commandLink styleClass = "redirect-to-registro-ENABLED" action = "registrar" />	
+			
+			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_wait_ENABLED}">
+				<h:commandLink styleClass = "redirect-to-wait"  />
+			</h:panelGroup>											
+			
+			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_ofert_ENABLED}">			
+				<h:commandLink styleClass = "redirect-to-oferta-from-init" action = "ofertaslnk" />
+			</h:panelGroup>
+			
+			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_registro_ENABLED}">			
+				<h:commandLink styleClass = "redirect-to-registro-from-init" action = "registrar" />	
+			</h:panelGroup>
+		</div>
+
+</ui:composition>	

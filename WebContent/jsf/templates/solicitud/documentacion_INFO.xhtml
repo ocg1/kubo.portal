@@ -16,11 +16,73 @@
 						</strong>
 					</h3>
 						
-					<ui:include src = "documentacion/change-control.xhtml" />									
+					<ui:include src = "documentacion/change-control.xhtml" />	
+					
+					<h:panelGroup rendered="#{summaryRequest.blnComment}" >
+						
+						<div>
+						
+							<div class="Q">
+									<p class="lendingQuestion lendingTableLeft"><strong>No pudo subir documentos debido a:</strong></p>
+						
+							<ui:repeat var="comment" value="#{summaryRequest.lstcomm}">
+								
+								<div class="lendingAnswer" >
+									<div >
+										#{comment.comment}
+									</div>
+									
+									<div class="footerComment" >
+										<h:outputText value="#{comment.comment_date}">
+											<f:convertDateTime pattern="dd-MMMM-yyyy HH:mm:ss" />
+										</h:outputText>
+									</div>
+									
+								</div>
+								
+							</ui:repeat>
+							
+							</div>
+						</div>
+					
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{ summaryRequest.copiar_documentos_ENABLED and ( summaryRequest.documentacion == null or summaryRequest.documentacion.listFiles == null or summaryRequest.documentacion.listFiles.size() lt 3 ) }"  >
+						<h:commandLink class="clsCmdCopiaDocs"  style="float:right;" onclick="showLoaderCopiaDocs();" >													
+			
+							Copiar últimos documentos válidos
+							<p:ajax listener="#{summaryRequest.fileUploadLastProyect}" immediate="true" event="click" update = "sectionDocumentaction" ></p:ajax>
+							
+						</h:commandLink>
+						
+						<div id="contLoaderCopiaDocs" style="display:none;">
+						
+							<h:graphicImage library="img" name="loader.gif"  />
+						
+						</div>
+						
+						<script>
+						
+							function showLoaderCopiaDocs(){
+								
+								$(".clsCmdCopiaDocs").hide( 'slow',function(){ $("#contLoaderCopiaDocs").show('slow') } );
+								
+								return true;
+								
+							}
+						
+						</script>
+						
+						
+						
+					</h:panelGroup>
+									
+									
+													
 					<ui:include src = "documentacion/list-file.xhtml" />										
 			
 				</h:panelGroup>
-			
+				
 				<h:panelGroup id = "pnlAdjuntarDoc" rendered = "#{summaryRequest.addDocument}">
 				
 					<div>

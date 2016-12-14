@@ -62,22 +62,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />  
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 	    <link rel="shortcut icon" href="resources/favicon.ico"/> 
         <link rel="apple-touch-icon-precomposed" href="resources/images/apple-touch-icon.png"/>
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/apple-touch-icon72.png"/>
@@ -89,12 +73,13 @@
         <link rel="stylesheet" type="text/css" href="resources/css/kubo_styles.css" />
         <link rel="stylesheet" type="text/css" href="resources/css/interior_styles.css" />
         <link rel="stylesheet" type="text/css" href="resources/css/desbloquear-password.css"/>
-        
-        <link rel="stylesheet" type="text/css" href="resources/css/frmStyle.css" />	
+
         <link rel="stylesheet" type="text/css" href="resources/css/alertify.core.css" />
        	<link rel="stylesheet" type="text/css" href="resources/css/alertify.default.css" />
        	<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css" />
        	<link rel="stylesheet" type="text/css" href="resources/css/smart_tab_vertical.css" />
+        <link rel="stylesheet" type="text/css" href="resources/royal/css/royalslider.css" />
+       	<link rel="stylesheet" type="text/css" href="resources/royal/css/rs-minimal-white.css" />
        	
        <script data-cfasync="false" type='text/javascript' src="resources/js/chat.js" />
     	
@@ -105,9 +90,6 @@
 		   <script type="text/javascript" src="resources/royal/js/highlight.pack.js" charset="utf-8"/>
 	    <script type="text/javascript" src="resources/royal/js/jquery-ui-1.8.22.custom.min.js" charset="utf-8"/>
 
-        <script type="text/javascript" src="resources/js/jquery.slides.min.js"/>
-        <script type="text/javascript" src="resources/js/js_slideshome.js"/>
-        
     	<script type="text/javascript" src="resources/js/scripts.js"/>
     	<script type="text/javascript" src="resources/js/scripts_interior.js"/>  	
    		<script type="text/javascript" src="resources/js/ga_event.js"/>    	
@@ -130,8 +112,7 @@
 
     
 
-     	<link rel="stylesheet" type="text/css" href="resources/royal/css/royalslider.css" />
-       	<link rel="stylesheet" type="text/css" href="resources/royal/css/rs-minimal-white.css" />
+
 
        	
         <script type = "text/javascript" >
@@ -213,20 +194,20 @@
        	    </div-->
            	<div class="banner bannerFondo">    
            	
-           	<div class="sliderContainer fullWidth clearfix">
-<div id="full-width-slider" class="royalSlider heroSlider rsMinW">
-  <div class="rsContent">
-    <img class="rsImg" src="resources/royal/img/1.jpg" alt="" />
-   
-  </div>
-  <div class="rsContent">
-    <img class="rsImg" src="resources/royal/img/2.jpg" alt="" />
-   
-  </div>
-
- 
-</div>
-  </div>
+			 <div class="sliderContainer fullWidth clearfix">
+				<div id="full-width-slider" class="royalSlider heroSlider rsMinW">
+				  <div class="rsContent">
+				    <img class="rsImg" src="resources/royal/img/1.jpg" alt="" />
+				   
+				  </div>
+				  <div class="rsContent">
+				    <img class="rsImg" src="resources/royal/img/2.jpg" alt="" />
+				   
+				  </div>
+				
+				 
+				</div>
+			  </div>
   
  
            	
@@ -296,8 +277,8 @@
 		    <!-- ui:include src="templates/modal_correo_existente.xhtml" / -->	
 			<ui:include src="templates/modal_cambiocontrasena.xhtml" />
 			<ui:include src="templates/modal-init-login.xhtml" />
-			<ui:include src="templates/modal_simulador_resultados.xhtml" />
-			<ui:include src="templates/modal_tabla_amortizacion_lightbox.xhtml" />  		
+			<!-- ui:include src="templates/modal_simulador_resultados.xhtml" /-->
+			<!-- ui:include src="templates/modal_tabla_amortizacion_lightbox.xhtml" /-->  		
         </h:form>
 	</div>
         
@@ -317,6 +298,12 @@
 		
 		/* End Alexa Certify Javascript */
 		
+ 	
+ 			 
+ 			 
+			
+			
+			
 		</script>
 	
 	<div style="display: none;">#{applicationParams.cargaParamentosAplicacion}</div>	

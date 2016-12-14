@@ -164,6 +164,8 @@ Documentacion.show_cropper = function(xhr, status, args)
 	});
 };
 
+/*
+
 function muestraValidFile( str_in )
 {	
 	$("#inp_ValAutorizaDoc").val( str_in );	
@@ -181,7 +183,8 @@ function cerrar_modal_validaDoc()
 	$(".dvValidaArchivo").removeClass("show");	
 }
 
-function autoriza_documento()
+ 
+ function autoriza_documento()
 {	
 	$(".botones_lightbox").fadeOut(500,function()
 	{	
@@ -241,3 +244,5 @@ function regresaValidaDoc( xhr, status, args )
 		$(".botones_lightbox_message p").html( str_message );
 	}	
 }
+
+*/

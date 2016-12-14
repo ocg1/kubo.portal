@@ -43,7 +43,7 @@ Simulador.info_oncomplete = function(xhr, status, args)
 	var term_id      = args.term_id;
 	var frequency_id = args.frequency_id;
 	
-	console.log("simulatorInfoOnComplete(): ");
+	console.log("Simulador.info_oncomplete(): ");
 	
 	if(purpose_id != undefined)
 	{
@@ -78,7 +78,10 @@ Simulador.simulation_oncomplete = function(xhr, status, args)
 {	
 	var FROM_SIMULATOR = 2;
 	
-	console.log("simulation_oncomplete(): OK");
+	var max_payment_ENABLED = args.max_payment_ENABLED;
+	
+	console.log("Simulador.simulation_oncomplete(): ");
+	console.log("> max_payment_ENABLED = " + max_payment_ENABLED);
 	
 	Preaprobador.init_panel(FROM_SIMULATOR);
 }

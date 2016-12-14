@@ -118,6 +118,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		editor_tipo_credito_ENABLED = false;
 		reporte_inusual_ENABLED     = false;
 		flagPromo = false;
+		copiar_documentos_ENABLED = false;
 		
 		changeBankData      = null;		
 		changeConsolidate   = null;
@@ -2689,6 +2690,12 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 			{
 				autorizar_contratos_ENABLED = true;
 			}
+			
+			if(function_id == COPIAR_DOCUMENTOS)
+			{
+				copiar_documentos_ENABLED = true;
+			}
+			
 		}
 		
 		List<AccessCollector> menuAccess = accessService.loadControlMenu(role_id, sesion.getCompany_id());
@@ -3428,7 +3435,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 			
 				request.setEvent_id("43");
 				
-				String msg = "Para poder comenzar a invertir con Kubo, ¡ya puedes firmar tus contratos! Da click en: "+url+"";
+				String msg = "Con KUBO gana dinero ¡YA!. Invierte con nosotros, da clic en: "+url+" y firma tus contratos ahora.";
 				
 				request.setMessage(msg);
 			

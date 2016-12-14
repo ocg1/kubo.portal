@@ -1,0 +1,131 @@
+#dvPassIDProv 
+{
+	background-color: #FFF;
+	border: solid 3px #548f39;
+	/* padding: 15px; */
+	/* margin: 100px 50px; */
+}
+ #wait, #dvNext_autorizoPass , .pantalla-style-1
+{	
+	display:none;	
+}
+
+#dvIDProviderPass
+{
+	/*background-color: #FFF;*/
+}
+
+.autenticador_buro p {
+	font-size:16px;
+}
+
+.contenedor-renovaciones {
+	max-width:570px;
+	margin:0 auto;
+	background:#fff;
+	display:block;
+	overflow:hidden;
+}
+
+.contenedor-renovaciones .datos_protegidos {
+	margin:0 auto 30px;
+	padding:0;
+}
+
+ .pass-renovaciones .empezarRegistro {
+	max-width: 550px;
+	margin:0 auto;
+	padding: 20px 40px;
+}
+
+.pass-renovaciones .empezarRegistro li {
+	padding: 0;
+	margin:0;
+}
+
+.pass-renovaciones .empezarRegistro p {
+	font-size: 20px;
+	font-weight: 600;
+	font-family: 'Lato', sans-serif;
+	color: #666;
+	margin: 0 0 30px !important;
+	text-align: center;
+	line-height: 24px;
+}
+
+
+ @media (max-width:600px)  {
+ .pass-renovaciones .empezarRegistro {
+	max-width: 550px;
+	margin:0 auto;
+	padding: 20px 0px;
+}
+ }
+
+ .contenedor-renovaciones .empezarRegistro li div i {
+ 		color: #C3C3C3;font-size: 21px;
+position:absolute;right: 13px !important;top: 10px;
+ }
+
+
+.preaprobacion_pantallas.no-hit-renovacion h2 {
+	font-size:20px !important;
+	font-weight:600 !important;
+}
+
+.preaprobacion_pantallas.no-hit-renovacion .callAction {
+	width:200px;
+	margin:0 auto;
+	clear: both;
+}
+.error-consulta-renovacion {
+	padding:20px !important;
+}
+.error-consulta-renovacion .msgpreaprobado{
+	font-size:20px !important;
+	font-weight:600 !important;
+	margin:0 0 20px !important;
+
+}
+.error-consulta-renovacion  .msgpreaprobadoDesc {
+	color:#999;
+	text-align:left;
+	font-size:15px !important;
+	line-height: 20px !important;
+	margin: 0 0 10px;
+	
+}
+
+.error-consulta-renovacion  .callAction {
+	width:200px;
+	margin:0 auto;
+}
+
+
+ @media (max-width: 600px)  {
+ 	  .no-hit-renovacion.preaprobacion_pantallas {
+ 	  	margin: 0 !important;
+ 	  }
+  .no-hit-renovacion.preaprobacion_pantallas > figure {
+		clear:both;
+		float:none;
+		width:100px;
+		margin:0 auto;
+
+  }
+   .no-hit-renovacion.preaprobacion_pantallas article {
+		clear:both;
+		float:none;
+		width:100%;
+
+  }
+  .importante figure {
+  		margin:0 auto 30px;
+  		width:60px;
+  		float: none;
+  }
+ }
+ 
+.preaprobacion_pantallas.no-hit-renovacion, .error-consulta-renovacion {
+	display:none;
+}

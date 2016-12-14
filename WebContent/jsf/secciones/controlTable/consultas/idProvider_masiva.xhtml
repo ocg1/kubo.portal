@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+
+<div class="clsTitleCons" style="font-size: 1.6em;" >
+  Consulta Masiva ID-Provider
+</div>
+
+<div class="docFile">
+<!--  <h:form prependId="false">
+	<div class="selectNuevo slctPartner">
+	<h:selectOneMenu id="slctPartner" value="#{administrationProfile.partnerId}"   >
+		<f:selectItem itemLabel="" itemValue="" />
+		<f:selectItems value="#{administrationProfile.partnerLst}" var="partner" itemLabel="#{partner.name}" itemValue="#{partner.partnerPK.partner_id}" ></f:selectItems>
+		<p:ajax event="change"   ></p:ajax>
+	</h:selectOneMenu>
+	</div>
+</h:form> -->
+
+<h:form id="frm_alta_masiva" enctype="multipart/form-data" prependId="false">
+
+	
+
+	<p:fileUpload id = "file_alta_masiva" 			      
+				  fileUploadListener = "#{consultaMasivaIdProvider.fileUploadAction}"																													   
+				  invalidSizeMessage = "Tamaño del archivo inválido"
+		    	  invalidFileMessage = "Tipo de archivo no válido."
+		    	  showButtons = "true" 
+            	  mode  = "advanced" 
+            	  auto  = "true"  
+	              label = "Documento"
+	              sizeLimit  = "5242880" 
+	              allowTypes = "/(\.|\/)(txt|csv)$/"
+	              styleClass="custumStlFileMassive"
+	              immediate="true"
+	              >
+	              
+								 
+	 </p:fileUpload> 
+	 
+	 
+	 
+	 
+</h:form>
+</div>
+<div id="dvloaderMassive" >
+	 
+	 	<h:graphicImage library="img" name="loader.gif"  ></h:graphicImage>
+	 	<p>Estamos procesando tu documento</p>
+	 </div>
+	 
+	 <h:panelGroup id="pnlURLFiles" >
+	 
+	 	<h:panelGroup rendered="#{administrationProfile.bln_archivos}" >
+	 
+	 	<div>
+	 		<a class="callActionMedium btnVerde" href="#{administrationProfile.archivo_exitoso}" target="_blank">  Archivo Exitoso</a>
+	 	</div>
+	 	
+	 	<div>
+	 		<a class="callActionMedium btnVerde"  href="#{administrationProfile.archivo_error}" target="_blank"> Archivo Con Errores </a>
+	 	</div>
+	 	
+	 	<script>
+	 		hideLoderMassive();
+	 	</script>
+	 	
+	 	</h:panelGroup>
+	 
+	 </h:panelGroup>
+
+</ui:composition>

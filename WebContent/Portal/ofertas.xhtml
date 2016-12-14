@@ -9,42 +9,26 @@
 	<h:head>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
-        <!--Meta title, description-->    
+	        
     	<title>Inicia sesión | kubo.financiero </title>
-        <meta name="description" content="" />
-    	<!-- Meta viewport -->
-             <meta name ="viewport"          content="width=device-width, minimum-scale=1, maximum-scale=1,  initial-scale=1"/>     
-    	<!-- Meta format-detection -->
-        <meta name="format-detection" content="telephone=no"/>
-        
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        
-    	<!-- Status Bar -->
-    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        
-        <!-- Meta facebook -->    
+    	
+        <meta name="description" content="" />    	
+        <meta name ="viewport"   content="width=device-width, minimum-scale=1, maximum-scale=1,  initial-scale=1"/>         	
+        <meta name="format-detection" content="telephone=no"/>        
+        <meta name="apple-mobile-web-app-capable" content="yes" />            	
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />                
         <meta property="og:title" content=""/>
         <meta property="og:url" content="" />
         <meta property="" />
         <meta property="og:imag" content="" />
         <meta name="apple-mobile-web-app-title" content="AddToHome"/>
-
-    	<!-- favicon --> 
-	    <link rel="shortcut icon" href="resources/favicon.ico"/> 
-	    
-	    
-	      <!-- Icon -->
-            <link rel="apple-touch-icon-precomposed" href="resources/images/apple-touch-icon.png"/>
-            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/apple-touch-icon72.png"/>
-            <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/apple-touch-icon144.png"/>
-           
-           <!-- Iphone -->
-        	<link rel="apple-touch-startup-image"  media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="resources/images/320_460.png" />
-      
-  
-      
-        <!-- MS --> 
+    	
+	    <link rel="shortcut icon" href="resources/favicon.ico"/> 	    	    	      
+        <link rel="apple-touch-icon-precomposed" href="resources/images/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/apple-touch-icon72.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/apple-touch-icon144.png"/>                      
+        <link rel="apple-touch-startup-image"  media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="resources/images/320_460.png" />
+                      
         <meta http-equiv="cleartype" content="on" > </meta>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" ></meta>
         <!-- CSS --> 
@@ -105,7 +89,37 @@
 	    <script type="text/javascript" src="/Kubo/resources/js/mx.com.kubo.portal/simulador/frequency.js"/>
 	    <script type="text/javascript" src="/Kubo/resources/js/mx.com.kubo.portal/simulador/ammount.js"/>
 	    <script type="text/javascript" src="/Kubo/resources/js/mx.com.kubo.portal/simulador/format.js"/>
-	    <script type="text/javascript" src="/Kubo/resources/js/mx.com.kubo.portal/simulador.js"/>	    
+	    <script type="text/javascript" src="/Kubo/resources/js/mx.com.kubo.portal/simulador.js"/>
+	    
+	    <style>
+	    
+	    	.clDesCondicionesCat {
+				    width: 95%;
+				    margin-left: auto;
+				    margin-right: auto;
+				    margin-bottom: 10px;
+				    margin-top: 10px;
+				}
+				
+				.clsVerTablaAmort{
+					    margin-left: auto;
+					    margin-right: auto;
+					    text-align: center;
+					    font-size: 1.2em;
+					    
+				}
+				
+				a#link-tabla-amortizacion{
+					color: #5e5e5e;
+					text-decoration: underline;
+				}
+				
+				.contenidoTable table tr.classCAT td {
+					font-size: 22px !important;
+					font-weight: bold;
+				}
+	    
+	    </style>	    
 	    
 <!-- 
         <script type="text/javascript" language="javascript">
@@ -138,52 +152,52 @@
 		
     	<div class="velo"/>
     
-<!--
-class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}" 
- -->    
     	<div class = "kubo_container privado" style="background:#f1f1f1">
         	<h:form prependId = "false">
         	    
        	    	<ui:include src = "templates/header.xhtml" />
                                       
 				<div class = "content ">
-           
-					<div class = "inner_content">
-        		            		            		
-						<div id = "panel-tabla-ofertas" class = "unbound">
-            		
-							<ui:repeat value = "#{ofertaRenovacion.parser.renovaciones}" var = "renovacion" varStatus = "renovationNumber">     	            			   
-								<ui:include src = "ofertas/tabla-titulares.xhtml" />    
-								    	
-								<div class = "tablasUnbound">   		
-									<ui:include src = "ofertas/tabla-oferta-1.xhtml"/>
-									<ui:include src = "ofertas/tabla-oferta-2.xhtml"/>
-									<ui:include src = "ofertas/tabla-oferta-3.xhtml"/>              				
-								</div>  
-	            			</ui:repeat>     		
-            		
-	            			<div id = "simular-nuevo-prestamo" class = "montoDistinto textoCopys">
-	            				<h3>Si deseas un monto distinto puedes simular tu nuevo préstamo</h3>
-	            				<div class = "callAction btnGris" onclick = "Ofertas.init_panel_simulador();">Simular nuevo préstamo</div>
-	            			</div>            			            			            			
-            			</div>
-          		
-						<div id = "ofertas-panel-preaprobado" style = "display: none;">
-	            			<ui:include src = "ofertas/preaprobador.xhtml"/>
-	            		</div>	                 
-           			</div>
-           		
-           			<ui:include src = "ofertas/preaprobador-response.xhtml"/>
-         
-					<div id = "ofertas-panel-simulador" style = "display: none">
-						<div class = "simulador">
-           					<ui:include src = "ofertas/simulador.xhtml" />
-<!--            		
-          					<ui:include src="templates/simulador_resultados.xhtml" />
--->          		
-           				</div>
-           			</div>
            	
+           			<h:panelGroup rendered = "#{ofertaRenovacion.publicacion_ENABLED}">           			
+						<div class = "inner_content">
+	        		            		            		
+							<div id = "panel-tabla-ofertas" class = "unbound">
+							
+								<ui:include src = "ofertas/SAFI-credit-id.xhtml" />						 										 					
+	            		
+								<ui:repeat value = "#{ofertaRenovacion.parser.renovaciones}" var = "renovacion" varStatus = "renovationNumber">     	            			   								
+					
+									<div id = "renovacion-#{renovacion.safi_credit_id}" class = "renovacion-hidden">
+										<ui:include src = "ofertas/tabla-titulares.xhtml" />
+										   				    	
+										<div class = "tablasUnbound">   		
+											<ui:include src = "ofertas/tabla-oferta-1.xhtml"/>
+											<ui:include src = "ofertas/tabla-oferta-2.xhtml"/>
+											<ui:include src = "ofertas/tabla-oferta-3.xhtml"/>              				
+										</div>  
+									</div>
+		            			</ui:repeat>     		
+	            		
+		            			<div id = "simular-nuevo-prestamo" class = "montoDistinto textoCopys renovacion-hidden">
+		            				<h3>Si deseas un monto distinto puedes simular tu nuevo préstamo</h3>
+		            				<div class = "callAction btnGris" onclick = "Ofertas.init_panel_simulador();">Simular nuevo préstamo</div>
+		            			</div>            			            			            			
+	            			</div>
+	          		
+							<div id = "ofertas-panel-preaprobado" style = "display: none;">
+		            			<ui:include src = "ofertas/preaprobador.xhtml"/>
+		            		</div>	                 
+	           			</div>
+	           			
+	           			<div id = "ofertas-panel-simulador" style = "display: none">
+							<div class = "simulador">
+	           					<ui:include src = "ofertas/simulador.xhtml" />        		
+	           				</div>
+	           			</div>
+           			</h:panelGroup>
+           		
+           			<ui:include src = "ofertas/preaprobador-response.xhtml"/>                   
 					<ui:include src = "ofertas/remote-command.xhtml"/>
            	
 				</div>

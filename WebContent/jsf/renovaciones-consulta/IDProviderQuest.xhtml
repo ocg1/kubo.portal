@@ -1,0 +1,45 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">
+				
+					
+		<div id = "dvIDProviderQuest" class="cuatro-clicks" >
+	
+			<div id = "contFrmReg" class="contPR" style="margin-right: 0px;">
+				
+				<div class="velo"></div>
+				
+				<div class="content menuVisible" style="min-height: 800px !important; overflow: hidden; ">
+				
+					<div id="dvContMenuREG" >
+						<div id = "menuRG" class = "menuFrm" style = "margin-right: 0px;"></div>
+					</div>
+							<div id = "frm_content" class = "formFrm contenidoForm ">
+		
+						
+								
+							<div class="plecaForm mG">
+        			<h3>
+Contesta las siguientes preguntas para recibir la oferta de tu nuevo préstamo:</h3>
+
+        			<span class="triangle"><i class="fa fa-caret-down"></i></span>
+        		</div>
+								<div class="areaL">
+									<ui:include src = "/jsf/secciones/registro/historialCred.xhtml"/>
+								
+	<!-- 							
+								<div id = "dvSi_autorizoRN" class="callAction btnNaranja" onclick="siAutorizo();" style="display: block;">Sí autorizo</div>
+	-->						
+	
+								<div id = "dvSi_autorizoRN" class="callAction btnNaranja" style="display: block;" onclick = "ConsultaRenovacion.init_IdProvider();">Sí autorizo</div>
+							</div>
+							</div>
+						
+					
+				</div>
+			</div>
+		</div>	
+			
+</ui:composition>				

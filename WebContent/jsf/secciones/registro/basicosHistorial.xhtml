@@ -56,6 +56,7 @@
 									    					
 						<ui:include src = "datos_personales/tu_prestamo.xhtml"/>	
 						<ui:include src = "datos_personales/actividad_economica.xhtml"/>
+						<ui:include src = "datos_personales/formaContacto.xhtml"/>
 						<ui:include src = "datos_personales/deudasAtrasadas.xhtml"/>
 						
 					<div class="section" id="datosPersonales" onclick="tab_section(this);">Cuéntanos un poco de ti ...<i class="fa fa-angle-down"></i></div>
@@ -227,8 +228,13 @@
 		</h:panelGroup>
 	
 					 <div class="mensaje_campos_obligatorios">
-					 <h:panelGroup id="pnlMsgFaltanCampos" >	
-							<div class="nombre" style="display:none;">#{sessionBean.nombre}</div>Para continuar, llena todos los campos marcados con asterisco (*)
+					 <h:panelGroup id="pnlMsgFaltanCampos" >
+					 	<i class="fa fa-exclamation-triangle"></i>
+					 		<div class="pnlMsgFaltanCampos_text">
+					 			Para continuar es obligatorio llenar todos los campos marcados en rojo con asterisco (*)
+					 		</div>
+							
+
 					 </h:panelGroup>	
 			</div>
 			

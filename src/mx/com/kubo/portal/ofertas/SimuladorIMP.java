@@ -37,5 +37,7 @@ implements SimuladorIMO
 		request = RequestContext.getCurrentInstance();
 		
 		super.init_simulator();		
+		
+		request.addCallbackParam("max_payment_ENABLED", max_payment_ENABLED);
 	}
 }

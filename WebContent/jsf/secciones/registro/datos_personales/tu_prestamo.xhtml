@@ -42,8 +42,11 @@
 								<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />		 
 										 
 					   </h:inputText>
+					   
+					   <INPUT type="hidden" id = "ammount" />
+					   
 				</div>				 
-			   <div class="field">			
+			   <div class="field">		
 	
 						<div class="dvLabel">
 							<h:outputLabel styleClass="labelsStl" value="#{msg.Purpose_loan}"/>
@@ -64,11 +67,33 @@
 						
 					
 				</div>
+				
+
+
 			
 						
 		
 				
 			</section>
+						   <div class="field">		
+			   	<div class="dvLabel">
+							<h:outputLabel styleClass="labelsStl" value="¿Cómo te gustaría pagar tu préstamo? "/>
+						</div>
+						<div class="selectNuevo">
+						
+		                            			<h:selectOneMenu id="frecuProyect" value="#{simulator.frequency_id}" styleClass="validatorClass" >
+													<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+													<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+													<p:ajax event      = "change" 
+														    listener   = "#{simulator.simulaCred(false)}" 
+														    update     = ":contSimReg" 
+														    onstart    = "return simulatorMirror();" 
+														    oncomplete = "return showRes();" 
+														    
+														    />  
+												</h:selectOneMenu>
+								</div>	
+												</div>
 
 			
 	</h:panelGroup>

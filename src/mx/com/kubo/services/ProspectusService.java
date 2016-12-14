@@ -2,6 +2,7 @@ package mx.com.kubo.services;
 
 import java.util.List;
 
+import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
@@ -27,4 +28,9 @@ public interface ProspectusService
 	
 	boolean saveProspectAndNaturalPersonAndMembership(Prospectus prospectus,NaturalPerson naturalPerson,Membership membership);
 	boolean saveProspectAndNaturalPerson(Prospectus prospectus,NaturalPerson naturalPerson);
+	
+	boolean altaProspectoHS( HS_OBJ hs_obj );
+	
+	boolean updateProspectoHS( HS_OBJ hs_obj );
+	
 }

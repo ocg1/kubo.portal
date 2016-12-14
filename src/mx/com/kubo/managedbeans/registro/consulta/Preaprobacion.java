@@ -50,6 +50,21 @@ implements PreaprobacionIMO, Serializable
 		company_id    = sesion.getCompany_id();
 		prospectus_id = sesion.getProspectus_id();
 									
+		init_variables();
+		
+/*		
+		if(i == 7)
+		{
+			consulta = new ConsultaCompletaIMP();
+			consulta.setCredithistory(credithistory);
+			consulta.setBlocked_person_ENABLED(blocked_person_ENABLED);
+			consulta.init();
+		}
+*/		
+	}
+	
+	public void init_variables(){
+		
 		i = 0;
 		flag = false;
 						
@@ -62,15 +77,6 @@ implements PreaprobacionIMO, Serializable
 		init_credit_history_DATA();						
 		init_message_ERROR();
 		
-/*		
-		if(i == 7)
-		{
-			consulta = new ConsultaCompletaIMP();
-			consulta.setCredithistory(credithistory);
-			consulta.setBlocked_person_ENABLED(blocked_person_ENABLED);
-			consulta.init();
-		}
-*/		
 	}
 
 	public void callWSSGB()
@@ -99,8 +105,12 @@ implements PreaprobacionIMO, Serializable
 										   || tarjeta_credito_company.toUpperCase().replaceAll(" ", "").indexOf("BRADES") != (-1)
 										   || tarjeta_credito_company.toUpperCase().replaceAll(" ", "").indexOf("UBURBI") != (-1));
 			
-			request = RequestContext.getCurrentInstance();
-			request.addCallbackParam("blocked_person_ENABLED", blocked_person_ENABLED);
+			if( excecuteJSF ){
+			
+				request = RequestContext.getCurrentInstance();
+				request.addCallbackParam("blocked_person_ENABLED", blocked_person_ENABLED);
+			
+			}
 			
 			if(!blocked_person_ENABLED)
 			{			
@@ -118,12 +128,16 @@ implements PreaprobacionIMO, Serializable
 					score        = scoringService.loadMaxScoringByProspectus(prospectus_id, company_id);			
 					proyect_loan = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
 					
-					faces = FacesContext.getCurrentInstance();
+					if( excecuteJSF ){
 					
-					elContext = faces.getELContext();
-					resolver  = faces.getApplication().getELResolver();
+						faces = FacesContext.getCurrentInstance();
+						
+						elContext = faces.getELContext();
+						resolver  = faces.getApplication().getELResolver();
+						
+						simulator = (Simulator) resolver.getValue(elContext, null, "simulator");
 					
-					simulator = (Simulator) resolver.getValue(elContext, null, "simulator");
+					}
 				
 					
 					if(tarjeta_credito_company_ENABLED)
@@ -175,9 +189,13 @@ implements PreaprobacionIMO, Serializable
 						}
 					}	
 					
-					asignar_score();
 					
-					init_access();					
+					if(excecuteJSF){
+					
+						asignar_score();
+						init_access();	
+					
+					}
 					
 				} else {	
 					
@@ -192,7 +210,7 @@ implements PreaprobacionIMO, Serializable
 	}	
 
 
-	private void asignar_score() 
+	public void asignar_score() 
 	{
 		if(score != null)
 		{
@@ -320,6 +338,8 @@ implements PreaprobacionIMO, Serializable
 				
 				if(!(reskubo.getVocalkubo1()+reskubo.getVocalkubo2()).equals("N0"))
 				{
+					if( excecuteJSF ){
+					
 					ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 					SessionBean sesion  = (SessionBean) FacesContext.getCurrentInstance()
 																	.getApplication()
@@ -332,7 +352,7 @@ implements PreaprobacionIMO, Serializable
 					
 					//Lamando al Safi!!
 					//callWSSafi();
-					
+					}
 					setSuccess(true);
 					setWait(false);
 					setFail(false);
@@ -358,6 +378,8 @@ implements PreaprobacionIMO, Serializable
 					score.setRisk_level("18.6");
 					score.setKubo_rate("21.52");
 					
+					if(excecuteJSF){
+					
 					ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 					SessionBean sesion  = (SessionBean) FacesContext.getCurrentInstance()
 																	.getApplication()
@@ -366,6 +388,8 @@ implements PreaprobacionIMO, Serializable
 					
 					/*modificar por una tasa variable*/
 					sesion.setRate(score.getRate());
+					
+					}
 					setSuccessTitle(false);
 					
 					scoringService.updateScoring(score);

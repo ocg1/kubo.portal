@@ -5,7 +5,7 @@
 				xmlns:p  = "http://primefaces.org/ui">
 	<div class="dvContent">
 		<div class="dvLabel">
-			<h:outputLabel styleClass="labelsStl familiar_trabaja" value="¿Sabes si alguno de tus familiares trabaja en kubo.financiero?*"/>
+			<h:outputLabel styleClass="labelsStl familiar_trabaja" value="¿Alguno de tus familiares trabaja en kubo.financiero?*"/>
 		</div>
 <fieldset class="conjuntoChecks famwork">
 				   <div class="btnN tresBtnChecks" style="width:22%;" data-opcion="S">
@@ -14,8 +14,8 @@
 			       <div class="btnN tresBtnChecks" style="width:22%;"  data-opcion="N">
 			        	<span>	<i class="fa fa-times"></i> No</span>
 			       </div>
-			       <div class="btnN tresBtnChecks btnR" style="width:48%; margin:0;"  data-opcion="D">
-			        	<span>	<i class="fa fa-question"></i> Lo desconoce</span>
+			       <div class="btnN tresBtnChecks btnR" style="width:47%; margin:0;"  data-opcion="D">
+			        	<span>	<i class="fa fa-question"></i>No sé</span>
 			       </div>
 			<h:selectOneRadio id="famwork" value="#{addPldDocument.prevencionld.has_kubo_relative}" styleClass="elementStlLbl validatorClass elementStlRd familiar_trabaja hs_class ocultaSelect">
 			    <f:selectItem itemValue="S" itemLabel="Si"/>

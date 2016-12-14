@@ -23,6 +23,7 @@ implements Serializable
 		super();
 	}
 	
+	
 	public final void sessionOut()
 	{
 		setOpeningCommission (null);
@@ -66,6 +67,10 @@ implements Serializable
 		setUrl_access(null);
 		setFb_New( false );
 		setMedium("");
+		
+		setNew_consulting( false );
+		setEnabled_Ren_4_Click(false);
+		
 	}
 	
 	

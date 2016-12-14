@@ -136,17 +136,24 @@ public class CheckScoreProcessed extends CheckScoreProcessedDMO  implements Seri
 						}
 						
 						elContext = FacesContext.getCurrentInstance().getELContext();
-						Simulator sim    = (Simulator) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(elContext, null, "simulator");
+						
 						
 						score = scoringservice.loadMaxScoringByProspectus(getProspectus_id(), getCompany_id());
 						
-						sim.setTasaTotal(score.getRate());
-						sim.setComisionApertura(score.getOpening_commission());
+						if( !sesion.getArea().toString().equals("M") ){
+							
+							Simulator sim    = (Simulator) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(elContext, null, "simulator");
+							
+							sim.setTasaTotal(score.getRate());
+							sim.setComisionApertura(score.getOpening_commission());
+							
+							sim.getSesion().setOpeningCommission(score.getOpening_commission());
+							sim.getSesion().setRate(score.getRate());
 						
-						sim.getSesion().setOpeningCommission(score.getOpening_commission());
-						sim.getSesion().setRate(score.getRate());
+							sim.simulaCred(false);
+						}
 						
-						sim.simulaCred(false);
+						
 						
 						if( sesion.getArea().toString().equals("L") ){
 						

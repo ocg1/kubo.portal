@@ -4,7 +4,7 @@
 				xmlns:p  = "http://primefaces.org/ui">
 				
 	<div class="prestamoAprobado azul">
-		<div class="table_encabezado">
+		<div id = "parser-title" class="table_encabezado">
 			<p>¡Tu préstamo ya está aprobado!</p>
 			<h2 id = "parser-ammount"/>            				
 		</div>
@@ -16,22 +16,70 @@
 					<td id = "parser-term-frequency"/>
 				</tr>
 				
+				<tr>
+            		<td>Pago aproximado:</td>
+            		<td id = "parser-payment"/>
+            	</tr>
+            	
             	<tr>
-            		<td>Interés:</td>
+            		<td>Total a recibir:</td>
+            		<td id = "parser-total-recibir"/>
+            	</tr>
+            	
+            	<tr>
+            		<td>Total a pagar:</td>
+            		<td id = "parser-total-payment"/>
+            	</tr>
+            	
+            	<tr>
+            		<td>Comisión por apertura:</td>
+            		<td id = "parser-opening-commission"/>
+            	</tr>
+            	
+            	<tr>
+            		<td>Monto de la comisión por apertura:</td>
+            		<td id = "parser-ammount-commission"/>
+            	</tr>
+            	            	            	
+            	<tr>
+            		<td>Tasa:</td>
             		<td id = "parser-rate"/>
             	</tr>
             	
-            	<tr>
+            	<tr class="classCAT" >
             		<td>CAT:</td>
             		<td id = "parser-cat"/>
-            	</tr>
-            	
-            	<tr>
-            		<td>Pago mensual:</td>
-            		<td id = "parser-payment"/>
-            	</tr>
+            	</tr>   				          	         
 			</table>
 		</div>
+		<div class="clsVerTablaAmort" >
+			<a id = "link-tabla-amortizacion" class="refTbAmrtOfer" data-div="7" href="#" src="" >
+				Ver tabla de amortización
+	        </a>
+        </div>
+		
+		<div class="labelsStl clDesCondicionesCat">	 	
+			<div class="labelsStl clLabelCondiciones"> 
+				
+				<b>(a)</b>:Tasa fija anual simple.<br /><br />
+				<b>(b)</b>:Costo Anual Total. Para fines informativos y de comparación. 
+				Fecha de cálculo:. Los <a  href="../jsf/avisolegal.jsf?page=condiciones"  >términos, condiciones</a> y <a href="leyTransparencia.jsf?page=comisiones" >comisiones</a> aplicables al 
+				Crédito Personal kubo.financiero son los incluidos en el <a href="leyTransparencia.xhtml?page=contrato" >Contrato de Adhesión</a> relacionado en la solicitud. Puedes consultar nuestros <a  href="avisolegal.jsf?page=requisitos" >requisitos y modalidades de contratación</a>.	
+				<br />
+				
+			</div>
+		   		
+			<!-- div style = "margin-left: 5px;margin-right: auto;width:80px;cursor: pointer; font-size: 1.1em;">
+				<a class   = "refTbAmrt" 
+				   href    = "/Kubo/jsf/secciones/creditos_personales_ref/avisoslegales.xhtml" 
+				   target  = "popup" 
+				   onClick = "window.open(this.href, this.target, 'width=544,height=400,scrollbars=1'); return false;">
+					Advertencias
+				</a>
+			</div -->					   		      		
+		</div>
+		
+		
 		
 		<div class="callAction btnNaranja" onclick = "Preaprobador.obtener_prestamo();">
 			Obtener préstamo
@@ -43,6 +91,53 @@
             				
         <script>
         	prestamoAprobadoTable();
+        	
+        	var flagTAmort = true;
+        	
+        	// funcion para abrir el lightbox y cargar los iframes con los parametros
+        	$(document).ready(function(e){
+        		
+                $('a.refTbAmrtOfer').click(function( e ){
+                	
+                	e.preventDefault();
+                	
+                	if( flagTAmort ){
+                		
+                		flagTAmort = false;
+                	
+	                	if( $("div[id^='light']").is(":visible") ){
+	                	
+	                		$("div[id^='light']").fadeOut();
+	                	
+	                	}
+	                	
+	                	$('#light' + $(this).attr('data-div')).fadeIn('slow');
+	                	
+	                	var src 		= $(this).attr("href");
+	                	
+						var iframe 		= $("#myiFrame");
+		                			  
+							iframe.attr("src", src); 
+		                	// myapp = {active: false}; 
+		                	
+	                }else{
+	                	flagTAmort = true;
+	                }
+				});
+                
+                   	 
+                
+                	 $(window).resize(function(event){
+    					 $(".div_scroll").scroll_absolute({arrows:true});
+    				 }); 
+               			
+                
+             
+                  });
+        	
 		</script>
-	</div>				
+	</div>
+	
+	<ui:include src="../templates/modal_tabla_amortizacion_lightbox.xhtml" />  
+					
 </ui:composition>				

@@ -44,6 +44,12 @@ public class EFL_Return implements Serializable {
 	@ManagedProperty("#{accessServiceImp}")
 	protected AccessService accessService;
 	
+	private Membership mCoach;
+	
+	private SessionBean sesion ;
+	
+	private HeaderBean headerbean;
+	
 	
 	private String name;
 	
@@ -68,35 +74,16 @@ public class EFL_Return implements Serializable {
 			if(prospectus_id != null ){
 				
 				prospectus_id = Utilities.encodeBase64( prospectus_id ) ;
-			
-				SessionBean sesion          = (SessionBean)         resolver.getValue(context, null, "sessionBean");
 				
-				
+				if( Utilities.isNumeric(prospectus_id) ){
 				
 					MembershipPK mpk = new MembershipPK();
 					
 					mpk.setCompany_id( COMPANY_ID );
 					mpk.setProspectus_id( Integer.parseInt(prospectus_id) );
 					
-					Membership mCoach = service_membership.getMembershipById(mpk);
+					mCoach = service_membership.getMembershipById(mpk);
 					
-					if(
-							
-						(sesion != null && sesion.getProspectus_id() != null && sesion.getProspectus_id().intValue() != Integer.parseInt(prospectus_id)  ) ||
-						 sesion == null || sesion.getProspectus_id() == null
-								
-					  ){
-					
-							HeaderBean headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
-							
-							headerbean.SignOut();
-							
-							headerbean.iniciaSesionCoach(mCoach, null, false);
-							
-							sesion          = (SessionBean)         resolver.getValue(context, null, "sessionBean");
-							
-					}
-							
 					name =  mCoach.getPerson().getFirst_name();
 					
 					Scoring score = scoringService.loadMaxScoringByProspectus(Integer.parseInt(prospectus_id),COMPANY_ID);
@@ -115,11 +102,51 @@ public class EFL_Return implements Serializable {
 					
 					scoringService.updateScoring(score);
 				
-					registraAccess( sesion );
+					
 				
-			
+				}
+				
+				sesion          = (SessionBean)         resolver.getValue(context, null, "sessionBean");
+				
+				headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
+				
 			}
+				
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
+			}
+
 			
+		}
+				
+		public void iniciSessionReturn(){
+			
+			try{
+		
+				if(
+						
+					(
+							sesion != null && 
+							sesion.getProspectus_id() != null && 
+							sesion.getProspectus_id().intValue() != mCoach.getMembershipPK().getProspectus_id()  
+					) 
+					
+					||
+					 
+					sesion == null || sesion.getProspectus_id() == null
+							
+				  ){
+				
+					headerbean.iniciaSesionCoach(mCoach, null, false);
+					
+				}
+				
+				registraAccess( sesion , mCoach.getMembershipPK().getProspectus_id() );
+						
+				
+				
 		}catch(Exception e){
 			
 			e.printStackTrace();
@@ -143,12 +170,12 @@ public class EFL_Return implements Serializable {
 		
 	}
 	
-	private void registraAccess( SessionBean sesion){
+	private void registraAccess( SessionBean sesion , Integer prospectus_id){
 		
 		Access access = new Access();
 		
-		access.setCompany_id(sesion.getCompany_id());
-		access.setProspectus_id(sesion.getProspectus_id());
+		access.setCompany_id(COMPANY_ID);
+		access.setProspectus_id(prospectus_id);
 		access.setScreen_id(77);
 		access.setPercentage(0);
 		access.setWeb_browser(sesion.getNamebrawser());

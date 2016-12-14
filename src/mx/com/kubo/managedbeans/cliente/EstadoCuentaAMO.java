@@ -36,9 +36,8 @@ import mx.com.kubo.model.TicketConfig;
 import mx.com.kubo.portal.reader.ParameterReaderIMP;
 import mx.com.kubo.tools.Utilities;
 
-import com.soa.model.businessobject.TSafiCreditosMovs;
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.webServices.WsSgbRiskServiceLocator;
+import mx.com.kubo.model.TSafiCreditosMovs;
+import mx.com.kubo.model.TSafiPagosCuota;
 
 public class EstadoCuentaAMO extends EstadoCuentaDMO
 {
@@ -352,16 +351,17 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 		
 		list_proyect_loan = servicioProyecto.getProyectLoanListByProspectus(prospectus_id, company_id);
 		
-		locator = new WsSgbRiskServiceLocator();
-		web_service_SGB = locator.getWsSgbRisk();
+		
 							
-		tamortizacion = web_service_SGB.getTSafiPagosCuota(prospectus_id + "");
+		//tamortizacion = web_service_SGB.getTSafiPagosCuota(prospectus_id + "");
+		
+		tamortizacion = estadocuentaservice.getTSafiPagosCuota(prospectus_id);
 					
 		lst = ticketconfigservice.getTicketConfigLst();
 		
 		setLstTicketConfig(lst);
 		
-		Calendar c = web_service_SGB.getFechaCorte();
+		Calendar c = estadocuentaservice.getFechaCorte();
 		
 		if( c != null )
 		{			
@@ -384,33 +384,33 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 		 
 		 if(cuentaAho != null && cuentaAho.trim().length() > 0)
 		 {								 
-			 movs2 = web_service_SGB.getTSafiCuentasAhoMovDep( cuentaAho , null, null);
+			 movs2 = estadocuentaservice.getTSafiCuentasAhoMovDep( Integer.parseInt( cuentaAho ) );
 			 
 			 if(movs2 != null)
 			 {						
-				for( int i = 0 ; i< movs2.length; i++)
+				for( int i = 0 ; i< movs2.size(); i++)
 				{														
-					if( movs2[i] != null )
+					if( movs2.get(i) != null )
 					{	
 						//System.out.println( "  MOVIMIENTO: " + movs2[i].getNatMovimiento() + " - " + movs2[i].getDescripcionMov() );
 						
-						if( movs2[i].getNatMovimiento().equals("A") )
+						if( movs2.get(i).getNatMovimiento().equals("A") )
 						{								
-							ahoMov.add( new CuentasAhoMovDep(movs2[i]) );								
+							ahoMov.add( new CuentasAhoMovDep( movs2.get(i) ) );								
 						}
 							
 						if( 
-									movs2[i].getDescripcionMov() != null 
-								&&  movs2[i].getNatMovimiento()  != null 
+									movs2.get(i).getDescripcionMov() != null 
+								&&  movs2.get(i).getNatMovimiento()  != null 
 								&& (
 										( 
-													movs2[i].getNatMovimiento().equals("A") 
-												&&  movs2[i].getDescripcionMov().equals("DEPOSITO A CREDITO") 
+													movs2.get(i).getNatMovimiento().equals("A") 
+												&&  movs2.get(i).getDescripcionMov().equals("DEPOSITO A CREDITO") 
 										) 
 										||  
 										( 
-													movs2[i].getNatMovimiento().equals("C") 
-												&& 	(movs2[i].getDescripcionMov().indexOf("COMISI") != (-1) )
+													movs2.get(i).getNatMovimiento().equals("C") 
+												&& 	(movs2.get(i).getDescripcionMov().indexOf("COMISI") != (-1) )
 										) 
 								)
 								
@@ -419,27 +419,27 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 							//System.out.println( " ASIGNANDO MOVIMIENTO: " + movs2[i].getDescripcionMov() );
 							
 							movimiento = new MovsCuentaAhorro();								
-							movimiento.setDescripcion(movs2[i].getDescripcionMov());
-							movimiento.setFecha( movs2[i].getFecha().getTime());
+							movimiento.setDescripcion(movs2.get(i).getDescripcionMov());
+							movimiento.setFecha( movs2.get(i).getFecha());
 														
-							if( movs2[i].getNombreCorto() != null )
+							if( movs2.get(i).getNombreCorto() != null )
 							{									
-								inst = movs2[i].getNombreCorto().toUpperCase() 
-									 + " POR " + movs2[i].getTipoDeposito() == null ? "" : movs2[i].getTipoDeposito().equals("E") ? "DEPÓSITO EN EFECTIVO" : movs2[i].getTipoDeposito().equals("T")?"SPEI" : "";										
+								inst = movs2.get(i).getNombreCorto().toUpperCase() 
+									 + " POR " + movs2.get(i).getTipoDeposito() == null ? "" : movs2.get(i).getTipoDeposito().equals("E") ? "DEPÓSITO EN EFECTIVO" : movs2.get(i).getTipoDeposito().equals("T")?"SPEI" : "";										
 							} else {									
 								inst = "";
 							}
 								
 							movimiento.setInstitucion_receptora(inst);
-							movimiento.setMoneda(movs2[i].getMoneda());
-							movimiento.setMonto(dec.format(Double.parseDouble(movs2[i].getCantidadMov() )));
-							movimiento.setNaturaleza(movs2[i].getNatMovimiento());
+							movimiento.setMoneda(movs2.get(i).getMoneda());
+							movimiento.setMonto(dec.format(movs2.get(i).getCantidadMov() ));
+							movimiento.setNaturaleza(movs2.get(i).getNatMovimiento());
 							movimiento.setOrder(1);
 							  
 							
-							if( movs2[i].getDescripcionMov() != null ){
+							if( movs2.get(i).getDescripcionMov() != null ){
 								
-								String[] descMov =  movs2[i].getDescripcionMov().split(" - ");
+								String[] descMov =  movs2.get(i).getDescripcionMov().split(" - ");
 								
 								if( descMov != null && descMov.length>1 ){
 									
@@ -462,7 +462,7 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 						}							
 					}
 					
-					movs = web_service_SGB.getTSafiCreditosMovs( null, null, null, null,(prospectus_id + "") );
+					movs = estadocuentaservice.getTSafiCreditosMovs( null, null, (prospectus_id ) );
 					
 					htCredTotalCuotas = new Hashtable<String,String>();
 					
@@ -470,32 +470,32 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 					{
 						for( TSafiCreditosMovs m : movs)
 						{								
-							if(m != null && m.getNatmovimiento()!=null && m.getNatmovimiento().equals("A") && m.getDescripcion() != null && m.getDescripcion().equals("PAGO DE CREDITO") )
+							if(m != null && m.getNatMovimiento()!=null && m.getNatMovimiento().equals("A") && m.getDescripcion() != null && m.getDescripcion().equals("PAGO DE CREDITO") )
 							{								
 								movimiento = new MovsCuentaAhorro();
 								
-								String r = getTitleBySafiCode(Integer.parseInt(m.getTipomovcreid()));
+								String r = getTitleBySafiCode(m.getTipoMovCreId());
 								
-								String numCuotas = htCredTotalCuotas.get(m.getCreditoid());
+								String numCuotas = htCredTotalCuotas.get(m.getCreditoId());
 								
 								if( numCuotas == null )
 								{
-									numCuotas = getTotalCuotas(m.getCreditoid(),htCredTotalCuotas,tamortizacion);
+									numCuotas = getTotalCuotas((m.getCreditoId()+""),htCredTotalCuotas,tamortizacion);
 								}
 								
 								String desc = "PAGO DE " + r.split("::")[1]
-											+ " <br /> (Cuota " + m.getAmorticreid() 
+											+ " <br /> (Cuota " + m.getAmorticreId()
 											+ " de " + numCuotas
-											+ " Crédito " + m.getCreditoid() + ")"; 
+											+ " Crédito " + m.getCreditoId()+ ")"; 
 								
 								movimiento.setDescripcion( desc );									
 								movimiento.setOrder( Integer.parseInt( r.split("::")[0] ));									
-								movimiento.setFecha( m.getFechaaplicacion().getTime());									
+								movimiento.setFecha( m.getFechaAplicacion());									
 								movimiento.setInstitucion_receptora("");
 								movimiento.setMoneda( m.getDescripcion());
 								movimiento.setMonto(dec.format(m.getCantidad()));
 								movimiento.setNaturaleza("C");
-								movimiento.setCreditoId( m.getCreditoid());
+								movimiento.setCreditoId( m.getCreditoId()+"");
 								
 								movimientos.add(movimiento);
 							}
@@ -637,14 +637,14 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 		return res;	
 	}
 	
-	public final String getTotalCuotas(String creditoid, Hashtable<String,String> htCredTotalCuotas,TSafiPagosCuota[] posicionInt)
+	public final String getTotalCuotas(String creditoid, Hashtable<String,String> htCredTotalCuotas,List<TSafiPagosCuota> posicionInt)
 	{					
 		String numCuotas = "";
 		int totalAmort = 0;
 		
 		for(TSafiPagosCuota amort : posicionInt)
 		{			
-			if(amort.getCreditoid().equals(creditoid))
+			if((amort.getPk().getCreditoId()+"").equals(creditoid))
 			{
 				totalAmort++;
 			}			
@@ -653,6 +653,32 @@ public class EstadoCuentaAMO extends EstadoCuentaDMO
 		htCredTotalCuotas.put(creditoid, (totalAmort + ""));
 		
 		return numCuotas;		
+	}
+	
+	protected void init_bandera_renovacion(){
+		
+		systemParam_PK = new SystemParamPK();
+		
+		systemParam_PK.setCompany_id(1);
+		systemParam_PK.setSystem_param_id(97); 
+		
+		systemparam = systemparamservice.loadSelectedSystemParam(systemParam_PK);
+		
+		indice_saldo_deudor_MIN = Double.parseDouble(systemparam.getValue() == null ? "75" : systemparam.getValue());
+		
+		
+		systemParam_PK = new SystemParamPK();
+		
+		systemParam_PK.setCompany_id(1);
+		systemParam_PK.setSystem_param_id(98); 
+		
+		systemparam = systemparamservice.loadSelectedSystemParam(systemParam_PK);
+		
+		boolean ren_4_click_enabled =  systemparam.getValue().equals( "S" );
+		
+		sesion.setEnabled_Ren_4_Click(ren_4_click_enabled) ;
+		
+		
 	}
 	
 	private boolean isDirectory(String other)

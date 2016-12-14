@@ -11,7 +11,9 @@ import java.util.Date;
 import org.primefaces.json.JSONObject;
 
 import mx.com.kubo.model.EflScore;
+import mx.com.kubo.model.Scoring;
 import mx.com.kubo.services.EflScoreService;
+import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.tools.Utilities;
 
 public class EflConnect {
@@ -124,6 +126,16 @@ public class EflConnect {
 		eflscr.setMx_solicitud_buro(mx_solicitud_buro);
 		
 		service.saveEflScore(eflscr);
+		
+		// --
+		
+		ScoringService scoringservice =  Utilities.findBean( "scoringServiceImp" );
+		
+		Scoring score = scoringservice.loadScoringByBurSolNum(mx_solicitud_buro);
+		
+		score.setEfl_test(estado);
+		
+		scoringservice.updateScoring(score);
 		
 	}
 

@@ -4,37 +4,22 @@ import static mx.com.kubo.change_control.ChangeControlEMO.CREDITO_ADICIONAL_CON_
 import static mx.com.kubo.change_control.ChangeControlEMO.CREDITO_ADICIONAL_SIN_CONSULTA;
 import static mx.com.kubo.change_control.ChangeControlEMO.RENOVACION_CREDITO;
 
-import java.io.Serializable;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.faces.context.FacesContext;
-import javax.xml.rpc.ServiceException;
 
 import mx.com.kubo.bean.ChangeBean;
 import mx.com.kubo.bean.DocumentationDMO;
-import mx.com.kubo.change_control.AccesControlIMO;
-import mx.com.kubo.change_control.ChangeControlIMO;
 import mx.com.kubo.managedbeans.mesa.solicitud.adicional.TipoCreditoAdicional;
 import mx.com.kubo.model.Files;
 import mx.com.kubo.model.MembershipPK;
-import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Proyect;
 import mx.com.kubo.model.ProyectLoan;
-import mx.com.kubo.model.ServiceCalling;
+import mx.com.kubo.model.ProyectPK;
+import mx.com.kubo.model.SimulatorBean;
 
-import org.springframework.stereotype.Service;
-
-import com.soa.webServices.WsSgbRiskServiceLocator;
-import com.soa.webServices.request.DocumentsReviewRequest;
-import com.soa.webServices.responses.WsSgbResponse;
-import com.soa.webServices.util.InputParam;
-
-@SuppressWarnings("serial")
-@Service(value = "reasignador_service")
 public final class ReasignadorIMP extends ReasignadorPMO
-implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
+implements ReasignadorIMO
 {	
 	public final void setProyect_loan_reasignable(ProyectLoan proyect_loan)
 	{
@@ -57,47 +42,104 @@ implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
 		
 	}
 	
-	public void init_renovacion_aprobacion_automatica(TipoCreditoAdicional tipo_credito_adicional, int loan_type)
-	{
-		int emisor_prospectus_id = sesion.getProspectus_id();
+	public void init_renovacion_aprobacion_automatica(String loan_type)
+	{		
 		
 		company_id     = proyect_loan.getPerson().getNatPerPK().getCompany_id();
 		prospectus_id  = proyect_loan.getPerson().getNatPerPK().getProspectus_id();
 		
-		crear_proyect(prospectus_id, company_id);													
+		SimulatorBean simulation = simulatorService.getMaxSimulationProspect(prospectus_id, company_id);
+		
+		score = scoreService.loadMaxScoringByProspectus(prospectus_id, company_id);
+		
+		proyect_loan_NEW = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
+		
+		proyect_NEW = proyect_loan_NEW.getProyect();
+		
+		allocater = new ScoreAllocIMP();		
+		allocater.setProyect_loan(proyect_loan_NEW);
+		allocater.setScore(score);
+		allocater.setSimulation(simulation);				
+		allocater.init();
+		
+		proyect_loan_NEW = allocater.getProyect_loan();
+				
+		int proyect_loan_id = proyect_loan.getProyectloanPk().getProyect_loan_id();
+		
+		proyect_loan_NEW.setLoan_type(loan_type);
+		proyect_loan_NEW.setPrevious_proyect_loan_id(proyect_loan_id);
+		proyect_loan_NEW.setIs_automatic_aproved(is_automatic_aproved);
+		
+		proyect_loan_NEW.setIs_published("S");
+		
+		proyectloanService.update(proyect_loan_NEW);				
+		
+						
+		ProyectPK project_actual_PK = proyect_loan_NEW.getProyect().getProyectoPk();		
+					
+		proyect_loan.getProyect().setProyectoPk(project_actual_PK);
+		
+		proyectService.update(proyect_loan.getProyect());
+		
+		
+		Proyect project_actual = proyectService.getProyectById(project_actual_PK);
+				
+		int proyect_id = project_actual_PK.getProyect_id();
+				
+		String logo  = proyect_loan_NEW.getProyect().getLogo();
+		String logo2 = proyect_loan_NEW.getProyect().getLogo2();
+		String logo3 = proyect_loan_NEW.getProyect().getLogo3();
+		
+		proyect_loan_id = proyect_loan_NEW.getProyectloanPk().getProyect_loan_id();								
+		
+		if(logo != null)
+		{
+			String pathDocument = copy_proyect_photo(logo, 1, proyect_loan_id, proyect_id);
 			
-		if(is_proyect_NEW_OK)
-		{								
-			crear_proyect_loan_NEW(tipo_credito_adicional, loan_type, emisor_prospectus_id);						
+			project_actual.setLogo(pathDocument);
+		}		
+		
+		if(logo2 != null)
+		{
+			String pathDocument = copy_proyect_photo(logo2, 2, proyect_loan_id, proyect_id);
 			
-			proyect_loan_NEW = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);	
+			project_actual.setLogo2(pathDocument);
+		}	
+		
+		if(logo3 != null)
+		{
+			String pathDocument = copy_proyect_photo(logo3, 3, proyect_loan_id, proyect_id);
+			
+			project_actual.setLogo3(pathDocument);
+		}	
+		
+		proyectService.update(project_actual);
 			
 /*			
-			if(tipo_credito_adicional == NUEVA_CONSULTA_DISABLED)
-			{
-				registrar_change_control(new ChangeBean(CREDITO_ADICIONAL_SIN_CONSULTA), emisor_prospectus_id);
-			}
-			
-			if(tipo_credito_adicional == NUEVA_CONSULTA_ENABLED)
-			{
-				registrar_change_control(new ChangeBean(CREDITO_ADICIONAL_CON_CONSULTA), emisor_prospectus_id);
-			}
+		if(tipo_credito_adicional == NUEVA_CONSULTA_DISABLED)
+		{
+			registrar_change_control(new ChangeBean(CREDITO_ADICIONAL_SIN_CONSULTA), emisor_prospectus_id);
+		}
+		
+		if(tipo_credito_adicional == NUEVA_CONSULTA_ENABLED)
+		{
+			registrar_change_control(new ChangeBean(CREDITO_ADICIONAL_CON_CONSULTA), emisor_prospectus_id);
+		}
 */			
 			
-			crear_lista_documentos(VALIDACION_VIGENCIA_DISABLED);
-			copiar_documentos();
+		crear_lista_documentos(VALIDACION_VIGENCIA_DISABLED);
+		copiar_documentos();
+		
+		callSGB(proyect_NEW, proyect_loan_NEW);
 			
-			callSGB(proyect_NEW, proyect_loan_NEW);
-			
-//			registrar_change_control(new ChangeBean(RENOVACION_CREDITO), emisor_prospectus_id);
-		}	
-	}
-	
+//		registrar_change_control(new ChangeBean(RENOVACION_CREDITO), emisor_prospectus_id);		
+	}	
+
 	public final void renovar_solicitud_de_credito(TipoCreditoAdicional tipo_credito_adicional)
 	{
 		int emisor_prospectus_id = sesion.getProspectus_id();
 		
-		crear_proyect_loan_NEW(tipo_credito_adicional, 3, emisor_prospectus_id);
+		crear_proyect_loan_NEW(tipo_credito_adicional, 3);
 		
 		proyect_loan_NEW = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
 		
@@ -120,7 +162,7 @@ implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
 			
 		if(is_proyect_NEW_OK)
 		{					
-			crear_proyect_loan_NEW(tipo_credito_adicional, loan_type, emisor_prospectus_id);						
+			crear_proyect_loan_NEW(tipo_credito_adicional, loan_type);						
 			
 			proyect_loan_NEW = proyectloanService.getMaxProyectLoanByProspect(prospectus_id, company_id);	
 			
@@ -149,7 +191,7 @@ implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
 		
 		for (Files file : lista_files_loaded)
 		{
-			 real_path      = external.getRealPath("//resources//") + file.getLocation();
+			 real_path = external.getRealPath("//resources//") + file.getLocation();
 			 
 			 url_img        = file.getLocation();
 			 formatDocument = file.getLocation().substring(file.getLocation().lastIndexOf(".") + 1);
@@ -164,7 +206,7 @@ implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
 			 file_type_id   = file.getFilesPk().getFile_type_id();			 
 			 file_id        = file.getFilesPk().getFile_id();			
 			 
-			 docBean   = new DocumentationDMO();
+			 docBean = new DocumentationDMO();
 				 
 			 docBean.setProspectus_id(prospectus_id);
 			 docBean.setCompany_id(company_id);
@@ -216,10 +258,18 @@ implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
 		boolean new_proyect_OK = false;
 		
 		try
-		{			
+		{				
+			this.proyect_loan = proyect_loan;
+			
 			init_documents_review(proyect);
 			
-			new_proyect_OK = init_new_project(proyect, proyect_loan);								
+			publicator = new SGBNewProyectIMP();
+			publicator.setProyect(proyect);
+			publicator.setProyect_loan(proyect_loan);
+			publicator.setIs_automatic_aproved(is_automatic_aproved);
+			publicator.init();
+			
+			new_proyect_OK = publicator.isChange_status_ENABLED();								
 		
 		} catch(Exception e) {
 			
@@ -229,5 +279,5 @@ implements ReasignadorIMO, AccesControlIMO, ChangeControlIMO, Serializable
 		}
 		
 		return new_proyect_OK;
-	}	
+	}
 }

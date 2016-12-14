@@ -18,6 +18,7 @@ import mx.com.kubo.services.OfferRejectionMotiveService;
 import mx.com.kubo.services.OfferService;
 import mx.com.kubo.services.OfferValuesService;
 import mx.com.kubo.services.PromoParametersService;
+import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ScreenService;
 import mx.com.kubo.services.SegmentActionService;
@@ -60,6 +61,9 @@ public class CheckScoreProcessedDMO {
 	
 	@ManagedProperty("#{service_catalogos}")
 	protected ServiceCatalogosIMO service_catalogos;
+	
+	@ManagedProperty("#{proyectLoanServiceImp}")
+	protected ProyectLoanService proyectLoanService;
 	
 	protected boolean checkEnabled;
 	protected SessionBean sesion;
@@ -389,6 +393,14 @@ public class CheckScoreProcessedDMO {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public ProyectLoanService getProyectLoanService() {
+		return proyectLoanService;
+	}
+
+	public void setProyectLoanService(ProyectLoanService proyectLoanService) {
+		this.proyectLoanService = proyectLoanService;
 	}
 	
 

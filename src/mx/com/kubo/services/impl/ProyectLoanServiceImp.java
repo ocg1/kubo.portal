@@ -101,6 +101,10 @@ implements ProyectLoanService
 		return dao.getMaxProyectLoanByProspectInFunding(prospectus_id, company_id);
 	}
 	
+	public ProyectLoan getMaxProyectLoanByProspectAndStatus(Integer prospectus_id, Integer company_id, Integer status_id) {
+		return dao.getMaxProyectLoanByProspectAndStatus( prospectus_id,  company_id,  status_id) ;
+	}
+	
 	public List<Byte> getOnlyTermID()
 	{
 		return dao.getOnlyTermId();

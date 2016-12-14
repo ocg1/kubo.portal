@@ -1,22 +1,38 @@
 console.log("ofertas.js");
 
+var claseSel = "";
+
+$(document).ready(function()
+{
+	claseSel = "";
+	
+	var remote_command = $("div#ofertas-remote-command");
+	
+	if(remote_command.find(".check-automatic-aproved").length > 0)
+	{
+		remote_command.find(".check-automatic-aproved").trigger("click");
+		
+	} else {
+	
+		Ofertas.init_SAFI_credit_id();
+	}		
+});
+
 Ofertas.init_panel_simulador = function()
 {
-	//$("div#ofertas-remote-command").find("a.init-panel-simulador").trigger("click");
-	
-	$("div#ofertas-panel-simulador").show();
-	$("div#simular-nuevo-prestamo").hide();		
-	$("div#ofertas-panel-preaprobado").hide();
-	$("div#panel-tabla-ofertas").hide(); 
+	$("div#ofertas-remote-command").find("a.init-panel-simulador").trigger("click");
 };
 
-/*
 Ofertas.panel_simulador_oncomplete = function(xhr, status, args)
 {
 	var panel_simulador_ENABLED = args.panel_simulador_ENABLED;
+	var max_ammount = args.max_ammount;
+	var max_payment = args.max_payment;
 	
-	console.log("panel_simulador_oncomplete(): ");
+	console.log("Ofertas.panel_simulador_oncomplete(): ");
 	console.log("> panel_simulador_ENABLED = " + panel_simulador_ENABLED);
+	console.log("> max_ammount = " + max_ammount);
+	console.log("> max_payment = " + max_payment);
 	
 	if(panel_simulador_ENABLED)
 	{
@@ -28,7 +44,82 @@ Ofertas.panel_simulador_oncomplete = function(xhr, status, args)
 	
 	closeFancy();
 }
-*/
+
+Ofertas.automatic_aproved_oncomplete = function(xhr, status, args)
+{
+	var automatic_aproved_ENABLED = args.automatic_aproved_ENABLED;
+	
+	console.log("> automatic_aproved_ENABLED = " + automatic_aproved_ENABLED);
+	
+	$("#panel-tabla-ofertas").hide();
+	
+	if(automatic_aproved_ENABLED)
+	{
+		$("div.txtConf1.mensajeConfirmacionPrestamo").show();
+		
+	} else {
+		
+		$("div.txtConf2.mensajeConfirmacionPrestamo").show();
+	}
+};
+
+Ofertas.init_SAFI_credit_id = function()
+{
+	console.log("Ofertas.init_SAFI_credit_id():");
+	
+	var ofertas = $("#SAFI-credit-id").find("select")
+	
+	$.each(ofertas.find("option"), function(index, element)
+	{
+		if(index > 0)
+		{
+			var SAFI_credit_id = $(element).val();
+			
+			console.log("> " + SAFI_credit_id);	
+			
+			ofertas.val(SAFI_credit_id).trigger("change");
+		}		
+	});				
+};
+
+Ofertas.SAFI_credit_id_oncomplete = function(xhr, status, args)
+{	
+	var SAFI_credit_id    = args.SAFI_credit_id;
+	var same_rate_ENABLED = args.same_rate_ENABLED;
+	var      ofert_TOKEN  = args.ofert_TOKEN;
+	var ofert_rate_TOKEN  = args.ofert_rate_TOKEN;
+	
+	console.log("Ofertas.SAFI_credit_id_oncomplete() = ");
+	console.log("> SAFI_credit_id    = " + SAFI_credit_id);
+	console.log("> same_rate_ENABLED = " + same_rate_ENABLED);
+	console.log("> ofert_TOKEN       = " + ofert_TOKEN);
+	console.log("> ofert_rate_TOKEN  = " + ofert_rate_TOKEN);
+				
+	$("div.renovacion-hidden").each(function(index, el)
+	{
+		$(el).hide();
+	});
+					
+	if(SAFI_credit_id > 0)
+	{
+		$("div#simular-nuevo-prestamo").show();
+		$("div#renovacion-" + SAFI_credit_id).show();	
+	}
+	
+	if(!same_rate_ENABLED)
+	{
+		$("div#renovacion-" + SAFI_credit_id).find("h2.renovacion-ofert-rate-TOKEN").html(ofert_rate_TOKEN);
+		
+	} else {
+		
+		$("div#renovacion-" + SAFI_credit_id).find("h2.renovacion-ofert-rate-TOKEN").html(ofert_rate_TOKEN);
+	}
+	
+	$("div#renovacion-" + SAFI_credit_id).find("h3.renovacion-ofert-TOKEN").html(ofert_TOKEN);
+
+		
+	closeFancy();
+};
 
 Ofertas.init_tabla_ofertas = function()
 {
@@ -40,12 +131,14 @@ Ofertas.init_tabla_ofertas = function()
 	closeFancy();
 };
 
-Ofertas.combo_checkBox  = function(input, ofert_id, table_id, renovationNumber) 
+Ofertas.combo_checkBox  = function(input, ofert_id, table_id, renovationNumber , clase ) 
 {
 	var frequency;
 	var ammount;
 	var payment;
-	var oferta_TOKEN;		
+	var oferta_TOKEN;
+	
+	claseSel = clase;
 	
 	var parent_id = "tabla-oferta-" + table_id + "-"+ renovationNumber;
 	
@@ -54,7 +147,7 @@ Ofertas.combo_checkBox  = function(input, ofert_id, table_id, renovationNumber)
 		$(el).removeClass("fa-check");	
 	});
 	
-	$(input).parent().addClass("fa-check");
+	$(input).parent().parent().addClass("fa-check");
 	
 	
 	$("div.btn-oferta-continuar").each(function (index, el)
@@ -116,11 +209,39 @@ Ofertas.simulation_ofert_oncomplete = function(xhr, status, args)
     Preaprobador.init_panel(FROM_TABLA_OFERTAS);
     
     closeFancy();
+    
+    $(".prestamoAprobado").removeClass("amarillo");
+    $(".prestamoAprobado").removeClass("azul");
+	$(".prestamoAprobado").removeClass("morado");
+	
+	//if($(".tablaUn.azul  input:checked").length != 0) {
+	if(claseSel == 'azul'	) {
+    	
+    	$(".prestamoAprobado").removeClass("amarillo");
+		$(".prestamoAprobado").removeClass("morado");
+		$(".prestamoAprobado").addClass("azul")
+    }
+    //else if($(".tablaUn.morado  input:checked").length != 0) {
+	
+	else if(claseSel == 'morado'	) {
+    	
+    	   $(".prestamoAprobado").removeClass("amarillo");
+    	    $(".prestamoAprobado").removeClass("azul");
+    		$(".prestamoAprobado").addClass("morado");
+    }
+    //else  if($(".tablaUn.amarillo  input:checked").length != 0) {
+	else if(claseSel == 'amarillo'	) {
+    	
+        $(".prestamoAprobado").removeClass("azul");
+    	$(".prestamoAprobado").removeClass("morado");
+		$(".prestamoAprobado").addClass("amarillo")
+    }
+    
 };
 
 function prestamoAprobadoTable ()
 {
-	$( ".prestamoAprobado tr:odd" ).css( "background-color", "#f1f1f1" );
+	//$( ".prestamoAprobado tr:odd" ).css( "background-color", "#f1f1f1" );
 }
 
 function loader()
@@ -140,36 +261,3 @@ function showRes()
 	
 	return true;
 }
-
-/*
-$(document).ready(function()
-{
-	// Smart Tab
-		$('#tabs').smartTab({autoProgress: false,stopOnFocus:true,transitionEffect:'vSlide'});
-	
-	$('#investment').click(function(){
-			 
-		location.href = "../jsf/preregistro.jsf?role=investment";
-	
-	})
-
-	$(".btnNext1").click(function(){
-		
-		$(".unbound").fadeOut(500,function(){ $(".prestamoAprobado").fadeIn(500) });
-		
-	});
-	
-	$(".clsback").click(function(){
-		
-		$(".prestamoAprobado").fadeOut(500,function(){ $(".unbound").fadeIn(500) });
-		
-	});
-	
-	$(".btnGetLoan").click(function(){
-		
-		$(".prestamoAprobado").fadeOut(500,function(){ $(".txtConf1").fadeIn(500) });
-		
-	});
-	
-});
-*/

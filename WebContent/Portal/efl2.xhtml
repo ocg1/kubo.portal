@@ -137,7 +137,30 @@
 </script>
 
 	
+	    <style>
 	    
+	    	.contentReturn{
+	    		display:none;
+	    	}
+	    	
+	    	.contWaitReturn{
+	    	
+	    		width: 100%;
+	    	
+	    	}
+	    	
+	    	.contWaitReturn .inner_content{
+	    	
+	    		width: 100%;
+	    		min-height:450px; 
+	    	
+	    	}
+	    	
+	    	.tituloNuevo{
+	    		display: none;
+	    	}
+	    
+	    </style>
 	    
 
         <script type="text/javascript" language="javascript">
@@ -169,6 +192,23 @@
 		}]);
 	//console.log(resp);
 	}
+	
+	function returnInitEFL(){
+		
+		$(".contWaitReturn").fadeOut("slow",function(){ 
+															$(".tituloNuevo").show(); 
+															$(".contentReturn").fadeIn("slow"); 
+															
+														});
+	}
+	
+	$(document).ready(function() 
+			{	
+		
+				$("#initEFL").trigger("click");
+		
+			});
+	
 </script>
 		
 
@@ -179,7 +219,7 @@
  			
  		</div>
  		
- 		#{eFL_Return.name}
+ 		<!--  #{eFL_Return.name} -->
     	
     	<div style="background:#EAEAEC;" class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
     	
@@ -188,14 +228,9 @@
         		
          		<ui:include src="templates/header.xhtml" />
       
-            	<!--
-            	 <div class="titulo"><h2>Inicia con tu crédito ahora</h2></div>	
-            	-->
-            		<div class="cargandoNuevo alerts">
-						
-                        		<img src="#{configManaged.location}resources/images/loader.gif"/>
-                        
-			</div>
+            			
+            	
+            		
             	<h:panelGroup>
             	
             	<div class="tituloNuevo noP">
@@ -205,9 +240,19 @@
 	            		<span class="triangle"><i class="fa fa-caret-down"></i></span>
             		</div>
             		
+            	</div>
+            	
+            	<div class="content contWaitReturn" style="background-color: #FFF;" >
+            		
+            		<div class="inner_content">
+            	 		
+            	 		<div style="margin-left: auto; margin-right: auto; width: 51px; height: 451px;" > <img src="#{configManaged.location}resources/images/loader.gif" style="margin-top: 200px;" />  </div>
+            	 		
+            	 	</div>	
+            	 
             	</div>	
 
-				<div class="content" >            	               
+				<div class="content contentReturn" >            	               
                 	<div class="inner_content">
             			<figure class="imagenEscritorio" >
 								<h:graphicImage library="img/nuevoRegistro" name= "welcomeBack.png"  />       
@@ -259,7 +304,18 @@ tomarles una foto y enviarlas por WhatsApp.
 				<ui:include src="templates/mandar_mail.xhtml" />		
 				<ui:include src="templates/modal_cambiocontrasena.xhtml" />	
 				
-				<ui:include src="../jsf/templates/msgProcessing.xhtml" />					        
+				<ui:include src="../jsf/templates/msgProcessing.xhtml" />		
+				
+				<div style="display:none;" >
+				
+						<h:commandLink id="initEFL"> 
+						
+							<p:ajax event="click" listener="#{eFL_Return.iniciSessionReturn}" oncomplete="returnInitEFL();" ></p:ajax>
+							
+						</h:commandLink>
+				
+				</div>
+							        
 			</h:form>
 
 			<script>

@@ -21,7 +21,7 @@ function simulatorMirror(){
 	
 	$("#ammount").val( $("#ammount_input").val() );
 	
-	var f = simOnStartVal();
+	var f = simOnStartVal_e();
 	
 	console.log( "regrasando: " + f);
 	
@@ -35,14 +35,14 @@ function simulatorMirror(){
 	
 }
 
-function simOnStartVal()
+function simOnStartVal_e()
 {
 	console.log( "menuregistro.js" );
 	if( validaMontoMin('ammount','simulator') )
 	{
 		//alert("regresa true");
 		loader();
-		var ent = $("#ammount").val().replace(",","");
+		var ent = ($("#ammount").val()+"").replace(",","");
 		var input = $("#ammount");
 		if(!isNaN(ent))
 		{
@@ -57,7 +57,7 @@ function simOnStartVal()
 				return true;
 		 	// }
 		}else{
-			alert("Cantidad invalida");
+			alert("Cantidad invalida " + ent +"  --  ");
 			input.value="";
 			//showRes()
 			return false;

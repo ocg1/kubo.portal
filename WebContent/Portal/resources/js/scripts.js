@@ -204,7 +204,7 @@ $(document).ready(function(){
 		      if(i > 2){i = 0;}
 		   }, 6000);
 
-		$('.titulo_frase .test-0').show();
+	$('.titulo_frase .test-0').show();
 			var testimoniosInterval = setInterval(function(){
 				 $('.titulo_frase h3').fadeOut();
 			      $('.titulo_frase .test-' + a + '').fadeIn();
@@ -218,11 +218,7 @@ $(document).ready(function(){
 			});
 		 });
 		 
-		 $(".bloque_simulador_comparador input[type='text']").keyup(function(){
-			  $(this).css({
-					"color" : "#444444"
-			});
-		 });
+		
 	 
 	var afterAdded = false;
 	
@@ -249,31 +245,16 @@ $(document).ready(function(){
 		  });
 	});	 
 	//para agregarle la clase min a algunos elementos y poder asignarle el estilo background size que funcione en explorer 8
-	$(".media ul li a, .dicen_inner div div fieldset  > ul li a, .header_inner ol li.bolsa a").each(function(){	
+	/*
+		 $(".media ul li a, .dicen_inner div div fieldset  > ul li a, .header_inner ol li.bolsa a").each(function(){	
 		 $(this).addClass("min");
 	 }); 
-    
+    */
     //-----> Panel estatus
     $('.open-disponible').click(function(){
         $(this).toggleClass('active');
         $('.inner-disponible').toggleClass('active');
-    });
-    // titulos version desktop y escritorio text shadow
-			$(".slidesjs-slide").each(function(){	
-				 var titulo = $(this).find("h2");
-				 var desktop  = $(this).find(".desktop");
-				 var mobile = $(this).find(".mobile");
-				 $(titulo).clone().appendTo( mobile);
-				 titulo.appendTo($(desktop));
-				 $(this).addClass("ie ie9 ie8and9");
-				  mobile.append("<div class='shade'></div>");
-			});
-				 // titulos text shadow
-			$(".slidesjs-slide div h2").each(function(){
-						var tituloh2 = $(this);
-						var original = $(this).find("span");
-						original.addClass("shadow").clone().appendTo(tituloh2).removeClass("shadow");			
-			 });					
+    });			
 			 
 			 // clases dinamicas seccion numeros
 			 $(".kubo_numeros div").addClass(function( index ) {
@@ -301,93 +282,18 @@ $(document).ready(function(){
 			});
 			// colocar dinamicamente marcadores
 
-		   //funcion invertir y prestamo version escritorio y mobile
-		   	var indicador = false;
-		   $('.como_funciona, .indicador').click(function(){
-				var width = $(window).width();	
-				$(".pasos").hide();
-				$(".mostar_prestamo .pasos:first").show();
-				$('.mostar_invertir').slideUp();
-				$('.mostar_prestamo').slideToggle();
-				$(".col_izq ul li a").removeClass("active");
-				$('.mostar_prestamo .col_izq ul li a:first').addClass("active"); 
-			/*	$('.funciona_filosofia').hide();*/
-			    $(".como_funciona").addClass("active");
-					
-				if (width < 770) { 
-					$(".mostar_prestamo .pasos").show();
-				}
-				if (indicador == false) {
-					$('.indicador').fadeIn(100);
-					$('.indicador2').fadeOut(100);
-					$(".como_invertir").removeClass("active");
-					indicador2 = false;
-					indicador = true;
-					if( width >= 550 && width <= 1023 ) { 
-									
-					}
-				} else {
-					$('.indicador').fadeOut(100);
-					$(".como_funciona").removeClass("active");
-					indicador = false;
-					if( width >= 550 && width <= 1023 ) { 
-						
-					}
-				}
-		 });
+		   
 		 	
-			   	var indicador2 = false;
-			    $('.como_invertir, .indicador2').click(function(){
-						 var width = $(window).width();	
-						$(".pasos").hide();
-						$(".mostar_invertir .pasos:first").show();
-						$('.mostar_prestamo').slideUp();
-						$('.mostar_invertir').slideToggle();
-						$(".col_izq ul li a").removeClass("active");
-						$('.mostar_invertir .col_izq ul li a:first').addClass("active"); 	
-					/*	$('.funciona_filosofia').hide();*/
-						$(".como_invertir").toggleClass("active");
-			
-						if( width <= 770  ) { 
-								$(".mostar_invertir .pasos").show();
-						}
-						if (indicador2 == false) {
-								$('.indicador2').fadeIn(100);
-								$('.indicador').fadeOut(100);
-								$('.como_funciona').removeClass("active");
-								indicador = false;
-								indicador2 = true;
-								
-						} else {
-								$('.indicador2').fadeOut(100);
-								indicador2 = false;
-									
-						}						
-		 });
 		  //boton menu principal mobile
 
 		  $(".banner_principal").append($("<div class='block'></div>"));
 			//funcion abrir boton menu principal mobile
 		 		
-			//funcion seccion pasos       
-			$('.col_izq ul li a').click(function(){
-					clase = $(this).attr('class').split(' ').pop();
-					$('div.'+clase).hide()
-					.siblings(".pasos").slideUp();
-					$('div.'+clase).slideDown();
-					$(".col_izq ul li a").removeClass("active");
-					$(this).addClass("active");	
-		   });  
-	   // push pasos seccion mobile
-		 $(".pasos").append($("<div class='push_bottom'></div>"));	
+		 
 	
 
     	 $(window).resize(function(event){
     	
-	
-			
-     		
-     		   
      		   var resizeId2;
      		   clearTimeout(resizeId2);
      		   resizeId2 = setTimeout(altura_footer_fix, 100);
@@ -451,46 +357,12 @@ $(document).ready(function(){
 					    $(".bloques").insertBefore($(".invertir_prestamo"));
 					    pasar_mobile == false;
 				     }
-			   
-				$(".bloques > h2").appendTo($(".banner_principal"));
+			
 				
 				// se colocan intercalados los bloques  para que elformulario quede arriba de su contenido
 				$(".mostar_prestamo").insertAfter($(".prestamo"));
 				$(".mostar_invertir").insertAfter($(".invertir"));
-
-				// dos bloques version mobile funcionalidad	
-					if($(".como_funciona").hasClass("active")) {
-					   $("div.prestamo article").show();
-					   $("div.invertir article").hide();
-					   $("div.prestamo > h2").hide();
-					   $("div.prestamo > h3").show();
-					}
-					else {
-						 if ($("div.prestamo > h3").is(':visible')) {
-					  	 	$("div.prestamo article").show();
-						 }else {
-							$("div.prestamo article").hide();
-						    $("div.prestamo > h3").hide();
-						 	$("div.prestamo > h2").show();
-						 }
-					
-					} 
-					if($(".como_invertir").hasClass("active")) {
-					   $("div.invertir article").show();
-					   $("div.prestamo article").hide();
-					   $("div.invertir > h2").hide();
-					   $("div.invertir > h3").show(); 
-					} 
-					else {
-						 if ($("div.invertir > h3").is(':visible')) {
-					  	 	$("div.invertir article").show();
-						 }else {
-							$("div.invertir article").hide();
-							$("div.invertir > h3").hide();
-					  	    $("div.invertir > h2").show();
-						 }
-					 
-					}				
+			
 			}
 //termina width < 550
 			if (width >= 550) { 
@@ -516,9 +388,7 @@ $(document).ready(function(){
 				$(".bloques").insertBefore($(".invertir_prestamo"));
 				$(".bloques").insertAfter($(".slider"));
 				*/
-				$(".mostar_prestamo, .mostar_invertir").appendTo($(".invertir_prestamo"));
-				$( "div.prestamo article, div.invertir article, div.invertir h2, div.prestamo h2").show();
-				$( "div.prestamo > h3, div.invertir > h3").hide();
+	
 		
 				//html simulador
 				
@@ -537,32 +407,10 @@ $(document).ready(function(){
 				  $(".menu_inscripcion ul").show();	
 				  pasar_mobile = true;
 			  }
-	 		   if (width <= 770) { 
-	 			   
-	 			  // condiciones si como funciona y como mostrar active se encontraban activos en otro formatos de pantalla
-					 if($(".como_funciona").hasClass("active")) {
-						 $(".mostar_prestamo .pasos").show();
-					}
-					 if($(".como_invertir").hasClass("active")) {
-						 $(".mostar_invertir .pasos").show();
-					}	
-				}
+
 			  if (width >= 770) { 
 				  // condiciones si como funciona y como mostrar active se encontraban activos en otro formatos de pantalla
-					 if($(".como_funciona").hasClass("active")) {
-						 $('.mostar_prestamo').show();
-						 $(".pasos").hide();
-						 $(".mostar_prestamo .pasos:first").show();
-						 $(".col_izq ul li a").removeClass("active");
-						 $('.mostar_prestamo .col_izq ul li a:first').addClass("active"); 
-					}
-					 if($(".como_invertir").hasClass("active")) {
-						 $('.mostar_invertir').show();
-						 $(".pasos").hide();
-						 $(".mostar_invertir .pasos:first").show();
-						 $(".col_izq ul li a").removeClass("active");
-						 $('.mostar_invertir .col_izq ul li a:first').addClass("active"); 
-					}
+					
 					  // lightbox requisitos central modal
 					 $('.lightbox_requisitos').css({
 							 position:'absolute',
@@ -570,11 +418,7 @@ $(document).ready(function(){
 					 });	
 				}
 			
-			if (width <= 651) { 
-				 // elementos del bloque mosaico
-				$('.txt-0 a').removeClass("tip");	
-				$('.impacto').insertBefore('.relacion');
-			}
+		
 			if (width >= 650) { 
 							
 				$('.col_lateral').show();	
@@ -656,21 +500,13 @@ $(document).ready(function(){
 				}
 		 		
 		 		
-			// centrar los titulos	
-			$('.slidesjs-slide  h2').css({
-				   position:'absolute',
-				   left: ($(window).width() - $('.slidesjs-slide  h2').outerWidth())/2,
-			});
+
 				 
 				   //centrar bloques prestamo e invertir dinamicamente
-			$('.bloques').css({
-					position:'absolute',
-					left: ($(window).width() - $('.bloques').outerWidth())/2,
-			});
-			
+
 			
 	 		 // script, caso solo acreditado
-			 $(".prestamo h2 a").trigger("click");
+			
 	 	
 		  });
 		  // botones mostrar mas y menos 
@@ -690,48 +526,9 @@ $(document).ready(function(){
 					$(".mostrarmas").show();
 					$(this).hide();	
 			});
-		 // agregar boton  cerrar a los bloques prestamo e invertir  para la version mobile
-			  $(".prestamo").append($("<h3><a href='#prestamo_invertir'>Quiero un <strong>préstamo</strong></a></h3>"));	
-			  $(".prestamo > h3").insertBefore('.prestamo article');
-			  $(".invertir").append($("<h3><a href='#prestamo_invertir'>Quiero <strong>invertir</strong></a></h3>"));	
-			  $(".invertir > h3").insertBefore('.invertir article');
-			
-			  // funcion bloques prestamo e inertir version mobile	
 	
-			$( "div.prestamo > h2 a, div.invertir > h2 a").click(function() {
-					 var width = $(window).width();	
-					 if (width < 550) { 
-					    $("a.como_funciona, a.como_invertir").removeClass("active");
-						$(this).parent().parent().find("article").slideDown();
-					    $(this).parent().hide();
-						$(this).toggleClass("active");
-						$(this).parent().parent().find("h3").show();
-					    $(".indicador, .indicador2").hide();
-						$(".bloques").css({
-							"marginBottom" : 30
-						});
-					 }
-			 });
-			 // boton abrir prestamo mobile
-			$( "div.prestamo > h2 a").click(function() {
-				var width = $ (window).width();	
-				if (width < 550) { 
-					 $("div.invertir article").slideUp();
-					 $(".mostar_invertir").slideUp();
-					 $("div.invertir h2").show();
-					 $("div.invertir > h3").hide();
-				}
-			});
 			// boton abrir invertir mobile
-			$( "div.invertir > h2 a").click(function() {
-				 var width = $(window).width();	
-				 if (width < 550) { 
-					 $("div.prestamo article").slideUp();
-					 $(".mostar_prestamo").slideUp();
-					 $("div.prestamo h2").show();
-					 $("div.prestamo > h3").hide();
-				 }
-			});
+		
 		
 	//lightboxs funcionalidades		
 		$('.open_lightbox').click(function(){
@@ -880,11 +677,7 @@ $(document).ready(function(){
 				 $("#light12 div.close_lightbox").click(function(){
 				    	stopPropagation();
 				    });
-				    $('.recargar_pagina').click(function() {
-				    	$('.loader').show();
-					    location.reload();
-					
-				    });
+			
 				    
 			
 				    

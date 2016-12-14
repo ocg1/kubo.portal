@@ -426,40 +426,44 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 	
 	protected void add_simulation() 
 	{
-		pk  = new SimulatorPK(0, sesion.getProspectus_id(), sesion.getCompany_id());			
-		sim = new SimulatorBean();
+		simulation_PK = new SimulatorPK(0, sesion.getProspectus_id(), sesion.getCompany_id());			
+		simulation    = new SimulatorBean();
 		
-		sim.setTitle(null);
-		sim.setBc_score(null);
-		sim.setAmmount(ammount);
-		sim.setDate(new Date());
-		sim.setFrequency_id(frequency_id);
-		sim.setNum_payments(numCuota);
-		sim.setPayment(montoCuota);
-		sim.setPeriod_rate(tasaPeriodo);
-		sim.setPurpose_id(purpose_id);
-		sim.setSimulatorPK(pk);
-		sim.setTerm_id(term_id);
-		sim.setTotal_interest(interes);
-		sim.setTotal_payment(totalPagar);
-		sim.setType('M');
-		sim.setType_id(null);
-		sim.setYearly_rate(tasaTotal);
-		sim.setYearly_interest(null);
-		sim.setMx_cat(cat);
+		simulation.setSimulatorPK(simulation_PK);		
+		
+		simulation.setTotal_to_receive(total_to_receive);
+		simulation.setOpening_commission_amount(opening_commission_amount);
+		simulation.setMx_cat(cat);
+		simulation.setAmmount(ammount);		
+		simulation.setFrequency_id(frequency_id);
+		simulation.setNum_payments(term_id);
+		simulation.setPayment(montoCuota);
+		simulation.setPeriod_rate(tasaPeriodo);
+		simulation.setPurpose_id(purpose_id);		
+		simulation.setTerm_id(term_id);
+		simulation.setTotal_interest(interes);
+		simulation.setTotal_payment(totalPagar);
+		simulation.setType('M');		
+		simulation.setYearly_rate(tasaTotal);
+		simulation.setYearly_interest(null);	
+		
+		simulation.setType_id(null);
+		simulation.setTitle(null);
+		simulation.setBc_score(null);
+		simulation.setDate(new Date());
 		
 		if(isSafi)
 		{
-			sim.setOrigin("S");
+			simulation.setOrigin("S");
 			
 		} else {
 			
-			sim.setOrigin("K");
+			simulation.setOrigin("K");
 		}
 		
 		try
 		{
-			simulatorService.add(sim);
+			simulatorService.add(simulation);
 			
 		} catch(Exception e) {
 			
@@ -520,39 +524,39 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 	
 	protected void add_simulation_anonimo() 
 	{
-		pk    = new SimulatorPK(0, 0, 1);			
-		sim = new SimulatorBean();
+		simulation_PK = new SimulatorPK(0, 0, 1);			
+		simulation = new SimulatorBean();
 		
-		sim.setTitle(null);
-		sim.setBc_score(null);
-		sim.setAmmount(ammount);
-		sim.setDate(new Date());
-		sim.setFrequency_id(frequency_id);
-		sim.setNum_payments(numCuota);
-		sim.setPayment(montoCuota);
-		sim.setPeriod_rate(tasaPeriodo);
-		sim.setPurpose_id(purpose_id);
-		sim.setSimulatorPK(pk);
-		sim.setTerm_id(term_id);
-		sim.setTotal_interest(interes);
-		sim.setTotal_payment(totalPagar);
-		sim.setType('M');
-		sim.setType_id(null);
-		sim.setYearly_rate(tasaTotal);
-		sim.setYearly_interest(null);
-		sim.setMx_cat(cat);
+		simulation.setTitle(null);
+		simulation.setBc_score(null);
+		simulation.setAmmount(ammount);
+		simulation.setDate(new Date());
+		simulation.setFrequency_id(frequency_id);
+		simulation.setNum_payments(numCuota);
+		simulation.setPayment(montoCuota);
+		simulation.setPeriod_rate(tasaPeriodo);
+		simulation.setPurpose_id(purpose_id);
+		simulation.setSimulatorPK(simulation_PK);
+		simulation.setTerm_id(term_id);
+		simulation.setTotal_interest(interes);
+		simulation.setTotal_payment(totalPagar);
+		simulation.setType('M');
+		simulation.setType_id(null);
+		simulation.setYearly_rate(tasaTotal);
+		simulation.setYearly_interest(null);
+		simulation.setMx_cat(cat);
 		
 		if(isSafi)
 		{
-			sim.setOrigin("S");
+			simulation.setOrigin("S");
 			
 		} else {
-			sim.setOrigin("K");
+			simulation.setOrigin("K");
 		}
 		
 		try
 		{
-			simulatorService.add(sim);
+			simulatorService.add(simulation);
 			
 		} catch(Exception e) {
 			

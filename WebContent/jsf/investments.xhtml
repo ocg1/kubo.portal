@@ -59,7 +59,7 @@
 		<script type = "text/javascript" src = "../resources/js/reloj.js"/>
 		
 		<script type='text/javascript' src="../resources/js/explorer.js" />
-		<!--comentado hubspot script type='text/javascript' src="../resources/js/datos_hubspot.js" / -->
+		<script type='text/javascript' src="../resources/js/datos_hubspot.js" />
 		<script type='text/javascript' src="../resources/js/beneficiarios.js" />
 		<script type='text/javascript' src="../resources/js/perfil_inversionista.js" />
 		<script type='text/javascript' src="../resources/js/mayusculas.js" />
@@ -102,7 +102,7 @@
 			<script>
 			
 			google.load("visualization", "1", {packages:["corechart"]});
-			
+				/*
 				$(document).ready(function(){
 					$(".menu01Invest").click(function(){
 						var elementSelect = ($(this).parents(".secondaryMenuInv")).find(".selectedMenuInv");
@@ -114,7 +114,7 @@
 					
 					
 				});
-				
+				*/
 				
 				
 			</script>
@@ -132,6 +132,12 @@
 
 		  /*****************FIN*GOOGLE*ANALYTICS**********************************/
 		</script>
+		
+		<style>
+			#dvSamePerson, #dvRelPerson{
+				display:none !important;
+			}
+		</style>
 
 		<title> Kubo.financiero | Gracias por registrarte Inversionista</title>				
      <meta name="Description" content="El proceso de registro ha concluido éxitosamente, pronto te informaremos de los proyectos en los que podras invertir y de los que podrás obtener los mejores rendimientos"/>

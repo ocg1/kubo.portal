@@ -7,11 +7,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlSelectOneRadio;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 
+import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
 import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.mesa.solicitud.busqueda.ClientViewFullName;
 import mx.com.kubo.tools.Utilities;
@@ -115,6 +117,20 @@ implements SearchRequestIMO, Serializable
 							init_acreditado_TOKEN();
 												
 							sesion_search_request.setSearchSummary(acreditado_TOKEN);
+							
+							faces = FacesContext.getCurrentInstance();
+							
+							faces .getViewRoot().getViewMap().remove("summaryRequest");
+							
+							faces .getViewRoot().getViewMap().remove("chartBackBean");
+							
+							faces .getViewRoot().getViewMap().remove("checkScoreProcessed");
+							
+							resolver  = faces.getApplication().getELResolver();	
+							
+							elContext = faces.getELContext();
+							
+							summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
 							
 							summary_request.init();					
 							

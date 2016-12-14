@@ -8,6 +8,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 
+import javax.faces.bean.ManagedProperty;
 import javax.xml.rpc.ServiceException;
 
 import mx.com.kubo.bean.TAmortizacionBean;
@@ -22,13 +23,14 @@ import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.referencia_pago_panel.PanelAMO;
 import mx.com.kubo.services.CollectionRelationshipService;
 import mx.com.kubo.services.EstadoCuentaDatosService;
+import mx.com.kubo.services.EstadoCuentaService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.tools.Utilities;
 
-import com.soa.model.businessobject.TSafiCreditosMovs;
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.model.businessobject.TSafiPosicionInt;
+import mx.com.kubo.model.TSafiCreditosMovs;
+import mx.com.kubo.model.TSafiPagosCuota;
+import mx.com.kubo.model.TSafiPosicionInt;
 import com.soa.webServices.WsSgbRisk;
 import com.soa.webServices.WsSgbRiskServiceLocator;
 
@@ -45,6 +47,8 @@ implements ServiceEstadoCuentaIMO
 	
 	protected EstadoCuentaDatosService estadocuentadatosservice;
 	
+	protected EstadoCuentaService estadocuentaservice;
+	
 	protected SessionBean sesion;
 	protected ProyectLoan proyectloan;	
 	protected ProyectLoan proyect_loan;
@@ -55,9 +59,9 @@ implements ServiceEstadoCuentaIMO
 	protected WsSgbRiskServiceLocator locator_SGB;
 	protected WsSgbRisk  web_service_SGB;
 	
-	protected TSafiPosicionInt[]  posicion_SAFI;
-	protected TSafiPagosCuota[]   pagos_SAFI;
-	protected TSafiCreditosMovs[] creditos_SAFI;
+	protected List<TSafiPosicionInt>  posicion_SAFI;
+	protected List<TSafiPagosCuota>   pagos_SAFI;
+	protected List<TSafiCreditosMovs> creditos_SAFI;
 	
 	protected PanelAMO referencia_pago;
 	
@@ -99,7 +103,7 @@ implements ServiceEstadoCuentaIMO
 	protected String colores;
 	protected String scriptGraphic;
 	protected String nombre;
-	protected String numCliente;
+	protected Integer numCliente;
 	protected String cuota;
 	protected String panel_monto_detalle; 	
 	protected String estatus;
@@ -217,7 +221,7 @@ implements ServiceEstadoCuentaIMO
 		service_collection_relationship = Utilities.findBean("collectionRelationshipServiceImp") ;		
 		//service_referencia_pago         = new ServiceReferenciaPagoIMP() ;		
 		service_system_param            = Utilities.findBean("systemParamServiceImp") ;
-		
+		estadocuentaservice 			= Utilities.findBean("estadoCuentaServiceImp");
 		estadocuentadatosservice		= Utilities.findBean("estadoCuentaDatosServiceImp") ;
 			
 	}
@@ -293,15 +297,15 @@ implements ServiceEstadoCuentaIMO
 		this.prospectus_id = prospectus_id;
 	}
 
-	public final void setPosicion_SAFI(TSafiPosicionInt[] posicion)
+	public final void setPosicion_SAFI(List<TSafiPosicionInt> posicion)
 	{
 		posicion_SAFI = posicion;
 		
-		numCliente = posicion[0].getClienteid();
-		nombre     = posicion[0].getNombrecompleto();
+		numCliente = posicion.get(0).getPk().getClienteId();
+		nombre     = posicion.get(0).getNombreCompleto();
 	}
 		
-	public final void setPagos_SAFI(TSafiPagosCuota[] pagos) 
+	public final void setPagos_SAFI(List<TSafiPagosCuota> pagos) 
 	{
 		pagos_SAFI = pagos;
 	}

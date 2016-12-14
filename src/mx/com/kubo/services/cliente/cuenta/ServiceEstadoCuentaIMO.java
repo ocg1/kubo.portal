@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.model.businessobject.TSafiPosicionInt;
+import mx.com.kubo.model.TSafiPagosCuota;
+import mx.com.kubo.model.TSafiPosicionInt;
 
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.cliente.CreditoEMO;
@@ -29,8 +29,8 @@ public interface ServiceEstadoCuentaIMO
 	void setFecha_inicio  (Date fecha);
 	void setFecha_final   (Date fecha);
 
-	void setPosicion_SAFI(TSafiPosicionInt [] posicionInt);
-	void setPagos_SAFI   (TSafiPagosCuota  []  pagos);
+	void setPosicion_SAFI(List<TSafiPosicionInt> posicionInt);
+	void setPagos_SAFI   (List<TSafiPagosCuota>  pagos);
 	
 	void setComisiones(Hashtable<String, Double[]> comisiones);
 }

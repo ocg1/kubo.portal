@@ -29,6 +29,7 @@ import mx.com.kubo.model.TicketConfig;
 import mx.com.kubo.portal.reader.ParameterReaderIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AddressService;
+import mx.com.kubo.services.EstadoCuentaService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.ProspectusService;
@@ -41,10 +42,10 @@ import mx.com.kubo.services.cliente.cuenta.ServiceEstadoCuentaIMO;
 import mx.com.kubo.services.cliente.cuenta.ServiceReferenciaPagoIMP;
 import mx.com.kubo.services.mesa.solicitud.busqueda.ClientViewFullNameService;
 
-import com.soa.model.businessobject.TSafiCreditosMovs;
-import com.soa.model.businessobject.TSafiCuentasAhoMovDep;
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.model.businessobject.TSafiPosicionInt;
+import mx.com.kubo.model.TSafiCreditosMovs;
+import mx.com.kubo.model.TSafiCuentasAhoMovDep;
+import mx.com.kubo.model.TSafiPagosCuota;
+import mx.com.kubo.model.TSafiPosicionInt;
 import com.soa.webServices.WsSgbRisk;
 import com.soa.webServices.WsSgbRiskServiceLocator;
 
@@ -86,6 +87,9 @@ public abstract class EstadoCuentaDMO
 	@ManagedProperty("#{membershipServiceImp}")
 	protected MembershipService membershipService;
 	
+	@ManagedProperty("#{estadoCuentaServiceImp}")
+	protected EstadoCuentaService estadocuentaservice;
+	
 	protected ServiceEstadoCuentaIMO service_estado_cuenta;
 	
 	
@@ -115,10 +119,10 @@ public abstract class EstadoCuentaDMO
 	
 	protected List<ProyectLoan> list_proyect_loan;
 		
-	protected TSafiCreditosMovs[]     movs;
-	protected TSafiCuentasAhoMovDep[] movs2 = null;
-	protected TSafiPagosCuota[]       tamortizacion;
-	protected TSafiPosicionInt[]      posicionInt;
+	protected List<TSafiCreditosMovs>     movs;
+	protected List<TSafiCuentasAhoMovDep> movs2 = null;
+	protected List<TSafiPagosCuota>       tamortizacion;
+	protected List<TSafiPosicionInt>      posicionInt;
 		
 	protected List<CuentasAhoMovDep>  ahoMov = null;
 	protected List<TicketConfig>      thisList;	
@@ -162,6 +166,8 @@ public abstract class EstadoCuentaDMO
 	
 	protected  boolean accessFromURL;
 	
+	//protected boolean saldo_deudor_superior_al_MIN;
+	
 	private String comisionesStr = "";
 	private String domicilio;
 	private String font_size;
@@ -197,6 +203,8 @@ public abstract class EstadoCuentaDMO
 	protected Double total = 0D;		
 	protected Double saldoLiquidar = 0D;
 	private Double 	 comisiones = 0D;
+	
+	protected Double indice_saldo_deudor_MIN = 0D;
 		
 	protected Integer contador_creditos_vigentes;
 	protected Integer contador_creditos_liquidados;
@@ -212,6 +220,8 @@ public abstract class EstadoCuentaDMO
 	protected boolean flagRenderEdoCuenta = false;
 	protected boolean displayPag;
 	protected boolean panel_OPENED;
+	
+	protected boolean flag_In_for_min_100_per;
 	
 	private boolean restructure_flag;
 	private boolean pademovil;	
@@ -710,11 +720,11 @@ public abstract class EstadoCuentaDMO
 		this.sesion = sesion;
 	}
 
-	public TSafiCuentasAhoMovDep[] getMovs2() {
+	public List<TSafiCuentasAhoMovDep> getMovs2() {
 		return movs2;
 	}
 
-	public void setMovs2(TSafiCuentasAhoMovDep[] movs2) {
+	public void setMovs2( List<TSafiCuentasAhoMovDep> movs2) {
 		this.movs2 = movs2;
 	}
 	
@@ -752,5 +762,16 @@ public abstract class EstadoCuentaDMO
 
 	public void setSaldo_liquidar(String saldo_liquidar) {
 		this.saldo_liquidar = saldo_liquidar;
-	}	
+	}
+
+
+	public EstadoCuentaService getEstadocuentaservice() {
+		return estadocuentaservice;
+	}
+
+
+	public void setEstadocuentaservice(EstadoCuentaService estadocuentaservice) {
+		this.estadocuentaservice = estadocuentaservice;
+	}
+	
 }

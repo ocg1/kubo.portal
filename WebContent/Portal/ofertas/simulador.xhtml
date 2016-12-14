@@ -12,7 +12,7 @@
 		<h:inputHidden id="termMax"  value="#{simulator.termMax}" />
 				    
 		<ul>
-			<ui:include src = "simulador/purpose-id.xhtml"/>
+			<!-- <ui:include src = "simulador/purpose-id.xhtml"/> -->
 			<ui:include src = "simulador/ammount.xhtml"/>
 		
 			<li>					   
@@ -25,19 +25,11 @@
 			Continuar
 		</div>	
 		
-<!-- 
-	onclick = "ga('send', 'event', 'Leads', 'Simula Prestamo', 'Simula Home');"
-	update  = "simulator_acreditado" 
-	id = "simulaAction"
-	onstart = "return showloader2();"  
-	oncomplete = "muestraRes(xhr,status,args);  columnas();"
--->
-		
 		<ol>
 			<li>										
 				<div style = "clear: both;"/>
 				
-				<h:commandLink  immediate = "true" value = "Regrear a las opciones" styleClass = "solicitarPrestamo" >			
+				<h:commandLink  immediate = "true" value = "Regresar a las opciones" styleClass = "solicitarPrestamo" >			
 					<p:ajax event = "click" 
 							onstart    = "displayMessageProcessing('msgprocessing',false);"
 							oncomplete = "Ofertas.init_tabla_ofertas();"/>

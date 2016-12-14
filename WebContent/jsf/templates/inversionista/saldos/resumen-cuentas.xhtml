@@ -1,0 +1,213 @@
+<ui:composition  xmlns    ="http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+				 xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">
+						
+						<div class="summaryInv resumenCls">
+								<div class="summaryBoxInv">
+									<h3 class="summaryTitleInv">Resumen</h3>
+									<div class="summaryContentInv">
+						
+							<div class="accountInv"  >
+								<table class="accountTableInv">
+									<thead>
+										<tr>
+											<th/>
+											<th style="text-align: center;">Saldos</th>
+											<th style="padding-left: 5px;">Proyectos</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td colspan="3" style="font-size: 1.1em;" >
+												<b>kubo.global</b>
+											</td>
+										</tr>
+										<tr>
+											<td style="padding-left: 10px;">
+												<div style="width: 100%; height: auto;position: relative;">
+													Efectivo disponible 
+													
+													<ui:include src="../secciones/investment/tooltip/tooltip_efectivo_disponible.xhtml" />
+													
+												</div> 
+												
+											</td>
+											<td>#{myInvestments.balances_cash}</td>
+											<td><!-- <a title="Efectivo disponible" href="#" >#{myInvestments.notes_cash}</a> --></td>
+										</tr>
+
+										<tr>
+											<td style="padding-left: 10px;">
+												<div style="width: 100%; height: auto;position: relative;">
+													Inversiones en proceso
+													<ui:include src="../secciones/investment/tooltip/tooltip_en_proceso.xhtml" />
+												</div>
+											
+											</td>
+											<td>#{myInvestments.balances_investment_process}</td>
+											<td>
+												<!-- <div id="dvInvProc_01"><a title="Inversiones en proceso">#{myInvestments.notes_investment_process}</a></div> -->
+												<!-- <h:panelGroup rendered="#{sessionBean.area=='I'}"> -->
+													<p:commandLink id="proyectListInvestAction" value="#{myInvestments.notes_investment_process}" actionListener="#{myInvestments.getProjectProcess}" onstart="inicioVerProyectos()" oncomplete="llegadaVerProyectos()" update=":pnlContentInvest :panelContentListProyect" >
+														<f:attribute name="seccionInv" value="proyectListInvest" />
+														<f:attribute name="status" value="F" />
+													</p:commandLink>
+												<!-- </h:panelGroup>
+												<h:panelGroup rendered="#{sessionBean.area=='M'}">
+													#{myInvestments.notes_investment_process}
+												</h:panelGroup> -->
+											</td>
+										</tr>
+										
+										<tr>
+											<td colspan="3" style="font-size: 1.1em;" >
+												<b>kubo.impulso</b>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="padding-left: 10px;">
+												<div style="width: 100%; height: auto;position: relative;">
+													Inversiones activas
+													<ui:include src="../secciones/investment/tooltip/tooltip_inversiones_activas.xhtml" />
+												</div>
+											</td>
+											<td>#{myInvestments.balances_active_investments}</td>
+											<td>
+												<!-- 
+												<a title="Inversiones activas" href="#" >#{myInvestments.notes_active_investments}</a>
+												 -->
+												 <!-- <h:panelGroup rendered="#{sessionBean.area=='I'}"> -->
+												 <p:commandLink id="proyectListInvestActiveAction" value="#{myInvestments.number_notes_active}" actionListener="#{myInvestments.getProjectActive}" onstart="inicioVerProyectos()" oncomplete="llegadaVerProyectos()"  update=":pnlContentInvest :panelContentListProyect" >
+													<f:attribute name="seccionInv" value="proyectListInvestActiveAction" />
+													<f:attribute name="status" value="A" />
+												</p:commandLink>
+<!-- 													<p:commandLink id="proyectListInvestActiveAction" value="#{myInvestments.notes_active_investments}" actionListener="#{myInvestments.getProjectActive}" onstart="displayMessageProcessing('msgprocessing',true);" oncomplete="proyectos_activos_scroll();" update=":pnlContentInvest :panelContentListProyect" > -->
+<!-- 														<f:attribute name="seccionInv" value="proyectListInvestActiveAction" /> -->
+<!-- 														<f:attribute name="status" value="A" /> -->
+<!-- 													</p:commandLink> -->
+												<!--  </h:panelGroup>
+												 <h:panelGroup rendered="#{sessionBean.area=='M'}">
+												 	#{myInvestments.notes_active_investments}
+												 </h:panelGroup> -->
+											</td>
+										</tr>								
+
+										<tr>
+											<td style="padding-left: 10px;">
+												<div style="width: 100%; height: auto;position: relative;">
+													Intereses por cobrar
+													<ui:include src="../secciones/investment/tooltip/intereses_por_cobrar2.xhtml" />
+												</div>
+											</td>
+											<td>#{myInvestments.balances_accrued_interest}</td>
+											<td>
+												<!-- <a title="Intereses devengados" href="#" >#{myInvestments.notes_accrued_interest}</a> -->
+											</td>
+										</tr>	
+										<!-- 
+										<tr>
+											<td style="padding-left: 10px;">
+												<div style="width: 100%; height: auto;position: relative;">
+													Intereses en garantía
+													<ui:include src="../secciones/investment/tooltip/tooltip_intereses_garantia_impulso.xhtml" />
+												</div>
+											</td>
+											<td>#{myInvestments.balances_accrued_interest}</td>
+											<td>
+											
+											</td>
+										</tr>							
+									 -->
+										<tr>
+											<td colspan="3" style="font-size: 1.1em;" >
+												<b>kubo.plazofijo</b>
+											</td>
+										</tr>
+										
+										<tr>
+											<td style="padding-left: 10px;">
+												
+												
+												<div style="width: 100%; height: auto;position: relative;">
+													Inversiones activas
+													<ui:include src="../secciones/investment/tooltip/tooltip_inversiones_plazo_fijo.xhtml" />
+												</div>
+												
+											</td>
+											<td>#{myInvestments.montoInversiones}</td>
+											<td><!-- <a title="Efectivo disponible" href="#" >#{myInvestments.notes_cash}</a> --></td>
+										</tr>
+										
+										<tr>
+											<td style="padding-left: 10px;">
+												
+												<div style="width: 100%; height: auto;position: relative;">
+													Intereses devengados
+													<ui:include src="../secciones/investment/tooltip/tooltip_intereses_dev_plazofijo.xhtml" />
+												</div>
+											</td>
+											<td>#{myInvestments.intARecibir}</td>
+											<td><!-- <a title="Efectivo disponible" href="#" >#{myInvestments.notes_cash}</a> --></td>
+										</tr>
+										
+									
+									
+									
+										<tr >
+											<td class="blackInv" style="font-size: 1.1em !important;" >Saldo total</td>
+											<td class="blackInv" style="border-top: solid 2px #000000; font-size: 1.1em !important;" >#{myInvestments.total_balance}</td>
+											<td></td>
+										</tr>
+									
+									</tbody>
+								</table>
+								
+								<div class="proyectList-box" >
+									<div class="arrow_leftCH" ></div>
+									<div class="blindAction" style="position: absolute; z-index: 101; top: -13px;right: -13px; width: 30px; height: 30px;" >
+						     			<p:graphicImage url="../resources/img/close.png" onclick="hideMessage();" ></p:graphicImage>
+						     		</div>
+						     		
+						     		<div id="loader" style=" width: 24px; height: 24px; margin-left: auto; margin-right: auto; margin-top: 60px;" >
+						     			<p:graphicImage url="../resources/img/ajax-loader.gif" onclick="hideMessage();" ></p:graphicImage>
+						     		</div>
+						     		
+						     		<div id="contenPyLst">
+						     		
+						     		</div>
+						     		
+								</div>
+								
+								<div class="buttons" style="margin-top: 20px;padding: 10px; display: none;">
+									<!-- <a class="blueBtn" title="Todos los detalles" href="detailsInvestments.xhtml" >Todos los detalles</a>
+									<a class="blueBtn blueBtnMiddle" title="Incrementa mi saldo" href="#" >Incrementa mi saldo</a>
+									<a class="blueBtn" title="Quiero invertir" href="loanLis	t.xhtml" >Quiero invertir</a> -->
+									
+									<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; margin-right: 10px !important; padding: 7px 7px 6px 7px; height: 45px !important; display: inline;">
+										<p:commandLink action="detailsInv" id="details" styleClass="actionSim">
+											Todos los detalles
+										</p:commandLink> 
+									</div>
+									<!-- 
+									<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; margin-right: 10px !important; padding: 7px 7px 6px 7px; height: 45px !important; display: inline;">
+										<p:commandLink id="saldo" styleClass="actionSim">
+											Incrementa mi saldo
+										</p:commandLink> 
+									</div>
+									<div class="buttonPR"  style="margin-bottom: 0px !important; margin-top: 0px !important; margin-right: 10px !important; padding: 7px 7px 6px 7px; height: 45px !important; display: inline;">
+										<p:commandLink id="invertir" styleClass="actionSim">
+											Quiero invertir
+										</p:commandLink> 
+									</div>
+									 -->
+								</div>
+							</div>													
+							
+							</div>
+						</div>
+					</div>				
+</ui:composition>				

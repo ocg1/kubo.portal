@@ -22,6 +22,7 @@ import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
+import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.model.Bank;
 import mx.com.kubo.model.ClabeAccount;
 import mx.com.kubo.model.ClabeAccountPK;
@@ -42,12 +43,12 @@ import safisrv.ws.CreditosServicios.SAFIServiciosServiceLocator;
 import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoRequest;
 import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoResponse;
 
-@SuppressWarnings("serial")
-@ManagedBean(name = "deal") 
-@ViewScoped
+@ManagedBean(name = "deal") @ViewScoped
 public class DealIMP extends DealPMO
 implements Serializable, DealIMO
-{ 									
+{ 							
+	private static final long serialVersionUID = 7643927927141392752L;
+
 	@PostConstruct
 	public void init() 
 	{				
@@ -159,7 +160,9 @@ implements Serializable, DealIMO
 				
 		if(proyect_loan != null)
 		{					
-			documents_reviwed_OK = reasignador_service.callSGB(proyect_loan.getProyect(), proyect_loan);
+			reasignador = new ReasignadorIMP();
+			
+			documents_reviwed_OK = reasignador.callSGB(proyect_loan.getProyect(), proyect_loan);
 					
 			if(documents_reviwed_OK)
 			{												 												 
@@ -202,7 +205,7 @@ implements Serializable, DealIMO
 								
 								HubSpotController hs =  new HubSpotController();
 								
-								String properties = "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"publicado\"}";
+								StringBuilder properties = new StringBuilder( "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"publicado\"}" );
 								
 								hs.updateProspectus(natural_person.getProspectus().getHs_vid(), properties);
 								

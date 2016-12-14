@@ -32,7 +32,10 @@ import mx.com.kubo.model.RestructureBean;
 import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
+import mx.com.kubo.model.TSafiPagosCuota;
+import mx.com.kubo.model.TSafiPosicionInt;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMO;
+import mx.com.kubo.services.EstadoCuentaService;
 import mx.com.kubo.services.FilesService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.SystemParamService;
@@ -41,8 +44,6 @@ import mx.com.kubo.tools.Utilities;
 import org.primefaces.context.RequestContext;
 
 import com.soa.model.businessobject.BurResume;
-import com.soa.model.businessobject.TSafiPagosCuota;
-import com.soa.model.businessobject.TSafiPosicionInt;
 import com.soa.webServices.WsSgbRisk;
 import com.soa.webServices.WsSgbRiskServiceLocator;
 
@@ -55,10 +56,10 @@ public abstract class AdditionalCreditDMO
 	protected FilesService filesService;
 	
 	@ManagedProperty("#{systemParamServiceImp}")
-	private SystemParamService systemparamservice;	
+	private SystemParamService systemparamservice;				
 	
-	@ManagedProperty("#{reasignador_service}")
-	protected ReasignadorIMO reasignador_service;				
+	@ManagedProperty("#{estadoCuentaServiceImp}")
+	protected EstadoCuentaService estadocuentaservice;
 							
 	protected RequestContext  request;
 	protected RequestContext  requestContext;
@@ -72,6 +73,8 @@ public abstract class AdditionalCreditDMO
 	protected SearchSummaySession  summarysesion;
 	protected SummaryRequest       summary;
 	protected NavigationInvest     navigationinvest;
+	
+	protected ReasignadorIMO reasignador;
 		
 	protected ProyectLoan            proyect_loan;
 	protected RestructureBean        restructurebean;			
@@ -96,8 +99,11 @@ public abstract class AdditionalCreditDMO
 	protected Calendar cal1, cal2;
 	protected SimpleDateFormat fm1, formatStr1, formatStr;
 			
-	protected TSafiPagosCuota[]  safi_lista_pagos;
-	protected TSafiPosicionInt[] safi_lista_posiciones;
+//	protected TSafiPagosCuota[]  safi_lista_pagos;
+//	protected TSafiPosicionInt[] safi_lista_posiciones;
+	
+	protected List<TSafiPagosCuota>  safi_lista_pagos;
+	protected List<TSafiPosicionInt> safi_lista_posiciones;
 	
 	protected Hashtable <String, List<DocumentationDMO>> htCategFile;
 	
@@ -311,11 +317,6 @@ public abstract class AdditionalCreditDMO
 		this.systemparamservice = systemparamservice;
 	}		
 
-	public final void setReasignador_service(ReasignadorIMO service) 
-	{
-		reasignador_service = service;
-	}
-
 	public final void setProyectloanService(ProyectLoanService service) 
 	{
 		proyectloanService = service;
@@ -516,5 +517,13 @@ public abstract class AdditionalCreditDMO
 
 	public void setFecConsult(String fecConsult) {
 		this.fecConsult = fecConsult;
+	}
+
+	public EstadoCuentaService getEstadocuentaservice() {
+		return estadocuentaservice;
+	}
+
+	public void setEstadocuentaservice(EstadoCuentaService estadocuentaservice) {
+		this.estadocuentaservice = estadocuentaservice;
 	}
 }

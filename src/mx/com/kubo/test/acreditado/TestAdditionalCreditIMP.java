@@ -141,8 +141,8 @@ implements Serializable
 			reasignador = (ReasignadorIMO) resolver.getValue(elContext, null, "reasignador_service");
 			reasignador.setSesionBean(sesion);
 			reasignador.setProyect_loan_reasignable(proyect_loan);
-			
-			reasignador.init_renovacion_aprobacion_automatica(tipo_credito_adicional, loan_type);
+			reasignador.setMax_payment_ENABLED(true);
+			reasignador.init_renovacion_aprobacion_automatica("REN");
 			
 		} catch(Exception e) {
 			

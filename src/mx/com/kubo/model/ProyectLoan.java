@@ -109,6 +109,9 @@ implements Serializable
 	@Column private String cci_score;
 	@Column private String is_collection_solution;
 	@Column private String is_published;
+	@Column private String r_data;
+	@Column private String is_prospector_score = "N";
+	@Column private String is_automatic_aproved;
 	
 	@Column private Double rate;		
 	@Column private Double investment_bite = 250D;	
@@ -138,13 +141,9 @@ implements Serializable
 	@Column private int investors_number=0;
 	@Column private int days_online;	
 	@Column private int term_id;	
-	@Column private int frequency_id;		
+	@Column private int frequency_id;				
 	
-	@Column private String is_prospector_score = "N";
-	
-	@Column private char funding_type;	
-	
-	@Column private String r_data;
+	@Column private char funding_type;			
 	
 	public ProyectLoan()
 	{
@@ -848,19 +847,33 @@ implements Serializable
 		is_published = bandera;
 	}
 
-	public String getIs_prospector_score() {
+	public String getIs_prospector_score() 
+	{
 		return is_prospector_score;
 	}
 
-	public void setIs_prospector_score(String is_prospector_score) {
+	public void setIs_prospector_score(String is_prospector_score) 
+	{
 		this.is_prospector_score = is_prospector_score;
 	}
+	
+	public String getIs_automatic_aproved() 
+	{
+		return is_automatic_aproved;
+	}
 
-	public String getR_data() {
+	public void setIs_automatic_aproved(String is_automatic_aproved) 
+	{
+		this.is_automatic_aproved = is_automatic_aproved;
+	}	
+
+	public String getR_data() 
+	{
 		return r_data;
 	}
 
-	public void setR_data(String r_data) {
+	public void setR_data(String r_data) 
+	{
 		this.r_data = r_data;
 	}
 	

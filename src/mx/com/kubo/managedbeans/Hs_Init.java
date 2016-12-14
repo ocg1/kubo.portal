@@ -2,7 +2,6 @@ package mx.com.kubo.managedbeans;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -22,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.json.JSONObject;
 
+import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.constantes.NavigationRule;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.managedbeans.portal.IniciaSession;
@@ -189,17 +189,21 @@ public class Hs_Init implements Serializable {
 		
 		String cookieVal = getCookieRequest( request ); 
 		
+		Integer hs_vid  = null;
+		
+		//cookieVal = "baa0d64325060715408289c8e07bf573";
+		
 		if( cookieVal != null ){
 		
 			String hs_email = null;
 			
 			int w = 0;
 			
-			while( hs_email == null && w < 5 ){
+			while( hs_email == null && w < 1 ){
 				
 				w++;
 				
-				Integer hs_vid =  getHSVID( cookieVal);
+				hs_vid =  getHSVID( cookieVal);
 			
 				hs_email =  getEmailHS( hs_vid);
 			
@@ -222,7 +226,7 @@ public class Hs_Init implements Serializable {
 				
 				int y = 0;
 				
-				while( member == null && y < 5 ){
+				while( member == null && y < 1 ){
 				
 					y++;
 					
@@ -269,7 +273,23 @@ public class Hs_Init implements Serializable {
 						status_hs = 1;
 					}
 					
+				}else{
+					
+					HubSpotController hsc  = new HubSpotController();
+					
+					String json_str =hsc.getJSONProperties( hs_vid );
+					
+					HS_OBJ hs_obj =hsc.createHSOBJ( json_str );
+					
+					altaUsuario( hs_obj );
+					
 				}
+				
+			}else{
+				
+				//TODO  no encuentra el correo en la base
+				url_str = "utm_source=HSP";
+				status_hs = 2;
 				
 			}
 		
@@ -278,6 +298,80 @@ public class Hs_Init implements Serializable {
 			status_hs = 3;
 		}
 		
+	}
+	
+	
+	private boolean altaUsuario( HS_OBJ hs_obj ){
+		
+		if( hs_obj != null ){
+			
+			hs_obj.setArea("L");
+			
+			Prospectus exist_VID = prospectusService.getProspectusByHSId( Integer.parseInt( hs_obj.getV_id() + "" ) );
+			
+			Membership  exist_EMAIL = membershipService.getMembershipByEmail( hs_obj.getEmail_value() );
+			
+			if( exist_VID == null  &&  exist_EMAIL == null   ){
+				
+				if ( prospectusService.altaProspectoHS( hs_obj ) ) {
+				
+					member = membershipService.getMembershipByEmail( hs_obj.getEmail_value() );
+					
+					email = member.getEmail();
+					
+					HubSpotController hs = new HubSpotController();
+					
+					String properties = "{ \"property\" : \"alta_kubo\" ,\"value\":\"S\" }";
+					
+					hs.updateProspectus( hs_obj.getV_id().intValue() , new StringBuilder( properties ) );
+					
+				}
+				
+				return true;
+			
+			}else{
+				
+				Integer pros = 0;
+				
+				if( exist_VID != null ){
+					
+					pros = exist_VID.getProspectusPK().getProspectus_id();
+					
+				}else if( exist_EMAIL != null ){
+					
+					pros = exist_EMAIL.getMembershipPK().getProspectus_id();
+					
+				}
+				
+				hs_obj.setProspectus_id(pros);
+				
+				if (prospectusService.updateProspectoHS( hs_obj ) ){
+				
+					HubSpotController hs = new HubSpotController();
+					
+					String properties = "{ \"property\" : \"alta_kubo\" ,\"value\":\"S\" }";
+					
+					hs.updateProspectus(  hs_obj.getV_id().intValue() , new StringBuilder( properties ) );
+				
+				}
+				
+				member = membershipService.getMembershipByEmail( hs_obj.getEmail_value() );
+				
+				email = member.getEmail();
+				
+				url_str = "iniciarSesion=true&email_access="+member.getEmail();
+				status_hs = 1;
+				
+				return true;
+			}
+			
+		
+		}else{
+			
+			return false;
+			
+		}
+	
 	}
 
 	public MembershipService getMembershipService() {
@@ -380,15 +474,12 @@ public class Hs_Init implements Serializable {
 		
 		try{
 		
-		
 			HubSpotController hsc  = new HubSpotController();
 			
 			String json =hsc.getJSONProperties(vid_);
 			
-		   hs_email =getMailFromHS( json );
+		    hs_email = getMailFromHS( json );
 		    
-		  
-		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -517,7 +608,7 @@ public class Hs_Init implements Serializable {
 		
 		try{
 			
-			String email = "";
+			String email = null;
 			
 			JSONObject json = new JSONObject( json_str );
 			

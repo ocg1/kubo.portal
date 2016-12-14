@@ -72,8 +72,8 @@ function focus_indices() {
 	 	    this_indice = Number(this_indice.replace(/[^0-9\.]+/g,""));
 	 		validacion_llenado(this_indice);	
 	 	
-	 	 	$(this).closest(".conjuntoChecks").removeClass("vacio");
-	    	$(this).closest(".conjuntoChecks").addClass("lleno");
+	 	 	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("vacio");
+	    	$(this).closest(".conjuntoChecks").find(".btnN").addClass("lleno");
 	 });
 	 
 	
@@ -233,13 +233,13 @@ function blur_indices() {
 					else {
 			    		if($(this).find(":radio").is(":checked")) {
 				    		
-					    	$(this).closest(".conjuntoChecks").removeClass("vacio");
-					    	$(this).closest(".conjuntoChecks").addClass("lleno");
+					    	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("vacio");
+					    	$(this).closest(".conjuntoChecks").find(".btnN").addClass("lleno");
 					   
 			    		}else {
 			    	
-				    	   	$(this).closest(".conjuntoChecks").addClass("vacio");
-					    	$(this).closest(".conjuntoChecks").removeClass("lleno");
+				    	   	$(this).closest(".conjuntoChecks").find(".btnN").addClass("vacio");
+					    	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("lleno");
 				    		
 			    		}
 					}	
@@ -327,7 +327,7 @@ function blur_indices() {
 			      } 	
 			     
 			     total_gastos(this_element);
-			     var campos =  $(".validatorClass[index]:visible, table.validatorClass:visible,  #acSimple2:visible input,  #acSimple3:visible input, table.validatorClass2:visible, .conjuntoChecks:visible,  .selectNuevo:visible");
+			     var campos =  $(".validatorClass[index]:visible, table.validatorClass:visible,  #acSimple2:visible input,  #acSimple3:visible input, table.validatorClass2:visible, .conjuntoChecks:visible .btnN,  .selectNuevo:visible");
 					
 				    
 				    var campos_vacios = campos.filter(function () {
@@ -373,12 +373,12 @@ function blur_indices() {
 	 		    	 
 	 		    	if($(this).is('table')){
 	 		    		if($(this).find(":radio").is(":checked")){
-			 		    	$(this).closest(".conjuntoChecks").removeClass("vacio");
-					    	$(this).closest(".conjuntoChecks").addClass("lleno");
+			 		    	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("vacio");
+					    	$(this).closest(".conjuntoChecks").find(".btnN").addClass("lleno");
 		 		    	}else {
 		 		    
-		 		    	 	$(this).closest(".conjuntoChecks").removeClass("lleno");
-					    	$(this).closest(".conjuntoChecks").addClass("vacio");
+		 		    	 	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("lleno");
+					    	$(this).closest(".conjuntoChecks").find(".btnN").addClass("vacio");
 		 		    	}
 	 		    	}
 	 		   
@@ -717,6 +717,7 @@ $(".validatorClass[index], table.validatorClass,  #acSimple2 input,  #acSimple3 
 	     tableCheck("condicionPerfil");
 	     tableCheck("productoSinRiesgo");
 	     tableCheck("productoSinRiesgoCheck");
+	
    	  
    		if($(this).attr("id") == "aceptar_consulta" ){
 				
@@ -740,14 +741,16 @@ $(".validatorClass[index], table.validatorClass,  #acSimple2 input,  #acSimple3 
 			else {
 	    		if($(this).find(":radio").is(":checked")) {
 		    	
-			     	$(this).closest(".conjuntoChecks").removeClass("vacio");
-			    	$(this).closest(".conjuntoChecks").addClass("lleno");
+			     	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("vacio");
+			    	$(this).closest(".conjuntoChecks").find(".btnN").addClass("lleno");
 	    		}else {
 	    			
-		    	 	$(this).closest(".conjuntoChecks").addClass("vacio");
-			    	$(this).closest(".conjuntoChecks").removeClass("lleno");
+		    	 	$(this).closest(".conjuntoChecks").find(".btnN").addClass("vacio");
+			    	$(this).closest(".conjuntoChecks").find(".btnN").removeClass("lleno");
 	    		}
 			}	
+   		
+        //tableCheck("forma-contacto");
    	}
    	
    	 if($(this).is('img')){
@@ -839,6 +842,17 @@ $(".validatorClass[index], table.validatorClass,  #acSimple2 input,  #acSimple3 
 	    		
 	    
 	      } 	
+   	 /*
+		if($(this).attr("id") == "forma-contacto" ){
+			if( !$("#forma-contacto input:checked").length == 0) {
+				$("#forma-contacto").removeClass("vacio");
+				$("#forma-contacto").addClass("lleno");
+			}else {
+				$("#forma-contacto").removeClass("lleno");
+				$("#forma-contacto").addClass("vacio");
+			}
+		}
+		*/
 
 	 	//console.log(i);
    	
@@ -860,11 +874,11 @@ function tableCheck (id) {
 	//console.log(id);
 
 				if( !$("#"+id+" input:checked").length == 0) {
-					$("#"+id).closest(".conjuntoChecks").removeClass("vacio");
-					$("#"+id).closest(".conjuntoChecks").addClass("lleno");
+					$("#"+id).closest(".conjuntoChecks").find(".btnN").removeClass("vacio");
+					$("#"+id).closest(".conjuntoChecks").find(".btnN").addClass("lleno");
 				}else {
-					$("#"+id).closest(".conjuntoChecks").removeClass("lleno");
-					$("#"+id).closest(".conjuntoChecks").addClass("vacio");
+					$("#"+id).closest(".conjuntoChecks").find(".btnN").removeClass("lleno");
+					$("#"+id).closest(".conjuntoChecks").find(".btnN").addClass("vacio");
 				}
 			
 }
@@ -878,7 +892,7 @@ function validationBtn (btn) {
 var buttonClick; 
 	var revision_pasos = function (element) {
 		    validacionLlenado2();
-			var campos =  $("#general .validatorClass[index]:visible, #general  table.validatorClass:visible, #general  #acSimple2:visible input, #general  #acSimple3:visible input, #general  table.validatorClass2:visible, .fileinput-button:visible, #type_compDomi, #type_loan, .selectNuevo:visible, .conjuntoChecks:visible, .validacionLadaField:visible");
+			var campos =  $("#general .validatorClass[index]:visible, #general  table.validatorClass:visible, #general  #acSimple2:visible input, #general  #acSimple3:visible input, #general  table.validatorClass2:visible, .fileinput-button:visible, #type_compDomi, #type_loan, .selectNuevo:visible, .conjuntoChecks:visible .btnN, .validacionLadaField:visible");
 		
 		  	var campos_vacios = campos.filter(function () {
 			    return $(this).hasClass('vacio');   

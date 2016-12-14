@@ -1,0 +1,81 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+<div class="alertaModal renovacionesPopUp centrar_horizontal">
+		<i class="fa fa-times closePop" onclick="cerrarAlertaRenovacion();"></i>
+	<div class="titulares textoCopys renovacion-texto">
+            				<h2>¡ #{sessionBean.nombre} ya puedes solicitar tu nuevo préstamo!</h2>
+            				<h3>Sigue los siguientes pasos para conocer las ofertas personalizadas que tenemos para ti.</h3>
+        
+            		
+            			</div>
+            			
+            			
+    	<div class="pasos_generales renovacion-texto">
+               	<div class="inner_block">
+                	<article>
+							<figure><img src="../Portal/resources/images/renovacion/01-01.jpg"/></figure>
+						
+                			<h2>Actualiza tu Búro de Crédito</h2>
+                		
+	                
+	            
+	                	
+	                	
+	                	
+                	</article>
+				                	
+                	<article >
+                	 	<figure><img src="../Portal/resources/images/renovacion/02-01.jpg"/></figure>
+                		<h2>Selecciona la oferta que más te guste</h2>
+				                		
+                		
+				                		
+					
+				                		
+					</article>
+				            				                	
+           			<article>
+                	  <figure><img src="../Portal/resources/images/renovacion/03-01.jpg"/></figure>
+                		<h2>Firma tu contrato</h2>
+                		
+                	</article>	
+                	<article>
+                	 <figure><img src="../Portal/resources/images/renovacion/04-01.jpg"/></figure>
+                		<h2>Recibe una transferencia</h2>
+             
+                	</article>	
+                	
+                	<p:commandLink styleClass="callAction  btnNaranja" value="Solicitar nuevo préstamo" onclick="renuevaFnc();" immediate="true"  ></p:commandLink>
+                	
+                				                				               
+				</div>			                
+			</div>
+			<script>
+			$(document).ready(function() {	
+				abrirAlertaRenovacion() 
+			});
+			
+			function abrirAlertaRenovacion() {
+				$(".renovacionesPopUp").addClass("show");
+			
+				$('html, body').animate({
+				       scrollTop: ($('.titulo').offset().top - 100)
+				},1400);
+			}
+				function cerrarAlertaRenovacion() {
+					$(".renovacionesPopUp").removeClass("show");
+				
+					
+			}
+				
+				function solicitarNuevoPrestamo() {
+					$(".nuevoPrestamoEnlace").trigger("click");
+				}
+				
+			</script>
+</div>
+		</ui:composition>

@@ -39,6 +39,8 @@ import mx.com.kubo.model.BmxEconActivityCat;
 import mx.com.kubo.model.Business;
 import mx.com.kubo.model.BusinessPK;
 import mx.com.kubo.model.ClabeAccount;
+import mx.com.kubo.model.ContactWayProspectus;
+import mx.com.kubo.model.ContactWayProspectusPK;
 import mx.com.kubo.model.Country;
 import mx.com.kubo.model.CountryPK;
 import mx.com.kubo.model.Employment;
@@ -126,7 +128,9 @@ implements Serializable, BasicDataIMO
 		
 		validaConsulta();
 				
-		init_lista_actividad_economica();				
+		init_lista_actividad_economica();
+		
+		init_Contract_Way_Prospectus_List();
 	}	
 
 	public final void init_address_type(AjaxBehaviorEvent event)
@@ -1228,9 +1232,9 @@ implements Serializable, BasicDataIMO
 								
 								HubSpotController hs =  new HubSpotController();
 								
-								String properties = "{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
+								StringBuilder properties = new StringBuilder( "{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
 													"{ \"property\" : \"prospector_valid\" , 		 \"value\" : \""+res.getValido()+"\"}," +
-									 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}";
+									 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}");
 								
 								hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
 								
@@ -1285,11 +1289,12 @@ implements Serializable, BasicDataIMO
 								
 								HubSpotController hs =  new HubSpotController();
 								
-								String properties = "";
+								StringBuilder properties = new StringBuilder();
 								
-								properties = "{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
+								properties.append("{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
 									 "{ \"property\" : \"prospector_valid\" , 		 \"value\" : \""+res.getValido()+"\"}," +
-									 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}";
+									 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}," +
+									 "{ \"property\" : \"tiene_prospector\" , \"value\" : \"Si\"}");
 								
 									hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
 								
@@ -1529,5 +1534,62 @@ implements Serializable, BasicDataIMO
 		}
 		
 	}
+	
+	public void updateContactWayValue(){
+		
+		try{
+			
+			String ischeck = contactWayValue.split("::")[0];
+			
+			if( ischeck.equals("true") ){
+				
+				String contact = contactWayValue.split("::")[1];
+				
+				
+			
+				ContactWayProspectus cont = new ContactWayProspectus();
+				
+				ContactWayProspectusPK cwpk = new ContactWayProspectusPK();
+				
+				cwpk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+				cwpk.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
+				
+				cwpk.setContact_way_id(Integer.parseInt(contact));
+				
+				cont.setPk(cwpk);
+				cont.setSelection_date(new Date());
+				
+				contactwayprospectusservice.saveContactWayProspectus(cont);
+			
+			}
+			
+			if( ischeck.equals("false") ){
+				
+				String contact = contactWayValue.split("::")[1];
+				
+				ContactWayProspectus cont = new ContactWayProspectus();
+				
+				ContactWayProspectusPK cwpk = new ContactWayProspectusPK();
+				
+				cwpk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+				cwpk.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
+				
+				cwpk.setContact_way_id(Integer.parseInt(contact));
+				
+				cont.setPk(cwpk);
+				cont.setSelection_date(new Date());
+				
+				contactwayprospectusservice.removeContactWayProspectus(cont);
+			
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+	
 }
 

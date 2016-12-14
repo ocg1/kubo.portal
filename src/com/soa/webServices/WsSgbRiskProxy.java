@@ -44,16 +44,94 @@ public class WsSgbRiskProxy implements com.soa.webServices.WsSgbRisk {
     return wsSgbRisk;
   }
   
+  public java.lang.String testConnection() throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.testConnection();
+  }
+  
+  public com.soa.webServices.responses.WsSgbResponse newProject(java.lang.String prospectId, java.lang.String projectId, java.lang.String productId, java.lang.String amount, java.lang.String companyId, java.lang.String mxTasa, java.lang.String mxFrec, java.lang.String mxNumPagos, java.lang.String mxComisionApertura, java.lang.String bursolnum, java.lang.String loan_type, java.lang.String is_collection_solution) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.newProject(prospectId, projectId, productId, amount, companyId, mxTasa, mxFrec, mxNumPagos, mxComisionApertura, bursolnum, loan_type, is_collection_solution);
+  }
+  
   public com.soa.webServices.responses.WsSgbResponse consultaBuro(java.lang.String cadenaConsulta) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
     return wsSgbRisk.consultaBuro(cadenaConsulta);
   }
   
-  public com.soa.model.businessobject.BurResponse getProspectProspector(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.ApplicationLogResponse applicationsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getProspectProspector(user, password, prospectId);
+    return wsSgbRisk.applicationsLogs(cliProId, indCliPro);
+  }
+  
+  public com.soa.webServices.responses.ApplicationLogResponse creditsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.creditsLogs(cliProId, indCliPro);
+  }
+  
+  public com.soa.webServices.responses.ApplicationLogResponse recoveryLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.recoveryLogs(cliProId, indCliPro);
+  }
+  
+  public com.soa.webServices.responses.ApplicationLogResponse eventsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.eventsLogs(cliProId, indCliPro);
+  }
+  
+  public com.soa.model.businessobject.TSafiCuentasAhoMovDep[] getTSafiCuentasAhoMovDep(java.lang.String cuentaAhoID, java.util.Calendar fecha, java.lang.String natMovimiento) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getTSafiCuentasAhoMovDep(cuentaAhoID, fecha, natMovimiento);
+  }
+  
+  public java.util.Calendar getFechaCorte() throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getFechaCorte();
+  }
+  
+  public com.soa.model.businessobject.Vtbur_infoAlertaInc[] getVtbur_infoAlertaInc(java.lang.String bursolnum) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getVtbur_infoAlertaInc(bursolnum);
+  }
+  
+  public com.soa.model.businessobject.Vtbur_infoAlertaPrev[] getVtbur_infoAlertaPrev(java.lang.String bursolnum) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getVtbur_infoAlertaPrev(bursolnum);
+  }
+  
+  public com.soa.model.businessobject.TSafiKiva[] getTSafiKiva(java.lang.String creditoId) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getTSafiKiva(creditoId);
+  }
+  
+  public com.soa.webServices.responses.AllDataBur getAllDataBur(java.lang.String burSolNum) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getAllDataBur(burSolNum);
+  }
+  
+  public com.soa.webServices.responses.KuboRulesResponse[] getKuboRules(java.lang.String prospectId) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getKuboRules(prospectId);
+  }
+  
+  public com.soa.webServices.responses.WsSgbResponse notificaPromesadePago() throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.notificaPromesadePago();
   }
   
   public com.soa.webServices.responses.SGBCierreDiarioResponse dispararCierreDiario(com.soa.webServices.request.SGBCierreDiarioRequest cierreDiarioRequest) throws java.rmi.RemoteException{
@@ -68,76 +146,40 @@ public class WsSgbRiskProxy implements com.soa.webServices.WsSgbRisk {
     return wsSgbRisk.consultarCierreDiario(consultaCierreDiarioRequest);
   }
   
-  public void notificationDisbursementInfusion() throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.ApplicationLogResponse evaluationLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    wsSgbRisk.notificationDisbursementInfusion();
+    return wsSgbRisk.evaluationLogs(cliProId, indCliPro);
   }
   
-  public com.soa.webServices.responses.WsSgbResponse depositNotification(java.lang.String prospectusId, java.lang.String mail, java.lang.String safiClientId, java.lang.String originAccount, java.lang.String originBank, java.lang.String destinationAccount, java.lang.String despositAmount, java.lang.String depositDate, java.lang.String description, java.lang.String savingsAccountId) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.WsSgbResponse newProjectDTO(com.mx.kubo.sgbws.models.dto.NewProjectRequestDTO newProjectRequestDTO) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.depositNotification(prospectusId, mail, safiClientId, originAccount, originBank, destinationAccount, despositAmount, depositDate, description, savingsAccountId);
+    return wsSgbRisk.newProjectDTO(newProjectRequestDTO);
   }
   
-  public com.soa.webServices.responses.WsSgbResponse notificationValidatedSignature(java.lang.String prospectusId, java.lang.String projectLoanId) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.BurResponse getProspectProspector(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.notificationValidatedSignature(prospectusId, projectLoanId);
+    return wsSgbRisk.getProspectProspector(user, password, prospectId);
   }
   
-  public com.soa.webServices.responses.WsSgbResponse aplicationPublicationInvestor(java.lang.String aplicationPublicationInvestorDTOJSON) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.BurResponse getProspectBC(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.aplicationPublicationInvestor(aplicationPublicationInvestorDTOJSON);
+    return wsSgbRisk.getProspectBC(user, password, prospectId);
   }
   
-  public com.soa.model.businessobject.Vtbur_infocredcte_c[] getVtbur_infocredcte_c(java.lang.String bursolnum) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.WsSgbResponse prospectAdmin(java.lang.String user, java.lang.String password, java.lang.String prospectId, java.lang.String firstName, java.lang.String secondName, java.lang.String surName, java.lang.String aditSurName, java.lang.String birthday, java.lang.String rfc, java.lang.String street, java.lang.String mx_manzana, java.lang.String mx_lote, java.lang.String mx_numExterior, java.lang.String mx_numInterior, java.lang.String mx_colonia, java.lang.String mx_municipio, java.lang.String mx_estado, java.lang.String mx_codPostal, java.lang.String mx_lada, java.lang.String phoneNumber, java.lang.String curp, java.lang.String folio, double monto_Solicitado) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getVtbur_infocredcte_c(bursolnum);
+    return wsSgbRisk.prospectAdmin(user, password, prospectId, firstName, secondName, surName, aditSurName, birthday, rfc, street, mx_manzana, mx_lote, mx_numExterior, mx_numInterior, mx_colonia, mx_municipio, mx_estado, mx_codPostal, mx_lada, phoneNumber, curp, folio, monto_Solicitado);
   }
   
-  public com.soa.model.businessobject.Vtbur_infocredcte_m[] getVtbur_infocredcte_m(java.lang.String bursolnum) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.SpScoreKubo getProspectRisk(com.soa.webServices.request.BCRiskRequest request) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getVtbur_infocredcte_m(bursolnum);
-  }
-  
-  public com.soa.webServices.responses.ProspectBCRiskResponse getProspectBCRisk(com.soa.webServices.request.BCRiskRequest request) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getProspectBCRisk(request);
-  }
-  
-  public com.soa.model.businessobject.Vtbur_infocnsltult[] getVtbur_infocnsltult(java.lang.String bursolnum) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getVtbur_infocnsltult(bursolnum);
-  }
-  
-  public com.soa.model.businessobject.Vtbur_infocnsltms[] getVtbur_infocnsltms(java.lang.String bursolnum) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getVtbur_infocnsltms(bursolnum);
-  }
-  
-  public com.soa.webServices.responses.WsSgbResponse prospectPhone(java.lang.String prospectId, java.lang.String phoneNumber, java.lang.String phoneType, java.lang.String operation) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.prospectPhone(prospectId, phoneNumber, phoneType, operation);
-  }
-  
-  public com.soa.model.businessobject.TSafiPosicionInt[] getTSafiPosicionInt(java.lang.String creditoid) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getTSafiPosicionInt(creditoid);
-  }
-  
-  public com.soa.model.businessobject.TSafiPagosCuota[] getTSafiPagosCuota(java.lang.String creditoid) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getTSafiPagosCuota(creditoid);
+    return wsSgbRisk.getProspectRisk(request);
   }
   
   public com.soa.webServices.responses.WsSgbResponse updateCredit(java.lang.String userId, java.lang.String projectLoanId, java.lang.String prospectId, java.lang.String companyId, java.lang.String varId, java.lang.String newValue) throws java.rmi.RemoteException{
@@ -182,22 +224,46 @@ public class WsSgbRiskProxy implements com.soa.webServices.WsSgbRisk {
     return wsSgbRisk.getTSafiCreditosMovs(creditoId, amortiCreId, fechaOperacion, tipoSaldo, idProspecto);
   }
   
-  public com.soa.webServices.responses.ApplicationLogResponse evaluationLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
+  public void notificationDisbursementInfusion() throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.evaluationLogs(cliProId, indCliPro);
+    wsSgbRisk.notificationDisbursementInfusion();
   }
   
-  public com.soa.model.businessobject.BurResponse getProspectBC(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.WsSgbResponse depositNotification(java.lang.String prospectusId, java.lang.String mail, java.lang.String safiClientId, java.lang.String originAccount, java.lang.String originBank, java.lang.String destinationAccount, java.lang.String despositAmount, java.lang.String depositDate, java.lang.String description, java.lang.String savingsAccountId) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getProspectBC(user, password, prospectId);
+    return wsSgbRisk.depositNotification(prospectusId, mail, safiClientId, originAccount, originBank, destinationAccount, despositAmount, depositDate, description, savingsAccountId);
   }
   
-  public com.soa.webServices.responses.WsSgbResponse prospectAdmin(java.lang.String user, java.lang.String password, java.lang.String prospectId, java.lang.String firstName, java.lang.String secondName, java.lang.String surName, java.lang.String aditSurName, java.lang.String birthday, java.lang.String rfc, java.lang.String street, java.lang.String mx_manzana, java.lang.String mx_lote, java.lang.String mx_numExterior, java.lang.String mx_numInterior, java.lang.String mx_colonia, java.lang.String mx_municipio, java.lang.String mx_estado, java.lang.String mx_codPostal, java.lang.String mx_lada, java.lang.String phoneNumber, java.lang.String curp, java.lang.String folio, double monto_Solicitado) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.WsSgbResponse notificationValidatedSignature(java.lang.String prospectusId, java.lang.String projectLoanId) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.prospectAdmin(user, password, prospectId, firstName, secondName, surName, aditSurName, birthday, rfc, street, mx_manzana, mx_lote, mx_numExterior, mx_numInterior, mx_colonia, mx_municipio, mx_estado, mx_codPostal, mx_lada, phoneNumber, curp, folio, monto_Solicitado);
+    return wsSgbRisk.notificationValidatedSignature(prospectusId, projectLoanId);
+  }
+  
+  public com.soa.webServices.responses.WsSgbResponse aplicationPublicationInvestor(java.lang.String aplicationPublicationInvestorDTOJSON) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.aplicationPublicationInvestor(aplicationPublicationInvestorDTOJSON);
+  }
+  
+  public com.soa.webServices.responses.WsSgbResponse buroReprocess(com.mx.kubo.sgbws.models.dto.ReprocessBuroDataDTO reprocessBuroDataDTO) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.buroReprocess(reprocessBuroDataDTO);
+  }
+  
+  public com.soa.model.businessobject.SpScoreKubo getClientRisk(java.lang.String clientId, java.lang.String bur_solnum, java.lang.String homeType, java.lang.String gender, java.lang.String age, java.lang.String businessType) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getClientRisk(clientId, bur_solnum, homeType, gender, age, businessType);
+  }
+  
+  public com.soa.model.businessobject.BurResponse getProspectIDProvider(java.lang.String user, java.lang.String password, java.lang.String prospectId, java.lang.String indCreditCard, java.lang.String creditCardTermination, java.lang.String indmortgage, java.lang.String indCarLoan) throws java.rmi.RemoteException{
+    if (wsSgbRisk == null)
+      _initWsSgbRiskProxy();
+    return wsSgbRisk.getProspectIDProvider(user, password, prospectId, indCreditCard, creditCardTermination, indmortgage, indCarLoan);
   }
   
   public com.soa.model.businessobject.BurResume getBurResume(java.lang.String user, java.lang.String password, java.lang.String burSol) throws java.rmi.RemoteException{
@@ -228,36 +294,6 @@ public class WsSgbRiskProxy implements com.soa.webServices.WsSgbRisk {
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
     return wsSgbRisk.homeUpdate(homeUpdateRequest);
-  }
-  
-  public com.soa.webServices.responses.ApplicationLogResponse applicationsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.applicationsLogs(cliProId, indCliPro);
-  }
-  
-  public com.soa.webServices.responses.ApplicationLogResponse creditsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.creditsLogs(cliProId, indCliPro);
-  }
-  
-  public com.soa.webServices.responses.ApplicationLogResponse recoveryLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.recoveryLogs(cliProId, indCliPro);
-  }
-  
-  public com.soa.webServices.responses.ApplicationLogResponse eventsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.eventsLogs(cliProId, indCliPro);
-  }
-  
-  public com.soa.model.businessobject.SpScoreKubo getProspectRisk(com.soa.webServices.request.BCRiskRequest request) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getProspectRisk(request);
   }
   
   public com.soa.webServices.responses.WsSgbResponse referencesUpdate(com.soa.webServices.request.ReferencesUpdateRequest req) throws java.rmi.RemoteException{
@@ -320,76 +356,52 @@ public class WsSgbRiskProxy implements com.soa.webServices.WsSgbRisk {
     return wsSgbRisk.getVtbur_infocredcte_vig(bursolnum);
   }
   
-  public com.soa.model.businessobject.TSafiCuentasAhoMovDep[] getTSafiCuentasAhoMovDep(java.lang.String cuentaAhoID, java.util.Calendar fecha, java.lang.String natMovimiento) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.Vtbur_infocredcte_c[] getVtbur_infocredcte_c(java.lang.String bursolnum) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getTSafiCuentasAhoMovDep(cuentaAhoID, fecha, natMovimiento);
+    return wsSgbRisk.getVtbur_infocredcte_c(bursolnum);
   }
   
-  public java.util.Calendar getFechaCorte() throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.Vtbur_infocredcte_m[] getVtbur_infocredcte_m(java.lang.String bursolnum) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getFechaCorte();
+    return wsSgbRisk.getVtbur_infocredcte_m(bursolnum);
   }
   
-  public com.soa.model.businessobject.Vtbur_infoAlertaInc[] getVtbur_infoAlertaInc(java.lang.String bursolnum) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.ProspectBCRiskResponse getProspectBCRisk(com.soa.webServices.request.BCRiskRequest request) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getVtbur_infoAlertaInc(bursolnum);
+    return wsSgbRisk.getProspectBCRisk(request);
   }
   
-  public com.soa.model.businessobject.Vtbur_infoAlertaPrev[] getVtbur_infoAlertaPrev(java.lang.String bursolnum) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.Vtbur_infocnsltult[] getVtbur_infocnsltult(java.lang.String bursolnum) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getVtbur_infoAlertaPrev(bursolnum);
+    return wsSgbRisk.getVtbur_infocnsltult(bursolnum);
   }
   
-  public com.soa.model.businessobject.TSafiKiva[] getTSafiKiva(java.lang.String creditoId) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.Vtbur_infocnsltms[] getVtbur_infocnsltms(java.lang.String bursolnum) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getTSafiKiva(creditoId);
+    return wsSgbRisk.getVtbur_infocnsltms(bursolnum);
   }
   
-  public com.soa.webServices.responses.AllDataBur getAllDataBur(java.lang.String burSolNum) throws java.rmi.RemoteException{
+  public com.soa.webServices.responses.WsSgbResponse prospectPhone(java.lang.String prospectId, java.lang.String phoneNumber, java.lang.String phoneType, java.lang.String operation) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getAllDataBur(burSolNum);
+    return wsSgbRisk.prospectPhone(prospectId, phoneNumber, phoneType, operation);
   }
   
-  public com.soa.webServices.responses.KuboRulesResponse[] getKuboRules(java.lang.String prospectId) throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.TSafiPosicionInt[] getTSafiPosicionInt(java.lang.String creditoid) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.getKuboRules(prospectId);
+    return wsSgbRisk.getTSafiPosicionInt(creditoid);
   }
   
-  public com.soa.webServices.responses.WsSgbResponse notificaPromesadePago() throws java.rmi.RemoteException{
+  public com.soa.model.businessobject.TSafiPagosCuota[] getTSafiPagosCuota(java.lang.String creditoid) throws java.rmi.RemoteException{
     if (wsSgbRisk == null)
       _initWsSgbRiskProxy();
-    return wsSgbRisk.notificaPromesadePago();
-  }
-  
-  public java.lang.String testConnection() throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.testConnection();
-  }
-  
-  public com.soa.webServices.responses.WsSgbResponse newProject(java.lang.String prospectId, java.lang.String projectId, java.lang.String productId, java.lang.String amount, java.lang.String companyId, java.lang.String mxTasa, java.lang.String mxFrec, java.lang.String mxNumPagos, java.lang.String mxComisionApertura, java.lang.String bursolnum, java.lang.String loan_type, java.lang.String is_collection_solution) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.newProject(prospectId, projectId, productId, amount, companyId, mxTasa, mxFrec, mxNumPagos, mxComisionApertura, bursolnum, loan_type, is_collection_solution);
-  }
-  
-  public com.soa.model.businessobject.SpScoreKubo getClientRisk(java.lang.String clientId, java.lang.String bur_solnum, java.lang.String homeType, java.lang.String gender, java.lang.String age, java.lang.String businessType) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getClientRisk(clientId, bur_solnum, homeType, gender, age, businessType);
-  }
-  
-  public com.soa.model.businessobject.BurResponse getProspectIDProvider(java.lang.String user, java.lang.String password, java.lang.String prospectId, java.lang.String indCreditCard, java.lang.String creditCardTermination, java.lang.String indmortgage, java.lang.String indCarLoan) throws java.rmi.RemoteException{
-    if (wsSgbRisk == null)
-      _initWsSgbRiskProxy();
-    return wsSgbRisk.getProspectIDProvider(user, password, prospectId, indCreditCard, creditCardTermination, indmortgage, indCarLoan);
+    return wsSgbRisk.getTSafiPagosCuota(creditoid);
   }
   
   

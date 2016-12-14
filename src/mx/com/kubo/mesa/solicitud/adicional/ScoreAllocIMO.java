@@ -5,7 +5,7 @@ import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SimulatorBean;
 
 public interface ScoreAllocIMO 
-{
+{	
 	void setProyect_loan(ProyectLoan proyect_loan);
 	void setScore(Scoring score);
 	void setSimulation(SimulatorBean simulation);

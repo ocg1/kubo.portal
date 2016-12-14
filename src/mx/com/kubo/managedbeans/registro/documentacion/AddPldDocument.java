@@ -187,6 +187,8 @@ implements Serializable
 		
 		init_validity_date();
 		
+		init_pospectus_comment();
+		
 		lista_tipo_credencial = service_catalogos.getLista_tipo_credencial();	
 		
 		if( naturalperson  != null && naturalperson.getCountry_of_residence() != null && naturalperson.getCountry_of_residence().intValue() == 1 ){
@@ -2376,4 +2378,26 @@ implements Serializable
 		return phones;
 	}
 	
+	
+	public void saveProspectusComment(){
+		
+		if( has_prospectuscomment ){
+		
+			if( prospectuscomment.getComment() != null && prospectuscomment.getComment().trim().length() > 0 ){
+				
+				prospectuscomment.setComment_date(new Date());
+				pospectuscommentservice.updatePospectusComment(prospectuscomment);
+				
+			}else{
+				
+				pospectuscommentservice.removePospectusComment(prospectuscomment);
+				
+			}
+		
+		}else {
+			pospectuscommentservice.savePospectusComment(prospectuscomment);
+			has_prospectuscomment = true;
+		}
+		
+	}
 }

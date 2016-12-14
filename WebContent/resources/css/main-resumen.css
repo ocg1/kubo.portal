@@ -3463,8 +3463,8 @@ color: #439539;
 }	
 
 #raContent, #raOnlyContent {
-	opacity:0;
-	height:1px;
+	/* opacity:0; */
+	/* height:1px; */
 }
 
 #dvGraphicsInv {
@@ -3702,4 +3702,5 @@ color: #439539;
 	color: #000000;
 	background-color: #FFFFFF;
 }
+
 

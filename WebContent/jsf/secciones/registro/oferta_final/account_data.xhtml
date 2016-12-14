@@ -6,11 +6,11 @@
 				
 	<h:panelGroup id = "accountData">
 				
-		<div style = "display: #{deal.accountDisp};">
+		<div style = "display: #{deal.accountDisp};" id="accountDisp">
 	
 			<div class = "field">
 				<div class = "dvLabel">
-					<h:outputLabel value = "Institución*" styleClass = "labelsStl"/>
+					<h:outputLabel value = "Institución" styleClass = "labelsStl"/>
 				</div>
 							
 				<P />
@@ -22,7 +22,7 @@
 								
 					<p:autoComplete id             = "acSimple" 
 									value          = "#{deal.thisClabe.bank_description}" 
-									styleClass     = "validatorClass auocmpleStl hs_class"  
+									styleClass     = " auocmpleStl hs_class"  
 									completeMethod = "#{deal.autocomplete}" >
 					 	<p:ajax event = "itemSelect" listener = "#{deal.handleSelect}" /> 
 					 	<p:ajax event = "blur"       listener = "#{deal.updateClabe}" /> 
@@ -33,10 +33,10 @@
 						
 			<div class = "field">
 				<div class = "dvLabel">
-					<h:outputLabel value = "Cuenta Clabe*" styleClass = "labelsStl"/>
+					<h:outputLabel value = "Cuenta Clabe" styleClass = "labelsStl"/>
 				</div>
 				<div class="leyendas">
-					<p>18 dígitos, buscalos en tu estado de cuenta</p>
+				18 dígitos, buscalos en tu estado de cuenta
 				</div>
 				
 		
@@ -46,14 +46,14 @@
 								 value      = "#{deal.thisClabe.mx_clabe}"  											 
 								 onkeypress = "return isNumberKey(event);"
 								 maxlength  = "18"
-								 styleClass = "elementAddres1 validatorClass hs_class">
+								 styleClass = "elementAddres1  hs_class">
 						<p:ajax event    = "blur" 
 							    onstart  = "return validaClabe();" 
 							    listener = "#{deal.updateClabe}"/>
 					</h:inputText>
 				</div>
 			</div>	
-			<div class="field">
+			<!-- div class="field">
 			
 					<div class="dvLabel">
 							<h:outputLabel styleClass="labelsStl" value="#{msg.nickname}" />
@@ -63,11 +63,19 @@
 								<p:ajax event="blur" listener="#{basicData.saveMembership}"></p:ajax>
 							</h:inputText>
 						</div>
-				</div>					
+				</div-->					
 		</div>
 		<script>
 			asterisk(".labelsStl");
 			resetar_indices();
+			setTimeout(function(){
+				if($("#accountDisp").is(":hidden")){
+					$("#hasaccount input[value='1']").trigger("click");	
+				}
+			
+			
+				
+		  	},200);
 		</script>
 	</h:panelGroup>				
 </ui:composition>				

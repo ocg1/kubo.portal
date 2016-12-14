@@ -61,7 +61,7 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-   		<from-view-id>jsf/creditos_personales.xhtml</from-view-id>
+   		<from-view-id>/jsf/creditos_personales.xhtml</from-view-id>
    		<navigation-case>
       		<from-outcome>preguntas</from-outcome>
       		<to-view-id>/jsf/manualAyudaCnt.xhtml</to-view-id>
@@ -234,7 +234,7 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-   		<from-view-id>jsf/inversiones1.xhtml</from-view-id>
+   		<from-view-id>/jsf/inversiones1.xhtml</from-view-id>
    		<navigation-case>
       		<from-outcome>inversion2</from-outcome>
       		<to-view-id>/jsf/inversion2.xhtml</to-view-id>

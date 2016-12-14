@@ -405,7 +405,7 @@ public class ProfileInvestment implements Serializable{
 			}else{
 			
 				if( formValue.getValue().equals("1") ){
-					scriptChecks +=" $('.form_id_"+formValue.getPk().getProfile_form_id()+"')[0].checked=true;";
+					scriptChecks +=" if( ( $('.form_id_"+formValue.getPk().getProfile_form_id()+"').length >0 ) ) { $('.form_id_"+formValue.getPk().getProfile_form_id()+"')[0].checked=true; }";
 				}
 			
 			}
@@ -413,13 +413,13 @@ public class ProfileInvestment implements Serializable{
 		}
 		
 		if(profile.getNo_risk() != null && profile.getNo_risk().equals("1") ){
-			scriptChecks +=" $('.noRisk_yes')[0].checked=true;";
-			scriptChecks +=" $('#dvResKuboImpulso').css('display','block');";
+			scriptChecks +=" if( $('.noRisk_yes').length > 0 ) {  $('.noRisk_yes')[0].checked=true; }";
+			scriptChecks +=" if( $('#dvResKuboImpulso').length > 0 ) { $('#dvResKuboImpulso').css('display','block'); } ";
 			isHidden = true;
 		}
 		if(profile.getNo_risk() != null && profile.getNo_risk().equals("0") ){
-			scriptChecks +=" $('.noRisk_no')[0].checked=true;";
-			scriptChecks +=" $('#dvResKuboImpulso').css('display','none');";
+			scriptChecks +=" if( $('.noRisk_no').length > 0 ) { $('.noRisk_no')[0].checked=true; }";
+			scriptChecks +=" if( $('.dvResKuboImpulso').length > 0 ) {  $('#dvResKuboImpulso').css('display','none'); } ";
 			isHidden = false;
 		}
 		/*

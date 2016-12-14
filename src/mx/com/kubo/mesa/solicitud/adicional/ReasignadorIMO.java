@@ -8,6 +8,8 @@ import mx.com.kubo.model.ProyectLoan;
 
 public interface ReasignadorIMO 
 {
+	void setMax_payment_ENABLED(boolean max_payment_ENABLED);
+	
 	void init(ProyectLoan proyect_loan_ACTUAL);
 	
 	void setProyect_loan_reasignable(ProyectLoan actual);
@@ -15,7 +17,8 @@ public interface ReasignadorIMO
 	void renovar_solicitud_de_credito(TipoCreditoAdicional tipo);
 	
 	void crear_nuevo_proyecto(TipoCreditoAdicional tipo_credito_adicional, int loan_type);
-	void init_renovacion_aprobacion_automatica(TipoCreditoAdicional tipo_credito_adicional, int loan_type);
+	
+	void init_renovacion_aprobacion_automatica(String loan_type);
 	
 	void crear_lista_documentos(boolean validacion_de_vigencia);
 	
@@ -26,4 +29,5 @@ public interface ReasignadorIMO
 	boolean callSGB(Proyect proyect, ProyectLoan proyect_loan);
 	
 	void setSesionBean(SessionBean sesion);
+	
 }

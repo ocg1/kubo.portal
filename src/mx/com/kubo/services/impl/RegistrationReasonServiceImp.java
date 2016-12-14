@@ -42,4 +42,10 @@ implements RegistrationReasonService
 		
 	}
 	
+	public RegistrationReason getRegistrationReasonByPartner( String partner_id ){
+		
+		return dao.getRegistrationReasonByPartner( partner_id );
+		
+	}
+	
 }

@@ -122,7 +122,7 @@ function validaMontoMin(e,place){
 	
 	var input = $("#"+e);
 	
-    var num = (input.val()).replace(",","");
+    var num = (input.val()+"").replace(",","");
     num = num.replace(",","");
     num = num.replace(",","");
 	var ent;

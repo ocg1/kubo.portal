@@ -712,14 +712,15 @@ implements Serializable
 				servicecallingRepository.saveServiceCall(srvCall);
 			}
 			try{
+				
 				SAFIServiciosServiceLocator locator = new SAFIServiciosServiceLocator();
 				SAFIServicios service = locator.getSAFIServiciosSoap11();
 				SimuladorCuotaCreditoResponse response =  service.simuladorCuotaCredito(simulador);
 				
-				
-			
 					if(response.getCodigoRespuesta().equals("0")){
+						
 						if(sesion!=null&&sesion.getProspectus_id()!=null&&sesion.getProspectus_id()!=0){
+						
 							srvCall = new ServiceCalling();
 				
 							srvCall.setAcces_datetime(new Date());
@@ -1449,6 +1450,12 @@ implements Serializable
 				sesion.setRate(proyectLoan.getScoring().getRate());
 			}
 		}
+	}
+	
+	public void setProyectLoan( ProyectLoan proyectloan ){
+		
+		this.proyectLoan = proyectloan;
+		
 	}
 
 	public void setSimulador_A(SimBeanForList simulador_A) {

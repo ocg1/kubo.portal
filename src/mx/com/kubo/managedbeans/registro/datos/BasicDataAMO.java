@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import javax.faces.context.FacesContext;
@@ -22,6 +23,7 @@ import javax.imageio.ImageIO;
 import mx.com.kubo.bean.ValBusiness;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.BusinessPK;
+import mx.com.kubo.model.ContactWayProspectus;
 import mx.com.kubo.model.EconomicActivityPK;
 import mx.com.kubo.model.Economic_Activity;
 import mx.com.kubo.model.EmploymentPK;
@@ -518,6 +520,30 @@ public abstract class BasicDataAMO extends BasicDataDMO
 			
 			hasPhoneCell = true;
 		}
+	}
+	
+	protected void init_Contract_Way_Prospectus_List(){
+		
+		List<ContactWayProspectus> lstCntWayPrs =  contactwayprospectusservice.getContactWayProspectusList( naturalPerson.getNatPerPK().getCompany_id(), naturalPerson.getNatPerPK().getProspectus_id() );
+		
+		scriptContactWay = "";
+		
+		if( lstCntWayPrs != null && lstCntWayPrs.size() > 0 ){
+		
+			scriptContactWay = "<script>";
+					
+			for( ContactWayProspectus cntWayPrs : lstCntWayPrs ){
+			
+				scriptContactWay += "$('#contacto_"+cntWayPrs.getPk().getContact_way_id()+"').prop('checked', true); ";
+			
+			}
+			
+			scriptContactWay += " revisarNUevosChecks (); </script>";
+			
+		}
+		
+		
+		
 	}
 	
 	protected void init_lista_actividad_economica() 

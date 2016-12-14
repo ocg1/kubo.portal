@@ -751,51 +751,82 @@ implements Serializable, HeaderBeanIMO
 
 	public String SignOut()
 	{
-		faces     = FacesContext.getCurrentInstance();
-		external  = faces.getExternalContext();
-		elContext = faces.getELContext();
-		resolver  = faces.getApplication().getELResolver();
 		
-		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
-		sesion.setLog_out_ENABLED(true);
+		try{
 		
-		String partner = sesion.getPartner();
+			faces     = FacesContext.getCurrentInstance();
+			external  = faces.getExternalContext();
+			elContext = faces.getELContext();
+			resolver  = faces.getApplication().getELResolver();
+			
+			sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
+			sesion.setLog_out_ENABLED(true);
+			
+			String partner = sesion.getPartner();
+			
+			this.menu = "Entrar";
+			this.user = sesion.getNickname();
+			this.header = "headerOut.xhtml";
+			
+			external.getSessionMap().remove("NavigationBean");
+			
+			simulator = (Simulator) resolver.getValue(elContext, null, "simulator");		
+			simulator.clearSim();
+			
+			sessionUsed = (HttpSession) external.getSession(false);	
+			
+			String sessId = sessionUsed.getId();
+			
+			sessionUsed.invalidate();
+			
+			ServletContext servlet     = sessionUsed.getServletContext();
+			
+			Hashtable<String, String> ht = (Hashtable<String, String>)servlet.getAttribute( "logOutuser" );
+			
+			//System.out.println( "Session LogOut: " + sessId );
+			
+			if( ht != null && ht.containsKey( sessId) ){
+				//System.out.println( "Quitando session : " + sessId );
+				ht.remove(sessId);
+			}else{
+				//System.out.println( "Session No encontrada : " + sessId );
+			}
+			
+			try{
+			
+			sessionUsed = (HttpSession) external.getSession(true);
+			sessionUsed.setAttribute("new", Boolean.FALSE);  
+			sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
+			sesion.sessionOut();
+			sesion.setLog_out_ENABLED(false);
+			sesion.setPartner(partner);
+			
+			
+			}catch( IllegalStateException i ){
+				
+				sessionUsed = null;
+				sesion.sessionOut();
+				sesion.setLog_out_ENABLED(false);
+				sesion.setPartner(partner);
+				
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
+			}
 		
-		this.menu = "Entrar";
-		this.user = sesion.getNickname();
-		this.header = "headerOut.xhtml";
-		
-		external.getSessionMap().remove("NavigationBean");
-		
-		simulator = (Simulator) resolver.getValue(elContext, null, "simulator");		
-		simulator.clearSim();
-		
-		sessionUsed = (HttpSession) external.getSession(false);	
-		
-		String sessId = sessionUsed.getId();
-		
-		sessionUsed.invalidate();
-		
-		ServletContext servlet     = sessionUsed.getServletContext();
-		
-		Hashtable<String, String> ht = (Hashtable<String, String>)servlet.getAttribute( "logOutuser" );
-		
-		//System.out.println( "Session LogOut: " + sessId );
-		
-		if( ht != null && ht.containsKey( sessId) ){
-			//System.out.println( "Quitando session : " + sessId );
-			ht.remove(sessId);
-		}else{
-			//System.out.println( "Session No encontrada : " + sessId );
+		}catch( IllegalStateException ie ){
+			
+			sessionUsed = null;
+			sesion.sessionOut();
+			sesion.setLog_out_ENABLED(false);
+			sesion.setPartner(partner);
+			
+		}catch(Exception ee){
+			
+			ee.printStackTrace();
+			
 		}
-		
-		sessionUsed = (HttpSession) external.getSession(true);
-		sessionUsed.setAttribute("new", Boolean.FALSE);  
-		
-		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
-		sesion.sessionOut();
-		sesion.setLog_out_ENABLED(false);
-		sesion.setPartner(partner);
 		
 		return "kubofinanciero";
 	}

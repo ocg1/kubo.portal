@@ -1,5 +1,4 @@
 
-
 	  var width = $(window).width();
 var ofertaFinal = false;
 $(document).ready(function() {
@@ -108,7 +107,9 @@ function name_section () {
 		
 		 //SegundoPasoInv ();
 		 dondeInvierte();
-		 seleccionDomicilio ();
+		 //seleccionDomicilio ();
+		 revisarNUevosChecks ();
+		
  }
  
  
@@ -198,6 +199,8 @@ function name_section () {
 			 	}
 			
 	   });
+		
+	
 		
 		$(".conjuntoChecks").each(function(){	
 			 var conjunto = $(this);
@@ -358,7 +361,7 @@ function siAutorizo() {
 		
 		setTimeout(function(){	
 			obtener_diagnostico();
-	 }, 300);
+	   }, 300);
 		
 		
 }
@@ -628,6 +631,7 @@ function revisionCheck() {
 		 }
 	});
 	
+
 	
 
 }
@@ -738,8 +742,11 @@ function pixel (){
     
     	console.log("Pixel tracking.global-analitics   "+"entra dentro del rango del score A1 - E5: "+kuboScoreVal+" https://tracking.global-analitics.net/aff_l?offer_id=1249&adv_sub="+''+prospectoID+''+"");
     	console.log("Pixel inboxlabs.go2cloud   "+"entra dentro del rango del score A1 - E5: "+kuboScoreVal+" https://inboxlabs.go2cloud.org/aff_l?offer_id=1249&adv_sub="+''+prospectoID+''+"");
-        contenedorTracksacai.innerHTML = '<img src="https://clean.tracksacai.com/aff_l?offer_id=1665" width="1" height="1" />';
-    	console.log("Pixel tracksacai"+contenedorTracksacai.innerHTML);
+        if($("#tracksacai").length){
+        	contenedorTracksacai.innerHTML = '<img src="https://clean.tracksacai.com/aff_l?offer_id=1665" width="1" height="1" />';
+        	console.log("Pixel tracksacai"+contenedorTracksacai.innerHTML);
+        }
+    	
     	
 		
 		$("#goCloud").attr( "src", "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+""); 
@@ -1121,3 +1128,131 @@ function parentescoReset (){
 
 
 
+
+function checksNuevos(check, id){
+	var idCheck = id;
+	
+    var contenedor = $(check).closest(".input-checkbox-simple");
+    var tabla = $(check).closest("table");
+    	tabla.removeClass("vacio");
+      if($(check).is(":checked")){
+    	  	contenedor.addClass("fa-check");
+    	    	var str = $(id).attr("id");
+			 str = str.split("_")[1];
+			 
+			 var str2 = "true::"+str;
+			 
+			 $("#contactWayValue").val(str2);
+			 $("#contactWayValue").blur();
+			 
+			 $("#cmdContactWay").trigger("click");
+    	  	
+      }else{
+          contenedor.removeClass("fa-check");
+      	 var str = $(id).attr("id");
+			 str = str.split("_")[1];
+			 
+			 var str2 = "false::"+str;
+			 
+			 $("#contactWayValue").val(str2);
+			 $("#contactWayValue").blur();
+			 
+			 $("#cmdContactWay").trigger("click");
+	     
+      }
+}
+
+
+function revisarNUevosChecks (){
+	$(".input-checkbox-simple input").each(function(){	
+		  var contenedor = $(this).closest(".input-checkbox-simple");
+	      if($(this).is(":checked")){
+	    	  	contenedor.addClass("fa-check");   
+	      }else{
+	          contenedor.removeClass("fa-check");
+	      }
+  });
+	
+	
+}
+
+function acordeonN(pestana) {
+	
+	$(pestana).next(".pestana__contenido").slideToggle();
+ 	$(pestana).find(".iconoAbrirCerrar").toggleClass("fa-angle-up fa-angle-down");
+ 		
+}	
+
+function comentarioRealizado(textarea){
+	$(".comentario-realizado p").html("");
+	$(".comentario-realizado p").html($(textarea).val());
+}
+function clicBtnGuardar() {
+	displayMessageProcessing('msgprocessing',false);	
+	$(".guardarProblemaDocs").trigger("click");
+	console.log("clickBtnProblema");
+}
+function enviarComentarioProblema() {
+	$(".campo-textarea-btn").slideUp();
+	$(".comentarioEnviado").slideDown();
+	closeFancy();
+}
+function editarComentario() {
+	$(".campo-textarea-btn").slideDown();
+	$(".comentarioEnviado").slideUp();
+}
+function consolelog() {
+	//console.log("clickkkkkkk!");
+	return true;
+}
+
+function resetComentario() {
+	if($("#comentarioProblemaDocs").val() != ""){
+		$(".comentario-realizado p").html($("#comentarioProblemaDocs").val());
+		$(".problemas-doc .pestana").trigger("click");
+	
+		$(".campo-textarea-btn").slideUp();
+		$(".comentarioEnviado").slideDown();
+	}
+}
+
+
+
+
+
+$(window).load(function() {
+
+		 var width = $(window).width();	
+		 	if (width >= 851) {
+				avisoCliente ();
+				
+		 	}
+
+
+});
+
+
+
+function cerrarPopUp (modal) {
+	$(".velo").fadeOut();
+	$(modal).removeClass("show-alert");
+}
+
+function abrirModalesSecuencia (){
+	cerraAlert();
+	avisoCliente ();
+}
+function avisoCliente (){
+	var locacion = document.location.href; 
+	if(locacion.indexOf('avisoCliente=true')<0 && $(".aviso-cliente").length) {  
+		setTimeout(function(){	
+			$(".aviso-cliente").addClass("show-alert");
+			$(".velo").fadeIn();
+	    }, 300);
+		changeUrlParam('avisoCliente', true);
+		$('html, body').animate({
+		       scrollTop: ($('.content').offset().top - 100)
+		},1400);
+	}
+	
+}

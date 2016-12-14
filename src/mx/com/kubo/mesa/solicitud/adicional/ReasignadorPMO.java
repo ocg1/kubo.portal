@@ -13,16 +13,14 @@ import com.soa.webServices.util.InputParam;
 import mx.com.kubo.bean.ChangeBean;
 import mx.com.kubo.managedbeans.mesa.solicitud.adicional.TipoCreditoAdicional;
 import mx.com.kubo.model.Files;
-import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Proyect;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.ServiceCalling;
-import mx.com.kubo.model.SimulatorBean;
 
 public abstract class ReasignadorPMO extends ReasignadorAMO
 {
-	protected void crear_proyect_loan_NEW(TipoCreditoAdicional tipo_credito_adicional, int loan_type, int emisor_prospectus_id)
+	protected void crear_proyect_loan_NEW(TipoCreditoAdicional tipo_credito_adicional, int loan_type)
 	{		
 		asignar_valores_a_copiar();			
 						
@@ -30,12 +28,13 @@ public abstract class ReasignadorPMO extends ReasignadorAMO
 		
 		switch(tipo_credito_adicional)
 		{			
+		
 			case RENOVACION_APROBACION_AUTOMATICA:								
-
+				/*
 				SimulatorBean simulation = simulatorService.getMaxSimulationProspect(prospectus_id, company_id);
 				
 				allocater = new ScoreAllocIMP();
-				allocater.setProyect_loan(proyect_loan_NEW);
+				allocater.setProyect_loan(proyect_loan);
 				allocater.setScore(score);
 				allocater.setSimulation(simulation);				
 				allocater.init();
@@ -44,6 +43,7 @@ public abstract class ReasignadorPMO extends ReasignadorAMO
 				
 				asignar_tipo_de_credito(loan_type);
 				asignar_proyect_NEW_PK(company_id, prospectus_id);
+*/				
 			break;
 		
 			case NUEVA_CONSULTA_ENABLED:			
@@ -259,8 +259,10 @@ public abstract class ReasignadorPMO extends ReasignadorAMO
 		}
 	}
 	
+/*	
 	protected boolean init_new_project(Proyect proyect, ProyectLoan proyect_loan) throws RemoteException 
 	{
+		
 		srvCall = new ServiceCalling();
 
 		srvCall.setAcces_datetime(new Date());
@@ -355,4 +357,5 @@ public abstract class ReasignadorPMO extends ReasignadorAMO
 			return false;
 		}
 	}
+*/
 }

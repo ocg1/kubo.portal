@@ -307,7 +307,14 @@ function alertasCentrarH () {
 					left: ($(window).width() - content.outerWidth())/2
 					//top: ($(window).height() - content.outerHeight())/2
 			});	
-	
+	var content2 = $('.centrar_horizontal');
+		
+		content2.css(
+		{
+			position:'absolute',
+			left: ($(window).width() - content2.outerWidth())/2,
+		
+		});	
 }
 
 $(window).load(function() {

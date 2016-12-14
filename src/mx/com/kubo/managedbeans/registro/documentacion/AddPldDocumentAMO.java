@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
@@ -40,6 +41,8 @@ import mx.com.kubo.model.FileType;
 import mx.com.kubo.model.Files;
 import mx.com.kubo.model.Investor;
 import mx.com.kubo.model.InvestorPK;
+import mx.com.kubo.model.PospectusComment;
+import mx.com.kubo.model.PospectusCommentPK;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.PrevencionLDPK;
 import mx.com.kubo.model.ProyectLoanInfo;
@@ -255,6 +258,43 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 			setImgLogo("/img/sinimagen.jpg");
 			//e.printStackTrace();
 		}
+	}
+	
+	protected void init_pospectus_comment(){
+		
+		List<PospectusComment> lstPC = null;
+		
+		if( naturalperson != null && naturalperson.getProspectus().getArea().toString().equals("L") ){
+		
+			lstPC = pospectuscommentservice.getPospectusCommentByType(prospectus_id, proyect_loan_id  , 1);
+		
+		}else{
+			
+			lstPC = pospectuscommentservice.getPospectusCommentByType(prospectus_id, 1  , 1);
+		}
+		
+		has_prospectuscomment = false;
+		
+		if(lstPC != null && lstPC.size() > 0){
+			
+			prospectuscomment = lstPC.get(0);
+			has_prospectuscomment = true;
+			
+		}else{
+			
+			prospectuscomment = new PospectusComment();
+			PospectusCommentPK pcpk = new PospectusCommentPK();
+			pcpk.setComment_id(1);
+			pcpk.setComment_type_id(1);
+			pcpk.setCompany_id(1);
+			pcpk.setProspectus_id(prospectus_id);
+			prospectuscomment.setPk(pcpk);
+			prospectuscomment.setProspectus_id_to(0);
+			prospectuscomment.setProyect_loan_id(proyect_loan_id);
+			has_prospectuscomment = false;
+			
+		}
+		
 	}
 	
 	protected void init_lista_documentos() 

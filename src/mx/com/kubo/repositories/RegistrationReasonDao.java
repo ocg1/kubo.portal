@@ -16,4 +16,6 @@ public interface RegistrationReasonDao
 	
 	UtmPartnerConversion existUTM( String utm );
 	
+	public RegistrationReason getRegistrationReasonByPartner( String partner_id );
+	
 }
