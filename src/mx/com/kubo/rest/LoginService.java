@@ -43,7 +43,7 @@ public class LoginService extends LoginServiceDMO
 		login.setProspectus_id(membership.getMembershipPK().getProspectus_id() + "");
 		login.setFull_name(person.NombreCompletoNPM());		
 		login.setLast_login_attempt(date_format.format(membership.getLast_login_attempt()));
-		login.setPassword_ENABLED(true);
+		login.setPassword_ENABLED("S");
         
         return login;        
 	}
@@ -92,7 +92,7 @@ public class LoginService extends LoginServiceDMO
 				login.setFull_name(person.NombreCompletoNPM());
 				login.setProspectus_id(membership.getMembershipPK().getProspectus_id() + "");					
 				login.setLast_login_attempt(date_format.format(membership.getLast_login_attempt()));				
-				login.setPassword_ENABLED(true);				
+				login.setPassword_ENABLED("S");				
 			} 
 		}
 		

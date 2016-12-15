@@ -1,23 +1,63 @@
-package mx.com.kubo.rest;
+package mx.com.kubo.rest.saldos;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-import javax.faces.bean.ManagedProperty;
+import javax.el.ELContext;
+import javax.el.ELResolver;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
+import mx.com.kubo.managedbeans.SessionBean;
+
+import mx.com.kubo.model.InfoCalifPorc;
 import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.ProyectSaldosEdoCta;
+import mx.com.kubo.model.SPProyectActive;
+import mx.com.kubo.rest.ResumenSaldos;
 import mx.com.kubo.services.ProyectLoanService;
 
+import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteRequest;
+import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteResponse;
+import safisrv.ws.InvKuboServicios.ConsultaInverRequest;
+import safisrv.ws.InvKuboServicios.ConsultaInverResponse;
+
 public abstract class ResumenSaldosDMO 
-{
-	@ManagedProperty("#{proyectLoanServiceImp}")
-	protected ProyectLoanService servicioProyecto;
+implements ResumenSaldosIMO
+{	
+	protected ProyectLoanService servicioProyecto;	
+	//protected NaturalPersonService personaNaturalService;
+	
+	protected FacesContext faces;
+	
+	protected ExternalContext external;
+	protected ELContext elContext;
+	protected ELResolver resolver;		
+	
+	protected SessionBean sesion;
 	
 	protected NaturalPerson persona;
+//	protected gnNaturalPersonPK key;
+	
+	protected ConsultaCuentasPorClienteRequest request;
+	protected ConsultaCuentasPorClienteResponse replyA;
+	protected ConsultaInverRequest request_investment;
+	protected ConsultaInverResponse replyB;
+	
+	protected SPProyectActive activeResume;
+	
+	protected ProyectSaldosEdoCta saldosEdoCta;
+	
+	protected ResumenSaldos saldos;
+	
+	protected List<InfoCalifPorc> lstinfo;		
 	
 	protected  Locale locale;
 	protected  NumberFormat dec;
+	
+	protected String safi_client_id;
 	
 	protected String selectedAccount;
 	protected String selectedAccountAux;
@@ -43,9 +83,21 @@ public abstract class ResumenSaldosDMO
 	protected String in_process_amount;
 	protected String broken_amount;
 	protected String fully_paid_amount;
+	protected String depositos = "0";
+	protected String view_delinquentInv;
+	protected String viewLabelDelinquent;
+	protected String labelDelinquent;
 	
 	protected Double gat;
 	
+	protected int number_backward1_15;
+	protected int number_backward16_30;
+	protected int number_backward31_90;
+	protected int number_backward91_120;
+	protected int number_backward121_180;
+	protected int number_under_warranty;
+	protected int number_NoDelinquent;
+	protected int number_notes_active;
 	protected int notes_cash;
 	protected int notes_investment_process;
 	protected int notes_accrued_interest;	
@@ -95,8 +147,11 @@ public abstract class ResumenSaldosDMO
 	protected String ordinary_interests_amount;	
 	protected String interest_on_arrears_amount;
 	
+	protected ArrayList<String> numCuentas;
 	protected ArrayList<String> infoCalEst;
 	protected ArrayList<String> infoCalPorc;
+	
+	protected char status_delinquentinv	= 'C';
 	
 	protected int numInvActivas;
 	protected int fully_paid_number;
@@ -104,9 +159,34 @@ public abstract class ResumenSaldosDMO
 	protected int capital_number;
 	protected int ordinary_interests_number;
 	protected int interest_on_arrears_number;
+	
+	protected ResumenSaldosDMO()
+	{
+		numCuentas   = new ArrayList<String>();
+		infoCalEst   = new ArrayList<String>();
+		infoCalPorc  = new ArrayList<String>();
+				
+		locale = new Locale("es","mx");
+		
+		dec = NumberFormat.getCurrencyInstance(locale);
+	}
 		
 	public void setServicioProyecto(ProyectLoanService service)
 	{
 		servicioProyecto = service;
+	}
+	
+	public void setPerson(NaturalPerson person)
+	{
+		persona = person;				
+		
+		safi_client_id = persona.getSafi_client_id();		
+		
+		client = persona.NombreCompletoNPM();
+	}	
+	
+	public ResumenSaldos getResumenSaldos()
+	{
+		return saldos;
 	}
 }

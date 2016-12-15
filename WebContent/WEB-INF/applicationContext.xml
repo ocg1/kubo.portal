@@ -57,7 +57,8 @@
 			</props>
 		</property>		
 	</bean>
-	
+
+<!-- 	
 	<bean id = "pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" >	
 		<property name="driverClass"   value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"       value="jdbc:mysql://192.168.11.222:3306/kubodb?zeroDateTimeBehavior=convertToNull"/>  
@@ -74,23 +75,23 @@
    		<property name="username"        value="kuboadm"/>
    		<property name="password"        value="mdaobuk"/>
     </bean> 
-    
-<!-- 
+ -->  
+
 	<bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" >	
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://192.168.1.222:3306/kubodb"/>  
-	    <property name="user" value="kuboadm"/>  
-        <property name="password" value="mdaobuk"/>	
+		<property name="jdbcUrl" value="jdbc:mysql://192.168.200.12:3306/kubodb?zeroDateTimeBehavior=convertToNull" />  
+	    <property name="user" value="dbadmin"/>  
+        <property name="password" value="Kvb0@dm1n"/>	
         <property name="maxPoolSize" value="10" />
 		<property name="maxStatements" value="0" />
 		<property name="minPoolSize" value="5" />
-	</bean>
-	
+	</bean> 
+
 	<bean id="JDBCDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
    		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-   		<property name="url" value="jdbc:mysql://192.168.1.222:3306/kubodb"/>
-   		<property name="username" value="kuboadm"/>
-   		<property name="password" value="mdaobuk"/>
-    </bean>
--->
+   		<property name="url" value="jdbc:mysql://192.168.200.12:3306/kubodb?zeroDateTimeBehavior=convertToNull"/>
+   		<property name="username" value="dbadmin"/>
+   		<property name="password" value="Kvb0@dm1n"/>
+    </bean> 
+
 </beans>

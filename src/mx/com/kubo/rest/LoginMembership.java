@@ -10,7 +10,7 @@ public class LoginMembership
     private String full_name;
     private String last_login_attempt;
     
-    private boolean password_ENABLED;
+    private String password_ENABLED;
     
     public LoginMembership(){}
 
@@ -46,11 +46,11 @@ public class LoginMembership
 		this.area = area;
 	}
 
-	public boolean isPassword_ENABLED() {
+	public String getPassword_ENABLED() {
 		return password_ENABLED;
 	}
 
-	public void setPassword_ENABLED(boolean password_ENABLED) {
+	public void setPassword_ENABLED(String password_ENABLED) {
 		this.password_ENABLED = password_ENABLED;
 	}		
 }
