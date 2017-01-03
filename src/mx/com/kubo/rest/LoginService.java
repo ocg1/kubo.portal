@@ -57,9 +57,18 @@ public class LoginService extends LoginServiceDMO
 		
 		membership = service_login.getMembershipByEmail(email);
 		
+		NaturalPerson person = membership.getPerson();
+		
+		Prospectus prospectus = person.getProspectus();
+		
+		SimpleDateFormat date_format = new SimpleDateFormat("dd / MM / yyyy  hh:mm:ss a");
+		
 		login = new LoginMembership();
+		login.setArea(prospectus.getArea().toString());
 		login.setProspectus_id(membership.getMembershipPK().getProspectus_id() + "");
 		login.setFull_name(membership.getPerson().NombreCompletoNPM());
+		login.setLast_login_attempt(date_format.format(membership.getLast_login_attempt()));
+		login.setPassword_ENABLED("S");
         
         return login;  
 	}

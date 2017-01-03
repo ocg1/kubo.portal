@@ -18,4 +18,6 @@ public interface AccessIMO
 	boolean isAccess_OK();
 	
 	void init_access_CONFIG(AjaxBehaviorEvent event);
+	
+	void save_access(SessionBean sesion, int screen_id) ;
 }

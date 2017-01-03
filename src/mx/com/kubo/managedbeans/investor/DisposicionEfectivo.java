@@ -23,6 +23,7 @@ import mx.com.kubo.services.investor.ServiceMovimientosIMP;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 import static mx.com.kubo.notificaciones.notificables.Evento.DEPOSITO_DE_EFECTIVO;
 import static mx.com.kubo.notificaciones.notificables.Evento.DISPOSICION_DE_EFECTIVO;
@@ -94,6 +95,7 @@ implements Serializable
 			 Membership emisor     = membership;
 			 Membership acreditado = membership;
 			 
+			 notificador = new NotificadorIMP();
 			 notificador.setEmisor(emisor);
 			 notificador.setAcreditado(acreditado);
 			 
@@ -124,6 +126,7 @@ implements Serializable
 			 Membership emisor     = membership;
 			 Membership acreditado = membership;
 			 
+			 notificador = new NotificadorIMP();
 			 notificador.setEmisor(emisor);
 			 notificador.setAcreditado(acreditado);
 			 

@@ -76,6 +76,9 @@ ConsultaRenovacion.init_redirect_links = function()
 		
 		$("#wait").show();
 		
+		$('.nuevoLoader').hide();
+		$('.loading-4clicks').fadeIn(500);
+		
 		ConsultaRenovacion.check_isRisk_processed();
 	}
 };
@@ -183,6 +186,10 @@ ConsultaRenovacion.prospectBCRisk_oncomplete = function(xhr, status, args)
 		
 		if(prospect_risk_ENABLED)
 		{
+			
+			$('.nuevoLoader').hide();
+			$('.loading-4clicks').fadeIn(500);
+					
 			ConsultaRenovacion.check_isRisk_processed();
 		}
 	

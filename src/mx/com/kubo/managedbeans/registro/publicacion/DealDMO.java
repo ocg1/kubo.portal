@@ -132,8 +132,7 @@ implements DealIMO
 	
 	@ManagedProperty("#{membershipServiceImp}")
 	protected MembershipService membershipservice;
-	
-	@ManagedProperty("#{notificadorImp}")
+		
 	protected NotificadorIMO notificador;
 	
 	@ManagedProperty("#{systemParamServiceImp}")
@@ -211,30 +210,6 @@ implements DealIMO
 	protected Integer termSel;
 	protected Integer frequencySel;
 	protected Boolean dispInvestor; 
-	
-	public Boolean getDispInvestor() {
-		return dispInvestor;
-	}
-
-	public void setDispInvestor(Boolean dispInvestor) {
-		this.dispInvestor = dispInvestor;
-	}
-
-	public Integer getTermSel() {
-		return termSel;
-	}
-
-	public void setTermSel(Integer termSel) {
-		this.termSel = termSel;
-	}
-
-	public Integer getFrequencySel() {
-		return frequencySel;
-	}
-
-	public void setFrequencySel(Integer frequencySel) {
-		this.frequencySel = frequencySel;
-	}
 
 	protected Double amount;
 	protected Double montoMin;
@@ -412,11 +387,6 @@ implements DealIMO
 	public final void setAccessService(AccessService service) 
 	{
 		accessService = service;
-	}
-
-	public final void setNotificador(NotificadorIMO notificador) 
-	{
-		this.notificador = notificador;
 	}
 	
 	public final void setSystem_param_service(SystemParamServiceImp service) 
@@ -618,6 +588,30 @@ implements DealIMO
 	protected String getMenu_item_selected() 
 	{		
 		return target_item + "::" + screen_id + "::" + id_item;
+	}
+	
+	public Boolean getDispInvestor() {
+		return dispInvestor;
+	}
+
+	public void setDispInvestor(Boolean dispInvestor) {
+		this.dispInvestor = dispInvestor;
+	}
+
+	public Integer getTermSel() {
+		return termSel;
+	}
+
+	public void setTermSel(Integer termSel) {
+		this.termSel = termSel;
+	}
+
+	public Integer getFrequencySel() {
+		return frequencySel;
+	}
+
+	public void setFrequencySel(Integer frequencySel) {
+		this.frequencySel = frequencySel;
 	}
 	
 	public boolean isHasAccount() 

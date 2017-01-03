@@ -1,0 +1,32 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+<div class="menu-main">
+	<ul>
+		<li><a class="active" href="#" onclick="jsShowblock(this, '.indicadores', event)" >Indicadores normativos</a></li>
+		<li><a href="#"  onclick="jsShowblock(this, '.expedientes', event)" >Expedientes </a></li>
+		<li><a href="#"  onclick="jsShowblock(this, '.tecnologia', event)">Tecnologia </a></li>
+		
+	</ul>
+	<script>
+		function jsShowblock (btn, bloque, e){
+			e.preventDefault();
+			$(".block-content").slideUp()
+			$(".menu-main li a").removeClass("active")
+			$(bloque).slideDown();
+			$(btn).addClass("active");
+		}
+		function jsShowsubBlock (btn, bloque, e){
+			e.preventDefault();
+			$(".subcontent").slideUp()
+			$(".js-show-subBlock").removeClass("active")
+			$(bloque).slideDown();
+			$(btn).addClass("active");
+		}
+	
+	</script>
+</div>
+</ui:composition>

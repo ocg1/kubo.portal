@@ -8,17 +8,18 @@ Historial.creditcard_is_principal_oncomplete = function(xhr, status, args)
 	console.log("Historial.creditcard_is_principal_oncomplete(): ");
 	console.log(" > creditcard_is_principal = " + creditcard_is_principal);
 	console.log(" > update_OK = " + update_OK);
+	 conjuntoCombos()
 };
 
 Historial.creditcard_company_oncomplete = function(xhr, status, args)
 {
-	var creditcard_company = args.creditcard_company;
+	/* var creditcard_company = args.creditcard_company;
 	var update_OK = args.update_OK;
 	
 	console.log("Historial.creditcard_company_oncomplete(): ");
 	console.log(" > creditcard_company = " + creditcard_company);
 	console.log(" > update_OK = " + update_OK);
-	
+	*/
 	bancoppel();
 };
 

@@ -27,8 +27,17 @@ public abstract class ConsultaRenovacionAMO extends ConsultaRenovacionDMO
 			long diff = today.getTime() - consulting_date.getTime();
 			
 		    long days = diff / 1000 / 60 / 60 / 24;
+		    		    
+		    boolean is_consulting_for_renovation = renovation != null && renovation.equals("S");
 		    
-		    consulta_vigente_OK = renovation != null && renovation.equals("S") && days < 31;		
+		    if(!is_consulting_for_renovation)
+		    {
+		    	ProyectLoan lastProyectloan = service_proyect_loan.getMaxProyectLoanByProspectAndStatus(prospectus_id, company_id, BORRADOR);
+		    	
+		    	is_consulting_for_renovation = lastProyectloan != null ? true : false;
+		    }		    		    		    		    		    		    
+		    
+		    consulta_vigente_OK = is_consulting_for_renovation && days < 31;		
 		    
 		    if(consulta_vigente_OK)
 		    {

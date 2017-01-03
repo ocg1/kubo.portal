@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import mx.com.kubo.model.CapitalNeto;
+import mx.com.kubo.model.PrecioUdi;
 import mx.com.kubo.repositories.CapitalNetoDao;
 import mx.com.kubo.services.CapitalNetoService;
 
@@ -30,6 +31,12 @@ public class CapitalNetoServiceImp implements CapitalNetoService, Serializable {
 	@Override
 	public List<CapitalNeto> getListCapitalNeto(){
 		return capitalnetodao.getListCapitalNeto();
+	}
+	
+	public PrecioUdi getMaxPrecioUdi(){
+		
+		return capitalnetodao.getMaxPrecioUdi();
+		
 	}
 	
 }

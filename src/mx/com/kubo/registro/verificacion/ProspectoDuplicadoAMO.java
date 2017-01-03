@@ -3,15 +3,19 @@ package mx.com.kubo.registro.verificacion;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.Stackholder_relationship;
+import mx.com.kubo.tools.Utilities;
 
 public abstract class ProspectoDuplicadoAMO extends ProspectoDuplicadoDMO
 implements ProspectoDuplicadoIMO
 {
-	public final boolean verificar_duplicidad_accionista() 
+	public void valida_persona_relacionada_y_empleado() 
 	{
 		flagRelation = false;
+		flagEmployee = false;
 		
-		if(sesion.getArea() != null && sesion.getArea() == 'L')
+		stackholder_selection = null; 
+		
+		if(naturalPerson.getProspectus().getArea() != null && naturalPerson.getProspectus().getArea() == 'L')
 		{										
 			lista_accionistas = service_accionistas.getStackholderRelLst();						
 			
@@ -19,34 +23,60 @@ implements ProspectoDuplicadoIMO
 			{				
 				for(Stackholder_relationship accionista : lista_accionistas)
 				{						
-					if(accionista.getIs_enabled() == 'S')
+					if(accionista.getIs_enabled().equals("S"))
 					{												
-						accionista_RFC    = accionista.getMx_rfc();
-						accionista_CURP   = accionista.getMx_curp();
-						accionista_nombre = accionista.NombreCompletoNPM().toUpperCase();
+						accionista_RFC    = Utilities.quitaAcentos(accionista.getMx_rfc());
+						accionista_CURP   = Utilities.quitaAcentos(accionista.getMx_curp());
+						accionista_nombre = Utilities.quitaAcentos(accionista.NombreCompletoNPM().toUpperCase());
 						
 						if(prospecto_RFC != null && prospecto_RFC.trim().length()>0 && prospecto_RFC.equals(accionista_RFC))
-						{							
+						{		
 							
-							flagRelation = true;
+							if( accionista.getIs_employee() != null && accionista.getIs_employee().toString().equals("S")  ){
+								flagEmployee = true;
+							}
+							
+							if( accionista.getIs_related_person() != null && accionista.getIs_related_person().toString().equals("S")  ){
+								flagRelation = true;
+							}
+							
+							
+							
+							stackholder_selection = accionista;
 							
 							break;
 							
 						} else if( prospecto_CURP  != null && prospecto_CURP.trim().length()>0 && prospecto_CURP.equals(accionista_CURP) ) {
 														
-							flagRelation = true;
+							if( accionista.getIs_employee() != null && accionista.getIs_employee().toString().equals("S")  ){
+								flagEmployee = true;
+							}
+							
+							if( accionista.getIs_related_person() != null && accionista.getIs_related_person().toString().equals("S")  ){
+								flagRelation = true;
+							}
+							
+							stackholder_selection = accionista;
 							
 							break;
 							
 						} else if(prospecto_RFC != null && prospecto_RFC.length() > 10) {
 							
-							if(accionista_RFC != null  && accionista_RFC.length() > 10)
+							if(accionista_RFC != null  && accionista_RFC.length() > 9)
 							{
-								if(prospecto_RFC.substring(0,9).equals(accionista_RFC.substring(0,9)))
+								if( prospecto_RFC.substring(0,9).equals(accionista_RFC.substring(0,9)))
 								{										
 									if(prospecto_nombre.toUpperCase().equals(accionista_nombre)) {
 																				
-										flagRelation = true;
+										if( accionista.getIs_employee() != null && accionista.getIs_employee().toString().equals("S")  ){
+											flagEmployee = true;
+										}
+										
+										if( accionista.getIs_related_person() != null && accionista.getIs_related_person().toString().equals("S")  ){
+											flagRelation = true;
+										}
+										
+										stackholder_selection = accionista;
 										
 										break;											
 									}
@@ -58,7 +88,7 @@ implements ProspectoDuplicadoIMO
 			}			
 		} 
 		
-		return flagRelation;
+		
 	}
 	
 	public final boolean verificar_duplicidad_prospecto() 
@@ -105,8 +135,8 @@ implements ProspectoDuplicadoIMO
 	public final void registrar_access() 
 	{	
 		access = new Access();
-		access.setCompany_id     (sesion.getCompany_id());
-		access.setProspectus_id  (sesion.getProspectus_id());
+		access.setCompany_id     (naturalPerson.getProspectus().getProspectusPK().getCompany_id());
+		access.setProspectus_id  (naturalPerson.getProspectus().getProspectusPK().getProspectus_id());
 		access.setOp_system      (sesion.getOsbrawser());
 		access.setHorizontal_size(sesion.getBrowser_width());
 		access.setVertical_size  (sesion.getBrowser_height());

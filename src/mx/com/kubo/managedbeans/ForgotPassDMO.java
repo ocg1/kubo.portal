@@ -29,7 +29,7 @@ import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.TempPassword;
 import mx.com.kubo.model.TempPasswordPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.MembershipService;
@@ -63,9 +63,8 @@ implements ForgotPassIMO
 	
 	@ManagedProperty("#{passwordHistoryServiceImp}")
 	protected PasswordHistoryService passwordhistoryservice;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
+		
+	protected NotificadorIMO notificador;
 	
 	@ManagedProperty("#{accessServiceImp}")
 	protected AccessService service_access; 
@@ -232,11 +231,6 @@ implements ForgotPassIMO
 	public void setPasswordhistoryservice(PasswordHistoryService service) 
 	{
 		passwordhistoryservice = service;
-	}
-
-	public void setNotificador(NotificadorIMP service) 
-	{
-		notificador = service;
 	}
 	
 	public void setService_access(AccessService service) 

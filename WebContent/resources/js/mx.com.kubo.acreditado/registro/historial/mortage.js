@@ -7,6 +7,7 @@ Historial.mortage_is_principal_oncomplete = function(xhr, status, args)
 	console.log("Historial.mortage_is_principal_oncomplete(): ");
 	console.log(" > mortgage_is_principal = " + mortgage_is_principal);
 	console.log(" > update_OK = " + update_OK);
+	 conjuntoCombos();
 };
 
 Historial.init_mortage_company_name = function()

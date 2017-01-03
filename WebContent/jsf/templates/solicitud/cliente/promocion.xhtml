@@ -2,7 +2,8 @@
 				 xmlns:ui = "http://java.sun.com/jsf/facelets"
 			     xmlns:h  = "http://java.sun.com/jsf/html"
 				 xmlns:f  = "http://java.sun.com/jsf/core"
-				 xmlns:p  = "http://primefaces.org/ui">
+				 xmlns:p  = "http://primefaces.org/ui"
+				 xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
 <script>
 
@@ -67,7 +68,7 @@ function offerRejectionAction(){
 				}
 				
 			</style>
-			<ui:include src="#{summaryRequest.pagePromo}"></ui:include>
+			<ui:include src="#{fn:endsWith(summaryRequest.pagePromo,'xhtml') ?  summaryRequest.pagePromo : fn:replace( summaryRequest.pagePromo , 'tmp1', 'tmp1.xhtml' ) }"></ui:include>
 		
 		<h:panelGroup rendered="#{summaryRequest.offer != null and summaryRequest.offer.offer_status_id == 0}" >
 		

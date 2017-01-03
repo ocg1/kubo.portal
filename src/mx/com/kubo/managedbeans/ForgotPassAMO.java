@@ -16,6 +16,7 @@ import mx.com.kubo.model.TempPasswordPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.Utilities;
 
 public abstract class ForgotPassAMO extends ForgotPassDMO
@@ -316,6 +317,7 @@ public abstract class ForgotPassAMO extends ForgotPassDMO
 										
 			try 
 			{
+				notificador = new NotificadorIMP();
 				notificador.setEmisor(membership);
 				notificador.notificar(Evento.PETICION_CAMBIO_PASSWORD);
 				
@@ -369,6 +371,7 @@ public abstract class ForgotPassAMO extends ForgotPassDMO
 											
 				try 
 				{
+					notificador = new NotificadorIMP();
 					notificador.setEmisor(membership);
 					notificador.notificar(Evento.PETICION_CAMBIO_PASSWORD);
 					

@@ -13,6 +13,7 @@ public interface ReasignadorIMO
 	void init(ProyectLoan proyect_loan_ACTUAL);
 	
 	void setProyect_loan_reasignable(ProyectLoan actual);
+	void setProyect_loan_NEW( ProyectLoan actualProyect);
 	
 	void renovar_solicitud_de_credito(TipoCreditoAdicional tipo);
 	
@@ -27,6 +28,8 @@ public interface ReasignadorIMO
 	boolean copiar_archivos(DocumentationDMO documento);
 	
 	boolean callSGB(Proyect proyect, ProyectLoan proyect_loan);
+	
+	boolean isNew_proyect_OK();
 	
 	void setSesionBean(SessionBean sesion);
 	

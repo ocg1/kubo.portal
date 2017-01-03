@@ -16,15 +16,19 @@ import org.primefaces.context.RequestContext;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMO;
 import mx.com.kubo.model.LoanType;
+import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Purpose;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.portal.ofertas.ParserRenovacionAutomaticaIMO;
 import mx.com.kubo.portal.ofertas.RenovacionBean;
 import mx.com.kubo.portal.ofertas.SimuladorIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.FrequencyService;
+import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.PurposeService;
 import mx.com.kubo.services.ScoringService;
@@ -49,6 +53,9 @@ public abstract class OfertaRenovacionDMO
 	@ManagedProperty("#{accessServiceImp}")
 	protected AccessService accessService;
 	
+	@ManagedProperty("#{membershipServiceImp}")
+	protected MembershipService service_membership;
+	
 	protected RequestContext request;
 	protected FacesContext faces; 
 	protected ELContext elContext;  
@@ -64,10 +71,13 @@ public abstract class OfertaRenovacionDMO
 	protected Scoring score;
 	
 	protected RenovacionBean renovacion;
+	protected Membership   membership;
+	protected MembershipPK membership_PK;
 		
 	protected ParserRenovacionAutomaticaIMO parser;
 	protected   SimuladorIMO simulador;
 	protected ReasignadorIMO reasignador;
+	protected NotificadorIMO notificador;
 	
 	protected List<LoanType> lista_loan_type;
 	protected List<Purpose>  listPurpose;
@@ -86,6 +96,9 @@ public abstract class OfertaRenovacionDMO
 	protected Double actual_rate;
 	protected Double rate;
 	protected Double opening_commission;
+	
+	protected Integer company_id;
+	protected Integer prospectus_id;
 
 	protected String loan_type_id; 
 	
@@ -133,6 +146,11 @@ public abstract class OfertaRenovacionDMO
 	public void setService_scoring(ScoringService service)
 	{
 		service_scoring = service;
+	}
+	
+	public final void setService_membership(MembershipService service) 
+	{
+		service_membership = service;
 	}
 
 	public SimuladorIMO getSimulador() 

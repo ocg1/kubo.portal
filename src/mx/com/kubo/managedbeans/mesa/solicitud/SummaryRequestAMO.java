@@ -41,6 +41,7 @@ import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AccessCollector;
 import mx.com.kubo.model.Address;
 import mx.com.kubo.model.Business;
+import mx.com.kubo.model.CapitalNeto;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.ClabeAccount;
 import mx.com.kubo.model.Country;
@@ -60,6 +61,8 @@ import mx.com.kubo.model.IncomeHistory;
 import mx.com.kubo.model.IncomePK;
 import mx.com.kubo.model.IncomeType;
 import mx.com.kubo.model.IncomeTypePK;
+import mx.com.kubo.model.LegalLimit;
+import mx.com.kubo.model.LegalLimitPK;
 import mx.com.kubo.model.LoanNegotiation;
 import mx.com.kubo.model.LoanNegotiationPK;
 import mx.com.kubo.model.Membership;
@@ -72,6 +75,7 @@ import mx.com.kubo.model.Operating_cost_type;
 import mx.com.kubo.model.Operating_cost_typePK;
 import mx.com.kubo.model.OperationCostHistory;
 import mx.com.kubo.model.PhoneType;
+import mx.com.kubo.model.PrecioUdi;
 import mx.com.kubo.model.ProfileFormValue;
 import mx.com.kubo.model.ProfileInv;
 import mx.com.kubo.model.ProfileInvPK;
@@ -81,6 +85,7 @@ import mx.com.kubo.model.ProyectLoanPK;
 import mx.com.kubo.model.ProyectQuestion;
 import mx.com.kubo.model.PublicForum;
 import mx.com.kubo.model.References;
+import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.RoleAccess;
 import mx.com.kubo.model.RoleFunction;
@@ -90,6 +95,8 @@ import mx.com.kubo.model.SellingDetailHistory;
 import mx.com.kubo.model.SellingDetailPK;
 import mx.com.kubo.model.SellingType;
 import mx.com.kubo.model.SellingTypePK;
+import mx.com.kubo.model.Stackholder_relationship;
+import mx.com.kubo.model.Stackholder_relationshipPK;
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.model.SystemParamPK;
@@ -144,6 +151,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		hasEflTest 			= false;
 		efl_OK 				= false;
 		efl_ERROR			= false;
+		autorizar_personas_relacionadas_ENABLED = false;
 		
 		editor_domicilio 	= null;
 		domicilio_actividad = null;
@@ -197,6 +205,98 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		
 		prospecto  = persona.getProspectus();		
 		numCliente = persona.getNatPerPK().getProspectus_id();
+	}
+	
+	protected void init_related_person(){
+		
+		if( member.getIs_stackholder() != null && member.getIs_stackholder().equals("S") ){
+			
+			if( member.getStackholder_relationship_id() != null ){
+			
+				Stackholder_relationshipPK stkPK = new Stackholder_relationshipPK();
+				
+				stkPK.setCompany_id(member.getMembershipPK().getCompany_id());
+				stkPK.setStackholder_relationship_id(member.getStackholder_relationship_id());
+				
+				
+				Stackholder_relationship stkHld = service_accionistas.getStackholderByPK(stkPK);
+				
+				stackholder_description = stkHld.getRelationship_type();
+				
+				if( stkHld.getRelated_to() != null ){
+					
+					stkPK.setCompany_id(member.getMembershipPK().getCompany_id());
+					stkPK.setStackholder_relationship_id(stkHld.getRelated_to());
+					
+					stkHld = service_accionistas.getStackholderByPK(stkPK);
+					
+					stackholder_description += " de " + stkHld.NombreCompletoNPM() + " ( " + stkHld.getRelationship_type() + " )";
+					
+				}
+				
+				
+			
+			}
+			
+		}
+		
+		LegalLimitPK lpk = new LegalLimitPK();
+		
+		lpk.setCompany_id(member.getMembershipPK().getCompany_id());
+		lpk.setLegal_limit_id(1);
+		
+		LegalLimit legallimit = legallimitservice.getLegalLimitByPK(lpk);
+		
+		PrecioUdi pu =capitalnetoservice.getMaxPrecioUdi();
+		
+		Double dlimiteUDIS = (Double.parseDouble(legallimit.getValue()) * pu.getMx_precio_udi() );
+		
+		limiteUDIS = dec.format( dlimiteUDIS );
+		
+		lpk = new LegalLimitPK();
+		
+		lpk.setCompany_id(member.getMembershipPK().getCompany_id());
+		lpk.setLegal_limit_id(2);
+		
+		legallimit = legallimitservice.getLegalLimitByPK(lpk);
+		
+		CapitalNeto capitalNeto = capitalnetoservice.getMaxCapitalNeto();
+		
+		Double dlimiteCapitalNeto =  (capitalNeto.getMx_capital_neto()* (Double.parseDouble(legallimit.getValue()))) / 100 ;
+		
+		limiteCapitalNeto = dec.format( dlimiteCapitalNeto );
+		
+		System.out.println( "descripcion persona relacionada : " + stackholder_description );
+		
+		requireAutorizacionPersonaRelacionada = member.getIs_stackholder() != null && member.getIs_stackholder().equals("S")  ;
+		
+		superaPorcCapitalNeto = actualProyect.getAmmount() > dlimiteCapitalNeto;
+		superaUDIS = actualProyect.getAmmount() > dlimiteUDIS;
+		
+		requireAutorizacionConsejoAdmin = superaPorcCapitalNeto || superaUDIS ;
+		
+		if( requireAutorizacionConsejoAdmin ){
+			requireAutorizacionPersonaRelacionada = false;
+		}
+		
+		initRelatedPerson();
+		
+	}
+	
+	protected void initDetalleTableroNormativo(){
+		
+		tableronormativodetallado = tableronormativoservice.getDetalleTableroNormativo( actualProyect.getProyectloanPk().getProyect_loan_id() );
+		
+	}
+	
+	protected void initRelatedPerson(){
+		
+		relatedProyect = relatedpersonloanservice.getRelatedPersonLoanByProyectLoanProspectus(actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getProyect_loan_id());
+		
+		if( relatedProyect == null ){
+			relatedProyect = new RelatedPersonLoan();
+		}
+		
 	}
 	
 	protected void init_telefonos()
@@ -1149,7 +1249,8 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 										isEquals=true;
 									}
 								}
-								else{
+								else if(registro3.getIncome_type_id() != 7 ) {
+									
 									income=new IncomeBean(registro3.getIncome_type_id(),registro3.getAmmount(),itertype.getName());
 									
 									if(registro3.getAmmount_modified()!=null){
@@ -1170,6 +1271,11 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 										this.totalIncome += (itertype.getOperation_sign() * registro3.getAmmount());
 									}
 									isEquals=true;
+								
+								} else if(registro3.getIncome_type_id() == 7 ) {
+									
+									setIngresosComprobables(registro3.getAmmount_modified());
+									
 								}
 								
 								if( registro3.getIncome_type_id() == 2 ){
@@ -1243,6 +1349,12 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 								
 								listIncomeBean.add(income);
 							}
+//						else if(itertype.getPk().getIncome_type_id() == 7 ) {
+//							
+//							setIngresosComprobables(registro3.getAmmount_modified());
+//							
+//						}
+						
 					}
 				}
 				
@@ -2694,6 +2806,16 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 			if(function_id == COPIAR_DOCUMENTOS)
 			{
 				copiar_documentos_ENABLED = true;
+			}
+			
+			if(function_id == AUTORIZAR_PERSONAS_RELACIONADAS)
+			{
+				autorizar_personas_relacionadas_ENABLED = true;
+			}
+			
+			if(function_id == VER_PESTANA_TABLERO_NORMATIVO)
+			{
+				ver_pestana_tablero_normativo_ENABLED = true;
 			}
 			
 		}

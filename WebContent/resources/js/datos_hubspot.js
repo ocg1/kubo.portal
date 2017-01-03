@@ -155,8 +155,9 @@ $(document).ready(function(){
 		  }*/
 		  
 		  if($("#inputSegmentName").val() != ""){
-			   str += "KuboScore =" + $("#inputKuboScore").val()+"&";
+			   str += "KuboScore=" + $("#inputKuboScore").val()+"&";
 		  }
+		  str += "alta_kubo=s&";
 		    /*
 		    context = {}
 	    	context ["hutk"] = $.cookie('hubspotutk')

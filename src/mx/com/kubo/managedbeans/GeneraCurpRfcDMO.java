@@ -11,7 +11,7 @@ import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.StateCat;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.CountryService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
@@ -34,9 +34,8 @@ public abstract class GeneraCurpRfcDMO
 	
 	@ManagedProperty("#{proyectLoanServiceImp}")
 	protected ProyectLoanService proyectloanService;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
+		
+	protected NotificadorIMO notificador;
 	
 	protected Membership membership;
 	protected MembershipPK membership_PK;
@@ -166,14 +165,6 @@ public abstract class GeneraCurpRfcDMO
 
 	public void setExtDis(String extDis) {
 		this.extDis = extDis;
-	}
-	
-	public NotificadorIMP getNotificador() {
-		return notificador;
-	}
-
-	public void setNotificador(NotificadorIMP notificador) {
-		this.notificador = notificador;
 	}
 
 	public MembershipService getMembershipservice() {

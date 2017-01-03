@@ -467,6 +467,15 @@ function blur_indices() {
 	 					
 	 					
 	 				}
+	 				if($(this).is('input:[type="text"]') || $(this).is('textarea')) {
+		 				if($(this).val().length==0) {
+		 					$(this).removeClass("lleno");
+		 					$(this).addClass("vacio");
+		 				}else {
+		 					$(this).removeClass("vacio");
+		 		    		$(this).addClass("lleno");
+		 				}
+	 				}
 	 				if($(this).hasClass("telephone")){
 	 					if($(this).val().length <10 ){
 	 						$(this).removeClass("lleno");

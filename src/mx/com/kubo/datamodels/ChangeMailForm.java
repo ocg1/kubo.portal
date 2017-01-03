@@ -5,8 +5,7 @@ import javax.faces.bean.ManagedProperty;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Phone;
-import mx.com.kubo.model.NaturalPerson;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.AddressService;
 import mx.com.kubo.services.EventNotificationService;
 import mx.com.kubo.services.EventService;
@@ -49,9 +48,8 @@ public abstract class ChangeMailForm
 	protected NaturalPerson   newNaturalPerson;	
 	protected Phone           phone;		
 	protected Integer         rememberPass;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
+		
+	protected NotificadorIMO notificador;
 	
 	@ManagedProperty("#{membershipServiceImp}")
 	protected MembershipService membershipService;
@@ -264,14 +262,6 @@ public abstract class ChangeMailForm
 
 	public void setRememberPass(Integer rememberPass) {
 		this.rememberPass = rememberPass;
-	}
-
-	public NotificadorIMP getNotificador() {
-		return notificador;
-	}
-
-	public void setNotificador(NotificadorIMP notificador) {
-		this.notificador = notificador;
 	}
 
 	public MembershipService getMembershipService() {

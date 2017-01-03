@@ -342,6 +342,8 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 			ht1.put("E",0D);
 			ht1.put("F",0D);
 			ht1.put("G",0D);
+			ht1.put("V",0D);
+			ht1.put("R",0D);
 			
 			for( InfoCalifPorc info : lstinfo ){
 				//if((arreglo1[i].split("\\&;\\&")).length == 3 ){
@@ -396,6 +398,8 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 			ht2.put("E",new ArrayList<Double>());
 			ht2.put("F",new ArrayList<Double>());
 			ht2.put("G",new ArrayList<Double>());
+			ht2.put("V",new ArrayList<Double>());
+			ht2.put("R",new ArrayList<Double>());
 			
 			for( InfoCalifPorc info : lstinfo ){
 				

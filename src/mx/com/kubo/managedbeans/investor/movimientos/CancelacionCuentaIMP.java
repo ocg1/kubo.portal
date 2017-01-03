@@ -9,11 +9,13 @@ import javax.faces.event.AjaxBehaviorEvent;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.services.investor.ServiceMovimientosIMP;
 import mx.com.kubo.tools.GeneradorCodigos;
 
 public final class CancelacionCuentaIMP extends CancelacionCuentaDMO
 implements CancelacionCuentaIMO
-{			
+{				
 	public final void listener_cuenta(AjaxBehaviorEvent evento)
 	{
 		requestContext = RequestContext.getCurrentInstance();
@@ -61,16 +63,18 @@ implements CancelacionCuentaIMO
 			{			
 				cancelacion = new MovimientoCancelacionDMO(cuenta, motivo_id, motivo.getDescription(), folio, descripcion);
 				
-				service_notificador.setEmisor(inversionista);
-				service_notificador.setAcreditado(inversionista);
-				service_notificador.notificar(CANCELACION_CUENTA_INVERSIONES,   cancelacion);
-				service_notificador.notificar(CANCELACION_CUENTA_INVERSIONISTA, cancelacion);
+				notificador = new NotificadorIMP();
+				notificador.setEmisor(inversionista);
+				notificador.setAcreditado(inversionista);
+				notificador.notificar(CANCELACION_CUENTA_INVERSIONES,   cancelacion);
+				notificador.notificar(CANCELACION_CUENTA_INVERSIONISTA, cancelacion);
 				
-				service_movimientos.setSesion(sesion);
-				service_movimientos.setMovimiento(cancelacion);
-				service_movimientos.registrar_cancelacion();
+				movimientos = new ServiceMovimientosIMP();
+				movimientos.setSesion(sesion);
+				movimientos.setMovimiento(cancelacion);
+				movimientos.registrar_cancelacion();
 				
-				lista_movimientos = service_movimientos.getLista_movimientos();
+				lista_movimientos = movimientos.getLista_movimientos();
 				
 				notificacion_OK = true;
 			}

@@ -184,6 +184,145 @@
 					</div>
 				</h:panelGroup>
 			</div>								
-		</div>									         				
-	</h:panelGroup>	  	 	
+		</div>
+		
+		<h:panelGroup id="pnlIngresosComprobables" rendered="#{sessionBean.area=='M'}" >
+			<div class="getTotal" style="color: #4F4F4F;font-weight: bold;">
+				<div style="float: left; margin-left: 10px;margin-top: 10px;">Ingresos Comprobables</div>
+				<!-- <div style="float: right; margin-right: 10px;">
+					<h:outputText value="#{summaryRequest.getTotalIncome()}" >
+						<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+					</h:outputText>
+				</div> -->
+					
+					<!-- **** -->
+				<div style="float: right;margin-right: 10px;">
+					
+					<h:panelGroup rendered="#{sessionBean.area=='M'}">
+					
+						<h:panelGroup rendered="#{summaryRequest.changeActions}"  >
+						<!-- #{summaryRequest.totalIncomeControll} -->
+							<span>$</span>
+							<h:inputText  
+									styleClass	= "elementAddresMin" 
+									value		= "#{summaryRequest.ingresosComprobablesStr}" 
+									onkeyup		= "format(this,'otro');" 
+									style		= "width: 80px !important; text-align: right; margin-right: 11px; font-size: 0.98em !important; color: #333333;"
+									
+								>
+								
+								<p:ajax event	= "blur"  listener="#{summaryRequest.changeIngersosComprobables}" />
+								
+							</h:inputText>
+							
+						</h:panelGroup>
+							
+						<h:panelGroup rendered="#{!summaryRequest.changeActions}">
+							<div style="float: left; margin-left: 10px; margin-right: 20px;">
+								<h:outputText value="#{summaryRequest.ingresosComprobablesStr}" >
+									<f:convertNumber maxFractionDigits="0" minFractionDigits="0" currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+								</h:outputText>
+							</div>
+						</h:panelGroup>
+						
+						<div 
+								class="statusBitacora" 
+								align = "right" 
+						 	  	style = "	width: 21px;
+									    	float: right;
+									    	bottom: 0px !important;
+									    	top: inherit;
+									    	margin-bottom: 15px;">
+						 	  		   
+								<p:commandLink immediate      = "true"
+												actionListener="#{summaryRequest.initListIncome}"  
+												oncomplete="returnLoadFileIncome();"	
+												update="pnlLstIncome"			  			   
+								  			   style          = "cursor:pointer;">
+								  			   
+									<h:graphicImage url      = "../resources/img/change-icon.png" 
+													styleClass = "change_icon"/>
+													
+								</p:commandLink>
+						</div>	
+						
+					</h:panelGroup>
+					
+				</div>								
+			</div>
+		</h:panelGroup>
+											         				
+	</h:panelGroup>	  	 
+	
+	
+	<h:panelGroup id="pnlLstIncome" rendered="#{sessionBean.area=='M'}" >
+	
+		<div id="dvLstIncome" >
+					<div id="dvCloseFileIncome" onclick="closedvFileIncome()" >
+						<h:graphicImage library="img" name="close.png" ></h:graphicImage>
+					</div>
+							<p>Comprobantes de Ingresos</p>
+						
+						<!-- <ul> -->
+						
+						
+							<ui:repeat var="file" value="#{summaryRequest.listIncomeFiles}">
+								
+								<!-- <li class="sublistClient" style="height: auto; vertical-align: top;padding-top: 0px;border: solid 1px #FF0000;"> -->
+									<div>
+										<table cellpadding="0" cellspacing="0" >
+											<tr>
+												<td>
+													
+													<a href="../jsf/templates/showpicture.xhtml?url=#{file.location}" target="_blank">#{file.fileType.name}</a>
+													
+												</td>
+												
+											</tr>	
+												
+										</table>
+									</div>
+								<!-- </li> -->
+								
+							</ui:repeat>
+
+		
+		</div>
+		
+		<style>
+		
+			#dvLstIncome{
+				width: 300px;
+			    border: solid 2px #f00;
+			    position: absolute;
+			    right: 0px;
+			    background-color: #FFFFFF;
+			    display: none;
+			    padding: 15px;
+			   }
+			   
+			   #dvCloseFileIncome{
+			   right: -20px;
+			    position: absolute;
+			    top: -20px;
+			    cursor: pointer;
+			   }
+			   
+		</style>
+		
+		<script>
+		
+			function returnLoadFileIncome(){
+				
+				$("#dvLstIncome").show();
+				
+			}
+			function closedvFileIncome(){
+				$("#dvLstIncome").hide();
+			}
+		
+		</script>
+	
+	</h:panelGroup>
+		
 </ui:composition>

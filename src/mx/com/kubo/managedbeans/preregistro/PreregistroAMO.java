@@ -9,7 +9,6 @@ import javax.el.ELContext;
 import javax.faces.context.FacesContext;
 
 import mx.com.kubo.constantes.NavigationRule;
-import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.managedbeans.ChangeMail;
 import mx.com.kubo.managedbeans.HeaderBean;
@@ -40,6 +39,7 @@ import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.UtmPartnerConversion;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.FormatoCadenas;
 import mx.com.kubo.tools.GeneradorCodigos;
 import mx.com.kubo.tools.Utilities;
@@ -846,6 +846,7 @@ public abstract class PreregistroAMO extends PreregistroDMO
 				{	
 					try
 					{
+						notificador = new NotificadorIMP();
 						notificador.setEmisor(membership);
 						notificador.notificar(Evento.REGISTRO_USUARIO);
 						
@@ -855,6 +856,7 @@ public abstract class PreregistroAMO extends PreregistroDMO
 						
 						if( membership.getRegistration_reason_id() != null && membership.getRegistration_reason_id() == 8 &&  membership.getPriceshoes_number() !=null  && membership.getPriceshoes_number().length() > 0 )
 						{
+							notificador = new NotificadorIMP();
 							notificador.setEmisor(membership);
 							notificador.notificar(Evento.REGISTRO_SOCIO_PARTNER);							
 						}		
@@ -875,7 +877,7 @@ public abstract class PreregistroAMO extends PreregistroDMO
 					
 					try 
 					{			
-						
+						notificador = new NotificadorIMP();
 						notificador.setEmisor(membership);
 						notificador.notificar(Evento.PREREGISTRO_INVERSIONISTA);
 						

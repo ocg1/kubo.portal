@@ -51,6 +51,9 @@ import mx.com.kubo.controller.inversion.Inversion;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
 import mx.com.kubo.controller.shortURL.ResponseShortURL;
+import mx.com.kubo.kubows.NotificadorConfigRequest;
+import mx.com.kubo.kubows.PublicProyect;
+import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.listeners.mesa.solicitud.EditorCurpIMP;
 import mx.com.kubo.listeners.mesa.solicitud.EditorNombreIMP;
 import mx.com.kubo.listeners.mesa.solicitud.EditorRfcIMP;
@@ -67,6 +70,7 @@ import mx.com.kubo.managedbeans.mesa.solicitud.estatus.CasosPospuestosIMP;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.managedbeans.portal.referencias.ReferenciasPersonalesIMP;
 import mx.com.kubo.managedbeans.util.ConvertCalendar;
+import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.Bank;
 import mx.com.kubo.model.Change_control;
@@ -77,6 +81,9 @@ import mx.com.kubo.model.CountryPK;
 import mx.com.kubo.model.Expenses;
 import mx.com.kubo.model.ExpensesPK;
 import mx.com.kubo.model.ExpensesType;
+import mx.com.kubo.model.Files;
+import mx.com.kubo.model.Income;
+import mx.com.kubo.model.IncomePK;
 import mx.com.kubo.model.Investor;
 import mx.com.kubo.model.InvestorPK;
 import mx.com.kubo.model.LegalStatusPK;
@@ -93,17 +100,22 @@ import mx.com.kubo.model.ProyectLoanInfo;
 import mx.com.kubo.model.ProyectLoanInfoPK;
 import mx.com.kubo.model.PublicForum;
 import mx.com.kubo.model.PublicForumPK;
+import mx.com.kubo.model.RelatedPersonLoan;
+import mx.com.kubo.model.RelatedPersonLoanPK;
 import mx.com.kubo.model.ResidencePK;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.ServiceCalling;
+import mx.com.kubo.model.Stackholder_relationship;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.model.Study_LevelPK;
 import mx.com.kubo.model.ViewInvestmetInProyect;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
-import mx.com.kubo.proyect_loan.documentacion.CopiarArchivosIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMP;
+import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMO;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.mesa.solicitud.perfil.IndicePagoDeudasIMP;
 import mx.com.kubo.tools.ImageUtils;
@@ -111,6 +123,7 @@ import mx.com.kubo.tools.Utilities;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.DateSelectEvent;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 
 import com.soa.model.businessobject.BurResponse;
@@ -345,8 +358,6 @@ implements SummaryRequestIMO,  Serializable
 		init_membership();		
 		init_reporte_inusual();
 		
-		
-		
 		init_name_visible();
 	
 		if( actualProyect != null && actualProyect.getSafi_credit_id() != null ){
@@ -437,6 +448,20 @@ implements SummaryRequestIMO,  Serializable
 		{		
 			inicializaPromo( actualProyect );
 		}	
+		
+		if( actualProyect != null ){
+			
+			validaRelationship();
+			init_related_person();
+			initDetalleTableroNormativo();
+			
+			Income inc = ingresosService.getIncomeByTypeIncomeID(actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id(), 7);
+			
+			if( inc != null ){
+				ingresosComprobables = inc.getAmmount_modified();
+			}
+		
+		}
 		
 		//long l = mD02.getTimeInMillis() - mD01.getTimeInMillis();
 
@@ -2779,10 +2804,13 @@ membershipTemp = new Membership();
 	{
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(user);
 			notificador.setAcreditado(member);
 			notificador.notificar(evento,  null, null, errormsg);
-		} catch (NotificacionException e) {			
+			
+		} catch (NotificacionException e) {
+			
 			e.printStackTrace();
 		}					
 	}
@@ -3211,19 +3239,11 @@ membershipTemp = new Membership();
 		
 		ProyectLoan lastProyectloan = service_proyect_loan.getMaxProyectLoanByProspectAndStatus( actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id(), 3);
 		
-		ReasignadorIMP reasignador = new ReasignadorIMP();
-		
-		reasignador.setMembershipservice(service_membership);
-		
-		reasignador.setFilesService(filesService);
+		ReasignadorIMO reasignador = new ReasignadorIMP();
 		
 		reasignador.setProyect_loan_NEW(actualProyect);
 		
 		reasignador.init(lastProyectloan);
-		
-		CopiarArchivosIMP copiar_archivos  = Utilities.findBean("copiar_archivos_service");
-		
-		reasignador.setCopiar_archivos_service( copiar_archivos );
 		
 		reasignador.crear_lista_documentos(false);
 		
@@ -3351,5 +3371,235 @@ membershipTemp = new Membership();
 		
 	}
 	
+	private void validaRelationship()
+	{	
+		
+		ProspectoDuplicadoIMP service_prospecto_duplicado = new ProspectoDuplicadoIMP();
+		
+		service_prospecto_duplicado.init_natural_person(actualProyect.getProyectloanPk().getProspectus_id(),actualProyect.getProyectloanPk().getCompany_id(), sesion);
+		
+		service_prospecto_duplicado.valida_persona_relacionada_y_empleado();
+		
+		boolean is_relatedPerson = service_prospecto_duplicado.isFlagRelation();
+		
+		boolean is_employed = service_prospecto_duplicado.isFlagEmployee();
+		Stackholder_relationship stackholder = service_prospecto_duplicado.getStackholder_selection();
+		
+		if(is_relatedPerson)
+		{
+			//request.addCallbackParam("isRelation", "S" );
+			// Actualizamos is_stackholder y campo de gn_stackholder_relationship
+			
+			member.setIs_stackholder("S");
+			
+		} else {						
+			//request.addCallbackParam("isRelation", "S" );
+			// TODO Actualizamos is_stackholder y campo de gn_stackholder_relationship
+			
+			member.setIs_stackholder("N");
+			
+		}
+		
+		if(is_employed)
+		{
+			
+			member.setIs_employee("S");
+			
+		} else {						
+			
+			member.setIs_employee("N");
+			
+		}
+		
+		if( stackholder != null && stackholder.getPk() != null ){
+		
+			member.setStackholder_relationship_id(stackholder.getPk().getStackholder_relationship_id());
+		
+		}else{
+			member.setStackholder_relationship_id(null);
+		}
+		
+		service_membership.update(member);
+		
+		
+	}
+	
+	public void uploadAuthorizedFile(FileUploadEvent event){
+		
+		try{
+		
+		faces    = FacesContext.getCurrentInstance();
+		context  = faces.getELContext();
+		resolver = faces.getApplication().getELResolver();
+		external = faces.getExternalContext();
+		
+		String EVENTO_NOTIFICACION_AUTORIZACION_PERSONA_RELACIONADA = "60";
+		
+		String realPath = (faces.getExternalContext().getRealPath("//resources//"));
+		
+			String formatFile="";
+			String nameFile="";
+			String randomName="";
+			
+			if(event!=null){
+				try{			
+					formatFile= event.getFile().getFileName().substring(event.getFile().getFileName().lastIndexOf("."));				
+				}
+				catch (Exception e) {
+					
+					formatFile=".jpg";
+				}
+				
+			}
+			randomName = Utilities.getRandomName(); 
+			nameFile="/authorized_"+actualProyect.getProyectloanPk().getProyect_loan_id()+"_"+actualProyect.getProyectloanPk().getProspectus_id()+"_"+randomName+formatFile;
+			
+			String pathDocument = "/documents/cia_" + 	actualProyect.getProyectloanPk().getCompany_id()+"/pros_" + actualProyect.getProyectloanPk().getProspectus_id()+ "/relatedPerson";		
+			String pathHistoric = "/historic/cia_"+		actualProyect.getProyectloanPk().getCompany_id()+"/pros_" + actualProyect.getProyectloanPk().getProspectus_id()+"/relatedPerson";
+			
+			Utilities.createDirectory(realPath + pathDocument);
+			Utilities.createDirectory(realPath + pathHistoric);
+			
+			Utilities.copyFile(realPath + pathDocument+nameFile, event.getFile().getInputstream());
+			Utilities.copyFile(realPath + pathHistoric+nameFile, event.getFile().getInputstream());
+			
+			RelatedPersonLoan related =  new RelatedPersonLoan() ;
+			 
+			RelatedPersonLoanPK rppk = new RelatedPersonLoanPK() ;
+			
+			rppk.setCompany_id(actualProyect.getProyectloanPk().getCompany_id());
+			
+			related.setPk(rppk);
+			
+			related.setAuthorization_date(new Date() );
+			related.setAuthorization_file_location(pathDocument+nameFile);
+			related.setAuthorization_status("S");
+			
+			
+			PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
+			
+			PublicProyect kuboservices =  kubolocator.getPublicProyect();
+			
+			NotificadorConfigRequest notificadorConfigRequest =  new NotificadorConfigRequest();
+			
+			notificadorConfigRequest.setCalled_FROM("portal.kubo");
+			
+			notificadorConfigRequest.setCompany_id(actualProyect.getProyectloanPk().getCompany_id()+"");
+			
+			notificadorConfigRequest.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id() + "");
+			
+			notificadorConfigRequest.setEvento_id(EVENTO_NOTIFICACION_AUTORIZACION_PERSONA_RELACIONADA);
+			
+			kuboservices.notificar(notificadorConfigRequest);
+			
+			related.setNotification_date(new Date());
+			
+			related.setAuthorization_status("S");
+			
+			related.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+			related.setProyect_loan_id(actualProyect.getProyectloanPk().getProyect_loan_id());
+			
+			if(requireAutorizacionConsejoAdmin){
+				
+				related.setAuthorization_type("CA");
+				
+			}else if(requireAutorizacionPersonaRelacionada){
+				
+				related.setAuthorization_type("CPR");
+				
+			}
+			
+			relatedpersonloanservice.saveRelatedPersonLoan(related);
+			
+			initRelatedPerson();
+			
+			RequestContext requestContext = RequestContext.getCurrentInstance();
+			requestContext.addPartialUpdateTarget("pnlAuthorizedRelated");
+			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("pnlAuthorizedRelated");
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+	}
+	
+	public void registerAccessNormativity(){
+		
+		Access access = new Access();
+		access.setScreen_id(83);//Pantalla para ver el resumen general del tablero normativo
+		access.setPercentage(0);
+		access.setCompany_id          (sesion.getCompany_id());
+		access.setProspectus_id       (sesion.getProspectus_id());
+		access.setWeb_browser         (sesion.getNamebrawser());
+		access.setWeb_browser_version (sesion.getVersionbrawser());
+		access.setOp_system           (sesion.getOsbrawser());
+		access.setHorizontal_size     (sesion.getBrowser_width());
+		access.setVertical_size       (sesion.getBrowser_height());
+		access.setUser_agent          (sesion.getUser_agent());
+		access.setDevice_info         (sesion.getDevice_info());
+		access.setIpaddress           (sesion.getIP_address_client());
+		access.setProspectus_id_viewed(persona.getNatPerPK().getProspectus_id());
+		access.setProspectus_id_coach (sesion.getCoachProspectus_id());
+		access.setAccess_from		  (sesion.getAccess_from());
+		access.setVersion_description (sesion.getVersion_description());
+		access.setUrl_access		  (sesion.getUrl_access());
+		access.setProspectus_id_viewed( actualProyect.getProyectloanPk().getProspectus_id() );
+		
+		accessService.add(access, true);
+		
+	}
+	
+	public String formatNumber( Double value ){
+		
+		return num.format(value);
+		
+	}
+	
+	public void changeIngersosComprobables(){
+		Income inc = ingresosService.getIncomeByTypeIncomeID(actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id(), 7);
+		
+		ingresosComprobables = Double.parseDouble(ingresosComprobablesStr.replaceAll(",", "") );
+		
+		if( inc != null ){
+			
+			inc.setAmmount_modified(ingresosComprobables);
+			ingresosService.updateIncome(inc);
+			
+		}else{
+			
+			inc = new Income();
+			inc.setAmmount(0D);
+			inc.setAmmount_modified(ingresosComprobables);
+			inc.setDatetime_modified(new Date());
+			inc.setDescription(null);
+			inc.setIncome_type_id(7);
+			
+			IncomePK incomePk = new IncomePK();
+			
+			incomePk.setCompany_id(actualProyect.getProyectloanPk().getCompany_id());
+			incomePk.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+			
+			inc.setIncomePk(incomePk);
+			inc.setProspectus_id_modified(sesion.getProspectus_id());
+			inc.setAmmount_modified(ingresosComprobables);
+			ingresosService.addIncome(inc, actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id());
+		}
+	}
+	
+	
+	public void initListIncome(){
+		
+		List<Files> listIncomeFilestmp = filesService.getListFilesByProspectOrderByCategory(actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id() , actualProyect.getProyectloanPk().getProyect_loan_id());
+		
+		listIncomeFiles = new ArrayList<Files>();
+		
+		for(Files f : listIncomeFilestmp){
+			if(f.getFileType().getFile_category_id() == 3){
+				listIncomeFiles.add(f);
+			}
+		}
+		
+	}
 	
 }

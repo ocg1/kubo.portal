@@ -6251,10 +6251,9 @@ position:absolute;right: 13px;top: 10px;}
 .tituloNuevo {
 	background: #8CC251;
 	color:#fff;
-	padding:22px 0 18px;
+	padding:22px;
 	max-height: 74px;
 }
-
 .tituloNuevo.inversionista {
 	color:#8CC251;
 	background:#fff;
@@ -7745,7 +7744,7 @@ text-align:left;
 	font-size:17px !important;
 }
 
-.pass-renovaciones .contrasenaValida {
+.contrasenaHubspot .contrasenaValida {
 	display:none;
 }
 

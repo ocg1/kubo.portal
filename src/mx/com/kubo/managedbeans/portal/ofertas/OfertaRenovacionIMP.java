@@ -1,5 +1,7 @@
 package mx.com.kubo.managedbeans.portal.ofertas;
 
+import static mx.com.kubo.notificaciones.notificables.Evento.PUBLICACION;
+
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +16,10 @@ import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
-import mx.com.kubo.model.Access;
+import mx.com.kubo.model.MembershipPK;
+import mx.com.kubo.model.ProyectLoan;
+import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.portal.ofertas.ParserRenovacionAutomaticaIMP;
 import mx.com.kubo.portal.ofertas.SimuladorIMP;
 
@@ -39,8 +44,8 @@ implements Serializable
 			lista_loan_type = service_proyect_loan.getLista_loan_type();			
 			listPurpose     = service_purpose.getPurposeList();		
 			
-			Integer prospectus_id = sesion.getProspectus_id();
-			Integer company_id    = sesion.getCompany_id();
+			prospectus_id = sesion.getProspectus_id();
+			company_id    = sesion.getCompany_id();
 			
 			score = service_scoring.loadMaxScoringByProspectus(prospectus_id, company_id);
 			
@@ -234,37 +239,30 @@ implements Serializable
 		reasignador.setMax_payment_ENABLED(max_payment_ENABLED);
 		reasignador.init_renovacion_aprobacion_automatica(loan_type_id);
 		
+		boolean new_proyect_OK = reasignador.isNew_proyect_OK();
+		
+		if(new_proyect_OK)
+		{		
+			membership_PK = new MembershipPK(prospectus_id, company_id);
+			
+			membership = service_membership.getMembershipById(membership_PK);		
+			
+			ProyectLoan proyect_loan = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id);
+	
+			try 
+			{
+				notificador = new NotificadorIMP();
+			 	notificador.setEmisor(membership);
+				notificador.notificar(PUBLICACION, score, proyect_loan, "");
+				
+			} catch (NotificacionException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		
+		request.addCallbackParam("new_proyect_OK", new_proyect_OK);
 		request.addCallbackParam("max_payment_ENABLED", max_payment_ENABLED);
 		request.addCallbackParam("loan_type_id", loan_type_id);
-	}
-	
-	private void initAccess( SessionBean sesion ){
-		
-		Access access = new Access();
-		
-		access.setCompany_id(sesion.getCompany_id());
-		access.setProspectus_id(sesion.getProspectus_id());
-		
-		access.setScreen_id( 81 );
-		
-		access.setPercentage(0);
-		
-		access.setWeb_browser(sesion.getNamebrawser());
-		access.setWeb_browser_version(sesion.getVersionbrawser());
-		access.setOp_system(sesion.getOsbrawser());
-		access.setHorizontal_size(sesion.getBrowser_width());
-		access.setVertical_size(sesion.getBrowser_height());
-		access.setUser_agent(sesion.getUser_agent());
-		access.setDevice_info(sesion.getDevice_info());
-		access.setIpaddress(sesion.getIP_address_client());
-		access.setUrl_access		  (sesion.getUrl_access());
-		
-		
-		access.setProspectus_id_coach (sesion.getCoachProspectus_id());
-		access.setAccess_from		  (sesion.getAccess_from());
-		access.setVersion_description (sesion.getVersion_description());
-		
-		accessService.add(access, false);
-		
 	}
 }

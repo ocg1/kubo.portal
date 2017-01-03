@@ -62,6 +62,7 @@ public class NotificacionPMO extends NotificacionDMO
             body_text = body_text.replaceAll("###Para_que_lo_utizara###", getProposito_del_credito());
             body_text = body_text.replaceAll("###BC-DESC###", Utilities.getBCDesc(getBcScore()));
             body_text = body_text.replaceAll("###URL_COMPORTAMIENTO_PAGO###", comportamiento_pago_URL);
+            body_text = body_text.replaceAll("###automatic_aproved_TOKEN###", automatic_aproved_TOKEN);
             
         } else if(isTemppass()){
         	message.setSubject("Petición de cambio de contraseña para kubo.financiero.");

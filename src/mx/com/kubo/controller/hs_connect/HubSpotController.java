@@ -880,11 +880,11 @@ public class HubSpotController {
 			
 			if( submit  != null ){
 			
-				hs_obj.setUrl_value( ( (String)(((JSONObject)submit.getJSONObject(0)).get("page-url")) ).trim() );
-				
-				System.out.println( "url_value: " + hs_obj.getUrl_value() );
-				
 				try{
+					
+					hs_obj.setUrl_value( ( (String)(((JSONObject)submit.getJSONObject(0)).get("page-url")) ).trim() );
+					
+					System.out.println( "url_value: " + hs_obj.getUrl_value() );
 					
 					Integer registration_reason_id = decodeURL( hs_obj.getUrl_value() );
 					

@@ -27,7 +27,7 @@ import mx.com.kubo.model.SecurityQuestion;
 import mx.com.kubo.model.SecurityQuestionPool;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.model.catalogos.NotificationPreference;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.FullNameService;
@@ -40,7 +40,6 @@ import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.SecurityQuestionPoolService;
 import mx.com.kubo.services.SecurityQuestionService;
 import mx.com.kubo.services.catalogos.ServiceCatalogosIMO;
-import mx.com.kubo.services.impl.FullNameServiceImp;
 
 import org.primefaces.context.RequestContext;
 
@@ -65,10 +64,7 @@ public abstract class PerfilControllerDMO
 	protected SavingAccountService savingaccountservice;
 	
 	@ManagedProperty("#{passwordHistoryServiceImp}")
-	protected PasswordHistoryService passwordhistoryservice;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
+	protected PasswordHistoryService passwordhistoryservice;			
 	
 	@ManagedProperty("#{accessServiceImp}")
 	protected AccessService service_access;
@@ -103,6 +99,7 @@ public abstract class PerfilControllerDMO
 	protected gnNaturalPersonPK natural_person_PK;
 	
 	protected EditorCorreoIMO correo;
+	protected NotificadorIMO notificador;
 	
 	protected HeaderBean header;
 	protected Access access;
@@ -205,11 +202,6 @@ public abstract class PerfilControllerDMO
 	public void setScoringService(ScoringService service) 
 	{
 		scoringService = service;
-	}
-
-	public void setNotificador(NotificadorIMP service) 
-	{
-		notificador = service;
 	}
 
 	public void setPasswordhistoryservice(PasswordHistoryService service) 

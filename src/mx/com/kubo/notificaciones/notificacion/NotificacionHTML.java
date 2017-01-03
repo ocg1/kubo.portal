@@ -439,7 +439,8 @@ public class NotificacionHTML
 			"<tr>				"	+		
 			"<td> Tipo de Crédito: </td>				"	+		
 			"<td><span style='font-weight: bold;'> ###LOANTYPE###</span> </td>				"	+		
-			"</tr>				"	+	
+			"</tr>				"	+
+			"###automatic_aproved_TOKEN###"+
 			"</table>"	+
 			"<p><a href='###URL_COMPORTAMIENTO_PAGO###' style='color:#439539;font-weight:bold;'>Da click aqui para ver su comportamiento de pago.</a></p>"+
 			"<p style='color:gray'>Para no caer en la carpeta de spam, por favor agrega soporte@kubofinanciero.com a tu libreta de direcciones.</p>					"	+

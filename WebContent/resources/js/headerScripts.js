@@ -315,6 +315,15 @@ function alertasCentrarH () {
 			left: ($(window).width() - content2.outerWidth())/2,
 		
 		});	
+		
+	var content3 = $('.centrar_horizontal2');
+		
+		content3.css(
+		{
+			position:'absolute',
+			left: ($(window).width() - content3.outerWidth())/2 - 100,
+		
+		});	
 }
 
 $(window).load(function() {
@@ -744,10 +753,9 @@ var preregistroInit = function () {
 }
 
 function tagMananger () {
-	/*
 	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-KD9SHG');  */
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PGQXXH7');
 }

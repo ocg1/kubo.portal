@@ -14,13 +14,12 @@ import mx.com.kubo.model.investor.MovimientosLog;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.investor.ServiceMovimientosIMO;
 import mx.com.kubo.services.investor.ServiceMovimientosIMP;
-import mx.com.kubo.tools.Utilities;
 
 public abstract class CancelacionCuentaDMO 
 implements CancelacionCuentaIMO
 {	
-	protected NotificadorIMO        service_notificador;
-	protected ServiceMovimientosIMO service_movimientos;
+	protected NotificadorIMO        notificador;
+	protected ServiceMovimientosIMO movimientos;
 	
 	protected RequestContext requestContext;
 	
@@ -49,9 +48,8 @@ implements CancelacionCuentaIMO
 	protected boolean notificacion_OK;	
 	
 	protected CancelacionCuentaDMO()
-	{
-		service_notificador = Utilities.findBean("notificadorImp");
-		service_movimientos = new ServiceMovimientosIMP();						
+	{		
+		movimientos = new ServiceMovimientosIMP();						
 	}
 
 	public final void setSesion(SessionBean sesion) 
@@ -61,9 +59,9 @@ implements CancelacionCuentaIMO
 		prospectus_id = sesion.getProspectus_id();
 		company_id    = sesion.getCompany_id();
 		
-		service_movimientos.setSesion(sesion);
+		movimientos.setSesion(sesion);
 		
-		lista_movimientos = service_movimientos.getLista_movimientos();
+		lista_movimientos = movimientos.getLista_movimientos();
 	}
 	
 	public final void setInversionista(Membership inversionista) 

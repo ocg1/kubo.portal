@@ -22,6 +22,7 @@ import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.Utilities;
 
 import org.primefaces.context.RequestContext;
@@ -262,6 +263,7 @@ implements PerfilControllerIMO, Serializable
 						correo_anterior = membership.getEmail();
 						membership.setEmail(getNewemail());
 						
+						notificador = new NotificadorIMP();
 						notificador.setEmisor(membership);
 						notificador.notificar(Evento.PETICION_CAMBIO_CUENTA_CORREO);
 						

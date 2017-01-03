@@ -59,6 +59,7 @@ import mx.com.kubo.model.Employment;
 import mx.com.kubo.model.Expenses;
 import mx.com.kubo.model.ExpensesType;
 import mx.com.kubo.model.FileType;
+import mx.com.kubo.model.Files;
 import mx.com.kubo.model.Income;
 import mx.com.kubo.model.IncomeDetail;
 import mx.com.kubo.model.IncomeType;
@@ -87,6 +88,7 @@ import mx.com.kubo.model.ProyectQuestion;
 import mx.com.kubo.model.PublicForum;
 import mx.com.kubo.model.References;
 import mx.com.kubo.model.Referred;
+import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.Residence;
 import mx.com.kubo.model.RoleFunction;
@@ -95,6 +97,7 @@ import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StatusProyectCat;
 import mx.com.kubo.model.Study_Level;
 import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.TableroNormativoDetallado;
 import mx.com.kubo.model.TownCat;
 import mx.com.kubo.model.TownCatPK;
 import mx.com.kubo.model.Tutor;
@@ -115,6 +118,7 @@ import mx.com.kubo.services.AddressService;
 import mx.com.kubo.services.AutomaticInvestmentService;
 import mx.com.kubo.services.BankService;
 import mx.com.kubo.services.BusinessService;
+import mx.com.kubo.services.CapitalNetoService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.ClabeAccountService;
 import mx.com.kubo.services.ContactWayProspectusService;
@@ -134,6 +138,7 @@ import mx.com.kubo.services.IncomeService;
 import mx.com.kubo.services.IncomeTypeService;
 import mx.com.kubo.services.InstitutionalInvestorService;
 import mx.com.kubo.services.InvestorService;
+import mx.com.kubo.services.LegalLimitService;
 import mx.com.kubo.services.LegalStatusService;
 import mx.com.kubo.services.LoanNegotiationService;
 import mx.com.kubo.services.MaritalStatusService;
@@ -158,6 +163,7 @@ import mx.com.kubo.services.RecaService;
 import mx.com.kubo.services.ReferencesService;
 import mx.com.kubo.services.ReferredService;
 import mx.com.kubo.services.RegistrationReasonService;
+import mx.com.kubo.services.RelatedPersonLoanService;
 import mx.com.kubo.services.RelationShipService;
 import mx.com.kubo.services.ResidenceService;
 import mx.com.kubo.services.RoleAccessService;
@@ -167,10 +173,12 @@ import mx.com.kubo.services.ScreenService;
 import mx.com.kubo.services.SellingDetailHistoryService;
 import mx.com.kubo.services.SellingTypeService;
 import mx.com.kubo.services.ServiceCallingService;
+import mx.com.kubo.services.StackholderRelService;
 import mx.com.kubo.services.StateService;
 import mx.com.kubo.services.StatusProyectCatService;
 import mx.com.kubo.services.StudyLevelService;
 import mx.com.kubo.services.SystemParamService;
+import mx.com.kubo.services.TableroNormativoService;
 import mx.com.kubo.services.TownService;
 import mx.com.kubo.services.TutorService;
 import mx.com.kubo.services.catalogos.ServiceCatalogosIMO;
@@ -349,10 +357,7 @@ implements SummaryRequestIMO
 	protected ProfileInvService profileinvservice;
 	
 	@ManagedProperty("#{recaServiceImp}")
-	protected RecaService recaservice;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMO notificador;
+	protected RecaService recaservice;		
 	
 	@ManagedProperty("#{motiveServiceImp}")
 	protected MotiveService motiveservice;		
@@ -393,6 +398,21 @@ implements SummaryRequestIMO
 	@ManagedProperty("#{contactWayProspectusServiceImp}")
 	protected ContactWayProspectusService contactwayprospectusservice;
 	
+	@ManagedProperty("#{stackholderRelServiceImp}")
+	protected StackholderRelService service_accionistas;
+	
+	@ManagedProperty("#{legalLimitServiceImp}")
+	protected LegalLimitService legallimitservice;
+	
+	@ManagedProperty("#{relatedPersonLoanServiceImp}")
+	protected RelatedPersonLoanService relatedpersonloanservice;
+	
+	@ManagedProperty("#{capitalNetoServiceImp}")
+	protected CapitalNetoService capitalnetoservice;
+	
+	@ManagedProperty("#{tableroNormativoServiceImp}")
+	protected TableroNormativoService tableronormativoservice;
+	
 	protected RequestContext request;
 	protected FacesContext   faces;
 	protected ExternalContext external;
@@ -420,6 +440,8 @@ implements SummaryRequestIMO
 	protected Membership 	 membershipTemp;
 	protected Membership    afiliacion;
 	
+	protected RelatedPersonLoan relatedProyect;
+	
 	protected ActividadEconomicaIMO editor_actividad_economica;	
 	protected       NotasDelCasoIMO editor_notas;
 	protected  EditorTipoCreditoIMO editor_tipo_credito;
@@ -434,6 +456,7 @@ implements SummaryRequestIMO
 	protected   IndicePagoDeudasIMP indice;	
 	protected          FondeadorIMO fondeador;
 	protected      DocumentacionIMO documentacion;
+	protected        NotificadorIMO notificador;
 	protected     ReporteInusualIMO inusual;
 	protected          TelefonosIMO telefono;
 	protected          PromocionIMO check;
@@ -508,6 +531,8 @@ implements SummaryRequestIMO
 	protected ChangeBean changeReferred;	
 //	protected ChangeBean ifeChangeTem;
 	
+	protected TableroNormativoDetallado tableronormativodetallado;
+	
 	protected Change_control lastChange;
 	
 	protected StringBuilder sb;
@@ -546,6 +571,8 @@ implements SummaryRequestIMO
 	protected List <ExpensesType>  listExpensesType;
 //	protected List <ChangeBean>    lstChangeIFE;	
 	protected List <IncomeType>    listIncomeType;
+	protected List <Files>		listIncomeFiles;
+	
 	
 	protected List<RoleFunction> lista_funciones;
 	protected List <PublicForum>  listPublicForum;
@@ -724,6 +751,11 @@ implements SummaryRequestIMO
 	protected String rejectionMotiveStr;	
 	protected String domicilio_pais_origen_TOKEN;
 	
+	
+	protected String limiteUDIS = "";
+	protected String limiteCapitalNeto = "";
+	protected String stackholder_description;
+	
 	protected final String UNDEFINED = "No definido";	
 	
 	protected Double totalIncome=0.0;
@@ -748,6 +780,9 @@ implements SummaryRequestIMO
 	protected Double pagoIni;	
 	protected Double saldoActualInv = 0D;
 	protected Double ammounttoInv;
+	
+	protected Double ingresosComprobables = 0D; 
+	protected String ingresosComprobablesStr="0.0";
 	
 	protected Long daysLeft;
 	
@@ -798,6 +833,8 @@ implements SummaryRequestIMO
 	protected final int AUTORIZAR_CONTRATOS			   = 29;
 	protected final int SCREEN_CONSULTA_SOLICITUD      = 12;
 	protected final int COPIAR_DOCUMENTOS      = 30;
+	protected final int AUTORIZAR_PERSONAS_RELACIONADAS = 31;
+	protected final int VER_PESTANA_TABLERO_NORMATIVO = 32;
 	
 	protected final int IFE = 1;
 	protected final int INE = 2;
@@ -861,6 +898,8 @@ implements SummaryRequestIMO
 	protected boolean reporte_inusual_ENABLED;
 	protected boolean autorizar_contratos_ENABLED= false;
 	protected boolean copiar_documentos_ENABLED= false;
+	protected boolean autorizar_personas_relacionadas_ENABLED = false;
+	protected boolean ver_pestana_tablero_normativo_ENABLED = false;
 	protected boolean hasReferred;	
 	protected boolean flagSolicitud = false;	
 	protected boolean showInvestPnl = false;
@@ -874,6 +913,9 @@ implements SummaryRequestIMO
 	protected boolean blnComment = false ;
 	protected boolean haveContactWay = false;
 	
+	protected boolean requireAutorizacionPersonaRelacionada = false;
+	protected boolean requireAutorizacionConsejoAdmin = false;
+	
 	protected boolean contactWayPhone;
 	protected boolean contactWayWhatsApp;
 	protected boolean contactWayEmail;
@@ -883,6 +925,8 @@ implements SummaryRequestIMO
 	protected Integer times_refill_init;
 	protected Double  provider_total_init;
 	
+	protected boolean superaPorcCapitalNeto;
+	protected boolean superaUDIS;
 	
 	public final void setMotiveservice(MotiveService service) 
 	{
@@ -1156,11 +1200,6 @@ implements SummaryRequestIMO
 	{
 		investorservice = service;
 	}
-
-	public void setNotificador(NotificadorIMO notificador) 
-	{
-		this.notificador = notificador;
-	}	
 	
 	public void setReferredservice(ReferredService service) 
 	{
@@ -3024,6 +3063,14 @@ implements SummaryRequestIMO
 	public void setListIncomeType(List<IncomeType> listIncomeType) {
 		this.listIncomeType = listIncomeType;
 	}
+	
+	public List<Files> getListIncomeFiles() {
+		return listIncomeFiles;
+	}
+
+	public void setListIncomeFiles(List<Files> listIncomeFiles) {
+		this.listIncomeFiles = listIncomeFiles;
+	}
 
 	public List<ExpensesType> getListExpensesType() {
 		return listExpensesType;
@@ -3463,6 +3510,22 @@ implements SummaryRequestIMO
 	public void setAmmounttoInv(Double ammounttoInv) {
 		this.ammounttoInv = ammounttoInv;
 	}
+	
+	public Double getIngresosComprobables() {
+		return ingresosComprobables;
+	}
+
+	public void setIngresosComprobables(Double ingresosComprobables) {
+		this.ingresosComprobables = ingresosComprobables;
+	}
+	
+	public String getIngresosComprobablesStr() {
+		return num.format(ingresosComprobables);
+	}
+
+	public void setIngresosComprobablesStr(String ingresosComprobablesStr) {
+		this.ingresosComprobablesStr = ingresosComprobablesStr;
+	}
 
 	public boolean isShowInvestPnl() {
 		return showInvestPnl;
@@ -3572,7 +3635,44 @@ implements SummaryRequestIMO
 		this.pospectuscommentservice = pospectuscommentservice;
 	}
 	
+	public StackholderRelService getService_accionistas(){
+		return service_accionistas;
+	}
 	
+	public void setService_accionistas( StackholderRelService service_accionistas ){
+		this.service_accionistas = service_accionistas ;
+	}
+	
+	public CapitalNetoService getCapitalnetoservice(){
+		return capitalnetoservice;
+	}
+	
+	public void setCapitalnetoservice( CapitalNetoService capitalnetoservice ){
+		this.capitalnetoservice = capitalnetoservice ;
+	}
+	
+	public TableroNormativoService getTableronormativoservice(){
+		return tableronormativoservice;
+	}
+	public void setTableronormativoservice( TableroNormativoService tableronormativoservice ){
+		this.tableronormativoservice = tableronormativoservice ;
+	}
+	
+	public RelatedPersonLoanService getRelatedpersonloanservice(){
+		return relatedpersonloanservice;
+	}
+	
+	public void setRelatedpersonloanservice( RelatedPersonLoanService relatedpersonloanservice ){
+		this.relatedpersonloanservice = relatedpersonloanservice ;
+	}
+	
+	public LegalLimitService getLegallimitservice(){
+		return legallimitservice;
+	}
+	
+	public void setLegallimitservice( LegalLimitService legallimitservice ){
+		this.legallimitservice = legallimitservice ;
+	}
 	
 	public ContactWayProspectusService getContactwayprospectusservice() {
 		return contactwayprospectusservice;
@@ -3786,6 +3886,14 @@ implements SummaryRequestIMO
 		return domicilio_pais_origen_TOKEN;
 	}
 	
+	public String getStackholder_description(){
+		return stackholder_description;
+	}
+	
+	public void setStackholder_description( String stackholder_description ){
+		this.stackholder_description = stackholder_description;
+	}
+	
 	public void setRejectionMotiveStr( String rejectionMotiveStr ){
 		this.rejectionMotiveStr = rejectionMotiveStr;
 	}
@@ -3806,5 +3914,85 @@ implements SummaryRequestIMO
 		this. lstcomm = lstcomm ;
 	}
 	
+	public String getLimiteUDIS (){
+		return this.limiteUDIS;
+	}
+	
+	public String getLimiteCapitalNeto(){
+		return this.limiteCapitalNeto;
+	}
+	
+	public void setLimiteUDIS ( String limiteUDIS ){
+		this.limiteUDIS = limiteUDIS;
+	}
+	
+	public void setLimiteCapitalNeto( String limiteCapitalNeto ){
+		 this.limiteCapitalNeto = limiteCapitalNeto;
+	}
+	
+	public boolean isRequireAutorizacionPersonaRelacionada() {
+		return requireAutorizacionPersonaRelacionada;
+	}
+
+	public void setRequireAutorizacionPersonaRelacionada(boolean requireAutorizacionPersonaRelacionada) {
+		this.requireAutorizacionPersonaRelacionada = requireAutorizacionPersonaRelacionada;
+	}
+
+	public boolean isRequireAutorizacionConsejoAdmin() {
+		return requireAutorizacionConsejoAdmin;
+	}
+
+	public void setRequireAutorizacionConsejoAdmin(boolean requireAutorizacionConsejoAdmin) {
+		this.requireAutorizacionConsejoAdmin = requireAutorizacionConsejoAdmin;
+	}
+	
+	public boolean isSuperaPorcCapitalNeto() {
+		return superaPorcCapitalNeto;
+	}
+
+	public void setSuperaPorcCapitalNeto(boolean superaPorcCapitalNeto) {
+		this.superaPorcCapitalNeto = superaPorcCapitalNeto;
+	}
+
+	public boolean isSuperaUDIS() {
+		return superaUDIS;
+	}
+
+	public void setSuperaUDIS(boolean superaUDIS) {
+		this.superaUDIS = superaUDIS;
+	}
+	
+	public RelatedPersonLoan getRelatedProyect() {
+		return relatedProyect;
+	}
+
+	public void setRelatedProyect(RelatedPersonLoan relatedProyect) {
+		this.relatedProyect = relatedProyect;
+	}
+
+
+	public boolean isAutorizar_personas_relacionadas_ENABLED() {
+		return autorizar_personas_relacionadas_ENABLED;
+	}
+
+	public void setAutorizar_personas_relacionadas_ENABLED(boolean autorizar_personas_relacionadas_ENABLED) {
+		this.autorizar_personas_relacionadas_ENABLED = autorizar_personas_relacionadas_ENABLED;
+	}
+
+	public boolean isVer_pestana_tablero_normativo_ENABLED() {
+		return ver_pestana_tablero_normativo_ENABLED;
+	}
+
+	public void setVer_pestana_tablero_normativo_ENABLED(boolean ver_pestana_tablero_normativo_ENABLED) {
+		this.ver_pestana_tablero_normativo_ENABLED = ver_pestana_tablero_normativo_ENABLED;
+	}
+	
+	public TableroNormativoDetallado getTableronormativodetallado(){
+		return this.tableronormativodetallado;
+	}
+	
+	public void setTableronormativodetallado( TableroNormativoDetallado tableronormativodetallado ){
+		this.tableronormativodetallado = tableronormativodetallado;
+	}
 	
 }

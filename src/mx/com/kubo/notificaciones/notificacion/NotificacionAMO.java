@@ -77,13 +77,39 @@ public abstract class NotificacionAMO extends NotificacionPMO
 		setErrormsg(errormsg);
 	}
 	
-	protected void asignaDatosPublicacion(ProyectLoan proyecto)
+	protected void asignaDatosPublicacion(ProyectLoan proyect_loan)
 	{		
-		setFolio(proyecto.getPerson().getProspectus().getTracking_id());
-		setMonto(number_format.format(proyecto.getAmmount()));
-		setPlazo(getPlazo(proyecto));
-		setProposito_del_credito( proyecto.getProyect().getPurpose().getName() );
-		publish = true;
+		setFolio(proyect_loan.getPerson().getProspectus().getTracking_id());
+		setMonto(number_format.format(proyect_loan.getAmmount()));
+		setPlazo(getPlazo(proyect_loan));
+		setProposito_del_credito( proyect_loan.getProyect().getPurpose().getName() );
+		
+		is_automatic_aproved = proyect_loan.getIs_automatic_aproved();
+		
+		if(is_automatic_aproved != null)
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.append("<tr><td>Renovación 4 Clicks: </td>");
+			sb.append("<td><span style='font-weight: bold;'>");															
+				
+			if(is_automatic_aproved.equals("S"))
+			{
+				sb.append("Aprobación automática");
+				
+			} else {
+				
+				sb.append("Revisar más a fondo");
+			}
+			
+			sb.append("</span></td></tr>");
+			
+			automatic_aproved_TOKEN = sb.toString();
+			
+		} else {
+			
+			automatic_aproved_TOKEN = "";
+		}
+		
 	}
 	
 	protected void asignarProject(ProyectLoan proyect_loan)

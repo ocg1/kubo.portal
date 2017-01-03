@@ -56,10 +56,7 @@ implements ActivityPersonIMO
 	protected ScoringService scoringService;
 	
 	@ManagedProperty("#{screenServiceImp}")
-	protected ScreenService screenService;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMO notificador;	
+	protected ScreenService screenService;			
 	
 	@ManagedProperty("#{change_controlServiceImp}")
 	protected Change_controlService service_change_control;
@@ -75,6 +72,7 @@ implements ActivityPersonIMO
 	protected Membership   membership;
 	protected MembershipPK membership_PK;
 	
+	protected NotificadorIMO notificador;
 	protected RoleFunctionController role_function;
 	protected ResourceBundle recurso;
 	protected MenuRegBean menu;
@@ -185,11 +183,6 @@ implements ActivityPersonIMO
 	public void setScoringService(ScoringService service) 
 	{
 		scoringService = service;
-	}
-
-	public void setNotificador(NotificadorIMO notificador) 
-	{
-		this.notificador = notificador;
 	}
 	
 	public void setScreenService(ScreenService service) 

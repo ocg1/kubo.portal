@@ -683,36 +683,38 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 			
 			HS_OBJ hs_obj =hs.createHSOBJ( json_str );
 			
-			ProspectusPK ppk = new ProspectusPK();
+			if( hs_obj != null ){
 			
-			ppk.setCompany_id(getCompany());
-			ppk.setProspectus_id( getProspectus() );
-			
-			Prospectus prospectus = prospectusService.getProspectusById(ppk) ;
-			
-			prospectus.setHs_vid(hs_vid);
-			
-			membership = membershipService.getMembershipById(membership.getMembershipPK());
-			
-			membership.setRegistration_reason_id(hs_obj.getRegistration_reason_id());
-			
-			membership.setOrigin( hs_obj.getUrl_value() );
-			
-			StringBuilder properties = new StringBuilder();
-			
-			properties.append("{ \"property\" : \"prospectoid\" , \"value\" : \""+getProspectus() +"\"},");
-			
-			properties.append("{ \"property\" : \"prospectoid\" , \"value\" : \""+getProspectus() +"\"},");
-			
-			properties.append("{ \"property\" : \"alta_kubo\" ,\"value\":\"S\" }");
-			
-			properties.append(",{\"property\": \"tipo_cliente\" , 		 \"value\" : \""+
-					
-										( membership.getPerson().getProspectus().getArea().toString().equals("L")?"acreditado":membership.getPerson().getProspectus().getArea().toString().equals("I")?"inversionista":"" )
+				ProspectusPK ppk = new ProspectusPK();
 				
-										+"\"}" );
+				ppk.setCompany_id(getCompany());
+				ppk.setProspectus_id( getProspectus() );
+				
+				Prospectus prospectus = prospectusService.getProspectusById(ppk) ;
+				
+				prospectus.setHs_vid(hs_vid);
+				
+				membership = membershipService.getMembershipById(membership.getMembershipPK());
+				
+				membership.setRegistration_reason_id(hs_obj.getRegistration_reason_id());
+				
+				membership.setOrigin( hs_obj.getUrl_value() );
+				
+				StringBuilder properties = new StringBuilder();
+				
+				properties.append("{ \"property\" : \"prospectoid\" , \"value\" : \""+getProspectus() +"\"},");
+				
+				properties.append("{ \"property\" : \"alta_kubo\" ,\"value\":\"S\" }");
+				
+				properties.append(",{\"property\": \"tipo_cliente\" , 		 \"value\" : \""+
+						
+											( membership.getPerson().getProspectus().getArea().toString().equals("L")?"acreditado":membership.getPerson().getProspectus().getArea().toString().equals("I")?"inversionista":"" )
+					
+											+"\"}" );
+				
+				hs.updateProspectus(hs_vid, properties);
 			
-			hs.updateProspectus(hs_vid, properties);
+			}
 			
 		}
 		

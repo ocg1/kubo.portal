@@ -5899,12 +5899,17 @@ table.ocultaSelect td {
 }
 table.ocultaSelect input{
 	width:100%;
-	border:solid 1px #ccc !important;
+	border:solid 1px red !important;
 	display:block;
 	height: 34px;
 	padding: 0 !important;
-	opacity: 0;
+	/* opacity: 0; */
 	cursor: pointer;
+		-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
 }
 table.ocultaSelect  label{
 	display:none;
@@ -8249,4 +8254,30 @@ margin:0 0 20px;
 	text-align:center !important;
 	/* width: 100%; */
 	width:70%;
+}
+
+
+
+.loading-4clicks {padding: 40px 60px; text-align:center;display:none;}
+
+.loading-4clicks .kubi-feliz {
+	width:250px !important;
+}
+
+.loading-4clicks h2{
+	  color: #568e3e;
+	  font-size:25px;
+	  font-weight:600;
+	  margin:0 0 20px;
+	text-align:center;
+}
+
+.loading-4clicks p{
+font-weight:600 !important;
+font-size:18px !important;
+margin:0 0 30px !important;line-height: 20px !important;}
+
+
+.loading-4clicks .kubi-feliz{
+	
 }

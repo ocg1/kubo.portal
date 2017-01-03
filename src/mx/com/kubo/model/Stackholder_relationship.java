@@ -37,9 +37,11 @@ public class Stackholder_relationship implements Serializable {
 	@Column
 	private String relationship_type;//	varchar(100)	YES
 	@Column
-	private Character is_employee;//	char(1)	NO
+	private String is_related_person;//	char(1)	NO
 	@Column
-	private Character is_enabled;//	char(1)	NO
+	private String is_employee;//	char(1)	NO
+	@Column
+	private String is_enabled;//	char(1)	NO
 	@Column
 	private String mx_curp;//	varchar(18)	YES	
 	
@@ -97,16 +99,16 @@ public class Stackholder_relationship implements Serializable {
 	public void setRelationship_type(String relationship_type) {
 		this.relationship_type = relationship_type;
 	}
-	public Character getIs_employee() {
+	public String getIs_employee() {
 		return is_employee;
 	}
-	public void setIs_employee(Character is_employee) {
+	public void setIs_employee(String is_employee) {
 		this.is_employee = is_employee;
 	}
-	public Character getIs_enabled() {
+	public String getIs_enabled() {
 		return is_enabled;
 	}
-	public void setIs_enabled(Character is_enabled) {
+	public void setIs_enabled(String is_enabled) {
 		this.is_enabled = is_enabled;
 	}
 	public String getMx_curp() {
@@ -130,6 +132,12 @@ public class Stackholder_relationship implements Serializable {
 			nombre += " "+mother_last_name;
 		
 		return nombre;
+	}
+	public String getIs_related_person() {
+		return is_related_person;
+	}
+	public void setIs_related_person(String is_related_person) {
+		this.is_related_person = is_related_person;
 	}
 	
 }

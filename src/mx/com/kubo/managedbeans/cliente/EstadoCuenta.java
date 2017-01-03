@@ -158,17 +158,23 @@ implements Serializable, EstadoCuentaIMO
 			
 			ProyectLoan proyect_loan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
 			
+			Long dias_transcurridos = 0L;
+			
 			Date d1 =   proyect_loan.getConsulting_date() ;
 			Date d2 =   new Date() ;
 			
-			Long ld1 = d1.getTime();
-			Long ld2 = d2.getTime();
+			if( d1 != null ){
 			
-			Long dias_transcurridos = ( (ld2 - ld1) / MILLSECS_PER_DAY );
+				Long ld1 = d1.getTime();
+				Long ld2 = d2.getTime();
+				
+				dias_transcurridos = ( (ld2 - ld1) / MILLSECS_PER_DAY );
+			
+			}
 			
 			sesion.setNew_consulting(false);
 			
-			if( dias_transcurridos > 30 || ( dias_transcurridos < 30 && proyect_loan.getStatus_id().intValue() == 0 ) ){
+			if( d1 == null ||  dias_transcurridos > 30 || ( dias_transcurridos < 30 && proyect_loan.getStatus_id().intValue() == 0 ) ){
 			
 				boolean capital_pagado_superior_al_MIN = false;
 				

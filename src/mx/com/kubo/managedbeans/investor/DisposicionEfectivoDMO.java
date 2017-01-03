@@ -32,10 +32,7 @@ import mx.com.kubo.services.investor.ServiceMovimientosIMO;
 public abstract class DisposicionEfectivoDMO 
 {
 	@ManagedProperty("#{membershipServiceImp}")
-	protected MembershipService membership_service;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMO notificador;
+	protected MembershipService membership_service;		
 	
 	@ManagedProperty("#{proyectLoanServiceImp}")
 	protected ProyectLoanService proyectLoanService;
@@ -64,6 +61,7 @@ public abstract class DisposicionEfectivoDMO
 	
 	protected MovimientosIMO    deposito_param_values;
 	protected MovimientosIMO disposicion_param_values;
+	protected NotificadorIMO notificador;
 	
 	protected SAFIServiciosServiceLocator locator2;		
 	protected SAFIServicios servCliente;		
@@ -103,11 +101,6 @@ public abstract class DisposicionEfectivoDMO
 	public void setMembership_service(MembershipService service) 
 	{
 		membership_service = service;
-	}
-
-	public void setNotificador(NotificadorIMO service) 
-	{
-		notificador = service;
 	}
 
 	public void setProyectLoanService(ProyectLoanService service) 

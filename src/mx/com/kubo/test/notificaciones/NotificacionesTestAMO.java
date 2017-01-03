@@ -5,6 +5,7 @@ import javax.faces.context.FacesContext;
 
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.ProyectLoanPK;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 public abstract class NotificacionesTestAMO extends NotificacionesTestDMO
 {
@@ -28,6 +29,7 @@ public abstract class NotificacionesTestAMO extends NotificacionesTestDMO
 			faces_msg = new FacesMessage("Emisor = Receptor",  acreditado.getEmail()); 	         
 			faces.addMessage(null, faces_msg);	
 			
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(acreditado);	
 			
 			bandera = true;
@@ -50,6 +52,7 @@ public abstract class NotificacionesTestAMO extends NotificacionesTestDMO
 		proyect_loan_PK = new ProyectLoanPK(2591, 2625, prospectus_id, company_id);
 		proyect_loan    = proyect_loan_service.getProyectLoanById(proyect_loan_PK);
 		
+		notificador = new NotificadorIMP();
 		notificador.setEmisor(emisor);
 		notificador.setAcreditado(acreditado);
 	}

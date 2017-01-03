@@ -152,6 +152,7 @@ implements ReasignadorIMO
 	protected boolean error_al_mover;
 	protected boolean is_proyect_NEW_OK;
 	protected boolean max_payment_ENABLED;
+	protected boolean new_proyect_OK;
 	
 	protected final boolean VALIDACION_VIGENCIA_DISABLED = false;
 	
@@ -187,6 +188,11 @@ implements ReasignadorIMO
 		proyect_loan = reasignable;
 	}
 	
+	public void setProyect_loan_NEW( ProyectLoan actualProyect)
+	{
+		this.proyect_loan_NEW = actualProyect;
+	}
+	
 	protected void setDocumento_vigente_DISABLED(boolean disabled)
 	{
 		documento_vigente = disabled;
@@ -211,6 +217,11 @@ implements ReasignadorIMO
 		return documento_vigente;
 	}
 	
+	public boolean isNew_proyect_OK()
+	{
+		return new_proyect_OK;
+	}
+	
 	protected Date getFecha_vigente(Date fecha_de_carga, int dias_vigencia)
 	{
 		calendar = Calendar.getInstance();	
@@ -225,21 +236,5 @@ implements ReasignadorIMO
 		System.out.println(" > Fecha de vigencia: " + formatter_date.format(fecha_vigente));
 		
 		return fecha_vigente;		
-	}
-	
-	public void setMembershipservice( MembershipService service_membership){
-		this.membershipservice = service_membership;
-	}
-	
-	public void setFilesService( FilesService filesService){
-		this.filesService = filesService;
-	}
-			
-	public void setProyect_loan_NEW( ProyectLoan actualProyect){
-		this.proyect_loan_NEW = actualProyect;
-	}
-			
-	public void setCopiar_archivos_service( CopiarArchivosIMP copiar_archivos_service ){
-		this.copiar_archivos_service = copiar_archivos_service;
 	}
 }

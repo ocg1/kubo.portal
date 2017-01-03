@@ -38,6 +38,7 @@ import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.refactorizables.AddInvestorSafiRefactorizable;
 
 @ManagedBean @ViewScoped @SuppressWarnings("serial")
@@ -261,6 +262,7 @@ implements AddInvestorSafiRefactorizable, Serializable
 		creaProspect_INV_SGB( membership );
 		
 		try {
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.notificar(evento, null, null, errormsg);
 		} catch (NotificacionException e) {			
@@ -268,6 +270,7 @@ implements AddInvestorSafiRefactorizable, Serializable
 		}
 		
 		try {
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.notificar(Evento.SOLICITUD_INVERSIONISTA_FINALIZADA);
 		} catch (NotificacionException e) {			

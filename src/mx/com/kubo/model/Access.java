@@ -46,7 +46,6 @@ implements Serializable
 	@Column private String version_description;
 	@Column private String url_access;
 	
-	
 	public String getAccess_from() {
 		return access_from;
 	}
@@ -205,4 +204,7 @@ implements Serializable
 	public void setUrl_access(String url_access) {
 		this.url_access = url_access;
 	}
+	
+	
 }
+

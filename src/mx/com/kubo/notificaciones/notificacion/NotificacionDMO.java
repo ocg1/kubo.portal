@@ -115,6 +115,8 @@ public abstract class NotificacionDMO
 	protected String toPartnerName;
 	protected String urlImg;
 	protected String comportamiento_pago_URL;
+	protected String is_automatic_aproved;
+	protected String automatic_aproved_TOKEN;
 	protected String userControlName;				
     protected String body_text;
     protected String subject;

@@ -42,7 +42,7 @@ import mx.com.kubo.model.SavingAccountPK;
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.Study_Level;
 import mx.com.kubo.model.gnNaturalPersonPK;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.registro.datos.birthdate.FechaNacimientoIMO;
 import mx.com.kubo.registro.datos.citizen.NacionalidadIMO;
 import mx.com.kubo.registro.datos.country.BirthCountryIMO;
@@ -158,7 +158,6 @@ implements BasicDataIMO
 	@ManagedProperty("#{change_controlServiceImp}")
 	protected Change_controlService service_change_control;
 	
-	@ManagedProperty("#{service_prospecto_duplicado}")
 	protected ProspectoDuplicadoIMO service_prospecto_duplicado;
 	
 	@ManagedProperty("#{purposeServiceImp}")
@@ -187,9 +186,6 @@ implements BasicDataIMO
 	
 	@ManagedProperty("#{systemParamServiceImp}")
 	protected SystemParamService systemParamService;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
 	
 	@ManagedProperty("#{fullNameServiceImp}")
 	protected FullNameService fullnameservice;
@@ -242,8 +238,8 @@ implements BasicDataIMO
 	protected   CURPGeneratorIMO generator;
 	protected    PersonaMoralIMO moral;	
 	protected       DomicilioIMO domicilio;
-	protected       DomicilioIMO fiscal;		
-	
+	protected       DomicilioIMO fiscal;	
+	protected     NotificadorIMO notificador;
 	
 	protected Access access;
 	protected Phone   thisPhoneFixed;
@@ -348,10 +344,6 @@ implements BasicDataIMO
 	protected static final int DOMICILIO_EMPRESA = 8;
 	protected static final int DOMICILIO_FISCAL  = 9;
 	
-	public final void setService_prospecto_duplicado(ProspectoDuplicadoIMO service) 
-	{
-		service_prospecto_duplicado = service;
-	}
 	
 	public void setAddresstypeService(AddressTypeService service) 
 	{
@@ -491,11 +483,6 @@ implements BasicDataIMO
 	public void setSystemParamService(SystemParamService service)
 	{
 		systemParamService = service;
-	}
-	
-	public void setNotificador(NotificadorIMP service) 
-	{
-		notificador = service;
 	}
 
 	public final NaturalPerson getNaturalPerson() 

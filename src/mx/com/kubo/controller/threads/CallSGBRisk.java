@@ -7,7 +7,6 @@ import mx.com.kubo.managedbeans.registro.consulta.Preaprobacion;
 import mx.com.kubo.model.IdProviderMassive;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.TrackingCode;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AddressService;
@@ -32,10 +31,7 @@ import mx.com.kubo.services.TownService;
 import mx.com.kubo.services.mesa.solicitud.notas.NotesService;
 import mx.com.kubo.tools.Utilities;
 
-public class CallSGBRisk extends Thread {
-	
-	
-	private  NotificadorIMP notificador;
+public class CallSGBRisk extends Thread {			
 	
 	private  ProspectusService prospectusService;
 	
@@ -87,9 +83,7 @@ public class CallSGBRisk extends Thread {
 		
 	}
 	
-	private  void  inicializaciones(){
-		
-		notificador = Utilities.findBean("notificadorImp");
+	private  void  inicializaciones(){				
 		
 		prospectusService =Utilities.findBean("prospectusServiceImp");
 		
@@ -232,9 +226,7 @@ public class CallSGBRisk extends Thread {
 	
 	public Preaprobacion initPreaprobacion(){
 		
-		Preaprobacion preaprobacion = new Preaprobacion();
-		
-		preaprobacion.setNotificador(notificador);
+		Preaprobacion preaprobacion = new Preaprobacion();				
 		
 		preaprobacion.setProspectusService(prospectusService );
 		

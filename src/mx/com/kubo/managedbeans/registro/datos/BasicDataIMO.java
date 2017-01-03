@@ -14,11 +14,10 @@ import mx.com.kubo.registro.datos.moral.PersonaMoralIMO;
 import mx.com.kubo.registro.datos.nombre.PersonNameIMO;
 import mx.com.kubo.registro.datos.pais.PaisOrigenIMO;
 import mx.com.kubo.registro.datos.state.BirthPlaceIMO;
-import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMO;
+
 
 public interface BasicDataIMO 
 {			
-	void setService_prospecto_duplicado(ProspectoDuplicadoIMO service);
 		
 	void saveData();
 	

@@ -78,6 +78,7 @@ public abstract class ConsultaRenovacionDMO
 	protected Integer prospectus_id;
 	protected Integer company_id;
 	
+	protected final int BORRADOR = 0;
 	protected final int SCREEN_REGISTRO_AFTER_CONSULTA = 5;
 	
 	protected final int SCREEN_CONSULTING_AUTOMATIC_RENOVATION = 80;

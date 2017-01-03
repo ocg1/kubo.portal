@@ -42,6 +42,7 @@ import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.TownCatPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.Utilities;
 
 public abstract class ConsultaCompletaAMO extends ConsultaCompletaDMO
@@ -1617,6 +1618,7 @@ public abstract class ConsultaCompletaAMO extends ConsultaCompletaDMO
 	{		
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.notificar(evento, score, proyect_loan, errormsg);
 			

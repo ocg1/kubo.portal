@@ -58,10 +58,7 @@ import org.primefaces.context.RequestContext;
 
 public abstract class PreregistroDMO 
 implements PreregistroIMO
-{			
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMO notificador;
-	
+{						
 	@ManagedProperty("#{clientViewFullNameServiceImp}")
 	protected ClientViewFullNameService clientViewFullNameService;
 	
@@ -125,6 +122,7 @@ implements PreregistroIMO
 	protected SessionBean session;
 	protected HeaderBean  header;
 	protected InicioValuesIMP inicioValues;
+	protected  NotificadorIMO notificador;
 		
 	protected NaturalPerson natural_person;		
 	protected Prospectus   prospectus;
@@ -291,11 +289,6 @@ implements PreregistroIMO
 		SECCION_INVERSIONISTA_ENABLED = 51;
 		
 		MEXICO = 700;
-	}
-
-	public void setNotificador(NotificadorIMO service) 
-	{
-		notificador = service;
 	}
 
 	public void setServicecallingService(ServiceCallingService service) 

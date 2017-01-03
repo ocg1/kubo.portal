@@ -10,6 +10,7 @@ import mx.com.kubo.model.ProyectLoanPK;
 import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 public abstract class ActivadorAMO extends ActivadorDMO
 {
@@ -147,6 +148,7 @@ public abstract class ActivadorAMO extends ActivadorDMO
 	{
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(emisor);
 			notificador.setAcreditado(acreditado);
 			notificador.notificar(evento, null, null, errormsg);

@@ -199,7 +199,7 @@ public class Hs_Init implements Serializable {
 			
 			int w = 0;
 			
-			while( hs_email == null && w < 1 ){
+			while( hs_email == null && w < 4 ){
 				
 				w++;
 				
@@ -210,9 +210,15 @@ public class Hs_Init implements Serializable {
 				if( hs_email == null ){
 					try{
 						
-						Thread.sleep(1000);
+						Thread.sleep(3000);
+						
+					}catch( InterruptedException i ){
+						
+						System.out.println( i.getMessage() );
 						
 					}catch(Exception e){
+						
+						System.out.println( e.getMessage() );
 						
 					}
 				
@@ -489,6 +495,9 @@ public class Hs_Init implements Serializable {
 			  con.disconnect();
 	  }
 	
+		if( hs_email != null && hs_email.trim().length() == 0 ){
+			hs_email = null;
+		}
 	 
 	return hs_email;
 		
@@ -517,7 +526,7 @@ public class Hs_Init implements Serializable {
 		
 		String  s  = "";
 		
-		System.out.println(s);
+		//System.out.println(s);
 		
 		/*OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
 		

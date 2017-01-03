@@ -1,0 +1,444 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				<section class="normatividad-1">
+	<div class="container">
+		<h3>Personas Relacionadas</h3>
+		<div class="bloque-articulos">
+			<div class="articulos">
+					<h4>Artículos 31 y 32</h4>
+			</div>
+		<div class="bloque  respuesta-no">
+		
+			<div class="pregunta-1">
+				<p>¿Es empleado de Kubo?</p>
+			</div>
+			<div class="respuesta-1">
+				<h:panelGroup rendered="#{summaryRequest.member.is_employee != null and summaryRequest.member.is_employee == 'S' }" >
+					<div  class="respuesta-positiva">
+						<p><i class="fa fa-exclamation-circle" ></i> Si</p>
+					</div>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{!(summaryRequest.member.is_employee != null and summaryRequest.member.is_employee == 'S') }" >
+					<div  class="respuesta-neutral">
+						<p><i class="fa fa-check" ></i> No</p>
+					</div>
+				</h:panelGroup>
+				
+			</div>
+			<div class="bloque  respuesta-si">
+		
+				<div class="pregunta-1">
+					<p>¿Es persona relacionada?</p>
+				</div>
+				<div class="respuesta-1">
+					<h:panelGroup rendered="#{summaryRequest.member.is_stackholder != null and summaryRequest.member.is_stackholder == 'S' }" >
+						<!-- <div  class="respuesta-neutral"> -->
+						<div  class="respuesta-negativa">
+							<p><i class="fa fa-exclamation-circle"></i> Si</p>
+						</div>
+					</h:panelGroup>
+					<h:panelGroup rendered="#{!(summaryRequest.member.is_stackholder != null and summaryRequest.member.is_stackholder == 'S') }" >
+						<!-- <div class="respuesta-positiva" > -->
+						<div  class="respuesta-neutral">
+							<p><i class="fa fa-check" ></i> No</p>
+						</div>
+					</h:panelGroup>
+				</div>
+				<h:panelGroup rendered="#{summaryRequest.member.is_stackholder != null and summaryRequest.member.is_stackholder == 'S' }" >
+					<div class="respuesta-1 descripcion">
+						<p>#{summaryRequest.stackholder_description}</p>
+					</div>
+				</h:panelGroup>
+
+			</div>
+
+		</div>
+	</div>
+	<h:panelGroup rendered="#{summaryRequest.member.is_stackholder != null and summaryRequest.member.is_stackholder == 'S' }" >
+		<div class="bloque-articulos">
+			<div class="title-2">
+				<h5><p>Autorizaciones para Personas Relacionadas</p></h5>
+			</div>
+				<div class="articulos">
+						<h4>Artículos 34</h4>
+				</div>
+				<div class="articulos-desglose">
+					<table cellspacing="0" cellpadding="0" border="0">
+						<tr>
+							<td>Monto solicitado:</td>
+							<td>
+								<h:panelGroup rendered="#{summaryRequest.requireAutorizacionConsejoAdmin}">
+									<span class="excedente"><i class="fa fa-exclamation-circle"></i> $#{summaryRequest.ammount}</span>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{!summaryRequest.requireAutorizacionConsejoAdmin}">
+									<span><i class="fa fa-check "></i> $#{summaryRequest.ammount}</span>
+								</h:panelGroup>
+							</td>
+						</tr>
+						<tr>
+							<td>Limite en UDIS (75,000):</td>
+							
+							<td>
+								<h:panelGroup rendered="#{summaryRequest.superaUDIS}" >
+									<span class="excedente"><i class="fa fa-exclamation-circle"></i> #{summaryRequest.limiteUDIS}</span>
+								</h:panelGroup>
+								
+								<h:panelGroup rendered="#{!summaryRequest.superaUDIS}" >
+									<span><i class="fa fa-check "></i> #{summaryRequest.limiteUDIS}</span>
+								</h:panelGroup>
+							</td>
+							
+						</tr>
+						<tr>
+							<td>Limite del capital neto (0.50%):</td>
+							<td>
+								<h:panelGroup rendered="#{summaryRequest.superaPorcCapitalNeto}" >
+									<span class="excedente"><i class="fa fa-exclamation-circle"></i> #{summaryRequest.limiteCapitalNeto}</span>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{!summaryRequest.superaPorcCapitalNeto}" >
+									<span><i class="fa fa-check "></i> #{summaryRequest.limiteCapitalNeto}</span>
+								</h:panelGroup>
+							</td>
+						</tr>
+					</table>
+				</div>
+			<div class="bloque  respuesta-no">
+			
+				<div class="pregunta-1">
+					<p>¿Requiere autorización del Comité de Personas Relacionadas?</p>
+				</div>
+				<div class="respuesta-1">
+					
+				<h:panelGroup rendered="#{!summaryRequest.requireAutorizacionPersonaRelacionada}" >
+					<div  class="respuesta-positiva">
+						<p><i class="fa fa-check-circle " ></i> No</p>
+					</div>
+				</h:panelGroup>
+					
+				<h:panelGroup rendered="#{summaryRequest.requireAutorizacionPersonaRelacionada}" >
+					<div  class="respuesta-negativa">
+						<p><i class="fa fa-exclamation-circle" ></i> Si</p>
+					</div>
+				</h:panelGroup>
+					
+					
+			</div>
+				<div class="bloque respuesta-si">
+					<div class="pregunta-1">
+							<p>¿Requiere autorización del Consejo de Administración?</p>
+						</div>
+						
+						
+						
+						<h:panelGroup rendered="#{!summaryRequest.requireAutorizacionConsejoAdmin}" >
+							<div  class="respuesta-positiva">
+								<p><i class="fa fa-check-circle " ></i> No</p>
+							</div>
+						</h:panelGroup>
+							
+						<h:panelGroup rendered="#{summaryRequest.requireAutorizacionConsejoAdmin}" >
+							<div  class="respuesta-negativa">
+								<p><i class="fa fa-exclamation-circle" ></i> Si</p>
+							</div>
+						</h:panelGroup>
+						
+						<h:panelGroup id="pnlAuthorizedRelated"  rendered="#{summaryRequest.requireAutorizacionConsejoAdmin or summaryRequest.requireAutorizacionPersonaRelacionada}" >
+						
+							<div class="respuesta-1">
+								<div class="articulos-desglose">
+									<table cellspacing="0" cellpadding="0" border="0">
+											
+										<h:panelGroup rendered="#{summaryRequest.relatedProyect == null or  summaryRequest.relatedProyect.authorization_status != 'S'  }" >
+										<tr>
+											<td>Autorización:</td>
+											<td>
+										
+												<span class="noOtorgada">No otorgada</span>
+												<div class="btn-subir-doc-auto">
+													
+													<h:panelGroup rendered="#{summaryRequest.autorizar_personas_relacionadas_ENABLED}" > 
+													
+													  <i class="fa fa-paperclip" onclick="jsCargarAutorizacion()"></i>	
+											
+														<p:fileUpload id="cargarAutorizacion"				               
+														              fileUploadListener = "#{summaryRequest.uploadAuthorizedFile}"  
+														              styleClass = "custumStlFileUpload"
+																	  mode   = "advanced" 
+																	  auto = "true"
+																	  label="Otorgar"	
+																	  update = "pnlImgAuthorized  pnlAuthorizedRelated"																											   
+																      invalidSizeMessage = "Tamaño del archivo inválido."
+																      invalidFileMessage = "Tipo de archivo no válido." 									    				                       
+														              sizeLimit  = "#{summaryRequest.documentacion.size_limit}"  
+														              allowTypes = "/(\.|\/)(gif|jpe?g|png|pdf)$/">			
+														            	 
+														 </p:fileUpload>
+													
+													</h:panelGroup>
+										
+												</div>
+											</td>
+										</tr>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{summaryRequest.relatedProyect != null and  summaryRequest.relatedProyect.authorization_status == 'S'  }" >
+										
+										<tr>
+											<td>Autorización:</td>
+											<td>Otorgada</td>
+										</tr>
+										
+										<tr>
+											<td>Fecha:</td>
+											<td>
+												<h:outputText value="#{summaryRequest.relatedProyect.authorization_date}" >
+												    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+												</h:outputText>
+											</td>
+										</tr>
+										<tr>
+											<td>Ver autorización:</td>
+											<td><div class="verAutorizacion" onclick="verAutorizacionN()" >Click para ver</div></td>
+										</tr>
+										<tr>
+											<td>Informe a Comisario:</td>
+											<td>
+												<h:outputText value="#{summaryRequest.relatedProyect.notification_date}" >
+												    <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+												</h:outputText>
+											</td>
+										</tr>
+										</h:panelGroup>
+									</table>
+								</div>
+							</div>
+					
+					</h:panelGroup>
+	
+				</div>
+	
+			</div>
+		</div>
+		
+	</h:panelGroup>
+	
+	</div>
+	
+</section>
+	<script>
+		function verAutorizacionN (){
+			$(".docAutorizacion").addClass("show");
+			
+			$(".velo").fadeIn();
+			$('html, body').animate({
+			       scrollTop: ($('#cargarAutorizacion').offset().top) -150
+			},1400);	
+			$(window).resize();
+		}
+		function cerrarAutorizacion() {
+			$(".docAutorizacion").removeClass("show");
+			 $(".velo").fadeOut();
+			
+	}
+		function jsCargarAutorizacion() {
+			$("#cargarAutorizacion_input").trigger("click");
+		}
+	</script>	
+	
+	<h:panelGroup id="pnlImgAuthorized" >
+			
+		<div class="alertaModal docAutorizacion centrar_horizontal2 ">
+				<i class="fa fa-times closePop" onclick="cerrarAutorizacion();"></i>
+				<div class="contenedor-imagen"><img src="../resources/#{summaryRequest.relatedProyect.authorization_file_location}"/></div>
+		</div>
+
+	</h:panelGroup>
+	
+	<div style = "display: none;">	
+		<p:commandLink id             = "btnInitNormativity" 
+					   immediate      = "true" 
+				       actionListener = "#{summaryRequest.registerAccessNormativity}" 
+				        />	
+	</div>
+	<div class="bloque-articulos">
+	<div class="limites-normativos articulos-desglose">
+	<div class="articulos">
+						<h4>Límites Normativos (Nivel de Operaciones I)</h4>
+				</div>
+	
+			<table cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td><span>Capital Neto del último trimestre:</span></td>
+					<td><strong> $ #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.capitalNeto)} </strong></td>
+				</tr>
+					<tr>
+					<td><span>Saldo Cartera total:</span></td>
+					<td><strong> $ #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.totalCartera)} </strong></td>
+				</tr>
+			
+			</table>
+	</div>
+	<div class="tabla-central  articulos-desglose tabla-style2">
+			
+
+			<table cellspacing="0" cellpadding="0" border="0">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Monto</th>
+            <th>%</th>
+            <th width="22%">Límite</th>
+            <th>Estatus</th>
+            <th>Informe a Comisario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Artículo 35 Bis</td>
+            <td>Suma Total de operaciones de personas relacionadas</td>
+            <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoPersonaRel)}</strong> </td>
+            <td><strong> #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcentajePersRel)}%</strong></td>
+            <td><strong> #{summaryRequest.tableronormativodetallado.descripPersRel}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusPersRel == 'Permitido' ? 'valor-positivo':'valor-negativo'}"> #{summaryRequest.tableronormativodetallado.estatusPersRel} </strong></td>
+            <td><strong> 24/05/2016</strong></td>
+        </tr>
+        <tr>
+            <td>Artículo 25</td>
+            <td>Suma Total de hasta 60 meses</td>
+            <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.monto60Meses)}</strong> </td> 
+             <td><strong> #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcentaje60meses)}%</strong></td>
+             <td><strong>#{summaryRequest.tableronormativodetallado.descrip60Meses}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatus60Meses == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus60Meses}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+        <tr>
+            <td>Artículo 25</td>
+            <td>Créditos de mas de 30 años</td>
+           <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.monto30Anios)}  </strong> </td>
+            <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcentaje30Anios)}%</strong></td>
+            <td><strong>#{summaryRequest.tableronormativodetallado.descrip30Anios}</strong></td>
+             <td><strong class="#{summaryRequest.tableronormativodetallado.estatus30Anios == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus30Anios}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+        <tr>
+            <td>Artículo 63</td>
+            <td>Límite de crédito máximo</td>
+        <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoCreditoMax)} </strong></td>
+            <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcCreditoMax)}%</strong></td>
+            <td><strong>#{summaryRequest.tableronormativodetallado.descripCredMax}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusCredMax == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusCredMax}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+        <tr>
+            <td>Artículo 63 bis</td>
+            <td>¿Aplica identificación de créditos de riesgo común?</td>
+            <td>#{summaryRequest.tableronormativodetallado.aplicaIdentif}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Monto</th>
+            <th>%</th>
+            <th>Límite</th>
+            <th>Estatus</th>
+            <th>Informe a Comisario</th>
+        </tr>
+        <tr>
+            <td>Artículo 63 bis</td>
+            <td>Suma de los veinte créditos con mayor saldo</td>
+             <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.monto20CredMax)} </strong></td>
+             <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porc20CredMax)}%</strong></td>
+             <td><strong>#{summaryRequest.tableronormativodetallado.descrip20CreMax}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatus20CreMax == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus20CreMax}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+        <tr>
+            <td>Artículo 63 bis</td>
+            <td>Crédito más grande</td>
+             <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoCreditoGde)}</strong> </td>
+             <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcCreditoGde)}%</strong></td>
+            <td><strong>#{summaryRequest.tableronormativodetallado.descripCredGde}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusCreditoGde == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusCreditoGde}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+    
+        <tr>
+            <td>Artículo 63 bis</td>
+            <td>¿Requiere control respecto de sus vínculos patrimoniales y de parentesco?</td>
+            <td>#{summaryRequest.tableronormativodetallado.requiereParent}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+   
+         <tr>
+            <th></th>
+            <th></th>
+            <th>Monto</th>
+            <th>%</th>
+            <th>Límite</th>
+            <th>Estatus</th>
+            <th>Informe a Comisario</th>
+        </tr>
+        <tr>
+            <td>Artículo 63 bis</td>
+            <td>Monto Solicitado</td>
+           <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoSolicitud)}</strong> </td>
+            <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcSolicitud)}%</strong></td>
+            <td><strong>#{summaryRequest.tableronormativodetallado.descripSolicitud}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusSolicitud == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusSolicitud}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+      
+        <tr>
+            <td></td>
+            <td>Pasivos de Corto Plazo</td>
+         <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.pasivoCortoPlazo)} </strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Inversiones a la vista o con plazo menor a 30 días</td>
+            <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoPasivoMenor)}</strong> </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+           <tr>
+            <th></th>
+            <th></th>
+            <th>Monto</th>
+            <th>%</th>
+            <th>Límite</th>
+            <th>Estatus</th>
+            <th>Informe a Comisario</th>
+        </tr>
+        <tr>
+            <td>Artículo 62</td>
+            <td>Coeficiente de Liquidez</td>
+            <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoLiquidez)} </strong></td>
+            <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcLiquidez)}%</strong></td>
+             <td><strong>#{summaryRequest.tableronormativodetallado.descripLiquidez}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusLiquidez == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusLiquidez}</strong></td>
+            <td>24/05/2016</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+	</div>
+
+</ui:composition>
+				

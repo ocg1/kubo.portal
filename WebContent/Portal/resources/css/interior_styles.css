@@ -2721,7 +2721,7 @@ p.big strong {
 
 
 .tasasActivas {
-	width: 450px;
+	width: 100%;
 }
 
 .tasasActivas td strong {
@@ -2755,4 +2755,21 @@ p.big strong {
 
 .table_gats strong {
 	font-size:18px;
+}
+
+.doble-encabezado table {
+	margin:0;
+	width: 100%;
+}
+.doble-encabezado table th {
+	padding:4px 6px 0;
+	text-align: center;
+}
+.tasasActivas th td {
+	text-align:center;
+
+}
+.tasasActivas td {
+	text-align:right;
+
 }

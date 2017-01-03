@@ -16,6 +16,7 @@ import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 public abstract class PreaprobacionPMO extends PreaprobacionDMO
 {
@@ -288,6 +289,7 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 	{		
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.notificar(evento, score, proyect_loan, errormsg);
 			

@@ -3,6 +3,7 @@ package mx.com.kubo.services.impl;
 import java.util.List;
 
 import mx.com.kubo.model.Stackholder_relationship;
+import mx.com.kubo.model.Stackholder_relationshipPK;
 import mx.com.kubo.repositories.StackholderRelDao;
 import mx.com.kubo.services.StackholderRelService;
 
@@ -22,6 +23,13 @@ implements StackholderRelService
 	public List<Stackholder_relationship> getStackholderRelLst(){
 		
 		return stackholderrelrepository.getStackholderRelLst();
+		
+	}
+	
+	@Override
+	public Stackholder_relationship getStackholderByPK( Stackholder_relationshipPK pk ){
+		
+		return stackholderrelrepository.getStackholderByPK( pk );
 		
 	}
 	

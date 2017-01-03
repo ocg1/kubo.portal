@@ -1,0 +1,65 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+	<div class="subcontent side-riesgoComun">
+		
+						<div class="container-side">
+			<h3>Riesgo Común</h3>
+				<div class="tabla-style2 articulos-desglose">
+					<table cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td>¿Aplica identificación de créditos de riesgo común?</td>
+									<td>No</td>
+								</tr>
+					</table>
+				</div>
+				<div class="tabla-style2 articulos-desglose">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<th></th>
+							<th>Límite</th>
+							<th>Suma Total</th>
+								<th>%</th>
+							<th>Estatus</th>
+						</tr>
+						<tr>
+							<td>Suma de los veinte créditos con mayor saldo</td>
+							<td><strong>#{resumenTableroNormativo.tableronormativoresumen.descrip20CreMax}</strong></td>
+							<td> <strong> $ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.monto20CredMax)}</strong>  </td>
+									<td><span>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porc20CredMax)}%</span></td>
+							<td> 
+								
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax != 'Permitido'}" >
+									<strong  class="valor-negativo"><i class="fa fa-exclamation-circle"></i> #{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax}</strong>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax == 'Permitido'}" >
+									<a href="#">#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax}</a>
+								</h:panelGroup>
+								
+							</td>
+						</tr>
+						<tr>
+							<td>Crédito más grande</td>
+							<td><span>#{resumenTableroNormativo.tableronormativoresumen.descripCredGde}</span></td>
+							<td> <strong> $ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.montoCreditoGde)} </strong>  </td>
+									<td><span>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcCreditoGde)}%</span></td>
+							<td> 
+								
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde != 'Permitido'}" >
+									<strong  class="valor-negativo"><i class="fa fa-exclamation-circle"></i> #{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde}</strong>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde == 'Permitido'}" >
+									<a href="#">#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde}</a>
+								</h:panelGroup>
+								
+							</td>
+						</tr>
+					</table>
+			   	</div>
+		</div>
+
+		</div>
+</ui:composition>

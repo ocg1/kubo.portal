@@ -1,0 +1,17 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+			
+	
+<div class="content contenidoNormatividadResumen">
+        <ui:include src = "resumen/resumen_infoGeneral.xhtml"/>
+		<ui:include src = "resumen/menu-main.xhtml"/>
+		<div class="content top logsContent">
+			<ui:include src = "resumen/contenido-indicadores.xhtml"/>
+			<ui:include src = "resumen/contenido-expedientes.xhtml"/>
+			<ui:include src = "resumen/contenido-tecnologia.xhtml"/>
+		</div>
+</div>	
+</ui:composition>

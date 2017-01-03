@@ -17,6 +17,7 @@ import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 @ManagedBean @ViewScoped
 public class GeneraCurpRfc extends GeneraCurpRfcDMO
@@ -242,6 +243,7 @@ public class GeneraCurpRfc extends GeneraCurpRfcDMO
 	{
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);			
 			notificador.notificar(evento, score, myPyLn, errormsg);
 			

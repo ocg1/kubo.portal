@@ -49,7 +49,7 @@ import mx.com.kubo.model.TownCat;
 import mx.com.kubo.model.TownCatPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.model.mesa.solicitud.notas.Notes;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.registro.verificacion.PersonaBloqueadaIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AddressService;
@@ -78,10 +78,7 @@ import com.soa.webServices.WsSgbRiskServiceLocator;
 
 public abstract class PreaprobacionDMO 
 implements PreaprobacionIMO
-{
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
-	
+{		
 	@ManagedProperty("#{prospectusServiceImp}")
 	protected ProspectusService prospectusService;
 	
@@ -143,7 +140,7 @@ implements PreaprobacionIMO
 	
 	protected NavigationBeanIMP navigation;
 	protected PersonaBloqueadaIMO blocked;
-	//protected ConsultaCompletaIMO consulta;
+	protected NotificadorIMO notificador;
 	
 	protected FacesContext faces;
 	protected RequestContext request;
@@ -677,11 +674,6 @@ implements PreaprobacionIMO
 	public void setCreditAttemptService(CreditHistoryAttemptService service) 
 	{
 		creditAttemptService = service;
-	}
-	
-	public void setNotificador(NotificadorIMP notificador) 
-	{
-		this.notificador = notificador;
 	}
 	
 	public void setSystemParamService(SystemParamService service) 

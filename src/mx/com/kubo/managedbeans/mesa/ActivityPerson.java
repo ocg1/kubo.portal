@@ -15,6 +15,7 @@ import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.Utilities;
 
 @ManagedBean(name = "activityPerson") @ViewScoped
@@ -185,6 +186,7 @@ implements ActivityPersonIMO, Serializable
 				
 			} while (nuevo_password.length() < 8);
 			
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.notificar(Evento.GENERACION_PASSWORD_ACTIVACION, nuevo_password);
 			

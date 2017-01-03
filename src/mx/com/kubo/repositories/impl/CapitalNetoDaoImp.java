@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import mx.com.kubo.model.CapitalNeto;
+import mx.com.kubo.model.PrecioUdi;
 import mx.com.kubo.repositories.CapitalNetoDao;
 
 import org.springframework.stereotype.Repository;
@@ -48,8 +49,20 @@ public class CapitalNetoDaoImp implements CapitalNetoDao, Serializable {
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
+				
 		}
 		
 	}
 
+	public PrecioUdi getMaxPrecioUdi(){
+		
+		try{
+			return em.createQuery("from PrecioUdi cn where cn.creation_date = (select max(creation_date) from PrecioUdi)",PrecioUdi.class).getSingleResult();
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 }

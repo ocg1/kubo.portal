@@ -14,10 +14,7 @@ import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.ProyectLoanService;
 
 public abstract class NotificacionesTestDMO 
-{
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMO notificador;
-	
+{			
 	@ManagedProperty("#{membershipServiceImp}")
 	protected MembershipService membership_service;
 	
@@ -33,16 +30,12 @@ public abstract class NotificacionesTestDMO
 	protected ProyectLoan   proyect_loan;
 	
 	protected MovimientosIMO param_values_bean;
+	protected NotificadorIMO notificador;
 	
 	protected StringBuilder sb;
 	protected Integer prospectus_id, company_id;
 	
 	protected String receptor_email;
-	
-	public final void setNotificador(NotificadorIMO notificador) 
-	{
-		this.notificador = notificador;
-	}
 
 	public final void setMembership_service(MembershipService service) 
 	{
@@ -73,6 +66,4 @@ public abstract class NotificacionesTestDMO
 	{
 		receptor_email = email;
 	}
-	
-	
 }

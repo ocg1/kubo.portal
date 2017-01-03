@@ -14,22 +14,16 @@ import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.StackholderRelService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 public abstract class ProspectoDuplicadoDMO
 implements ProspectoDuplicadoIMO
 {
-	@Autowired @Qualifier("stackholderRelServiceImp")
 	protected StackholderRelService service_accionistas;
 	
-	@Autowired @Qualifier("naturalPersonServiceImp")
 	protected NaturalPersonService service_natural_person;
 	
-	@Autowired @Qualifier("membershipServiceImp")
 	protected MembershipService service_membership;
 	
-	@Autowired @Qualifier("accessServiceImp")
 	protected AccessService service_access;
 			
 	protected SessionBean sesion;
@@ -58,6 +52,8 @@ implements ProspectoDuplicadoIMO
 	protected List<Stackholder_relationship> lista_accionistas;
 	protected List<Membership> lista_membership;
 	
+	protected Stackholder_relationship stackholder_selection;
+	
 	protected int company_id;
 	protected int prospectus_id;
 	protected int duplicado_company_id;
@@ -65,6 +61,7 @@ implements ProspectoDuplicadoIMO
 	
 	protected boolean flagRelation;
 	protected boolean flagSamePros;
+	protected boolean flagEmployee;
 	
 	protected final int SCREEN_CLIENTE_DUPLICADO = 29;
 	
@@ -91,5 +88,29 @@ implements ProspectoDuplicadoIMO
 	public final String getLista_prospectos_duplicados() 
 	{
 		return lista_prospectos_duplicados;
+	}
+
+	public Stackholder_relationship getStackholder_selection() {
+		return stackholder_selection;
+	}
+
+	public void setStackholder_selection(Stackholder_relationship stackholder_selection) {
+		this.stackholder_selection = stackholder_selection;
+	}
+
+	public boolean isFlagRelation() {
+		return flagRelation;
+	}
+
+	public void setFlagRelation(boolean flagRelation) {
+		this.flagRelation = flagRelation;
+	}
+
+	public boolean isFlagEmployee() {
+		return flagEmployee;
+	}
+
+	public void setFlagEmployee(boolean flagEmployee) {
+		this.flagEmployee = flagEmployee;
 	}
 }

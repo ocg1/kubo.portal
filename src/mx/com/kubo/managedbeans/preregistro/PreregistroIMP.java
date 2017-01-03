@@ -34,6 +34,7 @@ import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.mesa.solicitud.busqueda.ClientViewFullName;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.GeneradorCodigos;
 import mx.com.kubo.tools.Utilities;
 
@@ -591,6 +592,7 @@ implements PreregistroIMO, Serializable
 				{	
 					try
 					{
+						notificador = new NotificadorIMP();
 						notificador.setEmisor(member);
 						notificador.notificar(Evento.REGISTRO_USUARIO);
 						
@@ -601,6 +603,7 @@ implements PreregistroIMO, Serializable
 						if( member.getRegistration_reason_id() != null && member.getRegistration_reason_id() == 8 &&  
 							member.getPriceshoes_number()      !=null  && member.getPriceshoes_number().length() > 0 )
 						{
+							notificador = new NotificadorIMP();
 							notificador.setEmisor(member);
 							notificador.notificar(Evento.REGISTRO_SOCIO_PARTNER);							
 						}		
@@ -611,12 +614,18 @@ implements PreregistroIMO, Serializable
 					}
 				
 				} else if(getArea() != null && getArea().toString().equals("I")) {					
-					try {
+					try 
+					{
+						notificador = new NotificadorIMP();
 						notificador.setEmisor(member);
 						notificador.notificar(Evento.PREREGISTRO_INVERSIONISTA);
+						
 						flagActiveCode = true;
-					} catch (NotificacionException e) {	
+						
+					} catch (NotificacionException e) {
+						
 						e.printStackTrace();
+						
 						flagActiveCode = false;
 					}					
 				}				
@@ -732,6 +741,7 @@ implements PreregistroIMO, Serializable
 		{
 			member = membershipService.getMembershipByEmail(getForwardMail());
 			
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(member);
 			notificador.notificar(Evento.REENVIO_MAIL_CONFIRMACION);
 			
@@ -767,6 +777,7 @@ implements PreregistroIMO, Serializable
 		{
 			member = membershipService.getMembershipByEmail(getForwardMail());
 			
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(member);
 			notificador.notificar(Evento.REENVIO_MAIL_CONFIRMACION);
 			

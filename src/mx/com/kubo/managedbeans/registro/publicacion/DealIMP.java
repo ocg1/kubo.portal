@@ -35,6 +35,7 @@ import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 import org.primefaces.event.SelectEvent;
 
@@ -167,7 +168,8 @@ implements Serializable, DealIMO
 			if(documents_reviwed_OK)
 			{												 												 
 				 try 
-				 {								
+				 {				
+					notificador = new NotificadorIMP();
 				 	notificador.setEmisor(membership);
 					notificador.notificar(PUBLICACION, score, proyect_loan, "");
 					

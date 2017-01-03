@@ -11,6 +11,7 @@ import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Change_controlPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.tools.Utilities;
 
 public final class EditorCorreoIMP extends EditorCorreoDMO
@@ -33,6 +34,7 @@ public final class EditorCorreoIMP extends EditorCorreoDMO
 						correo_anterior = membership.getEmail();
 						membership.setEmail(newemail);
 						
+						notificador = new NotificadorIMP();
 						notificador.setEmisor(membership);
 						notificador.notificar(Evento.PETICION_CAMBIO_CUENTA_CORREO);
 						

@@ -88,6 +88,7 @@ implements Serializable
 	@Column private String is_duplicated;
 	@Column private String is_blocked;
 	@Column private String is_pld_blocked;
+	@Column private String is_employee;
 	@Column private String is_stackholder;	
 	
 	@Column private Integer is_active;		
@@ -102,6 +103,7 @@ implements Serializable
 	@Column private Integer failed_question_attempts = 0;
 	@Column private String 	 fb_id;
 	@Column private String 	 utm_medium;
+	@Column private Integer stackholder_relationship_id;
 	
 
 	
@@ -400,6 +402,22 @@ implements Serializable
 
 	public void setUtm_medium(String utm_medium) {
 		this.utm_medium = utm_medium;
+	}
+
+	public String getIs_employee() {
+		return is_employee;
+	}
+
+	public void setIs_employee(String is_employee) {
+		this.is_employee = is_employee;
+	}
+
+	public Integer getStackholder_relationship_id() {
+		return stackholder_relationship_id;
+	}
+
+	public void setStackholder_relationship_id(Integer stackholder_relationship_id) {
+		this.stackholder_relationship_id = stackholder_relationship_id;
 	}
 	
 	

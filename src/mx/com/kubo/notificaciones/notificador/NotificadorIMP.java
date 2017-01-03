@@ -5,12 +5,9 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.notificaciones.notificables.Evento;
 
-import org.springframework.stereotype.Service;
-
-@Service(value = "notificadorImp")
 public final class NotificadorIMP extends NotificadorPMO 
 implements NotificadorIMO
-{		
+{			
 	public final void notificar(Evento evento) throws NotificacionException
 	{		
 		try

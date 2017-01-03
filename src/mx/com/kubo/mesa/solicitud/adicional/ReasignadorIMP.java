@@ -255,7 +255,7 @@ implements ReasignadorIMO
 		
 	public final boolean callSGB(Proyect proyect, ProyectLoan proyect_loan)
 	{
-		boolean new_proyect_OK = false;
+		new_proyect_OK = false;
 		
 		try
 		{				

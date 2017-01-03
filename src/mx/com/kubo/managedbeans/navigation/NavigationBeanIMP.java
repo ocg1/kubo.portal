@@ -96,8 +96,11 @@ implements Serializable, NavigationBeanIMO
 		if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
 		
 			if( membership.getPerson().getProspectus().getHs_vid() == null ){
-				
-				actualizaHS_VID();
+				try{
+					actualizaHS_VID();
+				}catch(Exception e){
+					System.out.println( "No encontrado en HUBSPOT:" + e.getMessage() );
+				}
 				
 			}
 			

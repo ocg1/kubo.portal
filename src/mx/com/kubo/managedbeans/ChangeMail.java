@@ -19,6 +19,7 @@ import mx.com.kubo.model.PasswordHistory;
 import mx.com.kubo.model.PasswordHistoryPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 import mx.com.kubo.refactorizables.ChangeMailRefactorizable;
 import mx.com.kubo.tools.Utilities;
 
@@ -374,6 +375,7 @@ public void validaEmail(){
 			
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(member);
 			notificador.notificar(Evento.CAMBIO_CUENTA_CORREO);
 						
@@ -430,6 +432,7 @@ public void validaEmail(){
 			
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(member);
 			notificador.notificar(Evento.CAMBIO_CUENTA_CORREO);
 						

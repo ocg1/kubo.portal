@@ -271,6 +271,7 @@ function initSummaryRequest()
 		$('#dvCntBuroReport').hide();
 		$("#dvCntDiagnostico").hide();
 		$("#dvCntActivityPerson").hide();
+		$("#dvCntNormativityPerson").hide();
 		$("#dvCntActivityPerson").css("display","none");
 		
 		if(!$('#dvSumaryCnt').is(":visible"))
@@ -351,6 +352,8 @@ function initSummaryRequest()
 		 $('#dvCntBuroReport').hide(); 
 		 
 		 $("#dvCntActivityPerson").show();
+		 
+		 $("#dvCntNormativityPerson").hide();
 		
 		 if(flagActivity)
 		 {			 
@@ -378,7 +381,7 @@ function initSummaryRequest()
 		 
 		 $('#dvSumaryCnt').hide(); 		 
 		 $('#dvCntBuroReport').show(); 
-		 
+		 $("#dvCntNormativityPerson").hide();
 		 $("#dvCntActivityPerson").hide();
 		 
 		 $('#detailsTabLink').text('Ver perfil del cliente');
@@ -457,6 +460,7 @@ function initSummaryRequest()
 		 $("#dvCntDiagnostico").show();
 		 $('#dvCntBuroReport').hide();
 		 $("#dvCntActivityPerson").hide();
+		 $("#dvCntNormativityPerson").hide();
 		 
 		 if(flagDgntc){
 			 $("#btnInitDagns").click();
@@ -467,8 +471,28 @@ function initSummaryRequest()
 		
 	});
 	
+	$(".clsNormativityButt").click( function(e)
+			{		
+				
+				$('.profile').hide(); 
+				$('.profileControlTable').hide();
+				$("#dvCntDiagnostico").hide();
+				 
+				 $('#dvSumaryCnt').hide(); 		 
+				 $('#dvCntBuroReport').hide(); 
+				 
+				 $("#dvCntActivityPerson").hide();
+				 
+				 $("#dvCntNormativityPerson").show();
+				 
+				 $("#btnInitNormativity").trigger("click");
+				 
+			});
+	
 	console.log("initSummaryRequest(): OK");
 }
+
+
 
 function resInfoCompleta(xhr, status, args)
 {

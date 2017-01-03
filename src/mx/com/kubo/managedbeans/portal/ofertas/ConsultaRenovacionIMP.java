@@ -52,11 +52,13 @@ implements Serializable
 			
 			auditor = new AccessIMP();
 			auditor.setService_access(service_access);
-			auditor.setSesion(sesion);
-			auditor.setScreen_id(SCREEN_CONSULTING_AUTOMATIC_RENOVATION);
-			auditor.setAccess_from(access_from);
+//			auditor.setSesion(sesion);
+//			auditor.setScreen_id();
+//			auditor.setAccess_from(access_from);
 			
-			score = service_score.loadMaxScoringByProspectus(prospectus_id, company_id);
+			auditor.save_access(sesion, SCREEN_CONSULTING_AUTOMATIC_RENOVATION );
+			
+			score = service_score.loadMaxScoringByProspectus(prospectus_id, company_id);						
 			
 			init_score();				
 		}

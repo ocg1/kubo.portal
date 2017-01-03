@@ -38,6 +38,13 @@
 			</h:panelGroup>
 			</li>
 			<li>
+			<h:panelGroup rendered = "#{summaryRequest.actualProyect != null and summaryRequest.ver_pestana_tablero_normativo_ENABLED }">
+				<div  id = "NormativityButton" class="clsNormativityButt  menu_opcion" onclick="botonActive(this)">
+					Tablero Normativo
+				</div>
+			</h:panelGroup>
+			</li>
+			<li>
 			<ui:include src = "titulos/ver-perfil-completo.xhtml"/>
 			</li>
 		</ul>

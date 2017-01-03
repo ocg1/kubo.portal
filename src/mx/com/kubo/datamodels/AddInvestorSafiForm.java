@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedProperty;
 
 import mx.com.kubo.bean.MenuRegBean;
 import mx.com.kubo.model.NaturalPerson;
-import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.ClabeAccountService;
 import mx.com.kubo.services.CountryService;
@@ -36,10 +36,8 @@ public class AddInvestorSafiForm
 	
 	protected List<MenuRegBean> listRequiredMenu;
 	
-	protected NaturalPerson personSel;
-	
-	@ManagedProperty("#{notificadorImp}")
-	protected NotificadorIMP notificador;
+	protected NaturalPerson personSel;		
+	protected NotificadorIMO notificador;
 	
 	@ManagedProperty("#{savingAccountServiceImp}")
 	protected SavingAccountService savingaccountservice;
@@ -161,14 +159,6 @@ public class AddInvestorSafiForm
 
 	public void setPersonSel(NaturalPerson personSel) {
 		this.personSel = personSel;
-	}
-	
-	public NotificadorIMP getNotificador() {
-		return notificador;
-	}
-
-	public void setNotificador(NotificadorIMP notificador) {
-		this.notificador = notificador;
 	}
 
 	public SavingAccountService getSavingaccountservice() {

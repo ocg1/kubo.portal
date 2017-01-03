@@ -56,6 +56,7 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SavingAccountPK;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.Stackholder_relationship;
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.model.SystemParam;
@@ -63,6 +64,8 @@ import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMP;
 import mx.com.kubo.services.mesa.solicitud.notas.NotesService;
 import mx.com.kubo.tools.Utilities;
 
@@ -91,6 +94,8 @@ implements Serializable, BasicDataIMO
 		external = faces.getExternalContext();
 		
 		sesion          = (SessionBean)       resolver.getValue(context, null, "sessionBean");	
+		
+		service_prospecto_duplicado = new ProspectoDuplicadoIMP();
 		
 		if(isSesion_DISABLED()){
 			return;
@@ -1036,21 +1041,63 @@ implements Serializable, BasicDataIMO
 		
 		service_prospecto_duplicado.init_natural_person(sesion);
 		
-		is_accionista_DUPLICADO = service_prospecto_duplicado.verificar_duplicidad_accionista();
-		is_prospecto_DUPLICADO  = service_prospecto_duplicado.verificar_duplicidad_prospecto();		
+		service_prospecto_duplicado.valida_persona_relacionada_y_empleado();
+		
+		is_accionista_DUPLICADO = service_prospecto_duplicado.isFlagRelation();
+		
+		boolean is_employed = service_prospecto_duplicado.isFlagEmployee();
+		
+		is_prospecto_DUPLICADO  = service_prospecto_duplicado.verificar_duplicidad_prospecto();	
+		
+		Stackholder_relationship stackholder = service_prospecto_duplicado.getStackholder_selection();
 		
 		if(is_accionista_DUPLICADO)
 		{
-			request.addCallbackParam("isRelation", "S" );
+			//request.addCallbackParam("isRelation", "S" );
+			// Actualizamos is_stackholder y campo de gn_stackholder_relationship
+			
+			membership.setIs_stackholder("S");
+			
+			//Para que  deje pasar personas relacionadas 20161219 RMB
+			request.addCallbackParam("isRelation", "N" );
 			
 			System.out.println("BasicData.validaRelationship(): Persona Relacionada");
 			
 		} else {						
+			//request.addCallbackParam("isRelation", "S" );
+			// TODO Actualizamos is_stackholder y campo de gn_stackholder_relationship
+			
+			membership.setIs_stackholder("N");
 			
 			request.addCallbackParam("isRelation", "N" );
 			
 			System.out.println("BasicData.validaRelationship(): Persona No relacionada");	
 		}
+		
+		if(is_employed)
+		{
+			
+			membership.setIs_employee("S");
+			
+			
+		} else {						
+			
+			membership.setIs_employee("N");
+			
+			
+		}
+		
+		if( stackholder != null && stackholder.getPk() != null  ){
+			
+			membership.setStackholder_relationship_id( stackholder.getPk().getStackholder_relationship_id() );
+			
+		}else{
+		
+			membership.setStackholder_relationship_id(null);
+		
+		}
+		
+		membershipService.update(membership);
 		
 		if(is_prospecto_DUPLICADO)
 		{
@@ -1354,6 +1401,7 @@ implements Serializable, BasicDataIMO
 	{		
 		try 
 		{
+			notificador = new NotificadorIMP();
 			notificador.setEmisor(membership);
 			notificador.notificar(evento, score, proyect_loan, errormsg);
 			
