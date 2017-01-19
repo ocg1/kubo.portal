@@ -19,6 +19,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.primefaces.context.RequestContext;
 
+import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.model.Scoring;
@@ -47,8 +48,24 @@ implements PreaprobacionIMO, Serializable
 		
 		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
 		
-		company_id    = sesion.getCompany_id();
-		prospectus_id = sesion.getProspectus_id();
+		if( sesion.getArea() != null && sesion.getArea().toString().equals("L") ){
+		
+			company_id    = sesion.getCompany_id();
+			prospectus_id = sesion.getProspectus_id();
+		
+		}else if( sesion.getArea() != null && sesion.getArea().toString().equals("M") ) {
+			SearchSummaySession sesion_search_request = (SearchSummaySession)  resolver.getValue(elContext, null, "searchSummaySession");
+			
+			String search = sesion_search_request.getSearchSummary();
+			
+			String[] splStr = search.split("::") ;
+			
+			if( splStr.length == 4 ){
+				
+				prospectus_id = Integer.parseInt( splStr[2] );
+				company_id    = Integer.parseInt( splStr[3] );
+			}
+		}
 									
 		init_variables();
 		

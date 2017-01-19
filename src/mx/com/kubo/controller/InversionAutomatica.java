@@ -153,7 +153,7 @@ public class InversionAutomatica {
 						storedString.addAll		( inversion.getStoredString()	); //
 					
 					progress_flag = 8 ; // ejecuta SPRecargaListaClienteCredito
-					inversion.ejecutaSPRecargaListaClienteCredito(i.getSafi_client_id());
+					//inversion.ejecutaSPRecargaListaClienteCredito(i.getSafi_client_id());
 					
 					
 					i.setLast_investment(new Date());

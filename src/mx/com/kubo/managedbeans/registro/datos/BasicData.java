@@ -27,6 +27,7 @@ import mx.com.kubo.bean.ResponseShortScore;
 import mx.com.kubo.bean.ValBusiness;
 import mx.com.kubo.bean.jackson.AplicationPublicationInvestorDataDTO;
 import mx.com.kubo.controller.ObtieneConsultaCorta;
+import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.managedbeans.HeaderBean;
@@ -1125,6 +1126,28 @@ implements Serializable, BasicDataIMO
 		
 		try{
 			
+			faces  = FacesContext.getCurrentInstance();
+			resolver = faces.getApplication().getELResolver();
+			context  = faces.getELContext();
+			external = faces.getExternalContext();
+			
+			
+				
+			BehaviorCheck bc = new BehaviorCheck();
+			
+			HttpServletRequest httpServletRequest = (HttpServletRequest) external.getRequest(); 
+	
+			String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+				    
+					if(ipAddressClient == null)  
+					{
+				    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
+					}
+			
+			bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
+				
+			
+			
 			SystemParamPK spkH = new SystemParamPK();
 			
 			spkH.setCompany_id(1);
@@ -1138,10 +1161,7 @@ implements Serializable, BasicDataIMO
 				request.addCallbackParam("isActive", true );
 				
 		System.out.println("iniciandoConsultaPropector");
-		faces  = FacesContext.getCurrentInstance();
-		resolver = faces.getApplication().getELResolver();
-		context  = faces.getELContext();
-		external = faces.getExternalContext();
+		
 		
 		Preaprobacion preaprobacion =  (Preaprobacion)       resolver.getValue(context, null, "preaprobacion");
 		
@@ -1151,6 +1171,32 @@ implements Serializable, BasicDataIMO
 		npPK.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
 		
 		naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+		boolean changeNatPer = false;
+		
+		if( naturalPerson.getFirst_name() == null && name.getFirst_name() != null ){
+			naturalPerson.setFirst_name(name.getFirst_name());
+			changeNatPer = true;
+		}
+		
+		if( naturalPerson.getMiddle_name() == null && name.getMiddle_name() != null ){
+			naturalPerson.setMiddle_name(name.getMiddle_name());
+			changeNatPer = true;
+		}
+		if( naturalPerson.getFather_last_name() == null && name.getFather_last_name() != null ){
+			naturalPerson.setFather_last_name( name.getFather_last_name() );
+			changeNatPer = true;
+		}
+		if( naturalPerson.getMother_last_name() == null && name.getMother_last_name() != null ){
+			naturalPerson.setMother_last_name( name.getMother_last_name() );
+			changeNatPer = true;
+		}
+		
+		if( changeNatPer ){
+			
+			service_natural_person.update(naturalPerson);
+			naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+			
+		}
 		
 		Address domicilio_tmp  = addressService.getAddressById(domicilio.getAddress().getAddressPK());
 		
@@ -1330,7 +1376,7 @@ implements Serializable, BasicDataIMO
 							system_param_PK_I.setCompany_id( 1 );
 							system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
 							
-							 SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
+							SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
 							
 							if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
 								

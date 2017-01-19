@@ -6,7 +6,7 @@ import mx.com.kubo.model.ServiceCalling;
 import safisrv.ws.CreditosServicios.SAFIServiciosServiceLocator;
 import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoRequest;
 
-public abstract class SAFICuotaCreditoAMO extends SAFICuotaCreditoDMO 
+public class SAFICuotaCreditoAMO extends SAFICuotaCreditoDMO 
 {
 	protected void init_request() 
 	{
@@ -25,18 +25,18 @@ public abstract class SAFICuotaCreditoAMO extends SAFICuotaCreditoDMO
 		
 		srvCall = new ServiceCalling();
 		
-		if(sesion!=null&&sesion.getProspectus_id()!=null&&sesion.getProspectus_id()!=0)
+		if( prospectus_id !=0 )
 		{
 			srvCall.setAcces_datetime(new Date());
-			srvCall.setCompany_id(sesion.getCompany_id());
+			srvCall.setCompany_id( company_id );
 			srvCall.setInfo("Invocando Servicio Web SAFIServiciosServiceLocator.getSAFIServiciosSoap11.simuladorCuotaCredito");
-			srvCall.setProspectus_id(sesion.getProspectus_id());
+			srvCall.setProspectus_id( prospectus_id );
 			srvCall.setStatus(1);
 			servicecallingRepository.saveServiceCall(srvCall);
 		}
 	}
 	
-	protected void init_response() 
+	protected void init_response( ) 
 	{
 		try
 		{
@@ -47,14 +47,14 @@ public abstract class SAFICuotaCreditoAMO extends SAFICuotaCreditoDMO
 										
 				if(response.getCodigoRespuesta().equals("0"))
 				{
-					if(sesion!=null&&sesion.getProspectus_id()!=null&&sesion.getProspectus_id()!=0)
+					if( prospectus_id !=0 )
 					{
 						srvCall = new ServiceCalling();
 			
 						srvCall.setAcces_datetime(new Date());
-						srvCall.setCompany_id(sesion.getCompany_id());
+						srvCall.setCompany_id( company_id );
 						srvCall.setInfo("Regresando Satisfactoriamente de Servicio SAFIServiciosServiceLocator.getSAFIServiciosSoap11.simuladorCuotaCredito: "+response.getMensajeRespuesta());
-						srvCall.setProspectus_id(sesion.getProspectus_id());
+						srvCall.setProspectus_id( prospectus_id);
 						srvCall.setStatus(2);
 						
 						servicecallingRepository.saveServiceCall(srvCall);
@@ -82,14 +82,14 @@ public abstract class SAFICuotaCreditoAMO extends SAFICuotaCreditoDMO
 					
 				} else {
 					
-					if(sesion!=null&&sesion.getProspectus_id()!=null&&sesion.getProspectus_id()!=0)
+					if( prospectus_id !=0 )
 					{
 						srvCall = new ServiceCalling();
 						
 						srvCall.setAcces_datetime(new Date());
-						srvCall.setCompany_id(sesion.getCompany_id());
+						srvCall.setCompany_id( company_id );
 						srvCall.setException(response.getMensajeRespuesta());
-						srvCall.setProspectus_id(sesion.getProspectus_id());
+						srvCall.setProspectus_id( prospectus_id );
 						srvCall.setStatus(3);
 						servicecallingRepository.saveServiceCall(srvCall);
 						

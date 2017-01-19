@@ -17,10 +17,12 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.ProyectLoanPK;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SavingAccountPK;
+import mx.com.kubo.services.BehaviorProcessService;
 import mx.com.kubo.services.PrevencionLDService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.SavingAccountService;
 import mx.com.kubo.services.fondeo.ServiceFondeoIMO;
+import mx.com.kubo.services.impl.SystemParamServiceImp;
 
 public abstract class CreaCreditoServiceDMO 
 {	
@@ -32,6 +34,12 @@ public abstract class CreaCreditoServiceDMO
 		
 	@ManagedProperty("#{prevencionLDServiceImp}")
 	protected PrevencionLDService service_PLD;
+	
+	@ManagedProperty("#{behaviorProcessServiceImp}")
+	protected BehaviorProcessService behaviorprocessservice;
+	
+	@ManagedProperty("#{systemParamServiceImp}")
+	protected SystemParamServiceImp system_param_service;
 		
 	protected ServiceFondeoIMO service_fondeo;
 	
@@ -91,6 +99,7 @@ public abstract class CreaCreditoServiceDMO
 	protected boolean solicitud_credito_OK;
 	protected boolean cuenta_OK;
 	protected boolean param_values_OK;
+	protected boolean is_inussual_person;
 
 	protected final String SAFI_ALTA_PROSPECTO_ACTUAL;
 	
@@ -156,6 +165,22 @@ public abstract class CreaCreditoServiceDMO
 	public List<String> getLstErrors() 
 	{
 		return lista_errores;
+	}
+
+	public BehaviorProcessService getBehaviorprocessservice() {
+		return behaviorprocessservice;
+	}
+
+	public void setBehaviorprocessservice(BehaviorProcessService behaviorprocessservice) {
+		this.behaviorprocessservice = behaviorprocessservice;
+	}
+
+	public SystemParamServiceImp getSystem_param_service() {
+		return system_param_service;
+	}
+
+	public void setSystem_param_service(SystemParamServiceImp system_param_service) {
+		this.system_param_service = system_param_service;
 	}
 	
 

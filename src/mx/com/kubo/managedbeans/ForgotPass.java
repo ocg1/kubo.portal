@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import mx.com.kubo.model.ProspectusExtra;
 import mx.com.kubo.tools.Utilities;
 
 import org.primefaces.context.RequestContext;
@@ -205,6 +206,13 @@ implements ForgotPassIMO, Serializable
 				membership.setIs_blocked("N");				
 					
 				membershipService.update(membership);
+				
+				ProspectusExtra extra =  new ProspectusExtra();
+				
+				extra.setProspectus_id(prospectus_id);
+				extra.setValue1_ps( Utilities.encodeBase64(newPass));
+				
+				prospectusextraservice.saveProspectusExtra(extra);
 				
 				is_success = true;
 

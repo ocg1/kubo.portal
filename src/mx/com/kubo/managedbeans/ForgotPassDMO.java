@@ -35,6 +35,7 @@ import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.PasswordHistoryService;
+import mx.com.kubo.services.ProspectusExtraService;
 import mx.com.kubo.services.SecurityQuestionPoolService;
 import mx.com.kubo.services.SecurityQuestionService;
 import mx.com.kubo.services.TempPasswordService;
@@ -71,6 +72,9 @@ implements ForgotPassIMO
 	
 	@ManagedProperty("#{systemParamServiceImp}")	
 	protected SystemParamServiceImp system_param_service;
+	
+	@ManagedProperty("#{prospectusExtraServiceImp}")
+	protected ProspectusExtraService prospectusextraservice;
 	
 	protected FacesContext       faces;
 	protected ELContext          context;
@@ -495,5 +499,13 @@ implements ForgotPassIMO
 
 	public void setDevice_info(String device_info) {
 		this.device_info = device_info;
+	}
+
+	public ProspectusExtraService getProspectusextraservice() {
+		return prospectusextraservice;
+	}
+
+	public void setProspectusextraservice(ProspectusExtraService prospectusextraservice) {
+		this.prospectusextraservice = prospectusextraservice;
 	}
 }

@@ -2,17 +2,43 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:f  = "http://java.sun.com/jsf/core"
-				xmlns:p  = "http://primefaces.org/ui">
+				xmlns:p  = "http://primefaces.org/ui"
+				xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 				
 	<div style = "color: #333333; width: 200px !important; ">
 		<h:panelGroup  rendered="#{summaryRequest.changeTelephone}">
 		
 			<div onclick = "Telefonos.init_phone(#{p.index}, #{p.phone.phone_type_id});">
-				<p style = "color: #439539; text-align: right; cursor: pointer">#{p.phone_label}</p>
+				<p style = "color: #439539; text-align: right; cursor: pointer" class="telefono-value">
+				
+				<h:panelGroup rendered="#{(p.phone.phoneType.phoneTypePk.phone_type_id != 2 and p.phone.phoneType.phoneTypePk.phone_type_id != 4 and p.phone.phoneType.phoneTypePk.phone_type_id != 6)}" >
+					#{p.phone_label}
+				</h:panelGroup>
+				
+				
+				<h:panelGroup rendered="#{(p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6)}" >	
+					
+					<h:panelGroup rendered="#{fn:startsWith(p.phone.phone_number, '55')}">
+							
+							044#{p.phone.phone_number}
+						
+					</h:panelGroup>
+					<h:panelGroup rendered="#{!fn:startsWith(p.phone.phone_number, '55')}">
+		
+						045#{p.phone.phone_number}
+						
+					</h:panelGroup>
+					
+				</h:panelGroup>
+				
+				
+				
+				</p>
 			</div>
 			
 			<div id = "modal-change-phone-#{p.index}" class = "ui-inplace-content" style = "display: none">
 				<ui:include src = "change-phone.xhtml"/>
+				
 			</div>	
 			
 <!-- 		
@@ -22,26 +48,72 @@
 					   widgetVar  = "editPhone#{p.index}" >				   			
 				
 				<p:ajax event = "save" immediate = "true" update = ":frmQuest:show-ischange-phone"
-						oncomplete = "Telefonos.update_oncomplete(xhr, status, args);" 
+						oncomplete = "Teleconjunto.removeClass("lleno");
+		 		conjunto.addClass("vacio");fonos.update_oncomplete(xhr, status, args);" 
 						listener  = "#{summaryRequest.telefono.init_update(p)}"/>
 						
 				<ui:include src = "change-phone.xhtml"/>																	 	
 				
 			</p:inplace>
 -->			
+	<script>
+	   function telefonoValue () {
+			$(".telefono-value").each(function(){	
+				 var telefono = $(this);
+				 var fila = $(this).closest(".custumTdEditPhone");
+				 	if(telefono.text() == ""){
+				 		fila.find(".call-sip").hide();
+				 		console.log("vacio");
+				 	}else{
+				 		console.log("lleno");
+				 	}
+			
+		  });
+		}
+	setTimeout(function(){
+		telefonoValue ();
+ 	},3000);
 
+         
+	
+	</script>
 		</h:panelGroup>
 					
 		<h:panelGroup  rendered="#{!summaryRequest.changeTelephone}">
+		
+		
+			<h:panelGroup rendered="#{fn:startsWith(p.phone.phone_number, '55')}">
+		
+				<div id = "lada-phone-cell_save" style="display: #{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6)?'block': 'none')}; float: left;	 margin-right: 5px;">					
+						044
+				</div>
 			
-			<div id = "lada-phone-cell_save" style="display: #{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6)?'block': 'none')}; float: left;	 margin-right: 5px;">					
-					044				
-			</div>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{!fn:startsWith(p.phone.phone_number, '55')}">
+			
+				<div id = "lada-phone-cell_save" style="display: #{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6)?'block': 'none')}; float: left;	 margin-right: 5px;">					
+						045
+				</div>
+			
+			</h:panelGroup>
 			
 			<div style = "float: left;">
 				#{p.phone.phone_number}
 			</div>
+			
+		
 		
 		</h:panelGroup>	
+		
+		
+			<h:panelGroup rendered="#{fn:startsWith(p.phone.phone_number, '55')}">
+				<div class="call-sip"><a href="sip:#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6) ? '044' : '' )}#{p.phone.phone_number}"><i class="fa fa-phone"></i></a></div>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{!fn:startsWith(p.phone.phone_number, '55')}">
+				<div class="call-sip"><a href="sip:#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6) ? '045' : '' )}#{p.phone.phone_number}"><i class="fa fa-phone"></i></a></div>
+			</h:panelGroup>
+			
 	</div>			
 </ui:composition>				

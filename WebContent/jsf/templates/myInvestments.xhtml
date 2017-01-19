@@ -1,9 +1,8 @@
-<ui:composition  
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns   ="http://www.w3.org/1999/xhtml"	
-	xmlns:h ="http://java.sun.com/jsf/html"
-	xmlns:f ="http://java.sun.com/jsf/core"
-	xmlns:p ="http://primefaces.org/ui">
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+				 xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
 		
 		<!-- PROYECT LOAN / TOOLTIP -->		
 		<link   type = "text/css" rel = "stylesheet" href = "../resources/css/templates/perfil_completo/tooltip_ayuda.css" />
@@ -36,7 +35,7 @@
 			function mensajeInvCuenta() {
 			var idClienteInvestor = $(".select_cuenta select").val();
 							
-			var cuentas = ['00100011760','00100013177','00100015226','00100016176','00100016389','00100016575','00100019221'];
+			var cuentas = ['00100011760','00100015226','00100016176','00100016389','00100016575','00100019221'];
 			    if($.inArray(idClienteInvestor, cuentas) >= 0) {
 			    	$(".mensajeInversionista").slideDown();
 			    	

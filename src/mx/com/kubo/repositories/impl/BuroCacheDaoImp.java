@@ -1,7 +1,5 @@
 package mx.com.kubo.repositories.impl;
 
-import java.io.Serializable;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,18 +10,9 @@ import mx.com.kubo.model.BuroCache;
 import mx.com.kubo.repositories.BuroCacheDao;
 
 @Repository
-public class BuroCacheDaoImp implements Serializable, BuroCacheDao {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+public class BuroCacheDaoImp implements BuroCacheDao 
+{
 	private EntityManager em = null;
-	
-	  /**
-	   * Sets the entity manager.
-	   */
 		
 	  @PersistenceContext
 	  public void setEntityManager(EntityManager em) {
@@ -57,4 +46,27 @@ public class BuroCacheDaoImp implements Serializable, BuroCacheDao {
 		}
 	}
 	
+	@Transactional
+	public boolean delete(String burSolNum) 
+	{
+		BuroCache cache = getBuroCache(burSolNum);
+		
+		boolean delete_cache_OK = false;
+		
+		try
+		{
+			if(cache != null)
+			{
+				em.remove(cache);
+			
+				delete_cache_OK = true;
+			}
+			
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return delete_cache_OK;
+	}
 }

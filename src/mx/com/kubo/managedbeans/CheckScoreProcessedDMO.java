@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedProperty;
 
+import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.Offer;
 import mx.com.kubo.model.OfferRejectionMotive;
 import mx.com.kubo.model.Scoring;
@@ -81,6 +82,8 @@ public class CheckScoreProcessedDMO {
 	protected Screen screen;
 	
 	protected SegmentProspectus segment;
+	
+	protected Membership member;
 	
 	protected String partner_id;
 	
@@ -401,6 +404,14 @@ public class CheckScoreProcessedDMO {
 
 	public void setProyectLoanService(ProyectLoanService proyectLoanService) {
 		this.proyectLoanService = proyectLoanService;
+	}
+
+	public Membership getMember() {
+		return member;
+	}
+
+	public void setMember(Membership member) {
+		this.member = member;
 	}
 	
 

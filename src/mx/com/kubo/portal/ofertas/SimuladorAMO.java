@@ -92,7 +92,15 @@ public abstract class SimuladorAMO extends SimuladorDMO
 	protected void init_simulator() 
 	{				
 		credit_simulator = new CreditSimulatorIMP(term_id);
-		credit_simulator.setSesion(sesion);
+		
+		//credit_simulator.setSesion(sesion);
+		
+		credit_simulator.setProspectus_id( prospectus_id );
+		credit_simulator.setCompany_id( company_id );
+		
+		credit_simulator.setTasaTotal( tasaTotal );
+		credit_simulator.setComisionApertura( comisionApertura );
+		
 		credit_simulator.setAmmount(ammount);
 		credit_simulator.setFrequency_id(frequency_id);
 		

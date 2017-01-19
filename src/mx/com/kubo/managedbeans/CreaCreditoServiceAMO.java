@@ -1,6 +1,10 @@
 package mx.com.kubo.managedbeans;
 
+import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
+import mx.com.kubo.model.FraudeDetection;
 import mx.com.kubo.model.ProyectLoanPK;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.services.fondeo.cliente.AltaClienteIMP;
 import mx.com.kubo.services.fondeo.cliente.AltaConocimientoClienteIMP;
 import mx.com.kubo.services.fondeo.cliente.CreacionClienteIMP;
@@ -47,6 +51,49 @@ public abstract class CreaCreditoServiceAMO extends CreaCreditoServiceDMO
 		}
 		
 		param_values_OK = prospectus_id != 0 && company_id != 0 && proyect_id != 0 && proyect_loan_id != 0;								
+	}
+	
+	protected void validaInusualBehavior(String ipaddress){
+		
+		is_inussual_person = false;
+		
+		SystemParamPK spkH = new SystemParamPK();
+		SystemParam param = null;
+		
+		spkH = new SystemParamPK();
+		
+		spkH.setCompany_id(sesion.getCompany_id());
+		spkH.setSystem_param_id(99);
+		
+		param = system_param_service.loadSelectedSystemParam(spkH);
+		
+		if( param != null && param.getValue() != null && param.getValue().equals("S") ){
+		
+			FraudeDetection fd = behaviorprocessservice.getFraudeDetection(company_id, prospectus_id);
+			
+			if( fd == null ){
+				
+				BehaviorCheck bc = new BehaviorCheck();
+				
+				bc.checkProcess(company_id, prospectus_id, ipaddress);
+				
+				fd = behaviorprocessservice.getFraudeDetection(company_id, prospectus_id);
+				
+				if( fd != null ){
+				
+					is_inussual_person = true;
+					
+				}
+				
+			}else{
+				
+				is_inussual_person = true;
+				
+			}
+			
+		}
+		
+		
 	}
 	
 	protected void init_proyect_loan() 

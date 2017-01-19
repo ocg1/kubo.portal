@@ -1,5 +1,6 @@
 	/* inicia Charts */
 	var dataArea = null;
+	
 	function initLog()
 	{		
 		$("#inpLog").val( $("#confpass").val() );
@@ -10,16 +11,10 @@
 		$("#inpLog").blur();
 		
 		return true;	
-		
-	
-		
 	}
 	
-
-	
 	function returnInit(xhr, status, args)
-	{
-		
+	{		
 		var isLogged = args.isLogged;	
 		
 		if(isLogged)
@@ -91,74 +86,77 @@
 		return true;		
 	}
 	
-	   	var flagF = true;
+	var flagF = true;
 	   	
-	   	function inicializaTable()
-	   	{    		 
-	   		$("#btnRecommen").click(function(e)
-	   				{
-	   					e.preventDefault();
+   	function inicializaTable()
+   	{    		 
+	   	$("#btnRecommen").click(function(e)
+	   	{
+	   		e.preventDefault();
 	   					
-	   					$("#btnRecommen").fadeOut(
-	   							{
-	   								duration:  1000,
-					    			easing:		'easeOutBack',
-					    			complete: function(){ $("#dvContRecommendationNote").fadeIn({duration:1000, easing:'easeOutBack'}); } });
-	   							});
+	   		$("#btnRecommen").fadeOut(
+			{
+				duration:  1000,
+    			easing:		'easeOutBack',
+    			complete: function()
+    			{ 
+    				$("#dvContRecommendationNote").fadeIn({duration:1000, easing:'easeOutBack'}); 
+    			} 
+			});
+		});
 	   		
 			    		//maxWidthTableVig = $("#maxWidthTableVig").val();    		
 			    		 maxWidthTableVig = 788;
 	   		 
-	   	if(flagF){
-	   		
-		    		flagF = false;
+	   	if(flagF)
+	   	{	   		
+		    flagF = false;
+		    				    				    		
+    		$('.fixme').fixheadertable(
+    		{
+                caption : 'Créditos Vigentes',
+               
+                width	: maxWidthTableVig ,
+                zebra   : false,
+                resizeCol      : true,
+                colratio	: [65,180,280,100,80,100,100,90,90,110,100,180,110,115,140,95,105,105,105,105,135,90,90,135,135,135,135,200,135,320,320,650,5]
+           });
 		    		
+    		$('.fixmeCom').fixheadertable({
+                caption : 'Créditos Vigentes Comunicaciones',
+    
+                width	: maxWidthTableVig ,
+                zebra   : false,
+                resizeCol      : true,
+                colratio	: [55,85,150,200,350,80,200,140,140,120,170,140,140,145,135,155,135,180,120,180,200,200,200,200,200,190,320,320,200,650,5]
+           });
 		    		
+    		$('.fixmeConsultUlt').fixheadertable({
+                caption : 'Consultas en los Últimos 6 meses',
+               
+                width	: maxWidthTableVig ,
+                zebra   : false,
+                resizeCol      : true,
+                colratio	: [55,200,200,200,200,200,180,140]
+           });
 		    		
-		    		$('.fixme').fixheadertable({
-		                caption : 'Créditos Vigentes',
-		               
-		                width	: maxWidthTableVig ,
-		                zebra   : false,
-		                resizeCol      : true,
-		                colratio	: [65,180,280,100,80,100,100,90,90,110,100,180,110,115,140,95,105,105,105,105,135,90,90,135,135,135,135,200,135,320,320,650,5]
-		           });
+    	 $('.fixmeConsultMS').fixheadertable({
+                caption : 'Consultas hace más de 6 meses',
+               
+                width	: maxWidthTableVig ,
+                zebra   : false,
+                resizeCol      : true,
+                colratio	: [55,200,200,200,200,200,180,140]
+           });
 		    		
-		    		$('.fixmeCom').fixheadertable({
-		                caption : 'Créditos Vigentes Comunicaciones',
-		    
-		                width	: maxWidthTableVig ,
-		                zebra   : false,
-		                resizeCol      : true,
-		                colratio	: [55,85,150,200,350,80,200,140,140,120,170,140,140,145,135,155,135,180,120,180,200,200,200,200,200,190,320,320,200,650,5]
-		           });
-		    		
-		    		$('.fixmeConsultUlt').fixheadertable({
-		                caption : 'Consultas en los Últimos 6 meses',
-		               
-		                width	: maxWidthTableVig ,
-		                zebra   : false,
-		                resizeCol      : true,
-		                colratio	: [55,200,200,200,200,200,180,140]
-		           });
-		    		
-		    	 $('.fixmeConsultMS').fixheadertable({
-		                caption : 'Consultas hace más de 6 meses',
-		               
-		                width	: maxWidthTableVig ,
-		                zebra   : false,
-		                resizeCol      : true,
-		                colratio	: [55,200,200,200,200,200,180,140]
-		           });
-		    		
-		    		$('.tableDomicilios').fixheadertable({
-		                caption : 'Domicilios',
-		               
-		                width	: maxWidthTableVig ,
-		                zebra   : false,
-		                resizeCol      : true,
-		                colratio	: [55,200,200,200,200,200,200,200,200,180,140]
-		           });
+    		$('.tableDomicilios').fixheadertable({
+                caption : 'Domicilios',
+               
+                width	: maxWidthTableVig ,
+                zebra   : false,
+                resizeCol      : true,
+                colratio	: [55,200,200,200,200,200,200,200,200,180,140]
+           });
 		    		
 		    		$('.tableCredClose').fixheadertable({
 		                caption : 'Créditos Cerrados',
@@ -199,7 +197,8 @@
 	   		}
 	   	}
 	
-	function returnNoteFunction(){
+	function returnNoteFunction()
+	{
 		closeMessageProcessing();
 		$('#person_kubo_select').val('');
 		$('#recommentaion_kubo_select').val('');
@@ -207,7 +206,8 @@
 		hideTableNote();
 	}
 	   	
-	function initGraph(){
+	function initGraph()
+	{
 		 // alert("initGraph .. solnum: "+$('#valGraphic').val());
 		 $('#valGraphic').blur();
 		
@@ -220,25 +220,39 @@
 	var gridV;
 	var maxWidthTableVig;
 	
-	function drawChartBuro() { 
+	function chartReload_oncomplete(xhr, args, status)
+	{
+		var delete_cache_OK = args.delete_cache_OK
 		
-		if(google.setOnLoadCallback(chartDrawBuro)){
+		console.log("chartReload_oncomplete(): ");
+		console.log("delete_cache_OK = " + delete_cache_OK);
+		
+		drawChartBuro();
+	}
+	
+	function drawChartBuro() 
+	{ 		
+		if(google.setOnLoadCallback(chartDrawBuro))
+		{
 			
-		}else{
+		} else {
 			
 			chartDrawBuro();
 		}
-		
 	}
 	
-	function hideDetTScore(){
+	function hideDetTScore()
+	{
 		$("#dvContDetTScore").hide();
 	}
 	
-	function chartDrawBuro() { 
+	function chartDrawBuro() 
+	{ 
 	
-		if( rowData ){
-			if(rowData != "SIN_RESPUESTA"){
+		if( rowData )
+		{
+			if(rowData != "SIN_RESPUESTA")
+			{
 				
 	 					$("#loaderGraph").hide();
 	 					$("#chart_warning").hide();
@@ -336,22 +350,21 @@
 
 	}
 	
-	function validaSolNum(){
+	function validaSolNum()
+	{	
+		console.log("validaSolNum(): ");
+		console.log($('#valGraphic').val() + ' --  bursol: ' + $('#burSolNum').val());
 		
-		//alert($('#valGraphic').val() + ' --  bursol: ' + $('#burSolNum').val());
-		
-		
-		
-		if( $('#valGraphic').val() == null ){
-			
-			$('#valGraphic').val($('#burSolNum').val());
-			
+		if( $('#valGraphic').val() == null )
+		{			
+			$('#valGraphic').val($('#burSolNum').val());			
 		}
-		//alert("regresando ........."+$('#valGraphic').val());
+		
+		console.log("regresando ........."+$('#valGraphic').val());
+		
 		displayMessageProcessing('msgprocessing', false);
 		
 		return true;
-		
 	}
 	
 	function hideTooltip(){

@@ -11,6 +11,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 
+import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.controller.threads.RespuestaConsultaMasiva;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.mesa.buro.ProspectRiskIMP;
@@ -33,14 +34,49 @@ implements Serializable
 		elContext = faces.getELContext();
 		resolver  = faces.getApplication().getELResolver();
 		
+		company_id = null;
+		prospectus_id = null;
+		
 		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");		
 		
-		if(sesion != null & sesion.getProspectus_id() != null)
+		if(sesion != null && sesion.getProspectus_id() != null && sesion.getArea() != null && sesion.getArea().toString().equals("L") )
 		{
 			company_id    = sesion.getCompany_id();
 			prospectus_id = sesion.getProspectus_id();
 			
 			sesion.setCoachProspectus_id(prospectus_id);
+			
+		}else if(sesion != null && sesion.getProspectus_id() != null && sesion.getArea() != null && sesion.getArea().toString().equals("M") )
+		{
+		
+			sesion_search_request = (SearchSummaySession)  resolver.getValue(elContext, null, "searchSummaySession");
+			
+			String search = sesion_search_request.getSearchSummary();
+			
+			String[] splStr = search.split("::") ;
+			
+			if( splStr.length == 4 ){
+				
+				prospectus_id = Integer.parseInt( splStr[2] );
+				company_id    = Integer.parseInt( splStr[3] );
+			}
+			
+			sesion.setCoachProspectus_id(sesion.getProspectus_id());
+			
+			membership_PK = new MembershipPK();
+			membership_PK.setCompany_id(company_id);
+			membership_PK.setProspectus_id(sesion.getProspectus_id());
+			
+			membership = service_membership.getMembershipById(membership_PK);
+			
+			nombreCoach = membership.getPerson().NombreCompletoNPM();
+			
+			sesion.setCoachProspectus_id(prospectus_id);
+			
+			
+		}
+		
+		if( company_id != null && prospectus_id != null ){
 			
 			membership_PK = new MembershipPK();
 			membership_PK.setCompany_id(company_id);
@@ -49,6 +85,8 @@ implements Serializable
 			membership = service_membership.getMembershipById(membership_PK);
 			
 			person = membership.getPerson();
+			
+			nombreCliente = membership.getPerson().NombreCompletoNPM();
 			
 			auditor = new AccessIMP();
 			auditor.setService_access(service_access);
@@ -152,12 +190,13 @@ implements Serializable
 		}
 		
 		request.addCallbackParam("is_risk_processed", is_risk_processed);
-		request.addCallbackParam(   "redirect_to_ofert_ENABLED", redirect_to_ofert_ENABLED);
-		request.addCallbackParam("redirect_to_registro_ENABLED", redirect_to_registro_ENABLED);	
+		request.addCallbackParam("redirect_to_ofert_ENABLED", redirect_to_ofert_ENABLED);
+		request.addCallbackParam("redirect_to_registro_ENABLED", redirect_to_registro_ENABLED);
+		request.addCallbackParam("is_controlTable", ( sesion.getArea() != null && sesion.getArea().toString().equals("M") ) );	
 		
 		if( redirect_to_registro_ENABLED ){
 			
-			if(sesion != null & sesion.getProspectus_id() != null)
+			if(sesion != null && sesion.getProspectus_id() != null && sesion.getArea() != null && sesion.getArea().toString().equals("L") )
 			{
 				company_id    = sesion.getCompany_id();
 				prospectus_id = sesion.getProspectus_id();
@@ -181,6 +220,7 @@ implements Serializable
 				score = service_score.loadMaxScoringByProspectus(prospectus_id, company_id);
 				
 				init_score();				
+				
 			}
 			
 		}

@@ -4,7 +4,7 @@
 				 xmlns:f  = "http://java.sun.com/jsf/core"
 				 xmlns:p  = "http://primefaces.org/ui">
 				 
-	<div class="summaryInv pagosCls">	
+					<div class="summaryInv pagosCls">	
 						<div class="summaryBoxInv">
 							<h3 class="summaryTitleInv" title="Resumen de pagos">Resumen de pagos</h3>
 							<div class="summaryContentInv">
@@ -29,7 +29,7 @@
 											<td>
 												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
 													Intereses
-													<ui:include src="../../../secciones/investment/tooltip/tooltip_kuboglobal.xhtml" />
+													<ui:include src="../secciones/investment/tooltip/tooltip_kuboglobal.xhtml" />
 												</div>
 											</td>
 											<td ><span>#{myInvestments.saldoIntGlobal}</span></td>
@@ -49,7 +49,7 @@
 											<td>
 												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
 													Capital
-													<ui:include src="../../../secciones/investment/tooltip/tooltip_capital.xhtml" />
+													<ui:include src="../secciones/investment/tooltip/tooltip_capital.xhtml" />
 												</div>	
 											</td>
 											<td ><span>#{myInvestments.capital_amount}</span></td>
@@ -62,7 +62,7 @@
 												
 												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
 													Intereses Recibidos
-													<ui:include src="../../../secciones/investment/tooltip/tooltip_kuboimpulso.xhtml" />
+													<ui:include src="../secciones/investment/tooltip/tooltip_kuboimpulso.xhtml" />
 												</div>
 											</td>
 											<td ><span>#{myInvestments.ordinary_interests_amount}</span></td>
@@ -75,7 +75,7 @@
 												
 												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
 													Intereses moratorios
-													<ui:include src="../../../secciones/investment/tooltip/tooltip_moratorios.xhtml" />
+													<ui:include src="../secciones/investment/tooltip/tooltip_moratorios.xhtml" />
 												</div>	
 											</td>
 											<td ><span>#{myInvestments.interest_on_arrears_amount}</span></td>
@@ -96,7 +96,7 @@
 												
 												<div style="width: 90%; height: auto;position: relative;margin-left: 10px;">
 													Intereses
-													<ui:include src="../../../secciones/investment/tooltip/tooltip_kuboplazofijo.xhtml" />
+													<ui:include src="../secciones/investment/tooltip/tooltip_kuboplazofijo.xhtml" />
 												</div>	
 											</td>
 											<td ><span>#{myInvestments.saldoIntPlazoFijo}</span></td>
@@ -127,5 +127,5 @@
 								</table>									
 							</div> <!-- .summaryContent -->
 						</div>
-					</div>	
+					</div>		
 </ui:composition>				 

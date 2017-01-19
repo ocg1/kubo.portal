@@ -89,6 +89,9 @@ public abstract class OfertaRenovacionDMO
 	protected String ofert_TOKEN;
 	protected String ofert_rate_TOKEN;
 	
+	protected String nombreCliente;
+	protected String nombreCoach;
+	
 	protected final String MEJOR_TASA;
 	protected final String PRESTAMO_APROBADO;	
 	protected final String TABLA_AMORTIZACION_XHTML;
@@ -209,5 +212,21 @@ public abstract class OfertaRenovacionDMO
 
 	public void setAccessService(AccessService accessService) {
 		this.accessService = accessService;
+	}
+
+	public String getNombreCliente() {
+		return nombreCliente;
+	}
+
+	public void setNombreCliente(String nombreCliente) {
+		this.nombreCliente = nombreCliente;
+	}
+
+	public String getNombreCoach() {
+		return nombreCoach;
+	}
+
+	public void setNombreCoach(String nombreCoach) {
+		this.nombreCoach = nombreCoach;
 	}			
 }

@@ -1157,9 +1157,20 @@ function cerrarAlertHub (){
 
 
 function loaderfunction() {
-	   $(".contrasenaHubspot").removeClass("show");
-	   $(".cargandoNuevo").addClass("show");
-	   $(".cmdSavePass").click();
+	if($("#passTemp").val().length >= 4  && $("#passTemp").val().length<20) {
+		$("#passTemp").removeClass("requiredClass");
+		alertaQuitar ("#passTemp");
+		   $(".contrasenaHubspot").removeClass("show");
+		   $(".cargandoNuevo").addClass("show");
+		   $(".cmdSavePass").click();
+	}else {
+		  $("#passTemp").addClass("requiredClass");
+		  if($("#passTemp").val().length>=1){
+			  alerta ("La contraseña debe tener un mínimo de 4 y un máximo de 20 caracteres.", "#passTemp");
+		  }else{
+			  alertaQuitar ("#passTemp");
+		  }
+	}
 	  
 }
 

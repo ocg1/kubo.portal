@@ -9,7 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
+import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.CreditHistoryAttempt;
@@ -25,6 +27,7 @@ import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.model.SimulatorPK;
 import mx.com.kubo.model.StateCatPK;
+import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.TownCatPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
@@ -347,9 +350,28 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 				creditAttemptService.add(tmp);
 				
 				System.out.println( flagDoubleCheck_2 +" - "+ flagDoubleCheck + "" );
+					
+				if( excecuteJSF ){
+					
+					faces = FacesContext.getCurrentInstance();
+					
+					HttpServletRequest httpServletRequest = (HttpServletRequest) faces.getExternalContext().getRequest(); 
 
+					String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+						    
+							if(ipAddressClient == null)  
+							{
+						    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
+							}
 				
-				   
+					BehaviorCheck bc = new BehaviorCheck();
+					
+					bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
+					
+					
+				}
+					
+					
 				
 				if(response.getStatus().equals("-1"))
 				{									

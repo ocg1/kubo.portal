@@ -1135,7 +1135,7 @@ td.clTdMontoStr{
 	background: #568e3e;
 }
 
-.crea_contraseÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±a small:hover, .crea_contrasena2 small:hover{
+.crea_contrasena small:hover, .crea_contrasena2 small:hover{
 	background:#cbd93b;
 }
 
@@ -8258,7 +8258,7 @@ margin:0 0 20px;
 
 
 
-.loading-4clicks {padding: 40px 60px; text-align:center;display:none;}
+.loading-4clicks, .rejection-4clicks {padding: 40px 60px;text-align:center;display:none;margin: 30px;}
 
 .loading-4clicks .kubi-feliz {
 	width:250px !important;
@@ -8278,6 +8278,33 @@ font-size:18px !important;
 margin:0 0 30px !important;line-height: 20px !important;}
 
 
+
+.rejection-4clicks .kubi-feliz {
+	width:250px !important;
+}
+
+.rejection-4clicks h2{
+	  color: #568e3e;
+	  font-size:25px;
+	  font-weight:600;
+	  margin:0 0 20px;
+	text-align:center;
+}
+
+.rejection-4clicks p{
+	font-weight:600 !important;
+	font-size:18px !important;
+	margin:0 0 30px !important;
+	line-height: 20px !important;
+}
+
+
+
 .loading-4clicks .kubi-feliz{
 	
+}
+
+.rejection-4clicks .regresar_cuenta {
+	float:none;
+	margin:0 auto !important;
 }

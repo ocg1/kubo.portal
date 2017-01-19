@@ -1,11 +1,10 @@
 package mx.com.kubo.portal.simulador;
 
-import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.SimulatorBean;
 
 public interface CreditSimulatorIMO 
 {
-	void setSesion(SessionBean sesion);	 
+	//void init( int prospectus_id, int company_id );	 
 
 	void setAmmount(double ammount);
 	
@@ -15,6 +14,12 @@ public interface CreditSimulatorIMO
 	
 	void init_cuota_by_formula();		
 	void init_cat_SAFI();
+	
+	void setProspectus_id(int prospectus_id);
+	void setCompany_id(int company_id);
+	
+	public void setTasaTotal(Double tasaTotal);
+	public void setComisionApertura(Double comisionApertura);
 	
 /*	
 	Double getPayment();

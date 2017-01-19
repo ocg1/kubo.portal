@@ -84,7 +84,13 @@
 		<div class="velo"></div>
 			<div class = "kubo_container privado" style="background:#f1f1f1; overflow:inherit !important;">
 			<h:form prependId = "false">
-				<ui:include src = "/Portal/templates/header.xhtml" />
+				<h:panelGroup rendered ="#{sessionBean.area=='L'}" >
+					<ui:include src = "/Portal/templates/header.xhtml" />
+				</h:panelGroup>
+				
+				<h:panelGroup rendered ="#{sessionBean.area=='M'}" >
+					<ui:include src = "templates/headerCoach.xhtml" />
+				</h:panelGroup>
 
 				<ui:include src = "scripts/registro.xhtml"/>			
 				<ui:include src = "styles/renovaciones.xhtml"/>

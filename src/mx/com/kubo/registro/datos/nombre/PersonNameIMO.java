@@ -10,4 +10,8 @@ public interface PersonNameIMO extends DatosPersonalesIMO
 	void init_middle_name(AjaxBehaviorEvent event);
 	void init_father_last_name(AjaxBehaviorEvent event);
 	void init_mother_last_name(AjaxBehaviorEvent event);
+	String getFirst_name();
+	String getMiddle_name();
+	String getFather_last_name();
+	String getMother_last_name();
 }

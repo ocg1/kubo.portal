@@ -129,3 +129,19 @@ position:absolute;right: 13px !important;top: 10px;
 .preaprobacion_pantallas.no-hit-renovacion, .error-consulta-renovacion {
 	display:none;
 }
+
+
+
+.head_coach + .contenedor-renovaciones + #dvIDProviderQuest {
+	margin:50px 0 0 !important;
+}
+
+
+ @media (max-width: 1024px)  {
+ 	.head_coach + .contenedor-renovaciones + #dvIDProviderQuest {
+	margin:0px 0 0 !important;
+}
+
+ }
+ 
+ 

@@ -318,13 +318,13 @@ public abstract class PreaprobacionPMO extends PreaprobacionDMO
 				if( esAutenticado ){
 				
 				properties.append("{ \"property\" : \"tiene_id_provider\" , \"value\" : \"Si\"}," +
-									"{ \"property\" : \"autenticado\" , \"value\" : \"Si\"}"
+									"{ \"property\" : \"consulto_buro\" , \"value\" : \"Si\"}"
 									);
 				
 				}else{
 					
 					properties.append("{ \"property\" : \"tiene_id_provider\" , \"value\" : \"No\"}," +
-							"{ \"property\" : \"autenticado\" , \"value\" : \"No\"}"
+							"{ \"property\" : \"consulto_buro\" , \"value\" : \"No\"}"
 							);
 					
 				}

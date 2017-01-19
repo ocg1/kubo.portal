@@ -67,10 +67,10 @@ public abstract class OfertaRenovacionAMO extends OfertaRenovacionDMO
 		sb.append(TABLA_AMORTIZACION_XHTML).append("?");
 		sb.append("monto=").append(ammount).append("::");
 		sb.append("term=").append(term_id).append("::");
-		sb.append("rate=").append(sesion.getRate()).append("::");
+		sb.append("rate=").append(rate).append("::");
 		sb.append("payment=").append(payment).append("::");
 		sb.append("frequency=").append(frequency).append("::");
-		sb.append("comision=").append(sesion.getOpeningCommission()).append("::");
+		sb.append("comision=").append( opening_commission).append("::");
 		sb.append("totalPayment=").append(total_payment).append("::");
 		sb.append("cat=").append(mx_cat);
 		
@@ -81,8 +81,8 @@ public abstract class OfertaRenovacionAMO extends OfertaRenovacionDMO
 		request.addCallbackParam("tabla_amoritizacion_URL", tabla_amoritizacion_URL);
 		request.addCallbackParam("max_payment_ENABLED", max_payment_ENABLED);
 		
-		request.addCallbackParam("interes",            sesion.getRate());
-		request.addCallbackParam("opening_commission", sesion.getOpeningCommission());
+		request.addCallbackParam("interes",            rate);
+		request.addCallbackParam("opening_commission", opening_commission);
 		
 		request.addCallbackParam("plazo", parser.getTerm_frequency_TOKEN().substring(2) );	
 		

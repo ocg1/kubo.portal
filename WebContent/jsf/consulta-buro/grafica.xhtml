@@ -3,23 +3,34 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<div class="detailsControlTable clssControlBuro"  >
+	<div onclick = "initChartReload()" class = "btn_verde initChartReload">
+		Recargar Gráfica 
+	</div>				
+				
+	<div class = "detailsControlTable clssControlBuro">
 		
-		<div style="display: none;">
-			<p:inputText id="valGraphic"  value="#{chartBackBean.burSolNum}" >
-				<p:ajax event="blur" 
-				onstart="return validaSolNum();"  
-				listener="#{chartBackBean.initChart}" 
-				oncomplete="drawChartBuro();" 
-				update="pnlGraphic titleGraphic pnlBurResumeData pnlContCredVig pnlContPersonalData pnlContAddressBuro pnlContConsulBuroUlt6M pnlContConsulBuroMas6M pnlContCredVigCom pnlContCredCerrUlt6M pnlContCredCerrMas6M pnlContAlertas01 pnlContAlertas02 pnlBuroConsultationBur pnlTableNetes pnlWidthVal pnlSaldosdeuda pnlKuboRules " />
+		<div style = "display: none;">
+			<p:inputText id = "valGraphic" value = "#{chartBackBean.burSolNum}" >
+				<p:ajax event = "blur" update = "pnlGraphic titleGraphic pnlBurResumeData pnlContCredVig pnlContPersonalData pnlContAddressBuro pnlContConsulBuroUlt6M pnlContConsulBuroMas6M pnlContCredVigCom pnlContCredCerrUlt6M pnlContCredCerrMas6M pnlContAlertas01 pnlContAlertas02 pnlBuroConsultationBur pnlTableNetes pnlWidthVal pnlSaldosdeuda pnlKuboRules "
+						listener   = "#{chartBackBean.initChart}"
+						onstart    = "return validaSolNum();"  						
+						oncomplete = "drawChartBuro();" />
 			</p:inputText>
+			
 			<h:panelGroup id = "pnlWidthVal">
-				<p:inputText id="maxWidthTableVig" value="#{chartBackBean.maxWidthTableVig}" ></p:inputText>
+				<p:inputText id = "maxWidthTableVig" value = "#{chartBackBean.maxWidthTableVig}" />
 			</h:panelGroup>
 			
+			<h:commandLink id = "initChartReload" immediate = "true" value="reload">
+				<p:ajax event = "click" update = "pnlGraphic titleGraphic"
+						listener   = "#{chartBackBean.initChartReload}"
+						onstart    = "return validaSolNum();"  						
+						oncomplete = "chartReload_oncomplete(xhr, args, status);" />
+			</h:commandLink>
 		</div>
 		
 		<div id="chart_data"></div>
+		
 		<h:panelGroup id="titleGraphic">
 			<div  id="chart_divCont" style="display: none;" >
 				<!-- <div class="clGraphicTitle">
@@ -34,14 +45,16 @@
 				
 				<ui:include src = "../templates/buro_de_credito/tooltip/grafica_MOP.xhtml"/>
 				<ui:include src = "../templates/buro_de_credito/tooltip/grafica_MOP_lineas.xhtml"/>
+				
 				<h:panelGroup rendered="#{sessionBean.area != 'M'}">
 				<script>
 					mostrar_tooltip_reporte();
 				</script>
+				
 				</h:panelGroup>
 					<!-- <h:panelGroup rendered="#{summaryRequest.displayReport}"> -->
-					<h:panelGroup rendered="false">
-						<div class="buttonPR" style="font-size: 0.85em; width: 290px;" >
+					<h:panelGroup rendered = "false">
+						<div class = "buttonPR" style = "font-size: 0.85em; width: 290px;" >
 							<!-- <a href="../resources/#{summaryRequest.report}" target="_blank"> -->
 								Ver reporte detallado de Buró
 							<!-- </a> -->
@@ -52,20 +65,23 @@
 				
 			</div>
 		</h:panelGroup>
-		<h:panelGroup id="pnlGraphic" >
+		
+		<h:panelGroup id = "pnlGraphic">
 			
-			<div id="hVal" style="display: none;" >
-				<h:outputText escape="false"   value="#{chartBackBean.chartModel}" ></h:outputText>
+			<div id = "hVal" style = "display: none;">
+				<h:outputText escape = "false" value = "#{chartBackBean.chartModel}" />				
+				<h:outputText escape = "false" value = "#{chartBackBean.identifyStr}" />
 				
-				<h:outputText escape="false"   value="#{chartBackBean.identifyStr}" ></h:outputText>
-				<input type="text" value="#{chartBackBean.maxGrid}" id ="maxGrid" />
+				<input type="text" value="#{chartBackBean.maxGrid}" id = 
+				  "maxGrid" />
 			</div>
 			
-		 	<div style=" display: none; " id="chart_warning">
+		 	<div id = "chart_warning" style = "display: none;">
 		 		Usuario sin datos de Buró de Crédito
 		 	</div>
 		 	
  		</h:panelGroup>
-		</div>
-		<p></p>				
+	</div>
+	
+	<p/>				
 </ui:composition>				

@@ -47,6 +47,7 @@ import mx.com.kubo.bean.PhoneReview;
 import mx.com.kubo.bean.ProyectBean;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.bean.ShowChangeSession;
+import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.controller.inversion.Inversion;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
@@ -82,6 +83,7 @@ import mx.com.kubo.model.Expenses;
 import mx.com.kubo.model.ExpensesPK;
 import mx.com.kubo.model.ExpensesType;
 import mx.com.kubo.model.Files;
+import mx.com.kubo.model.FraudeDetection;
 import mx.com.kubo.model.Income;
 import mx.com.kubo.model.IncomePK;
 import mx.com.kubo.model.Investor;
@@ -109,6 +111,7 @@ import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.Stackholder_relationship;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.model.Study_LevelPK;
+import mx.com.kubo.model.TimeLog;
 import mx.com.kubo.model.ViewInvestmetInProyect;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
@@ -447,6 +450,13 @@ implements SummaryRequestIMO,  Serializable
 		if( persona.getProspectus().getArea().toString().equals("L") )
 		{		
 			inicializaPromo( actualProyect );
+			
+			BehaviorCheck bc = new BehaviorCheck();
+			
+			bc.checkProcess(persona.getNatPerPK().getCompany_id(), persona.getNatPerPK().getProspectus_id(), ipAddressClient);
+			
+			fd = bc.getBehaviorprocessservice().getFraudeDetection(persona.getNatPerPK().getCompany_id(), persona.getNatPerPK().getProspectus_id());
+			
 		}	
 		
 		if( actualProyect != null ){
@@ -454,6 +464,8 @@ implements SummaryRequestIMO,  Serializable
 			validaRelationship();
 			init_related_person();
 			initDetalleTableroNormativo();
+			
+			
 			
 			Income inc = ingresosService.getIncomeByTypeIncomeID(actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id(), 7);
 			
@@ -463,7 +475,13 @@ implements SummaryRequestIMO,  Serializable
 		
 		}
 		
+		if( actualProyect != null && actualProyect.getPerson().getSafi_client_id() != null && actualProyect.getPerson().getSafi_client_id().trim().length() > 0  ){
+			ren4c = true;
+		}
+		
 		//long l = mD02.getTimeInMillis() - mD01.getTimeInMillis();
+		
+		saveTimelog( "carga mapeoDatos" ,mD01.getTime() , mD02.getTime()  );
 
 		//System.out.println("SummaryRequest.mapeoDatos(): Tardó  "+l+" milisegundos en cargar mapeoDatos()");
 	}
@@ -3025,7 +3043,7 @@ membershipTemp = new Membership();
 		
 		 inversion.ejecutaInvestment();
 		 inversion.ejecutaThreadDespuesDeFondeo();
-		 inversion.ejecutaSPRecargaListaClienteCredito( investmentList.getNaturalPerson().getSafi_client_id() );
+		 //inversion.ejecutaSPRecargaListaClienteCredito( investmentList.getNaturalPerson().getSafi_client_id() );
 		 //
 		//investmentList.invierteList( listForInv );
 		
@@ -3488,6 +3506,8 @@ membershipTemp = new Membership();
 			
 			notificadorConfigRequest.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id() + "");
 			
+			notificadorConfigRequest.setMonto_deposito(actualProyect.getAmmount()+"");
+			
 			notificadorConfigRequest.setEvento_id(EVENTO_NOTIFICACION_AUTORIZACION_PERSONA_RELACIONADA);
 			
 			kuboservices.notificar(notificadorConfigRequest);
@@ -3599,6 +3619,43 @@ membershipTemp = new Membership();
 				listIncomeFiles.add(f);
 			}
 		}
+		
+	}
+	
+	public boolean saveTimelog(  String description , Date init_time , Date final_time  ){
+		
+		TimeLog timelog = new TimeLog();
+		
+		timelog.setDescription(description);
+		
+		timelog.setInit_time(init_time);
+		timelog.setFinal_time(final_time);
+		
+		if( init_time != null && final_time != null ){
+			
+			long l = final_time.getTime() - init_time.getTime();
+			
+			Long seg = l/1000;
+			
+			long m = l%1000;
+			
+			Long min =  Long.valueOf((seg.intValue()))/60;
+			
+			seg = Long.valueOf((seg.intValue()))%60;
+			
+			String str =  min.intValue()+"m " + seg +"s " + m+"ms";
+			
+		
+			timelog.setTotal_lapse(str);
+		
+		}
+		
+		timelog.setProspectus_id_viewed(prospecto.getProspectusPK().getProspectus_id());
+		timelog.setProspectus_id(sesion.getProspectus_id());
+		
+		timelog.setIp_address(ipAddressClient);
+		
+		return timelogservice.saveTimeLog(timelog);
 		
 	}
 	

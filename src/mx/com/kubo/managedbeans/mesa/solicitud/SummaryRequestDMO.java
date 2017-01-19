@@ -60,6 +60,7 @@ import mx.com.kubo.model.Expenses;
 import mx.com.kubo.model.ExpensesType;
 import mx.com.kubo.model.FileType;
 import mx.com.kubo.model.Files;
+import mx.com.kubo.model.FraudeDetection;
 import mx.com.kubo.model.Income;
 import mx.com.kubo.model.IncomeDetail;
 import mx.com.kubo.model.IncomeType;
@@ -179,6 +180,7 @@ import mx.com.kubo.services.StatusProyectCatService;
 import mx.com.kubo.services.StudyLevelService;
 import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.services.TableroNormativoService;
+import mx.com.kubo.services.TimeLogService;
 import mx.com.kubo.services.TownService;
 import mx.com.kubo.services.TutorService;
 import mx.com.kubo.services.catalogos.ServiceCatalogosIMO;
@@ -413,6 +415,9 @@ implements SummaryRequestIMO
 	@ManagedProperty("#{tableroNormativoServiceImp}")
 	protected TableroNormativoService tableronormativoservice;
 	
+	@ManagedProperty("#{timeLogServiceImp}")
+	protected TimeLogService timelogservice;
+	
 	protected RequestContext request;
 	protected FacesContext   faces;
 	protected ExternalContext external;
@@ -424,6 +429,8 @@ implements SummaryRequestIMO
 	protected SessionBean         sesion;
 	protected SearchSummaySession session_sumary;
 	protected RoleFunctionController role_function;
+	
+	protected FraudeDetection fd;
 	
 	protected Prospectus    prospecto;
 	protected NaturalPerson persona;
@@ -835,6 +842,8 @@ implements SummaryRequestIMO
 	protected final int COPIAR_DOCUMENTOS      = 30;
 	protected final int AUTORIZAR_PERSONAS_RELACIONADAS = 31;
 	protected final int VER_PESTANA_TABLERO_NORMATIVO = 32;
+	protected final int VER_NOTAS_COMPORTAMIENTO_INUSUAL = 33;
+	protected final int REN_4_C = 34;
 	
 	protected final int IFE = 1;
 	protected final int INE = 2;
@@ -912,6 +921,10 @@ implements SummaryRequestIMO
 	protected boolean efl_ERROR = false;
 	protected boolean blnComment = false ;
 	protected boolean haveContactWay = false;
+	
+	protected boolean ren4c = false;
+	
+	protected boolean ver_notas_comportamiento_inusual_ENABLED = false;
 	
 	protected boolean requireAutorizacionPersonaRelacionada = false;
 	protected boolean requireAutorizacionConsejoAdmin = false;
@@ -2732,6 +2745,16 @@ implements SummaryRequestIMO
 	public void setPersona(NaturalPerson persona) {
 		this.persona = persona;
 	}
+	
+	 
+	
+	public FraudeDetection getFd() {
+		return fd;
+	}
+
+	public void setFd(FraudeDetection fd) {
+		this.fd = fd;
+	}
 
 	public Membership getMember() {
 		return member;
@@ -3547,6 +3570,16 @@ implements SummaryRequestIMO
 		
 	}
 	
+	public void setRen4c ( boolean ren4c ){
+		this.ren4c = ren4c ;
+	}
+	
+	public boolean isRen4c() {
+		
+		return ren4c;
+		
+	}
+	
 	public FondeadorIMO getFondeador() 
 	{
 		return fondeador;
@@ -3656,6 +3689,13 @@ implements SummaryRequestIMO
 	}
 	public void setTableronormativoservice( TableroNormativoService tableronormativoservice ){
 		this.tableronormativoservice = tableronormativoservice ;
+	}
+	
+	public TimeLogService getTimelogservice(){
+		return timelogservice;
+	}
+	public void setTimelogservice( TimeLogService timelogservice ){
+		this.timelogservice = timelogservice ;
 	}
 	
 	public RelatedPersonLoanService getRelatedpersonloanservice(){
@@ -3818,6 +3858,16 @@ implements SummaryRequestIMO
 	
 	public void setHaveContactWay( boolean haveContactWay ){
 		this. haveContactWay = haveContactWay;
+	}
+	
+	
+	
+	public boolean isVer_notas_comportamiento_inusual_ENABLED(){
+		return ver_notas_comportamiento_inusual_ENABLED;
+	}
+	
+	public void setVer_notas_comportamiento_inusual_ENABLED( boolean ver_notas_comportamiento_inusual_ENABLED ){
+		this. ver_notas_comportamiento_inusual_ENABLED = ver_notas_comportamiento_inusual_ENABLED;
 	}
 	
 	public boolean isContactWayEmail(){

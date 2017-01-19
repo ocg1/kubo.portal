@@ -155,8 +155,33 @@
     	<div class = "kubo_container privado" style="background:#f1f1f1">
         	<h:form prependId = "false">
         	    
-       	    	<ui:include src = "templates/header.xhtml" />
-                                      
+        	    <h:panelGroup rendered ="#{sessionBean.area=='L'}" >
+       	    		<ui:include src = "templates/header.xhtml" />
+       	    	</h:panelGroup> 
+       	    	
+       	    	<h:panelGroup rendered ="#{sessionBean.area=='M'}" >
+       	    	
+	       	    	<div id="header" class="head_coach">
+			
+						<div class="inner_block">
+							  	<div class="datos_prospecto">
+								  	<p>Acceso con el Cliente:<strong>  #{ofertaRenovacion.nombreCliente} </strong> </p>
+								    <p>Coach:<strong> #{ofertaRenovacion.nombreCoach} </strong> </p>
+								</div>
+								<p:commandLink immediate    = "true"
+										   onstart          = "return displayMessageProcessing('msgprocessing', true);" 
+										   style			= "text-decoration: none;"
+										   value	        = "Regresar a mi cuenta"
+										   action			= "controlTable"
+										   styleClass		= "callActionMedium btnNaranja regresar_cuenta"	
+										   >
+									
+								</p:commandLink>	
+						</div>
+					</div>
+       	    	
+       	    	</h:panelGroup>
+                                    
 				<div class = "content ">
            	
            			<h:panelGroup rendered = "#{ofertaRenovacion.publicacion_ENABLED}">           			

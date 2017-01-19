@@ -231,6 +231,20 @@ implements ChartBackBeanIMO, Serializable
 			maxWidthTableVig = "868";
 		}		
 	}	
+	
+	public void initChartReload()
+	{		
+		request = RequestContext.getCurrentInstance();
+	
+		boolean delete_cache_OK = burocacheservice.delete(burSolNum);
+		
+		if(delete_cache_OK)
+		{
+			initChart();
+		}
+		
+		request.addCallbackParam("delete_cache_OK", delete_cache_OK);
+	}	
 					
 	public final void loadChart()
 	{
@@ -414,215 +428,14 @@ implements ChartBackBeanIMO, Serializable
 				
 				infocte = new Vtbur_infocte();
 				
+				init_buro_cache(cache);
 				
-				folioNum 			= cache.getMx_folio();
-				//idProvider 			= Integer.parseInt( cache.getIdProvider() );
-				
-				dFecConsult  		= cache.getFecConsult();
-				calificacion_kubo	= cache.getCalificacion_kubo();
-				kubo_score_class	= cache.getKubo_score_class();
-				nombreCompleto		= cache.getNombreCompleto();
-				infocte.setRfc(cache.getRfc());
-				
-				infocte.setIdprospecto( cache.getProspectus_id() );
-			
-				if( cache.getProspectus_id() != null ){
-					prospectus_id = Integer.parseInt( cache.getProspectus_id() );
-				}
-				
-				infocte.setNombre1    ( cache.getNombre1()   );
-				infocte.setNombre2    ( cache.getNombre2()   );
-				infocte.setApellido1  ( cache.getApellido1() ); 
-				infocte.setApellido2  ( cache.getApellido2() );
-				infocte.setBur_solnum ( cache.getMx_solicitud_buro());
-				
-				if( cache.getKubo_score_letter() != null ){
-				kubo_score_letter = Character.valueOf(cache.getKubo_score_letter().charAt(0) );
-				}
-				if( cache.getKubo_score_number() != null ){
-				kubo_score_number = Character.valueOf(cache.getKubo_score_number().charAt(0) );
-				}
-				if( cache.getConsultas_propias() != null ){
-				consultas_propias	= Integer.parseInt(cache.getConsultas_propias());
-				}
-				if( cache.getConsultas_propiasMS() != null ){
-				consultas_propiasMS	= Integer.parseInt(cache.getConsultas_propiasMS());
-				}
-				if( cache.getConsultas_propiasULT() != null ){
-				consultas_propiasULT= Integer.parseInt(cache.getConsultas_propiasULT());
-				}
-				if( cache.getConsultasOtras() != null ){
-				consultasOtras		= Integer.parseInt(cache.getConsultasOtras());
-				}
-				if( cache.getConsultasOtrasMS() != null ){
-				consultasOtrasMS	= Integer.parseInt(cache.getConsultasOtrasMS());
-				}
-				if( cache.getConsultasOtrasULT() != null ){
-					consultasOtrasULT	= Integer.parseInt(cache.getConsultasOtrasULT());
-				}
-				if( cache.getConsultasKubo() != null ){
-					consultasKubo		= Integer.parseInt(cache.getConsultasKubo());
-				}
-				if( cache.getConsultasKuboULT() != null ){
-					consultasKuboULT	= Integer.parseInt(cache.getConsultasKuboULT());
-				}
-				if( cache.getConsultasKuboMS() != null ){
-					consultasKuboMS		= Integer.parseInt(cache.getConsultasKuboMS());
-				}
-				if( cache.getTotalConsult() != null ){
-					totalConsult		= Integer.parseInt(cache.getTotalConsult());
-				}
-				
-				tableRulesStr		= cache.getTableRulesStr();
-				tableAlertas1Str	= cache.getTableAlertas1Str();
-				tableAlertas2Str	= cache.getTableAlertas2Str();
-				tableConsultUltData	= cache.getTableConsultUltData();
-				tableConsultMSData	= cache.getTableConsultMSData();
-				tableVigData		= cache.getTableVigData();
-				tableVigDataCom		= cache.getTableVigDataCom();
-				tableDomicilios		= cache.getTableDomicilios();
-				tableCredCerr		= cache.getTableCredCerr();
-				tableCredCerr_M_6	= cache.getTableCredCerr_M_6();
-				chartModel			= cache.getChartModel();
-				
-				
-				if( cache.getMaxGrid() != null ){
-					maxGrid			= Integer.parseInt(cache.getMaxGrid());
-				}
-				
-				scriptJSon			= cache.getScriptJSon();
-				scriptSaldos		= cache.getScriptSaldos();
-				
-				
-				fecConsult  = formatStr.format( dFecConsult );
-				
-				bur = new BurResume();
-				
-				//System.out.println( "Inicializando  bur = new BurResume()" );
-				
-				bur.setScore_buro(cache.getScore_buro() );
-				
-				bur.setBurFol(cache.getBurFol());
-				bur.setTipoConsulta(cache.getTipoConsulta());
-				bur.setScoreIcc(cache.getScoreIcc());
-				
-				bur.setNumsols(cache.getNumsols());
-				bur.setCta_cgarantia(cache.getCta_cgarantia());
-				bur.setQuebrantos(cache.getQuebrantos());
-				
-				if( cache.getProspectus_id() != null ){
-					bur.setIdprospecto( cache.getProspectus_id() );
-				}
-				if( cache.getFraudes() != null ){
-					bur.setFraudes(Integer.parseInt(cache.getFraudes()));
-				}
-				if( cache.getRoboidentidad() != null ){
-					bur.setRoboidentidad(Integer.parseInt(cache.getRoboidentidad()));
-				}
-				if( cache.getFraudesnoatribuible() != null ){
-					bur.setFraudesnoatribuible(Integer.parseInt(cache.getFraudesnoatribuible()));
-				}
-				if( cache.getFianzas() != null ){
-					bur.setFianzas(Integer.parseInt(cache.getFianzas()));
-				}
-				if( cache.getAplicogarantia() != null ){
-					bur.setAplicogarantia(Integer.parseInt(cache.getAplicogarantia()));
-				}
-				if( cache.getNolocalizable() != null ){
-					bur.setNolocalizable(Integer.parseInt(cache.getNolocalizable()));
-				}
-				if( cache.getCodemandado() != null ){
-					bur.setCodemandado(Integer.parseInt(cache.getCodemandado()));
-				}
-				if( cache.getCondonaciones() != null ){
-					bur.setCondonaciones(Integer.parseInt(cache.getCondonaciones()));
-				}
-				if( cache.getReestructura() != null ){
-					bur.setReestructura(Integer.parseInt(cache.getReestructura()));
-				}
-				
-				bur_fec_credantiguo = cache.getFec_credantiguo();
-				
-				spca = new Bur_spca();
-				spca.setStrCreditos(cache.getStrCreditos());
-				
-				if( cache.getLimiteagregado() != null ){
-					spca.setLimiteagregado(Double.parseDouble( cache.getLimiteagregado() ));
-				}
-				if( cache.getSaldoagregado() != null ){
-					spca.setSaldoagregado( Double.parseDouble( cache.getSaldoagregado()));
-				}
-				if( cache.getMontoagregado() != null ){
-					spca.setMontoagregado( Double.parseDouble( cache.getMontoagregado()));
-				}
-				
-			  
-				maxoto= new Bur_maxoto();
-				maxoto.setPrim_credito(  cache.getPrim_credito());
-				maxoto.setUlt_credito(   cache.getUlt_credito());
-				
-				if( cache.getMax_liquidado() != null ){
-					maxoto.setMax_liquidado( Double.parseDouble( cache.getMax_liquidado() ));
-				}
-				if( cache.getMax_noliquidado() != null ){
-					maxoto.setMax_noliquidado( Double.parseDouble(cache.getMax_noliquidado()));
-				}
-				
-				if( cache.getNumCorriente() != null ){
-					numCorriente = Integer.parseInt( cache.getNumCorriente() );
-				}
-				if( cache.getSaldoCorriente() != null ){
-					saldoCorrienteStr = cache.getSaldoCorriente();
-				}
-				if( cache.getMontoAPagarCorriente( ) != null ){
-					montoAPagarCorrienteStr = cache.getMontoAPagarCorriente( );
-				}
-				if( cache.getPagoPeriodicoCorriente() != null ){
-					pagoPeriodicoCorrienteStr = cache.getPagoPeriodicoCorriente();
-				}
-				if( cache.getSaldoVencidoCorriente() != null ){
-					saldoVencidoCorrienteStr = cache.getSaldoVencidoCorriente();
-				}
-				if( cache.getMaxCredCorriente() != null ){
-					maxCredCorrienteStr = cache.getMaxCredCorriente();
-				}
-				if( cache.getLimiteMaxCorriente() != null ){
-					limiteMaxCorrienteStr = cache.getLimiteMaxCorriente();
-				}
-				if( cache.getNumAtraso() != null ){
-					numAtraso = Integer.parseInt(cache.getNumAtraso() );
-				}
-				if( cache.getSaldoAtraso( ) != null ){
-					saldoAtrasoStr = cache.getSaldoAtraso( );
-				}
-				if( cache.getMontoAPagarAtraso() != null ){
-					montoAPagarAtrasoStr = cache.getMontoAPagarAtraso();
-				}
-				if( cache.getPagoPeriodicoAtrasado( ) != null ){
-					pagoPeriodicoAtrasadoStr = cache.getPagoPeriodicoAtrasado( );
-				}
-				if( cache.getLimiteMaxCorriente( ) != null ){
-					limiteMaxCorrienteStr = cache.getLimiteMaxCorriente( );
-				}
-				if( cache.getMaxCredAtraso( ) != null ){
-					maxCredAtrasoStr = cache.getMaxCredAtraso( );
-				}
-				if( cache.getLimiteMaxAtrasado( ) != null ){
-					limiteMaxAtrasadoStr = cache.getLimiteMaxAtrasado( );
-				}
-				if( cache.getSaldoVencidoAtrasado() != null ){
-					saldoVencidoAtrasadoStr = cache.getSaldoVencidoAtrasado();
-				}
-				
-				
-				
-				if(company_id == 0){
+				if(company_id == 0)
+				{
 					company_id = 1;
 				}
-				
-				
+	
 				asignarCorreoAcreditado();
-				
 			}
 			
 			asignar_dias_transcurridos_consulta();

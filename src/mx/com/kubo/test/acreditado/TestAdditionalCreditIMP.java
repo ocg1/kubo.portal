@@ -40,7 +40,7 @@ implements Serializable
 		
 		simulator = (Simulator) resolver.getValue(elContext, null, "simulator");		
 		simulador = new SimuladorIMP();		
-		simulador.setSesion(sesion);
+		//simulador.setSesion(sesion);
 		simulador.init();
 	}
 		

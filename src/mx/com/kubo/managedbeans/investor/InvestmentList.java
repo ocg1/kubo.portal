@@ -2602,6 +2602,8 @@ import org.primefaces.context.RequestContext;
 			String msgInv = "";
 			Double monto_sugerido = 0D;
 			
+			Double montoDisponibleEn_E5_ini = inversion.initMontoDisponibleEn_E5();
+			
 			boolean flagNotInv1 = false;
 			
 			try
@@ -2895,7 +2897,7 @@ import org.primefaces.context.RequestContext;
 				
 				if( itemKuboScore.equals("E5") && !flagNotInv1 ){
 					
-					if( (montoDisponibleEn_E5 - newVal) < 0 ){
+					if( (montoDisponibleEn_E5 - newVal) < 0 && flagMasivo ){
 						
 						msgInv = "El monto que propones, junto con tus inversiones y selecciones anteriores supera el "+porcMaxSUMSaldoProyE5+"% de tu saldo total.";
 						
@@ -2909,7 +2911,7 @@ import org.primefaces.context.RequestContext;
 						
 						flagNotInv1 = true;
 						
-					}else{
+					}else if(flagMasivo){
 						
 						if(maximoInvBySaldoPryE4E5 <= (newVal+ item.getAmmountPreviousFounded()) ){
 						
@@ -2924,6 +2926,43 @@ import org.primefaces.context.RequestContext;
 						}else{
 						montoDisponibleEn_E5 = montoDisponibleEn_E5 -  newVal ;
 						}
+					}else if( !flagMasivo ){
+						
+						//
+						
+						if( (montoDisponibleEn_E5_ini - newVal) < 0 ){
+							
+							msgInv = "El monto que propones, junto con tus inversiones y selecciones anteriores supera el "+porcMaxSUMSaldoProyE5+"% de tu saldo total.";
+							
+							if( montoDisponibleEn_E5_ini < montoMinThis ){
+								monto_sugerido = 0D;
+							}else{
+								monto_sugerido = montoDisponibleEn_E5_ini;
+								montoDisponibleEn_E5_ini = 0D;
+							}
+							
+							
+							flagNotInv1 = true;
+							
+						}else {
+							
+							if(maximoInvBySaldoPryE4E5 <= (newVal+ item.getAmmountPreviousFounded()) ){
+							
+								if( item.getAmmountPreviousFounded() > 0 ){
+									msgInv = "El proyecto ya cuenta con un fondeo previo de "+dec.format( item.getAmmountPreviousFounded() )+", que sumado con lo que quiere invertir supera el límite permitido para este proyecto que es de "+dec.format(maximoInvBySaldoPryE4E5);
+								}else{
+									msgInv = "El monto que quiere invertir supera el límite permitido para este proyecto que es de "+dec.format(maximoInvBySaldoPryE4E5);
+								}
+								montoDisponibleEn_E5_ini = 0D;
+								flagNotInv1 = true;
+								
+							}else{
+								montoDisponibleEn_E5_ini = montoDisponibleEn_E5_ini -  newVal ;
+							}
+						
+						}
+						//
+						
 					}
 					
 				}
@@ -3057,6 +3096,9 @@ import org.primefaces.context.RequestContext;
 			}
 			
 			ammountFoundedInv = 0D;
+			
+			montoDisponibleEn_E5	= inversion.initMontoDisponibleEn_E5();
+			montoInvertido_F_G 		= inversion.getMontoInvertido_F_G();
 			
 			Calendar pc1 = Calendar.getInstance();
 			pc1.setTime( new Date() );

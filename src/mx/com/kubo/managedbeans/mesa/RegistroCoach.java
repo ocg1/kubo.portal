@@ -208,8 +208,6 @@ public String backSession(){
 			
 			navigation1.setPaginaActual( "controlTable/searchRequest" ) ;
 			
-			
-			
 			HeaderBean headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
 			
 			headerbean.iniciaSesionCoach(mCoach, mProspectus, false);

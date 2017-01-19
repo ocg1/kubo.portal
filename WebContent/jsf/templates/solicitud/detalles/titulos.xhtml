@@ -12,14 +12,14 @@
 			<li>
 				<ui:include src = "titulos/estado-de-cuenta.xhtml"/>
 			</li>
-			<li>
+			<!-- <li>
 			<h:panelGroup rendered = "#{!searchSummaySession.person and summaryRequest.actualProyect != null and (summaryRequest.actualProyect.is_prospector_score == null or summaryRequest.actualProyect.is_prospector_score == 'N' ) }" >
 				<div id = "DiagnosticoButton"  class="clsDiagNosticoButt menu_opcion" onclick="botonActive(this)">
 					Diagnóstico Financiero
 					
 				</div>
 			</h:panelGroup>
-			</li>
+			</li> -->
 			<li>
 			<h:panelGroup rendered ="#{!searchSummaySession.person and summaryRequest.actualProyect != null and (summaryRequest.actualProyect.is_prospector_score == null or summaryRequest.actualProyect.is_prospector_score == 'N' ) }" >
 				<div id = "detailsBuro" class = "detailsTabHelpControlTable menu_opcion" onclick="botonActive(this)">

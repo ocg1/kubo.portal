@@ -156,6 +156,7 @@ $(document).ready(function(){
 		  
 		  if($("#inputSegmentName").val() != ""){
 			   str += "KuboScore=" + $("#inputKuboScore").val()+"&";
+			   str += "estado_consulta_prospectus=" + $("#inputSegmentName").val()+"&";
 		  }
 		  str += "alta_kubo=s&";
 		    /*

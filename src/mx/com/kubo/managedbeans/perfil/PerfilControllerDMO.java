@@ -35,6 +35,7 @@ import mx.com.kubo.services.LoginServiceIMO;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.PasswordHistoryService;
+import mx.com.kubo.services.ProspectusExtraService;
 import mx.com.kubo.services.SavingAccountService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.SecurityQuestionPoolService;
@@ -80,6 +81,9 @@ public abstract class PerfilControllerDMO
 	
 	@ManagedProperty("#{fullNameServiceImp}")
 	protected FullNameService fullnameservice;
+	
+	@ManagedProperty("#{prospectusExtraServiceImp}")
+	protected ProspectusExtraService prospectusextraservice;
 	
 	protected FacesContext   faces;
 	protected ELContext      context;
@@ -356,5 +360,13 @@ public abstract class PerfilControllerDMO
 
 	public void setFullnameservice(FullNameService fullnameservice) {
 		this.fullnameservice = fullnameservice;
+	}
+
+	public ProspectusExtraService getProspectusextraservice() {
+		return prospectusextraservice;
+	}
+
+	public void setProspectusextraservice(ProspectusExtraService prospectusextraservice) {
+		this.prospectusextraservice = prospectusextraservice;
 	}
 }

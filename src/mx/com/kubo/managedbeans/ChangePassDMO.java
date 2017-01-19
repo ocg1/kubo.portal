@@ -10,6 +10,7 @@ import mx.com.kubo.model.Membership;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.PasswordHistoryService;
+import mx.com.kubo.services.ProspectusExtraService;
 import mx.com.kubo.services.SavingAccountService;
 import mx.com.kubo.services.SystemParamService;
 
@@ -29,6 +30,9 @@ public class ChangePassDMO
 	
 	@ManagedProperty("#{systemParamServiceImp}")
 	protected SystemParamService systemparamservice;
+	
+	@ManagedProperty("#{prospectusExtraServiceImp}")
+	protected ProspectusExtraService prospectusextraservice;
 	
 	protected SessionBean sesion;
 	protected Membership member;
@@ -118,5 +122,13 @@ public class ChangePassDMO
 
 	public void setDiasVal(String diasVal) {
 		this.diasVal = diasVal;
+	}
+
+	public ProspectusExtraService getProspectusextraservice() {
+		return prospectusextraservice;
+	}
+
+	public void setProspectusextraservice(ProspectusExtraService prospectusextraservice) {
+		this.prospectusextraservice = prospectusextraservice;
 	}
 }

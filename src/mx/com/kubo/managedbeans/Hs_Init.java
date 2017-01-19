@@ -30,9 +30,11 @@ import mx.com.kubo.model.PasswordHistory;
 import mx.com.kubo.model.PasswordHistoryPK;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.ProspectusPK;
+import mx.com.kubo.model.TimeLog;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.PasswordHistoryService;
 import mx.com.kubo.services.ProspectusService;
+import mx.com.kubo.services.TimeLogService;
 import mx.com.kubo.tools.GeneradorCodigos;
 import mx.com.kubo.tools.Utilities;
 
@@ -54,6 +56,9 @@ public class Hs_Init implements Serializable {
 	@ManagedProperty("#{prospectusServiceImp}")
 	protected ProspectusService prospectusService;
 	
+	@ManagedProperty("#{timeLogServiceImp}")
+	protected TimeLogService timelogservice;
+	
 	private String nombre;
 	private String email;
 	private String pass;
@@ -62,12 +67,23 @@ public class Hs_Init implements Serializable {
 	private String url_str = ""; 
 	private int status_hs = 0;
 	
+	private String ipAddressClient;
+	
 	protected Membership member;
 	
 	@PostConstruct
 	public void init(){
 		
 		ExternalContext external = FacesContext.getCurrentInstance().getExternalContext();
+		
+		HttpServletRequest http_request = (HttpServletRequest) external.getRequest();
+		
+		ipAddressClient  = http_request.getHeader("X-FORWARDED-FOR");
+		
+		if(ipAddressClient == null)
+		{
+	    	ipAddressClient = http_request.getRemoteAddr();
+		}
 		
 		Map<String, String> request_map = external.getRequestParameterMap();
 		
@@ -193,6 +209,8 @@ public class Hs_Init implements Serializable {
 		
 		//cookieVal = "baa0d64325060715408289c8e07bf573";
 		
+		//cookieVal = "2c87c37948cd7ad94762cec4cb09fbf1";
+		
 		if( cookieVal != null ){
 		
 			String hs_email = null;
@@ -210,6 +228,8 @@ public class Hs_Init implements Serializable {
 				if( hs_email == null ){
 					try{
 						
+						saveTimelog( "coockie:"+cookieVal, " Intento ERROR: " + w + " vid: " + hs_vid , new Date() , null  );
+						
 						Thread.sleep(3000);
 						
 					}catch( InterruptedException i ){
@@ -226,7 +246,11 @@ public class Hs_Init implements Serializable {
 				
 			}
 			
+			
+			
 			if( hs_email != null ){
+			
+				saveTimelog( "coockie:"+cookieVal, " Intento EXITO " + w + " vid: " + hs_vid , new Date() , null  );
 				
 				member = null;
 				
@@ -292,6 +316,8 @@ public class Hs_Init implements Serializable {
 				}
 				
 			}else{
+				
+				saveTimelog( "coockie:"+cookieVal, " Intento ERROR " + w + " vid: " + hs_vid , new Date() , null  );
 				
 				//TODO  no encuentra el correo en la base
 				url_str = "utm_source=HSP";
@@ -524,7 +550,7 @@ public class Hs_Init implements Serializable {
 		
 		con.setRequestMethod("GET");
 		
-		String  s  = "";
+		//String  s  = "";
 		
 		//System.out.println(s);
 		
@@ -656,6 +682,57 @@ public class Hs_Init implements Serializable {
 				e.printStackTrace();
 				return null;
 			}
+			
+		}
+
+		public TimeLogService getTimelogservice() {
+			return timelogservice;
+		}
+
+		public void setTimelogservice(TimeLogService timelogservice) {
+			this.timelogservice = timelogservice;
+		}
+		
+		public boolean saveTimelog( String identify_str, String description , Date init_time , Date final_time  ){
+			
+			TimeLog timelog = new TimeLog();
+			
+			timelog.setDescription(description);
+			
+			timelog.setInit_time(init_time);
+			timelog.setFinal_time(final_time);
+			
+			if( init_time != null && final_time != null ){
+				
+				//Date d = new Date( final_time.getTime() - init_time.getTime() );
+			
+				long l = final_time.getTime() - init_time.getTime();
+				
+				Long seg = l/1000;
+				
+				long m = l%1000;
+				
+				Long min =  Long.valueOf((seg.intValue()))/60;
+				
+				seg = Long.valueOf((seg.intValue()))%60;
+				
+				String str =  min.intValue()+"m " + seg +"s " + m+"ms";
+				
+				timelog.setTotal_lapse(str);
+			
+			}
+			
+			timelog.setIdentify_str(identify_str);
+			
+			if( member != null && member.getMembershipPK() != null && member.getMembershipPK().getProspectus_id() != 0 ){
+			
+				timelog.setProspectus_id(member.getMembershipPK().getProspectus_id());
+				
+			}
+			
+			timelog.setIp_address(ipAddressClient);
+			
+			return timelogservice.saveTimeLog(timelog);
 			
 		}
 	

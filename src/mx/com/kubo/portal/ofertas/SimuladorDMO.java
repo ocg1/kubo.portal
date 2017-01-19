@@ -7,7 +7,6 @@ import javax.faces.component.html.HtmlSelectOneMenu;
 
 import org.primefaces.context.RequestContext;
 
-import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.Frequency;
 import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.portal.simulador.CreditSimulatorIMO;
@@ -24,7 +23,11 @@ implements SimuladorIMO
 	protected HtmlInputText input_text;
 	protected HtmlSelectOneMenu select_one;
 	
-	protected SessionBean sesion;	
+	protected int prospectus_id;
+	protected int company_id;
+	
+	protected Double tasaTotal;
+	protected Double comisionApertura;
 	
 	protected SimulatorBean simulation;
 		
@@ -66,12 +69,7 @@ implements SimuladorIMO
 		  purpose_id = 0;
 		frequency_id = 4;
 		     term_id = 12;
-	}
-	
-	public void setSesion(SessionBean sesion) 
-	{
-		this.sesion = sesion;
-	}
+	}	
 	
 	public void setRenovacion(RenovacionBean renovacion)
 	{		
@@ -148,5 +146,21 @@ implements SimuladorIMO
 	public Integer getFrequency_id() 
 	{
 		return frequency_id;
+	}
+
+	public void setProspectus_id(int prospectus_id) {
+		this.prospectus_id = prospectus_id;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
+	}
+
+	public void setTasaTotal(Double tasaTotal) {
+		this.tasaTotal = tasaTotal;
+	}
+
+	public void setComisionApertura(Double comisionApertura) {
+		this.comisionApertura = comisionApertura;
 	}		
 }

@@ -14,8 +14,7 @@ import safisrv.ws.CreditosServicios.SAFIServiciosServiceLocator;
 import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoRequest;
 import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoResponse;
 
-public abstract class SAFICuotaCreditoDMO 
-implements SAFICuotaCreditoIMO
+public class SAFICuotaCreditoDMO 
 {
 	protected SimulationCacheService simulationCacheService;	
 	protected ServiceCallingDao servicecallingRepository;
@@ -30,7 +29,7 @@ implements SAFICuotaCreditoIMO
 	
 	protected Simulation_Cache simulationCache;
 	
-	protected SessionBean sesion;
+	//protected SessionBean sesion;
 	
 	protected SimpleDateFormat format;	
 	protected SimpleDateFormat formatStr;
@@ -51,6 +50,9 @@ implements SAFICuotaCreditoIMO
 	
 	protected double ammount;
 	
+	protected int company_id;
+	protected int prospectus_id;
+	
 	protected int term_id;
 	protected int frequency_id;
 	protected int numCuota;	
@@ -69,18 +71,17 @@ implements SAFICuotaCreditoIMO
 		formatStr = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("ES"));
 	}
 
-	public void setSesion(SessionBean sesion) 
+	public void initTasaComision(Double rate, Double commission) 
 	{
-		this.sesion = sesion;
 		
-		if(sesion.getRate() != null && !sesion.getArea().toString().equals("M"))
+		if( rate != null )
 		{
-			tasaTotal = sesion.getRate();
+			tasaTotal = rate;
 		}
 		
-		if(sesion.getOpeningCommission() != null)
+		if( commission != null)
 		{
-			comisionApertura = sesion.getOpeningCommission();
+			comisionApertura = commission;
 		}
 	}
 
@@ -103,5 +104,13 @@ implements SAFICuotaCreditoIMO
 	public boolean isFlagSaveSimulationCache() 
 	{
 		return flagSaveSimulationCache;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
+	}
+
+	public void setProspectus_id(int prospectus_id) {
+		this.prospectus_id = prospectus_id;
 	}				
 }

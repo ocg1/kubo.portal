@@ -8,8 +8,9 @@ import org.primefaces.context.RequestContext;
 public class ParserRenovacionAutomaticaIMP extends ParserRenovacionAutomaticaAMO 
 implements ParserRenovacionAutomaticaIMO
 {
-	public void init()
-	{						
+	public void init( )
+	{	
+		
 		init_ofert_ENABLED();
 		
 		if(ofert_ENABLED)

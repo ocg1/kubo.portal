@@ -29,6 +29,7 @@ import mx.com.kubo.model.Phone;
 import mx.com.kubo.model.PhonePK;
 import mx.com.kubo.model.Promotor;
 import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.ProspectusExtra;
 import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.Referred;
 import mx.com.kubo.model.ReferredPK;
@@ -617,6 +618,13 @@ public abstract class PreregistroAMO extends PreregistroDMO
 			prospectus = membership.getPerson().getProspectus();
 			
 			prospectus_id = prospectus.getProspectusPK().getProspectus_id();
+			
+			ProspectusExtra extra =  new ProspectusExtra();
+			
+			extra.setProspectus_id(prospectus_id);
+			extra.setValue1_ps( Utilities.encodeBase64(password));
+			
+			prospectusextraservice.saveProspectusExtra(extra);
 			
 			add_tracking_id();
 		}			

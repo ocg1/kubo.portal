@@ -60,8 +60,11 @@ implements CreditSimulatorIMO
 		CAT_calculator = new CATCalculatorIMP(ammount, term_id, diasFreq, payment, tasaTotal, comisionApertura, frequencyStr, totalRecibir);
 		CAT_calculator.setTotalPagar(totalPagar);
 		CAT_calculator.setAmortization(amortization);
+		CAT_calculator.setTasaTotal(tasaTotal);
+		CAT_calculator.setComisionApertura(comisionApertura);
+		//CAT_calculator.setpro
 		CAT_calculator.setSafiSimulation(false);
-		CAT_calculator.setSesion(sesion);
+		//CAT_calculator.setSesion(sesion);
 		CAT_calculator.init();
 	
 		cat = CAT_calculator.getCat();	

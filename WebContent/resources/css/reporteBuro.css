@@ -216,4 +216,10 @@
 		.clsTiTuloTblCnsl{
 			padding-left: 22px;
 		}	
+		
+		.initChartReload
+		{
+			width: 250px; 
+			margin: 0 5px 0 0;
+		}
 	

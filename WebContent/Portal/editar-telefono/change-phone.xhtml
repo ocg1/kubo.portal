@@ -1,12 +1,27 @@
 <ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
-				xmlns:p  = "http://primefaces.org/ui">	
+				xmlns:p  = "http://primefaces.org/ui"
+				xmlns:fn="http://java.sun.com/jsp/jstl/functions">	
 							
 		<div onclick = "EditorTelefono.init_change_phone(#{p.phone.phonePk.phone_id});">
-			<p style = "color: #439539; text-align: right; cursor: pointer">#{p.phone_label}</p>
+			<h:panelGroup rendered="#{fn:startsWith(p.phone_label, '55')}">
+				<p style = "color: #439539; text-align: right; cursor: pointer">#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6) ? '044' : '' )}#{p.phone_label}</p>
+			</h:panelGroup>
+			<h:panelGroup rendered="#{!fn:startsWith(p.phone_label, '55')}">
+				<p style = "color: #439539; text-align: right; cursor: pointer">#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6) ? '045' : '' )}#{p.phone_label}</p>
+			</h:panelGroup>
+			
 		</div>
-				
+		
+			<h:panelGroup rendered="#{fn:startsWith(p.phone_label, '55')}">
+				<div class="call-sip"><a href="sip:#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6) ? '044' : '' )}#{p.phone_label}"><i class="fa fa-phone"></i></a></div>		
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{!fn:startsWith(p.phone_label, '55')}">
+				<div class="call-sip"><a href="sip:#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6) ? '045' : '' )}#{p.phone_label}"><i class="fa fa-phone"></i></a></div>		
+			</h:panelGroup>
+			
 		<div id = "modal-change-phone-#{p.phone.phonePk.phone_id}" class = "ui-inplace-content centrar_h" style = "display: none;  width: 280px;">
 			<div>
 				<h3>Editar teléfono</h3>

@@ -6,6 +6,7 @@ import mx.com.kubo.model.FullNamePK;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.Phone;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.SP_AltaProspectoCallector;
 import mx.com.kubo.model.SP_UpdateProspectoCallector;
@@ -158,10 +159,12 @@ implements ProspectusDao
 	
 	
 	@Transactional  
-	  public boolean updateProspectoHS( HS_OBJ hs_obj  ){
+	  public boolean updateProspectoHS( HS_OBJ hs_obj_in  ){
 		  try{
 		 
 			  //SystemParam res = em.createQuery(" from SystemParam where pk.system_param_id = ? ",SystemParam.class).setParameter(1, 79) .getSingleResult();
+			  
+			  HS_OBJ hs_obj = validaHSobj( hs_obj_in );
 			  
 			  SP_UpdateProspectoCallector s = em.createNamedQuery("collectorUpdateProspecto",SP_UpdateProspectoCallector.class)
 					  
@@ -186,6 +189,62 @@ implements ProspectusDao
 			  return false;
 		  }
 	  }
+	
+	private HS_OBJ validaHSobj( HS_OBJ hs_obj ){
+		
+		NaturalPerson per 	= em.createQuery( "from NaturalPerson	where natPerPK.prospectus_id = ? ", NaturalPerson.class).setParameter(1, hs_obj.getProspectus_id()).getSingleResult();
+		Phone phone 		= em.createQuery( "from Phone 			where phonePk.prospectus_id = ? and phone_type_id = 6 " , Phone.class).setParameter(1, hs_obj.getProspectus_id()).getSingleResult();
+		Membership mem 		= em.createQuery( "from Membership 		where membershipPK.prospectus_id = ? ", Membership.class).setParameter(1, hs_obj.getProspectus_id()).getSingleResult();
+		
+		
+			
+			if( per != null ){
+			
+				if( (hs_obj.getFirstname_value() == null || hs_obj.getFirstname_value().trim().length() == 0 ) ){
+					hs_obj.setFirstname_value( per.getFirst_name() );
+				}
+				
+				if( hs_obj.getSecond_name() == null || hs_obj.getSecond_name().trim().length() == 0){
+					hs_obj.setSecond_name( per.getMiddle_name() );
+				}
+				
+				if( hs_obj.getLast_name() == null || hs_obj.getLast_name().trim().length() == 0){
+					hs_obj.setLast_name(per.getFather_last_name() );
+				}
+				
+				if( hs_obj.getLast_name2() == null || hs_obj.getLast_name2().trim().length() == 0){
+					hs_obj.setLast_name2( per.getMother_last_name() );
+				}
+			
+			}
+			
+			if( phone != null ){
+				
+				if( hs_obj.getMobil_value() == null || hs_obj.getMobil_value().trim().length() == 0){
+					hs_obj.setMobil_value( phone.getPhone_number() );
+				}
+			}
+			
+			if( mem != null ){
+				
+				if( hs_obj.getEmail_value() == null ||  hs_obj.getEmail_value().trim().length() == 0){
+					hs_obj.setEmail_value( mem.getEmail() );
+				}
+				if( hs_obj.getRegistration_reason_id() == null){
+					hs_obj.setRegistration_reason_id( mem.getRegistration_reason_id() );
+				}
+				if(hs_obj.getUrl_value() == null || hs_obj.getUrl_value().trim().length() == 0){
+					hs_obj.setUrl_value( mem.getUrl_origin() );
+				}
+				
+			}
+			
+			return hs_obj;
+			
+			//return obj;
+			
+		
+	}
 	
 	  @Transactional  
 	  public boolean altaProspectoHS( HS_OBJ hs_obj  ){

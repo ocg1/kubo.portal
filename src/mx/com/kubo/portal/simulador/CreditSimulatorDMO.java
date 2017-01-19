@@ -8,7 +8,6 @@ import javax.el.ELContext;
 import javax.el.ELResolver;
 import javax.faces.context.FacesContext;
 
-import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.TablaAmortizacion;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Frequency;
@@ -40,7 +39,7 @@ implements CreditSimulatorIMO
 	protected PrevencionLDService prevencionldservice;
 	protected Change_controlService changeControlService;
 	
-	protected SessionBean sesion;	
+	//protected SessionBean sesion;	
 	
 	protected ProyectLoan proyectLoan;	
 	protected Frequency frequency;	
@@ -79,6 +78,8 @@ implements CreditSimulatorIMO
 	protected Double opening_commission_amount;
 	protected Double total_to_receive;
 	
+	protected Double rate;
+	
 	protected double ammount = 50000;
 	
 	protected int numCuota = 0;
@@ -97,6 +98,10 @@ implements CreditSimulatorIMO
 	protected boolean flagSaveSimulationCache = false;
 	protected boolean isConnected;
 	protected boolean isSafi;
+	
+	protected int prospectus_id;
+	protected int company_id;
+	
 	
 	abstract String formatDec(String valor);
 	
@@ -137,7 +142,7 @@ implements CreditSimulatorIMO
 		generaNumCuotas();
 	}
 	
-	public void setSesion(SessionBean sesion) 
+	/*public void setSesion(SessionBean sesion) 
 	{
 		this.sesion = sesion;
 		
@@ -159,7 +164,7 @@ implements CreditSimulatorIMO
 		{
 			comisionApertura = sesion.getOpeningCommission();
 		}
-	}
+	}*/
 	
 	public String getTotalPagarStr() 
 	{
@@ -181,6 +186,30 @@ implements CreditSimulatorIMO
 	public String getTotalRecibir()
 	{
 		return totalRecibir;
+	}
+
+	public Double getRate() {
+		return rate;
+	}
+
+	public void setRate(Double rate) {
+		this.rate = rate;
+	}
+
+	public void setProspectus_id(int prospectus_id) {
+		this.prospectus_id = prospectus_id;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
+	}
+
+	public void setTasaTotal(Double tasaTotal) {
+		this.tasaTotal = tasaTotal;
+	}
+
+	public void setComisionApertura(Double comisionApertura) {
+		this.comisionApertura = comisionApertura;
 	}
 	
 /*	

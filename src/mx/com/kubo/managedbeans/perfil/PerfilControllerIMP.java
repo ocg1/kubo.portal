@@ -18,6 +18,7 @@ import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.PasswordHistory;
 import mx.com.kubo.model.PasswordHistoryPK;
+import mx.com.kubo.model.ProspectusExtra;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
@@ -383,6 +384,13 @@ implements PerfilControllerIMO, Serializable
 						membership.setPassword(encriptNewPass);						
 						membershipService.update(membership);
 						msg="Contraseña modificada satisfactoriamente.";
+						
+						ProspectusExtra extra =  new ProspectusExtra();
+						
+						extra.setProspectus_id(membership.getMembershipPK().getProspectus_id());
+						extra.setValue1_ps( Utilities.encodeBase64(getNewPass()));
+						
+						prospectusextraservice.saveProspectusExtra(extra);
 						
 						PasswordHistoryPK pwdhpk = new PasswordHistoryPK();
 						pwdhpk.setCompany_id(sesion.getCompany_id());

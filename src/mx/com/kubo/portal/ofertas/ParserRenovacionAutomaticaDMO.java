@@ -16,14 +16,17 @@ import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.portal.simulador.CreditSimulatorIMO;
 
-public abstract class ParserRenovacionAutomaticaDMO 
-implements ParserRenovacionAutomaticaIMO
+public class ParserRenovacionAutomaticaDMO 
+
 {		
 	protected RequestContext request;
 	
 	protected HtmlInputText input_text;
 	
-	protected SessionBean sesion;	
+	//protected SessionBean sesion;	
+	
+	protected int  prospectus_id;
+	protected int  company_id;
 	
 	protected CreditSimulatorIMO credit_simulator;
 	
@@ -122,10 +125,10 @@ implements ParserRenovacionAutomaticaIMO
 		r_data = score.getR_data();
 	}
 		
-	public void setSesion(SessionBean sesion)
-	{
-		this.sesion = sesion;
-	}		
+//	public void setSesion(SessionBean sesion)
+//	{
+//		this.sesion = sesion;
+//	}		
 	
 	public String getLoan_type_id() 
 	{
@@ -159,5 +162,13 @@ implements ParserRenovacionAutomaticaIMO
 	public List<RenovacionBean> getRenovaciones()
 	{
 		return renovaciones;
+	}
+
+	public void setProspectus_id(int prospectus_id) {
+		this.prospectus_id = prospectus_id;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
 	}
 }

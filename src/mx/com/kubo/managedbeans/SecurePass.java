@@ -11,10 +11,7 @@ import javax.el.ELResolver;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
@@ -29,6 +26,7 @@ import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.PasswordHistory;
 import mx.com.kubo.model.PasswordHistoryPK;
+import mx.com.kubo.model.ProspectusExtra;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.Screen;
@@ -41,6 +39,7 @@ import mx.com.kubo.services.ClientsService;
 import mx.com.kubo.services.InvestorService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.PasswordHistoryService;
+import mx.com.kubo.services.ProspectusExtraService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.SavingAccountService;
 import mx.com.kubo.services.ScreenService;
@@ -87,6 +86,9 @@ public class SecurePass implements Serializable {
 	
 	@ManagedProperty("#{clientsServiceImp}")
 	protected ClientsService clientsservice;
+	
+	@ManagedProperty("#{prospectusExtraServiceImp}")
+	protected ProspectusExtraService prospectusextraservice;
 	
 	protected String [] lista_receptores;
 	
@@ -168,6 +170,13 @@ public class SecurePass implements Serializable {
 			member.setIs_client_pass("S");
 			
 			membershipService.update(member);
+			
+			ProspectusExtra extra =  new ProspectusExtra();
+			
+			extra.setProspectus_id(member.getMembershipPK().getProspectus_id());
+			extra.setValue1_ps( Utilities.encodeBase64(password));
+			
+			prospectusextraservice.saveProspectusExtra(extra);
 			
 			PasswordHistoryPK passHPK = new PasswordHistoryPK();
 			
@@ -517,7 +526,6 @@ public class SecurePass implements Serializable {
 	protected void inicializaSimulador(Integer company_id,Integer prospectus_id, boolean  isSafi)
 	{
 		FacesContext faces     = FacesContext.getCurrentInstance();
-		ExternalContext external  = faces.getExternalContext();
 		ELContext elContext = faces.getELContext();
 		ELResolver resolver  = faces.getApplication().getELResolver();
 				
@@ -754,6 +762,14 @@ public class SecurePass implements Serializable {
 
 	public void setMsgPass(String msgPass) {
 		this.msgPass = msgPass;
+	}
+
+	public ProspectusExtraService getProspectusextraservice() {
+		return prospectusextraservice;
+	}
+
+	public void setProspectusextraservice(ProspectusExtraService prospectusextraservice) {
+		this.prospectusextraservice = prospectusextraservice;
 	}
 	
 }

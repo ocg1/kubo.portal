@@ -4145,3 +4145,38 @@ div.bloque.respuesta-si {
 .tabla-style2 td + td {
 	font-weight:300 !important;
 }
+
+.call-sip {
+	display:block;
+	margin: 7px 0 0;
+	width: 34px;
+	float: right;
+}
+.call-sip a {
+		display:block;
+	color: #8FC450 !important;
+	overflow:hidden;
+}
+.call-sip i  {
+	float:right;
+	color: #8FC450 !important;
+	font-size: 23px !important;
+	border: solid 1px #8FC450;
+	padding: 4px 6px;
+	border-radius: 4px;
+}
+
+.respuesta-negativa.orange {
+	background: rgba(255, 146, 34, 0.7);
+	margin: 0 0 0px;
+}
+
+.respuesta-negativa.orange p {
+	color: #666 !important;
+	/* font-weight: bold; */
+}
+
+
+.tabla-style2.orange  th {
+	background: #FFB263;
+}

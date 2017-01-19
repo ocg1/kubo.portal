@@ -65,4 +65,33 @@ implements AccessIMO
 		service_access .add(access, false);
 	}
 	
+	public final void save_access_coach(SessionBean sesion, int screen_id, int prospectus_id) 
+	{
+		Access access = new Access();
+		
+		access.setCompany_id(sesion.getCompany_id());
+		access.setProspectus_id(prospectus_id);
+		
+		access.setScreen_id( screen_id );
+		
+		access.setPercentage(0);
+		
+		access.setWeb_browser(sesion.getNamebrawser());
+		access.setWeb_browser_version(sesion.getVersionbrawser());
+		access.setOp_system(sesion.getOsbrawser());
+		access.setHorizontal_size(sesion.getBrowser_width());
+		access.setVertical_size(sesion.getBrowser_height());
+		access.setUser_agent(sesion.getUser_agent());
+		access.setDevice_info(sesion.getDevice_info());
+		access.setIpaddress(sesion.getIP_address_client());
+		access.setUrl_access		  (sesion.getUrl_access());
+		
+		
+		access.setProspectus_id_coach (sesion.getProspectus_id());
+		access.setAccess_from		  (sesion.getAccess_from());
+		access.setVersion_description (sesion.getVersion_description());
+		
+		service_access .add(access, false);
+	}
+	
 }

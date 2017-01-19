@@ -18,6 +18,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpServletRequest;
 
 import mx.com.kubo.bean.DealBean;
+import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.managedbeans.SessionBean;
@@ -139,6 +140,8 @@ implements Serializable, DealIMO
 
 		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
 		
+		HttpServletRequest httpServletRequest = (HttpServletRequest) faces.getExternalContext().getRequest(); 
+		
 		prospectus_id = sesion.getProspectus_id();
 		company_id    = sesion.getCompany_id();
 		
@@ -210,6 +213,20 @@ implements Serializable, DealIMO
 								StringBuilder properties = new StringBuilder( "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"publicado\"}" );
 								
 								hs.updateProspectus(natural_person.getProspectus().getHs_vid(), properties);
+								
+								
+									
+									BehaviorCheck bc = new BehaviorCheck();
+									
+									String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+								    
+									if(ipAddressClient == null)  
+									{
+								    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
+									}
+									
+									bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
+									
 								
 							 }
 						}

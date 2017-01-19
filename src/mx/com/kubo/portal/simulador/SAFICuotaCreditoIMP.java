@@ -16,7 +16,7 @@ implements SAFICuotaCreditoIMO
 		this.tasaPeriodo  = tasaPeriodo;
 	}
 	
-	public void init()
+	public void init( )
 	{			
 		thisFechaInicio = format.format(new Date());
 		fechaInicio     = formatStr.format(new Date());
@@ -28,8 +28,8 @@ implements SAFICuotaCreditoIMO
 				
 		if(simulationCache == null)
 		{					
-			init_request();						
-			init_response();
+			init_request(   );						
+			init_response(  );
 			
 		} else {
 			

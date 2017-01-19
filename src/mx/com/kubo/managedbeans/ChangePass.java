@@ -16,6 +16,7 @@ import mx.com.kubo.model.Access;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.PasswordHistory;
 import mx.com.kubo.model.PasswordHistoryPK;
+import mx.com.kubo.model.ProspectusExtra;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
@@ -95,6 +96,13 @@ implements Serializable
 			{			
 				member.setPassword(pass);
 				membershipService.update(member);
+				
+				ProspectusExtra extra =  new ProspectusExtra();
+				
+				extra.setProspectus_id(member.getMembershipPK().getProspectus_id());
+				extra.setValue1_ps( Utilities.encodeBase64(getNewPass()));
+				
+				prospectusextraservice.saveProspectusExtra(extra);
 				
 				PasswordHistoryPK passHPK = new PasswordHistoryPK();
 				

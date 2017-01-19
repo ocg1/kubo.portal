@@ -13,6 +13,9 @@
 				<strong class="bigBlack">Mi cuenta:       </strong> <strong class="orange">#</strong> 
 			</div>
 			
+		
+     
+		
 			<div  class="select_cuenta">
 				<div class="selectNuevo">
 					<h:selectOneMenu styleClass="elementStlSelAddress"  value="#{myInvestments.selectedAccount}" effect="fold">
@@ -20,42 +23,45 @@
 						<p:ajax event="change" onstart="return displayMessageProcessing('msgprocessing',false);" oncomplete="closeMessageProcessing();" listener="#{myInvestments.updateAccount}" update="pnlEdoCuentInv" />
 					</h:selectOneMenu>
 				</div>
-			</div>			
-		</div>		
-	</div>			
-	
-			<!-- detailBoxes -->
-	<div class="detailBoxesInv">
-		<div class="cornerFill"></div>
-		<div class="detailBoxInv">
-			<p class="detailTitleInv">Disponible:</p>
-			<p class="detailValueInv">#{myInvestments.balances_cash}</p>
-			<p class="detailBottomValueInv">Mis depósitos del mes
-				<br />
-					<span class="detailBottomValueInvVal">#{myInvestments.depositos}</span>
-			</p>
+			</div>
+			
 		</div>
 		
-		<div class="cornerFill"></div>
-		<div class="detailBoxInv">
-			<p class="detailTitleInv">Mis intereses cobrados</p>
-			<p class="detailValueInv">#{myInvestments.interest_charged}</p>
-			<!-- <p class="detailBottomValueInv" style="display:none !important;" >Pagos totales recibidos: <br />
-					<span class="detailBottomValueInvVal">#{myInvestments.total_payments}</span>
-			</p> -->
-		</div>
-		<div class="cornerFill"></div>
-		<div class="detailBoxInv  box-right">
-			<p class="detailTitleInv">Mi saldo total</p>
-			<p class="detailValueInv">#{myInvestments.total_balance}</p>								
-		</div>
-		<!-- 
-		<div class="cornerFill"></div>
-		<div class="detailBoxInv" id="detailBoxLastInv">
-			<p class="detailTitleInv">Mi rendimiento anual</p>
-			<p class="detailValueInv">#{myInvestments.gat}%</p>								
-			<!- - <p class="detailBottomValueInv"><a title="Alertas" href="#" >¿Cómo se calcula?</a></p> - ->
-		</div>	 -->						
-		<div class="clear"></div>
-	</div>	
+	</div>
+
+				
+				<!-- detailBoxes -->
+			<div class="detailBoxesInv">
+				<div class="cornerFill"></div>
+				<div class="detailBoxInv">
+					<p class="detailTitleInv">Disponible:</p>
+					<p class="detailValueInv">#{myInvestments.balances_cash}</p>
+					<p class="detailBottomValueInv">Mis depósitos del mes
+						<br />
+							<span class="detailBottomValueInvVal">#{myInvestments.depositos}</span>
+					</p>
+				</div>
+				
+				<div class="cornerFill"></div>
+				<div class="detailBoxInv">
+					<p class="detailTitleInv">Mis intereses cobrados</p>
+					<p class="detailValueInv">#{myInvestments.interest_charged}</p>
+					<!-- <p class="detailBottomValueInv" style="display:none !important;" >Pagos totales recibidos: <br />
+							<span class="detailBottomValueInvVal">#{myInvestments.total_payments}</span>
+					</p> -->
+				</div>
+				<div class="cornerFill"></div>
+				<div class="detailBoxInv  box-right">
+					<p class="detailTitleInv">Mi saldo total</p>
+					<p class="detailValueInv">#{myInvestments.total_balance}</p>								
+				</div>
+				<!-- 
+				<div class="cornerFill"></div>
+				<div class="detailBoxInv" id="detailBoxLastInv">
+					<p class="detailTitleInv">Mi rendimiento anual</p>
+					<p class="detailValueInv">#{myInvestments.gat}%</p>								
+					<!- - <p class="detailBottomValueInv"><a title="Alertas" href="#" >¿Cómo se calcula?</a></p> - ->
+				</div>	 -->						
+				<div class="clear"></div>
+			</div>
 </ui:composition>				

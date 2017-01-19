@@ -11,6 +11,7 @@ import javax.el.ELContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.model.Access;
@@ -168,12 +169,25 @@ public class IniciaSessionAMO extends IniciaSessionDMO
 	protected void init_acreditado() 
 	{
 		
+		BehaviorCheck bc = new BehaviorCheck();
+		
+		ipAddressClient  = http_request.getHeader("X-FORWARDED-FOR");  
+	    
+		if(ipAddressClient == null)  
+		{
+	    	ipAddressClient = http_request.getRemoteAddr();  	 
+		}
+		
+		bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
+		
 		system_param_PK = new SystemParamPK();
 		
 		system_param_PK.setCompany_id(sesion.getCompany_id());
 		system_param_PK.setSystem_param_id(ESTADO_CUENTA_ENABLED);
 		
 		system_param = systemparamservice.loadSelectedSystemParam(system_param_PK);
+		
+		
 			
 		if(width==null)
 		{

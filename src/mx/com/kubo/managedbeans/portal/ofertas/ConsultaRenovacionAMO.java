@@ -44,14 +44,15 @@ public abstract class ConsultaRenovacionAMO extends ConsultaRenovacionDMO
 		    	if(is_risk_processed)
 		    	{
 			    	parser = new ParserRenovacionAutomaticaIMP();		
-			    	parser.setSesion(sesion);
+			    	parser.setProspectus_id(prospectus_id);
+			    	parser.setCompany_id(company_id);
 			    	parser.setScore(score);			
 			    			    	
 			    	ofert_ENABLED = parser.is_ofert_ENABLED();
 	    		
 			    	redirect_to_registro_ENABLED = !ofert_ENABLED;		
 			    	
-			    	if( redirect_to_registro_ENABLED ){
+			    	if( redirect_to_registro_ENABLED && sesion.getArea() != null && sesion.getArea().toString().equals("L") ){
 			    		navigation = (NavigationBeanIMP) resolver.getValue(elContext, null, "navigationBean");
 						navigation.setFlagBCScore(true);
 			    	}
@@ -62,9 +63,12 @@ public abstract class ConsultaRenovacionAMO extends ConsultaRenovacionDMO
 		    	}
 		    	
 			} else {
-				
-				navigation = (NavigationBeanIMP) resolver.getValue(elContext, null, "navigationBean");
-				navigation.setFlagBCScore(false);
+				if( sesion.getArea() != null && sesion.getArea().toString().equals("L") ){
+					
+					navigation = (NavigationBeanIMP) resolver.getValue(elContext, null, "navigationBean");
+					navigation.setFlagBCScore(false);
+					
+				}
 			}
 		    
 		    redirect_to_ofert_ENABLED = consulta_vigente_OK && ofert_ENABLED;

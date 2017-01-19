@@ -921,22 +921,29 @@ var buttonClick;
 					
 						if($("#frm_info_basic_loan").is(":visible")) {
 							$("#hdNext\\:siguienteDocPLD").click();
+							 dataLayer.push({'event': 'Sobre ti'});
+							 console.log('Sobre ti');
 						}
 						if($(".IncomeExpense").is(":visible")) {
 					
 							$("#hdNext\\:siguientePrep").click();
+							 dataLayer.push({'event': 'Ingresos y gastos'});
+							 console.log('Ingresos y gastos');
 						}
 						if($("#frmMoreInfo").is(":visible")) {
 							hideIFEjs();
 							$("#hdNext\\:siguienteCierre").click();
 							$.scrollTo('#header', 800, { axis:'y' });
+							 dataLayer.push({'event': 'Referencias'});
+							 console.log('Referencias');
 						}
 						
 						if($("#buttons > #menu6").hasClass("menuItemSel") && $("#area").val() == "L"){
 							//$("#hdNext\\:siguienteCierre").click();
 							$("#hdNext\\:siguienteMasInfo").click();
 							console.log("entro a esta que no tiene que ver");
-		
+							 dataLayer.push({'event': 'Enviar Documentos'});
+							 console.log('Enviar Documentos');
 						}
 						if(element == "datosPersonales" ) {
 							$("#hdNext\\:nextInvestor").click();

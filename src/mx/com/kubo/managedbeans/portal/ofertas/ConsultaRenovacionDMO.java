@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 
+import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.mesa.buro.ProspectRiskIMO;
@@ -53,6 +54,7 @@ public abstract class ConsultaRenovacionDMO
 	protected HtmlInputSecret input_secret;
 	
 	protected SessionBean sesion;
+	protected SearchSummaySession sesion_search_request;
 	
 	protected NavigationBeanIMP navigation;
 	
@@ -73,6 +75,10 @@ public abstract class ConsultaRenovacionDMO
 	protected         ProyectLoanCreatorIMO creator;	
 	
 	protected String bur_sol_num;
+	
+	protected String nombreCliente;
+	protected String nombreCoach;
+	
 	protected final String access_from = "/Kubo/jsf/renovaciones_consulta.xhtml";
 	
 	protected Integer prospectus_id;
@@ -144,5 +150,21 @@ public abstract class ConsultaRenovacionDMO
 
 	public void setService_proyect_loan(ProyectLoanService service_proyect_loan) {
 		this.service_proyect_loan = service_proyect_loan;
+	}
+
+	public String getNombreCliente() {
+		return nombreCliente;
+	}
+
+	public void setNombreCliente(String nombreCliente) {
+		this.nombreCliente = nombreCliente;
+	}
+
+	public String getNombreCoach() {
+		return nombreCoach;
+	}
+
+	public void setNombreCoach(String nombreCoach) {
+		this.nombreCoach = nombreCoach;
 	}
 }

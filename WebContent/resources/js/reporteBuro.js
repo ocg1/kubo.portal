@@ -1,3 +1,5 @@
+console.log("reporteBuro.js");
+
 function customHTMLContConsult(arr) {
 		  var str = '<div style="padding:5px 5px 5px 5px;">' +
 				      '<table id="consult_id">' +
@@ -166,6 +168,12 @@ function mostrar_tooltip_reporte()
 	$("div.tooltip_icon").show();
 }	
 
+function initChartReload()
+{
+	console.log("initChartReload(): INIT");
+	
+	$("#initChartReload").trigger("click");	
+}
 
 
 

@@ -31,7 +31,7 @@
 					   	listener   = "#{consultaRenovacion.auditor.init_access_CONFIG}"/>
 			</h:inputText>	
 			
-			<h:commandLink styleClass = "redirect-to-registro-ENABLED" action = "registrar" />	
+			<h:commandLink styleClass = "redirect-to-registro-ENABLED" action = "registrar" rendered ="#{sesionBean.area=='L'}" />	
 			
 			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_wait_ENABLED}">
 				<h:commandLink styleClass = "redirect-to-wait"  />
@@ -41,9 +41,14 @@
 				<h:commandLink styleClass = "redirect-to-oferta-from-init" action = "ofertaslnk" />
 			</h:panelGroup>
 			
-			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_registro_ENABLED}">			
+			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_registro_ENABLED and sessionBean.area == 'L'}">			
 				<h:commandLink styleClass = "redirect-to-registro-from-init" action = "registrar" />	
 			</h:panelGroup>
+			
+			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_registro_ENABLED and sessionBean.area == 'M'}">			
+				<h:commandLink styleClass = "redirect-to-registro-controlTable"  />	
+			</h:panelGroup>
+			
 		</div>
 
 </ui:composition>	

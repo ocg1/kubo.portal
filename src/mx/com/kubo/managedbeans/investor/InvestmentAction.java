@@ -263,7 +263,7 @@ public class InvestmentAction implements Serializable {
 				
 				inversion.ejecutaThreadDespuesDeFondeo();
 				 //
-				inversion.ejecutaSPRecargaListaClienteCredito(getSafiClientId());
+				//inversion.ejecutaSPRecargaListaClienteCredito(getSafiClientId());
 				System.out.println("Finalizó Ejecucion de peticion!!");
 				
 				NavigationInvest nav = (NavigationInvest) FacesContext.getCurrentInstance()

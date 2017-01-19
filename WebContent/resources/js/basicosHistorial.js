@@ -220,7 +220,8 @@ function abrirSiguiente() {
 				   mandodatos_hs();
 				   $("#hdNext\\:cmdValidaRelationship").trigger("click");
 				   
-				   
+				   dataLayer.push({'event': 'Datos Personales 1'});
+				   console.log('Datos Personales 1');
 				   
 			   }else {
 				   sendInteractoa ();
@@ -231,6 +232,9 @@ function abrirSiguiente() {
 							asignar_nota_del_coach();
 							validar_historial_crediticio ();
 							console.log("historialListo"+historialListo);
+							dataLayer.push({'event': 'Datos Personales 2'});
+							 console.log('Datos Personales 2');dataLayer.push({'event': 'Datos Personales 2'});
+							 console.log('Datos Personales 2');
 						}else {
 							closeWindowPrep();
 							console.log("historialListo"+historialListo);
@@ -257,6 +261,12 @@ function abrirSiguiente() {
 		parent.$("#hdNext\\:siguienteIncomeExpense").click();
 		parent.$.scrollTo('#header', 800, { axis:'y' })
 		console.log("quiere llegar a income");
+		
+	
+		 if($("#btn_bcScore").length){
+			 dataLayer.push({'event': 'Antes preaprobación'});
+			 console.log('Antes preaprobación');
+		 }
 	}
 	function closeWindow(){
 		parent.$("#valFlagPrep").val("NOACEPTADO");

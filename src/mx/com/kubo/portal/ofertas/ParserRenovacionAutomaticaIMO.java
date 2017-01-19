@@ -1,6 +1,5 @@
 package mx.com.kubo.portal.ofertas;
 
-import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SimulatorBean;
 
@@ -8,9 +7,11 @@ public interface ParserRenovacionAutomaticaIMO
 {
 	void setScore(Scoring score);
 	
-	void setSesion(SessionBean sesion);		
+	void setProspectus_id(int prospectus_id);
+
+	void setCompany_id(int company_id);
 	
-	void init();	
+	void init( );	
 	
 	boolean is_ofert_ENABLED();
 	

@@ -14,7 +14,6 @@ import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.model.Access;
-import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.Offer;
 import mx.com.kubo.model.OfferValues;
@@ -61,7 +60,7 @@ public class CheckScoreProcessed extends CheckScoreProcessedDMO  implements Seri
 			mpk.setCompany_id( company_id );
 			mpk.setProspectus_id( prospectus_id );
 			
-			Membership member = membershipService.getMembershipById(mpk);
+			member = membershipService.getMembershipById(mpk);
 			
 			if( member!= null && member.getRegistration_reason() != null && member.getRegistration_reason().getPartner() != null && member.getRegistration_reason().getPartner().getPartnerPK() != null  ){
 				
@@ -456,12 +455,12 @@ public class CheckScoreProcessed extends CheckScoreProcessedDMO  implements Seri
 		
 		switch( offerType ){
 		
-		case 5: // KUBO TE PREMIA Monto
-			
-			pagePromo 	=  "nuevosProductos/2_KuboTePremia.xhtml";
-			pageBtn 	=  "tmp1.xhtml";
-			
-			break;
+			case 5: // KUBO TE PREMIA Monto
+				
+				pagePromo 	=  "nuevosProductos/2_KuboTePremia.xhtml";
+				pageBtn 	=  "tmp1.xhtml";
+				
+				break;
 		
 			case 9: // KUBO TE PREMIA Monto
 				
@@ -485,6 +484,69 @@ public class CheckScoreProcessed extends CheckScoreProcessedDMO  implements Seri
 				break;
 				
 			case 12: // Con Kubo paga menos - Con comision
+				
+				pagePromo 	=  "nuevosProductos/2_detalleComision.xhtml";
+				pageBtn 	=  "nuevosProductos/1_Comision.xhtml";
+				
+				break;
+				
+			case 13: // KUBO TE PREMIA Monto
+				
+				pagePromo 	=  "nuevosProductos/2_KuboTePremia.xhtml";
+				pageBtn 	=  "tmp1.xhtml";
+				
+				break;
+		
+			case 14: // KUBO TE PREMIA Monto
+				
+				pagePromo 	=  "nuevosProductos/2_premiaMontoDetalle.xhtml";
+				pageBtn 	=  "nuevosProductos/1_PremioSaldoMonto.xhtml";
+				
+				break;
+				
+			case 15: // KUBO TE PREMIA Saldo
+				
+				pagePromo 	=  "nuevosProductos/2_premiaSaldoDetalle.xhtml";
+				pageBtn 	=  "nuevosProductos/1_PremioSaldoMonto.xhtml";
+				
+				break;
+				
+			case 16: // Con Kubo paga menos - Sin comision
+				
+				pagePromo 	=  "nuevosProductos/2_detalleComision.xhtml";
+				pageBtn 	=  "nuevosProductos/1_Comision.xhtml"; //botones
+				
+				break;
+				
+			case 17: // Con Kubo paga menos - Con comision
+				
+				pagePromo 	=  "nuevosProductos/2_detalleComision.xhtml";
+				pageBtn 	=  "nuevosProductos/1_Comision.xhtml";
+				
+				break;
+				
+			case 18: // KUBO TE PREMIA Monto
+				
+				pagePromo 	=  "nuevosProductos/2_premiaMontoDetalle.xhtml";
+				pageBtn 	=  "nuevosProductos/1_PremioSaldoMonto.xhtml";
+				
+				break;
+				
+			case 19: // KUBO TE PREMIA Saldo
+				
+				pagePromo 	=  "nuevosProductos/2_premiaSaldoDetalle.xhtml";
+				pageBtn 	=  "nuevosProductos/1_PremioSaldoMonto.xhtml";
+				
+				break;
+				
+			case 20: // Con Kubo paga menos - Sin comision
+				
+				pagePromo 	=  "nuevosProductos/2_detalleComision.xhtml";
+				pageBtn 	=  "nuevosProductos/1_Comision.xhtml"; //botones
+				
+				break;
+				
+			case 21: // Con Kubo paga menos - Con comision
 				
 				pagePromo 	=  "nuevosProductos/2_detalleComision.xhtml";
 				pageBtn 	=  "nuevosProductos/1_Comision.xhtml";

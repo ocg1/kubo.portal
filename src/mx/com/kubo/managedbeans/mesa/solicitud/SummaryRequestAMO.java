@@ -152,6 +152,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		efl_OK 				= false;
 		efl_ERROR			= false;
 		autorizar_personas_relacionadas_ENABLED = false;
+		ren4c				= false;
 		
 		editor_domicilio 	= null;
 		domicilio_actividad = null;
@@ -2816,6 +2817,16 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 			if(function_id == VER_PESTANA_TABLERO_NORMATIVO)
 			{
 				ver_pestana_tablero_normativo_ENABLED = true;
+			}
+			if(function_id == VER_NOTAS_COMPORTAMIENTO_INUSUAL)
+			{
+				ver_notas_comportamiento_inusual_ENABLED = true;
+			}
+			if(function_id == REN_4_C)
+			{
+				
+				ren4c = true;
+				
 			}
 			
 		}

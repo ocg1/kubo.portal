@@ -44,6 +44,7 @@ import mx.com.kubo.services.LoginServiceIMO;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.PasswordHistoryService;
 import mx.com.kubo.services.PhoneService;
+import mx.com.kubo.services.ProspectusExtraService;
 import mx.com.kubo.services.ProspectusService;
 import mx.com.kubo.services.ReferredService;
 import mx.com.kubo.services.RegistrationReasonService;
@@ -103,6 +104,9 @@ implements PreregistroIMO
 	
 	@ManagedProperty("#{addressServiceImp}")
 	protected AddressService service_address;
+	
+	@ManagedProperty("#{prospectusExtraServiceImp}")
+	protected ProspectusExtraService prospectusextraservice;
 	
 	protected FacesContext faces;
 	protected FacesMessage faces_msg;
@@ -873,6 +877,14 @@ implements PreregistroIMO
 
 	public void setUtm_campaign(String utm_campaign) {
 		this.utm_campaign = utm_campaign;
+	}
+
+	public ProspectusExtraService getProspectusextraservice() {
+		return prospectusextraservice;
+	}
+
+	public void setProspectusextraservice(ProspectusExtraService prospectusextraservice) {
+		this.prospectusextraservice = prospectusextraservice;
 	}
 	
 	

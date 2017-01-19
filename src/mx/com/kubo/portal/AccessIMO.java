@@ -20,4 +20,6 @@ public interface AccessIMO
 	void init_access_CONFIG(AjaxBehaviorEvent event);
 	
 	void save_access(SessionBean sesion, int screen_id) ;
+	
+	void save_access_coach(SessionBean sesion, int screen_id, int prospectus_id); 
 }

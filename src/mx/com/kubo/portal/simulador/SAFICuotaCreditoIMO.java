@@ -1,10 +1,9 @@
 package mx.com.kubo.portal.simulador;
 
-import mx.com.kubo.managedbeans.SessionBean;
 
 public interface SAFICuotaCreditoIMO 
 {
-	void setSesion(SessionBean sesion);
+//	void setSesion(SessionBean sesion);
 	
 	void init();
 	
@@ -15,4 +14,7 @@ public interface SAFICuotaCreditoIMO
 	int getNumCuota();
 	
 	boolean isFlagSaveSimulationCache();
+	
+	public void setCompany_id(int company_id);
+	public void setProspectus_id(int prospectus_id);
 }

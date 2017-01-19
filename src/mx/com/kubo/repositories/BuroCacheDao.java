@@ -2,9 +2,10 @@ package mx.com.kubo.repositories;
 
 import mx.com.kubo.model.BuroCache;
 
-public interface BuroCacheDao {
-
+public interface BuroCacheDao 
+{
 	BuroCache getBuroCache( String burSolNum );
-	boolean saveBuroCache( BuroCache cache );
 	
+	boolean saveBuroCache( BuroCache cache );
+	boolean delete(String burSolNum);
 }

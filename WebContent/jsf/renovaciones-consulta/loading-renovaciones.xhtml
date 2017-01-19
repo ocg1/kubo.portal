@@ -18,4 +18,27 @@
 	        			
 				
 					</div>
+					
+					
+					<div class="rejection-4clicks">
+					
+						
+						<h2>#{sessionBean.nombre}:</h2>
+	        				<p>Es necesario continuar por el formulario para completar el proceso. </p>
+
+							<!-- <p>Este proceso puede tardar unos minutos, por favor espera sin cerrar la pantalla. </p> -->
+							
+							<p:commandLink immediate    = "true"
+							   onstart          = "return displayMessageProcessing('msgprocessing', true);" 
+							   style			= "text-decoration: none;"
+							   value	        = "Regresar a mi cuenta"
+							   action			= "controlTable"
+							   styleClass		= "callActionMedium btnNaranja regresar_cuenta"	
+							   >
+						
+					</p:commandLink>
+	        			
+				
+					</div>
+					
 </ui:composition>

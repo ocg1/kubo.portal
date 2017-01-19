@@ -153,11 +153,10 @@
 	         <p:watermark value="Crea tu contraseña*" for="passTemp"/> 
 	          	
 	</div>
-	  <!-- div class="alerta"></div-->       	
+	  <div class="alerta_crea_contrasena"></div>       	
 	</li>
     </ul>
-    
-     <div class="contrasenaInValida callAction btnGris">Continuar</div>
+   
      <div class="contrasenaValida callAction btnNaranja" onclick="loaderfunction()">Continuar</div>
     </div>
             	
@@ -206,7 +205,7 @@
 				</script>
 			
 			</h:panelGroup>
-			
+	
 			<h:panelGroup rendered="#{hs_Init.status_hs == 1}" >
 			
 				<script>
@@ -228,7 +227,6 @@
 			
 			</h:panelGroup>
 			
-			
 			<h:panelGroup rendered="#{hs_Init.status_hs == 3}" >
 			
 				<script>
@@ -237,7 +235,6 @@
 			
 			</h:panelGroup>
 			
-
 			<script>
 				setChat();
 			</script>		

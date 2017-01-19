@@ -8,6 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
+
+import org.primefaces.context.RequestContext;
+import org.primefaces.json.JSONArray;
 
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
@@ -32,25 +36,64 @@ public class CreaCreditoService extends CreaCreditoServiceAMO
 		attributes = evento.getComponent().getAttributes();
 		
 		init_param_values();
-		init_proyect_loan();
+		try{
+			HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest(); 
+	
+			String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+				    
+					if(ipAddressClient == null)  
+					{
+				    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
+					}
 		
-		init_alta_prospecto();
-		init_solicitud_credito();	
-		init_creacion_cliente();
-		init_alta_cliente();
-		init_creacion_cuenta();			
+		validaInusualBehavior( ipAddressClient );
+		}catch(Exception e){
+			
+		}
 		
-		init_alta_relacionado_cuenta();
+		if( !is_inussual_person ){
 		
-		init_alta_conocimiento_cuenta();
-		init_alta_conocimiento_cliente();		
+			init_proyect_loan();
+			
+			init_alta_prospecto();
+			init_solicitud_credito();	
+			init_creacion_cliente();
+			init_alta_cliente();
+			init_creacion_cuenta();			
+			
+			init_alta_relacionado_cuenta();
+			
+			init_alta_conocimiento_cuenta();
+			init_alta_conocimiento_cliente();		
+			
+			init_autorizar_cuenta();
+			init_creacion_credito();		
+			init_activacion_cuenta();		
+			init_creacion_seguro_vida();
+						
+			init_status_funding();
 		
-		init_autorizar_cuenta();
-		init_creacion_credito();		
-		init_activacion_cuenta();		
-		init_creacion_seguro_vida();
-					
-		init_status_funding();
+		}else{
+			
+			status_funding = false;
+			
+			try{
+			
+				request = RequestContext.getCurrentInstance();
+				
+				lista_errores = new ArrayList<String>();
+				
+				lista_errores.add("Se necesita permiso especial de Dirección");
+				
+				request.addCallbackParam("isFunding", status_funding);
+				request.addCallbackParam("listaerror", new JSONArray(lista_errores.toArray(),true).toString());
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
+		
 	}
 
 	public boolean callWSSafiAltaPros()

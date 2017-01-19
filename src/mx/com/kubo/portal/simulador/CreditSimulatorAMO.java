@@ -26,19 +26,19 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 {
 	protected void init_rate() 
 	{
-		if(isConnected && sesion.getArea() != null && sesion.getArea().toString().equals("L"))
-		{
-			int prospectus_id = sesion.getProspectus_id();
-			int company_id    = sesion.getCompany_id();
+		/*if(isConnected )
+		{*/
+//			int prospectus_id = sesion.getProspectus_id();
+//			int company_id    = sesion.getCompany_id();
 			
 			proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
-		}
+		/*}
 		
 		if(isConnected && sesion.getArea().toString().equals("L"))
 		{
 			int prospectus_id = sesion.getProspectus_id();
 			int company_id    = sesion.getCompany_id();
-			
+			*/
 			proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
 			
 			Scoring score = null;
@@ -58,9 +58,9 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 			
 			if(rate != null && status !=null && status == 1)
 			{
-				sesion.setRate(rate);
+				setRate(rate);
 			}
-		}
+		//}
 	}
 	
 	protected Integer generaNumCuotas()
@@ -175,7 +175,11 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 	public void generaMontoCuota2()
 	{	
 		SAFI_cuota_credito = new SAFICuotaCreditoIMP(ammount, term_id, frequency_id, freqStr, tasaPeriodo);
-		SAFI_cuota_credito.setSesion(sesion);
+		//SAFI_cuota_credito.setSesion(sesion);
+		
+		SAFI_cuota_credito.setCompany_id(company_id);
+		SAFI_cuota_credito.setProspectus_id(prospectus_id);
+		
 		SAFI_cuota_credito.init();
 		
 		cat        = SAFI_cuota_credito.getCat();
@@ -224,7 +228,9 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 		CAT_calculator.setTotalPagar(totalPagar);
 		CAT_calculator.setAmortization(amortization);
 		CAT_calculator.setSafiSimulation(isSafiSimulation);
-		CAT_calculator.setSesion(sesion);
+		CAT_calculator.setTasaTotal(tasaTotal);
+		CAT_calculator.setComisionApertura(comisionApertura);
+		//CAT_calculator.setSesion(sesion);
 		CAT_calculator.init();
 	
 		cat = CAT_calculator.getCat();		
@@ -259,18 +265,15 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 		}						
 	}
 	
-	public void saveSimulator()
+	public void saveSimulator( )
 	{		
-		int prospectus_id = sesion.getProspectus_id();
+		//int prospectus_id = sesion.getProspectus_id();
 		
 		try
 		{			
 			prevencionld = null;
 			
-			if(sesion.getProspectus_id() != null )
-			{
-				prevencionld = prevencionldservice.getPrevencionLDByProspectus(sesion.getProspectus_id() , sesion.getCompany_id() );
-			}
+			prevencionld = prevencionldservice.getPrevencionLDByProspectus(prospectus_id , company_id );
 			
 			if(prevencionld != null)
 			{			
@@ -295,24 +298,24 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 		
 		
 		//Consulta el registro PLD actual del prospecto.
-		 if(listChangeByProspect!=null && listChangeByProspect.size()>0)
+		/* if(listChangeByProspect!=null && listChangeByProspect.size()>0)
 		 {			 
-			 if(sesion.getArea()!='I')
+			 if(area.equals( "I" ))
 			 {				 
 			   	PrevencionLDPK prevPK = new PrevencionLDPK();				
-				prevPK.setCompany_id(sesion.getCompany_id());
-				prevPK.setProspectus_id(sesion.getProspectus_id());		
+				prevPK.setCompany_id(company_id);
+				prevPK.setProspectus_id(prospectus_id);		
 				
 				prevencionld = prevencionldservice.getSelectedPrevencionLDById(prevPK);
 				
 			 }
 			 
-		   }
+		   }*/
 		
 		if(hasPLD)
 		{
-			 if(!sesion.getArea().toString().equals("I"))
-			 {
+			 /*if(!area.equals("I"))
+			 {*/
 				if(listChangeByProspect!=null && listChangeByProspect.size()>0)
 				{	
 					boolean hasMovementFre=false; // bandera que determina si el campo movement_frequency sufrio cambios por parte del usuario. y esta ya no se actualiza.
@@ -346,8 +349,8 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 					
 					if(prevencionld==null){
 						PrevencionLDPK prevPK = new PrevencionLDPK();				
-						prevPK.setCompany_id(sesion.getCompany_id());
-						prevPK.setProspectus_id(sesion.getProspectus_id());
+						prevPK.setCompany_id(company_id);
+						prevPK.setProspectus_id(prospectus_id);
 						
 						prevencionld = new PrevencionLD();
 						prevencionld.setPk(prevPK);
@@ -388,18 +391,18 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 					 }
 					 
 				 }
-			 }
+			// }
 			
 		}else{
 			
-			 if(sesion.getArea()!='I')
-			 {				 
+//			 if(!area.equals("I"))
+//			 {				 
 				if(prevencionld==null)
 				{
 					
 					PrevencionLDPK prevPK = new PrevencionLDPK();				
-					prevPK.setCompany_id(sesion.getCompany_id());
-					prevPK.setProspectus_id(sesion.getProspectus_id());
+					prevPK.setCompany_id(company_id);
+					prevPK.setProspectus_id(prospectus_id);
 					
 					prevencionld = new PrevencionLD();
 					prevencionld.setPk(prevPK);
@@ -420,13 +423,13 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 					}
 					
 					hasPLD = true;
-			 }
+//			 }
 		}
 	}
 	
-	protected void add_simulation() 
+	protected void add_simulation( ) 
 	{
-		simulation_PK = new SimulatorPK(0, sesion.getProspectus_id(), sesion.getCompany_id());			
+		simulation_PK = new SimulatorPK(0, prospectus_id, company_id);			
 		simulation    = new SimulatorBean();
 		
 		simulation.setSimulatorPK(simulation_PK);		

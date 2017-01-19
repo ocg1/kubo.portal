@@ -14,9 +14,9 @@ public abstract class CATCalculatorDMO
 implements CATCalculatorIMO
 {
 	protected SimulatorService simulatorService;
-	
-	protected SessionBean sesion;
-	
+//	
+//	protected SessionBean sesion;
+//	
 	protected TablaAmortizacion amortization;
 	
 	protected List<Amortization> lista_amortizacion;
@@ -67,7 +67,7 @@ implements CATCalculatorIMO
 		this.amortization = amortization;
 	}
 
-	public void setSesion(SessionBean sesion) 
+	/*public void setSesion(SessionBean sesion) 
 	{
 		this.sesion = sesion;
 		
@@ -80,7 +80,7 @@ implements CATCalculatorIMO
 		{
 			comisionApertura = sesion.getOpeningCommission();
 		}
-	}
+	} */
 	
 	public void setTotalPagar(Double totalPagar)
 	{
@@ -145,6 +145,14 @@ implements CATCalculatorIMO
 		}
 		
 		return res;
+	}
+
+	public void setTasaTotal(Double tasaTotal) {
+		this.tasaTotal = tasaTotal;
+	}
+
+	public void setComisionApertura(Double comisionApertura) {
+		this.comisionApertura = comisionApertura;
 	}
 	
 }

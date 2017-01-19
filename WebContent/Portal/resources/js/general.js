@@ -998,7 +998,11 @@ function validateMinCaracteres(component,min){
 function alerta (mensaje, id){
 	$(""+id+"").closest("li").find(".alerta").html("<i class='fa fa-caret-up'></i><p>"+mensaje+"</p>");
 	$(""+id+"").closest("li").find(".alerta").fadeIn();
+	
+	$(""+id+"").closest("li").find(".alerta_crea_contrasena").html("<i class='fa fa-caret-up'></i><p>"+mensaje+"</p>");
+	$(""+id+"").closest("li").find(".alerta_crea_contrasena").fadeIn();
 }
 function alertaQuitar (id){
 	$(""+id+"").closest("li").find(".alerta").fadeOut();
+	$(""+id+"").closest("li").find(".alerta_crea_contrasena").fadeOut();
 }

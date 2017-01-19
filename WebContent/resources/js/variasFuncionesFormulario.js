@@ -730,10 +730,11 @@ function pixel (){
 	var prospectoID = $("#prospectoID").val();
 	var kuboScoreVal = $("#inputKuboScore").val();
 	var contenedorTracksacai = document.getElementById("tracksacai");
+	var valuePartner = $("#valuePartner").val();
 	console.log("kuboScoreVal"+kuboScoreVal);
-
 	
-	var scores = ['A1','A2','A3','A4','AE','B1','B2','B3','B4','BE','C1','C2','C3','C4','CE', 'D1','D2', 'D3','D4','D5','E1','E2', 'E3','E4','E5'];
+	
+	var scores = ['A1','A2','A3','A4','A5','B1','B2','B3','B4','B5','C1','C2','C3','C4','C5', 'D1','D2', 'D3','D4','D5','E1','E2', 'E3','E4','E5'];
 
 	
     if($.inArray(kuboScoreVal, scores) >= 0) {
@@ -751,12 +752,38 @@ function pixel (){
 		
 		$("#goCloud").attr( "src", "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+""); 
 		console.log("Pixel se disparó al  pasar la consulta prospector: credy.go2cloud.org "+ "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+"");
+		if(valuePartner == "S18" ){
+				var inputAdv = $("#advBackInput").val();
+				$("#advBack").attr("src", inputAdv);
+				console.log(inputAdv);
+		}
+		
+		console.log("");
+		console.log("");
+		console.log($("#valuePartner").val());
+		console.log("");
+		console.log("");
+		
+		if(valuePartner == "OCC"){
+			console.log("");
+			console.log("");
+			console.log("################################################");
+			console.log("############## PIXEL OCC #######################");
+			console.log("################################################");
+			console.log("");
+			console.log("");
+			
+			$("#occPixel").attr("src", "http://bit.ly/kubofinancieroOCC");
+		}
+		if(valuePartner == "svc"){
+			 $("#sivinco").attr("src", "https://sivinco.rurl.me/api/pixel/?cvt=lead&cvn=Kubo+Lead&cva=9.30&guid=");
+		}
 		
 		
     	}else{
 	    	console.log("no entra dentro del rango del score A1 - E5");
 	    	/*$("#frmMoreInfo .field").hide();
-	    	$("#frmMoreInfo .field input").hide();
+	    	$("#frmMoreI .field input").hide();
 	    	 fieldCount();*/
 	    }
     
@@ -883,6 +910,8 @@ function abrirAyudaDoc2() {
 	$(".ayudaDoc1").slideUp();
 	$(".ayudaDoc2").slideDown();
 	$("#cmdNeedSGBHelp").trigger("click");
+	dataLayer.push({'event': 'Ayuda documentos'});
+	 console.log('Ayuda documentos');
 }
 
 function cerrarAyudaDoc(pantalla) {
@@ -1191,6 +1220,8 @@ function clicBtnGuardar() {
 	displayMessageProcessing('msgprocessing',false);	
 	$(".guardarProblemaDocs").trigger("click");
 	console.log("clickBtnProblema");
+	 dataLayer.push({'event': 'Sin documentos'});
+	 console.log('Sin documentos');
 }
 function enviarComentarioProblema() {
 	$(".campo-textarea-btn").slideUp();

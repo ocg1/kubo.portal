@@ -17,7 +17,7 @@
 			</div>
 			<div class="respuesta-1">
 				<h:panelGroup rendered="#{summaryRequest.member.is_employee != null and summaryRequest.member.is_employee == 'S' }" >
-					<div  class="respuesta-positiva">
+					<div  class="respuesta-neutral">
 						<p><i class="fa fa-exclamation-circle" ></i> Si</p>
 					</div>
 				</h:panelGroup>
@@ -153,8 +153,8 @@
 											
 										<h:panelGroup rendered="#{summaryRequest.relatedProyect == null or  summaryRequest.relatedProyect.authorization_status != 'S'  }" >
 										<tr>
-											<td>Autorización:</td>
-											<td>
+												<td>Autorización:</td>
+										<td>
 										
 												<span class="noOtorgada">No otorgada</span>
 												<div class="btn-subir-doc-auto">
@@ -173,7 +173,8 @@
 																      invalidSizeMessage = "Tamaño del archivo inválido."
 																      invalidFileMessage = "Tipo de archivo no válido." 									    				                       
 														              sizeLimit  = "#{summaryRequest.documentacion.size_limit}"  
-														              allowTypes = "/(\.|\/)(gif|jpe?g|png|pdf)$/">			
+														              allowTypes = "/(\.|\/)(gif|jpe?g|png|pdf)$/"
+														              immediate="true">			
 														            	 
 														 </p:fileUpload>
 													
@@ -186,24 +187,24 @@
 										<h:panelGroup rendered="#{summaryRequest.relatedProyect != null and  summaryRequest.relatedProyect.authorization_status == 'S'  }" >
 										
 										<tr>
-											<td>Autorización:</td>
-											<td>Otorgada</td>
+													<td>Autorización:</td>
+									<td>Otorgada</td>
 										</tr>
 										
 										<tr>
-											<td>Fecha:</td>
-											<td>
+														<td>Fecha:</td>
+								<td>
 												<h:outputText value="#{summaryRequest.relatedProyect.authorization_date}" >
 												    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 												</h:outputText>
 											</td>
 										</tr>
 										<tr>
-											<td>Ver autorización:</td>
+											<td>Ver autorización</td>
 											<td><div class="verAutorizacion" onclick="verAutorizacionN()" >Click para ver</div></td>
 										</tr>
 										<tr>
-											<td>Informe a Comisario:</td>
+											<td>Informe a Comisario</td>
 											<td>
 												<h:outputText value="#{summaryRequest.relatedProyect.notification_date}" >
 												    <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
@@ -270,11 +271,11 @@
 	
 			<table cellspacing="0" cellpadding="0" border="0">
 				<tr>
-					<td><span>Capital Neto del último trimestre:</span></td>
+					<td><span>Capital Neto del último trimestre</span></td>
 					<td><strong> $ #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.capitalNeto)} </strong></td>
 				</tr>
 					<tr>
-					<td><span>Saldo Cartera total:</span></td>
+					<td><span>Saldo Cartera total</span></td>
 					<td><strong> $ #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.totalCartera)} </strong></td>
 				</tr>
 			
@@ -290,7 +291,7 @@
             <th></th>
             <th>Monto</th>
             <th>%</th>
-            <th width="22%">Límite</th>
+            <th>Límite</th>
             <th>Estatus</th>
             <th>Informe a Comisario</th>
         </tr>

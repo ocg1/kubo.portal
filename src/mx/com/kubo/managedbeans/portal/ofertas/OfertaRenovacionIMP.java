@@ -14,8 +14,10 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 
+import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
+import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
@@ -44,8 +46,40 @@ implements Serializable
 			lista_loan_type = service_proyect_loan.getLista_loan_type();			
 			listPurpose     = service_purpose.getPurposeList();		
 			
-			prospectus_id = sesion.getProspectus_id();
-			company_id    = sesion.getCompany_id();
+			if( sesion.getArea() != null && sesion.getArea().toString().equals("L") ){
+			
+				prospectus_id = sesion.getProspectus_id();
+				company_id    = sesion.getCompany_id();
+			
+			}else if( sesion.getArea() != null && sesion.getArea().toString().equals("M") ){
+				
+				SearchSummaySession sesion_search_request = (SearchSummaySession)  resolver.getValue(elContext, null, "searchSummaySession");
+				
+				String search = sesion_search_request.getSearchSummary();
+				
+				String[] splStr = search.split("::") ;
+				
+				if( splStr.length == 4 ){
+					
+					prospectus_id = Integer.parseInt( splStr[2] );
+					company_id    = Integer.parseInt( splStr[3] );
+					
+					MembershipPK mpk = new MembershipPK(prospectus_id, company_id);
+					
+					Membership membership_1 = service_membership.getMembershipById(mpk);
+					
+					nombreCliente = prospectus_id + " - " + membership_1.getPerson().NombreCompletoNPM();
+					
+					mpk = new MembershipPK(prospectus_id, company_id);
+						
+					membership_1 = service_membership.getMembershipById(mpk);
+						
+					nombreCoach = membership_1.getPerson().NombreCompletoNPM();
+					
+					
+				}
+				
+			}
 			
 			score = service_scoring.loadMaxScoringByProspectus(prospectus_id, company_id);
 			
@@ -63,20 +97,32 @@ implements Serializable
 								
 				if(publicacion_ENABLED)
 				{				
-					sesion.setOpeningCommission(opening_commission);				
-					sesion.setRate(rate);
+					//sesion.setOpeningCommission(opening_commission);				
+					//sesion.setRate(rate);
 					
 					parser = new ParserRenovacionAutomaticaIMP();		
-					parser.setSesion(sesion);
+					//parser.setSesion(sesion);
+					parser.setProspectus_id(prospectus_id);
+			    	parser.setCompany_id(company_id);
 					parser.setScore(score);				
 					parser.init();
 					
 					simulador = new SimuladorIMP();
-					simulador.setSesion(sesion);
+					//simulador.setSesion(sesion);
+					
+					simulador.setProspectus_id( prospectus_id);
+					
+					simulador.setCompany_id( company_id);
+
+					simulador.setTasaTotal( rate );
+
+					simulador.setComisionApertura( opening_commission);
+					
 					simulador.init();	
 					
 					reasignador = new ReasignadorIMP();
 					reasignador.setSesionBean(sesion);
+					
 					
 				} else {
 					
@@ -196,10 +242,10 @@ implements Serializable
 				sb.append(TABLA_AMORTIZACION_XHTML).append("?");
 				sb.append("monto=").append(ammount).append("::");
 				sb.append("term=").append(term_id).append("::");
-				sb.append("rate=").append(sesion.getRate()).append("::");
+				sb.append("rate=").append(rate).append("::");
 				sb.append("payment=").append(payment).append("::");
 				sb.append("frequency=").append(frequency).append("::");
-				sb.append("comision=").append(sesion.getOpeningCommission()).append("::");
+				sb.append("comision=").append( opening_commission).append("::");
 				sb.append("totalPayment=").append(total_payment).append("::");
 				sb.append("cat=").append(mx_cat);
 				
@@ -208,8 +254,8 @@ implements Serializable
 				request.addCallbackParam("tabla_amoritizacion_URL", tabla_amoritizacion_URL);
 				request.addCallbackParam("max_payment_ENABLED", max_payment_ENABLED);
 				
-				request.addCallbackParam("interes",            sesion.getRate());
-				request.addCallbackParam("opening_commission", sesion.getOpeningCommission());
+				request.addCallbackParam("interes",            rate);
+				request.addCallbackParam("opening_commission", opening_commission);
 				
 				request.addCallbackParam("plazo",  simulador.getTerm_frequency_TOKEN());
 				

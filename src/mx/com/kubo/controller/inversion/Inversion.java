@@ -195,6 +195,8 @@ public class Inversion extends InversionPMO {
 			
 		}
 		
+		ejecutaSPRecargaListaClienteCredito(  getSafiClientId() );
+		
 		procesaInversiones();
 		
 	}
@@ -643,11 +645,8 @@ public class Inversion extends InversionPMO {
 			porcMaxSUMSaldoProyE5 = 100D;
 			
 		}
-		Double ammountInverInProyE5 = getAmmountInvinProyE5( listInvAccounts.get(0).getAccount() );
 		
-		Double montoMaximoEn_E5s = (saldoTotal*porcMaxSUMSaldoProyE5)/100;
-		
-		montoDisponibleEn_E5 = montoMaximoEn_E5s - ammountInverInProyE5;
+		montoDisponibleEn_E5 = initMontoDisponibleEn_E5(); 
 		
 		boolean puede_invertir_en_E5 = montoDisponibleEn_E5 >  montoMinE4E5G; 
 		
@@ -1501,7 +1500,7 @@ public class Inversion extends InversionPMO {
 		
 	}
 	
-	public void ejecutaSPRecargaListaClienteCredito( String safi_client_id ){
+	private void ejecutaSPRecargaListaClienteCredito( String safi_client_id ){
 		proyectLoanService.ejecutaSPDeleteCreditsByClient(safi_client_id);
 	}
 	
@@ -1527,6 +1526,16 @@ public class Inversion extends InversionPMO {
 		
 		return sum_F_G;
 				
+	}
+	
+	public Double  initMontoDisponibleEn_E5(){
+		
+		Double ammountInverInProyE5 = getAmmountInvinProyE5( listInvAccounts.get(0).getAccount() );
+	
+		Double montoMaximoEn_E5s = (saldoTotal*porcMaxSUMSaldoProyE5)/100;
+	
+		return  montoMaximoEn_E5s - ammountInverInProyE5;
+		
 	}
 	
 }

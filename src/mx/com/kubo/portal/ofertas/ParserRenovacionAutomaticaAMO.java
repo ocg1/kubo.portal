@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import mx.com.kubo.portal.simulador.CreditSimulatorIMP;
 
-public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAutomaticaDMO
+public class ParserRenovacionAutomaticaAMO extends ParserRenovacionAutomaticaDMO
 {
 	protected void init_ofert_ENABLED() 
 	{
@@ -300,7 +300,9 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 	protected void init_CAT_simulation() 
 	{		
 		credit_simulator = new CreditSimulatorIMP(term_id, payment);
-		credit_simulator.setSesion(sesion);
+		//credit_simulator.setSesion(sesion);
+		credit_simulator.setProspectus_id(prospectus_id);
+		credit_simulator.setCompany_id(company_id);
 		credit_simulator.setAmmount(ammount);
 		credit_simulator.setFrequency_id(frequency_id);
 		
@@ -312,7 +314,9 @@ public abstract class ParserRenovacionAutomaticaAMO extends ParserRenovacionAuto
 	protected void init_CAT_simulation_SAFI() 
 	{	
 		credit_simulator = new CreditSimulatorIMP(term_id, payment);
-		credit_simulator.setSesion(sesion);
+		//credit_simulator.setSesion(sesion);
+		credit_simulator.setProspectus_id(prospectus_id);
+		credit_simulator.setCompany_id(company_id);
 		credit_simulator.setAmmount(ammount);
 		credit_simulator.setFrequency_id(frequency_id);
 		

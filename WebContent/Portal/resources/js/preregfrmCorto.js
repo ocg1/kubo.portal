@@ -150,18 +150,12 @@ function  minMaxCaracter(elemento) {
 	if($(elemento).val().length >= 4  && $(elemento).val().length<20) {
 		$(elemento).removeClass("requiredClass");
 		alertaQuitar ("#passTemp");
-		$(".contrasenaInValida").hide();
-		$(".contrasenaValida").show();
 	}else {
 		$(elemento).addClass("requiredClass");
 		  if($("#passTemp").val().length>=1){
 			  alerta ("La contraseña debe tener un mínimo de 4 y un máximo de 20 caracteres.", "#passTemp");
-			  $(".contrasenaInValida").show();
-				$(".contrasenaValida").hide();
 		  }else{
 				alertaQuitar ("#passTemp");
-				$(".contrasenaInValida").hide();
-				$(".contrasenaValida").show();
 		  }
 	}
 		onBlur(elemento);

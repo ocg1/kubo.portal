@@ -68,7 +68,19 @@ ConsultaRenovacion.init_redirect_links = function()
 	if(remote_command.find(".redirect-to-registro-from-init").length > 0)
 	{
 		ConsultaRenovacion.init_access_CONFIG();						
-	}		
+	}
+	
+	if( remote_command.find(".redirect-to-registro-controlTable").length > 0 ){
+		
+		console.log("######	ControlTable ######");
+		$("#dvIDProviderQuest").hide();
+		$("#wait").show();
+		$('.nuevoLoader').hide();
+		$('.loading-4clicks').hide();
+		$('.rejection-4clicks').show();
+		$(".contFrm").css("visibility","hidden");
+		
+	}
 		
 	if(remote_command.find(".redirect-to-wait").length > 0)
 	{
@@ -226,18 +238,31 @@ ConsultaRenovacion.isRisk_processed_oncomplete = function(xhr, status, args)
 	var is_risk_processed    = args.is_risk_processed;
 	var redirect_to_ofert    = args.redirect_to_ofert_ENABLED;
 	var redirect_to_registro = args.redirect_to_registro_ENABLED;
+	var is_controlTable 	 = args.is_controlTable;
 	
 	console.log("ConsultaRenovacion.isRisk_processed(): ");
 	console.log("> is_risk_processed    = " + is_risk_processed);
 	console.log("> redirect_to_ofert    = " + redirect_to_ofert);
 	console.log("> redirect_to_registro = " + redirect_to_registro);
+	console.log("> is_controlTable = " 		+ is_controlTable);
 	
 	if(is_risk_processed)
 	{
 		if(redirect_to_registro)
 		{
 			//ConsultaRenovacion.init_access_CONFIG();	
-			ConsultaRenovacion.showRedirecRegistro();
+			if( !is_controlTable ){
+				ConsultaRenovacion.showRedirecRegistro();
+			}else{
+				console.log("######	ControlTable ######");
+				$("#dvIDProviderQuest").hide();
+				$("#wait").show();
+				$('.nuevoLoader').hide();
+				$('.loading-4clicks').hide();
+				$('.rejection-4clicks').show();
+				$(".contFrm").css("visibility","hidden");
+				//alert("Seguir por Editar Formulario");
+			}
 		} 
 		
 		if (redirect_to_ofert)
