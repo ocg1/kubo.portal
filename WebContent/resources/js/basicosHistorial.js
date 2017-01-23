@@ -263,10 +263,7 @@ function abrirSiguiente() {
 		console.log("quiere llegar a income");
 		
 	
-		 if($("#btn_bcScore").length){
-			 dataLayer.push({'event': 'Antes preaprobación'});
-			 console.log('Antes preaprobación');
-		 }
+		
 	}
 	function closeWindow(){
 		parent.$("#valFlagPrep").val("NOACEPTADO");

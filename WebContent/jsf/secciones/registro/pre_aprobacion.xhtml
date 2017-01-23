@@ -33,7 +33,10 @@
 			function closeWindowPrep(){
 				/* parent.$("#valFlagPrep").val("aceptado");
 				parent.$.fancybox.close(); */
-				
+				 if($("#btn_bcScore").length){
+					 dataLayer.push({'event': 'Antes preaprobación'});
+					 console.log('Antes preaprobación');
+				 }
 				parent.$("#hdNext\\:siguienteIncomeExpense").click();
 				parent.$.scrollTo('#header', 800, { axis:'y' })
 				

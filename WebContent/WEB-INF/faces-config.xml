@@ -981,6 +981,15 @@
 	<navigation-rule>
    		<from-view-id>*</from-view-id>
    		<navigation-case>
+      		<from-outcome>sistema-remuneracion</from-outcome>
+      		<to-view-id>/Portal/aviso-legal/sistema-remuneracion.xhtml</to-view-id>
+      		<redirect/>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
       		<from-outcome>equipo-computo</from-outcome>
       		<to-view-id>/Portal/aviso-legal/equipo-computo.xhtml</to-view-id>
       		<redirect/>

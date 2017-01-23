@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+        
+<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+        <!--Meta title, description-->    
+    	<title>kubo.financiero | </title>
+        <meta name="description" content="" />
+    	<!-- Meta viewport -->
+        <meta name ="viewport" content= "width=device-width, minimum-scale=1, maximum-scale=1"/>
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    	<!-- Status Bar -->
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+
+    	<!-- Meta format-detection -->
+        <meta name="format-detection" content="telephone=no"/>
+        <!-- Meta facebook -->    
+        <meta property="og:title" content=""/>
+        <meta property="og:url" content="" />
+        <meta property="" />
+        <meta property="og:imag" content="" />
+    	
+    	<!-- favicon --> 
+	    <link rel="shortcut icon" href="../resources/favicon.ico"/> 
+
+        
+        <!-- CSS --> 
+        <link rel="stylesheet" type="text/css" href="../resources/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/kubo_styles.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/interior_styles.css" />
+        <link rel="stylesheet" type="text/css" media="all and (min-width: 1025px)" href="../resources/css/laptop_medium.css" />        
+		<link rel="stylesheet" type="text/css" href="../resources/css/flexslider.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/frmStyle.css" />
+		 <link rel="stylesheet" type="text/css" href="../resources/css/alertify.core.css" />
+       	<link rel="stylesheet" type="text/css" href="../resources/css/alertify.default.css" />
+		<!-- Explorer CSS -->   
+        <!--[if gt IE 7]>
+          <link rel="stylesheet" type="text/css" href="css/kubo_styles_explorer.css" />
+         <![endif]-->
+ 	    
+ 	    <!-- JS --> 
+      	 <script>
+	         $(document).ready(function(){
+	        	 $(".sistema-remuneracion").addClass("active");	 
+	        	 $(".push_header").addClass("interior").show();
+	         });
+         </script>
+        <script type="text/javascript" src="../resources/js/jquery.slides.min.js"></script>
+    	<script type="text/javascript" src="../resources/js/scripts.js"></script>
+		<script src="../resources/js/scripts_interior.js"></script>
+		<script src="../resources/js/jquery.flexslider.js"></script>
+        <script src="../resources/js/flexslider_start.js"></script>
+   
+		<script type="text/javascript" src="../resources/js/ga_event.js"></script>
+	    <script type="text/javascript" src="../resources/js/banners_footer.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/general.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/preregfrm2.js"></script>
+         <script data-cfasync="false" type='text/javascript' src="../resources/js/chat.js" ></script>
+        <script language="javascript" type="text/javascript" src="../resources/js/validar_cambio_correo.js"></script>
+		<script language="javascript" type="text/javascript" src="../resources/js/envio_correo_preregistro.js"></script>
+        <script type="text/javascript" src="../resources/js/forgot_password.js"/>	
+		<script type="text/javascript" src="../resources/js/browserDetect.js"/> 
+	    <script type="text/javascript" src="../resources/js/alertify.js"></script>	
+	   <script type="text/javascript" src="../resources/js/easyscroll.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../resources/js/mousewheel.js"></script>
+        <script type="text/javascript" language="javascript">
+        
+    	/******************GOOGLE*ANALYTICS**************************************/ 
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                
+                  ga('create', 'UA-40649010-1', 'auto');
+            	  ga('require', 'linkid');
+                  ga('require', 'displayfeatures');
+                  ga('send', 'pageview');
+
+        
+         /*****************FIN*GOOGLE*ANALYTICS**********************************/
+         </script>
+	
+
+</h:head>
+
+
+
+    <h:body>
+
+    
+    	<div class="kubo_container #{sessionBean.prospectus_id !=null ? 'privado':'publico'}">
+		<h:form  prependId="false" acceptcharset="UTF-8">
+           
+       	   <!-- header -->
+       	   <ui:include src="../templates/header.xhtml" />
+       	    
+            <div class="titulo"><h2>Avisos Legales</h2></div>	
+            <div class="content top">
+                <div class="inner_content">
+            	<div class="col_izquierda_productos containerFloatingMenu">
+                	 <!-- menu lateral productos -->
+       	  		    <ui:include src="../templates/menu-aviso-legal.xhtml" />
+                	
+	
+                </div>
+                <div class="col_derecha_productos">
+                		<div class="content_tabs">
+                		<div class="sistema-remuneracion">
+                			<h2>Sistema de remuneración</h2>
+   
+   
+   
+   <p>
+    Acorde con las mejores prácticas internacionales y a fin de procurar la
+    estabilidad, solvencia y solidez de las sociedades financieras populares,
+    la Comisión Nacional Bancaria y de Valores dispuso que todas las sociedades
+    financieras populares cuenten con un Sistema de Remuneración que determine
+    las políticas y procedimientos para efectuar las remuneraciones ordinarias
+    y extraordinarias a sus empleados o personal que ostente algún cargo,
+    mandato, comisión o cualquier otro título jurídico que las sociedades
+    financieras populares hayan otorgado para la realización de sus
+    operaciones, a fin de alinear los riesgos que asumen las referidas personas
+    al actuar por cuenta de dichas sociedades y con el público en general, con
+    los riesgos actuales o potenciales que las referidas entidades se
+    encuentran dispuestas a asumir o están preparadas para enfrentar.
+</p>
+<p>
+    Para coadyuvar en el desarrollo del referido Sistema de Remuneraciones,
+    Kubo Financiero S.A. de C.V. SFP (en lo sucesivo Kubo) en cumplimiento con
+    las Disposiciones de carácter general aplicables a las entidades de Ahorro
+    y Crédito Popular establecidas por la Comisión Nacional Bancaria y de
+    Valores, implementa su Sistema de Remuneraciones, mismo que promueve y es
+    consistente con una efectiva administración de Riesgos. Dicho Sistema de
+    Remuneraciones establece las políticas y procedimientos que norman las
+    remuneraciones ordinarias, extraordinarias y reúne las características que
+    a continuación se mencionarán:
+</p>	
+                	
+                	
+                	
+                	<p >
+    <strong>1. INFORMACIÓN CUALITATIVA.</strong>
+</p>
+<p >
+    <strong>
+        Políticas y procedimientos de remuneración de empleados o personas
+        sujetas al Sistema de Remuneraciones.
+    </strong>
+</p>
+<p >
+    En Kubo las remuneraciones se integran como sigue:
+</p>
+<p >
+    Ordinarias: Se considera el sueldo y prestaciones en efectivo garantizadas,
+    tales como:
+</p>
+<ul>
+    <li>
+        <p >
+            Aguinaldo: 15 días
+        </p>
+    </li>
+    <li>
+        <p >
+            Prima Vacacional, 25% de los días de vacaciones de acuerdo a la Ley
+            Federal del Trabajo
+        </p>
+    </li>
+    <li>
+        <p >
+            Periodo anual de seis días laborables, y que aumentará en dos días
+            laborables, hasta llegar a doce, por cada año subsecuente de
+            servicios. Después del cuarto año, el período de vacaciones
+            aumentará en dos días por cada cinco de servicios, de acuerdo a la
+            Ley Federal del Trabajo.
+        </p>
+    </li>
+    <li>
+        <p >
+            Aportaciones de seguridad social.
+        </p>
+    </li>
+</ul>
+<p >
+    Extraordinarias: Se consideran los logros en función de los cumplimientos
+    individuales de metas y objetivos, el desempeño de las áreas de negocio,
+    variables que se utilizan como factores de riesgo y evaluaciones
+    cualitativas del apego a la administración de riesgos, entre otras.
+</p>
+<p >
+    Información relativa a los puestos considerados dentro del Sistema de
+    Remuneraciones.
+</p>
+<p >
+    Kubo cuenta con personal que tanto por la naturaleza de sus funciones como
+    por sus decisiones, se encuentran reportados bajo el Sistema de
+    Remuneraciones. Los puestos que se encuentran dentro del Sistema de
+    Remuneración son:
+</p>
+                	
+                	<ul>
+    <li>
+        <p>
+            Coach Digital
+        </p>
+    </li>
+    <li>
+        <p>
+            Analista Financiero
+        </p>
+    </li>
+    <li>
+        <p>
+            Analista Telefónico de Cobranza
+        </p>
+    </li>
+</ul>
+
+
+
+<p >
+    <strong>Comité de Remuneraciones.</strong>
+</p>
+<p >
+    Con el propósito de asegurar el cumplimiento de los esquemas variables y
+    mantener una adecuada y efectiva administración del riesgo, el Comité de
+    Remuneraciones tiene dentro de sus principales responsabilidades, vigilar y
+    efectuar los ajustes que se consideren convenientes a los esquemas
+    variables para asegurar el apego a los lineamientos establecidos por la
+    autoridad. Para lograr lo anterior, el área Director del área de
+    Operaciones en coordinación con el Gerente de Riesgos efectúan los
+    análisis, escenarios y proyecciones sobre la materialización de los riesgos
+    inherentes a las personas reguladas bajo este Sistema y da a conocer los
+    resultados al Comité de Remuneración para la toma de decisión.
+</p>
+<p >
+    Al detalle, el Comité de Remuneraciones se conformará como se indica a
+    continuación
+</p>
+<ol class="romanos">
+    <li>
+        <p >
+            Un miembro propietario del Consejo de Administración,
+            independiente, con conocimientos y amplia experiencia en
+            administración de riesgos o control interno, quien presidirá el
+            Comite
+        </p>
+    </li>
+    <li>
+        <p >
+            Un miembro propietario del Consejo de Administración.
+        </p>
+    </li>
+    <li>
+        <p >
+            Un responsable de la administración integral de riesgos.
+        </p>
+    </li>
+    <li>
+        <p >
+            Un representante del área de capital humano.
+        </p>
+    </li>
+    <li>
+        <p >
+            Un representante del área encargada de la planeación financiera o
+            la elaboración del presupuesto.
+        </p>
+    </li>
+    <li>
+        <p >
+            El Comisario quien participará con voz pero sin voto.
+        </p>
+    </li>
+</ol>
+<p >
+    El Comité de Remuneraciones se reunirá trimestralmente.
+</p>
+
+
+
+<p >
+    <strong>Funciones del Comité de Remuneraciones</strong>
+</p>
+
+
+
+
+<p><strong>Funciones del Comité de Remuneraciones</strong></p>
+
+<p>Proponer para aprobación del Consejo de Administración:</p>
+<ol class="romanos">
+<li>Las políticas y procedimientos de remuneración, así como las eventuales modificaciones que se realicen a los mismos;
+<ul>
+<li>Los empleados o personal que ostente algún cargo, mandato, comisión o cualquier otro título jurídico que Kubo haya otorgado para la realización de sus operaciones, que estarán sujetos al Sistema de Remuneración, considerando en todo caso, aquellos que tomen decisiones que puedan implicar un riesgo para Kubo o participen en algún proceso que concluya en eso, y</li>
+
+<li>Los casos o circunstancias especiales en los cuales se podría exceptuar a alguna persona de la aplicación de las políticas de remuneración autorizadas.</li>
+</ul>
+</li>
+
+<li>Implementar y mantener el Sistema de Remuneración de Kubo, el cual deberá considerar las diferencias entre las distintas unidades administrativas, de control y de negocios y los riesgos inherentes a las actividades desempeñadas por las personas sujetas al Sistema de Remuneración. </li>
+
+<li>Informar a todo el personal pertinente, las políticas y procedimientos de remuneración, asegurando en todo momento el entendimiento por parte de los interesados de los métodos para la determinación, integración y entrega de sus remuneraciones, los ajustes por riesgos que les sean aplicables, el diferimiento de sus Remuneraciones Extraordinarias y cualquier otro mecanismo aplicable a sus remuneraciones.</li>
+
+<li>Contratar, cuando lo considere necesario, consultores externos en esquemas de remuneración y administración de riesgos, que coadyuven al diseño del esquema de remuneración, evitando al efecto cualquier conflicto de interés.</li>
+
+<li>Informar al Consejo de Administración, cuando menos semestralmente, sobre  el funcionamiento del Sistema de Remuneración, y en cualquier momento cuando la exposición al riesgo asumida por Kubo, las unidades administrativas, de control y de negocios o las personas sujetas al Sistema de Remuneración, pudieran derivar en un ajuste a dicho Sistema.</li>
+
+</ol>
+
+
+
+<p >
+    <strong>Consultores externos del sistema de remuneración.</strong>
+</p>
+<p >
+    Actualmente Kubo no cuenta con asesores externos en materia de
+    remuneración.
+</p>
+<p >
+    <strong>Alcance de la política de remuneraciones</strong>
+    .
+</p>
+<p >
+    La política del Sistema de Remuneración es aplicable al personal de Kubo,
+    cuyo puestos se consideran implican decisiones individuales que puedan
+    poner en riesgo la colocación de créditos.
+</p>
+<p >
+    <strong>Empleados tomadores de riesgo.</strong>
+</p>
+<p >
+    Al detalle, son considerado empleados tomadores de riesgo los siguientes
+</p>
+<p >
+    <strong>Estructura del Sistema de Remuneraciones</strong>
+</p>
+<p >
+    Las principales características y objetivos de la política de remuneración
+    tienen como objetivo:
+</p>
+<ul>
+    <li>
+        <p >
+            Evitar la toma de riesgos más allá de los límites que establecidos
+            por Kubo.
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p >
+            Asegurar que los esquemas de compensación extraordinaria tomen en
+            consideración todas las operaciones que puedan representar un
+            riesgo discrecional para Kubo y la aplicación de controles que
+            minimicen los riesgos.
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p >
+            Vigilar que las Remuneraciones Extraordinarias se encuentren
+            determinadas por resultados individuales o colectivos de una unidad
+            administrativa, de control o de negocio, no tomando en cuenta de
+            manera exclusiva los resultados observados durante el año
+            financiero en que se realizó la operación, sino que también
+            considere los riesgos y resultados a lo largo de un periodo
+            razonable de tiempo.
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p >
+            Asegurar que las evaluaciones del desempeño que pueden ser
+            aplicables a los puestos considerados dentro del Sistema de
+            Remuneración, sean consistentes y se basen en los resultados
+            ajustados por los riesgos presentes y futuros, costo de capital,
+            riesgos de liquidez, mercado, operativos, reputacional, de crédito,
+            objetivos específicos y demás variables que se consideren
+            relevantes.
+        </p>
+    </li>
+</ul>
+
+
+
+<p >
+    Los planes de compensación variable se ajustan en función del desempeño
+    individual y también en función del desempeño del negocio y del país
+</p>
+<p >
+    Los esquemas de remuneración variable proveen lineamientos para ajustar las
+    remuneraciones en función del desempeño: éstos pueden ser, diferimiento de
+    bonos, ajustes discrecionales por incumplimiento de parámetros de riesgo,
+    Código de Ética, evaluaciones del Comité de Remuneraciones, entre otros.
+</p>
+<p >
+    Información relativa a las formas de remuneración variable:
+</p>
+<p >
+    Las formas de remuneración variable son en efectivo como un concepto de
+    pago dentro de la nómina de los empleados.
+</p>
+<p >
+    La última fecha de revisión de la política del Sistema de Remuneraciones
+    fue en enero 2017, fecha en que el Consejo de Administración de Kubo aprobó
+    su implementación.
+</p>
+<p >
+    <strong>2. INFORMACIÓN CUANTITATIVA.</strong>
+</p>
+<ul>
+    <li>
+        <p >
+            Se tiene previstas cuatro sesiones del Comité de Remuneraciones
+            durante el ejercicio 2017 de manera trimestral.
+        </p>
+    </li>
+    <li>
+        <p >
+            Al 31 de diciembre de 2016 el número de empleados elegibles dentro
+            del Sistema de Remuneraciones es de 31.
+        </p>
+    </li>
+</ul>
+<p >
+    Se hace constar que a la fecha no se cuenta con información cualitativa que
+    informar, comparar, analizar o exponer en relación al sistema de
+    remuneración de la Sociedad, ya que el mismo iniciará su gestión a partir
+    del ejercicio social 2017.
+</p>
+
+
+
+                			
+                			</div>
+                		</div>
+                    
+                    </div>
+                    </div>
+                
+                    
+                
+                
+           
+           </div>  
+          
+		  	 <!--footer mapa de sitio-->
+	        <ui:include src="../templates/footer_mapa.xhtml" />        
+	        
+	        <!--lightbox abrir sesion-->
+	        <ui:include src="../templates/modal_iniciar_sesion.xhtml" />
+	         
+	        <!--lightbox opciones footer: Unidad especializada kubo/CONDUSEF, CAT y GAT-->
+	 	    <ui:include src="../templates/modal_condusef.xhtml" />    
+	 	   	<ui:include src="../templates/modal_cat.xhtml" />    
+	 	   	<ui:include src="../templates/modal_gat.xhtml" />  
+	        
+	        <!--lightbox sesion sin actividad-->
+	        <ui:include src="../templates/modal_sesion_inactiva.xhtml" />  
+	        <!--Requisitos-->
+	        <ui:include src="../templates/modal_requisitos.xhtml" />
+	      
+	        <ui:include src="../templates/contrasena_validador.xhtml" />
+	
+		    <ui:include src="../templates/modal_condiciones.xhtml" />
+		    <ui:include src="../templates/modal_correo_existente.xhtml" />
+		    
+			<ui:include src="../templates/modal_activar_cambiar_correo.xhtml" />
+			<ui:include src="../templates/modal_cambiar_correo.xhtml" />
+			
+			<ui:include src="../templates/mandar_mail.xhtml" />
+			
+			<ui:include src="../templates/modal_cambiocontrasena.xhtml" />
+      
+      
+        </h:form>
+        <script>
+			setChat();
+		</script>
+    </div>
+    </h:body>
+		<script type="text/javascript">
+		/** Start Alexa Certify Javascript **/
+		_atrk_opts = { atrk_acct:"j7qKi1a8Dy00UF", domain:"kubofinanciero.com",dynamic: true};
+		
+		(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+		
+		/* End Alexa Certify Javascript */
+		  
+		
+		</script>
+	<!-- Alexa Certify Javascript -->
+		<noscript>
+			<img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=j7qKi1a8Dy00UF" style="display:none" height="1" width="1" alt="" />
+		</noscript>
+	<!-- End Alexa Certify Javascript -->
+	
+		<div style="display: none;">
+				#{inicioValues.inicio}
+		</div>
+		
+</html>

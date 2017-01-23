@@ -7035,7 +7035,7 @@ margin:40px 0 0 0;
 
 
 .descripcion_producto .cat {
-	display:none;
+	display:none; 
 }
 
 .requisitos_modalidades {
@@ -7064,7 +7064,7 @@ margin:40px 0 0 0;
 	font-weight: 400;
 }
 .descripcion_producto .cat {
-	display:none;
+	display:none; 
 }
 
 .ipab {
@@ -8096,4 +8096,22 @@ text-align:left;
 .head_coach + .content   {
 	margin:50px auto 0;
 	
+}
+
+
+.sistema-remuneracion ul li {
+	list-style:disc;
+
+}
+
+.sistema-remuneracion ul {
+	padding:0 0 0 20px;
+
+}
+.romanos {
+	padding:0 0 0 40px;
+}
+.romanos li {
+	padding:0 0 0 0px;
+	list-style:lower-roman;
 }

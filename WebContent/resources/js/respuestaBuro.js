@@ -137,6 +137,12 @@ var centerContentInt= function (elemento){
 		     	 $("#dvContMenuREG").removeClass("opacity");
 		     	 $(".helpFrm").removeClass("opacity");
 		     	 
+		     	 if($("#cerrarLienzoPrimeraVez").length){
+					 dataLayer.push({'event': 'Preaprobación'});
+					 console.log('Preaprobación');
+				 }
+		     	 
+		     	 
 		     	if($(".contOfertas").length || $(".paso_1_2.areaL").length){
 		     		displayMessageProcessing('msgprocessing',false);
 		     		setTimeout(function(){
