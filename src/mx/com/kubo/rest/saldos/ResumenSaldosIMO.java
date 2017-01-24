@@ -1,7 +1,7 @@
 package mx.com.kubo.rest.saldos;
 
 import mx.com.kubo.model.NaturalPerson;
-import mx.com.kubo.rest.ResumenSaldos;
+import mx.com.kubo.rest.model.ResumenSaldos;
 import mx.com.kubo.services.ProyectLoanService;
 
 public interface ResumenSaldosIMO 

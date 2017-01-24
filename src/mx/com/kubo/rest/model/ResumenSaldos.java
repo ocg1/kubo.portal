@@ -1,4 +1,4 @@
-package mx.com.kubo.rest;
+package mx.com.kubo.rest.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

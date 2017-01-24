@@ -30,7 +30,7 @@
 												<div style="width: 100%; height: auto;position: relative;">
 													Efectivo disponible 
 													
-													<ui:include src="../secciones/investment/tooltip/tooltip_efectivo_disponible.xhtml" />
+													<ui:include src="../../../secciones/investment/tooltip/tooltip_efectivo_disponible.xhtml" />
 													
 												</div> 
 												
@@ -43,7 +43,7 @@
 											<td style="padding-left: 10px;">
 												<div style="width: 100%; height: auto;position: relative;">
 													Inversiones en proceso
-													<ui:include src="../secciones/investment/tooltip/tooltip_en_proceso.xhtml" />
+													<ui:include src="../../../secciones/investment/tooltip/tooltip_en_proceso.xhtml" />
 												</div>
 											
 											</td>
@@ -51,7 +51,11 @@
 											<td>
 												<!-- <div id="dvInvProc_01"><a title="Inversiones en proceso">#{myInvestments.notes_investment_process}</a></div> -->
 												<!-- <h:panelGroup rendered="#{sessionBean.area=='I'}"> -->
-													<p:commandLink id="proyectListInvestAction" value="#{myInvestments.notes_investment_process}" actionListener="#{myInvestments.getProjectProcess}" onstart="inicioVerProyectos()" oncomplete="llegadaVerProyectos()" update=":pnlContentInvest :panelContentListProyect" >
+													<p:commandLink id = "proyectListInvestAction" update = ":pnlContentInvest :panelContentListProyect"
+																   value = "#{myInvestments.notes_investment_process}" 
+																   actionListener = "#{myInvestments.getProjectProcess}"
+																   onstart    = "inicioVerProyectos()" 
+																   oncomplete = "llegadaVerProyectos()" >
 														<f:attribute name="seccionInv" value="proyectListInvest" />
 														<f:attribute name="status" value="F" />
 													</p:commandLink>
@@ -72,7 +76,7 @@
 											<td style="padding-left: 10px;">
 												<div style="width: 100%; height: auto;position: relative;">
 													Inversiones activas
-													<ui:include src="../secciones/investment/tooltip/tooltip_inversiones_activas.xhtml" />
+													<ui:include src="../../../secciones/investment/tooltip/tooltip_inversiones_activas.xhtml" />
 												</div>
 											</td>
 											<td>#{myInvestments.balances_active_investments}</td>
@@ -100,7 +104,7 @@
 											<td style="padding-left: 10px;">
 												<div style="width: 100%; height: auto;position: relative;">
 													Intereses por cobrar
-													<ui:include src="../secciones/investment/tooltip/intereses_por_cobrar2.xhtml" />
+													<ui:include src="../../../secciones/investment/tooltip/intereses_por_cobrar2.xhtml" />
 												</div>
 											</td>
 											<td>#{myInvestments.balances_accrued_interest}</td>
@@ -134,7 +138,7 @@
 												
 												<div style="width: 100%; height: auto;position: relative;">
 													Inversiones activas
-													<ui:include src="../secciones/investment/tooltip/tooltip_inversiones_plazo_fijo.xhtml" />
+													<ui:include src="../../../secciones/investment/tooltip/tooltip_inversiones_plazo_fijo.xhtml" />
 												</div>
 												
 											</td>
@@ -147,7 +151,7 @@
 												
 												<div style="width: 100%; height: auto;position: relative;">
 													Intereses devengados
-													<ui:include src="../secciones/investment/tooltip/tooltip_intereses_dev_plazofijo.xhtml" />
+													<ui:include src="../../../secciones/investment/tooltip/tooltip_intereses_dev_plazofijo.xhtml" />
 												</div>
 											</td>
 											<td>#{myInvestments.intARecibir}</td>

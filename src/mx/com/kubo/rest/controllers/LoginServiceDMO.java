@@ -1,4 +1,4 @@
-package mx.com.kubo.rest;
+package mx.com.kubo.rest.controllers;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.Membership;
+import mx.com.kubo.rest.model.LoginMembership;
 import mx.com.kubo.services.LoginServiceIMO;
 
 public abstract class LoginServiceDMO 

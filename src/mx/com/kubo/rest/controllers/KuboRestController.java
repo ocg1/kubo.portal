@@ -5,10 +5,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.gnNaturalPersonPK;
-import mx.com.kubo.rest.ResumenSaldos;
+import mx.com.kubo.rest.model.ResumenSaldos;
+import mx.com.kubo.rest.saldos.ProyectLoanActiveIMO;
+import mx.com.kubo.rest.saldos.ProyectLoanActiveIMP;
 import mx.com.kubo.rest.saldos.ResumenSaldosIMO;
 import mx.com.kubo.rest.saldos.ResumenSaldosIMP;
 import mx.com.kubo.services.NaturalPersonService;
@@ -18,8 +21,8 @@ import mx.com.kubo.tools.Utilities;
 @Path("/KuboREST")
 public class KuboRestController 
 {
-	protected ProyectLoanService servicioProyecto;
-	protected NaturalPersonService personaNaturalService;
+	private ProyectLoanService service_proyect_loan;
+	private NaturalPersonService personaNaturalService;
 	
 	@GET
 	@Path("{saldos}")
@@ -32,7 +35,7 @@ public class KuboRestController
 		gnNaturalPersonPK key;
 		NaturalPerson persona;
 		
-		servicioProyecto = Utilities.findBean("proyectLoanServiceImp");
+		service_proyect_loan = Utilities.findBean("proyectLoanServiceImp");
 		
 		personaNaturalService = Utilities.findBean("naturalPersonServiceImp");
 		
@@ -41,7 +44,7 @@ public class KuboRestController
 		persona = personaNaturalService.getNaturalPersonById(key);
 		
 		saldos = new ResumenSaldosIMP();
-		saldos.setServicioProyecto(servicioProyecto);
+		saldos.setServicioProyecto(service_proyect_loan);
 		saldos.setPerson(persona);		
 		saldos.init();
 		saldos.init_resumen_saldos();
@@ -49,5 +52,29 @@ public class KuboRestController
 		response = saldos.getResumenSaldos();
 		
 		return response;
+	}
+	
+	@GET
+	@Path("saldos/{getProjectActive}")
+	@Produces("application/json;charset=utf-8")
+	public Response getProjectActive(@QueryParam("cuenta") String cuenta, @QueryParam("status") String status)
+	{
+		//String status = (String) e.getComponent().getAttributes().get("status").toString();
+		//String cuenta = getStrCuentas();
+		
+		ProyectLoanActiveIMO active;
+		Response responseJSON;
+	
+		char status_delinquentinv = 'C';
+		
+		service_proyect_loan = Utilities.findBean("proyectLoanServiceImp");
+		
+		active = new ProyectLoanActiveIMP();
+		active.setService_proyect_loan(service_proyect_loan);
+		active.init(cuenta, status, status_delinquentinv);
+		
+		responseJSON = active.getResponseJSON();
+				
+		return responseJSON;
 	}
 }

@@ -1,4 +1,4 @@
-package mx.com.kubo.rest;
+package mx.com.kubo.rest.controllers;
 
 import java.text.SimpleDateFormat;
 
@@ -16,6 +16,8 @@ import javax.ws.rs.core.MediaType;
 
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.rest.model.LoginMembership;
+import mx.com.kubo.rest.model.LoginRequest;
 import mx.com.kubo.tools.Utilities;
 
 @Path("/membership")

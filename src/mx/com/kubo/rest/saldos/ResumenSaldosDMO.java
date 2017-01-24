@@ -16,7 +16,7 @@ import mx.com.kubo.model.InfoCalifPorc;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.ProyectSaldosEdoCta;
 import mx.com.kubo.model.SPProyectActive;
-import mx.com.kubo.rest.ResumenSaldos;
+import mx.com.kubo.rest.model.ResumenSaldos;
 import mx.com.kubo.services.ProyectLoanService;
 
 import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteRequest;

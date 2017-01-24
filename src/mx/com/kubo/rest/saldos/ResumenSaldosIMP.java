@@ -3,8 +3,7 @@ package mx.com.kubo.rest.saldos;
 import java.rmi.RemoteException;
 
 import mx.com.kubo.model.InfoCalifPorc;
-import mx.com.kubo.rest.ResumenSaldos;
-
+import mx.com.kubo.rest.model.ResumenSaldos;
 import safisrv.ws.InvKuboServicios.ConsultaInverRequest;
 import safisrv.ws.InvKuboServicios.SAFIServicios;
 import safisrv.ws.InvKuboServicios.SAFIServiciosServiceLocator;
