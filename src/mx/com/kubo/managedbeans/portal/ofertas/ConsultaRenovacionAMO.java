@@ -19,7 +19,7 @@ public abstract class ConsultaRenovacionAMO extends ConsultaRenovacionDMO
 		{
 			String renovation    = score.getIs_consulting_for_renovation();
 			Date consulting_date = score.getResult_datetime();			
-			is_risk_processed    = score.getRisk_processed() > 0 ? true : false;
+			is_risk_processed    = ( score.getRisk_processed() != null && score.getRisk_processed() > 0) ? true : false;
 			bur_sol_num          = score.getMx_solicitud_buro();
 			
 			Date today = new Date();

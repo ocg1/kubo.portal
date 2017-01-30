@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
+import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.SystemParam;
@@ -35,9 +36,28 @@ implements CreditHistoryControllerIMO, Serializable
 		
 		sesion = (SessionBean) resolver.getValue(context, null, "sessionBean");
 		
-		area           = sesion.getArea();
-		prospectus_id  = sesion.getProspectus_id();
-		company_id     = sesion.getCompany_id();
+		area      = sesion.getArea();
+		
+		if( area != null && area.toString().equals("L") ){
+		
+			prospectus_id  = sesion.getProspectus_id();
+			company_id     = sesion.getCompany_id();
+		
+		}else if( area != null && area.toString().equals("M") ){
+			
+			SearchSummaySession sesion_search_request = (SearchSummaySession)  resolver.getValue(context, null, "searchSummaySession");
+			
+			String search = sesion_search_request.getSearchSummary();
+			
+			String[] splStr = search.split("::") ;
+			
+			if( splStr.length == 4 ){
+				
+				prospectus_id = Integer.parseInt( splStr[2] );
+				company_id    = Integer.parseInt( splStr[3] );
+			}
+			
+		}
 		
 		membership_PK = new MembershipPK(); 
 		membership_PK.setCompany_id(company_id);

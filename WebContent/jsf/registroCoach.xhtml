@@ -58,6 +58,12 @@
 		
 		<script type = "text/javascript" src = "../resources/js/hubSpot_analytics.js"/>
 		
+		
+		<!-- 
+		<noscript>
+			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=974610895889842&amp;ev=PixelInitialized" />
+		</noscript> -->
+		
 		<script>
 		//<![CDATA[
 		
@@ -139,7 +145,7 @@
 	<style>
 	
 
-	@media only screen and (max-width: 1024px)  {
+	@media only screen and (max-width: 1024px){
 	
 			div#dvContMenuREG {
 	
@@ -165,8 +171,12 @@
 			// $("#cmdChargeInf").click();
 			
 			ejecutaInicio();
+		
 			
 		});
+		
+	
+		
 	</script>
 	
 </h:head>
@@ -175,10 +185,7 @@
 
 #{registroCoach.successInfo}
 		 <h:outputScript library="js" target="head" name="hubSpot_analytics.js" />
-<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWFJWG5"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
 
 
 <div id="headCoach" style="height:1px; position:absolute; width:100%; top:0;"></div>
@@ -278,6 +285,6 @@
 
 		<h:panelGroup id="pnlCancel" >
 		</h:panelGroup>
-
+	
 </h:body>
 </html>

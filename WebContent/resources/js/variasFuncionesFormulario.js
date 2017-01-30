@@ -910,7 +910,9 @@ function abrirAyudaDoc2() {
 	$(".ayudaDoc1").slideUp();
 	$(".ayudaDoc2").slideDown();
 	$("#cmdNeedSGBHelp").trigger("click");
-	dataLayer.push({'event': 'Ayuda documentos'});
+	//dataLayer.push({'event': 'Ayuda documentos'});
+	
+	 GTM_eventos ('Ayuda documentos')
 	 console.log('Ayuda documentos');
 }
 
@@ -1220,7 +1222,9 @@ function clicBtnGuardar() {
 	displayMessageProcessing('msgprocessing',false);	
 	$(".guardarProblemaDocs").trigger("click");
 	console.log("clickBtnProblema");
-	 dataLayer.push({'event': 'Sin documentos'});
+	 //dataLayer.push({'event': 'Sin documentos'});
+	 
+	 GTM_eventos ('Sin documentos')
 	 console.log('Sin documentos');
 }
 function enviarComentarioProblema() {

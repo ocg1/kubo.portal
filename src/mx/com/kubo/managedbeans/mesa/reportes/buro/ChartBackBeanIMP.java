@@ -36,6 +36,7 @@ import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
@@ -141,6 +142,30 @@ implements ChartBackBeanIMO, Serializable
 		Date d2 = new Date();
 		Calendar cd_2 = Calendar.getInstance();
 		cd_2.setTime(d2);
+		
+		recargarGrafica = false;
+		
+		if( sesion.getRole_id() != null ){
+		
+			List<RoleFunction> lstrf = roleFunctionService.getLstFunctionByRole(sesion.getRole_id(), sesion.getCompany_id());
+			
+			if( lstrf != null && lstrf.size() > 0 ){
+				
+				for( RoleFunction rf : lstrf ){
+					
+					if( rf.getPk().getFunction_id() == 35  ){
+						
+						recargarGrafica = true;
+						break;
+					}
+					
+				}
+				
+			}
+			
+			
+		
+		}
 		
 		if( sesion.getProspectus_id() != null && sesion.getCompany_id() != null ){
 		

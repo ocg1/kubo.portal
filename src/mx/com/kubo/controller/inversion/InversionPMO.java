@@ -656,7 +656,7 @@ public boolean puedeInvertirEn_F_G( int prospectus_id, int company_id , String s
 					
 					for( MontoInvertido_F_G_Collector coll : collector ){
 						
-						if( coll.getKubo_score().equals( "F1" ) || coll.getKubo_score().equals( "G1" ) ){
+						if( coll.getKubo_score() != null && ( coll.getKubo_score().equals( "F1" ) || coll.getKubo_score().equals( "G1" ) ) ){
 							
 							sum_F_G += coll.getTotalFondeado();
 							
@@ -745,7 +745,7 @@ public boolean puedeInvertirEn_F_G( int prospectus_id, int company_id , String s
 					
 					for( MontoInvertido_F_G_Collector coll : collector ){
 						
-						if( coll.getKubo_score().equals( "E5" ) ){
+						if( coll != null && coll.getKubo_score() != null && coll.getKubo_score().equals( "E5" ) ){
 							
 							sum_F_G += coll.getTotalFondeado();
 							

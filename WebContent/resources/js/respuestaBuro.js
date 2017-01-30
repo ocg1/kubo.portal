@@ -38,6 +38,7 @@ var actualTimer;
 		function segmentComplete(xhr, status, args){
 			
 			console.log( "segmentComplete: " + args.flagRepeat  );
+			console.log( "args.flagRepeat: " + args.flagRepeat );
 			
 			if( args.flagRepeat != undefined  &&   ( (!args.flagRepeat) || (args.flagRepeat+"") == 'false' ) ){
 				
@@ -54,6 +55,11 @@ var actualTimer;
 				}
 				
 				//
+				
+			}else if( args.flagRepeat === undefined && args.flagRepeat === undefined && args.isvalid === undefined   ){
+				
+				window.clearInterval(timerID);
+				window.clearInterval( timerSegment );
 				
 			}
 			
@@ -138,7 +144,11 @@ var centerContentInt= function (elemento){
 		     	 $(".helpFrm").removeClass("opacity");
 		     	 
 		     	 if($("#cerrarLienzoPrimeraVez").length){
-					 dataLayer.push({'event': 'Preaprobación'});
+					 //dataLayer.push({'event': 'Preaprobación'});
+					 
+					   GTM_eventos ('Preaprobación')
+					   
+					   
 					 console.log('Preaprobación');
 				 }
 		     	 

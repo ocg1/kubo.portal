@@ -56,12 +56,18 @@ public class SessionTimeoutFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 
-		//// System.out.println( ".... Redirigiendo a "+ timeoutPage +" .... ");
+		//System.out.println( ".... Redirigiendo a "+ timeoutPage +" .... ");
+		
+		String urltoredirect = "/Portal/index.xhtml";
 
 		if ((request instanceof HttpServletRequest) && (response instanceof HttpServletResponse)) {
 
 			HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+			
+			String uri = httpServletRequest.getRequestURI() ;
+			String qs  = httpServletRequest.getQueryString() ;
+			
 
 			// is session expire control required for this request?
 			if (isSessionControlRequiredForThisResource(httpServletRequest)) {
@@ -70,9 +76,38 @@ public class SessionTimeoutFilter implements Filter {
 					if (isSessionInvalid(httpServletRequest)) {
 						
 						/********************************************************************************************/
+						
+						System.out.println( "\n");
+						System.out.println( "\n");
+						System.out.println( "sessionID: " +  httpServletRequest.getRequestedSessionId() );
+						System.out.println( "\n");
+						System.out.println( "\n");
+						
+						if( uri.indexOf("/Portal") != (-1) && qs != null && uri.indexOf("/registro.xhtml") == (-1) && uri.indexOf("/controltable.xhtml") == (-1) && uri.indexOf("/registroCoach.xhtml") == (-1) ){
+						
+							uri =  uri.substring( uri.indexOf("/Portal") ) ;
+							urltoredirect = uri+"?"+qs;
+							
+						
+						}else if( uri.indexOf("comenzar-registro.xhtml") != (-1) ){
+							
+							uri =  uri.substring( uri.indexOf("/Portal") ) ;
+							
+							if( qs != null ){
+								uri = uri+"?"+qs;
+							}
+							
+							urltoredirect = uri;
+							
+						}
 
+						timeoutPage = urltoredirect;
+						
+						System.out.println( ".... Redirigiendo a "+ timeoutPage +" .... ");
+						
 						if ("partial/ajax".equals(httpServletRequest.getHeader("Faces-Request"))) {
 
+							
 							String sesId = httpServletRequest.getRequestedSessionId();
 							String timeoutUrl = httpServletRequest.getContextPath() +"/"+ getTimeoutPage();
 							
@@ -98,13 +133,13 @@ public class SessionTimeoutFilter implements Filter {
 												ht.remove(sesId);
 												
 											}else{
-												timeoutUrl = httpServletRequest.getContextPath() +"/Portal/index.xhtml";
+												timeoutUrl = httpServletRequest.getContextPath() +urltoredirect;
 											}
 											
 										}else{
 											// System.out.println( "servlet is null" );
 										
-											timeoutUrl = httpServletRequest.getContextPath() +"/Portal/index.xhtml";
+											timeoutUrl = httpServletRequest.getContextPath() +urltoredirect;
 								
 										}
 											
@@ -115,7 +150,7 @@ public class SessionTimeoutFilter implements Filter {
 								
 							}else{
 								// System.out.println("IF  partial/ajax HttpSession:session ID null " );
-								timeoutUrl = httpServletRequest.getContextPath() +"/Portal/index.xhtml";
+								timeoutUrl = httpServletRequest.getContextPath() + urltoredirect;
 							}
 							
 							// System.out.println("IF  partial/ajax  Session is invalid! Correct redirecting to timeoutpage : " + timeoutUrl);
@@ -126,10 +161,14 @@ public class SessionTimeoutFilter implements Filter {
 									timeoutUrl);
 						} else {
 								
-							String timeoutUrl = httpServletRequest.getContextPath() +"/Portal/index.xhtml";
+							System.out.println( " SessionTimeout URI(else): " + httpServletRequest.getRequestURI() );
+							
+							System.out.println( " SessionTimeout URL(else): " + httpServletRequest.getRequestURL() );
+							
+							String timeoutUrl = httpServletRequest.getContextPath() + urltoredirect;
 							
 							if( httpServletRequest.getSession(false) == null ){
-								timeoutUrl = httpServletRequest.getContextPath() +"/Portal/index.xhtml";
+								timeoutUrl = httpServletRequest.getContextPath() + urltoredirect;
 								httpServletRequest.getSession(true);
 							}
 							
@@ -170,7 +209,8 @@ public class SessionTimeoutFilter implements Filter {
 				httpServletResponse.setDateHeader("Expires", 0); // Proxies.
 
 			}
-
+			
+			
 			filterChain.doFilter(request, response);
 
 		} catch (Exception e) {

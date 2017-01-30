@@ -107,6 +107,7 @@ la autorización de tu préstamo.
 	
 			<!-- h:inputHidden id="publicacion_exitosa" / -->
 	
+	<h:panelGroup rendered="#{sessionBean.coachProspectus_id == null }" >
 		<script>
 		
 			deal_success ();
@@ -129,6 +130,8 @@ la autorización de tu préstamo.
 			*/
 		
 		</script>
+		
+	</h:panelGroup>
 	
 		<a href="#" class="segumiento_facebook" > </a>
 		<!-- a class="oferta_final" href="#" onclick="ga('send', { 'hitType': 'pageview', 'page': '/registro/paso7.html' , 'title': 'Paso 7' });"> </a -->

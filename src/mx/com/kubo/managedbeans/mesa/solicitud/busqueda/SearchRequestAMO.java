@@ -1,5 +1,7 @@
 package mx.com.kubo.managedbeans.mesa.solicitud.busqueda;
 
+import java.util.Date;
+
 import javax.faces.context.FacesContext;
 
 import mx.com.kubo.bean.SearchSummaySession;
@@ -8,6 +10,7 @@ import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.mesa.ActivityPersonIMO;
 import mx.com.kubo.managedbeans.mesa.MenuControlTableBean;
 import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
+import mx.com.kubo.model.Access;
 import mx.com.kubo.model.InvestorPK;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.ProspectusPK;
@@ -133,8 +136,8 @@ public abstract class SearchRequestAMO extends SearchRequestDMO
 				summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
 				
 		        summary_request.init();
-				//summary_request.cargaInfoCompleta();	
-		        //summary_request.initInvesmentData();
+				summary_request.cargaInfoCompleta();	
+		        summary_request.initInvesmentData();
 
 			break;
 			
@@ -168,7 +171,7 @@ public abstract class SearchRequestAMO extends SearchRequestDMO
 				elContext = faces.getELContext();
 				
 				summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
-				
+//				
 				summary_request.init();				
 			break;
 		}		
@@ -191,6 +194,39 @@ public abstract class SearchRequestAMO extends SearchRequestDMO
 			
 			actividad_ENABLED = false;
 		}
+	}
+	
+	protected void addAccess(  ){
+	
+		Access access = new Access();
+		
+		System.out.println( "UserAgent: "  );
+		
+		access.setAccess_from("Portal.kubo");
+		access.setCompany_id(sesion.getCompany_id());
+		access.setDevice_info(null);
+		access.setHorizontal_size( sesion.getBrowser_width() );
+		
+		access.setIpaddress(sesion.getIP_address_client());
+		access.setOp_system(sesion.getOsbrawser());
+		access.setPercentage(0);
+		access.setProspectus_id( sesion.getProspectus_id() );
+		access.setProspectus_id_coach(null);
+		access.setProspectus_id_viewed( prospectus.getProspectusPK().getProspectus_id() );
+		access.setScreen_id(12);
+		access.setUser_agent(sesion.getUser_agent());
+		access.setVersion_description(sesion.getVersion_description());
+		access.setVertical_size(sesion.getBrowser_width());
+		access.setWeb_browser(sesion.getNamebrawser());
+		access.setWeb_browser_version(sesion.getVersionbrawser());
+		access.setUrl_access( null );
+		
+		
+		
+		access.setAccess_datetime(new Date());
+		
+		access_service.add(access,false);
+		
 	}
 	
 

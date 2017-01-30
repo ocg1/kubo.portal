@@ -197,7 +197,9 @@ implements Serializable, EstadoCuentaIMO
 					sesion.setNew_consulting( capital_pagado_superior_al_MIN && contador_creditos_mora == 0 && contador_creditos_vencidos == 0 );
 				
 				}else if( !flag_In_for_min_100_per ) {
-					sesion.setNew_consulting( contador_creditos_mora == 0 && contador_creditos_vencidos == 0  && (contador_creditos_liquidados>0 || contador_creditos_vigentes > 0  ));
+					
+					sesion.setNew_consulting( contador_creditos_mora == 0 && contador_creditos_vencidos == 0  && contador_creditos_liquidados>0 && contador_creditos_vigentes == 0 );
+					
 				}else{
 					sesion.setNew_consulting( false );
 				}

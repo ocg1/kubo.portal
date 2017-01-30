@@ -130,13 +130,13 @@ public class AjustesPMO extends AjustesDMO  {
 		List<MontoInvertido_F_G_Collector> lst =  montoInvertido_F_G_service.getMontoInvertido_F_G(cuentaActual);
 		if( lst != null ){
 			for( MontoInvertido_F_G_Collector coll : lst ){
-				if( coll.getKubo_score().equals( "E5" ) ){
+				if( coll != null && coll.getKubo_score() != null && coll.getKubo_score().equals( "E5" ) ){
 					
 					montoInvertido_E5 += coll.getTotalFondeado();
 					
 				}
 				
-				if( coll.getKubo_score().equals( "F1" ) || coll.getKubo_score().equals( "G1" ) ){
+				if( coll != null && coll.getKubo_score() != null && ( coll.getKubo_score().equals( "F1" ) || coll.getKubo_score().equals( "G1" ) )){
 					
 					montoInvertido_FG += coll.getTotalFondeado();
 					

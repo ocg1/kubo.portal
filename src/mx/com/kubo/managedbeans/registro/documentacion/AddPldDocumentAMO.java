@@ -402,7 +402,16 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 				}
 			}
 			
+			/*if( naturalperson.getCitizenship() == EXTRANJERO ){
+				
+				if( naturalperson.getCountry_of_residence() != null && naturalperson.getCountry_of_residence().intValue() == 1 ){
+					dispCheckCompDomi = "inline";
+				}
+				
+			} */
+			
 			//Determinar si ya subio parte frontal y reverso tanto para IFE or FM2
+			
 			if( (lDocAddedCredFm2.size() == 3 && naturalperson.getCitizenship() == EXTRANJERO))
 			{
 				dispCheckCredFm2 = "inline";
@@ -904,7 +913,23 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 			
 			if( inv != null ){
 				
-				 sameAddress = inv.getMx_ife_domicilio();
+				if( naturalperson.getCitizenship() != null && naturalperson.getCitizenship() == NACIONAL && inv.getMx_ife_domicilio() != null ){
+					
+					sameAddress = inv.getMx_ife_domicilio();
+				 
+				}else if( naturalperson.getCitizenship() != null &&  naturalperson.getCitizenship() == EXTRANJERO  ){
+						
+					if( inv.getMx_ife_domicilio() != null){
+						
+						sameAddress = inv.getMx_ife_domicilio();
+						
+					}else{
+					
+						sameAddress = "N";
+						
+					}
+					
+				}
 				
 			}else{
 				
@@ -912,6 +937,7 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 				inv.setPk(invPk);
 				inv.setMx_ife_domicilio("N");
 				investorservice.addInvestor(inv);
+				sameAddress = "N";
 			}
 			 
 		 }

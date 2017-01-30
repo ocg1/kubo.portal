@@ -342,6 +342,7 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 			ht1.put("E",0D);
 			ht1.put("F",0D);
 			ht1.put("G",0D);
+			ht1.put("R",0D);
 			
 			
 			for( InfoCalifPorc info : lstinfo ){
@@ -351,6 +352,7 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 					//String porc 			= (arreglo1[i].split("\\&;\\&"))[2];
 					
 					if( riesgo != null && numInversiones != null ){
+						System.out.println("-- " + riesgo.charAt(0)+"");
 						ht1.put ( (riesgo.charAt(0)+"") , (ht1.get( riesgo.charAt(0)+"" )+Double.parseDouble(numInversiones)) ) ;
 					}
 				//}
@@ -397,6 +399,7 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 			ht2.put("E",new ArrayList<Double>());
 			ht2.put("F",new ArrayList<Double>());
 			ht2.put("G",new ArrayList<Double>());
+			ht2.put("R",new ArrayList<Double>());
 			
 			for( InfoCalifPorc info : lstinfo ){
 				

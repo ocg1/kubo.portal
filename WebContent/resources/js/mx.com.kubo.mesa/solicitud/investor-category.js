@@ -4,7 +4,7 @@ Resumen.init = function()
 {
 	console.log("Resumen.init(): OK");		
 	
-	$("#init-investor-category").trigger("blur");
+	//$("#init-investor-category").trigger("blur");
 	
 /*	
 	$("#sectionEditInstitutionalIvestor").off();

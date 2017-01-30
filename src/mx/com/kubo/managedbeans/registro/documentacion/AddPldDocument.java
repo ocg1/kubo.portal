@@ -60,8 +60,12 @@ import mx.com.kubo.model.IncomeType;
 import mx.com.kubo.model.InfoNotification;
 import mx.com.kubo.model.InfoScreen;
 import mx.com.kubo.model.InfoScreenPK;
+import mx.com.kubo.model.Investor;
+import mx.com.kubo.model.InvestorPK;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.Phone;
+import mx.com.kubo.model.ProyectLoanInfo;
+import mx.com.kubo.model.ProyectLoanInfoPK;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.Screen;
 import mx.com.kubo.model.ScreenPK;
@@ -191,9 +195,11 @@ implements Serializable
 		
 		lista_tipo_credencial = service_catalogos.getLista_tipo_credencial();	
 		
-		if( naturalperson  != null && naturalperson.getCountry_of_residence() != null && naturalperson.getCountry_of_residence().intValue() == 1 ){
-			sameAddress = "N";
+		 if( naturalperson  != null && naturalperson.getCountry_of_residence() != null && naturalperson.getCountry_of_residence().intValue() == 1 ){
+			sameAddress = "S";
 		}
+		
+		sameAddress = "N";
 		
 	}
 	
@@ -226,13 +232,50 @@ implements Serializable
 			
 			if( sesion.getArea().toString().equals("L") ){
 				
+				if(info != null){
+				
 				 info.setMx_ife_domicilio(sameAddress);
 				 proyectLoanInfoService.updateProyectLoanInfo(info);
+				 
+				}else{
+					
+					info =  new ProyectLoanInfo();
+					
+					ProyectLoanInfoPK pkInfo = new ProyectLoanInfoPK();
+					 
+					 pkInfo.setCompany_id( thisProyectLoan.getProyectloanPk().getCompany_id());
+					 pkInfo.setProspectus_id( thisProyectLoan.getProyectloanPk().getProspectus_id() );
+					 pkInfo.setProyect_id( thisProyectLoan.getProyectloanPk().getProyect_id() );
+					 pkInfo.setProyect_loan_id( thisProyectLoan.getProyectloanPk().getProyect_loan_id() );
+					
+					 info.setPk(pkInfo);
+					 info.setMx_ife_domicilio("N");
+					 proyectLoanInfoService.saveProyectLoanInfo(info);
+					
+				}
 				
 			 }else if( sesion.getArea().toString().equals("I") ){
 				 
-				 inv.setMx_ife_domicilio( sameAddress );
-				 investorservice.updateInvestor(inv);
+				 if( inv != null ){
+					
+					 inv = new Investor();
+					 
+					 InvestorPK invPk = new InvestorPK();
+						
+					invPk.setCompany_id(company_id);
+					invPk.setProspectus_id(prospectus_id);
+					
+					inv.setPk(invPk);
+					
+					inv.setMx_ife_domicilio( sameAddress );
+					investorservice.addInvestor(inv);
+					 
+				 }else{
+				 
+					 inv.setMx_ife_domicilio( sameAddress );
+					 investorservice.updateInvestor(inv);
+				 
+				 }
 				 
 			 }
 			

@@ -99,7 +99,7 @@ public abstract class OfertaRenovacionAMO extends OfertaRenovacionDMO
 		Access access = new Access();
 		
 		access.setCompany_id(sesion.getCompany_id());
-		access.setProspectus_id(sesion.getProspectus_id());
+		access.setProspectus_id(prospectus_id);
 		
 		access.setScreen_id( 81 );
 		

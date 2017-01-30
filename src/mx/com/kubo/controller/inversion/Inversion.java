@@ -1514,7 +1514,7 @@ public class Inversion extends InversionPMO {
 			
 			for( MontoInvertido_F_G_Collector coll : collector ){
 				
-				if( coll.getKubo_score().equals( "E5" ) ){
+				if( coll != null && coll.getKubo_score() != null && coll.getKubo_score().equals( "E5" ) ){
 					
 					sum_F_G += coll.getTotalFondeado();
 					

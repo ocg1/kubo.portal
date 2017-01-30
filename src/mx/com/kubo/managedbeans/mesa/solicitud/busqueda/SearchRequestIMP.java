@@ -131,7 +131,7 @@ implements SearchRequestIMO, Serializable
 							elContext = faces.getELContext();
 							
 							summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
-							
+//							
 							summary_request.init();					
 							
 							isPerson          = false;
@@ -165,6 +165,12 @@ implements SearchRequestIMO, Serializable
 					System.out.println ("isPerson"+ isPerson+" - " +"isValid" + isValid+" - " +"actividad_ENABLED"+    actividad_ENABLED+" - " +"proyect_loan_ENABLED"+ proyect_loan_ENABLED+" - " +"investor_ENABLED"+  investor_ENABLED);
 					
 					System.out.println("\n\n\n\n\n");
+					
+					if( prospectus != null ){
+					
+						addAccess( );
+					
+					}
 					
 					sesion_search_request.setPerson(isPerson);
 					sesion_search_request.setTypeLog(type_log);

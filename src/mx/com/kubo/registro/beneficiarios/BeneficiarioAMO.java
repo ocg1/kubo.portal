@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import mx.com.kubo.model.Address;
 import mx.com.kubo.model.AddressPK;
 import mx.com.kubo.model.Beneficiaries;
 import mx.com.kubo.model.BeneficiariesPK;
@@ -187,6 +188,10 @@ public abstract class BeneficiarioAMO extends BeneficiarioDMO
 			address_PK.setCompany_id(company_id);
 			address_PK.setProspectus_id(prospectus_id);
 			address_PK.setAddress_id(address_id);
+			
+			if( address == null ){
+				address = new Address();
+			}
 			
 			address.setAddressPK(address_PK);
 			

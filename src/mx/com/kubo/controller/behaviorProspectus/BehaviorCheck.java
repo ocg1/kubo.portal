@@ -187,19 +187,19 @@ public class BehaviorCheck {
 										is_inussual = true;
 										note_description += "El número telefónico que proporcionó es de alto riesgo ("+ p.getPhone_number()+")  \n";
 										
-									}else if( p.getPhone_number().trim().substring(0, 8).equals(blPh.getPhone_number().trim().substring(0, 8) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
+									}else if( p.getPhone_number() != null &&  p.getPhone_number().trim().length() > 7 && p.getPhone_number().trim().substring(0, 8).equals(blPh.getPhone_number().trim().substring(0, 8) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
 										
 										is_inussual = true;
 										note_description += "El número telefónico que proporcionó contiene 8 dígitos iguales a uno de alto riesgo, pudo comprarse en lote  ("+ p.getPhone_number()+")  \n";
 										
-									}else if( p.getPhone_number().trim().substring(0, 6).equals(blPh.getPhone_number().trim().substring(0, 6) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
+									}/*else if( p.getPhone_number() != null && p.getPhone_number().trim().length() > 5 && p.getPhone_number().trim().substring(0, 6).equals(blPh.getPhone_number().trim().substring(0, 6) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
 										
 			
 										is_inussual = true;
 										note_description += "El número telefónico que proporcionó contiene 6 dígitos iguales a uno de alto riesgo, pudo comprarse en lote  ("+ p.getPhone_number()+")  \n";
 										
 										
-									}
+									}*/
 								
 								}
 							
@@ -232,17 +232,17 @@ public class BehaviorCheck {
 										is_inussual = true;
 										note_description += "El número telefónico que proporcionó es de alto riesgo ("+ r.getPhone()+")  \n";
 										
-									}else if( r.getPhone().trim().substring(0, 8).equals(blPh.getPhone_number().trim().substring(0, 8) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
+									}else if( r.getPhone() != null &&  r.getPhone().trim().length() > 7 && r.getPhone().trim().substring(0, 8).equals(blPh.getPhone_number().trim().substring(0, 8) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
 										
 										is_inussual = true;
 										note_description += "El número telefónico que proporcionó contiene 8 dígitos iguales a uno de alto riesgo, pudo comprarse en lote  ("+ r.getPhone()+")  \n";
 										
-									}else if( r.getPhone().trim().substring(0, 6).equals(blPh.getPhone_number().trim().substring(0, 6) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
+									}/*else if( r.getPhone() != null &&  r.getPhone().trim().length() > 5 && r.getPhone().trim().substring(0, 6).equals(blPh.getPhone_number().trim().substring(0, 6) ) && blPh.getIs_enabled() != null && blPh.getIs_enabled().equals("S") ){
 										
 										is_inussual = true;
 										note_description += "El número telefónico que proporcionó contiene 6 dígitos iguales a uno de alto riesgo, pudo comprarse en lote  ("+ r.getPhone() +")  \n";
 										
-									}
+									}*/
 								
 								}
 							

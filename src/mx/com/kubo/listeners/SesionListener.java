@@ -29,6 +29,10 @@ implements HttpSessionListener
 		msg += evento.getSession().getId() + " at "+ new Date();
 		
 		System.out.println("\n" + msg + " timeOut: "+ evento.getSession().getMaxInactiveInterval() +"  \n");
+		
+//		evento.getSession().setMaxInactiveInterval(60); 
+//		
+//		System.out.println("\n" + msg + " timeOut: "+ evento.getSession().getMaxInactiveInterval() +"  \n");
 	}
 
 	@SuppressWarnings("rawtypes")

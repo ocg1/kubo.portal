@@ -85,7 +85,7 @@ public class Rechazado implements Serializable {
 			
 			initAccess();
 			
-			if( pyln != null && pyln.getStatus_id() != null && pyln.getStatus_id().intValue() == 11 ){
+			if( pyln != null && pyln.getStatus_id() != null && pyln.getStatus_id().intValue() != 0 && pyln.getStatus_id().intValue() != 1 && pyln.getStatus_id().intValue() != 2 && pyln.getStatus_id().intValue() != 3 ){
 				
 				if( pyln.getConsulting_date() != null ){
 					

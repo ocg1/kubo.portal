@@ -302,7 +302,7 @@ implements NotasDelCasoIMO
 		
 	public final String getMotiveDescription(Integer motive_id)
 	{		
-		//System.out.println("NotasDelCasoIMP.getMotiveDescription(): " + motive_id);
+		System.out.println("NotasDelCasoIMP.getMotiveDescription(): " + motive_id);
 		
 		String name = "";
 		
@@ -325,6 +325,8 @@ implements NotasDelCasoIMO
 	
 	public final String getMetaInfoTOKEN(Notes nota)
 	{
+		System.out.println("NotasDelCasoIMP.getMetaInfoTOKEN(): " + nota);
+		
 		meta_info_TOKEN = service_notas_del_caso.getMeta_info_TOKEN(nota);
 		
 		return meta_info_TOKEN;

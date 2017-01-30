@@ -3,6 +3,7 @@ package mx.com.kubo.controller.efl_connect;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -54,9 +55,23 @@ public class EflConnect {
 			
 			writer.write(input);
 	        writer.close();*/
+			
+			int code = 0;
+			
+			try{
+				
+				code = conn.getResponseCode();
+				
+			}catch( ConnectException ne ){
+				
+				System.out.println( "ConnectException: " + ne );
+				ne.printStackTrace();
+				
+				code = 0;
+			}
 	        
-			if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-				throw new RuntimeException("Failed : HTTP error code : "+ conn.getResponseCode());
+			if ( code != HttpURLConnection.HTTP_OK) {
+				throw new RuntimeException("Failed : HTTP error code : "+ code );
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));

@@ -1131,7 +1131,56 @@ implements Serializable, BasicDataIMO
 			context  = faces.getELContext();
 			external = faces.getExternalContext();
 			
+			npPK = new gnNaturalPersonPK();
 			
+			npPK.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+			npPK.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
+			
+			naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+			boolean changeNatPer = false;
+			
+			if( naturalPerson.getFirst_name() == null && name.getFirst_name() != null ){
+				naturalPerson.setFirst_name(name.getFirst_name());
+				changeNatPer = true;
+			}
+			
+			if( naturalPerson.getMiddle_name() == null && name.getMiddle_name() != null ){
+				naturalPerson.setMiddle_name(name.getMiddle_name());
+				changeNatPer = true;
+			}
+			if( naturalPerson.getFather_last_name() == null && name.getFather_last_name() != null ){
+				naturalPerson.setFather_last_name( name.getFather_last_name() );
+				changeNatPer = true;
+			}
+			if( naturalPerson.getMother_last_name() == null && name.getMother_last_name() != null ){
+				naturalPerson.setMother_last_name( name.getMother_last_name() );
+				changeNatPer = true;
+			}
+			
+			if( naturalPerson.getCountry_id() == null ){
+				naturalPerson.setCountry_id(700);
+				changeNatPer = true;
+			}
+			if( naturalPerson.getSector_id() == null ){
+				naturalPerson.setSector_id(32);
+				changeNatPer = true;
+			}
+			
+			if( changeNatPer ){
+				
+				generator.setPerson(naturalPerson);
+				generator.init_RFC();
+				generator.init_CURP();
+				
+				naturalPerson = generator.getPerson();
+			}
+			
+			if( changeNatPer ){
+				
+				service_natural_person.update(naturalPerson);
+				naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+				
+			}
 				
 			BehaviorCheck bc = new BehaviorCheck();
 			
@@ -1145,8 +1194,6 @@ implements Serializable, BasicDataIMO
 					}
 			
 			bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
-				
-			
 			
 			SystemParamPK spkH = new SystemParamPK();
 			
@@ -1160,259 +1207,234 @@ implements Serializable, BasicDataIMO
 				request = RequestContext.getCurrentInstance();
 				request.addCallbackParam("isActive", true );
 				
-		System.out.println("iniciandoConsultaPropector");
-		
-		
-		Preaprobacion preaprobacion =  (Preaprobacion)       resolver.getValue(context, null, "preaprobacion");
-		
-		npPK = new gnNaturalPersonPK();
-		
-		npPK.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
-		npPK.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
-		
-		naturalPerson = service_natural_person.getNaturalPersonById(npPK);
-		boolean changeNatPer = false;
-		
-		if( naturalPerson.getFirst_name() == null && name.getFirst_name() != null ){
-			naturalPerson.setFirst_name(name.getFirst_name());
-			changeNatPer = true;
-		}
-		
-		if( naturalPerson.getMiddle_name() == null && name.getMiddle_name() != null ){
-			naturalPerson.setMiddle_name(name.getMiddle_name());
-			changeNatPer = true;
-		}
-		if( naturalPerson.getFather_last_name() == null && name.getFather_last_name() != null ){
-			naturalPerson.setFather_last_name( name.getFather_last_name() );
-			changeNatPer = true;
-		}
-		if( naturalPerson.getMother_last_name() == null && name.getMother_last_name() != null ){
-			naturalPerson.setMother_last_name( name.getMother_last_name() );
-			changeNatPer = true;
-		}
-		
-		if( changeNatPer ){
-			
-			service_natural_person.update(naturalPerson);
-			naturalPerson = service_natural_person.getNaturalPersonById(npPK);
-			
-		}
-		
-		Address domicilio_tmp  = addressService.getAddressById(domicilio.getAddress().getAddressPK());
-		
-		preaprobacion.setNaturalPerson(naturalPerson);
-		preaprobacion.setProspectus(prospectus);
-		preaprobacion.setThisAddress( domicilio_tmp );
-		
-		Phone thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 6, 'L');
-		
-		if( thisPhoneFixed == null ){
-			thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 5, 'L');
-		}
-		
-		System.out.println("phone: "+thisPhoneFixed.getPhone_number());
-		
-		preaprobacion.setThisPhoneFixed(thisPhoneFixed);
-		
-		Simulator simulator =  (Simulator) resolver.getValue(context, null, "simulator");;
-		
-		preaprobacion.setSimulator(simulator);
-		
-		NotesService notesservice = Utilities.findBean("notesServiceImp");
-		
-		preaprobacion.setService_notas(notesservice);
-		
-		boolean is_prospect_SGB_OK = preaprobacion.creaProspectSGB();
-		
-		System.out.println("preaprobacion msg: "+ preaprobacion.getMsg());
-		
-		if( is_prospect_SGB_OK ){
-		
-			RequestShortScore shortrequest = new RequestShortScore();
-
-			//Esta llamada se tiene que realizar ya que es probable que haya cambiado la dirección y los objetos  de estado neighborhood
-			// no se hayan recargado 
-			Address address = addressService.getMaxAddressByType(sesion.getProspectus_id(), sesion.getCompany_id(), 1);
-			
-			shortrequest.setClientId(naturalPerson.getNatPerPK().getProspectus_id()+"");
-			
-			shortrequest.setPrimerNombre(naturalPerson.getFirst_name());
-			shortrequest.setSegundoNombre(naturalPerson.getMiddle_name());
-			shortrequest.setApellidoMaterno(naturalPerson.getMother_last_name());
-			shortrequest.setApellidoPaterno(naturalPerson.getFather_last_name());
-			shortrequest.setFechaNacimineto(generaFecha(naturalPerson.getDate_of_birth()));
-			shortrequest.setRfc(naturalPerson.getMx_rfc());
-			
-			String street = address.getStreet();
-			
-			if( street != null ){
+				System.out.println("iniciandoConsultaPropector");
 				
-				street = street.replace( "," , "");
 				
-			}
-			
-			shortrequest.setCalle( street );
-			
-			shortrequest.setCiudad(address.getTownCat().getName());
-			
-			shortrequest.setCodigoPostal(address.getZip_code());
-			
-			if(address.getNeighborhood() != null ){
+				Preaprobacion preaprobacion =  (Preaprobacion)       resolver.getValue(context, null, "preaprobacion");
 				
-				shortrequest.setColonia(address.getNeighborhood().getName());
+				Address domicilio_tmp  = addressService.getAddressById(domicilio.getAddress().getAddressPK());
 				
-			}else{
+				preaprobacion.setNaturalPerson(naturalPerson);
+				preaprobacion.setProspectus(prospectus);
+				preaprobacion.setThisAddress( domicilio_tmp );
 				
-				shortrequest.setColonia(address.getNeighborhood_text());
+				Phone thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 6, 'L');
 				
-			}
-			
-			shortrequest.setEstado(address.getStateCat().getBc_key());
-			shortrequest.setMunicipio(address.getTownCat().getName());
-			shortrequest.setNumeroExterior(address.getAddress_number());
-			
-			ObtieneConsultaCorta shortScore = new ObtieneConsultaCorta();
-			
-			ResponseShortScore res =  shortScore.generaConsultaCorta(shortrequest, true);
-			
-			if(res != null){
-			
-				request.addCallbackParam("isActive", true );
-				request.addCallbackParam("isValid", res.getValido() );
-				request.addCallbackParam("score", res.getScore());
-				request.addCallbackParam("bursolnum",res.getBurSolNum());
-			
-				insertaProspector( res );
+				if( thisPhoneFixed == null ){
 				
-				if( !res.getValido() ){
+					thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 5, 'L');
+				
+					System.out.println("phone: "+thisPhoneFixed.getPhone_number());
 					
-					insertaScoring( res );
-					enviaNotificacion();
-					booleanListo	= false;
-					protectorValid	= true;
-					consultValid    = true;
-					
-					if( naturalPerson != null && naturalPerson.getProspectus() != null  ){
-					
-						SystemParamPK spk = new SystemParamPK();
-						
-						spk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
-						spk.setSystem_param_id(88);
-						
-						SystemParam sys =  systemParamService.loadSelectedSystemParam( spk );
-						
-						if( sys != null && sys.getValue() != null && sys.getValue().equals("S") && naturalPerson.getProspectus().getInfusion_id() != null ){
-						
-							InfusionSoft infusion = new InfusionSoft();
-						
-							infusion.addTAgToContact( naturalPerson.getProspectus().getInfusion_id() , 261 ); // tag Rechazo Automático Prospector
-					
-							//sendRejectMailForEFL( String email, String body ){
-							
-						}
-						
-						//HUBSPOT CONSULTA PROSPECTOR RECHAZADO
-						if( naturalPerson != null && naturalPerson.getProspectus() != null && naturalPerson.getProspectus().getHs_vid() != null ){	
-							
-							SystemParamPK system_param_PK_I = new SystemParamPK();
-							
-							system_param_PK_I.setCompany_id( 1 );
-							system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
-							
-							 SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
-							
-							if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
-								
-								HubSpotController hs =  new HubSpotController();
-								
-								StringBuilder properties = new StringBuilder( "{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
-													"{ \"property\" : \"prospector_valid\" , 		 \"value\" : \""+res.getValido()+"\"}," +
-									 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}");
-								
-								hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
-								
-							 }
-						}
-					}
-					
-					
-					
+					preaprobacion.setThisPhoneFixed(thisPhoneFixed);
+				
 				}else{
 					
-					booleanListo	= true;
-					protectorValid	= true;
-					consultValid    = false;
-					
-//					if(){
-//						
-//						eflMail efl = new eflMail();
-//						
-//						efl.sendRejectMailRedirectEFL();
-//						
-//					}
-					
-					if( naturalPerson != null && naturalPerson.getProspectus() != null ){
-						
-						SystemParamPK spk = new SystemParamPK();
-						
-						spk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
-						spk.setSystem_param_id(88);
-						
-						SystemParam sys =  systemParamService.loadSelectedSystemParam( spk );
-						
-						if( sys != null && sys.getValue() != null && sys.getValue().equals("S") && naturalPerson.getProspectus().getInfusion_id() != null ){
-						
-							InfusionSoft infusion = new InfusionSoft();
-						
-							infusion.addTAgToContact( naturalPerson.getProspectus().getInfusion_id() , 139 ); // tag Consulta Prospector  exitosa
-					
-						}
-						
-						//HUBSPOT CONSULTA PROSPECTOR EXITOSO
-						if( naturalPerson != null && naturalPerson.getProspectus() != null && naturalPerson.getProspectus().getHs_vid() != null ){	
-							
-							SystemParamPK system_param_PK_I = new SystemParamPK();
-							
-							system_param_PK_I.setCompany_id( 1 );
-							system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
-							
-							SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
-							
-							if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
-								
-								HubSpotController hs =  new HubSpotController();
-								
-								StringBuilder properties = new StringBuilder();
-								
-								properties.append("{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
-									 "{ \"property\" : \"prospector_valid\" , 		 \"value\" : \""+res.getValido()+"\"}," +
-									 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}," +
-									 "{ \"property\" : \"tiene_prospector\" , \"value\" : \"Si\"}");
-								
-									hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
-								
-								
-										
-										
-							 }
-							
-						}
-						
-					}
-					
+					thisPhoneFixed = new Phone();
+					thisPhoneFixed.setPhone_number("");
+					preaprobacion.setThisPhoneFixed(thisPhoneFixed);
 					
 				}
 				
-			}
-		}
+				Simulator simulator =  (Simulator) resolver.getValue(context, null, "simulator");;
+				
+				preaprobacion.setSimulator(simulator);
+				
+				NotesService notesservice = Utilities.findBean("notesServiceImp");
+				
+				preaprobacion.setService_notas(notesservice);
+				
+				boolean is_prospect_SGB_OK = preaprobacion.creaProspectSGB();
+				
+				System.out.println("preaprobacion msg: "+ preaprobacion.getMsg());
+				
+				if( is_prospect_SGB_OK ){
+				
+					RequestShortScore shortrequest = new RequestShortScore();
 		
-		
-//			InfusionSoft infusion = new InfusionSoft();
-//			
-//			infusion.sendRejectMailForEFL( "alangustavo@kubofinanciero.com", "text" );
-			
-		
-		faces.getViewRoot().getViewMap().remove("preaprobacion");
+					//Esta llamada se tiene que realizar ya que es probable que haya cambiado la dirección y los objetos  de estado neighborhood
+					// no se hayan recargado 
+					Address address = addressService.getMaxAddressByType(sesion.getProspectus_id(), sesion.getCompany_id(), 1);
+					
+					shortrequest.setClientId(naturalPerson.getNatPerPK().getProspectus_id()+"");
+					
+					shortrequest.setPrimerNombre(naturalPerson.getFirst_name());
+					shortrequest.setSegundoNombre(naturalPerson.getMiddle_name());
+					shortrequest.setApellidoMaterno(naturalPerson.getMother_last_name());
+					shortrequest.setApellidoPaterno(naturalPerson.getFather_last_name());
+					shortrequest.setFechaNacimineto(generaFecha(naturalPerson.getDate_of_birth()));
+					shortrequest.setRfc(naturalPerson.getMx_rfc());
+					
+					String street = address.getStreet();
+					
+					if( street != null ){
+						
+						street = street.replace( "," , "");
+						
+					}
+					
+					shortrequest.setCalle( street );
+					
+					shortrequest.setCiudad(address.getTownCat().getName());
+					
+					shortrequest.setCodigoPostal(address.getZip_code());
+					
+					if(address.getNeighborhood() != null ){
+						
+						shortrequest.setColonia(address.getNeighborhood().getName());
+						
+					}else{
+						
+						shortrequest.setColonia(address.getNeighborhood_text());
+						
+					}
+					
+					shortrequest.setEstado(address.getStateCat().getBc_key());
+					shortrequest.setMunicipio(address.getTownCat().getName());
+					shortrequest.setNumeroExterior(address.getAddress_number());
+					
+					ObtieneConsultaCorta shortScore = new ObtieneConsultaCorta();
+					
+					ResponseShortScore res =  shortScore.generaConsultaCorta(shortrequest, true);
+					
+					if(res != null){
+					
+						request.addCallbackParam("isActive", true );
+						request.addCallbackParam("isValid", res.getValido() );
+						request.addCallbackParam("score", res.getScore());
+						request.addCallbackParam("bursolnum",res.getBurSolNum());
+					
+						insertaProspector( res );
+						
+						if( !res.getValido() ){
+							
+							insertaScoring( res );
+							enviaNotificacion();
+							booleanListo	= false;
+							protectorValid	= true;
+							consultValid    = true;
+							
+							if( naturalPerson != null && naturalPerson.getProspectus() != null  ){
+							
+								SystemParamPK spk = new SystemParamPK();
+								
+								spk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+								spk.setSystem_param_id(88);
+								
+								SystemParam sys =  systemParamService.loadSelectedSystemParam( spk );
+								
+								if( sys != null && sys.getValue() != null && sys.getValue().equals("S") && naturalPerson.getProspectus().getInfusion_id() != null ){
+								
+									InfusionSoft infusion = new InfusionSoft();
+								
+									infusion.addTAgToContact( naturalPerson.getProspectus().getInfusion_id() , 261 ); // tag Rechazo Automático Prospector
+							
+									//sendRejectMailForEFL( String email, String body ){
+									
+								}
+								
+								//HUBSPOT CONSULTA PROSPECTOR RECHAZADO
+								if( naturalPerson != null && naturalPerson.getProspectus() != null && naturalPerson.getProspectus().getHs_vid() != null ){	
+									
+									SystemParamPK system_param_PK_I = new SystemParamPK();
+									
+									system_param_PK_I.setCompany_id( 1 );
+									system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
+									
+									 SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
+									
+									if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+										
+										HubSpotController hs =  new HubSpotController();
+										
+										StringBuilder properties = new StringBuilder( "{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
+															"{ \"property\" : \"prospector_valid\" , 		 \"value\" : \""+res.getValido()+"\"}," +
+											 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}");
+										
+										hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
+										
+									 }
+								}
+							}
+							
+							
+							
+						}else{
+							
+							booleanListo	= true;
+							protectorValid	= true;
+							consultValid    = false;
+							
+		//					if(){
+		//						
+		//						eflMail efl = new eflMail();
+		//						
+		//						efl.sendRejectMailRedirectEFL();
+		//						
+		//					}
+							
+							if( naturalPerson != null && naturalPerson.getProspectus() != null ){
+								
+								SystemParamPK spk = new SystemParamPK();
+								
+								spk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+								spk.setSystem_param_id(88);
+								
+								SystemParam sys =  systemParamService.loadSelectedSystemParam( spk );
+								
+								if( sys != null && sys.getValue() != null && sys.getValue().equals("S") && naturalPerson.getProspectus().getInfusion_id() != null ){
+								
+									InfusionSoft infusion = new InfusionSoft();
+								
+									infusion.addTAgToContact( naturalPerson.getProspectus().getInfusion_id() , 139 ); // tag Consulta Prospector  exitosa
+							
+								}
+								
+								//HUBSPOT CONSULTA PROSPECTOR EXITOSO
+								if( naturalPerson != null && naturalPerson.getProspectus() != null && naturalPerson.getProspectus().getHs_vid() != null ){	
+									
+									SystemParamPK system_param_PK_I = new SystemParamPK();
+									
+									system_param_PK_I.setCompany_id( 1 );
+									system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
+									
+									SystemParam system_param_I = systemParamService.loadSelectedSystemParam(system_param_PK_I);
+									
+									if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+										
+										HubSpotController hs =  new HubSpotController();
+										
+										StringBuilder properties = new StringBuilder();
+										
+										properties.append("{ \"property\" : \"bc_score\" , \"value\" : \""+res.getScore()+"\"}," +
+											 "{ \"property\" : \"prospector_valid\" , 		 \"value\" : \""+res.getValido()+"\"}," +
+											 "{ \"property\" : \"estatus_prospecto\" , \"value\" : \"consulta_prospector\"}," +
+											 "{ \"property\" : \"tiene_prospector\" , \"value\" : \"Si\"}");
+										
+											hs.updateProspectus(naturalPerson.getProspectus().getHs_vid(), properties);
+										
+										
+												
+												
+									 }
+									
+								}
+								
+							}
+							
+							
+						}
+						
+					}
+				}
+				
+				
+		//			InfusionSoft infusion = new InfusionSoft();
+		//			
+		//			infusion.sendRejectMailForEFL( "alangustavo@kubofinanciero.com", "text" );
+					
+				
+				faces.getViewRoot().getViewMap().remove("preaprobacion");
 		
 		
 			}else{

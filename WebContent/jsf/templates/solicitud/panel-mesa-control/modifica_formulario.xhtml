@@ -24,10 +24,10 @@
 		function validaCambiaUsuario (){
 			
 
-		
+			var status = $("#dvContPersonStatus").html();
 			  
 			
-			 alertify.confirm('¿Está seguro que querer entrar a modificar los datos del cliente?', function (e) {
+			 alertify.confirm( status + '¿Está seguro que querer entrar a modificar los datos del cliente?', function (e) {
 							if (e) {
 								 $("#cmdChangeSessionAction").click();
 								displayMessageProcessing('msgprocessing', true);
@@ -42,7 +42,7 @@
 		
 		function returnValidaRen4C(){
 			
-			 alertify.confirm('¿Está seguro que el cliente no cuenta con atrasos actuales en kubo y que lleva más del 50% del crédito pagado ?', function (e) {
+			 alertify.confirm( '¿Está seguro que el cliente no cuenta con atrasos actuales en kubo y que lleva más del 50% del crédito pagado ?', function (e) {
 					if (e) {
 						 $(".clsRen4c").click();
 						//displayMessageProcessing('msgprocessing', true);
@@ -76,6 +76,57 @@
 						   >
 				
 			</p:commandLink>
+			
+			<div id="dvContPersonStatus" style="display:none;" >
+				 
+				<h:panelGroup rendered="#{summaryRequest.actualProyect!=null}" >
+			
+					<h:panelGroup rendered="#{summaryRequest.hasEflTest}" >
+						
+						<h:panelGroup rendered = "#{sessionBean.area=='M' and summaryRequest.actualProyect.is_kubo_property!=0}">
+							
+							<div style="width: 90%; margin-left: auto; margin-right: auto;" >
+							
+								<h:graphicImage  style="margin-left: auto; margin-right: auto;"
+												url 		= "../resources#{summaryRequest.actualProyect!=null?summaryRequest.actualProyect.institutionalInvestor.icon:'/img/logo_cartera_pronafim.png'}" 
+												height 		= "#{summaryRequest.actualProyect.institutionalInvestor.institutionalInvestorPK.institutional_investor_id==1?'30px':'40px'};"/>
+							
+							</div>
+							
+						</h:panelGroup>
+						
+						<h:panelGroup rendered="#{!summaryRequest.efl_OK}">
+							<br />	
+							<h:panelGroup rendered="#{!summaryRequest.efl_ERROR}">
+								<div class="OfertaInfo" ><i class="fa fa-pencil-square-o "></i>Sin Examen EFL</div>
+							</h:panelGroup>
+							
+							<h:panelGroup rendered="#{summaryRequest.efl_ERROR}">
+								<div class="OfertaInfo" ><i class="fa fa-pencil-square-o "></i>Sin Respuesta EFL</div>
+							</h:panelGroup>
+							
+							<br />
+							
+						</h:panelGroup>	
+							
+						<h:panelGroup rendered="#{summaryRequest.efl_OK}">
+							<br />
+							<div class="OfertaInfo" ><i class="fa fa-check-square-o "></i>Examen EFL CONCLUIDO</div>
+							<br />
+						</h:panelGroup>	
+					
+					</h:panelGroup>
+				
+					
+				
+					Estatus de la solicitud: <b>#{summaryRequest.actualProyect.statusProyect.name}</b>
+					<br />
+					<br />
+				
+				</h:panelGroup>
+				
+			
+			</div>
 		
 	</h:panelGroup>
 	

@@ -29,7 +29,20 @@ implements Serializable
 	
 	@PostConstruct
 	public void init()
-	{	
+	{
+		
+		System.out.println( "" );
+		System.out.println( "" );
+		
+		System.out.println( "*******************************" );
+		System.out.println( "*******************************" );
+		System.out.println( "***consultaRenovacion.init()***" );
+		System.out.println( "*******************************" );
+		System.out.println( "*******************************" );
+		
+		System.out.println( "" );
+		System.out.println( "" );
+		
 		faces = FacesContext.getCurrentInstance();
 		elContext = faces.getELContext();
 		resolver  = faces.getApplication().getELResolver();
@@ -71,7 +84,7 @@ implements Serializable
 			
 			nombreCoach = membership.getPerson().NombreCompletoNPM();
 			
-			sesion.setCoachProspectus_id(prospectus_id);
+			//sesion.setProspectus_id(prospectus_id);
 			
 			
 		}
@@ -94,8 +107,9 @@ implements Serializable
 //			auditor.setScreen_id();
 //			auditor.setAccess_from(access_from);
 			
+			sesion.setProspectus_id(prospectus_id);
 			auditor.save_access(sesion, SCREEN_CONSULTING_AUTOMATIC_RENOVATION );
-			
+			sesion.setProspectus_id(sesion.getCoachProspectus_id());
 			score = service_score.loadMaxScoringByProspectus(prospectus_id, company_id);						
 			
 			init_score();				

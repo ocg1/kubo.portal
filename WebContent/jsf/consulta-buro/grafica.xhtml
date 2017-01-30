@@ -3,9 +3,13 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<div onclick = "initChartReload()" class = "btn_verde initChartReload">
-		Recargar Gráfica 
-	</div>				
+	<h:panelGroup rendered="#{chartBackBean.recargarGrafica}" >
+	
+		<div onclick = "initChartReload()" class = "btn_verde initChartReload">
+			Recargar Gráfica 
+		</div>	
+	
+	</h:panelGroup>			
 				
 	<div class = "detailsControlTable clssControlBuro">
 		

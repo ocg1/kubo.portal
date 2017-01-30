@@ -1392,3 +1392,41 @@ font-weight: bold;
 	position:relative;
 	margin:0 auto;
 }
+
+.logo-client-type img {
+	/* float:right; */
+}
+.logo-client-type {
+	overflow:hidden;
+	margin: 0px 0 10px;
+	clear: both;
+}
+.logo-client-type figure {
+	width: 80px;
+	float:left;
+	margin: 0 20px 0 0;
+	border: solid 1px #f1f1f1;
+}
+
+
+.logo-client-type figure img {
+	width:100%;
+	
+
+}
+
+.nombre-team {
+	float:left;
+	font-size: 15px;
+	color: #439539;
+	margin: 33px 0 0;
+	font-weight: 600;
+}
+
+@media (max-width: 550px) {
+	.logo-client-type {
+		overflow:hidden;
+		margin: 50px 0 10px;
+		clear: both;
+	}
+}

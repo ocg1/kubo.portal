@@ -3,6 +3,7 @@ package mx.com.kubo.managedbeans;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
@@ -24,16 +25,23 @@ import org.primefaces.json.JSONObject;
 import mx.com.kubo.bean.HS_OBJ;
 import mx.com.kubo.constantes.NavigationRule;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
+import mx.com.kubo.kubows.NotificadorConfigRequest;
+import mx.com.kubo.kubows.PublicProyect;
+import mx.com.kubo.kubows.PublicProyectServiceLocator;
+import mx.com.kubo.kubows.WsResponse;
 import mx.com.kubo.managedbeans.portal.IniciaSession;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.PasswordHistory;
 import mx.com.kubo.model.PasswordHistoryPK;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.ProspectusPK;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.TimeLog;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.PasswordHistoryService;
 import mx.com.kubo.services.ProspectusService;
+import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.services.TimeLogService;
 import mx.com.kubo.tools.GeneradorCodigos;
 import mx.com.kubo.tools.Utilities;
@@ -55,6 +63,9 @@ public class Hs_Init implements Serializable {
 	
 	@ManagedProperty("#{prospectusServiceImp}")
 	protected ProspectusService prospectusService;
+	
+	@ManagedProperty("#{systemParamServiceImp}")
+	protected SystemParamService systemparamservice;
 	
 	@ManagedProperty("#{timeLogServiceImp}")
 	protected TimeLogService timelogservice;
@@ -223,25 +234,30 @@ public class Hs_Init implements Serializable {
 				
 				hs_vid =  getHSVID( cookieVal);
 			
-				hs_email =  getEmailHS( hs_vid);
-			
-				if( hs_email == null ){
-					try{
-						
-						saveTimelog( "coockie:"+cookieVal, " Intento ERROR: " + w + " vid: " + hs_vid , new Date() , null  );
-						
-						Thread.sleep(3000);
-						
-					}catch( InterruptedException i ){
-						
-						System.out.println( i.getMessage() );
-						
-					}catch(Exception e){
-						
-						System.out.println( e.getMessage() );
-						
-					}
+				if( hs_vid != null ){
 				
+					hs_email =  getEmailHS( hs_vid);
+			
+					if( hs_email == null ){
+						
+						try{
+							
+							saveTimelog( "coockie:"+cookieVal, " Intento ERROR: " + w + " vid: " + hs_vid , new Date() , null  );
+							
+							Thread.sleep(3000);
+							
+						}catch( InterruptedException i ){
+							
+							System.out.println( i.getMessage() );
+							
+						}catch(Exception e){
+							
+							System.out.println( e.getMessage() );
+							
+						}
+					
+					}
+					
 				}
 				
 			}
@@ -562,7 +578,54 @@ public class Hs_Init implements Serializable {
 		//display what returns the POST request
 
 		StringBuilder sb = new StringBuilder();  
-		int HttpResult = con.getResponseCode();
+		int HttpResult = 0;
+				
+		try{
+			
+			HttpResult = con.getResponseCode();
+			
+			
+		}catch( ConnectException ne ){
+			
+			System.out.println( "ConnectException: " + ne );
+			
+			ne.printStackTrace();
+			
+			vid = null;
+			
+			SystemParamPK sppk =  new SystemParamPK(96, 1);  // Bandera que indica si esta habilitada la conección con HUBSPOT
+			
+			SystemParam sp = systemparamservice.loadSelectedSystemParam(sppk);
+			
+			sp.setValue("N");
+			
+			systemparamservice.updateSelectedSystemParam(sp);
+			
+			try{
+				
+				NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();
+				request_notificar_config.setCompany_id("1");
+				request_notificar_config.setProspectus_id("0");					
+				request_notificar_config.setCalled_FROM("PortalKubo.HS_init()");
+				request_notificar_config.setEvento_id("2");
+				request_notificar_config.setFecha_deposito("El servicio de HUBSPOT no está disponible");
+				request_notificar_config.setMonto_deposito("ERROR COMUNICACIÓN CON HUBSPOT");
+				
+				PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+				
+				PublicProyect kubo_services = locator.getPublicProyect();
+				
+				WsResponse response = kubo_services.notificar(request_notificar_config);
+				
+			}catch( Exception e ){
+				
+				e.printStackTrace();
+				
+			}
+			
+			
+			
+		}
 		
 		System.out.println(HttpResult);
 		
@@ -592,8 +655,12 @@ public class Hs_Init implements Serializable {
 			//hs_email =getMailFromHS( sb.toString() );
 		    
 		} else {
-		    
-			System.out.println(con.getResponseMessage());
+			
+		    if( con != null ){
+		    	
+		    	System.out.println(con.getResponseMessage());
+		    	
+		    }
 		    
 		}  
 		
@@ -734,6 +801,14 @@ public class Hs_Init implements Serializable {
 			
 			return timelogservice.saveTimeLog(timelog);
 			
+		}
+
+		public SystemParamService getSystemparamservice() {
+			return systemparamservice;
+		}
+
+		public void setSystemparamservice(SystemParamService systemparamservice) {
+			this.systemparamservice = systemparamservice;
 		}
 	
 }

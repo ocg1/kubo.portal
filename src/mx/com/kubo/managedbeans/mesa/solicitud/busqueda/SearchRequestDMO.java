@@ -25,6 +25,7 @@ import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.mesa.solicitud.busqueda.ClientViewFullName;
+import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.InvestorService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.ProspectusService;
@@ -47,7 +48,10 @@ implements SearchRequestIMO
 	protected MembershipService service_membership;
 		
 	@ManagedProperty("#{investorServiceImp}")
-	protected InvestorService service_investor;		
+	protected InvestorService service_investor;
+	
+	@ManagedProperty("#{accessServiceImp}")
+	protected AccessService access_service;
 	
 	protected FacesContext   faces;
 	protected ELContext      elContext;
@@ -211,6 +215,14 @@ implements SearchRequestIMO
 	
 	public void setCompany_id( Integer company_id ){
 		this.company_id = company_id;
+	}
+
+	public AccessService getAccess_service() {
+		return access_service;
+	}
+
+	public void setAccess_service(AccessService access_service) {
+		this.access_service = access_service;
 	}
 	
 }

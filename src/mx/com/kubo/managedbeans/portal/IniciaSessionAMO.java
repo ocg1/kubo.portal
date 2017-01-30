@@ -281,9 +281,9 @@ public class IniciaSessionAMO extends IniciaSessionDMO
 		
 		int RISK_PROCESSED = 1;
 		
-		int STATUS_RECHAZADO = 11;
+		//int STATUS_RECHAZADO = 11;
 		
-		if( proyectloan != null && proyectloan.getStatus_id() != null && proyectloan.getStatus_id().intValue() == STATUS_RECHAZADO )
+		if( proyectloan != null && proyectloan.getStatus_id() != null && proyectloan.getStatus_id().intValue() != 0 && proyectloan.getStatus_id().intValue() != 1 && proyectloan.getStatus_id().intValue() != 2 && proyectloan.getStatus_id().intValue() != 3  )
 		{
 //			system_param_PK = new SystemParamPK();
 //			system_param_PK.setCompany_id(sesion.getCompany_id());
@@ -323,6 +323,15 @@ public class IniciaSessionAMO extends IniciaSessionDMO
 				
 				if( lst == null || lst.size() == 0){
 					flagRechazado = true;
+				}else{
+					
+					/*Scoring score = scoring_service.loadMaxScoringByProspectus(proyectloan.getProyectloanPk().getProspectus_id(), proyectloan.getProyectloanPk().getCompany_id());
+					
+					
+					if(score == null){ */
+						flagRechazado = true;
+					//}
+					
 				}
 				
 			}

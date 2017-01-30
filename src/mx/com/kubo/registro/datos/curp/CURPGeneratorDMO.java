@@ -76,10 +76,14 @@ implements CURPGeneratorIMO
 		prospectus_id  = person.getNatPerPK().getProspectus_id();
 		company_id     = person.getNatPerPK().getCompany_id();		
 		
-		rfc_ENABLED = !person.getFirst_name().isEmpty()
-				   && !person.getFather_last_name().isEmpty()
-				   && !person.getMother_last_name().isEmpty()
-				   &&  person.getDate_of_birth() != null;
+		if( person.getFirst_name() != null && person.getFather_last_name() != null && person.getMother_last_name() != null ){
+		
+			rfc_ENABLED = !person.getFirst_name().isEmpty()
+					   && !person.getFather_last_name().isEmpty()
+					   && !person.getMother_last_name().isEmpty()
+					   &&  person.getDate_of_birth() != null;
+		
+		}
 		
 		citizenship_ENABLED = person.getCitizenship() != null && person.getCitizenship() == 1;
 		

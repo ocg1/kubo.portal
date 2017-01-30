@@ -51,6 +51,8 @@ implements SearchEngineIMO
 		
 		sesion_search_request.setSearchSummary(proyect_loan_TOKEN);
 		
+		System.out.println( "init_summary_request" );
+		
 		summary_request.init();		
 		
 		request.addCallbackParam("isPerson", false);

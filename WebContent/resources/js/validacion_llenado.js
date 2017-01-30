@@ -365,7 +365,9 @@ function blur_indices() {
 			    var indice_elemento = $(this).attr("index");
 			   	   indice_elemento = Number(indice_elemento.replace(/[^0-9\.]+/g,""));
 			   	   
-			     
+			     if( indice_elemento === undefined){
+			    	 return;
+			     }
 		   	      
 	 			if( this_indice > indice_elemento  &&  $(this).val().length==0) {
 	 		
@@ -921,20 +923,26 @@ var buttonClick;
 					
 						if($("#frm_info_basic_loan").is(":visible")) {
 							$("#hdNext\\:siguienteDocPLD").click();
-							 dataLayer.push({'event': 'Sobre ti'});
+							  GTM_eventos ('Sobre ti');
+							 //dataLayer.push({'event': 'Sobre ti'});
 							 console.log('Sobre ti');
 						}
 						if($(".IncomeExpense").is(":visible")) {
 					
 							$("#hdNext\\:siguientePrep").click();
-							 dataLayer.push({'event': 'Ingresos y gastos'});
+							
+							 GTM_eventos ('Ingresos y gastos')
+							// dataLayer.push({'event': 'Ingresos y gastos'});
 							 console.log('Ingresos y gastos');
 						}
 						if($("#frmMoreInfo").is(":visible")) {
 							hideIFEjs();
 							$("#hdNext\\:siguienteCierre").click();
 							$.scrollTo('#header', 800, { axis:'y' });
-							 dataLayer.push({'event': 'Referencias'});
+							 //dataLayer.push({'event': 'Referencias'});
+							 
+							 GTM_eventos ('Referencias')
+							 
 							 console.log('Referencias');
 						}
 						
@@ -942,7 +950,9 @@ var buttonClick;
 							//$("#hdNext\\:siguienteCierre").click();
 							$("#hdNext\\:siguienteMasInfo").click();
 							console.log("entro a esta que no tiene que ver");
-							 dataLayer.push({'event': 'Enviar Documentos'});
+							
+							 GTM_eventos ('Enviar Documentos')
+							 //dataLayer.push({'event': 'Enviar Documentos'});
 							 console.log('Enviar Documentos');
 						}
 						if(element == "datosPersonales" ) {

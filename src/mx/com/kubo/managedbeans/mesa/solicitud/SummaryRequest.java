@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.ExternalContext;
@@ -83,7 +84,6 @@ import mx.com.kubo.model.Expenses;
 import mx.com.kubo.model.ExpensesPK;
 import mx.com.kubo.model.ExpensesType;
 import mx.com.kubo.model.Files;
-import mx.com.kubo.model.FraudeDetection;
 import mx.com.kubo.model.Income;
 import mx.com.kubo.model.IncomePK;
 import mx.com.kubo.model.Investor;
@@ -136,7 +136,8 @@ import com.soa.webServices.request.BCRiskRequest;
 import com.soa.webServices.responses.ProspectBCRiskResponse;
 import com.soa.webServices.responses.WsSgbResponse;
 
-@ManagedBean(name = "summaryRequest") @ViewScoped 
+@ManagedBean(name = "summaryRequest") 
+@SessionScoped
 public final class SummaryRequest extends IngresosPMO
 implements SummaryRequestIMO,  Serializable
 {	
@@ -475,8 +476,10 @@ implements SummaryRequestIMO,  Serializable
 		
 		}
 		
-		if( actualProyect != null && actualProyect.getPerson().getSafi_client_id() != null && actualProyect.getPerson().getSafi_client_id().trim().length() > 0  ){
+		if( ren4c && actualProyect != null && actualProyect.getPerson().getSafi_client_id() != null && actualProyect.getPerson().getSafi_client_id().trim().length() > 0  ){
 			ren4c = true;
+		}else{
+			ren4c = false;
 		}
 		
 		//long l = mD02.getTimeInMillis() - mD01.getTimeInMillis();

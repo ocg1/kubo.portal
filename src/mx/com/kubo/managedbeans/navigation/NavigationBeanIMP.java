@@ -52,7 +52,7 @@ implements Serializable, NavigationBeanIMO
 		setCompany(sesion.getCompany_id());
 		setHasValidScore(false);
 		
-		if( is_Rechazo() ){
+		if( is_Rechazo() && sesion.getCoachProspectus_id() == null ){
 			
 			String url = (getPath() + "/Portal/no-posible-prestamo.xhtml?redirecFrom=NavigationBean");
 			
@@ -106,7 +106,7 @@ implements Serializable, NavigationBeanIMO
 			
 		}
 		
-		if( is_EFL() ){
+		if( is_EFL() && sesion.getCoachProspectus_id() == null ){
 			
 			String url = (getPath() + "/Portal/efl.xhtml?redirecFrom=NavigationBean");
 			

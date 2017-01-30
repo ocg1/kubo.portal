@@ -46,7 +46,10 @@
 	     alertify.labels.cancel = "Regresar";
 		 alertify.labels.ok = "Enviar";
 		 
-			dataLayer.push({'event': 'Enviar solicitud 1'});
+		 
+		   GTM_eventos ('Enviar solicitud 1');
+		   
+			
 			 console.log('Enviar solicitud 1');
 			 
 		 var cadenita =  '<div class="confirmacion-modificado"> <h3 class="oferta-final-h3">¡#{sessionBean.nombre}tu solicitud está lista para ser enviada!</h3><p class="oferta-final-p">Un asesor verificará que todos tus documentos estén correctos y pueda pasarlos a el analista que aprobará tu préstamo.</p></div>'
@@ -63,8 +66,12 @@
 						
 						
 						sendInteractoa ();
-						
-						dataLayer.push({'event': 'Enviar solicitud 2'});
+						 
+							 GTM_eventos ('Enviar solicitud 2');
+							
+							
+							
+					
 						 console.log('Enviar solicitud 2');
 						return true;
 						

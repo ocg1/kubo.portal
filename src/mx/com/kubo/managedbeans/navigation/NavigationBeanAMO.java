@@ -2,6 +2,7 @@ package mx.com.kubo.managedbeans.navigation;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -781,7 +782,23 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 		//display what returns the POST request
 
 		StringBuilder sb = new StringBuilder();  
-		int HttpResult = con.getResponseCode();
+		
+		int HttpResult = 0;
+		
+		try{
+			
+			HttpResult = con.getResponseCode();
+			
+			
+		}catch( ConnectException ne ){
+			
+			System.out.println( "ConnectException: " + ne );
+			
+			ne.printStackTrace();
+			
+			vid = null;
+			
+		}
 		
 		System.out.println(HttpResult);
 		

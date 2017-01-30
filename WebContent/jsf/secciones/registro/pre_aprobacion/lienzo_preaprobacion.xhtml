@@ -408,6 +408,7 @@ function formatLienzo(e,place)
 		
 						<div style="display:none">
 						
+							<h:panelGroup rendered="#{sessionBean.prospectus_id != null and sessionBean.prospectus_id != 0 and sessionBean.area != null and sessionBean.prospectus_id == 'L'}" ></h:panelGroup>
 							<h:commandLink id="cmdSegment" >
 							
 								<p:ajax listener="#{checkScoreProcessed.validaMsg}" oncomplete="segmentComplete(xhr, status, args);" update="procesandoSegment, pnlMsgConsulName" />

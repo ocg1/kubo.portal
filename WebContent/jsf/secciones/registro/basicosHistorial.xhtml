@@ -192,9 +192,9 @@
 		
 	       	<h:panelGroup rendered="#{!(basicData.protectorValid == true and basicData.consultValid == true)}">
 	       	
-	       		<h:panelGroup rendered = "#{basicData.membership.registration_reason_id != 6  }" >
+	       		<h:panelGroup rendered = "#{basicData.membership.registration_reason_id != 6  and sessionBean.coachProspectus_id == null }" >
 						<script>
-					  	 	window._fbq.push(["track", "DatosPersonales", {}]);
+							facebook_events ("DatosPersonales" );
 					  	 	console.log("fbq datos personales");
 					  	 </script>
 		  	 	</h:panelGroup>

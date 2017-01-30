@@ -3571,7 +3571,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 				String msg = "Con KUBO gana dinero ¡YA!. Invierte con nosotros, da clic en: "+url+" y firma tus contratos ahora.";
 				
 				request.setMessage(msg);
-			
+				
 			}else if( persona.getProspectus().getArea().toString().equals("L") ) {
 				
 				request.setEvent_id("43");

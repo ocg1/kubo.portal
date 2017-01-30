@@ -209,7 +209,7 @@ public abstract class CreditHistoryControllerAMO extends CreditHistoryController
 		Access access = new Access();
 		
 		access.setCompany_id( sesion.getCompany_id() );
-		access.setProspectus_id(sesion.getProspectus_id());
+		access.setProspectus_id(prospectus_id);
 		access.setScreen_id(2);
 		access.setPercentage(100);
 		access.setWeb_browser(sesion.getNamebrawser());

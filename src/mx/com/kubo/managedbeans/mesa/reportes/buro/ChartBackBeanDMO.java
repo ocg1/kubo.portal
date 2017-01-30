@@ -44,6 +44,7 @@ import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.RecommendationTypeService;
+import mx.com.kubo.services.RoleFunctionService;
 import mx.com.kubo.services.SimulationConfigService;
 import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.services.TransunionRespService;
@@ -109,6 +110,9 @@ implements ChartBackBeanIMO
 	
 	@ManagedProperty("#{buroCacheServiceImp}")
 	protected BuroCacheService burocacheservice;
+	
+	@ManagedProperty("#{roleFunctionServiceImp}")
+	protected RoleFunctionService roleFunctionService;
 
 	protected WsSgbRisk service_SGB_risk;
 	protected WsSgbRiskServiceLocator locator;	
@@ -365,6 +369,8 @@ implements ChartBackBeanIMO
 	protected boolean is_prospectus_OK;
 	protected boolean is_promotor_ENABLED;
 	protected boolean nota_coach_ENABLED;
+	
+	protected boolean recargarGrafica;
 			
 	protected ChartBackBeanDMO()
 	{
@@ -1442,6 +1448,22 @@ implements ChartBackBeanIMO
 
 	public void setBurocacheservice(BuroCacheService burocacheservice) {
 		this.burocacheservice = burocacheservice;
+	}
+
+	public boolean isRecargarGrafica() {
+		return recargarGrafica;
+	}
+
+	public void setRecargarGrafica(boolean recargarGrafica) {
+		this.recargarGrafica = recargarGrafica;
+	}
+
+	public RoleFunctionService getRoleFunctionService() {
+		return roleFunctionService;
+	}
+
+	public void setRoleFunctionService(RoleFunctionService roleFunctionService) {
+		this.roleFunctionService = roleFunctionService;
 	}
 	
 }

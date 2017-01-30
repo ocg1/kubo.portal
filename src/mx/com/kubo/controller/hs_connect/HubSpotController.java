@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -20,9 +21,16 @@ import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONObject;
 
 import mx.com.kubo.bean.HS_OBJ;
+import mx.com.kubo.kubows.NotificadorConfigRequest;
+import mx.com.kubo.kubows.PublicProyect;
+import mx.com.kubo.kubows.PublicProyectServiceLocator;
+import mx.com.kubo.kubows.WsResponse;
 import mx.com.kubo.model.RegistrationReason;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.UtmPartnerConversion;
 import mx.com.kubo.services.RegistrationReasonService;
+import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.tools.Utilities;
 
 public class HubSpotController {
@@ -92,7 +100,55 @@ public class HubSpotController {
 				//display what returns the POST request
 		
 				StringBuilder sb = new StringBuilder();  
-				int HttpResult = con.getResponseCode();
+				
+				int HttpResult = 0;
+				
+				try{
+					
+					HttpResult = con.getResponseCode();
+					
+					
+				}catch( ConnectException ne ){
+					
+					System.out.println( "ConnectException: " + ne );
+					
+					ne.printStackTrace();
+					
+					vid = null;
+				
+					SystemParamService systemparamservice = Utilities.findBean( "systemParamServiceImp" ) ;
+					
+					SystemParamPK sppk =  new SystemParamPK(96, 1);  // Bandera que indica si esta habilitada la conección con HUBSPOT
+					
+					SystemParam sp = systemparamservice.loadSelectedSystemParam(sppk);
+					
+					sp.setValue("N");
+					
+					systemparamservice.updateSelectedSystemParam(sp);
+					
+					try{
+						
+						NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();
+						request_notificar_config.setCompany_id("1");
+						request_notificar_config.setProspectus_id("0");					
+						request_notificar_config.setCalled_FROM("PortalKubo.HubspotController()");
+						request_notificar_config.setEvento_id("2");
+						request_notificar_config.setFecha_deposito("El servicio de HUBSPOT no está disponible");
+						request_notificar_config.setMonto_deposito("ERROR COMUNICACIÓN CON HUBSPOT");
+						
+						PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+						
+						PublicProyect kubo_services = locator.getPublicProyect();
+						
+						WsResponse response = kubo_services.notificar(request_notificar_config);
+						
+					}catch( Exception e ){
+						
+						e.printStackTrace();
+						
+					}
+					
+				}
 				
 				System.out.println(HttpResult);
 				
@@ -171,7 +227,54 @@ public class HubSpotController {
 		//display what returns the POST request
 
 		StringBuilder sb = new StringBuilder();  
-		int HttpResult = con.getResponseCode();
+		
+		int HttpResult = 0;
+		
+		try{
+			
+			HttpResult = con.getResponseCode();
+			
+			
+		}catch( ConnectException ne ){
+			
+			System.out.println( "ConnectException: " + ne );
+			
+			ne.printStackTrace();
+			
+			SystemParamService systemparamservice = Utilities.findBean( "systemParamServiceImp" ) ;
+			
+			SystemParamPK sppk =  new SystemParamPK(96, 1);  // Bandera que indica si esta habilitada la conección con HUBSPOT
+			
+			SystemParam sp = systemparamservice.loadSelectedSystemParam(sppk);
+			
+			sp.setValue("N");
+			
+			systemparamservice.updateSelectedSystemParam(sp);
+			
+			try{
+				
+				NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();
+				request_notificar_config.setCompany_id("1");
+				request_notificar_config.setProspectus_id("0");					
+				request_notificar_config.setCalled_FROM("PortalKubo.HubspotController()");
+				request_notificar_config.setEvento_id("2");
+				request_notificar_config.setFecha_deposito("El servicio de HUBSPOT no está disponible");
+				request_notificar_config.setMonto_deposito("ERROR COMUNICACIÓN CON HUBSPOT");
+				
+				PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+				
+				PublicProyect kubo_services = locator.getPublicProyect();
+				
+				WsResponse response = kubo_services.notificar(request_notificar_config);
+				
+			}catch( Exception e ){
+				
+				e.printStackTrace();
+				
+			}
+			
+			
+		}
 		
 		System.out.println(HttpResult);
 		
@@ -254,7 +357,56 @@ public class HubSpotController {
 			//display what returns the POST request
 
 			StringBuilder sb = new StringBuilder();  
-			Integer HttpResult = con.getResponseCode();
+			
+			
+			int HttpResult = 0;
+			
+			try{
+				
+				HttpResult = con.getResponseCode();
+				
+				
+			}catch( ConnectException ne ){
+				
+				System.out.println( "ConnectException: " + ne );
+				
+				ne.printStackTrace();
+				
+				vid = null;
+				
+				SystemParamService systemparamservice = Utilities.findBean( "systemParamServiceImp" ) ;
+				
+				SystemParamPK sppk =  new SystemParamPK(96, 1);  // Bandera que indica si esta habilitada la conección con HUBSPOT
+				
+				SystemParam sp = systemparamservice.loadSelectedSystemParam(sppk);
+				
+				sp.setValue("N");
+				
+				systemparamservice.updateSelectedSystemParam(sp);
+				
+				try{
+					
+					NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();
+					request_notificar_config.setCompany_id("1");
+					request_notificar_config.setProspectus_id("0");					
+					request_notificar_config.setCalled_FROM("PortalKubo.HubspotController()");
+					request_notificar_config.setEvento_id("2");
+					request_notificar_config.setFecha_deposito("El servicio de HUBSPOT no está disponible");
+					request_notificar_config.setMonto_deposito("ERROR COMUNICACIÓN CON HUBSPOT");
+					
+					PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+					
+					PublicProyect kubo_services = locator.getPublicProyect();
+					
+					WsResponse response = kubo_services.notificar(request_notificar_config);
+					
+				}catch( Exception e ){
+					
+					e.printStackTrace();
+					
+				}
+				
+			}
 			
 			System.out.println(HttpResult);
 			
@@ -820,7 +972,51 @@ public class HubSpotController {
 		
 		//display what returns the POST request
 
-		int HttpResult = con.getResponseCode();
+		int HttpResult = 0;
+		
+		try{
+			
+			HttpResult = con.getResponseCode();
+			
+		}catch( ConnectException ne ){
+			
+			System.out.println( "ConnectException: " + ne );
+			
+			ne.printStackTrace();
+			
+			SystemParamService systemparamservice = Utilities.findBean( "systemParamServiceImp" ) ;
+			
+			SystemParamPK sppk =  new SystemParamPK(96, 1);  // Bandera que indica si esta habilitada la conección con HUBSPOT
+			
+			SystemParam sp = systemparamservice.loadSelectedSystemParam(sppk);
+			
+			sp.setValue("N");
+			
+			systemparamservice.updateSelectedSystemParam(sp);
+			
+			try{
+				
+				NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();
+				request_notificar_config.setCompany_id("1");
+				request_notificar_config.setProspectus_id("0");					
+				request_notificar_config.setCalled_FROM("PortalKubo.HubspotController()");
+				request_notificar_config.setEvento_id("2");
+				request_notificar_config.setFecha_deposito("El servicio de HUBSPOT no está disponible");
+				request_notificar_config.setMonto_deposito("ERROR COMUNICACIÓN CON HUBSPOT");
+				
+				PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+				
+				PublicProyect kubo_services = locator.getPublicProyect();
+				
+				WsResponse response = kubo_services.notificar(request_notificar_config);
+				
+			}catch( Exception e ){
+				
+				e.printStackTrace();
+				
+			}
+			
+		}
 		
 		System.out.println(HttpResult);
 		

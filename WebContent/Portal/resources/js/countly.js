@@ -7,7 +7,7 @@
 	Countly.app_key = "9fca087b391cebf6e965233f2b05ef889baf15d4";
 
 	//EFL endpoint
-	Countly.url = "http://eflglobal.count.ly"; 
+	Countly.url = "https://eflglobal.count.ly"; 
 
 	//push session tracking
 	Countly.q.push(['track_sessions']);
