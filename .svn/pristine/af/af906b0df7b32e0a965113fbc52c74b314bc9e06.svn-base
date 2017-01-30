@@ -1,9 +1,0 @@
-<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
-			    xmlns:ui = "http://java.sun.com/jsf/facelets"
-		        xmlns:h  = "http://java.sun.com/jsf/html">		
-				
-	<h:form id = "form_header" prependId = "true">	
-		<ui:include src = "labels_menu_items.xhtml"/>	
-		<ui:include src = "secciones_menu_items.xhtml"/>			
-	</h:form>	
-</ui:composition>

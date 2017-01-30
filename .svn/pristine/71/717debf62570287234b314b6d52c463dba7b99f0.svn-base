@@ -1,9 +1,0 @@
-<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
-				xmlns:h  = "http://java.sun.com/jsf/html"
-				xmlns:ui = "http://java.sun.com/jsf/facelets"
-				xmlns:f  = "http://java.sun.com/jsf/core"
-				xmlns:p  = "http://primefaces.org/ui">
-	
-	<span  onclick="return eliminarElemento(this, '#{addPldDocument.selfieIdentification.company_id}','#{addPldDocument.selfieIdentification.file_id}', '#{addPldDocument.selfieIdentification.file_type_id}', '#{addPldDocument.selfieIdentification.prospectus_id}', '#{addPldDocument.selfieIdentification.proyect_loan_id}', '#{addPldDocument.selfieIdentification.location}')" class="eliminar cambiar">Eliminar</span>
-	
-</ui:composition>			
