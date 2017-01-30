@@ -1,7 +1,0 @@
-@CHARSET "ISO-8859-1";
-.master_fmenu{float:left;width:auto}
-.master_fmenu li{float:left;list-style:none;width:auto;padding-left:10px;line-height:1.231}
-.master_fmenu a{display:block;float:left;width:auto}
-.master_fmenu li.first a{padding-left:0}
-#master_top-nav a.active-Investing,#master_top-nav a.active-Portfolios
-{background:url(../img/masterSprite.png) -434px -132px no-repeat scroll transparent}

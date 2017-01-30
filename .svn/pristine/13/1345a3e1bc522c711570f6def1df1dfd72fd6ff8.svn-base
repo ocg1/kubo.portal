@@ -1,9 +1,0 @@
-<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
-				xmlns:ui = "http://java.sun.com/jsf/facelets">
-				
-	<div  class="details4 left" style="margin-bottom: 10px;">
-		<p><strong>Estado civil</strong></p>
-		<p>#{summaryRequest.statusLegal}#{summaryRequest.maritalStatus}#{summaryRequest.dependantsNumber}</p>
-	</div>				
-	
-</ui:composition>				
