@@ -5,3 +5,8 @@ build/*
 build/**/* 
 
 .settings/*
+
+.svn/*
+
+.project
+.classpath
