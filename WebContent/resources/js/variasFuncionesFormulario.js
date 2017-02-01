@@ -750,8 +750,6 @@ function pixel (){
     	
     	
 		
-		$("#goCloud").attr( "src", "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+""); 
-		console.log("Pixel se disparó al  pasar la consulta prospector: credy.go2cloud.org "+ "https://credy.go2cloud.org/aff_l?offer_id=161&adv_sub="+''+prospectoID+''+"");
 		if(valuePartner == "S18" ){
 				var inputAdv = $("#advBackInput").val();
 				$("#advBack").attr("src", inputAdv);
@@ -775,10 +773,17 @@ function pixel (){
 			
 			$("#occPixel").attr("src", "http://bit.ly/kubofinancieroOCC");
 		}
-		if(valuePartner == "svc"){
+		if(valuePartner == "SVC"){
 			 $("#sivinco").attr("src", "https://sivinco.rurl.me/api/pixel/?cvt=lead&cvn=Kubo+Lead&cva=9.30&guid=");
 		}
-		
+		if(valuePartner == "CDY" ){
+			var inputAdv = $("#advBackInput").val();
+	
+			var transactionId= inputAdv.substr(inputAdv.indexOf("tid=") + 4, inputAdv.indexOf("&"));
+				transactionId= transactionId.substr(0, transactionId.indexOf("&")) ;
+				$("#goCloud").attr( "src", "http://tracking.credy.eu/aff_lsr?offer_id=161&adv_sub="+''+prospectoID+''+"&transaction_id="+''+transactionId+''+""); 
+				console.log($("#goCloud").attr("src"));
+		}
 		
     	}else{
 	    	console.log("no entra dentro del rango del score A1 - E5");
@@ -1291,3 +1296,4 @@ function avisoCliente (){
 	}
 	
 }
+

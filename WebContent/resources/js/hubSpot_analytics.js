@@ -979,5 +979,16 @@ function facebook_events (event ){
 		}
 }
 	
+function incomePixel () {
+		
+		try {
+			
+			hj('trigger', 'gastos_e_ingresos');
+		}
+		catch(err) {
+		   console.log(err.message);
+		   /*notificar error*/
+		}
+	}
 	
 	

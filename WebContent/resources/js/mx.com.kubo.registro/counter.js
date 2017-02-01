@@ -16,7 +16,7 @@ var print_log_ENABLED = true;
 
 function fieldCount()
 {
-	
+
 	var startTime = new Date();
 	var startMsec = startTime.getTime();
 	var flagDocument = false;
@@ -65,7 +65,7 @@ function fieldCount()
 		campos = document.frmCuentaClabe.elements;
 		menuOrder = 6;
 		
-	}else if( flagDocument || document.credencial_elector_INFO || document.frm_questPLD || document.frm_credFm2 || document.frm_compActEcom || document.frm_loan || document.frm_acredProBus || document.frm_compDomi){
+	}else if( flagDocument || document.credencial_elector_INFO || document.frm_questPLD || document.frm_credFm2 || document.frm_compActEcom || document.frm_loan || document.frm_acredProBus || document.frm_compDomi ||  document.frm_campoNuevo ){
 		console.log("DOCUMENTACION: ");
 		campos = $("#general").find(".validatorClass");
 		menuOrder = 7;

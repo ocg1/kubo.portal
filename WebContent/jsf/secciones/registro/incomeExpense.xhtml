@@ -22,6 +22,11 @@ xmlns:o="http://omnifaces.org/ui">
 			<div id="contFrmPre">  			 
 			 	<h:form id="frm_income_expense" prependId="false" styleClass="areaL" >
 			 
+			 	<script>
+			 		incomePixel ();
+			 	
+			 		
+			 	</script>
 			    <h:inputHidden value="#{sessionBean.sessionID}" id="sessionId" ></h:inputHidden> 
        				<ui:include src = "incomeExpense/ingresos.xhtml"/>     
        				<ui:include src = "incomeExpense/gastosFamiliares.xhtml"/>
