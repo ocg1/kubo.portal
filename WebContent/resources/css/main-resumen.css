@@ -2126,7 +2126,7 @@ margin: 0;
 	margin:0 0 10px;
 
 }
-#dvSummaryCont Â .editar_nota {
+#dvSummaryCont Ã‚ .editar_nota {
  	border: solid 1px #ccc !important;
  	display:block;
  	width:20px;
@@ -3955,7 +3955,7 @@ div.bloque.respuesta-si {
 	/* width:100%; */
 	font-family:'Open Sans', sans-serif;
 	font-size:12px;
-	z-index: 99999;
+	z-index: 9999999;
 	-moz-box-shadow: 0px 2px 9px #999;
 	/* -webkit-box-shadow: 0px 2px 9px #999; */
 	border: solid 2px #8CC251;
@@ -4179,4 +4179,64 @@ div.bloque.respuesta-si {
 
 .tabla-style2.orange  th {
 	background: #FFB263;
+}
+
+.modal-client-type {
+	max-width: 430px;
+	padding: 20px;
+}
+
+.image-client-type {
+	width:80px;
+	float:left;
+}
+.image-client-type figure {
+	width:100%;
+	float:left;
+	margin: 0;
+}
+.image-client-type figure img {
+	width:100%;
+	float:left;
+}
+.description-client-type  {
+	float:right;
+	width: 300px;
+}
+
+.description-client-type  table  {
+	width:100%;
+	
+
+
+}
+
+
+.description-client-type  table td, .description-client-type  table th {
+	padding:5px 10px;
+	text-align:left;
+	font-size:14px;
+
+
+}
+
+@media only screen and (max-width: 550px) {
+	.image-client-type {
+		width:80px;
+		float:none;
+		margin:0 auto;
+	}
+	.description-client-type  {
+		float:none;
+		width: 100%;
+	}
+	.description-client-type  table td, .description-client-type  table th {
+		padding:5px 5px;
+	}
+}
+@media only screen and (max-width: 400px) {
+.modal-client-type {
+	max-width: 80%;
+	padding: 20px 4%;
+}
 }

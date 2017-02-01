@@ -3,6 +3,7 @@ console.log("main.js");
 var Kubo = window.Kubo || {};
 
 Kubo.Mesa                         = window.Kubo.Mesa || {};
+Kubo.Mesa.Administracion          = window.Kubo.Mesa.Administracion || {};
 Kubo.Mesa.Proyectos               = window.Kubo.Mesa.Proyectos || {};
 Kubo.Mesa.Sesiones                = window.Kubo.Mesa.Sesiones || {};
 Kubo.Mesa.Solicitud               = window.Kubo.Mesa.Solicitud || {};
@@ -18,7 +19,7 @@ Kubo.Mesa.Solicitud.Inusual       = window.Kubo.Mesa.Solicitud.Inusual || {};
 Kubo.Mesa.Solicitud.ActividadEconomica           = window.Kubo.Mesa.Solicitud.ActividadEconomica || {};
 Kubo.Mesa.Solicitud.ActividadEconomica.Domicilio = window.Kubo.Mesa.Solicitud.ActividadEconomica.Domicilio || {};
 
-
+var Administracion = Kubo.Mesa.Administracion;
 var Proyectos      = Kubo.Mesa.Proyectos;
 var GestorSesiones = Kubo.Mesa.Sesiones;
 

@@ -28,6 +28,7 @@ import mx.com.kubo.bean.ResponseShortScore;
 import mx.com.kubo.controller.InversionAutomatica;
 import mx.com.kubo.controller.ObtieneConsultaCorta;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.model.MailLog;
 import mx.com.kubo.model.MassiveProspector;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
@@ -59,10 +60,12 @@ implements Serializable
 		
 		SystemParam sp = systemParamService.loadSelectedSystemParam(spk);
 		
-		if( sp != null  ){
+		if( sp != null  )
+		{
 			flgStatusBuro = sp.getValue().equals("S");
 		}
 		
+		init_email_date();
 	}
 					
 	public void changePage(ActionEvent e)
@@ -100,6 +103,11 @@ implements Serializable
 			else if(menu_SELECTED.equals("ping_buro"))
 			{
 				actualPage = "pingBuro.xhtml";
+			}
+			
+			else if(menu_SELECTED.equals("tablero-normativo"))
+			{
+				actualPage = "tablero-normativo.xhtml";
 			}
 		}				
 	}
@@ -1045,5 +1053,23 @@ implements Serializable
 		
 	}
 	
-	
+	public void notificar()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		init_notificar_evento();
+		
+		if(notificar_OK)
+		{
+			init_email_date();
+		}
+		
+		String response = sb_exito.toString();
+		
+		System.out.println(response);
+		
+		request.addCallbackParam("notificar_OK", notificar_OK);
+		request.addCallbackParam("email_date_ENABLED", email_date_ENABLED);
+		request.addCallbackParam("response", response);
+	}
 }

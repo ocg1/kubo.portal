@@ -42,7 +42,8 @@ $(function() {
           	},1000);
         
         });
-  });    
+  });  
+    
 });
 
 $(window).load(function() {
@@ -50,6 +51,28 @@ $(window).load(function() {
 
 	altura_footer_fix();
 	$(".footer_mapa").fadeIn();
+	
+	 console.log(getCookie('hubspotutk'));
+	    utk = getCookie('hubspotutk');
+	    ga('set', 'userId', utk); // Establezca el ID de usuario mediante el user_id con el que haya iniciado sesión.
+	    
+	    
+	    
+	    function getCookie(cname) {
+	        var name = cname + "=";
+	        var decodedCookie = decodeURIComponent(document.cookie);
+	        var ca = decodedCookie.split(';');
+	        for(var i = 0; i <ca.length; i++) {
+	            var c = ca[i];
+	            while (c.charAt(0) == ' ') {
+	                c = c.substring(1);
+	            }
+	            if (c.indexOf(name) == 0) {
+	                return c.substring(name.length, c.length);
+	            }
+	        }
+	        return "";
+	    }
 });
 
 
@@ -137,7 +160,10 @@ function ensambleP (){
 
 
 $(document).ready(function(){
+	
 
+	
+	
 	abre_iniciar_sesion();
 	/*salir sesion */	
 	 $(".opciones_navegadores li" ).click(function() {
@@ -228,9 +254,7 @@ $(document).ready(function(){
 				if($(this).attr("id") == "footerCita" ) {
 					document.location.href="#captacionObservacion";
 					
-				}else {
-					
-						
+				}else {	
 					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
 					  var target = $(this.hash);
 					  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -1007,7 +1031,27 @@ function Example() {
 	}
 	
 	e = new Example();
-	e.calculate();  // "odd"
+	e.calculate();  //  console.log(getCookie('hubspotutk'));
+    utk = getCookie('hubspotutk');
+    ga('set', 'userId', utk); // Establezca el ID de usuario mediante el user_id con el que haya iniciado sesión.
+    
+    
+    
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }"odd"
 */
 /*
 function getURLParameter(name) {

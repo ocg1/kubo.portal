@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "sessionBean") @SessionScoped
 public class SessionBean extends SessionBeanDMO
@@ -89,5 +91,14 @@ implements Serializable
 	public void notificationLoginSucces() {
 		
 		setFlagLoginEnabled(false);
+	}
+	
+	public String getSessionId(){
+		
+		FacesContext context = FacesContext.getCurrentInstance(); 
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		
+		return session.getId();
+		
 	}
 }

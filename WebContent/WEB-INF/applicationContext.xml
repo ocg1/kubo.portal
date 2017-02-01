@@ -57,7 +57,7 @@
 			</props>
 		</property>		
 	</bean>
-<!-- 	
+
 	<bean id = "JDBCDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
    		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
    		<property name="url"             value="jdbc:mysql://192.168.11.222:3306/kubodb?zeroDateTimeBehavior=convertToNull"/>
@@ -74,7 +74,7 @@
 		<property name="maxStatements" value="0" />
 		<property name="minPoolSize"   value="5" />
 	</bean> 
--->
+<!-- 	
    	<bean id="JDBCDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
    		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
    		<property name="url" value="jdbc:mysql://192.168.200.12:3306/kubodb?zeroDateTimeBehavior=convertToNull"/>
@@ -92,4 +92,5 @@
 		<property name="maxStatements" value="0" />
 		<property name="minPoolSize" value="5" />
 	</bean> 
+-->	
 </beans>

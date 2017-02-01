@@ -1,0 +1,37 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:f  = "http://java.sun.com/jsf/core"
+	xmlns:p  = "http://primefaces.org/ui">
+
+	<h:panelGroup id = "panel-tablero-normativo" rendered = "#{administrationProfile.actualPage == 'tablero-normativo.xhtml'}">
+		<div style="width: 99%; text-align: center; margin:40px auto;">
+			
+			<span style="color: #439539;font-size: 1.3em; font-weight: bold;" >			
+				Notificación Resumen Tablero Normativo			
+			</span>
+		
+		</div>
+		
+		<div class = "clsContBtnInvPend">													
+			<div onclick = "Administracion.notificar();" class = "callActionMedium  btnNaranja" style="width: 30%;" >Enviar</div>
+			
+			<h:panelGroup rendered = "#{administrationProfile.email_date_ENABLED}">
+				<div id = "administracion-notificar-estatus" style = "margin:15px auto; width: 100%; text-align: center;">
+					<h:graphicImage library = "img" name = "check.png" width = "30" height = "30" />
+					<span>Fecha de último envío <b>#{administrationProfile.email_date}</b></span>
+				</div>	
+			</h:panelGroup>			
+		</div>	
+	</h:panelGroup>
+	
+	<div style = "display: none">
+		<h:commandLink 	id = "btn-administracion-notificar" immediate = "true">
+				<p:ajax event = "click" update = "panel-tablero-normativo"
+						onstart    = "displayMessageProcessing('msgprocessing',false);"	
+			    		oncomplete = "Administracion.notificar_oncomplete(xhr, status, args);"
+						listener   = "#{administrationProfile.notificar}"/>
+		</h:commandLink>
+	</div>	
+</ui:composition>

@@ -78,7 +78,8 @@ div.gestion-sesiones.container
 #dvMenuPantRole,
 #gestion-sesiones,
 #reinversion_automatica,
-#ping_buro
+#ping_buro,
+#tablero-normativo
 {
 	height: 40px; 
 	width: 95%; 
@@ -88,4 +89,6 @@ div.gestion-sesiones.container
 	margin-bottom: 5px;
 	border: solid 1px #E3E3E3;
 }
+
+
 	 

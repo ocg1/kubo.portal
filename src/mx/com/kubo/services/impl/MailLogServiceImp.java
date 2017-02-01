@@ -22,6 +22,11 @@ implements MailLogService
 		dao.saveMailLog(mail);		
 	}
 	
+	public MailLog getMaxMailLog(Integer event_id)
+	{
+		return dao.getMaxMailLog(event_id);
+	}
+	
 	public final List<SystemNotificationLog> getSystem_notification_log(int prospectus_id)
 	{
 		return dao.getSystem_notification_log(prospectus_id);

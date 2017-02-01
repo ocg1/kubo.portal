@@ -2,6 +2,32 @@ console.log("mx.com.kubo.mesa/administracion.js");
 
 var menAntSel="";
 
+Administracion.notificar = function()
+{
+	$("#btn-administracion-notificar").trigger("click");
+	
+	$("#administracion-notificar-estatus").hide();
+};
+
+Administracion.notificar_oncomplete = function(xhr, status, args)
+{
+	var notificar_OK = args.notificar_OK;
+	var response     = args.response;
+	var email_date_ENABLED = args.email_date_ENABLED;
+	
+	console.log("Administracion.notificar_oncomplete():");
+	console.log("> notificar_OK = " + notificar_OK);
+	console.log("> email_date_ENABLED = " + email_date_ENABLED);
+	console.log("> response = " + response);
+	
+	if(notificar_OK)
+	{
+		$("#administracion-notificar-estatus").show();
+	}
+	
+	closeMessageProcessing();
+};
+
 /* 
  $(function() 
  {
@@ -9,8 +35,10 @@ var menAntSel="";
 }); 
 */
 
-function setClassMenu(menu){
-	if( menAntSel.length > 0){
+function setClassMenu(menu)
+{
+	if( menAntSel.length > 0)
+	{
 		$("#"+menAntSel).removeClass('clsMenuSel');
 	}
 	

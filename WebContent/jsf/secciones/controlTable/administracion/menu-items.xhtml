@@ -95,6 +95,22 @@
 				
 			</p:commandLink>		
 			
+			<p:commandLink oncomplete     = "setClassMenu('tablero-normativo');"
+						   actionListener = "#{administrationProfile.changePage}" 
+						   update = ":pnlCntProfile"  >
+			
+				<div id = "tablero-normativo">
+									
+					<f:attribute name="section" value="tablero-normativo" />
+					
+					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
+						Tablero Normativo
+					</div>	
+								
+				</div>
+				
+			</p:commandLink>
+			
 			<div style="height: 40px; width: 95%; margin-left: auto;margin-right: auto; margin-top: 5px; border: solid 1px #E3E3E3; display: none; " >
 				<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px; " >
 					Roles
@@ -106,8 +122,5 @@
 				</div>
 			</div>
 		</div>
-		
-
-	
 	</h:form>
 </ui:composition>	

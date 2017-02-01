@@ -42,6 +42,24 @@ implements MailLogDAO
     	}
 	}
     
+    public MailLog getMaxMailLog(Integer event_id)
+    {		
+    	Integer id = 0;
+    	
+		String query = "select MAX(m.mail_log_id) from MailLog m WHERE m.event_id = ?";		
+		
+		id = (Integer) em.createQuery(query).setParameter(1, event_id).getSingleResult();
+		
+		if(id == null)
+		{
+			return null;
+			
+		} else {
+			
+			return em.find(MailLog.class, id);
+		}
+    }
+    
     public final List<SystemNotificationLog> getSystem_notification_log(int prospectus_id)
     {
     	List<SystemNotificationLog> bitacora;

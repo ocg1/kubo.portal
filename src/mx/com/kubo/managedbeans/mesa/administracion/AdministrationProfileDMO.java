@@ -11,10 +11,15 @@ import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.controller.InversionAutomatica;
+import mx.com.kubo.kubows.NotificadorConfigRequest;
+import mx.com.kubo.kubows.PublicProyect;
+import mx.com.kubo.kubows.PublicProyectServiceLocator;
+import mx.com.kubo.kubows.WsResponse;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.InvestmentProgress;
 import mx.com.kubo.model.Partner;
+import mx.com.kubo.services.MailLogService;
 import mx.com.kubo.services.MassiveProspectorService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.SystemParamService;
@@ -34,16 +39,29 @@ public abstract class AdministrationProfileDMO
 	@ManagedProperty("#{systemParamServiceImp}")
 	protected SystemParamService systemParamService;
 	
+	@ManagedProperty("#{mailLogServiceImp}")
+	protected MailLogService service_mail_log;
+	
 	protected RequestContext  request;
 	protected FacesContext    faces;		
 	protected ELResolver      resolver;
 	protected ELContext       context;	
 	
+	protected NotificadorConfigRequest request_notificar_config;
+	protected PublicProyectServiceLocator locator;
+	protected PublicProyect kubo_services;
+	protected WsResponse    response;
+	
 	protected SessionBean sesion;
 		
+	protected InversionAutomatica inversionAutomatica;
+	
 	protected List<AutomaticInvestment> listaInversionistas;
 	protected List<InvestmentProgress>	listaInversionesRealizadas;
 	protected List<Partner> partnerLst;
+	
+	protected StringBuilder sb_exito;
+	protected StringBuilder sb_error;
 		
 	protected String sesion_search;
 	protected String actualPage = "asignaPerfil.xhtml";	
@@ -53,40 +71,49 @@ public abstract class AdministrationProfileDMO
 	protected String archivo_exitoso ;    
 	protected String archivo_error;
 	protected String strResConsultaProspector;
-	
 	protected String strSendConsultaProspector;
+	protected String email_date = "";
 	
-	protected boolean  consultaSatisfactoria;
-	
-	
-	protected StringBuilder sb_exito;
-	protected StringBuilder sb_error;
-	
+	protected boolean consultaSatisfactoria;	
 	protected boolean bln_archivos ;
 	protected boolean flgStatusBuro;
-					
-	protected InversionAutomatica inversionAutomatica;
+	protected boolean email_date_ENABLED;
+	protected boolean notificar_OK;
 	
 	protected Date fechaInversion;
-	
 	protected Date dateInicio;
 	protected Date dateFin;
+	
+	protected final String RESUMEN_TABLERO_NORMATIVO = "61";
 	
 	public String getActualPage() 
 	{
 		return actualPage;
 	}
 	
-	public void setPartnerserviceimp(PartnerServiceIMP partnerserviceimp) {
-		this.partnerserviceimp = partnerserviceimp;
+	public void setPartnerserviceimp(PartnerServiceIMP service) 
+	{
+		partnerserviceimp = service;
 	}
 
-	public void setMassiveprospectorservice(MassiveProspectorService massiveprospectorservice) {
-		this.massiveprospectorservice = massiveprospectorservice;
+	public void setMassiveprospectorservice(MassiveProspectorService service) 
+	{
+		massiveprospectorservice = service;
 	}
 
-	public void setNaturalpersonservice(NaturalPersonService naturalpersonservice) {
-		this.naturalpersonservice = naturalpersonservice;
+	public void setNaturalpersonservice(NaturalPersonService service) 
+	{
+		naturalpersonservice = service;
+	}
+	
+	public void setSystemParamService(SystemParamService service) 
+	{
+		systemParamService = service;
+	}
+
+	public void setService_mail_log(MailLogService service) 
+	{
+		service_mail_log = service;
 	}
 
 	public List<AutomaticInvestment> getListaInversionistas() {
@@ -169,19 +196,21 @@ public abstract class AdministrationProfileDMO
 		this.dateFin = dateFin;
 	}
 
-	public SystemParamService getSystemParamService() {
-		return systemParamService;
-	}
-
-	public void setSystemParamService(SystemParamService systemParamService) {
-		this.systemParamService = systemParamService;
-	}
-
 	public boolean isFlgStatusBuro() {
 		return flgStatusBuro;
+	}
+	
+	public boolean isEmail_date_ENABLED()
+	{
+		return email_date_ENABLED;
 	}
 
 	public void setFlgStatusBuro(boolean flgStatusBuro) {
 		this.flgStatusBuro = flgStatusBuro;
+	}
+	
+	public String getEmail_date()
+	{
+		return email_date;
 	}
 }
