@@ -4,7 +4,7 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 
-	<h:panelGroup id="contGralUpld" rendered="#{sessionBean.partner == null or sessionBean.partner != 'ALIANZA BARARED'}">
+	<h:panelGroup id="contGralUpld" rendered="#{(addPldDocument.membership.registration_reason_id == null or addPldDocument.membership.registration_reason_id != 79 ) and sessionBean.coachProspectus_id != null}">
 
 		<h:panelGroup id="panelScript">
 			<script type="text/javascript">

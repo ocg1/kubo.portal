@@ -1025,5 +1025,13 @@ public abstract class AddPldDocumentDMO
 	public void setPospectuscomment(PospectusComment prospectuscomment) {
 		this.prospectuscomment = prospectuscomment;
 	}
+
+	public Membership getMembership() {
+		return membership;
+	}
+
+	public void setMembership(Membership membership) {
+		this.membership = membership;
+	}
 	
 }

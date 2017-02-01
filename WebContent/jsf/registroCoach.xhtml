@@ -59,10 +59,7 @@
 		<script type = "text/javascript" src = "../resources/js/hubSpot_analytics.js"/>
 		
 		
-		<!-- 
-		<noscript>
-			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=974610895889842&amp;ev=PixelInitialized" />
-		</noscript> -->
+
 		
 		<script>
 		//<![CDATA[
@@ -182,7 +179,41 @@
 </h:head>
 	
 <h:body style="background:#EAEAEC">
+	<script type="text/javascript">
+	function siftPageview(session_id, user_id) {
+		
+		var _sift = window._sift = window._sift || [];
+		_sift.push(['_setAccount', "c5640e6cca"]);
+		_sift.push(['_setUserId', user_id]);
+		_sift.push(['_setSessionId', session_id]);
+		_sift.push(['_trackPageview']);
+	}
 
+
+  
+
+	  function  siftscience () {
+	  	try {
+	  	 (function() {
+	  		   function ls() {
+	  		     var e = document.createElement('script');
+	  		     e.src = 'https://cdn.siftscience.com/s.js';
+	  		     document.body.appendChild(e);
+	  		   }
+	  		   if (window.attachEvent) {
+	  		     window.attachEvent('onload', ls);
+	  		   } else {
+	  		     window.addEventListener('load', ls, false);
+	  		   }
+	  		 })();
+	  	}
+	  	catch(err) {
+	  		console.log(err.message);
+	  	}
+	  }
+	  siftscience ();
+</script>
+		<input id="sesionId" type="hidden" value="#{sessionBean.getSessionId()}" />
 #{registroCoach.successInfo}
 		 <h:outputScript library="js" target="head" name="hubSpot_analytics.js" />
 

@@ -68,35 +68,7 @@
 			}
 		</script>
 		
-		<script>
-			(function() 
-			{
-				var _fbq = window._fbq || (window._fbq = []);
-				
-				if (!_fbq.loaded) 
-				{
-					var fbds = document.createElement('script');
-					
-					fbds.async = true;
-					fbds.src = '//connect.facebook.net/en_US/fbds.js';;
-					
-					var s = document.getElementsByTagName('script')[0];
-					
-					s.parentNode.insertBefore(fbds, s);
-					
-					_fbq.loaded = true;
-				}
-				
-				_fbq.push(['addPixelId', '974610895889842']);
-			})();
-			
-			window._fbq = window._fbq || [];
-			window._fbq.push(['track', 'PixelInitialized', {}]);
-		</script>
 		
-		<noscript>
-			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=974610895889842&amp;ev=PixelInitialized" />
-		</noscript>
 	
 	<title>kubo.financiero | Registro acreditado</title>				
        
@@ -134,6 +106,42 @@
 	</h:head>
 	
 	<h:body style="background:#EAEAEC">		
+	
+		<script type="text/javascript">
+	function siftPageview(session_id, user_id) {
+		
+		var _sift = window._sift = window._sift || [];
+		_sift.push(['_setAccount', "c5640e6cca"]);
+		_sift.push(['_setUserId', user_id]);
+		_sift.push(['_setSessionId', session_id]);
+		_sift.push(['_trackPageview']);
+	}
+
+
+  
+
+	  function  siftscience () {
+	  	try {
+	  	 (function() {
+	  		   function ls() {
+	  		     var e = document.createElement('script');
+	  		     e.src = 'https://cdn.siftscience.com/s.js';
+	  		     document.body.appendChild(e);
+	  		   }
+	  		   if (window.attachEvent) {
+	  		     window.attachEvent('onload', ls);
+	  		   } else {
+	  		     window.addEventListener('load', ls, false);
+	  		   }
+	  		 })();
+	  	}
+	  	catch(err) {
+	  		console.log(err.message);
+	  	}
+	  }
+	  siftscience ();
+</script>
+		<input id="sesionId" type="hidden" value="#{sessionBean.getSessionId()}" />
 		<img style="display:none" id="offerConversion" width="1" height="1" />
 		<img style="display:none" id="inboxlabs" width="1" height="1" />
  		<ui:include src = "scripts/registro.xhtml"/>		  		 			

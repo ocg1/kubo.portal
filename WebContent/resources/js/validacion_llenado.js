@@ -903,6 +903,11 @@ function validationBtn (btn) {
 var buttonClick; 
 	var revision_pasos = function (element) {
 		    validacionLlenado2();
+			var session_id = $("#sesionId").val();
+			var user_id = $("#thisMail").val();
+			
+			siftPageview(session_id, user_id);
+			
 			var campos =  $("#general .validatorClass[index]:visible, #general  table.validatorClass:visible, #general  #acSimple2:visible input, #general  #acSimple3:visible input, #general  table.validatorClass2:visible, .fileinput-button:visible, #type_compDomi, #type_loan, .selectNuevo:visible, .conjuntoChecks:visible .btnN, .validacionLadaField:visible");
 		
 		  	var campos_vacios = campos.filter(function () {
