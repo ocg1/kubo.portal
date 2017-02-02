@@ -45,7 +45,7 @@
 				<h:panelGroup styleClass="areaL" id="documentosActualizar" >
 			
 					<ui:include src = "documentacion/sube_tus_fotos.xhtml"/>	
-					<h:panelGroup  rendered="#{(addPldDocument.membership.registration_reason_id == null or addPldDocument.membership.registration_reason_id != 79 ) and sessionBean.coachProspectus_id != null}">
+					<h:panelGroup  rendered="#{(addPldDocument.membership.registration_reason_id == null or addPldDocument.membership.registration_reason_id != 79 )}">
 					
 							<ui:include src = "documentacion/problemasDocumentos.xhtml"/>	
 					</h:panelGroup>

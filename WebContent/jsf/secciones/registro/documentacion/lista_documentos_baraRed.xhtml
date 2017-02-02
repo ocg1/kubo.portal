@@ -5,6 +5,27 @@
 				xmlns:p  = "http://primefaces.org/ui">
 				
 	<h:panelGroup rendered="#{addPldDocument.membership.registration_reason_id != null and addPldDocument.membership.registration_reason_id == 79 and sessionBean.coachProspectus_id == null }">
+		
+		<script>
+		   $(".sigDocumentsBtn .callAction.btnNaranja").css("opacity", "0");
+		   $(".plecaForm.docu").css("opacity", "0");
+	
+			setTimeout(function(){  
+				   $("#campoNuevoDoc").val("lorem ipsum");
+				   $("#campoNuevoDoc").blur();
+					setTimeout(function(){  
+						   $(".sigDocumentsBtn .callAction.btnNaranja").trigger("click");
+					}, 1000);
+			}, 500);
+		
+		
+			
+		</script>
+			<h:form id="frm_campoNuevo">
+				<input style="opacity:0" id="campoNuevoDoc" type="text" class="validatorClass" />
+			</h:form>
+	<h:panelGroup rendered="false">
+	
 	
 	<fieldset>
 	
@@ -76,5 +97,6 @@
 			<p:dataList value="#{addPldDocument.listAcredProBusiness}" var="type">						
 				#{type.name}
 			</p:dataList>
+			</h:panelGroup>
 	</h:panelGroup>				
 </ui:composition>				

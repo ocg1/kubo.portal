@@ -975,20 +975,23 @@ function facebook_events (event ){
 		}
 		catch(err) {
 		   console.log(err.message);
-		   /*notificar error*/
+		  
 		}
 }
 	
 function incomePixel () {
 		
 		try {
-			
+			console.log("incomePixel");
 			hj('trigger', 'gastos_e_ingresos');
+			
 		}
 		catch(err) {
 		   console.log(err.message);
+		   console.log("fallo hotyar");
 		   /*notificar error*/
 		}
-	}
+	
+}
 	
 	
