@@ -5,11 +5,47 @@
 				xmlns:p  = "http://primefaces.org/ui">
 				
 	<div class = "bloqueo"/>
+	     <div class="actualizando-sistema_modal alertaModal centrar_h">
+	     	<div class="actualizando_sistema-1">
+	         		<h2>Hola, Carlos</h2>
 	
+					<p>En este momento estamos actualizando 
+					nuestro sistema. </p>
+					
+					<p>¿Te gustaría recibir un mensaje para avisarte 
+					cuando terminemos? </p>
+					
+					 <div class="btns_modal">
+					 		<div class="callActionMedium btnGris left" onclick="modalActualizando_regresar ()">
+					 			Cerrar
+					 		</div>
+					 			<div class="callActionMedium btnVerde-2 right" onclick="modalActualizando_si ()">
+					 			Si
+					 		</div>
+					 </div>
+			 </div>
+			 <div class="actualizando_sistema-2">
+					 <h2>¡Gracias!</h2>
+	
+					<p>Recibirás un mensaje al teléfono ****3003 para avisarte que ya puedes volver a ingresar a tu cuenta.</p>
+			
+			<div class="btns_modal">
+					 		<div class="callActionMedium btnGris" onclick="modalActualizando_cerrar ()">
+					 			Cerrar
+					 		</div>
+					 			
+					 </div>
+					 	<p:commandLink id="envioMensaje">
+					 			<p:ajax listener="#{navigationInvest.savePendingNatification}"  />
+					 	</p:commandLink>
+			 </div>
+         
+          		
+         </div>
 	<div id = "light1" class = "lightbox white" data-div = "1">
 
 		<div class = "close_lightbox"/>
-              
+           
         <div class = "abrir_sesion">
         
 			<a class = "close_lightbox" href = "#"/>

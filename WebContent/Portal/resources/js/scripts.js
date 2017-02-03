@@ -778,16 +778,33 @@ function returnlogin(xhr, status, args) {
 		$('div.bloqueo').hide();
 
 			if( $("#warningUser .error_inicio").text().indexOf("Disculpe las molestias, por el momento estamos actualizando nuestro sistema.") != (-1) ){
+				$(".abrir_sesion").hide();
+				$(".actualizando-sistema_modal").addClass("show");
 				$("#warningUser .error_inicio").addClass("act");
-				$("#warningUser .error_inicio").html("<i class='fa fa-cogs'></i><p>Disculpe las molestias, por el momento <strong>estamos actualizando nuestro sistema.</strong></p>")
-			
+				$("#warningUser .error_inicio").html("<i class='fa fa-cogs'></i><p>Disculpe las molestias, por el momento <strong>estamos actualizando nuestro sistema.</strong></p>");
+				
 			}
 	
 	   	
 		
-		
-		
 	}
+}
+function modalActualizando_regresar () {
+	$(".abrir_sesion").show();
+	$(".actualizando-sistema_modal").removeClass("show");
+}
+
+
+function modalActualizando_si () {
+	$(".actualizando_sistema-1").slideUp();
+	$(".actualizando_sistema-2").slideDown();
+	$("#envioMensaje").trigger("click");
+	
+}
+
+function modalActualizando_cerrar () {
+	$(".actualizando-sistema_modal").removeClass("show");
+	$("div.close_lightbox").trigger("click");
 }
 
 function showloader(){

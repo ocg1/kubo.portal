@@ -2773,3 +2773,34 @@ p.big strong {
 	text-align:right;
 
 }
+
+
+
+.btns_modal {
+	overflow:hidden;
+}
+.btns_modal .callActionMedium{
+	width:48%;
+	display:block;
+	cursor:pointer;
+}
+
+
+.callActionMedium.left {
+	float:left;
+}
+.callActionMedium.right {
+	float:right;
+}
+.actualizando_sistema-2 {
+	display:none;
+}
+
+.error-market-place p {
+	margin:0 0 20px;
+}
+
+.actualizando_sistema-2 .callActionMedium {
+	width:200px;
+
+}

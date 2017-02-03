@@ -1043,3 +1043,17 @@ function encabezadosReset (){
 		$(this).addClass("selectedMenuInv");
 	});
 }
+
+function modalTienda_regresar () {
+	$("#resumenInvest").trigger("click");
+}
+
+function modalTienda_si () {
+	$(".actualizando_sistema-1").slideUp();
+	$(".actualizando_sistema-2").slideDown();
+	$("#envioMensaje").trigger("click");
+}
+
+function modalTienda_cerrar () {
+	$("#resumenInvest").trigger("click");
+}
