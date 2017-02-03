@@ -45,6 +45,7 @@ implements Serializable
 		session_sumary.setSearchSummary(searchSummary);
 		
 		summary_request = (SummaryRequest) resolver.getValue(context, null, "summaryRequest");
+		summary_request.init();
 	}
 		
 	protected void init_sesion() 

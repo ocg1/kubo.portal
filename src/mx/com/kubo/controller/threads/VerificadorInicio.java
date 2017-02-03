@@ -6,6 +6,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import mx.com.kubo.controller.InversionAutomatica;
+import mx.com.kubo.controller.shortURL.GeneraURLCorta;
+import mx.com.kubo.controller.shortURL.RequestShortURL;
+import mx.com.kubo.controller.shortURL.ResponseShortURL;
+import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.kubows.SMSRequestService;
@@ -16,6 +21,8 @@ import mx.com.kubo.model.Change_controlPK;
 import mx.com.kubo.model.ClientesEnMora;
 import mx.com.kubo.model.CobranzaPreventiva;
 import mx.com.kubo.model.InactiveAccount;
+import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.MovementNotification;
 import mx.com.kubo.model.MovementNotificationPK;
 import mx.com.kubo.model.MovementToVerify;
@@ -36,6 +43,8 @@ import mx.com.kubo.tools.Utilities;
 
 public class VerificadorInicio extends Thread  {
 		
+	
+	//  MOVEMENT_ID 
 		private final int VERIFICADEPOSITOS = 1;
 		private final int VERIFICARETIROS = 2;
 		private final int VERIFICAPRIORITARIOSSINPUBLICAR = 3;
@@ -46,6 +55,18 @@ public class VerificadorInicio extends Thread  {
 		private final int SMS_COBRANZA_CLIENTES_MORA_61_90 = 8;
 		private final int SMS_COBRANZA_CLIENTES_MORA_75_80 = 9;
 		private final int SMS_COBRANZA_CLIENTES_MORA_81_90 = 10;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_1 = 11;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_2 = 12;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_3 = 13;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_4 = 14;
+		private final int SMS_AYUDA_DOCUMENTACION_DIA_5 = 15;
+		private final int AVISO_TIENDA_DISPONIBLE = 16;
+		private final int NOTIFICA_TABLERO_NORMATIVO = 17;
+		private final int INVERSIONES_AUTOMATICAS = 18;
+
+	
+	//  FIN MOVEMENT_ID 
+		
 		
 		private final int EVENT_COBRANZA_CLIENTES_MORA_1_30 = 48;
 		private final int EVENT_COBRANZA_CLIENTES_MORA_31_60 = 51;
@@ -59,14 +80,12 @@ public class VerificadorInicio extends Thread  {
 		private final int EVENT_AYUDA_DOCUMENTACION_DIA_4 = 58;
 		private final int EVENT_AYUDA_DOCUMENTACION_DIA_5 = 59;
 		
-		private final int SMS_AYUDA_DOCUMENTACION_DIA_1 = 11;
-		private final int SMS_AYUDA_DOCUMENTACION_DIA_2 = 12;
-		private final int SMS_AYUDA_DOCUMENTACION_DIA_3 = 13;
-		private final int SMS_AYUDA_DOCUMENTACION_DIA_4 = 14;
-		private final int SMS_AYUDA_DOCUMENTACION_DIA_5 = 15;
+		private final int EVENT_RESUMEN_TABLERO_NORMATIVO = 61;
+		
 		
 		private final int KUBO_USER=0;
 		
+		// VARIABLES DE MINUTOS EN QUE SE REPETIRÁ 
 		private int int_VERIFICAPRIORITARIOSSINPUBLICAR = 1;
 		private int int_VERIFICADEPOSITOS = 1;
 		private int int_VERIFICARETIROS = 1;
@@ -77,12 +96,15 @@ public class VerificadorInicio extends Thread  {
 		private int int_SMS_COBRANZA_CLIENTES_MORA_61_90 = 1;
 		private int int_SMS_COBRANZA_CLIENTES_MORA_75_80 = 1;
 		private int int_SMS_COBRANZA_CLIENTES_MORA_81_90 = 1;
-		
+		private int int_TIENDA_DISPONIBLE = 1;
 		private int int_SMS_AYUDA_DOCUMENTACION_DIA_1 = 1;
 		private int int_SMS_AYUDA_DOCUMENTACION_DIA_2 = 1;
 		private int int_SMS_AYUDA_DOCUMENTACION_DIA_3 = 1;
 		private int int_SMS_AYUDA_DOCUMENTACION_DIA_4 = 1;
 		private int int_SMS_AYUDA_DOCUMENTACION_DIA_5 = 1;
+		private int int_TABLERO_NORMATIVO = 1;
+		private int int_INVERSIONES_AUTOMATICAS = 1;
+		// FIN VARIABLES DE MINUTOS EN QUE SE REPETIRÁ 
 		
 		
 		private 	SystemParamService 	systemparamservice;
@@ -1069,6 +1091,145 @@ public class VerificadorInicio extends Thread  {
 							
 							break;
 							
+							
+						case AVISO_TIENDA_DISPONIBLE:
+							
+							try{
+								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_TIENDA_DISPONIBLE ){
+									System.out.println( " 16 - Aviso a inversionistas que la tienda ya está disponible despues de que habia sido deshabilitada" );
+									
+									verificaTiendaDisponible();
+									
+									int_TIENDA_DISPONIBLE = 1;
+									
+								}else{
+									int_TIENDA_DISPONIBLE ++;
+								}
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+								
+							break;
+							
+						case NOTIFICA_TABLERO_NORMATIVO:
+							
+							try{
+								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_TABLERO_NORMATIVO ){
+									System.out.println( " 17 - Aviso a inversionistas que la tienda ya está disponible despues de que habia sido deshabilitada" );
+									
+									
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 17 - TABLERO NORMATIVO " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+									
+											notificaTableroNormativo();
+											
+											int_TABLERO_NORMATIVO = 1;
+											
+										}else{
+											int_TABLERO_NORMATIVO = 1;
+										}
+										
+									}
+									
+									
+									
+								}else{
+									int_TABLERO_NORMATIVO ++;
+								}
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+								
+							break;
+							
+							
+						case INVERSIONES_AUTOMATICAS:
+							
+							try{
+								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_INVERSIONES_AUTOMATICAS ){
+									System.out.println( " 16 - Aviso a inversionistas que la tienda ya está disponible despues de que habia sido deshabilitada" );
+									
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 18 - INVERSIONES AUTOMÁTICAS " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+									
+											verificaInversionesAutomaticas();
+										
+											int_INVERSIONES_AUTOMATICAS = 1;
+											
+										}else{
+											int_INVERSIONES_AUTOMATICAS = 1;
+										}
+										
+									}
+									
+									
+									
+								}else{
+									int_INVERSIONES_AUTOMATICAS ++;
+								}
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+								
+							break;
+							
 						default:
 							
 							System.out.println( " Default" );
@@ -1308,6 +1469,89 @@ public class VerificadorInicio extends Thread  {
 				e.printStackTrace();
 			}
 		}
+		
+		private void verificaTiendaDisponible(){
+			
+			SystemParamPK spk = new SystemParamPK() ;
+			
+			spk.setCompany_id(1);
+			spk.setSystem_param_id(89); // Ejecución de cierre del día
+			
+			SystemParam param = systemparamservice.loadSelectedSystemParam(spk);
+			
+			String valCierreDia = param.getValue();
+			
+			spk = new SystemParamPK() ;
+			
+			spk.setCompany_id(1);
+			spk.setSystem_param_id(71); // Bandera que indica si se encuentra deshabilitada la tienda
+			
+			param = systemparamservice.loadSelectedSystemParam(spk);
+			
+			String valNoTienda  = param.getValue();
+			
+			spk = new SystemParamPK() ;
+			
+			spk.setCompany_id(1);
+			spk.setSystem_param_id(70); // Bandera que indica si existe un error al cargar la tienda
+			
+			param = systemparamservice.loadSelectedSystemParam(spk);
+			
+			String valNoTiendaError  = param.getValue();
+			
+			if ( valCierreDia != null && valNoTienda != null && valNoTiendaError != null && valCierreDia.equals("S") && valNoTienda.equals("N") && valNoTiendaError.equals("N") ){
+				
+				verificaPendientesPorNotificar();
+				
+			}
+		}
+
+		private void notificaTableroNormativo(){
+			
+			try{
+			
+				PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+				
+				PublicProyect py = locator.getPublicProyect();
+				
+				NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();										
+				request_notificar_config.setCompany_id("1");
+				request_notificar_config.setProspectus_id("0");	
+				request_notificar_config.setEvento_id(EVENT_RESUMEN_TABLERO_NORMATIVO+"");
+				request_notificar_config.setCalled_FROM("AdministrationProfileAMO.init_notificar_evento()");						
+			
+				WsResponse res  = py.notificar(request_notificar_config);
+				
+				System.out.println( "res: " +res.getFolio() );
+				
+				System.out.println( "res: " +res.getMessage() );
+			
+			}catch(Exception e){
+				
+			}
+			
+		}
+											
+		private void verificaInversionesAutomaticas(){
+			
+			try{
+				
+				InversionAutomatica inversionAutomatica = new InversionAutomatica();
+				
+				Date fechaInversion = new Date();
+				
+				inversionAutomatica.cargaListaInversionistas( fechaInversion );
+				
+				inversionAutomatica.ejecutaInversionAutomatica( fechaInversion );
+				
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
+			}
+				
+		}
+
 		
 		private void llamadaServicioAyudaDocumentos( int event_id ){
 			try{
@@ -1637,6 +1881,81 @@ public class VerificadorInicio extends Thread  {
 			}
 			
 			return c;
+			
+		}
+		
+		private void verificaPendientesPorNotificar(){
+			//preparaSMS();
+		}
+		
+		private void preparaSMS( Integer company_id, Integer prospectus_id ){
+			
+			MembershipPK mpk = new MembershipPK(prospectus_id, company_id);
+			
+			Membership mem = service_membership.getMembershipById(mpk);
+			
+			
+			
+			GeneraURLCorta shortURl = new GeneraURLCorta();
+			
+			RequestShortURL request = new RequestShortURL();
+			
+			request.setCompany_id(mem.getPerson().getNatPerPK().getCompany_id()+"");
+			request.setProspectus_id(mem.getPerson().getNatPerPK().getProspectus_id()+"");
+			//request.setLongURL("http://www.kubofinanciero.com/Kubo/Portal/acreditado/preregistro/comenzar-registro.xhtml?selectedReg=s");
+			
+			request.setLongURL("http://www.kubofinanciero.com/Kubo/Portal/index.xhtml?iniciarSesion=true&email_access="+mem.getEmail());
+			
+			ResponseShortURL response =   shortURl.generaConsultaCorta( request );
+		
+			if( response != null && response.getStatus().equals("0") ){
+				
+				enviaSMS(response.getShortURL(), mem.getPerson().getNatPerPK().getProspectus_id(), mem.getPerson().getFirst_name());
+				
+			}
+			
+		}
+		
+		private boolean enviaSMS(String url, Integer prospectus_id,String nombre){
+			
+			//System.out.println( tokenGen );
+			boolean flag = false; 
+			
+			try{
+				
+				PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
+				
+				PublicProyect kuboservices =  kubolocator.getPublicProyect();
+				
+				SMSRequestService request =  new SMSRequestService() ;
+				
+				request.setEmisor_id( "0" );
+				
+				request.setBursolnum(null);
+				request.setCampaign(null);
+				
+				request.setEvent_id("65");
+				
+				String msg = Utilities.capilizeString( nombre ) + ", todo en orden, ya puedes regresar a invertir en Kubo " + url;
+				
+				request.setMessage(msg);
+				
+				
+				String[] str = {""+prospectus_id+""};
+				
+				request.setProspectus_id(str);
+				
+				kuboservices.enviaSMS(request);
+				
+				flag = true;
+			
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				flag = false;
+			}
+
+			return flag ;
 			
 		}
 		

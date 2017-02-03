@@ -3247,6 +3247,31 @@ membershipTemp = new Membership();
 			if( response != null && response.getStatus().equals("0") ){
 				
 				enviaSMSContract( response.getShortURL() , persona.getNatPerPK().getProspectus_id() );
+				
+				if( persona.getProspectus().getArea().toString().equals("I") ){
+				
+					NotificadorConfigRequest request_notificar_config = new NotificadorConfigRequest();
+					
+					request_notificar_config.setCompany_id("1");
+					request_notificar_config.setProspectus_id( persona.getNatPerPK().getProspectus_id() + "");					
+					request_notificar_config.setCalled_FROM("portal.kubofinanciero.summaryRequest");
+					request_notificar_config.setEvento_id("64");
+					request_notificar_config.setMonto_deposito(response.getShortURL());
+					
+					try{
+					
+						PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
+						
+						PublicProyect kuboservices =  kubolocator.getPublicProyect();
+						
+						kuboservices.notificar(request_notificar_config);
+					
+					}catch(Exception e){
+						
+					}
+				
+				}
+				
 			}
 			
 		}else{
@@ -3661,5 +3686,34 @@ membershipTemp = new Membership();
 		return timelogservice.saveTimeLog(timelog);
 		
 	}
+	
+	public void actualizaFondeador(){
+		
+//		actualProyect =  service_proyect_loan.findProyect(actualProyect.getProyectloanPk());
+//		
+//		fondeador.setProyect_loan(actualProyect);
+		
+		fondeador.init_crear_cartera();
+		
+		init_fondeador();
+		
+		init() ;
+		 
+		actualProyect =  service_proyect_loan.findProyect(actualProyect.getProyectloanPk());
+		
+		System.out.println( " InstitucionalInvestor:  " + actualProyect.getInstitutionalInvestor().getShort_name() );
+		
+	}
+	
+	public void editaTipoCredito(){
+	
+		editor_tipo_credito.listener_guardar_cambios();
+		
+		actualProyect =  service_proyect_loan.findProyect(actualProyect.getProyectloanPk());
+		
+		System.out.println( "editaTipoCredito: " +actualProyect.getLoantype().getLoan_type_desc() );
+	
+	}
+	
 	
 }

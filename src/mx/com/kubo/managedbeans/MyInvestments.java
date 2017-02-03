@@ -667,6 +667,8 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 			
 			initRetornoAnual( cuentaAhoID );
 			
+			initGroup();
+			
 			service_access.add(15, 0, sesion, true);
 			
 		}
@@ -1131,6 +1133,17 @@ public class MyInvestments extends MyInvestmentsDMO implements Serializable
 		System.out.println(script);
 		
 		setScriptGraphicCombo(script);
+		
+	}
+	
+	private void initGroup(){
+		try{
+			
+			groupmember = groupmemberserviceimp.getMembersGroupByProspectus(persona.getNatPerPK().getProspectus_id());
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 	

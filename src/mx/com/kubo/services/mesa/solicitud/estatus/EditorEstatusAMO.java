@@ -25,6 +25,14 @@ implements ChangeControlIMO
 		
 		estatus_name_NEW = service_estatus.getStatusProyectCatByPK(estatus_PK);
 		
+		if( estatus_ORIGINAL != null ){
+		
+			estatus_PK = new StatusProyectCatPK(estatus_ORIGINAL.getId(), COMPANY);
+			
+			estatus_name_ORIGINAL = service_estatus.getStatusProyectCatByPK(estatus_PK);
+		
+		}
+		
 		change_control.setNewValue(estatus_name_NEW.getName());
 		change_control.setWhyChangeData(descripcion_del_cambio);
 		
@@ -49,10 +57,6 @@ implements ChangeControlIMO
 			change_control.setOrigValue(change_control_LAST.getNew_value());	
 			
 		} else {
-			
-			estatus_PK = new StatusProyectCatPK(estatus_ORIGINAL.getId(), COMPANY);
-			
-			estatus_name_ORIGINAL = service_estatus.getStatusProyectCatByPK(estatus_PK);
 			
 			change_control.setOrigValue(estatus_name_ORIGINAL.getName());
 		}

@@ -20,10 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 import mx.com.kubo.bean.MenuRegBean;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AccessCollector;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
+import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.RestructureBean;
 import mx.com.kubo.model.RoleAccess;
 
@@ -239,6 +241,14 @@ implements Serializable
 		
 		String t = (String) e.getComponent().getAttributes().get("tipoLog");
 		
+		Object o = (Object) e.getComponent().getAttributes().get("new_proyect");
+		
+		boolean flag_newProyect = false;
+		
+		if( o != null  ){
+			flag_newProyect = true;
+		}
+		
 		System.out.println(v);
 		
 		Map<String, Object> viewMap = FacesContext.getCurrentInstance().getViewRoot().getViewMap();
@@ -259,9 +269,11 @@ implements Serializable
 		}
 		
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		SearchSummaySession searchsum= (SearchSummaySession) FacesContext.getCurrentInstance()
-                .getApplication().getELResolver()
-                .getValue(elContext, null, "searchSummaySession");
+		
+		resolver = FacesContext.getCurrentInstance()
+                .getApplication().getELResolver();
+		
+		SearchSummaySession searchsum= (SearchSummaySession) resolver.getValue(elContext, null, "searchSummaySession");
 		
 		if(t != null){
 		searchsum.setTypeLog(t);
@@ -292,6 +304,28 @@ implements Serializable
 							setProspectus_is_canceled(true);			
 						}
 			}
+			
+			if(flag_newProyect){
+				ProyectLoan pl = proyectloanservice.getMaxProyectLoanByProspect(Integer.parseInt( cadenaProyecto.split("::")[2]), Integer.parseInt( cadenaProyecto.split("::")[3] ));
+				
+				if( pl != null && pl.getStatus_id() != null && pl.getStatus_id().intValue() == 0 ){
+					
+					cadenaProyecto = pl.getProyectloanPk().getProyect_loan_id()+"::"+pl.getProyectloanPk().getProyect_id()+"::"+pl.getProyectloanPk().getProspectus_id()+"::"+pl.getProyectloanPk().getCompany_id();
+				
+					searchsum.setSearchSummary( cadenaProyecto);
+					
+				// cadenaProyecto.split("::")[0]) -- proyect_loan_id 
+				// cadenaProyecto.split("::")[1]) -- proyect_id
+				// cadenaProyecto.split("::")[2]) -- prospectus_id
+				// cadenaProyecto.split("::")[3]) -- company_id
+				
+				}
+					
+			}
+			
+			SummaryRequest summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
+//			
+			summary_request.init();	
 			
 		}
 		

@@ -13,8 +13,8 @@
 	</div>
 	
 	<p:ajax event  = "save" immediate = "true"
-		update = "frmQuest" 
-        listener   = "#{summaryRequest.fondeador.init_crear_cartera}" 
-        onstart    = "return displayMessageProcessing('msgprocessing', true);" 
-        oncomplete = "onCompleteAddInvestor( xhr, status, args );" />
+        listener   = "#{summaryRequest.actualizaFondeador}" 
+        onstart    = "return displayMessageProcessing('msgprocessing', false);" 
+        oncomplete = "onCompleteAddInvestor( xhr, status, args );"  />
+        
 </ui:composition>	

@@ -19,6 +19,7 @@ import mx.com.kubo.model.ConsultingManualPK;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.portal.AccessIMO;
 import mx.com.kubo.portal.ofertas.ParserRenovacionAutomaticaIMO;
@@ -74,6 +75,8 @@ public abstract class ConsultaRenovacionDMO
 	protected ParserRenovacionAutomaticaIMO parser;
 	protected         ProyectLoanCreatorIMO creator;	
 	
+	protected ProyectLoan actualProyect; 
+	
 	protected String bur_sol_num;
 	
 	protected String nombreCliente;
@@ -98,6 +101,9 @@ public abstract class ConsultaRenovacionDMO
 	protected boolean redirect_to_registro_ENABLED;
 	protected boolean ofert_ENABLED;
 	protected boolean consulta_vigente_OK;
+	protected boolean hasEflTest;
+	protected boolean efl_OK;
+	protected boolean efl_ERROR;
 	
 	public final void setService_access(AccessService service) 
 	{
@@ -166,5 +172,37 @@ public abstract class ConsultaRenovacionDMO
 
 	public void setNombreCoach(String nombreCoach) {
 		this.nombreCoach = nombreCoach;
+	}
+
+	public ProyectLoan getActualProyect() {
+		return actualProyect;
+	}
+
+	public void setActualProyect(ProyectLoan actualProyect) {
+		this.actualProyect = actualProyect;
+	}
+
+	public boolean isHasEflTest() {
+		return hasEflTest;
+	}
+
+	public void setHasEflTest(boolean hasEflTest) {
+		this.hasEflTest = hasEflTest;
+	}
+
+	public boolean isEfl_OK() {
+		return efl_OK;
+	}
+
+	public void setEfl_OK(boolean efl_OK) {
+		this.efl_OK = efl_OK;
+	}
+
+	public boolean isEfl_ERROR() {
+		return efl_ERROR;
+	}
+
+	public void setEfl_ERROR(boolean efl_ERROR) {
+		this.efl_ERROR = efl_ERROR;
 	}
 }

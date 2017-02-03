@@ -14,6 +14,7 @@ import mx.com.kubo.model.ContratoCreditoCollector;
 import mx.com.kubo.model.ContratoRepCapBenCollector;
 import mx.com.kubo.model.ContratoRepCapCollector;
 import mx.com.kubo.model.CreCertSegrepCollector;
+import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.PagareCollector;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.services.AccessService;
@@ -78,6 +79,8 @@ public abstract class ContractDataDMO
 	protected boolean credit = false;
 	
 	protected boolean flagRenderedContactCapt;
+	
+	protected Membership membership;
 	
 	protected String url_contrato_medios_electronicos = "jsf/cap1.xhtml";
 	protected String url_contrato_garantias = "jsf/cap1.xhtml";
@@ -880,6 +883,14 @@ public abstract class ContractDataDMO
 
 	public void setPagoTardioStr(String pagoTardioStr) {
 		this.pagoTardioStr = pagoTardioStr;
+	}
+
+	public Membership getMembership() {
+		return membership;
+	}
+
+	public void setMembership(Membership membership) {
+		this.membership = membership;
 	}
 	
 }

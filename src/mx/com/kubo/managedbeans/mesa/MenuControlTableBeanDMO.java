@@ -16,6 +16,7 @@ import mx.com.kubo.model.AccessCollector;
 import mx.com.kubo.model.RoleAccess;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.MembershipService;
+import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.RoleAccessService;
 
 public abstract class MenuControlTableBeanDMO 
@@ -23,6 +24,8 @@ public abstract class MenuControlTableBeanDMO
 	@ManagedProperty("#{accessServiceImp}")
 	protected AccessService service_access;
 	
+	@ManagedProperty("#{proyectLoanServiceImp}")
+	protected ProyectLoanService  proyectloanservice;
 	
 	@ManagedProperty("#{membershipServiceImp}")
 	protected MembershipService membershipService;
@@ -110,5 +113,13 @@ public abstract class MenuControlTableBeanDMO
 
 	public void setCanceledReason(String canceledReason) {
 		this.canceledReason = canceledReason;
+	}
+
+	public ProyectLoanService getProyectloanservice() {
+		return proyectloanservice;
+	}
+
+	public void setProyectloanservice(ProyectLoanService proyectloanservice) {
+		this.proyectloanservice = proyectloanservice;
 	}
 }

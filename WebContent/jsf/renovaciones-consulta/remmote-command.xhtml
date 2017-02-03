@@ -20,7 +20,8 @@
 			<h:commandLink styleClass = "check_isRisk_processed" immediate = "true">
 				<p:ajax event = "click" 
 						oncomplete = "ConsultaRenovacion.isRisk_processed_oncomplete(xhr, status, args);"
-						listener   = "#{consultaRenovacion.check_is_risk_processed}"/>
+						listener   = "#{consultaRenovacion.check_is_risk_processed}"
+						update ="pnlEditFormCoach" />
 			</h:commandLink>
 			
 			<h:commandLink styleClass = "ofertasLnk" action = "ofertaslnk" />

@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import mx.com.kubo.bean.FilterStore;
 import mx.com.kubo.managedbeans.MyInvestments;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
 import mx.com.kubo.model.EventTokenAccess;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
@@ -260,6 +261,9 @@ public abstract class NavigationInvestAMO extends NavigationInvestDMO
 		}
 		else if(seccionInv.equals("summary")){
 			
+			SummaryRequest summary = (SummaryRequest) resolver.getValue(elContext, null, "summaryRequest");
+			
+			summary.init();
 			
 			setCashWithdrawalDisp(false);
 			setResumenDisp(false);

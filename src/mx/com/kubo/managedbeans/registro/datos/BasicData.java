@@ -1224,9 +1224,12 @@ implements Serializable, BasicDataIMO
 				
 					thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 5, 'L');
 				
-					System.out.println("phone: "+thisPhoneFixed.getPhone_number());
+					if( thisPhoneFixed != null  ){
+						
+						System.out.println("phone: "+thisPhoneFixed.getPhone_number());
+						preaprobacion.setThisPhoneFixed(thisPhoneFixed);
 					
-					preaprobacion.setThisPhoneFixed(thisPhoneFixed);
+					}
 				
 				}else{
 					

@@ -2,6 +2,8 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
+				
+				
 			
 	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
 		<div class = "orange">
@@ -20,9 +22,8 @@
 		
 			<p:ajax event = "save" 
 					immediate = "true"
-				    update   = "editor-tipo-credito"
 				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
-					listener   = "#{summaryRequest.editor_tipo_credito.listener_guardar_cambios}"/>
+					listener   = "#{summaryRequest.editaTipoCredito}"/>
 		 	
 		 	<ui:include src = "editor-tipo-credito/tipo-de-credito.xhtml" /> 							 	
 			<ui:include src = "editor-tipo-credito/motivo.xhtml" />
@@ -33,10 +34,16 @@
 	<script>
 		function listener_guardar_cambios(xhr, status, args)
 		{
-			$("#editor-tipo-credito-motivo").val("");				
-			
+			$("#editor-tipo-credito-motivo").val("").blur();				
+			$("#cmdTipoCred").trigger("click");
 			console.log("listener_guardar_cambios(): OK");
 
 		}
+		
+		
 	</script>
+	
+	<h:commandLink id="cmdTipoCred" style="display:none" >
+      	<p:ajax event  = "click" immediate = "true" update   = "editor-tipo-credito" />
+      </h:commandLink>	
 </ui:composition>	

@@ -142,9 +142,20 @@ public class Hs_Init implements Serializable {
 		}else{
 			//TODO  no llega el hs_mail en la url
 			
-			HttpServletRequest request = (HttpServletRequest) (FacesContext.getCurrentInstance().getExternalContext().getRequest());
+			SystemParamPK sppk =  new SystemParamPK(96, 1);  // Bandera que indica si esta habilitada la conección con HUBSPOT
 			
-			initHS( request );
+			SystemParam sp = systemparamservice.loadSelectedSystemParam(sppk);
+			
+			if( sp != null && sp.getValue() != null && sp.getValue().equals("S") ){
+			
+				HttpServletRequest request = (HttpServletRequest) (FacesContext.getCurrentInstance().getExternalContext().getRequest());
+				
+				initHS( request );
+			
+			}else{
+				url_str = "utm_source=HSP";
+				status_hs = 2;
+			}
 			
 		}
 		
@@ -228,7 +239,7 @@ public class Hs_Init implements Serializable {
 			
 			int w = 0;
 			
-			while( hs_email == null && w < 4 ){
+			while( hs_email == null && w < 5 ){
 				
 				w++;
 				
@@ -258,6 +269,22 @@ public class Hs_Init implements Serializable {
 					
 					}
 					
+				}else{
+					try{
+						
+						saveTimelog( "coockie:"+cookieVal, " Intento ERROR: " + w + " vid: " + hs_vid , new Date() , null  );
+						
+						Thread.sleep(3000);
+						
+					}catch( InterruptedException i ){
+						
+						System.out.println( i.getMessage() );
+						
+					}catch(Exception e){
+						
+						System.out.println( e.getMessage() );
+						
+					}
 				}
 				
 			}
@@ -353,7 +380,17 @@ public class Hs_Init implements Serializable {
 		
 		if( hs_obj != null ){
 			
-			hs_obj.setArea("L");
+			String tipo = validaTipoCliente( hs_obj.getV_id().intValue() );
+			
+			if( tipo != null && tipo.equals("inversionista") ){
+			
+				hs_obj.setArea("I");
+				
+			}else{
+				
+				hs_obj.setArea("L");
+			
+			}
 			
 			Prospectus exist_VID = prospectusService.getProspectusByHSId( Integer.parseInt( hs_obj.getV_id() + "" ) );
 			
@@ -405,10 +442,19 @@ public class Hs_Init implements Serializable {
 				
 				member = membershipService.getMembershipByEmail( hs_obj.getEmail_value() );
 				
-				email = member.getEmail();
+				if( member != null ){
 				
-				url_str = "iniciarSesion=true&email_access="+member.getEmail();
-				status_hs = 1;
+					email = member.getEmail();
+					
+					url_str = "iniciarSesion=true&email_access="+member.getEmail();
+					status_hs = 1;
+				
+				}else{
+					
+					url_str = "utm_source=HSP";
+					status_hs = 2;
+					
+				}
 				
 				return true;
 			}
@@ -514,6 +560,37 @@ public class Hs_Init implements Serializable {
 	
 	// HubSpotController
 	
+	private String validaTipoCliente( Integer vid_ ){
+		
+		HttpURLConnection con = null;
+		String 	hs_email = null;
+		
+		
+		try{
+		
+			HubSpotController hsc  = new HubSpotController();
+			
+			String json =hsc.getJSONProperties(vid_);
+			
+		    hs_email = getClientTypeFromHS( json );
+		    
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+		  
+		  if(con != null)
+			  con.disconnect();
+	  }
+	
+		if( hs_email != null && hs_email.trim().length() == 0 ){
+			hs_email = null;
+		}
+	 
+	return hs_email;
+		
+	}
+	
 	private String getEmailHS( Integer vid_){
 		
 		HttpURLConnection con = null;
@@ -525,6 +602,8 @@ public class Hs_Init implements Serializable {
 			HubSpotController hsc  = new HubSpotController();
 			
 			String json =hsc.getJSONProperties(vid_);
+			
+			
 			
 		    hs_email = getMailFromHS( json );
 		    
@@ -720,6 +799,28 @@ public class Hs_Init implements Serializable {
 			email = getValueElementForJSON( prop, "email" ) ;
 			
 			return email;
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+private String getClientTypeFromHS( String json_str ){
+		
+		try{
+			
+			String tipo_cliente = null;
+			
+			JSONObject json = new JSONObject( json_str );
+			
+			JSONObject prop =  (JSONObject)json.get("properties");
+			
+			
+			tipo_cliente = getValueElementForJSON( prop, "tipo_cliente" ) ;
+			
+			return tipo_cliente;
 			
 		}catch(Exception e){
 			e.printStackTrace();

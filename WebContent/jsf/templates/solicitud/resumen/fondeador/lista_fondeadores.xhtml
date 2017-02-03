@@ -5,16 +5,16 @@
 				xmlns:p  = "http://primefaces.org/ui">		
 				
 	<div class = "styled-select">
-		<h:selectOneMenu id = "idInstitutinalIvestor" value = "#{summaryRequest.fondeador.kubo_property}" immediate = "true">
+		<h:selectOneMenu id = "idInstitutinalIvestor" value = "#{summaryRequest.fondeador.kubo_property}" immediate="true"  >
 		
 			<f:selectItem itemLabel = "Selecciona un inversionista" itemValue = "-1" />
 			
 			<f:selectItems value = "#{summaryRequest.fondeador.lista_fondeadores}" var = "investor" 
 						   itemLabel = "#{investor.short_name}" 
 						   itemValue = "#{investor.institutionalInvestorPK.institutional_investor_id}"/>
-			<p:ajax event  = "change" update = "panel-investor-category"
+			<p:ajax event  = "change" update = "panel-investor-category" 
 				    oncomplete = "Resumen.kubo_property_on_complete(xhr, status, args);" 
-					listener   = "#{summaryRequest.fondeador.init_kubo_property}"/>
+					listener   = "#{summaryRequest.fondeador.init_kubo_property}" />
 		</h:selectOneMenu>
 	</div>				
 </ui:composition>				

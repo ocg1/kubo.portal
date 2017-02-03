@@ -620,13 +620,18 @@ public abstract class PreregistroAMO extends PreregistroDMO
 			prospectus_id = prospectus.getProspectusPK().getProspectus_id();
 			
 			ProspectusExtra extra =  new ProspectusExtra();
-			
-			extra.setProspectus_id(prospectus_id);
-			extra.setValue1_ps( Utilities.encodeBase64(password));
-			
-			prospectusextraservice.saveProspectusExtra(extra);
+			try{
+				extra.setProspectus_id(prospectus_id);
+				extra.setValue1_ps( password );
+				
+				prospectusextraservice.saveProspectusExtra(extra);
+				
+			}catch(Exception e){
+				
+			}
 			
 			add_tracking_id();
+			
 		}			
 	}
 	

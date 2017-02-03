@@ -19,6 +19,7 @@ import org.primefaces.context.RequestContext;
 import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.managedbeans.mesa.MenuControlTableBean;
+import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.services.MembershipService;
@@ -55,7 +56,7 @@ public class CargaOtroProyecto implements Serializable {
 		
 		SessionBean sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
 		
-		if (sesion.getArea().equals('M')) 
+		if (sesion.getArea().toString().equals("M")) 
 		{		
 			Calendar cal1 = Calendar.getInstance();			
 			cal1.setTime(new Date());									
@@ -103,6 +104,10 @@ public class CargaOtroProyecto implements Serializable {
 			
 			SearchSummaySession summarysesion = (SearchSummaySession) resolver.getValue(elContext, null, "searchSummaySession");
 			summarysesion.setSearchSummary(proyect_loan_SEARCH_TOKEN);
+			
+			SummaryRequest summary_request = (SummaryRequest)  resolver.getValue(elContext, null, "summaryRequest");
+//			
+			summary_request.init();					
 			
 		}
 		

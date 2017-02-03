@@ -4,14 +4,21 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:c  = "http://java.sun.com/jsp/jstl/core"
 				xmlns:p  = "http://primefaces.org/ui">
-				
+			
 	<div>
+		<h:panelGroup id="pnlFondeador" >
+		
+		<script>
+			//alert("pnlFondeador: " );
+		</script>
+		
 		<div class = " smallGray left">
+		
 			<strong>Fondeador: </strong>
 			
 				<p:inplace id = "sectionEditInstitutionalIvestor" widgetVar = "editInvestor" rendered = "#{summaryRequest.changeInstitutionalInvestor}">
-						   					        
-					<p:inputText value = "#{summaryRequest.actualProyect != null ? summaryRequest.actualProyect.institutionalInvestor.short_name : ''}" />
+						   					   					        
+					<h:outputText value = "#{summaryRequest.actualProyect != null ? summaryRequest.actualProyect.institutionalInvestor.short_name : ''}" />
 					
 					<ui:include src = "lista_fondeadores.xhtml" />
 					<ui:include src = "lista_investor_category.xhtml" />
@@ -21,7 +28,9 @@
 				
 				<ui:include src = "asignacion-valores-ajax.xhtml" />
 				<ui:include src = "institutional_investor_ICON.xhtml" />
-				<ui:include src = "bitacora-change-control.xhtml" />		
+				<ui:include src = "bitacora-change-control.xhtml" />	
+				
+					
 		</div>
 		
 		<script>
@@ -30,5 +39,14 @@
 				Resumen.init();
 			});
 		</script>
+		
+		</h:panelGroup>
+		
+		
+		
+		<h:commandLink id="cmdUpdateFondeador" style="display:none" >
+	    	<p:ajax event  = "click" immediate = "true" update = "frmQuest, pnlFondeador" oncomplete = "reInicia();"   />
+	    </h:commandLink>
+		
 	</div>				
 </ui:composition>				

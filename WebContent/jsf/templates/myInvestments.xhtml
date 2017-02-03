@@ -116,49 +116,60 @@
 			<div class="wrapperInv"  >	
 				<!--section myInvestments -->
 				<section class="myInvestments">
-					<div class="modal-client-type alertaModal centrar_h">
-					<i class="fa fa-times closePop" onclick="cerrarAlertTypeClient();"></i>
-						<div class="image-client-type">
-								<figure><h:graphicImage library="img" name= "banortel.jpg"  /> </figure> 
-						</div>
-						<div class="description-client-type ">
-							<table cellpadding="0" cellspacing="0" border="0">
-							   <tr>
-									<td><strong>Cliente</strong></td>
-									<td><span>Banorte Team</span></td>
-								</tr>
-								<tr>
-									<td><strong>Fecha de inicio</strong></td>
-									<td><span>18 de septiembre 2016</span></td>
-								</tr>
-								<tr>
-									<td><strong>Fecha de inicio</strong></td>
-									<td><span>18 de septiembre 2016</span></td>
-								</tr>
-								<tr>
-									<td><strong>Fecha de inicio</strong></td>
-									<td><span>18 de septiembre 2016</span></td>
-								</tr>
+				
+					<h:panelGroup rendered="#{myInvestments.groupmember != null }" >
+					
+						<ui:repeat var="group" value="#{myInvestments.groupmember}" varStatus="myVarStatus">
+				
+							<div class="modal-client-type alertaModal#{myVarStatus.index} centrar_h alertaModal">
+							<i class="fa fa-times closePop" onclick="cerrarAlertTypeClient#{myVarStatus.index}();"></i>
+								<div class="image-client-type">
+										<figure><h:graphicImage library="documents" name= "#{group.investorgroup.logo_location}"  /> </figure> 
+								</div>
+								<div class="description-client-type ">
+									<table cellpadding="0" cellspacing="0" border="0">
+									   <tr>
+											<td><strong>Grupo:</strong></td>
+											<td><span>#{group.investorgroup.description}</span></td>
+										</tr>
+										<tr>
+											<td><strong>Creado por:</strong></td>
+											<td><span>#{group.investorgroup.person.NombreCompletoNPM()}</span></td>
+										</tr>
+										<tr>
+											<td><strong>Fecha de creación:</strong></td>
+											<td><span>#{group.investorgroup.creation_date}</span></td>
+										</tr>
+										<tr>
+											<td><strong>Formas parte desde:</strong></td>
+											<td><span>#{group.added_date}</span></td>
+										</tr>
+									
+									</table>
+								</div>
+							</div>
+					
+							<div class="logo-client-type">
 							
-							</table>
-						</div>
-					</div>
-					<div class="logo-client-type">
+									<figure onclick="typeClient_modal#{myVarStatus.index}()"><h:graphicImage library="documents" name= "#{group.investorgroup.logo_location}"  /> </figure> 
+									<div class="nombre-team">#{group.investorgroup.description}</div>
+							
+							</div>
+							<script>
+									function typeClient_modal#{myVarStatus.index}() {
+											$(".alertaModal#{myVarStatus.index}").addClass("show");
+											$(".velo").fadeIn();
+									}
+									function cerrarAlertTypeClient#{myVarStatus.index}() {
+										$(".alertaModal#{myVarStatus.index}").removeClass("show");
+										$(".velo").fadeOut();
+									}
+							</script>
+						
+						</ui:repeat>
 					
-							<figure onclick="typeClient_modal()"><h:graphicImage library="img" name= "banortel.jpg"  /> </figure> 
-							<div class="nombre-team">Banortel Team</div>
+					</h:panelGroup>
 					
-					</div>
-					<script>
-							function typeClient_modal() {
-									$(".alertaModal").addClass("show");
-									$(".velo").fadeIn();
-							}
-							function cerrarAlertTypeClient() {
-								$(".alertaModal").removeClass("show");
-								$(".velo").fadeOut();
-							}
-					</script>
 					<div class="container_03" style="width: 100%;">
 				
 						<div class="contentInv" >

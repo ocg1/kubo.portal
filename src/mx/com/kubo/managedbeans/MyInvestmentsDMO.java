@@ -11,12 +11,14 @@ import javax.faces.bean.ManagedProperty;
 
 import mx.com.kubo.bean.SellingProyectBean;
 import mx.com.kubo.model.AmortizacionInversionista;
+import mx.com.kubo.model.GroupMember;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.ProyectLoanActiveInSafi;
 import mx.com.kubo.model.RendimientosInv;
 import mx.com.kubo.model.SafiProyecInProcess;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AmortizacionInversionistaService;
+import mx.com.kubo.services.GroupMemberService;
 import mx.com.kubo.services.InfoNotificationService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.ProyeccionGraficaInvService;
@@ -60,6 +62,9 @@ public abstract class MyInvestmentsDMO
 	@ManagedProperty("#{infoNotificationServiceImp}")
 	protected InfoNotificationService infonotificationservice;
 	
+	@ManagedProperty("#{groupMemberServiceImp}")
+	protected GroupMemberService groupmemberserviceimp;
+	
 	/*
 	@ManagedProperty("#{investmentsAtraEdoCtaServiceImp}")
 	protected InvestmentsAtraEdoCtaServiceImp investmentsAtras;
@@ -72,6 +77,8 @@ public abstract class MyInvestmentsDMO
 	protected SessionBean sesion;
 	protected NaturalPerson persona;
 	protected ProyectLoanActiveInSafi active;
+	
+	protected List<GroupMember> groupmember;
 	
 	protected ArrayList<String> numCuentas;
 	protected ArrayList<String> infoCalEst;
@@ -1446,5 +1453,21 @@ public abstract class MyInvestmentsDMO
 
 	public void setDisplayNotificacion(boolean displayNotificacion) {
 		this.displayNotificacion = displayNotificacion;
+	}
+	
+	public GroupMemberService getGroupmemberserviceimp() {
+		return groupmemberserviceimp;
+	}
+
+	public void setGroupmemberserviceimp(GroupMemberService groupmemberserviceimp) {
+		this.groupmemberserviceimp = groupmemberserviceimp;
+	}
+
+	public List<GroupMember> getGroupmember() {
+		return groupmember;
+	}
+
+	public void setGroupmember(List<GroupMember> groupmember) {
+		this.groupmember = groupmember;
 	}
 }

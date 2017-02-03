@@ -1,21 +1,31 @@
 package mx.com.kubo.managedbeans.portal.ofertas;
 
 import java.io.Serializable;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 import javax.annotation.PostConstruct;
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlInputSecret;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.controller.threads.RespuestaConsultaMasiva;
+import mx.com.kubo.managedbeans.HeaderBean;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
+import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.mesa.buro.ProspectRiskIMP;
 import mx.com.kubo.mesa.buro.ProyectLoanCreatorIMP;
+import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.portal.AccessIMP;
 import mx.com.kubo.tools.Utilities;
@@ -235,9 +245,162 @@ implements Serializable
 				
 				init_score();				
 				
+			}else if(sesion != null && sesion.getProspectus_id() != null && sesion.getArea() != null && sesion.getArea().toString().equals("M") ) {
+				
+				actualProyect = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id) ;
+				
 			}
 			
 		}
 		
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public void validaSession () 
+	{		
+			boolean flag = false;
+			
+			faces          = FacesContext.getCurrentInstance();
+			ExternalContext external    = faces.getExternalContext();		
+			HttpSession sessionUsed = (HttpSession) external.getSession(false);
+			ServletContext servlet     = sessionUsed.getServletContext();
+			
+			Hashtable<String, Hashtable<String,HttpSession>>  ht = (Hashtable<String, Hashtable<String,HttpSession>>)servlet.getAttribute("usuariosFirmados");
+			
+			Enumeration<String> enumKey = ht.keys();
+			
+			if( actualProyect == null ){
+				actualProyect = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id) ;
+			}
+
+			while(enumKey.hasMoreElements()) 
+			{
+				
+			   String key = enumKey.nextElement();
+			    
+			   Hashtable<String,HttpSession> htVal = (Hashtable<String,HttpSession>)ht.get(key);
+			    
+			    if( htVal.get( actualProyect.getPerson().getProspectus().getTracking_id()) != null )
+			    {
+			    	flag = true;
+			    	
+			    	break;
+			    }
+			    
+			}
+			
+			request   = RequestContext.getCurrentInstance();
+			
+			request.addCallbackParam("isLogged", flag);
+			
+	}
+	
+	
+	public String changeSessionForEditForm(){
+		
+		faces = FacesContext.getCurrentInstance();
+		ELContext context   = faces.getELContext();
+		resolver  = faces.getApplication().getELResolver();
+		
+		NavigationBeanIMP navi = (NavigationBeanIMP)resolver.getValue(context, null, "navigationBean");
+		
+		navi.setPaginaActual("registro/basicdata");
+		
+		SearchSummaySession search = (SearchSummaySession)resolver.getValue(context, null, "searchSummaySession");
+		
+		if( actualProyect == null ){
+			actualProyect = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id) ;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(actualProyect.getProyectloanPk().getProyect_loan_id()).append("::");
+		sb.append(actualProyect.getProyectloanPk().getProyect_id()).append("::");
+		sb.append(actualProyect.getProyectloanPk().getProspectus_id()).append("::");
+		sb.append(actualProyect.getProyectloanPk().getCompany_id());
+		
+		String str = sb.toString();
+		
+		MembershipPK mpk = new MembershipPK();
+		
+		mpk.setCompany_id( sesion.getCompany_id()  );
+		mpk.setProspectus_id( sesion.getProspectus_id() );
+		
+		Membership mCoach = service_membership.getMembershipById(mpk);
+		
+		mpk = new MembershipPK();
+		
+		mpk.setCompany_id( sesion.getCompany_id() );
+		mpk.setProspectus_id( actualProyect.getPerson().getNatPerPK().getProspectus_id() );
+		
+		Membership mProspectus = service_membership.getMembershipById(mpk);
+		
+		HeaderBean headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
+		
+		int i = 0;
+		
+		do {
+			
+			try{
+			
+				Thread.sleep(500);
+				
+				headerbean.iniciaSesionCoach(mCoach, mProspectus, true);
+				
+				search = (SearchSummaySession)resolver.getValue(context, null, "searchSummaySession");
+				
+				search.setSearchSummary( str );
+				
+				sesion = (SessionBean)resolver.getValue(context, null, "sessionBean");
+				
+				sesion.setCoachProspectus_id(mCoach.getMembershipPK().getProspectus_id());
+				
+				sesion.setAccess_from("portalKubo");
+				
+				i++;
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}while (sesion.getCompany_id() == null && i < 4 );
+		
+		return "registrocoach";
+	
+	}
+	
+	
+	public String returnToControlTable(){
+		
+		faces = FacesContext.getCurrentInstance();
+		ELContext context   = faces.getELContext();
+		resolver  = faces.getApplication().getELResolver();
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if( actualProyect == null ){
+			actualProyect = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id) ;
+		}
+		
+		sb.append(actualProyect.getProyectloanPk().getProyect_loan_id()).append("::");
+		sb.append(actualProyect.getProyectloanPk().getProyect_id()).append("::");
+		sb.append(actualProyect.getProyectloanPk().getProspectus_id()).append("::");
+		sb.append(actualProyect.getProyectloanPk().getCompany_id());
+		
+		String str = sb.toString();
+		
+		SearchSummaySession search = (SearchSummaySession)resolver.getValue(context, null, "searchSummaySession");
+		
+		search.setSearchSummary( str );
+		
+		SummaryRequest summary_request = (SummaryRequest)  resolver.getValue(context, null, "summaryRequest");
+		
+		summary_request.init();		
+		
+		return "controlTable";
+		
+	}
+	
+	
 }

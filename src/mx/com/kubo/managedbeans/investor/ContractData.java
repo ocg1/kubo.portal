@@ -34,6 +34,7 @@ import mx.com.kubo.model.ContratoRepCapCollector;
 import mx.com.kubo.model.FileType;
 import mx.com.kubo.model.FileTypePK;
 import mx.com.kubo.model.Files;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.PagareCollector;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Signature;
@@ -165,6 +166,9 @@ implements Serializable
 			lstFiles = fileService.getListFilesByProspect( saving.getSaving_accountPk().getProspectus_id() , saving.getSaving_accountPk().getCompany_id(), proyectloan.getProyectloanPk().getProyect_loan_id());
 		}
 		
+		MembershipPK mpk = new MembershipPK(saving.getSaving_accountPk().getProspectus_id() , saving.getSaving_accountPk().getCompany_id());
+		
+		membership = membershipService.getMembershipById(mpk);
 		
 		Calendar tmp_files = Calendar.getInstance();
 		tmp_files.setTime(new Date());

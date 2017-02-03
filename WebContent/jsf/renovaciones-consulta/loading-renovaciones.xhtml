@@ -32,11 +32,13 @@
 							   onstart          = "return displayMessageProcessing('msgprocessing', true);" 
 							   style			= "text-decoration: none;"
 							   value	        = "Regresar a mi cuenta"
-							   action			= "controlTable"
+							   action			= "#{consultaRenovacion.returnToControlTable}"
 							   styleClass		= "callActionMedium btnNaranja regresar_cuenta"	
 							   >
 						
-					</p:commandLink>
+							</p:commandLink>
+							
+							<ui:include src="editar_formulario_button.xhtml"></ui:include>
 	        			
 				
 					</div>

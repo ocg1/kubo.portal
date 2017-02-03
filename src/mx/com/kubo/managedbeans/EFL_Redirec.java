@@ -12,13 +12,16 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.services.AccessService;
-import mx.com.kubo.services.EflScoreService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.ScoringService;
+import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.tools.Utilities;
 
 
@@ -40,6 +43,9 @@ public class EFL_Redirec implements Serializable {
 	
 	@ManagedProperty("#{proyectLoanServiceImp}")
 	protected ProyectLoanService proyectLoanService;
+	
+	@ManagedProperty("#{systemParamServiceImp}")
+	protected SystemParamService systemparamservice;
 	
 	private String url_str_1;
 	private String url_redirec;
@@ -180,6 +186,26 @@ public class EFL_Redirec implements Serializable {
 		
 		System.out.println( "url:  " + url_str_1 );
 		
+		SystemParamPK system_param_PK_I = new SystemParamPK();
+		
+		system_param_PK_I.setCompany_id( 1 );
+		system_param_PK_I.setSystem_param_id(96); // Bandera que indica si esta habilitada la conección con HUBSPOT
+		
+		SystemParam system_param_I = systemparamservice.loadSelectedSystemParam(system_param_PK_I);
+		
+		if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+		
+			if( proyect.getPerson().getProspectus().getHs_vid() != null ){
+				try{
+					actualizaHS_VID( proyect.getPerson().getProspectus().getHs_vid() );
+				}catch(Exception e){
+					System.out.println( "No encontrado en HUBSPOT:" + e.getMessage() );
+				}
+				
+			}
+			
+		}
+		
 	}
 
 	public String getUrl_str_1() {
@@ -275,6 +301,29 @@ public class EFL_Redirec implements Serializable {
 	public void setProyectLoanService(ProyectLoanService proyectLoanService) {
 		this.proyectLoanService = proyectLoanService;
 	}
+
+	public SystemParamService getSystemparamservice() {
+		return systemparamservice;
+	}
+
+	public void setSystemparamservice(SystemParamService systemparamservice) {
+		this.systemparamservice = systemparamservice;
+	}
 	 
+	
+	
+	protected void actualizaHS_VID( Integer hs_vid ){
+		
+				//TODO TRAE utm_source utm_medium  registration_reason
+				
+				HubSpotController hs  = new HubSpotController();
+				
+				StringBuilder properties = new StringBuilder();
+					
+				properties.append("{ \"property\" : \"contacto_efl\" ,\"value\":\"si\" }");
+					
+				hs.updateProspectus(hs_vid, properties);
+				
+		}
 	
 }
