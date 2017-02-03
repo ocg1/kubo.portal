@@ -200,12 +200,17 @@ function regresaTutor(){
 
 function onCompleteAddInvestor( xhr, status, args ){
 	
-	reInicia();
+//	reInicia();
+	
+	editInvestor.cancel();
+	
 	closeFancy();
 	
 	console.log("onCompleteAddInvestor(): OK");
 	
-	location.reload();
+	//location.reload();
+	
+	$( "#cmdUpdateFondeador" ).trigger("click");
 	
 	if( !args.isValidInvestor )
 	{		

@@ -98,6 +98,13 @@ public class CheckScoreProcessed extends CheckScoreProcessedDMO  implements Seri
 				flagRepeat = true;
 				pageSend = "tmp1";
 				isvalid = false;
+				
+				if( request != null ){
+					request.addCallbackParam("flagRepeat", flagRepeat);
+					request.addCallbackParam("pageSend", pageSend);
+					request.addCallbackParam("isvalid", isvalid);
+				}
+				
 				return;
 			}
 			

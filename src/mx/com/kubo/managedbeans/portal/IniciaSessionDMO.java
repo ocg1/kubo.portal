@@ -96,6 +96,8 @@ public class IniciaSessionDMO
 	@ManagedProperty("#{scoringServiceImp}")
 	protected ScoringService scoring_service;
 	
+	protected final int EVENT_TIENDA_DISPONIBLE = 65; 
+	
 	protected RequestContext request;
 	protected FacesContext    faces;
 	protected ELResolver      resolver;

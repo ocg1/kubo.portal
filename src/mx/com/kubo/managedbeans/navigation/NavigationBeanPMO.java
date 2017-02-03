@@ -16,29 +16,31 @@ public abstract class NavigationBeanPMO extends NavigationBeanAMO
 {	
 	public void cambiaPorcentBasicos(ActionEvent e)
 	{
-		
-		if( is_Rechazo() ){
+		if( sesion.getArea().equals("L") ){
+			if( is_Rechazo() ){
+				
+				faces     = FacesContext.getCurrentInstance();
+				
+				elContext = faces.getELContext();
+				resolver  = faces.getApplication().getELResolver();
+				external  = faces.getExternalContext();
 			
-			faces     = FacesContext.getCurrentInstance();
-			
-			elContext = faces.getELContext();
-			resolver  = faces.getApplication().getELResolver();
-			external  = faces.getExternalContext();
-		
-			String url = (getPath() + "/Portal/no-posible-prestamo.xhtml?redirecFrom=NavigationBean");
-			
-			try 
-			{
-				System.out.println( "Redirigiendo Rechazo automatico desde NavigationBean: " + url);
-				external.redirect(url);
-			        
-			} catch (IOException ex) {						      
-				ex.printStackTrace();
-			}catch(Exception e1){
-				System.out.println("Redirect "+url);
+				String url = (getPath() + "/Portal/no-posible-prestamo.xhtml?redirecFrom=NavigationBean");
+				
+				try 
+				{
+					System.out.println( "Redirigiendo Rechazo automatico desde NavigationBean: " + url);
+					external.redirect(url);
+				        
+				} catch (IOException ex) {						      
+					ex.printStackTrace();
+				}catch(Exception e1){
+					System.out.println("Redirect "+url);
+				}
+				
+				return;
+				
 			}
-			
-			return;
 			
 		}
 		

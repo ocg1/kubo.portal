@@ -34,6 +34,7 @@ public abstract class NavigationInvestDMO
 	protected int menuInveSel = 1;
 	protected int MODIFICAR_DATOS_PERSONALES = 1;
 	protected int EJECUCION_CIERRE_DEL_DIA   = 89;
+	protected final int EVENT_TIENDA_DISPONIBLE = 65;
 	
 	protected boolean displayInfo = true;
 	protected boolean displayList = false;

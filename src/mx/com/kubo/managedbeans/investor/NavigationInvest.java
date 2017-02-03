@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import mx.com.kubo.controller.PendingNotificationController;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.registro.verificacion.CierreDelDiaIMP;
 import mx.com.kubo.registro.verificacion.UsuariosFirmadosIMP;
@@ -143,4 +144,21 @@ implements Serializable
 		}
 		
 	}	
+	
+	
+	public void savePendingNatification(){
+		
+		FacesContext faces = FacesContext.getCurrentInstance();
+		
+		ELResolver resolver = faces.getApplication().getELResolver();		
+		ELContext elContext = faces.getELContext();
+		
+		SessionBean sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");	
+		
+		PendingNotificationController pnc = new PendingNotificationController();
+		
+		pnc.initPendingNotificationOBJ( sesion.getCompany_id(), sesion.getProspectus_id(), EVENT_TIENDA_DISPONIBLE);
+		
+	}
+	
 }

@@ -20,7 +20,7 @@ implements DocumentsReviewIMO
 					
 			response =  new WsSgbResponse();
 			
-			lista_archivos = filesService.getListFilesByProspect(prospectus_id, company_id, 0);
+			lista_archivos = filesService.getListFilesByProspect(prospectus_id, company_id, 1);
 		
 			if(lista_archivos.size() > 0)
 			{

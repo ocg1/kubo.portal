@@ -23,7 +23,7 @@ public abstract class DocumentsReviewAMO extends DocumentsReviewDMO
 	
 	protected void init_files() 
 	{
-		com.soa.webServices.util.Files[] files = null ;
+		files = null ;
 		
 		if( person.getIdentification_type_id() != null && (person.getIdentification_type_id().intValue() == 3 || person.getIdentification_type_id().intValue() == 4 || person.getIdentification_type_id().intValue() == 5 || person.getIdentification_type_id().intValue() == 6 ) ){
 		

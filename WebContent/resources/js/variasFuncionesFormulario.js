@@ -779,9 +779,16 @@ function pixel (){
 		if(valuePartner == "CDY" ){
 			var inputAdv = $("#advBackInput").val();
 	
-			var transactionId= inputAdv.substr(inputAdv.indexOf("tid=") + 4, inputAdv.indexOf("&"));
+			var transactionId= inputAdv.substr(inputAdv.indexOf("tid=") + 4);
+
+			if( transactionId.indexOf("&") != (-1) ){
+
 				transactionId= transactionId.substr(0, transactionId.indexOf("&")) ;
-				$("#goCloud").attr( "src", "http://tracking.credy.eu/aff_lsr?offer_id=161&adv_sub="+''+prospectoID+''+"&transaction_id="+''+transactionId+''+""); 
+
+			}
+
+
+			$("#goCloud").attr( "src", "http://tracking.credy.eu/aff_lsr?offer_id=161&adv_sub="+''+prospectoID+''+"&transaction_id="+''+transactionId+''+""); 
 				console.log($("#goCloud").attr("src"));
 		}
 		

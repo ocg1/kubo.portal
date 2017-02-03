@@ -10,6 +10,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import mx.com.kubo.controller.PendingNotificationController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.home.InicioValuesIMP;
@@ -509,6 +510,14 @@ implements Serializable
 			return false;
 		}
 		
+		
+	}
+	
+	public void savePendingNatification(){
+		
+		PendingNotificationController pnc = new PendingNotificationController();
+		
+		pnc.initPendingNotificationOBJ(membership.getMembershipPK().getCompany_id(), prospectus_id, EVENT_TIENDA_DISPONIBLE);
 		
 	}
 	
