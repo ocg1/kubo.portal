@@ -20,6 +20,8 @@ public abstract class MembershipCheckAMO extends MembershipCheckDMO
 		
 		area = person.getProspectus().getArea();
 		
+		is_safi_client = person.getSafi_client_id() != null && !person.getSafi_client_id().isEmpty();
+		
 		is_inversionista = area.equals('I');		
 		is_mesa_control  = area.equals('M');
 		is_acreditado    = area.equals('L');
@@ -36,7 +38,7 @@ public abstract class MembershipCheckAMO extends MembershipCheckDMO
 	
 	protected void init_ejecucion_cierre() 
 	{
-		if(!is_acreditado && !is_mesa_control)
+		if(!is_acreditado && !is_mesa_control && is_safi_client)
 		{
 			ejecutor = new CierreDelDiaIMP();
 			ejecutor.setService_system_param(service_system_param);

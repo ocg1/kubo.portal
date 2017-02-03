@@ -1,7 +1,6 @@
 package mx.com.kubo.managedbeans.portal;
 
 import java.io.File;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;

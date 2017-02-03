@@ -79,6 +79,7 @@ implements MembershipCheckIMO
 	protected boolean is_inversionista;
 	protected boolean is_mesa_control;
 	protected boolean is_acreditado;
+	protected boolean is_safi_client;
 	
 	protected MembershipCheckDMO()
 	{

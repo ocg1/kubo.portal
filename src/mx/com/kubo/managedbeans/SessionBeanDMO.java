@@ -97,8 +97,6 @@ public abstract class SessionBeanDMO
 		
 	}
 	
-	
-	
 	public final void setBrowser_width(Integer width) 
 	{
 		this.width = width;
@@ -475,19 +473,13 @@ public abstract class SessionBeanDMO
 		this.coachProspectus_id = coachProspectus_id;
 	}
 	
-	
-	
 	public Integer getPromotor_id() {
 		return promotor_id;
 	}
 
-
-
 	public void setPromotor_id(Integer promotor_id) {
 		this.promotor_id = promotor_id;
 	}
-
-
 
 	public String getAccess_from() {
 		return access_from;
@@ -561,19 +553,13 @@ public abstract class SessionBeanDMO
 		this.flagLoginEnabled = flagLoginEnabled;
 	}
 
-
-
 	public boolean isIsClient() {
 		return isClient;
 	}
 
-
-
 	public void setIsClient(boolean isClient) {
 		this.isClient = isClient;
 	}
-
-
 
 	public boolean isHaveUsrImg() {
 		return haveUsrImg;
