@@ -1,12 +1,32 @@
-package mx.com.kubo.datamodels;
+package mx.com.kubo.managedbeans;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
+import javax.el.ELContext;
+import javax.el.ELResolver;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+
+import com.soa.webServices.WsSgbRisk;
+import com.soa.webServices.WsSgbRiskServiceLocator;
 
 import mx.com.kubo.bean.MenuRegBean;
+import mx.com.kubo.bean.jackson.AplicationPublicationInvestorDataDTO;
+import mx.com.kubo.controller.hs_connect.HubSpotController;
+import mx.com.kubo.model.Access;
+import mx.com.kubo.model.AccessCollector;
+import mx.com.kubo.model.ClabeAccount;
+import mx.com.kubo.model.Investor;
+import mx.com.kubo.model.InvestorPK;
+import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.SavingAccount;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
+import mx.com.kubo.registro.publicacion.DocumentsReviewIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.ClabeAccountService;
 import mx.com.kubo.services.CountryService;
@@ -22,23 +42,8 @@ import mx.com.kubo.services.ServiceCallingService;
 import mx.com.kubo.services.StateService;
 import mx.com.kubo.services.SystemParamService;
 
-public class AddInvestorSafiForm 
-{
-	protected String msg;
-	protected boolean success =false;
-	protected boolean error =false;
-	protected boolean wait =true;
-	protected boolean displayAction = false;
-	protected boolean successFull = false;
-	protected boolean errorDisp=false;
-	protected int prospectus_id = 0;
-	protected boolean flagaccount = false;
-	
-	protected List<MenuRegBean> listRequiredMenu;
-	
-	protected NaturalPerson personSel;		
-	protected NotificadorIMO notificador;
-	
+public abstract class AddInvestorSafiDMO 
+{	
 	@ManagedProperty("#{savingAccountServiceImp}")
 	protected SavingAccountService savingaccountservice;
 	
@@ -80,6 +85,55 @@ public class AddInvestorSafiForm
 	
 	@ManagedProperty("#{systemParamServiceImp}")
 	protected SystemParamService systemparamservice;
+	
+	protected WsSgbRiskServiceLocator locator;
+	protected WsSgbRisk  service;
+	
+	protected FacesContext faces;
+	protected ELContext elContext;
+	protected ELResolver resolver;
+	
+	protected SessionBean sesion;
+	
+	protected NaturalPerson person;		
+	protected Membership   membership;
+	protected MembershipPK membership_PK;
+	protected Investor investor;
+	protected InvestorPK investor_PK;
+	
+	protected NotificadorIMO notificador;
+	protected DocumentsReviewIMO documents;
+	
+	protected HubSpotController hs;
+	protected AplicationPublicationInvestorDataDTO ap_INV;
+	protected MenuRegBean menureq;
+	protected ResourceBundle recurso;
+	protected SystemParam system_param_I;
+	protected SystemParamPK system_param_PK_I;
+	protected Access access;
+	
+	protected List<AccessCollector> menuIncomplete;
+	protected List<MenuRegBean> listRequiredMenu;
+	protected List<SavingAccount> countList;
+	protected List<ClabeAccount> accountList;
+	
+	
+	protected StringBuilder properties;
+	protected String msg;
+	
+	protected int prospectus_id = 0;
+	
+	protected final int IS_INFUSION_ENABLED = 88;
+	protected final int IS_HUBSPOT_ENABLED  = 96;
+	
+	protected boolean success =false;
+	protected boolean error =false;
+	protected boolean wait =true;
+	protected boolean displayAction = false;
+	protected boolean successFull = false;
+	protected boolean errorDisp=false;
+	protected boolean flagaccount = false;	
+	protected boolean notificacion_OK;
 
 	public String getMsg() {
 		return msg;
@@ -153,93 +207,58 @@ public class AddInvestorSafiForm
 		this.listRequiredMenu = listRequiredMenu;
 	}
 
-	public NaturalPerson getPersonSel() {
-		return personSel;
+	public NaturalPerson getPersonSel() 
+	{
+		return person;
+	}
+	
+	public void setSavingaccountservice(SavingAccountService service) 
+	{
+		savingaccountservice = service;
 	}
 
-	public void setPersonSel(NaturalPerson personSel) {
-		this.personSel = personSel;
+	public void setPrevencionldservice(PrevencionLDService service) 
+	{
+		prevencionldservice = service;
 	}
 
-	public SavingAccountService getSavingaccountservice() {
-		return savingaccountservice;
+	public void setNaturalPersonService(NaturalPersonService service) 
+	{
+		naturalPersonService = service;
 	}
 
-	public void setSavingaccountservice(SavingAccountService savingaccountservice) {
-		this.savingaccountservice = savingaccountservice;
+	public void setEventnotificationservice(EventNotificationService service) 
+	{
+		eventnotificationservice = service;
 	}
 
-	public PrevencionLDService getPrevencionldservice() {
-		return prevencionldservice;
+	public void setEventService(EventService service) 
+	{
+		eventService = service;
 	}
 
-	public void setPrevencionldservice(PrevencionLDService prevencionldservice) {
-		this.prevencionldservice = prevencionldservice;
+	public void setMembershipservice(MembershipService service) {
+		membershipservice = service;
 	}
 
-	public NaturalPersonService getNaturalPersonService() {
-		return naturalPersonService;
+	public void setInvestorservice(InvestorService service) 
+	{
+		investorservice = service;
 	}
 
-	public void setNaturalPersonService(NaturalPersonService naturalPersonService) {
-		this.naturalPersonService = naturalPersonService;
+	public void setServicecallingService(ServiceCallingService service) 
+	{
+		servicecallingService = service;
 	}
 
-	public EventNotificationService getEventnotificationservice() {
-		return eventnotificationservice;
+	public void setAccessService(AccessService service) 
+	{
+		accessService = service;
 	}
 
-	public void setEventnotificationservice(
-			EventNotificationService eventnotificationservice) {
-		this.eventnotificationservice = eventnotificationservice;
-	}
-
-	public EventService getEventService() {
-		return eventService;
-	}
-
-	public void setEventService(EventService eventService) {
-		this.eventService = eventService;
-	}
-
-	public MembershipService getMembershipservice() {
-		return membershipservice;
-	}
-
-	public void setMembershipservice(MembershipService membershipservice) {
-		this.membershipservice = membershipservice;
-	}
-
-	public InvestorService getInvestorservice() {
-		return investorservice;
-	}
-
-	public void setInvestorservice(InvestorService investorservice) {
-		this.investorservice = investorservice;
-	}
-
-	public ServiceCallingService getServicecallingService() {
-		return servicecallingService;
-	}
-
-	public void setServicecallingService(ServiceCallingService servicecallingService) {
-		this.servicecallingService = servicecallingService;
-	}
-
-	public AccessService getAccessService() {
-		return accessService;
-	}
-
-	public void setAccessService(AccessService accessService) {
-		this.accessService = accessService;
-	}
-
-	public MailLogService getMailService() {
-		return mailService;
-	}
-
-	public void setMailService(MailLogService mailService) {
-		this.mailService = mailService;
+	public void setMailService(MailLogService service) 
+	{
+		mailService = service;
 	}
 
 	public boolean isFlagaccount() {
@@ -281,5 +300,4 @@ public class AddInvestorSafiForm
 	public void setSystemparamservice(SystemParamService systemparamservice) {
 		this.systemparamservice = systemparamservice;
 	}	
-	
 }

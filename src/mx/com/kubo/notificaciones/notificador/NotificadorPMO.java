@@ -38,6 +38,10 @@ public abstract class NotificadorPMO extends NotificadorDMO
 				new NotificableRegistroPartner(getEmisor()).notificar();											
 			break;		
 			
+			case SOLICITUD_INVERSIONISTA_EXITOSA:
+				new NotificableSolicitudInversionista(getEmisor()).notificar();								
+			break;
+			
 			case REENVIO_MAIL_CONFIRMACION:
 				new NotificableReenvioConfirmacion(getEmisor()).notificar();	
 			break;
@@ -117,10 +121,6 @@ public abstract class NotificadorPMO extends NotificadorDMO
 			case ACTIVACION_INVERSIONISTA :
 				new NotificableActivacionInversionista(getEmisor(), getAcreditado(), score, myPyLn).notificar();
 			break;		
-			
-			case SOLICITUD_INVERSIONISTA_EXITOSA:
-				new NotificableSolicitudInversionista(getEmisor(), score, myPyLn).notificar();								
-			break;
 			
 			case PUBLICACION:
 				new NotificablePublicacion(getEmisor(), score, myPyLn).notificar();														

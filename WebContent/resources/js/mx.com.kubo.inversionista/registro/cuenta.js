@@ -1,4 +1,4 @@
-console.log("mx.com.kubo.inversionista/registro/cuenta.js");
+console.log("cuenta.js");
 
 
 function init_alta_inversionista()

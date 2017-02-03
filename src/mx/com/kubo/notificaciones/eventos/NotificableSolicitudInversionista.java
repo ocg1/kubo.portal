@@ -1,8 +1,6 @@
 package mx.com.kubo.notificaciones.eventos;
 
 import mx.com.kubo.model.Membership;
-import mx.com.kubo.model.ProyectLoan;
-import mx.com.kubo.model.Scoring;
 import mx.com.kubo.notificaciones.conexion.ConexionIMP;
 import mx.com.kubo.notificaciones.mailsender.MailSenderIMP;
 import mx.com.kubo.notificaciones.notificables.Evento;
@@ -15,7 +13,7 @@ import mx.com.kubo.notificaciones.receptores.ReceptoresIMP;
 public class NotificableSolicitudInversionista extends NotificableEMO
 implements NotificableIMO 
 {
-	public NotificableSolicitudInversionista(Membership emisor, Scoring score, ProyectLoan proyecto)
+	public NotificableSolicitudInversionista(Membership emisor)
 	{
 		this.emisor     = emisor;
 		this.acreditado = emisor;
