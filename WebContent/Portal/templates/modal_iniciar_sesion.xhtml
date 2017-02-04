@@ -7,8 +7,7 @@
 	<div class = "bloqueo"/>
 	     <div class="actualizando-sistema_modal alertaModal centrar_h">
 	     	<div class="actualizando_sistema-1">
-	         		<h2>Hola, Carlos</h2>
-	
+	         		<h2>Hola</h2>
 					<p>En este momento estamos actualizando 
 					nuestro sistema. </p>
 					
@@ -27,7 +26,7 @@
 			 <div class="actualizando_sistema-2">
 					 <h2>¡Gracias!</h2>
 	
-					<p>Recibirás un mensaje al teléfono ****3003 para avisarte que ya puedes volver a ingresar a tu cuenta.</p>
+					<p>Recibirás un mensaje al teléfono <div id="number-message">****3003</div> para avisarte que ya puedes volver a ingresar a tu cuenta.</p>
 			
 			<div class="btns_modal">
 					 		<div class="callActionMedium btnGris" onclick="modalActualizando_cerrar ()">
@@ -35,9 +34,9 @@
 					 		</div>
 					 			
 					 </div>
-					 	<p:commandLink id="envioMensaje">
-					 			<p:ajax listener="#{navigationInvest.savePendingNatification}"  />
-					 	</p:commandLink>
+					 	<h:commandLink id="envioMensaje">
+					 			<p:ajax event="click" listener="#{navigationInvest.savePendingNatification}" oncomplete="regresar_enviomsn(xhr, status, args)"  />
+					 	</h:commandLink>
 			 </div>
          
           		

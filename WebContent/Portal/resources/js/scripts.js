@@ -807,6 +807,9 @@ function modalActualizando_cerrar () {
 	$("div.close_lightbox").trigger("click");
 }
 
+function regresar_enviomsn(xhr, status, args)  {	
+	 $("#number-message").html(args.phone_number)
+}
 function showloader(){
 	$("#email").blur();
 	$("#password").blur();

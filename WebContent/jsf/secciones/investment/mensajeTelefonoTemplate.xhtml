@@ -21,7 +21,7 @@
 </script>
 
 
-
+<h:form prependId="false">
 <div >
 	      			
             			<div class="sesion_expirada error-market-place" style="margin-top:50px">
@@ -47,16 +47,16 @@ avisarte cuando terminemos?            						</p>
 						
 						<h2>¡Gracias! </h2>
             				<p>
-Recibirás un mensaje al teléfono ****3003 para avisarte 
+Recibirás un mensaje al teléfono <div id="number-message">****3003</div> para avisarte 
 que ya puedes volver a invertir.        						</p>
 
 	<div class="callActionMedium btnGris" onclick="modalTienda_cerrar ()">
 					 			Cerrar
 					 		</div>
 					 		
-					 		<p:commandLink id="envioMensaje">
-					 			<p:ajax listener="#{navigationInvest.savePendingNatification}"  />
-					 		</p:commandLink>
+					 		<h:commandLink id="envioMensaje" style="opacity:0">
+					 			<p:ajax event="click"  listener="#{navigationInvest.savePendingNatification}" oncomplete="regresar_enviomsn(xhr, status, args)"  />
+					 		</h:commandLink>
 						</div>
            					<div style="display:none">
            						<p>
@@ -83,4 +83,5 @@ que ya puedes volver a invertir.        						</p>
 	
 	
 </div>
+</h:form>
 </ui:composition>

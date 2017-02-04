@@ -1047,7 +1047,7 @@ function encabezadosReset (){
 function modalTienda_regresar () {
 	$("#resumenInvest").trigger("click");
 }
-
+		
 function modalTienda_si () {
 	$(".actualizando_sistema-1").slideUp();
 	$(".actualizando_sistema-2").slideDown();
@@ -1056,4 +1056,10 @@ function modalTienda_si () {
 
 function modalTienda_cerrar () {
 	$("#resumenInvest").trigger("click");
+}
+
+
+
+function regresar_enviomsn(xhr, status, args)  {	
+	 $("#number-message").html(args.phone_number)
 }

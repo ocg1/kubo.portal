@@ -20,9 +20,9 @@
 </p>
 <p >
     Por medio de la presente instruyo a Ku-bo Financiero, S.A. de C.V., S.F.P.
-    a que la cantidad $  <span>___________</span> (  <span>___________</span> M.N.) proveniente del crédito
+    a que la cantidad $  <span>#{contractData.monto_credito} </span> (  <span>#{contractData.monto_a_pagar_str}</span> M.N.) proveniente del crédito
     que me fue otorgado por esa Sociedad Financiera Popular, mediante depósito
-    en la cuenta Kubo Global número   <span>_________</span> a mi nombre, sean transferidos a
+    en la cuenta Kubo Global número   <span>#{contractData.data.cliCuentaAhoID}</span> a mi nombre, sean transferidos a
     favor de   <span>_____________</span> con cuenta   <span>_____________</span> y CLABE   <span>_____________</span> en el
     Banco   <span>_____________</span>. Dicha transferencia deberá realizarse a más tardar el
     día   <span>___________</span>.
@@ -35,15 +35,23 @@
 <p>
     Muchas gracias por sus atenciones.
 </p>
-<p>
-    Atentamente,
-</p>
-<p>
-    <span>_____________________</span>
-</p>
-<p>
-    Nombre del titular de la cuenta
-</p>
+
+
+		<div class="container firmas center">
+			<p style="text-align:center">
+		    Atentamente,
+		</p>
+          	<span class="unaFirma">
+				<span class="firmaCliente"></span>
+			</span>
+					<hr/>
+				  <p> <span class="variable">#{contractData.data.cliNombreCompleto}</span></p>
+				
+				<p>Nombre del titular de la cuenta </p>
+				
+				 
+			  
+		</div>
 <p>
     Número de cuenta (o algún registro que confirme la identidad del cliente).
 </p>
