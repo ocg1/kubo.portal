@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import mx.com.kubo.controller.InversionAutomatica;
+import mx.com.kubo.controller.PendingNotificationController;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
 import mx.com.kubo.controller.shortURL.ResponseShortURL;
@@ -26,6 +27,7 @@ import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.MovementNotification;
 import mx.com.kubo.model.MovementNotificationPK;
 import mx.com.kubo.model.MovementToVerify;
+import mx.com.kubo.model.PendingNotification;
 import mx.com.kubo.model.SafiDepositoRefere;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
@@ -1499,7 +1501,7 @@ public class VerificadorInicio extends Thread  {
 			
 			String valNoTiendaError  = param.getValue();
 			
-			if ( valCierreDia != null && valNoTienda != null && valNoTiendaError != null && valCierreDia.equals("S") && valNoTienda.equals("N") && valNoTiendaError.equals("N") ){
+			if ( valCierreDia != null && valNoTienda != null && valNoTiendaError != null && valCierreDia.equals("N") && valNoTienda.equals("N") && valNoTiendaError.equals("N") ){
 				
 				verificaPendientesPorNotificar();
 				
@@ -1885,16 +1887,37 @@ public class VerificadorInicio extends Thread  {
 		}
 		
 		private void verificaPendientesPorNotificar(){
-			//preparaSMS();
+			
+			
+			PendingNotificationController pnc = new PendingNotificationController();
+			
+			List<PendingNotification> lstPN = pnc.getPendingNotificationStatusCero();
+			
+			if( lstPN != null && lstPN.size() > 0 ){
+				
+				for( PendingNotification pn : lstPN ){
+				
+					if( preparaSMS( pn.getCompany_id() , pn.getProspectus_id() ) ){
+						
+						pn.setNotification_date(new Date());
+						pn.setStatus_id(1);
+						
+						pnc.updatePendingNotification(pn);
+						
+					}
+				
+				}
+				
+			}
+			
+			
 		}
 		
-		private void preparaSMS( Integer company_id, Integer prospectus_id ){
+		private boolean preparaSMS( Integer company_id, Integer prospectus_id ){
 			
 			MembershipPK mpk = new MembershipPK(prospectus_id, company_id);
 			
 			Membership mem = service_membership.getMembershipById(mpk);
-			
-			
 			
 			GeneraURLCorta shortURl = new GeneraURLCorta();
 			
@@ -1910,8 +1933,10 @@ public class VerificadorInicio extends Thread  {
 		
 			if( response != null && response.getStatus().equals("0") ){
 				
-				enviaSMS(response.getShortURL(), mem.getPerson().getNatPerPK().getProspectus_id(), mem.getPerson().getFirst_name());
-				
+				return enviaSMS(response.getShortURL(), mem.getPerson().getNatPerPK().getProspectus_id(), mem.getPerson().getFirst_name());
+				 
+			}else{
+				return false;
 			}
 			
 		}

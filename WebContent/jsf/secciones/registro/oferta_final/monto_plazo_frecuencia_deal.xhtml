@@ -42,19 +42,32 @@
 								 
 					</h:inputText>
 		
-					<div class="selectNuevo">
-						<h:selectOneMenu  id         = "frecuencia_cierre" 
-									 value      = "#{deal.frequencySel}" 
-									 styleClass = "elementSelAddres1" 
-									 immediate	= "true">
-						
-							<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
-							<f:selectItems  value="#{deal.simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
-						
-							<p:ajax event="change" listener="#{deal.listener_frequency_simulation_deal}" onstart="return simuladorCierre();" update="contPropuestas" immediate="true" oncomplete="closeLoader();" ></p:ajax>
-						
-						</h:selectOneMenu>
-					</div>
+					<h:panelGroup rendered="#{(deal.membership.registration_reason_id == null or deal.membership.registration_reason_id != 79)}" >
+						<div class="selectNuevo">
+							<h:selectOneMenu  id         = "frecuencia_cierre" 
+										 value      = "#{deal.frequencySel}" 
+										 styleClass = "elementSelAddres1" 
+										 immediate	= "true" 
+										 rendered="#{(deal.membership.registration_reason_id == null or deal.membership.registration_reason_id != 79)}"
+										 >
+							
+								<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
+								<f:selectItems  value="#{deal.simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
+							
+								<p:ajax event="change" listener="#{deal.listener_frequency_simulation_deal}" onstart="return simuladorCierre();" update="contPropuestas" immediate="true" oncomplete="closeLoader();" ></p:ajax>
+							
+							</h:selectOneMenu>
+							
+						</div>
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{(deal.membership.registration_reason_id != null and deal.membership.registration_reason_id == 79)}" >
+						<div style="font-size: 25px;padding-top: 38px; width: 242px;">
+						Semanas
+						</div>
+						<input type="hidden" id="frecuencia_cierre" value="1" />
+					</h:panelGroup>
+					
 			</div>
 			
 				<div class="loader simulatorPaso7">                          	

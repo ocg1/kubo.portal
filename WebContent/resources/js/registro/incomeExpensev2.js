@@ -515,24 +515,24 @@ function abrir_imagenreferencia (btnImagen) {
 
 	if($(btnImagen).hasClass("tipoCrede")){
 		console.log("tiene crede");
-		ga('send', 'event', 'Leads', 'Tooltip Ayuda', 'Tipo de credencial');
+		
 	}
 	if($(btnImagen).hasClass("ClaveEle")){
 		console.log("tiene ClaveEle");
-		ga('send', 'event', 'Leads', 'Tooltip Ayuda', 'Clave de elector');
+		
 	}
 	if($(btnImagen).hasClass("numEmision")){
 		console.log("tiene numEmision");
-		ga('send', 'event', 'Leads', 'Tooltip Ayuda', 'Numeros de emision');
+		
 	}
 	
 	if($(btnImagen).hasClass("nOCR")){
 		console.log("nOCR");
-	    ga('send', 'event', 'Leads', 'Tooltip Ayuda', 'OCR');
+	   
 	}
 	if($(btnImagen).hasClass("Selfiee")){
 		console.log("Selfiee");
-		ga('send', 'event', 'Leads', 'Tooltip Ayuda', 'Selfie');
+		
 	}
 }
 function cerrar_imagenreferencia (btnCerrar) {

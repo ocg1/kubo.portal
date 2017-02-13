@@ -561,7 +561,7 @@ function validaMontoMin(e,place){
 
 function validaPlazo( idTerm )
 {
-
+console.log("ValidaPlazoeditor-in.js");
 	var term =  $("#"+idTerm).val();
 	var freq =  $("#frecuProyect").val();
 	

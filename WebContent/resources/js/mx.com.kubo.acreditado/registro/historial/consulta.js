@@ -34,7 +34,7 @@ function creaConsulta()
     };
     
     $("#testframe").css(styles);
-    ga('send', 'event', 'Leads', 'Consulta Buro', 'Consulta despues de verificar');  
+    //ga('send', 'event', 'Leads', 'Consulta Buro', 'Consulta despues de verificar');  
 }
 
 function asignar_nota_del_coach()

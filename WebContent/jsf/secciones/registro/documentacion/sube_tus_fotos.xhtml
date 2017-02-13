@@ -30,13 +30,13 @@
 		var myVideo=document.getElementById("video1"); 
 		
 		function videoPlay () {
-			
+			 googleEvents ('solicitud-credito', 'play video documentos', 'video como subir documentos');
 			if (myVideo.paused) {
 				  myVideo.play(); 
 			}else{
 				  myVideo.pause(); 
 				} 
-			ga('send', 'event', 'Leads', 'Video Ayuda', 'Documentos');
+		
 		}
 	
 		

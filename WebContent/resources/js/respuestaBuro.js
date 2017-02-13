@@ -96,7 +96,6 @@ var centerContentInt= function (elemento){
      function muestraLienzo(){ 
     	 lienzoPreaprobacion();
     	 setTimeout( function(){ $("#cmdViewScreen").click(); }, 2200 );
-    	 ga('send', 'event', 'Leads', 'Resultado Consulta');
 			
 			if( $("#rechazoPantalla").length ){
 				
@@ -109,7 +108,7 @@ var centerContentInt= function (elemento){
 		
 			}
 		
-			
+			 googleEvents ('solicitud-credito', 'clic ver resultado', 'boton ver resultado');
 			
      }
      
@@ -148,7 +147,8 @@ var centerContentInt= function (elemento){
 					 
 					   GTM_eventos ('Preaprobación')
 					   
-					   
+					   googleEvents ('solicitud-credito', 'clic regresar a la solicitud', 'boton regresar a la solicitud');
+
 					 console.log('Preaprobación');
 				 }
 		     	 
@@ -168,7 +168,6 @@ var centerContentInt= function (elemento){
 	     	 }else {
      			 $("#light20").fadeOut(); 
      		 }
-	     	ga('send', 'event', 'Leads', 'Boton completar solicitud');
 	     	 
 	     }
 function muestraLienzoSegundaVez() {

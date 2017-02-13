@@ -8308,3 +8308,63 @@ margin:0 0 30px !important;line-height: 20px !important;}
 	float:none;
 	margin:0 auto !important;
 }
+
+.plecaForm.preaprobacionCopy {
+	padding: 20px 85px !important;
+}
+
+.plecaForm.preaprobacionCopy h3 {
+	line-height:30px;
+	margin:0 0 10px;
+
+}
+
+#advBackInput, #valuePartner, #advBack, #occPixel, #sivinco {
+	/* height: 0px !important; */
+	overflow:hidden;
+	padding:0 !important;
+	position: absolute;
+}
+
+.preaprobacionCopy .triangle {
+	bottom: -20px;
+}
+
+
+  @media (max-width:600px)  {
+.aviso-cliente {
+	width:75%;
+}
+
+.plecaForm.preaprobacionCopy {
+	padding: 20px 20px !important;
+}
+
+.plecaForm.preaprobacionCopy {
+	padding: 20px 20px !important;
+}
+
+
+	.plecaForm h3{
+		font-size: 24px;
+		font-weight: 700;
+		margin: 0 0 0px;
+		color:#fff;
+		line-height: 28px !important;
+	}
+
+	.parrafo_b {
+		font-size:16px !important;
+}
+
+.avisoDocs table td p {
+	font-size:16px !important;
+	margin:0 !important;	
+	
+}
+
+
+
+
+
+ }

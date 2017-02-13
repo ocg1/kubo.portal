@@ -48,7 +48,6 @@ function proyectos_activos_scroll (){
 		        $(".container_loanlist2").scrollLeft($("#proyectInvest").scrollLeft());
 		    });
 		    $(".container_loanlist2").scroll(function(){
-		
 		        $("#proyectInvest").scrollLeft($(".container_loanlist2").scrollLeft());
 		    });
 		    

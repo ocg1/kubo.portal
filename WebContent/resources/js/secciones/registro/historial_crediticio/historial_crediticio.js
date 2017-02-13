@@ -127,6 +127,5 @@ function showIni(){
 }
 
 function dataReview(){
-	ga('send', 'event', 'Leads', 'Regresa Consulta Buro');
 	$("#hdNext\\:siguienteBasicosReview").click();
 }

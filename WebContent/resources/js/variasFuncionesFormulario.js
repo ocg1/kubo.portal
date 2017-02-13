@@ -449,18 +449,15 @@ function closePopCaramelo() {
 	$(".popCaramelo").removeClass("show");
 	$(".velo").fadeOut();
 	$(".velo2").fadeOut();
-	ga('send', 'event', 'Leads', 'Boton completar solicitud caramelo');
 
 }
-
-
 
 function closePopCaramelo() {
 	$(".popCaramelo").removeClass("show");
 	$(".velo").fadeOut();
 	$(".velo2").fadeOut();
-	ga('send', 'event', 'Leads', 'Boton completar solicitud caramelo');
 }
+
 function closeSucesssPopUp(){
 	$(".sucesssPopUp").removeClass("show");
 	$(".velo").fadeOut();
@@ -729,7 +726,7 @@ function descripcionOferta (){
 function pixel (){
 	var prospectoID = $("#prospectoID").val();
 	var kuboScoreVal = $("#inputKuboScore").val();
-	var contenedorTracksacai = document.getElementById("tracksacai");
+	//var contenedorTracksacai = document.getElementById("tracksacai");
 	var valuePartner = $("#valuePartner").val();
 	console.log("kuboScoreVal"+kuboScoreVal);
 	
@@ -738,22 +735,29 @@ function pixel (){
 
 	
     if($.inArray(kuboScoreVal, scores) >= 0) {
+    	
     	$("#offerConversion").attr("src", "https://tracking.global-analitics.net/aff_l?offer_id=1249&adv_sub="+''+prospectoID+''+"");
     	$("#inboxlabs").attr("src", "https://inboxlabs.go2cloud.org/aff_l?offer_id=1249&adv_sub="+''+prospectoID+''+"");
     
     	console.log("Pixel tracking.global-analitics   "+"entra dentro del rango del score A1 - E5: "+kuboScoreVal+" https://tracking.global-analitics.net/aff_l?offer_id=1249&adv_sub="+''+prospectoID+''+"");
     	console.log("Pixel inboxlabs.go2cloud   "+"entra dentro del rango del score A1 - E5: "+kuboScoreVal+" https://inboxlabs.go2cloud.org/aff_l?offer_id=1249&adv_sub="+''+prospectoID+''+"");
-        if($("#tracksacai").length){
-        	contenedorTracksacai.innerHTML = '<img src="https://clean.tracksacai.com/aff_l?offer_id=1665" width="1" height="1" />';
-        	console.log("Pixel tracksacai"+contenedorTracksacai.innerHTML);
-        }
-    	
+    	if(valuePartner == "KRW" ){
+    		$("#tracksacai").attr("src", "https://clean.tracksacai.com/aff_l?offer_id=1665" );
+    		/*
+    		if($("#tracksacai").length){
+	        	contenedorTracksacai.innerHTML = '<img src="https://clean.tracksacai.com/aff_l?offer_id=1665" width="1" height="1" />';
+	        	console.log("Pixel tracksacai"+contenedorTracksacai.innerHTML);
+	        }
+    		*/
+    	}
     	
 		
 		if(valuePartner == "S18" ){
+			
 				var inputAdv = $("#advBackInput").val();
 				$("#advBack").attr("src", inputAdv);
 				console.log(inputAdv);
+				
 		}
 		
 		console.log("");
@@ -776,6 +780,7 @@ function pixel (){
 		if(valuePartner == "SVC"){
 			 $("#sivinco").attr("src", "https://sivinco.rurl.me/api/pixel/?cvt=lead&cvn=Kubo+Lead&cva=9.30&guid=");
 		}
+		
 		if(valuePartner == "CDY" ){
 			var inputAdv = $("#advBackInput").val();
 	
@@ -792,12 +797,12 @@ function pixel (){
 				console.log($("#goCloud").attr("src"));
 		}
 		
-    	}else{
-	    	console.log("no entra dentro del rango del score A1 - E5");
-	    	/*$("#frmMoreInfo .field").hide();
-	    	$("#frmMoreI .field input").hide();
-	    	 fieldCount();*/
-	    }
+	}else{
+    	console.log("no entra dentro del rango del score A1 - E5");
+    	/*$("#frmMoreInfo .field").hide();
+    	$("#frmMoreI .field input").hide();
+    	 fieldCount();*/
+    }
     
     
 	console.log( "kuboScoreVal"+kuboScoreVal);
@@ -914,6 +919,9 @@ function abrirAyudaDoc() {
 			centerContenido();
         	    	
         	    }, 500);
+	
+	
+	 googleEvents ('solicitud-credito', 'clic solicitar ayuda', 'boton soliciar ayuda');
 }
 
 

@@ -229,7 +229,7 @@
 							<p>Obtén tu pre-aprobación en 5 min.</p>
 							
 							<p>Préstamos para tu negocio, deudas, 
-							hogar, educación y <p:commandLink onclick="ga('send','event', 'Prestamos','prestamos')" action="productos" immediate="true" >más.</p:commandLink></p>
+							hogar, educación y <p:commandLink action="productos" immediate="true" >más.</p:commandLink></p>
 							
 							<p>Tu historia cuenta... Con tu buen 
 							historial de crédito pagas menos.</p>
@@ -238,18 +238,18 @@
 			
 			
 						 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="ga('send', 'event', 'Leads', 'Solicita Prestamo', 'Solicita Prestamo Home');"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
+                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="googleEvents ('registro-credito', 'clic solicitar', 'boton solicitar - home');"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
                        </h:panelGroup>
 				<ol>
 					<li>
 						
 						 <div class="homeInicio">
 							 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-									<p:commandLink onclick="ga('send','event', 'Prestamos','Simulador')" action="simulador_acreditado" immediate="true" styleClass="goSimulatorPage" >Simula tu préstamo</p:commandLink>
+									<p:commandLink onclick="googleEvents ('registro-credito', 'clic simular', 'enlace simular - home');" action="simulador_acreditado" immediate="true" styleClass="goSimulatorPage" >Simula tu préstamo</p:commandLink>
 							 </h:panelGroup>
 						 </div>
 				 </li>
-					<li><a class="open_lightbox" href="#"  data-div="4" onClick="ga('send', 'event', 'Leads', 'Requisitos Prestamo', 'Requisitos Prestamo');" >Requisitos</a></li>
+					<li><a class="open_lightbox" href="#"  data-div="4" onClick="googleEvents ('registro-credito', 'clic pedir requisitos', 'enlace pedir requisitos - home');" >Requisitos</a></li>
 				</ol>
 				
 			</div>
@@ -288,7 +288,7 @@
    <!--  <ui:include src="templates/seccionEvitaExpirarSession.xhtml" />  -->
         
         
-        
+
     </h:body>
 
 		<script type="text/javascript">

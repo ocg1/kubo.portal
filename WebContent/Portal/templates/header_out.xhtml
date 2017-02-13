@@ -10,11 +10,12 @@
 
 		
 				
-			 <h:outputScript     library="js" name="hubSpot_analytics.js"/>
+			 <!-- h:outputScript     library="js" name="hubSpot_analytics.js"/ -->
 			 <h:outputStylesheet library="css" name="preaprobacion_pantallas.css"/>
 			 <h:outputStylesheet library="css"  name="buttonSyles.css" />
+			 <!-- 
 			 <h:outputScript     library="js"   name="infusion.js" target="head" />
-			 
+			  -->
 			 
 			<div class="header nav-down">
             	<div class="header_inner ">
@@ -25,12 +26,12 @@
                     			
                		  </p:commandLink>
                     <ol>
-                    	<li class="ingresar_lista"><p:commandLink styleClass="ingresar open_lightbox" data-div="1"  onclick="ga('send','event', 'Login','Ingresar')" >Iniciar sesión</p:commandLink></li>
+                    	<li class="ingresar_lista"><p:commandLink styleClass="ingresar open_lightbox" data-div="1" >Iniciar sesión</p:commandLink></li>
 
                         
                         <li class="logout"><a href="#"></a></li>
                         <!-- li class="whatsappCelda">   <a data-text="Sitio de prestamos personales en línea" data-link="https://www.kubofinanciero.com/Kubo/Portal/index.xhtml" class="whatsapp"><h:graphicImage library="img" name= "whatsapp.png"  /></a></li-->
-                        <li><a class="telefono" href="tel:6269 0024" onclick="ga('send','event', 'Teléfono','Teléfono')"> <i class="fa fa-phone fa-rotate-90"></i> #{msg.Kubo_telefono}</a></li>
+                        <li><a class="telefono" href="tel:6269 0024"> <i class="fa fa-phone fa-rotate-90"></i> #{msg.Kubo_telefono}</a></li>
                 
                     </ol>    
                     	<h1 style="display:none">kubo.financiero | Préstamos personales</h1>
@@ -45,14 +46,14 @@
                     
 						<div>                    	
                             <ul>
-                                <li><p:commandLink styleClass="opc_prestamos"  onclick="ga('send','event', 'menu principal','prestamos')" action="productos" immediate="true"> Préstamos</p:commandLink></li>
+                                <li><p:commandLink styleClass="opc_prestamos"   action="productos" immediate="true"> Préstamos</p:commandLink></li>
                                 
                                 
-                                <li style="display:none;"><p:commandLink  onclick="ga('send','event', 'menu principal','inversiones')" immediate="true" >Inversiones</p:commandLink></li> 
-                                 <li><p:commandLink  styleClass="opc_pro_cap"   onclick="ga('send','event', 'menu principal','productos de captación')" immediate="true" action="empezar-invertir">Inversión<span>Nuevo</span></p:commandLink></li>
-                                <li><p:commandLink  onclick="ga('send','event', 'menu principal','quiénes somos')" immediate="true" action="quienes-somos">Quiénes Somos</p:commandLink></li>
-                                <li style="display:none;"><p:commandLink  onclick="ga('send','event', 'menu principal','fondear proyectos')" immediate="true">Fondear Proyectos</p:commandLink></li>                                             
-                                <li><a class="nuestro_blog" target="_blank" href="https://blog.kubofinanciero.com/" onclick="ga('send','event', 'menu principal','nuestro blog')"> Nuestro Blog</a></li> 
+                                <li style="display:none;"><p:commandLink  immediate="true" >Inversiones</p:commandLink></li> 
+                                 <li><p:commandLink  styleClass="opc_pro_cap"  immediate="true" action="empezar-invertir">Inversión<span>Nuevo</span></p:commandLink></li>
+                                <li><p:commandLink  immediate="true" action="quienes-somos">Quiénes Somos</p:commandLink></li>
+                                <li style="display:none;"><p:commandLink  immediate="true">Fondear Proyectos</p:commandLink></li>                                             
+                                <li><a class="nuestro_blog" target="_blank" href="https://blog.kubofinanciero.com/"> Nuestro Blog</a></li> 
                            
                             </ul>
                     	</div>	

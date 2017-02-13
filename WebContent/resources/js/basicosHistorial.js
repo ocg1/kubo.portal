@@ -45,7 +45,7 @@ function abrirSiguiente() {
 
 		$("div.section.historial").off("click");
 		$(".obten_diagnosticoBreve").hide();
-		$(".3minPreAprobacion").hide();
+		//$(".3minPreAprobacion").hide();
 		if(!$("div.section.historial").hasClass("active")) {
 			$("div.section.historial").trigger("click");
 		}
@@ -79,8 +79,8 @@ function abrirSiguiente() {
 	var tab_section =  function (elemnt) {	
 		$(elemnt).toggleClass("active");
 		$(elemnt).next("section").toggleClass("active");
-	    $(elemnt).find("i").toggleClass("fa-caret-down");
-	    $(elemnt).find("i").toggleClass("fa-caret-right ");	
+	    $(elemnt).find("i").toggleClass("fa-chevron-down");
+	    $(elemnt).find("i").toggleClass("fa-chevron-up ");	
 	}
 	
 	
@@ -225,6 +225,9 @@ function abrirSiguiente() {
 				   GTM_eventos ('Datos Personales 1')
 				   // console.log('Datos Personales 1');
 				   
+				   googleEvents ('solicitud-credito', 'clic consultar prospector', 'boton consultar prospector');
+
+				   
 			   }else {
 				   sendInteractoa ();
 				   console.log("preaprobacion true");
@@ -237,7 +240,8 @@ function abrirSiguiente() {
 							//dataLayer.push({'event': 'Datos Personales 2'});
 							
 							   GTM_eventos ('Datos Personales 2')
-							
+							 googleEvents ('solicitud-credito', 'clic autorizar buro', 'boton autorizar buro');
+
 						}else {
 							closeWindowPrep();
 							console.log("historialListo"+historialListo);
@@ -306,7 +310,6 @@ function  returnConsultaBreve(xhr, status, args){
 			        $(".obten_diagnostico.solicitud").show();
 					$(".section historial").trigger("click");	 
 					console.log(" returnConsultaBreve args.isValid==true");
-					ga('send', 'event', 'Leads', 'Consulta Prospector');
 					$(".ayuda4").fadeIn();
 					$(".columnaAyuda").show();
 					setTimeout(function(){ 

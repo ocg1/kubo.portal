@@ -2,7 +2,6 @@ var zip_code_id_now;
 
 var init_login = function()
 {
-	ga('send','event', 'modal iniciar sesión','entrar ');
 	
 	console.log("init_login(): INIT");
 	

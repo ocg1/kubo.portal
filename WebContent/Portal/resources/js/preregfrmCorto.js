@@ -184,14 +184,21 @@ $(document).ready(function() {
 });
 
 function passToText(btn) {
-	ga('send', 'event', 'Leads', 'Mostrar Password');
+	console.log("contraseña");
+	if( $("#empezar-registro-acredtado").is(":visible") ){
+		console.log("contraseña");
+
+		
+		googleEvents ('registro-credito', 'clic mostrar password', 'boton mostrar password');
+	}
+
 	var divMostrar =   $(btn).parent();
 	var passBox    =   divMostrar.find(".passCode");
 	var textBox    =   divMostrar.find(".textCode");					
 	var passBoxId =    passBox.attr("id");
 	var textBoxId =    textBox.attr("id");
 
-	
+
 
 	if (!$(btn).hasClass("active")) {
 	

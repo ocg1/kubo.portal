@@ -204,6 +204,10 @@ public abstract class PreregistroAMO extends PreregistroDMO
 				
 				String partner_str = validaUTMPartner( partner );
 				
+				if(partner_str == null || partner_str.trim().length() == 0){
+					partner_str = partner;
+				}
+				
 				int index = 0;
 				
 				for( RegistrationReason reason: lista_registration_reason)
@@ -239,6 +243,10 @@ public abstract class PreregistroAMO extends PreregistroDMO
 				int index = 0;
 				
 				String partner_str = validaUTMPartner( session.getPartner() );
+				
+				if(partner_str == null || partner_str.trim().length() == 0){
+					partner_str = session.getPartner();
+				}
 				
 				for( RegistrationReason reason: lista_registration_reason)
 				{			

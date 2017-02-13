@@ -75,7 +75,7 @@ implements ApplicationContextAware, Serializable
 			Utilities.context = context;
 			
 			System.out.println("\n\n++++++++++++++++++++ SI JALO ++++++++++++++++++++\n\n");
-/*			
+			
 //			Thread.sleep( 3000 );
 //			
 //			ThreadVerificacionInicial verficador =  new ThreadVerificacionInicial ();
@@ -83,9 +83,8 @@ implements ApplicationContextAware, Serializable
 //			System.out.println("\n\n++++++++++++++++++++ THREAD ++++++++++++++++++++\n\n");
 //			
 //			verficador.excecuteAction();
-//*/			
-			
-			System.out.println("\n\n++++++++++++++++++++ OK ++++++++++++++++++++\n\n");
+//			
+//			System.out.println("\n\n++++++++++++++++++++ OK ++++++++++++++++++++\n\n");
 //			
 			
 		} catch(Exception e) {

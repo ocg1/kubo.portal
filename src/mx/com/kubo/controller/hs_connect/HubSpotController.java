@@ -1088,6 +1088,10 @@ public class HubSpotController {
 						hs_obj.setRegistration_reason_id(registration_reason_id);
 					}
 					
+					hs_obj.setUrl_medium( getUTMValue( hs_obj.getUrl_value()   , "utm_medium" ));
+					
+					hs_obj.setUrl_campaign( getUTMValue( hs_obj.getUrl_value()   , "utm_campaign" ));
+					
 				}catch(Exception e){
 					hs_obj.setRegistration_reason_id(81);
 				}
@@ -1133,7 +1137,7 @@ public class HubSpotController {
 		
 	}
 	
-	private Integer decodeURL( String url_value ){
+	private Integer decodeURL( String url_value  ){
 		try{
 			
 			registrationreasonservice = Utilities.findBean( "registrationReasonServiceImp" );
@@ -1191,6 +1195,44 @@ public class HubSpotController {
 			return null;
 		}
 	}
+	
+	
+	private String getUTMValue( String url_value, String utm  ){
+		
+		String utm_medium = null;
+		
+		try{
+			
+			if( url_value != null && url_value.trim().length() > 0 ){
+			
+				URL url = new URL(url_value) ;
+				
+				Map<String, List<String>> map = splitQuery( url);
+				
+				List<String> this_utm_partner_id = map.get(utm); // map.get("utm_medium");
+				
+				if( this_utm_partner_id != null && this_utm_partner_id.size() > 0){
+				
+					String utm_partner_id = this_utm_partner_id.get(0);
+					
+					if ( utm_partner_id != null &&  utm_partner_id.trim().length() > 0 ){
+					
+						utm_medium = utm_partner_id;
+						
+					}
+				
+				}
+			
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+		return utm_medium;
+	}
+	
 	
 	private  Map<String, List<String>> splitQuery(URL url) throws UnsupportedEncodingException   {
 		  final Map<String, List<String>> query_pairs = new LinkedHashMap<String, List<String>>();

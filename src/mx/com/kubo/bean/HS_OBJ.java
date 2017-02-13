@@ -11,6 +11,8 @@ public class HS_OBJ {
 	private String mobil_value ;
 	private String email_value ;
 	private String url_value;
+	private String url_medium;
+	private String url_campaign;
 	private Integer registration_reason_id;
 	private Integer prospectus_id;
 	
@@ -101,6 +103,22 @@ public class HS_OBJ {
 
 	public void setLast_name2(String last_name2) {
 		this.last_name2 = last_name2;
+	}
+
+	public String getUrl_medium() {
+		return url_medium;
+	}
+
+	public void setUrl_medium(String url_medium) {
+		this.url_medium = url_medium;
+	}
+
+	public String getUrl_campaign() {
+		return url_campaign;
+	}
+
+	public void setUrl_campaign(String url_campaign) {
+		this.url_campaign = url_campaign;
 	}
 	
 }
