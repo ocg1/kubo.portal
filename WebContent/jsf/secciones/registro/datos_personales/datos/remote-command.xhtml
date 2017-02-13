@@ -5,6 +5,12 @@
 				
 	<div id = "datos-remote-command" style = "display: none">
 		
+		<h:commandLink id = "focus-ammount">
+			<p:ajax event = "click" 
+					oncomplete = "DatosPersonales.focus_on_complete(xhr, status, args);"
+					listener = "#{basicData.simulador.init_focus_date}"/>
+		</h:commandLink>
+		
 		<h:commandLink id = "focus-first-name">
 			<p:ajax event = "click" 
 					oncomplete = "DatosPersonales.focus_on_complete(xhr, status, args);"

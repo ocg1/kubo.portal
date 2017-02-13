@@ -16,6 +16,7 @@ import mx.com.kubo.bean.ListNeighborhoodBean;
 import mx.com.kubo.bean.ValBusiness;
 import mx.com.kubo.managedbeans.HeaderBean;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMO;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AddressPK;
@@ -52,6 +53,7 @@ import mx.com.kubo.registro.datos.genero.GeneroIMO;
 import mx.com.kubo.registro.datos.moral.PersonaMoralIMO;
 import mx.com.kubo.registro.datos.nombre.PersonNameIMO;
 import mx.com.kubo.registro.datos.pais.PaisOrigenIMO;
+import mx.com.kubo.registro.datos.simulador.SimuladorIMO;
 import mx.com.kubo.registro.datos.state.BirthPlaceIMO;
 import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMO;
 import mx.com.kubo.services.AccessService;
@@ -209,6 +211,7 @@ implements BasicDataIMO
 	protected HtmlInputText input_text;
 	protected HtmlSelectOneRadio select_radio;
 		
+	protected Simulator simulator;	
 	protected SessionBean  sesion;	
 	protected Prospectus    prospectus;
 	protected ProspectusPK prosPK;
@@ -240,6 +243,7 @@ implements BasicDataIMO
 	protected       DomicilioIMO domicilio;
 	protected       DomicilioIMO fiscal;	
 	protected     NotificadorIMO notificador;
+	protected       SimuladorIMO simulador;
 	
 	protected Access access;
 	protected Phone   thisPhoneFixed;
@@ -543,6 +547,11 @@ implements BasicDataIMO
 	public GeneroIMO getGender() 
 	{
 		return gender;
+	}
+	
+	public SimuladorIMO getSimulador()
+	{
+		return simulador;
 	}
 	
 	public boolean isInversionista_ENABLED() 
@@ -1017,24 +1026,12 @@ implements BasicDataIMO
 		return booleanListo;
 	}
 
-	public FullNameService getFullnameservice() {
-		return fullnameservice;
-	}
-
 	public void setFullnameservice(FullNameService fullnameservice) {
 		this.fullnameservice = fullnameservice;
 	}
 
-	public ClabeAccountService getClabeaccountservice() {
-		return clabeaccountservice;
-	}
-
 	public void setClabeaccountservice(ClabeAccountService clabeaccountservice) {
 		this.clabeaccountservice = clabeaccountservice;
-	}
-
-	public ContactWayProspectusService getContactwayprospectusservice() {
-		return contactwayprospectusservice;
 	}
 
 	public void setContactwayprospectusservice(ContactWayProspectusService contactwayprospectusservice) {

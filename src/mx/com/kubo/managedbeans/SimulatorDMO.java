@@ -4,13 +4,20 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
+import javax.el.ELContext;
+import javax.el.ELResolver;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import mx.com.kubo.bean.SimBeanForList;
 import mx.com.kubo.model.Frequency;
+import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Purpose;
+import mx.com.kubo.model.SimulationConfig;
 import mx.com.kubo.repositories.ServiceCallingDao;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.FrequencyService;
@@ -62,7 +69,36 @@ public abstract class SimulatorDMO
 	protected SimulationConfigService simulationConfigService;
 	
 	@ManagedProperty("#{simulationCacheServiceImp}")
-	protected SimulationCacheService simulationCacheService;	
+	protected SimulationCacheService simulationCacheService;
+	
+	protected FacesContext faces;
+	protected ELContext    elContext;
+	protected ELResolver   resolver;
+	
+	protected ProyectLoan      proyectLoan;
+	protected MembershipPK     membershipPK;
+	protected Membership       membership;
+	protected SimulationConfig simulationConfig;
+	
+	protected List<Frequency> listFrequencyTmp;
+	
+	protected String ammountStr   = "50,000";
+	protected String totalRecibir = "0";	
+	protected String purposeName;
+	protected String frequencyName;
+	protected String guardarAction;
+	protected String mailAction;
+	
+	protected SimBeanForList simulador_A;
+	protected SimBeanForList simulador_C;
+	protected SimBeanForList simulador_E;
+	
+	protected Double comisionApertura = 5D;
+	
+	protected int frequency_id = 4;
+	protected int purpose_id;
+	
+	public boolean flagSaveSimulationCache = false;
 	
 	private Prospectus prospectus;
 	protected SessionBean sesion ;
@@ -84,7 +120,7 @@ public abstract class SimulatorDMO
 	private String ivaInteresStr="0";
 	private String interesStr="0";
 	private String tableAmort;
-	private String catStr="0";
+	protected String catStr="0";
 	private String frequencyStr="0";
 	private String frequencyStr2="0";
 	protected String partnerID = null;
@@ -95,7 +131,7 @@ public abstract class SimulatorDMO
 	private String termMax;
 	private String loanTypeID = null;
 	
-	private Double tasaTotal=52.6d;  /////////////////////////////////  TASA  TOTAL
+	protected Double tasaTotal=52.6d;  /////////////////////////////////  TASA  TOTAL
 	private Double iva=0.16d;
 	private Double ivaInteres=0d;
 	private Double interes=0d;
@@ -228,6 +264,22 @@ public abstract class SimulatorDMO
 	{
 		simulatorService = service;
 	}
+		
+	public void setComisionApertura(Double comisionApertura) {
+		this.comisionApertura = comisionApertura;
+	}
+	
+	public void setTotalRecibir(String totalRecibir) {
+		this.totalRecibir = totalRecibir;
+	}
+	
+	public void setGuardarAction(String guardarAction) {
+		this.guardarAction = guardarAction;
+	}
+
+	public void setMailAction(String mailAction) {
+		this.mailAction = mailAction;
+	}
 	
 	public int getWsim() {
 		return wsim;
@@ -344,6 +396,27 @@ public abstract class SimulatorDMO
 		this.lstSim = lstSim;
 	}
 	
+	public void setFrequencyName(String frequencyName) {
+		this.frequencyName = getFrequency().getName();
+	}
+	
+	public String getPurposeName() {
+		return purposeName;
+	}
+
+	public void setPurposeName(String purposeName) {
+		this.purposeName = getPurpose().getName();
+	}
+	
+	public int getPurpose_id() 
+	{
+		return purpose_id;
+	}
+	
+	public int getFrequency_id() {
+		return frequency_id;
+	}
+	
 	public String getFrequencyStr2() {
 		return frequencyStr2;
 	}
@@ -370,26 +443,6 @@ public abstract class SimulatorDMO
 		this.cat = cat;
 	}
 	
-	public Double getTasaTotal() 
-	{	
-		if(sesion.getRate() != null && !sesion.getArea().toString().equals("M"))
-		{
-			tasaTotal = sesion.getRate();
-		}
-		
-		return tasaTotal;
-	}
-
-	public String getCatStr() 
-	{
-		if(getCat() != null)
-		{
-			catStr = "" + ((double) Math.round((getCat()) * 100) / 100);
-		}
-		
-		return catStr;
-	}
-
 	public void setCatStr(String catStr) {
 		this.catStr = catStr;
 	}
@@ -628,5 +681,35 @@ public abstract class SimulatorDMO
 
 	public void setProyectService(ProyectService proyectService) {
 		this.proyectService = proyectService;
+	}
+	
+	public void setSimulador_A(SimBeanForList simulador_A) {
+		this.simulador_A = simulador_A;
+	}
+
+	public void setSimulador_C(SimBeanForList simulador_C) {
+		this.simulador_C = simulador_C;
+	}
+
+	public void setSimulador_E(SimBeanForList simulador_E) {
+		this.simulador_E = simulador_E;
+	}
+	
+	public SimBeanForList getSimulador_A() {
+		return simulador_A;
+	}
+
+	public SimBeanForList getSimulador_C() {
+		return simulador_C;
+	}
+
+	public SimBeanForList getSimulador_E() {
+		return simulador_E;
+	}
+	
+	public void setProyectLoan( ProyectLoan proyectloan ){
+		
+		this.proyectLoan = proyectloan;
+		
 	}
 }

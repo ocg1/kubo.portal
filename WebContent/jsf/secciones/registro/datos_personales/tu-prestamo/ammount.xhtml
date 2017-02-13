@@ -1,0 +1,44 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass="labelsStl" value = "¿Cuánto dinero necesitas?"/>
+		</div>
+			<!-- styleClass = "elementAddres1 validatorClass hs_class" -->	
+		<h:inputText id = "ammount_input" value = "#{simulator.ammount}" styleClass = "elementAddres1 hs_class" 
+					 onkeyup = "return format(this,'simulator');"						
+					 onfocus = " ayuda('.ayuda1');"
+					 onblur  = " ayudaQuitar();">
+			
+				<p:ajax event = "blur" update = ":contSimReg"
+					    listener   = "#{simulator.simulaCred(false)}" 						     
+					    onstart    = "return simulatorMirror();" 
+					    oncomplete = "return showRes();" />
+					    
+			<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />		 
+						 
+		</h:inputText>
+		
+		<br/>
+		
+		<h:inputText id = "simulador_ammount" value = "#{basicData.simulador.ammount_value}" immediate = "true"
+					 onkeyup = "return format(this,'simulator');"
+					 onfocus = "Simulador.init_focus_date();"
+					 onblur  = " ayudaQuitar();">
+										 			 								 		
+			<p:ajax event = "blur" listener = "#{basicData.simulador.init_input_text}"
+					onstart    = "return simulatorMirror();"
+					oncomplete = "Simulador.info_oncomplete(xhr, status, args);" />	
+					
+			<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />
+									
+		</h:inputText>
+		   
+		<input type = "hidden" id = "ammount" />
+		   
+	</div>					
+</ui:composition>				

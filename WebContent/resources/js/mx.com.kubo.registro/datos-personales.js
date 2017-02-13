@@ -1,4 +1,4 @@
-console.log("mx.com.kubo.registro/datos-personales.js");
+console.log("datos-personales.js");
 
 DatosPersonales.focus_on_complete = function(xhr, status, args)
 {	
@@ -13,7 +13,7 @@ DatosPersonales.gender_on_complete = function(xhr, status, args)
 	var change_control_OK = args.change_control_OK;
 	
 	console.log("DatosPersonales.gender_on_complete(): " + gender_id);
-	console.log("> change_control_OK = : " + change_control_OK);
+	console.log("> change_control_OK = " + change_control_OK);
 	
 	$("a#init-panel-rfc-curp").trigger("click");
 };
@@ -26,7 +26,7 @@ DatosPersonales.citizenship_on_complete = function(xhr, status, args)
 	
 	console.log("DatosPersonales.citizenship_on_complete(): "+ citizenship);
 	console.log("> country_id        = " + country_id);
-	console.log("> change_control_OK = : " + change_control_OK);		
+	console.log("> change_control_OK = " + change_control_OK);		
 	
 	$("a#init-panel-rfc-curp").trigger("click");
 	//seleccionDomicilio ();
@@ -48,7 +48,7 @@ DatosPersonales.country_id_on_complete = function(xhr, status, args)
 	var change_control_OK = args.change_control_OK;
 	
 	console.log("DatosPersonales.country_id_on_complete(): " + country_id);
-	console.log("> change_control_OK = : " + change_control_OK);		
+	console.log("> change_control_OK = " + change_control_OK);		
 	
 	$("a#init-panel-rfc-curp").trigger("click");
 };
@@ -59,7 +59,7 @@ DatosPersonales.state_id_on_complete = function(xhr, status, args)
 	var change_control_OK = args.change_control_OK;
 	
 	console.log("DatosPersonales.state_id_on_complete(): " + state_id);
-	console.log("> change_control_OK = : " + change_control_OK);	
+	console.log("> change_control_OK = " + change_control_OK);	
 	
 	$("a#init-panel-rfc-curp").trigger("click");
 };

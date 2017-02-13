@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,26 +20,45 @@ import java.util.Properties;
 
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import mx.com.kubo.bean.ValBusiness;
+import mx.com.kubo.bean.jackson.AplicationPublicationInvestorDataDTO;
+import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.BusinessPK;
+import mx.com.kubo.model.ClabeAccount;
 import mx.com.kubo.model.ContactWayProspectus;
+import mx.com.kubo.model.Country;
+import mx.com.kubo.model.CountryPK;
 import mx.com.kubo.model.EconomicActivityPK;
 import mx.com.kubo.model.Economic_Activity;
 import mx.com.kubo.model.EmploymentPK;
+import mx.com.kubo.model.FullName;
+import mx.com.kubo.model.FullNamePK;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.Phone;
 import mx.com.kubo.model.ProspectusPK;
+import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SavingAccountPK;
+import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.StateCat;
+import mx.com.kubo.model.StateCatPK;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
+
+import mx.com.kubo.notificaciones.notificables.Evento;
+import mx.com.kubo.notificaciones.notificador.NotificacionException;
+import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
 
 import mx.com.kubo.registro.datos.domicilio.DomicilioIMP;
 import mx.com.kubo.registro.datos.genero.GeneroIMP;
 import mx.com.kubo.registro.datos.moral.PersonaMoralIMP;
 import mx.com.kubo.registro.datos.nombre.PersonNameIMP;
 import mx.com.kubo.registro.datos.pais.PaisOrigenIMP;
+import mx.com.kubo.registro.datos.simulador.SimuladorIMP;
 import mx.com.kubo.registro.datos.state.BirthPlaceIMP;
 import mx.com.kubo.registro.datos.birthdate.FechaNacimientoIMP;
 import mx.com.kubo.registro.datos.citizen.NacionalidadIMP;
@@ -49,6 +69,11 @@ import mx.com.kubo.tools.Utilities;
 
 import org.apache.commons.io.FileUtils;
 import org.primefaces.model.UploadedFile;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.soa.webServices.WsSgbRisk;
+import com.soa.webServices.WsSgbRiskServiceLocator;
 
 public abstract class BasicDataAMO extends BasicDataDMO
 {		
@@ -160,6 +185,14 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		
 		service_natural_person.update(naturalPerson);
 		
+	}
+	
+	protected void init_simulador() 
+	{		
+		simulador = new SimuladorIMP();
+		simulador.setService_change_control(service_change_control);
+		simulador.setSesion(sesion);			
+		simulador.setSimulator(simulator);
 	}
 	
 	protected void init_datos_personales() 
@@ -899,5 +932,316 @@ public abstract class BasicDataAMO extends BasicDataDMO
 			io.printStackTrace();
 			return null;
 		}
+	}
+	
+	protected void saveFullName()
+	{		
+		String first_name       = naturalPerson.getFirst_name()        == null ? "" : naturalPerson.getFirst_name().trim();	
+		String middle_name      = naturalPerson.getMiddle_name()       == null ? ""  : naturalPerson.getMiddle_name().trim();
+		String father_last_name = naturalPerson.getFather_last_name()  == null ? "" : naturalPerson.getFather_last_name().trim();
+		String mother_last_name = naturalPerson.getMother_last_name()  == null ? "" : naturalPerson.getMother_last_name().trim();
+		
+		String fullnameStr = first_name; 
+		
+		if( middle_name.length() > 0 )
+		{			
+			if( fullnameStr.length() > 0 )
+			{
+				fullnameStr += " ";
+			}
+			
+			fullnameStr +=  middle_name;
+			
+		}
+		if( father_last_name.length() > 0 ){
+			
+			if( fullnameStr.length() > 0 ){
+				fullnameStr += " ";
+			}
+			
+			fullnameStr += father_last_name;
+			
+		}
+		if( mother_last_name.length() > 0 ){
+			
+			if( fullnameStr.length() > 0 ){
+				fullnameStr += " ";
+			}
+			
+			fullnameStr	+= mother_last_name ;
+			
+		}
+		
+		FullNamePK fpk = new FullNamePK();
+		
+		fpk.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+		fpk.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
+		
+		FullName fullname = fullnameservice.getFullName(fpk);
+		
+		if( fullname == null ){
+			
+			fullname = new FullName();
+			
+			fullname.setPk(fpk);
+			fullname.setEmail( membership.getEmail());
+			fullname.setFull_name(fullnameStr);
+			
+			fullnameservice.saveFullName(fullname);
+			
+		}else{
+			
+			fullname.setFull_name(fullnameStr);
+			fullnameservice.updateFullName(fullname);
+			
+		}
+		
+	}
+	
+	protected void actualizaPhoneInfusion( String phonestr )
+	{	
+		try
+		{			
+			Integer contactId = naturalPerson.getProspectus().getInfusion_id();
+			
+			if( contactId != null )
+			{			
+				SystemParamPK system_param_PK_I = new SystemParamPK();
+				
+				system_param_PK_I.setCompany_id( 1 );
+				system_param_PK_I.setSystem_param_id(88); // Bandera que índica si infusion esta habilitado
+				
+				 SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+				
+				 if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+				 
+					InfusionSoft infusion = new InfusionSoft();
+					infusion.actualizaTelefonoContacto(contactId, phonestr);
+						
+				 }
+			 
+			}
+		 
+		}catch( Exception e ){
+			
+			e.printStackTrace();
+			
+		}
+	
+	}
+	
+	protected void actualizaDatosInfusion()
+	{	
+		try
+		{			
+			String first_name       = naturalPerson.getFirst_name()       == null ? "" : naturalPerson.getFirst_name();	
+			String father_last_name = naturalPerson.getFather_last_name() == null ? "" : naturalPerson.getFather_last_name();
+			Integer contactId = naturalPerson.getProspectus().getInfusion_id();
+			
+			if( contactId != null )
+			{			
+				SystemParamPK system_param_PK_I = new SystemParamPK();
+				
+				system_param_PK_I.setCompany_id( 1 );
+				system_param_PK_I.setSystem_param_id(88); // Bandera que índica si infusion esta habilitado
+				
+				 SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+				
+				 if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") )
+				 {				 
+					InfusionSoft infusion = new InfusionSoft();
+					infusion.actualizaContacto(contactId, first_name, father_last_name, membership.getEmail());						
+				 }			
+			}
+		 
+		} catch( Exception e ){
+			e.printStackTrace();
+		}	
+	}
+	
+	protected void notificar(Evento evento, Scoring score, String errormsg, ProyectLoan proyect_loan )
+	{		
+		try 
+		{
+			notificador = new NotificadorIMP();
+			notificador.setEmisor(membership);
+			notificador.notificar(evento, score, proyect_loan, errormsg);
+			
+		} catch (NotificacionException e) {			
+			e.printStackTrace();
+		}				
+	}
+	
+	protected String generaFecha( Date nfecha)
+	{	
+//		Calendar c = Calendar.getInstance(); 
+//		c.setTime( nfecha );
+//		
+//		int day = c.get(Calendar.DATE);
+//		int month = c.get(Calendar.MONTH);
+//		int year = c.get(Calendar.YEAR);
+//		
+		if( nfecha != null ){
+			String res = "";
+			
+			SimpleDateFormat sd = new SimpleDateFormat( "ddMMyyyy" );
+			
+			res = sd.format(nfecha);
+			
+	//		if( day < 10)
+	//			res += "0";
+	//		
+	//		res += day;
+	//		
+	//		if( month < 10)
+	//			res += "0";
+	//		
+	//		res += month+year;
+			
+			return res;
+		}else{
+			return "";
+		}
+	}
+	
+	protected final boolean isSesion_DISABLED()
+	{
+		boolean bandera = false;
+		
+		if(sesion.getProspectus_id() == null || sesion.getCompany_id() == null)
+		{																										
+			String url = (getPath() + "/Portal/sesion-expirada.xhtml?redirecFrom=basicData");
+							
+			try 
+			{
+				System.out.println( "Redirigiendo desde NavigationBean: " + url);
+				external.redirect(url);
+			        
+			} catch (IOException ex) {						      
+				ex.printStackTrace();
+			}catch(Exception e){
+				e.printStackTrace();
+				System.out.println("Redirect "+url);
+			}
+			
+			bandera = true;
+		}
+		
+		return bandera;
+	}
+	
+	protected String getPath()
+	{
+		HttpServletRequest request = (HttpServletRequest) external.getRequest();
+		
+		return request.getContextPath();
+	}
+	
+	protected void creaProspect_INV_SGB()
+	{
+		System.out.println("+++++    LLAMANDO AL SGB    +++++");
+
+		try 
+		{
+			
+			
+			mspk = new MembershipPK();
+			mspk.setCompany_id(company_id);
+			mspk.setProspectus_id(prospectus_id);
+			
+			String clabe = "";
+			
+			String banco = "";
+			
+			membership = membershipService.getMembershipById(mspk);
+			
+			String _JSON_str = "";
+			
+			if( membership.getPerson().getProspectus().getArea().toString().equals("I") ){
+			
+					WsSgbRiskServiceLocator locator = new WsSgbRiskServiceLocator();
+					WsSgbRisk  service = locator.getWsSgbRisk();// yyyymmdd. 19860131
+					
+					AplicationPublicationInvestorDataDTO ap_INV = new AplicationPublicationInvestorDataDTO();
+					
+					List<ClabeAccount> accountList    = clabeaccountservice.loadClabeAccountListByProspectus(prospectus_id, membership.getMembershipPK().getCompany_id());
+					
+					if( accountList != null && accountList.size() > 0  ){
+					
+						banco = accountList.get(0).getBank_description();
+						clabe = accountList.get(0).getMx_clabe();
+						
+					}
+					
+					CountryPK cpk = new CountryPK(membership.getPerson().getCountry_id(),membership.getMembershipPK().getCompany_id() );
+					
+					Country c = countryService.getCountryById( cpk );
+					
+					StateCatPK stPK = null;
+					
+					StateCat st = null;
+					
+					if( membership.getPerson().getState_id() != null ){
+					
+						stPK = new  StateCatPK(membership.getPerson().getState_id() ,membership.getMembershipPK().getCompany_id() );
+						st =  service_estado.getStateById(stPK);
+						
+					}
+					
+					
+				
+					if(c != null){
+						ap_INV .setCountryOfBirthName( c.getName() );
+					}
+					
+					ap_INV .setDateOfBirth( membership.getPerson().getDate_of_birth() );
+					ap_INV .setFatherLastName(membership.getPerson().getFather_last_name());
+					ap_INV .setFirstName(membership.getPerson().getFirst_name());
+					ap_INV .setGenderId(membership.getPerson().getGender_id());
+					ap_INV .setMail(membership.getEmail());
+					ap_INV .setMiddleName(membership.getPerson().getMiddle_name());
+					ap_INV .setMotherLastName(membership.getPerson().getMother_last_name());
+					ap_INV .setMxBankDescription(banco);
+					ap_INV .setMxClabe(clabe);
+					ap_INV .setMxCurp(membership.getPerson().getMx_curp());
+					ap_INV .setMxRfc(membership.getPerson().getMx_rfc());
+					ap_INV .setProspectusId(membership.getMembershipPK().getProspectus_id());
+					ap_INV .setReason(membership.getRegistration_reason().getName());
+					
+					if(st != null){
+						ap_INV .setStateOfBirthName( st.getName() );
+					}
+					
+					ap_INV .setStatusId(0);
+					
+					ObjectMapper mapper = new ObjectMapper();
+					
+									//Object to JSON in String
+							try {
+								String jsonInString = mapper.writeValueAsString(ap_INV);
+								_JSON_str = jsonInString;
+							} catch (JsonProcessingException e) {
+								e.printStackTrace();
+							}
+					
+					// +
+					
+					
+					System.out.println( "******" );
+					System.out.println( "***SGB*REQUEST**" );
+					System.out.println( _JSON_str );
+					System.out.println( "******" );
+					System.out.println( "******" );
+					
+					service.aplicationPublicationInvestor(_JSON_str);
+					
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+		
 	}
 }

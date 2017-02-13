@@ -10,9 +10,11 @@ import mx.com.kubo.registro.datos.birthdate.FechaNacimientoIMO;
 import mx.com.kubo.registro.datos.citizen.NacionalidadIMO;
 import mx.com.kubo.registro.datos.country.BirthCountryIMO;
 import mx.com.kubo.registro.datos.domicilio.DomicilioIMO;
+import mx.com.kubo.registro.datos.genero.GeneroIMO;
 import mx.com.kubo.registro.datos.moral.PersonaMoralIMO;
 import mx.com.kubo.registro.datos.nombre.PersonNameIMO;
 import mx.com.kubo.registro.datos.pais.PaisOrigenIMO;
+import mx.com.kubo.registro.datos.simulador.SimuladorIMO;
 import mx.com.kubo.registro.datos.state.BirthPlaceIMO;
 
 
@@ -38,6 +40,8 @@ public interface BasicDataIMO
 	      DomicilioIMO getFiscal();
 	     PersonNameIMO getName();
        BirthCountryIMO getCountry();
+             GeneroIMO getGender();
+          SimuladorIMO getSimulador();
 	
 	NaturalPerson getNaturalPerson();	
 	

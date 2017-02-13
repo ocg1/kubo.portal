@@ -3,25 +3,30 @@
 	            xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
-				<div class="consultaHistorialDeshabilitada" style="max-width:560px;">
-				<div class="mensajeAprobacion" >
-					<h:form id="frmErrorBuro" prependId="false">
-							<h:panelGroup id="pnlErrorBuro">
-			        			<div class="bT" style=" width:92%;">
-				        			<h3><span></span>,  lo sentimos...</h3>
-				        			<p>Tenemos un problema técnico para continuar con tu solicitud.</p>
+				
+	<div class="consultaHistorialDeshabilitada" style="max-width:560px;">
+		<div class="mensajeAprobacion" >
+			<h:form id="frmErrorBuro" prependId="false">
+				<h:panelGroup id="pnlErrorBuro">
+			    	<div class="bT" style=" width:92%;">
+				    	<h3><span></span>,  lo sentimos...</h3>
+				        <p>Tenemos un problema técnico para continuar con tu solicitud.</p>
 				        			
-				        			<p>No te preocupes, tus datos están guardados, regresa en unos minutos para continuar.</p>
-				        			<div class="callAction btnNaranja" style="width:70%; margin:0 auto;"  onclick="aceptaSalir();">Salir</div>
-			        			</div>
-		
-		
-			        			<figure   style="width:100%; margin:0 0 30px !important" class="personajeLoader"><h:graphicImage library="img" name= "kubiCuate.png"  />        </figure>
-							</h:panelGroup>
-						</h:form>
-				</div>
-			</div>
-		<ui:include src = "nuevoRegistro/plecaSuperior.xhtml"/>						
+				        <p>No te preocupes, tus datos están guardados, regresa en unos minutos para continuar.</p>
+				        
+				       	<div class="callAction btnNaranja" style="width:70%; margin:0 auto;"  onclick="aceptaSalir();">Salir</div>
+			        </div>
+			        		
+			        <figure   style="width:100%; margin:0 0 30px !important" class="personajeLoader">
+			        	<h:graphicImage library="img" name= "kubiCuate.png"  />        
+			        </figure>
+				</h:panelGroup>
+			</h:form>
+		</div>
+	</div>
+	
+	<ui:include src = "nuevoRegistro/plecaSuperior.xhtml"/>
+							
 	<div class = "paso_1_2 areaL">
 
 		<div class="veloE"></div>
@@ -45,45 +50,43 @@
 			<div id="general">
 				<div class="backStyle">	
 					<div id="contFrmPre">
-					
-					
-			<!-- pixelprogramatic paso 1, 11 marzo 2015 -->
-					   <h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
-                              	<img border="0" src="https://r.turn.com/r/beacon?b2=FFBKj1fEKrmPsvv1nQIkDV_N-677JK95U2lG_gSwUaYgp1wj57Plw7FfebHAu3QLxViWfRw3FAO_8q6kTyjrfw&amp;cid="/>
-								<a class="datos_basicos" href="#" onclick="ga('send', { 'hitType': 'pageview', 'page': '/registro/paso1.html', 'title': 'Paso 1' });"> </a>
-		
-		               </h:panelGroup>   
+										
+						<!-- pixelprogramatic paso 1, 11 marzo 2015 -->
+						<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+                            <img border="0" src="https://r.turn.com/r/beacon?b2=FFBKj1fEKrmPsvv1nQIkDV_N-677JK95U2lG_gSwUaYgp1wj57Plw7FfebHAu3QLxViWfRw3FAO_8q6kTyjrfw&amp;cid="/>
+							<a class="datos_basicos" href="#"> </a>		
+						</h:panelGroup>   
 									    					
 						<ui:include src = "datos_personales/tu_prestamo.xhtml"/>	
 						<ui:include src = "datos_personales/actividad_economica.xhtml"/>
 						<ui:include src = "datos_personales/formaContacto.xhtml"/>
 						<ui:include src = "datos_personales/deudasAtrasadas.xhtml"/>
 						
-					<div class="section" id="datosPersonales" onclick="tab_section(this);">Cuéntanos un poco de ti ...<i class="fa fa-angle-down"></i></div>
-					<section>		
-						<ui:include src = "datos_personales/datos/datos_personales_INFO.xhtml"/>
-						<ui:include src = "datos_personales/telefonos.xhtml"/>
-						<ui:include src = "datos_personales/editar_RFC_y_CURP.xhtml"/>		
-						
-						
-					</section>
-			  	   <div class="section" onclick="tab_section(this);">Domicilio  <i class="fa fa-angle-down"></i></div>
-					<section>	
-						<!-- <ui:include src = "datos_personales/nickname.xhtml"/> -->			
-						<ui:include src = "datos_personales/domicilio/domicilio.xhtml"/>
-						<ui:include src = "datos_personales/domicilio-remote-command.xhtml" />
-						<ui:include src = "datos_personales/domicilio_pais_origen/domicilio.xhtml"/>
-						
+						<div class="section" id="datosPersonales" onclick="tab_section(this);">Por favor, ingresa tus datos personales.<i class="fa fa-chevron-down"></i></div>
 					
-						<ui:include src = "datos_personales/estado_cuenta_electronico.xhtml"/>
-						<ui:include src = "datos_personales/boton_siguiente.xhtml"/>						
-					</section>
+						<section>		
+							<ui:include src = "datos_personales/datos/datos_personales_INFO.xhtml"/>
+							<ui:include src = "datos_personales/telefonos.xhtml"/>
+							<ui:include src = "datos_personales/editar_RFC_y_CURP.xhtml"/>														
+						</section>
 					
-					 
-				    <script>
-				   		 resetar_indices();
-							$(".avisoCamposVacio").hide();
-					</script>
+			  	   		<div class="section" onclick="tab_section(this);">Por favor, ingresa los datos de tu domicilio. <i class="fa fa-chevron-down"></i></div>
+			  	   	
+						<section>	
+							<!-- <ui:include src = "datos_personales/nickname.xhtml"/> -->			
+							<ui:include src = "datos_personales/domicilio/domicilio.xhtml"/>
+							<ui:include src = "datos_personales/domicilio-remote-command.xhtml" />
+							<ui:include src = "datos_personales/domicilio_pais_origen/domicilio.xhtml"/>
+							
+						
+							<ui:include src = "datos_personales/estado_cuenta_electronico.xhtml"/>
+							<ui:include src = "datos_personales/boton_siguiente.xhtml"/>						
+						</section>
+										 
+					    <script>
+					   		 resetar_indices();
+								$(".avisoCamposVacio").hide();
+						</script>
 					</div>
 				</div>
 			</div>
@@ -171,7 +174,7 @@
         			
 	       			<h:graphicImage  styleClass="loaderImage"  library="img/nuevoRegistro" name= "ajax-loader.gif"  /> 
 	       		
-	       			<p>Estás a 1 minuto de tener un préstamo Pre-Aprobado</p>
+	       			<p>Estás a un minuto de obtener el resultado de tu pre-aprobación.</p>
 	       			
 	       			<figure class="personajeLoader"><h:graphicImage library="img/nuevoRegistro" name= "personajeLoader.jpg"  /></figure>
         			

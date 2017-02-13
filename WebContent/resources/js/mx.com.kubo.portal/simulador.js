@@ -67,7 +67,7 @@ Simulador.info_oncomplete = function(xhr, status, args)
 	
 	//$("#modifcaCondiciones").trigger("click");
 	//showRes();
-}
+};
 
 Simulador.init = function() 
 {
@@ -84,7 +84,4 @@ Simulador.simulation_oncomplete = function(xhr, status, args)
 	console.log("> max_payment_ENABLED = " + max_payment_ENABLED);
 	
 	Preaprobador.init_panel(FROM_SIMULATOR);
-}
-
-
-
+};

@@ -1,4 +1,4 @@
-console.log("mx.com.kubo.registro/datos/focus-date.js");
+console.log("focus-date.js");
 
 DatosPersonales.init_focus_date = function(focus_id)
 {	

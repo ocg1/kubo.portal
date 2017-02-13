@@ -1,100 +1,24 @@
 <ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
 				xmlns:h  = "http://java.sun.com/jsf/html"
-				xmlns:ui = "http://java.sun.com/jsf/facelets"
-				xmlns:f  = "http://java.sun.com/jsf/core"
-				xmlns:p  = "http://primefaces.org/ui">
+				xmlns:ui = "http://java.sun.com/jsf/facelets">
 						
-		<h:panelGroup rendered="#{sessionBean.area == 'L'}">
-			<div class="aviso_inicial">
-				<h3>Información importante </h3>
-				<p>Por tu seguridad, despues de 10 min de inactividad,<br/> tendrás que reiniciar tu sesión.</p>
-				<p>Pero tu información se guardará automáticamente para que continúes donde te quedaste.</p>
-				
+	<h:panelGroup rendered = "#{sessionBean.area == 'L'}">
+		<div class = "aviso_inicial">
+			<h3>Información importante </h3>
+			<p>Por tu seguridad, despues de 10 min de inactividad,<br/> tendrás que reiniciar tu sesión.</p>
+			<p>Pero tu información se guardará automáticamente para que continúes donde te quedaste.</p>							
+		</div>
 			
-			</div>
-			<div class="clTitle vamos_iniciar">
-				<h:outputLabel styleClass="clTitleLbl" style="margin:0;" value="Vamos a iniciar tu solicitud"></h:outputLabel>
-			</div>
-			
-			
-	
-			<section class="monto_proposito">
-				<div class="field">
-						<div class = "dvLabel">
-							<h:outputLabel styleClass="labelsStl" value = "¿Cuánto necesitas?"/>
-						</div>
+		<div class = "clTitle vamos_iniciar">
+			<h:outputLabel styleClass = "clTitleLbl" style = "margin:0;" value = "Vamos a iniciar tu solicitud"/>
+		</div>
 							
-					    <h:inputText id         = "ammount_input" 
-										 value		= "#{simulator.ammount}" 
-										 onkeyup	= "return format(this,'simulator');"
-										 styleClass = "elementAddres1 validatorClass hs_class"
-										 onfocus	= " ayuda('.ayuda1');"
-										 onblur		= " ayudaQuitar();"
-										 >
-							
-								<p:ajax event      = "blur" 
-									    listener   = "#{simulator.simulaCred(false)}" 
-									    update     = ":contSimReg" 
-									    onstart    = "return simulatorMirror();" 
-									    oncomplete = "return showRes();" 
-									    />
-									    
-								<f:convertNumber pattern="###,###,###,###" locale="es_MX" type="currency" groupingUsed="true" />		 
-										 
-					   </h:inputText>
-					   
-					   <INPUT type="hidden" id = "ammount" />
-					   
-				</div>				 
-			   <div class="field">		
-	
-						<div class="dvLabel">
-							<h:outputLabel styleClass="labelsStl" value="#{msg.Purpose_loan}"/>
-						</div>
-					
-					
-						<div class="selectNuevo">
-							
-								<h:selectOneMenu id="proposito_prestamo" styleClass="elementStlSelAddress validatorClass requiredVerify hs_class"  value="#{simulator.purpose_id}">
-									<f:selectItem itemLabel="" itemValue="0"  />
-									<f:selectItems value="#{simulator.listPurpose}" var="purpose"  itemLabel="#{purpose.name}" style="color: #FF0000 !important;"  itemValue="#{purpose.purposePK.purpose_id}"/>
-									<p:ajax event="change"  listener="#{simulator.simulaCred(false)}"  />  
-								</h:selectOneMenu>
-								
-						</div>
-					
-					
-						
-					
-				</div>
-				
-
-
-			
-						
+		<section class = "monto_proposito">
+			<ui:include src = "tu-prestamo/ammount.xhtml"/>			 
+			<ui:include src = "tu-prestamo/purpose.xhtml"/>										
+		</section>
 		
-				
-			</section>
-						   <div class="field">		
-			   	<div class="dvLabel">
-							<h:outputLabel styleClass="labelsStl" value="¿Cómo te gustaría pagar tu préstamo? "/>
-						</div>
-						<div class="selectNuevo">
-						
-		                            			<h:selectOneMenu id="frecuProyect" value="#{simulator.frequency_id}" styleClass="validatorClass" >
-													<f:selectItem itemLabel="Seleccione Frecuencia" itemValue="" />
-													<f:selectItems  value="#{simulator.listFrequency}" var="frequency" itemLabel="#{frequency.name}" itemValue="#{frequency.frequencyPK.frequency_id}"/>
-													<p:ajax event      = "change" 
-														    listener   = "#{simulator.simulaCred(false)}" 
-														    update     = ":contSimReg" 
-														    onstart    = "return simulatorMirror();" 
-														    oncomplete = "return showRes();" 
-														    
-														    />  
-												</h:selectOneMenu>
-								</div>	
-												</div>
-
-			
+		<ui:include src = "tu-prestamo/frequency.xhtml"/>
+					
 	</h:panelGroup>
 </ui:composition>		

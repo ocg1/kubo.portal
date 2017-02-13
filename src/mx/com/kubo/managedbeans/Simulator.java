@@ -10,7 +10,6 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.el.ELContext;
-import javax.el.ELResolver;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -21,21 +20,10 @@ import mx.com.kubo.bean.SimBeanForList;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.managedbeans.registro.documentacion.AddPldDocument;
 import mx.com.kubo.model.Change_control;
-import mx.com.kubo.model.Frequency;
-import mx.com.kubo.model.Membership;
-import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.PrevencionLDPK;
-import mx.com.kubo.model.Proyect;
-import mx.com.kubo.model.ProyectLoan;
-import mx.com.kubo.model.Purpose;
-import mx.com.kubo.model.PurposePK;
 import mx.com.kubo.model.ServiceCalling;
-import mx.com.kubo.model.SimulationConfig;
 import mx.com.kubo.model.Simulation_Cache;
-import mx.com.kubo.model.Simulation_Cache_PK;
-import mx.com.kubo.model.SimulatorBean;
-import mx.com.kubo.model.SimulatorPK;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SlideEndEvent;
@@ -48,40 +36,11 @@ import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoRequest;
 import safisrv.ws.CreditosServicios.SimuladorCuotaCreditoResponse;
 
 @ManagedBean @SessionScoped
-public class Simulator extends SimulatorDMO
+public class Simulator extends SimulatorAMO
 implements Serializable
-{	
-	private FacesContext faces;
-	private ELContext    elContext;
-	private ELResolver   resolver;
-	
-	private ProyectLoan      proyectLoan;
-	private MembershipPK     membershipPK;
-	private Membership       membership;
-	private SimulationConfig simulationConfig;
-	
-	private List<Frequency> listFrequencyTmp;
-	
-	private String ammountStr   = "50,000";
-	private String totalRecibir = "0";	
-	private String purposeName;
-	private String frequencyName;
-	private String guardarAction;
-	private String mailAction;
-	
-	private SimBeanForList simulador_A;
-	private SimBeanForList simulador_C;
-	private SimBeanForList simulador_E;
-	
-	private Double comisionApertura = 5D;
-	
-	private int frequency_id = 4;
-	private int purpose_id;
-	
-	public boolean flagSaveSimulationCache = false;
-		
-	private static final long serialVersionUID = 1L;
-	
+{			
+	private static final long serialVersionUID = 2314574719378680076L;
+
 	@PostConstruct
 	public void init()
 	{
@@ -91,300 +50,32 @@ implements Serializable
 		
 		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
 		
-			if(sesion.getRate() != null)
-			{
-		   		setWsim(370);
-		   		setWgral(750);
-		   		setWcat(250);
-		   		setMsim(0);
-		   		
-			} else {		 
-				
-				setWsim(815);
-				setWgral(1250);
-				setWcat(760);
-				setMsim(230);
-		   }
-		   
-		   if(sesion != null && sesion.getProspectus_id() != null && sesion.getCompany_id() != null)
-		   {			  
-			   if(sesion.getArea() != null && (sesion.getArea()=='M' || sesion.getArea()=='I'))
-				{
-					
-				   area = sesion.getArea().toString();
-				   
-				} else {
-					
-					if(sesion.getArea() != null)
-					{
-						area = sesion.getArea().toString();
-					}
-					
-					proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(sesion.getProspectus_id(), sesion.getCompany_id());
-					
-					if(proyectLoan != null)
-					{						
-						setLoanTypeID(proyectLoan.getLoan_type());
-						
-						if(proyectLoan.getProyect().getPartner_id() != null && partnerID == null)
-						{
-							partnerID =	proyectLoan.getProyect().getPartner_id().toString();
-						}
-							
-					} else {
-						
-						membershipPK = new MembershipPK(sesion.getProspectus_id(), sesion.getCompany_id());
-						
-						membership = membershipservice.getMembershipById(membershipPK);
-						
-						if(membership.getRegistration_reason() != null)
-						{
-							partnerID = membership.getRegistration_reason().getPartner_id();
-						}					
-					}
-					
-					if(sesion != null && sesion.getPartner() != null && partnerID == null)
-					{
-						partnerID = "BRD";
-					}						
-				}
-			   
-		   	} else if(sesion != null && sesion.getPartner() != null) {
-				
-		   		
-		   		if(sesion.getPartner().equals("10000034") || sesion.getPartner().equals("ALIANZA BARARED")){
-		   		
-		   			partnerID = "BRD";
-		   		
-		   		}else{
-		   			partnerID = sesion.getPartner();
-		   		}
-			   
-			}
-		   
-		   System.out.println( "\n\n******* SimulationConfig Partner: "+sesion.getPartner()+" *******\n\n" );
-
-			simulationConfig = new SimulationConfig();
-			
-			if(area == null)
-			{
-				area = "L";
-				
-				if(partnerID == null)
-				{
-					if( sesion == null || sesion.getCompany_id() == null)
-					{
-						simulationConfig = simulationConfigService.getSimulationByArea(area, 1);
-					} else {
-						simulationConfig = simulationConfigService.getSimulationByArea(area, sesion.getCompany_id());
-					}
-					
-				} else {
-					
-					if( sesion == null || sesion.getCompany_id() == null)
-					{
-						simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID,area, 1);
-					} else {
-						simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID,area, sesion.getCompany_id());
-					}
-				}
-				
-				area = null;
-				
-			} else if(getLoanTypeID() != null && partnerID != null && area != null){
-					
-				simulationConfig = simulationConfigService.getSimulationByLoanTypeIDandPartnerIDandArea(getLoanTypeID(), partnerID, area, sesion.getCompany_id());
-				
-				if( simulationConfig == null )
-				{				
-					simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID, area, sesion.getCompany_id());					
-				}
-				
-				if( simulationConfig == null )
-				{				
-					simulationConfig = simulationConfigService.getSimulationByLoanTypeIDandArea(getLoanTypeID(), area, sesion.getCompany_id());					
-				}
-				
-			} else if(getLoanTypeID() != null && area != null){
-					
-				simulationConfig = simulationConfigService.getSimulationByLoanTypeIDandArea(getLoanTypeID(), area, sesion.getCompany_id());
-					
-			} else if(partnerID != null && area != null){
-					
-				simulationConfig = simulationConfigService.getSimulationByPartnerIDandArea(partnerID, area, sesion.getCompany_id());
-				
-			} else if(area != null){
-					
-				simulationConfig = simulationConfigService.getSimulationByArea(area, sesion.getCompany_id());
-				
-			} else {
-				
-				simulationConfig = simulationConfigService.getSimulationByArea("L", 1);
-			}
-			
-			if(simulationConfig == null)
-			{			
-				area = "L";
-				
-				if( sesion == null || sesion.getCompany_id() == null)
-				{
-					simulationConfig = simulationConfigService.getSimulationByArea(area, 1);
-					
-				} else {
-					
-					simulationConfig = simulationConfigService.getSimulationByArea(area, sesion.getCompany_id());
-				}
-				
-				area = null;				
-			}
-		   			
-			if(simulationConfig != null)
-			{
-				setMontoMax(""+simulationConfig.getMax_amount());
-				setMontoMin(""+simulationConfig.getMin_amount());
-				setTermMax(""+simulationConfig.getMax_term());
-				
-			} else {
-				
-				setMontoMax("50000");
-				setMontoMin("5000");
-				setTermMax("18");
-			}
-		
-		
-			listPurpose = purposeService.getPurposeList();
-			
-			listFrequencyTmp = frequencyService.getFrequencyList();
-			
-			listFrequency = new ArrayList<Frequency>();
-			for(Frequency ls :listFrequencyTmp ){
-				switch (ls.getFrequencyPK().getFrequency_id()){
-					
-					case 1://Semanal
-						ls.setName("Semanas");
-						break;
-						
-					case 2: //Catorcenal
-						ls.setName("Catorcenas");
-						break;
-						
-					case 3: //Quincenal
-						ls.setName("Quincenas");
-						break;
-						
-					case 4: //Mensual
-						ls.setName("Meses");
-						break;
-						
-				}
-				listFrequency.add(ls);
-			}
-		//simulaCred();
-		
-			try{
-			
-				prevencionld = null;
-				
-				if(sesion.getProspectus_id() != null )
-					prevencionld = prevencionldservice.getPrevencionLDByProspectus(sesion.getProspectus_id() , sesion.getCompany_id() );
-				
-				if(prevencionld != null){
-					
-					setHasPLD(true);
-					
-				}else{
-					
-					setHasPLD(false);
-					
-				}
-			
-			}catch(Exception e){
-				e.printStackTrace();
-				setHasPLD(false);
-			}
-			
-		
-	}
-
-	public int getPurpose_id() 
-	{
-		return purpose_id;
-	}
-
-	public void setPurpose_id(int purpose_id) 
-	{
-		this.purpose_id = purpose_id;
-		
-		if(purpose_id != 0)
+		if(sesion.getRate() != null)
 		{
-			initPurpose(purpose_id);
-		}else{
-			setPurpose( new Purpose() );
+	   		setWsim(370);
+	   		setWgral(750);
+	   		setWcat(250);
+	   		setMsim(0);
+	   		
+		} else {		 
+			
+			setWsim(815);
+			setWgral(1250);
+			setWcat(760);
+			setMsim(230);
+	   }
+			
+		init_partner_ID();
+		init_simulation_config();
+		init_list_frequency();
+		init_PLD();
+			
+		if(sesion.getProspectus_id() != null && simulationConfig != null )
+		{
+			initSimulador_();
 		}
-		
-		setPurposeName("");
 	}
 
-	public int getFrequency_id() {
-		return frequency_id;
-	}
-
-	public void setFrequency_id(int frequency_id) {
-		this.frequency_id = frequency_id;
-		if(frequency_id!=0)
-			initFrequency(frequency_id);
-		setFrequencyName("");
-	}
-
-	private void initFrequency(int frequency_id)
-	{
-		setFrequency(frequencyService.getFrequencyById(frequency_id));
-	}
-	
-	private void initPurpose(int purpose_id){
-		
-		setPurpose(purposeService.getPurposeById(new PurposePK(purpose_id, 1)));
-	}
-
-	public String getFrequencyName() {
-		
-		int freq = getFrequency_id();
-		switch (freq){
-			case 1://Semanal
-				frequencyName="Semanal";
-				break;
-			case 2: //Catorcenal
-				frequencyName="Catorcenal";
-				break;
-			case 3: //Quincenal
-				frequencyName = "Quincenal";
-				break;
-			case 4: //Mensual
-				frequencyName = "Mensual";
-				break;
-		}
-		
-		
-		return frequencyName;
-	}
-
-	public void setFrequencyName(String frequencyName) {
-		this.frequencyName = getFrequency().getName();
-	}
-	
-	public String getPurposeName() {
-		return purposeName;
-	}
-
-	public String getInteresStr() 
-	{
-		return formatDec(dec.format(getInteres()));
-	}
-	
-	public void setPurposeName(String purposeName) {
-		this.purposeName = getPurpose().getName();
-	}
-	
 	public void onSlideEnd(SlideEndEvent event) 
 	{  
         setTerm_id(event.getValue());  
@@ -403,9 +94,10 @@ implements Serializable
         simulaCred(false);
     }
 	
-	public void onFreqChange(ValueChangeEvent ce) {  
-		
-		if(ce.getNewValue()!=null){
+	public void onFreqChange(ValueChangeEvent ce) 
+	{  		
+		if(ce.getNewValue()!=null)
+		{
 			this.frequency_id = Integer.parseInt(ce.getNewValue().toString());  
         	simulaCred(false);
 		}
@@ -430,249 +122,56 @@ implements Serializable
 		}
 	}
 
-	public String getAmmountStr() {
-		
-		ammountStr = formatDec(dec.format(this.ammount));
-		ammountStr = ammountStr.split("\\.")[0];
-		return ammountStr;
-	}
-
-	public void setAmmountStr(String ammountStr) {
-		this.ammountStr = ammountStr;
-		setAmmount(Float.parseFloat(ammountStr.replaceAll(",", "")));
-	}
-	
-	public String getTotalPagarStr() 
-	{
-		if(getTotalPagar() != null && getTotalPagar() > 0)
-		{
-			return formatDec(dec.format(getTotalPagar()));
-			
-		} else {
-			
-			return "No disponible";
-		}
-	}
-	
-	public String getMontoCuotaStr() 
-	{
-		if(getMontoCuota() != null && getMontoCuota() > 0)
-		{
-			return formatDec(dec.format(getMontoCuota()));
-		} else {
-			return "No disponible";
-		}
-	}
-
 	public void simulaCred(boolean isSafi)
 	{
 		if( sesion.getArea() != null && sesion.getArea().toString().equals("L"))
+		{
 			proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(sesion.getProspectus_id(), sesion.getCompany_id());
+		}
 		
 		setActualRate();
 		setNumCuota(generaNumCuotas());
 		setTasaPeriodo(generaTasaPeriodo(true));
-		if(isSafi){
+		
+		if(isSafi)
+		{
 			generaMontoCuota2();
-		}else{
+			
+		} else {
+			
 			getCuotaByFormula(true,isSafi);
 		}
+		
 		setInteres(generaInteres());
 		/*setIvaInteres(generaIva(getInteres(),getIva()));*/
 		//setTotalPagar(generaTotal());
-		if(flagSaveSimulationCache){
+		
+		if(flagSaveSimulationCache)
+		{
 			saveSimulatorCache();
 		}
 		
 		if(isConnected() && !getTotalPagarStr().equals("No disponible"))
 		{
 			saveSimulator();
-						
-			SimulatorPK pk    = new SimulatorPK(0, sesion.getProspectus_id(), sesion.getCompany_id());			
-			SimulatorBean sim = new SimulatorBean();
+			addSimulator(isSafi);
+			updateProyectLoan();			
 			
-			sim.setTitle(null);
-			sim.setBc_score(null);
-			sim.setAmmount(getAmmount());
-			sim.setDate(new Date());
-			sim.setFrequency_id(getFrequency_id());
-			sim.setNum_payments(getNumCuota());
-			sim.setPayment(getMontoCuota());
-			sim.setPeriod_rate(getTasaPeriodo());
-			sim.setPurpose_id(getPurpose_id());
-			sim.setSimulatorPK(pk);
-			sim.setTerm_id(getTerm_id());
-			sim.setTotal_interest(getInteres());
-			sim.setTotal_payment(getTotalPagar());
-			sim.setType('M');
-			sim.setType_id(null);
-			sim.setYearly_rate(getTasaTotal());
-			sim.setYearly_interest(null);
-			sim.setMx_cat(getCat());
+		} else {
 			
-			if(isSafi){
-				sim.setOrigin("S");
-			}else{
-				sim.setOrigin("K");
-			}
-			
-			try{
-				simulatorService.add(sim);
-			}catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			
-			if (proyectLoan != null && proyectLoan.getStatus_id() == 0)
-			{
-				if(proyectLoan.getStatus_id() != null && proyectLoan.getStatus_id() == 0)
-				{
-					if(proyectLoan.getOpening_commission() != null)
-					{
-						double cuota_simulador    = getMontoCuota();
-						double cuota_proyect_loan = proyectLoan.getPayment();
-						double cuota_apertura     = getAmmount() * proyectLoan.getOpening_commission() / 100;
-					
-						if(cuota_simulador != cuota_proyect_loan)
-						{
-							proyectLoan.setAmmount(getAmmount());
-							proyectLoan.setMin_ammount(getAmmount());
-							proyectLoan.setMx_cat(getCat());
-							proyectLoan.setTerm_id(getTerm_id());
-							proyectLoan.setFrequency_id(getFrequency_id());
-							proyectLoan.setPayment(getMontoCuota());
-							
-							proyectLoan.setOpening_commission_amount(cuota_apertura);
-							
-							if( proyectLoanService.update(proyectLoan) )
-							{
-								System.out.println("Simulator.simulaCred(): OK");
-							} else {
-								
-								System.out.println("Simulator.simulaCred(): ERROR al actualizar proyect_loan");
-							}
-							
-							if(purpose_id != 0){
-								
-								Proyect proyect = proyectLoan.getProyect();
-								
-								proyect.setPurpose_id(purpose_id);
-								
-								proyectService.update(proyect);
-								
-							}
-							
-							proyectLoan = proyectLoanService.getProyectLoanByProyectLoanID( proyectLoan.getProyectloanPk().getProyect_loan_id(), proyectLoan.getProyectloanPk().getProspectus_id(), proyectLoan.getProyectloanPk().getCompany_id());
-							
-						}
-					}
-				
-				}
-				
-			}
-			
-		} else {//Guarda en la tabla de comparaciones a los status anonimos. Prospectus_id = 0;
-			SimulatorPK pk    = new SimulatorPK(0, 0, 1);			
-			SimulatorBean sim = new SimulatorBean();
-			
-			sim.setTitle(null);
-			sim.setBc_score(null);
-			sim.setAmmount(getAmmount());
-			sim.setDate(new Date());
-			sim.setFrequency_id(getFrequency_id());
-			sim.setNum_payments(getNumCuota());
-			sim.setPayment(getMontoCuota());
-			sim.setPeriod_rate(getTasaPeriodo());
-			sim.setPurpose_id(getPurpose_id());
-			sim.setSimulatorPK(pk);
-			sim.setTerm_id(getTerm_id());
-			sim.setTotal_interest(getInteres());
-			sim.setTotal_payment(getTotalPagar());
-			sim.setType('M');
-			sim.setType_id(null);
-			sim.setYearly_rate(getTasaTotal());
-			sim.setYearly_interest(null);
-			sim.setMx_cat(getCat());
-			
-			if(isSafi){
-				sim.setOrigin("S");
-			}else{
-				sim.setOrigin("K");
-			}
-			try{
-					simulatorService.add(sim);
-				}catch(Exception e)
-				{
-					e.printStackTrace();
-				}
+			addSimulatorAnonimo(isSafi);			
 		}
 		
 		RequestContext requestContext = RequestContext.getCurrentInstance();
+		
 		if(requestContext != null)
 		{
 			requestContext.addCallbackParam("valor", true);
 		}
 	}
-	
-	private Double generaInteres(){
-		Double i = ((getMontoCuota()*getNumCuota())-getAmmount());
-		double interes = i/(1+getIva());
-		double iva = (double)Math.round((i - interes)*100)/100;
-		setIvaInteres(iva);
-		return (double)Math.round(interes*100)/100;
-	}
-	
-	
-//	private Double generaTotal(){
-//		return (double)Math.round((getAmmount()+getInteres()+getIvaInteres())*100)/100;
-//	}
-	
-	public Integer generaNumCuotas(){
-		int freq = getFrequency_id();
-		int num = getTerm_id();
-		switch (freq){
-			case 1://Semanal
-				//num= (int)Double.parseDouble(Math.rint((getTerm_id()*52)/12)+"");
-				setFrequencyAnual(52);
-				setFrequencyStr("semanales");
-				setFrequencyStr2("semanas");
-				setFrequencyName("Semanal");
-				setDiasFreq(7);
-				setFreqStr("S");
-				break;
-			case 2: //Catorcenal
-				//num= (int)Double.parseDouble(Math.rint((getTerm_id()*26)/12)+"");
-				setFrequencyAnual(26);
-				setFrequencyStr("catorcenales");
-				setFrequencyStr2("catorcenas");
-				setFrequencyName("Catorcenal");
-				setDiasFreq(14);
-				setFreqStr("C");
-				break;
-			case 3: //Quincenal
-				//num= getTerm_id()*2;
-				setFrequencyAnual(24);
-				setFrequencyStr("quincenales");
-				setFrequencyStr2("quincenas");
-				setFrequencyName("Quincenal");
-				setDiasFreq(15);
-				setFreqStr("Q");
-				break;
-			case 4: //Mensual
-				//num= getTerm_id();
-				setFrequencyAnual(12);
-				setFrequencyStr("mensuales");
-				setFrequencyStr2("meses");
-				setFrequencyName("Mensual");
-				setDiasFreq(30);
-				setFreqStr("M");
-				break;
-		}
-		return num;
 
-	}
-	
-	public void generaMontoCuota2(){
+	public void generaMontoCuota2()
+	{
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -687,8 +186,8 @@ implements Serializable
 			simulationCache = simulationCacheService.getMaxByAmmountRateTermFrequency(getAmmount(), getTasaPeriodo(), getTerm_id(), getFrequency_id(), 1);
 		
 		
-		if(simulationCache == null){
-		
+		if(simulationCache == null)
+		{		
 			SimuladorCuotaCreditoRequest simulador = new SimuladorCuotaCreditoRequest();
 			
 			simulador.setFechaInicio(thisFechaInicio);
@@ -711,7 +210,9 @@ implements Serializable
 				srvCall.setStatus(1);
 				servicecallingRepository.saveServiceCall(srvCall);
 			}
-			try{
+			
+			try
+			{
 				
 				SAFIServiciosServiceLocator locator = new SAFIServiciosServiceLocator();
 				SAFIServicios service = locator.getSAFIServiciosSoap11();
@@ -803,87 +304,11 @@ implements Serializable
 			
 			simulationCacheService.update(simulationCache);
 			
-		}
-		
-		
+		}	
 	}
 	
-	private void saveSimulatorCache(){
-		try{
-			
-			Simulation_Cache_PK simulationCachePK = new Simulation_Cache_PK();
-			Simulation_Cache simulationCache = new Simulation_Cache();
-			
-			simulationCachePK.setCompany_id(1);
-			
-			simulationCache.setPk(simulationCachePK);
-			simulationCache.setAmmount(getAmmount());
-			simulationCache.setTerm_id(getTerm_id());
-			simulationCache.setPayment(getMontoCuota());
-			simulationCache.setFrequency_id(getFrequency_id());
-			simulationCache.setNum_payments(getNumCuota());
-			simulationCache.setTotal_payment(getTotalPagar());
-			simulationCache.setPeriod_rate(getTasaPeriodo());
-			simulationCache.setYearly_rate(getTasaTotal());
-			simulationCache.setMx_cat(getCat());
-			simulationCache.setCreation_date(new Date());
-			
-			simulationCacheService.add(simulationCache);
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-				
-		
-	}
-
-	private Double generaTasaPeriodo(boolean flagIva){
-		/*
-		double ta = getTasaTotal();
-		double n = Double.parseDouble(getFrequencyAnual()+"");
-		//return (double)Math.round((ta/n)*100)/100;
-		double tp = 0D;
-		if(flagIva){
-			tp = (double)Math.round((((ta/100)/n)*(1+getIva()))*10000)/10000;
-		}else{
-			tp = (double)Math.round((((ta/100)/n))*10000)/10000;
-		}
-		setTasaPeriodoPorc((double)Math.round((tp*100)*100)/100);
-		return tp;
-		*/
-		
-		double taP = getTasaTotal()/100;
-		double tp = 0D;
-		
-		if(flagIva){
-			
-			tp = (double)Math.round(((taP/360)*(1+getIva()))*100000000)/100000000;
-			
-		}else{
-			
-			tp = (double)Math.round((taP/360)*100000000)/100000000;
-			
-		}
-		
-		return tp*getDiasFreq();
-		
-	}
-
-	
-	/*private Double generaTEA(){
-		Double t = getTasaTotal();
-		double n = Double.parseDouble(getFrequencyAnual()+"");
-		Double t1 = (double)Math.round((t/(n))*100)/100;
-		Double t2 = Math.pow((1+t1), (1/n));
-		
-		Double t3 = (t2-1)*100;
-		
-		Double t4 = (double)Math.round(t3*100)/100;
-		return t4;
-	}*/
-	
-	public void saveSimulator(){
-		
+	public void saveSimulator()
+	{	
 		int prospectus_id = sesion.getProspectus_id();
 		
 		/*
@@ -1063,7 +488,8 @@ implements Serializable
 		}
 	}
 	
-	public void creaTablaAmort(){
+	public void creaTablaAmort()
+	{
 		Double montoTotal;
 		Double interes;
 		Double iva;
@@ -1087,7 +513,8 @@ implements Serializable
 		res += "<td>Capital</td>";
 		//res += "<td>Monto Restante</td></tr>";
 		
-		for(int i = 1; i<=getNumCuota(); i++){
+		for(int i = 1; i<=getNumCuota(); i++)
+		{
 			interes = (double)Math.round(((tasa)*montoTotal)*100)/100;
 			iva = (double)Math.round(((getIva()*interes)/(getIva()+1))*100)/100;
 			interes = interes-iva;
@@ -1118,7 +545,8 @@ implements Serializable
 		setTableAmort(res);
 	}
 
-	public void clearSim(){
+	public void clearSim()
+	{
 		setAmmount(15000d);
 		setAmmountStr("15,000");
 		setFrequency_id(4);
@@ -1130,12 +558,8 @@ implements Serializable
 		setTasaTotal(52.6D);
 	}
 	
-	public void sendMail()
+	public Double getCuotaByFormula(boolean flagIva, boolean isSafiSimulation)
 	{
-		
-	}
-
-	public Double getCuotaByFormula(boolean flagIva, boolean isSafiSimulation){
 		setNumCuota(generaNumCuotas());
 		setTasaPeriodo(generaTasaPeriodo(flagIva));
 		Double intper = getTasaPeriodo();
@@ -1232,69 +656,8 @@ implements Serializable
 		
 	}
 	
-	public String getGuardarAction() {
-		
-		if(isConnected())
-			guardarAction = "<a id='save' href='#'>Guarda tu simulación para próximas visitas (reg).</a>";
-		else{
-			guardarAction = "<a id='inlineSave' href='#formRegistro'>Guarda tu simulación para próximas visitas.</a>";
-		}
-		return guardarAction;
-	}
-
-	public void setGuardarAction(String guardarAction) {
-		this.guardarAction = guardarAction;
-	}
-
-	public String getMailAction() {
-		if(isConnected())
-			mailAction = "<a id='send' href='#formRegistro'>Enviamos tu simulación por mail (reg).</a>";
-		else{
-			mailAction = "<a id='inlineMail' href='#formRegistro'>Enviamos tu simulación por mail.</a>";
-		}
-		return mailAction;
-	}
-
-	public void setMailAction(String mailAction) {
-		this.mailAction = mailAction;
-	}
-	
-	private boolean isConnected(){
-		
-		if(sesion.getProspectus_id()!=null&&sesion.getProspectus_id()>0)
-			return true;
-		else
-			return false;
-		
-	}
-
-	private String formatDec(String valor)
+	public void simulaLst()
 	{
-		String res;
-		valor = valor.replace("$", "");
-		
-		String[] arrayValor = valor.split("\\.");
-		
-		if(arrayValor.length < 2)
-		{
-			//res=valor+".00";
-			res = valor;
-			
-		} else {
-			
-			if(arrayValor[1].length() < 2)
-			{
-				arrayValor[1]= arrayValor[1] + "0";
-			}
-			
-			res = arrayValor[0]+"."+arrayValor[1];
-		}
-		
-		return res;
-	}
-	
-	public void simulaLst(){
-
 		lstSim = new ArrayList<SimBeanForList>();
 		
 		lstSim.clear();
@@ -1381,105 +744,6 @@ implements Serializable
 			
 			simulador_E = lstSim.get(2);
 			
-		}
-		
-		
+		}				
 	}
-
-	public String getIvaInteresStr() 
-	{
-		return formatDec(dec.format(getIvaInteres()));
-	}
-	
-	public String getTotalRecibir() {
-		
-		Double d =  getAmmount() - (getAmmount() * (getComisionApertura()/100));
-		
-		d = (double) Math.round(d*100)/100;
-		
-		totalRecibir = dec.format(d);
-		
-		return totalRecibir;
-	}
-
-	public void setTotalRecibir(String totalRecibir) {
-		this.totalRecibir = totalRecibir;
-	}
-
-	public Double getComisionApertura() {
-		
-		if(sesion.getOpeningCommission()!=null){
-			comisionApertura = sesion.getOpeningCommission();
-		}
-		
-		return comisionApertura;
-	}
-
-	public void setComisionApertura(Double comisionApertura) {
-		this.comisionApertura = comisionApertura;
-	}
-	
-	public boolean isClientePriceShoes(){
-		
-		MembershipPK mpk = new MembershipPK();
-		
-		mpk.setCompany_id(sesion.getCompany_id());
-		mpk.setProspectus_id(sesion.getProspectus_id());
-		
-		Membership member =  membershipservice.getMembershipById(mpk);
-		
-		if( member.getRegistration_reason_id() != null && member.getRegistration_reason_id() == 8 ){
-			
-			return true;
-			
-		}else{
-			
-			return false;
-			
-		}
-		
-	}
-	
-	private void setActualRate(){
-		if(isConnected() && sesion.getArea().toString().equals("L"))
-		{
-			ProyectLoan proyectLoan=proyectLoanService.getMaxProyectLoanByProspect(sesion.getProspectus_id(),sesion.getCompany_id());
-			
-			if(proyectLoan!=null && proyectLoan.getScoring()!=null && proyectLoan.getScoring().getRate()!=null && proyectLoan.getScoring().getStatus()!=null && proyectLoan.getScoring().getStatus()==1  )
-			{
-				sesion.setRate(proyectLoan.getScoring().getRate());
-			}
-		}
-	}
-	
-	public void setProyectLoan( ProyectLoan proyectloan ){
-		
-		this.proyectLoan = proyectloan;
-		
-	}
-
-	public void setSimulador_A(SimBeanForList simulador_A) {
-		this.simulador_A = simulador_A;
-	}
-
-	public void setSimulador_C(SimBeanForList simulador_C) {
-		this.simulador_C = simulador_C;
-	}
-
-	public void setSimulador_E(SimBeanForList simulador_E) {
-		this.simulador_E = simulador_E;
-	}
-	
-	public SimBeanForList getSimulador_A() {
-		return simulador_A;
-	}
-
-	public SimBeanForList getSimulador_C() {
-		return simulador_C;
-	}
-
-	public SimBeanForList getSimulador_E() {
-		return simulador_E;
-	}
-	
 }

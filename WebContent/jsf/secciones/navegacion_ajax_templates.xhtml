@@ -4,37 +4,21 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-        	   
-        
-		<div id = "frm_content" class = "formFrm contenidoForm">
+	<div id = "frm_content" class = "formFrm contenidoForm">
 
-		<h:form prependId="false" id="frm_cont_lienzo">
-			<h:panelGroup id="pnlCntntLienzo" >
+		<h:form prependId = "false" id = "frm_cont_lienzo">
+			<h:panelGroup id = "pnlCntntLienzo" >
 				<ui:include src ="registro/pre_aprobacion/lienzo_preaprobacion.xhtml"/>
 			</h:panelGroup>
 		</h:form> 
 		
 	
-			<h:panelGroup id = "actualPage">
+		<h:panelGroup id = "actualPage">
 			
-				<ui:include src = "registro/avisoCamposVacios.xhtml"/>  
-				<!-- ui:include src = "registro/rechazoAutomatico.xhtml"/-->
-				<ui:include src = "#{navigationBean.paginaActual}.xhtml" />
-		
+			<ui:include src = "registro/avisoCamposVacios.xhtml"/>  				
+			<ui:include src = "#{navigationBean.paginaActual}.xhtml" />
 				
-				<!-- script>
-					if( $("#frm_content").height() > $(".helpFrm").height() + 50 )
-					{
-						$("#contFrmReg").height( ($("#frm_content").height() + 50) + "px");
-						
-					} else {
-						$("#contFrmReg").height( ($(".helpFrm").height() + 150 ) + "px");	
-					}		
-					
-				</script-->   
-				
-					
-				           
-			</h:panelGroup>
-		</div>				
+			<!-- ui:include src = "registro/rechazoAutomatico.xhtml"/-->				           
+		</h:panelGroup>
+	</div>				
 </ui:composition>				

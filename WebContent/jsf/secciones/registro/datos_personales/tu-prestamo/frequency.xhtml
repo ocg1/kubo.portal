@@ -1,0 +1,45 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field">		
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "¿Cómo te gustaría pagar tu préstamo? "/>
+		</div>
+						
+		<div class = "selectNuevo">
+								
+			<h:selectOneMenu id = "frecuProyect" value = "#{simulator.frequency_id}" styleClass = "validatorClass" >
+				<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "" />
+				
+				<f:selectItems  value = "#{simulator.listFrequency}" var = "frequency" 
+								itemLabel = "#{frequency.name}" 
+								itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+				
+				<p:ajax event = "change" update = ":contSimReg" 
+					    listener   = "#{simulator.simulaCred(false)}" 				    
+					    onstart    = "return simulatorMirror();" 
+					    oncomplete = "return showRes();" />  
+			</h:selectOneMenu>
+		</div>	
+		
+		<div class = "selectNuevo">
+			<h:selectOneMenu id = "simulador-frequency-id" immediate = "true" styleClass = "elementStlSelMonth"
+							 value = "#{basicData.simulador.frequency_id}" >
+								 
+				<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "0" />
+					
+				<f:selectItems  value = "#{simulator.listFrequency}" var = "frequency" 
+								itemLabel = "#{frequency.name}" 
+								itemValue = "#{frequency.frequencyPK.frequency_id}"/>
+								
+					<p:ajax event      = "change" 
+							onstart    = "return simulatorMirror();" 
+							oncomplete = "Simulador.info_oncomplete(xhr, status, args);"  
+							listener   = "#{basicData.simulador.initSelectOneMenu}" />  
+			</h:selectOneMenu>	
+		</div>
+	</div>				
+</ui:composition>				

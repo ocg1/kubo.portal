@@ -3,6 +3,7 @@ console.log("mx.com.kubo.core/registro-main-config.js");
 var Kubo = window.Kubo || {};
 
 Kubo.Registro                           = window.Kubo.Registro || {};
+Kubo.Registro.Simulador                 = window.Kubo.Registro.Simulador || {};
 Kubo.Registro.Domicilio                 = window.Kubo.Registro.Domicilio || {};
 Kubo.Registro.DatosPersonales           = window.Kubo.Registro.DatosPersonales || {};
 Kubo.Registro.DatosPersonales.Historial = window.Kubo.Registro.DatosPersonales.Historial || {};
@@ -25,6 +26,7 @@ Kubo.Inversionista.Registro.Beneficiario.Domicilio = window.Kubo.Inversionista.R
 
 var percentageFlag = false;
 
+var Simulador       = Kubo.Registro.Simulador;
 var Domicilio       = Kubo.Registro.Domicilio;
 var DatosPersonales = Kubo.Registro.DatosPersonales;
 var Historial       = Kubo.Registro.DatosPersonales.Historial;

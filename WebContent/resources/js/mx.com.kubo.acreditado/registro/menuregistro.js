@@ -1,4 +1,4 @@
-console.log("mx.com.kubo.acreditado/registro/menuregistro.init");
+console.log("menuregistro.js");
 			
 function showRes()
 {

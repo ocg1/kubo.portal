@@ -1,0 +1,44 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "field">		
+	
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="#{msg.Purpose_loan}"/>
+		</div>					
+					
+		<div class = "selectNuevo">
+									
+			<h:selectOneMenu id = "proposito_prestamo" 
+							 value = "#{simulator.purpose_id}" 
+							 styleClass = "elementStlSelAddress validatorClass requiredVerify hs_class">
+							 
+				<f:selectItem itemLabel = "" itemValue = "0"  />
+				
+				<f:selectItems value = "#{simulator.listPurpose}" var = "purpose" style = "color: #FF0000 !important;"  
+							   itemLabel = "#{purpose.name}" 							    
+							   itemValue = "#{purpose.purposePK.purpose_id}"/>
+							   
+				<p:ajax event = "change" listener = "#{simulator.simulaCred(false)}"  />  
+			</h:selectOneMenu>							
+		</div>	
+		
+		<div class = "selectNuevo">
+			<h:selectOneMenu id = "simulador-purpose-id" value = "#{basicData.simulador.purpose_id}" immediate = "true">
+			
+				<f:selectItem  itemLabel = "" itemValue = "0" />
+				
+				<f:selectItems value = "#{simulator.listPurpose}" var = "purpose" 
+							   itemLabel = "#{purpose.name}"  
+							   itemValue = "#{purpose.purposePK.purpose_id}"/>
+							   
+				<p:ajax event = "change"
+						oncomplete = "Simulador.info_oncomplete(xhr, status, args);" 
+						listener   = "#{basicData.simulador.initSelectOneMenu}"/>  
+			</h:selectOneMenu>		
+		</div>																				
+	</div>				
+</ui:composition>				
