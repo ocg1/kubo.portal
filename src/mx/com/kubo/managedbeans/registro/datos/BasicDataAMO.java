@@ -43,6 +43,7 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SavingAccountPK;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.model.SystemParam;
@@ -189,6 +190,33 @@ public abstract class BasicDataAMO extends BasicDataDMO
 	
 	protected void init_simulador() 
 	{		
+		SimulatorBean sim = simulatorService.getMaxSimulationProspect(prospectus_id, company_id) ;
+		
+		if(sim != null)
+		{
+			simulator.setAmmount(sim.getAmmount());
+			simulator.setFrequency_id(sim.getFrequency_id());
+			
+			if(sesion.getRate()!= null)
+			{
+				simulator.setTasaTotal(sesion.getRate());
+				
+			} else {
+				
+				simulator.setTasaTotal(61.50D);
+			}
+			
+			if( sim.getTerm_id() != null )
+			{
+				simulator.setTerm_id(sim.getTerm_id());
+			}
+			
+			if( sim.getPurpose_id() != null )
+			{
+				simulator.setPurpose_id(sim.getPurpose_id());
+			}
+		}
+		
 		simulador = new SimuladorIMP();
 		simulador.setService_change_control(service_change_control);
 		simulador.setSesion(sesion);			

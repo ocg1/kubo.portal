@@ -9,11 +9,12 @@ import mx.com.kubo.managedbeans.TablaAmortizacion;
 public class CreditSimulatorIMP extends CreditSimulatorAMO
 implements CreditSimulatorIMO
 {	
-	public CreditSimulatorIMP(int term_id)
+	public CreditSimulatorIMP(int term_id, int purpose_id)
 	{
 		super();
 		
 		this.term_id = term_id;
+		this.purpose_id = purpose_id;
 	}
 	
 	

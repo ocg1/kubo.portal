@@ -27,6 +27,11 @@ implements SimuladorIMO
 	protected Simulator simulator;
 	protected SimulatorBean simulation;
 	
+	protected Locale locale;
+	protected DecimalFormatSymbols symbols;
+	protected DecimalFormat decimalFormat;
+	
+	private final String pattern;
 	protected String ammount_value;	
 	
 	protected Double tasaTotal;
@@ -39,6 +44,16 @@ implements SimuladorIMO
 	
 	protected SimuladorDMO()
 	{				
+		locale = new Locale("es", "MX");
+
+		symbols = new DecimalFormatSymbols(locale);
+		symbols.setDecimalSeparator('.');
+		symbols.setGroupingSeparator(',');
+		
+		pattern = "###,###.##";
+			    
+	    decimalFormat = new DecimalFormat(pattern, symbols);
+	    
 		ammount_value = "50,000";
 		ammount = 50000.00;
 		
@@ -51,16 +66,7 @@ implements SimuladorIMO
 	}
 	
 	public void setSimulator(Simulator simulator)
-	{
-		Locale locale = new Locale("es", "MX");
-
-		DecimalFormatSymbols symbols = new DecimalFormatSymbols(locale);
-		symbols.setDecimalSeparator('.');
-		symbols.setGroupingSeparator(',');
-		
-	    String pattern = "###,###.##";
-	    DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
-	    
+	{	    
 	    this.simulator = simulator;
 	     
 		ammount       = simulator.getAmmount();

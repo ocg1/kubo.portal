@@ -30,11 +30,15 @@ implements SimuladorIMO
 		{						
 			try
 			{
-				String value = input_text.getValue().toString();
-												
-				ammount = Double.parseDouble(value.replace(",", "").replace("$",""));								
+				original_value = decimalFormat.format(simulator.getAmmount());
 				
-				init_change_control("ammount", ammount_value, value);
+				original_value = original_value.replace(",", "").replace("$","");
+				
+				new_value = input_text.getValue().toString();
+												
+				ammount = Double.parseDouble(new_value.replace(",", "").replace("$",""));									
+				
+				init_change_control("ammount", original_value, new_value);
 				init_simulator();
 				
 				request.addCallbackParam("ammount", ammount);
