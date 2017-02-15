@@ -1,0 +1,39 @@
+<ui:composition
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:p  = "http://primefaces.org/ui">
+	
+	<div  class="field validacionLadaContainer">
+		<div class="dvLabel">
+			<h:outputLabel styleClass="labelsStl" value="Teléfono fijo (casa u oficina)" />
+		</div>
+			
+		<div class="leyendas">Por favor ingresa los diez dígitos de tu número telefónico</div>
+		
+		<i class="fa fa-phone"></i>
+											
+		<h:inputText id="phoneFixed_employ" maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"   styleClass="elementAddres1 phone_box_big2 hs_class" value="#{basicData.phoneFixedPropectus}">
+			<p:ajax event="blur"  listener="#{basicData.updatePhoneProspectus}"  ></p:ajax>
+		</h:inputText>
+		
+		<p:watermark for="phoneFixed_employ" value="LADA y teléfono"/>																					
+	</div>
+				
+	<div class="avisoDocs" style="display:block; overflow:initial !important; margin:20px 0 20px;" >
+		<i class="fa fa-caret-up"></i>
+					
+		<p class="parrafo_b">¿Cómo escribir correctamente tu número?</p>
+		
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td><p ><strong>55</strong>34567845</p></td>	
+				<td><p><i class="fa fa-check"></i> Correcto	</p></td>
+			</tr>
+			<tr>
+				<td><p>34567845</p></td>
+				<td><p><i class="fa fa-times"></i>Incorrecto</p></td>
+			</tr>						
+		</table>											
+	</div>	
+</ui:composition>	

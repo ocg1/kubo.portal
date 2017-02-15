@@ -529,7 +529,7 @@ public abstract class BasicDataAMO extends BasicDataDMO
 	}
 	
 	protected void init_telefonos() 
-	{
+	{						
 		thisPhoneFixed = phoneService.getPhoneByTypeByArea(sesion.getProspectus_id(), sesion.getCompany_id(), 5,sesion.getArea());
 		thisPhoneCell  = phoneService.getPhoneByTypeByArea(sesion.getProspectus_id(),sesion.getCompany_id(), 6,sesion.getArea());
 
@@ -537,6 +537,7 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		{
 			thisPhoneFixed = new Phone();
 			hasPhoneFixedProspectus = (false);
+			
 		} else {
 			
 			if (thisPhoneFixed.getPhone_number() != null) 
@@ -547,7 +548,9 @@ public abstract class BasicDataAMO extends BasicDataDMO
 				{
 					ladaFixedProspectus = array[0].replace("(", "").trim();
 					phoneFixedPropectus = ladaFixedProspectus + array[1];
-				}else{
+					
+				} else {
+					
 					phoneFixedPropectus = thisPhoneFixed.getPhone_number();
 				}
 			}
@@ -559,7 +562,9 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		{
 			thisPhoneCell = new Phone();
 			hasPhoneCell = false;
+			
 		} else {
+			
 			if (thisPhoneCell.getPhone_number() != null) 
 			{
 				String array[] = getThisPhoneCell().getPhone_number().split("\\)");

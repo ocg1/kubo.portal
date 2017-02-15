@@ -53,6 +53,7 @@ import mx.com.kubo.registro.datos.genero.GeneroIMO;
 import mx.com.kubo.registro.datos.moral.PersonaMoralIMO;
 import mx.com.kubo.registro.datos.nombre.PersonNameIMO;
 import mx.com.kubo.registro.datos.pais.PaisOrigenIMO;
+import mx.com.kubo.registro.datos.phone.TelefonoIMO;
 import mx.com.kubo.registro.datos.simulador.SimuladorIMO;
 import mx.com.kubo.registro.datos.state.BirthPlaceIMO;
 import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMO;
@@ -244,6 +245,7 @@ implements BasicDataIMO
 	protected       DomicilioIMO fiscal;	
 	protected     NotificadorIMO notificador;
 	protected       SimuladorIMO simulador;
+	protected        TelefonoIMO phone;
 	
 	protected Access access;
 	protected Phone   thisPhoneFixed;

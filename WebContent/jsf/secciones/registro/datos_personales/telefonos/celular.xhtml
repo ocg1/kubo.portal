@@ -1,0 +1,59 @@
+<ui:composition
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:p  = "http://primefaces.org/ui" >
+
+	<div class="field">
+		<div class="dvLabel">
+			<!-- h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_cell_text}" /-->
+			<label class="labelsStl">Tu teléfono celular <span style="color:red">(obligatorio)</span></label>
+		</div>
+		
+		<div class="leyendas">Por favor ingresa los trece dígitos de tu número celular</div>
+		
+		<div class=" validacionLadaContainer" >
+			<i class="fa iconoValidacion"><span></span></i>
+								
+			<!-- h:outputLabel styleClass="labelsStl" value="044/045"/-->
+			<input type="text" class="validacionLadaField  validatorClass" id="usuarioTelCel" onkeyup="validacionLada(this)" onblur="validacionLada2(this)" maxlength="13" onkeypress="return validateTelephono(event, this);" placeholder="Escribe LADA y teléfono" />
+									
+			<h:inputText id = "phoneCel_employ" value = "#{basicData.phoneCellProspectus}" maxlength = "20" 
+						 style = "display:none" styleClass = "elementAddres1  phone_box_big hs_class validatorClass telephone"
+						 onkeypress = "return validateTelephono(event, this);"  						  
+						 onfocus    = "abrirSiguiente()" 
+						 onchange   = "valueGreaterSix(this);" >
+						 
+				<p:ajax event = "blur" listener = "#{basicData.updatePhoneCellProspectus}" />
+				
+			</h:inputText>
+									
+			<p:watermark for="phoneCel_employ" value="Escribe LADA y teléfono"></p:watermark>
+									
+			<script>
+				resetMirrorTelefono(".validacionLadaContainer");
+			</script>
+		</div>
+			
+		<div class="error-telefono">Tu número debe comenzar con 044 y LADA</div>
+		
+		<div class="avisoDocs" style="display:block; overflow:initial !important; margin:20px 0 20px;" >
+			<i class="fa fa-caret-up"></i>
+					
+			<p class="parrafo_b">¿Cómo escribir correctamente tu número?</p>
+			
+			<table cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td><p ><strong>044</strong>7775640708</p></td>	
+					<td><p><i class="fa fa-check"></i> Correcto</p></td>
+				</tr>
+				<tr>
+					<td><p>5640708</p></td>
+					<td><p><i class="fa fa-times"></i>Incorrecto</p></td>
+            	</tr>						
+			</table>												
+		</div>
+						
+		<div class="alerta"></div>
+	</div>	
+</ui:composition>				
