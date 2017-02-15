@@ -9,8 +9,8 @@
 			<h:outputLabel styleClass = "labelsStl" value = "¿Cómo te gustaría pagar tu préstamo? "/>
 		</div>
 						
-		<div class = "selectNuevo">
-								
+		<div class = "selectNuevo">		
+<!-- 
 			<h:selectOneMenu id = "frecuProyect" value = "#{simulator.frequency_id}" styleClass = "validatorClass" >
 				<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "" />
 				
@@ -23,10 +23,8 @@
 					    onstart    = "return simulatorMirror();" 
 					    oncomplete = "return showRes();" />  
 			</h:selectOneMenu>
-		</div>	
-		
-		<div class = "selectNuevo">
-			<h:selectOneMenu id = "simulador-frequency-id" immediate = "true" styleClass = "elementStlSelMonth"
+-->			
+			<h:selectOneMenu id = "simulador-frequency-id" immediate = "true" styleClass = "validatorClass"
 							 value = "#{basicData.simulador.frequency_id}" >
 								 
 				<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "0" />
@@ -39,7 +37,7 @@
 							onstart    = "return simulatorMirror();" 
 							oncomplete = "Simulador.info_oncomplete(xhr, status, args);"  
 							listener   = "#{basicData.simulador.initSelectOneMenu}" />  
-			</h:selectOneMenu>	
-		</div>
+			</h:selectOneMenu>			
+		</div>	
 	</div>				
 </ui:composition>				

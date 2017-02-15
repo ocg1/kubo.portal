@@ -131,7 +131,7 @@ public abstract class SimulatorDMO
 	private String termMax;
 	private String loanTypeID = null;
 	
-	protected Double tasaTotal=52.6d;  /////////////////////////////////  TASA  TOTAL
+	protected Double tasaTotal=52.6d;
 	private Double iva=0.16d;
 	private Double ivaInteres=0d;
 	private Double interes=0d;

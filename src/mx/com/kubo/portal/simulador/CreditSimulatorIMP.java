@@ -17,7 +17,6 @@ implements CreditSimulatorIMO
 		this.purpose_id = purpose_id;
 	}
 	
-	
 	public CreditSimulatorIMP(int term_id, Double payment)
 	{
 		super();
@@ -62,8 +61,7 @@ implements CreditSimulatorIMO
 		CAT_calculator.setTotalPagar(totalPagar);
 		CAT_calculator.setAmortization(amortization);
 		CAT_calculator.setTasaTotal(tasaTotal);
-		CAT_calculator.setComisionApertura(comisionApertura);
-		//CAT_calculator.setpro
+		CAT_calculator.setComisionApertura(comisionApertura);		
 		CAT_calculator.setSafiSimulation(false);
 		//CAT_calculator.setSesion(sesion);
 		CAT_calculator.init();

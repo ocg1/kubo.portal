@@ -3,14 +3,12 @@ package mx.com.kubo.portal.simulador;
 import mx.com.kubo.model.SimulatorBean;
 
 public interface CreditSimulatorIMO 
-{
-	//void init( int prospectus_id, int company_id );	 
-
+{	
 	void setAmmount(double ammount);
 	
 	void setFrequency_id(int frequency_id);
 	
-	void simulaCred(boolean isSafi);
+	//void simulaCred(boolean isSafi);
 	
 	void init_cuota_by_formula();		
 	void init_cat_SAFI();
@@ -20,11 +18,6 @@ public interface CreditSimulatorIMO
 	
 	public void setTasaTotal(Double tasaTotal);
 	public void setComisionApertura(Double comisionApertura);
-	
-/*	
-	Double getPayment();
-	Double getCat();
-*/	
 	
 	SimulatorBean getSimulation();
 }

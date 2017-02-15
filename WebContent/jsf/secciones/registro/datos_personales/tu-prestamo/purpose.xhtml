@@ -9,9 +9,10 @@
 		<div class="dvLabel">
 			<h:outputLabel styleClass="labelsStl" value="#{msg.Purpose_loan}"/>
 		</div>					
-					
+				
+
 		<div class = "selectNuevo">
-									
+<!-- 
 			<h:selectOneMenu id = "proposito_prestamo" 
 							 value = "#{simulator.purpose_id}" 
 							 styleClass = "elementStlSelAddress validatorClass requiredVerify hs_class">
@@ -23,11 +24,10 @@
 							   itemValue = "#{purpose.purposePK.purpose_id}"/>
 							   
 				<p:ajax event = "change" listener = "#{simulator.simulaCred(false)}"  />  
-			</h:selectOneMenu>							
-		</div>	
-		
-		<div class = "selectNuevo">
-			<h:selectOneMenu id = "simulador-purpose-id" value = "#{basicData.simulador.purpose_id}" immediate = "true">
+			</h:selectOneMenu>	
+-->								
+
+			<h:selectOneMenu id = "simulador-purpose-id" value = "#{basicData.simulador.purpose_id}" immediate = "true" styleClass = "elementStlSelAddress validatorClass requiredVerify hs_class">
 			
 				<f:selectItem  itemLabel = "" itemValue = "0" />
 				
@@ -38,7 +38,7 @@
 				<p:ajax event = "change"
 						oncomplete = "Simulador.info_oncomplete(xhr, status, args);" 
 						listener   = "#{basicData.simulador.initSelectOneMenu}"/>  
-			</h:selectOneMenu>		
+			</h:selectOneMenu>	
 		</div>																				
 	</div>				
 </ui:composition>				

@@ -122,6 +122,22 @@ implements CreditSimulatorIMO
 		dec = NumberFormat.getCurrencyInstance(locale);
 	}
 	
+	public void setProspectus_id(int prospectus_id) {
+		this.prospectus_id = prospectus_id;
+	}
+
+	public void setCompany_id(int company_id) {
+		this.company_id = company_id;
+	}
+
+	public void setTasaTotal(Double tasaTotal) {
+		this.tasaTotal = tasaTotal;
+	}
+
+	public void setComisionApertura(Double comisionApertura) {
+		this.comisionApertura = comisionApertura;
+	}
+	
 	public void setAmmount(double ammount)
 	{
 		this.ammount = ammount;
@@ -182,45 +198,4 @@ implements CreditSimulatorIMO
 	{
 		return simulation;
 	}
-	
-	public String getTotalRecibir()
-	{
-		return totalRecibir;
-	}
-
-	public Double getRate() {
-		return rate;
-	}
-
-	public void setRate(Double rate) {
-		this.rate = rate;
-	}
-
-	public void setProspectus_id(int prospectus_id) {
-		this.prospectus_id = prospectus_id;
-	}
-
-	public void setCompany_id(int company_id) {
-		this.company_id = company_id;
-	}
-
-	public void setTasaTotal(Double tasaTotal) {
-		this.tasaTotal = tasaTotal;
-	}
-
-	public void setComisionApertura(Double comisionApertura) {
-		this.comisionApertura = comisionApertura;
-	}
-	
-/*	
-	public Double getPayment()
-	{
-		return payment;
-	}
-	
-	public Double getCat()
-	{
-		return cat;
-	}
-*/	
 }

@@ -69,10 +69,11 @@ implements SimuladorIMO
 	{	    
 	    this.simulator = simulator;
 	     
-		ammount       = simulator.getAmmount();
-		ammount_value = decimalFormat.format(simulator.getAmmount());
+	    tasaTotal     = simulator.getTasaTotal();
 		purpose_id    = simulator.getPurpose_id();
 		frequency_id  = simulator.getFrequency_id();
+		ammount       = simulator.getAmmount();
+		ammount_value = decimalFormat.format(simulator.getAmmount());
 	}
 
 	public String getAmmount_value() 

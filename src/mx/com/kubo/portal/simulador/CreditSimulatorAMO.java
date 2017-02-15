@@ -26,41 +26,27 @@ public abstract class CreditSimulatorAMO extends CreditSimulatorDMO
 {
 	protected void init_rate() 
 	{
-		/*if(isConnected )
-		{*/
-//			int prospectus_id = sesion.getProspectus_id();
-//			int company_id    = sesion.getCompany_id();
+		proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
 			
-			proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
-		/*}
+		Scoring score = null;
+		Double rate = null;
+		Integer status = null;
 		
-		if(isConnected && sesion.getArea().toString().equals("L"))
+		if(proyectLoan != null)
 		{
-			int prospectus_id = sesion.getProspectus_id();
-			int company_id    = sesion.getCompany_id();
-			*/
-			proyectLoan = proyectLoanService.getMaxProyectLoanByProspect(prospectus_id, company_id);
-			
-			Scoring score = null;
-			Double rate = null;
-			Integer status = null;
-			
-			if(proyectLoan != null)
-			{
-				score = proyectLoan.getScoring();
-			}			
-			
-			if(score != null)
-			{
-				rate   = score.getRate();
-				status = score.getStatus();
-			}
-			
-			if(rate != null && status !=null && status == 1)
-			{
-				setRate(rate);
-			}
-		//}
+			score = proyectLoan.getScoring();
+		}			
+		
+		if(score != null)
+		{
+			rate   = score.getRate();
+			status = score.getStatus();
+		}
+		
+		if(rate != null && status !=null && status == 1)
+		{
+			this.rate = rate;
+		}
 	}
 	
 	protected Integer generaNumCuotas()

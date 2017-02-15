@@ -12,9 +12,7 @@ public abstract class SimuladorAMO extends SimuladorDMO
 	{				
 		request = RequestContext.getCurrentInstance();
 		
-		credit_simulator = new CreditSimulatorIMP(term_id, purpose_id);
-		
-		//credit_simulator.setSesion(sesion);
+		credit_simulator = new CreditSimulatorIMP(term_id, purpose_id);				
 		
 		credit_simulator.setProspectus_id( prospectus_id );
 		credit_simulator.setCompany_id( company_id );		

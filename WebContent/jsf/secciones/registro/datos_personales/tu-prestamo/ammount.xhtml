@@ -8,8 +8,9 @@
 		<div class = "dvLabel">
 			<h:outputLabel styleClass="labelsStl" value = "¿Cuánto dinero necesitas?"/>
 		</div>
-			<!-- styleClass = "elementAddres1 validatorClass hs_class" -->	
-		<h:inputText id = "ammount_input" value = "#{simulator.ammount}" styleClass = "elementAddres1 hs_class" 
+<!-- 	
+		<h:inputText id = "ammount_input" value = "#{simulator.ammount}" 
+					 styleClass = "elementAddres1 validatorClass hs_class" 
 					 onkeyup = "return format(this,'simulator');"						
 					 onfocus = " ayuda('.ayuda1');"
 					 onblur  = " ayudaQuitar();">
@@ -24,8 +25,10 @@
 		</h:inputText>
 		
 		<br/>
+-->
 		
 		<h:inputText id = "simulador_ammount" value = "#{basicData.simulador.ammount_value}" immediate = "true"
+					 styleClass = "elementAddres1 validatorClass hs_class"
 					 onkeyup = "return format(this,'simulator');"
 					 onfocus = "Simulador.init_focus_date();"
 					 onblur  = " ayudaQuitar();">
