@@ -66,7 +66,7 @@
 	    	   $('#prAction').trigger("click");
 	    	    $(".cargandoNuevo").addClass("show");
 		    	$(".velo").fadeIn();
-	    	 
+		    	googleEvents ('registro-credito', 'clic iniciar solicitud', 'boton iniciar solicitud');
 		}
         
 		function noAcepta(){

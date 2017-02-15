@@ -929,6 +929,9 @@ var buttonClick;
 						if($("#frm_info_basic_loan").is(":visible")) {
 							$("#hdNext\\:siguienteDocPLD").click();
 							  GTM_eventos ('Sobre ti');
+							  googleEvents ('solicitud-credito', 'clic ir a documentacion', 'boton ir a documentacion');
+
+
 							 //dataLayer.push({'event': 'Sobre ti'});
 							 console.log('Sobre ti');
 						}
@@ -937,6 +940,8 @@ var buttonClick;
 							$("#hdNext\\:siguientePrep").click();
 							
 							 GTM_eventos ('Ingresos y gastos')
+							 googleEvents ('solicitud-credito', 'clic ir a sobre mi', 'boton ir a sobre mi');
+
 							// dataLayer.push({'event': 'Ingresos y gastos'});
 							 console.log('Ingresos y gastos');
 						}
@@ -947,18 +952,18 @@ var buttonClick;
 							 //dataLayer.push({'event': 'Referencias'});
 							 
 							 GTM_eventos ('Referencias')
-							 
+							  googleEvents ('solicitud-credito', 'clic ir a PLD', 'boton ir a PLD');
 							 console.log('Referencias');
 						}
 						
 						if($("#buttons > #menu6").hasClass("menuItemSel") && $("#area").val() == "L"){
 							//$("#hdNext\\:siguienteCierre").click();
 							$("#hdNext\\:siguienteMasInfo").click();
-							console.log("entro a esta que no tiene que ver");
 							
 							 GTM_eventos ('Enviar Documentos')
 							 //dataLayer.push({'event': 'Enviar Documentos'});
 							 console.log('Enviar Documentos');
+							 googleEvents ('solicitud-credito', 'clic ir referencias', 'boton ir a referencias');
 						}
 						if(element == "datosPersonales" ) {
 							$("#hdNext\\:nextInvestor").click();

@@ -264,6 +264,8 @@ implements ProspectusDao
 							.setParameter("par_phone_mobile", 		hs_obj.getMobil_value())
 							.setParameter("par_area", 				hs_obj.getArea())
 							.setParameter("par_registration_reason", 				hs_obj.getRegistration_reason_id())
+							.setParameter("par_utm_medium",			hs_obj.getUrl_medium())
+							.setParameter("par_utm_campaign",		hs_obj.getUrl_campaign())
 					  
 	    		.getSingleResult();
 			  

@@ -29,7 +29,7 @@
 						<!-- h:outputLabel styleClass="labelsStl" value="#{msg.Telephone_cell_text}" /-->
 						<label class="labelsStl">Tu teléfono celular <span style="color:red">(obligatorio)</span></label>
 					</div>
-					<div class="leyendas">Deben ser 13 dígitos</div>
+					<div class="leyendas">Por favor ingresa los trece dígitos de tu número celular</div>
 					<div class=" validacionLadaContainer" >
 								<i class="fa iconoValidacion"><span></span></i>
 								
@@ -61,7 +61,7 @@ Tiene que ser un número válido, al cual te contactaremos para entregarte tu pr
 						<table cellspacing="0" cellpadding="0" border="0">
 							<tr>
 								<td>
-									<p ><strong>0447775640708</strong></p>
+									<p ><strong>044</strong>7775640708</p>
 								</td>	
 								<td>
 									<p>
@@ -74,7 +74,7 @@ Tiene que ser un número válido, al cual te contactaremos para entregarte tu pr
 								 <td>
 							
 									<p>
-										<strong>5640708</strong>
+									5640708
 									</p>
 								 </td>
 								 <td>
@@ -95,7 +95,7 @@ Tiene que ser un número válido, al cual te contactaremos para entregarte tu pr
 						<h:outputLabel styleClass="labelsStl" value="Teléfono fijo (casa u oficina)" />
 					</div>
 			
-					<div class="leyendas">Ejemplo:5589273234</div>
+					<div class="leyendas">Por favor ingresa los diez dígitos de tu número telefónico</div>
 					<i class="fa fa-phone"></i>
 									<!-- Cambios UX 2.41.2 Gabriel Martínez quito la clase para que  este campo se considere opcional, en java se modifco en el texto -->
 									<h:inputText id="phoneFixed_employ" maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"   styleClass="elementAddres1 phone_box_big2 hs_class" value="#{basicData.phoneFixedPropectus}">
@@ -107,7 +107,38 @@ Tiene que ser un número válido, al cual te contactaremos para entregarte tu pr
 						
 					</div>
 				
-				
+					<div class="avisoDocs" style="display:block; overflow:initial !important; margin:20px 0 20px;" >
+						<i class="fa fa-caret-up"></i>
+					
+						<p class="parrafo_b">¿Cómo escribir correctamente tu número?</p>
+						<table cellspacing="0" cellpadding="0" border="0">
+							<tr>
+								<td>
+									<p ><strong>55</strong>34567845</p>
+								</td>	
+								<td>
+									<p>
+										<i class="fa fa-check"></i> Correcto
+						
+								 </p>
+								 </td>
+						</tr>
+						<tr>
+								 <td>
+							
+									<p>
+										34567845
+									</p>
+								 </td>
+								 <td>
+								 	  <p><i class="fa fa-times"></i>Incorrecto</p>
+								 </td>
+            			</tr>
+						
+						</table>
+						
+						
+						</div>
 			
 
 	

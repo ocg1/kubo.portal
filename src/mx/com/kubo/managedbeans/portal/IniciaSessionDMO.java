@@ -172,6 +172,9 @@ public class IniciaSessionDMO
 	protected Integer prospectus_id;
 	protected Integer company_id;
 	
+	protected Integer prospectus_id_temp;
+	protected Integer company_id_temp;
+	
 	protected Boolean response_boolean;
 	
 	protected boolean sessionUsedB;

@@ -105,9 +105,19 @@ implements Serializable
 			login_check.setSesion(sesion);
 			login_check.init();
 		
+			membership = login_check.getMembership();
+			
+			if( membership != null && membership.getMembershipPK() != null ){
+				
+				prospectus_id_temp = membership.getMembershipPK().getProspectus_id();
+				company_id_temp = membership.getMembershipPK().getCompany_id();
+				
+			}
+			
 			warningUser                 = login_check.getCheck_msg_TOKEN();
 			membership_ENABLED          = login_check.isMembership_ENABLED();
-			desbloqueo_password_ENABLED = login_check.isDesbloqueo_password_ENABLED();		
+			desbloqueo_password_ENABLED = login_check.isDesbloqueo_password_ENABLED();	
+			
 			//kubo_person_ENABLED         = login_check.isKubo_person_ENABLED(); 
 			
 		}else{
@@ -515,9 +525,17 @@ implements Serializable
 	
 	public void savePendingNatification(){
 		
+		request = RequestContext.getCurrentInstance();
+		
 		PendingNotificationController pnc = new PendingNotificationController();
 		
-		pnc.initPendingNotificationOBJ(membership.getMembershipPK().getCompany_id(), prospectus_id, EVENT_TIENDA_DISPONIBLE);
+		if( prospectus_id_temp != null ){
+			
+			pnc.initPendingNotificationOBJ( company_id_temp , prospectus_id_temp, EVENT_TIENDA_DISPONIBLE);
+			
+			request.addCallbackParam("phone_number", pnc.getPhoneNumber(  company_id_temp,  prospectus_id_temp ));
+		
+		}
 		
 	}
 	

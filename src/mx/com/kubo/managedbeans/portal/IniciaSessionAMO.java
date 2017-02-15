@@ -26,10 +26,12 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.ScreenPK;
+import mx.com.kubo.model.SimulationConfig;
 import mx.com.kubo.model.SimulatorBean;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.segment.SegmentProspectus;
+import mx.com.kubo.services.SimulationConfigService;
 import mx.com.kubo.tools.Utilities;
 
 public class IniciaSessionAMO extends IniciaSessionDMO 
@@ -641,8 +643,84 @@ public class IniciaSessionAMO extends IniciaSessionDMO
 		
 		SimulatorBean sim = simulatorService.getMaxSimulationProspect(prospectus_id, company_id) ;
 		
-		if(sim != null)
-		{
+		if(  membership.getRegistration_reason() != null && membership.getRegistration_reason().getPartner() != null && membership.getRegistration_reason().getPartner().getPartnerPK().getPartner_id().equals("VMK") ){
+		
+			SimulationConfigService simconf =  simulator.getSimulationConfigService();
+			
+			SimulationConfig conf = simconf.getSimulationByPartnerIDandArea(membership.getRegistration_reason().getPartner().getPartnerPK().getPartner_id(), membership.getPerson().getProspectus().getArea().toString(), membership.getMembershipPK().getCompany_id());
+			
+			Double max_amm = Double.parseDouble( conf.getMax_amount() + "" );
+			Double min_amm = Double.parseDouble( conf.getMin_amount() + "" );
+			
+			
+			
+			if( sim != null ){
+				
+				if( max_amm < sim.getAmmount() && sim.getAmmount() < min_amm ){
+				
+					simulator.setAmmount(sim.getAmmount());
+				
+				}else{
+					
+					if( sim.getAmmount() < min_amm ){
+						
+						simulator.setAmmount( min_amm );
+						
+					}else if ( max_amm < sim.getAmmount() ){
+						
+						simulator.setAmmount( max_amm );
+						
+					}
+					
+				}
+				
+				simulator.setFrequency_id(sim.getFrequency_id());
+				
+				if(sesion.getRate()!= null)
+				{
+					simulator.setTasaTotal(sesion.getRate());
+					
+				} else {
+					
+					simulator.setTasaTotal(61.50D);
+				}
+				
+				if( sim.getTerm_id() != null )
+				{
+					simulator.setTerm_id(sim.getTerm_id());
+				}
+				
+				if( sim.getPurpose_id() != null )
+				{
+					simulator.setPurpose_id(sim.getPurpose_id());
+				}
+				
+			}else{
+				
+				simulator.setAmmount( max_amm );
+				
+				
+				if(sesion.getRate()!= null)
+				{
+					simulator.setTasaTotal(sesion.getRate());
+					
+				} else {
+					
+					simulator.setTasaTotal(61.50D);
+				}
+				
+				
+					simulator.setTerm_id(16); // 16
+					simulator.setFrequency_id(1); // Semanas
+					simulator.setPurpose_id(1); // 1.- Compra de mercancia 
+				
+				
+			}
+			
+			
+				
+		}else	if(sim != null){
+			
 			simulator.setAmmount(sim.getAmmount());
 			simulator.setFrequency_id(sim.getFrequency_id());
 			

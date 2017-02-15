@@ -126,7 +126,7 @@ Historial.person_data_oncomplete = function(xhr, status, args)
 		}
 	}
 	
-	ga('send', 'event', 'Leads', 'Antes de verificar');
+	//ga('send', 'event', 'Leads', 'Antes de verificar');
 }
 
 Historial.have_credit_oncomplete = function(xhr, status, args)

@@ -3,8 +3,7 @@ console.log("validacion.js");
 
 function validar_pre_registro() {
 console.log("entra");
-	
-	ga('send', 'event', 'Leads', 'Inicia Registro');
+
 	
 	var numeroElementos = $(".empezarRegistro input.validatorClass:visible, .empezarRegistro select.validatorClass:visible").length;
 	console.log("numeroElementos"+numeroElementos);	

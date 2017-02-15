@@ -4,16 +4,22 @@ import java.util.Date;
 import java.util.List;
 
 import mx.com.kubo.model.PendingNotification;
+import mx.com.kubo.model.Phone;
 import mx.com.kubo.services.PendingNotificationService;
+import mx.com.kubo.services.PhoneService;
 import mx.com.kubo.tools.Utilities;
 
 public class PendingNotificationController {
 	
 	PendingNotificationService pendingnotificationservice;
+	PhoneService phoneservice;
+	
 	List<PendingNotification> lstPending;
 	
 	public PendingNotificationController(){
 		pendingnotificationservice = Utilities.findBean("pendingNotificationServiceImp");
+		phoneservice = Utilities.findBean("phoneServiceImp");
+		
 	}
 	
 	public boolean updatePendingNotification( PendingNotification pending ){
@@ -45,5 +51,37 @@ public class PendingNotificationController {
 		
 	}
 	
+	
+	public String getPhoneNumber( int company_id, int prospectus_id ){
+		
+		try{
+			
+			String phone_str = "";
+			
+			 List<Phone> lstPhone =  phoneservice.getPhoneListByType(prospectus_id, company_id, 6);
+			 
+			 if( lstPhone != null && lstPhone.size() > 0 ){
+			 
+				 for( Phone p : lstPhone ){
+					 if( p  != null && p.getPhone_number() != null && p.getPhone_number().trim().length() > 0 ){
+						 phone_str = p.getPhone_number();
+					 }
+				 }
+			
+			 }
+			 
+			 if( phone_str != null && phone_str.trim().length() > 0 ){
+				 
+				 phone_str = "******"+ phone_str.substring( phone_str.length()-4 );
+			 }
+			 
+			 return phone_str;
+		
+		}catch( Exception e ){
+			e.printStackTrace();
+			return  "******" ;
+		}
+		
+	}
 
 }

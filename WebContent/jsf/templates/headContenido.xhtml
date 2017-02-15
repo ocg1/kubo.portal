@@ -9,7 +9,7 @@
 	<c:set var = "context_root" value = "#{request.contextPath}" />
 	<c:set var = "Portal"       value = "#{localhost}#{context_root}/Portal" />
 	<c:set var = "resources"    value = "#{localhost}#{context_root}/resources" />	
-	
+ <h:outputScript library="js" target="head" name="hubSpot_analytics.js" />
 	<h:outputStylesheet library="css" name="headerStyles.css"/>
 	<h:outputScript library="js" target="head" name="headerScripts.js" />
 		<h:panelGroup  rendered="#{sessionBean.prospectus_id != null  and sessionBean.isnew == 'N'  }">

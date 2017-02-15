@@ -67,7 +67,7 @@
 							<p>Obtén tu pre-aprobación en 5 min.</p>
 							
 							<p>Préstamos para tu negocio, deudas, 
-							hogar, educación y <p:commandLink onclick="ga('send','event', 'Prestamos','prestamos')" action="productos" immediate="true" >más.</p:commandLink></p>
+							hogar, educación y <p:commandLink action="productos" immediate="true" >más.</p:commandLink></p>
 							
 							<p>Tu historia cuenta... Con tu buen 
 							historial de crédito pagas menos.</p>
@@ -76,18 +76,18 @@
 			
 			
 				 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="ga('send', 'event', 'Leads', 'Solicita Prestamo', 'Solicita Prestamo Home');"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
+                          		 <p:commandLink styleClass="callAction btnNaranja"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
                        </h:panelGroup>
 				<ol>
 					<li>
 						<div class="simulador-acreditado">
 							 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-									<p:commandLink id="simulaAction" styleClass="btn_simular  solicitarPrestamo"   value="Simula tu préstamo" onclick="ga('send', 'event', 'Leads', 'Simula Prestamo', 'Simula Home');" onstart="return showloader2();"  oncomplete="muestraRes(xhr,status,args);  columnas();"  actionListener="#{simulator.simulaLst}" immediate="true" update="simulator_acreditado"  ></p:commandLink>
+									<p:commandLink id="simulaAction" styleClass="btn_simular  solicitarPrestamo"   value="Simula tu préstamo"  onstart="return showloader2();"  oncomplete="muestraRes(xhr,status,args);  columnas();"  actionListener="#{simulator.simulaLst}" immediate="true" update="simulator_acreditado"  ></p:commandLink>
 							  </h:panelGroup>
 						</div>
 						
 				 </li>
-					<li><a class="open_lightbox" href="#"  data-div="4" onClick="ga('send', 'event', 'Leads', 'Requisitos Prestamo', 'Requisitos Prestamo');" >Requisitos</a></li>
+					<li><a class="open_lightbox" href="#"  data-div="4"  >Requisitos</a></li>
 				</ol>
 				
 			</div>

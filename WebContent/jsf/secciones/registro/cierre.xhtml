@@ -42,13 +42,13 @@
 		
 		function publishAct()
 		{	
-			ga('send', 'event', 'Leads', 'Envia solicitud');
+		
 	     alertify.labels.cancel = "Regresar";
 		 alertify.labels.ok = "Enviar";
 		 
 		 
 		   GTM_eventos ('Enviar solicitud 1');
-		   
+			  googleEvents ('solicitud-credito', 'clic ir a publicar ', 'boton ir a publicar');
 			
 			 console.log('Enviar solicitud 1');
 			 
@@ -62,20 +62,21 @@
 					if (e) {
 				
 						$("#actionFrm\\:pylnAction").click();
-						ga('send', 'event', 'Leads', 'Publicacion');
+						
 						
 						
 						sendInteractoa ();
 						 
 							 GTM_eventos ('Enviar solicitud 2');
 							
-							
+							  googleEvents ('solicitud-credito', 'clic publicar ', 'boton publicar ');
 							
 					
 						 console.log('Enviar solicitud 2');
 						return true;
 						
 					} else { 
+						 googleEvents ('solicitud-credito', 'clic regresar a confirmar', 'boton modal regresar a confirmar');
 						return false;
 						
 					}
@@ -127,10 +128,13 @@
 				{
 				
 					//showRes();
+					console.log("valida Plazocierre");
 					return false;
 				}else{
 					return true;
 				}
+			}else{
+				console.log("validaMontoMin: false");
 			}
 			
 			

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -82,6 +83,8 @@ public class PendingNotificationDaoImp implements Serializable, PendingNotificat
 				
 			}
 			
+		}catch( NoResultException nre  ){
+			return false;
 		}catch( EntityNotFoundException nf ){
 			return false;
 		}catch(Exception e){

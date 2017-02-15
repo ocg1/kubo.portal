@@ -12,6 +12,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.context.RequestContext;
+
 import mx.com.kubo.controller.PendingNotificationController;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.registro.verificacion.CierreDelDiaIMP;
@@ -152,12 +154,15 @@ implements Serializable
 		
 		ELResolver resolver = faces.getApplication().getELResolver();		
 		ELContext elContext = faces.getELContext();
+		RequestContext request = RequestContext.getCurrentInstance();
 		
 		SessionBean sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");	
 		
 		PendingNotificationController pnc = new PendingNotificationController();
 		
 		pnc.initPendingNotificationOBJ( sesion.getCompany_id(), sesion.getProspectus_id(), EVENT_TIENDA_DISPONIBLE);
+		
+		request.addCallbackParam("phone_number", pnc.getPhoneNumber( sesion.getCompany_id(),  sesion.getProspectus_id() ));
 		
 	}
 	
