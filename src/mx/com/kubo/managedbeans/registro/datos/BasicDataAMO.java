@@ -37,7 +37,6 @@ import mx.com.kubo.model.EmploymentPK;
 import mx.com.kubo.model.FullName;
 import mx.com.kubo.model.FullNamePK;
 import mx.com.kubo.model.MembershipPK;
-import mx.com.kubo.model.Phone;
 import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
@@ -537,7 +536,11 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		phone.setSesion(sesion);
 		phone.setInfusion_id(infusion_id);
 		phone.init();
-				
+	}
+	
+/*	
+	protected void init_telefonos() 
+	{							
 		thisPhoneFixed = phoneService.getPhoneByTypeByArea(sesion.getProspectus_id(), sesion.getCompany_id(), 5,sesion.getArea());
 		thisPhoneCell  = phoneService.getPhoneByTypeByArea(sesion.getProspectus_id(),sesion.getCompany_id(), 6,sesion.getArea());
 
@@ -595,6 +598,7 @@ public abstract class BasicDataAMO extends BasicDataDMO
 			hasPhoneCell = true;
 		}
 	}
+*/	
 	
 	protected void init_Contract_Way_Prospectus_List(){
 		
@@ -1039,6 +1043,7 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		
 	}
 	
+/*	
 	protected void actualizaPhoneInfusion( String phonestr )
 	{	
 		try
@@ -1070,6 +1075,7 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		}
 	
 	}
+*/	
 	
 	protected void actualizaDatosInfusion()
 	{	

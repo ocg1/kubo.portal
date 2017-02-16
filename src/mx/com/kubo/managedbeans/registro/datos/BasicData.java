@@ -44,7 +44,6 @@ import mx.com.kubo.model.EmploymentPK;
 import mx.com.kubo.model.InegiEconActivityCat;
 import mx.com.kubo.model.InegiEconActivityCatPK;
 import mx.com.kubo.model.Phone;
-import mx.com.kubo.model.PhonePK;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SavingAccountPK;
 import mx.com.kubo.model.Stackholder_relationship;
@@ -702,6 +701,7 @@ implements Serializable, BasicDataIMO
 		}
 	}
 	
+/*		
 	public void updatePhoneProspectus() {
 
 		log.info("====>>>>LADA FIXED= " + getLadaFixedProspectus());
@@ -801,7 +801,7 @@ implements Serializable, BasicDataIMO
 		}
 
 	}
-	
+*/	
 	
 	public void guardaPrimerNombre(AjaxBehaviorEvent event)
 	{
@@ -831,7 +831,6 @@ implements Serializable, BasicDataIMO
 		
 	}
 	
-	
 	public void guardaTipoVivienda (AjaxBehaviorEvent event)
 	{
 		
@@ -839,9 +838,6 @@ implements Serializable, BasicDataIMO
 		domicilio.init_residence_id(event);
 		
 	}
-	
-	
-	
 	
 	public void guardaMiddleName (AjaxBehaviorEvent event)
 	{

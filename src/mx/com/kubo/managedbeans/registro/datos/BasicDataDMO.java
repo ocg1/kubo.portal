@@ -35,7 +35,6 @@ import mx.com.kubo.model.Marital_Status;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
-import mx.com.kubo.model.Phone;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.SavingAccount;
@@ -248,8 +247,18 @@ implements BasicDataIMO
 	protected        TelefonoIMO phone;
 	
 	protected Access access;
+/*	
 	protected Phone   thisPhoneFixed;
 	protected Phone   thisPhoneCell;
+	
+	protected String ladaFixedProspectus;
+	protected String phoneFixedPropectus;
+	protected String ladaCelProspectus;
+	protected String phoneCellProspectus;
+	
+	protected boolean hasPhoneCell  = false;
+	protected boolean hasPhoneFixedProspectus 	= false;
+*/		
 	
 	protected BmxEconActivityCat bmx;
 	
@@ -283,10 +292,6 @@ implements BasicDataIMO
 	protected String mexDis = "block";
 	protected String displaySector = "none";
 	protected String lista_prospectos_duplicados;
-	protected String ladaFixedProspectus;
-	protected String phoneFixedPropectus;
-	protected String ladaCelProspectus;
-	protected String phoneCellProspectus;
 	protected String is_legal_address;	
 	protected String RFC, CURP, comentario;					
 	protected String father_last_name;
@@ -324,9 +329,7 @@ implements BasicDataIMO
 	protected int address_type_id;
 	protected int prospectus_id_viewed;
 				
-	protected boolean save_address_OK;	
-	protected boolean hasPhoneFixedProspectus 	= false;
-	protected boolean hasPhoneCell  = false;
+	protected boolean save_address_OK;			
 	protected boolean hasBusiness   = false;		
 	protected boolean hasEmployment = false;		
 	protected boolean is_accionista_DUPLICADO;
@@ -698,7 +701,46 @@ implements BasicDataIMO
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	
+	public final String getEdited_mx_rfc() 
+	{
+		return edited_mx_rfc;
+	}
 
+	public final void setEdited_mx_rfc(String value) 
+	{
+		edited_mx_rfc = value;
+	}		
+
+	public final String getEdited_mx_curp() 
+	{
+		return edited_mx_curp;
+	}
+
+	public final void setEdited_mx_curp(String value) 
+	{
+		edited_mx_curp = value;
+	}
+
+/*
+
+	
+	public boolean isHasPhoneFixedProspectus() {
+		return hasPhoneFixedProspectus;
+	}
+
+	public void setHasPhoneFixedProspectus(boolean hasPhoneFixedProspectus) {
+		this.hasPhoneFixedProspectus = hasPhoneFixedProspectus;
+	}
+
+	public boolean isHasPhoneCell() {
+		return hasPhoneCell;
+	}
+
+	public void setHasPhoneCell(boolean hasPhoneCell) {
+		this.hasPhoneCell = hasPhoneCell;
+	}	 
+	 
 	public String getLadaFixedProspectus() {
 		return ladaFixedProspectus;
 	}
@@ -729,51 +771,15 @@ implements BasicDataIMO
 
 	public void setPhoneCellProspectus(String phoneCellProspectus) {
 		this.phoneCellProspectus = phoneCellProspectus;
-	}
-	
-	public final String getEdited_mx_rfc() 
-	{
-		return edited_mx_rfc;
-	}
-
-	public final void setEdited_mx_rfc(String value) 
-	{
-		edited_mx_rfc = value;
-	}		
-
-	public final String getEdited_mx_curp() 
-	{
-		return edited_mx_curp;
-	}
-
-	public final void setEdited_mx_curp(String value) 
-	{
-		edited_mx_curp = value;
-	}
-
-	public boolean isHasPhoneFixedProspectus() {
-		return hasPhoneFixedProspectus;
-	}
-
-	public void setHasPhoneFixedProspectus(boolean hasPhoneFixedProspectus) {
-		this.hasPhoneFixedProspectus = hasPhoneFixedProspectus;
-	}
-
-	public boolean isHasPhoneCell() {
-		return hasPhoneCell;
-	}
-
-	public void setHasPhoneCell(boolean hasPhoneCell) {
-		this.hasPhoneCell = hasPhoneCell;
-	}
-
+	} 
+	  
 	public Phone getThisPhoneFixed() {
 		return thisPhoneFixed;
 	}
 	public void setThisPhoneFixed(Phone thisPhoneFixed) {
 		this.thisPhoneFixed = thisPhoneFixed;
 	}
-
+	
 	public Phone getThisPhoneCell() {
 		return thisPhoneCell;
 	}
@@ -781,6 +787,7 @@ implements BasicDataIMO
 	public void setThisPhoneCell(Phone thisPhoneCell) {
 		this.thisPhoneCell = thisPhoneCell;
 	}
+*/
 
 	public List<String> getSelectedComputer() {
 		return selectedComputer;
