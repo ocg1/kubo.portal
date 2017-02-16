@@ -10,14 +10,20 @@
 			<label class="labelsStl">Tu teléfono celular <span style="color:red">(obligatorio)</span></label>
 		</div>
 		
-		<div class="leyendas">Por favor ingresa los trece dígitos de tu número celular</div>
+		<div class = "leyendas">Por favor ingresa los trece dígitos de tu número celular</div>
 		
-		<div class=" validacionLadaContainer" >
-			<i class="fa iconoValidacion"><span></span></i>
+		<div class = " validacionLadaContainer" >
+			<i class = "fa iconoValidacion"><span></span></i>
 								
 			<!-- h:outputLabel styleClass="labelsStl" value="044/045"/-->
-			<input type="text" class="validacionLadaField  validatorClass" id="usuarioTelCel" onkeyup="validacionLada(this)" onblur="validacionLada2(this)" maxlength="13" onkeypress="return validateTelephono(event, this);" placeholder="Escribe LADA y teléfono" />
-									
+
+<!--			
+			<input id = "usuarioTelCel" type = "text" class = "validacionLadaField  validatorClass" maxlength = "13" placeholder = "Escribe LADA y teléfono" 
+				   onkeyup = "validacionLada(this)" 
+				   onblur  = "validacionLada2(this)" 				    
+				   onkeypress = "return validateTelephono(event, this);"/>
+	
+
 			<h:inputText id = "phoneCel_employ" value = "#{basicData.phoneCellProspectus}" maxlength = "20" 
 						 style = "display:none" styleClass = "elementAddres1  phone_box_big hs_class validatorClass telephone"
 						 onkeypress = "return validateTelephono(event, this);"  						  
@@ -25,20 +31,35 @@
 						 onchange   = "valueGreaterSix(this);" >
 						 
 				<p:ajax event = "blur" listener = "#{basicData.updatePhoneCellProspectus}" />
+-->	
+			<input id = "usuarioTelCel" type = "text" class = "validacionLadaField " maxlength = "13" placeholder = "Escribe LADA y teléfono" 
+				   onkeyup = "validacionLada(this)" 
+				   onblur  = "validacionLada2(this)"
+				   onfocus    = "Telefono.init_focus_date(6);" 				    
+				   onkeypress = "return validateTelephono(event, this);"/>
+				   
+			<h:inputText id = "phoneCel_employ" value = "#{basicData.phone.phoneCellProspectus}" immediate = "true"
+						 maxlength = "20" style = "display:none" styleClass = "elementAddres1 phone_box_big hs_class validatorClass telephone"
+						 onkeypress = "return validateTelephono(event, this);"						  
+						 onchange   = "valueGreaterSix(this);">
+						 
+				<p:ajax event = "click" 
+						listener   = "#{basicData.phone.update}"
+						oncomplete = "Telefono.update_oncomplete(xhr, status, args);" />			
 				
 			</h:inputText>
 									
-			<p:watermark for="phoneCel_employ" value="Escribe LADA y teléfono"></p:watermark>
+			<p:watermark for = "phoneCel_employ" value = "Escribe LADA y teléfono"/>
 									
 			<script>
 				resetMirrorTelefono(".validacionLadaContainer");
 			</script>
 		</div>
 			
-		<div class="error-telefono">Tu número debe comenzar con 044 y LADA</div>
+		<div class = "error-telefono">Tu número debe comenzar con 044 y LADA</div>
 		
-		<div class="avisoDocs" style="display:block; overflow:initial !important; margin:20px 0 20px;" >
-			<i class="fa fa-caret-up"></i>
+		<div class = "avisoDocs" style = "display:block; overflow:initial !important; margin:20px 0 20px;">
+			<i class = "fa fa-caret-up"></i>
 					
 			<p class="parrafo_b">¿Cómo escribir correctamente tu número?</p>
 			

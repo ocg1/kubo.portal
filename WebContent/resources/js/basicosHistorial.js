@@ -21,16 +21,6 @@ $(document).ready(function(){
 	
 });
 
-
-function abrirSiguiente() {
-	var siguientePanelBtn= $("#phoneCel_employ").closest("section").next("div.section");
-
-	
-	if(!siguientePanelBtn.hasClass("active") ){
-		siguientePanelBtn.trigger("click");
-	}
-}
-
 /* funciones para el nuevo paso 1 basicos historial*/
 	var preaprobacion = false;
 
@@ -76,16 +66,16 @@ function abrirSiguiente() {
 		$("h2.encabezado12").text("Solicita tu renovación");
 	}
 	
-	var tab_section =  function (elemnt) {	
+	var tab_section =  function (elemnt) 
+	{			
 		$(elemnt).toggleClass("active");
 		$(elemnt).next("section").toggleClass("active");
 	    $(elemnt).find("i").toggleClass("fa-chevron-down");
 	    $(elemnt).find("i").toggleClass("fa-chevron-up ");	
 	}
-	
-	
-	var obtener_diagnostico =  function ()  {
-	   
+		
+	var obtener_diagnostico =  function ()  
+	{	   
 		var elemento = $('.paso_1_2 .validatorClass[index]:visible, #acSimple input[index]:visible,  #acSimple2 input[index]:visible,  #acSimple3 input[index]:visible');
 		var conteo_elementos = elemento.length;
 		var i = 0;

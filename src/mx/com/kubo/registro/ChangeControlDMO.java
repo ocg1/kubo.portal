@@ -43,8 +43,7 @@ implements ChangeControlIMO
 	protected String new_value;
 	protected String comments;
 	protected String IP_address_client;
-	
-	
+		
 	protected Integer company_id;
 	protected Integer prospectus_id;
 	protected Integer prospectus_id_coach;

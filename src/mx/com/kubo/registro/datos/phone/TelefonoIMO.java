@@ -1,8 +1,14 @@
 package mx.com.kubo.registro.datos.phone;
 
-public interface TelefonoIMO 
-{
+import javax.faces.event.AjaxBehaviorEvent;
+
+import mx.com.kubo.registro.ChangeControlIMO;
+
+public interface TelefonoIMO extends ChangeControlIMO
+{		
+	void setInfusion_id(Integer infusion_id);
+	
 	void init();
 	
-	void updatePhoneCellProspectus();
+	void update(AjaxBehaviorEvent event);
 }

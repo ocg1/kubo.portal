@@ -4,20 +4,37 @@
 	xmlns:ui = "http://java.sun.com/jsf/facelets"
 	xmlns:p  = "http://primefaces.org/ui">
 	
-	<div  class="field validacionLadaContainer">
-		<div class="dvLabel">
-			<h:outputLabel styleClass="labelsStl" value="Teléfono fijo (casa u oficina)" />
+	<div class = "field validacionLadaContainer">
+		<div class = "dvLabel">
+			<h:outputLabel styleClass = "labelsStl" value = "Teléfono fijo (casa u oficina)" />
 		</div>
 			
 		<div class="leyendas">Por favor ingresa los diez dígitos de tu número telefónico</div>
 		
 		<i class="fa fa-phone"></i>
-											
-		<h:inputText id="phoneFixed_employ" maxlength="10" onchange="valueGreaterSix(this);" onkeypress="return validateTelephono(event, this);"   styleClass="elementAddres1 phone_box_big2 hs_class" value="#{basicData.phoneFixedPropectus}">
-			<p:ajax event="blur"  listener="#{basicData.updatePhoneProspectus}"  ></p:ajax>
+	
+<!-- 
+		<h:inputText id = "phoneFixed_employ" value = "#{basicData.phoneFixedPropectus}" immediate = "true"
+					 maxlength = "10" styleClass = "elementAddres1 phone_box_big2 hs_class"
+					 onchange   = "valueGreaterSix(this);" 
+					 onkeypress = "return validateTelephono(event, this);">
+					 
+			<p:ajax event = "blur"  listener = "#{basicData.updatePhoneProspectus}"  />
 		</h:inputText>
+-->
+
+		<h:inputText id = "phoneFixed_employ" value = "#{basicData.phone.phoneFixedPropectus}" immediate = "true"
+					 maxlength = "10" styleClass = "elementAddres1 phone_box_big2 hs_class"
+					 onkeypress = "return validateTelephono(event, this);"
+					 onchange   = "valueGreaterSix(this);" 
+					 onfocus    = "Telefono.init_focus_date(5);">
+					 
+			<p:ajax event = "blur"
+					oncomplete = "Telefono.update_oncomplete(xhr, status, args);"  
+					listener   = "#{basicData.phone.update}"  />
+		</h:inputText>		
 		
-		<p:watermark for="phoneFixed_employ" value="LADA y teléfono"/>																					
+		<p:watermark for = "phoneFixed_employ" value = "LADA y teléfono"/>																					
 	</div>
 				
 	<div class="avisoDocs" style="display:block; overflow:initial !important; margin:20px 0 20px;" >

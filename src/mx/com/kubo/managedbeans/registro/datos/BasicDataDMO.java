@@ -314,6 +314,7 @@ implements BasicDataIMO
 	protected Integer prospectus_id_coach;
 	protected Integer change_prospectus_id;
 	protected Integer country_id;
+	protected Integer infusion_id;
 	
 	protected Character coverage_zone;		
 	protected Character person_type;
@@ -554,6 +555,11 @@ implements BasicDataIMO
 	public SimuladorIMO getSimulador()
 	{
 		return simulador;
+	}
+	
+	public TelefonoIMO getPhone()
+	{
+		return phone;
 	}
 	
 	public boolean isInversionista_ENABLED() 

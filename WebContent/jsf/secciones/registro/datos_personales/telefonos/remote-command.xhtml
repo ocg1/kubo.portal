@@ -1,0 +1,20 @@
+<ui:composition 
+	xmlns    = "http://www.w3.org/1999/xhtml"
+	xmlns:h  = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:p  = "http://primefaces.org/ui">	
+	
+	<div id = "telefono-remote-command" style = "display: none">		
+		<h:commandLink id = "focus-phone-cell" immediate = "true">
+			<p:ajax event = "click" 
+					oncomplete = "Telefono.focus_on_complete(xhr, status, args);"
+					listener = "#{basicData.phone.init_focus_date}"/>
+		</h:commandLink>
+		
+		<h:commandLink id = "focus-phone-fixed" immediate = "true">
+			<p:ajax event = "click" 
+					oncomplete = "Telefono.focus_on_complete(xhr, status, args);"
+					listener = "#{basicData.phone.init_focus_date}"/>
+		</h:commandLink>				
+	</div>
+</ui:composition>

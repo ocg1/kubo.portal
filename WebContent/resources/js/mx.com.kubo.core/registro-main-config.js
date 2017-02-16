@@ -7,6 +7,7 @@ Kubo.Registro.Simulador                 = window.Kubo.Registro.Simulador || {};
 Kubo.Registro.Domicilio                 = window.Kubo.Registro.Domicilio || {};
 Kubo.Registro.DatosPersonales           = window.Kubo.Registro.DatosPersonales || {};
 Kubo.Registro.DatosPersonales.Historial = window.Kubo.Registro.DatosPersonales.Historial || {};
+Kubo.Registro.Telefono                  = window.Kubo.Registro.Telefono || {};
 Kubo.Registro.Documentacion             = window.Kubo.Registro.Documentacion || {};
 
 
@@ -31,6 +32,7 @@ var Domicilio       = Kubo.Registro.Domicilio;
 var DatosPersonales = Kubo.Registro.DatosPersonales;
 var Historial       = Kubo.Registro.DatosPersonales.Historial;
 var Documentacion   = Kubo.Registro.Documentacion;
+var Telefono        = Kubo.Registro.Telefono;
 
 var MiPrestamo = Kubo.Acreditado.Registro.MiPrestamo;
 var Employment = Kubo.Acreditado.Registro.Employment;

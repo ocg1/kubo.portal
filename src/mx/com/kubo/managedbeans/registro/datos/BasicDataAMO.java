@@ -59,6 +59,7 @@ import mx.com.kubo.registro.datos.genero.GeneroIMP;
 import mx.com.kubo.registro.datos.moral.PersonaMoralIMP;
 import mx.com.kubo.registro.datos.nombre.PersonNameIMP;
 import mx.com.kubo.registro.datos.pais.PaisOrigenIMP;
+import mx.com.kubo.registro.datos.phone.TelefonoIMP;
 import mx.com.kubo.registro.datos.simulador.SimuladorIMP;
 import mx.com.kubo.registro.datos.state.BirthPlaceIMP;
 import mx.com.kubo.registro.datos.birthdate.FechaNacimientoIMP;
@@ -116,7 +117,8 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		
 		prospectus = service_prospectus.getProspectusById(prosPK);
 		
-		person_type = prospectus.getPerson_type();
+		person_type = prospectus.getPerson_type();		
+		infusion_id = prospectus.getInfusion_id();
 		
 		inversionista_ENABLED = prospectus.getArea().equals('I');
 		
@@ -172,7 +174,7 @@ public abstract class BasicDataAMO extends BasicDataDMO
 							
 		prospectus_id  = naturalPerson.getNatPerPK().getProspectus_id();
 		company_id     = naturalPerson.getNatPerPK().getCompany_id();		
-		coverage_zone  = naturalPerson.getIs_coverage_zone();
+		coverage_zone  = naturalPerson.getIs_coverage_zone();				
 		
 		if (naturalPerson.getGender_id() == null)
 		{
@@ -529,7 +531,13 @@ public abstract class BasicDataAMO extends BasicDataDMO
 	}
 	
 	protected void init_telefonos() 
-	{						
+	{					
+		phone = new TelefonoIMP();
+		phone.setService_change_control(service_change_control);
+		phone.setSesion(sesion);
+		phone.setInfusion_id(infusion_id);
+		phone.init();
+				
 		thisPhoneFixed = phoneService.getPhoneByTypeByArea(sesion.getProspectus_id(), sesion.getCompany_id(), 5,sesion.getArea());
 		thisPhoneCell  = phoneService.getPhoneByTypeByArea(sesion.getProspectus_id(),sesion.getCompany_id(), 6,sesion.getArea());
 
