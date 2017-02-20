@@ -1229,6 +1229,7 @@ function loaderfunction() {
 		   $(".contrasenaHubspot").removeClass("show");
 		   $(".cargandoNuevo").addClass("show");
 		   $(".cmdSavePass").click();
+		   facebook_events ('clicPasswordLanding' ); 	
 	}else {
 		  $("#passTemp").addClass("requiredClass");
 		  if($("#passTemp").val().length>=1){

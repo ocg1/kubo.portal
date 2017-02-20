@@ -70,14 +70,15 @@
 							 GTM_eventos ('Enviar solicitud 2');
 							
 							  googleEvents ('solicitud-credito', 'clic publicar ', 'boton publicar ');
-							
+							  facebook_events ('clicIrAPublicar');
 					
 						 console.log('Enviar solicitud 2');
 						return true;
 						
 					} else { 
 						 googleEvents ('solicitud-credito', 'clic regresar a confirmar', 'boton modal regresar a confirmar');
-						return false;
+						  facebook_events ('clicRegresarConfirmar');
+						 return false;
 						
 					}
 					

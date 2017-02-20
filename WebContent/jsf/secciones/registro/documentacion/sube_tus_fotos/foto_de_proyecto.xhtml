@@ -12,7 +12,15 @@
 		
 			<h:panelGroup id = "sectionLogos" rendered = "#{addPldDocument.listImgLogos != null}">
 			
-
+			<div class="field" style="margin:0;">
+				<div class="dvLabel"><label class="labelsStl">
+				Foto en tu negocio o empleo</label>							
+				</div>
+				
+				<div class="leyendas">
+					Tómate una foto donde salgas trabajando en tu empleo o negocio.
+				</div>
+			</div>
 		
 				<ui:repeat var = "images" value = "#{addPldDocument.listImgLogos}" varStatus = "status">	
 					<h:form id = "frm_proyect_image"  enctype = "multipart/form-data" data-ajax = "false">						

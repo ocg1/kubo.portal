@@ -238,18 +238,18 @@
 			
 			
 						 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="googleEvents ('registro-credito', 'clic solicitar', 'boton solicitar - home');"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
+                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="pixelesFunction ('registro-credito', 'clic solicitar', 'boton solicitar - home', 'clicSolicitar')"   value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado" ></p:commandLink>
                        </h:panelGroup>
 				<ol>
 					<li>
 						
 						 <div class="homeInicio">
 							 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-									<p:commandLink onclick="googleEvents ('registro-credito', 'clic simular', 'enlace simular - home');" action="simulador_acreditado" immediate="true" styleClass="goSimulatorPage" >Simula tu préstamo</p:commandLink>
+									<p:commandLink  onclick="pixelesFunction ('registro-credito', 'clic simular', 'enlace simular - home' , 'clic Simular');"  action="simulador_acreditado" immediate="true" styleClass="goSimulatorPage" >Simula tu préstamo</p:commandLink>
 							 </h:panelGroup>
 						 </div>
 				 </li>
-					<li><a class="open_lightbox" href="#"  data-div="4" onClick="googleEvents ('registro-credito', 'clic pedir requisitos', 'enlace pedir requisitos - home');" >Requisitos</a></li>
+					<li><a class="open_lightbox" href="#"  data-div="4" onclick="pixelesFunction ('registro-credito', 'clic pedir requisitos', 'clic pedir requisitos' , 'clicPedirRequisitosAcreditado');" >Requisitos</a></li>
 				</ol>
 				
 			</div>
@@ -309,39 +309,43 @@
 		</script>
 	
 	<div style="display: none;">#{applicationParams.cargaParamentosAplicacion}</div>	
-		   <script id="addJS">jQuery(document).ready(function($) {
-  $('#full-width-slider').royalSlider({
-    arrowsNav: true,
-    loop: true,
-    keyboardNavEnabled: true,
-    controlsInside:false,
-    imageScaleMode: 'fill',
-    arrowsNavAutoHide: false,
-    autoScaleSlider: true, 
-    autoScaleSliderWidth: 960,     
-    autoScaleSliderHeight: 530,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: true,
-    startSlideId: 0,
-    autoPlay: {
-        // autoplay options go gere
-        enabled: true,
-        pauseOnHover: false,
-        delay: 12000,
+		   <script id="addJS">
 
-    },
-	
-    transitionType:'move',
-    globalCaption: false,
-    deeplinking: {
-      enabled: true,
-      change: false
-    },
-    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-    imgWidth: 1400,
-    imgHeight: 530
-  });
-});
+			 jQuery(document).ready(function($) {
+				  $('#full-width-slider').royalSlider({
+				    arrowsNav: true,
+				    loop: true,
+				    keyboardNavEnabled: true,
+				    controlsInside:false,
+				    imageScaleMode: 'fill',
+				    arrowsNavAutoHide: false,
+				    autoScaleSlider: true, 
+				    autoScaleSliderWidth: 960,     
+				    autoScaleSliderHeight: 530,
+				    controlNavigation: 'bullets',
+				    thumbsFitInViewport: false,
+				    navigateByClick: true,
+				    startSlideId: 0,
+				    autoPlay: {
+				        // autoplay options go gere
+				        enabled: true,
+				        pauseOnHover: false,
+				        delay: 12000,
+
+				    },
+					
+				    transitionType:'move',
+				    globalCaption: false,
+				    deeplinking: {
+				      enabled: true,
+				      change: false
+				    },
+				    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+				    imgWidth: 1400,
+				    imgHeight: 530
+				  });
+				});
+		
+		   
 </script>			
 </html>

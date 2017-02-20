@@ -105,7 +105,7 @@
             		<div class="tituloNuevo">
             	
 	            		<h2>Crea una contraseña segura</h2>
-	            		<p>Para obtener tu Pre-Aprobación y proteger tus datos personales</p>
+	            		<p>Para iniciar con tu Pre-Aprobación y proteger tus datos</p>
 	            		
             			
             			
@@ -113,12 +113,14 @@
             	</div>	
             	<div class="empezarRegistro">
             	<ul>
-            	<li>
+	            	<li>
+	            	        <label>Usuario: <span style="font-weight: bold">#{hs_Init.email}</span></label>
+	            	</li>
+	            	<li>
             	
-            		<label>Usuario: <span style="font-weight: bold">#{hs_Init.email}</span></label>
             	
-            		<label>Crea tu contraseña <span style="color:red">*</span></label>
-            		
+            		<label>Crea tu contraseña<span style="color:red">*</span></label>
+            		<div class="leyenda"><p>Mínimo cuatro caracteres</p></div>
             	<div class="mostrar">
 	   <span onclick="passToText(this)">Mostrar</span>
 	     <i class="fa fa-lock"></i>	
@@ -150,7 +152,7 @@
 										
 				</p:inputText>
 					
-	         <p:watermark value="Crea tu contraseña*" for="passTemp"/> 
+	         <p:watermark value="Contraseña" for="passTemp"/> 
 	          	
 	</div>
 	  <div class="alerta_crea_contrasena"></div>       	
@@ -196,7 +198,8 @@
 				</div>
 									        
 			</h:form>
-			
+		
+		
 			<h:panelGroup rendered="#{hs_Init.status_hs == 0}" >
 			
 				<script>
@@ -236,7 +239,8 @@
 			
 			<script>
 				setChat();
-			</script>		
+			</script>
+		
     	</div>
     </h:body>
     

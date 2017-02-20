@@ -95,6 +95,7 @@ var centerContentInt= function (elemento){
 
      function muestraLienzo(){ 
     	 lienzoPreaprobacion();
+    	 GTM_eventos ('Pre-Aprobado_Pop-up');
     	 setTimeout( function(){ $("#cmdViewScreen").click(); }, 2200 );
 			
 			if( $("#rechazoPantalla").length ){
@@ -109,7 +110,8 @@ var centerContentInt= function (elemento){
 			}
 		
 			 googleEvents ('solicitud-credito', 'clic ver resultado', 'boton ver resultado');
-			
+			 facebook_events ('clicVerResultado'); 	
+			 
      }
      
      
@@ -147,9 +149,12 @@ var centerContentInt= function (elemento){
 					 
 					   GTM_eventos ('Preaprobación')
 					   
+					   
 					   googleEvents ('solicitud-credito', 'clic regresar a la solicitud', 'boton regresar a la solicitud');
-
-					 console.log('Preaprobación');
+					   
+					   facebook_events ('clicRegresarALaSolicitud'); 	
+					   
+					   console.log('Preaprobación');
 				 }
 		     	 
 		     	 

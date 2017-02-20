@@ -1232,11 +1232,13 @@ border: dashed 2px #ccc !important;
 .notaVerde {
 	font-weight: 500;
 	width:85%;
-	margin:0 auto;
+	margin: 0 auto 20px;
 	color:#8FC450;
 	text-align:center;
 	font-size:20px;
 	line-height:20px;
+	clear: both;
+	overflow: hidden;
 }
 
 

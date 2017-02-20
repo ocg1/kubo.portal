@@ -8163,12 +8163,11 @@ margin:0 0 20px;
 }
 
 .alerta-simple p{
-	margin:0 0 20px;
+	margin: 0 0 0px;
 	font-size:16px;
 	font-weight:500;
 	color:#666;
 	text-align:center;
-
 }
 
 
@@ -8367,4 +8366,107 @@ margin:0 0 30px !important;line-height: 20px !important;}
 
 
 
+ }
+
+ .aviso-type-1 {
+ 	border:solid 1px #8fc450;
+ 	padding:20px;
+ }
+
+  .aviso-type-1 h3 {
+ 	color: #8fc450;
+ 	text-align:center;
+ 	font-size:25px;
+ 	margin:0 0 30px;
+ }
+
+   .aviso-type-1 h4 {
+ 	color: #8fc450;
+ 	text-align:center;
+ 	font-size:18px;
+ 	margin:0 0 20px;
+ }
+ .aviso-logo ul {
+ 	overflow:hidden;
+ 	margin:0 auto;
+ 	padding:0;
+ 	width:320px;
+
+ }
+ .aviso-logo ul li{
+ 	height:80px;
+ 	width: 151px;
+ 	float:left;
+ 	list-style: none;
+ }
+
+ .cnbv-logo { 	
+ 	background:url("../../Portal/resources/images/logos_AMS/Logos_AMS.jpg");
+	background-position:-1880px -30px;
+	
+	background-repeat:no-repeat;
+	background-size:2200px auto;
+
+ }
+
+  .condusef-logo { 	
+ 	background:url("../../Portal/resources/images/logos_AMS/Logos_AMS.jpg");
+	background-position:-2190px -15px;
+	
+	background-repeat:no-repeat;
+	background-size:2350px auto;
+
+ }
+
+.aviso-cliente-doc ul {
+	margin:0px 0 20px;
+	padding:0;
+
+}
+.aviso-cliente-doc li  {
+	list-style:none;
+	text-align:left;
+}
+.aviso-cliente-doc li p {
+	text-align:left;
+
+}
+
+.aviso-cliente-doc > p {
+
+	margin:0 0 	30px !important;
+}
+
+
+
+ @media (max-width:400px)  {
+ .cnbv-logo { 	
+ 	background:url("../../Portal/resources/images/logos_AMS/Logos_AMS.jpg");
+	background-position:-1700px -30px;
+	
+	background-repeat:no-repeat;
+	background-size:2000px auto;
+
+ }
+
+  .condusef-logo { 	
+ 	background:url("../../Portal/resources/images/logos_AMS/Logos_AMS.jpg");
+	background-position:-1920px -15px;
+	
+	background-repeat:no-repeat;
+	background-size:2050px auto;
+
+ }
+ }
+ @media (max-width:400px)  {
+
+.alerta-s {
+		max-width: 79%;
+		left: 5% !important;
+}
+.alerta-simple h2{
+	margin:0 0 30px;
+	font-size:18px;
+	text-align:center;
+}
  }

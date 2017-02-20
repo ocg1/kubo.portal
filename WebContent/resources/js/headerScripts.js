@@ -252,9 +252,7 @@ $(document).ready(function(){
 		 
 		 
 		
-	 $(".regisFB.interiorFB" ).click(function() {
-		 	googleEvents ('registro-credito', 'clic registrar con facebook', 'enlace mejor registrar con facebook');
-	 });
+
 	
 });
 
@@ -419,6 +417,12 @@ function statusChangeCallback(response) {
 	    
 	   if($("#empezar-registro-acredtado").is(":visible")){
 		   googleEvents ('registro-credito', 'clic registrar con facebook', 'boton registrar con facebook');
+		   facebook_events ('clicBotonRegistrarConFacebook' );
+	   }
+	   
+	   if($("#empezar-registro-inversionista").is(":visible")){
+		   googleEvents ('registro-inversion', 'clic registrar con facebook', 'boton registrate con facebook');
+			  facebook_events ('clicBotonRegistrarConFacebookInv' );
 	   }
 	}
   
@@ -740,19 +744,27 @@ function registrateEmail(btn) {
 	$(".registrateCorreo").hide();
 	if($("#empezar-registro-acredtado").is(":visible")){
 		googleEvents ('registro-credito', 'clic registrar con email', 'boton registrar con email');
+		  facebook_events ('clicRegistrarConEmail' );
 	}
-	/*
+	
+	
 	if($("#empezar-registro-inversionista").length){
-		ga('send', 'event', 'registro-credito', 'clic registrar con email', 'boton registrar con email');
+		googleEvents ('registro-inversion', 'clic registrate con tu email', 'boton registrate con tu email');
+		 facebook_events ('clicRegistrarConEmailInv' );
 	}
-	*/
+	
 }
 
 function iniciarSesion() {
 	$(".ingresar.open_lightbox").trigger("click");
 	if( $("#empezar-registro-acredtado").is(":visible") ){
 	  googleEvents ('registro-credito', 'clic iniciar sesion', 'boton iniciar sesion');
+	  facebook_events ('clicIniciarSesion' ); 	
 	}
+	if( $("#empezar-registro-inversionista").is(":visible") ){
+		  googleEvents ('registro-inversion', 'clic iniciar sesion', 'boton iniciar sesion');
+		  facebook_events ('clicIniciarSesionInv' ); 
+		}
 }
 
 var preregistroInit = function () {

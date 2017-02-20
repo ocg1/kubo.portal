@@ -927,13 +927,17 @@ var buttonClick;
 					if ( buttonClick == true) {
 					
 						if($("#frm_info_basic_loan").is(":visible")) {
-							$("#hdNext\\:siguienteDocPLD").click();
+						
 							  GTM_eventos ('Sobre ti');
 							  googleEvents ('solicitud-credito', 'clic ir a documentacion', 'boton ir a documentacion');
-
-
+							  facebook_events ('clicIrADocumentacion');	
+							  $(".aviso-cliente-doc").addClass("show-alert");
+							  $(".velo").fadeIn();
 							 //dataLayer.push({'event': 'Sobre ti'});
 							 console.log('Sobre ti');
+							 $('html, body').animate({
+							       scrollTop: ($('.content').offset().top - 100)
+							},1400);
 						}
 						if($(".IncomeExpense").is(":visible")) {
 					
@@ -941,7 +945,7 @@ var buttonClick;
 							
 							 GTM_eventos ('Ingresos y gastos')
 							 googleEvents ('solicitud-credito', 'clic ir a sobre mi', 'boton ir a sobre mi');
-
+							 facebook_events ('clicIrASobreMi');	
 							// dataLayer.push({'event': 'Ingresos y gastos'});
 							 console.log('Ingresos y gastos');
 						}
@@ -953,6 +957,7 @@ var buttonClick;
 							 
 							 GTM_eventos ('Referencias')
 							  googleEvents ('solicitud-credito', 'clic ir a PLD', 'boton ir a PLD');
+							 facebook_events ('clicIrAPLD');	
 							 console.log('Referencias');
 						}
 						
@@ -964,30 +969,39 @@ var buttonClick;
 							 //dataLayer.push({'event': 'Enviar Documentos'});
 							 console.log('Enviar Documentos');
 							 googleEvents ('solicitud-credito', 'clic ir referencias', 'boton ir a referencias');
+							 facebook_events ('clicIrReferencias');	
 						}
 						if(element == "datosPersonales" ) {
 							$("#hdNext\\:nextInvestor").click();
-							
+							 googleEvents ('solicitud-inversion', 'clic terminar datos personales', 'boton guardar y continuar');
+							 facebook_events ('clicIrAPerfilDeInversion');	
 						}
 						
 						if(element == "PerfilInv"  ){
 							revisionCheck();
+							 googleEvents ('solicitud-inversion', 'clic terminar perfil de inversion', 'boton perfil de inversion');
+							 facebook_events ('cilcIrAAgregarBeneficiarios');	
 						}
 						if(element == "Beneficiarios"){
 							$("#nextToMoreInfo").click();
+							 googleEvents ('solicitud-inversion', 'clic terminar beneficiario', 'boton guardar y continuar');
+							 facebook_events ('clicIrAConociendoteMas');	
 						}
 						if(element == "nextPLD"){
 							$("#nextToPLD").click();
-							
+							 googleEvents ('solicitud-inversion', 'clic terminar conociendote mas', 'boton guardar y continuar');
+							 facebook_events ('clicIrADatosAdicionales');	
 						}
 						if(element == "Adicionales"){
 							$("#nextToDocument").click();
-	
+							 googleEvents ('solicitud-inversion', 'clic terminar datos adicionales', 'boton guardar y continuar');
+							 facebook_events ('clicIrADocumentacion');	
 							
 						}
 						if(element == "Documentacion"){
 							$("#nextToClabe").click();
-							
+							 googleEvents ('solicitud-inversion', 'clic terminar documentacion', 'boton guardar y continuar');
+							 facebook_events ('clicIrATerminarSolicitud');	
 						}
 						
 						
@@ -1010,6 +1024,12 @@ var buttonClick;
 			mandodatos_hs();
 	}
 	
+	function irDocumentosPopUp (){
+		  $(".aviso-cliente-doc").removeClass("show-alert");
+		  $(".velo").fadeOut();
+		$("#hdNext\\:siguienteDocPLD").click();
+		
+	}
 	
 	function sendInteractoa () {
 		console.log($("#enabledAnalytics").val());

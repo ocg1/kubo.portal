@@ -31,7 +31,11 @@
 		
 		function videoPlay () {
 			 googleEvents ('solicitud-credito', 'play video documentos', 'video como subir documentos');
-			if (myVideo.paused) {
+			
+			 facebook_events ('playVideoDocumentos' );
+			 
+			 
+			 if (myVideo.paused) {
 				  myVideo.play(); 
 			}else{
 				  myVideo.pause(); 

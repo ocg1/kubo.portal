@@ -275,7 +275,23 @@
 				var cci_score_input = $("#consBC\\:cci_score").val();
 				var kubo_score_input = $("#consBC\\:inputKuboScore").val();
 				var monto_solicitado_input = $("#consBC\\:monto_solicitado").val();
-	        	/*
+				
+		
+				
+			 	console.log("bc_score_input"+bc_score_input);
+	        	
+	        	//console.log("kuboScore"+kuboScore);
+				try {
+					fbq(['trackCustom', 'bcscore',{bcscore: bc_score_input}]);
+					fbq(['trackCustom', 'kuboscore',{kuboscore: kubo_score_input}]);
+					
+				}catch(err) {
+					   console.log(err.message);
+					  
+				}
+					
+				
+				/*
 	        	window._fbq.push(["track", "Consulta", {
 	        	      bcscore: bc_score_input,
 	        	      cci_score: cci_score_input,
@@ -286,7 +302,8 @@
 	        	//console.log("bc_score_input"+bc_score_input);
 	        	//console.log("cci_score"+cci_score);
 	        	//console.log("kuboScore"+kuboScore);
-	        	//console.log("monto_solicitado"+monto_solicitado);
+	        	//console.log("monto_solicitado"	fbq(['trackCustom', 'bcscore',{bcscore: bc_score_input}]);
+				//fbq(['trackCustom', 'kuboscore',{kuboscore: kubo_score_input}]);+monto_solicitado);
 	        	//console.log("inputKuboScore"+kubo_score_input);
 	        	
 	        	

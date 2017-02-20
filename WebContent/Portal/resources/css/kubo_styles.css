@@ -6277,10 +6277,11 @@ position:absolute;right: 13px;top: 10px;}
 	bottom: -37px;
 }
 .tituloNuevo h2{
-	font-size: 26px;
+	font-size: 24px;
 	margin:0 0 10px;
 	font-weight: 800;
 	font-family: 'Lato', sans-serif;
+	text-align: center;
 }
 
 .tituloNuevo.inversionista h2{
@@ -6460,7 +6461,7 @@ position:absolute;right: 13px;top: 10px;}
 .tituloNuevo {
 	background: #8DC047;
 	color:#fff;
-	padding: 22px 0  0;
+	padding: 22px 0  10px;
 	max-height: inherit;
 }
 
@@ -8135,3 +8136,28 @@ text-align:left;
 	
 }
 
+.leyenda {
+	color:#999;
+}
+
+.contrasenaHubspot .closePop {
+	display:none;
+}
+@media (max-width:550px) {  
+	.contrasenaHubspot {
+		width:90%;
+		left:5% !important;	
+	
+	}
+
+	.contrasenaHubspot .empezarRegistro {
+		padding:30px 20px;	
+	}
+	.tituloNuevo p{
+		line-height: 25px;
+		font-size: 20px;
+		text-align:center;
+		padding:0 5%;
+		margin:0 0 20px;
+	}
+}

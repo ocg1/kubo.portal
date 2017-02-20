@@ -66,7 +66,18 @@
 	    	   $('#prAction').trigger("click");
 	    	    $(".cargandoNuevo").addClass("show");
 		    	$(".velo").fadeIn();
-		    	googleEvents ('registro-credito', 'clic iniciar solicitud', 'boton iniciar solicitud');
+		    	
+		    	 if($("#empezar-registro-acredtado").is(":visible")){
+				    	googleEvents ('registro-credito', 'clic iniciar solicitud', 'boton iniciar solicitud');
+				     	facebook_events ('clicIniciarSolicitud' );
+		    	 }
+		  	   
+		  	   if($("#empezar-registro-inversionista").is(":visible")){
+		  		   googleEvents ('registro-inversion', 'clic registrame', 'boton registrame');
+		  		   facebook_events ('clicIniciarSolicitudInv' );
+		  	   }
+		  	   
+		  	   
 		}
         
 		function noAcepta(){

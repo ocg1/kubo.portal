@@ -34,8 +34,10 @@ Beneficiario.init_validator_class = function()
 		Beneficiario.verificPersentage();
 		
 	},  500);
-	
-	console.log("Beneficiario.init_validator_class(): OK");
+	 googleEvents ('registro-inversion', 'clic agregar beneficiario', 'boton agregar beneficiario');
+	 
+	 console.log("Beneficiario.init_validator_class(): OK");
+	   facebook_events ('cilcIrAAgregarBeneficiarios' );
 };
 
 Beneficiario.oncompleAddBeneficiaries = function ()

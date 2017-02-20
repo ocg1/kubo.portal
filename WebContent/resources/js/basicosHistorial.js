@@ -20,7 +20,12 @@ $(document).ready(function(){
 		 
 	
 });
-
+function abrirSiguiente() {	
+	var siguientePanelBtn= $("#phoneCel_employ").closest("section").next("div.section");	
+	if(!siguientePanelBtn.hasClass("active") ){
+		siguientePanelBtn.trigger("click");
+	}
+}
 /* funciones para el nuevo paso 1 basicos historial*/
 	var preaprobacion = false;
 
@@ -73,9 +78,9 @@ $(document).ready(function(){
 	    $(elemnt).find("i").toggleClass("fa-chevron-down");
 	    $(elemnt).find("i").toggleClass("fa-chevron-up ");	
 	}
-		
+	
 	var obtener_diagnostico =  function ()  
-	{	   
+	{       
 		var elemento = $('.paso_1_2 .validatorClass[index]:visible, #acSimple input[index]:visible,  #acSimple2 input[index]:visible,  #acSimple3 input[index]:visible');
 		var conteo_elementos = elemento.length;
 		var i = 0;
@@ -174,14 +179,14 @@ $(document).ready(function(){
 				obtener_diagnostico_status ();	
 			
 			}
-	 });
+	 });			
 		
 		
 	
 	}
-	var obtener_diagnostico_status   = function (bandera) {
-			$(".ayudaPanel").hide();
-		
+	var obtener_diagnostico_status   = function (bandera) {						
+			$(".ayudaPanel").hide();			
+			
 			var width = $(window).width();	
 			if(width <= 1024) { 
 				$(".columnaAyuda").hide();
@@ -205,6 +210,7 @@ $(document).ready(function(){
 			
 			    console.log("llenos campos");
 			   if( preaprobacion == false) {
+				   gaVirtualPages ('/vp/prospector.html');
 				   console.log("triggerClick");
 				   console.log("preaprobacion false");
 				   mandodatos_hs();
@@ -216,7 +222,8 @@ $(document).ready(function(){
 				   // console.log('Datos Personales 1');
 				   
 				   googleEvents ('solicitud-credito', 'clic consultar prospector', 'boton consultar prospector');
-
+				   facebook_events ('clicConsultarProspector' );
+				   hj('trigger', 'id_provider');
 				   
 			   }else {
 				   sendInteractoa ();
@@ -231,16 +238,16 @@ $(document).ready(function(){
 							
 							   GTM_eventos ('Datos Personales 2')
 							 googleEvents ('solicitud-credito', 'clic autorizar buro', 'boton autorizar buro');
-
+							   facebook_events ('clicAutorizarBuro' ); 	
 						}else {
 							closeWindowPrep();
 							console.log("historialListo"+historialListo);
-						}
+						}			
 					
 						
 				    }else {
 				    	
-				    		closeWindowPrep();
+				    		closeWindowPrep();			
 						
 				    		mandodatos_hs();
 				    		
@@ -258,7 +265,7 @@ $(document).ready(function(){
 		parent.$("#hdNext\\:siguienteIncomeExpense").click();
 		parent.$.scrollTo('#header', 800, { axis:'y' })
 		console.log("quiere llegar a income");
-		
+		gaVirtualPages ('/vp/id_provider.html');
 	
 		
 	}

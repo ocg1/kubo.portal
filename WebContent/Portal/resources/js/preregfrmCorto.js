@@ -190,6 +190,16 @@ function passToText(btn) {
 
 		
 		googleEvents ('registro-credito', 'clic mostrar password', 'boton mostrar password');
+		
+		facebook_events ('clicMostrarPassword' );
+		
+	}
+	
+	if( $("#empezar-registro-inversionista").is(":visible") ){
+
+		
+		googleEvents ('registro-inversion', 'clic mostrar contrasena', 'boton mostrar contasena');
+		facebook_events ('clicMostrarPasswordInv' );
 	}
 
 	var divMostrar =   $(btn).parent();

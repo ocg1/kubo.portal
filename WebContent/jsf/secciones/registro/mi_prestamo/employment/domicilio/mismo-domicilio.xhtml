@@ -6,7 +6,7 @@
 				 
 	<div class="field">
 		<div class = "dvLabel">
-			<h:outputLabel styleClass = "labelsStl" value = "#{msg.job_is_same_address}"/>
+			<h:outputLabel styleClass = "labelsStl" value = "¿Tu casa y tu empleo tienen la misma dirección?"/>
 		</div>
 		
 		<p></p>
@@ -18,15 +18,15 @@
 				asterisk(".titleDisabled");
 			</script>
 				<fieldset class="conjuntoChecks">
-				   <div class="btnN dosBtnChecks"  data-opcion="S">
-			        	<span>	<i class="fa fa-check"></i> Sí</span>
+				   <div class="btnN dosBtnChecks"  data-opcion="N">
+			        	<span>	<i class="fa fa-check"></i> Sí, es la misma</span>
 			       </div>
-			       <div class="btnN dosBtnChecks btnR"  data-opcion="N">
-			        	<span>	<i class="fa fa-times"></i> No</span>
+			       <div class="btnN dosBtnChecks btnR"  data-opcion="S">
+			        	<span>	<i class="fa fa-times"></i> No, es diferente</span>
 			       </div>
 					<h:selectOneRadio value = "#{employment.same_address}" styleClass = "elementStlLbl validatorClass requiredVerify ocultaSelect"  >
-					    <f:selectItem itemValue="S" itemLabel="Si"/> 
-					    <f:selectItem itemValue="N" itemLabel="No"/>	
+					    <f:selectItem itemValue="N" itemLabel="Si"/> 
+					    <f:selectItem itemValue="S" itemLabel="No"/>	
 					    
 						<p:ajax event = "click" 
 								onstart    = "displayMessageProcessing('msgprocessing',false);"

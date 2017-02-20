@@ -82,6 +82,7 @@ function init_validation_mx_CLABE()
 
 function showSuccess()
 {
+	 facebook_events ('clicTerminarSolicitud');
 	var val1 = $("#banco_cuenta_clabe_input").val();
 	var val2 = $("#clabe").val();
 	
@@ -129,11 +130,13 @@ function showSuccess()
 			    };
 			    
 			    $("#testframe").css(styles);
-			    
+				  googleEvents ('registro-inversion', 'clic aceptar', 'boton aceptar datos correctos');
+				  facebook_events ('clicAceptarSolicitud' );
 				return true;
 				
 			} else { 
-				
+				  googleEvents ('registro-inversion', 'clic cancelar', 'boton cancelar corregir datos');
+				  facebook_events ('clicCancelarSolicitud' );
 				return false;
 			}
 		}); 	
