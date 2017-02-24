@@ -796,6 +796,11 @@ function pixel (){
 			$("#goCloud").attr( "src", "http://tracking.credy.eu/aff_lsr?offer_id=161&adv_sub="+''+prospectoID+''+"&transaction_id="+''+transactionId+''+""); 
 				console.log($("#goCloud").attr("src"));
 		}
+		var inputAdv = $("#advBackInput").val();
+		
+		if(inputAdv.indexOf("optimus") != (-1)){
+			facebook_events ('TAG' )
+		}
 		
 	}else{
     	console.log("no entra dentro del rango del score A1 - E5");

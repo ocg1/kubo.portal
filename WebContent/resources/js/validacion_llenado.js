@@ -932,6 +932,7 @@ var buttonClick;
 							  googleEvents ('solicitud-credito', 'clic ir a documentacion', 'boton ir a documentacion');
 							  facebook_events ('clicIrADocumentacion');	
 							  $(".aviso-cliente-doc").addClass("show-alert");
+							  mixPanel ("clicIrADocumentacion");
 							  $(".velo").fadeIn();
 							 //dataLayer.push({'event': 'Sobre ti'});
 							 console.log('Sobre ti');
@@ -948,6 +949,7 @@ var buttonClick;
 							 facebook_events ('clicIrASobreMi');	
 							// dataLayer.push({'event': 'Ingresos y gastos'});
 							 console.log('Ingresos y gastos');
+							  mixPanel ("clicIrASobreMi");
 						}
 						if($("#frmMoreInfo").is(":visible")) {
 							hideIFEjs();
@@ -959,6 +961,7 @@ var buttonClick;
 							  googleEvents ('solicitud-credito', 'clic ir a PLD', 'boton ir a PLD');
 							 facebook_events ('clicIrAPLD');	
 							 console.log('Referencias');
+							  mixPanel ("clicIrAPLD");
 						}
 						
 						if($("#buttons > #menu6").hasClass("menuItemSel") && $("#area").val() == "L"){
@@ -970,6 +973,7 @@ var buttonClick;
 							 console.log('Enviar Documentos');
 							 googleEvents ('solicitud-credito', 'clic ir referencias', 'boton ir a referencias');
 							 facebook_events ('clicIrReferencias');	
+							  mixPanel ("clicIrReferencias");
 						}
 						if(element == "datosPersonales" ) {
 							$("#hdNext\\:nextInvestor").click();

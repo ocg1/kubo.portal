@@ -192,7 +192,7 @@ function passToText(btn) {
 		googleEvents ('registro-credito', 'clic mostrar password', 'boton mostrar password');
 		
 		facebook_events ('clicMostrarPassword' );
-		
+		mixPanel ("clicMostrarPassword")
 	}
 	
 	if( $("#empezar-registro-inversionista").is(":visible") ){

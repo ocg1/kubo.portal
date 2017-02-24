@@ -1230,6 +1230,7 @@ function loaderfunction() {
 		   $(".cargandoNuevo").addClass("show");
 		   $(".cmdSavePass").click();
 		   facebook_events ('clicPasswordLanding' ); 	
+		   mixPanel ("clicPasswordLanding");
 	}else {
 		  $("#passTemp").addClass("requiredClass");
 		  if($("#passTemp").val().length>=1){

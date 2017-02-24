@@ -970,8 +970,6 @@ function GTM_eventos (eventoGTM){
 			"<noscript> <img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=1616521048565792&ev=PageView&noscript=1'/>" +
 			"</noscript>");
 $(document).ready(function(){
-	
-	
 	$('head').append("<noscript> <img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=1616521048565792&ev=PageView&noscript=1'/></noscript>");
 });
 
@@ -1019,9 +1017,10 @@ function googleEvents (categoria, action, label){
 }
 
 
-function pixelesFunction (googleEventPar1, googleEventPar2, googleEventPar3, facebookPixel){
+function pixelesFunction (googleEventPar1, googleEventPar2, googleEventPar3, facebookPixel, pixelMix){
 	googleEvents (googleEventPar1, googleEventPar2, googleEventPar3);
 	facebook_events (facebookPixel);
+	 mixPanel (pixelMix) 
 }
 
 
@@ -1053,4 +1052,12 @@ function gaVirtualPages (page){
 
 	}
 
+	function mixPanel (pixelMix) {
+		try {
+			 mixpanel.track(pixelMix); 
+		}catch(err){
+			
+		}
+		
+	}
 

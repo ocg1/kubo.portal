@@ -284,7 +284,8 @@
 				try {
 					fbq(['trackCustom', 'bcscore',{bcscore: bc_score_input}]);
 					fbq(['trackCustom', 'kuboscore',{kuboscore: kubo_score_input}]);
-					
+					mixpanel.track("bcscore",{bcscore: bc_score_input});
+					mixpanel.track("kuboscore",{bcscore: bc_score_input});
 				}catch(err) {
 					   console.log(err.message);
 					  

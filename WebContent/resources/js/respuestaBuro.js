@@ -111,7 +111,7 @@ var centerContentInt= function (elemento){
 		
 			 googleEvents ('solicitud-credito', 'clic ver resultado', 'boton ver resultado');
 			 facebook_events ('clicVerResultado'); 	
-			 
+			  mixPanel ("clicVerResultado");
      }
      
      
@@ -153,7 +153,7 @@ var centerContentInt= function (elemento){
 					   googleEvents ('solicitud-credito', 'clic regresar a la solicitud', 'boton regresar a la solicitud');
 					   
 					   facebook_events ('clicRegresarALaSolicitud'); 	
-					   
+						  mixPanel ("clicRegresarALaSolicitud");
 					   console.log('Preaprobación');
 				 }
 		     	 

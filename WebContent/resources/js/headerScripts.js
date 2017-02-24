@@ -418,6 +418,7 @@ function statusChangeCallback(response) {
 	   if($("#empezar-registro-acredtado").is(":visible")){
 		   googleEvents ('registro-credito', 'clic registrar con facebook', 'boton registrar con facebook');
 		   facebook_events ('clicBotonRegistrarConFacebook' );
+		   mixPanel ("clicBotonRegistrarConFacebook");
 	   }
 	   
 	   if($("#empezar-registro-inversionista").is(":visible")){
@@ -745,6 +746,7 @@ function registrateEmail(btn) {
 	if($("#empezar-registro-acredtado").is(":visible")){
 		googleEvents ('registro-credito', 'clic registrar con email', 'boton registrar con email');
 		  facebook_events ('clicRegistrarConEmail' );
+		  mixPanel ("clicRegistrarConEmail");
 	}
 	
 	
@@ -760,6 +762,7 @@ function iniciarSesion() {
 	if( $("#empezar-registro-acredtado").is(":visible") ){
 	  googleEvents ('registro-credito', 'clic iniciar sesion', 'boton iniciar sesion');
 	  facebook_events ('clicIniciarSesion' ); 	
+	  mixPanel ("clicIniciarSesion");
 	}
 	if( $("#empezar-registro-inversionista").is(":visible") ){
 		  googleEvents ('registro-inversion', 'clic iniciar sesion', 'boton iniciar sesion');

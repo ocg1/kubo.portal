@@ -6,11 +6,11 @@
 				<div class="bloqueBanner BotonesMobileContainer">
 				
 					 <h:panelGroup rendered="#{sessionBean.prospectus_id==null}"> 
-	                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="pixelesFunction ('registro-credito', 'clic solicitar', 'boton solicitar - home', 'clicSolicitar')"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado"></p:commandLink>
+	                          		 <p:commandLink styleClass="callAction btnNaranja" onclick="pixelesFunction ('registro-credito', 'clic solicitar', 'boton solicitar - home', 'clicSolicitar', 'clicSolicitar')"  value="Solicitar préstamo" immediate="true" action="inicio_preregistro_acreditado"></p:commandLink>
 	                 </h:panelGroup>
 						<ol>
 						<li></li>
-							<li><a class="open_lightbox" href="#"  data-div="4" onclick="pixelesFunction ('registro-credito', 'clic pedir requisitos', 'clic pedir requisitos' , 'clicPedirRequisitosAcreditado');" >Requisitos</a></li>
+							<li><a class="open_lightbox" href="#"  data-div="4" onclick="pixelesFunction ('registro-credito', 'clic pedir requisitos', 'clic pedir requisitos' , 'clicPedirRequisitosAcreditado', 'clicPedirRequisitosAcreditado');" >Requisitos</a></li>
 						</ol>
 					     <h:panelGroup rendered="#{sessionBean.prospectus_id==null}">
 	                            			<p:commandLink styleClass="callAction btnVerde investment" action="inicio_preregistro_inversionista" immediate="true" onclick=" pixelesFunction ('registro-inversion', 'clic invertir mi dinero', 'boton invertir mi dinero home', 'clicSolicitarInv');" > Invertir mi dinero</p:commandLink>

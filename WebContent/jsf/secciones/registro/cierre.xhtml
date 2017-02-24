@@ -49,7 +49,7 @@
 		 
 		   GTM_eventos ('Enviar solicitud 1');
 			  googleEvents ('solicitud-credito', 'clic ir a publicar ', 'boton ir a publicar');
-			
+			  mixPanel ("clicIrAPublicar");
 			 console.log('Enviar solicitud 1');
 			 
 		 var cadenita =  '<div class="confirmacion-modificado"> <h3 class="oferta-final-h3">¡#{sessionBean.nombre}tu solicitud está lista para ser enviada!</h3><p class="oferta-final-p">Un asesor verificará que todos tus documentos estén correctos y pueda pasarlos a el analista que aprobará tu préstamo.</p></div>'
@@ -71,13 +71,15 @@
 							
 							  googleEvents ('solicitud-credito', 'clic publicar ', 'boton publicar ');
 							  facebook_events ('clicIrAPublicar');
-					
+							  
+							  mixPanel ("clicRegresarConfirmar");
 						 console.log('Enviar solicitud 2');
 						return true;
 						
 					} else { 
 						 googleEvents ('solicitud-credito', 'clic regresar a confirmar', 'boton modal regresar a confirmar');
 						  facebook_events ('clicRegresarConfirmar');
+						  mixPanel ("clicRegresarConfirmar");
 						 return false;
 						
 					}

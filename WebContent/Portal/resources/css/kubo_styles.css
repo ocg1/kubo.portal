@@ -6395,7 +6395,7 @@ position:absolute;right: 13px;top: 10px;}
 	background-size:800px auto;
 }
 .imagenAbajoMobile.inversionista{
-	background: #8EC148 url(../../resources/images/nuevoPreregistro/preImagenAbajoInv.jpg) no-repeat center bottom;
+	background: #7BCE51 url(../../resources/images/nuevoPreregistro/preImagenAbajoInv.jpg) no-repeat center bottom;
 	height: 170px;
 	background-size:800px auto;
 }
@@ -6459,13 +6459,15 @@ position:absolute;right: 13px;top: 10px;}
 	padding: 0;
 }
 .tituloNuevo {
-	background: #8DC047;
+	background: #7acd50;
 	color:#fff;
 	padding: 22px 0  10px;
 	max-height: inherit;
 }
 
-
+.titulo-preregistro {
+	padding: 22px 0  0px;
+}
 
 
 
@@ -8117,7 +8119,6 @@ text-align:left;
 .actualizando-sistema_modal {
 	max-width:320px;
 	padding:20px;
-
 	top: 70px;
 }
 

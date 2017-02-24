@@ -5607,11 +5607,11 @@ color: #8FC450;
 }
 .dosBtn  i{
 	display:block;
-    margin:0 auto;
-    width:30px;
-    text-align:center;
-    font-size:35px;
-    color: #999;
+	margin:0 auto;
+	width:30px;
+	text-align:center;
+	font-size:35px;
+	color: #999;
 }
 .dosBtn .palomita {
 	min-height:35px;
@@ -6106,7 +6106,10 @@ table.ocultaSelect  label{
 	}
 	.dosBtn i{
 	   font-size: 22px;
-	}       			
+	}     
+	.dosBtn i.fa-frown-o {
+		 font-size: 22px !important;
+	}  			
 	.dosBtn {
 	   width: 95%;
 	   padding: 9px 2%;
@@ -6187,6 +6190,9 @@ table.ocultaSelect  label{
 	/* text-align: right; */
 	/* width: 87% !important; */
 }
+ #general #gastoTotal, div#frm_content #actualPage .IncomeExpense   #gastosNegocio, div#frm_content #actualPage .IncomeExpense  #inp_shopping_monthly {
+ 	 width: 94.5% !important;
+ }
 .simulator_nv, #accountData, .recibir_transferencia {
 	width:100%;
 	margin: 0 auto 20px;
@@ -7608,7 +7614,7 @@ display:block;
  
 .sucesssPopUp {
 	border: solid 2px #8FC450;
-	width: 90%;
+	width: 88.8%;
 	padding: 26px 4% 5px;
 }
 
@@ -8469,4 +8475,27 @@ margin:0 0 30px !important;line-height: 20px !important;}
 	font-size:18px;
 	text-align:center;
 }
+ }
+.nombre-primero-segundo  {
+	overflow:hidden;
+}
+.nombre-primero-segundo .field {
+		
+		width:47%;
+		float:left;
+}
+
+.nombre-primero-segundo .field + .field {
+	float:right;
+}
+
+
+ @media (max-width:480px)  {
+ 	.nombre-primero-segundo .field {
+ 		width:100%;
+ 	}
+ }
+
+ .miPrestamoNX  {
+ 	margin:20px auto 0 !important;
  }

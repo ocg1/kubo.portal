@@ -224,6 +224,7 @@ function abrirSiguiente() {
 				   googleEvents ('solicitud-credito', 'clic consultar prospector', 'boton consultar prospector');
 				   facebook_events ('clicConsultarProspector' );
 				   hj('trigger', 'id_provider');
+					mixPanel ("clicConsultarProspector")
 				   
 			   }else {
 				   sendInteractoa ();
@@ -239,6 +240,7 @@ function abrirSiguiente() {
 							   GTM_eventos ('Datos Personales 2')
 							 googleEvents ('solicitud-credito', 'clic autorizar buro', 'boton autorizar buro');
 							   facebook_events ('clicAutorizarBuro' ); 	
+								mixPanel ("clicAutorizarBuro");
 						}else {
 							closeWindowPrep();
 							console.log("historialListo"+historialListo);

@@ -70,11 +70,13 @@
 		    	 if($("#empezar-registro-acredtado").is(":visible")){
 				    	googleEvents ('registro-credito', 'clic iniciar solicitud', 'boton iniciar solicitud');
 				     	facebook_events ('clicIniciarSolicitud' );
+				     	mixPanel ("clicIniciarSesion")
 		    	 }
 		  	   
 		  	   if($("#empezar-registro-inversionista").is(":visible")){
 		  		   googleEvents ('registro-inversion', 'clic registrame', 'boton registrame');
 		  		   facebook_events ('clicIniciarSolicitudInv' );
+		  		   
 		  	   }
 		  	   
 		  	   
