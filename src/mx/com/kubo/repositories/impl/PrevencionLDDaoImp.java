@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import mx.com.kubo.model.BlockedPerson;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.PrevencionLDPK;
 import mx.com.kubo.model.mesa.solicitud.PldNotification;
@@ -77,43 +76,6 @@ implements PrevencionLDDao
 		}catch(Exception e){
 			return null;
 		}
-	}
-	
-	public List<BlockedPerson> getLista_blocked_person()
-	{	
-		List<BlockedPerson> lista = null;
-		
-		lista = em.createQuery("from BlockedPerson", BlockedPerson.class).getResultList();
-		
-		return lista;
-	}
-	
-	public List<BlockedPerson> getBlockedPersonByFullName(String full_name)
-	{		
-		List<BlockedPerson> lista = null;
-		
-		TypedQuery<BlockedPerson> typed = null;
-		
-		typed = em.createQuery("from BlockedPerson where full_name like ?", BlockedPerson.class);
-		typed.setParameter(1, "%" + full_name + "%");
-		
-		lista = typed.getResultList();
-		
-		return lista;
-	}
-	
-	public List<BlockedPerson> getBlockedPersonByRFC(String mx_rfc)
-	{	
-		List<BlockedPerson> lista = null;
-		
-		TypedQuery<BlockedPerson> typed = null;
-		
-		typed = em.createQuery("from BlockedPerson where mx_rfc like ?", BlockedPerson.class);
-		typed.setParameter(1, "%" + mx_rfc + "%");
-		
-		lista = typed.getResultList();
-		
-		return lista;
 	}
 
 	@Transactional

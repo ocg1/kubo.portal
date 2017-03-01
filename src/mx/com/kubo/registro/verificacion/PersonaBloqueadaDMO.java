@@ -16,22 +16,22 @@ import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.services.AccessService;
+import mx.com.kubo.services.BlockedPersonService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.ClientsService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.NaturalPersonService;
-import mx.com.kubo.services.PrevencionLDService;
 import mx.com.kubo.tools.Utilities;
 
 public abstract class PersonaBloqueadaDMO
 implements PersonaBloqueadaIMO
 {
 	protected NaturalPersonService  service_natural_person;
-	protected MembershipService     service_membership;
-	protected PrevencionLDService   service_PLD;
+	protected MembershipService     service_membership;	
 	protected Change_controlService service_change_control;
 	protected AccessService         service_access;
 	protected ClientsService        service_clients;
+	protected BlockedPersonService  service_blocked_person;
 	
 	protected NotificadorConfigRequest request_notificar_config;
 	protected PublicProyectServiceLocator locator;
@@ -84,11 +84,11 @@ implements PersonaBloqueadaIMO
 	protected PersonaBloqueadaDMO()
 	{
 		service_membership     = Utilities.findBean("membershipServiceImp");
-		service_PLD            = Utilities.findBean("prevencionLDServiceImp");
 		service_change_control = Utilities.findBean("change_controlServiceImp");
 		service_access         = Utilities.findBean("accessServiceImp");
 		service_clients        = Utilities.findBean("clientsServiceImp");
 		service_natural_person = Utilities.findBean("naturalPersonServiceImp");
+		service_blocked_person = Utilities.findBean("blockedPersonServiceImp");
 		
 		blocked_person_TOTAL = 0;
 		

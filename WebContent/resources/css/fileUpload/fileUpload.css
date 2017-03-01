@@ -1160,7 +1160,9 @@
 }
 }
 
-#file_alta_masiva .fileupload-buttonbar label {
+#file_alta_masiva    .fileupload-buttonbar label,
+#file-blocked-person .fileupload-buttonbar label
+{
 
 border: dashed 2px #ccc !important;
 	display: block;
@@ -1177,7 +1179,8 @@ border: dashed 2px #ccc !important;
    	color: #999;
    	font-weight: normal;
    	text-align: center;
-   	font-family:'Open Sans', sans-serif;padding: 17px 0 10px !important;}
+   	font-family:'Open Sans', sans-serif;padding: 17px 0 10px !important;
+}
 
 
 #slctPartner {

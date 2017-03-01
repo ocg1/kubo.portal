@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:p="http://primefaces.org/ui">
+				
+	<h:panelGroup id = "gestor-sesiones">				
+		<div class = "gestion-sesiones container" >
+	
+			<div style = "width: 99%; overflow: hidden;">
+			<div style="float: left; padding-top: 18px;">
+				<strong>Personas Bloqueadas:			
+				<h:outputText value="#{administrationProfile.lista_blocked_person.size()}" /></strong>
+			</div>
+				
+				<div onclick = "Administracion.delete_blocked_person();" 
+				     class = "callActionMedium borrarSesion btnNaranja " 
+				     style="float: right; ">
+					Borrar
+				</div>		 	
+			</div>
+				
+			<h:panelGroup rendered = "#{administrationProfile.lista_blocked_person.size() > 0}">
+			<div style = "height: 310px; clear: both;">			
+				<table cellspacing="0"  cellpadding="0" border = "0"  class="formato_tablas sesiones">
+					<thead>
+						<tr>
+							<th>no.</th>
+							<th style= "text-align: left;">Nombre</th>
+							<th style= "text-align: left;">RFC</th>
+						</tr>
+					</thead>
+							
+					<tbody>
+						<ui:repeat value = "#{administrationProfile.lista_blocked_person}" 
+								   var = "blocked_person" varStatus = "row_counter">
+								<tr>
+									<td >#{row_counter.index + 1}</td>
+									<td >#{blocked_person.full_name}</td>									
+									<td>#{blocked_person.mx_rfc}</td>
+<!-- 									
+									<td>
+					
+										<div onclick = "GestorSesiones.listener_usuario_SELECTED(#{usuario.membershipPK.prospectus_id});" 
+										     class = "callActionMedium borrarSesion btnNaranja ">
+											Borrar sesión
+										</div>		
+									</td>	
+ -->								
+								</tr>						
+						</ui:repeat>
+					</tbody>
+				</table>
+				</div>
+				<script>
+					 $(document).ready(function() {
+				    
+					setTimeout(function(){
+			    		
+						$(".sesiones tr:odd").addClass("par");
+			
+						
+						 
+					 	},100);
+					
+					 });
+					
+				</script>
+			</h:panelGroup>
+		</div>			
+	</h:panelGroup>					
+</ui:composition>				

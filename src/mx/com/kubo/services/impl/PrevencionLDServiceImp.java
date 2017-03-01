@@ -2,7 +2,6 @@ package mx.com.kubo.services.impl;
 
 import java.util.List;
 
-import mx.com.kubo.model.BlockedPerson;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.PrevencionLDPK;
 import mx.com.kubo.model.mesa.solicitud.PldNotification;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class PrevencionLDServiceImp 
 implements PrevencionLDService 
 {
-	
 	Logger log = Logger.getLogger(getClass());
 	
 	@Autowired
@@ -46,16 +44,6 @@ implements PrevencionLDService
 	public PrevencionLD getPrevencionLDByProspectus(int prospectus_id,int company_id)
 	{
 		return dao.getPrevencionLDByProspectus(prospectus_id, company_id);
-	}
-	
-	public List<BlockedPerson> getBlockedPersonByFullName(String full_name)
-	{		
-		return dao.getBlockedPersonByFullName(full_name);
-	}
-	
-	public List<BlockedPerson> getBlockedPersonByRFC(String mx_rfc)
-	{		
-		return dao.getBlockedPersonByRFC(mx_rfc);
 	}
 
 	public boolean add(PldNotification notification_log) 

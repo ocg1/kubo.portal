@@ -16,11 +16,7 @@ public interface PrevencionLDService
 	void deletePrevencionLD(PrevencionLD prvencionld);
 	
 	PrevencionLD getSelectedPrevencionLDById(PrevencionLDPK pk);
-
 	PrevencionLD getPrevencionLDByProspectus(int prospectus_id, int company_id);
-	
-	List<BlockedPerson> getBlockedPersonByFullName(String full_name);
-	List<BlockedPerson> getBlockedPersonByRFC(String mx_rfc);
-	
+
 	List<PldNotification> getLista_pld_notification(int prospectus_id, int company_id);
 }

@@ -74,6 +74,7 @@
 		<property name="maxStatements" value="0" />
 		<property name="minPoolSize"   value="5" />
 	</bean> 
+	
 <!-- 	
    	<bean id="JDBCDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
    		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -84,13 +85,13 @@
    
 
 	<bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" >	
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://192.168.200.12:3306/kubodb?zeroDateTimeBehavior=convertToNull" />  
-	    <property name="user" value="dbadmin"/>  
-        <property name="password" value="Kvb0@dm1n"/>	
-        <property name="maxPoolSize" value="10" />
+		<property name="driverClass"   value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl"       value="jdbc:mysql://192.168.200.12:3306/kubodb?zeroDateTimeBehavior=convertToNull" />  
+	    <property name="user"          value="dbadmin"/>  
+        <property name="password"      value="Kvb0@dm1n"/>	
+        <property name="maxPoolSize"   value="10" />
 		<property name="maxStatements" value="0" />
-		<property name="minPoolSize" value="5" />
+		<property name="minPoolSize"   value="5" />
 	</bean> 
 -->	
 </beans>

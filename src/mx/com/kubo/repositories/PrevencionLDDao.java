@@ -16,9 +16,6 @@ public interface PrevencionLDDao
 	void deletePrevencionLD(PrevencionLD prvencionld);
 	
 	PrevencionLD getPrevencionLDByProspectus(int prospectus_id,int company_id);
-	
-	List<BlockedPerson> getBlockedPersonByFullName(String full_name);
-	List<BlockedPerson> getBlockedPersonByRFC(String mx_rfc);
 
 	boolean add(PldNotification notification_log);
 

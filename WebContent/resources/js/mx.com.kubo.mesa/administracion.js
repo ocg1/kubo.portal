@@ -1,4 +1,4 @@
-console.log("mx.com.kubo.mesa/administracion.js");
+console.log("administracion.js");
 
 var menAntSel="";
 
@@ -8,6 +8,16 @@ Administracion.notificar = function()
 	
 	$("#administracion-notificar-estatus").hide();
 };
+
+Administracion.delete_blocked_person = function()
+{
+	console.log("Administracion.delete_blocked_person():");
+};
+
+/* 
+	onstart    = "displayMessageProcessing('msgprocessing',false);"
+	oncomplete = "Administracion.blocked_person_oncomplete(xhr, status, args);"
+ */
 
 Administracion.notificar_oncomplete = function(xhr, status, args)
 {
@@ -28,12 +38,15 @@ Administracion.notificar_oncomplete = function(xhr, status, args)
 	closeMessageProcessing();
 };
 
-/* 
- $(function() 
- {
-	$( "#datepicker" ).datepicker();
-}); 
-*/
+Administracion.blocked_person_oncomplete = function(xhr, status, args)
+{
+	var notificar_OK = args.path_file_LOG;;
+	
+	console.log("Administracion.notificar_oncomplete():");
+	console.log("> path_file_LOG = " + path_file_LOG);	
+	
+	closeMessageProcessing();
+};
 
 function setClassMenu(menu)
 {

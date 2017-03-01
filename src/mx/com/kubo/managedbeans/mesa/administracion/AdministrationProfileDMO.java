@@ -6,6 +6,7 @@ import java.util.List;
 import javax.el.ELContext;
 import javax.el.ELResolver;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
@@ -16,9 +17,12 @@ import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.kubows.WsResponse;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.mesa.administracion.DocumentUploaderIMO;
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.BlockedPerson;
 import mx.com.kubo.model.InvestmentProgress;
 import mx.com.kubo.model.Partner;
+import mx.com.kubo.services.BlockedPersonService;
 import mx.com.kubo.services.MailLogService;
 import mx.com.kubo.services.MassiveProspectorService;
 import mx.com.kubo.services.NaturalPersonService;
@@ -42,11 +46,15 @@ public abstract class AdministrationProfileDMO
 	@ManagedProperty("#{mailLogServiceImp}")
 	protected MailLogService service_mail_log;
 	
+	@ManagedProperty("#{blockedPersonServiceImp}")
+	protected BlockedPersonService service_blocked_person;
+	
 	protected RequestContext  request;
-	protected FacesContext    faces;		
+	protected FacesContext    faces;
+	protected ExternalContext external;
 	protected ELResolver      resolver;
 	protected ELContext       context;	
-	
+
 	protected NotificadorConfigRequest request_notificar_config;
 	protected PublicProyectServiceLocator locator;
 	protected PublicProyect kubo_services;
@@ -55,7 +63,10 @@ public abstract class AdministrationProfileDMO
 	protected SessionBean sesion;
 		
 	protected InversionAutomatica inversionAutomatica;
+	protected DocumentUploaderIMO loader;
+	protected    BlockedPersonIMO manager;
 	
+	protected List<BlockedPerson> lista_blocked_person;
 	protected List<AutomaticInvestment> listaInversionistas;
 	protected List<InvestmentProgress>	listaInversionesRealizadas;
 	protected List<Partner> partnerLst;
@@ -66,7 +77,7 @@ public abstract class AdministrationProfileDMO
 	protected String sesion_search;
 	protected String actualPage = "asignaPerfil.xhtml";	
 	protected String menu_SELECTED;	
-	protected String separador;
+	protected String separador=";";
 	protected String partnerId;
 	protected String archivo_exitoso ;    
 	protected String archivo_error;
@@ -75,7 +86,7 @@ public abstract class AdministrationProfileDMO
 	protected String email_date = "";
 	
 	protected boolean consultaSatisfactoria;	
-	protected boolean bln_archivos ;
+	protected boolean bln_archivos;
 	protected boolean flgStatusBuro;
 	protected boolean email_date_ENABLED;
 	protected boolean notificar_OK;
@@ -115,25 +126,30 @@ public abstract class AdministrationProfileDMO
 	{
 		service_mail_log = service;
 	}
+	
+	public void setService_blocked_person(BlockedPersonService service)
+	{
+		service_blocked_person = service;
+	}
 
-	public List<AutomaticInvestment> getListaInversionistas() {
+	public List<AutomaticInvestment> getListaInversionistas() 
+	{
 		return listaInversionistas;
 	}
 
-	public void setListaInversionistas(List<AutomaticInvestment> listaInversionistas) {
-		this.listaInversionistas = listaInversionistas;
-	}
-
-	public List<InvestmentProgress> getListaInversionesRealizadas() {
+	public List<InvestmentProgress> getListaInversionesRealizadas() 
+	{
 		return listaInversionesRealizadas;
 	}
 
-	public List<Partner> getPartnerLst() {
+	public List<Partner> getPartnerLst() 
+	{
 		return partnerLst;
 	}
-
-	public void setListaInversionesRealizadas(List<InvestmentProgress> listaInversionesRealizadas) {
-		this.listaInversionesRealizadas = listaInversionesRealizadas;
+	
+	public List<BlockedPerson> getLista_blocked_person()
+	{
+		return lista_blocked_person;
 	}
 
 	public String getPartnerId() {

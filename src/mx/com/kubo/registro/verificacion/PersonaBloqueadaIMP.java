@@ -38,7 +38,7 @@ implements PersonaBloqueadaIMO
 	{		
 		if(mx_rfc != null)
 		{
-			lista_blocked_person = service_PLD.getBlockedPersonByRFC(mx_rfc.substring(0, 9));
+			lista_blocked_person = service_blocked_person.getBlockedPersonByRFC(mx_rfc.substring(0, 9));
 		
 			blocked_person_ENABLED = lista_blocked_person != null && lista_blocked_person.size() > 0;
 		}
@@ -47,7 +47,7 @@ implements PersonaBloqueadaIMO
 		{
 			if(full_name_ENABLED)
 			{
-				lista_blocked_person = service_PLD.getBlockedPersonByFullName(full_name.toUpperCase());
+				lista_blocked_person = service_blocked_person.getBlockedPersonByFullName(full_name.toUpperCase());
 			}
 			
 			blocked_person_ENABLED = lista_blocked_person != null && lista_blocked_person.size() > 0;

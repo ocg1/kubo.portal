@@ -39,7 +39,7 @@ div.gestion-sesiones.container
 {
 	border: solid 0px #E3E3E3;
 	margin:0 auto;
-	width: 100%;
+	width: 99%;
 	height:auto;
 	overflow: auto;
 	padding: 0px;
@@ -58,7 +58,7 @@ div.gestion-sesiones.container
 
 #admMenu
 {
-	width: 20%; 
+	width: 22%; 
 	float: left;
 	border: solid 1px #E3E3E3; 
 }
@@ -79,7 +79,8 @@ div.gestion-sesiones.container
 #gestion-sesiones,
 #reinversion_automatica,
 #ping_buro,
-#tablero-normativo
+#tablero-normativo,
+#blocked-person
 {
 	height: 40px; 
 	width: 95%; 
