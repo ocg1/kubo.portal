@@ -59,17 +59,31 @@
 									    					
 						<ui:include src = "datos_personales/tu_prestamo.xhtml"/>	
 						<ui:include src = "datos_personales/actividad_economica.xhtml"/>
-						<ui:include src = "datos_personales/formaContacto.xhtml"/>
+					
 						<ui:include src = "datos_personales/deudasAtrasadas.xhtml"/>
 						
 						<div class="section" id="datosPersonales" onclick="tab_section(this);">Por favor, ingresa tus datos personales.<i class="fa fa-chevron-down"></i></div>
 					
 						<section>		
 							<ui:include src = "datos_personales/datos/datos_personales_INFO.xhtml"/>
+							<ui:include src = "datos_personales/formaContacto.xhtml"/>
 							<ui:include src = "datos_personales/telefonos.xhtml"/>
+							<div class="aviso-type-1 telefono-bloque">
+							<h3>¡Recuerda!</h3>
+							<h4>Agregar nuestro número a tus contactos:</h4>
+							<div class="telefono-style">
+								<p><i class="fa fa-phone"></i>
+									<span>62690024</span>
+								</p>
+							</div>
+							</div>
 							<ui:include src = "datos_personales/editar_RFC_y_CURP.xhtml"/>														
 						</section>
-					
+						
+							
+							
+						
+						
 			  	   		<div class="section" onclick="tab_section(this);">Por favor, ingresa los datos de tu domicilio. <i class="fa fa-chevron-down"></i></div>
 			  	   	
 						<section>	
