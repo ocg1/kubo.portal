@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
@@ -67,8 +68,8 @@ implements Serializable
 		}				
 	}
 	
-	public void cargaListInversionesPorRealizar(){
-		
+	public void cargaListInversionesPorRealizar()
+	{		
 		inversionAutomatica = new InversionAutomatica();
 		
 		fechaInversion = new Date();
@@ -77,25 +78,23 @@ implements Serializable
 		
 		listaInversionistas = inversionAutomatica.getListaInversionistas();
 		
-		System.out.println( " cargaListInversionesPorRealizar ... " );
-		
+		System.out.println( " cargaListInversionesPorRealizar ... " );	
 	}
 	
-	public void ejecutaInversion(){
-		
-		try{
-			
+	public void ejecutaInversion()
+	{		
+		try
+		{			
 			inversionAutomatica.ejecutaInversionAutomatica( fechaInversion );
 			
-		}catch(Exception e){
+		} catch(Exception e) {
 			
-			e.printStackTrace();
-			
-		}
-		
+			e.printStackTrace();			
+		}		
 	}
 	
-	public void cargaListInversionesRealizadas(){
+	public void cargaListInversionesRealizadas()
+	{
 		
 		//InversionAutomatica inversionAutomatica = new InversionAutomatica();
 		
@@ -108,17 +107,36 @@ implements Serializable
 		if(listaInversionesRealizadas != null)
 		{
 			System.out.println( "Inversiones Realizadas: "+listaInversionesRealizadas.size() );
-		}else
-		{
+			
+		} else {
+			
 			System.out.println("listaInversionesRealizadas == null");
-		}
-		
+		}		
 	}
 	
-	public void handleFileCredFmDos(FileUploadEvent event)
+	public void init_blocked_person_list(AjaxBehaviorEvent event)
 	{
+		request = RequestContext.getCurrentInstance();
 		
-		handleFileUpload(event);
+		lista_blocked_person = service_blocked_person.getBlockedPerson();
+		
+		if(lista_blocked_person != null)
+		{		
+			request.addCallbackParam("blocked_person_number", lista_blocked_person.size());
+			
+		} else {
+			
+			request.addCallbackParam("blocked_person_number", "0");
+		}
+	}
+	
+	public void delete_blocked_person(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		boolean delete_OK = service_blocked_person.delete();
+		
+		request.addCallbackParam("delete_OK", delete_OK);
 	}
 	
 	public void handleFileBlockedPerson(FileUploadEvent event)
@@ -133,9 +151,9 @@ implements Serializable
 		UploadedFile file = event.getFile();
 		
 		loader = new DocumentUploaderIMP();
-		loader.setSesion(sesion);
-		loader.setFile(file);
 		loader.setRealPath(realPath);
+		loader.setSesion(sesion);
+		loader.setFile(file);		
 		loader.init();
 		
 		String file_uploaded_path = loader.getFile_uploaded_path();
@@ -153,6 +171,11 @@ implements Serializable
 
 		request.addCallbackParam("path_file_LOG", path_file_LOG);		
 	}	
+	
+	public void handleFileCredFmDos(FileUploadEvent event)
+	{		
+		handleFileUpload(event);
+	}
 	
 	public void handleFileUpload(FileUploadEvent event) 
 	{	

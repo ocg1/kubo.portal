@@ -15,9 +15,12 @@
 						  invalidSizeMessage = "Tamaño del archivo inválido"
 				    	  invalidFileMessage = "Tipo de archivo no válido."		    	  
 			              sizeLimit  = "5242880" allowTypes = "/(\.|\/)(txt|csv)$/"
-
+			              onstart    = "displayMessageProcessing('msgprocessing',false);"
+			              oncomplete = "Administracion.file_upload_oncomplete();"						  
 			              styleClass = "custumStlFileMassive">			 
-			 </p:fileUpload> 
-		</h:form>
+			 </p:fileUpload> 			 			 
+		</h:form>				
+		
+		<ui:include src = "blocked-person/remote-command.xhtml" />
 	</h:panelGroup>				
 </ui:composition>

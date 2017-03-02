@@ -57,6 +57,23 @@ public class BlockedPersonDAOImp implements BlockedPersonDAO
 		}		 
 	}
 	
+	@Transactional
+	public boolean delete()
+	{
+		try
+		{
+			int deletedCount = em.createQuery("delete from BlockedPerson").executeUpdate();						
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+			return false;
+		}
+	}
+	
 	public List<BlockedPerson> getLista_blocked_person()
 	{	
 		List<BlockedPerson> lista = null;

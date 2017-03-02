@@ -2,8 +2,6 @@ package mx.com.kubo.mesa.administracion;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 import mx.com.kubo.tools.Utilities;
 
@@ -13,15 +11,13 @@ public abstract class DocumentUploaderAMO extends DocumentUploaderDMO
 	{
 		try
 		{		
-			InputStream in = file.getInputstream();
-			
-			//System.out.println( "component_id: " + component_id + " formatFile: " + formatFile );
-			
-			nameFile += "_" + fecha + formatFile;
+			in = file_uploaded.getInputstream();		
 			
 			file_uploaded_path = realPath + pathDocument + nameFile;
 			
-			OutputStream out = new FileOutputStream(new File(file_uploaded_path));
+			File file = new File(file_uploaded_path);
+			
+			out = new FileOutputStream(file);
             
             int read = 0;
             byte[] bytes = new byte[1024];

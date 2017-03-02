@@ -51,13 +51,13 @@ public abstract class BlockedPersonAMO extends BlockedPersonDMO
 			
 			if (save_OK)
 			{					
-				sb_log.append("¡ ¡ ¡ ¡  I N S E R T A D O  ! ! ! !" ).append("\n");
+				sb_log.append("OK").append("\n");
 				
 				counter_insert++;
 				
 			} else {
 				
-				sb_log.append("X X X X X  E R R O R  X X X X").append("\n");			
+				sb_log.append("ERROR").append("\n");			
 			}			
 		}
 	}

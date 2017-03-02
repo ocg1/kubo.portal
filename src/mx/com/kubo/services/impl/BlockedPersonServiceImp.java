@@ -25,6 +25,11 @@ public class BlockedPersonServiceImp implements BlockedPersonService
 		return dao.update(blocked_person);
 	}
 	
+	public boolean delete()
+	{
+		return dao.delete();
+	}
+	
 	public List<BlockedPerson> getBlockedPersonByFullName(String full_name)
 	{		
 		return dao.getBlockedPersonByFullName(full_name);

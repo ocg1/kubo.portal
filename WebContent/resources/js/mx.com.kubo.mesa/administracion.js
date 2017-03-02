@@ -9,16 +9,6 @@ Administracion.notificar = function()
 	$("#administracion-notificar-estatus").hide();
 };
 
-Administracion.delete_blocked_person = function()
-{
-	console.log("Administracion.delete_blocked_person():");
-};
-
-/* 
-	onstart    = "displayMessageProcessing('msgprocessing',false);"
-	oncomplete = "Administracion.blocked_person_oncomplete(xhr, status, args);"
- */
-
 Administracion.notificar_oncomplete = function(xhr, status, args)
 {
 	var notificar_OK = args.notificar_OK;
@@ -38,12 +28,47 @@ Administracion.notificar_oncomplete = function(xhr, status, args)
 	closeMessageProcessing();
 };
 
-Administracion.blocked_person_oncomplete = function(xhr, status, args)
+Administracion.delete_blocked_person = function()
 {
-	var notificar_OK = args.path_file_LOG;;
+	console.log("Administracion.delete_blocked_person():");
 	
-	console.log("Administracion.notificar_oncomplete():");
-	console.log("> path_file_LOG = " + path_file_LOG);	
+	$("a#delete-blocked-person").trigger("click");
+};
+
+Administracion.delete_oncomplete = function(xhr, status, args)
+{
+	var delete_OK = args.delete_OK;
+	
+	console.log("Administracion.delete_oncomplete():");
+	console.log(" > delete_OK = " + delete_OK);
+	
+	closeMessageProcessing();
+	
+	Administracion.init_blocked_person_list();
+};
+
+Administracion.file_upload_oncomplete = function()
+{	
+	console.log("Administracion.file_upload_oncomplete(): OK");
+	
+	closeMessageProcessing();
+	
+	Administracion.init_blocked_person_list();
+};
+
+Administracion.init_blocked_person_list = function()
+{
+	console.log("Administracion.init_blocked_person_list(): OK");
+	
+	$("a#init-blocked-person-list").trigger("click");
+};
+
+Administracion.blocked_person_list_oncomplete = function(xhr, status, args)
+{
+	var blocked_person_number = args.blocked_person_number;
+	
+	console.log("Administracion.blocked_person_list_oncomplete():");
+	console.log(" > blocked_person_number = " + blocked_person_number);
 	
 	closeMessageProcessing();
 };

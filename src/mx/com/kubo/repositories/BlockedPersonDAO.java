@@ -6,7 +6,8 @@ import mx.com.kubo.model.BlockedPerson;
 
 public interface BlockedPersonDAO 
 {
-	boolean save(BlockedPerson blocked_person);
+	boolean delete();
+	boolean save  (BlockedPerson blocked_person);
 	boolean update(BlockedPerson blocked_person);
 	
 	List<BlockedPerson> getLista_blocked_person();

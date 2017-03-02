@@ -6,6 +6,7 @@ import mx.com.kubo.model.BlockedPerson;
 
 public interface BlockedPersonService 
 {
+	boolean delete();
 	boolean save(BlockedPerson blocked_person);
 	boolean update(BlockedPerson blocked_person);
 	
