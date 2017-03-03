@@ -252,7 +252,14 @@ function name_section () {
 		  }
 		
 	}
-	
+	function ayudaMixPanel (pixMixPanel){
+		ayudaQuitar();
+		mixPanel (pixMixPanel);
+	}	
+	function  formatMixPanel(element, componente, pixMixPanel ){
+		 format(element, componente)
+		 mixPanel (pixMixPanel);
+	}
 	function ayudaQuitar() {
 		$(".ayudaPanel").fadeOut();
 		
@@ -260,6 +267,7 @@ function name_section () {
 			  $(".columnaAyuda").fadeOut();
 			
 		  }
+		 
 	}
 function btnN(btn) {
 		
@@ -1281,6 +1289,8 @@ $(window).load(function() {
 				avisoCliente ();
 				
 		 	}
+		 	
+		 	
 
 
 });
@@ -1310,4 +1320,6 @@ function avisoCliente (){
 	}
 	
 }
+
+
 

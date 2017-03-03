@@ -86,6 +86,44 @@ function showSuccess()
 	var val1 = $("#banco_cuenta_clabe_input").val();
 	var val2 = $("#clabe").val();
 	
+	alertify.confirm('¿Estás seguro que todos tus datos son correctos?', function (e) 
+			
+			{
+				if(e) 
+				{			
+					$('#dvcntClabe').hide();
+					$.scrollTo('#header',300, { axis:'y' });
+					$('#dvcntSuccess').show();
+					
+					mandodatos_hs();
+					
+				    var testframe = document.createElement("iframe");
+				    
+				    testframe.id = "testframe";
+				    testframe.src = "../jsf/secciones/registro/investor/altaClientInvest.xhtml";
+				    
+				    $("#dvcntSuccess").empty();
+				    $("#dvcntSuccess").append(testframe);
+				    
+				    var styles = {
+				    		width : "98%",
+				    		border: "0px",
+				    		height: "900px",
+				    		overflow: "hidden"
+				    };
+				    
+				    $("#testframe").css(styles);
+					  googleEvents ('registro-inversion', 'clic aceptar', 'boton aceptar datos correctos');
+					  facebook_events ('clicAceptarSolicitud' );
+					return true;
+					
+				} else { 
+					  googleEvents ('registro-inversion', 'clic cancelar', 'boton cancelar corregir datos');
+					  facebook_events ('clicCancelarSolicitud' );
+					return false;
+				}
+			}); 	
+	/*
 	if(val1.trim() == "" || val2.trim() == "" || $("#tipoVivienda").val() == 0)
 	{
 		alertify.alert("Es necesario que llenes todos los campos para finalizar tu solicitud");
@@ -140,7 +178,7 @@ function showSuccess()
 				return false;
 			}
 		}); 	
-	}
+	}*/
 }
 
 function reload()

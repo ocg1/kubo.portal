@@ -250,7 +250,8 @@ $(document).ready(function(){
 	 
 	
 		 
-		 
+	
+		 addProspectIdUrl();
 		
 
 	
@@ -782,7 +783,14 @@ var preregistroInit = function () {
 }
 
 
+function addProspectIdUrl () {
+	var locacion = document.location.href; 
+	if(locacion.indexOf('pID')<0  && $("#prosId").length & $("#prosId").val() != "" &&  $("#prosId").val() != null  &&  $("#prosId").val() != "0"  ){
+		var ProspectoId = $("#prosId").val()
+		changeUrlParam('pID', ProspectoId );
+	}
+	
+	
 
-
-
+}
 

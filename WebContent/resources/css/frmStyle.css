@@ -8444,14 +8444,13 @@ margin:0 0 30px !important;line-height: 20px !important;}
 }
 
  @media (max-width:400px)  {
-	 
+
 	 .cnbv-logo { 	
 	 	background:url("../../Portal/resources/images/logos_AMS/Logos_AMS.jpg");
 		background-position:-1700px -30px;
 		background-repeat:no-repeat;
 		background-size:2000px auto;
 	 }
- 	
  	.condusef-logo { 	
 	 	background:url("../../Portal/resources/images/logos_AMS/Logos_AMS.jpg");
 		background-position:-1920px -15px;
@@ -8481,6 +8480,10 @@ margin:0 0 30px !important;line-height: 20px !important;}
 		float:left;
 }
 
+.nombre-primero-segundo .field label {		
+	color:#999 !important;
+}
+
 .nombre-primero-segundo .field + .field {
 	float:right;
 }
@@ -8503,6 +8506,11 @@ margin:0 0 30px !important;line-height: 20px !important;}
 	width: 135px;
 	margin:0 auto;
 }
+
+
+
+
+
 
  .telefono-style p i {
  	color: #bbbbbb !important;

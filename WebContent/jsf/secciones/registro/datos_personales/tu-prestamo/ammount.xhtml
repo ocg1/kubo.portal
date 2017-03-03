@@ -29,9 +29,9 @@
 		
 		<h:inputText id = "simulador_ammount" value = "#{basicData.simulador.ammount_value}" immediate = "true"
 					 styleClass = "elementAddres1 validatorClass hs_class"
-					 onkeyup = "return format(this,'simulator');"
+					 onkeyup = "return formatMixPanel(this,'simulator', 'cuantoDineroNecesitas' );"
 					 onfocus = "Simulador.init_focus_date();"
-					 onblur  = " ayudaQuitar();">
+					 onblur  = " ayudaMixPanel ('cuantoDineroNecesitas')">
 										 			 								 		
 			<p:ajax event = "blur" listener = "#{basicData.simulador.init_input_text}"
 					onstart    = "return simulatorMirror();"

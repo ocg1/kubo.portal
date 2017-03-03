@@ -235,5 +235,12 @@
 	</h:panelGroup>    
 	
 	</h:panelGroup>
+	
+			<h:panelGroup rendered="#{sessionBean.prospectus_id != null}" >
+        
+        	 <input style="display:none" id="prosId" value="#{sessionBean.prospectus_id}" />   
+        
+	      
+        </h:panelGroup>
 	  
 </ui:composition>           

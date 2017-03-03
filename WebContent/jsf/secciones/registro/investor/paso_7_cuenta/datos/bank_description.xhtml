@@ -16,7 +16,7 @@
 			<p:autoComplete id = "banco_cuenta_clabe" 
 						    value = "#{deal.thisClabe.bank_description}"
 						    completeMethod = "#{deal.autocomplete}" 
-						    styleClass = "validatorClass auocmpleStl hs_class">
+						    styleClass = "auocmpleStl hs_class">
 			 	<p:ajax event = "itemSelect" listener = "#{deal.handleSelect}" /> 
 			 	<p:ajax event = "blur"       listener = "#{deal.updateClabe}" /> 
 			</p:autoComplete>  					

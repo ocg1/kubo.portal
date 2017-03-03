@@ -5,11 +5,11 @@
 
 	<div class = "field" >
 		<div class = "dvLabel">
-			<h:outputLabel styleClass = "labelsStl" value = "#{msg.nickname}" />
+			<h:outputLabel styleClass = "labelsStl" value = "Escribe un sobrenombre para tí" />
 		</div>
 					
 	
-			<h:inputText id="nickname" styleClass = "elementAddres1 hideIFE validatorClass hs_class" value = "#{deal.membership.nickname}" >
+			<h:inputText id="nickname" styleClass = "elementAddres1 hideIFE hs_class" value = "#{deal.membership.nickname}" >
 				<p:ajax event = "blur" listener = "#{deal.saveMembership}"/>
 			</h:inputText>
 		
