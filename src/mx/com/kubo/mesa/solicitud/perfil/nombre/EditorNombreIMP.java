@@ -1,4 +1,4 @@
-package mx.com.kubo.listeners.mesa.solicitud;
+package mx.com.kubo.mesa.solicitud.perfil.nombre;
 
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.event.AjaxBehaviorEvent;

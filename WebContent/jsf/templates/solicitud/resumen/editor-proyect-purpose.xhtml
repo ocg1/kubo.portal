@@ -1,0 +1,48 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+						
+	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
+		<h3>#{summaryRequest.proposito}</h3>		
+	</h:panelGroup>			
+															
+	<div class = "clear smallGray" 
+		 style = "width: 350px; overflow: visible; color: #439539;">
+		 
+		<div style = "overflow: visible; float: left;">						
+			<ui:include src = "editor-proyect/bitacora.xhtml" />
+		</div>		
+										
+		<p:inplace widgetVar = "editorProyectPurpose"
+				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
+		 		   label     = "#{summaryRequest.actualProyect.proyect.purpose.name}" >
+		
+			<p:ajax event = "save" 
+					immediate = "true"
+				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+					listener   = "#{summaryRequest.editarProyectPurpose}"/>
+		 	
+		 	<ui:include src = "editor-proyect/purpose-id.xhtml" /> 							 	
+			<ui:include src = "editor-proyect/change-motive.xhtml" />
+			<ui:include src = "editor-proyect/save-cancel.xhtml" />
+		</p:inplace>							
+	</div> 		
+	
+	<script>
+		function listener_guardar_cambios(xhr, status, args)
+		{
+			$("#editor-purpose-motive").val("").blur();				
+			$("#update-proyect-purpose").trigger("click");
+			console.log("listener_guardar_cambios(): OK");
+
+		}
+		
+		
+	</script>
+	
+	<h:commandLink id = "update-proyect-purpose" style="display:none">
+      	<p:ajax event = "click" immediate = "true" update = "editor-proyect-purpose" />
+      </h:commandLink>	
+				
+</ui:composition>				

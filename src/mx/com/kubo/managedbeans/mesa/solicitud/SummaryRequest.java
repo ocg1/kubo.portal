@@ -24,7 +24,6 @@ import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -56,10 +55,8 @@ import mx.com.kubo.controller.shortURL.ResponseShortURL;
 import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
-import mx.com.kubo.listeners.mesa.solicitud.EditorCurpIMP;
-import mx.com.kubo.listeners.mesa.solicitud.EditorNombreIMP;
-import mx.com.kubo.listeners.mesa.solicitud.EditorRfcIMP;
-import mx.com.kubo.listeners.mesa.solicitud.EditorTipoCreditoIMP;
+import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
+import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
 import mx.com.kubo.managedbeans.AlertsManaged;
 import mx.com.kubo.managedbeans.ApplicationParams;
 import mx.com.kubo.managedbeans.HeaderBean;
@@ -121,6 +118,9 @@ import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMP;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMO;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.mesa.solicitud.perfil.IndicePagoDeudasIMP;
+import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMP;
+import mx.com.kubo.mesa.solicitud.perfil.nombre.EditorNombreIMP;
+import mx.com.kubo.mesa.solicitud.perfil.rfc.EditorRfcIMP;
 import mx.com.kubo.tools.ImageUtils;
 import mx.com.kubo.tools.Utilities;
 
@@ -427,6 +427,11 @@ implements SummaryRequestIMO,  Serializable
 			editor_tipo_credito = new EditorTipoCreditoIMP();
 			editor_tipo_credito.setSesion(sesion);
 			editor_tipo_credito.setProyect_loan(actualProyect);
+			
+			editor_purpose = new EditorPurposeIMP();
+			editor_purpose.setSesion(sesion);
+			editor_purpose.setProyect_loan(actualProyect);
+			editor_purpose.init();
 		}
 				
 		verificaRecomendado();
@@ -1569,58 +1574,7 @@ implements SummaryRequestIMO,  Serializable
 		return false;
 		
 	}	
-		
-/*	
-	public void saveChangeIFE(ChangeBean changeife){
-		
-		HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest(); 
-		  String ipAddress  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
-	        if(ipAddress == null)  
-	        {  
-	          ipAddress = httpServletRequest.getRemoteAddr();  
-	        }
-		if(persona!=null && changeife.getWhyChangeData()!=null){
-			String originalVal="";
-			String newValue="";
-			String field="";
-			if(changeife.getNameField().equals("mx_ife_cveelector")){
-				originalVal=persona.getMx_ife_cveelector()!=null?persona.getMx_ife_cveelector():"";
-				newValue=changeife.getNewValue();
-				field="mx_ife_cveelector";
-				persona.setMx_ife_cveelector(changeife.getNewValue());
-			}else if(changeife.getNameField().equals("mx_ife_numemision")){
-				originalVal=persona.getMx_ife_numemision()!=null?persona.getMx_ife_numemision().toString():"";
-				newValue=changeife.getNewValue();
-				field="mx_ife_numemision";	
-				persona.setMx_ife_numemision(Integer.parseInt(changeife.getNewValue()));
-			}else if(changeife.getNameField().equals("mx_ife_seccion")){
-				originalVal=persona.getMx_ife_seccion()!=null?persona.getMx_ife_seccion():"";
-				newValue=changeife.getNewValue();
-				field="mx_ife_seccion";				
-				persona.setMx_ife_seccion(changeife.getNewValue());
-			}else if(changeife.getNameField().equals("mx_ife_numvertical")){
-				originalVal=persona.getMx_ife_numvertical()!=null?persona.getMx_ife_numvertical():"";
-				newValue=changeife.getNewValue();
-				field="mx_ife_numvertical";			
-				persona.setMx_ife_numvertical(changeife.getNewValue());
-			}
 			
-			service_natural_person.update(getPersona());			
-			if(saveChangeData("gn_natural_person", field, originalVal, newValue, changeife.getWhyChangeData())){
-				setWhyChangeData(null);
-				changeife.setWhyChangeData(null);
-				changeDataIFE=new ChangeBean();
-				List<Change_control> lstChange_ife=service_change_control.getListByProspectByAfectedTablesFields(persona.getNatPerPK().getProspectus_id(),
-						persona.getNatPerPK().getCompany_id(), new String[]{"gn_natural_person"}, new String[]{"mx_ife_cveelector","mx_ife_numemision","mx_ife_seccion","mx_ife_numvertical"});
-				changeDataIFE.setHasChange(lstChange_ife!=null && lstChange_ife.size()>0?true:false);
-				changeDataIFE.setLstChanges(lstChange_ife!=null && lstChange_ife.size()>0?lstChange_ife:null);
-			}
-				
-			
-		}
-	}
-*/	
-	
 	public void saveNewBanckDesk()
 	{		
 		if(persona!=null && claveaccountlst!=null && claveaccountlst.size()>0)
@@ -3705,15 +3659,35 @@ membershipTemp = new Membership();
 		
 	}
 	
-	public void editaTipoCredito(){
-	
+	public void editaTipoCredito()
+	{
+		request = RequestContext.getCurrentInstance();
+		
 		editor_tipo_credito.listener_guardar_cambios();
 		
-		actualProyect =  service_proyect_loan.findProyect(actualProyect.getProyectloanPk());
+		boolean update_OK = editor_tipo_credito.isUpdate_OK();
 		
-		System.out.println( "editaTipoCredito: " +actualProyect.getLoantype().getLoan_type_desc() );
-	
+		actualProyect = editor_tipo_credito.getProyect_loan();
+		
+		String description = actualProyect.getLoantype().getLoan_type_desc();
+		
+		request.addCallbackParam("update_OK", update_OK);
+		request.addCallbackParam("description", description);
 	}
 	
-	
+	public void editarProyectPurpose()
+	{		
+		request = RequestContext.getCurrentInstance();
+		
+		editor_purpose.save();
+		
+		actualProyect = editor_purpose.getProyect_loan();
+		
+		boolean update_OK = editor_purpose.isUpdate_OK();
+		
+		String description = actualProyect.getProyect().getPurpose().getDescription();				
+		
+		request.addCallbackParam("update_OK", update_OK);
+		request.addCallbackParam("description", description);
+	}
 }

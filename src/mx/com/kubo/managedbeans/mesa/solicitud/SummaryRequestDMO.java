@@ -31,10 +31,6 @@ import mx.com.kubo.bean.PersonOtherFamily;
 import mx.com.kubo.bean.ProyectBean;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.bean.ShowChangeSession;
-import mx.com.kubo.listeners.mesa.solicitud.EditorCurpIMO;
-import mx.com.kubo.listeners.mesa.solicitud.EditorNombreIMO;
-import mx.com.kubo.listeners.mesa.solicitud.EditorRfcIMO;
-import mx.com.kubo.listeners.mesa.solicitud.EditorTipoCreditoIMO;
 import mx.com.kubo.managedbeans.ApplicationParams;
 import mx.com.kubo.managedbeans.RoleFunctionController;
 import mx.com.kubo.managedbeans.SessionBean;
@@ -45,6 +41,8 @@ import mx.com.kubo.managedbeans.mesa.solicitud.perfil.FondeadorIMO;
 import mx.com.kubo.mesa.solicitud.ReporteInusualIMO;
 import mx.com.kubo.mesa.solicitud.documentacion.DocumentacionIMO;
 //import mx.com.kubo.mesa.solicitud.investor.ActivadorIMO;
+import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
+import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.ActividadEconomicaIMO;
 import mx.com.kubo.mesa.solicitud.perfil.EditorIdentificationIMO;
 import mx.com.kubo.mesa.solicitud.promo.PromocionIMO;
@@ -112,8 +110,11 @@ import mx.com.kubo.model.mesa.solicitud.notas.PriorityType;
 import mx.com.kubo.model.mesa.solicitud.notas.TipoDeNota;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.mesa.solicitud.perfil.IndicePagoDeudasIMP;
+import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMO;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.DomicilioIMO;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.EditorViviendaIMO;
+import mx.com.kubo.mesa.solicitud.perfil.nombre.EditorNombreIMO;
+import mx.com.kubo.mesa.solicitud.perfil.rfc.EditorRfcIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AddressService;
 import mx.com.kubo.services.AutomaticInvestmentService;
@@ -467,8 +468,9 @@ implements SummaryRequestIMO
 	protected     ReporteInusualIMO inusual;
 	protected          TelefonosIMO telefono;
 	protected          PromocionIMO check;
-	//protected          ActivadorIMO activador;
 	protected 	EditorIdentificationIMO editor_identification;
+	protected      EditorPurposeIMO editor_purpose;
+	//protected          ActivadorIMO activador;
 	
 	protected Proyect 		 proyecto;
 	protected ProyectLoan   actualProyect = null;	
@@ -814,7 +816,6 @@ implements SummaryRequestIMO
 	protected Integer registration_reason_id;
 	protected Integer displayConsulSuccess = 2;
 	protected Integer motive_selected;
-	//protected Integer tipo_identificacion;
 	
 	protected long li1;
 			
@@ -901,7 +902,6 @@ implements SummaryRequestIMO
 	protected boolean editor_nombre_ENABLED;
 	protected boolean editor_domicilio_ENABLED;
 	protected boolean domicilio_fiscal_ENABLED;	
-//	protected boolean editor_ife_ENABLED;
 	protected boolean editor_tipo_credito_ENABLED;
 	protected boolean acreditado_sin_publicar_ENABLED;
 	protected boolean reporte_inusual_ENABLED;
@@ -3608,6 +3608,11 @@ implements SummaryRequestIMO
 	public final EditorIdentificationIMO getEditor_identification()
 	{
 		return editor_identification;
+	}
+	
+	public EditorPurposeIMO getEditor_purpose()
+	{
+		return editor_purpose;
 	}
 	
 	public final List <IdentificationType> getLista_identification_type()

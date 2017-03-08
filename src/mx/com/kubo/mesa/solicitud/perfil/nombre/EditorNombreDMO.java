@@ -1,4 +1,4 @@
-package mx.com.kubo.listeners.mesa.solicitud;
+package mx.com.kubo.mesa.solicitud.perfil.nombre;
 
 import java.util.ArrayList;
 import java.util.List;

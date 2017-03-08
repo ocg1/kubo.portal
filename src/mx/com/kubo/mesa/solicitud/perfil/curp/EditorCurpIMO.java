@@ -1,4 +1,4 @@
-package mx.com.kubo.listeners.mesa.solicitud;
+package mx.com.kubo.mesa.solicitud.perfil.curp;
 
 import mx.com.kubo.bean.ChangeBean;
 import mx.com.kubo.managedbeans.SessionBean;

@@ -60,10 +60,13 @@
 							</div>
 						</div>														
 					</div> 
-					<!-- style="width: #{(summaryRequest.actualProyect.transunion_bc_score==null or summaryRequest.actualProyect.transunion_bc_score=='')?'470px':'440px' }" -->
-					<div class="detailsMiddle"  >
-						<div class="titulo_proyectos">
-							<h3>#{summaryRequest.proposito}</h3>
+					
+					<div class = "detailsMiddle"  >
+						<div class = "titulo_proyectos">
+														
+							<h:panelGroup id = "editor-proyect-purpose">
+								<ui:include src = "editor-proyect-purpose.xhtml"/>	
+							</h:panelGroup>		
 								
 							<p class="proyect_name">#{summaryRequest.actualProyect.proyect.name}</p>
 																								

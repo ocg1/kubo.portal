@@ -1,4 +1,4 @@
-package mx.com.kubo.listeners.mesa.solicitud;
+package mx.com.kubo.mesa.solicitud.perfil.curp;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Change_controlPK;
 
-public class EditorRfcIMP extends EditorRfcDMO
-implements EditorRfcIMO
-{
+public class EditorCurpIMP extends EditorCurpDMO
+implements EditorCurpIMO
+{	
 	public void listener_guardar_cambios() 
 	{
 		FacesContext faces = FacesContext.getCurrentInstance();
@@ -28,16 +28,19 @@ implements EditorRfcIMO
         
 		if(change_ENABLED)
 		{			
-			person.setMx_rfc(change_control_bean.getNewValue());
+			person.setMx_curp(change_control_bean.getNewValue());
 			
 			person = service_natural_person.update(person);
 			
-			boolean change_control_OK = saveChangeData("gn_natural_person", "mx_rfc", change_control_bean.getOrigValue() != null ? change_control_bean.getOrigValue():"", person.getMx_rfc(), change_control_bean.getWhyChangeData());
+			boolean change_control_OK = saveChangeData("gn_natural_person", "mx_curp", change_control_bean.getOrigValue() != null ? change_control_bean.getOrigValue():"", person.getMx_curp(), change_control_bean.getWhyChangeData());
 			
 			if(change_control_OK)
 			{
 				change_control_bean.setWhyChangeData(null);
 				change_control_bean.setHasChange(true);
+				
+				int prospectus_id = person.getNatPerPK().getProspectus_id();
+				int company_id    = person.getNatPerPK().getCompany_id();
 				
 				bitacora_change_control = service_change_control.getListByProspectByAfectedTablesFields(prospectus_id, company_id, tables, fields);
 				
