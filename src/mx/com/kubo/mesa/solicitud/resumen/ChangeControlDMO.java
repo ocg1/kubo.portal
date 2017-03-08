@@ -43,6 +43,7 @@ public abstract class ChangeControlDMO implements ChangeControlIMO
 	
 	protected String ip_address;
 	protected String original_value;
+	protected String new_value;
 	protected String afected_table;
 	protected String afected_table_type;
 	protected String field;
@@ -53,6 +54,7 @@ public abstract class ChangeControlDMO implements ChangeControlIMO
 	protected int prospectus_id;
 	protected int emisor_prospectus_id;
 	
+	protected boolean save_ENABLED;
 	protected boolean change_control_OK;
 	protected boolean update_OK;	
 	

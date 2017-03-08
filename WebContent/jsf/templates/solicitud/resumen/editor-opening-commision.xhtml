@@ -1,0 +1,44 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+	
+	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
+		<p class = "detailsBoxValue">
+			<strong class = "orange">#{summaryRequest.actualProyect.opening_commission}%</strong>
+		</p>	
+	</h:panelGroup>		
+
+	<div class = "clear smallGray" style = "width: 180px; overflow: visible; margin-top: 5px; ">
+		<div style = "overflow: visible; float: left;">						
+			<ui:include src = "editor-opening-commission/bitacora.xhtml" />
+		</div>		
+										
+		<p:inplace widgetVar = "editorOpeningCommission"
+				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
+		 		   label     = "#{summaryRequest.actualProyect.opening_commission}%" >
+		
+			<p:ajax event = "save" immediate = "true"
+				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+					listener   = "#{summaryRequest.editarOpeningCommission}"/>
+		 	
+		 	<ui:include src = "editor-opening-commission/opening-commission.xhtml" /> 							 	
+			<ui:include src = "editor-opening-commission/change-motive.xhtml" />
+			<ui:include src = "editor-opening-commission/save-cancel.xhtml" />
+		</p:inplace>							
+	</div> 		
+	
+	<script>
+		function listener_guardar_cambios(xhr, status, args)
+		{
+			$("#editor-commission-motive").val("").blur();				
+			$("#update-editor-commission").trigger("click");
+			
+			console.log("listener_guardar_cambios(): OK");
+		}				
+	</script>
+	
+	<h:commandLink id = "update-editor-commission" style = "display:none" >
+      	<p:ajax event = "click" immediate = "true" update = "editor-opening-commision" />
+	</h:commandLink>	
+</ui:composition>

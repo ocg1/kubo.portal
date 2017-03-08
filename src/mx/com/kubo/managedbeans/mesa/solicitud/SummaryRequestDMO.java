@@ -42,6 +42,7 @@ import mx.com.kubo.mesa.solicitud.ReporteInusualIMO;
 import mx.com.kubo.mesa.solicitud.documentacion.DocumentacionIMO;
 //import mx.com.kubo.mesa.solicitud.investor.ActivadorIMO;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMO;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMO;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.ActividadEconomicaIMO;
@@ -472,6 +473,7 @@ implements SummaryRequestIMO
 	protected 	EditorIdentificationIMO editor_identification;
 	protected      EditorPurposeIMO editor_purpose;
 	protected         EditorRateIMO editor_rate;
+	protected   EditorCommissionIMO editor_commission;
 	//protected          ActivadorIMO activador;
 	
 	protected Proyect 		 proyecto;
@@ -3614,6 +3616,11 @@ implements SummaryRequestIMO
 	public EditorRateIMO getEditor_rate()
 	{
 		return editor_rate;
+	}
+	
+	public EditorCommissionIMO getEditor_commission()
+	{
+		return editor_commission;
 	}
 	
 	public final List <IdentificationType> getLista_identification_type()

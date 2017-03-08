@@ -56,6 +56,7 @@ import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
 import mx.com.kubo.managedbeans.AlertsManaged;
@@ -437,6 +438,10 @@ implements SummaryRequestIMO,  Serializable
 			editor_rate = new EditorRateIMP();
 			editor_rate.setSesion(sesion);
 			editor_rate.setProyect_loan(actualProyect);
+			
+			editor_commission = new EditorCommissionIMP();
+			editor_commission.setSesion(sesion);
+			editor_commission.setProyect_loan(actualProyect);
 		}
 				
 		verificaRecomendado();
@@ -3707,5 +3712,18 @@ membershipTemp = new Membership();
 		
 		request.addCallbackParam("update_OK", update_OK);
 		request.addCallbackParam("rate_investor", rate_investor);
+	}
+	
+	public void editarOpeningCommission()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		editor_commission.save();
+		
+		update_OK     = editor_commission.isUpdate_OK();
+		actualProyect = editor_commission.getProyect_loan();				 
+		
+		request.addCallbackParam("update_OK", update_OK);
+		request.addCallbackParam("opening_commission", actualProyect.getOpening_commission());
 	}
 }

@@ -15,6 +15,7 @@ import mx.com.kubo.bean.IncomeDetailsBean;
 import mx.com.kubo.bean.PersonAndPhones;
 import mx.com.kubo.bean.PhoneReview;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMO;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMO;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMO;
@@ -119,6 +120,7 @@ interface SummaryRequestIMO
 	TelefonosIMO          getTelefono();
 	PromocionIMO          getCheck();
 	EditorIdentificationIMO getEditor_identification();
+	EditorCommissionIMO getEditor_commission();
 	
 	RegistrationReasonService getReasonsService();
 	MembershipService         getService_membership();		

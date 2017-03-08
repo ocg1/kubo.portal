@@ -9,4 +9,6 @@ public interface EditorRateIMO extends ChangeControlIMO
 	void init_rate_investor(AjaxBehaviorEvent event);
 	
 	void save();
+	
+	void init_editor();
 }

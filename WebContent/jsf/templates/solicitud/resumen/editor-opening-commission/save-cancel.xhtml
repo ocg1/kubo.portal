@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		 	
+ 	<div onclick = "$('#save-opening-commision').click();"
+ 		 class = "buttonPR" style = "width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">
+			Guardar
+	</div>
+ 	
+ 	<div onclick = "editorOpeningCommission.cancel()"
+ 		 class = "buttonPR"   		 
+ 		 style = "margin: 0; width: 71px;font-size:0.9em;float: left;">
+			Cancelar
+	</div>				
+	
+	<p:commandButton id = "save-opening-commision" style = "display: none;"  
+				 onclick    = "editorOpeningCommission.save();"
+				 oncomplete = "editorOpeningCommission.hide();"
+				 update = "editor-opening-commision"/>
+</ui:composition>

@@ -5,10 +5,10 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 
-public class EditorRateIMP extends EditorRateDMO
-implements EditorRateIMO 
+public class EditorCommissionIMP extends EditorCommissionDMO
+implements EditorCommissionIMO 
 {
-	public void init_rate_investor(AjaxBehaviorEvent event)
+	public void init_opening_commission(AjaxBehaviorEvent event)
 	{
 		request = RequestContext.getCurrentInstance();
 		
@@ -16,9 +16,9 @@ implements EditorRateIMO
 		
 		try
 		{
-			rate_investor = Double.parseDouble(input_text.getValue().toString());
+			opening_commission = Double.parseDouble(input_text.getValue().toString());
 			
-			request.addCallbackParam("rate_investor", rate_investor);
+			request.addCallbackParam("opening_commision", opening_commission);
 			
 		} catch (Exception e) {
 			
@@ -28,7 +28,7 @@ implements EditorRateIMO
 	
 	public final void save() 
 	{							
-		new_value = rate_investor + "";
+		new_value = opening_commission + "";
 		
 		save_change_control();		
 		init_change_control_bean();
@@ -38,10 +38,10 @@ implements EditorRateIMO
 			init_editor();
 		}		
 	}
-
+	
 	public final void init_editor() 
 	{
-		proyect_loan.setRate_investor(rate_investor);
+		proyect_loan.setOpening_commission(opening_commission);
 		
 		update_OK = service_proyect_loan.update(proyect_loan);
 		
@@ -49,9 +49,9 @@ implements EditorRateIMO
 		{			
 			proyect_loan = service_proyect_loan.findProyect(proyect_loan.getProyectloanPk());
 			
-			rate_investor = proyect_loan.getRate_investor();
+			opening_commission = proyect_loan.getOpening_commission();
 			
-			original_value = rate_investor + "";
+			original_value = opening_commission + "";
 		}
 	}
 }

@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+ 	<h:inputTextarea id = "editor-commission-motive"
+ 					 cols = "25" rows = "3" 
+ 					 rendered  = "#{summaryRequest.editor_commission != null}"
+				 	 value = "#{summaryRequest.editor_commission.change_control_bean.whyChangeData}"
+				 	 styleClass = "elementTextArea" 
+				  	 style = "margin:5px 0;
+				  	 	      width:200px;
+				  	 	      height:100px;
+				  	 	      font-size: 1em ! important;" >
+ 		<p:ajax event = "blur"/>
+ 	</h:inputTextarea>
+ 	
+ 	<p:watermark for = "editor-commission-motive" value = "Motivo del cambio" />				
+</ui:composition>

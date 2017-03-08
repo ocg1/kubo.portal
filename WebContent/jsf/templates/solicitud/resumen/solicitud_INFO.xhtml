@@ -96,71 +96,9 @@
 							<h:panelGroup id = "editor-tipo-credito">
 								<ui:include src = "editor-tipo-credito.xhtml"/>	
 							</h:panelGroup>		
-	
-							<h:panelGroup rendered="#{summaryRequest.hasOffer != 0}">
-							
-								<h:panelGroup rendered="#{summaryRequest.hasOffer == 3}">
-									<div class="OfertaInfo"><i class="fa fa-star "></i>Tiene Oferta</div>
-								</h:panelGroup>	
-								<h:panelGroup rendered="#{summaryRequest.hasOffer == 2}">
-									<div class="OfertaInfo"><i class="fa fa-star "></i>Aceptó Oferta</div>
-								</h:panelGroup>		
-								<h:panelGroup rendered="#{summaryRequest.hasOffer == 1}">
-									<div class="OfertaInfo"><i class="fa fa-star "></i>Rechazó Oferta</div>
-								</h:panelGroup>
-								<h:panelGroup rendered="#{summaryRequest.hasOffer == 4}">
-									<div class="OfertaInfo"><i class="fa fa-star "></i>Rechazó Oferta en Mesa</div>
-								</h:panelGroup>
-								<h:panelGroup rendered="#{summaryRequest.hasOffer == 5}">
-									<div class="OfertaInfo"><i class="fa fa-star "></i>Aceptó Oferta en Mesa</div>
-								</h:panelGroup>
 								
-									
-							</h:panelGroup>
-							
-							<h:panelGroup rendered="#{summaryRequest.hasEflTest}">
-								
-								<h:panelGroup rendered="#{!summaryRequest.efl_OK}">
-									
-									<h:panelGroup rendered="#{!summaryRequest.efl_ERROR}">
-										<div class="OfertaInfo clsEFLRes " style = "cursor:pointer;" ><i class="fa fa-pencil-square-o "></i>Sin Examen EFL</div>
-									</h:panelGroup>
-									
-									<h:panelGroup rendered="#{summaryRequest.efl_ERROR}">
-										<div class="OfertaInfo clsEFLRes" style = "cursor:pointer;" ><i class="fa fa-pencil-square-o "></i>Sin Respuesta EFL</div>
-									</h:panelGroup>
-										
-								</h:panelGroup>	
-								
-								<h:panelGroup rendered="#{summaryRequest.efl_OK}">
-									<div class="OfertaInfo clsEFLRes" style = "cursor:pointer;" ><i class="fa fa-check-square-o "></i>Examen EFL CONCLUIDO</div>
-								</h:panelGroup>	
-								
-								<div style="display:none;">
-									
-									
-									
-									<p:commandLink id="cmdCheckEFL" immediate      = "true" 
-									               actionListener = "#{summaryRequest.initListEFLProgress}" 
-									               oncomplete     = "showEflProgress();" 
-									              >
-									
-									</p:commandLink>
-								
-								</div>
-								
-								<script>
-								
-									$(".clsEFLRes").click( function(){ 
-										
-										$("#cmdCheckEFL").trigger("click");
-										
-									});
-								
-								</script>	
-								
-							</h:panelGroup>
-																									 								 															 
+							<ui:include src = "hasOffer.xhtml"/>
+							<ui:include src = "hasEflTest.xhtml"/>																															 								 															 
 						</div>
 						
 						<div class="detailsMiddleData">
@@ -190,67 +128,33 @@
 									<p class="smallGray">Tasa fondeador</p>
 								</div>
 									
-								<h:panelGroup  rendered="#{summaryRequest.nameVisible}">
+								<h:panelGroup rendered = "#{summaryRequest.nameVisible}">
 									<div class="detailsMiddleBox" style="margin-top: 0px !important; position: relative;">
 										<p class="detailsBoxValue"><strong class="orange">#{summaryRequest.actualProyect.rate}%</strong></p>
 										<p class="smallGray">Tasa #{summaryRequest.female?'acreditada':'acreditado'}</p>
 										
-										<h:panelGroup rendered="#{summaryRequest.actualProyect.scoring != null  and (summaryRequest.actualProyect.scoring.status == 0 or summaryRequest.actualProyect.scoring.status == null) }">
-										<div class="tasaAcreditado"><i class="fa fa-exclamation-triangle"
-											
-										 />
-										
-										 </div>
+										<h:panelGroup rendered = "#{summaryRequest.actualProyect.scoring != null  and (summaryRequest.actualProyect.scoring.status == 0 or summaryRequest.actualProyect.scoring.status == null) }">
+											<div class = "tasaAcreditado">
+												<i class = "fa fa-exclamation-triangle"/>
+											</div>
 										 </h:panelGroup>
 									</div>
 									
-									<h:panelGroup rendered="#{summaryRequest.actualProyect.opening_commission!=null}">
-										<div class="detailsMiddleBox"  style="margin-top: 0px !important;">
-											<p class="detailsBoxValue"><strong class="orange">#{summaryRequest.actualProyect.opening_commission}%</strong></p>
+									<h:panelGroup rendered = "#{summaryRequest.actualProyect.opening_commission != null}">
+										<div class = "detailsMiddleBox"  style = "width:34.4% !important;">
+											
+											<h:panelGroup id = "editor-opening-commision">
+												<ui:include src = "editor-opening-commision.xhtml"/>
+											</h:panelGroup>	
+											
 											<p class="smallGray">Comisión por apertura</p>
 										</div>
 									</h:panelGroup>	
 									
 									<ui:include src = "estatus/cambio_estatus_DISABLED.xhtml"/>																		
 									<ui:include src = "estatus/cambio_estatus_ENABLED.xhtml"/>
-									
-									<h:panelGroup rendered="#{summaryRequest.actualProyect.status_id == 3 and summaryRequest.lstApproval != null and summaryRequest.lstApproval.size() gt 0 and sessionBean.area == 'M' }" >
-										<div style="display:block; text-align: left;" >
-										<div style="color: #666; background-color: #E6E6E6 !important; font-weight: bold; width: 98%; padding: 4px;  " >
-											Crédito aprobado digitalmente por:
-										</div>
-										
-											<ul>
-											
-												<ui:repeat var="approval" value="#{summaryRequest.lstApproval}">
-											
-												<li>
-													<div style="float: left; width: 40%; color: #439539; background-color: #E6E6E6 !important; padding-top: 4px; padding-bottom: 4px; padding-left: 4px;" >
-													
-														<h:outputText value="#{approval.pk.approval_user}" title="#{approval.pk.approval_user}" />
-													
-													</div>
-													
-													
-													<div style="float: left; width: 18%; color: #439539; background-color: #E6E6E6 !important; padding-top: 4px; padding-bottom: 4px;">
-														<h:outputText value="#{approval.approval_date}">
-														    <f:convertDateTime pattern="dd/MM/yyyy" />
-														</h:outputText>
-													 </div>
-													<div style="float: left; width: 40%; color: #439539; background-color: #E6E6E6 !important; padding-top: 4px; padding-bottom: 4px; padding-right: 4px;"> 
-													
-														<h:outputText value="#{approval.approval_role_user}" title="#{approval.approval_role_user}" />
-													 
-													</div>
-												</li>
-												
-												</ui:repeat>
-												
-											</ul>
-										
-										</div>
-									</h:panelGroup>		
-																																					
+									<ui:include src = "approval-list.xhtml"/>
+																																														
 								</h:panelGroup>							
 							</div>
 							

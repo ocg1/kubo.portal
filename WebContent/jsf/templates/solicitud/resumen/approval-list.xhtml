@@ -1,0 +1,36 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+					
+	<h:panelGroup rendered="#{summaryRequest.actualProyect.status_id == 3 and summaryRequest.lstApproval != null and summaryRequest.lstApproval.size() gt 0 and sessionBean.area == 'M' }" >
+		<div style="display:block; text-align: left;">
+			<div style="color: #666; background-color: #E6E6E6 !important; font-weight: bold; width: 98%; padding: 4px;  " >
+				Crédito aprobado digitalmente por:
+			</div>
+										
+			<ul>											
+				<ui:repeat var="approval" value="#{summaryRequest.lstApproval}">											
+					<li>
+						<div style="float: left; width: 40%; color: #439539; background-color: #E6E6E6 !important; padding-top: 4px; padding-bottom: 4px; padding-left: 4px;" >													
+							<h:outputText value="#{approval.pk.approval_user}" title="#{approval.pk.approval_user}" />
+						</div>													
+													
+						<div style="float: left; width: 18%; color: #439539; background-color: #E6E6E6 !important; padding-top: 4px; padding-bottom: 4px;">
+							<h:outputText value="#{approval.approval_date}">
+							    <f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						 </div>
+													 
+						<div style="float: left; width: 40%; color: #439539; background-color: #E6E6E6 !important; padding-top: 4px; padding-bottom: 4px; padding-right: 4px;"> 
+						
+							<h:outputText value="#{approval.approval_role_user}" title="#{approval.approval_role_user}" />
+						 
+						</div>
+					</li>												
+				</ui:repeat>												
+			</ul>										
+		</div>
+	</h:panelGroup>	
+</ui:composition>				
