@@ -1,29 +1,29 @@
-package mx.com.kubo.mesa.solicitud.resumen.loantype;
+package mx.com.kubo.mesa.solicitud.resumen.rate;
 
-import javax.faces.component.html.HtmlSelectOneMenu;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 
-public final class EditorTipoCreditoIMP extends EditorTipoCreditoDMO
-implements EditorTipoCreditoIMO
+public class EditorRateIMP extends EditorRateDMO
+implements EditorRateIMO 
 {
-	public final void listener_tipo_credito(AjaxBehaviorEvent evento)
+	public void init_rate_investor(AjaxBehaviorEvent event)
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		select_one_menu = (HtmlSelectOneMenu) evento.getComponent();
+		input_text = (HtmlInputText) event.getComponent();
 		
-		loan_type_id = select_one_menu.getValue().toString();
+		rate_investor = Double.parseDouble(input_text.getValue().toString());				
 		
-		field_type_id = Integer.parseInt(loan_type_id);
-		
-		request.addCallbackParam("loan_type_id", loan_type_id);
+		request.addCallbackParam("rate_investor", rate_investor);
 	}
 	
 	public final void save() 
-	{
-		change_control_bean.setNewValue(loan_type_id);
+	{				
+		change_control_bean.setNewValue(rate_investor + "");
+		
+		change_control_OK = update_OK = false;
 		
 		if(change_control_bean.getWhyChangeData() != null)
 		{
@@ -49,8 +49,7 @@ implements EditorTipoCreditoIMO
 		
 		if(change_control_OK)
 		{
-			proyect_loan.getLoantype().getPk().setLoan_type_id(loan_type_id);
-			proyect_loan.setLoan_type(loan_type_id);
+			proyect_loan.setRate_investor(rate_investor);
 			
 			update_OK = service_proyect_loan.update(proyect_loan);
 			
@@ -58,10 +57,10 @@ implements EditorTipoCreditoIMO
 			{			
 				proyect_loan = service_proyect_loan.findProyect(proyect_loan.getProyectloanPk());
 				
-				tipo_de_credito = proyect_loan.getLoantype().getLoan_type_desc();
+				rate_investor = proyect_loan.getRate_investor();
 				
-				original_value = loan_type_id + "";
+				original_value = rate_investor + "";
 			}
-		}						
+		}		
 	}
 }

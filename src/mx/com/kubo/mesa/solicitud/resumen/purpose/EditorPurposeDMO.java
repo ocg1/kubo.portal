@@ -35,13 +35,10 @@ implements EditorPurposeIMO
 		
 	public final void setProyect_loan(ProyectLoan proyect_loan)
 	{
-		this.proyect_loan = proyect_loan;
+		super.setProyect_loan(proyect_loan);
 		
 		if(proyect_loan != null)
-		{
-			company_id    = proyect_loan.getProyectloanPk().getCompany_id();
-			prospectus_id = proyect_loan.getProyectloanPk().getProspectus_id();	
-			
+		{			
 			purpose_id = proyect_loan.getProyect().getPurpose_id();
 			
 			original_value = purpose_id + "";

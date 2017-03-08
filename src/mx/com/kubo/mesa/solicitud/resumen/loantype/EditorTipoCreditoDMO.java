@@ -51,13 +51,10 @@ implements EditorTipoCreditoIMO
 	
 	public final void setProyect_loan(ProyectLoan proyect_loan)
 	{
-		this.proyect_loan = proyect_loan;
+		super.setProyect_loan(proyect_loan);
 		
 		if(proyect_loan != null)
 		{
-			company_id    = proyect_loan.getProyectloanPk().getCompany_id();
-			prospectus_id = proyect_loan.getProyectloanPk().getProspectus_id();	
-			
 			loan_type_id    = proyect_loan.getLoantype().getPk().getLoan_type_id();
 			tipo_de_credito = proyect_loan.getLoantype().getLoan_type_desc();
 			

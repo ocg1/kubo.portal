@@ -42,6 +42,7 @@ import mx.com.kubo.mesa.solicitud.ReporteInusualIMO;
 import mx.com.kubo.mesa.solicitud.documentacion.DocumentacionIMO;
 //import mx.com.kubo.mesa.solicitud.investor.ActivadorIMO;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMO;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.ActividadEconomicaIMO;
 import mx.com.kubo.mesa.solicitud.perfil.EditorIdentificationIMO;
@@ -470,6 +471,7 @@ implements SummaryRequestIMO
 	protected          PromocionIMO check;
 	protected 	EditorIdentificationIMO editor_identification;
 	protected      EditorPurposeIMO editor_purpose;
+	protected         EditorRateIMO editor_rate;
 	//protected          ActivadorIMO activador;
 	
 	protected Proyect 		 proyecto;
@@ -668,7 +670,6 @@ implements SummaryRequestIMO
 	protected String verificationRange;
 	protected String nameProyect;
 	protected String imageProyect;
-//	protected String whyChangeData;
 	protected String report;
 	protected String country;
 	protected String gender;
@@ -746,7 +747,6 @@ implements SummaryRequestIMO
 	protected String isYearss;
 	protected String lada_phone;
 	protected String sesion_search;
-	//protected String mx_ine_cic;
 	protected String frequencyInvestment;
 	protected String lastInvestment;
 	protected String nextInvestment;
@@ -759,8 +759,6 @@ implements SummaryRequestIMO
 	protected String offer_why_not;
 	protected String rejectionMotiveStr;	
 	protected String domicilio_pais_origen_TOKEN;
-	
-	
 	protected String limiteUDIS = "";
 	protected String limiteCapitalNeto = "";
 	protected String stackholder_description;
@@ -773,7 +771,7 @@ implements SummaryRequestIMO
 	protected Double bottomPorcent;
 	protected Double investment_bite;
 	protected Double min_ammount;
-	protected Double rate;
+	protected Double rate_investor;
 	protected Double liquidezReq;
 	protected Double liquidezCli;
 	protected Double totalExpensesControl=0D;
@@ -921,6 +919,7 @@ implements SummaryRequestIMO
 	protected boolean efl_ERROR = false;
 	protected boolean blnComment = false ;
 	protected boolean haveContactWay = false;
+	protected boolean update_OK;
 	
 	protected boolean ren4c = false;
 	
@@ -1877,12 +1876,9 @@ implements SummaryRequestIMO
 		this.min_ammount = min_ammount;
 	}
 
-	public Double getRate() {
-		return rate;
-	}
-
-	public void setRate(Double rate) {
-		this.rate = rate;
+	public Double getRate_investor() 
+	{
+		return rate_investor;
 	}
 
 	public Double getLiquidezReq() {
@@ -3613,6 +3609,11 @@ implements SummaryRequestIMO
 	public EditorPurposeIMO getEditor_purpose()
 	{
 		return editor_purpose;
+	}
+	
+	public EditorRateIMO getEditor_rate()
+	{
+		return editor_rate;
 	}
 	
 	public final List <IdentificationType> getLista_identification_type()

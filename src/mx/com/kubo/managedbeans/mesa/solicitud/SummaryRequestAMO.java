@@ -554,7 +554,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 			kuboScoreNumber     = actualProyect.getkuboScoreNumber();
 			min_ammount	        = actualProyect.getMin_ammount();
 			payment             = num.format(actualProyect.getPayment());
-			rate                = actualProyect.getRate_investor(); 
+			rate_investor       = actualProyect.getRate_investor(); 
 			term_id             = actualProyect.getTerm_id();
 			verification_score  = actualProyect.getVerification_score();
 			verificationClass   = actualProyect.getVerificationClass();

@@ -56,6 +56,7 @@ import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
 import mx.com.kubo.managedbeans.AlertsManaged;
 import mx.com.kubo.managedbeans.ApplicationParams;
@@ -432,6 +433,10 @@ implements SummaryRequestIMO,  Serializable
 			editor_purpose.setSesion(sesion);
 			editor_purpose.setProyect_loan(actualProyect);
 			editor_purpose.init();
+			
+			editor_rate = new EditorRateIMP();
+			editor_rate.setSesion(sesion);
+			editor_rate.setProyect_loan(actualProyect);
 		}
 				
 		verificaRecomendado();
@@ -3663,10 +3668,9 @@ membershipTemp = new Membership();
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		editor_tipo_credito.listener_guardar_cambios();
+		editor_tipo_credito.save();
 		
-		boolean update_OK = editor_tipo_credito.isUpdate_OK();
-		
+		update_OK     = editor_tipo_credito.isUpdate_OK();		
 		actualProyect = editor_tipo_credito.getProyect_loan();
 		
 		String description = actualProyect.getLoantype().getLoan_type_desc();
@@ -3681,13 +3685,27 @@ membershipTemp = new Membership();
 		
 		editor_purpose.save();
 		
-		actualProyect = editor_purpose.getProyect_loan();
-		
-		boolean update_OK = editor_purpose.isUpdate_OK();
+		update_OK     = editor_purpose.isUpdate_OK();
+		actualProyect = editor_purpose.getProyect_loan();				
 		
 		String description = actualProyect.getProyect().getPurpose().getDescription();				
 		
 		request.addCallbackParam("update_OK", update_OK);
 		request.addCallbackParam("description", description);
+	}
+	
+	public void editarLoanRate()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		editor_rate.save();
+		
+		update_OK     = editor_purpose.isUpdate_OK();
+		actualProyect = editor_purpose.getProyect_loan();
+		
+		rate_investor = actualProyect.getRate_investor();
+		
+		request.addCallbackParam("update_OK", update_OK);
+		request.addCallbackParam("rate_investor", rate_investor);
 	}
 }

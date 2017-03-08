@@ -7,6 +7,7 @@ import mx.com.kubo.model.ProyectLoan;
 public interface ChangeControlIMO 
 {
 	void setSesion(SessionBean sesion);
+	void setProyect_loan(ProyectLoan proyect_loan);
 	
 	boolean isUpdate_OK();
 	

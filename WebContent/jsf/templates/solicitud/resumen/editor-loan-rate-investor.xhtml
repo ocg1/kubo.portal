@@ -1,0 +1,44 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">	
+	
+	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
+		<p class = "detailsBoxValue">
+			<strong class = "orange">#{summaryRequest.rate_investor}%</strong>
+		</p>		
+	</h:panelGroup>		
+
+	<div class = "clear smallGray" style = "width: 180px; overflow: visible; margin-top: 5px; ">
+		<div style = "overflow: visible; float: left;">						
+			<ui:include src = "editor-loan-rate/bitacora.xhtml" />
+		</div>		
+										
+		<p:inplace widgetVar = "editorLoanRateInvestor"
+				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
+		 		   label     = "#{summaryRequest.rate_investor}%" >
+		
+			<p:ajax event = "save" immediate = "true"
+				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+					listener   = "#{summaryRequest.editarLoanRate}"/>
+		 	
+		 	<ui:include src = "editor-loan-rate/rate.xhtml" /> 							 	
+			<ui:include src = "editor-loan-rate/change-motive.xhtml" />
+			<ui:include src = "editor-loan-rate/save-cancel.xhtml" />
+		</p:inplace>							
+	</div> 		
+	
+	<script>
+		function listener_guardar_cambios(xhr, status, args)
+		{
+			$("#editor-rate-investor-motive").val("").blur();				
+			$("#update-loan-rate").trigger("click");
+			
+			console.log("listener_guardar_cambios(): OK");
+		}				
+	</script>
+	
+	<h:commandLink id = "update-loan-rate" style = "display:none" >
+      	<p:ajax event = "click" immediate = "true" update = "editor-loan-rate-investor" />
+	</h:commandLink>	
+</ui:composition>

@@ -15,6 +15,7 @@ import mx.com.kubo.bean.IncomeDetailsBean;
 import mx.com.kubo.bean.PersonAndPhones;
 import mx.com.kubo.bean.PhoneReview;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMO;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMO;
 import mx.com.kubo.managedbeans.mesa.solicitud.estatus.CasosPospuestosIMO;
@@ -110,6 +111,7 @@ interface SummaryRequestIMO
 	     DomicilioIMO     getDomicilio_actividad();
 	EditorTipoCreditoIMO  getEditor_tipo_credito();
 	EditorPurposeIMO      getEditor_purpose();
+	EditorRateIMO         getEditor_rate();
 	NotasDelCasoIMO       getNotas();
 	ActividadEconomicaIMO getActividad_economica();
 	DocumentacionIMO      getDocumentacion();

@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+		 	
+ 	<div onclick = "$('#save-loan-rate-investor').click();"
+ 		 class = "buttonPR" style = "width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">
+			Guardar
+	</div>
+ 	
+ 	<div onclick = "editorLoanRateInvestor.cancel()"
+ 		 class = "buttonPR"   		 
+ 		 style = "margin: 0; width: 71px;font-size:0.9em;float: left;">
+			Cancelar
+	</div>				
+	
+	<p:commandButton id = "save-loan-rate-investor" style = "display: none;"  
+				 onclick    = "editorLoanRateInvestor.save();"
+				 oncomplete = "editorLoanRateInvestor.hide();"
+				 update = "editor-loan-rate-investor"/>
+</ui:composition>
