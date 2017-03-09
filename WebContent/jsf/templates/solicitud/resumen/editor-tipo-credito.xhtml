@@ -18,11 +18,11 @@
 										
 		<p:inplace widgetVar = "editorTipoCredito"
 				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
-		 		   label     = "#{summaryRequest.editor_tipo_credito.tipo_de_credito}" >
+		 		   label     = "#{summaryRequest.actualProyect.loantype.loan_type_desc}" >
 		
 			<p:ajax event = "save" 
 					immediate = "true"
-				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+				    oncomplete = "loantype_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editaTipoCredito}"/>
 		 	
 		 	<ui:include src = "editor-tipo-credito/tipo-de-credito.xhtml" /> 							 	
@@ -32,11 +32,11 @@
 	</div> 		
 	
 	<script>
-		function listener_guardar_cambios(xhr, status, args)
+		function loantype_oncomplete(xhr, status, args)
 		{
 			$("#editor-tipo-credito-motivo").val("").blur();				
 			$("#cmdTipoCred").trigger("click");
-			console.log("listener_guardar_cambios(): OK");
+			console.log("loantype_oncomplete(): OK");
 
 		}
 		

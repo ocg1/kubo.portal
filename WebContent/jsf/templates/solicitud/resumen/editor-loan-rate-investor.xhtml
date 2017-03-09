@@ -19,7 +19,7 @@
 		 		   label     = "#{summaryRequest.rate_investor}%" >
 		
 			<p:ajax event = "save" immediate = "true"
-				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+				    oncomplete = "rate_investor_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editarLoanRate}"/>
 		 	
 		 	<ui:include src = "editor-loan-rate/rate.xhtml" /> 							 	
@@ -29,7 +29,7 @@
 	</div> 		
 	
 	<script>
-		function listener_guardar_cambios(xhr, status, args)
+		function rate_investor_oncomplete(xhr, status, args)
 		{
 			$("#editor-rate-investor-motive").val("").blur();				
 			$("#update-loan-rate").trigger("click");

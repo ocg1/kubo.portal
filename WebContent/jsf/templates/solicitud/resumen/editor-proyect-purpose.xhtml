@@ -20,7 +20,7 @@
 		
 			<p:ajax event = "save" 
 					immediate = "true"
-				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+				    oncomplete = "proyect_purpose_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editarProyectPurpose}"/>
 		 	
 		 	<ui:include src = "editor-proyect/purpose-id.xhtml" /> 							 	
@@ -30,7 +30,7 @@
 	</div> 		
 	
 	<script>
-		function listener_guardar_cambios(xhr, status, args)
+		function proyect_purpose_oncomplete(xhr, status, args)
 		{
 			$("#editor-purpose-motive").val("").blur();				
 			$("#update-proyect-purpose").trigger("click");

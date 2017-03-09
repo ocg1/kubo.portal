@@ -37,7 +37,7 @@
 				 		   label     = "Calificación" >
 				
 					<p:ajax event = "save" immediate = "true"
-						    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+						    oncomplete = "loan_score_oncomplete(xhr, status, args);"
 							listener   = "#{summaryRequest.editarLoanScore}"/>
 				 	
 				 	<ui:include src = "editor-loan-score/letter.xhtml" />
@@ -48,7 +48,7 @@
 			</div> 		
 			
 			<script>
-				function listener_guardar_cambios(xhr, status, args)
+				function loan_score_oncomplete(xhr, status, args)
 				{
 					$("#editor-score-motive").val("").blur();				
 					$("#update-editor-score").trigger("click");

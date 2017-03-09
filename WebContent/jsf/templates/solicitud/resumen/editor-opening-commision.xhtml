@@ -19,7 +19,7 @@
 		 		   label     = "#{summaryRequest.actualProyect.opening_commission}%" >
 		
 			<p:ajax event = "save" immediate = "true"
-				    oncomplete = "listener_guardar_cambios(xhr, status, args);"
+				    oncomplete = "opening_commission_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editarOpeningCommission}"/>
 		 	
 		 	<ui:include src = "editor-opening-commission/opening-commission.xhtml" /> 							 	
@@ -29,7 +29,7 @@
 	</div> 		
 	
 	<script>
-		function listener_guardar_cambios(xhr, status, args)
+		function opening_commission_oncomplete(xhr, status, args)
 		{
 			$("#editor-commission-motive").val("").blur();				
 			$("#update-editor-commission").trigger("click");

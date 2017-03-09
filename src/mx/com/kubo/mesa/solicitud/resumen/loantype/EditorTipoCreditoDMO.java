@@ -5,17 +5,12 @@ import java.util.List;
 import mx.com.kubo.mesa.solicitud.resumen.ChangeControlAMO;
 import mx.com.kubo.model.LoanType;
 import mx.com.kubo.model.ProyectLoan;
-import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.tools.Utilities;
 
 public abstract class EditorTipoCreditoDMO extends ChangeControlAMO
 implements EditorTipoCreditoIMO
-{
-	protected ProyectLoanService service_proyect_loan;	
-
+{	
 	protected List<LoanType> lista_loan_type;
-	
-	protected ProyectLoan proyect_loan;
 	
 	protected String loan_type_id;
 	protected String tipo_de_credito;		
