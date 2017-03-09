@@ -4,7 +4,7 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 	<h:inputTextarea id    = "txt-reason-add-phone"
-					 cols  = "25" rows = "3"
+					 cols  = "25" rows = "3" rendered="#{summaryRequest.telefono != null}"
 					 value = "#{summaryRequest.telefono.newAddPhone.comments}" 
 					 styleClass = "elementTextArea" 
 					 >

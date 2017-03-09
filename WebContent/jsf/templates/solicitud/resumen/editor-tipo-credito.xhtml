@@ -2,9 +2,7 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
-				
-				
-			
+									
 	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
 		<div class = "orange">
 			<strong>#{summaryRequest.actualProyect.loantype.loan_type_desc} </strong>
@@ -22,7 +20,7 @@
 		
 			<p:ajax event = "save" 
 					immediate = "true"
-				    oncomplete = "loantype_oncomplete(xhr, status, args);"
+				    oncomplete = "Resumen.loantype_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editaTipoCredito}"/>
 		 	
 		 	<ui:include src = "editor-tipo-credito/tipo-de-credito.xhtml" /> 							 	
@@ -30,18 +28,6 @@
 			<ui:include src = "editor-tipo-credito/guardar-cancelar.xhtml" />
 		</p:inplace>							
 	</div> 		
-	
-	<script>
-		function loantype_oncomplete(xhr, status, args)
-		{
-			$("#editor-tipo-credito-motivo").val("").blur();				
-			$("#cmdTipoCred").trigger("click");
-			console.log("loantype_oncomplete(): OK");
-
-		}
-		
-		
-	</script>
 	
 	<h:commandLink id="cmdTipoCred" style="display:none" >
       	<p:ajax event  = "click" immediate = "true" update   = "editor-tipo-credito" />

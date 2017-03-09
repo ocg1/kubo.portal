@@ -114,6 +114,7 @@ interface SummaryRequestIMO
 	EditorTipoCreditoIMO  getEditor_tipo_credito();
 	EditorPurposeIMO      getEditor_purpose();
 	EditorRateIMO         getEditor_rate();
+	EditorRateIMO         getEditor_rate_investor();
 	NotasDelCasoIMO       getNotas();
 	ActividadEconomicaIMO getActividad_economica();
 	DocumentacionIMO      getDocumentacion();
@@ -122,7 +123,7 @@ interface SummaryRequestIMO
 	PromocionIMO          getCheck();
 	EditorIdentificationIMO getEditor_identification();
 	EditorCommissionIMO getEditor_commission();
-	EditorScoreIMO getEditor_score();
+	EditorScoreIMO getEditor_score();	
 	
 	RegistrationReasonService getReasonsService();
 	MembershipService         getService_membership();		

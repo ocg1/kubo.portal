@@ -5,8 +5,8 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 
-public class EditorRateIMP extends EditorRateDMO
-implements EditorRateIMO 
+public class EditorRateInvestorIMP extends EditorRateInvestorDMO 
+implements EditorRateIMO
 {
 	public void init_rate(AjaxBehaviorEvent event)
 	{
@@ -16,9 +16,9 @@ implements EditorRateIMO
 		
 		try
 		{
-			rate = Double.parseDouble(input_text.getValue().toString());
+			rate_investor = Double.parseDouble(input_text.getValue().toString());
 			
-			request.addCallbackParam("rate", rate);
+			request.addCallbackParam("rate_investor", rate_investor);
 			
 		} catch (Exception e) {
 			
@@ -28,7 +28,7 @@ implements EditorRateIMO
 	
 	public final void save() 
 	{							
-		new_value = rate + "";
+		new_value = rate_investor + "";
 		
 		save_change_control();		
 		init_change_control_bean();
@@ -41,8 +41,7 @@ implements EditorRateIMO
 
 	public final void init_editor() 
 	{
-		proyect_loan.setRate(rate);
-		proyect_loan.setRate_with_opening(rate);
+		proyect_loan.setRate_investor(rate_investor);
 		
 		update_OK = service_proyect_loan.update(proyect_loan);
 		
@@ -50,9 +49,9 @@ implements EditorRateIMO
 		{			
 			proyect_loan = service_proyect_loan.findProyect(proyect_loan.getProyectloanPk());
 			
-			rate = proyect_loan.getRate();
+			rate_investor = proyect_loan.getRate_investor();
 			
-			original_value = rate + "";
+			original_value = rate_investor + "";
 		}
 	}
 }

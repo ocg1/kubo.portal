@@ -19,7 +19,7 @@
 		 		   label     = "#{summaryRequest.actualProyect.opening_commission}%" >
 		
 			<p:ajax event = "save" immediate = "true"
-				    oncomplete = "opening_commission_oncomplete(xhr, status, args);"
+				    oncomplete = "Resumen.opening_commission_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editarOpeningCommission}"/>
 		 	
 		 	<ui:include src = "editor-opening-commission/opening-commission.xhtml" /> 							 	
@@ -27,16 +27,6 @@
 			<ui:include src = "editor-opening-commission/save-cancel.xhtml" />
 		</p:inplace>							
 	</div> 		
-	
-	<script>
-		function opening_commission_oncomplete(xhr, status, args)
-		{
-			$("#editor-commission-motive").val("").blur();				
-			$("#update-editor-commission").trigger("click");
-			
-			console.log("listener_guardar_cambios(): OK");
-		}				
-	</script>
 	
 	<h:commandLink id = "update-editor-commission" style = "display:none" >
       	<p:ajax event = "click" immediate = "true" update = "editor-opening-commision" />

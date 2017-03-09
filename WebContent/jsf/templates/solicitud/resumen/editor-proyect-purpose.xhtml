@@ -7,8 +7,7 @@
 		<h3>#{summaryRequest.proposito}</h3>		
 	</h:panelGroup>			
 															
-	<div class = "clear smallGray" 
-		 style = "width: 350px; overflow: visible; color: #439539;">
+	<div class = "clear smallGray" style = "width: 350px; overflow: visible; color: #439539;">
 		 
 		<div style = "overflow: visible; float: left;">						
 			<ui:include src = "editor-proyect/bitacora.xhtml" />
@@ -18,31 +17,18 @@
 				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
 		 		   label     = "#{summaryRequest.actualProyect.proyect.purpose.name}" >
 		
-			<p:ajax event = "save" 
-					immediate = "true"
-				    oncomplete = "proyect_purpose_oncomplete(xhr, status, args);"
+			<p:ajax event = "save" immediate = "true"
+				    oncomplete = "Resumen.proyect_purpose_oncomplete(xhr, status, args);"
 					listener   = "#{summaryRequest.editarProyectPurpose}"/>
 		 	
 		 	<ui:include src = "editor-proyect/purpose-id.xhtml" /> 							 	
 			<ui:include src = "editor-proyect/change-motive.xhtml" />
 			<ui:include src = "editor-proyect/save-cancel.xhtml" />
 		</p:inplace>							
-	</div> 		
-	
-	<script>
-		function proyect_purpose_oncomplete(xhr, status, args)
-		{
-			$("#editor-purpose-motive").val("").blur();				
-			$("#update-proyect-purpose").trigger("click");
-			console.log("listener_guardar_cambios(): OK");
-
-		}
-		
-		
-	</script>
+	</div> 			
 	
 	<h:commandLink id = "update-proyect-purpose" style="display:none">
       	<p:ajax event = "click" immediate = "true" update = "editor-proyect-purpose" />
-      </h:commandLink>	
+	</h:commandLink>	
 				
 </ui:composition>				

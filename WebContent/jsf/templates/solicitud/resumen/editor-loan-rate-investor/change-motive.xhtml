@@ -3,10 +3,10 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
- 	<h:inputTextarea id = "editor-rate-motive"
+ 	<h:inputTextarea id = "editor-rate-investor-motive"
  					 cols = "25" rows = "3" 
- 					 rendered  = "#{summaryRequest.editor_rate != null}"
-				 	 value = "#{summaryRequest.editor_rate.change_control_bean.whyChangeData}"
+ 					 rendered  = "#{summaryRequest.editor_rate_investor != null}"
+				 	 value = "#{summaryRequest.editor_rate_investor.change_control_bean.whyChangeData}"
 				 	 styleClass = "elementTextArea" 
 				  	 style = "margin:5px 0;
 				  	 	      width:200px;
@@ -15,5 +15,5 @@
  		<p:ajax event = "blur"/>
  	</h:inputTextarea>
  	
- 	<p:watermark for="editor-rate-motive" value="Motivo del cambio" />				
+ 	<p:watermark for="editor-rate-investor-motive" value="Motivo del cambio" />				
 </ui:composition>

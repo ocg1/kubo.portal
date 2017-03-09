@@ -129,9 +129,13 @@
 								</div>
 									
 								<h:panelGroup rendered = "#{summaryRequest.nameVisible}">
-									<div class="detailsMiddleBox" style="margin-top: 0px !important; position: relative;">
-										<p class="detailsBoxValue"><strong class="orange">#{summaryRequest.actualProyect.rate}%</strong></p>
-										<p class="smallGray">Tasa #{summaryRequest.female?'acreditada':'acreditado'}</p>
+									<div class = "detailsMiddleBox" style = "margin-top: 0px !important; position: relative;">
+										
+										<h:panelGroup id = "editor-loan-rate">
+											<ui:include src = "editor-loan-rate.xhtml"/>
+										</h:panelGroup>	
+										
+										<p class = "smallGray">Tasa #{summaryRequest.female?'acreditada':'acreditado'}</p>
 										
 										<h:panelGroup rendered = "#{summaryRequest.actualProyect.scoring != null  and (summaryRequest.actualProyect.scoring.status == 0 or summaryRequest.actualProyect.scoring.status == null) }">
 											<div class = "tasaAcreditado">
@@ -192,31 +196,6 @@
 									</div>
 								</div>							
 									
-								<script>
-								
-								
-						
-							
-								
-								function showInvestors(){
-									$.fancybox({
-										'showCloseButton': false,
-										'width': 680,
-										'height': '90%',
-										'type':'iframe',
-										'speedIn': 20,
-										'speedOut': 10,
-										'modal': false,
-										'scrolling': 'auto',
-										'centerOnScroll': true,
-										'href': 'templates/perfil_completo/listaInversionistas/listaInversionistas.xhtml?proyectLoan=#{summaryRequest.actualProyect.safi_credit_id}_#{summaryRequest.actualProyect.safi_mx_solicitud_id}',
-										'overlayColor': '#333333',
-										'hideOnOverlayClick': true,
-										'enableEscapeButton': true
-									});
-								}
-								
-								</script>
 								
 								<h:panelGroup id = "editor-loan-score">	
 									<ui:include src = "score.xhtml"/>		
@@ -268,44 +247,9 @@
 					</h:panelGroup>
 				</div>	
 			</h:panelGroup>	
-				<h:panelGroup rendered="#{ summaryRequest.fd != null and sessionBean.area == 'M' }" >
-						<h:panelGroup>
-								<div class="respuesta-1">
-						
-										<div class="respuesta-negativa orange">
-											<p><i class="fa fa-exclamation-circle"></i> Requiere escalamiento interno.</p>
-										</div>
-								</div>
-								<h:panelGroup  rendered="#{ summaryRequest.fd != null and sessionBean.area == 'M' and summaryRequest.ver_notas_comportamiento_inusual_ENABLED }"  >
-									<div class="articulos-desglose tabla-style2 orange">
-											<table border="0" cellpadding="0" cellspacing="0">
-											<tr>
-												<th>Fecha</th>
-												<th>Motivo</th>
-											</tr>
-											<tr>
-												<td width="190">
-													<strong>
-														<h:outputText value="#{summaryRequest.fd.creation_date}" >
-															<f:convertDateTime pattern="dd 'de' MMMM 'de' yyyy HH:mm:ss" />
-														</h:outputText>
-													</strong>
-												</td>
-												<td>
-													<h:outputText value="#{summaryRequest.fd.description_note}" >
-													
-													</h:outputText>
-												</td>
-											</tr>
-									
-											
-										</table>
-									
-									</div>
-									
-								</h:panelGroup>
-						</h:panelGroup>	
-				</h:panelGroup>	
+
+			<ui:include src = "fraud_detection.xhtml"/>
+
 			<h:panelGroup id = "section-alert-priority-note" rendered="#{sessionBean.area == 'M'}" >
 				<ui:include src = "../notas/notas_del_caso/notas_alta_prioridad.xhtml"/>
 			</h:panelGroup>

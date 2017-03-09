@@ -3,7 +3,7 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
- 	<h:inputText value = "#{summaryRequest.actualProyect.rate}" immediate = "true">
- 		<p:ajax event = "blur" listener = "#{summaryRequest.editor_rate.init_rate}"/>
+ 	<h:inputText value = "#{summaryRequest.rate_investor}" immediate = "true">
+ 		<p:ajax event = "blur" listener = "#{summaryRequest.editor_rate_investor.init_rate}"/>
  	</h:inputText> 	 			
 </ui:composition>

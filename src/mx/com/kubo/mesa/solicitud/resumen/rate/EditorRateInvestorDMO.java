@@ -4,20 +4,20 @@ import mx.com.kubo.mesa.solicitud.resumen.ChangeControlAMO;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.tools.Utilities;
 
-public abstract class EditorRateDMO extends ChangeControlAMO 
+public abstract class EditorRateInvestorDMO extends ChangeControlAMO 
 {
-	protected Double rate;
+	protected Double rate_investor;
 	
-	protected EditorRateDMO()
+	protected EditorRateInvestorDMO()
 	{
 		service_proyect_loan = Utilities.findBean("proyectLoanServiceImp");
 		
 		tables = new String[]{"ln_proyect_loan"};
-		fields = new String[]{"rate"};
+		fields = new String[]{"rate_investor"};
 		
 		afected_table_type = "";
 		afected_table = "ln_proyect_loan";
-		field = "rate";		
+		field = "rate_investor";		
 	}
 	
 	public final void setProyect_loan(ProyectLoan proyect_loan)
@@ -26,9 +26,9 @@ public abstract class EditorRateDMO extends ChangeControlAMO
 		
 		if(proyect_loan != null)
 		{			
-			rate = proyect_loan.getRate();
+			rate_investor = proyect_loan.getRate_investor();
 			
-			original_value = rate + "";
+			original_value = rate_investor + "";
 			
 			init_change_control();
 		}

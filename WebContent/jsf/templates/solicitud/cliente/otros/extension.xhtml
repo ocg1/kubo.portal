@@ -11,7 +11,7 @@
 		<P />
 		
 		<div style = "overflow: visible;">
-			<h:inputText id = "phone_extension" 						 
+			<h:inputText id = "phone_extension" rendered="#{summaryRequest.telefono != null}"						 
 						 value      = "#{summaryRequest.telefono.newAddPhone.extension}"
 						 tabindex   = "39" 
 						 onkeypress = "return isNumberKey(event);" 

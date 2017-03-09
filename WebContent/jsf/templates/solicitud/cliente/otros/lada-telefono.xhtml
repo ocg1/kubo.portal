@@ -16,7 +16,7 @@
 			<p:ajax event = "blur" onstart = "return fieldNotEmpty('addladaphone');"/>					
 		</h:inputText> -->
 		
-		<h:inputText id = "addnumphone"  
+		<h:inputText id = "addnumphone"  rendered="#{summaryRequest.telefono != null}"
 					 value      = "#{summaryRequest.telefono.newAddPhone.numPhone}"
 					 maxlength  = "13"  
 					 onkeypress = "return isNumberKey(event);"  

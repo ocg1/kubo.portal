@@ -59,6 +59,7 @@ import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateInvestorIMP;
 import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMP;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
 import mx.com.kubo.managedbeans.AlertsManaged;
@@ -441,6 +442,10 @@ implements SummaryRequestIMO,  Serializable
 			editor_rate = new EditorRateIMP();
 			editor_rate.setSesion(sesion);
 			editor_rate.setProyect_loan(actualProyect);
+			
+			editor_rate_investor = new EditorRateInvestorIMP();
+			editor_rate_investor.setSesion(sesion);
+			editor_rate_investor.setProyect_loan(actualProyect);
 			
 			editor_commission = new EditorCommissionIMP();
 			editor_commission.setSesion(sesion);
@@ -3817,8 +3822,23 @@ membershipTemp = new Membership();
 		
 		editor_rate.save();
 		
-		update_OK     = editor_purpose.isUpdate_OK();
-		actualProyect = editor_purpose.getProyect_loan();
+		update_OK     = editor_rate.isUpdate_OK();
+		actualProyect = editor_rate.getProyect_loan();
+		
+		Double rate = actualProyect.getRate();
+		
+		request.addCallbackParam("update_OK", update_OK);
+		request.addCallbackParam("rate", rate);
+	}
+	
+	public void editarLoanRateInvestor()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		editor_rate_investor.save();
+		
+		update_OK     = editor_rate_investor.isUpdate_OK();
+		actualProyect = editor_rate_investor.getProyect_loan();
 		
 		rate_investor = actualProyect.getRate_investor();
 		

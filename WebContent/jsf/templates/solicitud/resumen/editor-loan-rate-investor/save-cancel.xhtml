@@ -4,19 +4,19 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 		 	
- 	<div onclick = "$('#save-loan-rate').click();"
+ 	<div onclick = "$('#save-loan-rate-investor').click();"
  		 class = "buttonPR" style = "width: 71px; font-size: 0.9em; float: left; margin: 0 5px 0 0;">
 			Guardar
 	</div>
  	
- 	<div onclick = "editorLoanRate.cancel()"
+ 	<div onclick = "editorLoanRateInvestor.cancel()"
  		 class = "buttonPR"   		 
  		 style = "margin: 0; width: 71px;font-size:0.9em;float: left;">
 			Cancelar
 	</div>				
 	
-	<p:commandButton id = "save-loan-rate" style = "display: none;"  
-				 onclick    = "editorLoanRate.save();"
-				 oncomplete = "editorLoanRate.hide();"
-				 update = "editor-loan-rate"/>
+	<p:commandButton id = "save-loan-rate-investor" style = "display: none;"  
+				 onclick    = "editorLoanRateInvestor.save();"
+				 oncomplete = "editorLoanRateInvestor.hide();"
+				 update = "editor-loan-rate-investor"/>
 </ui:composition>

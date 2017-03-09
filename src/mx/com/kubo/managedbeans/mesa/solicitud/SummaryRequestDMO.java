@@ -93,7 +93,6 @@ import mx.com.kubo.model.Referred;
 import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.Residence;
-import mx.com.kubo.model.RiskTask;
 import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.StateCat;
@@ -479,6 +478,7 @@ implements SummaryRequestIMO
 	protected 	EditorIdentificationIMO editor_identification;
 	protected      EditorPurposeIMO editor_purpose;
 	protected         EditorRateIMO editor_rate;
+	protected         EditorRateIMO editor_rate_investor;
 	protected   EditorCommissionIMO editor_commission;
 	protected        EditorScoreIMO editor_score;
 	//protected          ActivadorIMO activador;
@@ -3621,6 +3621,11 @@ implements SummaryRequestIMO
 	public EditorRateIMO getEditor_rate()
 	{
 		return editor_rate;
+	}
+	
+	public EditorRateIMO getEditor_rate_investor()
+	{
+		return editor_rate_investor;
 	}
 	
 	public EditorCommissionIMO getEditor_commission()
