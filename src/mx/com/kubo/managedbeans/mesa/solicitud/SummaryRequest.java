@@ -48,6 +48,7 @@ import mx.com.kubo.bean.ProyectBean;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.bean.ShowChangeSession;
 import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.inversion.Inversion;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
@@ -58,6 +59,7 @@ import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
+import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMP;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
 import mx.com.kubo.managedbeans.AlertsManaged;
 import mx.com.kubo.managedbeans.ApplicationParams;
@@ -104,6 +106,7 @@ import mx.com.kubo.model.PublicForumPK;
 import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelatedPersonLoanPK;
 import mx.com.kubo.model.ResidencePK;
+import mx.com.kubo.model.RiskTask;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.ServiceCalling;
@@ -442,6 +445,10 @@ implements SummaryRequestIMO,  Serializable
 			editor_commission = new EditorCommissionIMP();
 			editor_commission.setSesion(sesion);
 			editor_commission.setProyect_loan(actualProyect);
+			
+			editor_score = new EditorScoreIMP();
+			editor_score.setSesion(sesion);
+			editor_score.setProyect_loan(actualProyect);
 		}
 				
 		verificaRecomendado();
@@ -789,6 +796,7 @@ implements SummaryRequestIMO,  Serializable
 		if( persona.getProspectus().getArea().toString().equals("L") )
 		{
 			inicializa_prospectus_comment();
+			initRiskTask();
 		}
 		
 		inicializa_Contact_Way();
@@ -3222,6 +3230,18 @@ membershipTemp = new Membership();
 					request_notificar_config.setEvento_id("64");
 					request_notificar_config.setMonto_deposito(response.getShortURL());
 					
+					if( persona.getProspectus().getHs_vid() != null ){
+					
+						HubSpotController hs =  new HubSpotController();
+				 		
+						StringBuilder properties = new StringBuilder();
+						
+				 		properties.append( "{ \"property\" : \"enlace_firma_inversion\" , \"value\" : \""+response.getShortURL()+"\"}");
+						
+						hs.updateProspectus(persona.getProspectus().getHs_vid(), properties);
+					
+					}
+					
 					try{
 					
 						PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
@@ -3347,6 +3367,98 @@ membershipTemp = new Membership();
 			
 		}
 		
+	}
+	
+	private void initRiskTask(){
+
+		System.out.println( "Revisa Tareas" );
+		
+		ProyectLoan proyectloan = service_proyect_loan.getMaxProyectLoanByProspect(actualProyect.getProyectloanPk().getProspectus_id(),actualProyect.getProyectloanPk().getCompany_id());
+		
+		RiskTask risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(proyectloan.getMx_solicitud_buro(), 1);
+		
+		if( risktask != null ){
+			
+			if( !risktask.getTask().getIs_enabled().equals("0") ){
+				
+				risktask1 = ( risktask.getTask_value().equals("0") );
+				
+			}else{
+				risktask1 = true; // siempre se piden los documentos
+			}
+			
+		}else{
+			
+			getTareas( );
+			
+		}
+	}
+	
+	private void getTareas(){
+		try{
+			
+			String r_data = actualProyect.getR_data();
+			
+			int TAREA1 = 1;
+			int TAREA2 = 2;
+			
+			if( r_data != null ){
+			
+				if( r_data.indexOf("TAREAS") != (-1) ){
+					
+					String taresStr = "";
+					
+					taresStr = r_data.substring(r_data.indexOf("TAREAS"));
+					
+					taresStr = taresStr.substring( taresStr.indexOf("[")+1 , taresStr.indexOf("]") );
+					
+					if( taresStr.indexOf(" ") != (-1) ){
+						taresStr = taresStr.replaceAll(" ","");
+					}
+					
+					taresStr = taresStr.trim();
+					
+					RiskTask risktask = new RiskTask();
+					
+					risktask.setCompany_id( actualProyect.getProyectloanPk().getCompany_id());
+					risktask.setMx_solicitud_buro( actualProyect.getMx_solicitud_buro());
+					risktask.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+					risktask.setTask_id(TAREA1);
+					risktask.setTask_value((taresStr.split(",")[0]).trim());
+					
+					risktaskservice.saveRiskTask(risktask);
+					
+					risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(actualProyect.getMx_solicitud_buro(), TAREA1);
+
+					if( !risktask.getTask().getIs_enabled().equals("0") ){
+					
+						risktask1 = ( risktask.getTask_value().equals("0") );
+						
+					}else{
+						risktask1 = true;//siempre se piden los documentos
+					}
+					
+					
+					risktask = new RiskTask();
+					
+					risktask.setCompany_id( actualProyect.getProyectloanPk().getCompany_id());
+					risktask.setMx_solicitud_buro( actualProyect.getMx_solicitud_buro());
+					risktask.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+					risktask.setTask_id(TAREA2);
+					risktask.setTask_value((taresStr.split(",")[1]).trim());
+					
+					risktaskservice.saveRiskTask(risktask);
+					
+				}
+			
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+	
 	}
 	
 	private void inicializa_Contact_Way(){
@@ -3725,5 +3837,23 @@ membershipTemp = new Membership();
 		
 		request.addCallbackParam("update_OK", update_OK);
 		request.addCallbackParam("opening_commission", actualProyect.getOpening_commission());
+	}
+	
+	public void editarLoanScore()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		editor_score.save();
+		
+		update_OK     = editor_score.isUpdate_OK();
+		actualProyect = editor_score.getProyect_loan();		
+		
+		kuboScoreLetter = actualProyect.getKubo_score_a();
+		kuboScoreNumber = actualProyect.getKubo_score_b();
+		
+		scoreClass = "dvRisk" + kuboScoreLetter;
+		
+		request.addCallbackParam("update_OK", update_OK);
+		request.addCallbackParam("opening_commission", kuboScoreLetter + kuboScoreNumber);
 	}
 }

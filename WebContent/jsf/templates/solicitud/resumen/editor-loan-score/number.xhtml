@@ -1,0 +1,19 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:selectOneMenu immediate = "true" value = "#{summaryRequest.kuboScoreNumber}" style = "height: 24px;">
+	
+					   
+		<f:selectItem itemValue = "1" itemLabel = "1"/>
+		<f:selectItem itemValue = "2" itemLabel = "2"/>
+		<f:selectItem itemValue = "3" itemLabel = "3"/>
+		<f:selectItem itemValue = "4" itemLabel = "4"/>
+		<f:selectItem itemValue = "5" itemLabel = "5"/>
+					  
+		<p:ajax event = "change" listener = "#{summaryRequest.editor_score.init_kubo_score_number}" />
+				   
+	</h:selectOneMenu>				
+</ui:composition>			

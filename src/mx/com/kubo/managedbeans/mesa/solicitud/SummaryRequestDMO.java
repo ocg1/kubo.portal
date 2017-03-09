@@ -44,6 +44,7 @@ import mx.com.kubo.mesa.solicitud.documentacion.DocumentacionIMO;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMO;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMO;
+import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMO;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.ActividadEconomicaIMO;
 import mx.com.kubo.mesa.solicitud.perfil.EditorIdentificationIMO;
@@ -92,6 +93,7 @@ import mx.com.kubo.model.Referred;
 import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.Residence;
+import mx.com.kubo.model.RiskTask;
 import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.StateCat;
@@ -170,6 +172,7 @@ import mx.com.kubo.services.RegistrationReasonService;
 import mx.com.kubo.services.RelatedPersonLoanService;
 import mx.com.kubo.services.RelationShipService;
 import mx.com.kubo.services.ResidenceService;
+import mx.com.kubo.services.RiskTaskService;
 import mx.com.kubo.services.RoleAccessService;
 import mx.com.kubo.services.SavingAccountService;
 import mx.com.kubo.services.ScoringService;
@@ -421,6 +424,9 @@ implements SummaryRequestIMO
 	@ManagedProperty("#{timeLogServiceImp}")
 	protected TimeLogService timelogservice;
 	
+	@ManagedProperty("#{riskTaskServiceImp}")
+	protected RiskTaskService risktaskservice;
+	
 	protected RequestContext request;
 	protected FacesContext   faces;
 	protected ExternalContext external;
@@ -474,6 +480,7 @@ implements SummaryRequestIMO
 	protected      EditorPurposeIMO editor_purpose;
 	protected         EditorRateIMO editor_rate;
 	protected   EditorCommissionIMO editor_commission;
+	protected        EditorScoreIMO editor_score;
 	//protected          ActivadorIMO activador;
 	
 	protected Proyect 		 proyecto;
@@ -922,6 +929,8 @@ implements SummaryRequestIMO
 	protected boolean blnComment = false ;
 	protected boolean haveContactWay = false;
 	protected boolean update_OK;
+	
+	protected boolean risktask1 = true;
 	
 	protected boolean ren4c = false;
 	
@@ -2624,11 +2633,7 @@ implements SummaryRequestIMO
 
 	public String getScoreClass() {
 		return scoreClass;
-	}
-
-	public void setScoreClass(String scoreClass) {
-		this.scoreClass = scoreClass;
-	}
+	}	
 
 	public String getFecConsulta() {
 		return fecConsulta;
@@ -3623,6 +3628,11 @@ implements SummaryRequestIMO
 		return editor_commission;
 	}
 	
+	public EditorScoreIMO getEditor_score()
+	{
+		return editor_score;
+	}
+	
 	public final List <IdentificationType> getLista_identification_type()
 	{
 		return lista_identification_type;
@@ -4056,6 +4066,22 @@ implements SummaryRequestIMO
 	
 	public void setTableronormativodetallado( TableroNormativoDetallado tableronormativodetallado ){
 		this.tableronormativodetallado = tableronormativodetallado;
+	}
+
+	public RiskTaskService getRisktaskservice() {
+		return risktaskservice;
+	}
+
+	public void setRisktaskservice(RiskTaskService risktaskservice) {
+		this.risktaskservice = risktaskservice;
+	}
+
+	public boolean isRisktask1() {
+		return risktask1;
+	}
+
+	public void setRisktask1(boolean risktask1) {
+		this.risktask1 = risktask1;
 	}
 	
 }

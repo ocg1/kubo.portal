@@ -147,7 +147,7 @@
 												<ui:include src = "editor-opening-commision.xhtml"/>
 											</h:panelGroup>	
 											
-											<p class="smallGray">Comisión por apertura</p>
+											<p class = "smallGray">Comisión por apertura</p>
 										</div>
 									</h:panelGroup>	
 									
@@ -217,35 +217,10 @@
 								}
 								
 								</script>
-									
-								<div class="detailsMiddleStatus">										
-									<div class="detailsMiddleStatusData #{summaryRequest.scoreClass} ">
-										<h:panelGroup rendered="#{sessionBean.area=='I'}">
-											<p class="statusLeft">#{summaryRequest.kuboScoreLetter}</p>
-											<p class="statusRight">#{summaryRequest.kuboScoreNumber}</p>
-										</h:panelGroup>
-										
-										<p:commandLink style="text-decoration:none;" rendered="#{sessionBean.area=='M'}" onstart="return displayMessageProcessing('msgprocessing', false);" oncomplete="closeFancy();"  actionListener="#{summaryRequest.goToLogs}" action="#{summaryRequest.actionNavLogs}">
-											<p class="statusLeft">#{summaryRequest.kuboScoreLetter}</p>
-											<p class="statusRight">#{summaryRequest.kuboScoreNumber}</p>
-											<f:attribute name="gotypeLog" value="EVA" ></f:attribute>												
-										</p:commandLink>
-																					
-											<p id="rightRating" style="font-size: 1.1em; font-weight: normal;">Calificación</p>								
-									</div>
-									
-									<div class="detailsMiddleStatusData">
-										
-										<p class="normalGray right" style="font-size: 1.1em; font-weight: normal;" id="rightVerification">Estatus de verificación</p>
-										
-										<p id="status">
-											<p:commandLink style="color:#FFFFFF;" onstart="return displayMessageProcessing('msgprocessing', false);" oncomplete="closeFancy();" value="#{summaryRequest.verification_score}" actionListener="#{summaryRequest.goToLogs}" action="#{summaryRequest.actionNavLogs}">
-											<f:attribute name="gotypeLog" value="SOL" ></f:attribute>
-											</p:commandLink>
-										</p>
-										
-									</div>
-								</div>						
+								
+								<h:panelGroup id = "editor-loan-score">	
+									<ui:include src = "score.xhtml"/>		
+								</h:panelGroup>													
 							</div> 
 						</div> 
 					</div> 																				
