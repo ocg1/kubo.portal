@@ -8,6 +8,7 @@ import java.util.List;
 
 import mx.com.kubo.controller.InversionAutomatica;
 import mx.com.kubo.controller.PendingNotificationController;
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
 import mx.com.kubo.controller.shortURL.ResponseShortURL;
@@ -31,6 +32,7 @@ import mx.com.kubo.model.PendingNotification;
 import mx.com.kubo.model.SafiDepositoRefere;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
+import mx.com.kubo.model.UltimosDesembolsos;
 import mx.com.kubo.services.AutomaticInvestmentService;
 import mx.com.kubo.services.AyudaDocumentosService;
 import mx.com.kubo.services.Change_controlService;
@@ -41,6 +43,7 @@ import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.MovementNotificationService;
 import mx.com.kubo.services.MovementToVerifyService;
 import mx.com.kubo.services.SystemParamService;
+import mx.com.kubo.services.UltimosDesembolsosService;
 import mx.com.kubo.tools.Utilities;
 
 public class VerificadorInicio extends Thread  {
@@ -65,6 +68,7 @@ public class VerificadorInicio extends Thread  {
 		private final int AVISO_TIENDA_DISPONIBLE = 16;
 		private final int NOTIFICA_TABLERO_NORMATIVO = 17;
 		private final int INVERSIONES_AUTOMATICAS = 18;
+		private final int NOTIFICACION_DESEMBOLSO = 19;
 
 	
 	//  FIN MOVEMENT_ID 
@@ -106,6 +110,7 @@ public class VerificadorInicio extends Thread  {
 		private int int_SMS_AYUDA_DOCUMENTACION_DIA_5 = 1;
 		private int int_TABLERO_NORMATIVO = 1;
 		private int int_INVERSIONES_AUTOMATICAS = 1;
+		private int int_NOTIFICACION_DESEMBOLSO = 1;
 		// FIN VARIABLES DE MINUTOS EN QUE SE REPETIRÁ 
 		
 		
@@ -134,6 +139,8 @@ public class VerificadorInicio extends Thread  {
 		protected AyudaDocumentosService ayudadocumentosservice;
 		
 		private   	AutomaticInvestmentService service;
+		
+		private UltimosDesembolsosService ultimosdesembolsosservice;
 		
 		private 	List<MovementToVerify>	movements;
 		
@@ -168,7 +175,9 @@ public class VerificadorInicio extends Thread  {
 			
 			ayudadocumentosservice			=  Utilities.findBean("ayudaDocumentosServiceImp"); 
 			
-			service = Utilities.findBean("automaticInvestmentServiceImp");
+			ultimosdesembolsosservice		=  Utilities.findBean("ultimosDesembolsosServiceImp");
+			
+			service 						= Utilities.findBean("automaticInvestmentServiceImp");
 			
 		}
 		
@@ -1120,7 +1129,7 @@ public class VerificadorInicio extends Thread  {
 							
 							try{
 								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_TABLERO_NORMATIVO ){
-									System.out.println( " 17 - Aviso a inversionistas que la tienda ya está disponible despues de que habia sido deshabilitada" );
+									System.out.println( " 17 - Envio de tablero Normativo" );
 									
 									
 									if( move.getNext_day_to_apply() != null ){
@@ -1179,7 +1188,7 @@ public class VerificadorInicio extends Thread  {
 							
 							try{
 								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_INVERSIONES_AUTOMATICAS ){
-									System.out.println( " 16 - Aviso a inversionistas que la tienda ya está disponible despues de que habia sido deshabilitada" );
+									System.out.println( " 18 - Inversiones Automáticas" );
 									
 									if( move.getNext_day_to_apply() != null ){
 										
@@ -1224,6 +1233,8 @@ public class VerificadorInicio extends Thread  {
 									int_INVERSIONES_AUTOMATICAS ++;
 								}
 								
+							
+								
 							}catch(Exception e){
 								
 								e.printStackTrace();
@@ -1231,6 +1242,64 @@ public class VerificadorInicio extends Thread  {
 							}
 								
 							break;
+							
+							
+						case NOTIFICACION_DESEMBOLSO:
+							
+							try{
+								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_NOTIFICACION_DESEMBOLSO ){
+									System.out.println( " 18 - NOTIFICACION_DESEMBOLSO" );
+									
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( " 18 - NOTIFICACION_DESEMBOLSO " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+									
+											notificaDesembolso ();
+										
+											int_NOTIFICACION_DESEMBOLSO = 1;
+											
+										}else{
+											int_NOTIFICACION_DESEMBOLSO = 1;
+										}
+										
+									}
+									
+									
+									
+								}else{
+									int_INVERSIONES_AUTOMATICAS ++;
+								}
+							
+						}catch(Exception e){
+							
+							e.printStackTrace();
+							
+						}
+							
+						break;
 							
 						default:
 							
@@ -1554,6 +1623,50 @@ public class VerificadorInicio extends Thread  {
 				
 		}
 
+		private void notificaDesembolso (){
+			
+			try{
+				
+				//TODO  query que trae los vid para notificar desembolsos 
+				
+				List<UltimosDesembolsos> lst = ultimosdesembolsosservice.getUltimosDesembolsos();
+				
+				SystemParamPK sysid = new SystemParamPK();
+				
+				sysid.setCompany_id(1);
+				sysid.setSystem_param_id(100);
+				
+				SystemParam sys = systemparamservice.loadSelectedSystemParam(sysid);
+				 
+				String max_credit = sys.getValue();
+				
+				if( lst != null && lst.size() > 0 ){
+				
+					for( UltimosDesembolsos ult : lst ){
+						
+						HubSpotController hs = new HubSpotController();
+						
+						hs.sendEvent("000001873034", ult.getEmail());
+						
+						// http://track.hubspot.com/v1/event?_n=000001867303&_a=2511529
+						
+						max_credit = ult.getSafi_credit_id()+"";
+						
+					}
+				
+				}
+				
+				sys.setValue(max_credit);
+				
+				systemparamservice.updateSelectedSystemParam(sys);
+				
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
+			}
+			
+		}
 		
 		private void llamadaServicioAyudaDocumentos( int event_id ){
 			try{

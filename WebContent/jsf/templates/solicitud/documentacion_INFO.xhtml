@@ -1,118 +1,143 @@
-<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
-				xmlns:ui = "http://java.sun.com/jsf/facelets"
-				xmlns:h  = "http://java.sun.com/jsf/html"
-				xmlns:f  = "http://java.sun.com/jsf/core"
-				xmlns:p  = "http://primefaces.org/ui">
-				
-	<h:panelGroup rendered = "#{summaryRequest.nameVisible}" id = "pnlContSectionDocumentaction">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-		<div id = "dvContSectionDocumentaction" class = "profileControlTable" style = "display: none;">
-			<div class = "centerPosition">
-			
-				<h:panelGroup id = "sectionDocumentaction">
-					<h3 class = "tab">
-						<strong class = "orange">
-							Documentación
-						</strong>
+	<h:panelGroup rendered="#{summaryRequest.nameVisible}"
+		id="pnlContSectionDocumentaction">
+
+		<div id="dvContSectionDocumentaction" class="profileControlTable"
+			style="display: none;">
+			<div class="centerPosition">
+
+				<h:panelGroup id="sectionDocumentaction">
+					<h3 class="tab">
+						<strong class="orange"> Documentación </strong>
 					</h3>
-						
-					<ui:include src = "documentacion/change-control.xhtml" />	
-					
-					<h:panelGroup rendered="#{summaryRequest.blnComment}" >
-						
+
+
+
+					<ui:include src="documentacion/change-control.xhtml" />
+
+					<h:panelGroup rendered="#{summaryRequest.blnComment}">
+
 						<div>
-						
+
 							<div class="Q">
-									<p class="lendingQuestion lendingTableLeft"><strong>No pudo subir documentos debido a:</strong></p>
-						
-							<ui:repeat var="comment" value="#{summaryRequest.lstcomm}">
-								
-								<div class="lendingAnswer" >
-									<div >
-										#{comment.comment}
+								<p class="lendingQuestion lendingTableLeft">
+									<strong>No pudo subir documentos debido a:</strong>
+								</p>
+
+								<ui:repeat var="comment" value="#{summaryRequest.lstcomm}">
+
+									<div class="lendingAnswer">
+										<div>#{comment.comment}</div>
+
+										<div class="footerComment">
+											<h:outputText value="#{comment.comment_date}">
+												<f:convertDateTime pattern="dd-MMMM-yyyy HH:mm:ss" />
+											</h:outputText>
+										</div>
+
 									</div>
-									
-									<div class="footerComment" >
-										<h:outputText value="#{comment.comment_date}">
-											<f:convertDateTime pattern="dd-MMMM-yyyy HH:mm:ss" />
-										</h:outputText>
-									</div>
-									
-								</div>
-								
-							</ui:repeat>
-							
+
+								</ui:repeat>
+
 							</div>
 						</div>
-					
+
 					</h:panelGroup>
-					
-					<h:panelGroup rendered="#{ summaryRequest.copiar_documentos_ENABLED and ( summaryRequest.documentacion == null or summaryRequest.documentacion.listFiles == null or summaryRequest.documentacion.listFiles.size() lt 3 ) }"  >
-						<h:commandLink class="clsCmdCopiaDocs"  style="float:right;" onclick="showLoaderCopiaDocs();" >													
+
+					<h:panelGroup
+						rendered="#{ summaryRequest.copiar_documentos_ENABLED and ( summaryRequest.documentacion == null or summaryRequest.documentacion.listFiles == null or summaryRequest.documentacion.listFiles.size() lt 3 ) }">
+						<h:commandLink class="clsCmdCopiaDocs" style="float:right;"
+							onclick="showLoaderCopiaDocs();">													
 			
 							Copiar últimos documentos válidos
-							<p:ajax listener="#{summaryRequest.fileUploadLastProyect}" immediate="true" event="click" update = "sectionDocumentaction" ></p:ajax>
-							
+							<p:ajax listener="#{summaryRequest.fileUploadLastProyect}"
+								immediate="true" event="click" update="sectionDocumentaction"></p:ajax>
+
 						</h:commandLink>
-						
-						<div id="contLoaderCopiaDocs" style="display:none;">
-						
-							<h:graphicImage library="img" name="loader.gif"  />
-						
+
+						<div id="contLoaderCopiaDocs" style="display: none;">
+
+							<h:graphicImage library="img" name="loader.gif" />
+
 						</div>
-						
+
 						<script>
-						
-							function showLoaderCopiaDocs(){
-								
-								$(".clsCmdCopiaDocs").hide( 'slow',function(){ $("#contLoaderCopiaDocs").show('slow') } );
-								
+							function showLoaderCopiaDocs() {
+
+								$(".clsCmdCopiaDocs").hide('slow', function() {
+									$("#contLoaderCopiaDocs").show('slow')
+								});
+
 								return true;
-								
+
 							}
-						
 						</script>
-						
-						
-						
+
+
+
 					</h:panelGroup>
-									
-									
-													
-					<ui:include src = "documentacion/list-file.xhtml" />										
-			
+
+
+
+					<ui:include src="documentacion/list-file.xhtml" />
+
 				</h:panelGroup>
-				
-				<h:panelGroup id = "pnlAdjuntarDoc" rendered = "#{summaryRequest.addDocument}">
-				
+
+				<h:panelGroup id="pnlAdjuntarDoc"
+					rendered="#{summaryRequest.addDocument}">
+
 					<div>
-						<div id = "dvAdjDocBtn">
-							<div style = "width: 254px;" >
-								<p:commandLink onstart = "toggledvAddDocument();" style = "text-decoration: none;">
-									<div class = "btn_verde" style = "margin-bottom: 0px; width: 250px;">													
-											<h:outputText value = "Adjuntar nuevo documento" />													
+						<div id="dvAdjDocBtn">
+							<div style="width: 254px;">
+								<p:commandLink onstart="toggledvAddDocument();"
+									style="text-decoration: none;">
+									<div class="btn_verde"
+										style="margin-bottom: 0px; width: 250px;">
+										<h:outputText value="Adjuntar nuevo documento" />
 									</div>
 								</p:commandLink>
 							</div>
 						</div>
-						
-						<div id = "dvAdjDocSel" style = "display: none;" >				
-							<ui:include src = "documentacion/file-type.xhtml"/>	
-							<ui:include src = "documentacion/reca-id.xhtml"/>								
-							<ui:include src = "documentacion/subir-archivo.xhtml"/>				
+
+						<div id="dvAdjDocSel" style="display: none;">
+							<ui:include src="documentacion/file-type.xhtml" />
+							<ui:include src="documentacion/reca-id.xhtml" />
+							<ui:include src="documentacion/subir-archivo.xhtml" />
 						</div>
 					</div>
-					
-				</h:panelGroup>	
-		
-				<div id = "successUpload" style = " display: none; color: #439539; width: 350px;margin-top: 15px;" >
+
+				</h:panelGroup>
+
+				<div id="successUpload"
+					style="display: none; color: #439539; width: 350px; margin-top: 15px;">
+				
 					Documento adjuntado satisfactoriamente
-				</div>						
-			</div>					
+				
+				</div>
+				
+				<h:panelGroup id="pnlAvisoDoc"
+					rendered="#{summaryRequest.risktask1}">
+					<div class="respuesta-1 aviso-documentacion">
+						<div class="respuesta-negativa orange">
+							<p>
+								<i class="fa fa-exclamation-circle"></i>El usuario no necesita
+								los documentos: Comprobante de ingresos y Comprobante de
+								actividad economica .
+							</p>
+						</div>
+					</div>
+				</h:panelGroup>
+				
+			</div>
 		</div>
 	</h:panelGroup>
 
-	<p:remoteCommand name = "refreshSections" immediate = "true" 
-					 actionListener = "#{summaryRequest.documentacion.init}" 
-					 update = "sectionDocumentaction"/>						 									
-</ui:composition>				
+	<p:remoteCommand name="refreshSections" immediate="true"
+		actionListener="#{summaryRequest.documentacion.init}"
+		update="sectionDocumentaction" />
+</ui:composition>

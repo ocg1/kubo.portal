@@ -509,11 +509,12 @@ private void saveFullName(){
 			fullname.setPk(fpk);
 			fullname.setEmail( membership.getEmail());
 			fullname.setFull_name(fullnameStr);
-			
+			fullname.setArea(person.getProspectus().getArea().toString());
 			fullnameservice.saveFullName(fullname);
 			
 		}else{
-			
+			fullname.setEmail( membership.getEmail());
+			fullname.setArea(person.getProspectus().getArea().toString());
 			fullname.setFull_name(fullnameStr);
 			fullnameservice.updateFullName(fullname);
 			

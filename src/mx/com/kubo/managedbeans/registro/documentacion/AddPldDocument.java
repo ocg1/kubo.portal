@@ -182,6 +182,11 @@ implements Serializable
 		init_employment_business();	
 		init_file_category();
 		
+		if( !(sesion.getArea().toString().equals("I")))
+		{
+			initTask();
+		}
+		
 		init_address();
 		
 		init_same_Address();
@@ -195,9 +200,9 @@ implements Serializable
 		
 		lista_tipo_credencial = service_catalogos.getLista_tipo_credencial();	
 		
-		 if( naturalperson  != null && naturalperson.getCountry_of_residence() != null && naturalperson.getCountry_of_residence().intValue() == 1 ){
+		/* if( naturalperson  != null && naturalperson.getCountry_of_residence() != null && naturalperson.getCountry_of_residence().intValue() == 1 ){
 			sameAddress = "S";
-		}
+		}*/
 		
 		sameAddress = "N";
 		
@@ -1955,21 +1960,28 @@ implements Serializable
 	
 	public void changeSameAddress(AjaxBehaviorEvent e){
 		
-		String val = (String) ((HtmlSelectOneRadio) e.getComponent()).getValue();
+//		String val = (String) ((HtmlSelectOneRadio) e.getComponent()).getValue();
+//		
+//		System.out.println( "SameAddress: " + sameAddress + " val: " + val );
 		
-		System.out.println( "SameAddress: " + sameAddress + " val: " + val );
-		
-		sameAddress = val;
+		sameAddress = "N";
 		
 		if( sesion.getArea().toString().equals("L") ){
-			
-			 info.setMx_ife_domicilio(sameAddress);
-			 proyectLoanInfoService.updateProyectLoanInfo(info);
+			if(info != null){
+			 
+				info.setMx_ife_domicilio(sameAddress);
+				proyectLoanInfoService.updateProyectLoanInfo(info);
+				
+			}
 			
 		 }else if( sesion.getArea().toString().equals("I") ){
 			 
-			 inv.setMx_ife_domicilio( sameAddress );
-			 investorservice.updateInvestor(inv);
+			 if( inv != null ){
+			 
+				 inv.setMx_ife_domicilio( sameAddress );
+				 investorservice.updateInvestor(inv);
+				 
+			 }
 			 
 		 }
 		

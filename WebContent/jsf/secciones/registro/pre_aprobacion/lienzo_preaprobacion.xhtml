@@ -346,7 +346,7 @@ function formatLienzo(e,place)
 }
 //]]>
 </script>		     
-<h:panelGroup rendered="#{sessionBean.area == 'L' and sessionBean.coachProspectus_id == null}">
+<h:panelGroup rendered="#{sessionBean.area == 'L' and (sessionBean.coachProspectus_id == null || sessionBean.coachProspectus_id == sessionBean.prospectus_id )}">
 
 		
 		<input type="text" id="valuePartner" style="opacity:0; position:absolute;"  value="#{checkScoreProcessed.partner_id}" />

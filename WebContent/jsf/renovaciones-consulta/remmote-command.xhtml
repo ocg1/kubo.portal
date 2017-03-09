@@ -32,7 +32,12 @@
 					   	listener   = "#{consultaRenovacion.auditor.init_access_CONFIG}"/>
 			</h:inputText>	
 			
-			<h:commandLink styleClass = "redirect-to-registro-ENABLED" action = "registrar" rendered ="#{sesionBean.area=='L'}" />	
+			<h:panelGroup rendered ="#{sessionBean.area == 'L'}" >
+			
+				<p:commandLink styleClass = "redirect-to-registro-ENABLED" action = "registrar"  />	
+			
+			</h:panelGroup>
+			
 			
 			<h:panelGroup rendered = "#{consultaRenovacion.redirect_to_wait_ENABLED}">
 				<h:commandLink styleClass = "redirect-to-wait"  />

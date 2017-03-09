@@ -45,8 +45,10 @@ import mx.com.kubo.model.PospectusComment;
 import mx.com.kubo.model.PospectusCommentPK;
 import mx.com.kubo.model.PrevencionLD;
 import mx.com.kubo.model.PrevencionLDPK;
+import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.ProyectLoanInfo;
 import mx.com.kubo.model.ProyectLoanInfoPK;
+import mx.com.kubo.model.RiskTask;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.AddressTokenIMP;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.EditorViviendaIMP;
 import mx.com.kubo.tools.ImageUtils;
@@ -879,7 +881,7 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 	 
 	 protected void init_same_Address(){
 		 
-		 if( sesion.getArea().toString().equals("L") ){
+		/* if( sesion.getArea().toString().equals("L") ){
 			 
 			 ProyectLoanInfoPK pkInfo = new ProyectLoanInfoPK();
 			 
@@ -940,7 +942,9 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 				sameAddress = "N";
 			}
 			 
-		 }
+		 } */
+		 
+		 sameAddress = "N";
 		 
 	 }
 	 
@@ -1001,6 +1005,92 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 	private boolean isIMG( String extension ){
 		
 		return extension.toUpperCase().equals("JPG") || extension.toUpperCase().equals("JPEG") || extension.toUpperCase().equals("PNG") || extension.toUpperCase().equals("GIF");
+		
+	}
+	
+	protected void initTask(){
+		System.out.println( "Revisa Tareas" );
+		
+		RiskTask risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(thisProyectLoan.getMx_solicitud_buro(), TAREA1);
+		
+		if( risktask != null ){
+			
+			if( !risktask.getTask().getIs_enabled().equals("0") ){
+				tarea1 = ( risktask.getTask_value().equals("0") );
+			}else{
+				tarea1 = true; //siempre se piden los documentos
+			}
+			
+		}else{
+			
+			getTareas( );
+			
+		}
+		
+	}
+	
+	private void getTareas( ){
+		
+		try{
+			
+			String r_data = thisProyectLoan.getR_data();
+			
+			if( r_data != null ){
+			
+				if( r_data.indexOf("TAREAS") != (-1) ){
+					
+					String taresStr = "";
+					
+					taresStr = r_data.substring(r_data.indexOf("TAREAS"));
+					
+					taresStr = taresStr.substring( taresStr.indexOf("[")+1 , taresStr.indexOf("]") );
+					
+					if( taresStr.indexOf(" ") != (-1) ){
+						taresStr = taresStr.replaceAll(" ","");
+					}
+					
+					taresStr = taresStr.trim();
+					
+					RiskTask risktask = new RiskTask();
+					
+					risktask.setCompany_id( thisProyectLoan.getProyectloanPk().getCompany_id());
+					risktask.setMx_solicitud_buro( thisProyectLoan.getMx_solicitud_buro());
+					risktask.setProspectus_id(thisProyectLoan.getProyectloanPk().getProspectus_id());
+					risktask.setTask_id(TAREA1);
+					risktask.setTask_value((taresStr.split(",")[0]).trim());
+					
+					risktaskservice.saveRiskTask(risktask);
+					
+					risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(thisProyectLoan.getMx_solicitud_buro(), TAREA1);
+
+					if( !risktask.getTask().getIs_enabled().equals("0") ){
+					
+						tarea1 = ( risktask.getTask_value().equals("0") );
+						
+					}else{
+						tarea1 = true;//siempre se piden los documentos
+					}
+					
+					
+					risktask = new RiskTask();
+					
+					risktask.setCompany_id( thisProyectLoan.getProyectloanPk().getCompany_id());
+					risktask.setMx_solicitud_buro( thisProyectLoan.getMx_solicitud_buro());
+					risktask.setProspectus_id(thisProyectLoan.getProyectloanPk().getProspectus_id());
+					risktask.setTask_id(TAREA2);
+					risktask.setTask_value((taresStr.split(",")[1]).trim());
+					
+					risktaskservice.saveRiskTask(risktask);
+					
+				}
+			
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
 		
 	}
 	

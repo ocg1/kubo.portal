@@ -13,6 +13,8 @@ import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.model.Fields;
+import mx.com.kubo.model.ProyectLoan;
+import mx.com.kubo.model.RiskTask;
 import mx.com.kubo.model.Screen;
 import mx.com.kubo.model.ScreenPK;
 import mx.com.kubo.model.SystemParam;
@@ -269,6 +271,98 @@ implements Serializable, NavigationBeanIMO
 			
 		}
 			
+	}
+	
+	public void revisaTareas(){
+		
+		System.out.println( "Revisa Tareas" );
+		
+		ProyectLoan proyectloan = proyectloanservice.getMaxProyectLoanByProspect(getProspectus(), getCompany());
+		
+		RiskTask risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(proyectloan.getMx_solicitud_buro(), TAREA1);
+		
+		if( risktask != null ){
+			
+			if( !risktask.getTask().getIs_enabled().equals("0") ){
+				
+				tarea1 = ( risktask.getTask_value().equals("0") );
+				
+			}else{
+				tarea1 = true; // siempre se piden los documentos
+			}
+			
+		}else{
+			
+			getTareas( proyectloan );
+			
+		}
+		
+	}
+	
+	private void getTareas( ProyectLoan  proyectloan ){
+		
+		try{
+			
+			String r_data = proyectloan.getR_data();
+			
+			if( r_data != null ){
+			
+				if( r_data.indexOf("TAREAS") != (-1) ){
+					
+					String taresStr = "";
+					
+					taresStr = r_data.substring(r_data.indexOf("TAREAS"));
+					
+					taresStr = taresStr.substring( taresStr.indexOf("[")+1 , taresStr.indexOf("]") );
+					
+					if( taresStr.indexOf(" ") != (-1) ){
+						taresStr = taresStr.replaceAll(" ","");
+					}
+					
+					taresStr = taresStr.trim();
+					
+					RiskTask risktask = new RiskTask();
+					
+					risktask.setCompany_id( proyectloan.getProyectloanPk().getCompany_id());
+					risktask.setMx_solicitud_buro( proyectloan.getMx_solicitud_buro());
+					risktask.setProspectus_id(proyectloan.getProyectloanPk().getProspectus_id());
+					risktask.setTask_id(TAREA1);
+					risktask.setTask_value((taresStr.split(",")[0]).trim());
+					
+					tarea1 = ( risktask.getTask_value().equals("0") );
+					
+					risktaskservice.saveRiskTask(risktask);
+					
+					risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(proyectloan.getMx_solicitud_buro(), TAREA1);
+
+					if( !risktask.getTask().getIs_enabled().equals("0") ){
+					
+						tarea1 = ( risktask.getTask_value().equals("0") );
+						
+					}else{
+						tarea1 = true;//siempre se piden los documentos
+					}
+					
+					risktask = new RiskTask();
+					
+					risktask.setCompany_id( proyectloan.getProyectloanPk().getCompany_id());
+					risktask.setMx_solicitud_buro( proyectloan.getMx_solicitud_buro());
+					risktask.setProspectus_id(proyectloan.getProyectloanPk().getProspectus_id());
+					risktask.setTask_id(TAREA2);
+					risktask.setTask_value((taresStr.split(",")[1]).trim());
+					
+					risktaskservice.saveRiskTask(risktask);
+					
+				}
+			
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+		
 	}
 	
 }

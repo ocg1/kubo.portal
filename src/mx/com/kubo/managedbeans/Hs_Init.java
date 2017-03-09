@@ -7,6 +7,7 @@ import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;
+import java.net.HttpCookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.json.JSONObject;
@@ -760,7 +762,20 @@ public class Hs_Init implements Serializable {
 
 	private String getCookieRequest( HttpServletRequest request ){
 		
+		System.out.println( "");
+		System.out.println( "********************getCookieRequest*********************************");
+		
 		Cookie[] cookies = request.getCookies();
+		
+		// java.net.HttpCookie[] kookies = request.getHeaders(arg0);
+		
+		Enumeration<String> e = request.getHeaderNames();
+		
+		while (e.hasMoreElements()) {
+			
+			System.out.println( e.nextElement() ); 
+			
+		}
 		
 		String hsutk = null;
 		
@@ -771,10 +786,42 @@ public class Hs_Init implements Serializable {
 		          
 		    	  String cookieName = cookie.getName();
 		          String cookieValue = cookie.getValue();
+		          String domain = cookie.getDomain();
 		          
-		          if( cookieName.equals("hubspotutk") ){
-		        	  hsutk = cookieValue;
-		        	  break;
+		          
+		          if(  cookieName != null && cookieValue != null ){
+		          
+		        	 
+		        	  
+			          if( cookieName.equals("hubspotutk")  ){
+			        	  
+			        	 
+				          
+				          System.out.println( "*********************************************************");
+			        	  System.out.println( "*********************************************************");
+			        	  System.out.println( "*********************************************************");
+			        	  System.out.println( "cookieName: " +  cookieName);
+			        	  System.out.println( "cookieValue: " + cookieValue );
+			        	  System.out.println( "domain: " +  domain );
+			        	  System.out.println( "getComment(): " + cookie.getComment() );
+			        	  System.out.println( "getDomain(): " + cookie.getDomain() );
+			        	  System.out.println( "getMaxAge(): " + cookie.getMaxAge() );
+			        	  System.out.println( "getName(): " + cookie.getName() );
+			        	  System.out.println( "getPath(): " + cookie.getPath() );
+			        	  System.out.println( "getValue(): " + cookie.getValue() );
+			        	  System.out.println( "getVersion(): " + cookie.getVersion() );
+			        	  System.out.println( "getSecure(): " + cookie.getSecure() );
+			        	  
+			        	  
+			        	  System.out.println( "*********************************************************");
+			        	  System.out.println( "*********************************************************");
+			        	  System.out.println( "*********************************************************");
+			        	  
+			        	  hsutk = cookieValue;
+			        	  break;
+			        	  
+			          }
+		          
 		          }
 		          
 		       }
@@ -913,3 +960,4 @@ private String getClientTypeFromHS( String json_str ){
 		}
 	
 }
+

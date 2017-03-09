@@ -56,6 +56,74 @@ public class HubSpotController {
 		return executeCallBack( url , properties , vid );
 	}
 	
+	public Integer sendEvent( String event, String email){
+		try{
+			
+			try{
+				
+				
+				String url="http://track.hubspot.com/v1/event?_n="+event+"&_a=2511529&email="+email;
+				
+				URL object=new URL(url);
+				
+				String charset = "UTF-8";
+
+				HttpURLConnection con = (HttpURLConnection) object.openConnection();
+				con.setDoOutput(true);
+				
+				con.setRequestProperty("Accept-Charset", charset);
+				con.setRequestProperty("Content-Type", "application/json;charset="+charset);
+				
+				con.setRequestMethod("GET");
+				
+				
+				//display what returns the POST request
+
+				StringBuilder sb = new StringBuilder();  
+				
+				int HttpResult = 0;
+				
+				try{
+					
+					HttpResult = con.getResponseCode();
+					
+				}catch(Exception e){
+					
+				}
+				
+				System.out.println(HttpResult);
+				
+				if (HttpResult == HttpURLConnection.HTTP_OK ) {
+					
+				    BufferedReader br = new BufferedReader(
+											            	new InputStreamReader(con.getInputStream(), charset)
+											            );
+				    
+				    String line = null;  
+				    
+				    while ((line = br.readLine()) != null) {  
+				        
+				    	sb.append(line + "\n");
+				    	
+				    }
+				    
+				    br.close();
+				    System.out.println("" + sb.toString());
+				    
+				}
+				
+				return HttpResult;
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public  Integer createField2( String properties ){
 		
 		String url=" https://api.hubapi.com/properties/v1/contacts/properties?hapikey=ab5f1f2f-bc79-4cbb-a280-e53c182b7f8d";

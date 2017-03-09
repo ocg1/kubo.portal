@@ -980,7 +980,10 @@ public abstract class BasicDataAMO extends BasicDataDMO
 	}
 	
 	protected void saveFullName()
-	{		
+	{
+		
+		naturalPerson = service_natural_person.getNaturalPersonById(naturalPerson.getNatPerPK());
+		
 		String first_name       = naturalPerson.getFirst_name()        == null ? "" : naturalPerson.getFirst_name().trim();	
 		String middle_name      = naturalPerson.getMiddle_name()       == null ? ""  : naturalPerson.getMiddle_name().trim();
 		String father_last_name = naturalPerson.getFather_last_name()  == null ? "" : naturalPerson.getFather_last_name().trim();
@@ -1031,12 +1034,14 @@ public abstract class BasicDataAMO extends BasicDataDMO
 			fullname.setPk(fpk);
 			fullname.setEmail( membership.getEmail());
 			fullname.setFull_name(fullnameStr);
-			
+			fullname.setArea(naturalPerson.getProspectus().getArea().toString());
 			fullnameservice.saveFullName(fullname);
 			
 		}else{
 			
 			fullname.setFull_name(fullnameStr);
+			fullname.setEmail( membership.getEmail());
+			fullname.setArea(naturalPerson.getProspectus().getArea().toString());
 			fullnameservice.updateFullName(fullname);
 			
 		}

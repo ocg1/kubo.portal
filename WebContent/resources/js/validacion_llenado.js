@@ -931,7 +931,8 @@ var buttonClick;
 							  GTM_eventos ('Sobre ti');
 							  googleEvents ('solicitud-credito', 'clic ir a documentacion', 'boton ir a documentacion');
 							  facebook_events ('clicIrADocumentacion');	
-							  $(".aviso-cliente-doc").addClass("show-alert");
+							  //$(".aviso-cliente-doc").addClass("show-alert");
+							  $("#cmdRevDocs").trigger("click");
 							  mixPanel ("clicIrADocumentacion");
 							  $(".velo").fadeIn();
 							 //dataLayer.push({'event': 'Sobre ti'});
@@ -1046,4 +1047,8 @@ var buttonClick;
 			
 		/*}*/
 		
+	}
+	
+	function showMessageDocAviso(){
+		$(".aviso-cliente-doc").addClass("show-alert");
 	}

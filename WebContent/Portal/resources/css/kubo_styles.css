@@ -7196,14 +7196,21 @@ text-decoration:underline;color: #8FC450;}
 }
 
 .disclamer {
-	background: #666666;
-	padding:30px 0 20px;
+	background: #8fc450;
+	padding: 10px 0 10px;
 	position:fixed;
 	bottom:0;
 	z-index: 9999991;
 	width:100%;
 	text-align:left;
 }
+
+.disclamer .callAction {
+	float:right;
+	width: 240px;
+	margin: 20px 85px 0 0;
+}
+
 .disclamer  .inner-block {
 	max-width:1024px;
 	margin:0 auto;
@@ -7212,8 +7219,8 @@ text-decoration:underline;color: #8FC450;}
 
 .disclamer p {
 	color:#fff;
-	font-size:17px;
-	margin:0 0 15px;
+	font-size: 20px;
+	margin: 0 0 7px;
 	text-align:left;
 	line-height:20px;
 }
@@ -7221,7 +7228,7 @@ text-decoration:underline;color: #8FC450;}
 	color:#fff;
 	position:absolute;
 	right:20px;
-	top:-20px;
+	top: 20px;
 	font-size:30px;
 	cursor: pointer;
 }
@@ -7233,6 +7240,8 @@ text-decoration:underline;color: #8FC450;}
 	-ms-transition:.4s;
 	-o-transition:.4s;
 	transition:.4s;
+	width: 62%;
+	float: left;
 }
 .contenidoOculto {
 	display:none;
@@ -7240,7 +7249,7 @@ text-decoration:underline;color: #8FC450;}
 
 .textoDisclamer article {
 	float:right;
-	width:92%;
+	width: 100%;
 }
 .disclamer .fa-exclamation-triangle {
 	color:#ffa726;
@@ -7289,20 +7298,43 @@ text-decoration:underline;color: #8FC450;}
 
 
 .disclamer {
-	background: #666666;
+	/* background: #666666; */
 	padding:20px 0 30px;
-
 }
 	.textoDisclamer {
 	overflow:hidden;
 	padding:0px 0 0px;
-	
-	-webkit-transition:.4s;-moz-transition:.4s;-ms-transition:.4s;-o-transition:.4s;transition:.4s;
+	-webkit-transition:.4s;
+	-moz-transition:.4s;
+	-ms-transition:.4s;
+	-o-transition:.4s;
+	transition:.4s;
+	width: 100%;
 }
 .textoDisclamer article {
 	float:none;
 	width:100%;
 
+}
+.textoDisclamer p{
+	text-align:center;
+	margin: 0 0 10px;
+	line-height: 27px;
+	width: 90%;
+	font-size: 17px;
+}
+.textoDisclamer p + p{
+	margin:0 0 30px;
+	
+
+}
+
+.disclamer .callAction {
+	float:none;
+	width: 240px;
+	clear:both;
+	margin: 20px auto 0;
+	overflow:hidden
 }
 .disclamer .fa-exclamation-triangle {
 	color:#ffa726;
@@ -7314,11 +7346,7 @@ text-decoration:underline;color: #8FC450;}
 	
 }
 
-.disclamer .fa-times-circle {
-
-	top:0px;
-
-}
+.disclamer .fa-times-circle {top: -10px;right: 0px;left: auto;}
 
 }
 .titulares {

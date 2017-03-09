@@ -119,6 +119,38 @@ public class RegistroCoach implements Serializable {
 				
 				System.out.println( " coach " + coach +"  prospectus_id: "+ prospectus_id );
 				
+			}else{
+				
+				if( session != null && session.getProspectus_id() != null && session.getCoachProspectus_id() != null  ){
+					
+					coach        	= session.getCoachProspectus_id()+"";	
+					
+					company_id 		= session.getCompany_id()+"";
+					from 			= "portalKubo";
+					successInfo 	= true;
+					
+					prospectus_id 	= session.getProspectus_id()+"";
+					
+					MembershipPK mpk = new MembershipPK();
+					
+					mpk.setCompany_id( Integer.parseInt( company_id ) );
+					mpk.setProspectus_id(Integer.parseInt(coach));
+					
+					mCoach = service_membership.getMembershipById(mpk);
+					
+					mpk = new MembershipPK();
+					
+					mpk.setCompany_id( Integer.parseInt( company_id ) );
+					mpk.setProspectus_id(Integer.parseInt(prospectus_id));
+					
+					mProspectus = service_membership.getMembershipById(mpk);
+					
+					registrarAcceso( ENTRAR );
+					
+					System.out.println( " coach " + coach +"  prospectus_id: "+ prospectus_id );
+					
+				}
+				
 			}
 			
 		}
@@ -192,7 +224,7 @@ public class RegistroCoach implements Serializable {
 	}
 	
 	
-public String backSession(){
+	public String backSession(){
 		
 			FacesContext faces = FacesContext.getCurrentInstance();	
 			ELContext context   = faces.getELContext();
@@ -206,58 +238,72 @@ public String backSession(){
 			
 			String str = search.getSearchSummary();
 			
-			navigation1.setPaginaActual( "controlTable/searchRequest" ) ;
+			if( str != null ){
 			
-			HeaderBean headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
-			
-			headerbean.iniciaSesionCoach(mCoach, mProspectus, false);
-			
-			NavigationBeanIMP navigation = (NavigationBeanIMP)resolver.getValue(context, null, "navigationBean");
-			
-			search = (SearchSummaySession)resolver.getValue(context, null, "searchSummaySession");
-			
-			search.setSearchSummary( str );
-			
-			if( str.split("::").length < 3 ){
+				navigation1.setPaginaActual( "controlTable/searchRequest" ) ;
 				
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				System.out.println("true: str="+str);
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				search.setPerson(false);
-				search.setActividad_ENABLED(true);
-				search.setShowInvestPnl(true);
+				HeaderBean headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
 				
+				headerbean.iniciaSesionCoach(mCoach, mProspectus, false);
+				
+				NavigationBeanIMP navigation = (NavigationBeanIMP)resolver.getValue(context, null, "navigationBean");
+				
+				search = (SearchSummaySession)resolver.getValue(context, null, "searchSummaySession");
+				
+				search.setSearchSummary( str );
+				
+				if( str.split("::").length < 3 ){
+					
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					System.out.println("true: str="+str);
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					search.setPerson(false);
+					search.setActividad_ENABLED(true);
+					search.setShowInvestPnl(true);
+					
+				}else{
+					
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					System.out.println("false: str="+str);
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+					search.setPerson(false);
+					search.setActividad_ENABLED(true);
+					search.setShowInvestPnl(true);
+					search.setPerson(false);
+					search.setActividad_ENABLED(true);
+					search.setShowInvestPnl(true);
+					
+				}
+				
+				SearchRequestIMP searchRequest = (SearchRequestIMP)resolver.getValue(context, null, "searchRequest");
+				
+				searchRequest.setSearch(mProspectus.getMembershipPK().getProspectus_id()+"");
+				
+				searchRequest.listener_buscar_solicitud( null );
+				
+				registrarAcceso( SALIR );
+				
+				System.out.println( navigation.getPaginaActual() );
+				
+				successInfo = false;
+				
+				return "controlTable";
+			
 			}else{
 				
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				System.out.println("false: str="+str);
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-				search.setPerson(false);
-				search.setActividad_ENABLED(true);
-				search.setShowInvestPnl(true);
-				search.setPerson(false);
-				search.setActividad_ENABLED(true);
-				search.setShowInvestPnl(true);
+
+				HeaderBean headerbean = (HeaderBean)resolver.getValue(context, null, "headerBean");
+				
+				headerbean.SignOut();
+				
+				
+				return "kubofinanciero";
 				
 			}
-			
-			SearchRequestIMP searchRequest = (SearchRequestIMP)resolver.getValue(context, null, "searchRequest");
-			
-			searchRequest.setSearch(mProspectus.getMembershipPK().getProspectus_id()+"");
-			
-			searchRequest.listener_buscar_solicitud( null );
-			
-			registrarAcceso( SALIR );
-			
-			System.out.println( navigation.getPaginaActual() );
-			
-			successInfo = false;
-			
-			return "controlTable";
 			
 	}
 	

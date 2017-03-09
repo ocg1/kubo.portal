@@ -735,13 +735,31 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 		          
 		    	  String cookieName = cookie.getName();
 		          String cookieValue = cookie.getValue();
+		          String domain = cookie.getDomain();
 		          
-		          if( cookieName.equals("hubspotutk") ){
-		        	  hsutk = cookieValue;
-		        	  break;
+		          if( domain != null && cookieName != null && cookieValue != null ){
+		          
+		        	  System.out.println( "*********************************************************");
+		        	  System.out.println( "*********************************************************");
+		        	  System.out.println( "*********************************************************");
+		        	  System.out.println( "cookieName: " +  cookieName);
+		        	  System.out.println( "cookieValue: " + cookieValue );
+		        	  System.out.println( "domain: " +  domain );
+		        	  System.out.println( "*********************************************************");
+		        	  System.out.println( "*********************************************************");
+		        	  System.out.println( "*********************************************************");
+		        	  
+			          if( cookieName.equals("hubspotutk") && domain.indexOf("kubofinanciero") != (-1) ){
+			        	  
+			        	  hsutk = cookieValue;
+			        	  break;
+			        	  
+			          }
+		          
 		          }
 		          
 		       }
+		      
 		   }
 		
 		

@@ -166,7 +166,7 @@ implements ProyectLoanDao
 	{
 		try
 		{		
-			String query = " Select * from ln_proyect_loan where CAST(safi_credit_id AS UNSIGNED)   =  CAST('"+safi_credit_id+"' AS UNSIGNED) ";
+			String query = " Select * from ln_proyect_loan where safi_credit_id    =  '"+safi_credit_id+"' ";
 			
 			System.out.println( "**** ProyectLoanListBySafiCreditID ****" );
 			System.out.println( query );

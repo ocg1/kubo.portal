@@ -787,7 +787,17 @@ function addProspectIdUrl () {
 	var locacion = document.location.href; 
 	if(locacion.indexOf('pID')<0  && $("#prosId").length & $("#prosId").val() != "" &&  $("#prosId").val() != null  &&  $("#prosId").val() != "0"  ){
 		var ProspectoId = $("#prosId").val()
-		changeUrlParam('pID', ProspectoId );
+		
+		try {
+			changeUrlParam('pID', ProspectoId );
+		}
+		catch(err) {
+		 
+			console.log(err.message);
+		   /*notificar error*/
+		}
+		
+		
 	}
 	
 	

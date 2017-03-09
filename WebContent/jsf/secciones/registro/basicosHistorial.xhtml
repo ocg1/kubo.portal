@@ -50,15 +50,63 @@
 			<div id="general">
 				<div class="backStyle">	
 					<div id="contFrmPre">
-										
-						<!-- pixelprogramatic paso 1, 11 marzo 2015 -->
-						<h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
-                            <img border="0" src="https://r.turn.com/r/beacon?b2=FFBKj1fEKrmPsvv1nQIkDV_N-677JK95U2lG_gSwUaYgp1wj57Plw7FfebHAu3QLxViWfRw3FAO_8q6kTyjrfw&amp;cid="/>
-							<a class="datos_basicos" href="#"> </a>		
-						</h:panelGroup>   
-									    					
-						<ui:include src = "datos_personales/tu_prestamo.xhtml"/>	
-						<ui:include src = "datos_personales/actividad_economica.xhtml"/>
+					
+					
+			<!-- pixelprogramatic paso 1, 11 marzo 2015 -->
+					   <h:panelGroup rendered = "#{sessionBean.area == 'L'}" >
+                              	<img border="0" src="https://r.turn.com/r/beacon?b2=FFBKj1fEKrmPsvv1nQIkDV_N-677JK95U2lG_gSwUaYgp1wj57Plw7FfebHAu3QLxViWfRw3FAO_8q6kTyjrfw&amp;cid="/>
+								<a class="datos_basicos" href="#"> </a>
+		
+		               </h:panelGroup>  
+		               
+		               <h:panelGroup rendered="#{sessionBean.area == 'L' and sessionBean.coachProspectus_id == null and basicData.membership.registration_reason_id == 79 }" >
+		               
+		               		<section class="monto_proposito">
+								<div class="field"  >
+										<div class = "dvLabel" >
+											<h:outputLabel styleClass="labelsStl" value = "Tu préstamo por"/>
+										</div>
+											
+									    <div id         = "ammount_output"  style="font-weight: bold; font-size: 36px;padding: 15px !important; margin-left: auto !important; margin-right: auto !important; width: 99%; text-align: center; " >
+														$ #{simulator.ammountStr}
+														 
+														 
+													    
+									   </div>
+									   
+									   <INPUT type="hidden" id = "ammount" />
+									   
+								</div>				 
+							  <!--  <div class="field">		
+					
+										<div class="dvLabel">
+											<h:outputLabel styleClass="labelsStl" value="#{msg.Purpose_loan}"/>
+										</div>
+									
+									
+										<div class="selectNuevo">
+											
+												<h:selectOneMenu id="proposito_prestamo" styleClass="elementStlSelAddress validatorClass requiredVerify hs_class"  value="#{simulator.purpose_id}">
+													<f:selectItem itemLabel="" itemValue="0"  />
+													<f:selectItems value="#{simulator.listPurpose}" var="purpose"  itemLabel="#{purpose.name}" style="color: #FF0000 !important;"  itemValue="#{purpose.purposePK.purpose_id}"/>
+													<p:ajax event="change"  listener="#{simulator.simulaCred(false)}"  />  
+												</h:selectOneMenu>
+												
+										</div>
+									
+								</div> -->
+								
+							</section>
+		               
+		               </h:panelGroup> 
+					
+						<h:panelGroup rendered="#{sessionBean.area == 'L' and basicData.membership.registration_reason_id != 79 }" >
+						
+							<ui:include src = "datos_personales/tu_prestamo.xhtml"/>	
+							<ui:include src = "datos_personales/actividad_economica.xhtml"/>
+							
+						</h:panelGroup>
+						
 					
 						<ui:include src = "datos_personales/deudasAtrasadas.xhtml"/>
 						

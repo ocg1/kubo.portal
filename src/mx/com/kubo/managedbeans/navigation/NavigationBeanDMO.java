@@ -25,6 +25,7 @@ import mx.com.kubo.services.FieldsService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.ProspectusService;
 import mx.com.kubo.services.ProyectLoanService;
+import mx.com.kubo.services.RiskTaskService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ScreenService;
 import mx.com.kubo.services.SegmentProspectusService;
@@ -33,6 +34,9 @@ import mx.com.kubo.services.SystemParamService;
 public abstract class NavigationBeanDMO 
 implements NavigationBeanIMO
 {
+	protected final int TAREA1 = 1;
+	protected final int TAREA2 = 2;
+	
 	@ManagedProperty("#{accessServiceImp}")
 	protected AccessService accessService;
 	
@@ -62,6 +66,9 @@ implements NavigationBeanIMO
 	
 	@ManagedProperty("#{prospectusServiceImp}")
 	protected ProspectusService prospectusService;
+	
+	@ManagedProperty("#{riskTaskServiceImp}")
+	protected RiskTaskService risktaskservice;
 	
 	
 	protected String paginaIni;
@@ -110,6 +117,8 @@ implements NavigationBeanIMO
 	private boolean hasValidScore;
 	private boolean displaySim;
 	private boolean loaner;
+	
+	protected boolean tarea1 = true;
 	
 	protected NavigationBeanDMO()
 	{
@@ -371,5 +380,21 @@ implements NavigationBeanIMO
 
 	public void setProspectusService(ProspectusService prospectusService) {
 		this.prospectusService = prospectusService;
+	}
+
+	public boolean isTarea1() {
+		return tarea1;
+	}
+
+	public void setTarea1(boolean tarea1) {
+		this.tarea1 = tarea1;
+	}
+
+	public RiskTaskService getRisktaskservice() {
+		return risktaskservice;
+	}
+
+	public void setRisktaskservice(RiskTaskService risktaskservice) {
+		this.risktaskservice = risktaskservice;
 	}
 }

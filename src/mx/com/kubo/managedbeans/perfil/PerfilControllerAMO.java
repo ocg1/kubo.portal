@@ -16,7 +16,7 @@ public abstract class PerfilControllerAMO extends PerfilControllerDMO
 {
 	public final void init_preguntas_seguridad() 
 	{				
-		if(pool_preguntas_seguridad != null && pool_preguntas_seguridad.size() >= 3)
+		if(pool_preguntas_seguridad != null && pool_preguntas_seguridad.size() <= 3)
 		{		
 			question_pool = pool_preguntas_seguridad.get(0);
 			

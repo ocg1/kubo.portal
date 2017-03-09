@@ -50,9 +50,13 @@
 		<ui:include src = "credencial_elector_INFO.xhtml" />
 	
 		
-		<ui:include src = "sube_tus_fotos/comprobante/domicilio.xhtml" />					
-		<ui:include src = "sube_tus_fotos/comprobante/ingresos.xhtml" />
-		<ui:include src = "sube_tus_fotos/comprobante/actividad_economica.xhtml" />
+		<ui:include src = "sube_tus_fotos/comprobante/domicilio.xhtml" />	
+		<h:panelGroup rendered="#{addPldDocument.tarea1}">			
+			<ui:include src = "sube_tus_fotos/comprobante/ingresos.xhtml" />
+		</h:panelGroup>	
+		<h:panelGroup rendered="#{addPldDocument.tarea1}">	
+			<ui:include src = "sube_tus_fotos/comprobante/actividad_economica.xhtml" />
+		</h:panelGroup>	
 		<!-- ui:include src = "sube_tus_fotos/acreditacion/propiedad_del_negocio.xhtml" / -->
 		<ui:include src = "sube_tus_fotos/foto_de_proyecto.xhtml" />
 		<ui:include src = "sube_tus_fotos/selfie_identificacion.xhtml" />

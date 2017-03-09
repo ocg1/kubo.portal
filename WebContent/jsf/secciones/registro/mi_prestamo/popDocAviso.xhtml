@@ -4,6 +4,8 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 
+<h:panelGroup id="pnlDocAviso">
+
 <div class="alerta-simple alerta-s aviso-cliente-doc centrar_h ">
 						<h2>Consejos para el siguiente paso</h2> 
 						<p>Es importante que tengas a la mano estos documentos:</p>
@@ -11,9 +13,12 @@
 	
 						<ul>
 							<li><p>- Identificación</p></li>
-							<li><p>- Comprobante de Ingresos</p></li>
+							
+							<h:panelGroup rendered="#{navigationBean.tarea1}">
+								<li><p>- Comprobante de Ingresos</p></li>
 								<li><p>- Comprobante de Actividad Económica</p></li>
-							<li><p>	- Comprobante de Domicilio</p></li>
+							</h:panelGroup>
+								<li><p>	- Comprobante de Domicilio</p></li>
 						</ul>	
 						
 				
@@ -25,5 +30,19 @@
 						<div class="callAction btnNaranja" onclick="irDocumentosPopUp ()" style="left:0">Continuar</div>
 
 			</div>
+			
+</h:panelGroup>
+
+<div style="display: false;" >
+
+	<h:form prependId="false" >
+	
+		<h:commandLink id="cmdRevDocs" >
+			<p:ajax event="click" listener="#{navigationBean.revisaTareas}" update=":pnlDocAviso" oncomplete="showMessageDocAviso();" ></p:ajax>
+		</h:commandLink>
+	
+	</h:form>
+
+</div>			
 
 </ui:composition>

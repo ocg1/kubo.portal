@@ -48,7 +48,7 @@ la autorización de tu préstamo.
 				<script>
 					ofertaFinal = true;
 					$(".plecaForm.mG").hide();
-				
+					 gaVirtualPages ('/vp/publicacion.html');
 				</script>
 		</div>
 	<!-- table id = "propuesta" class = "clTableEnd propuesta_acreedor">
@@ -107,7 +107,6 @@ la autorización de tu préstamo.
 	
 			<!-- h:inputHidden id="publicacion_exitosa" / -->
 	
-	<h:panelGroup rendered="#{sessionBean.coachProspectus_id == null }" >
 		<script>
 		
 			deal_success ();
@@ -116,9 +115,9 @@ la autorización de tu préstamo.
 				 $(".oferta_final").trigger("click");
 			     
 			    
-					  console.log("publicacion");
-				      window._fbq.push(["track", "Publicacion", {}]);  
-				      
+				 facebook_events ("Publicacion" );
+				       
+				      console.log("publicacion");
 				      
 				  
 			}   
@@ -130,8 +129,6 @@ la autorización de tu préstamo.
 			*/
 		
 		</script>
-		
-	</h:panelGroup>
 	
 		<a href="#" class="segumiento_facebook" > </a>
 		<!-- a class="oferta_final" href="#" onclick="ga('send', { 'hitType': 'pageview', 'page': '/registro/paso7.html' , 'title': 'Paso 7' });"> </a -->
@@ -144,7 +141,7 @@ la autorización de tu préstamo.
 						setTimeout(function(){	
 							pixelSegundaMano();
 					 }, 500);
-						
+						gaVirtualPages ('/vp/publicacion.html');
 					</script>
 					
 			

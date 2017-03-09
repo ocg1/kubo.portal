@@ -57,6 +57,7 @@ import mx.com.kubo.services.PrevencionLDService;
 import mx.com.kubo.services.ProyectLoanInfoService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.ProyectService;
+import mx.com.kubo.services.RiskTaskService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ServiceCallingService;
 import mx.com.kubo.services.SystemParamService;
@@ -69,6 +70,11 @@ import org.primefaces.model.UploadedFile;
 
 public abstract class AddPldDocumentDMO 
 {
+	
+	protected final int TAREA1 = 1;
+	
+	protected final int TAREA2 = 2 ;
+	
 	@ManagedProperty("#{proyectServiceImp}")
 	protected ProyectService proyectService;
 	
@@ -149,6 +155,9 @@ public abstract class AddPldDocumentDMO
 	
 	@ManagedProperty("#{phoneServiceImp}")
 	protected PhoneService service_telefono;
+	
+	@ManagedProperty("#{riskTaskServiceImp}")
+	protected  RiskTaskService	risktaskservice;
 	
 	protected ProyectLoanInfo info;
 	protected Investor inv;
@@ -301,6 +310,8 @@ public abstract class AddPldDocumentDMO
 	private boolean otherTitle;
 	protected boolean datos_credencial_elector_ENABLED;
 	protected boolean enabled_whatsapp;
+	
+	protected boolean tarea1 = true;
 	
 	protected String dispSelfieIdentificacion = "";
 	protected FileForScreenBean selfieIdentification;
@@ -1032,6 +1043,22 @@ public abstract class AddPldDocumentDMO
 
 	public void setMembership(Membership membership) {
 		this.membership = membership;
+	}
+
+	public RiskTaskService getRisktaskservice() {
+		return risktaskservice;
+	}
+
+	public void setRisktaskservice(RiskTaskService risktaskservice) {
+		this.risktaskservice = risktaskservice;
+	}
+
+	public boolean isTarea1() {
+		return tarea1;
+	}
+
+	public void setTarea1(boolean tarea1) {
+		this.tarea1 = tarea1;
 	}
 	
 }

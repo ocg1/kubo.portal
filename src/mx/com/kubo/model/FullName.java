@@ -23,6 +23,8 @@ public class FullName implements Serializable {
 	private String full_name;
 	@Column
 	private String email;
+	@Column
+	private String area;
 	
 	public FullNamePK getPk() {
 		return pk;
@@ -41,6 +43,12 @@ public class FullName implements Serializable {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
 	}
 	
 }

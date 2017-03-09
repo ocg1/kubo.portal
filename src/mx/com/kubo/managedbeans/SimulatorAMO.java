@@ -740,6 +740,7 @@ public abstract class SimulatorAMO extends SimulatorDMO
 	
 	private void initFrequency(int frequency_id)
 	{
+		
 		setFrequency(frequencyService.getFrequencyById(frequency_id));
 	}
 	

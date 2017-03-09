@@ -84,7 +84,7 @@ implements ApplicationContextAware, Serializable
 //			
 //			verficador.excecuteAction();
 //			
-//			System.out.println("\n\n++++++++++++++++++++ OK ++++++++++++++++++++\n\n");
+			System.out.println("\n\n++++++++++++++++++++ OK ++++++++++++++++++++\n\n");
 //			
 			
 		} catch(Exception e) {

@@ -113,9 +113,14 @@ implements Serializable
 			
 			auditor = new AccessIMP();
 			auditor.setService_access(service_access);
-//			auditor.setSesion(sesion);
-//			auditor.setScreen_id();
-//			auditor.setAccess_from(access_from);
+
+			if( sesion != null && sesion.getProspectus_id() != null && sesion.getArea() != null && sesion.getArea().toString().equals("L")  ){
+				
+				auditor.setSesion(sesion);
+				auditor.setScreen_id( SCREEN_CONSULTING_AUTOMATIC_RENOVATION );
+				auditor.setAccess_from(access_from);
+				
+			}
 			
 			sesion.setProspectus_id(prospectus_id);
 			auditor.save_access(sesion, SCREEN_CONSULTING_AUTOMATIC_RENOVATION );

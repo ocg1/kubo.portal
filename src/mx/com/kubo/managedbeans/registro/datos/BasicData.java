@@ -884,7 +884,91 @@ implements Serializable, BasicDataIMO
 		saveFullName();
 		
 		actualizaDatosInfusion();		
-	}	
+		
+		/*if( fullname == null ){
+			
+			fullname = new FullName();
+			
+			fullname.setPk(fpk);
+			fullname.setEmail( membership.getEmail());
+			fullname.setFull_name(fullnameStr);
+			fullname.setArea(naturalPerson.getProspectus().getArea().toString());
+			fullnameservice.saveFullName(fullname);
+			
+		}else{
+			fullname.setEmail( membership.getEmail());
+			fullname.setArea(naturalPerson.getProspectus().getArea().toString());
+			fullname.setFull_name(fullnameStr);
+			fullnameservice.updateFullName(fullname);
+			
+		}*/
+		
+	}
+	/*
+	private void actualizaPhoneInfusion( String phonestr ){
+	
+		try{
+			
+			Integer contactId = naturalPerson.getProspectus().getInfusion_id();
+			
+			if( contactId != null ){
+			
+				SystemParamPK system_param_PK_I = new SystemParamPK();
+				
+				system_param_PK_I.setCompany_id( 1 );
+				system_param_PK_I.setSystem_param_id(88); // Bandera que índica si infusion esta habilitado
+				
+				 SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+				
+				 if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+				 
+					InfusionSoft infusion = new InfusionSoft();
+					infusion.actualizaTelefonoContacto(contactId, phonestr);
+						
+				 }
+			 
+			}
+		 
+		}catch( Exception e ){
+			
+			e.printStackTrace();
+			
+		}
+	
+	}
+	
+	private void actualizaDatosInfusion(  ){
+	
+		try{
+			
+			String first_name       = naturalPerson.getFirst_name()       == null ? "" : naturalPerson.getFirst_name();	
+			String father_last_name = naturalPerson.getFather_last_name() == null ? "" : naturalPerson.getFather_last_name();
+			Integer contactId = naturalPerson.getProspectus().getInfusion_id();
+			
+			if( contactId != null ){
+			
+				SystemParamPK system_param_PK_I = new SystemParamPK();
+				
+				system_param_PK_I.setCompany_id( 1 );
+				system_param_PK_I.setSystem_param_id(88); // Bandera que índica si infusion esta habilitado
+				
+				 SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+				
+				 if( system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") ){
+				 
+					InfusionSoft infusion = new InfusionSoft();
+					infusion.actualizaContacto(contactId, first_name, father_last_name, membership.getEmail());
+						
+				 }
+			 
+			}
+		 
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
+	
+	} */
+	
 		
 	public void validaRelationship()
 	{	

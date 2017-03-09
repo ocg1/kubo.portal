@@ -199,6 +199,10 @@ implements NaturalPersonDao
 				res = "CC";
 			}else if(estado.equals("DISTRITO FEDERAL")){
 				res = "DF";
+			}else if(estado.equals("CIUDAD DE MEXICO")){
+				res = "DF";
+			}else if(estado.equals("ESTADO DE MEXICO")){
+				res = "MC";
 			}else if(estado.equals("NUEVO LEON")){
 				res = "NL";
 			}else if(estado.equals("QUERETARO DE ARTEAGA")){

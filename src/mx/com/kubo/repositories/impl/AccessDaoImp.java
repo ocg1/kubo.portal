@@ -30,11 +30,10 @@ implements AccessDao
 	public Access loadMaxAccess(Integer prospectus_id, Integer company_id) 
 	{
 		log.info("saveAccess.AccessDaoImp");
-		String query="select MAX(a.access_id) from Access a where a.prospectus_id = ? and a.company_id = ?";
+		String query="select MAX(a.access_id) from Access a where a.prospectus_id = ?";
 		Integer id=0;
 		id=(Integer)  em.createQuery(query)
 						.setParameter(1, prospectus_id)
-						.setParameter(2, company_id)
 						.getSingleResult();
 		if(id == null)
 			return null;
@@ -193,7 +192,7 @@ long dif_1 = cd_F.getTimeInMillis() - cd_I.getTimeInMillis();
 					"  ) as ax left join pr_access as bx  on (ax.access_id = bx.access_id)    "  ; */
 					
 					
-					" select ax.*, bx.percentage from  "  +
+					/* " select ax.*, bx.percentage from  "  +
 					"(Select  "
 					+ "	s.company_id as company_id,   "
 					+ " s.name as name,    "
@@ -214,7 +213,19 @@ long dif_1 = cd_F.getTimeInMillis() - cd_I.getTimeInMillis();
 							+ "s.screen_id, "
 							+ "s.resource_name, "  
 							+ "a.prospectus_id "
-					+ "order by s.menu_order) as ax left join pr_access as bx  on (ax.access_id = bx.access_id); ";
+					+ "order by s.menu_order) as ax left join pr_access as bx  on (ax.access_id = bx.access_id); ";   */
+			
+			" select ax.*, bx.percentage  "  + 
+			" from  (Select  	s.company_id as company_id,    s.name as name,     s.menu_order as menu_order,  s.is_obligatory as is_obligatory, "  +    
+			" s.screen_id as screen_id,   s.resource_name as resource_name,  a.access_id as access_id,    a.prospectus_id   "  + 
+			" From pr_screen as s Left Join (select prospectus_id, company_id, screen_id, max(access_id) access_id  "  + 
+			" from pr_access use index(FK_pr_access_gn_prospectus)  "  + 
+			" where prospectus_id = ? and company_id = ?  "  + 
+			" group by prospectus_id, company_id, screen_id)  "  + 
+			" as a On   (s.screen_id = a.screen_id and a.company_id = s.company_id)     "  + 
+			" where s.menu_order > 0 and s.area=?  "  + 
+			" Group By s.company_id, s.name, s.menu_order, s.screen_id, s.resource_name, a.prospectus_id order by s.menu_order)  "  + 
+			" as ax left join pr_access as bx  on (ax.access_id = bx.access_id); ";
 					
 		
 			@SuppressWarnings("unchecked")

@@ -4240,3 +4240,17 @@ div.bloque.respuesta-si {
 	padding: 20px 4%;
 }
 }
+
+.aviso-documentacion {
+	overflow:hidden;
+}
+
+.clsCmdCopiaDocs {
+	overflow:hidden;
+	margin:0 0 30px;
+}
+
+.aviso-documentacion p i{
+	margin:0 10px 0 0px;
+
+}
