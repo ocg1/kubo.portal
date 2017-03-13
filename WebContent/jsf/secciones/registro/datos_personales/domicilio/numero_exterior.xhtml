@@ -13,7 +13,8 @@
 			<h:inputText id = "address_number" size = "4" immediate = "true" 
 						 onfocus = "Domicilio.init_focus_date(1);"
 						 value   = "#{basicData.domicilio.address.address_number}" 
-						 styleClass = "elementAddresMin mapClass address_number hs_class">
+						 styleClass = "elementAddresMin mapClass address_number hs_class"
+						 onblur = "mixPanel ('numeroExterior')" >
 						 
 				<p:ajax event = "blur" 
 				        oncomplete = "Domicilio.address_number_on_complete(xhr, status, args);"

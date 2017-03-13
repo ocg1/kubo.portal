@@ -399,7 +399,7 @@ implements Serializable
 					validaImagen( file );
 					lDocAddedAcredProBusiness.add(file);
 					
-				} else if(file_type_id >= 24 && file_type_id <= 29){
+				} else if( (file_type_id >= 24 && file_type_id <= 29 ) || ( file_type_id >= 122 && file_type_id <= 125 ) ){
 					
 					FileForScreenBean file = new FileForScreenBean(regis);
 					validaImagen( file );
@@ -823,27 +823,6 @@ implements Serializable
 		
 		String component_id = event.getComponent().getId();
 		
-		if(component_id.equals("file_compIncome"))
-		{
-			//requestContext.addPartialUpdateTarget("listloan");
-			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listloan");
-			
-		}else if(component_id.equals("file_compDomi")){
-			
-			requestContext.addPartialUpdateTarget("listacompDomi");
-			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listacompDomi");
-			
-		}else if(component_id.equals("file_compActEcom")){
-			
-			requestContext.addPartialUpdateTarget("listCompActEcon");
-			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listCompActEcon");
-			
-		}else if(component_id.equals("file_acredProBus")){
-			
-			requestContext.addPartialUpdateTarget("listacredProBus");
-			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listacredProBus");
-		}
-		
 //		requestContext.addPartialUpdateTarget("panelScript");
 //		requestContext.addPartialUpdateTarget(":actualPage");
 			
@@ -1091,6 +1070,28 @@ implements Serializable
 					setThisDocumentId(null);
 				}
 			}
+		}
+		
+		
+		if(component_id.equals("file_compIncome"))
+		{
+			//requestContext.addPartialUpdateTarget("listloan");
+			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listloan");
+			
+		}else if(component_id.equals("file_compDomi")){
+			
+			requestContext.addPartialUpdateTarget("listacompDomi");
+			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listacompDomi");
+			
+		}else if(component_id.equals("file_compActEcom")){
+			
+			requestContext.addPartialUpdateTarget("listCompActEcon");
+			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listCompActEcon");
+			
+		}else if(component_id.equals("file_acredProBus")){
+			
+			requestContext.addPartialUpdateTarget("listacredProBus");
+			FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("listacredProBus");
 		}
 
 	}

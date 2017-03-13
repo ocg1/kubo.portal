@@ -26,6 +26,9 @@ function validar_institucion_credito_automotriz()
 								
 				is_value_OK = false;
 			}
+			mixPanelValue ('creditoAutomotriz', 'creditoAutomotriz', 'si');
+		}else{
+			mixPanelValue ('creditoAutomotriz', 'creditoAutomotriz', 'no');
 		}
 		
 	} else {

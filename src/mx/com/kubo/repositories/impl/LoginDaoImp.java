@@ -622,7 +622,7 @@ implements LoginDaoIMO
 				if(failed_login_attempts >= MAX_FAILED_LOGIN || (is_blocked != null && is_blocked.equals("S")))
 				{
 					valido = false;
-					msg = "La contraseña ha sido bloqueda";	
+					msg = "Tu contraseña ha sido bloqueda";	
 					desbloqueo_password_ENABLED = true;
 				}								
 				

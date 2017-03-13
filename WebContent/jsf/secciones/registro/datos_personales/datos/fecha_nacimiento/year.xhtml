@@ -9,7 +9,9 @@
 					     value      = "#{basicData.birthday.year}" 
 					     disabled   = "#{navigationBean.disabledComponent('year')}"  
 					     onfocus    = "DatosPersonales.init_focus_date(2);"
-					     styleClass = "elementStlSelYear mapOff validatorClass requiredVerify hs_class">
+					     styleClass = "elementStlSelYear mapOff validatorClass requiredVerify hs_class"
+					     onchange = "mixPanel_fechaNacimiento ('fechaNacimiento');"
+					      >
 					     
 			<f:selectItem itemLabel = "Año " itemValue="0" />
 			

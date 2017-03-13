@@ -3386,10 +3386,10 @@ membershipTemp = new Membership();
 			
 			if( !risktask.getTask().getIs_enabled().equals("0") ){
 				
-				risktask1 = ( risktask.getTask_value().equals("0") );
+				risktask1 = ( risktask.getTask_value().equals("1") );
 				
 			}else{
-				risktask1 = true; // siempre se piden los documentos
+				risktask1 = false; // siempre se piden los documentos
 			}
 			
 		}else{

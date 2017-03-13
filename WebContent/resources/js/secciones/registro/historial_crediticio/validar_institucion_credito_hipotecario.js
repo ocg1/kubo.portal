@@ -30,6 +30,9 @@ function validar_institucion_credito_hipotecario()
 				
 				is_value_OK = false;				
 			}
+			mixPanelValue ('actualmenteTienesUnCreditoHipotecario', 'tieneCredito', 'si');
+		}else{
+			mixPanelValue ('actualmenteTienesUnCreditoHipotecario', 'tieneCredito', 'no');
 		}
 		
 	} else {
@@ -37,7 +40,6 @@ function validar_institucion_credito_hipotecario()
 		
 		
 		$.scrollTo('#contFrmPre',300, { axis:'y' });
-		
 		is_value_OK = false;
 		
 	}

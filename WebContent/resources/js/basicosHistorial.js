@@ -565,7 +565,9 @@ function  returnConsultaBreve(xhr, status, args){
    	    		console.log("limpiar tiempo");
    	    		actividadTiempo = setTimeout(noActivo, 150000);
    	       });
-    
+           
+           
+           mixPanel_selectionValue (lastField, 'tipodevivienda', 'tipoVivienda');
     }
 
 	

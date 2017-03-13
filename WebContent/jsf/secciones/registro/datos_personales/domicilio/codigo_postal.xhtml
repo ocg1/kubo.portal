@@ -14,7 +14,8 @@
 						 value = "#{basicData.domicilio.address.zip_code}"
 					     onkeypress = "return isNumberKey(event);"  
 					     onfocus    = "Domicilio.init_focus_date(1);"					      					  
-					     styleClass = "elementAddres1 validatorClass mapClass zipcode hs_class">     
+					     styleClass = "elementAddres1 validatorClass mapClass zipcode hs_class"
+					     onblur = "CP_delegacion_estado()">     
 				<p:ajax event     	= "blur"
 						oncomplete	= "Domicilio.zipcode_on_complete(xhr, status, args);" 
 						listener  	= "#{basicData.domicilio.init_zipcode}"

@@ -18,7 +18,8 @@
 			<h:inputText id = "street" immediate = "true"
 						 onfocus = "Domicilio.init_focus_date(1);"
 						 value   = "#{basicData.domicilio.address.street}"  
-						 styleClass = "elementAddres1 validatorClass mapClass street hs_class" >
+						 styleClass = "elementAddres1 validatorClass mapClass street hs_class" 
+						 onblur="mixPanel('calle')">
 						 
 				<p:ajax event = "blur"  
 						oncomplete = "Domicilio.street_on_complete(xhr, status, args);"

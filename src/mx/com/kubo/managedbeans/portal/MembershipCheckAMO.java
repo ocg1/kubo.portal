@@ -131,7 +131,7 @@ public abstract class MembershipCheckAMO extends MembershipCheckDMO
 		if(failed_login_attempts >= MAX_FAILED_LOGIN || (is_blocked != null && is_blocked.equals("S")))
 		{
 			membership_ENABLED = false;
-			check_msg_TOKEN = "La contraseña ha sido bloqueda";	
+			check_msg_TOKEN = "Tu contraseña ha sido bloqueda";	
 			desbloqueo_password_ENABLED = true;
 		}		
 	}

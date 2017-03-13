@@ -45,6 +45,10 @@ function validar_titular_tarjeta_vigente()
 				
 				is_value_OK = false;
 			 }
+
+			mixPanelValue ('manejaTC', 'manejaTC', 'si');
+		}else{
+			mixPanelValue ('manejaTC', 'manejaTC', 'no');
 		}
 		
 	} else {
@@ -52,7 +56,7 @@ function validar_titular_tarjeta_vigente()
 		
 		
 		$.scrollTo('#contFrmPre',250, { axis:'y' });				
-		
+
 		is_value_OK = false;
 	}
 	

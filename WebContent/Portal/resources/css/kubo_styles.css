@@ -8190,3 +8190,37 @@ text-align:left;
 		margin:0 0 20px;
 	}
 }
+
+
+
+.advertencia-contrasena {
+	background:rgba(255, 0, 0, .2);
+	padding:7px 7px 7px;
+	overflow:hidden;
+	margin:0 0 17px;
+}
+
+.advertencia-contrasena .fa-exclamation-circle {
+	font-size:35px;
+	width:20px;
+	float:left;
+	margin:3px 0 0 5px;
+
+}
+
+.advertencia-contrasena-text {
+	width:80%;
+	float:right;
+
+}
+
+#warningUser .advertencia-contrasena-text  span{
+	color:#565b59 !important;
+	font-size:13px;
+
+}
+
+#warningUser .advertencia-contrasena-text  a{
+	text-decoration:underline;
+	font-size: 13px !important;
+}

@@ -13,7 +13,9 @@
 			<h:inputText size = "4" immediate = "true" 
 					     value = "#{basicData.domicilio.address.mx_lote}"
 					     onfocus = "Domicilio.init_focus_date(1);" 
-					     styleClass = "elementAddresMin">
+					     styleClass = "elementAddresMin"
+					     onblur = "mixPanel ('lote')" 
+					     >
 					     
 				<p:ajax event = "blur"				
 						oncomplete = "Domicilio.mx_lote_on_complete(xhr, status, args);"  

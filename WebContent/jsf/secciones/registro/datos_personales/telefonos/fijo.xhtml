@@ -27,7 +27,8 @@
 					 maxlength = "10" styleClass = "elementAddres1 phone_box_big2 hs_class"
 					 onkeypress = "return validateTelephono(event, this);"
 					 onchange   = "valueGreaterSix(this);" 
-					 onfocus    = "Telefono.init_focus_date(5);">
+					 onfocus    = "Telefono.init_focus_date(5);"
+					 onblur     =   "mixPanel('telefonoFijo');"	>
 					 
 			<p:ajax event = "blur"
 					oncomplete = "Telefono.update_oncomplete(xhr, status, args);"  

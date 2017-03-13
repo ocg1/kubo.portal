@@ -933,6 +933,7 @@ var buttonClick;
 							  facebook_events ('clicIrADocumentacion');	
 							  //$(".aviso-cliente-doc").addClass("show-alert");
 							  $("#cmdRevDocs").trigger("click");
+							  
 							  mixPanel ("clicIrADocumentacion");
 							  $(".velo").fadeIn();
 							 //dataLayer.push({'event': 'Sobre ti'});
@@ -1032,7 +1033,7 @@ var buttonClick;
 	function irDocumentosPopUp (){
 		  $(".aviso-cliente-doc").removeClass("show-alert");
 		  $(".velo").fadeOut();
-		$("#hdNext\\:siguienteDocPLD").click();
+		  $("#hdNext\\:siguienteDocPLD").click();
 		
 	}
 	
@@ -1044,11 +1045,14 @@ var buttonClick;
 					interactions.__sendInteractions__();
 				}
 			
-			
+				
+				
 		/*}*/
 		
 	}
 	
 	function showMessageDocAviso(){
+		
 		$(".aviso-cliente-doc").addClass("show-alert");
+		$(window).resize();
 	}

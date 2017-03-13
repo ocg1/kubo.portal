@@ -30,7 +30,7 @@
 	        			<i class="fa fa-check checkMobile"></i>
 	        		</div>
 	        		<div class="selectNuevo ocultaSelect">
-							<h:selectOneMenu id="activityEconomic"  value="#{basicData.economicActivity}" styleClass="elementStlSelAddress validatorClass hs_class"  >
+							<h:selectOneMenu id="activityEconomic"  value="#{basicData.economicActivity}" styleClass="elementStlSelAddress validatorClass hs_class" onchange="mixPanel_selectionValue(this, 'cualEsTuActividadEconomica','actividad')"  >
 								<f:selectItem itemLabel="" itemValue="0" />
 								<f:selectItems  value="#{basicData.economicActivityList}" var="activity" itemLabel="#{activity.description}" itemValue="#{activity.economicActivityPK.economic_activity_id}"/>
 								<p:ajax event="change" listener="#{basicData.selectEconomicActivity}" update="giroActivEcon" oncomplete="fieldCount();"></p:ajax>

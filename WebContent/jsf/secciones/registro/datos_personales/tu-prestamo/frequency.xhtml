@@ -25,7 +25,7 @@
 			</h:selectOneMenu>
 -->			
 			<h:selectOneMenu id = "simulador-frequency-id" immediate = "true" styleClass = "validatorClass"
-							 value = "#{basicData.simulador.frequency_id}" >
+							 value = "#{basicData.simulador.frequency_id}" onchange="mixPanel_selectionValue (this, 'comoTeGustariaPagarTuPrestamo', 'periodo')">
 								 
 				<f:selectItem itemLabel = "Seleccione Frecuencia" itemValue = "0" />
 					

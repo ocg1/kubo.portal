@@ -20,7 +20,7 @@
 		<p:inputText id = "name" immediate = "true" 
 					 value   = "#{basicData.naturalPerson.first_name}"
 					 onfocus = "DatosPersonales.init_focus_date(1);"
-					 onblur  = "actualizarNombre();" 
+					 onblur  = "mixPanel_actualizaNombre ('primerNombre')" 
 					 styleClass = "name elementStl validatorClass hs_class">					 
 
 			<p:ajax event = "blur" update = "warningName :frmErrorBuro:pnlErrorBuro"

@@ -36,7 +36,9 @@
 								 onfocus    = "DatosPersonales.init_focus_date(5);"
 							 	 disabled   = "#{navigationBean.disabledComponent('genero')}" 
 							 	 value      = "#{basicData.naturalPerson.gender_id}"  
-							     styleClass = "elementStlSelAddress  validatorClass requiredVerify hs_class">
+							     styleClass = "elementStlSelAddress  validatorClass requiredVerify hs_class"
+							     onchange    = "mixPanel_selectionValue(this, 'sexo','sexo');"
+							     >
 							 
 					<f:selectItem itemLabel = "" itemValue = "" />
 				

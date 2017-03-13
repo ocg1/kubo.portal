@@ -11,7 +11,7 @@
 
 			<p:inputText id = "aPaterno" immediate = "true" 
 						 value = "#{basicData.naturalPerson.father_last_name}"
-						 onblur  = "actualizarNombre();"
+						 onblur  = "mixPanel_actualizaNombre ('apellidoPaterno');"
 						 onfocus = "DatosPersonales.init_focus_date(1);"					  
 						 styleClass = "elementStl validatorClass validate[required,minSize[5]] text-input hs_class">
 						 
@@ -31,7 +31,9 @@
 			<p:inputText id = "aMaterno" immediate = "true" 
 						 value      = "#{basicData.naturalPerson.mother_last_name}"
 					     onfocus = "DatosPersonales.init_focus_date(1);" 					      
-					     styleClass = "elementStl hs_class" >
+					     styleClass = "elementStl hs_class"
+					     onblur  = "mixPanel_actualizaNombre ('apellidoMaterno');"
+					      >
 					 
 				<p:ajax event = "blur"
 						oncomplete = "DatosPersonales.mother_last_name_on_complete(xhr, status, args);"  

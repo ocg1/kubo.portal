@@ -1956,9 +1956,11 @@ margin: 0 0 6px;
 
 
 .tab {
-	margin: 0 0 22px;
+	margin: 0 0 14px;
 	width: 100%;
 	font-size: 20px;
+	/* clear: both; */
+	/* overflow: hidden; */
 }
 
 .tab i{
@@ -2126,7 +2128,7 @@ margin: 0;
 	margin:0 0 10px;
 
 }
-#dvSummaryCont Ã‚ .editar_nota {
+#dvSummaryCont Ã, .editar_nota {
  	border: solid 1px #ccc !important;
  	display:block;
  	width:20px;
@@ -4171,9 +4173,13 @@ div.bloque.respuesta-si {
 	margin: 0 0 0px;
 }
 
+.respuesta-1.aviso-documentacion .respuesta-negativa.orange {
+	background:#CCEBF3;
+}
 .respuesta-negativa.orange p {
 	color: #666 !important;
-	/* font-weight: bold; */
+	font-weight: 300;
+	margin: 0 0 10px;
 }
 
 
@@ -4252,5 +4258,5 @@ div.bloque.respuesta-si {
 
 .aviso-documentacion p i{
 	margin:0 10px 0 0px;
-
+	float: left;
 }

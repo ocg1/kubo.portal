@@ -10,19 +10,22 @@
 		</div>
             	
 		<div style = "display: #{iniciaSession.displayWarningUser};">
-			<span class = "error_inicio">
-				<h:outputText escape = "false" value = "#{iniciaSession.warningUser}"/>
-			</span>
-			
-			<h:panelGroup rendered = "#{iniciaSession.desbloqueo_password_ENABLED}">
+		<div class="advertencia-contrasena">
+			<i class="fa fa-exclamation-circle"></i>
+			<div class="advertencia-contrasena-text">
 				<span class = "error_inicio">
-					click <p:commandLink style = "color: #666; float: none;" onclick = "DesbloqueoPassword.mostrar_modal('desbloquear-password');"> aqui</p:commandLink> para desbloquear.
+					<h:outputText escape = "false" value = "#{iniciaSession.warningUser}"/>
 				</span>
-			</h:panelGroup>
-			
-			<h:panelGroup rendered = "#{iniciaSession.blocked_person_ENABLED}">
-				<span class = "error_inicio">Su cuenta ha sido bloqueada por requerimiento de la autoridad.</span>
-			</h:panelGroup>
+				<h:panelGroup rendered = "#{iniciaSession.desbloqueo_password_ENABLED}">
+					<span class = "error_inicio" id="desbloquearPassLink">
+							da <p:commandLink style = "color: #666; float: none;" onclick = "DesbloqueoPassword.mostrar_modal('desbloquear-password');">clic aquí</p:commandLink> para desbloquearla.
+					</span>
+				</h:panelGroup>
+				<h:panelGroup rendered = "#{iniciaSession.blocked_person_ENABLED}">
+					<span class = "error_inicio">Su cuenta ha sido bloqueada por requerimiento de la autoridad.</span>
+				</h:panelGroup>
+			</div>
+		</div>
 		</div>
 	</h:panelGroup>
 </ui:composition>                

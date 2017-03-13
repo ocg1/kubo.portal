@@ -252,14 +252,7 @@ function name_section () {
 		  }
 		
 	}
-	function ayudaMixPanel (pixMixPanel){
-		ayudaQuitar();
-		mixPanel (pixMixPanel);
-	}	
-	function  formatMixPanel(element, componente, pixMixPanel ){
-		 format(element, componente)
-		 mixPanel (pixMixPanel);
-	}
+
 	function ayudaQuitar() {
 		$(".ayudaPanel").fadeOut();
 		
@@ -1021,7 +1014,7 @@ function validacionLada2(inputEspejo) {
 		inputReal.blur();		
 			
 		validacionLLenadoMirror (inputEspejo, posibleLada);		
-			
+		mixPanel("telefonoCelular");	
 }		
 function resetMirrorTelefono (container){		
 	var contenedorTelefono = $(container);		

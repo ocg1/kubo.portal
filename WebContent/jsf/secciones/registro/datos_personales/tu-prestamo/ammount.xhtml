@@ -31,7 +31,7 @@
 					 styleClass = "elementAddres1 validatorClass hs_class"
 					 onkeyup = "return formatMixPanel(this,'simulator', 'cuantoDineroNecesitas' );"
 					 onfocus = "Simulador.init_focus_date();"
-					 onblur  = " ayudaMixPanel ('cuantoDineroNecesitas')">
+					 onblur  = "mixPanel_sendHelp_valueInput (this, 'cuantoDineroNecesitas', 'monto')">
 										 			 								 		
 			<p:ajax event = "blur" listener = "#{basicData.simulador.init_input_text}"
 					onstart    = "return simulatorMirror();"

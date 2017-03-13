@@ -861,6 +861,7 @@ public abstract class AddPldDocumentDMO
 		this.direccion = direccion;
 	}
 
+	
 	public String getSameAddress() {
 		return sameAddress;
 	}

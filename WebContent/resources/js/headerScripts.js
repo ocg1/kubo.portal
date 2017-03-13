@@ -111,19 +111,16 @@ var telefono = function (campoForm) {
 	 $(campoForm+" small").replaceWith(function() { return $(this).contents(); });
 			 $(campoForm+":contains('(55)')").html(function(_, html) {
 			  return html.replace(/(\(55\))/g, '<small class="small">$1</small>');
-	 });	
-	   
+	 });	   
 }
 	
 
 $(window).load(function() {
 	fechaResponsivo ();
-
 });
 
 $(window).resize(function() {
 	fechaResponsivo();
-
 });
 
 $(document).ready(function(){

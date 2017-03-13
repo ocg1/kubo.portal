@@ -23,7 +23,10 @@
 										 value = "#{basicData.domicilio.neighborhood_id}" 
 										 onfocus = "Domicilio.init_focus_date(1);"
 										 styleClass = "elementStlSelAddress validatorClass mapClass neighborhood hs_class" 
-										 style = "height: 30px;">
+										 style = "height: 30px;"
+										 onchange ="mixPanel ('colonia')"
+										 
+										 >
 										 
 							<f:selectItem  itemLabel = "Selecciona..." itemValue = "0" />
 							  

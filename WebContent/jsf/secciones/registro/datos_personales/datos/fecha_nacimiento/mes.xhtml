@@ -9,7 +9,9 @@
 					     value      = "#{basicData.birthday.month}" 
 					     disabled   = "#{navigationBean.disabledComponent('month')}"  
 					     onfocus    = "DatosPersonales.init_focus_date(2);"
-					     styleClass = "elementStlSelMonth mapOff validatorClass requiredVerify hs_class" >
+					     styleClass = "elementStlSelMonth mapOff validatorClass requiredVerify hs_class" 
+					     onchange = "mixPanel_fechaNacimiento ('fechaNacimiento');"
+					      >
 					     
 			<f:selectItem itemLabel = "Mes " itemValue = "0" />
 			

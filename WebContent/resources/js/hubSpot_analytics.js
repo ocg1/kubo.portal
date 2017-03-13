@@ -1052,6 +1052,7 @@ function gaVirtualPages (page){
 
 	}
 
+ 
 	function mixPanel (pixelMix) {
 		try {
 			 mixpanel.track(pixelMix); 
@@ -1060,4 +1061,71 @@ function gaVirtualPages (page){
 		}
 		
 	}
+	function mixPanelValue (pixelMix, label, value) {
+		try {
+			mixpanel.track(pixelMix,{ label: value});
+			console.log(pixelMix, label, value);
+		}catch(err){
+			
+		}
+		
+	}
+	function ayudaMixPanel (pixMixPanel){
+		//ayudaQuitar();
+		//mixPanel (pixMixPanel);
+	}	
+	function mixPanel_sendHelp_valueInput (field, pixelMix, label) {
+		ayudaQuitar();
+		mixPanel_valueInput (field, pixelMix, label);
+	}
+	function mixPanel_valueInput (field, pixelMix, label){
+		var value  = $(field).val();
+		mixPanelValue (pixelMix, label, value);
+	}
+	
+	function mixPanel_selectionValue (field, pixelMix, label){
+		var value  = $(field).find("option:selected").text();
+		mixPanelValue (pixelMix, label, value);
 
+	}
+	function mixPanel_actualizaNombre (pixelMix){
+ 		
+ 		actualizarNombre();
+ 		mixPanel (pixelMix);
+ 	}
+ 
+	function  formatMixPanel(element, componente, pixMixPanel ){
+		 format(element, componente)
+		// mixPanel (pixMixPanel);
+	}
+	function mixPanel_blurTelefono(campoTelefonoLada, mixPanel) {
+		validacionLLenadoMirror2(campoTelefonoLada); 
+		
+	}
+	
+	
+	function mixPanel_fechaNacimiento (pixMix){
+	
+		if( $("#comboDate #day").find("option:selected").val() != 0 && $("#comboDate #month").find("option:selected").val() != 0 && $("#comboDate #year").find("option:selected").val() != 0 ){
+			mixPanel(pixMix);
+			console.log("llenados campos de  fecha nacimiento");
+		}else{
+			console.log("falta llenar  fecha nacimiento");
+		}
+
+	}
+	
+	function mixPanel_checksNuevos(check, id, pixMix) {
+		if($(check).is(":checked")){
+			checksNuevos (check, id);
+			mixPanel(pixMix);
+			console.log(check, id, pixMix);
+		}
+	}
+	
+
+	function CP_delegacion_estado (){
+		mixPanel ('codigoPostal');
+		mixPanel ('delegacion');
+		mixPanel ('estado');
+	}
