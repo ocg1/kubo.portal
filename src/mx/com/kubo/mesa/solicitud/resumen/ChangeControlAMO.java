@@ -12,6 +12,7 @@ public abstract class ChangeControlAMO extends ChangeControlDMO
 		change_control_bean.setOrigValue(original_value);
 		change_control_bean.setNameTable(afected_table);
 		change_control_bean.setNameField(field);
+		change_control_bean.setWhyChangeData("");
 			
 		bitacora_change_control = service_change_control.getListByProspectByAfectedTablesFields(prospectus_id, company_id, tables, fields);
 			
@@ -23,7 +24,7 @@ public abstract class ChangeControlAMO extends ChangeControlDMO
 	{
 		if(change_control_OK)
 		{
-			change_control_bean.setWhyChangeData(null);
+			change_control_bean.setWhyChangeData("");
 			change_control_bean.setHasChange(true);
 			
 			bitacora_change_control = service_change_control.getListByProspectByAfectedTablesFields(prospectus_id, company_id, tables, fields);

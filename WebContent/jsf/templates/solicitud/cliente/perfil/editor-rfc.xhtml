@@ -12,7 +12,7 @@
 										
 		<p:inplace id = "sectionEditRFC" 
 		 		   widgetVar = "editRFC" 
-		 		   rendered  = "#{summaryRequest.changeActions}" 
+		 		   rendered  = "#{summaryRequest.editor_RFC != null}" 
 		 		   label = "#{summaryRequest.persona.mx_rfc}" >
 		
 			<p:ajax event = "save"
@@ -24,7 +24,7 @@
 			<ui:include src = "editor-rfc/guardar-cancelar.xhtml" />
 		</p:inplace>
 	
-		<h:panelGroup rendered = "#{!summaryRequest.changeActions}" >
+		<h:panelGroup rendered = "#{summaryRequest.editor_RFC == null}" >
 			
 			<p>#{summaryRequest.persona.mx_rfc}</p>
 			

@@ -10,9 +10,16 @@ import mx.com.kubo.tools.Utilities;
 public abstract class EditorPurposeDMO extends ChangeControlAMO
 implements EditorPurposeIMO
 {		
+	protected Purpose purpose;
+	
 	protected List<Purpose> purpose_list;
 	
+	protected StringBuilder sb;
+	
+	protected String name;
+	
 	protected Integer purpose_id;
+	protected Integer type_id;
 	
 	protected EditorPurposeDMO()
 	{
@@ -39,9 +46,20 @@ implements EditorPurposeIMO
 		
 		if(proyect_loan != null)
 		{			
-			purpose_id = proyect_loan.getProyect().getPurpose_id();
+			purpose_id = proyect_loan.getProyect().getPurpose_id();			
+			purpose    = proyect_loan.getProyect().getPurpose();
 			
-			original_value = purpose_id + "";
+			type_id = purpose.getType_id();
+			   name = purpose.getName();
+			
+			sb = new StringBuilder();
+			sb.append("purpose_id = ").append(purpose_id).append(" - ");
+			sb.append("type_id = ").append(type_id).append(" - ");
+			sb.append(name);
+			
+			original_value = sb.toString();
+			
+			field_type_id = purpose_id;
 			
 			init_change_control();
 		}

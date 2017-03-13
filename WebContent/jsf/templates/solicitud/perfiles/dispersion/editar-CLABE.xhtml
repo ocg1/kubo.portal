@@ -3,14 +3,13 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<h:panelGroup rendered = "#{!summaryRequest.changeDispersion}" >
+	<h:panelGroup rendered="#{summaryRequest.changeBankData == null}">
 		#{summaryRequest.changeBankData.origValue}
 	</h:panelGroup>				
 				
 	<p:inplace id         = "inplace-clabe" 
 			   styleClass = "section-edit-clabe" 
-			   widgetVar  = "editClabe" 
-			   rendered   = "#{summaryRequest.changeDispersion != null}" 			   
+			   widgetVar  = "editClabe" rendered="#{summaryRequest.changeBankData != null}"			    			  
 			   label = "#{(summaryRequest.changeBankData.origValue==null or summaryRequest.changeBankData.origValue=='')?'No definido': summaryRequest.changeBankData.origValue}">
 													
 				<p:ajax event = "save" immediate  = "true" update = "change-clabe-inter"
@@ -18,7 +17,7 @@
 						oncomplete = "$('#bank-desc').show();" 						 
 						listener   = "#{summaryRequest.saveNewClabe}"/>	
 																						
-				<h:inputText id = "txt-mxclabe" maxlength = "18" rendered = "#{summaryRequest.changeDispersion != null}"
+				<h:inputText id = "txt-mxclabe" maxlength = "18" rendered = "#{summaryRequest.changeBankData != null}"
 							 value = "#{summaryRequest.changeBankData.origValue}"  
 				        	 onfocus    = "$('#bank-desc').hide();"
 				             onkeypress = "return isNumberKey(event);"

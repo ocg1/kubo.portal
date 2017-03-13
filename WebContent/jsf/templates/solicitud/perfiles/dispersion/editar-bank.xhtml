@@ -3,7 +3,7 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<h:panelGroup id="pnlBanckDesc" rendered="#{summaryRequest.changeDispersion}">
+	<h:panelGroup id="pnlBanckDesc" rendered="#{summaryRequest.changeBankData != null}">
 											
 		<p:inplace widgetVar="banckDesc" 
 					label="#{(summaryRequest.changeBankData.bank_description==null or summaryRequest.changeBankData.bank_description=='')? 'No definido':summaryRequest.changeBankData.bank_description}"  >
@@ -35,7 +35,7 @@
 		</p:inplace>
 	</h:panelGroup>
 											
-	<h:panelGroup rendered="#{!summaryRequest.changeDispersion}">									
+	<h:panelGroup rendered="#{summaryRequest.changeBankData == null}">									
 		<p id="bank-desc"> 
 			<h:outputLabel id="back-desc-value_02" 
 				value="#{(summaryRequest.changeBankData.bank_description==null or summaryRequest.changeBankData.bank_description=='' )? 'No definido':summaryRequest.changeBankData.bank_description}">
