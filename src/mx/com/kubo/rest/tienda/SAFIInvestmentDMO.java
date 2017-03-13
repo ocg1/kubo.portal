@@ -12,6 +12,7 @@ import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.model.InvestmentProgress;
 import mx.com.kubo.model.InvestmentProgressDet;
 import mx.com.kubo.model.ProyectFunding;
+import mx.com.kubo.model.SaldoInversionista;
 import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.ViewForTiendaExec;
 import mx.com.kubo.model.ViewProyectTienda;
@@ -29,7 +30,8 @@ import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.services.TiendaCreditosService;
 
 import mx.com.kubo.tools.Utilities;
-
+import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteRequest;
+import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteResponse;
 import safisrv.ws.InvKuboServicios.SAFIServicios;
 import safisrv.ws.InvKuboServicios.SAFIServiciosServiceLocator;
 
@@ -56,6 +58,10 @@ implements SAFIInvestmentIMO
 		
 	protected InvestmentProgress  investmentprogress;
 	protected FilterStore filter;
+	protected ConsultaCuentasPorClienteRequest request;
+	protected ConsultaCuentasPorClienteResponse resCliente;
+	protected SaldoInversionista saldoObj;
+	protected InvestorsAccounts invsAccts;
 	
 	protected FilterStoreIMO filter_store;
 	
@@ -120,49 +126,35 @@ implements SAFIInvestmentIMO
 	protected final int MAX_AMMOUNT_INVESTMENT_HIGH_RISK_ENABLED = 82;
 	
 	protected SAFIInvestmentDMO()
-	{		
-		try
-		{			
-			lstService 				= new ArrayList<ServiceCalling>();
-			storedString 			= new ArrayList<String>();
-			listToInv				= new ArrayList<ItemInversion>();
-			proyectList  			= new ArrayList<ItemLoanList>();
-			lstProyectosFondeados 	= new ArrayList<ProyectFunding>();
-			listInvAccounts			= new ArrayList<InvestorsAccounts>();	
-			progressdetlst			= new ArrayList<InvestmentProgressDet>();
-			
-			montoinvertido 			= 0D;
-			montoNOinvertido 		= 0D;
-			tasaPonderada			= 0D;
-			
-			proyectos 				= 0;
-			porcentaje 				= 0;
-			proyectosNoFondeados 	= 0;
-			
-			scriptStatus			= "";
-			
-			locatorInvKuboSafi = new SAFIServiciosServiceLocator();
-			servicioInvKuboSafi = locatorInvKuboSafi.getSAFIServiciosSoap11();
-			
-			locatorAccount = new safisrv.ws.CuentasServicios.SAFIServiciosServiceLocator();
-			servCuentasCliente = locatorAccount.getSAFIServiciosSoap11();
-			
-			saldoinversionistaservice = Utilities.findBean("saldoInversionistaServiceImp");
-			proyectLoanService		  = Utilities.findBean("proyectLoanServiceImp");
-			tiendacreditosservice 	  = Utilities.findBean("tiendaCreditosServiceImp");
-			proyectFundingService	  = Utilities.findBean("proyectFundingServiceImp");
-			systemparamservice	  	  = Utilities.findBean("systemParamServiceImp");
-			profile_inv_service	  	  = Utilities.findBean("profileInvServiceImp");
-			montoInvertido_F_G_service= Utilities.findBean("montoInvertido_F_G_CollectorServiceImp");
-			profileformvalueservice	  = Utilities.findBean("profileFormValueServiceImp");
-			proyectInfoService		  = Utilities.findBean("proyectInfoServiceImp");
-			savingaccountservice	  = Utilities.findBean("savingAccountServiceImp");
-			investorparamservice	  = Utilities.findBean("investorParamServiceImp");
-			
-		} catch(Exception e) {
-			
-			e.printStackTrace();
-		}
+	{				
+		saldoinversionistaservice = Utilities.findBean("saldoInversionistaServiceImp");
+		proyectLoanService		  = Utilities.findBean("proyectLoanServiceImp");
+		tiendacreditosservice 	  = Utilities.findBean("tiendaCreditosServiceImp");
+		proyectFundingService	  = Utilities.findBean("proyectFundingServiceImp");
+		systemparamservice	  	  = Utilities.findBean("systemParamServiceImp");
+		profile_inv_service	  	  = Utilities.findBean("profileInvServiceImp");
+		montoInvertido_F_G_service= Utilities.findBean("montoInvertido_F_G_CollectorServiceImp");
+		profileformvalueservice	  = Utilities.findBean("profileFormValueServiceImp");
+		proyectInfoService		  = Utilities.findBean("proyectInfoServiceImp");
+		savingaccountservice	  = Utilities.findBean("savingAccountServiceImp");
+		investorparamservice	  = Utilities.findBean("investorParamServiceImp");
+		
+		lstService 				= new ArrayList<ServiceCalling>();
+		storedString 			= new ArrayList<String>();
+		listToInv				= new ArrayList<ItemInversion>();
+		proyectList  			= new ArrayList<ItemLoanList>();
+		lstProyectosFondeados 	= new ArrayList<ProyectFunding>();
+		listInvAccounts			= new ArrayList<InvestorsAccounts>();	
+		progressdetlst			= new ArrayList<InvestmentProgressDet>();
+		
+		montoinvertido 			= 0D;
+		montoNOinvertido 		= 0D;
+		tasaPonderada			= 0D;			
+		proyectos 				= 0;
+		porcentaje 				= 0;
+		proyectosNoFondeados 	= 0;
+		
+		scriptStatus = "";			
 	}
 	
 	public List<ItemLoanList> getProyectList() {

@@ -1,6 +1,5 @@
 package mx.com.kubo.rest.tienda;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import javax.annotation.PostConstruct;
 import javax.el.ELContext;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
@@ -23,11 +21,11 @@ import mx.com.kubo.bean.FilterStore;
 import mx.com.kubo.bean.InvestorsAccounts;
 import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.bean.SearchSummaySession;
-import mx.com.kubo.managedbeans.RoleFunctionController;
-import mx.com.kubo.managedbeans.SessionBean;
+
 import mx.com.kubo.managedbeans.investor.InvestorSession;
 import mx.com.kubo.managedbeans.investor.NavigationInvest;
 import mx.com.kubo.managedbeans.mesa.MenuControlTableBean;
+
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AmortizacionInversionista;
 import mx.com.kubo.model.InvestmentFilter;
@@ -38,77 +36,44 @@ import mx.com.kubo.model.ProyectInfo;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.ProyectLoanActiveInSafi;
 import mx.com.kubo.model.ProyectLoanPK;
-import mx.com.kubo.model.RoleFunction;
-import mx.com.kubo.model.SystemParam;
-import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.TasasAcreditado;
 import mx.com.kubo.model.TiendaCreditos;
 import mx.com.kubo.model.ViewForTiendaExec;
-import mx.com.kubo.model.ViewProyectTienda;
-import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.tools.NumberToLetterConverter;
 
 import org.primefaces.context.RequestContext;
 
 public class InvestmentListIMP extends InvestmentListAMO
-{
-	@PostConstruct
+implements InvestmentListIMO
+{	
 	public void init()
-	{			
-		faces = FacesContext.getCurrentInstance();
-					
-		elContext = faces.getELContext();
-		resolver  = faces.getApplication().getELResolver();
-			
-		sesion = (SessionBean) resolver.getValue(elContext, null, "sessionBean");
-			
-		investorSession = (InvestorSession) resolver.getValue(elContext, null, "investorSession");
-			
-		System.setProperty("java.awt.headless", "true");
-			
+	{
+/*					
+		investorSession = (InvestorSession) resolver.getValue(elContext, null, "investorSession");		
+*/																																		
+		purposelst = purposeservice.getPurposeList();
+		lstStatus  = statusproyectcatservice.getListStatusProyectCat();
+		
 		inversion = new SAFIInvestmentIMP();
+		inversion.init();
+		
+		inicializaSaldos();
+		init_system_param();											
 			
-		proyectList = new ArrayList<ItemLoanList>();
+		calculaSaldoActual();														
 			
-		proyectListForInvesInd = new ArrayList<ItemLoanList>(); 
-			
-		PID_cliente = sesion.getProspectus_id().toString();					
-								
-		naturalPerson = naturalPersonService.getNaturalPersonById(new gnNaturalPersonPK(sesion.getProspectus_id(),sesion.getCompany_id()));
-			
-		if(sesion.getArea()=='I')
-		{								
-			inicializaSaldos();
-								
-			SystemParamPK sysPk = new SystemParamPK();
-			
-			sysPk.setCompany_id(sesion.getCompany_id());
-			sysPk.setSystem_param_id(MAX_NUMBER_INVESTMENTS_ENABLED);				
-			
-			SystemParam sys = systemparamservice.loadSelectedSystemParam(sysPk);
-			
-			vecesQuePuedeFondear = sys.getValue();
-			
-			purposelst = purposeservice.getPurposeList();
+		try
+		{					
+			servicioSafi = inversion.getServicioInvKuboSafi();				
 				
-			calculaSaldoActual();														
-				
-			try
-			{					
-				servicioSafi = inversion.getServicioInvKuboSafi();				
-					
-			} catch(Exception e) {
-				
-					e.printStackTrace();
-			}
-				
-		}
-									
-			lstStatus = statusproyectcatservice.getListStatusProyectCat();															
-			
-			setMontoMaximo();
-			
-			cargaListaTienda();		
+		} catch(Exception e) {
+						
+			e.printStackTrace();
+		}																															
+		
+		setMontoMaximo();
+		
+		cargaListaTienda();		
 
 			
 			if( sesion.getArea().toString().equals("I") )
@@ -149,12 +114,16 @@ public class InvestmentListIMP extends InvestmentListAMO
 				displayMsgMaxSug = true;
 				displayMsgMinSug = true;
 				
-				if( getSaldoActual() != null )
+				if( saldoActual != null )
 				{					
-					if(getSaldoActual() > montoLimiteMaxSugerido)
+					if(saldoActual > montoLimiteMaxSugerido)
 					{
 						displayMsgMaxSug = true;
-					} else if( getSaldoActual() < montoLimiteMinSugerido ){
+						
+					}
+					
+					else if( saldoActual < montoLimiteMinSugerido )
+					{
 						displayMsgMinSug = true;
 					}					
 				}				
@@ -165,81 +134,9 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 			flagNotRule = inversion.isFlagNotRule();
 			flagMin_E5_E4 = inversion.isFlagMin_E5_E4();
-		}
-		
-		public Double getTotalCreditOnAccounts()
-		{
-			Double suma=0.00;
-			
-			try {
-				
-				for (InvestorsAccounts iterElement : getListInvAccounts()) 
-				{
-					suma=suma+iterElement.getSaldo();
-				}
-				
-			} catch (Exception e) {
-				log.info("Se genero un error al hacer la suma del saldo de cuentas");
-			}
-			
-			return suma;
-		}
-	
-						
-		public boolean getEnabledFlag(ProyectLoan proyect,Integer InvId)
-		{
-			String proyectLoanId = ( ( proyect.getProyectloanPk().getProyect_loan_id() ) + "" );
-			List<ProyectFunding> proyectFundingByInvestor = proyectFundingService.getproyectbyInvestor(InvId.toString(), proyectLoanId);
-			
-			if (proyect.getAmount_founded()>=proyect.getAmmount()) 
-					return true;
-			else if (proyectFundingByInvestor.size()>=Integer.parseInt(vecesQuePuedeFondear)) 
-		    		return true;
-		    else if ((saldoActual)<=0.00) 
-					return true;
-//			else if (proyect.getDaysLeft()>(long)0) 
-//		    		return false;
-		    else if ((proyect.getAmmount()-proyect.getAmount_founded())<=0.00) 
-		    	return true;
-		    else return false;
-		}
-		
-		public Double getExpectedPerformanceForProyect(Double cachito,Double tasa,Integer plazo,Integer idPagos)
-		{
-			Integer pagos = 0;
-			if(idPagos==1){ 
-				pagos = 52;
-			}
-			else if (idPagos==2){ 
-				pagos = 26;
-			}
-			else if (idPagos==3){ 
-				pagos = 24;
-			}
-			else{
-				pagos = 14;
-			}
-			if(tasa==null)
-				tasa=52.6D;
-			tasa = tasa/100;
-			Double tasaAnual=tasa;
-			Double tasaEnPeriodo = tasaAnual/pagos;	
-			Double rendimiento = generaMontoCuota(tasaEnPeriodo, Double.parseDouble(plazo+""), cachito);
-			rendimiento = (rendimiento*plazo)-cachito;
-			if (rendimiento < 0.00) rendimiento = 0.00;
-			return (double)Math.round(rendimiento*100)/100;
-		}
-		
-		private Double generaMontoCuota(Double tasaPeriodo,Double numCuota,Double cachito)
-		{
-			Double intper = tasaPeriodo;
-			Double num = (Math.pow((1+intper), numCuota))*intper;
-			Double den = (Math.pow((1+intper), numCuota))-1;
-			Double montoAPagar = cachito*(num/den);
-			return (double)Math.round(montoAPagar*100)/100;
-		}
+		}										
 
-	    public void updateByFiltering(ActionEvent e)
+		public void updateByFiltering(ActionEvent e)
 	    {
 	    	
 	    	Map<String , String > map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
@@ -323,8 +220,8 @@ public class InvestmentListIMP extends InvestmentListAMO
 	    	
 	    }
 	    	    	    
-	    public void filteringAfterIndivInversion(){
-	    	
+	    public void filteringAfterIndivInversion()
+	    {	    	
 // CREA FILTRO
 	    	
 	    	String strQuery = lastFilter;
@@ -368,59 +265,23 @@ public class InvestmentListIMP extends InvestmentListAMO
 	    	
 	    	investmentFilterServiceImp.addFilterUsed(filterInvestment);
 	    	
-	    	inicializaListas();
-	    
-	    	
-	    }
-	    
-	    public void setPageDataTable() {
-//	        DataTable d = (DataTable) FacesContext.getCurrentInstance().getViewRoot()
-//	            .findComponent(":table_proyect_list:creditos");
-//	        
-//	        d.setFirst(0);
-	        
-	    }
-	    
-	    public Double getExpectedPerformanceByInvestorId(String InvId)
-	    {
-	    	Double suma=0.0;
-	    	List<ProyectLoan> theList = proyectFundingService.getProyectsOfInvestorById(InvId);
-	    	
-	    	if(Double.valueOf(InvId)>0.0)
-	    	{
-	    		for(Object x: theList)
-	    		{
-	        		Object[] pair = (Object[]) x;
-	        		BigDecimal z =  (BigDecimal)pair[0];
-	        		BigDecimal y = (BigDecimal) pair[1];
-	        		Byte t = (Byte) pair[2];
-	        		Byte f = (Byte) pair[3];
-	        		Double amount = z.doubleValue();
-	        		Double rate = y.doubleValue();
-	        		Integer term = t.intValue();
-	        		Integer freq = f.intValue();
-	        		suma=suma+getExpectedPerformanceForProyect(amount,rate,term,freq);
-	        	}
-	        	return suma;
-	    	}
-	    	else return 0.0;
-	    	
-	    }
+	    	inicializaListas();	    	    	
+	    }	  	
 	    
 		public void changeAccount(){
 			
-			if(getCuentaActual()!=null && getCuentaActual()!="")
+			if(cuentaActual != null && cuentaActual != "")
 			{
-				setTagAccount(getCuentaActual());
+				tagAccount = cuentaActual;
 				
 				try {
 					
-					for (InvestorsAccounts iterElement : getListInvAccounts()) 
+					for (InvestorsAccounts iterElement : listInvAccounts) 
 					{
-						 if(iterElement.getAccount().equals(getCuentaActual()))
+						 if(iterElement.getAccount().equals(cuentaActual))
 						 {
-							 setCuentaActual(iterElement.getAccount());
-							 setSaldoActual(iterElement.getSaldo());
+							 cuentaActual = iterElement.getAccount();
+							 saldoActual = iterElement.getSaldo();
 							 break;
 						 }
 					}
@@ -430,20 +291,21 @@ public class InvestmentListIMP extends InvestmentListAMO
 					log.info("Se genero un error al hacer la suma del saldo de cuentas");
 				}
 				
-			}else{
+			} else {
 				
-				setTagAccount("Ninguna cuenta");
-				setCuentaActual("");
-				setSaldoActual(getTotalCreditOnAccounts());
-				
+				tagAccount = "Ninguna cuenta";
+				cuentaActual = "";
+				saldoActual = getTotalCreditOnAccounts();				
 			}
 			
-			if(getSaldoActual() > montoLimiteMaxSugerido){
+			if(saldoActual > montoLimiteMaxSugerido)
+			{
 				displayMsgMaxSug = true;
-			}else if( getSaldoActual() < montoLimiteMinSugerido ){
+				
+			} else if( saldoActual < montoLimiteMinSugerido ) {
+				
 				displayMsgMinSug = true;
-			}
-			
+			}			
 		}
 			
 		public void setActualProyectForPopUp(ActionEvent e)
@@ -465,22 +327,18 @@ public class InvestmentListIMP extends InvestmentListAMO
 			this.ammountFounedScooped = investment_Bite;
 			this.proyectFundingByInvestor = proyectFundingService.getproyectbyInvestor(this.PID_cliente, proyectLoanId);
 			
-		}
-
-		public void setTagActual(String tagActual) {
-			if(tagActual == null){
-				this.tagActual = "-1";
-			}
-			else this.tagActual = tagActual;
-		}
+		}	
 		
-		public String getHtmlCodeForTermFilter(){
+		public String getHtmlCodeForTermFilter()
+		{
 			String htmlCode = new String("");
 			int dividendoPar = 0;
 			
-			if( onlyTermOfProyectLoan != null ){
+			if( onlyTermOfProyectLoan != null )
+			{
 			
-				for(byte x: onlyTermOfProyectLoan){
+				for(byte x: onlyTermOfProyectLoan)
+				{
 					if(dividendoPar%2==0) htmlCode = htmlCode+"<tr>";
 					htmlCode = htmlCode + " <td><input type='checkbox' name='checkbox' id='chkTF"+x+"'/></td><td><span id='TF"+x+"'>"+x+" Meses.</span></td>";
 					dividendoPar = dividendoPar + 1;
@@ -511,154 +369,6 @@ public class InvestmentListIMP extends InvestmentListAMO
 		    if (actualProyect.getDaysLeft()>(long)0) return "#popupdata";
 		    if ((actualProyect.getAmmount()-actualProyect.getAmount_founded())<=0.00) return "";
 		    else return "";
-		}
-		
-		public String getKuboBarPorcent(ProyectLoan proyect){
-			try {
-				List<BigDecimal> amount = this.proyectFundingService.getIFAmountFunding(proyect.getProyectloanPk());
-				//ProyectLoan proyect = this.proyectLoanService.findProyect(key);
-				
-				if(amount.size()>0){
-					BigDecimal kuboAmmount=amount.get(0);
-					
-					String KFAmmount = kuboAmmount.toString();
-					Double montoDeProyecto = proyect.getBottomPorcentParametrized(KFAmmount);
-					
-					if(montoDeProyecto<=0.0){
-						return "width: 0.0%;";
-					}
-					else{
-						return "width: "+montoDeProyecto.toString()+"%;";
-					}
-				}else{
-					return "width: 0.0%;";
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return "width: 0.0%;"; 
-			}
-			
-		}
-		
-		public String getKuboBarPorcentFromView(ViewProyectTienda proyect){
-			try {
-//				List<BigDecimal> amount = this.proyectFundingService.getIFAmountFunding(proyect.getProyectloanPk());
-//				//ProyectLoan proyect = this.proyectLoanService.findProyect(key);
-//				
-//				if(amount.size()>0){
-//					BigDecimal kuboAmmount=amount.get(0);
-//					
-//					String KFAmmount = kuboAmmount.toString();
-//					Double montoDeProyecto = proyect.getBottomPorcentParametrized(KFAmmount);
-//					
-//					if(montoDeProyecto<=0.0){
-//						return "width: 0.0%;";
-//					}
-//					else{
-//						return "width: "+montoDeProyecto.toString()+"%;";
-//					}
-//				}else{
-//					return "width: 0.0%;";
-//				}
-				
-				return "width: 0.0%";
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-				return "width: 0.0%;"; 
-			}
-			
-		}
-		
-		public List<ProyectFunding> getMaxInvertionOnProyectFromInvestor(ProyectLoanPK key, Integer InvID)
-		{
-			try 
-			{
-				if(key!=null && InvID!=null)
-				{
-					List<ProyectFunding> amount = this.proyectFundingService.getMaxProyectFundingByInvOnProyect(key, InvID);
-					
-					if(amount.size()>0)
-					{
-						
-						/* ----- */
-						
-						List<ProyectFunding> lstInv = investorSession.getInvestmentList();
-						List<String> solicituondeo = new ArrayList<String> ();
-						
-						for( ProyectFunding pf : amount )
-						{							
-							//System.out.println("solicitudFondeo1: "+pf.getSolicitudFondeo()+"   --  lstInv: " + (lstInv==null?"null":lstInv.size()) );
-													
-							if( pf.getSolicitudFondeo() != null && pf.getSolicitudFondeo().trim().length() > 0 && lstInv != null && lstInv.size() > 0 )
-							{
-								solicituondeo.add( pf.getSolicitudFondeo() );
-							}							
-						}
-						
-						int i = 0; 
-						
-						ArrayList<ProyectFunding> lst_index = new ArrayList<ProyectFunding>();
-						
-						for ( ProyectFunding fdg : lstInv ) 
-						{							
-							for( String str : solicituondeo )
-							{								
-								System.out.println( fdg.getSolicitudFondeo().trim().equals(str) +" : " + fdg.getSolicitudFondeo() + "  " +str);
-								
-								if ( fdg.getSolicitudFondeo().trim().equals(str) )
-								{
-									lst_index.add(fdg);
-								}
-								
-							}
-							
-							 i++;
-						}
-						
-						if( lst_index != null && lst_index.size()>0 )
-						{					
-							//Collections.reverse(lst_index);
-							
-							for( ProyectFunding in : lst_index )
-							{
-								//System.out.println( " remover elemeto #"+in+" : " );
-								lstInv.remove(in);
-							}
-						
-						}
-						
-						for ( ProyectFunding fdg : lstInv ) {
-							if(
-								key.getCompany_id() == fdg.getProyectloanfundingPk().getCompany_id() && 
-								key.getProspectus_id() == fdg.getProyectloanfundingPk().getProspectus_id() &&
-								key.getProyect_id() == fdg.getProyectloanfundingPk().getProyect_id() &&
-								key.getProyect_loan_id() == fdg.getProyectloanfundingPk().getProyect_loan_id() &&
-								fdg.getSolicitudFondeo() != null && fdg.getSolicitudFondeo().trim().length() > 0
-									){
-							
-								amount.add(fdg);
-								
-							}
-							
-						}
-						
-						/* ----- */
-						
-						return amount;
-					}
-					else{
-						return null;
-					}
-				}else
-					return null;
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-				return null;
-			}
-			
 		}
 		
 		public String getEnabledForDetailBtn(ProyectLoanPK key, Integer InvID){
@@ -813,11 +523,6 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 		}
 		
-		public String redireNavigation()
-		{
-			return getNavigation();
-		}
-		
 		public void goToLogs(ActionEvent e)
 		{
 			String value=(String) e.getComponent().getAttributes().get("proyectAtrr").toString();	
@@ -845,407 +550,13 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 			RequestContext requestContext = RequestContext.getCurrentInstance();
 			requestContext.addPartialUpdateTarget("pnlContentInvest");	
-			requestContext.addPartialUpdateTarget("panelContentListProyect");
-				
+			requestContext.addPartialUpdateTarget("panelContentListProyect");				
 		}
 		
-		public String actionNavLogs(){
-			return getLogs_navegation();
-		}
-		
-		private void createProyectListView2(List<ViewProyectTienda> temporalProyectListView){
-			
-			proyectList = new ArrayList<ItemLoanList>();
-			
-			for(ViewProyectTienda prln : temporalProyectListView ){
-				
-				ItemLoanList item = new ItemLoanList();
-				
-				if(sesion.getArea() == 'I'){
-					
-					TiendaCreditos tienda = tiendacreditosservice.getTiendaCreditosItemBySolOrCred( prln.getSafi_mx_solicitud_id(), prln.getSafi_credit_id() );
-					
-					if(tienda != null){
-						
-						////System.out.println("tienda != null "+tienda.getSafi_mx_solicitud_id());
-						
-						item.setActualTerm( tienda.getPlazoEnDias()+" Días" );
-						
-						if( tienda.getSafi_credit_id()==null || Integer.parseInt( tienda.getSafi_credit_id() ) == 0){
-							
-							
-							ProyectLoanPK tmpPk = new  ProyectLoanPK();
-							
-							tmpPk.setCompany_id(prln.getProyectloanPk().getCompany_id());
-							tmpPk.setProspectus_id(prln.getProyectloanPk().getProspectus_id());
-							tmpPk.setProyect_id(prln.getProyectloanPk().getProyect_id());
-							tmpPk.setProyect_loan_id(prln.getProyectloanPk().getProyect_loan_id());
-							
-							List<BigDecimal> ammountlst =proyectFundingService.getAmountFundedByProyectLoanPK(tmpPk);
-							
-							BigDecimal deci = BigDecimal.ZERO;
-							
-							for(BigDecimal amm : ammountlst ){
-								
-								////System.out.println(amm);
-								
-								deci = deci.add(new BigDecimal( amm+"" ));
-								
-							}
-							
-							Double disponible = prln.getAmmount()-((prln.getAmmount()*10)/100)-(Double.parseDouble( deci.toString() ));
-							
-							item.setAvailableAmmount(disponible);
-							
-						}else{
-							
-							item.setAvailableAmmount( Double.parseDouble( tienda.getDisponibleFondeo() ) );
-							
-						}
-						
-						item.setAvailableDays( tienda.getDiasPorTrans() + " Días" );
-						
-						item.setAmmount( tienda.getMontoCredito() );
-						
-						if( prln.getSafi_credit_id() != null ){
-							
-							item.setActualAmmount( tienda.getSaldoCredito() );
-							item.setDaysLeftStrInv("DESEMBOLSADO");
-							
-						}else{
-							
-							item.setActualAmmount( tienda.getMontoCredito() );
-							item.setDaysLeftStrInv(prln.getDaysLeft()+" Días");
-							
-						}
-						
-//						List<ViewInvestmetInProyect> listInvestors = new ArrayList<ViewInvestmetInProyect>(); 
-//						
-//						if( prln.getSafi_credit_id() != null && !prln.getSafi_credit_id().equals("0") ){
-//							
-//							listInvestors = (List<ViewInvestmetInProyect>)proyectFundingService.getListInvestorbyProyectId( Integer.parseInt( prln.getSafi_credit_id() ) , null );
-//						
-//						}else if(  prln.getSafi_mx_solicitud_id() != null && !prln.getSafi_mx_solicitud_id().equals("0")  ) {
-//							listInvestors = (List<ViewInvestmetInProyect>)proyectFundingService.getListInvestorbyProyectId( null,  prln.getSafi_mx_solicitud_id()  );
-//						}
-//						
-//						
-//						if( listInvestors != null ){
-//							item.setNumInvestors( listInvestors.size()+"" );
-//						}
-						
-						
-					
-					}else{
-						
-						////System.out.println("tienda == null prln_id = "+prln.getProyectloanPk().getProyect_loan_id()+" mx_solicitud: "+prln.getSafi_mx_solicitud_id()+" credit:  "+prln.getSafi_credit_id() );
-						
-						item.setActualAmmount( null );
-						
-						item.setActualTerm( null );
-						
-						item.setAvailableAmmount( null);
-						
-						item.setAvailableDays( null );
-						
-						item.setAmmount(prln.getAmmount());
-						
-					}
-					
-					// aSIGNACION DE MONTO QUE PUEDE INVERTIR CADA INVERSIONISTA
-					item.setInvestment_bite(investmentBiteVAL);
-					
-				}else{
-					
-					item.setActualAmmount( null );
-					
-					item.setActualTerm( null );
-					
-					item.setAvailableAmmount( null);
-					
-					item.setAvailableDays( null );
-					
-					item.setAmmount(prln.getAmmount());
-					
-					item.setInvestment_bite(prln.getInvestment_bite());
-					
-					item.setNumInvestors(prln.getInvestorsInt()+"");
-					
-				}
-				
-					
-					item.setAmmountLeft(prln.getAmmountLeft());
-					item.setAmount_founded(prln.getAmount_founded());
-					item.setBarPorcentTotal(prln.getBarPorcentTotal());
-					item.setBc_score_range(prln.getBc_score_range());
-					item.setBottomPorcent(prln.getBottomPorcent());
-					item.setCompany_id(prln.getProyectloanPk().getCompany_id());
-					item.setCompleteName(prln.getPerson().NombreCompletoNPM());
-					item.setDaysLeft(prln.getDaysLeft());
-					
-					// Desabilitado para fondeo Global 2014-04-08 RMB
-					// item.setEnabledFundingBtn(getEnabledFlag(prln,sesion.getProspectus_id()));
-					// prueba para fondeo Global
-					item.setEnabledFundingBtn(false);
-					
-					item.setEnabledFundingDetailBtn(prln.getEnabledBottomDetail());
-					item.setExpectedPerformanceForProyect(getExpectedPerformanceForProyect(prln.getInvestment_bite2(saldoActual+""), prln.getRate_investor(), prln.getTerm().getMonths(), prln.getFrequency_id()));
-					item.setFrequency_id(prln.getFrequency_id());
-					//item.setInvestment_bite(prln.getInvestment_bite());
-					item.setKubo_score_a(prln.getKubo_score_a());
-					item.setKubo_score_b(prln.getKubo_score_b());
-					item.setKuboBarPorcent(getKuboBarPorcentFromView(prln));
-					
-					item.setProspectus_id(prln.getProyectloanPk().getProspectus_id());
-					item.setProyect_id(prln.getProyectloanPk().getProyect_id());
-					item.setProyect_loan_id(prln.getProyectloanPk().getProyect_loan_id());
-					item.setProyect_name(prln.getProyect().getName());
-					
-					if(prln.getProyect().getPurpose() !=null)
-						item.setProyect_purpose_name(prln.getProyect().getPurpose().getName());
-					else{
-						item.setProyect_purpose_name("");
-					}
-					
-					item.setRate(prln.getRate());
-					item.setRate_investor(prln.getRate_investor());
-					item.setSaldoActual(saldoActual);
-					item.setStatus_id(prln.getStatus_id());
-					item.setTerm_months(prln.getTerm().getMonths());
-					item.setVerification_score(prln.getVerification_score());
-					item.setVerificationClass(prln.getVerificationClass()+"");
-					item.setVerificationRange(prln.getVerificationRange());
-					
-					item.setName(prln.getStatusProyect().getName());
-					item.setUrl_img(prln.getStatusProyect().getUrl_img());
-					
-					item.setSafi_credit_id( prln.getSafi_credit_id() );
-					item.setSafi_solicitud_id( prln.getSafi_mx_solicitud_id() );
-					
-					
-					if(prln.getSafi_credit_id() != null && !prln.getSafi_credit_id().equals("0") ){
-						item.setNumInvestors( prln.getCantInvCred().toString()  );
-					}else{
-						item.setNumInvestors( prln.getCantInvSol().toString()  );
-					}
-					
-					item.setProyectFunding(getMaxInvertionOnProyectFromInvestor(prln.getProyectloanPk(), sesion.getProspectus_id()));
-				
-					item.setLoan_type(prln.getLoan_type());
-					
-				proyectList.add(item);
-				
-				
-			}
-		}
-		
-		private void createProyectList2(List<ProyectLoan> temporalProyectList)
-		{
-			
-			proyectList = new ArrayList<ItemLoanList>();
-			
-			for(ProyectLoan prln : temporalProyectList ){
-				
-				ItemLoanList item = new ItemLoanList();
-				
-				if(sesion.getArea() == 'I'){
-					
-					TiendaCreditos tienda = tiendacreditosservice.getTiendaCreditosItemBySolOrCred( prln.getSafi_mx_solicitud_id(), prln.getSafi_credit_id() );
-					
-					if(tienda != null){
-						
-						////System.out.println("tienda != null "+tienda.getSafi_mx_solicitud_id());
-						
-						item.setActualTerm( tienda.getPlazoEnDias()+" Días" );
-						
-						if( tienda.getSafi_credit_id()==null || Integer.parseInt( tienda.getSafi_credit_id() ) == 0){
-							
-							
-							ProyectLoanPK tmpPk = new  ProyectLoanPK();
-							
-							tmpPk.setCompany_id(prln.getProyectloanPk().getCompany_id());
-							tmpPk.setProspectus_id(prln.getProyectloanPk().getProspectus_id());
-							tmpPk.setProyect_id(prln.getProyectloanPk().getProyect_id());
-							tmpPk.setProyect_loan_id(prln.getProyectloanPk().getProyect_loan_id());
-							
-							List<BigDecimal> ammountlst =proyectFundingService.getAmountFundedByProyectLoanPK(tmpPk);
-							
-							BigDecimal deci = BigDecimal.ZERO;
-							
-							for(BigDecimal amm : ammountlst ){
-								
-								////System.out.println(amm);
-								
-								deci = deci.add(new BigDecimal( amm+"" ));
-								
-							}
-							
-							Double disponible = prln.getAmmount()-((prln.getAmmount()*10)/100)-(Double.parseDouble( deci.toString() ));
-							
-							item.setAvailableAmmount(disponible);
-							
-						}else{
-							
-							item.setAvailableAmmount( Double.parseDouble( tienda.getDisponibleFondeo() ) );
-							
-						}
-						
-						item.setAvailableDays( tienda.getDiasPorTrans() + " Días" );
-						
-						item.setAmmount( tienda.getMontoCredito() );
-						
-						if( prln.getSafi_credit_id() != null ){
-							
-							item.setActualAmmount( tienda.getSaldoCredito() );
-							item.setDaysLeftStrInv("DESEMBOLSADO");
-							
-						}else{
-							
-							item.setActualAmmount( tienda.getMontoCredito() );
-							item.setDaysLeftStrInv(prln.getDaysLeft()+" Días");
-							
-						}
-						
-//						List<ViewInvestmetInProyect> listInvestors = new ArrayList<ViewInvestmetInProyect>(); 
-//						
-//						if( prln.getSafi_credit_id() != null && !prln.getSafi_credit_id().equals("0") ){
-//							
-//							listInvestors = (List<ViewInvestmetInProyect>)proyectFundingService.getListInvestorbyProyectId( Integer.parseInt( prln.getSafi_credit_id() ) , null );
-//						
-//						}else if(  prln.getSafi_mx_solicitud_id() != null && !prln.getSafi_mx_solicitud_id().equals("0")  ) {
-//							listInvestors = (List<ViewInvestmetInProyect>)proyectFundingService.getListInvestorbyProyectId( null,  prln.getSafi_mx_solicitud_id()  );
-//						}
-//						
-//						
-//						if( listInvestors != null ){
-//							item.setNumInvestors( listInvestors.size()+"" );
-//						}
-						
-						
-					
-					}else{
-						
-						////System.out.println("tienda == null prln_id = "+prln.getProyectloanPk().getProyect_loan_id()+" mx_solicitud: "+prln.getSafi_mx_solicitud_id()+" credit:  "+prln.getSafi_credit_id() );
-						
-						item.setActualAmmount( null );
-						
-						item.setActualTerm( null );
-						
-						item.setAvailableAmmount( null);
-						
-						item.setAvailableDays( null );
-						
-						item.setAmmount(prln.getAmmount());
-						
-					}
-					
-					// aSIGNACION DE MONTO QUE PUEDE INVERTIR CADA INVERSIONISTA
-					item.setInvestment_bite(investmentBiteVAL);
-					
-				}else{
-					
-					item.setActualAmmount( null );
-					
-					item.setActualTerm( null );
-					
-					item.setAvailableAmmount( null);
-					
-					item.setAvailableDays( null );
-					
-					item.setAmmount(prln.getAmmount());
-					
-					item.setInvestment_bite(prln.getInvestment_bite());
-					
-					//item.setNumInvestors(prln.getInvestorsInt()+"");
-					
-				}
-				
-					
-					item.setAmmountLeft(prln.getAmmountLeft());
-					item.setAmount_founded(prln.getAmount_founded());
-					item.setBarPorcentTotal(prln.getBarPorcentTotal());
-					item.setBc_score_range(prln.getBc_score_range());
-					item.setBottomPorcent(prln.getBottomPorcent());
-					item.setCompany_id(prln.getProyectloanPk().getCompany_id());
-					item.setCompleteName(prln.getPerson().NombreCompletoNPM());
-					item.setDaysLeft(prln.getDaysLeft());
-					
-					// Desabilitado para fondeo Global 2014-04-08 RMB
-					// item.setEnabledFundingBtn(getEnabledFlag(prln,sesion.getProspectus_id()));
-					// prueba para fondeo Global
-					item.setEnabledFundingBtn(false);
-					
-					item.setEnabledFundingDetailBtn(prln.getEnabledBottomDetail());
-					item.setExpectedPerformanceForProyect(getExpectedPerformanceForProyect(prln.getInvestment_bite2(saldoActual+""), prln.getRate_investor(), prln.getTerm().getMonths(), prln.getFrequency_id()));
-					item.setFrequency_id(prln.getFrequency_id());
-					//item.setInvestment_bite(prln.getInvestment_bite());
-					item.setKubo_score_a(prln.getKubo_score_a());
-					item.setKubo_score_b(prln.getKubo_score_b());
-					item.setKuboBarPorcent(getKuboBarPorcent(prln));
-					
-					item.setProspectus_id(prln.getProyectloanPk().getProspectus_id());
-					item.setProyect_id(prln.getProyectloanPk().getProyect_id());
-					item.setProyect_loan_id(prln.getProyectloanPk().getProyect_loan_id());
-					item.setProyect_name(prln.getProyect().getName());
-					
-					if(prln.getProyect().getPurpose() !=null)
-						item.setProyect_purpose_name(prln.getProyect().getPurpose().getName());
-					else{
-						item.setProyect_purpose_name("");
-					}
-					
-					item.setRate(prln.getRate());
-					item.setRate_investor(prln.getRate_investor());
-					item.setSaldoActual(saldoActual);
-					item.setStatus_id(prln.getStatus_id());
-					item.setTerm_months(prln.getTerm().getMonths());
-					item.setVerification_score(prln.getVerification_score());
-					item.setVerificationClass(prln.getVerificationClass()+"");
-					item.setVerificationRange(prln.getVerificationRange());
-					
-					item.setName(prln.getStatusProyect().getName());
-					item.setUrl_img(prln.getStatusProyect().getUrl_img());
-					
-					item.setSafi_credit_id( prln.getSafi_credit_id() );
-					item.setSafi_solicitud_id( prln.getSafi_mx_solicitud_id() );
-					
-					
-					item.setProyectFunding(getMaxInvertionOnProyectFromInvestor(prln.getProyectloanPk(), sesion.getProspectus_id()));
-				
-				proyectList.add(item);
-				
-				
-			}
-			
-		}
-		
-		private void setPermissions(int role_id)
-		{
-			ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-			RoleFunctionController rfc = (RoleFunctionController) FacesContext.getCurrentInstance()
-					.getApplication().getELResolver()
-					.getValue(elContext, null, "roleFunctionController");
-			
-			List<RoleFunction> rolefunctionlistbyrole = rfc.getFunctionByRole(role_id);
-			
-			for(RoleFunction rf : rolefunctionlistbyrole)
-			{
-				
-				if(rf.getPk().getFunction_id() == 1){ //permiso para Fondear
-					
-					fundingFunction = true;
-					
-				}
-				
-			}
-			
-		}
-
-		public void getGarantia(){
-			////System.out.println("Generando garantía..............");
-			
-				
-				if (valuesforGarantia != null){ 
+		public void getGarantia()
+		{									
+				if (valuesforGarantia != null)
+				{ 
 					////System.out.println(valuesforGarantia);
 					
 					ResourceBundle recurso = ResourceBundle.getBundle("Message.MessageResourceBundle");
@@ -1385,11 +696,11 @@ public class InvestmentListIMP extends InvestmentListAMO
 		
 		public void validaMontoAInvertir(){
 			
-			//System.out.println("validaMontoAInvertir: " + getAmmoutToInv() + "  maximo a invertir: " + montoTotal );
+			//System.out.println("validaMontoAInvertir: " + ammoutToInv + "  maximo a invertir: " + montoTotal );
 			
 			RequestContext requestContext = RequestContext.getCurrentInstance();
 			
-			if( getAmmoutToInv() > montoTotal){
+			if( ammoutToInv > montoTotal){
 				
 				//System.out.println("Monto mayor !!");
 				
@@ -1397,7 +708,7 @@ public class InvestmentListIMP extends InvestmentListAMO
 				requestContext.addCallbackParam("montoSugerido", montoTotal );
 				requestContext.addCallbackParam("msgInv", " El moto que desea invertir supera el saldo disponible de su cuenta " );
 				
-			}else if( getAmmoutToInv() < montoMinG){
+			}else if( ammoutToInv < montoMinG){
 				//System.out.println("Monto mayor !!");
 				
 				requestContext.addCallbackParam("hasError", true );
@@ -2153,11 +1464,11 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 			boolean flagRestaInv = false;
 			
-			if( getNewBiteInv() != null && getNewBiteInv().trim().length()>0  && !item.isBlnChck() && item.getInvestment_bite() != null && Double.parseDouble(getNewBiteInv().trim()) != 0D){
-				ammountFoundedInv -= Double.parseDouble( getNewBiteInv().trim() );
+			if( newBiteInv != null && newBiteInv.trim().length()>0  && !item.isBlnChck() && item.getInvestment_bite() != null && Double.parseDouble(newBiteInv.trim()) != 0D){
+				ammountFoundedInv -= Double.parseDouble( newBiteInv.trim() );
 				flagRestaInv = true;
 				
-				//System.out.println(" Monto que se elimino1: "+getNewBiteInv());
+				//System.out.println(" Monto que se elimino1: "+newBiteInv);
 			}
 			
 			if(item.isBlnChck()){
@@ -2194,8 +1505,8 @@ public class InvestmentListIMP extends InvestmentListAMO
 			////System.out.println( item.isBlnChck()+"_"+ item.getProyect_loan_id()+"_"+item.getProyect_id()+"_"+item.getProspectus_id() );
 		}
 		
-		public void asignaBite(AjaxBehaviorEvent e){
-			
+		public void asignaBite(AjaxBehaviorEvent e)
+		{			
 			String valAnt = "";
 			String itemKuboScore = "";
 			Double maxAmmountTemp = ammountFoundedInv;
@@ -2203,9 +1514,9 @@ public class InvestmentListIMP extends InvestmentListAMO
 			RequestContext requestContext = RequestContext.getCurrentInstance();
 			ItemLoanList item = (ItemLoanList) e.getComponent().getAttributes().get("proyectloanItem");
 			
-			///System.out.println("nuevo valor : " + item.getInvestment_bite() + " valAnt: " + getNewBiteInv() );
+			///System.out.println("nuevo valor : " + item.getInvestment_bite() + " valAnt: " + newBiteInv );
 			
-			valAnt = getNewBiteInv();
+			valAnt = newBiteInv;
 			
 			if(item.getInvestment_bite() == null || item.getInvestment_bite() == 0 ){
 				
@@ -2226,7 +1537,8 @@ public class InvestmentListIMP extends InvestmentListAMO
 					
 				}
 				
-				setNewBiteInv( null );
+				newBiteInv =  null;
+				
 				return;
 			}
 			
@@ -2236,9 +1548,9 @@ public class InvestmentListIMP extends InvestmentListAMO
 				maxAmmountTemp = ammountFoundedInv - Double.parseDouble(valAnt) ;
 			}
 			
-			setNewBiteInv(item.getInvestment_bite() + "" );
+			newBiteInv = item.getInvestment_bite() + "" ;
 			
-			if( getNewBiteInv().trim().length()==0)
+			if( newBiteInv.trim().length()==0)
 				return;
 			
 			itemKuboScore = item.getKubo_score_a()+item.getKubo_score_b();
@@ -2255,7 +1567,7 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 			try
 			{
-				newVal = Double.parseDouble(getNewBiteInv());
+				newVal = Double.parseDouble(newBiteInv);
 			
 			}catch(Exception e1 ){
 				
@@ -2322,7 +1634,7 @@ public class InvestmentListIMP extends InvestmentListAMO
 			if( itemKuboScore.equals("F1") || itemKuboScore.equals("G1") ){
 				
 				System.out.println( maximoInvBySaldoPryF1G1 + " - - "  + porcMaxSaldoPryF1G1_G + " - - "+ montoInvertido_F_G +" - - "+limiteMaximoInversion_F_G);
-				System.out.println("nuevo valor : " + item.getInvestment_bite() + " valAnt: " + getNewBiteInv() );
+				System.out.println("nuevo valor : " + item.getInvestment_bite() + " valAnt: " + newBiteInv );
 				
 				String key = item.getProspectus_id() + "::"+ item.getProyect_loan_id();
 				
@@ -2718,7 +2030,7 @@ public class InvestmentListIMP extends InvestmentListAMO
 				proyectListForInvesInd.add(item);
 			//}
 			
-			setNewBiteInv( null );
+			newBiteInv = null;
 			
 			if( monto_sugerido < montoMinThis && monto_sugerido > 0D ){
 				monto_sugerido = 0D;
@@ -2828,7 +2140,8 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 		}
 		
-		public void calculaConfirm(){
+		public void calculaConfirm()
+		{
 			
 			aToInv=0;
 			bToInv=0;
@@ -2857,7 +2170,8 @@ public class InvestmentListIMP extends InvestmentListAMO
 			
 			monto_a_invertir_total = 0D;
 			
-			for( ItemLoanList item : getProyectListForInvesInd() ){
+			for( ItemLoanList item : proyectListForInvesInd )
+			{
 				
 				if( item.getKubo_score_a().equals("A") ){
 					montoInv_A += item.getInvestment_bite();
@@ -2886,7 +2200,7 @@ public class InvestmentListIMP extends InvestmentListAMO
 				monto_a_invertir_total = monto_a_invertir_total +item.getInvestment_bite();
 			}
 			
-			for( ItemLoanList item : getProyectListForInvesInd() ){
+			for( ItemLoanList item : proyectListForInvesInd ){
 				
 				if( item.getKubo_score_a().equals("A") ){
 					aToInv++;
@@ -2938,79 +2252,7 @@ public class InvestmentListIMP extends InvestmentListAMO
 			investorSession.setListToInvestment(proyectListForInvesInd);
 			
 		}
-		
-		public void inicializaSaldos()
-		{		
-			this.SAFI_cuenta = proyectLoanService.getOnlySAFIAccount(this.PID_cliente);
-			//setupClientSAFIData(this.SAFI_cuenta);
-			
-			inversion.inicializaSaldos(SAFI_cuenta);
-			
-			listInvAccounts = inversion.getListInvAccounts();
-			saldoTotal 		= inversion.getSaldoTotal();
-			
-			flagInversionFG = false;
-			
-			if( listInvAccounts!=null && listInvAccounts.size()==1 )
-			{
-				flagInversionFG =   inversion.puedeInvertirEn_F_G(sesion.getProspectus_id(), sesion.getCompany_id(), listInvAccounts.get(0).getAccount());
-			}						
-			
-			if(listInvAccounts != null)
-			{				
-				if(listInvAccounts.size() > 0)
-				{					
-					if(listInvAccounts.size() == 1) 
-					{						 
-						 tagAccount = listInvAccounts.get(0).getAccount();
-						 
-						 setCuentaActual(listInvAccounts.get(0).getAccount());
-						 setSaldoActual (listInvAccounts.get(0).getSaldo());
-						 
-						 ammoutToInv = listInvAccounts.get(0).getSaldo();
-						 
-					} else {
-						
-						this.saldoActual = this.getTotalCreditOnAccounts();
-						tagAccount="Ninguna cuenta";
-					}					
-				}
-			
-			} else {
-			
-				tagAccount = "No hay cuenta";			
-			}			
-		}
-		
-		public void calculaSaldoActual()
-		{		
-			if(listInvAccounts!=null)
-			{				
-				if(listInvAccounts.size()>0)
-				{					
-					if(listInvAccounts.size()==1) 
-					{						 
-						 tagAccount = listInvAccounts.get(0).getAccount();
-						 
-						 setCuentaActual(listInvAccounts.get(0).getAccount());
-						 setSaldoActual(listInvAccounts.get(0).getSaldo());
-						 
-						 ammoutToInv = listInvAccounts.get(0).getSaldo();
-						 
-					} else {
-						
-						this.saldoActual = this.getTotalCreditOnAccounts();
-						
-						tagAccount="Ninguna cuenta";
-					}					
-				}
-			
-			} else {
-			
-				tagAccount="No hay cuenta";			
-			}
-		}
-		
+					
 		public ItemLoanList getProyectSeleccionado( int proyect_loan_id , int proyect_id, int  prospectus_id , int company_id )
 		{			
 			ItemLoanList itemRes = null;
@@ -3037,11 +2279,13 @@ public class InvestmentListIMP extends InvestmentListAMO
 			//System.out.println( "Element: "+ ajax_input_text + " --------------- ajax_input_text:  " + s);
 		}
 		
-		public void preparaProyectList( FilterStore filter){ //Metodo llamado desde NavigationInvestment
+		public void preparaProyectList( FilterStore filter)
+		{ 
+			//Metodo llamado desde NavigationInvestment
 		
 			List<ViewForTiendaExec> temporalProyectListView = proyectLoanService.getProyectLoanByFilteringInv( filter );
 			
-			inversion.createProyectListView(temporalProyectListView,sesion.getProspectus_id().intValue(), sesion.getCompany_id().intValue(), getCuentaActual() );
+			inversion.createProyectListView(temporalProyectListView,sesion.getProspectus_id().intValue(), sesion.getCompany_id().intValue(), cuentaActual );
 			
 			proyectListForInvesInd = new ArrayList<ItemLoanList>();
 			ammountFoundedInv = 0D;

@@ -7,6 +7,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.rest.model.ResumenSaldos;
@@ -14,6 +15,8 @@ import mx.com.kubo.rest.saldos.ProyectLoanActiveIMO;
 import mx.com.kubo.rest.saldos.ProyectLoanActiveIMP;
 import mx.com.kubo.rest.saldos.ResumenSaldosIMO;
 import mx.com.kubo.rest.saldos.ResumenSaldosIMP;
+import mx.com.kubo.rest.tienda.InvestmentListIMO;
+import mx.com.kubo.rest.tienda.InvestmentListIMP;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.tools.Utilities;
@@ -74,6 +77,24 @@ public class KuboRestController
 		active.init(cuenta, status, status_delinquentinv);
 		
 		responseJSON = active.getResponseJSON();
+				
+		return responseJSON;
+	}
+	
+	@GET
+	@Path("tienda")
+	@Produces("application/json;charset=utf-8")
+	public Response getProjectList(@QueryParam("prospectus_id") String prospectus_id, @QueryParam("company_id") String company_id)
+	{		 
+		SessionBean sesion = new SessionBean();
+		sesion.setCompany_id   (Integer.parseInt(company_id));
+		sesion.setProspectus_id(Integer.parseInt(prospectus_id));
+		
+		InvestmentListIMO store = new InvestmentListIMP();
+		store.setSesion(sesion);
+		store.init();
+		
+		Response responseJSON = store.getResponseJSON();
 				
 		return responseJSON;
 	}

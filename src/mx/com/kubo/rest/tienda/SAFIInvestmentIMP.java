@@ -16,7 +16,6 @@ import mx.com.kubo.model.InvestorParamPK;
 import mx.com.kubo.model.MontoInvertido_F_G_Collector;
 import mx.com.kubo.model.ProfileInv;
 import mx.com.kubo.model.ProyectFunding;
-import mx.com.kubo.model.SaldoInversionista;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.SystemParam;
@@ -25,24 +24,27 @@ import mx.com.kubo.model.ViewForTiendaExec;
 import mx.com.kubo.tools.Utilities;
 
 import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteRequest;
-import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteResponse;
+import safisrv.ws.InvKuboServicios.SAFIServiciosServiceLocator;
 
 public class SAFIInvestmentIMP extends SAFIInvestmentAMO
 implements SAFIInvestmentIMO
 {
-	/**
-	 * Para ejecutar este método antes se deben setear las siguientes variables:
-	 * <br>
-	 * <b>proyectList: Lista de proyectos a invertir
-	 * <br><b>investor_id:</b> 
-	 * prospectus_id del inversionista
-	 * <br><b>account:</b> 
-	 * safi_account_id del inversionista
-	 * <br><b>SafiClientId:</b> 
-	 * safiClientId del inversionista 
-	 * 
-	 * 
-	 */
+	public void init()
+	{
+		try
+		{		
+			locatorInvKuboSafi = new SAFIServiciosServiceLocator();
+			servicioInvKuboSafi = locatorInvKuboSafi.getSAFIServiciosSoap11();
+			
+			locatorAccount = new safisrv.ws.CuentasServicios.SAFIServiciosServiceLocator();
+			servCuentasCliente = locatorAccount.getSAFIServiciosSoap11();
+		
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
 	public void ejecutaInvestment()
 	{					
 		lstService 				= new ArrayList<ServiceCalling>();
@@ -144,75 +146,62 @@ implements SAFIInvestmentIMO
 		procesaInversiones();		
 	}
 
-	public void inicializaSaldos( List<String> safiCuentas ){
-		
+	public void inicializaSaldos( List<String> safiCuentas )
+	{		
 		try
 		{
 			saldoTotal = 0D;
 			
-			Calendar cargaServ_CuentasT_1 = Calendar.getInstance();
-			cargaServ_CuentasT_1.setTime(new Date());
+			String cuenta = safiCuentas.get(0).toString();
 			
-			ConsultaCuentasPorClienteResponse resCliente = servCuentasCliente.consultaCuentasPorCliente(new ConsultaCuentasPorClienteRequest(safiCuentas.get(0).toString()));
+			request = new ConsultaCuentasPorClienteRequest(cuenta);
+			
+			resCliente = servCuentasCliente.consultaCuentasPorCliente(request);
 
+			boolean response_OK = resCliente.getInfocuenta()!=null && resCliente.getCodigoRespuesta()!=null && resCliente.getCodigoRespuesta()[0].equals("0");
 			
-			 if(resCliente.getInfocuenta()!=null && resCliente.getCodigoRespuesta()!=null && resCliente.getCodigoRespuesta()[0].equals("0"))
-	            {
-	                String respuestas = resCliente.getInfocuenta()[0];                   
-	                String[] cuentas = respuestas.split("\\&\\|\\&");
-	                listInvAccounts=new ArrayList<InvestorsAccounts>();
-	                InvestorsAccounts invsAccts=null;
+			 if(response_OK)
+	         {
+				 String respuestas = resCliente.getInfocuenta()[0];    
+				 
+	             String[] cuentas = respuestas.split("\\&\\|\\&");
+	             
+	             listInvAccounts = new ArrayList<InvestorsAccounts>();	             	              
 	                		
-	                for (int i = 0; i < cuentas.length; i++) {
-	                	
+	              for (int i = 0; i < cuentas.length; i++) 
+	              {	                	
 	                	String[] vars = cuentas[i].split("\\&\\;\\&",3);
 	                	
 	                	if(vars.length==3)
 	                	{
-	                		invsAccts=new InvestorsAccounts();
+	                		invsAccts = new InvestorsAccounts();
+	                		
 	                		invsAccts.setAccount(vars[0]);
 	                		invsAccts.setAccountName(vars[1]);
 	                		invsAccts.setSaldo(vars[2].equals("null")?0.00:Double.parseDouble(vars[2]));
+	                		
 	                		listInvAccounts.add(invsAccts);
 	                	}             			                	
 					}
-	            }
-	            
+	            }	            
+
+			 String accountList = listInvAccounts.get(0).getAccount();
 			 
-			Calendar cargaServ_cuenta_2 = Calendar.getInstance();
-			cargaServ_cuenta_2.setTime(new Date());
+			saldoObj = saldoinversionistaservice.getSaldoByAccount(accountList);
 			
-			//long difCL1 = cargaServ_cuenta_2.getTimeInMillis() - cargaServ_CuentasT_1.getTimeInMillis();
-			
-			//System.out.println("Tiempo en Consultar WS Cuentas: "+difCL1+" milisegundos");
-			 
-			Calendar cargaServ_Saldo_1 = Calendar.getInstance();
-			cargaServ_Saldo_1.setTime(new Date());
-//			
-			SaldoInversionista saldoObj = saldoinversionistaservice.getSaldoByAccount(listInvAccounts.get(0).getAccount());
-			
-			if(saldoObj != null){
+			if(saldoObj != null)
+			{
 				saldoTotal = saldoObj.getSaldoTotal();
-			}else{
+				
+			} else {
+				
 				saldoTotal = 0D;
 			}
-//			
-			//System.out.println("SALDO TOTAL: "+saldoTotal );
-			
-			Calendar cargaServ_Saldo_2 = Calendar.getInstance();
-			cargaServ_Saldo_2.setTime(new Date());
-			
-			//long difSaldo1 = cargaServ_Saldo_2.getTimeInMillis() - cargaServ_Saldo_1.getTimeInMillis();
-			
-			//System.out.println("Tiempo en Consultar WS Saldos: "+difSaldo1+" milisegundos");
-			
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 		
-			e.printStackTrace();
-			
-		}
-		
+			e.printStackTrace();			
+		}		
 	}
 
 	public void cargaListaTienda( String query, int prospectusInvestor_id, int company_id, String flagRisk,String safi_client_id, String safi_account_id )
