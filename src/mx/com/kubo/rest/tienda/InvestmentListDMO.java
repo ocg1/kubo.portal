@@ -38,6 +38,7 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.Purpose;
 import mx.com.kubo.model.StatusProyectCat;
 import mx.com.kubo.model.gnNaturalPersonPK;
+import mx.com.kubo.rest.tienda.accounts.CuentasClienteIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AmortizacionInversionistaService;
 import mx.com.kubo.services.InvestmentFilterService;
@@ -56,8 +57,7 @@ import mx.com.kubo.services.TasasAcreditadoService;
 import mx.com.kubo.services.TiendaCreditosService;
 import mx.com.kubo.tools.Utilities;
 
-public abstract class InvestmentListDMO 
-implements InvestmentListIMO
+public abstract class InvestmentListDMO implements InvestmentListIMO
 {	
 	protected        ProyectLoanService proyectLoanService;	
 	protected     ProyectFundingService proyectFundingService;		
@@ -90,9 +90,11 @@ implements InvestmentListIMO
 	protected NavigationInvest     navigationinvest;
 	protected MenuControlTableBean control_table;
 	protected FilterStore filter;
+	protected ProfileInv profile;
 	
 	protected ProyectLoan selectedRowProyectLoan;
 	
+	protected CuentasClienteIMO cuenta;
 	protected SAFIInvestmentIMO inversion;
 	
 	protected Response responseJSON;
@@ -127,7 +129,7 @@ implements InvestmentListIMO
 	protected List<StatusProyectCat>       lstStatus;
 	protected List<CreditoCaracteristicas> listCred;
 	protected List<Byte> onlyTermOfProyectLoan;		
-	protected List<String> SAFI_cuenta;
+	//protected List<String> SAFI_cuenta;
 	
 	protected String proyect_loan_SEARCH_TOKEN;
 	protected String navigation;	
@@ -151,26 +153,10 @@ implements InvestmentListIMO
 	protected String risk_str;
 	protected String previousType = "0";
 	protected String destiny_str;
-	protected String lastFilter;
-	
-	protected int creditFounded;       
-    protected int creditNotFounded;
-    
-    protected boolean fundingFunction;
-	protected boolean displayInvButton;	
-	protected boolean blnPaquete;
-	protected boolean displayInvestAction;
-	protected boolean flagNotRule;
-	protected boolean displayMsgMaxSug;
-	protected boolean displayMsgMinSug;
-	protected boolean flagNumberProy=true;
-	protected boolean flagMin_E5_E4 = false;
-	protected int maxProxect = 80;
-	protected boolean moreProyects = false;
-	protected boolean flagInversionFG = false;
-	protected boolean hold_selected = false;
-	
-	protected boolean flagMasivo =true;
+	protected String lastFilter;	
+	protected String newBiteInv;
+	protected String profileStr = "";
+	protected String maxInvBiteRecomded = ""; 
 	
 	protected Double montoLimiteMaxSugerido = 1000000D;
 	protected Double montoLimiteMinSugerido=400D;
@@ -208,25 +194,6 @@ implements InvestmentListIMO
 	protected Double ammoutToInv;
 	protected Double monto_a_invertir_total;
 	protected Double montoTotal;
-	
-	protected String newBiteInv;
-	protected String profileStr = "";
-	protected String maxInvBiteRecomded = ""; 
-    
-    protected List<Double> listOfPercentByKuboScore;   
-    
-    protected Boolean moreThanOneAccountFlag;
-    
-    protected ProfileInv profile;
-    
-    protected int aToInv;
-    protected int bToInv;
-    protected int cToInv;
-    protected int dToInv;
-    protected int eToInv;
-    protected int fToInv=0;
-    protected int gToInv=0;
-    
     protected Double tasaPon_A=0D;
     protected Double tasaPon_B=0D;
     protected Double tasaPon_C=0D;
@@ -236,10 +203,38 @@ implements InvestmentListIMO
     protected Double tasaPon_G=0D;
     protected Double tasaPonderada=0D;
     
+    protected List<Double> listOfPercentByKuboScore;   
+    
+    protected Boolean moreThanOneAccountFlag;
+        
+    protected int aToInv;
+    protected int bToInv;
+    protected int cToInv;
+    protected int dToInv;
+    protected int eToInv;
+    protected int fToInv=0;
+    protected int gToInv=0;    	
+	protected int creditFounded;       
+    protected int creditNotFounded;
+    protected int maxProxect = 80;         
     protected int temp;	    
     protected int typeSearch;
     
     protected final int MAX_NUMBER_INVESTMENTS_ENABLED = 6;
+    
+    protected boolean fundingFunction;
+	protected boolean displayInvButton;	
+	protected boolean blnPaquete;
+	protected boolean displayInvestAction;
+	protected boolean flagNotRule;
+	protected boolean displayMsgMaxSug;
+	protected boolean displayMsgMinSug;
+	protected boolean flagNumberProy=true;
+	protected boolean flagMin_E5_E4 = false;	
+	protected boolean moreProyects = false;
+	protected boolean flagInversionFG = false;
+	protected boolean hold_selected = false;	
+	protected boolean flagMasivo =true;
     
     protected InvestmentListDMO()
     {
@@ -302,6 +297,11 @@ implements InvestmentListIMO
         cuentaActual              = new String();
     	ExceptionOnFunding        = new String("");
     	labelOnFilteringByAmmount = new String("");
+    }
+    
+    public void setSesion_investor(InvestorSession sesion_investor)
+    {
+    	investorSession = sesion_investor;
     }
     
     public void setSesion(SessionBean sesion)
@@ -435,9 +435,9 @@ implements InvestmentListIMO
 		
 		try 
 		{			
-			for (InvestorsAccounts iterElement : listInvAccounts) 
+			for (InvestorsAccounts account : listInvAccounts) 
 			{
-				suma = suma + iterElement.getSaldo();
+				suma = suma + account.getSaldo();
 			}
 			
 		} catch (Exception e) {

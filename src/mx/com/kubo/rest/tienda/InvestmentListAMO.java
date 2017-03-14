@@ -13,6 +13,7 @@ import java.util.List;
 import javax.el.ELContext;
 import javax.faces.context.FacesContext;
 
+import mx.com.kubo.bean.InvestorsAccounts;
 import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.managedbeans.RoleFunctionController;
 import mx.com.kubo.model.ProyectFunding;
@@ -29,18 +30,24 @@ public abstract class InvestmentListAMO extends InvestmentListDMO
 {
 	public void inicializaSaldos()
 	{		
+	
+/*		
 		SAFI_cuenta = proyectLoanService.getOnlySAFIAccount(PID_cliente);			
 		
 		inversion.inicializaSaldos(SAFI_cuenta);
 		
 		listInvAccounts = inversion.getListInvAccounts();
 		saldoTotal 		= inversion.getSaldoTotal();
+*/		
+		
 		
 		flagInversionFG = false;
 		
 		if( listInvAccounts!=null && listInvAccounts.size()==1 )
 		{
-			flagInversionFG =   inversion.puedeInvertirEn_F_G(sesion.getProspectus_id(), sesion.getCompany_id(), listInvAccounts.get(0).getAccount());
+			InvestorsAccounts account = listInvAccounts.get(0);
+			
+			flagInversionFG =   inversion.puedeInvertirEn_F_G(sesion.getProspectus_id(), sesion.getCompany_id(), account.getAccount());
 		}						
 		
 		if(listInvAccounts != null)
@@ -49,10 +56,12 @@ public abstract class InvestmentListAMO extends InvestmentListDMO
 			{					
 				if(listInvAccounts.size() == 1) 
 				{						 
-					 tagAccount   = listInvAccounts.get(0).getAccount();						 
-					 cuentaActual = listInvAccounts.get(0).getAccount();
-					  saldoActual = listInvAccounts.get(0).getSaldo();						 
-					 ammoutToInv  = listInvAccounts.get(0).getSaldo();
+					InvestorsAccounts account = listInvAccounts.get(0);
+					
+					 tagAccount   = account.getAccount();						 
+					 cuentaActual = account.getAccount();
+					  saldoActual = account.getSaldo();						 
+					 ammoutToInv  = account.getSaldo();
 					 
 				} else {
 					
@@ -88,12 +97,12 @@ public abstract class InvestmentListAMO extends InvestmentListDMO
 			{					
 				if(listInvAccounts.size()==1) 
 				{						 
-					 tagAccount = listInvAccounts.get(0).getAccount();
-					 
-					 cuentaActual = listInvAccounts.get(0).getAccount();
-					  saldoActual = listInvAccounts.get(0).getSaldo();
-					 
-					 ammoutToInv = listInvAccounts.get(0).getSaldo();
+					InvestorsAccounts account = listInvAccounts.get(0);
+					
+					 tagAccount   = account.getAccount();					 
+					 cuentaActual = account.getAccount();
+					  saldoActual = account.getSaldo();					 
+					 ammoutToInv  = account.getSaldo();
 					 
 				} else {
 					
@@ -233,10 +242,12 @@ public abstract class InvestmentListAMO extends InvestmentListDMO
 		Hashtable<String,List<ProyectFunding> > ht = new Hashtable<String,List<ProyectFunding> >();
 		
 		ArrayList<String> solicituondeo = new ArrayList<String> (); 
-		
+	
+/*		
 		if(elContext == null){
 			elContext = FacesContext.getCurrentInstance().getELContext();
 		}
+*/		
 		
 		List<ProyectFunding> lstInv = investorSession.getInvestmentList();
 		

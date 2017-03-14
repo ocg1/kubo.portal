@@ -103,7 +103,7 @@ implements SAFIInvestmentIMO
 		item.setDaysLeft(prln.getDaysLeft());
 		item.setEnabledFundingBtn(false);				
 		item.setEnabledFundingDetailBtn(prln.getEnabledBottomDetail());
-		item.setExpectedPerformanceForProyect(getExpectedPerformanceForProyect(prln.getInvestment_bite2(getSaldoTotal()+""), prln.getRate_investor(), prln.getTerm().getMonths(), prln.getFrequency_id()));
+		item.setExpectedPerformanceForProyect(getExpectedPerformanceForProyect(prln.getInvestment_bite2(saldoTotal + ""), prln.getRate_investor(), prln.getTerm().getMonths(), prln.getFrequency_id()));
 		item.setFrequency_id(prln.getFrequency_id());				
 		item.setKubo_score_a(prln.getKubo_score_a());
 		item.setKubo_score_b(prln.getKubo_score_b());
@@ -122,7 +122,7 @@ implements SAFIInvestmentIMO
 		
 		item.setRate(prln.getRate());
 		item.setRate_investor(prln.getRate_investor());
-		item.setSaldoActual(getSaldoTotal());
+		item.setSaldoActual(saldoTotal);
 		item.setStatus_id(prln.getStatus_id());
 		item.setTerm_months(prln.getTerm().getMonths());
 		item.setVerification_score(prln.getVerification_score());

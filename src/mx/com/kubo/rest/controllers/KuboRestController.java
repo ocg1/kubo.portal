@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.managedbeans.investor.InvestorSession;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.rest.model.ResumenSaldos;
@@ -90,8 +91,12 @@ public class KuboRestController
 		sesion.setCompany_id   (Integer.parseInt(company_id));
 		sesion.setProspectus_id(Integer.parseInt(prospectus_id));
 		
+		InvestorSession sesion_investor = new InvestorSession();
+		sesion_investor.init();
+		
 		InvestmentListIMO store = new InvestmentListIMP();
 		store.setSesion(sesion);
+		store.setSesion_investor(sesion_investor);
 		store.init();
 		
 		Response responseJSON = store.getResponseJSON();

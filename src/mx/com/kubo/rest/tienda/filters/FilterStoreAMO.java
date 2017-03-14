@@ -1,4 +1,4 @@
-package mx.com.kubo.rest.tienda;
+package mx.com.kubo.rest.tienda.filters;
 
 public abstract class FilterStoreAMO extends FilterStoreDMO 
 {

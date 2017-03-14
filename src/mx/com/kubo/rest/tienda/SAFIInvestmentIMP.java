@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import mx.com.kubo.bean.InvestorsAccounts;
 import mx.com.kubo.bean.ItemInversion;
 import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.controller.ThreadInvestmentAction;
@@ -21,9 +20,9 @@ import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.ViewForTiendaExec;
+import mx.com.kubo.rest.tienda.filters.FilterStoreIMP;
 import mx.com.kubo.tools.Utilities;
 
-import safisrv.ws.CuentasServicios.ConsultaCuentasPorClienteRequest;
 import safisrv.ws.InvKuboServicios.SAFIServiciosServiceLocator;
 
 public class SAFIInvestmentIMP extends SAFIInvestmentAMO
@@ -35,9 +34,10 @@ implements SAFIInvestmentIMO
 		{		
 			locatorInvKuboSafi = new SAFIServiciosServiceLocator();
 			servicioInvKuboSafi = locatorInvKuboSafi.getSAFIServiciosSoap11();
-			
+/*			
 			locatorAccount = new safisrv.ws.CuentasServicios.SAFIServiciosServiceLocator();
 			servCuentasCliente = locatorAccount.getSAFIServiciosSoap11();
+*/			
 		
 		} catch(Exception e) {
 			
@@ -146,6 +146,7 @@ implements SAFIInvestmentIMO
 		procesaInversiones();		
 	}
 
+/*	
 	public void inicializaSaldos( List<String> safiCuentas )
 	{		
 		try
@@ -203,6 +204,7 @@ implements SAFIInvestmentIMO
 			e.printStackTrace();			
 		}		
 	}
+*/	
 
 	public void cargaListaTienda( String query, int prospectusInvestor_id, int company_id, String flagRisk,String safi_client_id, String safi_account_id )
 	{							 		

@@ -16,7 +16,7 @@ import mx.com.kubo.model.SaldoInversionista;
 import mx.com.kubo.model.ServiceCalling;
 import mx.com.kubo.model.ViewForTiendaExec;
 import mx.com.kubo.model.ViewProyectTienda;
-
+import mx.com.kubo.rest.tienda.filters.FilterStoreIMO;
 import mx.com.kubo.services.InvestorParamService;
 import mx.com.kubo.services.MontoInvertido_F_G_CollectorService;
 import mx.com.kubo.services.ProfileFormValueService;
@@ -41,10 +41,10 @@ implements SAFIInvestmentIMO
 	protected SAFIServiciosServiceLocator 	locatorInvKuboSafi;
 	protected SAFIServicios 				servicioInvKuboSafi;
 		
-	protected safisrv.ws.CuentasServicios.SAFIServiciosServiceLocator locatorAccount ;
-	protected safisrv.ws.CuentasServicios.SAFIServicios servCuentasCliente;
+//	protected safisrv.ws.CuentasServicios.SAFIServiciosServiceLocator locatorAccount ;
+//	protected safisrv.ws.CuentasServicios.SAFIServicios servCuentasCliente;
 	
-	protected SaldoInversionistaService saldoinversionistaservice;
+	//protected SaldoInversionistaService saldoinversionistaservice;
 	protected        ProyectLoanService proyectLoanService;
 	protected     TiendaCreditosService tiendacreditosservice;
 	protected     ProyectFundingService proyectFundingService;
@@ -58,10 +58,10 @@ implements SAFIInvestmentIMO
 		
 	protected InvestmentProgress  investmentprogress;
 	protected FilterStore filter;
-	protected ConsultaCuentasPorClienteRequest request;
-	protected ConsultaCuentasPorClienteResponse resCliente;
-	protected SaldoInversionista saldoObj;
-	protected InvestorsAccounts invsAccts;
+	//protected ConsultaCuentasPorClienteRequest request;
+	//protected ConsultaCuentasPorClienteResponse resCliente;
+	//protected SaldoInversionista saldoObj;
+	//
 	
 	protected FilterStoreIMO filter_store;
 	
@@ -86,7 +86,8 @@ implements SAFIInvestmentIMO
 	protected Double montoinvertido	= 0D;
 	protected Double montoNOinvertido = 0D;
 	protected Double tasaPonderada = 0D;
-	protected Double saldoTotal	= 0D;
+	//protected Double saldoTotal	= 0D;
+	protected Double saldoTotal;
 	protected Double maxPorcPryG = 0D;
 	protected Double maximoInvBySaldoG = 0D;
 	protected Double maximoInvBySaldoPryE5 = 0D;
@@ -127,7 +128,7 @@ implements SAFIInvestmentIMO
 	
 	protected SAFIInvestmentDMO()
 	{				
-		saldoinversionistaservice = Utilities.findBean("saldoInversionistaServiceImp");
+//		saldoinversionistaservice = Utilities.findBean("saldoInversionistaServiceImp");
 		proyectLoanService		  = Utilities.findBean("proyectLoanServiceImp");
 		tiendacreditosservice 	  = Utilities.findBean("tiendaCreditosServiceImp");
 		proyectFundingService	  = Utilities.findBean("proyectFundingServiceImp");
@@ -144,7 +145,7 @@ implements SAFIInvestmentIMO
 		listToInv				= new ArrayList<ItemInversion>();
 		proyectList  			= new ArrayList<ItemLoanList>();
 		lstProyectosFondeados 	= new ArrayList<ProyectFunding>();
-		listInvAccounts			= new ArrayList<InvestorsAccounts>();	
+//		listInvAccounts			= new ArrayList<InvestorsAccounts>();	
 		progressdetlst			= new ArrayList<InvestmentProgressDet>();
 		
 		montoinvertido 			= 0D;
@@ -155,6 +156,16 @@ implements SAFIInvestmentIMO
 		proyectosNoFondeados 	= 0;
 		
 		scriptStatus = "";			
+	}
+	
+	public void setSaldoTotal(Double saldoTotal)
+	{
+		this.saldoTotal = saldoTotal;
+	}
+	
+	public void setListInvAccounts(List<InvestorsAccounts> listInvAccounts)
+	{
+		this.listInvAccounts = listInvAccounts;
 	}
 	
 	public List<ItemLoanList> getProyectList() {
@@ -170,6 +181,7 @@ implements SAFIInvestmentIMO
 		return servicioInvKuboSafi;
 	}
 
+/*	
 	public List<InvestorsAccounts> getListInvAccounts() 
 	{
 		return listInvAccounts;
@@ -179,6 +191,7 @@ implements SAFIInvestmentIMO
 	{
 		return saldoTotal;
 	}
+*/	
 
 	public String getScriptStatus() 
 	{

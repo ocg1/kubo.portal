@@ -16,6 +16,7 @@ import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.ws.rs.core.Response;
 
 import mx.com.kubo.bean.FilterStore;
 import mx.com.kubo.bean.InvestorsAccounts;
@@ -39,6 +40,7 @@ import mx.com.kubo.model.ProyectLoanPK;
 import mx.com.kubo.model.TasasAcreditado;
 import mx.com.kubo.model.TiendaCreditos;
 import mx.com.kubo.model.ViewForTiendaExec;
+import mx.com.kubo.rest.tienda.accounts.CuentasClienteIMP;
 import mx.com.kubo.tools.NumberToLetterConverter;
 
 import org.primefaces.context.RequestContext;
@@ -54,7 +56,16 @@ implements InvestmentListIMO
 		purposelst = purposeservice.getPurposeList();
 		lstStatus  = statusproyectcatservice.getListStatusProyectCat();
 		
+		cuenta = new CuentasClienteIMP();
+		cuenta.setSesion(sesion);
+		cuenta.init();
+		
+		saldoTotal      = cuenta.getSaldoTotal();
+		listInvAccounts = cuenta.getListInvAccounts();
+		
 		inversion = new SAFIInvestmentIMP();
+		inversion.setSaldoTotal(saldoTotal);
+		inversion.setListInvAccounts(listInvAccounts);
 		inversion.init();
 		
 		inicializaSaldos();
@@ -75,19 +86,15 @@ implements InvestmentListIMO
 		
 		cargaListaTienda();		
 
-			
-			if( sesion.getArea().toString().equals("I") )
-			{
 				
-				if( saldoTotal  < montoMaximo )
-				{
-					displayInvestAction=false;
-					
-				}else{
-					
-					displayInvestAction=true;
-					
-				}
+		if( saldoTotal  < montoMaximo )
+		{
+			displayInvestAction = false;
+			
+		} else {
+			
+			displayInvestAction = true;					
+		}
 				
 				asignaPerfil();
 				
@@ -127,13 +134,13 @@ implements InvestmentListIMO
 						displayMsgMinSug = true;
 					}					
 				}				
-			}				
-			
-			
+										
 			inicializaListas();
 			
-			flagNotRule = inversion.isFlagNotRule();
+			flagNotRule   = inversion.isFlagNotRule();
 			flagMin_E5_E4 = inversion.isFlagMin_E5_E4();
+			
+			responseJSON = Response.ok(proyectList_A).build();
 		}										
 
 		public void updateByFiltering(ActionEvent e)

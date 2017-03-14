@@ -27,20 +27,29 @@ public interface SAFIInvestmentIMO
 
 	Double initMontoDisponibleEn_E5();
 	Double getMontoInvertido_F_G();
-	Double getSaldoTotal();
+	//Double getSaldoTotal();
 	Double getMontoMaximoPorProyecto_F_G();
 
+	void setSaldoTotal(Double saldoTotal);
+	
+	void setListInvAccounts(List<InvestorsAccounts> listInvAccounts);
+	
 	void init();
-	void inicializaSaldos(List<String> sAFI_cuenta);
+	//void inicializaSaldos(List<String> sAFI_cuenta);
 	void cargaListaTienda( String query, int prospectusInvestor_id, int companyInvestor_id, String flagRisk,String safi_investor_client_id, String safi_account_id );
 	void createProyectListView(List<ViewForTiendaExec> temporalProyectListView, int intValue, int intValue2, String cuentaActual);
 	void setProyectList(List<ItemLoanList> proyectList);
 
 	List<ItemLoanList> calculaInvestmentBite(int intValue, int intValue2, Double monto_a_invertir, List<ItemLoanList> proyectList);
-	List<InvestorsAccounts> getListInvAccounts();
+	//List<InvestorsAccounts> getListInvAccounts();
 
 	SAFIServicios getServicioInvKuboSafi();
+	
+	void setMontoInvertido_F_G_temp(Double d);	
+	void setMonto_a_invertir(Double d);
+	void setMonto_a_invertir_temp(Double monto_a_invertir_temp);
 	void sethTFunding(Hashtable<String, List<ProyectFunding>> generaHashFunding);
+	
 	Double getMaxPorcPryG();
 	Double getMontoMinF1_G1_G();
 	Double getMontoInvertido_F_G_temp();
@@ -60,7 +69,4 @@ public interface SAFIInvestmentIMO
 	Double getPorcMaxSaldoG();
 	Double getPorcMaxSaldoPryE5G();
 	Double getPorcMaxSaldoPryE4G();
-	void setMontoInvertido_F_G_temp(Double d);	
-	void setMonto_a_invertir(Double d);
-	void setMonto_a_invertir_temp(Double monto_a_invertir_temp);
 }
