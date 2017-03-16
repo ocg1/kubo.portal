@@ -370,6 +370,7 @@ implements Serializable
 			{
 				file_type_id  = regis.getFilesPk().getFile_type_id();				
 				uploaded_text = regis.getFileType().getUploaded_text();
+				int file_category = regis.getFileType().getFile_category_id();
 				
 				file_type     = CatalogoFileType.getInstance(file_type_id);
 				
@@ -384,22 +385,27 @@ implements Serializable
 					validaImagen( file );
 					lDocAddedCredFm2.add(file);
 					
-				} else if(file_type_id >=3 && file_type_id <= 8){
+				//} else if(file_type_id >=3 && file_type_id <= 8){
+				}else if( file_category == 2 ){ // Comprobante de actividad económica
 					FileForScreenBean file = new FileForScreenBean(regis);
 					validaImagen( file );
 					lDocAddedCompActEcon.add(file);	
 					
-				} else if(file_type_id >= 9 && file_type_id <= 14 || ( file_type_id >=48 && file_type_id <= 58  || (file_type_id >= 126 && file_type_id <= 130 ) )){
+				//} else if(file_type_id >= 9 && file_type_id <= 14 || ( file_type_id >=48 && file_type_id <= 58  || (file_type_id >= 126 && file_type_id <= 130 ) )){
+				}else if( file_category == 3 ){ // Comprobante de Ingresos
+					
 					FileForScreenBean file = new FileForScreenBean(regis);
 					validaImagen( file );
 					lDocAddedCompIncome.add(file);
 					
-				} else if(file_type_id >= 15 && file_type_id <= 23){	
+				//} else if(file_type_id >= 15 && file_type_id <= 23){
+				}else if( file_category == 4 ){ // Comprobante de Acreditacion del negocio
 					FileForScreenBean file = new FileForScreenBean(regis);
 					validaImagen( file );
 					lDocAddedAcredProBusiness.add(file);
 					
-				} else if( (file_type_id >= 24 && file_type_id <= 29 ) || ( file_type_id >= 122 && file_type_id <= 125 ) ){
+				//} else if( (file_type_id >= 24 && file_type_id <= 29 ) || ( file_type_id >= 122 && file_type_id <= 125 ) ){
+				}else if( file_category == 5 ){ // Comprobante de Domicilio
 					
 					FileForScreenBean file = new FileForScreenBean(regis);
 					validaImagen( file );

@@ -243,6 +243,7 @@ implements PreregistroIMO
 	protected boolean codigo_postal_OK;
 	protected boolean save_address_OK;
 	protected boolean email_OK;
+	protected boolean pide_contrasena_segura = false;
 	
 	protected Character area;
 	
@@ -265,6 +266,7 @@ implements PreregistroIMO
 	protected final int CASA;
 	protected final int MEXICO;
 	protected final int SECCION_INVERSIONISTA_ENABLED;
+	protected final int PEDIR_CONTRASENA_SEGURA = 101;
 	protected final int MEMBER_NOT_ACTIVE ;
 	protected final int MEMBER_ACTIVE;
 	protected final int MEMBER_NEW;
@@ -885,6 +887,14 @@ implements PreregistroIMO
 
 	public void setProspectusextraservice(ProspectusExtraService prospectusextraservice) {
 		this.prospectusextraservice = prospectusextraservice;
+	}
+
+	public boolean isPide_contrasena_segura() {
+		return pide_contrasena_segura;
+	}
+
+	public void setPide_contrasena_segura(boolean pide_contrasena_segura) {
+		this.pide_contrasena_segura = pide_contrasena_segura;
 	}
 	
 	

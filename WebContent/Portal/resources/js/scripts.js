@@ -352,12 +352,12 @@ $(document).ready(function(){
 					 position:'fixed',
 					left: ($(window).width() - $('.alerts').outerWidth())/2,
 				});
-				
+				/*
 				$('.contrasenaHubspot').css({
 					 position:'fixed',
 					left: ($(window).width() - $('.contrasenaHubspot').outerWidth())/2,
 				});
-		
+				*/
 		
 			if (width <= 549) { 
 				$(".logos_patrocinadores").insertAfter($(".content_mobile"));
@@ -1184,7 +1184,7 @@ $(window).load(function() {
 		}
 		
 		if($(".contrasenaHubspot").length){
-			$(".veloBtnCerrar").fadeIn();
+			//$(".veloBtnCerrar").fadeIn();
 			//$(".contrasenaHubspot").addClass("show");
 			$(window).resize();
 		}
@@ -1220,6 +1220,18 @@ function cerrarAlertHub (){
 	$(".veloBtnCerrar").fadeOut();
 	$(".contrasenaHubspot").removeClass("show");
 }
+function loaderfunction2() {
+	if ($('.contrasena_segura').is(':visible')) {
+		   $(".cargandoNuevo").addClass("show");
+		   $(".cmdSavePass").click();
+		   $(".validatePass").removeClass("vacio");
+		   $(".veloBtnCerrar").fadeIn();
+		   facebook_events ('clicPasswordLanding' ); 	
+		   mixPanel ("clicPasswordLanding");
+	} else {
+		$(".validatePass").addClass("vacio");
+	}
+}
 
 
 function loaderfunction() {
@@ -1231,6 +1243,7 @@ function loaderfunction() {
 		   $(".cmdSavePass").click();
 		   facebook_events ('clicPasswordLanding' ); 	
 		   mixPanel ("clicPasswordLanding");
+			$(".veloBtnCerrar").fadeIn();
 	}else {
 		  $("#passTemp").addClass("requiredClass");
 		  if($("#passTemp").val().length>=1){

@@ -406,6 +406,19 @@ public abstract class PreregistroAMO extends PreregistroDMO
 		version_description = service_system_param.getVersion_description();
 		
 		session.setVersion_description(version_description);
+		
+		system_param_PK = new SystemParamPK();
+		
+		system_param_PK.setCompany_id( 1 );
+		system_param_PK.setSystem_param_id(PEDIR_CONTRASENA_SEGURA);
+		
+		system_param = service_system_param.loadSelectedSystemParam(system_param_PK);
+						
+		if(system_param != null && system_param.getValue() != null )
+		{		
+			setPide_contrasena_segura(system_param.getValue().equals("S"));	
+		}
+		
 	}
 	
 	protected void init_suscribe()

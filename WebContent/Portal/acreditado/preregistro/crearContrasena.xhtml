@@ -77,6 +77,8 @@
 	</h:head>
 
     <h:body style="background:#EAEAEC">
+    
+
  		<div class="veloBtnCerrar">
  			
  		</div>
@@ -97,69 +99,146 @@
             	
             	
 
-				<div class="content" style="min-height:700px;" >            	               
+				<div class="content" >            	               
                 	<div class="inner_content">
             		
-            	<div class="alertaModal contrasenaHubspot">
+            	<div class=" contrasenaHubspot">
 					<i class="fa fa-times closePop" onclick="cerrarAlertHub();"></i>
             		<div class="tituloNuevo">
-            	
 	            		<h2>Crea una contraseña segura</h2>
 	            		<p>Para iniciar con tu Pre-Aprobación y proteger tus datos</p>
-	            		
-            			
-            			
-            		
-            	</div>	
+            		</div>	
             	<div class="empezarRegistro">
             	<ul>
 	            	<li>
 	            	        <label>Usuario: <span style="font-weight: bold">#{hs_Init.email}</span></label>
 	            	</li>
 	            	<li>
-            	
-            	
-            		<label>Crea tu contraseña<span style="color:red">*</span></label>
-            		<div class="leyenda"><p>Mínimo cuatro caracteres</p></div>
-            	<div class="mostrar">
-	   <span onclick="passToText(this)">Mostrar</span>
-	     <i class="fa fa-lock"></i>	
-	
-	   
-	   <p:inputText immediate="true" id              = "passTemp" 
-							value = "#{hs_Init.pass}"
-							 onfocus      = "onFocus(this);" 
-							 onblur="return minMaxCaracter(this);"
-							 styleClass      = "elementStl  validatorClass passCode"  
-							 type            = "password" 
-							 required        = "true" 
-							 requiredMessage = "Favor de introducir tu contraseña">
-												
-					<p:ajax event = "blur" />										
-				</p:inputText>
-				
-				<p:inputText 
-					immediate="true"
-					value 			= "#{hs_Init.pass}"
-					 onfocus      	= "onFocus(this);" 
-				     onblur="return minMaxCaracter(this);"
-					 styleClass      = "elementStl  validatorClass  textCode"  
-					 type            = "text" 
-					 required        = "true" 
-					 requiredMessage = "Favor de introducir tu contraseña">
-												
-					<p:ajax event="blur" />
+	            	
+	            		<label>Crea tu contraseña<span style="color:red">*</span></label>
+	            	<h:panelGroup rendered="#{!hs_Init.pide_contrasena_segura}">
+	            			
+	            			<div class="leyenda"><p>Mínimo cuatro caracteres</p></div>
+	            			<div class="mostrar">
+	  							 <span onclick="passToText(this)">Mostrar</span>
+	  							   <i class="fa fa-lock"></i>	
+	  							    <p:inputText immediate="true" id              = "passTemp" 
+												 value = "#{hs_Init.pass}"
+												 onfocus      = "onFocus(this);" 
+												 onblur="return minMaxCaracter(this);"
+												 styleClass      = "elementStl  validatorClass passCode"  
+												 type            = "password" 
+												 required        = "true" 
+												 requiredMessage = "Favor de introducir tu contraseña">
+																	
+										<p:ajax event = "blur" />										
+									</p:inputText>
+									<p:inputText 
+										immediate="true"
+										value 			= "#{hs_Init.pass}"
+										 onfocus      	= "onFocus(this);" 
+									     onblur="return minMaxCaracter(this);"
+										 styleClass      = "elementStl  validatorClass  textCode"  
+										 type            = "text" 
+										 required        = "true" 
+										 requiredMessage = "Favor de introducir tu contraseña">
+																	
+										<p:ajax event="blur" />
+															
+									</p:inputText>
 										
-				</p:inputText>
-					
-	         <p:watermark value="Contraseña" for="passTemp"/> 
+						         <p:watermark value="Contraseña" for="passTemp"/> 
+	            			</div>
+	            				
+	            	     <div class="alerta_crea_contrasena"></div>
+	            	     <div class="contrasenaValida callAction btnNaranja" onclick="loaderfunction()">Continuar</div>
+	            	        	  
+	            	</h:panelGroup>
+	            	
+	                <h:panelGroup rendered="#{hs_Init.pide_contrasena_segura}">
+	                	<h:inputHidden id="email4" value="#{hs_Init.email}" />
+	                	<div class="mostrar">
+	  						 <span onclick="passToText(this)">Mostrar</span>
+	     					 <i class="fa fa-lock"></i>	
+	     					    <p:inputText id              = "pass" 
+										
+											 onfocus         = "inicializaValores()"  
+										     value = "#{hs_Init.pass}"
+												
+											 styleClass      = "elementStl   validatePass pass validatorClass passCode  keyEnter"  
+											 type            = "password" 
+											 required        = "true" 
+											 requiredMessage = "Favor de introducir tu contraseña">
+																
+									<p:ajax event = "blur" />										
+								</p:inputText>
+					  
+								<p:inputText 
+								
+									 onfocus         = "inicializaValores()"  
+								    value 			= "#{hs_Init.pass}"
+									 styleClass      = "elementStl  validatePass pass validatorClass  textCode"  
+									 type            = "text" 
+									 required        = "true" 
+									 requiredMessage = "Favor de introducir tu contraseña">
+																
+									<p:ajax event="blur" />
+														
+								</p:inputText>
+	     			   			 <p:watermark value="Contraseña" for="pass"/> 
+	     			    </div>
+	     			    	 <ul class="ayuda_contrasena_mobile">
+	
+									<li id="passTitle2"  ><b>Tu contraseña debe contener:</b></li>
+									<li id="valLength2" class="item_a" ><i class="fa fa-circle"></i>Al menos 8 caracteres.</li>
+									<!-- 
+									<li id="valVoc2" class="item_a" ><i class="fa fa-circle"></i>Al menos una vocal.</li>
+									<li id="valCnsnt2" class="item_a" ><i class="fa fa-circle"></i>Al menos una consonante.</li>
+									<li id="valNum2" class="item_a" ><i class="fa fa-circle"></i>Al menos un número</li>
+									 -->
+									<li id="passTitle3" ><b>Tu contraseña NO debe contener:</b></li>
+								
+									<li id="valUsr2"  class="item_b" ><i class="fa fa-times"></i>Tu nombre de usuario del correo electrónico</li>
+									<li id="valInst2"  class="item_b"><i class="fa fa-times"></i>El nombre de la institución</li>
+									<li id="valCharCon2"  class="item_b"><i class="fa fa-times"></i>Caracteres consecutivos</li>
+									<li id="valNumCon2"  class="item_b" ><i class="fa fa-times"></i>Números consecutivos</li>
+									<li id="valRepChar2"  class="item_b" ><i class="fa fa-times"></i>Un caracter repetido más de 2 veces consecutivas</li>
+									<li id="valMaxLength2"  class="item_b"><i class="fa fa-times"></i>Más de 12 caracteres</li>
+							</ul>
+							<aside class="contrasena_segura"> 
+                           			Tu contraseña es válida
+                           		 <span>	pero hay error al confirmarla</span>
+                           	</aside>    
+                           	
+                           	<aside class="contrasena_novalida"> 
+                           		Tu contraseña aún no es válida
+                           	</aside> 
+                           	
+                           	     <div class="contrasenaValida callAction btnNaranja" onclick="loaderfunction2()">Continuar</div> 
+	                </h:panelGroup>
+	            	 
+	            	
+	            	
+            				
+            				
+            
+	
+	   	
+				
 	          	
-	</div>
-	  <div class="alerta_crea_contrasena"></div>       	
+
+	
+	 
+
+	  
+	  
+ 	      	
 	</li>
     </ul>
    
-     <div class="contrasenaValida callAction btnNaranja" onclick="loaderfunction()">Continuar</div>
+
+    
+    
     </div>
             	
             	</div>
@@ -199,7 +278,9 @@
 									        
 			</h:form>
 		
-		
+		<script>
+		$(".contrasenaHubspot").addClass("show");
+		</script>
 			<h:panelGroup rendered="#{hs_Init.status_hs == 0}" >
 			
 				<script>

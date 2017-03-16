@@ -4,8 +4,10 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 				<div class="cargandoNuevo alerts">
+					
+					
 						
-                        		<img src="#{configManaged.location}resources/images/loader.gif"/>
+                   	<img src="#{configManaged.location}resources/images/loader.gif"/>
                         
 			</div>
 				
@@ -50,7 +52,7 @@
  	<div>
 	   
 	   <i class="fa fa-envelope"></i>		
- 	
+
  	<p:inputText id = "email4"  
 					 onfocus      = "onFocus(this);" 
 					 onblur       = "onBlur(this)"
@@ -65,7 +67,7 @@
 				
  	
  	</div>
-	<p:watermark value="Correo electrónico*" for="email4"/> 	
+	<p:watermark value="Correo electrónico*" for="email4" /> 	
 	    <div class="alerta"></div>
    </li>
    
@@ -117,28 +119,66 @@
 									</div>
 								</h:panelGroup>
  	<!-- label>Contraseña<sup>*</sup></label-->		
- 	<div class="mostrar">
+ 	
+	 <h:panelGroup rendered="#{!addNaturalPerson.pide_contrasena_segura}">
+	 		<div class="mostrar">
+					   <span class="mostrarCon" onclick="passToText(this)">Mostrar</span>
+					     <i class="fa fa-lock"></i>	
+		 		  <p:inputText id              = "passTemp" 
+								 value           = "#{addNaturalPerson.password}" 
+								 onfocus      = "onFocus(this);" 
+								 onblur="return minMaxCaracter(this);"
+								 styleClass      = "elementStl  validatorClass passCode keyEnter"  
+								 type            = "password" 
+								 required        = "true" 
+								 requiredMessage = "Favor de introducir tu contraseña">
+													
+						<p:ajax event = "blur" />										
+					</p:inputText>
+						<p:inputText 
+						 value           = "#{addNaturalPerson.password}" 
+						 onfocus      = "onFocus(this);" 
+					     onblur="return minMaxCaracter(this);"
+						 styleClass      = "elementStl  validatorClass  textCode"  
+						 type            = "text" 
+						 required        = "true" 
+						 requiredMessage = "Favor de introducir tu contraseña">
+													
+						<p:ajax event="blur" />
+											
+					</p:inputText>
+						
+		           <p:watermark value="Crea tu contraseña*" for="passTemp"/> 
+	 		</div>
+	 		 	 <div class="alerta"></div>
+	 </h:panelGroup>	
+	 <h:panelGroup rendered="#{addNaturalPerson.pide_contrasena_segura}"> 	
+	 
+	  	<div class="mostrar">
 	   <span class="mostrarCon" onclick="passToText(this)">Mostrar</span>
 	     <i class="fa fa-lock"></i>	
 	
 	   
-	   <p:inputText id              = "passTemp" 
+	  		 <p:inputText id              = "pass" 
 							 value           = "#{addNaturalPerson.password}" 
-							 onfocus      = "onFocus(this);" 
-							 onblur="return minMaxCaracter(this);"
-							 styleClass      = "elementStl  validatorClass passCode keyEnter"  
+							 onfocus         = "inicializaValores()"  
+						
+								
+							 styleClass      = "elementStl   validatePass pass validatorClass passCode  keyEnter"  
 							 type            = "password" 
 							 required        = "true" 
 							 requiredMessage = "Favor de introducir tu contraseña">
 												
 					<p:ajax event = "blur" />										
 				</p:inputText>
+					   
+	 
 				
 				<p:inputText 
 					 value           = "#{addNaturalPerson.password}" 
-					 onfocus      = "onFocus(this);" 
-				     onblur="return minMaxCaracter(this);"
-					 styleClass      = "elementStl  validatorClass  textCode"  
+					 onfocus         = "inicializaValores()"  
+						
+					 styleClass      = "elementStl  validatePass pass validatorClass  textCode"  
 					 type            = "text" 
 					 required        = "true" 
 					 requiredMessage = "Favor de introducir tu contraseña">
@@ -146,11 +186,47 @@
 					<p:ajax event="blur" />
 										
 				</p:inputText>
+				
+			
 					
-	         <p:watermark value="Crea tu contraseña*" for="passTemp"/> 
+	         <p:watermark value="Crea tu contraseña*" for="pass"/> 
 	         
 	</div>
- 	 <div class="alerta"></div>
+	 <ul class="ayuda_contrasena_mobile">
+	
+					<li id="passTitle2"  ><b>Tu contraseña debe contener:</b></li>
+					
+					<li id="valLength2" class="item_a" ><i class="fa fa-circle"></i>Al menos 8 caracteres.</li>
+					<!-- 
+					<li id="valVoc2" class="item_a" ><i class="fa fa-circle"></i>Al menos una vocal.</li>
+					<li id="valCnsnt2" class="item_a" ><i class="fa fa-circle"></i>Al menos una consonante.</li>
+					<li id="valNum2" class="item_a" ><i class="fa fa-circle"></i>Al menos un número</li>
+					 -->
+					<li id="passTitle3" ><b>Tu contraseña NO debe contener:</b></li>
+				
+					<li id="valUsr2"  class="item_b" ><i class="fa fa-times"></i>Tu nombre de usuario del correo electrónico</li>
+					<li id="valInst2"  class="item_b"><i class="fa fa-times"></i>El nombre de la institución</li>
+					<li id="valCharCon2"  class="item_b"><i class="fa fa-times"></i>Caracteres consecutivos</li>
+					<li id="valNumCon2"  class="item_b" ><i class="fa fa-times"></i>Números consecutivos</li>
+					<li id="valRepChar2"  class="item_b" ><i class="fa fa-times"></i>Un caracter repetido más de 2 veces consecutivas</li>
+					<li id="valMaxLength2"  class="item_b"><i class="fa fa-times"></i>Más de 12 caracteres</li>
+			</ul>
+
+
+
+
+
+ 	<aside class="contrasena_segura"> 
+                           			Tu contraseña es válida
+                           		 <span>	pero hay error al confirmarla</span>
+                           	</aside>    
+                           	
+                           	<aside class="contrasena_novalida"> 
+                           		Tu contraseña aún no es válida
+                           	</aside> 
+	 </h:panelGroup> 
+
+
    </li>
 </ul>
 <div class="formulario tipo_1 estadisticos">

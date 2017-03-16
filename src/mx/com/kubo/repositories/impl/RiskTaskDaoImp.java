@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -66,6 +67,16 @@ public class RiskTaskDaoImp implements RiskTaskDao, Serializable {
 							.setParameter(1, bursolnum)
 							.setParameter(2, task_id)
 							.getSingleResult();
+			
+		}catch( NonUniqueResultException nu ){
+			
+			List<RiskTask> lst = em.createQuery("from RiskTask where mx_solicitud_buro = ? and task_id = ? ", RiskTask.class)
+					.setParameter(1, bursolnum)
+					.setParameter(2, task_id)
+					.getResultList();
+			
+			
+			return  lst.get(0);
 			
 		}catch(NoResultException e){
 			

@@ -7704,7 +7704,11 @@ text-align:left;
 	cursor:pointer;
 	border: solid 2px #fff;
 }
-
+.contrasenaHubspot {
+	max-width:550px;
+	margin:0 auto;
+	background:#fff;
+}
 .contrasenaHubspot .empezarRegistro {
 
 	width: auto;
@@ -8174,11 +8178,9 @@ text-align:left;
 }
 @media (max-width:550px) {  
 	.contrasenaHubspot {
-		width:90%;
-		left:5% !important;	
-	
+		/* width:90%; */
+		/* left:5% !important; */
 	}
-
 	.contrasenaHubspot .empezarRegistro {
 		padding:30px 20px;	
 	}

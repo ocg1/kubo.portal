@@ -79,6 +79,11 @@ $(document).ready(function() {
 			    return false;  
 			  }
 		});
+		
+		if(!$("#name").length){
+			$("#valName").remove();
+			$("#valName2").remove();
+		}
 });
 
 
@@ -281,6 +286,7 @@ function inicializaValores(){
 			validaPassColor();
 			event.preventDefault();
 			textopass();
+			if( $("#confpass").length){
 			if( $("#confpass").val().length>0 ) {
 				if($("#pass").val() != $("#confpass").val() ) {
 					$("#confpass").addClass('requiredClass');
@@ -291,6 +297,7 @@ function inicializaValores(){
 					$("#confpass").removeClass('requiredClass');
 				}
 			
+			}
 			}
 		
 	});
@@ -314,11 +321,14 @@ function despliegaPass (){
 		 textopass ();
 	
 	});
-	$("#name").blur(function(event){
-		validaPassColor();
-		
-		 textopass ();
-	});
+	if($("#name").length){
+		$("#name").blur(function(event){
+			validaPassColor();
+			
+			 textopass ();
+		});
+	}
+	
 $("#pass").each(function() {
 	$(this).focus(function(event){
 		 if ($(this).val().length==0 ) { 
@@ -406,6 +416,7 @@ function textopass (){
 		if($("#pass").val().length >0) {
 			
    			$("#pass").addClass("requiredClass");
+   			$("#pass").addClass("vacio");
    			$(".pass_code").addClass("requiredClass");
    			$(".text_code").addClass("requiredClass");
    			$(".contrasena_novalida").show();
@@ -599,7 +610,7 @@ function validaPassColor(){
 			$("#valUsr2").hide();
 		}
 	}
-	
+	if($("#name").length){
 	if(name.length>0){
 		if((pass.toUpperCase()).indexOf(name.toUpperCase())!=(-1)){
 			$("#valName").removeClass("descVal");
@@ -617,6 +628,7 @@ function validaPassColor(){
 			/*contraseña v-mobile */
 			$("#valName2").hide();
 		}
+	}
 	}
 	/*if((name.toUpperCase()).indexOf(pass.toUpperCase())!=(-1)){
 		$("#valName").removeClass("descVal");
@@ -923,14 +935,15 @@ function validaPass(){
 			return false;
 		}
 	}
-	
-	if((pass.toUpperCase()).indexOf(name.toUpperCase())!=(-1)){
-		 console.log("La contraseña no debe contener tu nombre");
-		return false;
-	}
-	if((name.toUpperCase()).indexOf(pass.toUpperCase())!=(-1)){
-		 console.log("La contraseña no debe contener tu nombre");
-		return false;
+	if($("#name").length){
+		if((pass.toUpperCase()).indexOf(name.toUpperCase())!=(-1)){
+			 console.log("La contraseña no debe contener tu nombre");
+			return false;
+		}
+		if((name.toUpperCase()).indexOf(pass.toUpperCase())!=(-1)){
+			 console.log("La contraseña no debe contener tu nombre");
+			return false;
+		}
 	}
 	if((pass.toUpperCase()).indexOf(inst1.toUpperCase())!=(-1)){
 		 console.log("La contraseña no debe contener el nombre de la institución");

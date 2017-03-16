@@ -13,7 +13,8 @@
 	     <p:inputText id = "second_name" immediate = "true"
 	     			  value   = "#{basicData.naturalPerson.middle_name}"
 					  onfocus = "DatosPersonales.init_focus_date(1);" 					  
-					  styleClass = "elementStl hs hs_class">
+					  styleClass = "elementStl hs hs_class"
+					  onblur=" mixPanel ('segundoNombre')">
 
 				<p:ajax event = "blur"
 						oncomplete = "DatosPersonales.middle_name_on_complete(xhr, status, args);"  

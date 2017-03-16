@@ -15,5 +15,6 @@ public interface MovementNotificationService {
 	public MovementNotification getMaxMovementNotification();
 	public List<SafiDepositoRefere> getMovementToSafiByFolioCarga( BigInteger folioCarga );
 	public List<SafiDepositoRefere> getMovementToSafiByFecha( Date fecha_de_origen );
+	public void insertaMovementToSafi( String tipoOper );
 	
 }

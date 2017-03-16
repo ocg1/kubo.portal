@@ -48,6 +48,10 @@ console.log("entra");
 						  alerta ("La contraseña debe tener un mínimo de 4 y un máximo de 20 caracteres.", "#passTemp");
 					  }
 				  }
+				  if( $("#pass").hasClass("requiredClass") ) {
+					  $("#pass").removeClass("lleno");
+					  $("#pass").addClass("vacio");
+				  }
 					console.log("con requered");
 				  return false;
 			}else {

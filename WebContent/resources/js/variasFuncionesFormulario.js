@@ -802,7 +802,9 @@ function pixel (){
 		if(inputAdv.indexOf("optimus") != (-1)){
 			facebook_events ('TAG' )
 		}
-		
+		if(valuePartner == "MDV"){
+		 $("#MDV").attr("src", "http://scomm.rurl.me/api/pixel/?cvt=lead&cvn=Qualified_Lead&cva=200.00&cid=");
+		}
 	}else{
     	console.log("no entra dentro del rango del score A1 - E5");
     	 /*$("#frmMoreInfo .field").hide();

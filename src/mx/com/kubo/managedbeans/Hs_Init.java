@@ -72,6 +72,8 @@ public class Hs_Init implements Serializable {
 	@ManagedProperty("#{timeLogServiceImp}")
 	protected TimeLogService timelogservice;
 	
+	
+	private final int PEDIR_CONTRASENA_SEGURA = 101;
 	private String nombre;
 	private String email;
 	private String pass;
@@ -79,6 +81,8 @@ public class Hs_Init implements Serializable {
 	private String message = "";
 	private String url_str = ""; 
 	private int status_hs = 0;
+	
+	private boolean pide_contrasena_segura;
 	
 	private String ipAddressClient;
 	
@@ -92,6 +96,18 @@ public class Hs_Init implements Serializable {
 		HttpServletRequest http_request = (HttpServletRequest) external.getRequest();
 		
 		ipAddressClient  = http_request.getHeader("X-FORWARDED-FOR");
+		
+		SystemParamPK system_param_PK = new SystemParamPK();
+		
+		system_param_PK.setCompany_id( 1 );
+		system_param_PK.setSystem_param_id(PEDIR_CONTRASENA_SEGURA);
+		
+		SystemParam system_param = systemparamservice.loadSelectedSystemParam(system_param_PK);
+						
+		if(system_param != null && system_param.getValue() != null )
+		{		
+			setPide_contrasena_segura(system_param.getValue().equals("S"));	
+		}
 		
 		if(ipAddressClient == null)
 		{
@@ -957,6 +973,14 @@ private String getClientTypeFromHS( String json_str ){
 
 		public void setSystemparamservice(SystemParamService systemparamservice) {
 			this.systemparamservice = systemparamservice;
+		}
+
+		public boolean isPide_contrasena_segura() {
+			return pide_contrasena_segura;
+		}
+
+		public void setPide_contrasena_segura(boolean pide_contrasena_segura) {
+			this.pide_contrasena_segura = pide_contrasena_segura;
 		}
 	
 }

@@ -21,4 +21,6 @@ public interface MovementNotificationDao {
 	
 	public List<SafiDepositoRefere> getMovementToSafiByFecha( Date fecha_de_origen );
 	
+	public void insertaMovementToSafi( String tipoOper );
+	
 }

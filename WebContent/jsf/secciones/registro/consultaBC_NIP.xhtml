@@ -1,0 +1,209 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<style>
+		
+		.stlPassBCNIP,#general input[type="password"]{
+			margin-left: 4px !important; 
+			width: 85% !important;
+		}
+		
+		ul.stlSetPassBCNIP {
+			  list-style-type: none;
+			}
+			
+		span.clsAgreeBCNIP_Label{
+		
+			font-weight: bold !important;
+			font-size: 1.6em;
+		
+		}
+			
+		.empezarRegistro > p{
+			
+				font-weight: bold !important;
+			
+			}
+			
+		.loaderWait{
+			display:none;
+		}
+		
+		#dvContAgreeBCNIP{
+			padding-bottom: 20px !important;
+			padding-top: 0px !important;
+			overflow: auto;
+			height: auto;
+		}
+		
+	</style>
+
+	<h:form id="frmHistCredNIP" prependId="false">
+
+		<div class="section historial" onclick="tab_section(this);">
+			Historial crediticio <i class="fa fa-chevron-down"></i>
+		</div>
+
+
+
+		<section class="historial_crediticio">
+
+			<div id="general">
+
+				<div class="backStyle"
+					style="padding-top: 0px !important; margin-top: 0px !important;">
+
+					<div id="contFrmPre"
+						style="padding-top: 0px !important; margin-top: 0px !important;">
+
+						<div class="aviso-type-1">
+
+							<h3>¡Recuerda!</h3>
+
+							<h4>Estamos supervisados por</h4>
+
+							<div class="aviso-logo">
+
+								<ul>
+									<li class="cnbv-logo"></li>
+
+									<li class="condusef-logo"></li>
+
+								</ul>
+
+							</div>
+
+						</div>
+
+						<div class="dvContent">
+
+							<div class="autenticador_buro">
+
+								<p>Por este conducto autorizo expresamente a
+									#{msg.razon_social_kubo_sofipo}, para que por conducto de sus
+									funcionarios facultados lleve a cabo Investigaciones, sobre mi
+									comportamiento Crediticio en las Sociedades de Información
+									Crediticia que estime conveniente.</p>
+								<p>Así mismo, declaro que conozco la naturaleza y alcance de
+									la información que se solicitará, del uso que
+									#{msg.razon_social_kubo_sofipo} hará de tal información y de
+									que ésta podrá realizar consultas periódicas de mi historial
+									crediticio, consintiendo que esta autorización se encuentre
+									vigente por un período de 3 años contados a partir de la fecha
+									de su expedición y en todo caso durante el tiempo que
+									mantengamos relación jurídica.</p>
+
+								<!-- <div id="dvSi_autorizoPass" class="callAction btnNaranja"
+									style="display: block;">Sí autorizo</div> -->
+									
+									<div id="dvContAgreeBCNIP" >
+									
+										<ul class="stlSetPassBCNIP" >
+											<li>
+											
+										     <label class="check-label inline--check ">
+										     	
+							                    <div class="input-checkbox-simple  small-check js-chexbox fa">
+							                        <input type="checkbox" id="agreeBCNIP"  name="agreeBCNIP" onclick="mixPanel_checksNuevos(this, '#agreeBCNIP', 'AceptaConsulta');"  />
+							                    </div>
+							                    
+							                    <span class="clsAgreeBCNIP_Label" >Sí Acepto</span>
+							                </label>
+						              	  </li>
+						              	  
+						              
+						              </ul>
+									
+									</div>
+
+								<!-- ******** PASS ******** -->
+
+								<div id="dvPassIDProv" class="pass-renovaciones">
+<!-- 
+									<i class="fa fa-times closePop" onclick="cerrarAlertPass();"></i>
+ -->
+									<div class="empezarRegistro">
+
+										<p>Para autorizar, ingresar nuevamente su contraseña:</p>
+
+										<ul class="stlSetPassBCNIP" >
+
+											<li >
+
+												<div class="mostrar">
+
+													<i class="fa fa-lock"></i>
+
+													<h:inputSecret immediate="true"
+														styleClass="elementAddres1 stlPassBCNIP"  >
+
+														<p:ajax event="blur"
+															oncomplete="ConsultaRenovacion.password_oncomplete(xhr, status, args);"
+															listener="#{consultaRenovacion.init_password}" />
+
+													</h:inputSecret>
+
+												</div>
+
+											</li>
+
+										</ul>
+
+										<div id="dvNext_autorizoPass" class="callAction btnNaranja">Continuar</div>
+
+									</div>
+
+								</div>
+
+								<!-- ****** FIN PASS ****** -->
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+
+
+	<script>
+	
+		$("#dvSi_autorizoPass").click( function(){
+			
+			$("#dvSi_autorizoPass").fadeOut("slow",function(){ $("#dvPassIDProv").fadeIn("slow"); }) ;
+			
+		} );
+		
+		$("#dvNext_autorizoPass").click( function(){ 
+			
+			$(".historial_crediticio").fadeOut("slow");
+			$(".historial").fadeOut("slow");
+			$(".stlCloseConsulBCNIP").fadeOut("slow");
+			$(".seccion").fadeOut( "slow",function(){ 
+				
+				$.scrollTo('#header', 800, { axis:'y' } );
+				
+				setTimeout( function(){ $(".loaderWait").fadeIn();} , 800);
+				
+			} );
+			
+		} );
+	
+	
+	
+	</script>
+	
+	<div class="loaderWait" >  
+		<ui:include src = "pre_aprobacion/procesando.xhtml"/>
+	</div>
+
+
+	</h:form>
+
+</ui:composition>

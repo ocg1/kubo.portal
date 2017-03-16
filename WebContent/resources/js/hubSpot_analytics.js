@@ -1088,8 +1088,8 @@ function gaVirtualPages (page){
 		mixPanelValue (pixelMix, label, value);
 
 	}
-	function mixPanel_actualizaNombre (pixelMix){
- 		
+	
+	function mixPanel_actualizaNombre (pixelMix){	
  		actualizarNombre();
  		mixPanel (pixelMix);
  	}

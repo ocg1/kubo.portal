@@ -54,4 +54,8 @@ public class MovementNotificationServiceImp implements MovementNotificationServi
 		return movementnotificationdao.getMovementToSafiByFecha( fecha_de_origen );
 	}
 	
+	public void insertaMovementToSafi( String tipoOper ){
+		movementnotificationdao.insertaMovementToSafi(  tipoOper );
+	}
+	
 }

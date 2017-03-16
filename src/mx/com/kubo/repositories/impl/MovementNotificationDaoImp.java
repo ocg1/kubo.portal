@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import mx.com.kubo.model.MovementNotification;
 import mx.com.kubo.model.SafiDepositoRefere;
+import mx.com.kubo.model.ViewDepositInfo;
 import mx.com.kubo.repositories.MovementNotificationDao;
 
 import org.springframework.stereotype.Repository;
@@ -149,6 +150,31 @@ public class MovementNotificationDaoImp implements MovementNotificationDao , Ser
 			return null;
 			
 		}
+		
+	}
+	
+	public void insertaMovementToSafi( String tipoOper ){
+		
+		try
+		{			
+//			String query = "select v.* from view_deposit_info v , pr_movement_notification m where m.folioCargaID = v.ClaveRastreo and m.status_notification = 0 and m.tipoMov = 'D' ;";
+//			
+//			return ( List< ViewDepositInfo > ) em.createNativeQuery(query,ViewDepositInfo.class).getResultList();
+		
+			List< ViewDepositInfo > l = ( List< ViewDepositInfo > ) em.createNamedQuery("collectorViewDepositInfo",ViewDepositInfo.class)
+					.setParameter("par_INSERTA", "S")
+					.setParameter("par_TIPONOTIFICA", "C")
+					.setParameter("par_TipoOperacion", tipoOper)
+					.setParameter("par_TipoConsulta", 0)
+					.setParameter("par_Fecha", "1900-01-01")
+					.getResultList();
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+			
+		}		
 		
 	}
 

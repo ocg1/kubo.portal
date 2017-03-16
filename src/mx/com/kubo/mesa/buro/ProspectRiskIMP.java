@@ -15,11 +15,11 @@ implements ProspectRiskIMO
 			locator = new WsSgbRiskServiceLocator();
 			service = locator.getWsSgbRisk();
 														
-			String testConnection = service.testConnection(); 
+			//String testConnection = service.testConnection(); 
 			
 			prospect_bc_risk_response = service.getProspectBCRisk( request );
 
-			String status = prospect_bc_risk_response.getStatus();
+			//String status = prospect_bc_risk_response.getStatus();
 			
 			if( prospect_bc_risk_response != null )
 			{

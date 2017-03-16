@@ -523,6 +523,8 @@ implements SummaryRequestIMO,  Serializable
 		context   = faces.getELContext();
 		resolver  = faces.getApplication().getELResolver();	
 		
+		risktask1 = false;
+		
 		if(actualProyect != null && actualProyect.getSignature_date() != null)
 		{ 			
 			fm1 =  new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
@@ -801,6 +803,11 @@ implements SummaryRequestIMO,  Serializable
 		if( persona.getProspectus().getArea().toString().equals("L") )
 		{
 			inicializa_prospectus_comment();
+		}
+		
+		if( persona.getProspectus().getArea().toString().equals("L") && actualProyect != null )
+		{
+			
 			initRiskTask();
 		}
 		
@@ -3378,6 +3385,8 @@ membershipTemp = new Membership();
 
 		System.out.println( "Revisa Tareas" );
 		
+		risktask1 = false;
+		
 		ProyectLoan proyectloan = service_proyect_loan.getMaxProyectLoanByProspect(actualProyect.getProyectloanPk().getProspectus_id(),actualProyect.getProyectloanPk().getCompany_id());
 		
 		RiskTask risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(proyectloan.getMx_solicitud_buro(), 1);
@@ -3402,60 +3411,65 @@ membershipTemp = new Membership();
 	private void getTareas(){
 		try{
 			
-			String r_data = actualProyect.getR_data();
+			if( actualProyect != null ){
+				
 			
-			int TAREA1 = 1;
-			int TAREA2 = 2;
-			
-			if( r_data != null ){
-			
-				if( r_data.indexOf("TAREAS") != (-1) ){
-					
-					String taresStr = "";
-					
-					taresStr = r_data.substring(r_data.indexOf("TAREAS"));
-					
-					taresStr = taresStr.substring( taresStr.indexOf("[")+1 , taresStr.indexOf("]") );
-					
-					if( taresStr.indexOf(" ") != (-1) ){
-						taresStr = taresStr.replaceAll(" ","");
-					}
-					
-					taresStr = taresStr.trim();
-					
-					RiskTask risktask = new RiskTask();
-					
-					risktask.setCompany_id( actualProyect.getProyectloanPk().getCompany_id());
-					risktask.setMx_solicitud_buro( actualProyect.getMx_solicitud_buro());
-					risktask.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
-					risktask.setTask_id(TAREA1);
-					risktask.setTask_value((taresStr.split(",")[0]).trim());
-					
-					risktaskservice.saveRiskTask(risktask);
-					
-					risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(actualProyect.getMx_solicitud_buro(), TAREA1);
-
-					if( !risktask.getTask().getIs_enabled().equals("0") ){
-					
-						risktask1 = ( risktask.getTask_value().equals("0") );
+				String r_data = actualProyect.getR_data();
+				
+				int TAREA1 = 1;
+				int TAREA2 = 2;
+				
+				if( r_data != null ){
+				
+					if( r_data.indexOf("TAREAS") != (-1) ){
 						
-					}else{
-						risktask1 = true;//siempre se piden los documentos
+						String taresStr = "";
+						
+						taresStr = r_data.substring(r_data.indexOf("TAREAS"));
+						
+						taresStr = taresStr.substring( taresStr.indexOf("[")+1 , taresStr.indexOf("]") );
+						
+						if( taresStr.indexOf(" ") != (-1) ){
+							taresStr = taresStr.replaceAll(" ","");
+						}
+						
+						taresStr = taresStr.trim();
+						
+						RiskTask risktask = new RiskTask();
+						
+						risktask.setCompany_id( actualProyect.getProyectloanPk().getCompany_id());
+						risktask.setMx_solicitud_buro( actualProyect.getMx_solicitud_buro());
+						risktask.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+						risktask.setTask_id(TAREA1);
+						risktask.setTask_value((taresStr.split(",")[0]).trim());
+						
+						risktaskservice.saveRiskTask(risktask);
+						
+						risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(actualProyect.getMx_solicitud_buro(), TAREA1);
+	
+						if( !risktask.getTask().getIs_enabled().equals("0") ){
+						
+							risktask1 = ( risktask.getTask_value().equals("1") );
+							
+						}else{
+							risktask1 = false;//siempre se piden los documentos
+						}
+						
+						
+						risktask = new RiskTask();
+						
+						risktask.setCompany_id( actualProyect.getProyectloanPk().getCompany_id());
+						risktask.setMx_solicitud_buro( actualProyect.getMx_solicitud_buro());
+						risktask.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+						risktask.setTask_id(TAREA2);
+						risktask.setTask_value((taresStr.split(",")[1]).trim());
+						
+						risktaskservice.saveRiskTask(risktask);
+						
 					}
-					
-					
-					risktask = new RiskTask();
-					
-					risktask.setCompany_id( actualProyect.getProyectloanPk().getCompany_id());
-					risktask.setMx_solicitud_buro( actualProyect.getMx_solicitud_buro());
-					risktask.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
-					risktask.setTask_id(TAREA2);
-					risktask.setTask_value((taresStr.split(",")[1]).trim());
-					
-					risktaskservice.saveRiskTask(risktask);
-					
+				
 				}
-			
+				
 			}
 			
 		}catch(Exception e){
