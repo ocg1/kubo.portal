@@ -21,6 +21,16 @@
 					oncomplete = "regresaValidaDoc( xhr, status, args )" />
 		</h:commandLink>		
 		
-		<p:remoteCommand name = "refreshPanelView" actionListener = "#{editor_documentos.gestor.init}" update = "panel-file-view"/>	
+		<p:remoteCommand name = "refreshPanelView" actionListener = "#{editor_documentos.gestor.init}" update = "panel-file-view"/>
+												
+		<h:panelGroup rendered = "#{editor_documentos.gestor.file_type_ENABLED}">
+			<script type = "text/javascript">
+				$(document).ready(function()
+				{									
+					Documentacion.toggle_section_file();
+					Documentacion.init_file_type_id('#{editor_documentos.gestor.file_type_id}');										
+				});	
+			</script>
+		</h:panelGroup>	
 	</div>			
 </ui:composition>				

@@ -24,7 +24,6 @@ import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Reca;
-import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMO;

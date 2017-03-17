@@ -16,6 +16,7 @@ public interface ParameterReaderIMO
 	
 	Integer getProyect_loan_id();
 	Integer getProyect_id(); 
+	Integer getFile_type_id();
 
 	String getPhone_id();
 	String getPage_title();

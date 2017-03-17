@@ -29,6 +29,13 @@ $(window).resize(function()
 	resizeId2 = setTimeout(alertasCentrarH, 100);
 });
 
+Documentacion.init_file_type_id = function(file_type_id)
+{
+	console.log("Documentacion.init_file_type_id(): " + file_type_id);
+	
+	$("div#editor-file-type-id").find("select").val(file_type_id).trigger("change");
+};
+
 Documentacion.file_type_on_complete = function(xhr, status, args)
 {
 	var file_type_id = args.file_type_id;
@@ -77,6 +84,8 @@ Documentacion.toggle_section_file = function()
 
 Documentacion.init_file_upload = function()
 {
+	console.log("Documentacion.init_file_upload(): OK");
+	
 	$("div#init-file-upload").find("label.ui-button").click();	
 };
 
@@ -163,86 +172,3 @@ Documentacion.show_cropper = function(xhr, status, args)
 
 	});
 };
-
-/*
-
-function muestraValidFile( str_in )
-{	
-	$("#inp_ValAutorizaDoc").val( str_in );	
-	$(".botones_lightbox").show();	
-	$(".botones_lightbox_message p").empty();	
-	$(".botones_lightbox_message").hide();	
-	$(".dvValidaArchivo > p  ").show();	
-	$(".veloE").fadeIn();
-	$(".dvValidaArchivo").addClass("show");	
-}
-
-function cerrar_modal_validaDoc()
-{
-	$(".veloE").fadeOut();
-	$(".dvValidaArchivo").removeClass("show");	
-}
-
- 
- function autoriza_documento()
-{	
-	$(".botones_lightbox").fadeOut(500,function()
-	{	
-		$(".botones_lightbox_wait").fadeIn(500,function()
-		{			
-			var str_in = $("#inp_ValAutorizaDoc").val();				
-			str_in += "::S"
-					
-			$("#inp_ValAutorizaDoc").val( str_in );					
-			$("#inp_ValAutorizaDoc").blur();					
-			$(".clsAutorizaDoc").trigger("click");
-		});
-	});
-}
-
-function rechaza_documento()
-{	
-	$(".botones_lightbox").fadeOut(500,function()
-	{		
-		$(".botones_lightbox_wait").fadeIn(500,function()
-		{
-			var str_in = $("#inp_ValAutorizaDoc").val();
-					
-			str_in += "::N"
-					
-			$("#inp_ValAutorizaDoc").val( str_in );					
-			$("#inp_ValAutorizaDoc").blur();					
-			$(".clsAutorizaDoc").trigger("click");				
-		});		
-	});	
-}
-
-var flgValidaDoc = true;
-var str_message = "" ;
-
-function regresaValidaDoc( xhr, status, args )
-{			
-	$(".dvValidaArchivo").addClass("show");		
-	$(".dvValidaArchivo > p  ").hide();		
-	$(".botones_lightbox").hide();					
-	$(".botones_lightbox_message").show();
-	
-	if(flgValidaDoc)
-	{	
-		flgValidaDoc = false;
-		
-		str_message = args.mensage_txt;
-		
-		$(".botones_lightbox_message p").html( args.mensage_txt );
-		
-		$(".botones_lightbox_wait").hide();
-		
-	} else {
-		
-		flgValidaDoc = true;
-		
-		$(".botones_lightbox_message p").html( str_message );
-	}	
-}
-
-*/

@@ -19,6 +19,7 @@ public interface DocumentacionIMO
 	void setPersona(NaturalPerson persona);
 	void setProyect_loan(ProyectLoan proyect_loan);
 	void setSesion(SessionBean sesion);
+	void setFile_type_id(Integer file_type_id);
 	
 	void init();
 	void init_file_type_id(AjaxBehaviorEvent event);

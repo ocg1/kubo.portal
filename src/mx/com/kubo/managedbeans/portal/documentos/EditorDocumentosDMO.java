@@ -54,6 +54,7 @@ public abstract class EditorDocumentosDMO
 	protected Integer prospectus_id_viewed;
 	protected Integer proyect_loan_id;
 	protected Integer role_id;
+	protected Integer file_type_id;
 	
 	protected boolean autorizar_contratos_ENABLED = true;
 	protected boolean editar_file_ENABLED = true;

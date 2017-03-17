@@ -19,7 +19,8 @@ public abstract class ParameterReaderAMO extends ParameterReaderDMO
 		phone_id     = parameter.get("phone_id");
 		proyect_loan = parameter.get("proyect_loan_id");
 		proyect      = parameter.get("proyect_id");
-		credit_id    = parameter.get("credit_id");			
+		credit_id    = parameter.get("credit_id");	
+		file_type    = parameter.get("file_type_id");
 	
 		if(company != null)
 		{
@@ -39,6 +40,11 @@ public abstract class ParameterReaderAMO extends ParameterReaderDMO
 		if(proyect_loan != null)
 		{
 			proyect_loan_id = Integer.parseInt(proyect_loan);
+		}	
+		
+		if(file_type != null)
+		{
+			file_type_id = Integer.parseInt(file_type);
 		}	
 	}
 

@@ -147,7 +147,8 @@ implements DocumentacionIMO
 	protected boolean flagInsert;
 	protected boolean inversionista_ENABLED;
 	protected boolean reca_ENABLED;
-	protected boolean logo_ENABLED;	
+	protected boolean logo_ENABLED;
+	protected boolean file_type_ENABLED;
 	
 	protected DocumentacionDMO()
 	{
@@ -202,6 +203,18 @@ implements DocumentacionIMO
 			
 			proyecto = proyect_loan.getProyect();														
 		} 
+	}
+	
+	public void setFile_type_id(Integer file_type_id)
+	{
+		this.file_type_id = file_type_id;
+		
+		file_type_ENABLED = true;
+	}
+	
+	public final boolean isFile_type_ENABLED() 
+	{
+		return file_type_ENABLED;
 	}
 	
 	public final boolean isReca_ENABLED() 

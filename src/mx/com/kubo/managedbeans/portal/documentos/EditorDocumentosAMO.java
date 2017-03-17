@@ -20,7 +20,7 @@ public abstract class EditorDocumentosAMO extends EditorDocumentosDMO
 		{		
 		    	sesion = reader.getSesion();
 		    page_title = reader.getPage_title();
-				
+		    file_type_id    = reader.getFile_type_id();	
 			proyect_loan_id = reader.getProyect_loan_id();
 			   			
 			auditor = new AccessIMP();
@@ -53,6 +53,12 @@ public abstract class EditorDocumentosAMO extends EditorDocumentosDMO
 			gestor.setSesion(sesion);
 			gestor.setProyect_loan (proyect_loan);		
 			gestor.setPersona(cliente.getPerson());
+			
+			if(file_type_id != null)
+			{
+				gestor.setFile_type_id(file_type_id);
+			}
+			
 			gestor.init();
 		}
 	}

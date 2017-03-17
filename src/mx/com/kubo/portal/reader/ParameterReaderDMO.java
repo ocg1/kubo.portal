@@ -51,6 +51,7 @@ implements ParameterReaderIMO
 	protected String access_client_IP;
 	protected String page_title;
 	protected String last_login;
+	protected String file_type;
 	
 	protected String credit_id;
 	protected String access_from;
@@ -62,6 +63,7 @@ implements ParameterReaderIMO
 	protected Integer prospectus_id_viewed;
 	protected Integer proyect_loan_id;
 	protected Integer proyect_id;
+	protected Integer file_type_id;
 	
 	protected boolean access_OK;
 	protected boolean sesion_ENABLED;
@@ -128,6 +130,11 @@ implements ParameterReaderIMO
 	public final Integer getProyect_id() 
 	{
 		return proyect_id;
+	}
+	
+	public final Integer getFile_type_id() 
+	{
+		return file_type_id;
 	}
 	
 	public String getCredit_id()

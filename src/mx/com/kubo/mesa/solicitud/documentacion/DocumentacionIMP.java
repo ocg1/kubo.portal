@@ -50,6 +50,8 @@ implements DocumentacionIMO
 		
 		logo_ENABLED = file_type_id == -1 || file_type_id == -2 || file_type_id == -3;
 		
+		file_type_ENABLED = false;
+		
 		init_size_limit();
 				
 		request.addCallbackParam("file_type_id", file_type_id);
