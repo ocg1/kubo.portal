@@ -48,8 +48,16 @@ Resumen.proyect_purpose_oncomplete = function(xhr, status, args)
 	console.log("Resumen.proyect_purpose_oncomplete(): OK");
 };
 
-function showInvestors()
+Resumen.showInvestors = function(safi_credit_id, safi_mx_solicitud_id)
 {
+	var inversionistas = 'templates/perfil_completo/listaInversionistas/listaInversionistas.xhtml';
+	
+	var proyectloan = '?proyectLoan=' + safi_credit_id + '_' + safi_mx_solicitud_id;
+	
+	var href = inversionistas + proyectloan;
+	
+	console.log("Resumen.showInvestors(): " + proyectloan);
+	
 	$.fancybox(
 	{
 		'showCloseButton': false,
@@ -61,9 +69,9 @@ function showInvestors()
 		'modal': false,
 		'scrolling': 'auto',
 		'centerOnScroll': true,
-		'href': 'templates/perfil_completo/listaInversionistas/listaInversionistas.xhtml?proyectLoan=#{summaryRequest.actualProyect.safi_credit_id}_#{summaryRequest.actualProyect.safi_mx_solicitud_id}',
+		'href': href,
 		'overlayColor': '#333333',
 		'hideOnOverlayClick': true,
 		'enableEscapeButton': true
 	});
-}
+};

@@ -4,7 +4,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Set;
 
 import javax.el.ELContext;
 import javax.el.ELResolver;
@@ -16,7 +15,6 @@ import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.bean.ChangeBean;
-import mx.com.kubo.bean.DocumentationDMO;
 import mx.com.kubo.bean.EditImageSession;
 import mx.com.kubo.bean.FilesTypeCategoryBean;
 import mx.com.kubo.bean.ImagesBean;
@@ -31,6 +29,7 @@ import mx.com.kubo.model.FileType;
 import mx.com.kubo.model.FileTypePK;
 import mx.com.kubo.model.Files;
 import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.Proyect;
@@ -68,7 +67,8 @@ implements DocumentacionIMO
 	protected SessionBean   sesion;
 	protected NaturalPerson persona;
 	protected Prospectus    prospectus;
-	protected Membership	 membership;
+	protected Membership   membership;
+	protected MembershipPK membership_PK;
 	
 	protected ProyectLoan proyect_loan;
 	protected Proyect     proyecto;
@@ -77,7 +77,7 @@ implements DocumentacionIMO
 	protected SystemParamPK system_param_PK;
 	protected ChangeBean changedocument;
 	protected SelectItem        typeF;
-	protected DocumentationDMO docBean;
+//	protected DocumentationDMO docBean;
 	protected DocumentUpload documentUpload;
 	protected EditImageSession editImg;
 	
@@ -90,6 +90,8 @@ implements DocumentacionIMO
 	protected FileType   filetype;
 	protected File       fileLogo;
 	
+	protected FileTypeIMO types;
+	
 	protected ImagesBean imageLogo1;
 	protected ImagesBean imageLogo2;
 	protected ImagesBean imageLogo3;
@@ -98,28 +100,29 @@ implements DocumentacionIMO
 	protected List <SelectItem>  ListaF;
 	protected List <SelectItem> lisDefaultItem;
 	
-	protected List <Files> lista_files;
+	protected List <Files> files;
 	protected List <FileType>  lista_file_type;
 	protected List <FilesTypeCategoryBean>  listFiles;	
 	protected List <Reca> recaitems;
 	protected List <Change_control> lstTempChang;
 	
-	protected Set<String> claves;
+//	protected Set<String> claves;
 	
 	protected Hashtable<String, Integer> htWH;
 	protected Hashtable<String, List<SelectItem>> htCategFile;
-	protected Hashtable<String, List<DocumentationDMO>> ht_category_file;
+//	protected Hashtable<String, List<DocumentationDMO>> ht_category_file;
 	protected Hashtable<String,Integer> wh;
 	
 	protected SelectItem[] menuItems;
 	
 	protected SimpleDateFormat formatoDeFecha;
 	
+	protected String real_path;
 	protected String category_name;
 	protected String file_type_name;
 	protected String format;
 	protected String file_name;
-	protected String destination;
+	//protected String destination;
 	protected String valAutorizaDoc;
 	protected String size_limit_DEFAULT;
 	protected String size_limit_EXCEPTION;	
@@ -143,8 +146,7 @@ implements DocumentacionIMO
 	protected final int SIZE_LIMIT_EXCEPTION = 85;
 	protected final int EXCEPTION_LIST       = 86;
 	
-	protected boolean female;
-	protected boolean flagInsert;
+	protected boolean female;	
 	protected boolean inversionista_ENABLED;
 	protected boolean reca_ENABLED;
 	protected boolean logo_ENABLED;
@@ -210,6 +212,11 @@ implements DocumentacionIMO
 		this.file_type_id = file_type_id;
 		
 		file_type_ENABLED = true;
+	}
+	
+	public void setReal_path(String real_path)
+	{
+		this.real_path = real_path;
 	}
 	
 	public final boolean isFile_type_ENABLED() 

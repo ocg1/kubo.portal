@@ -48,6 +48,7 @@ public abstract class EditorDocumentosDMO
 	
 	protected String page_title;
 	protected String access_from;
+	protected String real_path;
 	
 	protected Integer company_id;
 	protected Integer prospectus_id;
@@ -56,8 +57,8 @@ public abstract class EditorDocumentosDMO
 	protected Integer role_id;
 	protected Integer file_type_id;
 	
-	protected boolean autorizar_contratos_ENABLED = true;
-	protected boolean editar_file_ENABLED = true;
+	protected boolean autorizar_contratos_ENABLED;
+	protected boolean editar_file_ENABLED;
 	
 	protected final int SCREEN_EDITAR_DOCUMENTOS = 71;
 	protected final int EDITAR_DOCUMENTOS   = 8;

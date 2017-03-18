@@ -43,6 +43,8 @@ public abstract class EditorDocumentosAMO extends EditorDocumentosDMO
 			
 			mesa = service_membership.getMembershipById(membership_PK);
 			
+			init_role_function();
+			
 			membership_PK = new MembershipPK(prospectus_id_viewed, company_id);
 			
 			cliente = service_membership.getMembershipById(membership_PK);
@@ -50,6 +52,7 @@ public abstract class EditorDocumentosAMO extends EditorDocumentosDMO
 			proyect_loan = service_proyect_loan.getProyectLoanByProyectLoanID(proyect_loan_id, prospectus_id_viewed, company_id);
 			
 			gestor = new DocumentacionIMP();
+			gestor.setReal_path(real_path);
 			gestor.setSesion(sesion);
 			gestor.setProyect_loan (proyect_loan);		
 			gestor.setPersona(cliente.getPerson());
@@ -57,6 +60,8 @@ public abstract class EditorDocumentosAMO extends EditorDocumentosDMO
 			if(file_type_id != null)
 			{
 				gestor.setFile_type_id(file_type_id);
+				
+				editar_file_ENABLED = false;
 			}
 			
 			gestor.init();

@@ -18,8 +18,9 @@ implements Serializable
 	{
 		faces = FacesContext.getCurrentInstance();
 		
+		real_path = faces.getExternalContext().getRealPath("//resources//");
+				
 		init_sesion();
-		init_gestor();
-		init_role_function();				
+		init_gestor();					
 	}
 }

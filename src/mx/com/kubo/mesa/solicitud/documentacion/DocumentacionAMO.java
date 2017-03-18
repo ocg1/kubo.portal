@@ -6,25 +6,25 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
 
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
-import javax.servlet.ServletContext;
 
 import mx.com.kubo.bean.ChangeBean;
 import mx.com.kubo.bean.DocumentationDMO;
 import mx.com.kubo.bean.FilesTypeCategoryBean;
 import mx.com.kubo.bean.ImagesBean;
+
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
+
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.FileType;
 import mx.com.kubo.model.Files;
 import mx.com.kubo.model.Membership;
-import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Reca;
 import mx.com.kubo.model.SystemParamPK;
+
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMO;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
@@ -59,13 +59,26 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 		}
 	}
 	
-	protected void init_membership(){
-		MembershipPK mpk = new MembershipPK(prospectus_id,company_id);
+	protected void init_list_files() 
+	{
+		files = service_file.getListFilesByProspectOrderByCategory(prospectus_id, company_id , proyect_loan_id);
 		
-		membership = service_membership.getMembershipById(mpk);
+		types = new FileTypeIMP();
+		types.setReal_path(real_path);
+		types.setFiles(files);
+		
+		if(file_type_ENABLED)
+		{
+			types.setFile_type_id(file_type_id);
+		}
+		
+		types.init();
+		
+		listFiles = types.getFile_type_list();
 	}
 	
-	protected void init_list_files() 
+/*	
+	protected void init_list_files_TEMP() 
 	{
 		lista_files = service_file.getListFilesByProspectOrderByCategory(prospectus_id, company_id , proyect_loan_id);
 		
@@ -121,6 +134,7 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 			 listFiles.add(fileCateg);
 		 }
 	}
+*/	
 
 	protected void init_change_control() 
 	{
@@ -182,9 +196,10 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 		for (FileType fileType : lista_file_type) 
 		{
 			category_id    = fileType.getFile_category_id();
-			category_name  = fileType.getFileCategory().getName();
-			int file_type_id   = fileType.getFileTypePk().getFile_type_id();
+			category_name  = fileType.getFileCategory().getName();			
 			file_type_name = fileType.getName();
+			
+			int file_type_id = fileType.getFileTypePk().getFile_type_id();
 			
 			if(category_id != 6 && category_id != 7)
 			{
@@ -192,7 +207,7 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 				 
 				 if(ListaF != null)
 				 {		
-					 flagInsert = false;
+					 boolean flagInsert = false;
 					 
 					 for(FilesTypeCategoryBean filecat :listFiles)
 					 {						
@@ -200,11 +215,11 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 						 {							 
 							 if(file_type_id == bean.getTypeFile())
 							 {
-								 typeF = new SelectItem(fileType.getFileTypePk().getFile_type_id(), fileType.getName()+" (Asignado)");
+								 typeF = new SelectItem(fileType.getFileTypePk().getFile_type_id(), file_type_name + " (Asignado)");								 
 								 
 								 ListaF.add(typeF);
 								 
-								 flagInsert = true;
+								 flagInsert = true;								 								 
 								 
 								 htCategFile.put(category_name, ListaF);
 								 
@@ -234,11 +249,11 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 							 {
 								 ListaF = new ArrayList<SelectItem>();
 								 
-								 typeF = new SelectItem(file_type_id, file_type_name + " (Asignado)");
+								 typeF = new SelectItem(file_type_id, file_type_name + " (Asignado)");								 
 								 
 								 ListaF.add(typeF);
 								 
-								 flagInsert = true;
+								 flagInsert = true;								 								 
 								 
 								 htCategFile.put(category_name, ListaF);
 								 
@@ -280,8 +295,11 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 	{
 		lisDefaultItem = new ArrayList<SelectItem>();
 		
-		htCategFile.put("Fotos del proyecto", lisImgProyect);									
-		htCategFile.put(" ", lisDefaultItem);
+		if(!file_type_ENABLED)
+		{
+			htCategFile.put("Fotos del proyecto", lisImgProyect);									
+			htCategFile.put(" ", lisDefaultItem);
+		}
 		
 		Set<String> claves = htCategFile.keySet();
 		
@@ -335,25 +353,27 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 		String dir_cap = "";
 		String dir_cred = "";
 		
-		
+/*		
 		ServletContext ctx = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 		
 		String path  = ctx.getRealPath("/");
 		
+		
 		destination = path+"/resources";
 				
 		System.out.println( " ** " + destination );
+*/		
 		
-		if( lista_files != null ){
+		if( files != null ){
 			
-			for( Files f : lista_files ){
+			for( Files f : files ){
 				
 				if( f.getFilesPk().getFile_type_id() != null && f.getFilesPk().getFile_type_id().intValue() == 84 ){
 					have_capt = true;
 					if(f.getApproved() != null && f.getApproved().equals("1")  ){
 						cont_medios = true;
 						dir_medios = f.getLocation();
-						lista_archivos_adjuntos.add(destination+"/"+dir_medios+"::Contrato_Medios_Electronicos.pdf");
+						lista_archivos_adjuntos.add(real_path+"/"+dir_medios+"::Contrato_Medios_Electronicos.pdf");
 					}
 				}
 				if( f.getFilesPk().getFile_type_id() != null && f.getFilesPk().getFile_type_id().intValue() == 85 ){
@@ -361,7 +381,7 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 					if(f.getApproved() != null && f.getApproved().equals("1")  ){
 						cont_garantias = true;
 						dir_garantias = f.getLocation();
-						lista_archivos_adjuntos.add(destination+"/"+dir_garantias+"::Contrato_Garantia_Irrevocable.pdf");
+						lista_archivos_adjuntos.add(real_path+"/"+dir_garantias+"::Contrato_Garantia_Irrevocable.pdf");
 						
 					}
 				}
@@ -370,7 +390,7 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 					if(f.getApproved() != null && f.getApproved().equals("1")  ){
 						cont_cap = true;
 						dir_cap = f.getLocation();
-						lista_archivos_adjuntos.add(destination+"/"+dir_cap+"::Contrato_Captacion.pdf");
+						lista_archivos_adjuntos.add(real_path+"/"+dir_cap+"::Contrato_Captacion.pdf");
 					}
 				}
 				if( f.getFilesPk().getFile_type_id() != null && f.getFilesPk().getFile_type_id().intValue() == 44 ){
@@ -378,7 +398,7 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 					if(f.getApproved() != null && f.getApproved().equals("1")  ){
 						cont_cred = true;
 						dir_cred = f.getLocation();
-						lista_archivos_adjuntos.add(destination+"/"+dir_cred+"::Contrato_Credito.pdf");
+						lista_archivos_adjuntos.add(real_path+"/"+dir_cred+"::Contrato_Credito.pdf");
 					}
 				}
 				
@@ -543,11 +563,11 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 	{
 		if(proyecto != null)
 		{				
-			fileLogo = new File(destination + "/" + proyecto.getLogo());
+			fileLogo = new File(real_path + "/" + proyecto.getLogo());
 			
 			if(fileLogo.exists())
 			{
-				htWH = ImageUtils.scaleImage(new File(destination + "/" + proyecto.getLogo()), 400, 305);
+				htWH = ImageUtils.scaleImage(new File(real_path + "/" + proyecto.getLogo()), 400, 305);
 				
 				imageLogo1 = new ImagesBean();
 				imageLogo1.setWidth (htWH != null ? (Integer) htWH.get("Width")  : 445);
@@ -572,11 +592,11 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 			
 			if(proyecto.getLogo2() != null)
 			{
-				fileLogo = new File(destination + "/" + proyecto.getLogo2());
+				fileLogo = new File(real_path + "/" + proyecto.getLogo2());
 				
 				if(fileLogo.exists())
 				{
-					htWH = ImageUtils.scaleImage(new File(destination + "/" + proyecto.getLogo2()), 445, 305);
+					htWH = ImageUtils.scaleImage(new File(real_path + "/" + proyecto.getLogo2()), 445, 305);
 					
 					imageLogo2 = new ImagesBean();
 					imageLogo2.setWidth (htWH != null ? (Integer)htWH.get("Width")  : 445);
@@ -595,11 +615,11 @@ public abstract class DocumentacionAMO extends DocumentacionDMO
 				
 			if(proyecto.getLogo3() != null)
 			{
-				fileLogo = new File(destination+"/"+proyecto.getLogo3());
+				fileLogo = new File(real_path+"/"+proyecto.getLogo3());
 				
 				if(fileLogo.exists())
 				{
-					htWH = ImageUtils.scaleImage(new File(destination+"/"+proyecto.getLogo3()), 445, 305);
+					htWH = ImageUtils.scaleImage(new File(real_path+"/"+proyecto.getLogo3()), 445, 305);
 					
 					imageLogo3 = new ImagesBean();
 					imageLogo3.setWidth(htWH!=null?(Integer)htWH.get("Width"):445);

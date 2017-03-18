@@ -14,6 +14,7 @@ import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.managedbeans.generales.DocumentUpload;
 import mx.com.kubo.model.FileType;
 import mx.com.kubo.model.FileTypePK;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.tools.ImageUtils;
 import mx.com.kubo.tools.Utilities;
 
@@ -25,7 +26,10 @@ implements DocumentacionIMO
 {
 	public final void init()
 	{
-		init_membership();
+		membership_PK = new MembershipPK(prospectus_id, company_id);
+		
+		membership = service_membership.getMembershipById(membership_PK);
+		
 		init_list_files();
 		init_change_control();										
 		init_lista_file_type();
@@ -126,7 +130,9 @@ implements DocumentacionIMO
 			htWH     = null;
 			fileLogo = null;
 			
+/*			
 			destination = external.getRealPath("/resources/");
+*/			
 		
 			init();
 			init_proyect_LOGOS();
@@ -146,7 +152,9 @@ implements DocumentacionIMO
 		elContext = faces.getELContext();
 		external  = faces.getExternalContext();
 		
+/*		
 		String realPath = external.getRealPath("//resources//");
+*/		
 		
 		String documents = (String) event.getComponent().getAttributes().get("documents").toString();
 						
@@ -177,7 +185,7 @@ implements DocumentacionIMO
 			
 			InputStream in = new FileInputStream(new File(pathOriginalImg));
 			
-			if(Utilities.copyFile(realPath+"/temp/"+nameFile,in))
+			if(Utilities.copyFile(real_path+"/temp/"+nameFile,in))
 			{				
 				elContext = faces.getELContext();
 				
