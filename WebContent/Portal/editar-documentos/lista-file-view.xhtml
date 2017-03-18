@@ -27,13 +27,15 @@
 					</td>
 					
 					<td>
-						<p:commandLink       rendered = "#{editor_documentos.editar_file_ENABLED}" immediate = "true"  									     									  									   
-									   actionListener = "#{editor_documentos.gestor.editDocument}" 
-									   oncomplete = "Documentacion.show_cropper(xhr, status, args);">													
-										
-								Editar
-							<f:attribute name = "documents" value = "#{file.prospectus_id}::#{file.company_id}::#{file.originalPathImg}::#{file.typeFile}::#{file.file_id}::#{file.proyect_loan_id}"/>														
-						</p:commandLink>						
+						<h:panelGroup rendered = "#{editor_documentos.editar_file_ENABLED}">
+							<p:commandLink       rendered = "#{editor_documentos.editar_file_ENABLED}" immediate = "true"  									     									  									   
+										   actionListener = "#{editor_documentos.gestor.editDocument}" 
+										   oncomplete = "Documentacion.show_cropper(xhr, status, args);">													
+											
+									Editar
+								<f:attribute name = "documents" value = "#{file.prospectus_id}::#{file.company_id}::#{file.originalPathImg}::#{file.typeFile}::#{file.file_id}::#{file.proyect_loan_id}"/>														
+							</p:commandLink>		
+						</h:panelGroup>				
 					</td>
 					
 					<td>
