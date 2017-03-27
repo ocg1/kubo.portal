@@ -304,6 +304,7 @@ public class VerificadorInicio extends Thread  {
 							try{
 								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_VERIFICADEPOSITOS ){
 									System.out.println( " 1 - Ejecutando Depósito a cuenta ( Inversionista )" );
+									
 									verificaDepositos();
 									
 									int_VERIFICADEPOSITOS = 1;
@@ -326,6 +327,8 @@ public class VerificadorInicio extends Thread  {
 								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_VERIFICARETIROS ){
 
 									System.out.println( " 2 - Ejecutando Retiro de Efectivo ( Inversionista )" );
+									
+									verificaRetiros();
 									
 									int_VERIFICARETIROS = 1;
 								
@@ -1354,7 +1357,19 @@ public class VerificadorInicio extends Thread  {
 			
 		}
 		
-		
+		private void verificaRetiros(){
+			
+			try{
+			
+			movement_notification_service.insertaMovementToSafi( "R"  );
+			
+			llamdaServicioRetiros();
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
 		
 		private void verificaDepositos(){
 		
@@ -1362,7 +1377,7 @@ public class VerificadorInicio extends Thread  {
 			String fecha_de_origen_STR						= "";
 			List< SafiDepositoRefere > lstSafiDeposito 		= null;
 			
-			SystemParamPK spk = new SystemParamPK();
+			/* SystemParamPK spk = new SystemParamPK();
 			
 			spk.setCompany_id(1);
 			spk.setSystem_param_id(72); // Fecha a partir de la cual se comienzan a validar los movimientos ( Depositos, Retiros )
@@ -1457,13 +1472,17 @@ public class VerificadorInicio extends Thread  {
 					
 					movement_notification_service.saveMovementNotification( newMovement );
 					
-				}
+				} */
 				
 				//TODO llamada al Servicio
+			
+			    //movement_notification_service.saveMovementNotification( newMovement );
+			
+				movement_notification_service.insertaMovementToSafi( "D"  );
 				
 				llamdaServicio();
 				
-			}else{
+			/*}else{
 				
 					List< MovementNotification > lst =  movement_notification_service.getMovementNotificationInStatusCeroList();
 					
@@ -1480,11 +1499,29 @@ public class VerificadorInicio extends Thread  {
 				
 				inicializaciones();
 				
-			}
+			}*/
 			
 		}
 
-		
+		private void llamdaServicioRetiros(){
+			
+			try{
+				
+				PublicProyectServiceLocator locator = new PublicProyectServiceLocator();
+				
+				PublicProyect py = locator.getPublicProyect();
+				
+				WsResponse res = py.notificaRetiros();
+				
+				System.out.println( "res: " +res.getFolio() );
+				
+				System.out.println( "res: " +res.getMessage() );
+				
+			}catch( Exception e ){
+				
+			}
+			
+		}
 		
 
 		private void llamdaServicio(){

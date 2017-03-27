@@ -355,7 +355,7 @@ function scrollAyudas () {
  
 
 function siAutorizo() {
-	
+		
 		$("#aceptar_consulta").find("input[value='0']").trigger("click");
 		
 		mandodatos_hs();
@@ -733,6 +733,7 @@ function pixel (){
 	
 	
 	var scores = ['A1','A2','A3','A4','A5','B1','B2','B3','B4','B5','C1','C2','C3','C4','C5', 'D1','D2', 'D3','D4','D5','E1','E2', 'E3','E4','E5'];
+	var scores2 = ['F1','G1','V1','V2','V3'];
 
 	
     if($.inArray(kuboScoreVal, scores) >= 0) {
@@ -803,9 +804,18 @@ function pixel (){
 			facebook_events ('TAG' )
 		}
 		if(valuePartner == "MDV"){
-		 $("#MDV").attr("src", "http://scomm.rurl.me/api/pixel/?cvt=lead&cvn=Qualified_Lead&cva=200.00&cid=");
+			$("#MDV").attr("src", "http://scomm.rurl.me/api/pixel/?cvt=lead&cvn=Qualified_Lead&cva=200.00&cid=");
 		}
-	}else{
+		if(valuePartner == "GR4"){
+			$("#GR4").attr("src", "www.euroads.mx/system/trackleads.php?cpid=21&sid=17&orderid="+''+prospectoID+''+"");
+	    }
+	}
+    if($.inArray(kuboScoreVal, scores2) >= 0) {
+    	 GTM_eventos ('pre-aprobado-F1-V3');
+    }
+    
+    
+    else{
     	console.log("no entra dentro del rango del score A1 - E5");
     	 /*$("#frmMoreInfo .field").hide();
     	 $("#frmMoreI .field input").hide();
@@ -1095,7 +1105,6 @@ function validacionLLenadoMirror (inputEspejo, posibleLada) {
 function validacionLLenadoMirror2(campoTelefonoLada) {		
 	$(campoTelefonoLada).blur();		
 }		
-
 function parentescoReply(select){
 
 	var padreSelect = $(select).closest(".selectNuevo");
@@ -1181,7 +1190,18 @@ function parentescoReset (){
 
 
 
-
+function checksNuevos2(check, id){
+	var idCheck = id;
+	
+    var contenedor = $(check).closest(".input-checkbox-simple");
+    var tabla = $(check).closest("table");
+    	tabla.removeClass("vacio");
+        if($(check).is(":checked")){
+    	  	contenedor.addClass("fa-check");
+        }else{
+        	 contenedor.removeClass("fa-check");
+        }
+}
 function checksNuevos(check, id){
 	var idCheck = id;
 	

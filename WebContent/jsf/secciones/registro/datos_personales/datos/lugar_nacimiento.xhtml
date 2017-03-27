@@ -18,7 +18,9 @@
 									 disabled = "#{navigationBean.disabledComponent('edoNac')}" 
 									 value = "#{basicData.naturalPerson.state_id}"  
 									 onfocus    = "DatosPersonales.init_focus_date(4);"
-									 styleClass = "elementStlSelAddress validatorClass requiredVerify hs_class">
+									 styleClass = "elementStlSelAddress validatorClass requiredVerify hs_class"
+									 onchange= "mixPanel ('lugarNacimiento')"
+									 >
 											 
 						<f:selectItem itemLabel = "Selecciona..." itemValue = "0" />
 						

@@ -3076,8 +3076,6 @@ width: 100%;
 
 
 }
-
-
 #invClasFld {
 	border:none;
 	padding:0;
@@ -8524,3 +8522,102 @@ margin:0 0 30px !important;line-height: 20px !important;}
 	 margin:0 0 20px;
 	 font-weight:bold;
  }
+
+ .error-contrasena-mensaje {
+display:none;
+	color: red;
+	padding: 9px 0;
+	border: solid 1px #ccc;
+	border-radius: 5px;
+}
+
+#PassBCNIP {
+	padding:10px;
+	margin:0 auto;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+#dvContAgreeBCNIP {
+	margin:0;
+	padding:0;
+	
+	overflow: hidden;
+}
+
+.stlSetPassBCNIP {
+	margin: 0 0 20px !important;
+	position:relative;
+	/* width: 100%; */
+	padding:0;
+}
+
+.stlSetPassBCNIP  .mostrar i {
+	position:absolute;
+	right:10px;
+	top:10px;
+
+}
+
+.success-v2 {
+	display:none;
+}
+
+.success-v2 .datos_protegidos {
+	display:none;
+}
+
+
+.success-v2 .bT {
+	width:100% !important;
+}
+
+.success-v2  h2 {
+	text-align:center !important;
+	margin:0 0 15px !important;
+}
+
+.regreso-mensaje-error {
+	border: solid 2px #8FC450;
+	width: 88.8%;
+	padding: 26px 4% 26px;
+	margin:0 0 20px;
+	line-height:20px;
+}
+
+
+.regreso-mensaje-error ul{
+	margin:30px 0;
+
+}
+
+
+.regreso-mensaje-error ul li{
+	margin:0px 0 15px;
+	list-style:none;
+}
+
+
+#general #txt_about_me::-webkit-input-placeholder { 
+	font-style:initial !important;
+	font-size:16px !important;
+
+}
+
+#general #txt_about_me:-moz-placeholder { 
+	font-style:initial !important;
+	font-size:16px !important;
+}
+
+
+#general #txt_about_me:-ms-input-placeholder { 
+	font-style:initial !important; 
+	font-size:16px !important;
+}
+#general #txt_about_me:-moz-placeholder { 
+	font-style:initial !important;
+	font-size:16px !important;
+}
+
+
+

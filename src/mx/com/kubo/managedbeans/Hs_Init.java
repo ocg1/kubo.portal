@@ -200,6 +200,12 @@ public class Hs_Init implements Serializable {
 			member.setPassword(Utilities.encrypt(pass));
 			member.setIs_active(1);
 			
+			if( isPide_contrasena_segura() ){
+				member.setIs_client_pass("S");
+			}else{
+				member.setIs_client_pass("N");
+			}
+			
 			membershipService.update(member);
 			
 			PasswordHistoryPK pssPk = new PasswordHistoryPK();

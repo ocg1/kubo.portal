@@ -271,12 +271,31 @@
 	       	
 				<h:panelGroup rendered="#{basicData.protectorValid}" >
 					
-					<h:panelGroup rendered = "false" >
+					<h:panelGroup rendered = "#{!basicData.pide_contrasena_segura}" >
 		       			<ui:include src = "historialCred.xhtml"/>
 		       		</h:panelGroup>
 		       		
-		       		<h:panelGroup rendered = "true" >
+		       		<h:panelGroup rendered = "#{basicData.pide_contrasena_segura and !navigationBean.flagBCScore }" >
 		       			<ui:include src = "consultaBC_NIP.xhtml"/>
+		       		</h:panelGroup>
+		       		
+		       		<h:panelGroup rendered = "#{basicData.pide_contrasena_segura and navigationBean.flagBCScore }" >
+		       			<div class="dvContent">
+									<div   class="solicitud callAction btnNaranja center" onclick="nextNIPSuccess();">
+											Continuar
+									</div>
+								</div>
+								
+								<script>
+		       		
+						       		function nextNIPSuccess(){
+						       		
+						       			parent.$("#hdNext\\:siguienteIncomeExpense").click();
+						       		
+						       		}
+						       		
+						       	</script>
+								
 		       		</h:panelGroup>
 		       		
 		       		<script>
@@ -315,6 +334,8 @@
 					 </h:panelGroup>	
 			</div>
 			
+			
+			
 			 <!-- h:panelGroup>	
 				<div class="obten_diagnostico solicitud callAction btnNaranja" onclick="obtener_diagnostico();" >Obtén tu pre-aprobación</div>
 			</h:panelGroup-->
@@ -352,6 +373,11 @@
 				  	}
 					</script>				
 	 	</h:panelGroup>		
+	 	
+	 	
+		       		
+		       		
+	 	
 	</div>
 
 

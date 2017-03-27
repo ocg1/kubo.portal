@@ -521,6 +521,7 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 		intento.setCreditcard_four_digits(tarjeta_credito_number);
 		intento.setMortgage_is_principal(has_credito_hipotecario);
 		intento.setCar_is_principal(has_credito_automotriz);
+		intento.setTipo_consulta("ID_PROVIDER");
 		
 		if(lada != null  && lada.indexOf("+") != (-1))
 		{						
@@ -1269,6 +1270,7 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 		tmp.setTown_name(intento.getTown_name());
 		tmp.setUser(intento.getUser());
 		tmp.setZip_code(intento.getZip_code());
+		tmp.setTipo_consulta(intento.getTipo_consulta());
 		
 		return tmp;
 	}

@@ -8,6 +8,8 @@
 package mx.com.kubo.kubows;
 
 public class EditorEstatusRequest  implements java.io.Serializable {
+    private java.lang.String clean_ingresos_egresos_ENABLED;
+
     private java.lang.String company_id;
 
     private java.lang.String emisor_id;
@@ -32,6 +34,7 @@ public class EditorEstatusRequest  implements java.io.Serializable {
     }
 
     public EditorEstatusRequest(
+           java.lang.String clean_ingresos_egresos_ENABLED,
            java.lang.String company_id,
            java.lang.String emisor_id,
            java.lang.String estatus_id,
@@ -42,6 +45,7 @@ public class EditorEstatusRequest  implements java.io.Serializable {
            java.lang.String nota_tipo_id,
            java.lang.String prospectus_id,
            java.lang.String proyect_loan_id) {
+           this.clean_ingresos_egresos_ENABLED = clean_ingresos_egresos_ENABLED;
            this.company_id = company_id;
            this.emisor_id = emisor_id;
            this.estatus_id = estatus_id;
@@ -52,6 +56,26 @@ public class EditorEstatusRequest  implements java.io.Serializable {
            this.nota_tipo_id = nota_tipo_id;
            this.prospectus_id = prospectus_id;
            this.proyect_loan_id = proyect_loan_id;
+    }
+
+
+    /**
+     * Gets the clean_ingresos_egresos_ENABLED value for this EditorEstatusRequest.
+     * 
+     * @return clean_ingresos_egresos_ENABLED
+     */
+    public java.lang.String getClean_ingresos_egresos_ENABLED() {
+        return clean_ingresos_egresos_ENABLED;
+    }
+
+
+    /**
+     * Sets the clean_ingresos_egresos_ENABLED value for this EditorEstatusRequest.
+     * 
+     * @param clean_ingresos_egresos_ENABLED
+     */
+    public void setClean_ingresos_egresos_ENABLED(java.lang.String clean_ingresos_egresos_ENABLED) {
+        this.clean_ingresos_egresos_ENABLED = clean_ingresos_egresos_ENABLED;
     }
 
 
@@ -266,6 +290,9 @@ public class EditorEstatusRequest  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
+            ((this.clean_ingresos_egresos_ENABLED==null && other.getClean_ingresos_egresos_ENABLED()==null) || 
+             (this.clean_ingresos_egresos_ENABLED!=null &&
+              this.clean_ingresos_egresos_ENABLED.equals(other.getClean_ingresos_egresos_ENABLED()))) &&
             ((this.company_id==null && other.getCompany_id()==null) || 
              (this.company_id!=null &&
               this.company_id.equals(other.getCompany_id()))) &&
@@ -307,6 +334,9 @@ public class EditorEstatusRequest  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
+        if (getClean_ingresos_egresos_ENABLED() != null) {
+            _hashCode += getClean_ingresos_egresos_ENABLED().hashCode();
+        }
         if (getCompany_id() != null) {
             _hashCode += getCompany_id().hashCode();
         }
@@ -348,6 +378,12 @@ public class EditorEstatusRequest  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://kubows.kubo.com.mx", "EditorEstatusRequest"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("clean_ingresos_egresos_ENABLED");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://kubows.kubo.com.mx", "clean_ingresos_egresos_ENABLED"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("company_id");
         elemField.setXmlName(new javax.xml.namespace.QName("http://kubows.kubo.com.mx", "company_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));

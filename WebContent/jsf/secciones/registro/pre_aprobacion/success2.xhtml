@@ -1,0 +1,159 @@
+<ui:composition  xmlns    = "http://www.w3.org/1999/xhtml"
+				 xmlns:ui = "http://java.sun.com/jsf/facelets"
+			     xmlns:h  = "http://java.sun.com/jsf/html"
+				 xmlns:f  = "http://java.sun.com/jsf/core"
+				 xmlns:p  = "http://primefaces.org/ui">	
+
+	<h:panelGroup id = "success">
+	
+		<!-- 
+		<h:panelGroup  rendered="#{preaprobacion.displayGreen}" >
+			<div style="position: absolute; top: 4px; right: 4px; ">
+				<h:graphicImage url="../../../resources/img/bullet-green.png"/>
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{preaprobacion.displayBlue}">
+			<div style="position: absolute; top: 4px; right: 4px; ">
+				<h:graphicImage url="../../../resources/img/bullet-blue.png"/>
+			</div>
+		</h:panelGroup>
+	 -->
+		
+		<div style="height: auto; overflow: hidden; ">
+			
+				
+			
+		<div class="msgpreaprobadoDesc resultado_buro">
+			
+			
+				
+				
+				<div class="sucesssPopUp">
+					
+						<div class="bT">
+						<h2>#{basicData.naturalPerson.first_name}:</h2>
+	        				<p>Seguimos verificando tu <strong> información de crédito.</strong> </p>
+
+							<p>Continúa llenando tu solicitud, cuando estén listos tus resultados los mostraremos en  pantalla.</p>
+							<h:panelGroup rendered = "#{basicData.success_consulta_nip}" >
+								<div class="dvContent">
+									<div   id="btn_bcScore" class="solicitud callAction btnNaranja center" onclick="closeWindowPrep();">
+											Continuar
+									</div>
+									
+									
+								</div>
+							</h:panelGroup>
+							<figure class="kubi-feliz">
+								<h:graphicImage  library="img" name= "KubiFeliz-01.jpg" />
+							</figure>
+	        			
+						    
+        				</div>
+
+        				<!-- figure class="imagen"> 
+        						<img src="../../../resources/img/analizando.png"/>
+        				</figure-->
+        	
+					
+				
+					</div>
+				
+		</div>	
+	
+			
+				
+			
+		
+		</div>
+	
+		 <h:panelGroup rendered = "#{navigationBean.flagBCScore == 'null'}" >
+			<ui:include src = "../../../templates/datos_protegidos.xhtml" />
+		</h:panelGroup>
+		
+	<!-- 	
+		<h:inputHidden  id="bc_scoreinput" value="#{preaprobacion.score.bc_score}" />
+		<h:inputHidden  id="cci_score" value="#{preaprobacion.score.cci_score}" />
+		<h:inputHidden  id="inputKuboScore" value="#{preaprobacion.score.kubo_score_a}#{preaprobacion.score.kubo_score_b}"   />
+		<h:inputHidden  id="monto_solicitado" value="#{preaprobacion.monto_solicitado}" />
+		-->	
+
+
+					<iframe id="goCloud" scrolling="no" frameborder="0" width="1" height="1"> </iframe>
+        		<script>
+
+        	
+        
+        			
+        		</script>
+		<script>
+		/*
+			setTimeout(function(){
+				$("#btn_bcScore").trigger("click");
+		  	},12000);
+		*/	
+	      
+	        // score_input ();  
+	     
+			function score_input () {
+				
+				console.log("llego aqui");
+			//navigationBean.score.bc_score {}	
+				$(".buro_consulta").trigger("click");
+				
+				var bc_score_input = $("#consBC\\:bc_scoreinput").val();
+				var cci_score_input = $("#consBC\\:cci_score").val();
+				var kubo_score_input = $("#consBC\\:inputKuboScore").val();
+				var monto_solicitado_input = $("#consBC\\:monto_solicitado").val();
+				
+		
+				
+			 	console.log("bc_score_input"+bc_score_input);
+	        	
+	        	//console.log("kuboScore"+kuboScore);
+				try {
+					fbq(['trackCustom', 'bcscore',{bcscore: bc_score_input}]);
+					fbq(['trackCustom', 'kuboscore',{kuboscore: kubo_score_input}]);
+					mixpanel.track("bcscore",{bcscore: bc_score_input});
+					mixpanel.track("kuboscore",{bcscore: bc_score_input});
+				}catch(err) {
+					   console.log(err.message);
+					  
+				}
+					
+				
+				/*
+	        	window._fbq.push(["track", "Consulta", {
+	        	      bcscore: bc_score_input,
+	        	      cci_score: cci_score_input,
+	        	      kuboScore: kubo_score_input,
+	        	      monto_solicitado: monto_solicitado_input
+	        	}]);  
+					*/
+	        	//console.log("bc_score_input"+bc_score_input);
+	        	//console.log("cci_score"+cci_score);
+	        	//console.log("kuboScore"+kuboScore);
+	        	//console.log("monto_solicitado"	fbq(['trackCustom', 'bcscore',{bcscore: bc_score_input}]);
+				//fbq(['trackCustom', 'kuboscore',{kuboscore: kubo_score_input}]);+monto_solicitado);
+	        	//console.log("inputKuboScore"+kubo_score_input);
+	        	
+	        	
+	            
+			}
+	        /*     
+				initWatching();	
+				initCheckSegment();
+			*/
+        </script>
+       <h:panelGroup rendered="#{sessionBean.coachProspectus_id == null }">
+		<a class="buro_consulta" href="#"> </a>
+		</h:panelGroup>
+				<img border="0" src="https://r.turn.com/r/beacon?b2=mLFuLJ7hSK-cIKLCsqHuFU_fjTsLnrvOD5EFodFNSpcgp1wj57Plw7FfebHAu3QLf6njmAcXuQ5RZZCrGJy37Q&amp;cid="/>
+			
+		 		<iframe id="afiliateRevUp" width='1' height='1' frameborder='0' src='http://affiliate.rvptracker.com/rd/apx.php?id=175&amp;type=1&amp;hid=#{preaprobacion.hid_value}'></iframe>
+			
+	
+		
+	</h:panelGroup>
+</ui:composition>	

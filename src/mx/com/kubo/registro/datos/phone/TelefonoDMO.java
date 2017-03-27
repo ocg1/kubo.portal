@@ -55,4 +55,13 @@ implements TelefonoIMO
 	{
 		return phoneFixedPropectus;
 	}
+
+	public Phone getThisPhoneFixed() {
+		return thisPhoneFixed;
+	}
+	
+	public Phone getThisPhoneCell() {
+		return thisPhoneCell;
+	}
+
 }

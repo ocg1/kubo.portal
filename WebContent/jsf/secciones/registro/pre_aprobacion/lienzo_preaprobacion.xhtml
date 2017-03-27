@@ -350,11 +350,14 @@ function formatLienzo(e,place)
 
 		
 		<input type="text" id="valuePartner" style="opacity:0; position:absolute;"  value="#{checkScoreProcessed.partner_id}" />
-		<input id="advBackInput" type="text" style="opacity:0; position:absolute;" value="#{checkScoreProcessed.member.url_origin}" />
+		<input id="advBackInput" type="text" style="opacity:0; position:absolute; height:1px; overflow:hidden;" value="#{checkScoreProcessed.member.url_origin}" />
 		<iframe id="advBack"  scrolling="no" frameborder="0" width="1" height="1" style="opacity:0;position:absolute;"></iframe>    
-		<img id="occPixel" src="" width="1" height="1" />
-		<img id="sivinco" src="" width="1" height="1" border="0" />
-		<img id="MDV" src="" width="1" height="1" border="0" />
+		<div class="pixeles_img" style="position:absolute;">
+			<img id="occPixel" src="" width="1" height="1" />
+			<img id="sivinco" src="" width="1" height="1" border="0" />
+			<img id="MDV" src="" width="1" height="1" border="0" />
+			<img id="GR4" src="" width="1" height="1" />
+		</div>
 		<h:outputScript library="js" name="respuestaBuro.js" target="head" />	     
 
 			      <ui:include src="mensaje_consultaburo.xhtml" />

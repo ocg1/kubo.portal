@@ -128,7 +128,7 @@
 									<p class="smallGray">Tasa fondeador</p>
 								</div>
 									
-								<h:panelGroup rendered = "#{summaryRequest.nameVisible}">
+								<h:panelGroup rendered = "#{summaryRequest.nameVisible and summaryRequest.actualProyect != null }">
 									<div class = "detailsMiddleBox" style = "margin-top: 0px !important; position: relative;">
 										
 										<h:panelGroup id = "editor-loan-rate">

@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlInputSecret;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlSelectOneRadio;
 import javax.faces.context.ExternalContext;
@@ -33,19 +34,28 @@ import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.managedbeans.registro.consulta.Preaprobacion;
+import mx.com.kubo.mesa.buro.ProspectRiskIMP;
+import mx.com.kubo.mesa.buro.ProyectLoanCreatorIMP;
 import mx.com.kubo.model.Address;
 import mx.com.kubo.model.BmxEconActivityCat;
 import mx.com.kubo.model.Business;
 import mx.com.kubo.model.BusinessPK;
+import mx.com.kubo.model.ConsultingManual;
+import mx.com.kubo.model.ConsultingManualPK;
 import mx.com.kubo.model.ContactWayProspectus;
 import mx.com.kubo.model.ContactWayProspectusPK;
+import mx.com.kubo.model.CreditHistoryAttempt;
 import mx.com.kubo.model.Employment;
 import mx.com.kubo.model.EmploymentPK;
 import mx.com.kubo.model.InegiEconActivityCat;
 import mx.com.kubo.model.InegiEconActivityCatPK;
+import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Phone;
+import mx.com.kubo.model.Prospectus;
+import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.SavingAccountPK;
+import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.Stackholder_relationship;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
@@ -96,7 +106,9 @@ implements Serializable, BasicDataIMO
 		init_prospectus();					
 		init_person_type();	
 		init_membership();			
-		init_natural_person();	
+		init_natural_person();
+		
+		init_contrasena_segura();
 		
 		init_simulador();
 		init_datos_personales();
@@ -119,6 +131,11 @@ implements Serializable, BasicDataIMO
 		init_lista_actividad_economica();
 		
 		init_Contract_Way_Prospectus_List();
+		
+		password_ENABLED  = false;
+		
+		tmp = "inicio";
+		
 	}	
 
 	public final void init_address_type(AjaxBehaviorEvent event)
@@ -1065,56 +1082,7 @@ implements Serializable, BasicDataIMO
 			context  = faces.getELContext();
 			external = faces.getExternalContext();
 			
-			npPK = new gnNaturalPersonPK();
-			
-			npPK.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
-			npPK.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
-			
-			naturalPerson = service_natural_person.getNaturalPersonById(npPK);
-			boolean changeNatPer = false;
-			
-			if( naturalPerson.getFirst_name() == null && name.getFirst_name() != null ){
-				naturalPerson.setFirst_name(name.getFirst_name());
-				changeNatPer = true;
-			}
-			
-			if( naturalPerson.getMiddle_name() == null && name.getMiddle_name() != null ){
-				naturalPerson.setMiddle_name(name.getMiddle_name());
-				changeNatPer = true;
-			}
-			if( naturalPerson.getFather_last_name() == null && name.getFather_last_name() != null ){
-				naturalPerson.setFather_last_name( name.getFather_last_name() );
-				changeNatPer = true;
-			}
-			if( naturalPerson.getMother_last_name() == null && name.getMother_last_name() != null ){
-				naturalPerson.setMother_last_name( name.getMother_last_name() );
-				changeNatPer = true;
-			}
-			
-			if( naturalPerson.getCountry_id() == null ){
-				naturalPerson.setCountry_id(700);
-				changeNatPer = true;
-			}
-			if( naturalPerson.getSector_id() == null ){
-				naturalPerson.setSector_id(32);
-				changeNatPer = true;
-			}
-			
-			if( changeNatPer ){
-				
-				generator.setPerson(naturalPerson);
-				generator.init_RFC();
-				generator.init_CURP();
-				
-				naturalPerson = generator.getPerson();
-			}
-			
-			if( changeNatPer ){
-				
-				service_natural_person.update(naturalPerson);
-				naturalPerson = service_natural_person.getNaturalPersonById(npPK);
-				
-			}
+			validaDatosPersonales();
 				
 			BehaviorCheck bc = new BehaviorCheck();
 			
@@ -1144,46 +1112,10 @@ implements Serializable, BasicDataIMO
 				System.out.println("iniciandoConsultaPropector");
 				
 				
-				Preaprobacion preaprobacion =  (Preaprobacion)       resolver.getValue(context, null, "preaprobacion");
 				
-				Address domicilio_tmp  = addressService.getAddressById(domicilio.getAddress().getAddressPK());
+				boolean is_prospect_SGB_OK = creaProspectoSGB(prospectus, naturalPerson );
 				
-				preaprobacion.setNaturalPerson(naturalPerson);
-				preaprobacion.setProspectus(prospectus);
-				preaprobacion.setThisAddress( domicilio_tmp );
 				
-				Phone thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 6, 'L');
-				
-				if( thisPhoneFixed == null ){
-				
-					thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id(), 5, 'L');
-				
-					if( thisPhoneFixed != null  ){
-						
-						System.out.println("phone: "+thisPhoneFixed.getPhone_number());
-						preaprobacion.setThisPhoneFixed(thisPhoneFixed);
-					
-					}
-				
-				}else{
-					
-					thisPhoneFixed = new Phone();
-					thisPhoneFixed.setPhone_number("");
-					preaprobacion.setThisPhoneFixed(thisPhoneFixed);
-					
-				}
-				
-				Simulator simulator =  (Simulator) resolver.getValue(context, null, "simulator");;
-				
-				preaprobacion.setSimulator(simulator);
-				
-				NotesService notesservice = Utilities.findBean("notesServiceImp");
-				
-				preaprobacion.setService_notas(notesservice);
-				
-				boolean is_prospect_SGB_OK = preaprobacion.creaProspectSGB();
-				
-				System.out.println("preaprobacion msg: "+ preaprobacion.getMsg());
 				
 				if( is_prospect_SGB_OK ){
 				
@@ -1456,6 +1388,198 @@ implements Serializable, BasicDataIMO
 			
 		}
 		
+	}
+	
+	public void consultaBCNIP(){
+		
+		prospect_risk_ENABLED = false;
+		
+		intento   = new CreditHistoryAttempt();
+		
+		if(pide_contrasena_segura && password_ENABLED )
+		{
+			
+			faces  = FacesContext.getCurrentInstance();
+			resolver = faces.getApplication().getELResolver();
+			context  = faces.getELContext();
+			external = faces.getExternalContext();
+		
+			request = RequestContext.getCurrentInstance();
+			ProspectRiskIMP risk = new ProspectRiskIMP();
+			
+			//validaCreditHistoryAttempt();
+			
+			validaDatosPersonales();
+			
+			BehaviorCheck bc = new BehaviorCheck();
+			
+			HttpServletRequest httpServletRequest = (HttpServletRequest) external.getRequest(); 
+	
+			String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+				    
+					if(ipAddressClient == null)  
+					{
+				    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
+					}
+			
+			bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
+			
+			naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+			
+			init_telefonos();
+			
+			
+			boolean prospectoSGB = creaProspectoSGB( naturalPerson.getProspectus()  , naturalPerson );
+			
+			if( prospectoSGB ){
+				
+				try{
+					
+					asignar_credit_history_attempt( naturalPerson, domicilio.getAddress() , phone.getThisPhoneCell() );
+					
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
+				if( success_consulta_nip ){
+				
+						risk = new ProspectRiskIMP();
+						risk.setPerson(naturalPerson);
+						risk.setConsulting_renovation_ENABLED(false);
+						risk.init();
+						
+						prospect_risk_ENABLED = risk.isProspect_risk_ENABLED();
+										
+						if(prospect_risk_ENABLED)
+						{
+		
+							/*ProyectLoanCreatorIMP creator = new ProyectLoanCreatorIMP();
+							creator.setScore(risk.getScore());
+							creator.init();
+							*/
+							initProyectLoan( risk.getScore() );
+							
+							init_consulting_manual( risk.getScore() );
+							
+							/*faces     = FacesContext.getCurrentInstance();
+							context = faces.getELContext();
+							resolver  = faces.getApplication().getELResolver();*/
+				
+							/*NavigationBeanIMP navigation = (NavigationBeanIMP) resolver.getValue(context, null, "navigationBean");
+							
+							navigation.setHasValidScore(true);
+							
+							navigation.setFlagBCScore(true);*/
+							
+							intento.setStatus_res("0");
+							intento.setInfo_res( "Consulta satisfactoria" );;
+						
+						}else{
+							
+							intento.setStatus_res("-99");
+							intento.setInfo_res("Prospecto no encontrado");;
+							
+						}
+						
+						intento.setCreditcard_is_principal(null);
+						intento.setCreditcard_four_digits(null);
+						intento.setMortgage_is_principal(null);
+						intento.setCar_is_principal(null);
+		
+						
+						intento.setConsultation_date(new Date());
+		
+						intento.setIs_check("1");
+		
+						success_consulta_nip = prospect_risk_ENABLED;
+						
+						CreditHistoryAttempt  tmp = getTemporalCreditHistoryAttempt(intento); 
+						creditAttemptService.add(tmp);
+						
+				}
+				
+				
+			}
+		
+		}
+		
+		
+		tmp = "consulta";
+		
+		request.addPartialUpdateTarget(":frmSuccessNIP");
+		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add(":frmSuccessNIP");
+		
+		request.addCallbackParam("prospect_risk_ENABLED", prospect_risk_ENABLED);
+		
+		
+		
+		
+		
+		
+	}
+	
+	private void initProyectLoan( Scoring score ){
+		
+		ProyectLoan proyect_loan = proyectloanService.getMaxProyectLoanByProspect(score.getProspectus_id(), score.getCompany_id());
+		
+		if( proyect_loan == null || ( proyect_loan.getStatus_id() != null && proyect_loan.getStatus_id().intValue() != 0) ){
+			
+			insertaProyectLoan( score , 0, "N" );
+			
+		}else{
+			
+			proyect_loan.setRate(score.getRate());
+			proyect_loan.setMx_solicitud_buro(score.getMx_solicitud_buro());
+			proyect_loan.setRate_investor(score.getRate_investor());
+			proyect_loan.setKubo_score_a(score.getKubo_score_a()==null?"":score.getKubo_score_a());
+			proyect_loan.setKubo_score_b(score.getKubo_score_b()==null?"":score.getKubo_score_b());
+			proyect_loan.setBc_score(Integer.parseInt(score.getBc_score()));
+			proyect_loan.setRate_with_opening(score.getRate());
+			proyect_loan.setOpening_commission_amount((score.getOpening_commission()*proyect_loan.getAmmount())/100);
+			proyect_loan.setMx_solicitud_buro(score.getMx_solicitud_buro());
+			proyect_loan.setVerification_score(1);
+			proyect_loan.setOpening_commission(score.getOpening_commission());
+			proyect_loan.setLiquidity(score.getLiquidity());
+			proyect_loan.setCci_score(score.getCci_score());
+			proyect_loan.setConsulting_date(score.getResult_datetime());
+			proyectloanService.update(proyect_loan);
+			
+		}
+		
+	}
+	
+	private void init_consulting_manual( Scoring score )
+	{				
+		ConsultingManual consulting    = new ConsultingManual();
+		ConsultingManualPK consulting_PK = new ConsultingManualPK();
+					
+		consulting_PK.setCompany_id( score.getCompany_id() );
+		consulting_PK.setProspectus_id( score.getProspectus_id() );
+		
+		consulting.setPk(consulting_PK);						
+		consulting.setConsulting_prospectus_id(score.getProspectus_id());			
+		consulting.setConsulting_date(new Date());				
+		consulting.setMx_solicitud_buro( score.getMx_solicitud_buro()  );
+		consulting.setIs_consulting_for_renovation("N");
+		
+		service_consulting_manual.saveConsultingManual(consulting);
+	}
+	
+	public void init_password()
+	{
+		password_ENABLED  = false;
+		
+		//HtmlInputSecret input_secret = (HtmlInputSecret) event.getComponent();
+		
+		String password = nip_consulta;
+		
+		password = Utilities.encrypt(password);
+		
+		password_ENABLED = membership.getPassword().equals(password);
+		
+		request = RequestContext.getCurrentInstance();
+		
+		request.addCallbackParam("password_ENABLED", password_ENABLED);
 	}
 	
 }

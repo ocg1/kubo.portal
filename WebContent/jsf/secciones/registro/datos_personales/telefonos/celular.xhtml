@@ -34,9 +34,11 @@
 -->	
 			<input id = "usuarioTelCel" type = "text" class = "validacionLadaField " maxlength = "13" placeholder = "Escribe LADA y teléfono" 
 				   onkeyup = "validacionLada(this)" 
-				   onblur  = "validacionLada2(this)"
 				   onfocus    = "Telefono.init_focus_date(6);" 				    
-				   onkeypress = "return validateTelephono(event, this);"/>
+				   onkeypress = "return validateTelephono(event, this);"
+				   onblur="mixPanel_validacionLada2(this, 'telefonoCelular')"
+					  
+				   />
 				   
 			<h:inputText id = "phoneCel_employ" value = "#{basicData.phone.phoneCellProspectus}" immediate = "true"
 						 maxlength = "20" style = "display:none" styleClass = "elementAddres1 phone_box_big hs_class validatorClass telephone"

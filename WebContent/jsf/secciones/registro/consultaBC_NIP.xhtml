@@ -6,38 +6,13 @@
 	
 	<style>
 		
-		.stlPassBCNIP,#general input[type="password"]{
-			margin-left: 4px !important; 
-			width: 85% !important;
-		}
-		
-		ul.stlSetPassBCNIP {
-			  list-style-type: none;
-			}
-			
-		span.clsAgreeBCNIP_Label{
-		
-			font-weight: bold !important;
-			font-size: 1.6em;
-		
-		}
-			
-		.empezarRegistro > p{
-			
-				font-weight: bold !important;
-			
-			}
+	
 			
 		.loaderWait{
 			display:none;
 		}
 		
-		#dvContAgreeBCNIP{
-			padding-bottom: 20px !important;
-			padding-top: 0px !important;
-			overflow: auto;
-			height: auto;
-		}
+	
 		
 	</style>
 
@@ -100,18 +75,26 @@
 									style="display: block;">Sí autorizo</div> -->
 									
 									<div id="dvContAgreeBCNIP" >
-									
+										
+										
 										<ul class="stlSetPassBCNIP" >
 											<li>
-											
-										     <label class="check-label inline--check ">
-										     	
-							                    <div class="input-checkbox-simple  small-check js-chexbox fa">
-							                        <input type="checkbox" id="agreeBCNIP"  name="agreeBCNIP" onclick="mixPanel_checksNuevos(this, '#agreeBCNIP', 'AceptaConsulta');"  />
-							                    </div>
-							                    
-							                    <span class="clsAgreeBCNIP_Label" >Sí Acepto</span>
-							                </label>
+												<div class="checks-set conjuntoChecks" >
+													<table cellpadding="0" cellspacing="0" border="0" class="validatorClass" id="PassBCNIP"> 
+														<tr>
+															<td>
+															     <label class="check-label inline--check ">
+															     	
+												                    <div class="input-checkbox-simple  small-check js-chexbox fa">
+												                        <input type="checkbox" id="agreeBCNIP"  name="agreeBCNIP" onclick="checksNuevos2 (this, '#agreeBCNIP'); " />
+												                    </div>
+												                    
+												                    <span class="clsAgreeBCNIP_Label" >Sí Acepto</span>
+												                </label>
+												            </td>
+												        </tr>
+												    </table>
+												 </div>
 						              	  </li>
 						              	  
 						              
@@ -131,28 +114,37 @@
 
 										<ul class="stlSetPassBCNIP" >
 
-											<li >
-
+											<li>
+											   <h:inputHidden id="contrasena-segura" value="0" />
+												
 												<div class="mostrar">
 
 													<i class="fa fa-lock"></i>
 
 													<h:inputSecret immediate="true"
-														styleClass="elementAddres1 stlPassBCNIP"  >
+														styleClass="elementAddres1 stlPassBCNIP validatorClass" value="#{basicData.nip_consulta}"  >
 
-														<p:ajax event="blur"
-															oncomplete="ConsultaRenovacion.password_oncomplete(xhr, status, args);"
-															listener="#{consultaRenovacion.init_password}" />
+														<p:ajax event="blur"  />
 
 													</h:inputSecret>
 
 												</div>
-
+												
+												<div class="error-contrasena-mensaje">
+														La contraseña  no es válida
+												</div>
 											</li>
 
 										</ul>
-
-										<div id="dvNext_autorizoPass" class="callAction btnNaranja">Continuar</div>
+									   <h:commandLink id="SetPass_btn1">
+									    	 <p:ajax  event="click" listener="#{basicData.init_password}" oncomplete="contraseñaValidator(xhr, status, args)"/>
+									   </h:commandLink>
+									   <h:commandLink id="SetPass_btn2" immediate="true">
+									    	 <p:ajax  event="click" onstart="contraseñaValidatorReady()"  oncomplete="mostrarPantallaSucess( xhr, status, args )" listener="#{basicData.consultaBCNIP}"   />
+									   </h:commandLink>
+			
+  									
+										<div  class="callAction btnNaranja" onclick="siAutorizo()">Continuar</div>
 
 									</div>
 
@@ -180,22 +172,53 @@
 			
 		} );
 		
-		$("#dvNext_autorizoPass").click( function(){ 
+		
+		function returnClickUpdateNIP(){
 			
-			$(".historial_crediticio").fadeOut("slow");
-			$(".historial").fadeOut("slow");
-			$(".stlCloseConsulBCNIP").fadeOut("slow");
-			$(".seccion").fadeOut( "slow",function(){ 
-				
-				$.scrollTo('#header', 800, { axis:'y' } );
-				
-				setTimeout( function(){ $(".loaderWait").fadeIn();} , 800);
-				
-			} );
+			console.log("******************************");
+			console.log("*********return*click*********");
+			console.log("******************************");
+			
+			
+			return true;
+			
+		}
+		
+	function completeClickUpdateNIP(){
+			
+			console.log("******************************");
+			console.log("*******complete*click*********");
+			console.log("******************************");
+			
+			$("#frmHistCredNIP").fadeOut();
+			$(".success-v2").fadeIn();
+			
+			return true;
+			
+		}
+	
+	function returnBasicData(){
+		
+		$(".stlPassBCNIP").val("").blur();
+		$("#agreeBCNIP").trigger("click");
+		checksNuevos2 ($("#agreeBCNIP"), '#agreeBCNIP');
+		
+		$("#frmHistCredNIP").fadeIn();
+		$(".success-v2").fadeOut();
+		$(".loaderWait").hide();
+		$(".error-contrasena-mensaje").slideUp();
+		$(".stlPassBCNIP").removeClass("vacio");
+		$(".historial_crediticio").fadeIn("slow");
+		$(".historial").fadeIn("slow");
+		$(".stlCloseConsulBCNIP").fadeIn("slow");
+		
+		$(".seccion").fadeIn( "slow",function(){ 
+			
+			$.scrollTo('#header', 800, { axis:'y' } );
 			
 		} );
-	
-	
+		
+	}
 	
 	</script>
 	
@@ -205,5 +228,51 @@
 
 
 	</h:form>
-
+	
+	
+	<h:form id="frmSuccessNIP" prependId="false" >
+		<div style="display:none">
+		
+			<h:commandLink id="btnUpdateResNIP" styleClass="clsBtnUpdateResNIP"  >
+		    	 <p:ajax  event="click" onstart="return returnClickUpdateNIP();" update = ":frmSuccessNIP"  oncomplete="completeClickUpdateNIP();" />
+		   </h:commandLink>
+		
+		</div>
+		<h:panelGroup id="pnlBtnContinuarNIP" immediate="true" >
+		
+			
+			
+			<script>
+				console.log("******************************");
+				console.log("******pnlBtnContinuarNIP******");
+				console.log("******************************");
+			</script>
+			
+			
+			<div class="success-v2">
+			
+				<h:panelGroup rendered="#{basicData.success_consulta_nip}" >
+		
+					<ui:include src = "pre_aprobacion/success2.xhtml"/>
+				
+				</h:panelGroup>
+				
+				<h:panelGroup rendered="#{!basicData.success_consulta_nip}"  >
+					<div class="regreso-mensaje-error">
+						<h:outputLabel value="#{basicData.msgWarningBurConsult}" escape="false" ></h:outputLabel>
+						<div class="dvContent">
+									<div   id="btn_bcScore" class="solicitud callAction btnNaranja center" onclick="returnBasicData();">
+											Regresar
+									</div>
+									
+									
+								</div>
+					</div>
+				</h:panelGroup>
+				
+			</div>
+		</h:panelGroup>
+		
+	</h:form>
+	
 </ui:composition>

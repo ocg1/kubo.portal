@@ -27,6 +27,11 @@ implements ProspectRiskIMO
 				init_response();	
 				
 				prospect_risk_ENABLED = true;								
+			
+			}else{
+			
+				init_service_calling(3, "NO SE CONSULTÓ: RESPUESTA NULL");		
+				
 			}
 			
 		} catch(Exception e) {

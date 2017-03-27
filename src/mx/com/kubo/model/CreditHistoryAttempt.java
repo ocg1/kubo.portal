@@ -54,6 +54,8 @@ implements Serializable
 	@Column Date consultation_date;			//datetime
 	@Column java.sql.Date date_of_birth;	//date
 	
+	@Column String tipo_consulta;
+	
 	public int getAttempt_id() 
 	{
 		return attempt_id;
@@ -245,5 +247,13 @@ implements Serializable
 	}
 	public void setIs_check(String is_check) {
 		this.is_check = is_check;
+	}
+
+	public String getTipo_consulta() {
+		return tipo_consulta;
+	}
+
+	public void setTipo_consulta(String tipo_consulta) {
+		this.tipo_consulta = tipo_consulta;
 	}
 }

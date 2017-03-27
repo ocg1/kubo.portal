@@ -1,5 +1,8 @@
 package mx.com.kubo.managedbeans.registro.datos;
 
+import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.faces.component.html.HtmlInputText;
@@ -11,21 +14,37 @@ import mx.com.kubo.change_control.ChangeControlEMO;
 import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
+import mx.com.kubo.managedbeans.Simulator;
+import mx.com.kubo.managedbeans.registro.consulta.Preaprobacion;
 import mx.com.kubo.model.Access;
+import mx.com.kubo.model.Address;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Change_controlPK;
+import mx.com.kubo.model.CreditHistoryAttempt;
 import mx.com.kubo.model.MembershipPK;
+import mx.com.kubo.model.NaturalPerson;
+import mx.com.kubo.model.NeighborhoodCat;
+import mx.com.kubo.model.NeighborhoodCatPK;
+import mx.com.kubo.model.Phone;
 import mx.com.kubo.model.Prospector;
+import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.Proyect;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.ProyectLoanPK;
 import mx.com.kubo.model.ProyectPK;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SimulatorBean;
+import mx.com.kubo.model.StateCat;
+import mx.com.kubo.model.StateCatPK;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
+import mx.com.kubo.model.TownCat;
+import mx.com.kubo.model.TownCatPK;
+import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.model.segment.SegmentProspectus;
 import mx.com.kubo.model.segment.SegmentProspectusPK;
+import mx.com.kubo.services.mesa.solicitud.notas.NotesService;
+import mx.com.kubo.tools.Utilities;
 
 public abstract class BasicDataPMO extends BasicDataAMO
 {
@@ -291,13 +310,13 @@ public abstract class BasicDataPMO extends BasicDataAMO
 		
 		scoringService.saveScoring(s);
 		
-		insertaProyectLoan( s );
+		insertaProyectLoan( s , 11, "S" );
 		
 		insertaSegmento();
 		
 	}
 	
-	protected void insertaProyectLoan( Scoring score ){
+	protected void insertaProyectLoan( Scoring score, int loan_status_id, String is_prospector ){
 		
 		SimulatorBean simulacion_ACTUAL = simulatorService.getMaxSimulationProspect(score.getProspectus_id(), score.getCompany_id());
 		
@@ -378,11 +397,11 @@ public abstract class BasicDataPMO extends BasicDataAMO
 			proyect_loan.setProyectloanPk(proyect_loan_PK);
 			
 			proyect_loan.setRate(score.getRate());
-			proyect_loan.setStatus_id(11);									
+			proyect_loan.setStatus_id(loan_status_id);									
 			proyect_loan.setTerm_id(simulacion_ACTUAL.getTerm_id());
 			proyect_loan.setDeposit_method_id(1);									
 			proyect_loan.setMx_solicitud_buro(score.getMx_solicitud_buro());
-			proyect_loan.setIs_prospector_score("S");
+			proyect_loan.setIs_prospector_score(is_prospector);
 			
 			proyectloanService.add(proyect_loan);
 		
@@ -426,5 +445,341 @@ public abstract class BasicDataPMO extends BasicDataAMO
 		}
 		
 	}
+	
+	protected boolean creaProspectoSGB( Prospectus prospectus_in, NaturalPerson naturalPerson_in ){
+		
+		try{
+		
+		Preaprobacion preaprobacion =  (Preaprobacion)       resolver.getValue(context, null, "preaprobacion");
+		
+		Address domicilio_tmp  = addressService.getAddressById(domicilio.getAddress().getAddressPK());
+		
+		preaprobacion.setNaturalPerson(naturalPerson_in);
+		preaprobacion.setProspectus(prospectus_in);
+		preaprobacion.setThisAddress( domicilio_tmp );
+		
+		Phone thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson_in.getNatPerPK().getProspectus_id(), naturalPerson_in.getNatPerPK().getCompany_id(), 6, 'L');
+		
+		if( thisPhoneFixed == null ){
+		
+			thisPhoneFixed = phoneService.getPhoneByTypeByArea(naturalPerson_in.getNatPerPK().getProspectus_id(), naturalPerson_in.getNatPerPK().getCompany_id(), 5, 'L');
+		
+			if( thisPhoneFixed != null  ){
+				
+				System.out.println("phone: "+thisPhoneFixed.getPhone_number());
+				preaprobacion.setThisPhoneFixed(thisPhoneFixed);
+			
+			}
+		
+		}else{
+			
+			thisPhoneFixed = new Phone();
+			thisPhoneFixed.setPhone_number("");
+			preaprobacion.setThisPhoneFixed(thisPhoneFixed);
+			
+		}
+		
+		Simulator simulator =  (Simulator) resolver.getValue(context, null, "simulator");;
+		
+		preaprobacion.setSimulator(simulator);
+		
+		NotesService notesservice = Utilities.findBean("notesServiceImp");
+		
+		preaprobacion.setService_notas(notesservice);
+		
+		System.out.println("preaprobacion msg: "+ preaprobacion.getMsg());
+		
+		return preaprobacion.creaProspectSGB();
+		
+		}catch(Exception e){
+			return false;
+		}
+		
+		
+	}
+	
+	protected void asignar_credit_history_attempt( NaturalPerson naturalPerson, Address thisAddress, Phone phone_obj ) throws ParseException, RemoteException 
+	{
+		intento   = new CreditHistoryAttempt();
+	
+		intento.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+		intento.setUser("");
+		intento.setPassword("");
+		intento.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
+		intento.setFirst_name(naturalPerson.getFirst_name());
+		intento.setMiddle_name(naturalPerson.getMiddle_name());
+		intento.setFather_last_name(naturalPerson.getFather_last_name());
+		intento.setMother_last_name(naturalPerson.getMother_last_name());
+	
+		if(naturalPerson.getDate_of_birth() != null)
+		{							
+			SimpleDateFormat format   = new SimpleDateFormat("yyyy-MM-dd");
+			String birthStr = format.format(naturalPerson.getDate_of_birth());
+			Date birth    = format.parse(birthStr);
+			
+			intento.setDate_of_birth(new java.sql.Date(birth.getTime()));
+		}
+		
+		Integer colonia_id = thisAddress.getNeighborhood_id();
+		Integer ciudad_id  = thisAddress.getTown_id();
+		Integer estado_id  = thisAddress.getState_id();
+		
+		String colonia = "";
+		String municipio = "";
+		String thisEstado = "";
+		
+		if(colonia_id != null)
+		{
+			NeighborhoodCatPK nPK = new NeighborhoodCatPK();
+			
+			nPK.setCompany_id(company_id);
+			nPK.setNeighborhood_id(colonia_id);
+			
+			NeighborhoodCat neig = neighborhoodService.getNeighborhoodById(nPK);
+			colonia = Utilities.quitaAcentos( neig.getName() );
+			
+		} else if(thisAddress.getNeighborhood_text() != null){
+			
+			colonia = Utilities.quitaAcentos( thisAddress.getNeighborhood_text() );
+			
+		} 
 
+		if(ciudad_id != null)
+		{
+			TownCatPK tPK = new TownCatPK();
+			tPK.setCompany_id(company_id);
+			tPK.setTown_id(ciudad_id);
+			TownCat town = townService.getTownById(tPK);
+			municipio = Utilities.quitaAcentos( town.getName() );
+		} 
+									
+		if(estado_id != null)
+		{
+			StateCatPK sPK = new StateCatPK();
+			sPK.setCompany_id(company_id);
+			sPK.setState_id(estado_id);
+			StateCat state = service_estado.getStateById(sPK);
+			thisEstado = state.getBc_key();
+		} 
+	
+		intento.setMx_rfc(naturalPerson.getMx_rfc());
+		intento.setStreet(thisAddress.getStreet());
+		intento.setMx_manzana(thisAddress.getMx_manzana());
+		intento.setMx_lote(thisAddress.getMx_lote());
+		intento.setAddress_number(thisAddress.getAddress_number());
+		intento.setApt_number(thisAddress.getApt_number());
+		intento.setNeighborhood_name(colonia);
+		intento.setTown_name(municipio);
+		intento.setState_name(thisEstado);
+		intento.setZip_code(thisAddress.getZip_code());
+		intento.setCreditcard_is_principal(null);
+		intento.setCreditcard_four_digits(null);
+		intento.setMortgage_is_principal(null);
+		intento.setCar_is_principal(null);
+		intento.setTipo_consulta("FIRMA");
+		
+		String phone = phone_obj.getPhone_number();
+		
+		if(phone.isEmpty())
+		{
+			intento.setPhone(null);
+			
+		} else { 
+			
+			intento.setPhone(phone);
+		}
+		intento.setMx_curp(naturalPerson.getMx_curp());
+								
+		intento.setInfo_res("No se realizo la consulta*");
+												
+		Integer diasValidos        = null;						
+		Integer intentosPermitidos = null;
+	
+		//ID 45 trae los dias de validez de una consulta a buro
+		SystemParamPK paramPK     = new SystemParamPK(45,naturalPerson.getNatPerPK().getCompany_id());
+		SystemParam system      = systemParamService.loadSelectedSystemParam(paramPK);
+		diasValidos = Integer.parseInt(system.getValue());
+		
+		//el ID 46 trae el numero de intentos permitidos de consulta a buro
+		paramPK.setSystem_param_id(46);
+		paramPK.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+		system             = null;
+		system             = systemParamService.loadSelectedSystemParam(paramPK);
+		intentosPermitidos = Integer.parseInt(system.getValue());					
+		
+		SimpleDateFormat formatUtilDate = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+		
+		//Con los dias validos definidos en system_param se los restamos a la fecha actual para
+		//obtener la fecha limite a considerar para obtener el rango de validez de la ocnsulta.
+		//fecActual-diasValidos:24-10-13-2 = 22-10-13
+		Date fechaLimite       = Utilities.restarFechasDias(new Date(), diasValidos);										
+		String fecLimiteStr      = formatUtilDate.format(fechaLimite);
+		
+		//Se hizo otra variable Date por que no permitio formatear '2013-10-22'
+		Date fecLimiteUtilDate = formatUtilDate.parse(fecLimiteStr);
+		
+		//Consutamos el historico de consultas para saber si ya se realizo una consulta con los
+		//mismos datos y en el periodo valido.
+		Integer consultasAnteriores = creditAttemptService.getConsultas_anteriores(intento, fecLimiteUtilDate);
+		
+		System.out.println("PreaprobacionAMO.asignar_credit_history_attempt(consultasAnteriores): " + consultasAnteriores);
+		
+		if(consultasAnteriores == 0)
+		{	
+			
+			Integer numConsulBuro = creditAttemptService.getCreditHistoryAttemptByCheck(fecLimiteUtilDate, naturalPerson.getNatPerPK().getProspectus_id(), naturalPerson.getNatPerPK().getCompany_id());
+	        
+	        //Si el numero de intentos permitidos definido en system_param es menor a los intentos permitidos se realiza la consulta.
+	        if(intentosPermitidos != null && numConsulBuro != null)
+	        {	
+
+				if(numConsulBuro < intentosPermitidos)
+					        {
+					
+								success_consulta_nip = true;
+					
+					        }else{
+					        	
+					        	success_consulta_nip = false;
+					        	msgWarningBurConsult = "Hemos visto que has intentado varias veces introducir tu información y que por alguna razón no logramos autenticarte ante Buró de Crédito.<br />"
+										+ "Por favor, para brindarte un mejor servicio comunícate con nuestro centro de contacto, al teléfono <b>"+recurso.getString("Kubo_telefono")+"</b> o al correo <b>soporte@kubofinanciero.com</b>";
+					        	
+					        }
+	        
+	        }else{
+	        	
+	        	success_consulta_nip = false;
+	        	
+	        	msgWarningBurConsult = "Ha ocurrido un error al consultar su información."
+						+ " Por favor, para brindarte un mejor servicio comunícate con nuestro centro de contacto, al teléfono <b>"+recurso.getString("Kubo_telefono")+"</b> o al correo <b>soporte@kubofinanciero.com</b>";
+				
+	        	
+	        }
+				
+		} else if(consultasAnteriores > 0) {
+			/*setSuccess(false);
+			setWait(false);
+			setFail(false);
+			setError(false);
+			setNoHit(true);
+			
+			setDisplayErrBurConsult(false);*/
+			//msgWarningBurConsult = "Ya se realizo una consulta con esos datos, Compruebe que sean correctos. Si el problema continua por favor póngase en contacto con nuestro centro de atención.";
+			msgWarningBurConsult = "<b>No nos fue posible autenticarte ante Buro de Crédito con la información que nos proporcionaste.</b>"
+					+ "<br /> Por favor considera lo siguiente:"
+					+ "<ul>"
+					+ "<li>Revisa que tu nombre esté escrito exactamente como está en tu credencial de elector.</li>"
+					+ "<li>Verifica tu fecha de cumpleaños.</li>"
+					+ "</ul>"
+					+ "Si estás seguro de que tu información es correcta, por favor ponte en contacto con nuestro centro de contacto, al teléfono <b>"+recurso.getString("Kubo_telefono")+"</b> o al correo <b>soporte@kubofinanciero.com</b>";
+		} else {
+			/*setSuccess(false);
+			setWait(false);
+			setFail(false);
+			setError(false);
+			setNoHit(false);
+			
+			setDisplayErrBurConsult(true);*/
+			msgWarningBurConsult = "Ha ocurrido un error al consultar su información."
+					+ " Por favor, para brindarte un mejor servicio comunícate con nuestro centro de contacto, al teléfono <b>"+recurso.getString("Kubo_telefono")+"</b> o al correo <b>soporte@kubofinanciero.com</b>";
+			
+		}
+	}
+	
+	
+	protected void validaDatosPersonales(){
+	
+	npPK = new gnNaturalPersonPK();
+	
+	npPK.setCompany_id(naturalPerson.getNatPerPK().getCompany_id());
+	npPK.setProspectus_id(naturalPerson.getNatPerPK().getProspectus_id());
+	
+	naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+	boolean changeNatPer = false;
+	
+	if( naturalPerson.getFirst_name() == null && name.getFirst_name() != null ){
+		naturalPerson.setFirst_name(name.getFirst_name());
+		changeNatPer = true;
+	}
+	
+	if( naturalPerson.getMiddle_name() == null && name.getMiddle_name() != null ){
+		naturalPerson.setMiddle_name(name.getMiddle_name());
+		changeNatPer = true;
+	}
+	if( naturalPerson.getFather_last_name() == null && name.getFather_last_name() != null ){
+		naturalPerson.setFather_last_name( name.getFather_last_name() );
+		changeNatPer = true;
+	}
+	if( naturalPerson.getMother_last_name() == null && name.getMother_last_name() != null ){
+		naturalPerson.setMother_last_name( name.getMother_last_name() );
+		changeNatPer = true;
+	}
+	
+	if( naturalPerson.getCountry_id() == null ){
+		naturalPerson.setCountry_id(700);
+		changeNatPer = true;
+	}
+	if( naturalPerson.getSector_id() == null ){
+		naturalPerson.setSector_id(32);
+		changeNatPer = true;
+	}
+	
+	if( changeNatPer ){
+		
+		generator.setPerson(naturalPerson);
+		generator.init_RFC();
+		generator.init_CURP();
+		
+		naturalPerson = generator.getPerson();
+	}
+	
+	if( changeNatPer ){
+		
+		service_natural_person.update(naturalPerson);
+		naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+		
+	}
+	
+}
+
+	
+protected CreditHistoryAttempt getTemporalCreditHistoryAttempt( CreditHistoryAttempt intento){
+		
+		CreditHistoryAttempt tmp = new CreditHistoryAttempt();
+		tmp.setAddress_number(intento.getAddress_number());
+		tmp.setApt_number(intento.getApt_number());
+		tmp.setCar_is_principal(intento.getCar_is_principal());
+		tmp.setCompany_id(intento.getCompany_id());
+		tmp.setConsultation_date(intento.getConsultation_date());
+		tmp.setCreditcard_four_digits(intento.getCreditcard_four_digits());
+		tmp.setCreditcard_is_principal(intento.getCreditcard_is_principal());
+		tmp.setDate_of_birth(intento.getDate_of_birth());
+		tmp.setFather_last_name(intento.getFather_last_name());
+		tmp.setFirst_name(intento.getFirst_name());
+		tmp.setInfo_res(intento.getInfo_res());
+		tmp.setIs_check(intento.getIs_check());
+		tmp.setMiddle_name(intento.getMiddle_name());
+		tmp.setMortgage_is_principal(intento.getMortgage_is_principal());
+		tmp.setMother_last_name(intento.getMother_last_name());
+		tmp.setMx_curp(intento.getMx_curp());
+		tmp.setMx_lada(intento.getMx_lada());
+		tmp.setMx_lote(intento.getMx_lote());
+		tmp.setMx_manzana(intento.getMx_manzana());
+		tmp.setMx_rfc(intento.getMx_rfc());
+		tmp.setNeighborhood_name(intento.getNeighborhood_name());
+		tmp.setPassword(intento.getPassword());
+		tmp.setPhone(intento.getPhone());
+		tmp.setProspectus_id(intento.getProspectus_id());
+		tmp.setState_name(intento.getState_name());
+		tmp.setStatus_res(intento.getStatus_res());
+		tmp.setStreet(intento.getStreet());
+		tmp.setTown_name(intento.getTown_name());
+		tmp.setUser(intento.getUser());
+		tmp.setZip_code(intento.getZip_code());
+		tmp.setTipo_consulta(intento.getTipo_consulta());
+		
+		return tmp;
+	}
+	
+	
 }

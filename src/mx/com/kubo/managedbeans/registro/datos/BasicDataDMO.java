@@ -2,6 +2,7 @@ package mx.com.kubo.managedbeans.registro.datos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.el.ELContext;
 import javax.el.ELResolver;
@@ -26,6 +27,7 @@ import mx.com.kubo.model.BusinessPK;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Change_controlPK;
 import mx.com.kubo.model.Country;
+import mx.com.kubo.model.CreditHistoryAttempt;
 import mx.com.kubo.model.Economic_Activity;
 import mx.com.kubo.model.Employment;
 import mx.com.kubo.model.EmploymentPK;
@@ -62,8 +64,10 @@ import mx.com.kubo.services.AddressTypeService;
 import mx.com.kubo.services.BusinessService;
 import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.ClabeAccountService;
+import mx.com.kubo.services.ConsultingManualService;
 import mx.com.kubo.services.ContactWayProspectusService;
 import mx.com.kubo.services.CountryService;
+import mx.com.kubo.services.CreditHistoryAttemptService;
 import mx.com.kubo.services.EconomicActivityService;
 import mx.com.kubo.services.EmploymentService;
 import mx.com.kubo.services.FullNameService;
@@ -198,6 +202,12 @@ implements BasicDataIMO
 	@ManagedProperty("#{contactWayProspectusServiceImp}")
 	protected ContactWayProspectusService contactwayprospectusservice;
 	
+	@ManagedProperty("#{consultingManualServiceImp}")
+	protected ConsultingManualService service_consulting_manual;
+	
+	@ManagedProperty("#{creditHistoryAttemptServiceImp}")
+	protected CreditHistoryAttemptService creditAttemptService;
+	
 	protected Logger log = Logger.getLogger(getClass());
 	
 	protected RequestContext request;
@@ -219,6 +229,8 @@ implements BasicDataIMO
 	protected gnNaturalPersonPK npPK;
 	protected Membership    membership;
 	protected MembershipPK mspk;		
+	
+	protected CreditHistoryAttempt intento;
 	
 	protected BusinessPK business_PK;
 	protected AddressPK adpk;
@@ -295,9 +307,14 @@ implements BasicDataIMO
 	protected String is_legal_address;	
 	protected String RFC, CURP, comentario;					
 	protected String father_last_name;
+	protected String tmp;
+	
+	protected String msgWarningBurConsult;
 	
 	protected String scriptContactWay;
 	protected String contactWayValue;
+	
+	protected String nip_consulta;
 	
 	private String 	homaclave;
 	private String 	moreEmployment = "none";
@@ -346,6 +363,13 @@ implements BasicDataIMO
 	protected boolean address_ENABLED;
 	protected boolean change_control_OK;
 	
+	protected boolean success_consulta_nip;
+	
+	protected boolean password_ENABLED  = false;
+	
+	protected boolean pide_contrasena_segura;
+	protected boolean prospect_risk_ENABLED;
+	
 	protected final int RECHAZADO_AUTOMATICAMENTE = 3;
 	protected final int RIESGO_BURO = 1;
 	protected final int SCREEN_COVERAGE_ZONE = 41;
@@ -353,6 +377,8 @@ implements BasicDataIMO
 	protected static final int DOMICILIO_CASA    = 1;
 	protected static final int DOMICILIO_EMPRESA = 8;
 	protected static final int DOMICILIO_FISCAL  = 9;
+	
+	protected ResourceBundle recurso = ResourceBundle.getBundle("Message.MessageResourceBundle");
 	
 	
 	public void setAddresstypeService(AddressTypeService service) 
@@ -1067,5 +1093,69 @@ implements BasicDataIMO
 
 	public void setContactWayValue(String contactWayValue) {
 		this.contactWayValue = contactWayValue;
+	}
+
+	public boolean isPide_contrasena_segura() {
+		return pide_contrasena_segura;
+	}
+
+	public void setPide_contrasena_segura(boolean pide_contrasena_segura) {
+		this.pide_contrasena_segura = pide_contrasena_segura;
+	}
+
+	public boolean isProspect_risk_ENABLED() {
+		return prospect_risk_ENABLED;
+	}
+
+	public void setProspect_risk_ENABLED(boolean prospect_risk_ENABLED) {
+		this.prospect_risk_ENABLED = prospect_risk_ENABLED;
+	}
+
+	public ConsultingManualService getService_consulting_manual() {
+		return service_consulting_manual;
+	}
+
+	public void setService_consulting_manual(ConsultingManualService service_consulting_manual) {
+		this.service_consulting_manual = service_consulting_manual;
+	}
+
+	public CreditHistoryAttemptService getCreditAttemptService() {
+		return creditAttemptService;
+	}
+
+	public void setCreditAttemptService(CreditHistoryAttemptService creditAttemptService) {
+		this.creditAttemptService = creditAttemptService;
+	}
+
+	public String getNip_consulta() {
+		return nip_consulta;
+	}
+
+	public void setNip_consulta(String nip_consulta) {
+		this.nip_consulta = nip_consulta;
+	}
+
+	public String getMsgWarningBurConsult() {
+		return msgWarningBurConsult;
+	}
+
+	public void setMsgWarningBurConsult(String msgWarningBurConsult) {
+		this.msgWarningBurConsult = msgWarningBurConsult;
+	}
+
+	public boolean isSuccess_consulta_nip() {
+		return success_consulta_nip;
+	}
+
+	public void setSuccess_consulta_nip(boolean success_consulta_nip) {
+		this.success_consulta_nip = success_consulta_nip;
+	}
+
+	public String getTmp() {
+		return tmp;
+	}
+
+	public void setTmp(String tmp) {
+		this.tmp = tmp;
 	}
 }

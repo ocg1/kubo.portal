@@ -18,6 +18,8 @@ public class PhoneResponse  implements java.io.Serializable {
 
     private java.lang.String owned;
 
+    private java.lang.String phone_id;
+
     private java.lang.String phone_number;
 
     private java.lang.String phone_type_id;
@@ -33,6 +35,7 @@ public class PhoneResponse  implements java.io.Serializable {
            java.lang.String employment_id,
            java.lang.String extension,
            java.lang.String owned,
+           java.lang.String phone_id,
            java.lang.String phone_number,
            java.lang.String phone_type_id,
            java.lang.String phone_type_name) {
@@ -41,6 +44,7 @@ public class PhoneResponse  implements java.io.Serializable {
            this.employment_id = employment_id;
            this.extension = extension;
            this.owned = owned;
+           this.phone_id = phone_id;
            this.phone_number = phone_number;
            this.phone_type_id = phone_type_id;
            this.phone_type_name = phone_type_name;
@@ -148,6 +152,26 @@ public class PhoneResponse  implements java.io.Serializable {
 
 
     /**
+     * Gets the phone_id value for this PhoneResponse.
+     * 
+     * @return phone_id
+     */
+    public java.lang.String getPhone_id() {
+        return phone_id;
+    }
+
+
+    /**
+     * Sets the phone_id value for this PhoneResponse.
+     * 
+     * @param phone_id
+     */
+    public void setPhone_id(java.lang.String phone_id) {
+        this.phone_id = phone_id;
+    }
+
+
+    /**
      * Gets the phone_number value for this PhoneResponse.
      * 
      * @return phone_number
@@ -233,6 +257,9 @@ public class PhoneResponse  implements java.io.Serializable {
             ((this.owned==null && other.getOwned()==null) || 
              (this.owned!=null &&
               this.owned.equals(other.getOwned()))) &&
+            ((this.phone_id==null && other.getPhone_id()==null) || 
+             (this.phone_id!=null &&
+              this.phone_id.equals(other.getPhone_id()))) &&
             ((this.phone_number==null && other.getPhone_number()==null) || 
              (this.phone_number!=null &&
               this.phone_number.equals(other.getPhone_number()))) &&
@@ -267,6 +294,9 @@ public class PhoneResponse  implements java.io.Serializable {
         }
         if (getOwned() != null) {
             _hashCode += getOwned().hashCode();
+        }
+        if (getPhone_id() != null) {
+            _hashCode += getPhone_id().hashCode();
         }
         if (getPhone_number() != null) {
             _hashCode += getPhone_number().hashCode();
@@ -314,6 +344,12 @@ public class PhoneResponse  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("owned");
         elemField.setXmlName(new javax.xml.namespace.QName("http://kubows.kubo.com.mx", "owned"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("phone_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://kubows.kubo.com.mx", "phone_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);

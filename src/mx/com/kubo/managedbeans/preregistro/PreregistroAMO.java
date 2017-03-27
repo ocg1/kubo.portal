@@ -566,7 +566,20 @@ public abstract class PreregistroAMO extends PreregistroDMO
 		if( area != null && area.toString().equals("I") ){
 			membership.setIs_client_pass("S");
 		}else{
-			membership.setIs_client_pass("N");
+			
+			if( isPide_contrasena_segura() ){
+				
+				if( fb_id == null || fb_id.trim().equals("") ){
+					membership.setIs_client_pass("S");
+				}else{
+					membership.setIs_client_pass("N");
+				}
+				
+			}else{
+				
+				membership.setIs_client_pass("N");
+				
+			}
 		}
 		
 		if( registration_reason_id != null && registration_reason_id == 8)

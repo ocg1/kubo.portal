@@ -159,6 +159,15 @@ function abrirSiguiente() {
 						$("#forma-contacto").addClass("vacio");
 					}
 				}
+				if($(this).attr("id") == "PassBCNIP" ){
+					if( !$("#PassBCNIP input:checked").length == 0) {
+						$("#PassBCNIP").removeClass("vacio");
+						$("#PassBCNIP").addClass("lleno");
+					}else {
+						$("#PassBCNIP").removeClass("lleno");
+						$("#PassBCNIP").addClass("vacio");
+					}
+				}
 	    	}
 	    	if($(this).attr("id") == "nacionalidad" ) {
 		    	if($("#nacionalidad").val() == "") {
@@ -232,15 +241,34 @@ function abrirSiguiente() {
 				  
 					if($("#dvContMenuREG").is(":hidden") ) {
 						if(historialListo == false){
-							asignar_nota_del_coach();
-							validar_historial_crediticio ();
-							console.log("historialListo"+historialListo);
-							//dataLayer.push({'event': 'Datos Personales 2'});
 							
-							   GTM_eventos ('Datos Personales 2')
-							 googleEvents ('solicitud-credito', 'clic autorizar buro', 'boton autorizar buro');
-							   facebook_events ('clicAutorizarBuro' ); 	
-								mixPanel ("clicAutorizarBuro");
+							
+						
+								
+								
+								if($("#frmHistCredNIP").length){
+									$(".mensaje_campos_obligatorios").slideUp();
+									$("#SetPass_btn1").trigger("click");
+									fieldCount();
+								}else{
+									
+									
+									asignar_nota_del_coach();
+									validar_historial_crediticio ();
+									console.log("historialListo"+historialListo);
+									//dataLayer.push({'event': 'Datos Personales 2'});
+									
+									   GTM_eventos ('Datos Personales 2')
+									 googleEvents ('solicitud-credito', 'clic autorizar buro', 'boton autorizar buro');
+									   facebook_events ('clicAutorizarBuro' ); 	
+										mixPanel ("clicAutorizarBuro");
+										
+								}
+								
+								
+								
+								
+								
 						}else {
 							closeWindowPrep();
 							console.log("historialListo"+historialListo);
@@ -260,6 +288,44 @@ function abrirSiguiente() {
 			  
 			}
 	}
+	
+	function contraseñaValidator(xhr, status, args) {
+		
+		
+		if( args.password_ENABLED  == true ){
+			$("#SetPass_btn2").trigger("click");
+			
+		}else{
+			$(".stlPassBCNIP").addClass("vacio");
+			$(".error-contrasena-mensaje").slideDown();
+			console.log("no valida contraseña segura");
+		}
+	}
+	
+	function contraseñaValidatorReady() {
+		$(".error-contrasena-mensaje").slideUp();
+		$(".stlPassBCNIP").removeClass("vacio");
+		$(".historial_crediticio").fadeOut("slow");
+		$(".historial").fadeOut("slow");
+		$(".stlCloseConsulBCNIP").fadeOut("slow");
+		$(".seccion").fadeOut( "slow",function(){ 
+			
+			$.scrollTo('#header', 800, { axis:'y' } );
+			
+			setTimeout( function(){ $(".loaderWait").fadeIn();} , 800);
+			
+		} );
+		
+		return true;
+	}
+	
+	function mostrarPantallaSucess (  xhr, status, args ){
+		console.log( "prospect_risk_ENABLED: " + args.prospect_risk_ENABLED );
+		
+		$(".clsBtnUpdateResNIP").trigger("click");
+		console.log( "clsBtnUpdateResNIP  trigger click" );
+		
+	} 
 	function closeWindowPrep(){
 		/* parent.$("#valFlagPrep").val("aceptado");
 		parent.$.fancybox.close(); */

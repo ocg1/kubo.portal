@@ -153,9 +153,12 @@ public class Rechazado implements Serializable {
 		
 		Scoring score = scoringService.loadMaxScoringByProspectus(sesion.getProspectus_id(), sesion.getCompany_id());
 		
-		score.setScreen_viewed(1);
+		if(score != null ){
+			score.setScreen_viewed(1);
 		
-		scoringService.updateScoring(score);
+			scoringService.updateScoring(score);
+			
+		}
 		
 	}
 	

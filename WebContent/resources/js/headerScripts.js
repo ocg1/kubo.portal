@@ -511,24 +511,33 @@ function statusChangeCallback(response) {
 	  var index =   $("#emailFB2").val().indexOf("@");
       var substring = $("#emailFB2").val().substr(0, index);
       var locacion = document.location.href; 
+      var idFacebook = $("#idFB2").val()
       if(args.isFBValid == true){
     	  
     	   	  $("#email4").val( $("#emailFB2").val());
-	    	   
+	    	   /*
     	   	  if(substring.length >= 4){
 			      $("#passTemp").val(substring);
 	    	   	}else {
 	    	        $("#passTemp").val(substring+"00000");
 	    	   	}
+    	   	  */
     	   	  
+    	   	  if(idFacebook.length >= 8 && idFacebook.length <= 12 ){
+    	   		 $("#pass").val(idFacebook);
+    	   	  }else{
+    	   		 $("#pass").val("acreditado1");
+    	   	  }
+    	   	 
+    	 
     	   	  if($(".imagenEscritorio.inversionista").length){
     	   	  	  $("#selectRegistration_Razon").val("1");
         	   	  $("#selectRegistration_Razon").change();
     	   	  }
 		      $("#email4").blur();
 		      $("#email4").change();
-		      $("#passTemp").keyup();
-		      $("#passTemp").blur();
+		      $("#pass").keyup();
+		      $("#pass").blur();
 		    
 		      setTimeout(function(){
 		    	  $("#continuar_registro").trigger("click");

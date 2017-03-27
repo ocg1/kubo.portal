@@ -1098,11 +1098,16 @@ function gaVirtualPages (page){
 		 format(element, componente)
 		// mixPanel (pixMixPanel);
 	}
-	function mixPanel_blurTelefono(campoTelefonoLada, mixPanel) {
+	function mixPanel_blurTelefono(campoTelefonoLada, pixMixPanel) {
 		validacionLLenadoMirror2(campoTelefonoLada); 
 		
+		mixPanel (pixMixPanel);
+		
 	}
-	
+	function mixPanel_validacionLada2(field, pixMixPanel) {
+		validacionLada2(field);
+		mixPanel (pixMixPanel);
+	}
 	
 	function mixPanel_fechaNacimiento (pixMix){
 	
@@ -1116,10 +1121,12 @@ function gaVirtualPages (page){
 	}
 	
 	function mixPanel_checksNuevos(check, id, pixMix) {
+		checksNuevos (check, id);
+		console.log(check, id, pixMix);
 		if($(check).is(":checked")){
-			checksNuevos (check, id);
+			
 			mixPanel(pixMix);
-			console.log(check, id, pixMix);
+			
 		}
 	}
 	

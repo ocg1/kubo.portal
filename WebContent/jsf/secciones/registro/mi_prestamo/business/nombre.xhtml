@@ -16,10 +16,12 @@
 						 value="#{business.business.business_name}">
 				<p:ajax event="blur" 
 					    onstart="return validateMinCaracteres('uibus\:#{status.index}\:value_company_name',4)"
-						listener="#{addMyLoan.updateBusiness(business)}"/>
+						listener="#{addMyLoan.updateBusiness(business)}"
+						
+						/>
 			</h:inputText>
 			
-			<p:watermark for="value_company_name" value="Escribe el nombre de tu negocio*"/>
+			<p:watermark for="value_company_name" value="Escribe el nombre de tu negocio"/>
 		</div>
 	</div>				
 </ui:composition>				

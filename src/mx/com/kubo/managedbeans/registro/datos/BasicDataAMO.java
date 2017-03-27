@@ -189,6 +189,28 @@ public abstract class BasicDataAMO extends BasicDataDMO
 		
 	}
 	
+	protected void init_contrasena_segura(){
+		
+		SystemParamPK system_param_PK_I = new SystemParamPK();
+		
+		system_param_PK_I.setCompany_id( 1 );
+		system_param_PK_I.setSystem_param_id(102); // Consulta NIP habilitada
+		
+		SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+		
+		if( 
+			system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") && 
+			membership != null && membership.getIs_client_pass() != null && membership.getIs_client_pass().equals("S")
+		){
+		
+			pide_contrasena_segura = true;
+		
+		}else{
+			pide_contrasena_segura = false; 
+		}
+		
+	}
+	
 	protected void init_simulador() 
 	{		
 		SimulatorBean sim = simulatorService.getMaxSimulationProspect(prospectus_id, company_id) ;
