@@ -826,8 +826,10 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 	{
 		if(nameVisible)
 		{
+			String real_path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/");
 			documentacion = new DocumentacionIMP();
 			documentacion.setSesion(sesion);
+			documentacion.setReal_path(real_path);
 			documentacion.setProyect_loan  (actualProyect);	
 			documentacion.setPersona(persona);						
 			documentacion.init();

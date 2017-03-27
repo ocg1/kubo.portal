@@ -14,11 +14,9 @@
 		
 		<div>
 			<div class = "styled-select">
-				<h:selectOneMenu 
-								 value      = "#{summaryRequest.editor_domicilio.tipo_vivienda_id}" 
+				<h:selectOneMenu value = "#{summaryRequest.editor_domicilio.tipo_vivienda_id}" 
 								 styleClass = "validatorClass mapOff editor-domicilio input-text"
-								 style = "height:30px"
-								 >
+								 style = "height:30px" immediate = "true">
 								 
 					<f:selectItem itemLabel = "" itemValue = "" />
 					

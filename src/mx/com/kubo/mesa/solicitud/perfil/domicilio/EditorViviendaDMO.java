@@ -47,9 +47,9 @@ implements EditorViviendaIMO
 		
 	protected RequestContext request;
 	
-	protected HtmlInputText     ajax_inputText;
-	protected HtmlInputTextarea ajax_text_area;
-	protected UISelectOne       ajax_select_one;
+	protected HtmlInputText     input_text;
+	protected HtmlInputTextarea text_area;
+	protected UISelectOne       select_one;
 	
 	protected SessionBean sesion;
 	
@@ -93,7 +93,7 @@ implements EditorViviendaIMO
 	
 	protected String colonia_name;
 	protected String colonia_Text;
-	protected String codigo_postal;
+	protected String zipcode;
 	protected String delegacion_municipio_name;
 	protected String estado_name;
 	protected String map_ubication;	
@@ -301,7 +301,7 @@ implements EditorViviendaIMO
 
 	public final String getCodigo_postal() 
 	{
-		return codigo_postal;
+		return zipcode;
 	}
 	
 	public final String getMap_ubication() 

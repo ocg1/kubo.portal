@@ -89,7 +89,7 @@ implements EditorViviendaIMO
 			{		
 				init_state_ENABLED();		
 				
-				codigo_postal = neighborhood_zip_code;
+				zipcode = neighborhood_zip_code;
 				
 				colonias_por_codigo_postal =  service_vivienda.getAsentamientosByCP(neighborhood_zip_code);
 				
@@ -261,7 +261,7 @@ implements EditorViviendaIMO
 	
 	protected void asignar_datos_codigo_postal() 
 	{		
-		colonias_por_codigo_postal = service_vivienda.getAsentamientosByCP(codigo_postal);
+		colonias_por_codigo_postal = service_vivienda.getAsentamientosByCP(zipcode);
 				
 		for (NeighborhoodCat colonia : colonias_por_codigo_postal) 
 		{
@@ -297,10 +297,10 @@ implements EditorViviendaIMO
 			colonia_id = null;
 		}
 		
-		if (codigo_postal != null && codigo_postal.length() > 0 && state_ENABLED) 
+		if (zipcode != null && zipcode.length() > 0 && state_ENABLED) 
 		{			
 			address.setCountry_id      (MEXICO);
-			address.setZip_code        (codigo_postal);	
+			address.setZip_code        (zipcode);	
 			address.setNeighborhood_id (colonia_id);
 			address.setState_id        (stateId);
 			address.setTown_id         (townId);			
@@ -405,9 +405,7 @@ implements EditorViviendaIMO
 		if(vivienda_TOKEN_COMPARABLE != null && vivienda_TOKEN_COMPARABLE.length() > 0)
 		{
 			vivienda_CHANGED = !vivienda_TOKEN_NEW.equalsIgnoreCase(vivienda_TOKEN_COMPARABLE.trim().toLowerCase());
-		}
-		
-		request.addCallbackParam("vivienda_CHANGED", vivienda_CHANGED);
+		}				
 	}
 	
 	protected boolean guardar_change_control() 

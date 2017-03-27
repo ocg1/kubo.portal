@@ -557,31 +557,10 @@ implements SummaryRequestIMO,  Serializable
 		
 		lista_identification_type = service_catalogos.getLista_tipo_credencial();
 		
-		init_editor_identification();		
+		init_editor_identification();			
 		
-/*		
-		tipo_identificacion = persona.getIdentification_type_id();
-		mx_ine_cic = persona.getMx_ine_cic();
-		
-		if(tipo_identificacion != null)
+		if( prospecto.getArea().toString().equals("L") )
 		{
-			switch(tipo_identificacion)
-			{
-				case IFE:
-					editor_ife_ENABLED = true;
-					
-					init_change_control_IFE();
-				break;
-				
-				case INE:
-					editor_ife_ENABLED = false;
-				break;
-			}	
-		}
-*/		
-		
-		if( prospecto.getArea().toString().equals("L") ){
-			
 			flagSameAddress = false;
 			
 			ProyectLoanInfoPK ppk = new ProyectLoanInfoPK();

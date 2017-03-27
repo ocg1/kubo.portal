@@ -1,8 +1,8 @@
 package mx.com.kubo.mesa.solicitud.perfil.domicilio;
 
-import javax.faces.component.UISelectOne;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlInputTextarea;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import mx.com.kubo.model.AddressPK;
@@ -24,13 +24,7 @@ implements EditorViviendaIMO
 			
 		if(area.equals('I'))
 		{
-/*			
-			if( vivienda_TOKEN != null && vivienda_TOKEN.trim().length() == 0 )
-			{
-				vivienda_TOKEN = token.getInvestor_TOKEN();
-			}
-*/
-			
+
 			vivienda_TOKEN = token.getInvestor_TOKEN();
 			
 		} else {
@@ -63,10 +57,9 @@ implements EditorViviendaIMO
 	{			
 		request = RequestContext.getCurrentInstance();
 		
-		ajax_inputText = (HtmlInputText) evento.getComponent();
-		codigo_postal  = (String) ajax_inputText.getValue();
+		input_text = (HtmlInputText) evento.getComponent();
 		
-		System.out.println("EditorViviendaIMP.listener_codigo_postal(): " + codigo_postal);
+		zipcode = input_text.getValue().toString();				
 				
 		asignar_datos_codigo_postal();		
 		
@@ -80,14 +73,19 @@ implements EditorViviendaIMO
 		{
 			guardar_address();
 		}
+		
+		request.addCallbackParam("zipcode", zipcode);		
+		request.addCallbackParam("vivienda_CHANGED", vivienda_CHANGED);
+		request.addCallbackParam("address_saved_OK", address_saved_OK);
 	}
 	
 	public final void listener_mapa_ubicacion(AjaxBehaviorEvent evento) 
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		ajax_inputText = (HtmlInputText) evento.getComponent();
-		map_ubication  = (String) ajax_inputText.getValue();
+		input_text = (HtmlInputText) evento.getComponent();
+		
+		map_ubication = input_text.getValue().toString();
 
 		try 
 		{
@@ -101,7 +99,9 @@ implements EditorViviendaIMO
 				map_ubication_CHANGED = true;
 				
 				System.out.printf("\nEditorViviendaIMP.listener_mapa_ubicacion(): " + address.getLatitude() + ", " + address.getLongitude());
-			}						
+			}			
+			
+			request.addCallbackParam("map_ubication", map_ubication);
 			
 		} catch (Exception e) {
 			
@@ -113,8 +113,8 @@ implements EditorViviendaIMO
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		ajax_select_one = (UISelectOne) evento.getComponent();
-		colonia_id      = (Integer) ajax_select_one.getValue();
+		select_one = (HtmlSelectOneMenu) evento.getComponent();
+		colonia_id = Integer.parseInt(select_one.getValue().toString());
 		
 		colonia_PK = new NeighborhoodCatPK(colonia_id, company_id);
 		
@@ -140,26 +140,25 @@ implements EditorViviendaIMO
 		{
 			guardar_address();
 		}
+		
+		request.addCallbackParam("vivienda_CHANGED", vivienda_CHANGED);
+		request.addCallbackParam("address_saved_OK", address_saved_OK);
 	}
 	
 	public final void listener_colonia_TEXT(AjaxBehaviorEvent evento)
 	{	
 		request = RequestContext.getCurrentInstance();
 		
-		ajax_inputText = (HtmlInputText) evento.getComponent();
+		input_text = (HtmlInputText) evento.getComponent();
 				
-		colonia_Text  = (String) ajax_inputText.getValue();
-		input_text_id = (String) ajax_inputText.getId();
+		colonia_Text  = input_text.getValue().toString();
+		input_text_id = input_text.getId().toString();
 		
 		colonia_PK = null;		
 		colonia    = null;		
 		colonia_id = null;
 		
-		colonia_name = colonia_Text;
-		
-		System.out.printf("EditorViviendaIMP.listener_colonia_Text(): " + colonia_name);
-				
-		//asignar_datos_address();
+		colonia_name = colonia_Text;						
 		
 		address.setNeighborhood_id(colonia_id);
 		address.setNeighborhood(colonia);
@@ -175,6 +174,11 @@ implements EditorViviendaIMO
 		{
 			guardar_address();
 		}
+		
+		request.addCallbackParam("vivienda_CHANGED", vivienda_CHANGED);
+		request.addCallbackParam("address_saved_OK", address_saved_OK);		
+		request.addCallbackParam("neighborhood_text", colonia_name);
+		request.addCallbackParam("vivienda_TOKEN_NEW", vivienda_TOKEN_NEW);
 	}
 	
 	public final void listener_generar_vivienda_TOKEN(AjaxBehaviorEvent evento)
@@ -183,21 +187,18 @@ implements EditorViviendaIMO
 		
 		try
 		{
-			ajax_inputText = (HtmlInputText) evento.getComponent();
+			input_text = (HtmlInputText) evento.getComponent();
 			
-			input_text_value  = (String) ajax_inputText.getValue();		
-			input_text_id     = (String) ajax_inputText.getId();
+			input_text_value  = input_text.getValue().toString();		
+			input_text_id     = input_text.getId().toString();
 			
 		} catch (ClassCastException e) {
 			
-			ajax_text_area = (HtmlInputTextarea) evento.getComponent();
+			text_area = (HtmlInputTextarea) evento.getComponent();
 			
-			input_text_value  = (String) ajax_text_area.getValue();
-			input_text_id     = (String) ajax_text_area.getId();
+			input_text_value  = text_area.getValue().toString();
+			input_text_id     = text_area.getId().toString();
 		}
-
-		System.out.printf("\nEditorViviendaIMP.generar_vivienda_TOKEN(): " );
-		System.out.println(input_text_id + " = " + input_text_value);
 		
 		asignar_datos_address();		
 		
@@ -211,16 +212,20 @@ implements EditorViviendaIMO
 		{
 			guardar_address();
 		}
+		
+		request.addCallbackParam("address_saved_OK", address_saved_OK);
+		request.addCallbackParam("input_text_id",    input_text_id);
+		request.addCallbackParam("input_text_value", input_text_value);
+		request.addCallbackParam("vivienda_TOKEN_NEW", vivienda_TOKEN_NEW);
 	}
 	
 	public final void listener_tipo_vivienda_SELECTED(AjaxBehaviorEvent evento)
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		ajax_select_one  = (UISelectOne) evento.getComponent();
-		tipo_vivienda_id = (Integer) ajax_select_one.getValue();
+		select_one = (HtmlSelectOneMenu) evento.getComponent();
 		
-		System.out.printf("\nEditorViviendaIMP.guardar_tipo_vivienda(): " + tipo_vivienda_id);
+		tipo_vivienda_id = Integer.parseInt(select_one.getValue().toString());				
 		
 		tipo_vivienda_PK = new ResidencePK(tipo_vivienda_id, company_id);
 		
@@ -229,18 +234,22 @@ implements EditorViviendaIMO
 		init_addres_TOKEN();
 		
 		vivienda_TOKEN_NEW = token.getAddress_TOKEN();
+		
+		request.addCallbackParam("tipo_vivienda_id", tipo_vivienda_id);
+		request.addCallbackParam("vivienda_TOKEN_NEW", vivienda_TOKEN_NEW);
 	}
 	
 	public final void listener_motivo_del_cambio(AjaxBehaviorEvent evento)
 	{
-		ajax_text_area = (HtmlInputTextarea) evento.getComponent();
+		request = RequestContext.getCurrentInstance();
 		
-		motivo_del_cambio  = (String) ajax_text_area.getValue();
+		text_area = (HtmlInputTextarea) evento.getComponent();
 		
-		change_control_bean.setWhyChangeData(motivo_del_cambio);
+		motivo_del_cambio  = text_area.getValue().toString();
 		
-		System.out.printf("\nEditorViviendaIMP.listener_motivo_del_cambio(): \n");
-		System.out.println(motivo_del_cambio);		
+		change_control_bean.setWhyChangeData(motivo_del_cambio);	
+		
+		request.addCallbackParam("motivo_del_cambio", motivo_del_cambio);
 	}
 		
 	public final void listener_guardar_edicion() 
@@ -279,18 +288,15 @@ implements EditorViviendaIMO
 				
 			}
 		}
-		
-		request.addCallbackParam("vivienda_TOKEN", vivienda_TOKEN);
+					
+		request.addCallbackParam("address_saved_OK", address_saved_OK);
 		request.addCallbackParam("guardar_edicion_OK", guardar_edicion_OK);
-		
-		System.out.printf("\nEditorViviendaIMP.guardar_edicion(): " + guardar_edicion_OK);
+		request.addCallbackParam("vivienda_TOKEN", vivienda_TOKEN);
 	}
 	
 	public final void listener_lista_coincidencias()
 	{
-		request = RequestContext.getCurrentInstance();
-		
-		System.out.println("EditorViviendaIMP.listener_lista_coincidencias(): " + neighborhood_id);
+		request = RequestContext.getCurrentInstance();				
 		
 		lista_address = service_address.getLista_coincidencias(NIVEL_1, address);	
 		
@@ -302,14 +308,12 @@ implements EditorViviendaIMO
 	
 	public final void listener_lista_coincidencias_NIVEL_2()
 	{
-		request = RequestContext.getCurrentInstance();
-		
-		System.out.println("EditorViviendaIMP.listener_lista_coincidencias_NIVEL_2(): " + neighborhood_id);				
+		request = RequestContext.getCurrentInstance();						
 		
 		lista_address = service_address.getLista_coincidencias(NIVEL_2, address);		
 		
 		init_lista_coincidencias();
-		
+				
 		request.addCallbackParam("numero_coincidencias", lista_coincidencias.size());
 	}
 	
