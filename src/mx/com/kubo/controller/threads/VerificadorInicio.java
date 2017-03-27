@@ -6,12 +6,16 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import com.soa.webServices.WsSgbRisk;
+import com.soa.webServices.WsSgbRiskServiceLocator;
+
 import mx.com.kubo.controller.InversionAutomatica;
 import mx.com.kubo.controller.PendingNotificationController;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
 import mx.com.kubo.controller.shortURL.ResponseShortURL;
+import mx.com.kubo.kubows.ClientNotificationRequest;
 import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
@@ -20,22 +24,21 @@ import mx.com.kubo.kubows.WsResponse;
 import mx.com.kubo.model.AyudaDocumentos;
 import mx.com.kubo.model.Change_control;
 import mx.com.kubo.model.Change_controlPK;
+import mx.com.kubo.model.ClientNotification;
 import mx.com.kubo.model.ClientesEnMora;
 import mx.com.kubo.model.CobranzaPreventiva;
 import mx.com.kubo.model.InactiveAccount;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
-import mx.com.kubo.model.MovementNotification;
-import mx.com.kubo.model.MovementNotificationPK;
 import mx.com.kubo.model.MovementToVerify;
 import mx.com.kubo.model.PendingNotification;
-import mx.com.kubo.model.SafiDepositoRefere;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.UltimosDesembolsos;
 import mx.com.kubo.services.AutomaticInvestmentService;
 import mx.com.kubo.services.AyudaDocumentosService;
 import mx.com.kubo.services.Change_controlService;
+import mx.com.kubo.services.ClientNotificationService;
 import mx.com.kubo.services.ClientesEnMoraService;
 import mx.com.kubo.services.CobranzaPreventivaService;
 import mx.com.kubo.services.InactiveAccountService;
@@ -69,6 +72,7 @@ public class VerificadorInicio extends Thread  {
 		private final int NOTIFICA_TABLERO_NORMATIVO = 17;
 		private final int INVERSIONES_AUTOMATICAS = 18;
 		private final int NOTIFICACION_DESEMBOLSO = 19;
+		private final int NOTIFICACION_ASIGNACION_COACH = 20;
 
 	
 	//  FIN MOVEMENT_ID 
@@ -111,6 +115,7 @@ public class VerificadorInicio extends Thread  {
 		private int int_TABLERO_NORMATIVO = 1;
 		private int int_INVERSIONES_AUTOMATICAS = 1;
 		private int int_NOTIFICACION_DESEMBOLSO = 1;
+		private int int_NOTIFICACION_ASIGNACION_COACH = 20;
 		// FIN VARIABLES DE MINUTOS EN QUE SE REPETIRÁ 
 		
 		
@@ -132,17 +137,20 @@ public class VerificadorInicio extends Thread  {
 		
 		private 	InactiveAccountService inactiveAccountService;
 		
-		protected Change_controlService service_change_control;
+		protected 	Change_controlService service_change_control;
 		
-		protected MembershipService service_membership;
+		protected 	MembershipService service_membership;
 		
-		protected AyudaDocumentosService ayudadocumentosservice;
+		protected 	AyudaDocumentosService ayudadocumentosservice;
 		
 		private   	AutomaticInvestmentService service;
 		
-		private UltimosDesembolsosService ultimosdesembolsosservice;
+		private 	UltimosDesembolsosService ultimosdesembolsosservice;
+		
+		private 	ClientNotificationService  clientnotificationservice;
 		
 		private 	List<MovementToVerify>	movements;
+		
 		
 		public VerificadorInicio(){
 			
@@ -178,6 +186,8 @@ public class VerificadorInicio extends Thread  {
 			ultimosdesembolsosservice		=  Utilities.findBean("ultimosDesembolsosServiceImp");
 			
 			service 						= Utilities.findBean("automaticInvestmentServiceImp");
+			
+			clientnotificationservice		= Utilities.findBean("clientNotificationServiceImp");
 			
 		}
 		
@@ -258,9 +268,7 @@ public class VerificadorInicio extends Thread  {
 						}
 						
 					}
-				
-				
-				
+					
 					if(i > 20){
 						break;
 					}
@@ -1251,7 +1259,7 @@ public class VerificadorInicio extends Thread  {
 							
 							try{
 								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_NOTIFICACION_DESEMBOLSO ){
-									System.out.println( " 18 - NOTIFICACION_DESEMBOLSO" );
+									System.out.println( " 19 - NOTIFICACION_DESEMBOLSO" );
 									
 									if( move.getNext_day_to_apply() != null ){
 										
@@ -1303,6 +1311,30 @@ public class VerificadorInicio extends Thread  {
 						}
 							
 						break;
+						
+						case NOTIFICACION_ASIGNACION_COACH:
+							
+							try{
+								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_NOTIFICACION_ASIGNACION_COACH ){
+									
+									System.out.println( " 20 - NOTIFICACIÓN DE ASIGNACIÓN DE COACH" );
+									
+									notificacionAsignacionCoachFnc();
+									
+									int_NOTIFICACION_ASIGNACION_COACH = 1;
+									
+								}else{
+									
+									int_NOTIFICACION_ASIGNACION_COACH++;
+									
+								}
+								
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+									
 							
 						default:
 							
@@ -1373,9 +1405,9 @@ public class VerificadorInicio extends Thread  {
 		
 		private void verificaDepositos(){
 		
-			Date fecha_inicio_de_verificaciones_sys 		= new Date();
+			/*Date fecha_inicio_de_verificaciones_sys 		= new Date();
 			String fecha_de_origen_STR						= "";
-			List< SafiDepositoRefere > lstSafiDeposito 		= null;
+			List< SafiDepositoRefere > lstSafiDeposito 		= null; */
 			
 			/* SystemParamPK spk = new SystemParamPK();
 			
@@ -2091,6 +2123,24 @@ public class VerificadorInicio extends Thread  {
 			
 		}
 		
+		private void notificacionAsignacionCoachFnc(){
+			
+			try{
+				
+				initCalledStoredClientNotification();
+				
+				callServicesGetCoach();
+				
+				callServiceNoficationAssigned();
+				
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				
+			}
+			
+		}
+		
 		private boolean enviaSMS(String url, Integer prospectus_id,String nombre){
 			
 			//System.out.println( tokenGen );
@@ -2131,6 +2181,91 @@ public class VerificadorInicio extends Thread  {
 			}
 
 			return flag ;
+			
+		}
+		
+		private void initCalledStoredClientNotification(){
+			try{
+				
+				
+				clientnotificationservice.callSPClientNotification();
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		private void callServicesGetCoach(){
+			
+			try{
+				
+				List<ClientNotification> cnlst = clientnotificationservice.getClientNotificationWithOutCoach();
+				
+				String[] prospectusArray = new String[ cnlst.size() ]; 
+				
+				for( int y = 0 ; y < cnlst.size() ; y++ ){
+					prospectusArray[ y ] = cnlst.get(y).getProspectus_id() + "";
+				}
+				
+				/********* LLAMDA A SERVICIO SGB *********/ 
+				
+				WsSgbRiskServiceLocator locator     = new WsSgbRiskServiceLocator();
+				WsSgbRisk service_SGB_risk     = locator.getWsSgbRisk();	
+				
+				//String[] res = new String[4];
+				
+				String[] res = service_SGB_risk.getPromotorData(prospectusArray, "116", "1");
+				
+				/*res[0] = "3::686";
+				res[1] = "3::686";
+				res[2] = "3::686";
+				res[3] = "3::686";*/
+				
+				/******* FIN LLAMDA A SERVICIO SGB *******/ 
+				
+				if( res != null && res.length > 0 ){
+				
+					for( int i = 0 ; i < res.length ; i++ ){
+						
+						String r = res[i]; 
+						
+						if( r != null ){
+						
+							String prospectus_id = r.split("::")[0];
+							String prospectus_id_coach = r.split("::")[1];
+							ClientNotification cn = clientnotificationservice.getClientNotification( Integer.parseInt(prospectus_id) , 1);
+							cn.setProspectus_id_coach( Integer.parseInt(prospectus_id_coach) );
+							cn.setAssign_coach_status(1);
+							clientnotificationservice.updateClientNotification(cn);
+						}
+						
+					}
+				
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		private void callServiceNoficationAssigned(){
+			try{
+			
+				PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
+				
+				PublicProyect kuboservices =  kubolocator.getPublicProyect();
+				
+				ClientNotificationRequest request = new ClientNotificationRequest();
+				
+				request.setNotification_type_id("1");
+				
+				kuboservices.clientNotification(request);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			
 		}
 		

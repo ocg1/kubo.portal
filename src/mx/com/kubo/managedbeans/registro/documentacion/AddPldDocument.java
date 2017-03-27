@@ -261,7 +261,7 @@ implements Serializable
 				
 			 }else if( sesion.getArea().toString().equals("I") ){
 				 
-				 if( inv != null ){
+				 if( inv == null ){
 					
 					 inv = new Investor();
 					 

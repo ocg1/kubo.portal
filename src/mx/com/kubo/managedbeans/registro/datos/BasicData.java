@@ -1396,111 +1396,139 @@ implements Serializable, BasicDataIMO
 		
 		intento   = new CreditHistoryAttempt();
 		
-		if(pide_contrasena_segura && password_ENABLED )
-		{
-			
-			faces  = FacesContext.getCurrentInstance();
-			resolver = faces.getApplication().getELResolver();
-			context  = faces.getELContext();
-			external = faces.getExternalContext();
+		request = RequestContext.getCurrentInstance();
 		
-			request = RequestContext.getCurrentInstance();
-			ProspectRiskIMP risk = new ProspectRiskIMP();
-			
-			//validaCreditHistoryAttempt();
-			
-			validaDatosPersonales();
-			
-			BehaviorCheck bc = new BehaviorCheck();
-			
-			HttpServletRequest httpServletRequest = (HttpServletRequest) external.getRequest(); 
-	
-			String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
-				    
-					if(ipAddressClient == null)  
-					{
-				    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
-					}
-			
-			bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
-			
-			naturalPerson = service_natural_person.getNaturalPersonById(npPK);
-			
-			init_telefonos();
-			
-			
-			boolean prospectoSGB = creaProspectoSGB( naturalPerson.getProspectus()  , naturalPerson );
-			
-			if( prospectoSGB ){
+		SystemParamPK sysId = new SystemParamPK();
+		
+		sysId.setCompany_id(company_id);
+		sysId.setSystem_param_id(90);//Consulta a Buró Habiltada
+		
+		SystemParam param = systemParamService.loadSelectedSystemParam(sysId);
+		
+		if( param != null && param.getValue() != null && param.getValue().equals("S") ){
+		
+			if(pide_contrasena_segura && password_ENABLED )
+			{
 				
-				try{
-					
-					asignar_credit_history_attempt( naturalPerson, domicilio.getAddress() , phone.getThisPhoneCell() );
-					
-				}catch(Exception e){
-					e.printStackTrace();
-				}
+				faces  = FacesContext.getCurrentInstance();
+				resolver = faces.getApplication().getELResolver();
+				context  = faces.getELContext();
+				external = faces.getExternalContext();
+			
 				
-				if( success_consulta_nip ){
+				ProspectRiskIMP risk = new ProspectRiskIMP();
 				
-						risk = new ProspectRiskIMP();
-						risk.setPerson(naturalPerson);
-						risk.setConsulting_renovation_ENABLED(false);
-						risk.init();
-						
-						prospect_risk_ENABLED = risk.isProspect_risk_ENABLED();
-										
-						if(prospect_risk_ENABLED)
+				//validaCreditHistoryAttempt();
+				
+				validaDatosPersonales();
+				
+				BehaviorCheck bc = new BehaviorCheck();
+				
+				HttpServletRequest httpServletRequest = (HttpServletRequest) external.getRequest(); 
+		
+				String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+					    
+						if(ipAddressClient == null)  
 						{
-		
-							/*ProyectLoanCreatorIMP creator = new ProyectLoanCreatorIMP();
-							creator.setScore(risk.getScore());
-							creator.init();
-							*/
-							initProyectLoan( risk.getScore() );
-							
-							init_consulting_manual( risk.getScore() );
-							
-							/*faces     = FacesContext.getCurrentInstance();
-							context = faces.getELContext();
-							resolver  = faces.getApplication().getELResolver();*/
-				
-							/*NavigationBeanIMP navigation = (NavigationBeanIMP) resolver.getValue(context, null, "navigationBean");
-							
-							navigation.setHasValidScore(true);
-							
-							navigation.setFlagBCScore(true);*/
-							
-							intento.setStatus_res("0");
-							intento.setInfo_res( "Consulta satisfactoria" );;
-						
-						}else{
-							
-							intento.setStatus_res("-99");
-							intento.setInfo_res("Prospecto no encontrado");;
-							
+					    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
 						}
+				
+				bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
+				
+				naturalPerson = service_natural_person.getNaturalPersonById(npPK);
+				
+				init_telefonos();
+				
+				
+				boolean prospectoSGB = creaProspectoSGB( naturalPerson.getProspectus()  , naturalPerson );
+				
+				if( prospectoSGB ){
+					
+					try{
 						
-						intento.setCreditcard_is_principal(null);
-						intento.setCreditcard_four_digits(null);
-						intento.setMortgage_is_principal(null);
-						intento.setCar_is_principal(null);
-		
+						asignar_credit_history_attempt( naturalPerson, domicilio.getAddress() , phone.getThisPhoneCell() );
 						
-						intento.setConsultation_date(new Date());
-		
-						intento.setIs_check("1");
-		
-						success_consulta_nip = prospect_risk_ENABLED;
-						
-						CreditHistoryAttempt  tmp = getTemporalCreditHistoryAttempt(intento); 
-						creditAttemptService.add(tmp);
-						
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					
+					if( success_consulta_nip ){
+					
+							risk = new ProspectRiskIMP();
+							risk.setPerson(naturalPerson);
+							risk.setConsulting_renovation_ENABLED(false);
+							risk.init();
+							
+							prospect_risk_ENABLED = risk.isProspect_risk_ENABLED();
+											
+							if(prospect_risk_ENABLED)
+							{
+			
+								/*ProyectLoanCreatorIMP creator = new ProyectLoanCreatorIMP();
+								creator.setScore(risk.getScore());
+								creator.init();
+								*/
+								initProyectLoan( risk.getScore() );
+								
+								init_consulting_manual( risk.getScore() );
+								
+								/*faces     = FacesContext.getCurrentInstance();
+								context = faces.getELContext();
+								resolver  = faces.getApplication().getELResolver();*/
+					
+								/*NavigationBeanIMP navigation = (NavigationBeanIMP) resolver.getValue(context, null, "navigationBean");
+								
+								navigation.setHasValidScore(true);
+								
+								navigation.setFlagBCScore(true);*/
+								
+								intento.setStatus_res("0");
+								intento.setInfo_res( "Consulta satisfactoria" );;
+							
+							}else{
+								
+								intento.setStatus_res("-99");
+								intento.setInfo_res("Prospecto no encontrado");;
+								
+							}
+							
+							intento.setCreditcard_is_principal(null);
+							intento.setCreditcard_four_digits(null);
+							intento.setMortgage_is_principal(null);
+							intento.setCar_is_principal(null);
+			
+							
+							intento.setConsultation_date(new Date());
+			
+							intento.setIs_check("1");
+			
+							success_consulta_nip = prospect_risk_ENABLED;
+							
+							CreditHistoryAttempt  tmp = getTemporalCreditHistoryAttempt(intento); 
+							creditAttemptService.add(tmp);
+							
+					}
+					
+					
 				}
-				
-				
+			
 			}
-		
+			
+			//request.addCallbackParam("isActiveNIP", true);
+			
+		}else{
+			
+			//request.addCallbackParam("isActiveNIP", false);
+			success_consulta_nip = false;
+        	msgWarningBurConsult = "" +
+									    	"<h3><span></span>Lo sentimos...</h3>" +
+									        "<p>Tenemos un problema técnico para continuar con tu solicitud.</p>" +
+									        			
+									        "<p>No te preocupes, tus datos están guardados, regresa en unos minutos para continuar.</p>" +
+									        
+									       	//"<div class='callAction btnNaranja' style='width:70%; margin:0 auto;'  onclick='aceptaSalir();'>Salir</div>" +
+								        "" ;
+        	
 		}
 		
 		

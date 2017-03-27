@@ -29,6 +29,7 @@ import mx.com.kubo.services.RiskTaskService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ScreenService;
 import mx.com.kubo.services.SegmentProspectusService;
+import mx.com.kubo.services.SimulatorService;
 import mx.com.kubo.services.SystemParamService;
 
 public abstract class NavigationBeanDMO 
@@ -69,6 +70,10 @@ implements NavigationBeanIMO
 	
 	@ManagedProperty("#{riskTaskServiceImp}")
 	protected RiskTaskService risktaskservice;
+	
+	@ManagedProperty("#{simulatorServiceImp}")
+	protected SimulatorService simulatorService;
+	
 	
 	
 	protected String paginaIni;
@@ -396,5 +401,17 @@ implements NavigationBeanIMO
 
 	public void setRisktaskservice(RiskTaskService risktaskservice) {
 		this.risktaskservice = risktaskservice;
+	}
+
+	public Simulator getSimulator() {
+		return simulator;
+	}
+
+	public SimulatorService getSimulatorService() {
+		return simulatorService;
+	}
+
+	public void setSimulatorService(SimulatorService simulatorService) {
+		this.simulatorService = simulatorService;
 	}
 }

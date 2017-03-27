@@ -580,7 +580,7 @@ public abstract class BasicDataPMO extends BasicDataAMO
 		
 		String phone = phone_obj.getPhone_number();
 		
-		if(phone.isEmpty())
+		if( phone == null || phone.isEmpty())
 		{
 			intento.setPhone(null);
 			

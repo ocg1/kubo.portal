@@ -909,7 +909,7 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 				 proyectLoanInfoService.saveProyectLoanInfo(info);
 			 }
 			 
-		 }else if( sesion.getArea().toString().equals("I") ){
+		 }else */ if( sesion.getArea().toString().equals("I") ){
 			 
 			InvestorPK invPk = new InvestorPK();
 			
@@ -918,7 +918,7 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 			 
 			inv = investorservice.getInvestorById(invPk);
 			
-			if( inv != null ){
+			/* if( inv != null ){
 				
 				if( naturalperson.getCitizenship() != null && naturalperson.getCitizenship() == NACIONAL && inv.getMx_ife_domicilio() != null ){
 					
@@ -938,16 +938,19 @@ public abstract class AddPldDocumentAMO extends AddPldDocumentDMO
 					
 				}
 				
-			}else{
+			}else{ */
 				
+			if( inv == null ){
+			
 				inv = new Investor();
 				inv.setPk(invPk);
 				inv.setMx_ife_domicilio("N");
 				investorservice.addInvestor(inv);
 				sameAddress = "N";
+				
 			}
 			 
-		 } */
+		  } 
 		 
 		 sameAddress = "N";
 		 

@@ -11,6 +11,7 @@ import mx.com.kubo.bean.MenuRegBean;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.Fields;
 import mx.com.kubo.model.Scoring;
+import mx.com.kubo.model.SimulatorBean;
 
 public abstract class NavigationBeanPMO extends NavigationBeanAMO
 {	
@@ -102,6 +103,11 @@ public abstract class NavigationBeanPMO extends NavigationBeanAMO
 							a.setDisplayBar(true);
 						}
 					}
+					
+					SimulatorBean sim = simulatorService.getMaxSimulationProspectWithPurpose(score.getProspectus_id(), getCompany());
+					
+					simulator.setPurpose_id(sim.getPurpose_id());
+					
 					
 					cambiaPagina(e);
 				}				
