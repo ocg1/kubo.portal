@@ -39,6 +39,16 @@ public final class MovimientoDisposicionDMO extends MovimientosIMO
 		return "";
 	}
 	
+	public void setMotivo_disposicion(String motivo) 
+	{
+		motivo_disposicion = motivo;
+	}
+	
+	public String getMotivo_disposicion() 
+	{
+		return motivo_disposicion;
+	}
+	
 	public final String getMotivo_id() 
 	{
 		return "";

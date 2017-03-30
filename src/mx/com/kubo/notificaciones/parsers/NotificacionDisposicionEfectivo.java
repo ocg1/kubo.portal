@@ -19,13 +19,14 @@ implements NotificacionIMO
 {	
 	public NotificacionDisposicionEfectivo(ConexionIMO conexion_SMTP, Membership acreditado, MovimientosIMO movimiento)
 	{
-		this.conexion_SMTP    = conexion_SMTP;
+		this.conexion_SMTP = conexion_SMTP;
 	
-		this.acreditado       = acreditado;
+		this.acreditado = acreditado;
 		
-		this.monto            = movimiento.getMonto();
-		this.cuenta           = movimiento.getCuenta();
-		this.clabe_account_id = movimiento.getClabe_account_id();
+		monto  = movimiento.getMonto();
+		cuenta = movimiento.getCuenta();
+		clabe_account_id   = movimiento.getClabe_account_id();
+		motivo_disposicion = movimiento.getMotivo_disposicion();
 		
 		company_id    = acreditado.getMembershipPK().getCompany_id();
 		prospectus_id = acreditado.getMembershipPK().getProspectus_id() + "";
@@ -87,6 +88,7 @@ implements NotificacionIMO
     	body_text = body_text.replaceAll("###cuenta###",          cuenta);
     	body_text = body_text.replaceAll("###monto###",           monto);
     	body_text = body_text.replaceAll("###cuenta_CLABE###",    cuenta_CLABE);
-    	body_text = body_text.replaceAll("###banco###",           banco);		            	    	  	   
+    	body_text = body_text.replaceAll("###banco###",           banco);
+    	body_text = body_text.replaceAll("###motivo_disposicion###", motivo_disposicion);
 	}
 }

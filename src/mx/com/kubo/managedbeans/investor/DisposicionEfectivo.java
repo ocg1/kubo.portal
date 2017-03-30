@@ -91,6 +91,7 @@ implements Serializable
 		 try 
 		 {			 
 			 disposicion_param_values = new MovimientoDisposicionDMO( monto_SELECTED, cuentaActual , "1");
+			 disposicion_param_values.setMotivo_disposicion(motivo_disposicion);
 			 
 			 Membership emisor     = membership;
 			 Membership acreditado = membership;

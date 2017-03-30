@@ -88,6 +88,7 @@ public abstract class DisposicionEfectivoDMO
 	protected String monto_SELECTED_dep;
 	protected String cuenta;
 	protected String SAFI_client_id;	
+	protected String motivo_disposicion;
 		
 	protected List<String> SAFI_cuenta;
 	
@@ -271,6 +272,14 @@ public abstract class DisposicionEfectivoDMO
 
 	public void setServicecallingservice(ServiceCallingService servicecallingservice) {
 		this.servicecallingservice = servicecallingservice;
+	}
+
+	public String getMotivo_disposicion() {
+		return motivo_disposicion;
+	}
+
+	public void setMotivo_disposicion(String motivo_disposicion) {
+		this.motivo_disposicion = motivo_disposicion;
 	}
 
 }

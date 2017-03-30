@@ -137,6 +137,7 @@ public abstract class NotificacionDMO
     protected String fechaDep;
     protected String creation_DATE;
     protected String finish_DATE;
+    protected String motivo_disposicion;
 
 	protected NumberFormat     number_format;    
     protected SimpleDateFormat date_format;
