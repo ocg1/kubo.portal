@@ -20,7 +20,8 @@
 								<f:selectItem itemValue="5"  itemLabel="Tia(o)"/>
 								<f:selectItem itemValue="6"  itemLabel="Prima(o)"/>
 								<f:selectItem itemValue="7"  itemLabel="Sobrina(o)"/>
-								<f:selectItem itemValue="8"  itemLabel="Otro"/>
+								<f:selectItem itemValue="8"  itemLabel="Esposa(o)"/>
+								<f:selectItem itemValue="9"  itemLabel="Otro"/>
 							<p:ajax event="change"  ></p:ajax>
 
 						</h:selectOneMenu>	
@@ -28,7 +29,7 @@
 	
 			<h:inputText  value="#{benefic.relationship}" styleClass="elementAddres1 validatorClass parentescoCampoReal hs_class" id="relationship_Benef">
 				<p:ajax event="blur" listener="#{ibeneficiaries.beneficiario.persist(benefic)}"/>	
-			</h:inputText>						
+			</h:inputText>					
 		
 		<script>
 		

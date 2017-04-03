@@ -47,7 +47,7 @@ implements DAOSearchRequestIMO
 		" and (isnull(mem.is_duplicated) " + 
 		" or (mem.is_duplicated <> 'S'))) " +
 		" and mem.promotor_id =  " + promotor_id +" " +
-		" and f.full_name like '%" + search_TOKEN  + "%' " +
+		" and f.full_name like '%" + search_TOKEN.trim()  + "%' " +
 		" order by f.full_name " ;
 		
 
@@ -122,7 +122,7 @@ implements DAOSearchRequestIMO
 					" gn_prospectus pr " +
 					" on (fn.prospectus_id = pr.prospectus_id) " + 
 					" where  " +
-					" (fn.full_name like '%"+strName+"%')  and pr.area='"+ area +"' ";
+					" (fn.full_name like '%"+strName.trim()+"%')  and pr.area='"+ area +"' ";
 			
 			
 			List<ClientViewFullName> lista_client_view = em.createNativeQuery(query, ClientViewFullName.class).getResultList();
@@ -146,6 +146,51 @@ implements DAOSearchRequestIMO
 		}		
 	}
 	
+	public List<ClientViewFullName> getLista_inversionistas_CLABE(String token, String area){
+		
+		try{
+			
+			Date d1 = new Date();
+			
+			Calendar cd_1 = Calendar.getInstance();
+			cd_1.setTime(d1);
+			
+			token = token.trim();
+			
+			String query = "select "	+
+							" sa.prospectus_id, "	+
+							" '' as email, "	+
+							" sa.mx_clabe as full_name , "	+
+							" '0000000' as tracking_id  "	+
+							" from "	+
+							" gn_clabe_account sa join "	+ 
+							" gn_prospectus pr  "	+
+							" on (sa.prospectus_id = pr.prospectus_id) "	+ 
+							" where "	+
+							" sa.mx_clabe like '%"+token.trim()+"%' "	+
+							" and pr.area='"+area+"' "; 
+			
+			
+			List<ClientViewFullName> lista_client_view = em.createNativeQuery(query, ClientViewFullName.class).getResultList();
+			
+			Calendar cd_2 = Calendar.getInstance();
+			cd_2.setTime(new Date());
+			
+			long dif_1 = cd_2.getTimeInMillis() - cd_1.getTimeInMillis();
+			
+			System.out.println( "Fin ejecuta Consulta busqueda CLABE =  " + token + "   area: " + area + " tiempo: " + dif_1 );
+			
+			return lista_client_view;
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			return null;
+			
+		}
+		
+	}
+	
 	public List<ClientViewFullName> getLista_by_email(String search_TOKEN, String area){
 		
 		try
@@ -166,7 +211,7 @@ implements DAOSearchRequestIMO
 					" gn_prospectus pr " +
 					" on (m.prospectus_id = pr.prospectus_id) " + 
 					" where  " +
-					" (m.email like '%"+search_TOKEN+"%')  and pr.area='"+ area +"' ";
+					" (m.email like '%"+search_TOKEN.trim()+"%')  and pr.area='"+ area +"' ";
 			
 			
 			List<ClientViewFullName> lista_client_view = em.createNativeQuery(query, ClientViewFullName.class).getResultList();

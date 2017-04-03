@@ -14,6 +14,8 @@ import javax.faces.event.AjaxBehaviorEvent;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.managedbeans.mesa.solicitud.SummaryRequest;
+import mx.com.kubo.model.ClabeAccount;
+import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.ProspectusPK;
 import mx.com.kubo.model.mesa.solicitud.busqueda.ClientViewFullName;
 import mx.com.kubo.tools.Utilities;
@@ -75,7 +77,46 @@ implements SearchRequestIMO, Serializable
 					prospectus_id = prospectus.getProspectusPK().getProspectus_id();
 				}
 				
-			}else {
+			}else if( radioTypeSearch == 10 && Utilities.isNumeric( search ) ){
+				
+				if( search.length() == 18 ){
+				
+					//clabeaccountservice.loadClabeAccountListByProspectus(prospectus_id, company_id);
+					
+					ClabeAccount cl = clabeaccountservice.loadClabeAccountByClabeStr(search);
+					
+					if( cl != null ){
+						search = cl.getClabepk().getProspectus_id()+"";
+					}
+					
+				}
+					
+					MembershipPK mpk = new MembershipPK();
+					
+					mpk.setCompany_id(1);
+					mpk.setProspectus_id( Integer.parseInt( search ) ); 
+					
+					member =  service_membership.getMembershipById(mpk);
+					
+					if( member != null ){
+						
+						search = member.getMembershipPK().getProspectus_id() +"";
+						
+						prospectus = member.getPerson().getProspectus();
+						
+						prospectusPK = 	prospectus.getProspectusPK();
+					
+						prospectus_id = prospectusPK.getProspectus_id();
+						
+					}
+				
+				
+				
+			} else {
+				
+					prospectus = null;
+					proyectLoan = null;
+					proyect_loan_ENABLED = false;
 				
 					if( radioTypeSearch == 9 && !Utilities.isNumeric( search ) ){
 						
@@ -86,22 +127,15 @@ implements SearchRequestIMO, Serializable
 							search = member.getMembershipPK().getProspectus_id() +"";
 						}
 					}
-				
 					
+					if( Utilities.isNumeric(search) ){
+						init_prospectus();
+					}
 					
-						prospectus = null;
-						proyectLoan = null;
-						proyect_loan_ENABLED = false;
-						
-						
-						if( Utilities.isNumeric(search) ){
-							init_prospectus();
-						}
-						
-						if(prospectus != null)
-						{		
-							proyectLoan = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id);
-						}
+					if(prospectus != null)
+					{		
+						proyectLoan = service_proyect_loan.getMaxProyectLoanByProspect(prospectus_id, company_id);
+					}
 					
 			}
 					

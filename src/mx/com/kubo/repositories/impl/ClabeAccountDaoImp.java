@@ -78,4 +78,22 @@ public class ClabeAccountDaoImp implements ClabeAccountDao {
 	}
 	
 	
+	public ClabeAccount loadClabeAccountByClabeStr(String clabe){
+		try{
+		List<ClabeAccount> clabeaccount=em.createQuery("from ClabeAccount where mx_clabe = ? ",ClabeAccount.class)
+				.setParameter(1, clabe)
+				.getResultList();
+		
+		if( clabeaccount != null && clabeaccount.size() > 0 ){
+			return clabeaccount.get(0);
+		}else{
+			return null;
+		}
+		
+		}catch(Exception e){
+			return null;
+		}
+		
+	}
+	
 }

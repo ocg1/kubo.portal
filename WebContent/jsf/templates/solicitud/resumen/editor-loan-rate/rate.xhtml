@@ -2,8 +2,9 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
-				
- 	<h:inputText value = "#{summaryRequest.actualProyect.rate}" immediate = "true">
- 		<p:ajax event = "blur" listener = "#{summaryRequest.editor_rate.init_rate}"/>
- 	</h:inputText> 	 			
+	<h:panelGroup rendered="#{summaryRequest.actualProyect != null}" >			
+	 	<h:inputText value = "#{summaryRequest.actualProyect.rate}" immediate = "true">
+	 		<p:ajax event = "blur" listener = "#{summaryRequest.editor_rate.init_rate}"/>
+	 	</h:inputText>
+ 	</h:panelGroup> 	 			
 </ui:composition>

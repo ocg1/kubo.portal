@@ -7,17 +7,39 @@
 		
 	<script>
 		function validaMontoRetirar()
-		{		
-			var val = $( "#ammountRet" ).val().replace(",","");
+		{	
+			var val = $( "#ammountRet_001" ).val().replace(",","");
+			
 			val = val.replace(",","");
 			val = val.replace(",","");
 			val = val.replace(",","");
+			
+			if( val.trim().length == 0 ){
+				
+				//alertify.alert( "Debes especificar el monto a retirar" );
+				$(".alerta-disposicionEfectivo").fadeIn();
+				$(".velo").fadeIn();
+				$(".alerta-disposicionEfectivo p").html("Debes especificar el monto a retirar");
+				
+				$( "#ammountRet_001" ).val("");
+				
+				return false;
+				
+			}
+			
+			
+			
 			
 			var lim = $("#limiteSaldo").val();
 			
+			
+			
 			if(parseFloat( val ) > parseFloat( lim ) )
 			{
-				alert( "El monto a retirar debe ser menor o igual al saldo disponible" );
+		
+				$(".alerta-disposicionEfectivo").fadeIn();
+				$(".velo").fadeIn();
+				$(".alerta-disposicionEfectivo p").html("El monto a retirar debe ser menor o igual al saldo disponible");
 				
 				$( "#ammountRet" ).val("");
 				
@@ -28,7 +50,10 @@
 				return true;				
 			}			
 		}
-		
+		function closeModal(modal) {
+			$(modal).fadeOut();
+			$(".velo").fadeOut();
+		}
 		function resRet(xhr, status, args)
 		{
 			
@@ -42,8 +67,11 @@
 				
 			} else {
 				
-				alert("Ocurriò un error al crear la notificación de retiro de efectivo. Por favor intente más tarde o comuniquese al centro de atenciòn de kubo.financiero al telèfono 62-69-00-24");
+				$(".alerta-disposicionEfectivo").fadeIn();
+				$(".velo").fadeIn();
+				$(".alerta-disposicionEfectivo p").html("Ocurriò un error al crear la notificación de retiro de efectivo. Por favor intente más tarde o comuniquese al centro de atenciòn de kubo.financiero al telèfono 62-69-00-24");
 				
+								
 				$( "#ammountRet" ).val("");				
 			}
 			
@@ -51,11 +79,28 @@
 		}
 		
 		function retiroActionClick()
-		{			
-			$("#ammountRet").val( $("#ammountRet_001").val() );			
-			$("#ammountRet").blur();
+		{		
 			
-			$("#retiroAction" ).click();	
+			if(validaMontoRetirar()){
+				
+				var m = $("#motivo_disposicion").val();
+				
+				if( m.trim().length > 0 ){
+			
+					$("#ammountRet").val( $("#ammountRet_001").val() );			
+					$("#ammountRet").blur();
+					
+					$("#retiroAction" ).click();
+			
+				}else{
+				
+					$(".alerta-disposicionEfectivo").fadeIn();
+					$(".velo").fadeIn();
+					$(".alerta-disposicionEfectivo p").html("Debes especificar el motivo por el que deseas retirar tu dinero");
+					
+				}
+				
+			}
 		} 
 	</script>
 		
@@ -107,6 +152,13 @@
 				</FIELDSET>
 						
 			</div>
+			<div class="alerta-disposicionEfectivo mod modal-small centrar_h">
+				<div class="mod-inner">
+					<p></p>
+					<div class="callActionMedium btnNaranja" onclick="closeModal('.alerta-disposicionEfectivo')">Aceptar</div>
+				</div>
+			</div>
+			
 			
 		</div>
 			

@@ -79,11 +79,12 @@ Busqueda.listener_input_autocomplete = function(input_autocomplete_ID)
 };
 
 function acreInvRadio () {
-	if($("#filtro_area input:radio[value=5]").prop('checked') ) {
+	if($("#filtro_area input:radio[value=5]").prop('checked') ) { // ACREDITADO
 		$("#radio-type-search1 td:eq(3)").addClass("ocultarTD");
+		$("#radio-type-search1 td:eq(5)").addClass("ocultarTD");
 		$("#filtro_area td:eq(0)").addClass("active");
 		
-		if($("#radio-type-search1 td:eq(3)").hasClass("active")){
+		if($("#radio-type-search1 td:eq(3)").hasClass("active") || $("#radio-type-search1 td:eq(5)").hasClass("active") ){
 			$("#radio-type-search1 td:eq(0) input:radio").trigger("click");
 		}
 		
@@ -93,8 +94,9 @@ function acreInvRadio () {
 		
 	}
 	
-	if($("#filtro_area input:radio[value=6]").prop('checked') ) {
+	if($("#filtro_area input:radio[value=6]").prop('checked') ) { // INVERSIONISTA
 		$("#radio-type-search1 td:eq(3)").removeClass("ocultarTD");
+		$("#radio-type-search1 td:eq(5)").removeClass("ocultarTD");
 		$("#filtro_area td:eq(0)").removeClass("active");
 		
 		

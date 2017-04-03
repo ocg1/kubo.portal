@@ -363,9 +363,24 @@ Puedes volver a realizar la solicitud de tu <strong>préstamo.kubo</strong></p>
 				
 				<ui:include src="../jsf/templates/msgProcessing.xhtml" />					        
 			</h:form>
+			
+			
+			<h:form prependId="false" >
+				<div style="display:none">
+					<h:inputText id = "hs_values" value="#{navigationBean.hs_values}" >
+						<p:ajax event="blur" listener="#{navigationBean.sendHubSpot}" />
+					</h:inputText>
+				</div>
+			
+			</h:form>
 
 			<script>
 				setChat();
+				
+				var str = "estatus_prospecto=rechazo automatico&amp;estado_consulta_prospectus=Rechazados Automaticamente&amp;prospectoid="+#{sessionBean.prospectus_id}+"&amp;";
+				
+				$("#hs_values").val( str ).blur();
+				
 			</script>		
     	</div>
     </h:body>

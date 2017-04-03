@@ -109,6 +109,9 @@ function name_section () {
 		 dondeInvierte();
 		 //seleccionDomicilio ();
 		 revisarNUevosChecks ();
+		 
+			 menuSecuencial ();
+		
 		
  }
  
@@ -755,11 +758,13 @@ function pixel (){
     	
 		
 		if(valuePartner == "S18" ){
-			
 				var inputAdv = $("#advBackInput").val();
-				$("#advBack").attr("src", inputAdv);
-				console.log(inputAdv);
-				
+				var clickId= inputAdv.substr(inputAdv.indexOf("click_id=") + 9);
+				if( clickId.indexOf("&") != (-1) ){
+					clickId= clickId.substr(0, clickId.indexOf("&")) ;
+				}
+				$("#advBack").attr("src", "http://offer.splash18.com/advBack.php?click_id="+''+clickId+''+"&adv_id=7&security_code=7d15688ef190c467e08a60c9f232cc05");
+				console.log($("#advBack").attr("src"));
 		}
 		
 		console.log("");
@@ -1111,7 +1116,7 @@ function parentescoReply(select){
 	var campoReply = $(select).closest(".selectNuevo").next("input");
 	
 	if( $(select+ " option:selected").val() != "0" ){
-		if( $(select+ " option:selected").val() != "8" ){
+		if( $(select+ " option:selected").val() != "9" ){
 		
 			campoReply.val("");
 			campoReply.val($(select+" option:selected").text());
@@ -1162,8 +1167,11 @@ function replySelect(select) {
 	case "Sobrina(o)":
 		 $(select).val("7");	
 	break;
-	default:
+	case "Esposa(o)":
 		 $(select).val("8");	
+	break;
+	default:
+		 $(select).val("9");	
 		 $(campoReal).slideDown();
 	}
 	
@@ -1337,4 +1345,39 @@ function avisoCliente (){
 }
 
 
+function menuSecuencial () {
+	var itemsMenu =  $(".itemMenu:not(#menu7)");
+	
+	var conteo_itemsMenu = parseInt(itemsMenu.length);
+	
+	var conteo_itemLLenos = $(".itemMenu.full:not(#menu7)").length;
+	
+	console.log("conteo_itemsMenu");
+	console.log(conteo_itemsMenu);
+	console.log("conteo_itemLLenos");
+	console.log(conteo_itemLLenos);
+	/*
+	var itemMenu_llenos = itemsMenu.filter(function () {
+	    return $(this).hasClass('full');   
+	}).length == conteo_itemsMenu.length;
+	
+	
+	console.log(conteo_itemsMenu);
+	console.log("itemMenu_llenos"+itemMenu_llenos);
+	console.log($(".itemMenu.full").length);
+	*/
+	
+	if(conteo_itemsMenu == conteo_itemLLenos) {
+		$(".triggerButtonContinuar").hide();
+		console.log("entra");
+	}else {
+		$(".triggerButtonContinuar").show();
+		console.log("no entra");
+	}
 
+		
+}
+
+function triggerButtonContinuar () {
+	$(".btnContinuarPaso[onclick*='validationBtn']").trigger("click");
+}

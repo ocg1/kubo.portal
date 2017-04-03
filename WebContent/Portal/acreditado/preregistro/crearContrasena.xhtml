@@ -106,7 +106,9 @@
 					<i class="fa fa-times closePop" onclick="cerrarAlertHub();"></i>
             		<div class="tituloNuevo">
 	            		<h2>Crea una contraseña segura</h2>
-	            		<p>Para iniciar con tu Pre-Aprobación y proteger tus datos</p>
+	            		 <h:panelGroup rendered = "#{sessionBean.area == 'L'}" > 
+	            				<p>Para iniciar con tu Pre-Aprobación y proteger tus datos</p>
+	            		 </h:panelGroup>
             		</div>	
             	<div class="empezarRegistro">
             	<ul>

@@ -3221,6 +3221,12 @@ membershipTemp = new Membership();
 					request_notificar_config.setEvento_id("64");
 					request_notificar_config.setMonto_deposito(response.getShortURL());
 					
+					String[] lista_receptores = new String[1];
+					
+					lista_receptores[0] = "TO::"+member.getEmail();
+					
+					request_notificar_config.setLista_receptores(lista_receptores);
+					
 					if( persona.getProspectus().getHs_vid() != null ){
 					
 						HubSpotController hs =  new HubSpotController();

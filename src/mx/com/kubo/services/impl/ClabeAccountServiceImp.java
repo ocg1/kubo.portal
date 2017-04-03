@@ -48,5 +48,9 @@ implements ClabeAccountService, Serializable
 	public List<ClabeAccount> loadClabeAccountListByProspectus(int prospectus_id, int company_id){
 		return clabeAccountRepository.loadClabeAccountListByProspectus(prospectus_id, company_id);
 	}
+	
+	public ClabeAccount loadClabeAccountByClabeStr(String clabe){
+		return clabeAccountRepository.loadClabeAccountByClabeStr( clabe);
+	}
 
 }

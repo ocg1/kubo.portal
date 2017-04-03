@@ -8621,3 +8621,34 @@ display:none;
 
 
 
+.triggerButtonContinuar {
+	position: absolute;
+	z-index: 999;
+	width:100%;
+	height: 100%;
+	background:transparent;
+	cursor:pointer;
+	display: none;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	min-height: 430px;
+}
+
+
+@media (max-width: 1024px) {
+
+	.triggerButtonContinuar {
+	position: absolute;
+	z-index: 999;
+	width:100%;
+	height: 100%;
+	background:transparent;
+	cursor:pointer;
+	display: none;
+	overflow: hidden;
+	clear: both;
+	float: none;
+	min-height: 50px;
+}
+}

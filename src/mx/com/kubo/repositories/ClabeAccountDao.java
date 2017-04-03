@@ -12,5 +12,6 @@ public interface ClabeAccountDao {
 	public void updateClabeAccount(ClabeAccount newClabeAccount);
 	public void removeClabeAccount(ClabeAccount newClabeAccount);
 	public List<ClabeAccount> loadClabeAccountListByProspectus(int prospectus_id,int company_id);
+	public ClabeAccount loadClabeAccountByClabeStr(String clabe);
 	
 }

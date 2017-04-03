@@ -696,9 +696,16 @@ $(".validatorClass[index], table.validatorClass,  #acSimple2 input,  #acSimple3 
    		 if( $(this).val() == '0' || $(this).val() == ''  || $(this).val() == null) {
 	    		 $(this).closest(".selectNuevo").removeClass("lleno");
 		    	 $(this).closest(".selectNuevo").addClass("vacio");
+		    	 if($(this).attr("id") == "activityEconomic" ) {
+		    		 $("#activityEconomic").closest(".conjunto").addClass("vacio");
+		    	 }
+		    	 
    		 }else {
    			      $(this).closest(".selectNuevo").removeClass("vacio");
 		    	 $(this).closest(".selectNuevo").addClass("lleno");
+		    	 if($(this).attr("id") == "activityEconomic" ) {
+		    		 $("#activityEconomic").closest(".conjunto").removeClass("vacio");
+		    	 }
    		 }
    	 }
    	 if($(this).attr("id") == "nacionalidad" ) {

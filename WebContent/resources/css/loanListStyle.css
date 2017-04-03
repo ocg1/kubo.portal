@@ -5218,3 +5218,30 @@ margin:0 auto;
 .actualizando_sistema-2 {
 	display:none;
 }
+
+.mod {
+	background: #fff;
+	display:block;
+	position: fixed;
+	overflow:visible;
+	font-family:'Open Sans', sans-serif;
+	font-size:12px;
+	/* top:100px; */
+	z-index:9999999999999999999999999;
+	-moz-box-shadow: 0px 2px 9px #999;
+	/* -webkit-box-shadow: 0px 2px 9px #999; */
+	border: solid 2px #548f39;
+	/* padding: 20px; */
+	display:none;
+}
+.mod p {
+		font-size:14px;
+
+	text-align: left;
+	margin: 0 0 10px !important;
+}
+.modal-small {
+	padding: 20px;
+	max-width: 340px;
+	top: 150px;
+}

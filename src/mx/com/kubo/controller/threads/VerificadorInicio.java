@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import com.soa.webServices.WsSgbRisk;
 import com.soa.webServices.WsSgbRiskServiceLocator;
@@ -1319,7 +1320,32 @@ public class VerificadorInicio extends Thread  {
 									
 									System.out.println( " 20 - NOTIFICACIÓN DE ASIGNACIÓN DE COACH" );
 									
-									notificacionAsignacionCoachFnc();
+									if( !esDiaFeriado() ){
+										
+										SystemParamPK spk = new SystemParamPK();
+										
+										spk.setCompany_id(1);
+										spk.setSystem_param_id(92);
+										
+										SystemParam sys = systemparamservice.loadSelectedSystemParam(spk); // Hora de Inicio de Actividades Kubo
+										
+										String horaInicioSys = sys.getValue();
+										
+										spk.setCompany_id(1);
+										spk.setSystem_param_id(93);
+										
+										sys =systemparamservice.loadSelectedSystemParam(spk); // Hora de Término de Actividades Kubo
+										
+										String horaTerminoSys = sys.getValue();
+										
+										if( validaHora( horaInicioSys , horaTerminoSys ) ){
+											
+											notificacionAsignacionCoachFnc();
+											
+										}
+										
+									}
+									
 									
 									int_NOTIFICACION_ASIGNACION_COACH = 1;
 									
@@ -2161,7 +2187,9 @@ public class VerificadorInicio extends Thread  {
 				
 				request.setEvent_id("65");
 				
-				String msg = Utilities.capilizeString( nombre ) + ", todo en orden, ya puedes regresar a invertir en Kubo " + url;
+				String msg = Utilities.capilizeString( nombre ) + ", ya puedes regresar a invertir en Kubo, da click aquí " + url;
+				
+				//Carlos, ya puedes regresar a invertir en Kubo, da click aquí htpp://goo.gl/{URL CORTA}"
 				
 				request.setMessage(msg);
 				
@@ -2269,10 +2297,113 @@ public class VerificadorInicio extends Thread  {
 			
 		}
 		
+		
+		private boolean esDiaFeriado(){
+			
+			boolean flag = false;
+			
+			Calendar c = Calendar.getInstance();
+			
+			c.setTime(new Date());
+			
+			int dayOfWeek = getDayOfTheWeek( c.getTime() );
+			
+			if( dayOfWeek == Calendar.SATURDAY ){
+				
+				flag = false;
+				
+			}else if( dayOfWeek == Calendar.SUNDAY ){
+			
+				flag = false;
+				
+			}else if( service.esDiaFeriado( c.getTime() ) ){
+				
+				flag = false;
+				
+				
+			}else{
+				flag = true;
+			}
+			
+			return !flag;
+			
+		}
+		
 		private int getDayOfTheWeek(Date d){
 			GregorianCalendar cal = new GregorianCalendar();
 			cal.setTime(d);
 			return cal.get(Calendar.DAY_OF_WEEK);		
 		}
+		
+		private boolean validaHora( String horaInicioSys ,  String horaTerminoSys ){
+			
+			SimpleDateFormat formatter;
+			formatter = new SimpleDateFormat("HH:mm", new Locale("es","MX"));
+			Date today = new Date();
+			String result = formatter.format(today);
+			
+			String horaActual = result.split(":")[0];
+			String minutosActual = result.split(":")[1];
+			
+			String horaInicio = horaInicioSys.split(":")[0];
+			String minutosInicio = horaInicioSys.split(":")[1];
+			
+			String horaTermino = horaTerminoSys.split(":")[0];
+			String minutosTermino = horaTerminoSys.split(":")[1];
+			
+			if( 
+				Integer.parseInt( horaActual ) < Integer.parseInt( horaInicio ) ||
+				Integer.parseInt( horaActual ) > Integer.parseInt( horaTermino )
+					
+			){
+				return false;
+			}
+			
+			else if( 
+					Integer.parseInt( horaActual ) == Integer.parseInt( horaInicio ) &&
+					Integer.parseInt( minutosActual ) >= Integer.parseInt( minutosInicio )
+						
+				){
+					return true;
+				}
+			
+			else if( 
+					Integer.parseInt( horaActual ) == Integer.parseInt( horaTermino ) &&
+					Integer.parseInt( minutosActual ) <= Integer.parseInt( minutosTermino )
+						
+				){
+					return true;
+				}
+			
+			else if( 
+					Integer.parseInt( horaActual ) == Integer.parseInt( horaInicio ) &&
+					Integer.parseInt( minutosActual ) < Integer.parseInt( minutosInicio )
+						
+				){
+					return false;
+				}
+			
+			else if( 
+					Integer.parseInt( horaActual ) == Integer.parseInt( horaTermino ) &&
+					Integer.parseInt( minutosActual ) > Integer.parseInt( minutosTermino )
+						
+				){
+					return false;
+				}
+			
+			else if( 
+					Integer.parseInt( horaActual ) >= Integer.parseInt( horaInicio ) &&
+					Integer.parseInt( horaActual ) <= Integer.parseInt( horaTermino )
+						
+				){
+					return true;
+				}
+			
+			else{
+				return false;
+			}
+			
+		}
+		
 	
 }

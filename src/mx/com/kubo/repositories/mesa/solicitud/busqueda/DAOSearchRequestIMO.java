@@ -12,6 +12,8 @@ public interface DAOSearchRequestIMO
 	void setEntityManager(EntityManager em);
 	
 	List<ClientViewFullName> getLista_inversionistas(String strName, String area);
+	
+	List<ClientViewFullName> getLista_inversionistas_CLABE(String token, String area);
 
 	List<UserViewFullNameForCoach> getLista_prospectus_for_coach(String search_TOKEN, Integer promotor_id);
 	

@@ -26,10 +26,12 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.mesa.solicitud.busqueda.ClientViewFullName;
 import mx.com.kubo.services.AccessService;
+import mx.com.kubo.services.ClabeAccountService;
 import mx.com.kubo.services.InvestorService;
 import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.ProspectusService;
 import mx.com.kubo.services.ProyectLoanService;
+import mx.com.kubo.services.impl.ClabeAccountServiceImp;
 import mx.com.kubo.services.mesa.solicitud.busqueda.ServiceSearchRequestIMO;
 
 public abstract class SearchRequestDMO 
@@ -46,6 +48,9 @@ implements SearchRequestIMO
 	
 	@ManagedProperty("#{membershipServiceImp}")	
 	protected MembershipService service_membership;
+	
+	@ManagedProperty("#{clabeAccountServiceImp}")	
+	protected ClabeAccountService clabeaccountservice;
 		
 	@ManagedProperty("#{investorServiceImp}")
 	protected InvestorService service_investor;
@@ -223,6 +228,14 @@ implements SearchRequestIMO
 
 	public void setAccess_service(AccessService access_service) {
 		this.access_service = access_service;
+	}
+
+	public ClabeAccountService getClabeaccountservice() {
+		return clabeaccountservice;
+	}
+
+	public void setClabeaccountservice(ClabeAccountService clabeaccountservice) {
+		this.clabeaccountservice = clabeaccountservice;
 	}
 	
 }

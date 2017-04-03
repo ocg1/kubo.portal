@@ -26,7 +26,13 @@ implements ServiceSearchRequestIMO
 				case FILTRO_POR_INVERSIONISTA :
 					if( filtro_prospecto != FILTRO_POR_PERSONA_MORAL ){
 						
-						suggestions = dao_search_request.getLista_inversionistas(search_TOKEN, "I");
+						if( filtro_prospecto ==  BUSQUEDA_CLABE ){
+							
+							suggestions = dao_search_request.getLista_inversionistas_CLABE(search_TOKEN, "I");
+							
+						}else{
+							suggestions = dao_search_request.getLista_inversionistas(search_TOKEN, "I");
+						}
 						
 					}else{
 						

@@ -647,11 +647,11 @@ implements ApplicationContextAware, Serializable
     public static boolean isNumeric(String cadena){
 	    try {
 	    	
-	    	Integer.parseInt(cadena);
+	    	Long.parseLong(cadena);
 	    	
 	    	return true;
 	    } catch (NumberFormatException nfe){
-	    	
+	    	nfe.printStackTrace();
 	    	return false;
 	    	
 	    }

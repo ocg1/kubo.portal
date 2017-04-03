@@ -107,7 +107,9 @@ public abstract class NavigationBeanPMO extends NavigationBeanAMO
 					SimulatorBean sim = simulatorService.getMaxSimulationProspectWithPurpose(score.getProspectus_id(), getCompany());
 					
 					simulator.setPurpose_id(sim.getPurpose_id());
-					
+					simulator.setAmmount(sim.getAmmount());
+					simulator.setComisionApertura(sim.getOpening_commission_amount());
+					simulator.setMontoCuota(sim.getPayment());
 					
 					cambiaPagina(e);
 				}				

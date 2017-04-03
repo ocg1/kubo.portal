@@ -22,5 +22,6 @@ implements ServiceSearchRequestIMO
 	protected static final int FILTRO_POR_INVERSIONISTA = 6;
 	protected static final int FILTRO_POR_PERSONA_MORAL = 7;
 	protected static final int BUSQUEDA_EMAIL = 9;
+	protected static final int BUSQUEDA_CLABE = 10;
 	
 }

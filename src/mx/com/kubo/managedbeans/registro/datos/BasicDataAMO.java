@@ -191,22 +191,28 @@ public abstract class BasicDataAMO extends BasicDataDMO
 	
 	protected void init_contrasena_segura(){
 		
-		SystemParamPK system_param_PK_I = new SystemParamPK();
+		pide_contrasena_segura = false; 
 		
-		system_param_PK_I.setCompany_id( 1 );
-		system_param_PK_I.setSystem_param_id(102); // Consulta NIP habilitada
+		if(sesion.getCoachProspectus_id() == null || ( (sesion.getCoachProspectus_id()+"").equals( sesion.getProspectus_id()+"" ) ) ){
 		
-		SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+			SystemParamPK system_param_PK_I = new SystemParamPK();
+			
+			system_param_PK_I.setCompany_id( 1 );
+			system_param_PK_I.setSystem_param_id(102); // Consulta NIP habilitada
+			
+			SystemParam system_param_I = systemParamService .loadSelectedSystemParam(system_param_PK_I);
+			
+			if( 
+				system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") && 
+				membership != null && membership.getIs_client_pass() != null && membership.getIs_client_pass().equals("S")
+			){
+			
+				pide_contrasena_segura = true;
+			
+			}else{
+				pide_contrasena_segura = false; 
+			}
 		
-		if( 
-			system_param_I != null && system_param_I.getValue() != null && system_param_I.getValue().equals("S") && 
-			membership != null && membership.getIs_client_pass() != null && membership.getIs_client_pass().equals("S")
-		){
-		
-			pide_contrasena_segura = true;
-		
-		}else{
-			pide_contrasena_segura = false; 
 		}
 		
 	}

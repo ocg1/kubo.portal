@@ -16,7 +16,7 @@ import javax.persistence.QueryHint;
 			 
 			// query = "	call microfin.CONTRATOSREP(100005328,86.1645,1,1,1,'2016-02-08 19:11:00','192.0.0.0','kubofinanciero.generaContratos',1,0)
 			
-			query = "call microfin.COACHPUBLICATIONS(:par_Inserta,:par_TipoOperacion,:par_TipoNotifica)",
+			query = "call COACHPUBLICATIONS(:par_Inserta,:par_TipoOperacion,:par_TipoNotifica)",
 			
 			hints = {    
 			   			@QueryHint (name = "org.hibernate.callable", value = "true")  

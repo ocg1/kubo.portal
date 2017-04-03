@@ -433,12 +433,17 @@ function showBCDesc(){
 
 
 function initActiveInvestor(){
-	if(confirm("¿Está seguro de querer activar al cliente?")){
-		displayMessageProcessing('msgprocessing',false);
-		return true;
-	}else{
-		return false;
-	}
+
+	
+	alertify.confirm("¿Está seguro de querer activar al cliente?", function (e) {
+		if (e) {
+			displayMessageProcessing('msgprocessing',false);
+			return true;
+		} else {
+			return false;
+		}
+	}); 
+	
 }
 
 function intCargaPhonesREF( thisId ){
