@@ -54,4 +54,14 @@ public final class MovimientoCancelacionDMO extends MovimientosIMO
 	{
 		return "";
 	}
+	
+	public void setMotivo_disposicion(String motivo) 
+	{
+		motivo_disposicion = motivo;
+	}
+	
+	public String getMotivo_disposicion() 
+	{
+		return "";
+	}
 }

@@ -16,13 +16,14 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[60];
+        _operations = new org.apache.axis.description.OperationDesc[61];
         _initOperationDesc1();
         _initOperationDesc2();
         _initOperationDesc3();
         _initOperationDesc4();
         _initOperationDesc5();
         _initOperationDesc6();
+        _initOperationDesc7();
     }
 
     private static void _initOperationDesc1(){
@@ -71,109 +72,6 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         _operations[1] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("consultaBuro");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cadenaConsulta"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaBuroReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[2] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("applicationsLogs");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "applicationsLogsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[3] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("creditsLogs");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "creditsLogsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[4] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("recoveryLogs");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "recoveryLogsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[5] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("eventsLogs");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "eventsLogsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[6] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getTSafiCuentasAhoMovDep");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cuentaAhoID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "fecha"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "natMovimiento"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiCuentasAhoMovDep"));
-        oper.setReturnClass(com.soa.model.businessobject.TSafiCuentasAhoMovDep[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCuentasAhoMovDepReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[7] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getFechaCorte");
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
-        oper.setReturnClass(java.util.Calendar.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getFechaCorteReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[8] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infoAlertaInc");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infoAlertaInc"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infoAlertaInc[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infoAlertaIncReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[9] = oper;
-
-    }
-
-    private static void _initOperationDesc2(){
-        org.apache.axis.description.OperationDesc oper;
-        org.apache.axis.description.ParameterDesc param;
-        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getVtbur_infoAlertaPrev");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -182,7 +80,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infoAlertaPrevReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[10] = oper;
+        _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getTSafiKiva");
@@ -193,7 +91,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiKivaReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[11] = oper;
+        _operations[3] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getAllDataBur");
@@ -204,7 +102,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getAllDataBurReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[12] = oper;
+        _operations[4] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getKuboRules");
@@ -215,7 +113,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getKuboRulesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[13] = oper;
+        _operations[5] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("notificaPromesadePago");
@@ -224,43 +122,68 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificaPromesadePagoReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[14] = oper;
+        _operations[6] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("dispararCierreDiario");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cierreDiarioRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "SGBCierreDiarioRequest"), com.soa.webServices.request.SGBCierreDiarioRequest.class, false, false);
+        oper.setName("getClientRisk");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "clientId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "SGBCierreDiarioResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.SGBCierreDiarioResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "dispararCierreDiarioReturn"));
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bur_solnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "homeType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "gender"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "age"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "businessType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "SpScoreKubo"));
+        oper.setReturnClass(com.soa.model.businessobject.SpScoreKubo.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getClientRiskReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[15] = oper;
+        _operations[7] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("consultarCierreDiario");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaCierreDiarioRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "SGBConsultaCierreDiarioRequest"), com.soa.webServices.request.SGBConsultaCierreDiarioRequest.class, false, false);
+        oper.setName("getProspectIDProvider");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "user"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "SGBConsultaCierreDiarioResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.SGBConsultaCierreDiarioResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultarCierreDiarioReturn"));
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCreditCard"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditCardTermination"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indmortgage"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCarLoan"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "BurResponse"));
+        oper.setReturnClass(com.soa.model.businessobject.BurResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectIDProviderReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[16] = oper;
+        _operations[8] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("evaluationLogs");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("getKuboRulesEvaluation");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "evaluationLogsReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getKuboRulesEvaluationReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[17] = oper;
+        _operations[9] = oper;
 
+    }
+
+    private static void _initOperationDesc2(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("newProjectDTO");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "newProjectRequestDTO"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.models.sgbws.kubo.mx.com", "NewProjectRequestDTO"), com.mx.kubo.sgbws.models.dto.NewProjectRequestDTO.class, false, false);
@@ -270,7 +193,62 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "newProjectDTOReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[18] = oper;
+        _operations[10] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("phoneUpdate");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneUpdateRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "PhoneUpdateRequest"), com.soa.webServices.request.PhoneUpdateRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneUpdateReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[11] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("homeUpdate");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "homeUpdateRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "HomeUpdateRequest"), com.soa.webServices.request.HomeUpdateRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "homeUpdateReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[12] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("referencesUpdate");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "req"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "ReferencesUpdateRequest"), com.soa.webServices.request.ReferencesUpdateRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "referencesUpdateReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[13] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("updateIfe");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "doc"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "VDocumentsIfe"), com.soa.webServices.request.VDocumentsIfe.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateIfeReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[14] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("consultaBuro");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cadenaConsulta"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaBuroReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[15] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getProspectProspector");
@@ -285,13 +263,8 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectProspectorReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[19] = oper;
+        _operations[16] = oper;
 
-    }
-
-    private static void _initOperationDesc3(){
-        org.apache.axis.description.OperationDesc oper;
-        org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getProspectBC");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "user"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
@@ -305,7 +278,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectBCReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[20] = oper;
+        _operations[17] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("prospectAdmin");
@@ -360,39 +333,124 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectAdminReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[18] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("consultaCirculo");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cadenaConsulta"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaCirculoReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[19] = oper;
+
+    }
+
+    private static void _initOperationDesc3(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("consultaCirculoIdProvider");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaCirculoIdProviderReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[20] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getBurGraphic");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "burSolNum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "order"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String[].class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "BurGraphic"));
+        oper.setReturnClass(com.soa.model.businessobject.BurGraphic[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurGraphicReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[21] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getProspectRisk");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "request"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "BCRiskRequest"), com.soa.webServices.request.BCRiskRequest.class, false, false);
+        oper.setName("getVtbur_infocalkubo");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "SpScoreKubo"));
-        oper.setReturnClass(com.soa.model.businessobject.SpScoreKubo.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectRiskReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocalkubo"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocalkubo.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocalkuboReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[22] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("updateCredit");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "userId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("getVtbur_infocte");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "projectLoanId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "companyId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "varId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "newValue"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateCreditReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocte"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocte.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocteReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[23] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getVtbur_infodircte");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infodircte"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infodircte[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infodircteReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[24] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getVtbur_infocredcte_vig");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocredcte_vig"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocredcte_vig[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocredcte_vigReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[25] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getVtbur_infocredcte_c");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocredcte_c"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocredcte_c[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocredcte_cReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[26] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getVtbur_infocredcte_m");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocredcte_m"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocredcte_m[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocredcte_mReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[27] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getProspectBCRisk");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "request"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "BCRiskRequest"), com.soa.webServices.request.BCRiskRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ProspectBCRiskResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.ProspectBCRiskResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectBCRiskReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[28] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("updateProspect");
@@ -409,8 +467,13 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateProspectReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[24] = oper;
+        _operations[29] = oper;
 
+    }
+
+    private static void _initOperationDesc4(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("changePhone");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "userId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
@@ -426,7 +489,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "changePhoneReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[25] = oper;
+        _operations[30] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("changeAddress");
@@ -461,7 +524,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "changeAddressReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[26] = oper;
+        _operations[31] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getTransunionDecisionResponse");
@@ -474,47 +537,233 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTransunionDecisionResponseReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[27] = oper;
+        _operations[32] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("CRRTRMSVPWD");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "usuario"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("getVtbur_infocnsltult");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "consultasMaximas"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indTest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        oper.setReturnClass(java.lang.String.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "CRRTRMSVPWDReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocnsltult"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocnsltult[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocnsltultReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[28] = oper;
+        _operations[33] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getTSafiCreditosMovs");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditoId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("getVtbur_infocnsltms");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "amortiCreId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "fechaOperacion"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "tipoSaldo"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "idProspecto"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiCreditosMovs"));
-        oper.setReturnClass(com.soa.model.businessobject.TSafiCreditosMovs[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCreditosMovsReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocnsltms"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocnsltms[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocnsltmsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[29] = oper;
+        _operations[34] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("prospectPhone");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneNumber"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "operation"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectPhoneReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[35] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getTSafiPosicionInt");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditoid"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiPosicionInt"));
+        oper.setReturnClass(com.soa.model.businessobject.TSafiPosicionInt[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiPosicionIntReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[36] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getTSafiPagosCuota");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditoid"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiPagosCuota"));
+        oper.setReturnClass(com.soa.model.businessobject.TSafiPagosCuota[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiPagosCuotaReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[37] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("updateCredit");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "userId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "projectLoanId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "companyId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "varId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "newValue"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateCreditReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[38] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("notificationValidatedSignature");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectusId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "projectLoanId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificationValidatedSignatureReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[39] = oper;
 
     }
 
-    private static void _initOperationDesc4(){
+    private static void _initOperationDesc5(){
+        org.apache.axis.description.OperationDesc oper;
+        org.apache.axis.description.ParameterDesc param;
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("aplicationPublicationInvestor");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "aplicationPublicationInvestorDTOJSON"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "aplicationPublicationInvestorReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[40] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("buroReprocess");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "reprocessBuroDataDTO"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.models.sgbws.kubo.mx.com", "ReprocessBuroDataDTO"), com.mx.kubo.sgbws.models.dto.ReprocessBuroDataDTO.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "buroReprocessReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[41] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getPromotorData");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectusArray"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String[].class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "activityTypeId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "statusId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        oper.setReturnClass(java.lang.String[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getPromotorDataReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[42] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("applicationsLogs");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "applicationsLogsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[43] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("creditsLogs");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "creditsLogsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[44] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("recoveryLogs");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "recoveryLogsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[45] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("eventsLogs");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "eventsLogsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[46] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getProspectRisk");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "request"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "BCRiskRequest"), com.soa.webServices.request.BCRiskRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "SpScoreKubo"));
+        oper.setReturnClass(com.soa.model.businessobject.SpScoreKubo.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectRiskReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[47] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("dispararCierreDiario");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cierreDiarioRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "SGBCierreDiarioRequest"), com.soa.webServices.request.SGBCierreDiarioRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "SGBCierreDiarioResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.SGBCierreDiarioResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "dispararCierreDiarioReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[48] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("consultarCierreDiario");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaCierreDiarioRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "SGBConsultaCierreDiarioRequest"), com.soa.webServices.request.SGBConsultaCierreDiarioRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "SGBConsultaCierreDiarioResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.SGBConsultaCierreDiarioResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultarCierreDiarioReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[49] = oper;
+
+    }
+
+    private static void _initOperationDesc6(){
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
@@ -522,7 +771,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(org.apache.axis.encoding.XMLType.AXIS_VOID);
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[30] = oper;
+        _operations[50] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("depositNotification");
@@ -551,86 +800,91 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "depositNotificationReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[31] = oper;
+        _operations[51] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("notificationValidatedSignature");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectusId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "projectLoanId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificationValidatedSignatureReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[32] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("aplicationPublicationInvestor");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "aplicationPublicationInvestorDTOJSON"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "aplicationPublicationInvestorReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[33] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("buroReprocess");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "reprocessBuroDataDTO"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.models.sgbws.kubo.mx.com", "ReprocessBuroDataDTO"), com.mx.kubo.sgbws.models.dto.ReprocessBuroDataDTO.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "buroReprocessReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[34] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getClientRisk");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "clientId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bur_solnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "homeType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "gender"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "age"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "businessType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "SpScoreKubo"));
-        oper.setReturnClass(com.soa.model.businessobject.SpScoreKubo.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getClientRiskReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[35] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getProspectIDProvider");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "user"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("CRRTRMSVPWD");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "usuario"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "consultasMaximas"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCreditCard"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indTest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditCardTermination"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indmortgage"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCarLoan"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "BurResponse"));
-        oper.setReturnClass(com.soa.model.businessobject.BurResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectIDProviderReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        oper.setReturnClass(java.lang.String.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "CRRTRMSVPWDReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[36] = oper;
+        _operations[52] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getTSafiCreditosMovs");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditoId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "amortiCreId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "fechaOperacion"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "tipoSaldo"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "idProspecto"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiCreditosMovs"));
+        oper.setReturnClass(com.soa.model.businessobject.TSafiCreditosMovs[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCreditosMovsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[53] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getTSafiCuentasAhoMovDep");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cuentaAhoID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "fecha"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "natMovimiento"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiCuentasAhoMovDep"));
+        oper.setReturnClass(com.soa.model.businessobject.TSafiCuentasAhoMovDep[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCuentasAhoMovDepReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[54] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getFechaCorte");
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        oper.setReturnClass(java.util.Calendar.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getFechaCorteReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[55] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getVtbur_infoAlertaInc");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infoAlertaInc"));
+        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infoAlertaInc[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infoAlertaIncReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[56] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("evaluationLogs");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cliProId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "indCliPro"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ApplicationLogResponse"));
+        oper.setReturnClass(com.soa.webServices.responses.ApplicationLogResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "evaluationLogsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[57] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getBurResume");
@@ -645,7 +899,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurResumeReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[37] = oper;
+        _operations[58] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getBurScores");
@@ -660,68 +914,13 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurScoresReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[38] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getKuboRulesEvaluation");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getKuboRulesEvaluationReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[39] = oper;
+        _operations[59] = oper;
 
     }
 
-    private static void _initOperationDesc5(){
+    private static void _initOperationDesc7(){
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("phoneUpdate");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneUpdateRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "PhoneUpdateRequest"), com.soa.webServices.request.PhoneUpdateRequest.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneUpdateReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[40] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("homeUpdate");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "homeUpdateRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "HomeUpdateRequest"), com.soa.webServices.request.HomeUpdateRequest.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "homeUpdateReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[41] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("referencesUpdate");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "req"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "ReferencesUpdateRequest"), com.soa.webServices.request.ReferencesUpdateRequest.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "referencesUpdateReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[42] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("updateIfe");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "doc"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "VDocumentsIfe"), com.soa.webServices.request.VDocumentsIfe.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateIfeReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[43] = oper;
-
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("documentsReview");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "docs"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "DocumentsReviewRequest"), com.soa.webServices.request.DocumentsReviewRequest.class, false, false);
@@ -731,185 +930,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "documentsReviewReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[44] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("consultaCirculo");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "cadenaConsulta"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaCirculoReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[45] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("consultaCirculoIdProvider");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaCirculoIdProviderReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[46] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getBurGraphic");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "burSolNum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "order"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String[].class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "BurGraphic"));
-        oper.setReturnClass(com.soa.model.businessobject.BurGraphic[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurGraphicReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[47] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocalkubo");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocalkubo"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocalkubo.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocalkuboReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[48] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocte");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocte"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocte.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocteReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[49] = oper;
-
-    }
-
-    private static void _initOperationDesc6(){
-        org.apache.axis.description.OperationDesc oper;
-        org.apache.axis.description.ParameterDesc param;
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infodircte");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infodircte"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infodircte[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infodircteReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[50] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocredcte_vig");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocredcte_vig"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocredcte_vig[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocredcte_vigReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[51] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocredcte_c");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocredcte_c"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocredcte_c[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocredcte_cReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[52] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocredcte_m");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocredcte_m"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocredcte_m[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocredcte_mReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[53] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getProspectBCRisk");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "request"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://request.webServices.soa.com", "BCRiskRequest"), com.soa.webServices.request.BCRiskRequest.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "ProspectBCRiskResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.ProspectBCRiskResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectBCRiskReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[54] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocnsltult");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocnsltult"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocnsltult[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocnsltultReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[55] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getVtbur_infocnsltms");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "bursolnum"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "Vtbur_infocnsltms"));
-        oper.setReturnClass(com.soa.model.businessobject.Vtbur_infocnsltms[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infocnsltmsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[56] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("prospectPhone");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneNumber"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "phoneType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "operation"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://responses.webServices.soa.com", "WsSgbResponse"));
-        oper.setReturnClass(com.soa.webServices.responses.WsSgbResponse.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectPhoneReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[57] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getTSafiPosicionInt");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditoid"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiPosicionInt"));
-        oper.setReturnClass(com.soa.model.businessobject.TSafiPosicionInt[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiPosicionIntReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[58] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getTSafiPagosCuota");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webServices.soa.com", "creditoid"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://businessobject.model.soa.com", "TSafiPagosCuota"));
-        oper.setReturnClass(com.soa.model.businessobject.TSafiPagosCuota[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiPagosCuotaReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[59] = oper;
+        _operations[60] = oper;
 
     }
 
@@ -1599,284 +1620,12 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
 }
     }
 
-    public com.soa.webServices.responses.WsSgbResponse consultaBuro(java.lang.String cadenaConsulta) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[2]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaBuro"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cadenaConsulta});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.ApplicationLogResponse applicationsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[3]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "applicationsLogs"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.ApplicationLogResponse creditsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[4]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "creditsLogs"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.ApplicationLogResponse recoveryLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[5]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "recoveryLogs"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.ApplicationLogResponse eventsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[6]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "eventsLogs"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.TSafiCuentasAhoMovDep[] getTSafiCuentasAhoMovDep(java.lang.String cuentaAhoID, java.util.Calendar fecha, java.lang.String natMovimiento) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[7]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCuentasAhoMovDep"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cuentaAhoID, fecha, natMovimiento});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.TSafiCuentasAhoMovDep[]) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.TSafiCuentasAhoMovDep[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.TSafiCuentasAhoMovDep[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public java.util.Calendar getFechaCorte() throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[8]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getFechaCorte"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.util.Calendar) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.util.Calendar) org.apache.axis.utils.JavaUtils.convert(_resp, java.util.Calendar.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.Vtbur_infoAlertaInc[] getVtbur_infoAlertaInc(java.lang.String bursolnum) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[9]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infoAlertaInc"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {bursolnum});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.Vtbur_infoAlertaInc[]) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.Vtbur_infoAlertaInc[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.Vtbur_infoAlertaInc[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
     public com.soa.model.businessobject.Vtbur_infoAlertaPrev[] getVtbur_infoAlertaPrev(java.lang.String bursolnum) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[10]);
+        _call.setOperation(_operations[2]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -1910,7 +1659,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[11]);
+        _call.setOperation(_operations[3]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -1944,7 +1693,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[12]);
+        _call.setOperation(_operations[4]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -1978,7 +1727,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[13]);
+        _call.setOperation(_operations[5]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2012,7 +1761,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[14]);
+        _call.setOperation(_operations[6]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2041,685 +1790,12 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
 }
     }
 
-    public com.soa.webServices.responses.SGBCierreDiarioResponse dispararCierreDiario(com.soa.webServices.request.SGBCierreDiarioRequest cierreDiarioRequest) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[15]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "dispararCierreDiario"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cierreDiarioRequest});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.SGBCierreDiarioResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.SGBCierreDiarioResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.SGBCierreDiarioResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.SGBConsultaCierreDiarioResponse consultarCierreDiario(com.soa.webServices.request.SGBConsultaCierreDiarioRequest consultaCierreDiarioRequest) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[16]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultarCierreDiario"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {consultaCierreDiarioRequest});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.SGBConsultaCierreDiarioResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.SGBConsultaCierreDiarioResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.SGBConsultaCierreDiarioResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.ApplicationLogResponse evaluationLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[17]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "evaluationLogs"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse newProjectDTO(com.mx.kubo.sgbws.models.dto.NewProjectRequestDTO newProjectRequestDTO) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[18]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "newProjectDTO"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {newProjectRequestDTO});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.BurResponse getProspectProspector(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[19]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectProspector"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.BurResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.BurResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.BurResponse getProspectBC(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[20]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectBC"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.BurResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.BurResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse prospectAdmin(java.lang.String user, java.lang.String password, java.lang.String prospectId, java.lang.String firstName, java.lang.String secondName, java.lang.String surName, java.lang.String aditSurName, java.lang.String birthday, java.lang.String rfc, java.lang.String street, java.lang.String mx_manzana, java.lang.String mx_lote, java.lang.String mx_numExterior, java.lang.String mx_numInterior, java.lang.String mx_colonia, java.lang.String mx_municipio, java.lang.String mx_estado, java.lang.String mx_codPostal, java.lang.String mx_lada, java.lang.String phoneNumber, java.lang.String curp, java.lang.String folio, double monto_Solicitado) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[21]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectAdmin"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId, firstName, secondName, surName, aditSurName, birthday, rfc, street, mx_manzana, mx_lote, mx_numExterior, mx_numInterior, mx_colonia, mx_municipio, mx_estado, mx_codPostal, mx_lada, phoneNumber, curp, folio, new java.lang.Double(monto_Solicitado)});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.SpScoreKubo getProspectRisk(com.soa.webServices.request.BCRiskRequest request) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[22]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectRisk"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {request});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.SpScoreKubo) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.SpScoreKubo) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.SpScoreKubo.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse updateCredit(java.lang.String userId, java.lang.String projectLoanId, java.lang.String prospectId, java.lang.String companyId, java.lang.String varId, java.lang.String newValue) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[23]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateCredit"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, projectLoanId, prospectId, companyId, varId, newValue});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse updateProspect(java.lang.String userId, java.lang.String prospectId, java.lang.String varId, java.lang.String value) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[24]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateProspect"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, prospectId, varId, value});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse changePhone(java.lang.String userId, java.lang.String prospectId, java.lang.String phoneTypeId, java.lang.String phoneNumber) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[25]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "changePhone"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, prospectId, phoneTypeId, phoneNumber});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse changeAddress(java.lang.String userId, java.lang.String prospectId, java.lang.String addressTypeId, java.lang.String street, java.lang.String mx_manzana, java.lang.String mx_lote, java.lang.String mx_numExterior, java.lang.String mx_numInterior, java.lang.String mx_colonia, java.lang.String mx_municipio, java.lang.String mx_estado, java.lang.String mx_codPostal, java.lang.String mx_lada) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[26]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "changeAddress"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, prospectId, addressTypeId, street, mx_manzana, mx_lote, mx_numExterior, mx_numInterior, mx_colonia, mx_municipio, mx_estado, mx_codPostal, mx_lada});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.TransunionResponse getTransunionDecisionResponse(java.lang.String prospectId, java.lang.String bursolnum) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[27]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTransunionDecisionResponse"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectId, bursolnum});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.TransunionResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.TransunionResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.TransunionResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public java.lang.String CRRTRMSVPWD(java.lang.String usuario, java.lang.String password, java.lang.String consultasMaximas, java.lang.String indTest) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[28]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "CRRTRMSVPWD"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {usuario, password, consultasMaximas, indTest});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.TSafiCreditosMovs[] getTSafiCreditosMovs(java.lang.String creditoId, java.lang.String amortiCreId, java.util.Calendar fechaOperacion, java.lang.String tipoSaldo, java.lang.String idProspecto) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[29]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCreditosMovs"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {creditoId, amortiCreId, fechaOperacion, tipoSaldo, idProspecto});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.TSafiCreditosMovs[]) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.TSafiCreditosMovs[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.TSafiCreditosMovs[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public void notificationDisbursementInfusion() throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[30]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificationDisbursementInfusion"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        extractAttachments(_call);
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse depositNotification(java.lang.String prospectusId, java.lang.String mail, java.lang.String safiClientId, java.lang.String originAccount, java.lang.String originBank, java.lang.String destinationAccount, java.lang.String despositAmount, java.lang.String depositDate, java.lang.String description, java.lang.String savingsAccountId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[31]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "depositNotification"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectusId, mail, safiClientId, originAccount, originBank, destinationAccount, despositAmount, depositDate, description, savingsAccountId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse notificationValidatedSignature(java.lang.String prospectusId, java.lang.String projectLoanId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[32]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificationValidatedSignature"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectusId, projectLoanId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse aplicationPublicationInvestor(java.lang.String aplicationPublicationInvestorDTOJSON) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[33]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "aplicationPublicationInvestor"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {aplicationPublicationInvestorDTOJSON});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.webServices.responses.WsSgbResponse buroReprocess(com.mx.kubo.sgbws.models.dto.ReprocessBuroDataDTO reprocessBuroDataDTO) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[34]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "buroReprocess"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {reprocessBuroDataDTO});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.webServices.responses.WsSgbResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
     public com.soa.model.businessobject.SpScoreKubo getClientRisk(java.lang.String clientId, java.lang.String bur_solnum, java.lang.String homeType, java.lang.String gender, java.lang.String age, java.lang.String businessType) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[35]);
+        _call.setOperation(_operations[7]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2753,7 +1829,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[36]);
+        _call.setOperation(_operations[8]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2782,80 +1858,12 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
 }
     }
 
-    public com.soa.model.businessobject.BurResume getBurResume(java.lang.String user, java.lang.String password, java.lang.String burSol) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[37]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurResume"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, burSol});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.BurResume) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.BurResume) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResume.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public com.soa.model.businessobject.BurResponse[] getBurScores(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[38]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurScores"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.soa.model.businessobject.BurResponse[]) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.soa.model.businessobject.BurResponse[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResponse[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
     public boolean getKuboRulesEvaluation(java.lang.String bursolnum) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[39]);
+        _call.setOperation(_operations[9]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2884,12 +1892,46 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
 }
     }
 
+    public com.soa.webServices.responses.WsSgbResponse newProjectDTO(com.mx.kubo.sgbws.models.dto.NewProjectRequestDTO newProjectRequestDTO) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[10]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "newProjectDTO"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {newProjectRequestDTO});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
     public com.soa.webServices.responses.WsSgbResponse phoneUpdate(com.soa.webServices.request.PhoneUpdateRequest phoneUpdateRequest) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[40]);
+        _call.setOperation(_operations[11]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2923,7 +1965,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[41]);
+        _call.setOperation(_operations[12]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2957,7 +1999,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[42]);
+        _call.setOperation(_operations[13]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -2991,7 +2033,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[43]);
+        _call.setOperation(_operations[14]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3020,23 +2062,125 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
 }
     }
 
-    public com.soa.webServices.responses.WsSgbResponse documentsReview(com.soa.webServices.request.DocumentsReviewRequest docs) throws java.rmi.RemoteException {
+    public com.soa.webServices.responses.WsSgbResponse consultaBuro(java.lang.String cadenaConsulta) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[44]);
+        _call.setOperation(_operations[15]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "documentsReview"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultaBuro"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {docs});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cadenaConsulta});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.BurResponse getProspectProspector(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[16]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectProspector"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.BurResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.BurResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.BurResponse getProspectBC(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[17]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectBC"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.BurResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.BurResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse prospectAdmin(java.lang.String user, java.lang.String password, java.lang.String prospectId, java.lang.String firstName, java.lang.String secondName, java.lang.String surName, java.lang.String aditSurName, java.lang.String birthday, java.lang.String rfc, java.lang.String street, java.lang.String mx_manzana, java.lang.String mx_lote, java.lang.String mx_numExterior, java.lang.String mx_numInterior, java.lang.String mx_colonia, java.lang.String mx_municipio, java.lang.String mx_estado, java.lang.String mx_codPostal, java.lang.String mx_lada, java.lang.String phoneNumber, java.lang.String curp, java.lang.String folio, double monto_Solicitado) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[18]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "prospectAdmin"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId, firstName, secondName, surName, aditSurName, birthday, rfc, street, mx_manzana, mx_lote, mx_numExterior, mx_numInterior, mx_colonia, mx_municipio, mx_estado, mx_codPostal, mx_lada, phoneNumber, curp, folio, new java.lang.Double(monto_Solicitado)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -3059,7 +2203,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[45]);
+        _call.setOperation(_operations[19]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3093,7 +2237,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[46]);
+        _call.setOperation(_operations[20]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3127,7 +2271,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[47]);
+        _call.setOperation(_operations[21]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3161,7 +2305,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[48]);
+        _call.setOperation(_operations[22]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3195,7 +2339,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[49]);
+        _call.setOperation(_operations[23]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3229,7 +2373,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[50]);
+        _call.setOperation(_operations[24]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3263,7 +2407,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[51]);
+        _call.setOperation(_operations[25]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3297,7 +2441,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[52]);
+        _call.setOperation(_operations[26]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3331,7 +2475,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[53]);
+        _call.setOperation(_operations[27]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3365,7 +2509,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[54]);
+        _call.setOperation(_operations[28]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3394,12 +2538,148 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
 }
     }
 
+    public com.soa.webServices.responses.WsSgbResponse updateProspect(java.lang.String userId, java.lang.String prospectId, java.lang.String varId, java.lang.String value) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[29]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateProspect"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, prospectId, varId, value});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse changePhone(java.lang.String userId, java.lang.String prospectId, java.lang.String phoneTypeId, java.lang.String phoneNumber) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[30]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "changePhone"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, prospectId, phoneTypeId, phoneNumber});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse changeAddress(java.lang.String userId, java.lang.String prospectId, java.lang.String addressTypeId, java.lang.String street, java.lang.String mx_manzana, java.lang.String mx_lote, java.lang.String mx_numExterior, java.lang.String mx_numInterior, java.lang.String mx_colonia, java.lang.String mx_municipio, java.lang.String mx_estado, java.lang.String mx_codPostal, java.lang.String mx_lada) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[31]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "changeAddress"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, prospectId, addressTypeId, street, mx_manzana, mx_lote, mx_numExterior, mx_numInterior, mx_colonia, mx_municipio, mx_estado, mx_codPostal, mx_lada});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.TransunionResponse getTransunionDecisionResponse(java.lang.String prospectId, java.lang.String bursolnum) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[32]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTransunionDecisionResponse"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectId, bursolnum});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.TransunionResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.TransunionResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.TransunionResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
     public com.soa.model.businessobject.Vtbur_infocnsltult[] getVtbur_infocnsltult(java.lang.String bursolnum) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[55]);
+        _call.setOperation(_operations[33]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3433,7 +2713,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[56]);
+        _call.setOperation(_operations[34]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3467,7 +2747,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[57]);
+        _call.setOperation(_operations[35]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3501,7 +2781,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[58]);
+        _call.setOperation(_operations[36]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3535,7 +2815,7 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[59]);
+        _call.setOperation(_operations[37]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -3557,6 +2837,781 @@ public class WsSgbRiskSoapBindingStub extends org.apache.axis.client.Stub implem
                 return (com.soa.model.businessobject.TSafiPagosCuota[]) _resp;
             } catch (java.lang.Exception _exception) {
                 return (com.soa.model.businessobject.TSafiPagosCuota[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.TSafiPagosCuota[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse updateCredit(java.lang.String userId, java.lang.String projectLoanId, java.lang.String prospectId, java.lang.String companyId, java.lang.String varId, java.lang.String newValue) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[38]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "updateCredit"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userId, projectLoanId, prospectId, companyId, varId, newValue});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse notificationValidatedSignature(java.lang.String prospectusId, java.lang.String projectLoanId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[39]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificationValidatedSignature"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectusId, projectLoanId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse aplicationPublicationInvestor(java.lang.String aplicationPublicationInvestorDTOJSON) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[40]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "aplicationPublicationInvestor"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {aplicationPublicationInvestorDTOJSON});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse buroReprocess(com.mx.kubo.sgbws.models.dto.ReprocessBuroDataDTO reprocessBuroDataDTO) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[41]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "buroReprocess"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {reprocessBuroDataDTO});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public java.lang.String[] getPromotorData(java.lang.String[] prospectusArray, java.lang.String activityTypeId, java.lang.String statusId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[42]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getPromotorData"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectusArray, activityTypeId, statusId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (java.lang.String[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (java.lang.String[]) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.ApplicationLogResponse applicationsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[43]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "applicationsLogs"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.ApplicationLogResponse creditsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[44]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "creditsLogs"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.ApplicationLogResponse recoveryLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[45]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "recoveryLogs"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.ApplicationLogResponse eventsLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[46]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "eventsLogs"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.SpScoreKubo getProspectRisk(com.soa.webServices.request.BCRiskRequest request) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[47]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getProspectRisk"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {request});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.SpScoreKubo) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.SpScoreKubo) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.SpScoreKubo.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.SGBCierreDiarioResponse dispararCierreDiario(com.soa.webServices.request.SGBCierreDiarioRequest cierreDiarioRequest) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[48]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "dispararCierreDiario"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cierreDiarioRequest});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.SGBCierreDiarioResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.SGBCierreDiarioResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.SGBCierreDiarioResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.SGBConsultaCierreDiarioResponse consultarCierreDiario(com.soa.webServices.request.SGBConsultaCierreDiarioRequest consultaCierreDiarioRequest) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[49]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "consultarCierreDiario"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {consultaCierreDiarioRequest});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.SGBConsultaCierreDiarioResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.SGBConsultaCierreDiarioResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.SGBConsultaCierreDiarioResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public void notificationDisbursementInfusion() throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[50]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "notificationDisbursementInfusion"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        extractAttachments(_call);
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse depositNotification(java.lang.String prospectusId, java.lang.String mail, java.lang.String safiClientId, java.lang.String originAccount, java.lang.String originBank, java.lang.String destinationAccount, java.lang.String despositAmount, java.lang.String depositDate, java.lang.String description, java.lang.String savingsAccountId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[51]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "depositNotification"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {prospectusId, mail, safiClientId, originAccount, originBank, destinationAccount, despositAmount, depositDate, description, savingsAccountId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public java.lang.String CRRTRMSVPWD(java.lang.String usuario, java.lang.String password, java.lang.String consultasMaximas, java.lang.String indTest) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[52]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "CRRTRMSVPWD"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {usuario, password, consultasMaximas, indTest});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (java.lang.String) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.TSafiCreditosMovs[] getTSafiCreditosMovs(java.lang.String creditoId, java.lang.String amortiCreId, java.util.Calendar fechaOperacion, java.lang.String tipoSaldo, java.lang.String idProspecto) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[53]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCreditosMovs"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {creditoId, amortiCreId, fechaOperacion, tipoSaldo, idProspecto});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.TSafiCreditosMovs[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.TSafiCreditosMovs[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.TSafiCreditosMovs[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.TSafiCuentasAhoMovDep[] getTSafiCuentasAhoMovDep(java.lang.String cuentaAhoID, java.util.Calendar fecha, java.lang.String natMovimiento) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[54]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getTSafiCuentasAhoMovDep"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cuentaAhoID, fecha, natMovimiento});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.TSafiCuentasAhoMovDep[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.TSafiCuentasAhoMovDep[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.TSafiCuentasAhoMovDep[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public java.util.Calendar getFechaCorte() throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[55]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getFechaCorte"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (java.util.Calendar) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (java.util.Calendar) org.apache.axis.utils.JavaUtils.convert(_resp, java.util.Calendar.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.Vtbur_infoAlertaInc[] getVtbur_infoAlertaInc(java.lang.String bursolnum) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[56]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getVtbur_infoAlertaInc"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {bursolnum});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.Vtbur_infoAlertaInc[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.Vtbur_infoAlertaInc[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.Vtbur_infoAlertaInc[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.ApplicationLogResponse evaluationLogs(java.lang.String cliProId, java.lang.String indCliPro) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[57]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "evaluationLogs"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {cliProId, indCliPro});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.ApplicationLogResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.ApplicationLogResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.ApplicationLogResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.BurResume getBurResume(java.lang.String user, java.lang.String password, java.lang.String burSol) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[58]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurResume"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, burSol});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.BurResume) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.BurResume) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResume.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.model.businessobject.BurResponse[] getBurScores(java.lang.String user, java.lang.String password, java.lang.String prospectId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[59]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "getBurScores"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {user, password, prospectId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.model.businessobject.BurResponse[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.model.businessobject.BurResponse[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.model.businessobject.BurResponse[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public com.soa.webServices.responses.WsSgbResponse documentsReview(com.soa.webServices.request.DocumentsReviewRequest docs) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[60]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://webServices.soa.com", "documentsReview"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {docs});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.soa.webServices.responses.WsSgbResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.soa.webServices.responses.WsSgbResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.soa.webServices.responses.WsSgbResponse.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
