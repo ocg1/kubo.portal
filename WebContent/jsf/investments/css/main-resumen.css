@@ -405,7 +405,8 @@ tr {
 	padding-top: 4px;
 }
 
-#rightVerification {
+.rightVerification 
+{
 	float: right;
 	color: #4D4D4D;
 	font-size: 0.8em;

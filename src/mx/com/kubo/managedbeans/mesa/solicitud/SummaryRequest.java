@@ -60,6 +60,7 @@ import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateInvestorIMP;
+import mx.com.kubo.mesa.solicitud.resumen.score.BuroReprocessIMP;
 import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMP;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
 import mx.com.kubo.managedbeans.AlertsManaged;
@@ -454,6 +455,10 @@ implements SummaryRequestIMO,  Serializable
 			editor_score = new EditorScoreIMP();
 			editor_score.setSesion(sesion);
 			editor_score.setProyect_loan(actualProyect);
+			
+			buro_reprocess = new BuroReprocessIMP();
+			buro_reprocess.setMxSolicitudBuro(burSolNum);
+			buro_reprocess.setPerson(persona);
 		}
 				
 		verificaRecomendado();
@@ -3874,5 +3879,26 @@ membershipTemp = new Membership();
 		
 		request.addCallbackParam("update_OK", update_OK);
 		request.addCallbackParam("opening_commission", kuboScoreLetter + kuboScoreNumber);
+	}
+	
+	public void buroReprocess()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		buro_reprocess.init();
+		
+		boolean buro_reproccess_OK = buro_reprocess.isReproccess_OK();	
+		
+		String response_status = buro_reprocess.getResponse_status();
+		String response_msg    = buro_reprocess.getResponse_msg();
+		
+		if(buro_reproccess_OK)
+		{
+			actualProyect = service_proyect_loan.findProyect(proyect_loan_PK);
+		}
+		
+		request.addCallbackParam("buro_reproccess_OK", buro_reproccess_OK);
+		request.addCallbackParam("response_status", response_status);
+		request.addCallbackParam("response_msg",    response_msg);
 	}
 }

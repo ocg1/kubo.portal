@@ -47,14 +47,29 @@
 				</p:inplace>							
 			</div> 		
 			
-			<h:commandLink id = "update-editor-score" style = "display:none" >
-		      	<p:ajax event = "click" immediate = "true" update = "editor-loan-score" />
-			</h:commandLink>								
+			<div style = "display:none">
+				<h:commandLink id = "update-editor-score">
+			      	<p:ajax event = "click" immediate = "true" update = "editor-loan-score" />
+				</h:commandLink>	
+				
+				<h:commandLink id = "init-buro-reprocess">								
+			      	<p:ajax event = "click" immediate = "true"  
+			      			onstart    = "return displayMessageProcessing('msgprocessing', false);"
+			      			oncomplete = "Resumen.buro_reprocess_oncomplete(xhr, status, args);"
+			      			listener   = "#{summaryRequest.buroReprocess}"/>
+				</h:commandLink>	
+				
+				<h:commandLink id = "update-solicitud-resumen">
+			      	<p:ajax event = "click" immediate = "true" update = "solicitud-resumen" />
+				</h:commandLink>		
+			</div>					
 		</div>
 		
 		<div class = "detailsMiddleStatusData">
 			
-			<p class = "normalGray right" style = "font-size: 1.1em; font-weight: normal;" id = "rightVerification">Estatus de verificación</p>
+			<p class = "rightVerification normalGray right">
+				Estatus de verificación
+			</p>
 			
 			<p id = "status">
 				<p:commandLink style = "color:#FFFFFF;" value = "#{summaryRequest.verification_score}" 							   
@@ -65,8 +80,15 @@
 							   
 					<f:attribute name = "gotypeLog" value = "SOL" />
 				</p:commandLink>
-			</p>
+			</p>	
 			
-		</div>
+			<div style = "clear: both;"/>
+			
+			<p onclick = "Resumen.init_buro_reprocess();" class = "rightVerification normalGray right" style = "padding-top:15px; cursor:pointer;">Reprocesar</p>
+			
+			<p class = "icon-warning-reprocess" style = "color:#FFFFFF;">
+				#{summaryRequest.actualProyect.scoring.risk_processed}
+			</p>		
+		</div>			
 	</div>				
 </ui:composition>				

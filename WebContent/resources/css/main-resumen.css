@@ -931,13 +931,16 @@ border-bottom: solid 1px #ccc;
 	margin-left: 10px;
 }
 
-#rightVerification {
+.rightVerification 
+{
 	float: right;
 	color: #4D4D4D;
 	font-size: 0.8em;
 	width: 100px;
 	padding-top: 4px;
 	margin-left: 11px;
+	font-size: 1.1em; 
+	font-weight: normal;
 }
 
 
@@ -977,6 +980,18 @@ border-bottom: solid 1px #ccc;
 }
 
 #status {
+	background: url(../img/estatus.png) no-repeat;
+	width: 30px;
+	padding: 6px 0;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	float: left;
+	margin-top: 11px;
+}
+
+.icon-warning-reprocess
+{
 	background: url(../img/estatus.png) no-repeat;
 	width: 30px;
 	padding: 6px 0;

@@ -44,6 +44,7 @@ import mx.com.kubo.mesa.solicitud.documentacion.DocumentacionIMO;
 import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMO;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMO;
 import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMO;
+import mx.com.kubo.mesa.solicitud.resumen.score.BuroReprocessIMO;
 import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMO;
 import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMO;
 import mx.com.kubo.mesa.solicitud.perfil.ActividadEconomicaIMO;
@@ -481,6 +482,7 @@ implements SummaryRequestIMO
 	protected         EditorRateIMO editor_rate_investor;
 	protected   EditorCommissionIMO editor_commission;
 	protected        EditorScoreIMO editor_score;
+	protected      BuroReprocessIMO buro_reprocess;
 	//protected          ActivadorIMO activador;
 	
 	protected Proyect 		 proyecto;

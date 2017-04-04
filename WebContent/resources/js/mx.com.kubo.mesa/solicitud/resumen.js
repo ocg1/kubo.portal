@@ -75,3 +75,24 @@ Resumen.showInvestors = function(safi_credit_id, safi_mx_solicitud_id)
 		'enableEscapeButton': true
 	});
 };
+
+Resumen.init_buro_reprocess = function()
+{
+	$("#init-buro-reprocess").trigger("click");
+};
+
+Resumen.buro_reprocess_oncomplete = function(xhr, status, args)
+{
+	var buro_reprocess_OK = args.buro_reproccess_OK;
+	var response_msg = args.response_msg;
+	var response_status = args.response_status;
+	
+	console.log("Resumen.buro_reprocess_oncomplete(): ");
+	console.log(" > buro_reprocess_OK = " + buro_reproccess_OK);
+	console.log(" > response_status = " + response_status);
+	console.log(" > response_msg = " + response_msg);
+	
+	closeFancy();
+	
+	$("#update-solicitud-resumen").trigger("click");
+};
