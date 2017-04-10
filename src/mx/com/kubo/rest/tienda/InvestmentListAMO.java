@@ -152,6 +152,8 @@ public abstract class InvestmentListAMO extends InvestmentListDMO
     	
     	String safi_client_id = naturalPerson.getSafi_client_id();
     	
+    	System.out.println("ultimoFiltro = " + ultimoFiltro);
+    	
     	inversion.cargaListaTienda(ultimoFiltro, prospectus_id, company_id, flagRisk+"", safi_client_id , cuentaActual);
     	
     	scriptStatus = inversion.getScriptStatus();    	

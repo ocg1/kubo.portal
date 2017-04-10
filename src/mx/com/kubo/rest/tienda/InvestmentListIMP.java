@@ -40,6 +40,7 @@ import mx.com.kubo.model.ProyectLoanPK;
 import mx.com.kubo.model.TasasAcreditado;
 import mx.com.kubo.model.TiendaCreditos;
 import mx.com.kubo.model.ViewForTiendaExec;
+import mx.com.kubo.rest.model.TiendaRequest;
 import mx.com.kubo.rest.tienda.accounts.CuentasClienteIMP;
 import mx.com.kubo.tools.NumberToLetterConverter;
 
@@ -141,7 +142,98 @@ implements InvestmentListIMO
 			flagMin_E5_E4 = inversion.isFlagMin_E5_E4();
 			
 			responseJSON = Response.ok(proyectList_A).build();
-		}										
+		}			
+	
+		public void updateByFiltering(TiendaRequest request)
+		{	    		    	
+	    	String riskCad 			= request.getRiskCad();
+	    	String termCadIni 		= request.getTermCadIni();
+	    	String flagRisk 		= request.getFlagRisk();
+	    	String destiny_values 	= request.getDestiny_values();
+	    	String genderCad 		= request.getGenderCad();
+	    	String ammountCadFrom 	= request.getAmmountCadFrom();
+	    	String ammountCadTo 	= request.getAmmountCadTo();
+	    	
+	    	System.out.println( "flagRisk: " + flagRisk );
+	    	
+	    	String genderStr =	"";
+	    	
+	    	if( genderCad !=null && genderCad.trim().length()>0)
+	    	{
+	    		
+	    		if( genderCad.indexOf("2")!=(-1))
+	    		{	    			
+	    			genderStr += "M";
+	    		}
+	    		
+	    		if( genderCad.indexOf("1")!=(-1))
+	    		{
+	    			genderStr += "H";
+	    		}
+			}
+	    	
+	    	destiny_str = destiny_values;
+	    	
+	    	risk_str = riskCad;
+	    	
+	    	// CREA FILTRO
+	    	
+	    	String strQuery = "term:"+termCadIni +"||risk:"+riskCad+        "||gender:"+ genderStr+"||typeSearch:"+typeSearch+"||between:"+ammountCadFrom+"_"+ammountCadTo+"||previousType:"+previousType+"||destinyValues:"+destiny_values;
+	    	
+	    	lastFilter = strQuery;
+	    	
+			cuenta = new CuentasClienteIMP();
+			cuenta.setSesion(sesion);
+			cuenta.init();
+			
+			saldoTotal      = cuenta.getSaldoTotal();
+			listInvAccounts = cuenta.getListInvAccounts();
+			
+			inversion = new SAFIInvestmentIMP();
+			inversion.setSaldoTotal(saldoTotal);
+			inversion.setListInvAccounts(listInvAccounts);
+			inversion.init();
+	    	
+	    	inversion.cargaListaTienda(strQuery, sesion.getProspectus_id(), sesion.getCompany_id(), flagRisk+"",naturalPerson.getSafi_client_id(), listInvAccounts.get(0).getAccount() );
+	    	
+	    	scriptStatus = inversion.getScriptStatus();
+	    	
+	    	if( !hold_selected )
+	    	{	    	
+		    	calculaInversionPorProyecto(false);
+		    	
+	    		proyectList = inversion.getProyectList();
+    		
+	    	} else {	    			    		
+	    		
+	    		calculaInversionPorProyectoManteniendoSeleccionados(); 	    			    		
+	    	}
+	    	
+	    	filter = inversion.getFilter();
+    		
+    		System.out.println( "*Antes updateByFiltering* proyectListForInvesInd.size(): " + proyectListForInvesInd.size() );
+    		
+    		asignaListForInvest();
+    		
+    		System.out.println( "*Despues updateByFiltering* proyectListForInvesInd.size(): " + proyectListForInvesInd.size() );
+    		
+	    	InvestmentFilter filterInvestment = new InvestmentFilter();
+	    	
+	    	InvestmentFilterPK fpk = new InvestmentFilterPK();
+	    	
+	    	fpk.setCompany_id(sesion.getCompany_id());
+	    	fpk.setProspectus_id(sesion.getProspectus_id());
+	    	
+	    	filterInvestment.setFilter(strQuery);
+	    	filterInvestment.setFilter_date_used(new Date());
+	    	filterInvestment.setPk(fpk);
+	    	
+	    	investmentFilterServiceImp.addFilterUsed(filterInvestment);
+	    	
+	    	inicializaListas();
+	    	
+			responseJSON = Response.ok(proyectList_A).build();
+		}
 
 		public void updateByFiltering(ActionEvent e)
 	    {
@@ -163,13 +255,16 @@ implements InvestmentListIMO
 	    	
 	    	String genderStr	=	"";
 	    	
-	    	if( genderCad !=null && genderCad.trim().length()>0){
+	    	if( genderCad !=null && genderCad.trim().length()>0)
+	    	{
 	    		
-	    		if( genderCad.indexOf("2")!=(-1)){	    			
+	    		if( genderCad.indexOf("2")!=(-1))
+	    		{	    			
 	    			genderStr += "M";
 	    		}
 	    		
-	    		if( genderCad.indexOf("1")!=(-1)){
+	    		if( genderCad.indexOf("1")!=(-1))
+	    		{
 	    			genderStr += "H";
 	    		}
 			}
@@ -188,18 +283,15 @@ implements InvestmentListIMO
 	    	
 	    	scriptStatus = inversion.getScriptStatus();
 	    	
-	    	if( !hold_selected ){
-	    	
-		    	calculaInversionPorProyecto(false); //
+	    	if( !hold_selected )
+	    	{	    	
+		    	calculaInversionPorProyecto(false);
+		    	
 	    		proyectList = inversion.getProyectList();
     		
-	    	}else{
+	    	} else {	    			    		
 	    		
-	    		//List<ItemLoanList> proyectListTmp = inversion.getProyectList();
-	    		
-	    		calculaInversionPorProyectoManteniendoSeleccionados(); //
-	    		
-	    		
+	    		calculaInversionPorProyectoManteniendoSeleccionados(); 	    			    		
 	    	}
 	    	
 	    	filter = inversion.getFilter();

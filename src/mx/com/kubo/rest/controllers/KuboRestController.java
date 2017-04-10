@@ -1,6 +1,8 @@
 package mx.com.kubo.rest.controllers;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -12,6 +14,7 @@ import mx.com.kubo.managedbeans.investor.InvestorSession;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.rest.model.ResumenSaldos;
+import mx.com.kubo.rest.model.TiendaRequest;
 import mx.com.kubo.rest.saldos.ProyectLoanActiveIMO;
 import mx.com.kubo.rest.saldos.ProyectLoanActiveIMP;
 import mx.com.kubo.rest.saldos.ResumenSaldosIMO;
@@ -98,6 +101,30 @@ public class KuboRestController
 		store.setSesion(sesion);
 		store.setSesion_investor(sesion_investor);
 		store.init();
+		
+		Response responseJSON = store.getResponseJSON();
+				
+		return responseJSON;
+	}
+	
+		
+	@POST
+	@Path("tienda/{updateFilters}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces("application/json;charset=utf-8")
+	public Response updateFilters(TiendaRequest request)
+	{		 
+		SessionBean sesion = new SessionBean();
+		sesion.setCompany_id   (Integer.parseInt(request.getCompany_id()));
+		sesion.setProspectus_id(Integer.parseInt(request.getProspectus_id()));
+		
+		InvestorSession sesion_investor = new InvestorSession();
+		sesion_investor.init();
+		
+		InvestmentListIMO store = new InvestmentListIMP();
+		store.setSesion(sesion);
+		store.setSesion_investor(sesion_investor);
+		store.updateByFiltering(request);
 		
 		Response responseJSON = store.getResponseJSON();
 				
