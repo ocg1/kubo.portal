@@ -667,4 +667,17 @@ public class CheckScoreProcessed extends CheckScoreProcessedDMO  implements Seri
 	}
 	
 	
+	public String getEmailEncodemd5(){
+		
+		if( member != null && member.getEmail() != null ){
+		
+			return Utilities.md5_encode(member.getEmail());
+		
+		}else{
+			return "";
+		}
+				
+	}
+	
+	
 }

@@ -619,40 +619,45 @@ implements Serializable
 		
 		amort.calculaTabla();
 		int x = 0;
-		for(Amortization a : amort.getTamort()){
+		
+		if( amort.getTamort() != null ){
+		
+			for(Amortization a : amort.getTamort()){
+				
+				if(x != 0)
+					valorCuotas += ",";
+				
+				x++;
+				
+				Double interes =  Double.parseDouble( a.getInterest().replace("$", "").replace(",", "") );
+				
+				Double interesSinIva = interes/(1.16);
+				
+				interesSinIva = Double.parseDouble( (dec.format(interesSinIva)).replace("$", "").replace(",", "") );
+				
+				Double capital = Double.parseDouble( a.getCapital().replace("$", "").replace(",", "") );
+				
+				valorCuotas += (capital+interesSinIva);
+				
+			}
 			
-			if(x != 0)
-				valorCuotas += ",";
+			Calendar cal1 = Calendar.getInstance();
+			cal1.setTime(new Date());
+			Double catRes =  simulatorService.getCatBySafi( Double.parseDouble(  getTotalRecibir().replace("$", "").replace(",", "") ), valorCuotas, getDiasFreq());
+			Calendar cal2 = Calendar.getInstance();
+			cal2.setTime(new Date());
 			
-			x++;
+			long difCns_R_2 = cal2.getTimeInMillis() - cal1.getTimeInMillis();
+			 System.out.println("Tiempo en calcular el  cat: "+difCns_R_2+" milisegundos");
 			
-			Double interes =  Double.parseDouble( a.getInterest().replace("$", "").replace(",", "") );
+			 
+			 catRes = (double)Math.round((catRes)*10)/10;
+			 
+			System.out.println("Resultado Cat: "+catRes);
 			
-			Double interesSinIva = interes/(1.16);
-			
-			interesSinIva = Double.parseDouble( (dec.format(interesSinIva)).replace("$", "").replace(",", "") );
-			
-			Double capital = Double.parseDouble( a.getCapital().replace("$", "").replace(",", "") );
-			
-			valorCuotas += (capital+interesSinIva);
-			
+			setCat(catRes);
+		
 		}
-		
-		Calendar cal1 = Calendar.getInstance();
-		cal1.setTime(new Date());
-		Double catRes =  simulatorService.getCatBySafi( Double.parseDouble(  getTotalRecibir().replace("$", "").replace(",", "") ), valorCuotas, getDiasFreq());
-		Calendar cal2 = Calendar.getInstance();
-		cal2.setTime(new Date());
-		
-		long difCns_R_2 = cal2.getTimeInMillis() - cal1.getTimeInMillis();
-		 System.out.println("Tiempo en calcular el  cat: "+difCns_R_2+" milisegundos");
-		
-		 
-		 catRes = (double)Math.round((catRes)*10)/10;
-		 
-		System.out.println("Resultado Cat: "+catRes);
-		
-		setCat(catRes);
 		
 	}
 	

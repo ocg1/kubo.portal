@@ -37,6 +37,7 @@ import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.RoleFunction;
+import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.gnNaturalPersonPK;
@@ -332,6 +333,28 @@ implements ChartBackBeanIMO, Serializable
 			
 			BuroCache cache = burocacheservice.getBuroCache(burSolNum);
 			
+			if( cache != null ){
+				
+				if( proyecto != null && proyecto.getKubo_score_a() != null && proyecto.getKubo_score_b() != null && cache.getCalificacion_kubo() != null ){
+				
+					if(cache.getCalificacion_kubo().equals("G1") && !cache.getCalificacion_kubo().equals( proyecto.getKubo_score_a()+proyecto.getKubo_score_b() ) ){
+						
+						burocacheservice.delete(burSolNum);
+						cache = null;
+					}else{
+						
+						Scoring score = scoringService.loadScoringByBurSolNum(burSolNum);
+						
+						if( score != null && ( score.getRisk_processed() != null && score.getRisk_processed().intValue() == 0 ) ){
+							burocacheservice.delete(burSolNum);
+							cache = null;
+						}
+						
+					}
+				
+				}
+			}
+			
 			if( cache == null )
 			{ 						
 				cBr_1 = Calendar.getInstance();
@@ -447,7 +470,13 @@ implements ChartBackBeanIMO, Serializable
 				
 				scriptSaldos = saldos.calculaGráfica(infocredcte_c, infocredcte_m, infocredcte_vig, infocte );
 				
-				insertaDatosCache();
+				Scoring score = scoringService.loadScoringByBurSolNum(burSolNum);
+				
+				if( score == null || ( score.getRisk_processed() != null && score.getRisk_processed().intValue() == 1 ) ){
+				
+					insertaDatosCache();
+				
+				}
 				
 			} else {								
 				

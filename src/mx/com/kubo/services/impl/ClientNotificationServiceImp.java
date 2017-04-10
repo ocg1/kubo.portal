@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.com.kubo.model.ClientNotification;
+import mx.com.kubo.model.NotificaCreditosDesembolsadosTresDiasCollector;
+import mx.com.kubo.model.PublicadosSinAutorizar;
 import mx.com.kubo.repositories.ClientNotificationDao;
 import mx.com.kubo.services.ClientNotificationService;
 
@@ -35,6 +37,14 @@ public class ClientNotificationServiceImp implements Serializable,ClientNotifica
 	
 	public ClientNotification getClientNotification( Integer prospectus_id , Integer notification_type_id ){
 		return dao.getClientNotification(prospectus_id, notification_type_id);
+	}
+	
+	public List<PublicadosSinAutorizar> getPublicadosSinAutorizar( String send_type  ){
+		return dao.getPublicadosSinAutorizar(send_type);
+	}
+
+	public List<NotificaCreditosDesembolsadosTresDiasCollector> getNotificaCreditosDesembolsadosTresDias( String send_type  ){
+		return dao.getNotificaCreditosDesembolsadosTresDias(  send_type  );
 	}
 	
 	

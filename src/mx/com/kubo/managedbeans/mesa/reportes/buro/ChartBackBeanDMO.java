@@ -45,6 +45,7 @@ import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.RecommendationTypeService;
 import mx.com.kubo.services.RoleFunctionService;
+import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.SimulationConfigService;
 import mx.com.kubo.services.SystemParamService;
 import mx.com.kubo.services.TransunionRespService;
@@ -113,6 +114,9 @@ implements ChartBackBeanIMO
 	
 	@ManagedProperty("#{roleFunctionServiceImp}")
 	protected RoleFunctionService roleFunctionService;
+	
+	@ManagedProperty("#{scoringServiceImp}")
+	protected ScoringService scoringService;	
 
 	protected WsSgbRisk service_SGB_risk;
 	protected WsSgbRiskServiceLocator locator;	
@@ -1464,6 +1468,14 @@ implements ChartBackBeanIMO
 
 	public void setRoleFunctionService(RoleFunctionService roleFunctionService) {
 		this.roleFunctionService = roleFunctionService;
+	}
+
+	public ScoringService getScoringService() {
+		return scoringService;
+	}
+
+	public void setScoringService(ScoringService scoringService) {
+		this.scoringService = scoringService;
 	}
 	
 }

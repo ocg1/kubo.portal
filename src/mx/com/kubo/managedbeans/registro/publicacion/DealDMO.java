@@ -136,8 +136,8 @@ implements DealIMO
 	protected NotificadorIMO notificador;
 	
 	@ManagedProperty("#{systemParamServiceImp}")
-	protected SystemParamServiceImp system_param_service;			
-		
+	protected SystemParamServiceImp system_param_service;	
+	
 	protected ReasignadorIMO reasignador;
 	protected NavigationBeanIMO  menu_registro_service;
 	

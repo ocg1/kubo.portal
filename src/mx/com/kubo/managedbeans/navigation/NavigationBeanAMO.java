@@ -654,9 +654,12 @@ public abstract class NavigationBeanAMO extends NavigationBeanDMO
 		} else {
 			
 			if(area.equals("L")) {
-				
-				setDisplaySim(true);
-				simulator.simulaCred(false);
+				try{
+					setDisplaySim(true);
+					simulator.simulaCred(false);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 				
 			} else {
 				

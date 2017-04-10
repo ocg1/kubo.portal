@@ -51,6 +51,7 @@ import mx.com.kubo.model.InegiEconActivityCat;
 import mx.com.kubo.model.InegiEconActivityCatPK;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Phone;
+import mx.com.kubo.model.Prospector;
 import mx.com.kubo.model.Prospectus;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
@@ -1472,6 +1473,8 @@ implements Serializable, BasicDataIMO
 								
 								init_consulting_manual( risk.getScore() );
 								
+								updateProspector();
+								
 								/*faces     = FacesContext.getCurrentInstance();
 								context = faces.getELContext();
 								resolver  = faces.getApplication().getELResolver();*/
@@ -1544,6 +1547,20 @@ implements Serializable, BasicDataIMO
 		
 		
 		
+	}
+	
+	private void updateProspector(){
+		Prospector prospector = prospector_service.getMaxProspector(sesion.getProspectus_id(), sesion.getCompany_id());
+		
+		if( prospector != null ){
+			
+			prospector.setIs_processed("S");
+			prospector_service.updateProspector(prospector);
+			
+		}
+				
+				
+				
 	}
 	
 	private void initProyectLoan( Scoring score ){

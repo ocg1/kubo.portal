@@ -23,6 +23,7 @@ import mx.com.kubo.services.MembershipService;
 import mx.com.kubo.services.PasswordHistoryService;
 import mx.com.kubo.services.ProyectLoanService;
 import mx.com.kubo.services.SavingAccountService;
+import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ScreenService;
 import mx.com.kubo.services.SecurityQuestionPoolService;
 import mx.com.kubo.services.SimulatorService;
@@ -65,6 +66,9 @@ implements HeaderBeanIMO
 	
 	@ManagedProperty("#{proyectLoanServiceImp}")
 	protected ProyectLoanService proyectloanservice;
+	
+	@ManagedProperty("#{scoringServiceImp}")
+	protected ScoringService scoring_service;
 	
 	protected NavigationBeanIMP nav;
 	
@@ -505,6 +509,14 @@ implements HeaderBeanIMO
 	
 	public void setELResolver( ELResolver resolver ){
 		this.resolver = resolver;
+	}
+
+	public ScoringService getScoring_service() {
+		return scoring_service;
+	}
+
+	public void setScoring_service(ScoringService scoring_service) {
+		this.scoring_service = scoring_service;
 	}
 	
 }

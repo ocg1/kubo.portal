@@ -3069,10 +3069,7 @@ width: 100%;
 	background:none !important;
 		background-size: 14px !important;
 }
-::-webkit-input-placeholder { color:#666; }
-::-moz-placeholder { color:#666;} /* firefox 19+ */
-:-ms-input-placeholder { color:#666 !important;  } /* ie */
-:-moz-placeholder { color:#666; }
+
 
 
 }
@@ -8652,3 +8649,19 @@ display:none;
 	min-height: 50px;
 }
 }
+
+
+
+
+
+::-webkit-input-placeholder { color:#999; }
+::-moz-placeholder { color:#999;} 
+:-ms-input-placeholder { color:#999 !important;  } 
+:-moz-placeholder { color:#999; }
+
+
+
+:focus::-webkit-input-placeholder {color:transparent; opacity:0}
+:focus::-moz-placeholder { color:transparent; opacity:0} 
+:focus:-ms-input-placeholder { color:transparent; opacity:0 } 
+:focus:-moz-placeholder {color:transparent; opacity:0 }s

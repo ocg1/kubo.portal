@@ -222,22 +222,26 @@ implements Serializable, NavigationBeanIMO
 	
 	public void sendHubSpot(){
 		
-		HubSpotController hsC =  new HubSpotController();
-		
-		SystemParamPK sysid = new SystemParamPK(96,1);
-		
-		SystemParam systemParam =  systemparamservice.loadSelectedSystemParam(sysid);
-		
-		if( systemParam != null && systemParam.getValue().equals("S") ){
-		
-			 if( membership.getPerson().getProspectus().getHs_vid() != null ){
+		if( membership != null && membership.getPerson() != null && membership.getPerson().getProspectus() != null){
 			
-				 hsC.updateProspectus(membership.getPerson().getProspectus().getHs_vid(), sbHs);
+			HubSpotController hsC =  new HubSpotController();
+			
+			SystemParamPK sysid = new SystemParamPK(96,1);
+			
+			SystemParam systemParam =  systemparamservice.loadSelectedSystemParam(sysid);
+		
+			if( systemParam != null && systemParam.getValue().equals("S") ){
+			
+				 if( membership.getPerson().getProspectus().getHs_vid() != null ){
 				
-				//hsC.createField( hs_values);
-			
+					 hsC.updateProspectus(membership.getPerson().getProspectus().getHs_vid(), sbHs);
+					
+					//hsC.createField( hs_values);
+				
+				}
+			 
 			}
-		 
+		
 		}
 		 
 		 sbHs = null;

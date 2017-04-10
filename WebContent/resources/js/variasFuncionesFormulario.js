@@ -85,13 +85,7 @@ function name_section () {
 	asterisk(".numberAndTitle");
 	asterisk(".titleDisabled");
 	
-		$('#frm_content input,#frm_content textarea').focus(function(){
-		   $(this).data('placeholder',$(this).attr('placeholder'))
-		   $(this).attr('placeholder','');
-		});
-		$('#frm_content input, #frm_content textarea').blur(function(){
-		   $(this).attr('placeholder',$(this).data('placeholder'));
-		});
+	
 		 var width = $(window).width();	
 		 if (width <= 850) { 
 			 setTimeout(function(){
@@ -732,6 +726,7 @@ function pixel (){
 	var kuboScoreVal = $("#inputKuboScore").val();
 	//var contenedorTracksacai = document.getElementById("tracksacai");
 	var valuePartner = $("#valuePartner").val();
+	var inputEmailCodificado = $("#inputEmailCodificado").val();
 	console.log("kuboScoreVal"+kuboScoreVal);
 	
 	
@@ -813,6 +808,10 @@ function pixel (){
 		}
 		if(valuePartner == "GR4"){
 			$("#GR4").attr("src", "www.euroads.mx/system/trackleads.php?cpid=21&sid=17&orderid="+''+prospectoID+''+"");
+	    }
+		
+		if(valuePartner == "KWK"){
+			$("#KWK").attr("src", "https://action.metaffiliation.com/trk.php?mclic=G4E0271013&argann="+''+prospectoID+''+"&altid="+''+inputEmailCodificado+''+"" );
 	    }
 	}
     if($.inArray(kuboScoreVal, scores2) >= 0) {

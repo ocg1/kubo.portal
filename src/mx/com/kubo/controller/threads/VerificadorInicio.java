@@ -32,7 +32,9 @@ import mx.com.kubo.model.InactiveAccount;
 import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.MovementToVerify;
+import mx.com.kubo.model.NotificaCreditosDesembolsadosTresDiasCollector;
 import mx.com.kubo.model.PendingNotification;
+import mx.com.kubo.model.PublicadosSinAutorizar;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.model.UltimosDesembolsos;
@@ -74,6 +76,8 @@ public class VerificadorInicio extends Thread  {
 		private final int INVERSIONES_AUTOMATICAS = 18;
 		private final int NOTIFICACION_DESEMBOLSO = 19;
 		private final int NOTIFICACION_ASIGNACION_COACH = 20;
+		private final int NOTIFICACION_SOLICITUD_EN_ANALISIS = 21;
+		private final int SMS_LEER_CONTRATOS_DIA_3 = 22;
 
 	
 	//  FIN MOVEMENT_ID 
@@ -116,7 +120,9 @@ public class VerificadorInicio extends Thread  {
 		private int int_TABLERO_NORMATIVO = 1;
 		private int int_INVERSIONES_AUTOMATICAS = 1;
 		private int int_NOTIFICACION_DESEMBOLSO = 1;
-		private int int_NOTIFICACION_ASIGNACION_COACH = 20;
+		private int int_NOTIFICACION_ASIGNACION_COACH = 1;
+		private int int_NOTIFICACION_SOLICITUD_EN_ANALISIS = 21;
+		private int int_SMS_LEER_CONTRATOS_DIA_3 = 22;
 		// FIN VARIABLES DE MINUTOS EN QUE SE REPETIRÁ 
 		
 		
@@ -1141,8 +1147,8 @@ public class VerificadorInicio extends Thread  {
 							
 							try{
 								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_TABLERO_NORMATIVO ){
-									System.out.println( " 17 - Envio de tablero Normativo" );
 									
+									System.out.println( " 17 - Envio de tablero Normativo" );
 									
 									if( move.getNext_day_to_apply() != null ){
 										
@@ -1180,8 +1186,6 @@ public class VerificadorInicio extends Thread  {
 										}
 										
 									}
-									
-									
 									
 								}else{
 									int_TABLERO_NORMATIVO ++;
@@ -1239,14 +1243,10 @@ public class VerificadorInicio extends Thread  {
 										
 									}
 									
-									
-									
 								}else{
 									int_INVERSIONES_AUTOMATICAS ++;
 								}
-								
 							
-								
 							}catch(Exception e){
 								
 								e.printStackTrace();
@@ -1299,8 +1299,6 @@ public class VerificadorInicio extends Thread  {
 										
 									}
 									
-									
-									
 								}else{
 									int_INVERSIONES_AUTOMATICAS ++;
 								}
@@ -1346,7 +1344,6 @@ public class VerificadorInicio extends Thread  {
 										
 									}
 									
-									
 									int_NOTIFICACION_ASIGNACION_COACH = 1;
 									
 								}else{
@@ -1360,6 +1357,116 @@ public class VerificadorInicio extends Thread  {
 								e.printStackTrace();
 								
 							}
+							
+							break;
+							
+						case  NOTIFICACION_SOLICITUD_EN_ANALISIS:
+							
+							try{
+								if ( move.getMinutes_to_reply_event() == null || move.getMinutes_to_reply_event() <= int_NOTIFICACION_SOLICITUD_EN_ANALISIS ){
+									
+									System.out.println( " 21 - NOTIFICACION_SOLICITUD_EN_ANALISIS" );
+									
+									if( !esDiaFeriado() ){
+										
+										SystemParamPK spk = new SystemParamPK();
+										
+										spk.setCompany_id(1);
+										spk.setSystem_param_id(92);
+										
+										SystemParam sys = systemparamservice.loadSelectedSystemParam(spk); // Hora de Inicio de Actividades Kubo
+										
+										String horaInicioSys = sys.getValue();
+										
+										spk.setCompany_id(1);
+										spk.setSystem_param_id(93);
+										
+										sys =systemparamservice.loadSelectedSystemParam(spk); // Hora de Término de Actividades Kubo
+										
+										String horaTerminoSys = sys.getValue();
+										
+										if( validaHora( horaInicioSys , horaTerminoSys ) ){
+											
+											//TODO
+											envio_notificacion_client( 2 );
+											
+										}
+										
+									}
+									
+									int_NOTIFICACION_SOLICITUD_EN_ANALISIS = 1;
+									
+								}else{
+									
+									int_NOTIFICACION_SOLICITUD_EN_ANALISIS++;
+									
+								}
+							
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+								
+							
+							break;
+							
+						case SMS_LEER_CONTRATOS_DIA_3:
+							
+							try{
+								
+								if ( move.getMinutes_to_reply_event() == null ||  move.getMinutes_to_reply_event() <= int_SMS_LEER_CONTRATOS_DIA_3 ){
+									
+									if( move.getNext_day_to_apply() != null ){
+										
+										Calendar c_next_apply = Calendar.getInstance();
+										
+										c_next_apply.setTime(move.getNext_day_to_apply());
+										
+										Calendar TODAY = Calendar.getInstance();
+									
+										if( c_next_apply.before( TODAY ) ){
+										
+											Calendar c_next_apply_temp = Calendar.getInstance();
+											
+											c_next_apply_temp.setTime( c_next_apply.getTime() );
+											
+											c_next_apply.add(Calendar.DATE, 1);
+											c_next_apply = validaDia(c_next_apply);
+											
+											System.out.println( "22 - SMS_LEER_CONTRATOS " );
+										
+											c_next_apply_temp.add(Calendar.DATE, 1);
+											
+											c_next_apply_temp = validaDia(c_next_apply_temp);
+											
+											move.setNext_day_to_apply(c_next_apply.getTime());
+											
+											movements_to_verify_service.updateMovementToVerify(move);
+											
+											//TODO
+											
+											envio_notificacion_client( 3 );
+								
+											int_SMS_LEER_CONTRATOS_DIA_3 = 1;
+											
+										}else{
+											int_SMS_LEER_CONTRATOS_DIA_3 = 1;
+										}
+										
+									}
+									
+								}else{
+									int_SMS_LEER_CONTRATOS_DIA_3++;
+								}
+							
+							}catch(Exception e){
+								
+								e.printStackTrace();
+								
+							}
+							
+							break;
 									
 							
 						default:
@@ -2149,6 +2256,14 @@ public class VerificadorInicio extends Thread  {
 			
 		}
 		
+		private void envio_notificacion_client( int notification_type_id ){
+				
+			initCalledStoredClientNotification( notification_type_id );
+			
+			callServiceNoficationAssigned( notification_type_id );
+			
+		}
+		
 		private void notificacionAsignacionCoachFnc(){
 			
 			try{
@@ -2157,7 +2272,7 @@ public class VerificadorInicio extends Thread  {
 				
 				callServicesGetCoach();
 				
-				callServiceNoficationAssigned();
+				callServiceNoficationAssigned( 1 );
 				
 			}catch(Exception e){
 				
@@ -2223,6 +2338,27 @@ public class VerificadorInicio extends Thread  {
 			}
 		}
 		
+		private void initCalledStoredClientNotification( int notification_type_id ){
+			try{
+				
+				switch(notification_type_id){
+				
+				case 2:
+					List<PublicadosSinAutorizar> lst = clientnotificationservice.getPublicadosSinAutorizar("S");
+					break;
+				case 3:
+					List<NotificaCreditosDesembolsadosTresDiasCollector> lst3d = clientnotificationservice.getNotificaCreditosDesembolsadosTresDias("S");
+					break;
+				
+				}
+				
+				
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
 		private void callServicesGetCoach(){
 			
 			try{
@@ -2278,7 +2414,7 @@ public class VerificadorInicio extends Thread  {
 			
 		}
 		
-		private void callServiceNoficationAssigned(){
+		private void callServiceNoficationAssigned( Integer notification_type_id ){
 			try{
 			
 				PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
@@ -2287,7 +2423,7 @@ public class VerificadorInicio extends Thread  {
 				
 				ClientNotificationRequest request = new ClientNotificationRequest();
 				
-				request.setNotification_type_id("1");
+				request.setNotification_type_id(notification_type_id+"");
 				
 				kuboservices.clientNotification(request);
 			

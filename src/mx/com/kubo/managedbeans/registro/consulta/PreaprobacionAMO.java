@@ -1021,7 +1021,7 @@ public abstract class PreaprobacionAMO extends PreaprobacionPMO
 				
 					simulator = (Simulator) resolver.getValue(elContext, null, "simulator");
 					
-					if(simulator.getPurpose() != null && simulator.getPurpose().getPurposePK().getPurpose_id() != 0 ){
+					if(simulator.getPurpose() != null && simulator.getPurpose().getPurposePK() != null && simulator.getPurpose().getPurposePK().getPurpose_id() != 0 ){
 						
 						proyect.setType_id(simulator.getPurpose().getType_id());
 						proyect.setPurpose_id(simulator.getPurpose().getPurposePK().getPurpose_id());

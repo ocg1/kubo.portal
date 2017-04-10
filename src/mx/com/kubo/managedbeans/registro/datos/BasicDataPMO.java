@@ -198,39 +198,82 @@ public abstract class BasicDataPMO extends BasicDataAMO
 			
 			if( sp != null && sp.getValue().equals("S") ){
 				
-			
-			
 				Prospector prospector = prospector_service.getMaxProspector(sesion.getProspectus_id(), sesion.getCompany_id());
 				
 				if( prospector != null ){
 					
-					if( prospector.getIs_valid() != null && prospector.getIs_valid().equals("N")  ){
+					if( Utilities.asignar_dias_transcurridos_a_hoy(prospector.getConsulting_date()) < 30 ){
 					
-						protectorValid	= true;
+						if( prospector.getIs_valid() != null && prospector.getIs_valid().equals("N") &&  Utilities.asignar_dias_transcurridos_a_hoy(prospector.getConsulting_date()) < 30    ){
 						
+							protectorValid	= true;
+							consultValid    = true;
 						
-						consultValid    = true;
+						}else if( prospector.getIs_valid() != null && prospector.getIs_valid().equals("S") && prospector.getIs_processed() != null && prospector.getIs_processed().equals("S") ){
+							
+							protectorValid	= true;
+							
+							Scoring s = scoringService.loadMaxScoringByProspectus(prospectus_id, company_id);
+							 
+							 if (s == null){
+								 
+								 protectorValid	= true;
+								 consultValid    = false;
+							 
+							 }else{
+								 
+								 if( Utilities.asignar_dias_transcurridos_a_hoy(s.getResult_datetime()) < 30 ){
+								 
+									 protectorValid	= true;
+									 consultValid    = true;
+								 
+								 }else{
+							
+									 scoringService.removeScoring(s);
+									 protectorValid	= true;
+									 consultValid    = false;
+									 
+								 }
+							 
+							 }
+							
+							
+						}else if( prospector.getIs_valid() != null && prospector.getIs_valid().equals("S") && prospector.getIs_processed() != null && prospector.getIs_processed().equals("N") ){
+							
+							protectorValid	= true;
+							booleanListo 	= true;
+							consultValid    = false;
+							
+						}
 					
-					}else if( prospector.getIs_valid() != null && prospector.getIs_valid().equals("S") && prospector.getIs_processed() != null && prospector.getIs_processed().equals("S") ){
-						
-						protectorValid	= true;
+					}else{
 						
 						Scoring s = scoringService.loadMaxScoringByProspectus(prospectus_id, company_id);
-						 
-						 if (s == null){
-							 protectorValid	= false;
-							 consultValid    = false;
-						 }else{
-							 protectorValid	= true;
-							 consultValid    = true;
-						 }
 						
 						
-					}else if( prospector.getIs_valid() != null && prospector.getIs_valid().equals("S") && prospector.getIs_processed() != null && prospector.getIs_processed().equals("N") ){
 						
-						protectorValid	= true;
-						booleanListo 	= true;
-						consultValid    = false;
+						if( s != null && Utilities.asignar_dias_transcurridos_a_hoy(  s.getBc_score_date() ) > 30 ){
+						
+							scoringService.removeScoring(s);
+							
+							protectorValid	= false;
+							booleanListo 	= false;
+							consultValid    = false;
+							
+						}else if(s == null){
+							
+							protectorValid	= false;
+							booleanListo 	= false;
+							consultValid    = false;
+							
+						}else{
+							
+							protectorValid	= true;
+							consultValid    = true;
+							booleanListo 	= true;
+							
+						}
+						
 						
 					}
 					

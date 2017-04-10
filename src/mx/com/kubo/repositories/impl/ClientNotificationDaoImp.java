@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mx.com.kubo.model.ClientNotification;
 import mx.com.kubo.model.CoachPublicationsCollector;
+import mx.com.kubo.model.NotificaCreditosDesembolsadosTresDiasCollector;
+import mx.com.kubo.model.PublicadosSinAutorizar;
 import mx.com.kubo.repositories.ClientNotificationDao;
 
 @Repository
@@ -88,6 +90,38 @@ public class ClientNotificationDaoImp implements Serializable,ClientNotification
 							.setParameter(1, prospectus_id)
 							.setParameter(2, notification_type_id) 
 							.getSingleResult();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+public List<PublicadosSinAutorizar> getPublicadosSinAutorizar( String send_type  ){
+		
+		try{
+			
+			return em.createNamedQuery("collectorPublicadosSinAutorizar", PublicadosSinAutorizar.class)
+					.setParameter("Par_Inserta", "I")
+					.setParameter("Par_TipoNotifica", send_type)
+					.getResultList();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	public List<NotificaCreditosDesembolsadosTresDiasCollector> getNotificaCreditosDesembolsadosTresDias( String send_type  ){
+		
+		try{
+			
+			return em.createNamedQuery("collectorNotificaCreditosDesembolsadosTresDia", NotificaCreditosDesembolsadosTresDiasCollector.class)
+					.setParameter("Par_Inserta", "I")
+					.setParameter("Par_TipoNotifica", send_type)
+					.getResultList();
 			
 		}catch(Exception e){
 			e.printStackTrace();

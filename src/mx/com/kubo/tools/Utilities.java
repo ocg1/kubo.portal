@@ -22,6 +22,8 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import java.security.*;
+
 import javax.xml.bind.DatatypeConverter;
 
 
@@ -651,7 +653,7 @@ implements ApplicationContextAware, Serializable
 	    	
 	    	return true;
 	    } catch (NumberFormatException nfe){
-	    	nfe.printStackTrace();
+	    	
 	    	return false;
 	    	
 	    }
@@ -733,6 +735,64 @@ implements ApplicationContextAware, Serializable
 		}
 		
 		return str;
+	}
+    
+    public static int asignar_dias_transcurridos_a_hoy( Date dFecha ) 
+	{
+		GregorianCalendar date1 = new GregorianCalendar();
+        date1.setTime(dFecha);
+        
+        GregorianCalendar date2 = new GregorianCalendar();
+        date2.setTime(new Date());
+        
+        int rangoAnyos = 0;
+        int rango = 0;
+        int diasAnyo = 0;
+        /* COMPROBAMOS SI ESTAMOS EN EL MISMO ANYO */
+        if (date1.get(Calendar.YEAR) == date2.get(Calendar.YEAR)) 
+        {        
+        	rango = (date2.get(Calendar.DAY_OF_YEAR) - date1.get(Calendar.DAY_OF_YEAR));
+        	
+        } else {
+            /* SI ESTAMOS EN DISTINTO ANYO COMPROBAMOS QUE EL ANYO DEL DATEINI NO SEA BISIESTO
+             * SI ES BISIESTO SON 366 DIAS EL ANYO
+             * SINO SON 365
+             */
+            diasAnyo = date1.isLeapYear(date1.get(Calendar.YEAR)) ? 366 : 365;
+
+            /* CALCULAMOS EL RANGO DE ANYOS */
+            rangoAnyos = date2.get(Calendar.YEAR) - date1.get(Calendar.YEAR);
+
+            /* CALCULAMOS EL RANGO DE DIAS QUE HAY */
+            rango = (rangoAnyos * diasAnyo) + (date2.get(Calendar.DAY_OF_YEAR) - date1.get(Calendar.DAY_OF_YEAR));
+        }
+		
+		return rango;	
+	}
+    
+    public static String md5_encode( String str ) 
+	{
+    	
+		try {
+
+			java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+			
+			byte[] array = md.digest(str.getBytes());
+			
+			StringBuffer sb = new StringBuffer();
+			
+			for (int i = 0; i < array.length; ++i) {
+			
+				sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+			
+			}
+			
+			return sb.toString();
+
+		} catch (Exception e) {
+			return null;
+		}
+    	
 	}
 
 }

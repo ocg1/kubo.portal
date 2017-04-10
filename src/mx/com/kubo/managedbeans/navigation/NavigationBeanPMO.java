@@ -108,8 +108,9 @@ public abstract class NavigationBeanPMO extends NavigationBeanAMO
 					
 					simulator.setPurpose_id(sim.getPurpose_id());
 					simulator.setAmmount(sim.getAmmount());
-					simulator.setComisionApertura(sim.getOpening_commission_amount());
+					//simulator.setComisionApertura(sim.ge);
 					simulator.setMontoCuota(sim.getPayment());
+					//comisionApertura
 					
 					cambiaPagina(e);
 				}				

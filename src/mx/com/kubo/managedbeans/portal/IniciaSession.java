@@ -18,8 +18,10 @@ import mx.com.kubo.managedbeans.preregistro.PreregistroIMP;
 import mx.com.kubo.model.Clients;
 import mx.com.kubo.model.ClientsPK;
 import mx.com.kubo.model.Membership;
+import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SystemParam;
 import mx.com.kubo.model.SystemParamPK;
+import mx.com.kubo.tools.Utilities;
 
 import org.primefaces.context.RequestContext;
 
@@ -151,7 +153,7 @@ implements Serializable
 							init_inversionista();
 							
 						} else {
-							
+							validaScore();
 							init_acreditado();
 						}	
 						
@@ -247,6 +249,28 @@ implements Serializable
 		}catch( Exception e ){
 			e.printStackTrace();
 		}
+		
+	}
+	
+	private void validaScore(){
+		
+		Scoring score =scoring_service.loadMaxScoringByProspectus(sesion.getProspectus_id(), sesion.getCompany_id() );
+		
+		if(score == null){
+			
+			init_access(2) ;
+			
+			sesion.setLastPage("registro/basicosHistorial");
+		
+		}else if( Utilities.asignar_dias_transcurridos_a_hoy(score.getResult_datetime()) > 30 ){
+			
+			scoring_service.removeScoring(score);
+			init_access(2) ;
+			sesion.setLastPage("registro/basicosHistorial");
+			
+		}
+		
+		
 		
 	}
 	

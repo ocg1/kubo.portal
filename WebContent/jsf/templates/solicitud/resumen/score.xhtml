@@ -27,7 +27,7 @@
 				<p id = "rightRating" style = "font-size: 1.1em; font-weight: normal;">Calificación</p>	
 			</h:panelGroup>			
 			
-			<div class = "clear smallGray" style = "width: 180px; overflow: visible; margin-top: 5px; ">
+			<div class = "clear smallGray" style = "width: 180px; overflow: visible; margin-top: 35px; ">
 				<div style = "overflow: visible; float: left;">						
 					<ui:include src = "editor-loan-score/bitacora.xhtml" />
 				</div>		
@@ -67,9 +67,7 @@
 		
 		<div class = "detailsMiddleStatusData">
 			
-			<p class = "rightVerification normalGray right">
-				Estatus de verificación
-			</p>
+			
 			
 			<p id = "status">
 				<p:commandLink style = "color:#FFFFFF;" value = "#{summaryRequest.verification_score}" 							   
@@ -80,15 +78,24 @@
 							   
 					<f:attribute name = "gotypeLog" value = "SOL" />
 				</p:commandLink>
+				Estatus de verificación
 			</p>	
+
 			
-			<div style = "clear: both;"/>
 			
-			<p onclick = "Resumen.init_buro_reprocess();" class = "rightVerification normalGray right" style = "padding-top:15px; cursor:pointer;">Reprocesar</p>
-			
-			<p class = "icon-warning-reprocess" style = "color:#FFFFFF;">
+			<!-- p class = "icon-warning-reprocess" style = "color:#FFFFFF;">
 				#{summaryRequest.actualProyect.scoring.risk_processed}
-			</p>		
-		</div>			
+			</p-->		
+		</div>
+
+		<h:panelGroup
+			rendered="#{summaryRequest.actualProyect != null and summaryRequest.actualProyect.scoring != null and summaryRequest.actualProyect.scoring.risk_processed == 0}">
+
+				<div onclick="Resumen.init_buro_reprocess();"
+					class="callActionMedium btnVerde rightVerification">#{summaryRequest.actualProyect.scoring.risk_processed}
+					Reprocesar</div>
+			
+		</h:panelGroup>
+
 	</div>				
 </ui:composition>				

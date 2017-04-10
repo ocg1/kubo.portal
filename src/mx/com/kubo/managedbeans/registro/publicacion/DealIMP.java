@@ -21,6 +21,9 @@ import mx.com.kubo.bean.DealBean;
 import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
+import mx.com.kubo.kubows.PublicProyect;
+import mx.com.kubo.kubows.PublicProyectServiceLocator;
+import mx.com.kubo.kubows.SMSRequestService;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
@@ -176,11 +179,13 @@ implements Serializable, DealIMO
 				 	notificador.setEmisor(membership);
 					notificador.notificar(PUBLICACION, score, proyect_loan, "");
 					
+					notificaSMS(  );
+					
 					if( natural_person != null && natural_person.getProspectus() != null && 
 						natural_person.getProspectus().getArea() != null && 
 						natural_person.getProspectus().getArea().toString().equals("L") ){
 						
-						SystemParamPK spk = new SystemParamPK();
+						/* SystemParamPK spk = new SystemParamPK();
 						
 						spk.setCompany_id(natural_person.getNatPerPK().getCompany_id());
 						spk.setSystem_param_id(88);
@@ -194,7 +199,7 @@ implements Serializable, DealIMO
 						
 							infusion.addTAgToContact( natural_person.getProspectus().getInfusion_id() , 115 ); // tag Publicación
 					
-						}
+						} */
 						
 						//HUBSPOT PUBLICACION
 						if( natural_person != null && natural_person.getProspectus() != null && natural_person.getProspectus().getHs_vid() != null ){	
@@ -214,21 +219,18 @@ implements Serializable, DealIMO
 								
 								hs.updateProspectus(natural_person.getProspectus().getHs_vid(), properties);
 								
-								
-									
-									BehaviorCheck bc = new BehaviorCheck();
-									
-									String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
-								    
-									if(ipAddressClient == null)  
-									{
-								    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
-									}
-									
-									bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
-									
-								
 							 }
+							
+							BehaviorCheck bc = new BehaviorCheck();
+							
+							String ipAddressClient  = httpServletRequest.getHeader("X-FORWARDED-FOR");  
+						    
+							if(ipAddressClient == null)  
+							{
+						    	ipAddressClient = httpServletRequest.getRemoteAddr();  	 
+							}
+							
+							bc.checkProcess(sesion.getCompany_id(), sesion.getProspectus_id(), ipAddressClient);
 						}
 						
 					}
@@ -583,6 +585,43 @@ implements Serializable, DealIMO
 		HttpServletRequest request = (HttpServletRequest) external.getRequest();
 		
 		return request.getContextPath();
+	}
+	
+	private boolean notificaSMS(  ){
+			
+			boolean flag = false; 
+			
+			try{
+				
+				PublicProyectServiceLocator kubolocator = new  PublicProyectServiceLocator();
+				
+				PublicProyect kuboservices =  kubolocator.getPublicProyect();
+				
+				SMSRequestService request =  new SMSRequestService() ;
+				
+				request.setEmisor_id( sesion.getProspectus_id() + "" );
+				
+				request.setBursolnum(null);
+				request.setCampaign(null);
+				
+				request.setEvent_id("72");
+								
+				String[] str = {""+prospectus_id+""};
+				
+				request.setProspectus_id(str);
+				
+				kuboservices.enviaSMS(request);
+				
+				flag = true;
+			
+			}catch(Exception e){
+				
+				e.printStackTrace();
+				flag = false;
+			}
+
+			return flag ;
+			
 	}
 	
 	

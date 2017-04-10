@@ -26,7 +26,7 @@
 			</h:panelGroup>
 			
 			<h:commandLink id = "initChartReload" immediate = "true" value="reload">
-				<p:ajax event = "click" update = "pnlGraphic titleGraphic"
+				<p:ajax event = "click" update = "pnlContGraphic pnlGraphic titleGraphic"
 						listener   = "#{chartBackBean.initChartReload}"
 						onstart    = "return validaSolNum();"  						
 						oncomplete = "chartReload_oncomplete(xhr, args, status);" />

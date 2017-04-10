@@ -20,20 +20,23 @@
 	<script type = "text/javascript" src = "../resources/js/reporteBuro.js" />
 	<script type = "text/javascript" src = "../resources/js/reporteBuroChart.js" />	
 	
-	<ui:include src = "consulta-buro/datos-personales.xhtml"/>
-	<ui:include src = "consulta-buro/bloqueos.xhtml"/>
-	<ui:include src = "consulta-buro/grafica.xhtml"/>
-	<ui:include src = "consulta-buro/nivel-endeudamiento.xhtml"/>
-	<ui:include src = "consulta-buro/consultas-anteriores.xhtml"/>
-	<ui:include src = "consulta-buro/perfil-riesgo.xhtml"/>	 		
-	<ui:include src = "consulta-buro/direcciones.xhtml"/>
-	<ui:include src = "consulta-buro/creditos.xhtml"/>	
-	<ui:include src = "consulta-buro/consultas.xhtml"/>
-	<ui:include src = "consulta-buro/alertas.xhtml"/>
-	<ui:include src = "consulta-buro/identificar-creditos.xhtml"/>  			 				 		
- 			
- 	<h:outputText escape = "false"   value = "#{chartBackBean.scriptAction}" />
- 	 
+	<h:panelGroup id="pnlContGraphic" >
+	
+		<ui:include src = "consulta-buro/datos-personales.xhtml"/>
+		<ui:include src = "consulta-buro/bloqueos.xhtml"/>
+		<ui:include src = "consulta-buro/grafica.xhtml"/>
+		<ui:include src = "consulta-buro/nivel-endeudamiento.xhtml"/>
+		<ui:include src = "consulta-buro/consultas-anteriores.xhtml"/>
+		<ui:include src = "consulta-buro/perfil-riesgo.xhtml"/>	 		
+		<ui:include src = "consulta-buro/direcciones.xhtml"/>
+		<ui:include src = "consulta-buro/creditos.xhtml"/>	
+		<ui:include src = "consulta-buro/consultas.xhtml"/>
+		<ui:include src = "consulta-buro/alertas.xhtml"/>
+		<ui:include src = "consulta-buro/identificar-creditos.xhtml"/>  			 				 		
+	 			
+	 	<h:outputText escape = "false"   value = "#{chartBackBean.scriptAction}" />
+	 	
+ 	 </h:panelGroup>
  	<ui:include src = "consulta-buro/login.xhtml"/> 	 
  	<ui:include src = "templates/msgProcessing.xhtml" />
  	

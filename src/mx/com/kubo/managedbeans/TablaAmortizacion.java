@@ -65,6 +65,8 @@ implements TablaAmortizacionIMO, Serializable
 			
 			strTasa2 = (((double) Math.round(Double.parseDouble(strTasa2)*100)/100))+"";
 			
+			if(comision == null || comision.equals("null"))
+				comision = "5.0";
 			
 			montoarecibir = dec.format(((100 - Double.parseDouble( comision ) )/100)*ammount);
 			

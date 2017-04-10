@@ -24,6 +24,7 @@ import mx.com.kubo.model.Membership;
 import mx.com.kubo.model.MembershipPK;
 import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.model.SavingAccount;
+import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.Screen;
 import mx.com.kubo.model.ScreenPK;
 import mx.com.kubo.model.SecQuestPoolPK;
@@ -1364,6 +1365,8 @@ implements Serializable, HeaderBeanIMO
 						if(sesion.getArea().toString().equals("L"))
 						{	
 							
+							validaScore();
+							
 							if(sesion.getLastPage()!= null && sesion.getLastPage().equals("registro/cierre") ){
 								inicializaSimulador(sesion.getCompany_id(), sesion.getProspectus_id(),true);
 							}else{
@@ -1582,6 +1585,57 @@ implements Serializable, HeaderBeanIMO
 			
 			return "access";
 		}
+	}
+	
+	private void validaScore(){
+		
+		Scoring score =scoring_service.loadMaxScoringByProspectus(sesion.getProspectus_id(), sesion.getCompany_id() );
+		
+		if(score == null){
+			
+			init_access(2) ;
+			
+			//sesion.setLastPage("registro/basicosHistorial");
+		
+		}else if( Utilities.asignar_dias_transcurridos_a_hoy(score.getResult_datetime()) > 30 ){
+			
+			scoring_service.removeScoring(score);
+			init_access(2) ;
+			//sesion.setLastPage("registro/basicosHistorial");
+			
+		}
+		
+		
+		
+	}
+	
+	
+	private void init_access( int screen_id ){
+		
+		Access access = new Access();
+		access.setCompany_id     (sesion.getCompany_id());
+		access.setProspectus_id  (sesion.getProspectus_id());
+		access.setOp_system      (sesion.getOsbrawser());
+		access.setHorizontal_size(sesion.getBrowser_width());
+		access.setVertical_size  (sesion.getBrowser_height());
+		access.setIpaddress      (sesion.getIP_address_client());
+		access.setWeb_browser    (sesion.getNamebrawser());
+		access.setWeb_browser_version(sesion.getVersionbrawser());
+		access.setVersion_description(sesion.getVersion_description());
+		access.setScreen_id(screen_id);//pantalla de mis inversiones
+		access.setPercentage(0);
+		access.setUrl_access( sesion.getUrl_access() );
+		access.setProspectus_id_coach (sesion.getCoachProspectus_id());
+		access.setAccess_from		  (sesion.getAccess_from());
+		
+		service_access.add(access, false);
+		
+		ScreenPK pk = new ScreenPK();
+		pk.setCompany_id(sesion.getCompany_id());
+		pk.setScreen_id(screen_id);
+		Screen  sc = screenservice.getScreenById(pk);
+		sesion.setLastPage( sc.getName() );
+		
 	}
 	
 	
