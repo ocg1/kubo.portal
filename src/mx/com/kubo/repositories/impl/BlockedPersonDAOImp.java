@@ -58,11 +58,11 @@ public class BlockedPersonDAOImp implements BlockedPersonDAO
 	}
 	
 	@Transactional
-	public boolean delete()
+	public boolean delete(Integer citizenship)
 	{
 		try
 		{
-			int deletedCount = em.createQuery("delete from BlockedPerson").executeUpdate();						
+			int deletedCount = em.createQuery("delete from BlockedPerson where citizenship =  ?").setParameter(1, citizenship).executeUpdate();						
 			
 			return true;
 			
@@ -118,6 +118,19 @@ public class BlockedPersonDAOImp implements BlockedPersonDAO
 		TypedQuery<BlockedPerson> typed = null;
 		
 		typed = em.createQuery("from BlockedPerson ", BlockedPerson.class);		
+		
+		lista = typed.getResultList();
+		
+		return lista;
+	}
+	
+	public List<BlockedPerson> getBlockedPerson(Integer citizenship) 
+	{
+		List<BlockedPerson> lista = null;
+		
+		TypedQuery<BlockedPerson> typed = null;
+		
+		typed = em.createQuery("from BlockedPerson where citizenship = ?", BlockedPerson.class).setParameter(1, citizenship);		
 		
 		lista = typed.getResultList();
 		

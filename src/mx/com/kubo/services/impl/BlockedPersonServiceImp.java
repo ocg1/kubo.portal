@@ -25,9 +25,9 @@ public class BlockedPersonServiceImp implements BlockedPersonService
 		return dao.update(blocked_person);
 	}
 	
-	public boolean delete()
+	public boolean delete(Integer citizenship)
 	{
-		return dao.delete();
+		return dao.delete(citizenship);
 	}
 	
 	public List<BlockedPerson> getBlockedPersonByFullName(String full_name)
@@ -43,5 +43,10 @@ public class BlockedPersonServiceImp implements BlockedPersonService
 	public List<BlockedPerson> getBlockedPerson() 
 	{		
 		return dao.getBlockedPerson();
+	}
+	
+	public List<BlockedPerson> getBlockedPerson(Integer citizenship)
+	{
+		return dao.getBlockedPerson(citizenship);
 	}
 }

@@ -6,7 +6,8 @@ import mx.com.kubo.model.BlockedPerson;
 
 public interface BlockedPersonDAO 
 {
-	boolean delete();
+	boolean delete(Integer citizenship);
+	
 	boolean save  (BlockedPerson blocked_person);
 	boolean update(BlockedPerson blocked_person);
 	
@@ -14,4 +15,5 @@ public interface BlockedPersonDAO
 	List<BlockedPerson> getBlockedPersonByFullName(String full_name);
 	List<BlockedPerson> getBlockedPersonByRFC(String mx_rfc);
 	List<BlockedPerson> getBlockedPerson();
+	List<BlockedPerson> getBlockedPerson(Integer citizenship);
 }

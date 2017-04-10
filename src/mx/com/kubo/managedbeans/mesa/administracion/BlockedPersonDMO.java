@@ -42,6 +42,8 @@ public abstract class BlockedPersonDMO implements BlockedPersonIMO
 	
 	protected final String SEPARADOR  = "#";
 	
+	protected Integer citizenship;
+	
 	protected int counter_row;
 	protected int counter_insert;
 		
@@ -64,6 +66,11 @@ public abstract class BlockedPersonDMO implements BlockedPersonIMO
 	public String getPath_file_LOG()
 	{
 		return path_file_LOG;
+	}
+	
+	public void setCitizenship(Integer citizenship)
+	{
+		this.citizenship = citizenship;
 	}
 	
 	public void setFile_uploaded_path(String file_uploaded_path) 

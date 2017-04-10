@@ -6,6 +6,7 @@ import java.util.List;
 import javax.el.ELContext;
 import javax.el.ELResolver;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -49,16 +50,19 @@ public abstract class AdministrationProfileDMO
 	@ManagedProperty("#{blockedPersonServiceImp}")
 	protected BlockedPersonService service_blocked_person;
 	
-	protected RequestContext  request;
-	protected FacesContext    faces;
+	protected  RequestContext request;
+	protected    FacesContext faces;
 	protected ExternalContext external;
-	protected ELResolver      resolver;
-	protected ELContext       context;	
+	
+	protected ELResolver resolver;
+	protected ELContext context;	
+	
+	protected HtmlInputText input;
 
 	protected NotificadorConfigRequest request_notificar_config;
 	protected PublicProyectServiceLocator locator;
 	protected PublicProyect kubo_services;
-	protected WsResponse    response;
+	protected WsResponse response;
 	
 	protected SessionBean sesion;
 		
@@ -85,6 +89,8 @@ public abstract class AdministrationProfileDMO
 	protected String strSendConsultaProspector;
 	protected String email_date = "";
 	
+	protected Integer citizenship;
+	
 	protected boolean consultaSatisfactoria;	
 	protected boolean bln_archivos;
 	protected boolean flgStatusBuro;
@@ -96,6 +102,9 @@ public abstract class AdministrationProfileDMO
 	protected Date dateFin;
 	
 	protected final String RESUMEN_TABLERO_NORMATIVO = "61";
+	
+	public final int EXTRAJEROS = 0;
+	public final int NACIONALES = 1;	
 	
 	public String getActualPage() 
 	{

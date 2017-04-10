@@ -15,17 +15,27 @@
 				
 				<div onclick = "Administracion.delete_blocked_person();" 
 				     class = "callActionMedium borrarSesion btnNaranja " 
-				     style="float: right;">
+				     style="float: right; width: 120px; margin-right: 5px">
 					Borrar
 				</div>
 				
 				<div class = "callActionMedium borrarSesion btnNaranja " 
-				     style = "float: right; margin-right: 15px;">
+				     style = "float: right; width: 120px; margin-right: 5px">
 					<a href = "/Kubo/resources/documents/cia_1/blocked_person/blocked_person_LOG.csv" target = "_blank" style = "color: #fff;">
 					Log</a>
 				</div>									
 				
-		 	
+				<div onclick = "Administracion.init_init_citizenship('0')" 
+					 class = "callActionMedium borrarSesion btnNaranja " 
+					 style = "float: right;width: 120px; margin-right: 5px">
+					Extranjeros
+				</div>		
+				
+				<div onclick = "Administracion.init_init_citizenship('1')"
+					 class = "callActionMedium borrarSesion btnNaranja " 
+					 style = "float: right; width: 120px; margin-right: 5px">
+					Nacionales
+				</div> 	
 			</div>
 				
 			<h:panelGroup rendered = "#{administrationProfile.lista_blocked_person.size() > 0}">

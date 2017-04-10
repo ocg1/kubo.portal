@@ -26,6 +26,16 @@ implements Serializable
 	@Column private String additional_data;
 	
 	@Column private Date blocked_date;
+	
+	@Column private Integer citizenship;
+
+	public Integer getCitizenship() {
+		return citizenship;
+	}
+
+	public void setCitizenship(Integer citizenship) {
+		this.citizenship = citizenship;
+	}
 
 	public Integer getBlocked_id() {
 		return blocked_id;

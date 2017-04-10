@@ -27,6 +27,7 @@ public abstract class BlockedPersonAMO extends BlockedPersonDMO
 			blocked_date = format.parse(blocked_date_STR);
 			
 			person = new BlockedPerson();
+			person.setCitizenship(citizenship);
 			person.setBlocked_date(blocked_date);
 			person.setFull_name(full_name);
 			person.setMx_expediente(mx_expediente);

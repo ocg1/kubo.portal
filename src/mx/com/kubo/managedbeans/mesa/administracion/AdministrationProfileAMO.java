@@ -24,6 +24,8 @@ import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.model.MailLog;
 import mx.com.kubo.model.MassiveProspector;
+import mx.com.kubo.model.SystemParam;
+import mx.com.kubo.model.SystemParamPK;
 import mx.com.kubo.tools.Utilities;
 
 public abstract class AdministrationProfileAMO extends  AdministrationProfileDMO
@@ -69,6 +71,21 @@ public abstract class AdministrationProfileAMO extends  AdministrationProfileDMO
 		else if(menu_SELECTED.equals("blocked-person"))
 		{
 			actualPage = "blocked-person.xhtml";
+		}
+	}
+	
+	protected void init_status_buro()
+	{
+		SystemParamPK spk = new SystemParamPK();
+		
+		spk.setCompany_id(1);
+		spk.setSystem_param_id(90);
+		
+		SystemParam sp = systemParamService.loadSelectedSystemParam(spk);
+		
+		if( sp != null  )
+		{
+			flgStatusBuro = sp.getValue().equals("S");
 		}
 	}
 	

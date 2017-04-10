@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -26,7 +27,7 @@ import mx.com.kubo.model.SystemParamPK;
 
 @ManagedBean(name = "administrationProfile") @ViewScoped
 public class AdministrationProfile extends AdministrationProfileAMO
-implements Serializable 
+implements AdministrationProfileIMO, Serializable 
 {
 	private static final long serialVersionUID = 5297949001206986731L;
 	
@@ -34,33 +35,25 @@ implements Serializable
 	public final void init()
 	{
 		faces = FacesContext.getCurrentInstance();	
+		
 		context  = faces.getELContext();
 		resolver = faces.getApplication().getELResolver();
 		
-		sesion = (SessionBean) resolver.getValue(context, null, "sessionBean");
+		sesion = (SessionBean) resolver.getValue(context, null, "sessionBean");					
+				
+		init_status_buro();
+		init_email_date();		
 		
-		partnerLst =  partnerserviceimp.getPartnerList();
+		citizenship = NACIONALES;
 		
-		SystemParamPK spk = new SystemParamPK();
+		lista_blocked_person = service_blocked_person.getBlockedPerson(NACIONALES);
 		
-		spk.setCompany_id(1);
-		spk.setSystem_param_id(90);
-		
-		SystemParam sp = systemParamService.loadSelectedSystemParam(spk);
-		
-		if( sp != null  )
-		{
-			flgStatusBuro = sp.getValue().equals("S");
-		}
-		
-		init_email_date();
-		
-		lista_blocked_person = service_blocked_person.getBlockedPerson();
+		partnerLst = partnerserviceimp.getPartnerList();
 	}
 					
-	public void changePage(ActionEvent e)
+	public void changePage(ActionEvent event)
 	{		
-		menu_SELECTED = (String) e.getComponent().getAttributes().get("section").toString();
+		menu_SELECTED = event.getComponent().getAttributes().get("section").toString();
 		
 		if(menu_SELECTED != null)
 		{			
@@ -114,11 +107,15 @@ implements Serializable
 		}		
 	}
 	
-	public void init_blocked_person_list(AjaxBehaviorEvent event)
+	public void init_citizenship(AjaxBehaviorEvent event)
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		lista_blocked_person = service_blocked_person.getBlockedPerson();
+		input = (HtmlInputText) event.getComponent();
+		
+		citizenship = Integer.parseInt(input.getValue().toString());				
+		
+		lista_blocked_person = service_blocked_person.getBlockedPerson(citizenship);
 		
 		if(lista_blocked_person != null)
 		{		
@@ -128,13 +125,33 @@ implements Serializable
 			
 			request.addCallbackParam("blocked_person_number", "0");
 		}
+		
+		request.addCallbackParam("citizenship", citizenship);
+	}
+	
+	public void init_blocked_person_list(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		lista_blocked_person = service_blocked_person.getBlockedPerson(citizenship);
+		
+		if(lista_blocked_person != null)
+		{		
+			request.addCallbackParam("blocked_person_number", lista_blocked_person.size());
+			
+		} else {
+			
+			request.addCallbackParam("blocked_person_number", "0");
+		}
+		
+		request.addCallbackParam("citizenship", citizenship);
 	}
 	
 	public void delete_blocked_person(AjaxBehaviorEvent event)
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		boolean delete_OK = service_blocked_person.delete();
+		boolean delete_OK = service_blocked_person.delete(citizenship);
 		
 		request.addCallbackParam("delete_OK", delete_OK);
 	}
@@ -161,6 +178,7 @@ implements Serializable
 		request.addCallbackParam("file_uploaded_path", file_uploaded_path);
 		
 		manager = new BlockedPersonIMP();
+		manager.setCitizenship(citizenship);
 		manager.setFile_uploaded_path(file_uploaded_path);
 		manager.init();
 		

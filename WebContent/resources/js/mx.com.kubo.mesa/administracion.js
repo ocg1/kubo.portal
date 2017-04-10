@@ -66,8 +66,29 @@ Administracion.init_blocked_person_list = function()
 Administracion.blocked_person_list_oncomplete = function(xhr, status, args)
 {
 	var blocked_person_number = args.blocked_person_number;
+	var citizenship = args.citizenship;
 	
 	console.log("Administracion.blocked_person_list_oncomplete():");
+	console.log(" > citizenship = " + citizenship);
+	console.log(" > blocked_person_number = " + blocked_person_number);
+	
+	closeMessageProcessing();
+};
+
+Administracion.init_init_citizenship = function(citizenship)
+{
+	console.log("Administracion.init_citizenship(): " + citizenship);
+	
+	$("#init_citizenship").val(citizenship).trigger("click");
+};
+
+Administracion.citizenship_oncomplete = function(xhr, status, args)
+{
+	var blocked_person_number = args.blocked_person_number;
+	var citizenship = args.citizenship;
+	
+	console.log("Administracion.citizenship_oncomplete():");
+	console.log(" > citizenship = " + citizenship);
 	console.log(" > blocked_person_number = " + blocked_person_number);
 	
 	closeMessageProcessing();

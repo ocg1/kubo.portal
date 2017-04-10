@@ -17,6 +17,12 @@
 					listener   = "#{administrationProfile.delete_blocked_person}"/>
 		</h:commandLink>			
 						
+		<h:inputText id = "init_citizenship" immediate = "true">
+			<p:ajax event = "click" update = "panel-blocked-person" 						
+					onstart    = "displayMessageProcessing('msgprocessing',false);"
+					oncomplete = "Administracion.citizenship_oncomplete(xhr, status, args);"
+					listener   = "#{administrationProfile.init_citizenship}"/>
+		</h:inputText>
 		
 		<script>
 			$(document).ready(function()
