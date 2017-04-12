@@ -26,7 +26,6 @@ import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
 import mx.com.kubo.kubows.SMSRequestService;
 import mx.com.kubo.managedbeans.CheckScoreProcessed;
-import mx.com.kubo.managedbeans.RoleFunctionController;
 import mx.com.kubo.managedbeans.investor.InvestmentList;
 import mx.com.kubo.managedbeans.mesa.solicitud.estatus.CasosPospuestosIMP;
 import mx.com.kubo.managedbeans.mesa.solicitud.notas.NotasDelCasoIMP;
@@ -88,7 +87,6 @@ import mx.com.kubo.model.References;
 import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.RoleAccess;
-import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.SellingDetail;
 import mx.com.kubo.model.SellingDetailHistory;
@@ -117,15 +115,20 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 	{
 		validTransUnion = false;
 		nameVisible     = false;
+		pais_origen_ENABLED = false;		
+		domicilio_fiscal_ENABLED    = false;		
+		reporte_inusual_ENABLED     = false;
+		flagPromo = false;		
+	
+/*		
 		displayNotes    = false;
-		pais_origen_ENABLED = false;
 		editor_domicilio_ENABLED    = false;
-		domicilio_fiscal_ENABLED    = false;
 		editor_nombre_ENABLED       = false;
 		editor_tipo_credito_ENABLED = false;
-		reporte_inusual_ENABLED     = false;
-		flagPromo = false;
 		copiar_documentos_ENABLED = false;
+		autorizar_personas_relacionadas_ENABLED = false;
+		ren4c				= false;
+*/		
 		
 		changeBankData      = null;		
 		changeConsolidate   = null;
@@ -151,8 +154,6 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		hasEflTest 			= false;
 		efl_OK 				= false;
 		efl_ERROR			= false;
-		autorizar_personas_relacionadas_ENABLED = false;
-		ren4c				= false;
 		
 		editor_domicilio 	= null;
 		domicilio_actividad = null;
@@ -789,9 +790,9 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 	
 	protected void init_notas_del_caso() 
 	{
-		if( persona.getProspectus().getArea().toString().equals("L") ){
-		
-			if(actualProyect != null && displayNotes)
+		if( persona.getProspectus().getArea().toString().equals("L") )
+		{		
+			if(actualProyect != null && permisos.isDisplayNotes())
 			{
 				proyect_id = actualProyect.getProyectloanPk().getProyect_id();
 				
@@ -805,7 +806,10 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 				editor_notas.init_lista_notas();
 			}
 		
-		}else if( persona.getProspectus().getArea().toString().equals("I") && displayNotes ){
+		}
+		
+		else if( persona.getProspectus().getArea().toString().equals("I") && permisos.isDisplayNotes())
+		{
 			
 			editor_notas = new NotasDelCasoIMP();
 			editor_notas.setPersona(persona);
@@ -2679,6 +2683,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		
 	}
 	
+/*	
 	protected void setPermissions(int role_id)
 	{
 		faces    = FacesContext.getCurrentInstance();
@@ -2851,6 +2856,7 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		
 		
 	}
+*/	
 	
 	public boolean inAccessbyRole(List<RoleAccess> lstroleAccess, AccessCollector a)
 	{		

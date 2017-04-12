@@ -47,7 +47,7 @@
 													
 												</td>
 												<td>
-													<p:commandLink actionListener="#{summaryRequest.documentacion.editDocument}" rendered="#{summaryRequest.editDocument}"  immediate="true" style="float:right;" oncomplete="showEditCropperImage(xhr, status, args);">													
+													<p:commandLink actionListener="#{summaryRequest.documentacion.editDocument}" rendered="#{summaryRequest.permisos.editDocument}"  immediate="true" style="float:right;" oncomplete="showEditCropperImage(xhr, status, args);">													
 										
 														Editar
 														<f:attribute name="documents" value="#{file.prospectus_id}::#{file.company_id}::#{file.originalPathImg}::#{file.typeFile}::#{file.file_id}::#{file.proyect_loan_id}"></f:attribute>
@@ -56,7 +56,7 @@
 												</td>
 												
 												<td>
-													<h:panelGroup rendered="#{ summaryRequest.autorizar_contratos_ENABLED and ( (file.typeFile == 44 or ( file.typeFile gt 62 and file.typeFile lt 67 ) or  ( file.typeFile gt 82 and file.typeFile lt 92 ) ) and ( file.approved == null or file.approved == '0' or file.approved == '' )  ) }"  >
+													<h:panelGroup rendered="#{summaryRequest.permisos.autorizar_contratos_ENABLED and ( (file.typeFile == 44 or ( file.typeFile gt 62 and file.typeFile lt 67 ) or  ( file.typeFile gt 82 and file.typeFile lt 92 ) ) and ( file.approved == null or file.approved == '0' or file.approved == '' )  ) }"  >
 														<p:commandLink immediate="true" style="float:right;" onstart="return muestraValidFile( '#{file.prospectus_id}::#{file.company_id}::#{file.typeFile}::#{file.file_id}::#{file.proyect_loan_id}' );" >													
 											
 															Validar

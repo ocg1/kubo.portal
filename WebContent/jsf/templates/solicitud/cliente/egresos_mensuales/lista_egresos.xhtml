@@ -75,14 +75,14 @@
 				<p:column style="text-align: right; padding-right: 3px; " rendered="#{sessionBean.area=='M'}"  >
 					<div>
 					<span>$</span>
-					<h:inputText rendered="#{summaryRequest.changeActions}"  size="7" styleClass="elementAddresMin" value="#{listExpenses.ammount_modified}" onkeyup="format(this,'otro');" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;">
+					<h:inputText rendered="#{summaryRequest.permisos.changeActions}"  size="7" styleClass="elementAddresMin" value="#{listExpenses.ammount_modified}" onkeyup="format(this,'otro');" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;">
 						<p:ajax event      = "blur" 
 								onstart    = "return funcWait();" 
 								oncomplete = "return funcWaitRes();" 
 								listener   = "#{summaryRequest.changeExpenses(listExpenses)}" 
 								update     = ":frmQuest:pnlIndicadores :frmQuest:lstExpensestb :frmQuest:indice_pago_deudas :frmQuest:indice_pago_deudas_mesa_control"/>
 					</h:inputText>
-					<h:panelGroup rendered="#{!summaryRequest.changeActions}" >
+					<h:panelGroup rendered="#{!summaryRequest.permisos.changeActions}" >
 						#{listExpenses.ammount_modified}
 					</h:panelGroup>
 					</div>
@@ -205,10 +205,10 @@
 						<div style="float: right; width: 140px;">
 							<span>$</span>
 							<span>
-							<h:inputText id="txt-ammount-minus-consolidate" size="7" styleClass="elementAddresMin" onkeyup="format(this,'otro');showComment(this);" value="#{summaryRequest.ammountConsolidate.ammount_modified}" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;" rendered="#{summaryRequest.changeActions}" >														
+							<h:inputText id="txt-ammount-minus-consolidate" size="7" styleClass="elementAddresMin" onkeyup="format(this,'otro');showComment(this);" value="#{summaryRequest.ammountConsolidate.ammount_modified}" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;" rendered="#{summaryRequest.permisos.changeActions}" >														
 								<p:ajax event="blur"></p:ajax>
 							</h:inputText>
-							<h:panelGroup rendered="#{!summaryRequest.changeActions}" >
+							<h:panelGroup rendered="#{!summaryRequest.permisos.changeActions}" >
 								#{summaryRequest.ammountConsolidate.ammount_modified}
 							</h:panelGroup>
 							</span>

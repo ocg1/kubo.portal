@@ -82,7 +82,7 @@
 									<div style="text-align:right;width: 100px !important;display: #{listDetails.typeComponent=='I'?'block':'none'};">
 										<!-- <span>$</span> -->
 										<h:outputText rendered="#{ listDetails.name != 'Veces que se surte al mes' }" value="$"/>
-										<h:inputText id="txtValIncoDeta" size="7" styleClass="elementAddresMin" value="#{listDetails.ammount_modified}" onkeyup="format(this,'otro');" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;" rendered="#{summaryRequest.changeActions}" >
+										<h:inputText id="txtValIncoDeta" size="7" styleClass="elementAddresMin" value="#{listDetails.ammount_modified}" onkeyup="format(this,'otro');" style="width: 80px !important; text-align: right; font-size: 0.98em !important; color: #333333;" rendered="#{summaryRequest.permisos.changeActions}" >
 											<p:ajax event="blur" 
 													onstart="return changeValue('tableDetails\:#{status}\:txtValIncoDeta','#{listDetails.ammount_modified}');" 
 													listener="#{summaryRequest.saveChangeIncomDetails(listDetails)}" 
@@ -90,7 +90,7 @@
 													update=":frmQuest:section-income-details :frmQuest:pnlIndicadores :frmQuest:lstIncometb :frmQuest:lstExpensestb :frmQuest:indice_pago_deudas :frmQuest:indice_pago_deudas_mesa_control" />
 										</h:inputText>
 										
-										<h:panelGroup rendered="#{!summaryRequest.changeActions}" >
+										<h:panelGroup rendered="#{!summaryRequest.permisos.changeActions}" >
 											 #{listDetails.ammount_modified}
 										</h:panelGroup>											
 									</div>

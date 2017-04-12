@@ -28,7 +28,7 @@
 		<h:panelGroup id="pnlComoSeEntero">
 			<div  style="float:none !important; clear: both !important;">
 			
-				<p:inplace id="sectionEditPromotor" label='#{summaryRequest.registrationReason}' widgetVar="editPromotor" rendered="#{summaryRequest.asignaCartera}" >
+				<p:inplace id="sectionEditPromotor" label='#{summaryRequest.registrationReason}' widgetVar="editPromotor" rendered="#{summaryRequest.permisos.asignaCartera}" >
 					<p:ajax event="save" update="pnlEditPromotor" listener="#{summaryRequest.savePromotorData}"/>										
 				 	
 				 	<div class="styled-select">
@@ -95,7 +95,7 @@
 					</div>
 				</p:inplace>
 				
-				<h:panelGroup rendered="#{!summaryRequest.asignaCartera}" >					
+				<h:panelGroup rendered="#{!summaryRequest.permisos.asignaCartera}" >					
 					<p>
 						#{summaryRequest.registrationReason}
 						<h:panelGroup rendered="#{summaryRequest.hasReferred}">
@@ -108,7 +108,7 @@
 		
 		<p style="float: none; clear: both;" />
 		
-		<h:panelGroup rendered="#{summaryRequest.displayReferredChange}">
+		<h:panelGroup rendered = "#{summaryRequest.permisos.displayReferredChange}">
 					<div  onclick="showRecommended();" class="quien_recomendo">
 						Quien lo Recomendó
 						

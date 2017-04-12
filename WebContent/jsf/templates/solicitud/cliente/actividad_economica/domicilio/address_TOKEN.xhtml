@@ -5,7 +5,7 @@
 					
 <h:panelGroup rendered = "#{summaryRequest.domicilio_actividad.address != null}">					
 					
-	<h:panelGroup rendered = "#{!summaryRequest.editor_domicilio_ENABLED}">						
+	<h:panelGroup rendered = "#{!summaryRequest.permisos.editor_domicilio_ENABLED}">						
 		<p>#{summaryRequest.domicilio_actividad.activity_TOKEN}</p>
 		
 		<h:panelGroup rendered = "#{summaryRequest.nameVisible}">
@@ -13,7 +13,7 @@
 		 </h:panelGroup>
 	</h:panelGroup>	
 	
-	<h:panelGroup rendered = "#{summaryRequest.editor_domicilio_ENABLED}">				
+	<h:panelGroup rendered = "#{summaryRequest.permisos.editor_domicilio_ENABLED}">				
 		<div id = "business-address-TOKEN" onclick = "ActividadDomicilio.init();">	
 			<p>#{summaryRequest.domicilio_actividad.activity_TOKEN}</p>
 			

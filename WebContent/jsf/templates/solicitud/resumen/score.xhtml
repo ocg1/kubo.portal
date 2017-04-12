@@ -23,7 +23,7 @@
 				<f:attribute name = "gotypeLog" value = "EVA" />												
 			</p:commandLink>
 																				
-			<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}">			
+			<h:panelGroup rendered = "#{!summaryRequest.permisos.modificar_calificacion}">			
 				<p id = "rightRating" style = "font-size: 1.1em; font-weight: normal;">Calificación</p>	
 			</h:panelGroup>			
 			
@@ -33,7 +33,7 @@
 				</div>		
 												
 				<p:inplace widgetVar = "editorLoanScore"
-						   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
+						   rendered  = "#{summaryRequest.permisos.modificar_calificacion}" 
 				 		   label     = "Calificación" >
 				
 					<p:ajax event = "save" immediate = "true"
@@ -88,13 +88,10 @@
 			</p-->		
 		</div>
 
-		<h:panelGroup
-			rendered="#{summaryRequest.actualProyect != null and summaryRequest.actualProyect.scoring != null and summaryRequest.actualProyect.scoring.risk_processed == 0}">
-
-				<div onclick="Resumen.init_buro_reprocess();"
-					class="callActionMedium btnVerde rightVerification">#{summaryRequest.actualProyect.scoring.risk_processed}
-					Reprocesar</div>
-			
+		<h:panelGroup rendered = "#{summaryRequest.permisos.reprocesar_buro_credito}">
+			<div onclick = "Resumen.init_buro_reprocess();" class = "callActionMedium btnVerde rightVerification">
+				Reprocesar
+			</div>			
 		</h:panelGroup>
 
 	</div>				

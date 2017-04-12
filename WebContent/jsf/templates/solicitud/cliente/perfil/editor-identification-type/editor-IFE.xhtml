@@ -19,7 +19,7 @@
 				<p:inplace id = "sectionEditDataIfe" 
 						   styleClass = "editClass"  
 						   widgetVar  = "editIfe#{status.index}" 
-						   rendered   = "#{summaryRequest.changeActions}">
+						   rendered   = "#{summaryRequest.permisos.changeActions}">
 						   
 					<p:ajax event = "save" 					 
 							oncomplete = "$('.reason').val('');" 
@@ -57,7 +57,7 @@
 						</div>
 				</p:inplace>
 				
-				<h:panelGroup rendered = "#{!summaryRequest.changeActions}" >
+				<h:panelGroup rendered = "#{!summaryRequest.permisos.changeActions}" >
 					
 					<p> #{changeife.newValue} </p>
 					

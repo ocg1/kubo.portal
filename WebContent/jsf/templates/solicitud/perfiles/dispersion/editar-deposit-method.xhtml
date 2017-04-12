@@ -4,16 +4,17 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<h:panelGroup rendered="#{summaryRequest.changeDispersion}" >
-		<h:selectOneRadio id="radio-means-payment" styleClass="styleradiolocal" value="#{summaryRequest.actualProyect.deposit_method_id}">
+	<h:panelGroup rendered = "#{summaryRequest.permisos.changeDispersion}" >
+		<h:selectOneRadio id = "radio-means-payment" styleClass = "styleradiolocal" value = "#{summaryRequest.actualProyect.deposit_method_id}">
 			<f:selectItem itemValue="1" itemLabel="Transferencia"/>
-			<f:selectItem itemValue="2" itemLabel="Cheque"/>		
-			<p:ajax event="click" update=":frmQuest:change-clabe-inter" listener="#{summaryRequest.changeMeansOfPayment}"></p:ajax>					    
+			<f:selectItem itemValue="2" itemLabel="Cheque"/>	
+				
+			<p:ajax event = "click" update = ":frmQuest:change-clabe-inter" listener = "#{summaryRequest.changeMeansOfPayment}"/>					    
 		</h:selectOneRadio>
 	</h:panelGroup>
 										
-	<h:panelGroup rendered="#{!summaryRequest.changeDispersion}" >
-		<h:panelGroup rendered="#{summaryRequest.actualProyect.deposit_method != null}" >
+	<h:panelGroup rendered = "#{!summaryRequest.permisos.changeDispersion}">
+		<h:panelGroup rendered = "#{summaryRequest.actualProyect.deposit_method != null}">
 			#{summaryRequest.actualProyect.deposit_method.name}
 		</h:panelGroup>
 											

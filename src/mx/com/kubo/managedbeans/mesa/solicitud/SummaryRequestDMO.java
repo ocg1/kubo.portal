@@ -94,7 +94,6 @@ import mx.com.kubo.model.Referred;
 import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.Residence;
-import mx.com.kubo.model.RoleFunction;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StatusProyectCat;
@@ -119,6 +118,7 @@ import mx.com.kubo.mesa.solicitud.perfil.domicilio.DomicilioIMO;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.EditorViviendaIMO;
 import mx.com.kubo.mesa.solicitud.perfil.nombre.EditorNombreIMO;
 import mx.com.kubo.mesa.solicitud.perfil.rfc.EditorRfcIMO;
+import mx.com.kubo.mesa.solicitud.permisos.RoleFunctionIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AddressService;
 import mx.com.kubo.services.AutomaticInvestmentService;
@@ -483,11 +483,14 @@ implements SummaryRequestIMO
 	protected   EditorCommissionIMO editor_commission;
 	protected        EditorScoreIMO editor_score;
 	protected      BuroReprocessIMO buro_reprocess;
+	protected       RoleFunctionIMO permisos;
 	//protected          ActivadorIMO activador;
 	
 	protected Proyect 		 proyecto;
 	protected ProyectLoan   actualProyect = null;	
 	protected ProyectLoanPK proyect_loan_PK;
+	
+	protected Scoring score;
 	
 	protected Notes   addNote;
 	protected Notes   editNote;
@@ -524,8 +527,7 @@ implements SummaryRequestIMO
 	protected Tutor 	     thisTutor;
 	protected LoanNegotiationPK lnpk;
 	protected PublicForum 	     foro;
-	protected Scoring    		 score;
-	protected Investor   		 investor;
+	protected Investor   investor;
 	protected InvestorPK invPk;
 	protected IncomeDetail      incomedetail;	
 	protected SystemParam       thisSystem;
@@ -546,12 +548,10 @@ implements SummaryRequestIMO
 	protected ShowChangeSession showchange;
 	
 	protected ChangeBean changeBankData;
-//	protected ChangeBean changeDataIFE;
 	protected ChangeBean changeConsolidate;
 	protected ChangeBean changeReasons;
 	protected ChangeBean changeStatusProyect;
 	protected ChangeBean changeReferred;	
-//	protected ChangeBean ifeChangeTem;
 	
 	protected TableroNormativoDetallado tableronormativodetallado;
 	
@@ -590,20 +590,15 @@ implements SummaryRequestIMO
 	protected List <IncomeBean>   listIncomeBean;
 	protected List <Expenses> 	   listExpenses;
 	protected List <ExpensesBean> listExpensesBean;
-	protected List <ExpensesType>  listExpensesType;
-//	protected List <ChangeBean>    lstChangeIFE;	
+	protected List <ExpensesType>  listExpensesType;	
 	protected List <IncomeType>    listIncomeType;
 	protected List <Files>		listIncomeFiles;
-	
-	
-	protected List<RoleFunction> lista_funciones;
 	protected List <PublicForum>  listPublicForum;
 	protected List <PriorityType>  lstNotePrioriType;	
 	protected List<ViewInvestmetInProyect>   listInvestors;
 	protected List <References>   listReference;
 	protected List <PhoneType>    listPhoneType;
 	protected List <PhoneType>    listTempPhoneType;
-	
 	protected List<ProyectLoan> lstPL;
 	protected List <ListPorc>     listPorcClientBean;
 	protected List <ProyectBean>  lstPry;
@@ -614,7 +609,6 @@ implements SummaryRequestIMO
 	protected List <Motive>   lista_motivos_cambio_estatus;
 	protected List <Notes>    lstNoteByProspect;
 	protected List <NoteType> lstNoteType;
-
 	protected List <IdentificationType> lista_identification_type;
 	protected List <FileType>    lFileType;
 	protected List <SelectItem>  lisImgProyect;
@@ -624,16 +618,12 @@ implements SummaryRequestIMO
 	protected List <IncomeDetailsBean> 	 listBusinessDetails;
 	protected List <ProfileFormValue> profileformvaluelist;	
 	protected List<Tutor> lstTutor;
-	
 	protected List<PospectusComment> lstcomm ;
-	
 	protected List<ApprovalCredit> lstApproval;
-	
 	protected List<Change_control> listChangeInvestor;
 	protected List<Change_control> lstTemChangeClabe;
 	protected List<Change_control> listChangConsolTemp;
 	protected List<Change_control> listChangeReason;
-//	protected List<Change_control> lstChange_ife;
 	
 	protected ArrayList<ListInvestor> listInvestor_lst;
 	
@@ -798,12 +788,13 @@ implements SummaryRequestIMO
 	protected Double pagoIni;	
 	protected Double saldoActualInv = 0D;
 	protected Double ammounttoInv;
-	
+	protected Double provider_total_init;
 	protected Double ingresosComprobables = 0D; 
 	protected String ingresosComprobablesStr="0.0";
 	
 	protected Long daysLeft;
 	
+	protected Integer times_refill_init;		
 	protected Integer numCliente;
 	protected Integer days_online;
 	protected Integer frequency_id;
@@ -842,19 +833,6 @@ implements SummaryRequestIMO
     protected int motive_id;
     protected int hasOffer;
 	
-	protected final int FUNCTION_EDICION_CURP_TEL_DOCS = 4;
-	protected final int FUNCTION_CAMBIAR_ESTATUS       = 10;
-	protected final int FUNCTION_EDICION_VIVIENDA      = 21;
-	protected final int FUNCTION_EDICION_NOMBRE        = 26;
-	protected final int FUNCTION_EDICION_TIPO_CREDITO  = 27;
-	protected final int AUTORIZAR_CONTRATOS			   = 29;
-	protected final int SCREEN_CONSULTA_SOLICITUD      = 12;
-	protected final int COPIAR_DOCUMENTOS      = 30;
-	protected final int AUTORIZAR_PERSONAS_RELACIONADAS = 31;
-	protected final int VER_PESTANA_TABLERO_NORMATIVO = 32;
-	protected final int VER_NOTAS_COMPORTAMIENTO_INUSUAL = 33;
-	protected final int REN_4_C = 34;
-	
 	protected final int IFE = 1;
 	protected final int INE = 2;
 	protected final int FISCAL = 9;
@@ -862,8 +840,8 @@ implements SummaryRequestIMO
 	protected final int EMPLEO  = 2;
 	protected final int NEGOCIO = 3;
 	protected final int EMPRESA = 4;	
+	protected final int SCREEN_CONSULTA_SOLICITUD      = 12;
 			
-	protected boolean displayReferredChange = false;
 	protected boolean fechaPospuestaValida = false;	
 	protected boolean displayReport;	
 	protected boolean hasNegotiation;	
@@ -872,35 +850,17 @@ implements SummaryRequestIMO
 	protected boolean dispOKControl;
 	protected boolean dispWarnControl;	
 	protected boolean dispOKCl;
-	protected boolean dispWarnCl;	
-	protected boolean asignaCartera;
+	protected boolean dispWarnCl;		
 	protected boolean dispListPorc=false;
 	protected boolean dispListPorcWait = true;
 	protected boolean dispBotCondiciones = false;	
 	protected boolean dispSendNegotiation = false;	
-	protected boolean displayAddTutor = false; 
 	protected boolean hasIncomeDeatil;
-	protected boolean displayPnlOtherIncome;	
-	protected boolean renovacionAct;	
-	protected boolean editDocument;	
-	protected boolean addDocument;
-	protected boolean additionalCredit;	
-	protected boolean changeStatus;
-	protected boolean changeDispersion;
-	protected boolean changeTelephone;
-	protected boolean makeNewConsultation;
-	protected boolean changeBurSolNum = false;
-	protected boolean displayTransUnion= false;
-	protected boolean changeCreditConditionsFunction = false;
-	protected boolean displayLogCob = false;
-	protected boolean changeActions = false;
-	protected boolean displayNotes = false;
-	protected boolean cancel_prospectus = false;
-	protected boolean changeInstitutionalInvestor = true;
+	protected boolean displayPnlOtherIncome;					
+	protected boolean changeBurSolNum = false;	
 	protected boolean flagInsert;
 	protected boolean alertProyect = false;
 	protected boolean alertPerson = false;
-	protected boolean displayAlerts = false;
 	protected boolean validTransUnion = false;
 	protected boolean cambio_de_prioridad_OK;
 	protected boolean cambio_de_estatus_OK;
@@ -908,21 +868,13 @@ implements SummaryRequestIMO
 	protected boolean is_menor;
 	protected boolean pais_origen_ENABLED;
 	protected boolean estado_cuenta_ENABLED;
-	protected boolean editor_nombre_ENABLED;
-	protected boolean editor_domicilio_ENABLED;
 	protected boolean domicilio_fiscal_ENABLED;	
-	protected boolean editor_tipo_credito_ENABLED;
 	protected boolean acreditado_sin_publicar_ENABLED;
 	protected boolean reporte_inusual_ENABLED;
-	protected boolean autorizar_contratos_ENABLED= false;
-	protected boolean copiar_documentos_ENABLED= false;
-	protected boolean autorizar_personas_relacionadas_ENABLED = false;
-	protected boolean ver_pestana_tablero_normativo_ENABLED = false;
 	protected boolean hasReferred;	
 	protected boolean flagSolicitud = false;	
 	protected boolean showInvestPnl = false;
-	protected boolean flagInv;
-	protected boolean edit_Form_help_Coach = false;
+	protected boolean flagInv;	
 	protected boolean hasReinvestment = false;  
 	protected boolean flagPromo = false;
 	protected boolean hasEflTest = false;
@@ -931,28 +883,16 @@ implements SummaryRequestIMO
 	protected boolean blnComment = false ;
 	protected boolean haveContactWay = false;
 	protected boolean update_OK;
-	
-	protected boolean risktask1 = true;
-	
-	protected boolean ren4c = false;
-	
-	protected boolean ver_notas_comportamiento_inusual_ENABLED = false;
-	
+	protected boolean risktask1 = true;			
 	protected boolean requireAutorizacionPersonaRelacionada = false;
 	protected boolean requireAutorizacionConsejoAdmin = false;
-	
 	protected boolean contactWayPhone;
 	protected boolean contactWayWhatsApp;
 	protected boolean contactWayEmail;
-	
 	protected boolean flagSameAddress= false;
-	
-	protected Integer times_refill_init;
-	protected Double  provider_total_init;
-	
 	protected boolean superaPorcCapitalNeto;
 	protected boolean superaUDIS;
-	
+
 	public final void setMotiveservice(MotiveService service) 
 	{
 		motiveservice = service;
@@ -1331,65 +1271,11 @@ implements SummaryRequestIMO
 	{
 		return changeStatusProyect;
 	}
-
-	public final boolean isEditor_domicilio_ENABLED() 
-	{
-		return editor_domicilio_ENABLED;
-	}
 	
 	public final boolean isDomicilio_fiscal_ENABLED() 
 	{
 		return domicilio_fiscal_ENABLED;
 	}
-	
-	public final boolean isEditor_nombre_ENABLED() 
-	{
-		return editor_nombre_ENABLED;
-	}
-	
-
-	
-	public final boolean isEditor_tipo_credito_ENABLED() 
-	{
-		return editor_tipo_credito_ENABLED;
-	}
-
-/*	
- 
- 	public String getWhyChangeData() {
-		return whyChangeData;
-	}
-
-	public void setWhyChangeData(String whyChangeData) {
-		this.whyChangeData = whyChangeData;
-	}
-	
- 	public List<ChangeBean> getLstChangeIFE() {
-		return lstChangeIFE;
-	}
-
-	public void setLstChangeIFE(List<ChangeBean> lstChangeIFE) {
-		this.lstChangeIFE = lstChangeIFE;
-	}
- 
-  	public ChangeBean getChangeDataIFE() {
-		return changeDataIFE;
-	}
-
-	public void setChangeDataIFE(ChangeBean changeDataIFE) {
-		this.changeDataIFE = changeDataIFE;
-	}
-  	
-  	public final boolean isEditor_ife_ENABLED()
-	{
-		return editor_ife_ENABLED;
-	}
-	
-	public final String getMx_ine_cic() 
-	{
-		return mx_ine_cic;
-	}
-*/	
 	
 	public final boolean isPais_origen_ENABLED()
 	{
@@ -1399,17 +1285,6 @@ implements SummaryRequestIMO
 	public final boolean isEstado_cuenta_ENABLED() 
 	{
 		return estado_cuenta_ENABLED;
-	}
-	
-	public final boolean isAutorizar_contratos_ENABLED() 
-	{
-		return autorizar_contratos_ENABLED;
-	}
-	
-	
-	public final boolean isCopiar_documentos_ENABLED() 
-	{
-		return copiar_documentos_ENABLED;
 	}
 	
 	public final boolean isAcreditado_sin_publicar_ENABLED() 
@@ -1486,11 +1361,6 @@ implements SummaryRequestIMO
 		this.hasNegotiation = hasNegotiation;
 	}
 
-	public boolean isChangeInstitutionalInvestor() 
-	{
-		return changeInstitutionalInvestor;
-	}
-
 	public boolean isNameVisible() 
 	{
 		return nameVisible;
@@ -1536,14 +1406,6 @@ implements SummaryRequestIMO
 		this.dispWarnCl = dispWarnCl;
 	}
 
-	public boolean isAsignaCartera() {
-		return asignaCartera;
-	}
-
-	public void setAsignaCartera(boolean asignaCartera) {
-		this.asignaCartera = asignaCartera;
-	}
-
 	public boolean isDispListPorc() {
 		return dispListPorc;
 	}
@@ -1584,66 +1446,7 @@ implements SummaryRequestIMO
 		return displayPnlOtherIncome;
 	}
 
-	public boolean isRenovacionAct() {
-		return renovacionAct;
-	}
 
-	public void setRenovacionAct(boolean renovacionAct) {
-		this.renovacionAct = renovacionAct;
-	}
-
-	public boolean isEditDocument() {
-		return editDocument;
-	}
-
-	public void setEditDocument(boolean editDocument) {
-		this.editDocument = editDocument;
-	}
-
-	public boolean isAddDocument() 
-	{
-		return addDocument;
-	}
-
-	public boolean isAdditionalCredit() {
-		return additionalCredit;
-	}
-
-	public void setAdditionalCredit(boolean additionalCredit) {
-		this.additionalCredit = additionalCredit;
-	}
-
-	public boolean isChangeStatus() {
-		return changeStatus;
-	}
-
-	public void setChangeStatus(boolean changeStatus) {
-		this.changeStatus = changeStatus;
-	}
-
-	public boolean isChangeDispersion() {
-		return changeDispersion;
-	}
-
-	public void setChangeDispersion(boolean changeDispersion) {
-		this.changeDispersion = changeDispersion;
-	}
-
-	public boolean isChangeTelephone() {
-		return changeTelephone;
-	}
-
-	public void setChangeTelephone(boolean changeTelephone) {
-		this.changeTelephone = changeTelephone;
-	}
-
-	public boolean isMakeNewConsultation() {
-		return makeNewConsultation;
-	}
-
-	public void setMakeNewConsultation(boolean makeNewConsultation) {
-		this.makeNewConsultation = makeNewConsultation;
-	}
 
 	public boolean isChangeBurSolNum() {
 		return changeBurSolNum;
@@ -1651,28 +1454,6 @@ implements SummaryRequestIMO
 
 	public void setChangeBurSolNum(boolean changeBurSolNum) {
 		this.changeBurSolNum = changeBurSolNum;
-	}
-
-	public boolean isDisplayTransUnion() {
-		return displayTransUnion;
-	}
-
-	public void setDisplayTransUnion(boolean displayTransUnion) {
-		this.displayTransUnion = displayTransUnion;
-	}
-	
-	public boolean isChangeCreditConditionsFunction() {
-		return changeCreditConditionsFunction;
-	}
-
-	public void setChangeCreditConditionsFunction(
-			boolean changeCreditConditionsFunction) {
-		this.changeCreditConditionsFunction = changeCreditConditionsFunction;
-	}
-
-	public boolean isChangeActions() 
-	{
-		return changeActions;
 	}
 
 	public int getNumberReferences() {
@@ -3217,14 +2998,6 @@ implements SummaryRequestIMO
 			List<String> selectedUnrealizedQuestions) {
 		this.selectedUnrealizedQuestions = selectedUnrealizedQuestions;
 	}
-	
-	public boolean isDisplayNotes() {
-		return displayNotes;
-	}
-
-	public void setDisplayNotes(boolean displayNotes) {
-		this.displayNotes = displayNotes;
-	}
 		
 	public List<ProfileFormValue> getProfileformvaluelist() {
 		return profileformvaluelist;
@@ -3290,14 +3063,6 @@ implements SummaryRequestIMO
 		this.valInver = valInver;
 	}
 
-	public boolean isCancel_prospectus() {
-		return cancel_prospectus;
-	}
-
-	public void setCancel_prospectus(boolean cancel_prospectus) {
-		this.cancel_prospectus = cancel_prospectus;
-	}
-
 	public String getCancelAccountComment() {
 		return cancelAccountComment;
 	}
@@ -3320,14 +3085,6 @@ implements SummaryRequestIMO
 
 	public void setAlertPerson(boolean alertPerson) {
 		this.alertPerson = alertPerson;
-	}
-
-	public boolean isDisplayAlerts() {
-		return displayAlerts;
-	}
-
-	public void setDisplayAlerts(boolean displayAlerts) {
-		this.displayAlerts = displayAlerts;
 	}
 
 	public boolean isValidTransUnion() {
@@ -3355,7 +3112,6 @@ implements SummaryRequestIMO
 	{
 		estatus_SELECTED = selected;
 	}
-
 
 	public List<StatusProyectCat> getLista_cambio_estatus() 
 	{
@@ -3403,14 +3159,6 @@ implements SummaryRequestIMO
 		this.personTutor = personTutor;
 	}
 
-	public boolean isDisplayAddTutor() {
-		return displayAddTutor;
-	}
-
-	public void setDisplayAddTutor(boolean displayAddTutor) {
-		this.displayAddTutor = displayAddTutor;
-	}
-
 	public boolean isIs_menor() {
 		return is_menor;
 	}
@@ -3449,22 +3197,6 @@ implements SummaryRequestIMO
 
 	public void setChangeReferred(ChangeBean changeReferred) {
 		this.changeReferred = changeReferred;
-	}
-
-	public boolean isDisplayReferredChange() {
-		return displayReferredChange;
-	}
-	
-	public boolean isDisplayLogCob(){
-		return displayLogCob;
-	}
-	
-	public void setDisplayLogCob(boolean displayLogCob){
-		this.displayLogCob = displayLogCob;
-	}
-
-	public void setDisplayReferredChange(boolean displayReferredChange) {
-		this.displayReferredChange = displayReferredChange;
 	}
 
 	public String getFile_creation_date() {
@@ -3563,28 +3295,6 @@ implements SummaryRequestIMO
 		this.showInvestPnl = showInvestPnl;
 	}
 	
-	
-	
-	public void setEdit_Form_help_Coach ( boolean edit_Form_help_Coach ){
-		this.edit_Form_help_Coach = edit_Form_help_Coach ;
-	}
-	
-	public boolean getEdit_Form_help_Coach() {
-		
-		return edit_Form_help_Coach;
-		
-	}
-	
-	public void setRen4c ( boolean ren4c ){
-		this.ren4c = ren4c ;
-	}
-	
-	public boolean isRen4c() {
-		
-		return ren4c;
-		
-	}
-	
 	public FondeadorIMO getFondeador() 
 	{
 		return fondeador;
@@ -3638,6 +3348,11 @@ implements SummaryRequestIMO
 	public EditorScoreIMO getEditor_score()
 	{
 		return editor_score;
+	}
+	
+	public RoleFunctionIMO getPermisos()
+	{
+		return permisos;
 	}
 	
 	public final List <IdentificationType> getLista_identification_type()
@@ -3890,16 +3605,6 @@ implements SummaryRequestIMO
 		this. haveContactWay = haveContactWay;
 	}
 	
-	
-	
-	public boolean isVer_notas_comportamiento_inusual_ENABLED(){
-		return ver_notas_comportamiento_inusual_ENABLED;
-	}
-	
-	public void setVer_notas_comportamiento_inusual_ENABLED( boolean ver_notas_comportamiento_inusual_ENABLED ){
-		this. ver_notas_comportamiento_inusual_ENABLED = ver_notas_comportamiento_inusual_ENABLED;
-	}
-	
 	public boolean isContactWayEmail(){
 		return contactWayEmail;
 	}
@@ -4048,23 +3753,6 @@ implements SummaryRequestIMO
 
 	public void setRelatedProyect(RelatedPersonLoan relatedProyect) {
 		this.relatedProyect = relatedProyect;
-	}
-
-
-	public boolean isAutorizar_personas_relacionadas_ENABLED() {
-		return autorizar_personas_relacionadas_ENABLED;
-	}
-
-	public void setAutorizar_personas_relacionadas_ENABLED(boolean autorizar_personas_relacionadas_ENABLED) {
-		this.autorizar_personas_relacionadas_ENABLED = autorizar_personas_relacionadas_ENABLED;
-	}
-
-	public boolean isVer_pestana_tablero_normativo_ENABLED() {
-		return ver_pestana_tablero_normativo_ENABLED;
-	}
-
-	public void setVer_pestana_tablero_normativo_ENABLED(boolean ver_pestana_tablero_normativo_ENABLED) {
-		this.ver_pestana_tablero_normativo_ENABLED = ver_pestana_tablero_normativo_ENABLED;
 	}
 	
 	public TableroNormativoDetallado getTableronormativodetallado(){

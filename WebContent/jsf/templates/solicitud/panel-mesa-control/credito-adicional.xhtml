@@ -3,7 +3,8 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
-	<h:panelGroup rendered="#{summaryRequest.additionalCredit and sessionBean.area == 'M'}" >
+				
+	<h:panelGroup rendered="#{summaryRequest.permisos.additionalCredit and sessionBean.area == 'M'}" >
 											
 		<p:commandLink immediate      = "true"
 					   actionListener = "#{menuControlTableBean.toAdditionalCredit}" 

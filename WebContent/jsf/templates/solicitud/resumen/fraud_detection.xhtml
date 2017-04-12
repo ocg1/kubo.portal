@@ -12,7 +12,7 @@
 											<p><i class="fa fa-exclamation-circle"></i> Requiere escalamiento interno.</p>
 										</div>
 								</div>
-								<h:panelGroup  rendered="#{ summaryRequest.fd != null and sessionBean.area == 'M' and summaryRequest.ver_notas_comportamiento_inusual_ENABLED }"  >
+								<h:panelGroup  rendered="#{ summaryRequest.fd != null and sessionBean.area == 'M' and summaryRequest.permisos.ver_notas_comportamiento_inusual_ENABLED }"  >
 									<div class="articulos-desglose tabla-style2 orange">
 											<table border="0" cellpadding="0" cellspacing="0">
 											<tr>

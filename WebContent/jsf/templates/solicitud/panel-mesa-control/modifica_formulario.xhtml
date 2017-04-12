@@ -59,7 +59,7 @@
 	
 	
 	
-	<h:panelGroup  rendered		  = "#{summaryRequest.edit_Form_help_Coach}" >
+	<h:panelGroup  rendered		  = "#{summaryRequest.permisos.edit_Form_help_Coach}" >
 	
 		<p:commandLink immediate      = "true"
 						   action 	  = "#{summaryRequest.validaSession}" 
@@ -130,25 +130,15 @@
 		
 	</h:panelGroup>
 	
-	<h:panelGroup  rendered = "#{summaryRequest.ren4c}" >
+	<h:panelGroup  rendered = "#{summaryRequest.permisos.ren4c}" >
 	
-		<p:commandLink 	immediate      = "true"
-							onstart        = "returnValidaRen4C();"	
-						   value= "Renovación"
-						   styleClass="btn_verde" 
-						   >
-						   
-						   </p:commandLink>
+		<p:commandLink 	value = "Renovación" immediate = "true"
+						onstart = "returnValidaRen4C();"							   
+						styleClass = "btn_verde"/>
 	
-		<p:commandLink  immediate      = "true"
-							onstart        = "return displayMessageProcessing('msgprocessing', false);"	
-						   action = "renovacion4clk"
-						   value= "Renovación"
-						   styleClass="btn_verde clsRen4c" 
-						   style="display: none"
-						   >
-		</p:commandLink>
-		
-	</h:panelGroup>
-	
+		<p:commandLink  value = "Renovación" immediate = "true"
+						onstart = "return displayMessageProcessing('msgprocessing', false);"	
+						action = "renovacion4clk"						
+						styleClass="btn_verde clsRen4c" style = "display: none"/>		
+	</h:panelGroup>	
 </ui:composition>

@@ -6,7 +6,7 @@
 				xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 				
 	<div style = "color: #333333; width: 200px !important; ">
-		<h:panelGroup  rendered="#{summaryRequest.changeTelephone}">
+		<h:panelGroup  rendered="#{summaryRequest.permisos.changeTelephone}">
 		
 			<div onclick = "Telefonos.init_phone(#{p.index}, #{p.phone.phone_type_id});">
 				<p style = "color: #439539; text-align: right; cursor: pointer" class="telefono-value">
@@ -39,23 +39,7 @@
 			<div id = "modal-change-phone-#{p.index}" class = "ui-inplace-content" style = "display: none">
 				<ui:include src = "change-phone.xhtml"/>
 				
-			</div>	
-			
-<!-- 		
-			<p:inplace id = "sectionEditPhone" rendered = "#{summaryRequest.changeTelephone}"
-					   styleClass = "editClass" 				   
-					   label      = "#{((p.phone.phoneType.phoneTypePk.phone_type_id == 2 or p.phone.phoneType.phoneTypePk.phone_type_id == 4 or p.phone.phoneType.phoneTypePk.phone_type_id == 6)?'044 ': '')} #{ p.phone.phone_number} #{p.phone.phoneType.phoneTypePk.phone_type_id == 1 and ! empty p.phone.extension ? 'Ext. ' : ''} #{p.phone.phoneType.phoneTypePk.phone_type_id == 1 and ! empty p.phone.extension ? p.phone.extension : ''}" 
-					   widgetVar  = "editPhone#{p.index}" >				   			
-				
-				<p:ajax event = "save" immediate = "true" update = ":frmQuest:show-ischange-phone"
-						oncomplete = "Teleconjunto.removeClass("lleno");
-		 		conjunto.addClass("vacio");fonos.update_oncomplete(xhr, status, args);" 
-						listener  = "#{summaryRequest.telefono.init_update(p)}"/>
-						
-				<ui:include src = "change-phone.xhtml"/>																	 	
-				
-			</p:inplace>
--->			
+			</div>			
 	<script>
 	   function telefonoValue () {
 			$(".telefono-value").each(function(){	
@@ -79,7 +63,7 @@
 	</script>
 		</h:panelGroup>
 					
-		<h:panelGroup  rendered="#{!summaryRequest.changeTelephone}">
+		<h:panelGroup  rendered="#{!summaryRequest.permisos.changeTelephone}">
 		
 		
 			<h:panelGroup rendered="#{fn:startsWith(p.phone.phone_number, '55')}">
@@ -100,10 +84,7 @@
 			
 			<div style = "float: left;">
 				#{p.phone.phone_number}
-			</div>
-			
-		
-		
+			</div>							
 		</h:panelGroup>	
 		
 		

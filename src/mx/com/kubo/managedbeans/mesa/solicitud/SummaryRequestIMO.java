@@ -47,8 +47,7 @@ import org.primefaces.event.SelectEvent;
 interface SummaryRequestIMO 
 {
 	void init();
-	void mapeoDatos(String search);
-	
+	void mapeoDatos(String session_search_summary);
 	void cargaConsultas();
 	
 	
@@ -136,11 +135,6 @@ interface SummaryRequestIMO
 	boolean getReport(Integer prospectus_id);
 	boolean isValidBank(String name);	
 	boolean callSGB(ProyectLoan pl);
-	boolean isEditor_domicilio_ENABLED();
-	boolean isDomicilio_fiscal_ENABLED();
-	boolean isEditor_nombre_ENABLED();	
-	boolean isEditor_tipo_credito_ENABLED();
-	boolean isReporte_inusual_ENABLED();
 	
 	void setMotiveservice         (MotiveService     service);
 	void setService_income_type   (IncomeTypeService service);

@@ -14,16 +14,13 @@
 
 				<ui:include src = "panel-mesa-control/cartera-kubo.xhtml" />	
 				
-				<h:panelGroup rendered="#{sessionBean.area=='M' and summaryRequest.displayLogCob }">
-					<h:panelGroup rendered="#{summaryRequest.actualProyect != null}">
-					<p:commandLink	
+				<h:panelGroup rendered = "#{sessionBean.area=='M' and summaryRequest.permisos.displayLogCob }">
+					<h:panelGroup rendered = "#{summaryRequest.actualProyect != null}">
+					<p:commandLink	value = "	Cobranza"  immediate = "true" update = ":actualPage :form_Prin"
 							onstart        = "return displayMessageProcessing('msgprocessing', false);"																	
 							actionListener = "#{menuControlTableBean.cambiaPagina}"	
-							oncomplete     = "closeFancy();"
-							update         = ":actualPage :form_Prin"
-							immediate	   = "true"
-							value="	Cobranza" 
-							styleClass="btn_verde">
+							oncomplete     = "closeFancy();"																				
+							styleClass = "btn_verde">
 							
 							<f:attribute name = "section" value = "controlTable/Logs::16::menu1" />
 							

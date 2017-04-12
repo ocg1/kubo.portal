@@ -62,8 +62,7 @@
 
 					</h:panelGroup>
 
-					<h:panelGroup
-						rendered="#{ summaryRequest.copiar_documentos_ENABLED and ( summaryRequest.documentacion == null or summaryRequest.documentacion.listFiles == null or summaryRequest.documentacion.listFiles.size() lt 3 ) }">
+					<h:panelGroup rendered = "#{summaryRequest.permisos.copiar_documentos_ENABLED and ( summaryRequest.documentacion == null or summaryRequest.documentacion.listFiles == null or summaryRequest.documentacion.listFiles.size() lt 3 ) }">
 						<h:commandLink class="clsCmdCopiaDocs" style="float:right;"
 							onclick="showLoaderCopiaDocs();">													
 			
@@ -103,8 +102,7 @@
 
 				
 
-				<h:panelGroup id="pnlAdjuntarDoc"
-					rendered="#{summaryRequest.addDocument}">
+				<h:panelGroup id = "pnlAdjuntarDoc" rendered = "#{summaryRequest.permisos.addDocument}">
 
 					<div>
 						<div id="dvAdjDocBtn">

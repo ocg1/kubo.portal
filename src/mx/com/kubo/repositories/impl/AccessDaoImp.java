@@ -42,9 +42,10 @@ implements AccessDao
 		
 	}
 	
-	public List<AccessCollector> loadControlMenu(Integer role_id, Integer company_id){
-		
-		try{
+	public List<AccessCollector> loadControlMenu(Integer role_id, Integer company_id)
+	{		
+		try
+		{
 		
 		String query = "select "
 						+ "	ra.company_id, "

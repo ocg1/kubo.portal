@@ -111,14 +111,14 @@
 										</table>
 						
 								
-							<h:panelGroup rendered="#{summaryRequest.makeNewConsultation}">
+							<h:panelGroup rendered="#{summaryRequest.permisos.makeNewConsultation}">
 								<br />
 								<div id="dvBtnNwCnslt1" class="btn_verde" style="margin: 0 0 15px; width: 150px">																
 									<h:outputText value="Nueva Consulta" />																
 								</div>
 								
 								<div id="dvCntBtnCsl" style="display:none; width: 700px;" >
-									<h:panelGroup rendered="#{summaryRequest.actualProyect.status_id != 3 and summaryRequest.makeNewConsultation}">
+									<h:panelGroup rendered="#{summaryRequest.actualProyect.status_id != 3 and summaryRequest.permisos.makeNewConsultation}">
 						
 											<p>¿Deseas que esta nueva consulta se asigne al proyecto actual?</p>
 									

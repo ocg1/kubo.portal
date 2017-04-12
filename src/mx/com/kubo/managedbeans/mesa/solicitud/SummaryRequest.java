@@ -67,6 +67,7 @@ import mx.com.kubo.managedbeans.AlertsManaged;
 import mx.com.kubo.managedbeans.ApplicationParams;
 import mx.com.kubo.managedbeans.HeaderBean;
 import mx.com.kubo.managedbeans.MyInvestments;
+import mx.com.kubo.managedbeans.RoleFunctionController;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.managedbeans.Simulator;
 import mx.com.kubo.managedbeans.investor.NavigationInvest;
@@ -128,6 +129,7 @@ import mx.com.kubo.mesa.solicitud.perfil.IndicePagoDeudasIMP;
 import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMP;
 import mx.com.kubo.mesa.solicitud.perfil.nombre.EditorNombreIMP;
 import mx.com.kubo.mesa.solicitud.perfil.rfc.EditorRfcIMP;
+import mx.com.kubo.mesa.solicitud.permisos.RoleFunctionIMP;
 import mx.com.kubo.tools.ImageUtils;
 import mx.com.kubo.tools.Utilities;
 
@@ -322,11 +324,17 @@ implements SummaryRequestIMO,  Serializable
 		
 	}
 	
-	public final void mapeoDatos(String session_search_summary)
+	public void mapeoDatos(String session_search_summary)
 	{
 		faces = FacesContext.getCurrentInstance();
 		
-		httpServletRequest = (HttpServletRequest) faces.getExternalContext().getRequest(); 
+		resolver = faces.getApplication().getELResolver();
+		context  = faces.getELContext();
+		external = faces.getExternalContext();
+		
+		httpServletRequest = (HttpServletRequest) external.getRequest();
+		
+		role_function = (RoleFunctionController) resolver.getValue(context, null, "roleFunctionController");				
 		
 		mD01 = Calendar.getInstance();
 		mD01.setTime(new Date());				
@@ -335,8 +343,10 @@ implements SummaryRequestIMO,  Serializable
 		
 		
 		if(sesion.getRole_id() != null)
-		{
+		{			
+/*			
 			setPermissions(sesion.getRole_id());
+*/			
 		}
 		
 		displayPnlOtherIncome = false;				
@@ -353,13 +363,21 @@ implements SummaryRequestIMO,  Serializable
 		init_proyect_loan();
 		
 		if(actualProyect != null && actualProyect.getStatus_id() != 1)
-		{
-			changeActions = false;
-			
+		{						
 			validaIsCancel();			
 		}
 		
 		init_persona();		
+		
+		score = scoreService.loadMaxScoringByProspectus(persona.getNatPerPK().getProspectus_id(), persona.getNatPerPK().getCompany_id());
+		
+		permisos = new RoleFunctionIMP();
+		permisos.setProyectLoan(actualProyect);
+		permisos.setScore(score);
+		permisos.setSesion(sesion);
+		permisos.setRole_function(role_function);
+		permisos.init();
+		
 		init_frecuencia_pagos();
 		init_imagen_prospecto();
 		init_resumen_solicitud();
@@ -371,10 +389,9 @@ implements SummaryRequestIMO,  Serializable
 		
 		init_name_visible();
 	
-		if( actualProyect != null && actualProyect.getSafi_credit_id() != null ){
-			
-			init_approval_users();
-			
+		if( actualProyect != null && actualProyect.getSafi_credit_id() != null )
+		{		
+			init_approval_users();			
 		}
 		
 		if(proyecto != null)
@@ -385,19 +402,8 @@ implements SummaryRequestIMO,  Serializable
 			benefits    = proyecto.getBenefits();
 			reason      = proyecto.getReason();
 			logo        = proyecto.getLogo();	
-			proposito   =  proyecto.getPurpose() != null ? proyecto.getPurpose().getName():"No proporcionado";
-		}
-		
-		score = scoreService.loadMaxScoringByProspectus(persona.getNatPerPK().getProspectus_id(), persona.getNatPerPK().getCompany_id());
-		
-		if(score != null && additionalCredit && !persona.getProspectus().getArea().toString().equals("I"))
-		{
-			additionalCredit = true;
-			
-		} else {
-			
-			additionalCredit = false;
-		}
+			proposito   = proyecto.getPurpose() != null ? proyecto.getPurpose().getName():"No proporcionado";
+		}				
 		
 		if(actualProyect != null || persona.getProspectus().getArea().toString().equals("I")  )
 		{
@@ -418,7 +424,7 @@ implements SummaryRequestIMO,  Serializable
 		init_lista_thisTutor();
 		init_lista_imTutor();
 		
-		if(changeActions)
+		if(permisos.isChangeActions())
 		{
 			editor_CURP = new EditorCurpIMP();
 			editor_CURP.setPerson(persona);
@@ -429,7 +435,7 @@ implements SummaryRequestIMO,  Serializable
 			editor_RFC.setSesion(sesion);			
 		}
 		
-		if(editor_tipo_credito_ENABLED && !prospecto.getArea().equals('I'))
+		if(permisos.isEditor_tipo_credito_ENABLED() && !prospecto.getArea().equals('I'))
 		{
 			editor_tipo_credito = new EditorTipoCreditoIMP();
 			editor_tipo_credito.setSesion(sesion);
@@ -473,13 +479,11 @@ implements SummaryRequestIMO,  Serializable
 		
 		init_inversion_interna();
 		
-		if( prospecto.getArea().toString().equals("I") ){
-			
-			initInvesmentData();
-			
+		if( prospecto.getArea().toString().equals("I") )
+		{			
+			initInvesmentData();			
 		}
-			
-		
+					
 		if( persona.getProspectus().getArea().toString().equals("L") )
 		{		
 			inicializaPromo( actualProyect );
@@ -488,37 +492,25 @@ implements SummaryRequestIMO,  Serializable
 			
 			bc.checkProcess(persona.getNatPerPK().getCompany_id(), persona.getNatPerPK().getProspectus_id(), ipAddressClient);
 			
-			fd = bc.getBehaviorprocessservice().getFraudeDetection(persona.getNatPerPK().getCompany_id(), persona.getNatPerPK().getProspectus_id());
-			
+			fd = bc.getBehaviorprocessservice().getFraudeDetection(persona.getNatPerPK().getCompany_id(), persona.getNatPerPK().getProspectus_id());			
 		}	
 		
-		if( actualProyect != null ){
-			
+		if( actualProyect != null )
+		{			
 			validaRelationship();
 			init_related_person();
-			initDetalleTableroNormativo();
-			
-			
+			initDetalleTableroNormativo();						
 			
 			Income inc = ingresosService.getIncomeByTypeIncomeID(actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id(), 7);
 			
-			if( inc != null ){
+			if( inc != null )
+			{
 				ingresosComprobables = inc.getAmmount_modified();
 			}
 		
-		}
-		
-		if( ren4c && actualProyect != null && actualProyect.getPerson().getSafi_client_id() != null && actualProyect.getPerson().getSafi_client_id().trim().length() > 0  ){
-			ren4c = true;
-		}else{
-			ren4c = false;
-		}
-		
-		//long l = mD02.getTimeInMillis() - mD01.getTimeInMillis();
+		}	
 		
 		saveTimelog( "carga mapeoDatos" ,mD01.getTime() , mD02.getTime()  );
-
-		//System.out.println("SummaryRequest.mapeoDatos(): Tardó  "+l+" milisegundos en cargar mapeoDatos()");
 	}
 
 	public final void cargaInfoCompleta()
@@ -755,7 +747,7 @@ implements SummaryRequestIMO,  Serializable
 		
 		init_domicilio(false);		
 					
-		if(editor_nombre_ENABLED)
+		if(permisos.isEditor_nombre_ENABLED())
 		{
 			if(investor != null && investor.getStatus_id() < 3)
 			{
@@ -771,7 +763,7 @@ implements SummaryRequestIMO,  Serializable
 				
 			} else {
 				
-				editor_nombre_ENABLED = false;
+				permisos.setEditor_nombre_ENABLED(false);
 			}
 		}
 		
@@ -2904,20 +2896,26 @@ membershipTemp = new Membership();
 		}		
 	}
 	
-	public void initAlerts(){
+	public void initAlerts()
+	{
+		faces = FacesContext.getCurrentInstance();
 		
-		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-		AlertsManaged alerts = (AlertsManaged) FacesContext.getCurrentInstance().getApplication().getELResolver().getValue(elContext, null, "alertsManaged");
+		resolver = faces.getApplication().getELResolver();
+		context  = faces.getELContext();
+		
+		AlertsManaged alerts = (AlertsManaged) resolver.getValue(context, null, "alertsManaged");
 		
 		alerts.setProspectus_id(prospecto.getProspectusPK().getProspectus_id());
 		alerts.setCompany_id(prospecto.getProspectusPK().getCompany_id());
 		
 		if(actualProyect != null)
+		{
 			alerts.setPylnPk(actualProyect.getProyectloanPk());
+		}
 		
 		alerts.setProspectus_id_sender(sesion.getProspectus_id());
 		
-		alerts.setDisplayAlert(displayAlerts);
+		alerts.setDisplayAlert(permisos.isDisplayAlerts());
 		
 		alertProyect = alerts.haveAlertsProyect();
 		alertPerson = alerts.haveAlertsPerson();
@@ -3051,8 +3049,7 @@ membershipTemp = new Membership();
 			 
 		 }		
 	}
-	
-	
+		
 	public void asignaBite(AjaxBehaviorEvent e){
 		
 		//itemSel = (ItemLoanList) e.getComponent().getAttributes().get("proyectloanItem");
@@ -3078,7 +3075,6 @@ membershipTemp = new Membership();
 		
 		//e.getComponent().getAttributes().put("proyectloanItem",itemSel);
 	}
-
 
 	@SuppressWarnings("unchecked")
 	public void validaSession () 
@@ -3116,7 +3112,6 @@ membershipTemp = new Membership();
 			
 	}
 	
-
 	public String changeSessionForEditForm(){
 		
 		faces = FacesContext.getCurrentInstance();
@@ -3719,7 +3714,6 @@ membershipTemp = new Membership();
 			ingresosService.addIncome(inc, actualProyect.getProyectloanPk().getProspectus_id(), actualProyect.getProyectloanPk().getCompany_id());
 		}
 	}
-	
 	
 	public void initListIncome(){
 		

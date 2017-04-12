@@ -419,6 +419,15 @@ import org.primefaces.context.RequestContext;
 	    	String ammountCadFrom 	= map.get("inputFromBtn");
 	    	String ammountCadTo 	= map.get("inputToBtn");
 	    	
+	    	System.out.println("riskCad = " + riskCad);
+	    	System.out.println("termCadIni = " + termCadIni);
+	    	System.out.println("flagRisk = " + flagRisk );
+	    	System.out.println("destiny_values = " + destiny_values);
+	    	System.out.println("genderCad = " + genderCad);
+	    	System.out.println("ammountCadFrom = " + ammountCadFrom);
+	    	System.out.println("ammountCadTo = " + ammountCadTo);
+	    	
+	    	
 	    	System.out.println( "flagRisk: " + flagRisk );
 	    	
 	    	//String phraseCad = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("inputPhrase");
@@ -444,6 +453,8 @@ import org.primefaces.context.RequestContext;
 	    	// CREA FILTRO
 	    	
 	    	String strQuery = "term:"+termCadIni +"||risk:"+riskCad+        "||gender:"+ genderStr+"||typeSearch:"+typeSearch+"||between:"+ammountCadFrom+"_"+ammountCadTo+"||previousType:"+previousType+"||destinyValues:"+destiny_values;
+	    	
+	    	System.out.println("strQuery = " + strQuery);
 	    	
 	    	lastFilter = strQuery;
 	    	
@@ -3449,7 +3460,9 @@ import org.primefaces.context.RequestContext;
 				strRisk+=",'F','G'";
 			}
 			
-	    	String ultimoFiltro = "term:25T36_6||"+strRisk+"||gender:MH||typeSearch:"+typeSearch+"||between:||previousType:"+previousType+"||destinyValues:"+destiny_values; 
+	    	String ultimoFiltro = "term:25T36_6||"+strRisk+"||gender:MH||typeSearch:"+typeSearch+"||between:||previousType:"+previousType+"||destinyValues:"+destiny_values;
+	    	
+	    	System.out.println("ultimoFiltro = " + ultimoFiltro);
 	    	
 	    	Calendar cl_2 = Calendar.getInstance();
 			cl_2.setTime(new Date());

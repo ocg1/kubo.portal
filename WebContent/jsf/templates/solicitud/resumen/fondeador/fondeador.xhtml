@@ -16,7 +16,8 @@
 		
 			<strong>Fondeador: </strong>
 			
-				<p:inplace id = "sectionEditInstitutionalIvestor" widgetVar = "editInvestor" rendered = "#{summaryRequest.changeInstitutionalInvestor}">
+				<p:inplace id = "sectionEditInstitutionalIvestor" widgetVar = "editInvestor" 
+						   rendered = "#{summaryRequest.fondeador != null and summaryRequest.permisos.changeInstitutionalInvestor}">
 						   					   					        
 					<h:outputText value = "#{summaryRequest.actualProyect != null ? summaryRequest.actualProyect.institutionalInvestor.short_name : ''}" />
 					

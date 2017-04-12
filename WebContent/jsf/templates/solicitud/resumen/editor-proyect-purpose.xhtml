@@ -3,7 +3,7 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 						
-	<h:panelGroup rendered = "#{!summaryRequest.editor_tipo_credito_ENABLED}" >			
+	<h:panelGroup rendered = "#{!summaryRequest.permisos.modificar_destino_credito}" >			
 		<h3>#{summaryRequest.proposito}</h3>		
 	</h:panelGroup>			
 															
@@ -14,7 +14,7 @@
 		</div>		
 										
 		<p:inplace widgetVar = "editorProyectPurpose"
-				   rendered  = "#{summaryRequest.editor_tipo_credito_ENABLED}" 
+				   rendered  = "#{summaryRequest.permisos.modificar_destino_credito}" 
 		 		   label     = "#{summaryRequest.actualProyect.proyect.purpose.name}" >
 		
 			<p:ajax event = "save" immediate = "true"

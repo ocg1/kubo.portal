@@ -30,7 +30,7 @@
 			<div class="full_name_email_sobrenombre"> 
 				<h:panelGroup rendered = "#{summaryRequest.nameVisible}">
 					
-					<h:panelGroup rendered = "#{!summaryRequest.editor_nombre_ENABLED}">
+					<h:panelGroup rendered = "#{!summaryRequest.permisos.editor_nombre_ENABLED}">
 						<strong>#{summaryRequest.fullName}</strong>
 					</h:panelGroup>
 					
@@ -52,7 +52,7 @@
 					
 					</h:panelGroup>
 															
-					<h:panelGroup id = "editor-nombre" rendered = "#{summaryRequest.editor_nombre != null and summaryRequest.editor_nombre_ENABLED}">
+					<h:panelGroup id = "editor-nombre" rendered = "#{summaryRequest.editor_nombre != null and summaryRequest.permisos.editor_nombre_ENABLED}">
 						<ui:include src = "perfil/editor-nombre.xhtml"/>
 					</h:panelGroup>
 															

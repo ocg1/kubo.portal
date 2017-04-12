@@ -15,7 +15,7 @@
 			<ui:include src = "editor-domicilio/alarmas/coincidencias_nivel_2.xhtml"/>				      
 		</div>				      
 	
-		<h:panelGroup rendered = "#{summaryRequest.editor_domicilio_ENABLED}">
+		<h:panelGroup rendered = "#{summaryRequest.permisos.editor_domicilio_ENABLED}">
 			<div id = "container_vivienda_TOKEN" onclick = "container_editar_vivienda_TOKEN();">
 				<p>#{summaryRequest.editor_domicilio.vivienda_TOKEN}</p>
 			</div>
@@ -23,7 +23,7 @@
 			<h:outputText value="#{summaryRequest.editor_domicilio.scriptColonia}" escape="false" />
 		</h:panelGroup>
 		
-		<h:panelGroup rendered = "#{!summaryRequest.editor_domicilio_ENABLED}">				
+		<h:panelGroup rendered = "#{!summaryRequest.permisos.editor_domicilio_ENABLED}">				
 			<p>#{summaryRequest.editor_domicilio.vivienda_TOKEN}</p>				
 		</h:panelGroup>	
 		
