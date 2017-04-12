@@ -6,6 +6,8 @@ import mx.com.kubo.mesa.solicitud.resumen.ChangeControlIMO;
 
 public interface EditorRateIMO extends ChangeControlIMO
 {
+	void setRate(Double rate);
+	
 	void init_rate(AjaxBehaviorEvent event);
 	
 	void save();

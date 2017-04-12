@@ -4,6 +4,7 @@ Resumen.rate_oncomplete = function(xhr, status, args)
 {
 	$("#editor-rate-motive").val("").blur();				
 	$("#update-loan-rate").trigger("click");
+	$("#update-loan-rate-investor").trigger("click");
 	
 	console.log("Resumen.rate_oncomplete(): OK");
 };	

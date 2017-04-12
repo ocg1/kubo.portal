@@ -3780,6 +3780,20 @@ membershipTemp = new Membership();
 		
 		request.addCallbackParam("update_OK", update_OK);
 		request.addCallbackParam("rate", rate);
+		
+		if(editor_rate_investor != null && permisos.isModificar_tasa_inversionista())
+		{
+			editor_rate_investor.setRate(rate / 2);
+			editor_rate_investor.save();
+			
+			update_OK     = editor_rate_investor.isUpdate_OK();
+			actualProyect = editor_rate_investor.getProyect_loan();
+			
+			rate_investor = actualProyect.getRate_investor();
+			
+			request.addCallbackParam("update_OK", update_OK);
+			request.addCallbackParam("rate_investor", rate_investor);
+		}
 	}
 	
 	public void editarLoanRateInvestor()

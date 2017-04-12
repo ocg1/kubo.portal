@@ -5,6 +5,7 @@ import mx.com.kubo.model.ProyectLoan;
 import mx.com.kubo.tools.Utilities;
 
 public abstract class EditorRateInvestorDMO extends ChangeControlAMO 
+implements EditorRateIMO
 {
 	protected Double rate_investor;
 	
@@ -32,5 +33,10 @@ public abstract class EditorRateInvestorDMO extends ChangeControlAMO
 			
 			init_change_control();
 		}
+	}
+	
+	public void setRate(Double rate)
+	{
+		rate_investor = rate;
 	}
 }
