@@ -46,6 +46,9 @@
 								<th>no.</th>
 								<th style= "text-align: left;">Nombre</th>
 								<th style= "text-align: left;">RFC</th>
+								<th style= "text-align: left;">Oficio CNBV</th>
+								<th style= "text-align: left;">Expediente CNBV</th>
+								<th style= "text-align: left;">Fecha</th>								
 							</tr>
 						</thead>
 								
@@ -56,6 +59,13 @@
 										<td >#{row_counter.index + 1}</td>
 										<td >#{blocked_person.full_name}</td>									
 										<td>#{blocked_person.mx_rfc}</td>
+										<td>#{blocked_person.mx_oficio}</td>
+										<td>#{blocked_person.mx_expediente}</td>										
+										<td>
+											<h:outputText value = "#{blocked_person.blocked_date}" >
+	   				 							<f:convertDateTime pattern = "dd-MM-yyyy" />   			
+											</h:outputText>									
+										</td>	
 	<!-- 									
 										<td>
 						

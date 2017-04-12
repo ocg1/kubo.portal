@@ -6,11 +6,12 @@
 
 	<h:form prependId = "false" >	
 		<div id = "admMenu">
-			<p:commandLink oncomplete     = "setClassMenu('dvMenuPerf');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile">
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
-				<div id = "dvMenuPerf">								
+				<div id = "profile">								
 					<f:attribute name = "section" value = "profile" />
 					
 					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px; " >
@@ -19,11 +20,12 @@
 				</div>				
 			</p:commandLink>
 			
-			<p:commandLink oncomplete     = "setClassMenu('dvMenuPerfRole');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update=":pnlCntProfile">
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
-				<div id = "dvMenuPerfRole">
+				<div id = "permissionRole">
 								
 					<f:attribute name = "section" value = "permissionRole" />
 					
@@ -33,13 +35,14 @@
 				</div>			
 			</p:commandLink>
 			
-			<p:commandLink oncomplete     = "setClassMenu('dvMenuPantRole');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile"  >
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
-				<div id = "dvMenuPantRole">
+				<div id = "screenRole">
 								
-					<f:attribute name="section" value="screenRole" />
+					<f:attribute name = "section" value = "screenRole" />
 					
 					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
 						Pantallas por rol
@@ -47,13 +50,14 @@
 				</div>			
 			</p:commandLink>						
 			
-			<p:commandLink oncomplete     = "setClassMenu('reinversion_automatica');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile"  >
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
 				<div id = "reinversion_automatica">
 									
-					<f:attribute name="section" value="reinversion_automatica" />
+					<f:attribute name="section" value = "reinversion_automatica" />
 					
 					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
 						Reinversión Automática
@@ -63,13 +67,14 @@
 				
 			</p:commandLink>
 			
-			<p:commandLink oncomplete     = "setClassMenu('alta_masiva');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile"  >
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
-				<div id = "reinversion_automatica">
+				<div id = "alta_masiva">
 									
-					<f:attribute name="section" value="alta_masiva" />
+					<f:attribute name = "section" value = "alta_masiva" />
 					
 					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
 						Consulta Prospector Masiva
@@ -79,13 +84,14 @@
 				
 			</p:commandLink>	
 			
-			<p:commandLink oncomplete     = "setClassMenu('ping_buro');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile"  >
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
 				<div id = "ping_buro">
 									
-					<f:attribute name="section" value="ping_buro" />
+					<f:attribute name = "section" value = "ping_buro" />
 					
 					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
 						Ping Buró de Crédito
@@ -95,13 +101,14 @@
 				
 			</p:commandLink>		
 			
-			<p:commandLink oncomplete     = "setClassMenu('tablero-normativo');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile"  >
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"  
+						   actionListener = "#{administrationProfile.changePage}">
 			
 				<div id = "tablero-normativo">
 									
-					<f:attribute name="section" value="tablero-normativo" />
+					<f:attribute name = "section" value = "tablero-normativo" />
 					
 					<div style="height: auto; width: auto;margin-top: 10px; margin-left: 10px;" >
 						Tablero Normativo
@@ -111,9 +118,10 @@
 				
 			</p:commandLink>
 			
-			<p:commandLink oncomplete     = "setClassMenu('blocked-person');"
-						   actionListener = "#{administrationProfile.changePage}" 
-						   update = ":pnlCntProfile"  >
+			<p:commandLink update = ":pnlCntProfile"
+						   onstart    = "displayMessageProcessing('msgprocessing',false);"   
+						   oncomplete = "Administracion.change_page_oncomplete(xhr, status, args);"
+						   actionListener = "#{administrationProfile.changePage}" >
 			
 				<div id = "blocked-person">
 									

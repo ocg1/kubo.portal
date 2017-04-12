@@ -63,21 +63,12 @@ div.gestion-sesiones.container
 	border: solid 1px #E3E3E3; 
 }
 
-#dvMenuPerf
-{
-	height: 40px;
-	width: 95%; 
-	margin-left: auto;
-	margin-right: auto; 
-	margin-top: 5px; 
-	border: solid 1px #E3E3E3;
-	
-}
-
-#dvMenuPerfRole,
-#dvMenuPantRole,
+#profile,
+#permissionRole,
+#screenRole,
 #gestion-sesiones,
 #reinversion_automatica,
+#alta_masiva,
 #ping_buro,
 #tablero-normativo,
 #blocked-person

@@ -5,7 +5,8 @@
 	<div style = "display: none;">	
 	
 		<h:commandLink id = "init-blocked-person-list" immediate = "true">
-			<p:ajax event = "click" update = "panel-blocked-person" 											
+			<p:ajax event = "click" update = "panel-blocked-person" 	
+					onstart    = "displayMessageProcessing('msgprocessing',false);"										
 					oncomplete = "Administracion.blocked_person_list_oncomplete(xhr, status, args);"
 					listener   = "#{administrationProfile.init_blocked_person_list}"/>
 		</h:commandLink>	

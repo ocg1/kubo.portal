@@ -49,17 +49,13 @@ Administracion.delete_oncomplete = function(xhr, status, args)
 
 Administracion.file_upload_oncomplete = function()
 {	
-	console.log("Administracion.file_upload_oncomplete(): OK");
-	
-	closeMessageProcessing();
+	console.log("Administracion.file_upload_oncomplete(): OK");		
 	
 	Administracion.init_blocked_person_list();
 };
 
 Administracion.init_blocked_person_list = function()
-{
-	console.log("Administracion.init_blocked_person_list(): OK");
-	
+{		
 	$("a#init-blocked-person-list").trigger("click");
 };
 
@@ -90,6 +86,18 @@ Administracion.citizenship_oncomplete = function(xhr, status, args)
 	console.log("Administracion.citizenship_oncomplete():");
 	console.log(" > citizenship = " + citizenship);
 	console.log(" > blocked_person_number = " + blocked_person_number);
+	
+	closeMessageProcessing();
+};
+
+Administracion.change_page_oncomplete = function(xhr, status, args)
+{	
+	var section = args.section;
+	
+	console.log("Administracion.change_page_oncomplete():");
+	console.log(" > section = " + section);
+	
+	setClassMenu(section);
 	
 	closeMessageProcessing();
 };

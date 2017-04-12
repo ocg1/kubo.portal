@@ -53,12 +53,16 @@ implements AdministrationProfileIMO, Serializable
 					
 	public void changePage(ActionEvent event)
 	{		
+		request = RequestContext.getCurrentInstance();
+		
 		menu_SELECTED = event.getComponent().getAttributes().get("section").toString();
 		
 		if(menu_SELECTED != null)
 		{			
 			init_actualPage();
-		}				
+			
+			request.addCallbackParam("section", menu_SELECTED);
+		}								
 	}
 	
 	public void cargaListInversionesPorRealizar()
