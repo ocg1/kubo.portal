@@ -34,7 +34,15 @@ import mx.com.kubo.mesa.solicitud.ReporteInusualIMP;
 import mx.com.kubo.mesa.solicitud.documentacion.DocumentacionIMP;
 import mx.com.kubo.mesa.solicitud.perfil.ActividadEconomicaIMP;
 import mx.com.kubo.mesa.solicitud.perfil.EditorIdentificationIMP;
+import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMP;
 import mx.com.kubo.mesa.solicitud.promo.PromocionIMP;
+import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
+import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMP;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
+import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateInvestorIMP;
+import mx.com.kubo.mesa.solicitud.resumen.score.BuroReprocessIMP;
+import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMP;
 import mx.com.kubo.mesa.solicitud.telefonos.TelefonosIMP;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AccessCollector;
@@ -106,6 +114,8 @@ import mx.com.kubo.mesa.solicitud.perfil.domicilio.AddressTokenIMO;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.AddressTokenIMP;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.DomicilioIMP;
 import mx.com.kubo.mesa.solicitud.perfil.domicilio.EditorViviendaIMP;
+import mx.com.kubo.mesa.solicitud.perfil.rfc.EditorRfcIMP;
+import mx.com.kubo.mesa.solicitud.permisos.RoleFunctionIMP;
 import mx.com.kubo.services.mesa.solicitud.estatus.EstatusProyectLoan;
 import mx.com.kubo.tools.Utilities;
 
@@ -207,6 +217,16 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 		
 		prospecto  = persona.getProspectus();		
 		numCliente = persona.getNatPerPK().getProspectus_id();
+	}
+	
+	protected void init_permisos() 
+	{
+		permisos = new RoleFunctionIMP();
+		permisos.setProyectLoan(actualProyect);
+		permisos.setScore(score);
+		permisos.setSesion(sesion);
+		permisos.setRole_function(role_function);
+		permisos.init();
 	}
 	
 	protected void init_related_person(){
@@ -936,6 +956,70 @@ public abstract class SummaryRequestAMO extends SummaryRequestDMO
 			pais_origen_ENABLED = true;
 		}
 		
+	}
+	
+	protected void init_editores() 
+	{
+		if(permisos.isChangeActions())
+		{
+			editor_CURP = new EditorCurpIMP();
+			editor_CURP.setPerson(persona);
+			editor_CURP.setSesion(sesion);
+			
+			editor_RFC = new EditorRfcIMP();
+			editor_RFC.setPerson(persona);
+			editor_RFC.setSesion(sesion);			
+		}
+		
+		if(permisos.isEditor_tipo_credito_ENABLED())
+		{
+			editor_tipo_credito = new EditorTipoCreditoIMP();
+			editor_tipo_credito.setSesion(sesion);
+			editor_tipo_credito.setProyect_loan(actualProyect);
+		}
+		
+		if(permisos.isModificar_destino_credito())
+		{
+			editor_purpose = new EditorPurposeIMP();
+			editor_purpose.setSesion(sesion);
+			editor_purpose.setProyect_loan(actualProyect);
+			editor_purpose.init();
+		}
+		
+		if(permisos.isModificar_tasa_acreditado())
+		{
+			editor_rate = new EditorRateIMP();
+			editor_rate.setSesion(sesion);
+			editor_rate.setProyect_loan(actualProyect);
+		}
+		
+		if(permisos.isModificar_tasa_inversionista())
+		{
+			editor_rate_investor = new EditorRateInvestorIMP();
+			editor_rate_investor.setSesion(sesion);
+			editor_rate_investor.setProyect_loan(actualProyect);
+		}
+		
+		if(permisos.isModificar_comision_apertura())
+		{
+			editor_commission = new EditorCommissionIMP();
+			editor_commission.setSesion(sesion);
+			editor_commission.setProyect_loan(actualProyect);
+		}
+		
+		if(permisos.isModificar_calificacion())
+		{
+			editor_score = new EditorScoreIMP();
+			editor_score.setSesion(sesion);
+			editor_score.setProyect_loan(actualProyect);
+		}
+		
+		if(permisos.isReprocesar_buro_credito())
+		{
+			buro_reprocess = new BuroReprocessIMP();
+			buro_reprocess.setMxSolicitudBuro(burSolNum);
+			buro_reprocess.setPerson(persona);
+		}
 	}
 	
 	protected void init_editor_identification() 

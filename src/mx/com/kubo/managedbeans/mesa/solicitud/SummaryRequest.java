@@ -47,22 +47,18 @@ import mx.com.kubo.bean.PhoneReview;
 import mx.com.kubo.bean.ProyectBean;
 import mx.com.kubo.bean.SearchSummaySession;
 import mx.com.kubo.bean.ShowChangeSession;
+
 import mx.com.kubo.controller.behaviorProspectus.BehaviorCheck;
 import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.inversion.Inversion;
 import mx.com.kubo.controller.shortURL.GeneraURLCorta;
 import mx.com.kubo.controller.shortURL.RequestShortURL;
 import mx.com.kubo.controller.shortURL.ResponseShortURL;
+
 import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
-import mx.com.kubo.mesa.solicitud.resumen.purpose.EditorPurposeIMP;
-import mx.com.kubo.mesa.solicitud.resumen.rate.EditorCommissionIMP;
-import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateIMP;
-import mx.com.kubo.mesa.solicitud.resumen.rate.EditorRateInvestorIMP;
-import mx.com.kubo.mesa.solicitud.resumen.score.BuroReprocessIMP;
-import mx.com.kubo.mesa.solicitud.resumen.score.EditorScoreIMP;
-import mx.com.kubo.mesa.solicitud.resumen.loantype.EditorTipoCreditoIMP;
+
 import mx.com.kubo.managedbeans.AlertsManaged;
 import mx.com.kubo.managedbeans.ApplicationParams;
 import mx.com.kubo.managedbeans.HeaderBean;
@@ -76,6 +72,7 @@ import mx.com.kubo.managedbeans.mesa.solicitud.estatus.CasosPospuestosIMP;
 import mx.com.kubo.managedbeans.navigation.NavigationBeanIMP;
 import mx.com.kubo.managedbeans.portal.referencias.ReferenciasPersonalesIMP;
 import mx.com.kubo.managedbeans.util.ConvertCalendar;
+
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.Bank;
@@ -119,17 +116,18 @@ import mx.com.kubo.model.Study_LevelPK;
 import mx.com.kubo.model.TimeLog;
 import mx.com.kubo.model.ViewInvestmetInProyect;
 import mx.com.kubo.model.gnNaturalPersonPK;
+
 import mx.com.kubo.notificaciones.notificables.Evento;
 import mx.com.kubo.notificaciones.notificador.NotificacionException;
 import mx.com.kubo.notificaciones.notificador.NotificadorIMP;
+
 import mx.com.kubo.registro.verificacion.ProspectoDuplicadoIMP;
+
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMO;
 import mx.com.kubo.mesa.solicitud.adicional.ReasignadorIMP;
 import mx.com.kubo.mesa.solicitud.perfil.IndicePagoDeudasIMP;
-import mx.com.kubo.mesa.solicitud.perfil.curp.EditorCurpIMP;
 import mx.com.kubo.mesa.solicitud.perfil.nombre.EditorNombreIMP;
-import mx.com.kubo.mesa.solicitud.perfil.rfc.EditorRfcIMP;
-import mx.com.kubo.mesa.solicitud.permisos.RoleFunctionIMP;
+
 import mx.com.kubo.tools.ImageUtils;
 import mx.com.kubo.tools.Utilities;
 
@@ -371,13 +369,7 @@ implements SummaryRequestIMO,  Serializable
 		
 		score = scoreService.loadMaxScoringByProspectus(persona.getNatPerPK().getProspectus_id(), persona.getNatPerPK().getCompany_id());
 		
-		permisos = new RoleFunctionIMP();
-		permisos.setProyectLoan(actualProyect);
-		permisos.setScore(score);
-		permisos.setSesion(sesion);
-		permisos.setRole_function(role_function);
-		permisos.init();
-		
+		init_permisos();		
 		init_frecuencia_pagos();
 		init_imagen_prospecto();
 		init_resumen_solicitud();
@@ -423,48 +415,10 @@ implements SummaryRequestIMO,  Serializable
 		
 		init_lista_thisTutor();
 		init_lista_imTutor();
-		
-		if(permisos.isChangeActions())
+				
+		if(!prospecto.getArea().equals('I'))
 		{
-			editor_CURP = new EditorCurpIMP();
-			editor_CURP.setPerson(persona);
-			editor_CURP.setSesion(sesion);
-			
-			editor_RFC = new EditorRfcIMP();
-			editor_RFC.setPerson(persona);
-			editor_RFC.setSesion(sesion);			
-		}
-		
-		if(permisos.isEditor_tipo_credito_ENABLED() && !prospecto.getArea().equals('I'))
-		{
-			editor_tipo_credito = new EditorTipoCreditoIMP();
-			editor_tipo_credito.setSesion(sesion);
-			editor_tipo_credito.setProyect_loan(actualProyect);
-			
-			editor_purpose = new EditorPurposeIMP();
-			editor_purpose.setSesion(sesion);
-			editor_purpose.setProyect_loan(actualProyect);
-			editor_purpose.init();
-			
-			editor_rate = new EditorRateIMP();
-			editor_rate.setSesion(sesion);
-			editor_rate.setProyect_loan(actualProyect);
-			
-			editor_rate_investor = new EditorRateInvestorIMP();
-			editor_rate_investor.setSesion(sesion);
-			editor_rate_investor.setProyect_loan(actualProyect);
-			
-			editor_commission = new EditorCommissionIMP();
-			editor_commission.setSesion(sesion);
-			editor_commission.setProyect_loan(actualProyect);
-			
-			editor_score = new EditorScoreIMP();
-			editor_score.setSesion(sesion);
-			editor_score.setProyect_loan(actualProyect);
-			
-			buro_reprocess = new BuroReprocessIMP();
-			buro_reprocess.setMxSolicitudBuro(burSolNum);
-			buro_reprocess.setPerson(persona);
+			init_editores();
 		}
 				
 		verificaRecomendado();
@@ -506,8 +460,7 @@ implements SummaryRequestIMO,  Serializable
 			if( inc != null )
 			{
 				ingresosComprobables = inc.getAmmount_modified();
-			}
-		
+			}		
 		}	
 		
 		saveTimelog( "carga mapeoDatos" ,mD01.getTime() , mD02.getTime()  );
