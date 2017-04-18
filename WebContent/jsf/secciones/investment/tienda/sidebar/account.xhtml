@@ -1,0 +1,30 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id="section_account" rendered="#{sessionBean.area=='I'}">		
+		<div style="position: relative; ">				
+			<div class="dvContent" id="dvBackSectionAccount" >							
+				<div class="disponible-info">
+					<h:outputLabel styleClass="label" value="#{msg.ll_credit_available}"/>
+						  			
+					<h:outputText id="creditOfAccount" value="#{investmentList.saldoActual}" styleClass="val_bold">
+					     <f:convertNumber currencySymbol="$" type="currency" groupingUsed="true" locale="es_MX"/>
+					</h:outputText>				  								
+				</div>	
+				
+				<h:outputLabel styleClass="label" value="#{msg.ll_account} #{investmentList.tagAccount}"/>
+								
+				<div class="selectNuevo select_border">
+					<h:selectOneMenu  id="cuentasUsr" tabindex="1" styleClass="elementStlSelAddress"  value="#{investmentList.cuentaActual}">  
+				        <f:selectItem itemValue="" itemLabel="Todas las cuentas" />
+				        <f:selectItems value="#{investmentList.listInvAccounts}" var="account" itemLabel="#{account.accountName}" itemValue="#{account.account}"/>
+				        <p:ajax event="change" listener="#{investmentList.changeAccount}" update="section_account :frm_select_account:section_account_popup" />    
+				    </h:selectOneMenu>
+				</div>																
+			</div>
+		</div>						
+	</h:panelGroup>				
+</ui:composition>		

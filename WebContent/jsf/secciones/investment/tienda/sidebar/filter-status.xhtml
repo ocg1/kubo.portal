@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup id="filter_by_status" rendered="#{sessionBean.area=='M'}" >					 
+		<div class="divFilterByStatus">
+			<h2  class="expand_heading" onclick="filtroAbrir(this);"><a  href="#">Filtro por estatus</a><span class="collapse change" >Collapse/Expand</span></h2>
+														 
+			<div   class="toggle_container">
+				<div class="box">
+					<table class="tableDivFilterByStatus">														
+						<tbody align="left">
+							<ui:repeat var="status" varStatus="indexVal" value="#{investmentList.lstStatus}">
+								
+								<h:panelGroup rendered="#{(indexVal.index%2)==0}" >
+									<h:outputText escape="false" value="#{investmentList.tr}" ></h:outputText>
+								</h:panelGroup>
+								
+									<td><input type="checkbox" class="ui-checkbox-filter statusclss" name="checkbox-filter" id="status_#{status.statusPK.status_id}" /></td>
+									<td class="statusName"><h:graphicImage width="20" height="20" title="#{status.name}" styleClass="statusNameImg" url="../resources#{status.url_img}" /></td>
+									<td><p:outputPanel autoUpdate="true">#{investmentList.getPorcentByStatus(status.statusPK.status_id)}%</p:outputPanel></td>
+									
+								<h:panelGroup rendered="#{(indexVal.index%2)==1}" >
+									<h:outputText escape="false" value="#{investmentList.tr1}" ></h:outputText>
+								</h:panelGroup>
+							
+							</ui:repeat>
+							
+						</tbody>
+					</table>
+									
+					<div class="buttonPR buildQueryFilterDiv" >
+						<p:commandLink styleClass="buildQueryFilter"  onclick="buildQueryFilter();"  value="#{msg.ll_link_filter}" update=":pnlScriptStatus"  />
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>				
+</ui:composition>			

@@ -1,0 +1,82 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div id = "dvContentLoanLst" class = "container_loanlist">	
+		<div id = "providing_table">
+	
+			<div style="overflow: auto; width: 64%; border: solid 0px #00ff00;   margin-left: auto; margin-right: auto;" >
+		
+				<div style="width: 99%; border: solid 0px #ff0000;  margin-left: auto; margin-right: auto;" >
+			
+					<ui:repeat var="ajuste" value="#{ajustes.paramCat}">
+				
+						<h:panelGroup rendered="#{ ajuste.pk.investment_param_cat_id == 1 or ( ajuste.pk.investment_param_cat_id == 2 and ajustes.puedeInvertire_en_F_G )}" >
+				
+							<div style="margin-top: 15px;" >
+							
+								<div style=" width: 80%;padding-top: 12px;" >
+									#{ajuste.description} <br /> <span style="color: #439539; cursor: pointer;" onclick="openVerMás( #{ajuste.pk.investment_param_cat_id} );"> ver más ... </span> 
+								</div>
+								
+								<p style="float: none; clear:  both;" />
+								
+								<div style="width: 170px;float: left; " >
+									<INPUT id="param_id_#{ajuste.pk.investment_param_cat_id}" name="param_id_#{ajuste.pk.investment_param_cat_id}" class="elementAddres1" style="width: 130px !important; text-align: right;" disabled="disabled" onblur="dibujaLimites( #{ajuste.pk.investment_param_cat_id} );" onkeypress="return isNumberKey(event);" type="text" /> %
+								</div>
+								
+								<i class="fa fa-edit clsIconEdit_#{ajuste.pk.investment_param_cat_id}" style="float: left;color: #439539; cursor: pointer; margin-top: 15px;" />
+								
+								<div id="btnCambiar_#{ajuste.pk.investment_param_cat_id}" style="width: 170px;float: left;color: #439539; cursor: pointer; margin-top: 13px; margin-left: 5px;" onclick="editar( #{ajuste.pk.investment_param_cat_id} );" >
+									Cambiar
+								</div>
+								
+								<div id="btnOk_#{ajuste.pk.investment_param_cat_id}" style=" width: 70px; padding: 5px; padding-bottom: 15px; display:none; float: left; "  >
+										
+										<div class="callActionMedium  btnVerde" onclick="callBean( #{ajuste.pk.investment_param_cat_id} );"  >
+											OK
+										</div>									
+								</div>
+								
+								<p style="float: none; clear:  both;" />
+								
+								<div id="explica_#{ajuste.pk.investment_param_cat_id}" style="display: none;" >
+									 <div id="dvContInfo_#{ajuste.pk.investment_param_cat_id}"></div>
+								</div>
+								
+								<p style="float: none; clear:  both;" />								
+								<p style="float: none; clear:  both;" />							
+								<p style="float: none; clear:  both;" />																								
+							</div>
+						
+							<p style="float: none; clear:  both;" />
+							
+						</h:panelGroup>
+					
+						</ui:repeat>	
+			
+						<div style="margin-left: auto; margin-right: auto; width: 30%; padding: 5px; padding-bottom: 15px; display: none; "  >
+							<p:commandLink id="callBean" actionListener="#{ajustes.updateParam}" onstart="displayMessageProcessing('msgprocessing',false);" oncomplete="returnChange(  );" >
+								<div class="callActionMedium  btnNaranja"  >
+									Guardar
+								</div>
+							</p:commandLink>
+						</div>			
+					</div>
+				</div>
+		
+		<br/>
+		
+		<!-- 
+		<p:commandLink id="buttonTable1"  ></p:commandLink>
+		 -->
+		 
+		 <INPUT type="hidden" id="inSaldoActual" value="#{ajustes.saldoTotalActual}" />
+		 <INPUT type="hidden" id="inMontoInvertidoE5" value="#{ajustes.montoInvertido_E5}" />
+		 <INPUT type="hidden" id="inMontoInvertidoFG" value="#{ajustes.montoInvertido_FG}" />
+		 
+		</div>		
+	</div>				
+</ui:composition>				

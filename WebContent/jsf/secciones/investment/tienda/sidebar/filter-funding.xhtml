@@ -1,0 +1,37 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+				<h:panelGroup id="filter_by_funding" rendered="#{sessionBean.area=='I'}" >	
+					<div class="dvContent">
+						<div class="divfilterbyfunding">
+							<h2  class="expand_heading" onclick="filtroAbrir(this);"><a  href="#">Filtro por fondeo que he hecho</a><span class="collapse change" >Collapse/Expand</span></h2>											 
+							<div   class="toggle_container">
+								<div class="box">
+									
+									<table class="tablefilterbyfunding">														
+										<tbody align="left">
+											
+											
+											<h:selectOneRadio id="cbo_filter_funding" value="#{investmentList.typeSearch}" layout="pageDirection" >
+											   	<f:selectItem itemValue="1" itemLabel="Fondeados previamente" />
+											   	<f:selectItem itemValue="2" itemLabel="Sin mi fondeo previo" />
+											   	<f:selectItem itemValue="0" itemLabel="Todos" />
+											   	<p:ajax event="click" />
+											</h:selectOneRadio>
+											
+											
+										</tbody>
+									</table>
+									
+								
+										<p:commandLink id="cmdBuscarFondeados"  styleClass="callActionMedium btnVerde"  onclick="buildQueryFilter();" oncomplete="return filtros();"  update=":pnlScriptStatus"  value="#{msg.ll_link_filter}"  />
+								
+								</div>
+							</div>
+						</div>
+					</div>
+				</h:panelGroup>				
+</ui:composition>				
