@@ -1,0 +1,23 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<h:panelGroup rendered = "false">
+		<tr>
+			<td class = "verPorNumeroPorcentaje" colspan = "6">
+				<h:panelGroup rendered = "#{!investmentList.flagNumberProy}">
+					<p:commandLink actionListener = "#{investmentList.setFlagNumberProy(true)}" update = "filter_by_type :pnlScriptStatus">
+						Ver por número
+					</p:commandLink>
+				</h:panelGroup>
+				
+				<h:panelGroup rendered="#{investmentList.flagNumberProy}">
+					<p:commandLink actionListener="#{investmentList.setFlagNumberProy(false)}" update="filter_by_type :pnlScriptStatus" >
+						Ver por porcentaje
+					</p:commandLink>
+				</h:panelGroup>
+			</td>
+		</tr>
+	</h:panelGroup>				
+</ui:composition>				

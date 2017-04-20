@@ -24,18 +24,14 @@ import mx.com.kubo.model.ProfileInv;
 
 @ManagedBean
 @ViewScoped
-public class Ajustes extends AjustesPMO implements Serializable  {
+public class Ajustes extends AjustesPMO 
+implements Serializable  
+{
+	private static final long serialVersionUID = 8126663850910078137L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-
-	
 	@PostConstruct
-	public void init(){
-		
+	public void init()
+	{		
 		FacesContext faces = FacesContext.getCurrentInstance();
 		
 		ELResolver resolver = faces.getApplication().getELResolver();

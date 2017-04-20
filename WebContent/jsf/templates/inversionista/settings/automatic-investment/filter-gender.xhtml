@@ -4,41 +4,38 @@
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<h:panelGroup rendered="#{sessionBean.area!='M'}" >
-				<div class="dvContent genero">
-					<h2  class="expand_heading" onclick="filtroAbrir(this);"><a  href="#">Filtro por Género</a><span class="collapse change" >Collapse/Expand</span></h2>											 
-					<div   class="toggle_container">
-						<div class="box">
-							<!-- 
-							<div class="chkGender">
-							   	<input type="checkbox" id="chk1" class="chkStl" value="1" checked="checked" />
-							   		<label for="chk1">HOMBRES</label>
-								<input type="checkbox" id="chk2"  class="chkStl" value="2" checked="checked" />
-							   		<label for="chk2">MUJERES</label>
-							</div>
-							 -->
-							 
-							 <table>
-							 
-								 <tr>
-									<td id="gender_Hombre" class="clsTerm"></td>
-									<td >Hombres</td>
-								</tr>
+	<h:panelGroup rendered = "#{sessionBean.area!='M'}" >
+		<div class = "dvContent genero">
+			<h2 class = "expand_heading" onclick="filtroAbrir(this);">
+				<a  href="#">Filtro por Género</a><span class="collapse change" >Collapse/Expand</span>
+			</h2>
+														 
+			<div class = "toggle_container">
+				<div class = "box">							 
+					<table>							 
+						<tr>
+							<td id = "gender_Hombre" class = "clsTerm"></td>
+							<td >Hombres</td>
+						</tr>
 								
-								<tr>
-									<td id="gender_Mujer" class="clsTerm"></td>
-									<td>Mujeres</td>
-								</tr>
-								
-							</table>
-							 
-						
-								<p:commandLink  styleClass="callActionMedium btnVerde"  value="#{msg.ll_link_filter}" onclick="buildQueryFilter();" oncomplete="filtros();" />
-							<div id="labelForGenderFilter">
-								<h:outputLabel id="lblForGenderFilter" value="#{investmentList.labelOnFilteringByAmmount}" oncomplete="filtros();"  update=":pnlScriptStatus" ></h:outputLabel>
-							</div>
-						</div>
+						<tr>
+							<td id="gender_Mujer" class = "clsTerm"></td>
+							<td>Mujeres</td>
+						</tr>								
+					</table>
+							 						
+					<p:commandLink value = "#{msg.ll_link_filter}" 
+								   onclick    = "buildQueryFilter();" 
+								   oncomplete = "filtros();"
+								   styleClass = "callActionMedium btnVerde" />
+								   
+					<div id = "labelForGenderFilter">
+						<h:outputLabel id = "lblForGenderFilter" update = ":pnlScriptStatus" 
+									   value = "#{investmentList.labelOnFilteringByAmmount}" 
+									   oncomplete = "filtros();" />
 					</div>
 				</div>
-				</h:panelGroup>				
+			</div>
+		</div>
+	</h:panelGroup>				
 </ui:composition>				

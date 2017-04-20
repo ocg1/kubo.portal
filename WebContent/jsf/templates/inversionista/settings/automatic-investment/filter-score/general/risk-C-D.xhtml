@@ -1,0 +1,41 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+			<tr>
+				<td class = "tbGeneralRiskCellA">
+			  		<input type = "checkbox" class = "ui-checkbox-filter" name = "checkbox-filter" id = "chkC"/>
+			  	</td>
+			  	
+			  	<td class = "tbGeneralRiskCellB">
+			  		<span id = "BCscoringTestSpan" class = "CStestScoringSpan">C</span>
+			  	</td>
+			  	
+			  	<td class = "tbGeneralRiskCellC">
+			  		<span id = "BCscoringTestSpan" class = "porcentKS">
+			  		
+			  		<h:panelGroup rendered = "#{investmentList.flagNumberProy}">
+			  			<p:outputPanel autoUpdate = "true">#{investmentList.getNumByKuboScore('C')}</p:outputPanel>
+			  		</h:panelGroup>
+			  		
+			  		<h:panelGroup rendered="#{!investmentList.flagNumberProy}">
+			  			<p:outputPanel autoUpdate="true">#{investmentList.getPorcentByKuboScore('C')}%</p:outputPanel>
+			  		</h:panelGroup>
+			  		</span>
+			  	</td>
+			  	
+			  <td class="tbGeneralRiskCellA"><input 	type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkD"/></td>
+			  <td class="tbGeneralRiskCellB"><span 	id="BCscoringTestSpan" class="DStestScoringSpan">D</span></td>
+			  <td class="tbGeneralRiskCellC">
+			  	<span 	id="BCscoringTestSpan" class="porcentKSR">
+			  		<h:panelGroup rendered="#{investmentList.flagNumberProy}">
+			  			<p:outputPanel autoUpdate="true">#{investmentList.getNumByKuboScore('D')}</p:outputPanel>
+			  		</h:panelGroup>
+			  		
+			  		<h:panelGroup rendered="#{!investmentList.flagNumberProy}">
+			  			<p:outputPanel autoUpdate="true">#{investmentList.getPorcentByKuboScore('D')}%</p:outputPanel>
+			  		</h:panelGroup>
+			  	</span>
+			  </td>
+			</tr>				
+</ui:composition>				

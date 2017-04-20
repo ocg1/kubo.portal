@@ -1,0 +1,22 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets">
+
+	<table id = "tbGeneralRisk">														
+		<tbody align = "left">								
+			<tr>
+				<td class = "cellColspan6" colspan = "6">
+					
+					<div id = "dvSelAllRisk" onclick = "seleccionAll();" >
+						Quitar Selección
+					</div>
+				</td>
+			</tr>
+			
+			<ui:include src = "general/numero-porcentaje.xhtml"/>
+			<ui:include src = "general/risk-A-B.xhtml"/>
+			<ui:include src = "general/risk-C-D.xhtml"/>																			
+			<ui:include src = "general/risk-E-F.xhtml"/>					
+			<ui:include src = "general/risk-G.xhtml"/>																												
+		</tbody>
+	</table>
+</ui:composition>						
