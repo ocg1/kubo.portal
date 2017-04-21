@@ -105,11 +105,15 @@ function name_section () {
 		 revisarNUevosChecks ();
 		 
 			 menuSecuencial ();
-		
+			 montoVaciar ();
 		
  }
  
- 
+ function montoVaciar (){
+		if($(".monto_proposito #simulador_ammount").val() == 0) {
+			$(".monto_proposito #simulador_ammount").val("")
+		}
+	}
  
  function acordeon_responsivo () {
 	 var width = $(window).width();	

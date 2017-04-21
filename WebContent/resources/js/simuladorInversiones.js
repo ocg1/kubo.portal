@@ -184,7 +184,7 @@ function drawChart() {
 					          title: 'Distribución del portafolio',
 					          legend:{position:'bottom'},
 					          titleTextStyle: {fontSize: 15},
-					          'colors':['#003366','#7BC9DC','#83BA52','#9DDF3D','#FDC93D','#FDC93D','#FFA220'],
+					          'colors':['#8CDB81','#CCDD93','#7AC6A8','#68E2ED','#38A5DC','#3F51B5','#0097A7'],
 					          'sliceVisibilityThreshold': (1/9720),
 							  'is3D': true,
 							  tooltip: { isHtml: true }
@@ -579,23 +579,23 @@ function createCustomHTMLPieCntnt( riesgo, numProyectos , totalProyectos ){
 	
 	if(riesgo=="A")
 	{
-		 color = "#003366";
+		 color = "#8CDB81";
 		 
 	}else if(riesgo=="B")
 	{
-		 color = "#7BC9DC";
+		 color = "#CCDD93";
 		 
 	}else if(riesgo=="C"){
 		
-		 color = "#83BA52";
+		 color = "#7AC6A8";
 		 
 	}else if(riesgo=="D"){
 		
-		 color = "#9DDF3D";
+		 color = "#68E2ED";
 		 
 	}else if(riesgo=="E"){
 		
-		 color = "#FDC93D";
+		 color = "#38A5DC";
 		 
 	}
 

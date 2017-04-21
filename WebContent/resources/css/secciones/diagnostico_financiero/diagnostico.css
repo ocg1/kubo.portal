@@ -1,24 +1,24 @@
 @CHARSET "UTF-8";
 
 	.riskA {
-		background-color: #003366; 
-		border: 1px solid #003366;
+		background-color: #8CDB81; 
+		border: 1px solid #8CDB81;
 	}
 	.riskB{
-		background-color: #7BC9DC; 
-		border: 1px solid #7BC9DC;
+		background-color: #CCDD93; 
+		border: 1px solid #CCDD93;
 	}
 	.riskC{
-		background: #83BA52; 
-		border: 1px solid #83BA52;
+		background: #7AC6A8; 
+		border: 1px solid #7AC6A8;
 	}
 	.riskD{
-		background-color: #9DDF3D; 
-		border: 1px solid #9DDF3D;
+		background-color:#68E2ED; 
+		border: 1px solid #68E2ED;
 	}
 	.riskE{
-		background: #FDC93D;
-		border: 1px solid #FDC93D;
+		background: #38A5DC;
+		border: 1px solid #38A5DC;
 	}
 	
 	.orange {

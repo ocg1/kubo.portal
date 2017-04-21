@@ -762,7 +762,7 @@ span.fechaAcesso strong{
 		
 		float: right;
 }
-	.menu_principal  div >Ã‚Â ul {
+	.menu_principal  div > ul {
 		overflow: hidden;
 		margin:10px 0 0;
 		display:block;
@@ -1225,7 +1225,7 @@ font-size:40px;
 }
 
  .google-visualization-tooltip {
-  color:#fff;
+  /* color:#fff; */
   border:none;
   font-size:14px;
 }

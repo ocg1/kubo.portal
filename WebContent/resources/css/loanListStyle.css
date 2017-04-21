@@ -384,7 +384,7 @@
 	background: #003366 linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #003366;
 	*/
-	background: #003366;
+	background: #8CDB81;
     border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -393,10 +393,12 @@
     padding-bottom:2px;
 }
 #dvContentLoanLst .B-BCtestScoring{
+	/*
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #7BC9DC;
 	background:#7BC9DC -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #7BC9DC linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
-	background: #7BC9DC;
+	*/
+	background: #CCDD93;
 	 border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -405,10 +407,12 @@
     padding-bottom:2px;
 }
 #dvContentLoanLst .C-BCtestScoring{
+	/*
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #83BA52;
 	background:#83BA52 -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #83BA52 linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
-	background: #83BA52;
+	*/
+	background: #7AC6A8;
 	 border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -418,10 +422,12 @@
 }
 
 #dvContentLoanLst .D-BCtestScoring{
+	/*
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #9DDF3D;
 	background:#9DDF3D -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #9DDF3D linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
-	background: #9DDF3D;
+*/
+	background: #68E2ED;
 	 border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -431,10 +437,12 @@
 }
 
 #dvContentLoanLst .E-BCtestScoring{
+	/*
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #FDC93D;
 	background:#FDC93D -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #FDC93D linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
-	background: #FDC93D;
+	*/
+	background: #38A5DC;
 	 border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -444,10 +452,12 @@
 }
 
 #dvContentLoanLst .F-BCtestScoring{
+	/*
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #FDC93D;
 	background:#FDC93D -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #FDC93D linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
-	background: #FDC93D;
+	*/
+	background: #3F51B5;
 	 border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -457,10 +467,12 @@
 }
 
 #dvContentLoanLst .G-BCtestScoring{
+	/*
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #E07E0E;
 	background:#E07E0E -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #E07E0E linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
-	background: #E07E0E;
+	*/
+	background: #0097A7;
 	 border-radius: 0px 0px 0px 0px;
     height: 17px;
     padding-top: 5px;
@@ -589,70 +601,70 @@
 }
 
 .AstyleList .statusLeftLoanList{
-	background-color: #003366; 
-	border: 1px solid #003366;
+	background-color: #8CDB81; 
+	border: 1px solid #8CDB81;
 }
 .BstyleList .statusLeftLoanList{
-	background-color: #7BC9DC; 
-	border: 1px solid #7BC9DC;
+	background-color: #CCDD93; 
+	border: 1px solid #CCDD93;
 }
 .CstyleList .statusLeftLoanList{
-	background-color: #83BA52; 
-	border: 1px solid #83BA52;
+	background-color: #7AC6A8; 
+	border: 1px solid #7AC6A8;
 }
 .DstyleList .statusLeftLoanList{
-	background-color: #9DDF3D; 
-	border: 1px solid #9DDF3D;
+	background-color: #68E2ED; 
+	border: 1px solid #68E2ED;
 }
 .EstyleList .statusLeftLoanList{
-	background-color: #FDC93D;
-	border: 1px solid #FDC93D;
+	background-color: #38A5DC;
+	border: 1px solid #38A5DC;
 }
 .FstyleList .statusLeftLoanList{
-	border: 1px solid #FFA220;
-	background-color: #FFA220;
+	border: 1px solid #3F51B5;
+	background-color: #3F51B5;
 }
 
 .GstyleList .statusLeftLoanList{
-	border: 1px solid #E07E0E;
-	background-color: #E07E0E;
+	border: 1px solid #0097A7;
+	background-color: #0097A7;
 }
 
 
 .AstyleList .statusRightLoanList{
-	border: 1px solid  #003366; 
+	border: 1px solid  #8CDB81; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .BstyleList .statusRightLoanList{
-	border: 1px solid #7BC9DC; 
+	border: 1px solid #CCDD93; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .CstyleList .statusRightLoanList{
-	border: 1px solid #83BA52; 
+	border: 1px solid #7AC6A8; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .DstyleList .statusRightLoanList{
-	border: 1px solid #9DDF3D; 
+	border: 1px solid #68E2ED; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .EstyleList .statusRightLoanList{
-	border: 1px solid #FDC93D;
+	border: 1px solid #38A5DC;
 	color: #000000;
 	background-color: #FFFFFF;
 }
 
 .FstyleList .statusRightLoanList{
-	border: 1px solid #FFA220;
+	border: 1px solid #3F51B5;
 	color: #000000;
 	background-color: #FFFFFF;
 }
 
 .GstyleList .statusRightLoanList{
-	border: 1px solid #E07E0E;
+	border: 1px solid #0097A7;
 	color: #000000;
 	background-color: #FFFFFF;
 }
@@ -694,7 +706,7 @@
 }
 
 #dvContentLoanLst .AStestScoringSpan{
-	background: none repeat scroll 0 0 #003366; 
+	background: none repeat scroll 0 0 #8CDB81; 
 	border-radius: 0px 0px 0px 0px;
 	color: #FFFFFF;
 	text-align: center;
@@ -707,7 +719,7 @@
 }
 
 #dvContentLoanLst .BStestScoringSpan {
-    background: none repeat scroll 0 0 #7BC9DC;
+    background: none repeat scroll 0 0 #CCDD93;
     border-radius: 0px 0px 0px 0px;
     color: #FFFFFF;
     text-align: center;
@@ -720,7 +732,7 @@
 }
 
 #dvContentLoanLst .CStestScoringSpan{
-	background: none repeat scroll 0 0 #83BA52;
+	background: none repeat scroll 0 0 #7AC6A8;
 	border-radius: 0px 0px 0px 0px;
 	color: #FFFFFF;
 	text-align: center;
@@ -733,7 +745,7 @@
 }
 
 #dvContentLoanLst .DStestScoringSpan{
-	background: none repeat scroll 0 0 #9DDF3D;
+	background: none repeat scroll 0 0 #68E2ED;
 	border-radius: 0px 0px 0px 0px;
 	color: #FFFFFF;
 	text-align: center;
@@ -746,7 +758,7 @@
 }
 
 #dvContentLoanLst .EStestScoringSpan{
-	background: none repeat scroll 0 0 #FDC93D;
+	background: none repeat scroll 0 0 #38A5DC;
 	border-radius: 0px 0px 0px 0px;
 	color: #FFFFFF;
 	text-align: center;
@@ -759,7 +771,7 @@
 }
 
 #dvContentLoanLst .FStestScoringSpan{
-	background: #FFA220; 
+	background: #3F51B5; 
 	text-align: left;
 	width: 99%;
 	display: block;
@@ -773,7 +785,7 @@
 }
 
 #dvContentLoanLst .GStestScoringSpan{
-	background: #E07E0E; 
+	background: #0097A7; 
 	text-align: left;
 	width: 99%;
 	display: block;

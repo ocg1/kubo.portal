@@ -7608,7 +7608,7 @@ display:block;
 
  
 .sucesssPopUp {
-	border: solid 2px #8FC450;
+	/*border: solid 2px #8FC450;*/
 	width: 88.8%;
 	padding: 26px 4% 5px;
 }
@@ -8547,8 +8547,14 @@ display:none;
 	position:relative;
 	/* width: 100%; */
 	padding:0;
+	list-style: none !important;
+	overflow: hidden;
 }
 
+.stlSetPassBCNIP li {
+	list-style: none !important;
+
+}
 .stlSetPassBCNIP  .mostrar i {
 	position:absolute;
 	right:10px;
@@ -8664,4 +8670,4 @@ display:none;
 :focus::-webkit-input-placeholder {color:transparent; opacity:0}
 :focus::-moz-placeholder { color:transparent; opacity:0} 
 :focus:-ms-input-placeholder { color:transparent; opacity:0 } 
-:focus:-moz-placeholder {color:transparent; opacity:0 }s
+:focus:-moz-placeholder {color:transparent; opacity:0 }

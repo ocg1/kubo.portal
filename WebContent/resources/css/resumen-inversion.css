@@ -976,29 +976,29 @@ div.detailBoxInv:last-child {
 }
 
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(1) td:nth-child(1) {
-  background:#003366;
+  background: #8CDB81;
 }
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(2) td:nth-child(1) {
-  background:#7BC9DC;
+  background:#CCDD93;
 }
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(3) td:nth-child(1) {
-  background:#83BA52;
+  background:#7AC6A8;
 }
 
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(4) td:nth-child(1) {
-  background:#9DDF3D;
+  background:#68E2ED;
 }
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(5)  td:nth-child(1){
-  background:#FDC93D;
+  background:#38A5DC;
 }
 
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(6)  td:nth-child(1){
-  background:#FDC93D;
+  background:#3F51B5;
 }
 
 
 #pnlEdoCuentInv #dvGraphicsInv .distribucion svg + div  tbody tr:nth-child(7) td:nth-child(1) {
-  background:#FFA220;
+  background:#0097A7;
 }
 
 

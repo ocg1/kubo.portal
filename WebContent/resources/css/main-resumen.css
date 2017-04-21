@@ -817,68 +817,68 @@ border-bottom: solid 1px #ccc;
 }
 
 .dvRiskA .statusLeft{
-	background-color: #003366; 
-	border: 1px solid #003366;
+	background-color: #8CDB81; 
+	border: 1px solid #8CDB81;
 }
 .dvRiskB .statusLeft{
-	background-color: #7BC9DC; 
-	border: 1px solid #7BC9DC;
+	background-color: #CCDD93; 
+	border: 1px solid #CCDD93;
 }
 .dvRiskC .statusLeft{
-	background-color: #83BA52; 
-	border: 1px solid #83BA52;
+	background-color: #7AC6A8; 
+	border: 1px solid #7AC6A8;
 }
 .dvRiskD .statusLeft{
-	background-color: #9DDF3D; 
-	border: 1px solid #9DDF3D;
+	background-color: #68E2ED; 
+	border: 1px solid #68E2ED;
 }
 .dvRiskE .statusLeft{
-	background-color: #FDC93D;
-	border: 1px solid #FDC93D;
+	background-color: #38A5DC;
+	border: 1px solid #38A5DC;
 }
 
 .dvRiskF .statusLeft{
-	background-color: #F6AE70;
-	border: 1px solid #F6AE70;
+	background-color: #3F51B5;
+	border: 1px solid #3F51B5;
 }
 
 .dvRiskG .statusLeft{
-	background-color: #f19648;
-	border: 1px solid #f19648;
+	background-color: #0097A7;
+	border: 1px solid #0097A7;
 }
 
 .dvRiskA .statusRight{
-	border: 1px solid  #003366; 
+	border: 1px solid  #8CDB81; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .dvRiskB .statusRight{
-	border: 1px solid #7BC9DC; 
+	border: 1px solid #CCDD93; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .dvRiskC .statusRight{
-	border: 1px solid #83BA52; 
+	border: 1px solid #7AC6A8; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .dvRiskD .statusRight{
-	border: 1px solid #9DDF3D; 
+	border: 1px solid #68E2ED; 
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .dvRiskE .statusRight{
-	border: 1px solid #FDC93D;
+	border: 1px solid #38A5DC;
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .dvRiskF .statusRight{
-	border: 1px solid #F6AE70;
+	border: 1px solid #3F51B5;
 	color: #000000;
 	background-color: #FFFFFF;
 }
 .dvRiskG .statusRight{
-	border: 1px solid #F19648;
+	border: 1px solid #0097A7;
 	color: #000000;
 	background-color: #FFFFFF;
 }
