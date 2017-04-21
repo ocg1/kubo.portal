@@ -10,16 +10,19 @@
 			<h:outputText value = "CONFIGURACIÓN" />
 		</div>
 		
-		<ui:include src = "inversionista/settings/investment-param.xhtml"/>
-				
-		<h:outputLabel escape = "false" value = "#{ajustes.investor_param_script}" />
+		<h:panelGroup rendered = "#{ajustes.investment_param_ENABLED}">
+			<ui:include src = "inversionista/settings/investment-param.xhtml"/>
+							
+			<h:outputLabel escape = "false" value = "#{ajustes.investor_param_script}" />
+		</h:panelGroup>
 		
-		<h:panelGroup rendered = "true">
+		<h:panelGroup rendered = "#{ajustes.automatic_investment_ENABLED}">
+			<ui:include src = "inversionista/settings/automatic-investment/list.xhtml"/>
 			<ui:include src = "inversionista/settings/automatic-investment.xhtml"/>
 		</h:panelGroup>		
 	</h:form> 
 	
 	<h:panelGroup id = "pnlScriptStatus">
-		<h:outputText escape = "false" value = "#{investmentList.scriptStatus}"  />
+		<h:outputText escape = "false" value = "#{ajustes.filter.scriptStatus}"  />
 	</h:panelGroup>
 </ui:composition>

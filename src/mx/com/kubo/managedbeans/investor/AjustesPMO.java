@@ -10,8 +10,8 @@ import mx.com.kubo.model.SystemParamPK;
 
 public class AjustesPMO extends AjustesDMO  {
 
-	protected void initScript(){
-		
+	protected void initScript()
+	{		
 		investor_param_script = "<script>";
 		
 		ht = null;
@@ -23,19 +23,17 @@ public class AjustesPMO extends AjustesDMO  {
 		SystemParam sysParam = null;
 		InvestorParam p = null;
 		
-		if( lst != null && lst.size() > 0 ){
-			
+		if( lst != null && lst.size() > 0 )
+		{			
 			ht = initLst( lst );
-			
-			
-			
+									
 			p =  ht.get(ID_SUMA_MONTO_MAXIMO_E5_INV);
 			
-			if( p != null ){
-				
+			if( p != null )
+			{				
 				investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_E5_INV+"').val("+p.getValue_str()+"); ";
 				
-			}else{
+			} else {
 				
 				sysPK = new SystemParamPK();
 				sysParam = null;
@@ -43,23 +41,21 @@ public class AjustesPMO extends AjustesDMO  {
 				sysPK.setSystem_param_id(ID_SUMA_MONTO_MAXIMO_E5_SYS); // Porcentaje del saldo total que sirve como tope máximo de la suma de los montos que se ha invertido en proyectos de riesgo ( E5 )
 				sysParam = systemparamservice.loadSelectedSystemParam(sysPK);
 				
-				if( sysParam != null ){
-					
-					investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_E5_INV+"').val("+sysParam.getValue()+"); ";
-					
-				}
-				
+				if( sysParam != null )
+				{					
+					investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_E5_INV+"').val("+sysParam.getValue()+"); ";					
+				}				
 			}
 			
-			p= null;
+			p = null;
 			
-			p =  ht.get(ID_SUMA_MONTO_MAXIMO_FG_INV);
+			p = ht.get(ID_SUMA_MONTO_MAXIMO_FG_INV);
 			
-			if( p != null ){
-				
+			if( p != null )
+			{				
 				investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_FG_INV+"').val("+p.getValue_str()+"); ";
 				
-			}else{
+			} else {
 				
 				sysPK = new SystemParamPK();
 				sysParam = null;
@@ -67,15 +63,14 @@ public class AjustesPMO extends AjustesDMO  {
 				sysPK.setSystem_param_id(ID_SUMA_MONTO_MAXIMO_FG_SYS); // Porcentaje del saldo total que sirve como tope máximo de la suma de los montos que se ha invertido en proyectos de riesgo ( F1,G1 )
 				sysParam = systemparamservice.loadSelectedSystemParam(sysPK);
 				
-				if( sysParam != null ){
-					
+				if( sysParam != null )
+				{					
 					investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_FG_INV+"').val("+sysParam.getValue()+"); ";
 					
-				}
-				
+				}				
 			}
 			
-		}else{
+		} else {
 			
 			sysPK = new SystemParamPK();
 			sysParam = null;
@@ -83,10 +78,9 @@ public class AjustesPMO extends AjustesDMO  {
 			sysPK.setSystem_param_id(ID_SUMA_MONTO_MAXIMO_E5_SYS); // Porcentaje del saldo total que sirve como tope máximo de la suma de los montos que se ha invertido en proyectos de riesgo ( E5 )
 			sysParam = systemparamservice.loadSelectedSystemParam(sysPK);
 			
-			if( sysParam != null ){
-				
-				investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_E5_INV+"').val("+sysParam.getValue()+"); ";
-				
+			if( sysParam != null )
+			{				
+				investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_E5_INV+"').val("+sysParam.getValue()+"); ";				
 			}
 			
 			sysPK = new SystemParamPK();
@@ -96,55 +90,51 @@ public class AjustesPMO extends AjustesDMO  {
 			sysParam = systemparamservice.loadSelectedSystemParam(sysPK);
 			
 			
-			if( sysParam != null ){
-				
-				investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_FG_INV+"').val("+sysParam.getValue()+"); ";
-				
-			}
-		
+			if( sysParam != null )
+			{				
+				investor_param_script += "$('#param_id_"+ID_SUMA_MONTO_MAXIMO_FG_INV+"').val("+sysParam.getValue()+"); ";				
+			}		
 		}
 		
-		investor_param_script += " </script>";
-		
+		investor_param_script += " </script>";		
 	}
 	
-	private Hashtable<Integer, InvestorParam>  initLst( List<InvestorParam> lst){
-		
+	private Hashtable<Integer, InvestorParam>  initLst( List<InvestorParam> lst)
+	{		
 		Hashtable<Integer, InvestorParam> ht =  new Hashtable<Integer, InvestorParam>();
 		
-			for( InvestorParam p : lst ){
+			for( InvestorParam p : lst )
+			{
 				ht.put(p.getPk().getInvestment_param_id(), p);
 			}
 		
-		return ht;
-		
+		return ht;		
 	}
 	
-	protected void inicializaSaldos(){
-		
+	protected void inicializaSaldos()
+	{		
 		saldoTotalActual = investment_list.getSaldoActual();
-		cuentaActual = investment_list.getCuentaActual();
+		    cuentaActual = investment_list.getCuentaActual();
+		    
 		montoInvertido_E5 = 0D;
 		montoInvertido_FG = 0D;
 		
 		List<MontoInvertido_F_G_Collector> lst =  montoInvertido_F_G_service.getMontoInvertido_F_G(cuentaActual);
-		if( lst != null ){
-			for( MontoInvertido_F_G_Collector coll : lst ){
-				if( coll != null && coll.getKubo_score() != null && coll.getKubo_score().equals( "E5" ) ){
-					
-					montoInvertido_E5 += coll.getTotalFondeado();
-					
+		
+		if( lst != null )
+		{
+			for( MontoInvertido_F_G_Collector coll : lst )
+			{
+				if( coll != null && coll.getKubo_score() != null && coll.getKubo_score().equals( "E5" ) )
+				{					
+					montoInvertido_E5 += coll.getTotalFondeado();					
 				}
 				
-				if( coll != null && coll.getKubo_score() != null && ( coll.getKubo_score().equals( "F1" ) || coll.getKubo_score().equals( "G1" ) )){
-					
-					montoInvertido_FG += coll.getTotalFondeado();
-					
+				if( coll != null && coll.getKubo_score() != null && ( coll.getKubo_score().equals( "F1" ) || coll.getKubo_score().equals( "G1" ) ))
+				{					
+					montoInvertido_FG += coll.getTotalFondeado();					
 				}
-			}
-		
-		}
-		
-	}
-	
+			}	
+		}	
+	}	
 }

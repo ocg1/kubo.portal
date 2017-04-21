@@ -593,7 +593,7 @@ function removerSeleccionado()
 	$(".inversionCelda").removeClass("selected")
 }
 
-$(document).ready(function()
+Filters.init = function()
 {
 	console.log("Filters.init(): ");
 	
@@ -755,4 +755,4 @@ $(document).ready(function()
 		}
 		
 	} );
-});
+};

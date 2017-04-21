@@ -8,10 +8,10 @@
 <!-- 
 update = ":table_proyect_list:creditos, pnlNumCredito , lblForFundedFilter, filter_by_status, :table_proyect_list:pnlInvButton :frmInvFlot:pnlInvButtonFlot :pnlScriptStatus " 
 -->
-		<p:commandLink id = "updateByFiltering"  					    
+		<p:commandLink id = "updateByFiltering" update = "panel-automatic-investment-list"  					    
 					   onstart        = "displayMessageProcessing('msgprocessing',false);" 
 					   oncomplete     = "closeFancy();"
-					   actionListener = "#{investmentList.updateByFiltering}" />
+					   actionListener = "#{ajustes.filter.updateByFiltering}" />
 
 	</div>
 					
@@ -30,6 +30,6 @@ update = ":table_proyect_list:creditos, pnlNumCredito , lblForFundedFilter, filt
 	<input type="hidden" id="cadena3"         name="cadena3"      value=""/>
 	<input type="hidden" id="cadenaGender"    name="cadenaGender" value=""/>
 	<input type="hidden" id="destiny_str"     name="destiny_str"  value=""/>
-	<input type="hidden" id="destiny_str_val" name="risk_str"     value="#{investmentList.destiny_str}"/>
-	<input type="hidden" id="risk_str"        name="risk_str"     value="#{investmentList.risk_str}"/>						
+	<input type="hidden" id="destiny_str_val" name="risk_str"     value = "#{ajustes.filter.destiny_str}"/>
+	<input type="hidden" id="risk_str"        name="risk_str"     value = "#{ajustes.filter.risk_str}"/>						
 </ui:composition>				

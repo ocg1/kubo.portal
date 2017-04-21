@@ -15,12 +15,12 @@
 		<td class = "tbGeneralRiskCellC">
 			<span id = "BCscoringTestSpan" class = "porcentKS">
 			
-		  		<h:panelGroup rendered = "#{investmentList.flagNumberProy}">
-		  			<p:outputPanel autoUpdate = "true">#{investmentList.getNumByKuboScore('A')}</p:outputPanel>
+		  		<h:panelGroup rendered = "#{ajustes.filter.flagNumberProy}">
+		  			<p:outputPanel autoUpdate = "true">#{ajustes.filter.getNumByKuboScore('A')}</p:outputPanel>
 		  		</h:panelGroup>
 		  		
-		  		<h:panelGroup rendered = "#{!investmentList.flagNumberProy}">
-		  			<p:outputPanel autoUpdate = "true">#{investmentList.getPorcentByKuboScore('A')}%</p:outputPanel>
+		  		<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
+		  			<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('A')}%</p:outputPanel>
 		  		</h:panelGroup>
 			</span>
 		</td>
@@ -35,12 +35,12 @@
 								  
 		<td class = "tbGeneralRiskCellC">
 			<span id = "BCscoringTestSpan" class = "porcentKSR">
-				<h:panelGroup rendered = "#{investmentList.flagNumberProy}">
-					<p:outputPanel autoUpdate = "true">#{investmentList.getNumByKuboScore('B')}</p:outputPanel>
+				<h:panelGroup rendered = "#{ajustes.filter.flagNumberProy}">
+					<p:outputPanel autoUpdate = "true">#{ajustes.filter.getNumByKuboScore('B')}</p:outputPanel>
 				</h:panelGroup>
 			  		
-				<h:panelGroup rendered = "#{!investmentList.flagNumberProy}">
-					<p:outputPanel autoUpdate = "true">#{investmentList.getPorcentByKuboScore('B')}%</p:outputPanel>
+				<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
+					<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('B')}%</p:outputPanel>
 				</h:panelGroup>
 			</span>
 		</td>

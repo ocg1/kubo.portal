@@ -2,23 +2,28 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
-			<h:panelGroup rendered="#{investmentList.flagInversionFG}" >
-								<tr>
-								  <td class="tbGeneralRiskCellA"><input  type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkG"/></td>
-								  <td class="tbGeneralRiskCellB" ><span id="BCscoringTestSpan" class="GStestScoringSpan">G</span></td>
-								  <td class="tbGeneralRiskCellC">
-								
-								  	<span id="BCscoringTestSpan" class="porcentKS">
-								 
-								  		<h:panelGroup rendered="#{investmentList.flagNumberProy}">
-								  		
-								  			<p:outputPanel autoUpdate="true">#{investmentList.getNumByKuboScore('G')}</p:outputPanel>
-								  		</h:panelGroup>
-								  		<h:panelGroup rendered="#{!investmentList.flagNumberProy}">
-								  			<p:outputPanel autoUpdate="true">#{investmentList.getPorcentByKuboScore('G')}%</p:outputPanel>
-								  		</h:panelGroup>
-								  	</span>
-								  </td>
-								 </tr>
-			</h:panelGroup>					
+				
+	<h:panelGroup rendered = "#{ajustes.filter.flagInversionFG}" >
+		<tr>
+			<td class = "tbGeneralRiskCellA">
+				<input type = "checkbox" class = "ui-checkbox-filter" name = "checkbox-filter" id = "chkG"/>
+			</td>
+			
+			<td class = "tbGeneralRiskCellB">
+				<span id = "BCscoringTestSpan" class = "GStestScoringSpan">G</span>
+			</td>
+			
+			<td class = "tbGeneralRiskCellC">								
+				<span id = "BCscoringTestSpan" class = "porcentKS">								 
+					<h:panelGroup rendered = "#{ajustes.filter.flagNumberProy}">								  		
+						<p:outputPanel autoUpdate = "true">#{ajustes.filter.getNumByKuboScore('G')}</p:outputPanel>
+					</h:panelGroup>
+					
+					<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
+						<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('G')}%</p:outputPanel>
+					</h:panelGroup>
+				</span>
+			</td>
+		</tr>
+	</h:panelGroup>					
 </ui:composition>				

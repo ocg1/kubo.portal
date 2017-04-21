@@ -1,5 +1,9 @@
 console.log("automatic-investment.js");
 
+AutomaticInvestment.activar = function(automatic_investment_id)
+{
+	console.log("AutomaticInvestment.activar(): " + automatic_investment_id);
+};
 
 function dibujaLimites( val )
 {
@@ -327,7 +331,26 @@ function seleccionDestiny(){
 	
 	$("#destiny_str").val( strCadena );
 	$("#destiny_str_val").val( strCadena );
-	
-	
-	
 }
+
+function esInteger(e)
+{
+	var charCode;
+	if (navigator.appName == "Netscape"){
+		charCode = e.which;
+	}
+	else{
+		charCode = e.keyCode;
+	}	
+	if (48 > charCode || charCode > 57){
+		if(charCode == 8 || charCode == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	else{
+		return true;
+	}
+} 

@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.el.ELContext;
@@ -234,7 +233,8 @@ implements InvestmentListIMO
 	    	
 			responseJSON = Response.ok(proyectList_A).build();
 		}
-
+		
+/*		
 		public void updateByFiltering(ActionEvent e)
 	    {
 	    	
@@ -315,10 +315,10 @@ implements InvestmentListIMO
 	    	
 	    	investmentFilterServiceImp.addFilterUsed(filterInvestment);
 	    	
-	    	inicializaListas();
-	    	
+	    	inicializaListas();	    
 	    }
-	    	    	    
+*/		
+		
 	    public void filteringAfterIndivInversion()
 	    {	    	
 // CREA FILTRO

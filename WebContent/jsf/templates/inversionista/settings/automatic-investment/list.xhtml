@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:p="http://primefaces.org/ui">
+				
+	<h:panelGroup id = "panel-automatic-investment-list">				
+		<div class = "gestion-sesiones container" >
+	
+			<div style = "width: 99%; overflow: hidden;">
+				<div style="float: left; padding-top: 18px;">
+					<strong>Inversiones Automáticas:			
+					<h:outputText value="#{ajustes.filter.automatic_investment_list.size()}" /></strong>
+				</div>
+<!-- 
+				<div onclick = "Administracion.delete_blocked_person();" 
+				     class = "callActionMedium borrarSesion btnNaranja " 
+				     style="float: right; width: 120px; margin-right: 5px">
+					Borrar
+				</div>
+-->				
+			</div>
+				
+			<h:panelGroup rendered = "#{ajustes.filter.automatic_investment_list.size() > 0}">
+				<div style = "height: 270px; clear: both;">			
+					<table cellspacing="0"  cellpadding="0" border = "0"  class="formato_tablas sesiones">
+						<thead>
+							<tr>
+								<th>no.</th>
+								<th style= "text-align: left;">Filtro</th>
+								<th style= "text-align: left;">Activo</th>
+								<th style= "text-align: left;">Termina</th>		
+								<th>    </th>				
+							</tr>
+						</thead>
+								
+						<tbody>
+							<ui:repeat value = "#{ajustes.filter.automatic_investment_list}" 
+									   var = "automatic_investment" varStatus = "row_counter">
+									<tr>
+										<td >#{row_counter.index + 1}</td>
+										<td >#{automatic_investment.filter}</td>									
+										<td>#{automatic_investment.is_active}</td>									
+										<td>
+											<h:outputText value = "#{automatic_investment.finished_date}" >
+	   				 							<f:convertDateTime pattern = "dd-MM-yyyy" />   			
+											</h:outputText>									
+										</td>	
+	
+										<td>						
+											<div onclick = "AutomaticInvestment.activar(#{automatic_investment.automatic_investment_id});" 
+											     class = "callActionMedium borrarSesion btnNaranja ">
+												Activar
+											</div>		
+										</td>									
+									</tr>						
+							</ui:repeat>
+						</tbody>
+					</table>
+				</div>
+				
+				<script>
+					 $(document).ready(function() {
+				    
+					setTimeout(function(){
+			    		
+						$(".sesiones tr:odd").addClass("par");
+			
+						
+						 
+					 	},100);
+					
+					 });
+					
+				</script>
+			</h:panelGroup>
+		</div>			
+	</h:panelGroup>					
+</ui:composition>

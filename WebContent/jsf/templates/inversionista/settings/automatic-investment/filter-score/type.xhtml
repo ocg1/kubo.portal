@@ -7,12 +7,11 @@
 	<div class = "generalDetallada">	
 		<sup class = "nuevo">¡Nuevo!</sup>
 		
-		<h:selectOneRadio id = "flagRisk" value = "#{investmentList.flagRisk}" layout = "pageDirection" >
+		<h:selectOneRadio id = "flagRisk" value = "#{ajustes.filter.flagRisk}" layout = "pageDirection" >
 		   	<f:selectItem itemValue = "0" itemLabel = "General" />
 		   	<f:selectItem itemValue = "1" itemLabel = "Detallada" />
 		   	
 		   	<p:ajax event = "change" oncomplete = "initViewRisk();" />
 		</h:selectOneRadio>
-
 	</div>
 </ui:composition>							

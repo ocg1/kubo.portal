@@ -5,14 +5,13 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.el.ELContext;
-import javax.el.ELResolver;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 
+import mx.com.kubo.investor.settings.AutomaticInvestmentIMP;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.Change_control;
@@ -32,14 +31,14 @@ implements Serializable
 	@PostConstruct
 	public void init()
 	{		
-		FacesContext faces = FacesContext.getCurrentInstance();
+		faces = FacesContext.getCurrentInstance();
 		
-		ELResolver resolver = faces.getApplication().getELResolver();
-		ELContext context  = faces.getELContext();
+		resolver = faces.getApplication().getELResolver();
+		context  = faces.getELContext();
 		
-		sesion          	= (SessionBean)       resolver.getValue(context, null, "sessionBean");
+		sesion = (SessionBean) resolver.getValue(context, null, "sessionBean");
 		
-		investment_list     = (InvestmentList)       resolver.getValue(context, null, "investmentList");	
+		investment_list = (InvestmentList) resolver.getValue(context, null, "investmentList");	
 		
 		paramCat = paramcatsevice.getInvestmentParamCat();
 		
@@ -51,6 +50,9 @@ implements Serializable
 		
 		puedeInvertirFG();
 		
+		filter = new AutomaticInvestmentIMP();
+		filter.setSesion(sesion);
+		filter.init();
 	}
 
 	

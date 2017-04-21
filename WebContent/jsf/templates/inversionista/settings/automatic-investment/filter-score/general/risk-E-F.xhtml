@@ -2,36 +2,48 @@
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
-												<tr>
-								  <td class="tbGeneralRiskCellA"><input  type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkE"/></td>
-								  <td class="tbGeneralRiskCellB"><span id="BCscoringTestSpan" class="EStestScoringSpan">E</span></td>
-								  <td class="tbGeneralRiskCellC">
-								
-								  	<span id="BCscoringTestSpan" class="porcentKS">
-								 
-								  		<h:panelGroup rendered="#{investmentList.flagNumberProy}">
-								  		
-								  			<p:outputPanel autoUpdate="true">#{investmentList.getNumByKuboScore('E')}</p:outputPanel>
-								  		</h:panelGroup>
-								  		<h:panelGroup rendered="#{!investmentList.flagNumberProy}">
-								  			<p:outputPanel autoUpdate="true">#{investmentList.getPorcentByKuboScore('E')}%</p:outputPanel>
-								  		</h:panelGroup>
-								  	</span>
-								  </td>
+				
+	<tr>
+		<td class="tbGeneralRiskCellA">
+			<input  type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkE"/>
+		</td>
+		
+		<td class="tbGeneralRiskCellB">
+			<span id="BCscoringTestSpan" class="EStestScoringSpan">E</span>
+		</td>
+		
+		<td class = "tbGeneralRiskCellC">
+			<span id = "BCscoringTestSpan" class = "porcentKS">								 
+				<h:panelGroup rendered = "#{ajustes.filter.flagNumberProy}">								  		
+					<p:outputPanel autoUpdate = "true">#{ajustes.filter.getNumByKuboScore('E')}</p:outputPanel>
+				</h:panelGroup>
+				
+				<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
+					<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('E')}%</p:outputPanel>
+				</h:panelGroup>
+			</span>
+		</td>
 								  								  
-								  <h:panelGroup rendered="#{investmentList.flagInversionFG}" >
-								  <td class="tbGeneralRiskCellA"><input 	type="checkbox" class="ui-checkbox-filter" name="checkbox-filter" id="chkF"/></td>
-								  <td class="tbGeneralRiskCellB"><span 	id="BCscoringTestSpan" class="FStestScoringSpan">F</span></td>
-								  <td class="tbGeneralRiskCellC">
-								  	<span 	id="BCscoringTestSpan" class="porcentKSR">
-								  		<h:panelGroup rendered="#{investmentList.flagNumberProy}">
-								  			<p:outputPanel autoUpdate="true">#{investmentList.getNumByKuboScore('F')}</p:outputPanel>
-								  		</h:panelGroup>
-								  		<h:panelGroup rendered="#{!investmentList.flagNumberProy}">
-								  			<p:outputPanel autoUpdate="true">#{investmentList.getPorcentByKuboScore('F')}%</p:outputPanel>
-								  		</h:panelGroup>
-								  	</span>
-								  </td>
-								  </h:panelGroup>
-								</tr>
+	<h:panelGroup rendered = "#{ajustes.filter.flagInversionFG}" >
+		<td class = "tbGeneralRiskCellA">
+			<input type = "checkbox" class = "ui-checkbox-filter" name = "checkbox-filter" id = "chkF"/>
+		</td>
+		
+		<td class = "tbGeneralRiskCellB">
+			<span id = "BCscoringTestSpan" class = "FStestScoringSpan">F</span>
+		</td>
+		
+		<td class = "tbGeneralRiskCellC">
+			<span id = "BCscoringTestSpan" class = "porcentKSR">
+		  		<h:panelGroup rendered="#{ajustes.filter.flagNumberProy}">
+		  			<p:outputPanel autoUpdate="true">#{ajustes.filter.getNumByKuboScore('F')}</p:outputPanel>
+		  		</h:panelGroup>
+		  		
+		  		<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
+		  			<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('F')}%</p:outputPanel>
+		  		</h:panelGroup>
+	  		</span>
+		</td>
+	</h:panelGroup>
+	</tr>
 </ui:composition>				

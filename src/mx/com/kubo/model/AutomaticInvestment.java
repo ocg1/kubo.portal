@@ -13,14 +13,10 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table( name = "in_automatic_investment" )
-public class AutomaticInvestment implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity @Table( name = "in_automatic_investment" )
+public class AutomaticInvestment implements Serializable 
+{
+	private static final long serialVersionUID = 2836618487083272042L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int automatic_investment_id; // ` int(11) NOT NULL AUTO_INCREMENT,

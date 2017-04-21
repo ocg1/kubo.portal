@@ -1,52 +1,53 @@
 <ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
 				xmlns:ui = "http://java.sun.com/jsf/facelets"
-				xmlns:h  = "http://java.sun.com/jsf/html"
-				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:h  = "http://java.sun.com/jsf/html"				
 				xmlns:p  = "http://primefaces.org/ui">
-				 <h:panelGroup rendered="#{sessionBean.area =='I'}" >
-				<div class="dvContent plazo">
-					
-					<h2  class="expand_heading abrirFiltro" onclick="filtroAbrir(this);"><a  href="#">#{msg.ll_filter_term}</a><span class="collapse change" >Collapse/Expand</span></h2>											 
-					
-					<div   class="toggle_container">
-						<div class="box">
-							<div id="">
-								
-								<div class="plazoDiv">
-									<table class="plazoTable">
-										
-										<tr>
-											<th colspan="5"><h4>Plazo en meses</h4></th>
-										</tr>
-										
-										<tr>
-											<td  class="clDescTitHT2"> 4 - 6  </td>
-											<td  class="clDescTitHT2"> 7 - 9  </td>
-											<td  class="clDescTitHT2">10 - 12 </td>
-											<td  class="clDescTitHT2">13 - 15 </td>
-											<td  class="clDescTitHT2">16 - 24 </td>
-											<td  class="clDescTitHT2"> +24 </td>
-										</tr>
-										
-										<tr>
-											<td id="4T6_1"   class="clsTerm plazo_1"></td>
-											<td id="7T9_2"   class="clsTerm plazo_2"></td>
-											<td id="10T12_3" class="clsTerm plazo_3"></td>
-											<td id="13T15_4" class="clsTerm plazo_4"></td>
-											<td id="16T24_5" class="clsTerm plazo_5"></td>
-											<td id="25T36_6" class="clsTerm plazo_6"></td>
-											
-										</tr>
-									</table>
-								</div>
-								
-								
-									<p:commandLink styleClass="callActionMedium btnVerde"  value="#{msg.ll_link_filter}"  onclick="buildQueryFilter();" oncomplete="filtros();" update=":pnlScriptStatus"/>
-								
-							</div>
-						</div>
-					</div>
-				</div> 
 				
-				</h:panelGroup>				
+	<h:panelGroup rendered = "#{sessionBean.area =='I'}" >
+		<div class = "dvContent plazo">
+					
+			<h2 class = "expand_heading abrirFiltro" onclick="filtroAbrir(this);">
+				<a href = "#">#{msg.ll_filter_term}</a>
+				<span class = "collapse change" >Collapse/Expand</span>
+			</h2>											 
+					
+			<div class = "toggle_container">
+				<div class = "box">
+					<div id = "">								
+						<div class = "plazoDiv">
+							<table class = "plazoTable">									
+								<tr>
+									<th colspan="5"><h4>Plazo en meses</h4></th>
+								</tr>
+								
+								<tr>
+									<td  class="clDescTitHT2"> 4 - 6  </td>
+									<td  class="clDescTitHT2"> 7 - 9  </td>
+									<td  class="clDescTitHT2">10 - 12 </td>
+									<td  class="clDescTitHT2">13 - 15 </td>
+									<td  class="clDescTitHT2">16 - 24 </td>
+									<td  class="clDescTitHT2"> +24 </td>
+								</tr>
+										
+								<tr>
+									<td id="4T6_1"   class="clsTerm plazo_1"></td>
+									<td id="7T9_2"   class="clsTerm plazo_2"></td>
+									<td id="10T12_3" class="clsTerm plazo_3"></td>
+									<td id="13T15_4" class="clsTerm plazo_4"></td>
+									<td id="16T24_5" class="clsTerm plazo_5"></td>
+									<td id="25T36_6" class="clsTerm plazo_6"></td>									
+								</tr>
+							</table>
+						</div>
+																
+						<p:commandLink      value = "#{msg.ll_link_filter}" update = ":pnlScriptStatus"  
+									      onclick = "buildQueryFilter();" 
+									   oncomplete = "filtros();" 						
+									   styleClass = "callActionMedium btnVerde" />
+								
+					</div>
+				</div>
+			</div>
+		</div> 	
+	</h:panelGroup>				
 </ui:composition>				

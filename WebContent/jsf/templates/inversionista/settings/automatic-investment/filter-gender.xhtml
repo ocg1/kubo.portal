@@ -6,8 +6,9 @@
 				
 	<h:panelGroup rendered = "#{sessionBean.area!='M'}" >
 		<div class = "dvContent genero">
-			<h2 class = "expand_heading" onclick="filtroAbrir(this);">
-				<a  href="#">Filtro por Género</a><span class="collapse change" >Collapse/Expand</span>
+			<h2 class = "expand_heading" onclick = "filtroAbrir(this);">
+				<a  href="#">Filtro por Género</a>
+				<span class="collapse change" >Collapse/Expand</span>
 			</h2>
 														 
 			<div class = "toggle_container">
@@ -31,7 +32,7 @@
 								   
 					<div id = "labelForGenderFilter">
 						<h:outputLabel id = "lblForGenderFilter" update = ":pnlScriptStatus" 
-									   value = "#{investmentList.labelOnFilteringByAmmount}" 
+									   value = "#{ajustes.filter.labelOnFilteringByAmmount}" 
 									   oncomplete = "filtros();" />
 					</div>
 				</div>
