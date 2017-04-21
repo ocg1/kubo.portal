@@ -42,7 +42,6 @@
 					  			
 					  			<li class="monto_celda">Monto a <p:commandLink id="tooltip_inversiones6"  styleClass="tooltip_text" >invertir:</p:commandLink>
 					  			
-					  			
 					  						<p:tooltip for="tooltip_inversiones6" styleClass="tooltipStl"  showEvent="click" hideEvent="blur"  showEffect="fade" hideEffect="fade" trackMouse="true">
 										<ui:include src="../../../templates/content_tooltip.xhtml" />
 									
@@ -121,10 +120,10 @@
 						 <span>Distribuir</span> <i class="fa fa-repeat"></i>
 					</div>
 					<div class="btnDistribuirSel callActionMedium btnGris" onclick="distribuirEnSeleccionados();"><span>Distribuir en seleccionados</span><i class="fa fa-repeat absoluto"></i> <i class="fa fa-thumb-tack"></i></div>
-					
+				
 				  <h:panelGroup rendered="#{investmentList.displayInvButton and sessionBean.area=='I' and investmentList.blnPaquete }">
 				 	
-				 	<div class="btn_invertirflotante callActionMedium  btnNaranja"  onclick="bridgeFunctionInvPaq();" >
+					<div class="btn_invertirflotante callActionMedium  btnNaranja"  onclick="bridgeFunctionInvPaq();" >
 						 <span>Invertir Paquete</span> <i class="fa">$</i>
 					</div>
 				 

@@ -283,23 +283,29 @@ implements Serializable, NavigationBeanIMO
 		
 		ProyectLoan proyectloan = proyectloanservice.getMaxProyectLoanByProspect(getProspectus(), getCompany());
 		
-		RiskTask risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(proyectloan.getMx_solicitud_buro(), TAREA1);
+		if( proyectloan != null ){
 		
-		if( risktask != null ){
+			RiskTask risktask = risktaskservice.getRiskTaskByBurSolNumTaskId(proyectloan.getMx_solicitud_buro(), TAREA1);
 			
-			if( !risktask.getTask().getIs_enabled().equals("0") ){
+			if( risktask != null ){
 				
-				tarea1 = ( risktask.getTask_value().equals("0") );
+				if( !risktask.getTask().getIs_enabled().equals("0") ){
+					
+					tarea1 = ( risktask.getTask_value().equals("0") );
+					
+				}else{
+					tarea1 = true; // siempre se piden los documentos
+				}
 				
 			}else{
-				tarea1 = true; // siempre se piden los documentos
+				
+				getTareas( proyectloan );
+				
 			}
 			
-		}else{
-			
-			getTareas( proyectloan );
-			
 		}
+		
+		
 		
 	}
 	

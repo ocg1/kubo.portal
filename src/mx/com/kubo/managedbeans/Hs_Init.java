@@ -185,6 +185,8 @@ public class Hs_Init implements Serializable {
 		ELContext context  = faces.getELContext();		
 		ELResolver resolver = faces.getApplication().getELResolver();
 		
+		
+		
 		IniciaSession inicio = (IniciaSession) resolver.getValue(context, null, "iniciaSession");
 		inicio.setEmail(member.getEmail());
 		inicio.setPassword(pass);
@@ -237,6 +239,11 @@ public class Hs_Init implements Serializable {
 			inicio.setPassword(pass);
 			inicio.setCheckLogin(false);
 			inicio.iniciaSesion();
+			
+			Simulator simulator = (Simulator) resolver.getValue(context, null, "simulator");
+			
+			simulator.setAmmount(0D);
+			simulator.simulaCred(false);
 			
 			return NavigationRule.REGISTRAR.toString();
 			

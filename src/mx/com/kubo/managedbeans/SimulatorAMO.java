@@ -309,6 +309,8 @@ public abstract class SimulatorAMO extends SimulatorDMO
 			{
 				sesion.setRate(proyectLoan.getScoring().getRate());
 			}
+		}else{
+			sesion.setRate(52.6D);
 		}
 	}
 	
@@ -708,7 +710,7 @@ public abstract class SimulatorAMO extends SimulatorDMO
 	
 	public String getTotalPagarStr() 
 	{
-		if(getTotalPagar() != null && getTotalPagar() > 0)
+		if(getTotalPagar() != null)
 		{
 			return formatDec(dec.format(getTotalPagar()));
 			

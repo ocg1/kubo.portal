@@ -1025,6 +1025,10 @@ public abstract class PreregistroAMO extends PreregistroDMO
 				inicio.setPassword(password);				
 				inicio.iniciaSesion();
 				
+				Simulator simulator = (Simulator) resolver.getValue(context, null, "simulator");
+				
+				simulator.setAmmount(0D);
+				simulator.simulaCred(false);
 				
 				if( session.getArea().toString().equals("I") )
 				{

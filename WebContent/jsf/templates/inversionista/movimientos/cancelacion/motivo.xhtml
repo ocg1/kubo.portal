@@ -3,14 +3,14 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:f  = "http://java.sun.com/jsf/core"
 				xmlns:p  = "http://primefaces.org/ui">
-	<li>
+	<li class="motivoOcultar">
 		<label class="etiqueta">Motivo: </label>
 		<div class="campo">
 		
 				<div class="styled-select select_border">
 					<h:selectOneMenu immediate  = "true"
 								     tabindex   = "1" 
-								     styleClass = "elementStlSelAddress" 
+								     styleClass = "elementStlSelAddress motivoCancelar" 
 								     value      = "#{movimientosInversionista.cancelacion.motivo}">  
 								     
 				        <f:selectItem itemValue = "0" itemLabel = "Selecciona el motivo de la cancelación" />				        				        
@@ -24,6 +24,12 @@
 				    </h:selectOneMenu>
 				</div>
 			</div>	
+		<script>
+		setTimeout(function(){	
+			$(".motivoCancelar").val("1");
+			$(".motivoCancelar").change();
+	    }, 300);
 		
+		</script>
 	</li>				
 </ui:composition>

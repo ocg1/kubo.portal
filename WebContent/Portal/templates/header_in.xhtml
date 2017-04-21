@@ -65,7 +65,7 @@
                   	</div>
 				</li>
 			<!-- li class="whatsappCelda">   <a data-text="Sitio de prestamos personales en línea" data-link="https://www.kubofinanciero.com/Kubo/Portal/index.xhtml" class="whatsapp"><h:graphicImage library="img" name= "whatsapp.png"  /></a></li-->
-				<li><a class="telefono" href="tel:6269 0024"><i class="fa fa-phone fa-rotate-90"></i> #{msg.Kubo_telefono}</a></li>                
+				<li class="telefono-elementoLista2"><a class="telefono" href="tel:6269 0024"><i class="fa fa-phone-square"></i> #{msg.Kubo_telefono}</a></li>                
 			</ol>    
                     	                                  
             <div class="media">                                                                    
@@ -242,5 +242,11 @@
         
 	      
         </h:panelGroup>
+         <h:panelGroup rendered = "#{sessionBean.area == 'L'}" > 
+	        <script>
+	       	 	$(".noCliente .menu_principal").hide();
+				$(".noCliente .logoMobile, .noCliente .logoEscritorio").removeAttr("onclick");
+			</script>
+			</h:panelGroup>
 	  
 </ui:composition>           

@@ -57,6 +57,10 @@ implements CreditSimulatorIMO
 		
 		amortization = (TablaAmortizacion) resolver.getValue(elContext, null, "tablaAmortizacion");
 		
+		if( comisionApertura == null ){
+			comisionApertura = 5D;
+		}
+		
 		CAT_calculator = new CATCalculatorIMP(ammount, term_id, diasFreq, payment, tasaTotal, comisionApertura, frequencyStr, totalRecibir);
 		CAT_calculator.setTotalPagar(totalPagar);
 		CAT_calculator.setAmortization(amortization);

@@ -379,9 +379,11 @@
 }
 
 #dvContentLoanLst .A-BCtestScoring{
+	/*
 	background:#003366 -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0)));
 	background: #003366 linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
 	background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4)) repeat scroll 0 0 #003366;
+	*/
 	background: #003366;
     border-radius: 0px 0px 0px 0px;
     height: 17px;
@@ -3180,7 +3182,10 @@ margin: 0 0 3px;text-align: center;}
 
 @media only screen and (max-width: 767px) {
 	.tooltip_text {
-		color:#666 !important;	
+		color:#666 !important;
+		/* clear: BOTH; */
+		/* WIDTH: 100%; */
+		/* display: block; */
 	}
 .alerts {
 	/* position:absolute; */
@@ -3204,20 +3209,31 @@ margin: 0 0 3px;text-align: center;}
 #pnlInvestmentInfoFlot ul li{
 	/* float:none !important; */
 	margin: 0 0  4px !important;
-	width: 50%;
+	
 	height: 30px;
 	line-height: 29px;
 }
+
+.monto_celda, .monto_seleccionado_celda {
+	width: 60%;
+}
+
+.proyectos_celda, .saldo_disponible_celda {
+	width: 40%;
+}
+
 #ammountToInvFlot {
 	width: 105px !important;
 	margin: 0;
 	margin-top: 0px !important;
 	margin-bottom: 0 !important;
+	clear: both;
+	overflow: hidden;
 }
 #pnlInvestmentInfoFlot {
 	margin:0 auto;
 	float: left !important;
-	width: 69% !important;
+	width: 61% !important;
 }
 .btns_barraFlotante {
 	width:300px !important;
@@ -3226,12 +3242,21 @@ margin: 0 0 3px;text-align: center;}
 	overflow: hidden;
 }
 .btns_barraFlotante span{
-	display:none; 
+	display:none;
 }
-
+.btns_barraFlotante > .btn_invertirflotante {
+	width:65px !important;
+}
+.btn_invertirflotante span{
+	display:block;
+	line-height: 24px;
+}
+.btn_invertirflotante i{
+	display:none !important;
+}
 .btns_barraFlotante {
 	float:right;
-	width: 198px !important;
+	width: 238px !important;
 	margin: 23px 1% 0  0!important;
 }
 .btns_barraFlotante > div{

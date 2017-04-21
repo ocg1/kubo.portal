@@ -384,7 +384,7 @@ implements ApplicationContextAware, Serializable
 	 
 	 public static boolean validaMail(String mailStr){
 			if( mailStr != null ){
-				Pattern p = Pattern.compile("^\\w+([\\.*\\w+])*@\\w([\\-\\w])+\\.\\w{2,4}([\\.*\\w{2,3}])*$");
+				Pattern p = Pattern.compile("^\\w+([\\.\\-*\\w+])*@\\w([\\-\\w])+\\.\\w{2,4}([\\.*\\w{2,3}])*$");
 				//([\\w\\-]+\\.)+[A-Z]{2,4}([\\.\\w])?$
 				
 				Matcher m = p.matcher(mailStr);

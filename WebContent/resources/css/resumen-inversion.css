@@ -1431,3 +1431,33 @@ font-weight: bold;
 		clear: both;
 	}
 }
+
+
+#graphPie2 tr th:nth-child(2) {
+	background:#003366 !important;
+	color:#fff;
+}
+#graphPie2 tr th:nth-child(3) {
+	background:#7bc9dc !important;
+	color:#fff;
+}
+#graphPie2 tr th:nth-child(4) {
+	background:#83ba52 !important;
+	color:#fff;
+}
+#graphPie2 tr th:nth-child(5) {
+	background:#9ddf3d !important;
+	color:#fff;
+}
+#graphPie2 tr th:nth-child(6) {
+	background:#fdc93d !important;
+	color:#fff;
+}
+#graphPie2 tr th:nth-child(7) {
+	background:#fdc93d !important;
+	color:#fff;
+}
+#graphPie2 tr th:nth-child(8) {
+	background:#ffa220 !important;
+	color:#fff;
+}

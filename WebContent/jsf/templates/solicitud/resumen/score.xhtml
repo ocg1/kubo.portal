@@ -88,10 +88,13 @@
 			</p-->		
 		</div>
 
-		<h:panelGroup rendered = "#{summaryRequest.permisos.reprocesar_buro_credito}">
-			<div onclick = "Resumen.init_buro_reprocess();" class = "callActionMedium btnVerde rightVerification">
-				Reprocesar
-			</div>			
+		<h:panelGroup rendered="#{sessionBean.area=='M' and summaryRequest.permisos.reprocesar_buro_credito}">
+
+				<div onclick = "Resumen.init_buro_reprocess();"
+					class="callActionMedium btnVerde rightVerification">
+					Reprocesar
+				</div>			
+			
 		</h:panelGroup>
 
 	</div>				

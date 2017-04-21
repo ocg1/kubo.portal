@@ -4281,3 +4281,7 @@ div.bloque.respuesta-si {
 	margin:0 10px 0 0px;
 	float: left;
 }
+
+.motivoOcultar {
+	display:none;
+}

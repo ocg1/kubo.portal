@@ -48,7 +48,10 @@
 			} else {
 				
 				return true;				
-			}			
+			}		
+			
+			
+			
 		}
 		function closeModal(modal) {
 			$(modal).fadeOut();
@@ -76,6 +79,12 @@
 			}
 			
 			closeFancy();
+			$('html, body').animate({
+			       scrollTop: ($('#pnlContentInvest').offset().top - 100)
+			},1400);
+		
+			
+			
 		}
 		
 		function retiroActionClick()
@@ -97,9 +106,13 @@
 					$(".alerta-disposicionEfectivo").fadeIn();
 					$(".velo").fadeIn();
 					$(".alerta-disposicionEfectivo p").html("Debes especificar el motivo por el que deseas retirar tu dinero");
-					
+				
 				}
 				
+			}else{
+				$('html, body').animate({
+				       scrollTop: ($('#pnlContentInvest').offset().top - 100)
+				},1400);
 			}
 		} 
 	</script>

@@ -218,22 +218,34 @@ $(document).ready(function(){
 		    $(".menu_principal > div ol li.logout").appendTo('.header_inner.privado >  ol');
 			$(".header_inner.privado ol li.usuario").insertBefore('.header_inner.privado ol li.n_folio');
 			$(".header_inner.privado ol li.ayuda").insertAfter('.header_inner.privado ol li.bolsa');
-			$(".header_inner.privado ol li.logout").insertAfter('.header_inner.privado ol li.n_folio');
+			//$(".header_inner.privado ol li.logout").insertAfter('.header_inner.privado ol li.n_folio');
 			 //lightbox centrar 
 		
 			// menu social media
 			 $('.media').insertAfter('.header_inner > ol ');
 			 $(".fecha_actual_ultimo_acceso").insertAfter($(".header_inner > ol"));
+			 $(".telefono-elementoLista").insertAfter('.logout');
+			 /*
+			 if( $(".telefono-elementoLista2").length == 1){
+				 $(".telefono-elementoLista2").insertAfter('.logout');
+			 }
+			 */
+			
+			
+			 
 		}
 		if (width <= 850) { 
 			// menu mobile, redes sociales, menu auxiliar
-		
-	
-		
+			 $(".telefono-elementoLista").insertBefore('.ingresar_lista');
+			/*
+			 if( $(".telefono-elementoLista2").length == 1){
+				 $(".telefono-elementoLista2").insertBefore('.contenedorFecha.actual');
+			 }
+		*/
 			// botones de sesion privada	
 		    $(".header_inner.privado ol li.usuario").appendTo('.menu_principal > div ol');
 	        $(".header_inner.privado ol li.ayuda").appendTo('.menu_principal > div ol');
-			$(".header_inner.privado ol li.logout").appendTo('.menu_principal > div ol');
+			//$(".header_inner.privado ol li.logout").appendTo('.menu_principal > div ol');
 		}
 		if (($(window).width() > 851) &&  afterAdded) {
 			afterAdded = false;

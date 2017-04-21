@@ -43,7 +43,7 @@
 
 .header_inner > ol{
 	float:right;
-	width: 330px;
+	width: 339px;
 	display:block;
 	margin:6px  0 0;
 	clear:both;
@@ -126,7 +126,7 @@ li.logout {
 	font-size: 22px;
 	color:#fff;
 	font-weight: 700;
-	margin: 2px 0 0 0;
+	margin: 0px 0 0 0;
 	display:block;
 	float: right;
 	letter-spacing: 1px;
@@ -138,7 +138,10 @@ li.logout {
 	width:20px;
 }
 
+.header ol li a.telefono i { 
+	font-size:30px;
 
+}
 .usuario, .n_folio,  .ayuda, .logout, .bolsa {
 	display:none;
 }
@@ -697,7 +700,7 @@ span.fechaAcesso strong{
 	overflow:hidden;
 	display:block;
 	margin: 5px 38px 0 0 !important;
-	width: 107px !important;
+	width: 142px !important;
 	float: right;
 }
 
@@ -759,7 +762,7 @@ span.fechaAcesso strong{
 		
 		float: right;
 }
-	.menu_principal  div > ul {
+	.menu_principal  div >Ã‚Â ul {
 		overflow: hidden;
 		margin:10px 0 0;
 		display:block;
@@ -892,17 +895,21 @@ a.ingresar,  a.requisitos {
 	font-weight: 500;
 	float: none;
 }
-
+.telefono-elementoLista {
+	margin:0 0px 0 0;
+	display: block;
+	float: left;
+}
 .header ol li a.telefono {
 	margin: 3px 0 0 0;
 	width: 28px;
-	float: right;
-	margin: 0 0px 0 0;
+	float: none;
+	margin: 0 5px 0 0;
 	overflow: hidden;
-	border: 1px #fff solid;
+	/* border: 1px #fff solid; */
 	height: 28px;
 	border-radius: 4px;
-	display: none;
+	/* display: none; */
 }
 
 .menu_principal h6 {
@@ -924,6 +931,7 @@ a.ingresar,  a.requisitos {
 	top: 10px;
 	width: 152px;
 	line-height: 20px;
+	/* height: 30px !important; */
 }
 .header_inner h2 {
 	display:none;
@@ -1010,8 +1018,7 @@ a.ingresar,  a.requisitos {
 
 	}
 
-.header_inner > a {
-}
+.header_inner > a {width: 130px;}
 .header_inner h2 {
 
 	left: 79px;
@@ -1215,4 +1222,10 @@ font-size:40px;
 	.accesoN {
 		display:none;
 	}
+}
+
+ .google-visualization-tooltip {
+  color:#fff;
+  border:none;
+  font-size:14px;
 }

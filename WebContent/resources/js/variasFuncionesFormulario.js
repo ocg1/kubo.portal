@@ -354,7 +354,7 @@ function scrollAyudas () {
 function siAutorizo() {
 		
 		$("#aceptar_consulta").find("input[value='0']").trigger("click");
-		
+			
 		mandodatos_hs();
 		
 		setTimeout(function(){	
