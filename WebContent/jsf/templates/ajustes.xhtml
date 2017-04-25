@@ -6,20 +6,32 @@
 		
 	<h:form id = "FPyInv" prependId = "false">
 		
-		<div id = "confModulo" style = "width: 65%; margin-left: auto; margin-right: auto; text-align: center; color: #439539;font-weight: bold; font-size: 1.3em; margin-bottom: 20px; margin-top: 25px;">
-			<h:outputText value = "CONFIGURACIÓN" />
-		</div>
-		
-		<h:panelGroup rendered = "#{ajustes.investment_param_ENABLED}">
-			<ui:include src = "inversionista/settings/investment-param.xhtml"/>
+		<div class = "content top">
+			<div class = "inner_content">
+			
+				<ui:include src = "inversionista/settings/menu.xhtml"/>
+					
+				<div class = "clsContElemntSel col_derecha_productos">               
+					<div id = "confModulo" style = "margin-left: auto; margin-right: auto; text-align: center; color: #439539;font-weight: bold; font-size: 1.3em;">
+						<h:outputText value = "CONFIGURACIÓN" />
+					</div>
+					
+					
+						<div id = "investment-param" class = "riesgo-contenido" style = "display: none">							
+							<ui:include src = "inversionista/settings/investment-param.xhtml"/>
+											
+							<h:outputLabel escape = "false" value = "#{ajustes.investor_param_script}" />							
+						</div>					
+										
+						<ui:include src = "inversionista/settings/automatic-investment/list.xhtml"/>										
+						<ui:include src = "inversionista/settings/automatic-investment.xhtml"/>										
 							
-			<h:outputLabel escape = "false" value = "#{ajustes.investor_param_script}" />
-		</h:panelGroup>
-		
-		<h:panelGroup rendered = "#{ajustes.automatic_investment_ENABLED}">
-			<ui:include src = "inversionista/settings/automatic-investment/list.xhtml"/>
-			<ui:include src = "inversionista/settings/automatic-investment.xhtml"/>
-		</h:panelGroup>		
+				</div>
+				
+				<ui:include src = "inversionista/settings/remote-command.xhtml"/>
+				
+			</div>
+		</div>
 	</h:form> 
 	
 	<h:panelGroup id = "pnlScriptStatus">

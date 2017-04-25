@@ -5,7 +5,7 @@
 				xmlns:p="http://primefaces.org/ui">
 				
 	<h:panelGroup id = "panel-automatic-investment-list">				
-		<div class = "gestion-sesiones container" >
+		<div class = "gestion-sesiones container automatic-investment-list" style = "display: none">
 	
 			<div style = "width: 99%; overflow: hidden;">
 				<div style="float: left; padding-top: 18px;">
@@ -22,7 +22,7 @@
 			</div>
 				
 			<h:panelGroup rendered = "#{ajustes.filter.automatic_investment_list.size() > 0}">
-				<div style = "height: 270px; clear: both;">			
+				<div class = "automatic-investment-list" style = "height: 270px; clear: both; display: none">			
 					<table cellspacing="0"  cellpadding="0" border = "0"  class="formato_tablas sesiones">
 						<thead>
 							<tr>

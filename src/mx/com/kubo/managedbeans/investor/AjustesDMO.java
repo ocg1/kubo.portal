@@ -66,9 +66,16 @@ public abstract class AjustesDMO
 	protected Double montoInvertido_E5;
 	protected Double montoInvertido_FG;
 	
+	protected final String MENU_ITEM = "menu-item";
+	
+	protected int menu_item = 1;
+	
 	protected boolean puedeInvertire_en_F_G;
 	protected boolean investment_param_ENABLED = true;
-	protected boolean automatic_investment_ENABLED = true;
+	protected boolean automatic_investment_ENABLED = false;
+	
+	protected final int LIMITES = 1 ;
+	protected final int INVERSIONES_AUTOMATICAS = 2 ;
 	
 	protected final int ID_SUMA_MONTO_MAXIMO_E5_INV = 1 ;
 	protected final int ID_SUMA_MONTO_MAXIMO_FG_INV = 2;
@@ -180,6 +187,11 @@ public abstract class AjustesDMO
 	
 	public void setInvestment_list(InvestmentList investment_list) {
 		this.investment_list = investment_list;
+	}
+	
+	public int getMenu_item()
+	{
+		return menu_item;
 	}
 	
 	public boolean isPuedeInvertire_en_F_G() {

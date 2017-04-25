@@ -7,9 +7,13 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpServletRequest;
+
+import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.investor.settings.AutomaticInvestmentIMP;
 import mx.com.kubo.managedbeans.SessionBean;
@@ -55,6 +59,31 @@ implements Serializable
 		filter.init();
 	}
 
+	public void init_menu_item(AjaxBehaviorEvent event)
+    {
+		RequestContext request = RequestContext.getCurrentInstance();
+		
+		HtmlInputText input = (HtmlInputText) event.getComponent();
+		
+		menu_item = Integer.parseInt(input.getValue().toString());
+		
+		switch (menu_item) 
+		{
+			case LIMITES:
+				    investment_param_ENABLED = true;				
+				automatic_investment_ENABLED = false;
+			break;
+			
+			case INVERSIONES_AUTOMATICAS:								
+				    investment_param_ENABLED = false;
+				automatic_investment_ENABLED = true;
+			break;
+
+			default: break;
+		}
+		
+		request.addCallbackParam("menu_item", menu_item);
+    }
 	
 	public void updateParam(ActionEvent e)
     {

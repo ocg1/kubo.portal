@@ -1,0 +1,16 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div style = "display: none">
+		<h:inputText id = "settings-menu-item" immediate = "true" value = "{ajustes.menu_item}">					
+			
+			<p:ajax event = "click"   			
+					onstart    = "displayMessageProcessing('msgprocessing',false);"
+					oncomplete = "Settings.menu_oncomplete(xhr, status, args);" 
+					listener   = "#{ajustes.init_menu_item}"/>
+			
+		</h:inputText>	
+	</div>				
+</ui:composition>				

@@ -99,7 +99,7 @@ function dibujaLimites( val )
 
 function initViewRisk()
 {	
-	console.log("Settings.initViewRisk()");
+	console.log("AutomaticInvestment.initViewRisk()");
 	
 	if( $("input[name=flagRisk][value=0]'").is(":checked") )
 	{
@@ -118,7 +118,7 @@ function initViewRisk()
 
 function seleccionaTerm( elmnt )
 {
-	console.log("Settings.seleccionaTerm(): ");
+	console.log("AutomaticInvestment.seleccionaTerm(): ");
 	
 	var itemActualInv = elmnt.split("_")[1];
 	
@@ -150,7 +150,7 @@ function seleccionaTerm( elmnt )
 
 function initDestinyCheck()
 {	
-	console.log("Settings.initDestinyCheck(): ");
+	console.log("AutomaticInvestment.initDestinyCheck(): ");
 	
 	$(".clsItemDest").each(function()
 	{		
@@ -177,7 +177,7 @@ function initDestinyCheck()
 
 function filtroAbrir(tab) 
 {
-	console.log("Settings.filtroAbrir(): ");
+	console.log("AutomaticInvestment.filtroAbrir(): ");
 	
 	 var width = $(window).width();
 	 
@@ -201,7 +201,7 @@ function filtroAbrir(tab)
 
 function seleccionAll()
 {	
-	console.log("Settings.seleccionAll(): ");
+	console.log("AutomaticInvestment.seleccionAll(): ");
 	
 	var f = false;
 	
@@ -227,7 +227,7 @@ function seleccionAll()
 
 function seleccionAllDet()
 {
-	console.log("Settings.seleccionAllDet(): ");
+	console.log("AutomaticInvestment.seleccionAllDet(): ");
 	
 	var f = false;
 	
@@ -281,7 +281,9 @@ function seleccionAllDet()
 	
 }
 
-function seleccionDestiny(){ 
+function seleccionDestiny()
+{ 
+	console.log("AutomaticInvestment.seleccionDestiny(): ");
 	
 	var f = false;
 	
@@ -335,8 +337,12 @@ function seleccionDestiny(){
 
 function esInteger(e)
 {
+	console.log("AutomaticInvestment.esInteger(): ");
+	
 	var charCode;
-	if (navigator.appName == "Netscape"){
+	
+	if (navigator.appName == "Netscape")
+	{
 		charCode = e.which;
 	}
 	else{

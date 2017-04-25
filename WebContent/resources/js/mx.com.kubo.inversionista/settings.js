@@ -1,5 +1,41 @@
 console.log("settings.js");
 
+Settings.init_menu = function(menu_item)
+{
+	console.log("Settings.init_menu():" + menu_item);
+	
+	$("#settings-menu-item").val(menu_item).trigger("click");
+};
+
+Settings.menu_oncomplete = function(xhr, status, args)
+{
+	var menu_item = args.menu_item;
+	
+	console.log("Settings.menu_oncomplete():" + menu_item);
+	
+	var LIMITES = 1;
+	var AUTOMATIC_INVESTMENT = 2;
+	
+	switch(menu_item)
+	{
+		case LIMITES:
+			
+			$("#investment-param").show();			
+			$(".automatic-investment-list").hide();	
+		break;
+		
+		case AUTOMATIC_INVESTMENT:
+
+			$("#investment-param").hide();					
+			$(".automatic-investment-list").show();		
+		break;
+		
+		default: break;
+	}
+	
+	closeFancy();
+};
+
 function openVerMás( val )
 {
 	// alert( $("#explica_"+val).is(":visible") );

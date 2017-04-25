@@ -5282,3 +5282,45 @@ margin:0 auto;
 	max-width: 340px;
 	top: 150px;
 }
+
+.ajuste-descripcion {
+	width: 100%;
+
+	margin:0 0 20px;
+	overflow:hidden;
+	clear:both;
+}
+
+.ajuste-descripcion p{
+	margin:0 0 7px;
+}
+.tabla-explica {
+	margin:30px 0 0 ;
+}
+.tabla-explica table{
+	border:none !important;
+	margin:0 !important;
+	width: 57%;
+}
+
+
+.tabla-explica table td{
+	padding:5px 0;
+	text-transform: lowercase !important;
+	border: none;
+	/* padding: 0; */
+}
+
+.tabla-explica table tr:nth-child(even) {
+	background:#f1f1f1;
+}
+
+
+#FPyInv #sidebar {
+	width: 710px !important;
+}
+
+#FPyInv .plazoTable {
+	width:100%;
+	margin: 0 0 20px;
+}
