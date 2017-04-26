@@ -2,198 +2,6 @@ console.log("filters.js");
 
 var scrollea = false;
 
-function buildQueryFilter()
-{
-	console.log("Filters.buildQueryFilter(): ");
-	
-	scrollea = true;
-	
-	var cadStatus = getStringStatus();
-	var cadRisk   = getStringRisk();
-	var cadTerm   = getCadForTermChk();
-	
-	var cadgen = "";
-	
-	if($("#chk1").is(':checked') || $("#gender_Hombre").hasClass("itemCheck") ) 
-	{ 
-		 cadgen += "1";
-	}
-			
-	 if($("#chk2").is(':checked') || $("#gender_Mujer").hasClass("itemCheck")) 
-	 { 
-		 
-		 if( cadgen.length>0 )
-		 {
-				cadgen+=",";
-		 }
-		 
-		 cadgen+="2";
-	 }
-	 
-	 $('#cadena3').val(cadStatus!=""?cadStatus.substring(0,cadStatus.length-1):"");
-	 $('#cadena1').val(cadRisk!=""?cadRisk.substring(0,cadRisk.length-1):"");
-	 $('#cadena2').val(cadTerm!=""?cadTerm:"");
-	 $('#cadenaGender').val(cadgen);
-	 
-	 var strCadenaDest ="";
-	 var item_num_destiny = 0;
-	 
-	 $(".clsItemDest").each(function()
-	{			
-			if($(this).hasClass("itemCheck"))
-			{
-				if( item_num_destiny != 0 )
-				{
-					strCadenaDest+=",";
-				}
-				
-				var destinyChar = $(this).attr("id");
-				
-				strCadenaDest+= destinyChar.replace("purpose_","");
-				item_num_destiny++;			
-			}				
-	});
-		
-		$("#destiny_str").val( strCadenaDest );
-		$("#destiny_str_val").val( strCadenaDest );
-	 
-	 if(cadRisk.length>0)
-	 {
-			if(cadStatus.length>0 || cadTerm.length>0 || cadgen.length>0  )
-			{
-				$('#updateByFiltering').click();				
-			}
-	 }
-
-}
-
-function getStringStatus()
-{
-	console.log("Filters.getStringStatus(): ");
-	
-	var cadStatus= "";
-	
-	$(".statusclss").each(function( index )
-	{
-		
-		if($(this).is(":checked"))
-		{
-			var str = $(this).attr("id").split("_")[1];
-			cadStatus = cadStatus+"'"+str+"',";
-		}
-		
-	});
-	
-	return cadStatus;	
-}
-
-function getStringRisk()
-{		
-	console.log("Filters.getStringRisk(): ");
-	
-	var cadenaChk = "";
-	
-	if( $("input[name=flagRisk][value=0]'").is(":checked")  )
-	{			
-		if($("#chkA").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'A',";
-		}
-		
-		if($("#chkB").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'B',";
-		}
-		
-		if($("#chkC").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'C',";
-		}
-		
-		if($("#chkD").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'D',";
-		}
-		
-		if($("#chkE").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'E',";
-		}
-		
-		if($("#chkF").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'F',";
-		}
-		
-		if($("#chkG").is(":checked"))
-		{
-			cadenaChk = cadenaChk+"'G',";
-		}
-		
-	} else {
-		
-		var item_num_risk = 0;
-		var strCadena = "";
-		
-		$(".clsItem").each(function()
-		{			
-			if($(this).hasClass("itemCheck"))
-			{
-				if( item_num_risk != 0 )
-				{
-					strCadena+=",";
-				}
-				
-				strCadena+= "'" + $(this).attr("id") + "' ";
-				item_num_risk++;			
-			}				
-		});
-		
-		if( strCadena.trim().length == 0 || item_num_risk == 0 )
-		{
-			alert( "Seleccione al menos un tipo de riesgo ");
-			cadenaChk = strCadena = "";
-		}
-		
-		cadenaChk = strCadena;
-		
-	}
-		
-	return 	cadenaChk;
-}
-
-function getCadForTermChk()
-{	
-	console.log("Filters.getCadForTermChk(): ");
-	
-	var itemActualInv = 0;
-	var maxIdSel = "";
-	
-	$(".clsTerm").each(function()
-	{		
-		if( $(this).hasClass("itemCheck") )
-		{			
-			var this_id_2 = $(this).attr("id");
-			
-			var this_sec_2 = this_id_2.split("_")[1];
-			
-			if(parseInt(this_sec_2) > parseInt( itemActualInv ) )
-			{				
-				//console.log('idSel: '+this_id_2);
-				itemActualInv = parseInt(this_sec_2);
-				// maxIdSel = this_id_2.split("_")[0];
-				
-				maxIdSel = this_id_2;
-				
-				//console.log('idProcesado: '+maxIdSel);
-				
-			}								
-		}
-	});
-	
-	return maxIdSel;
-}
-
 function filtros()
 {
 	console.log("Filters.filtros(): ");
@@ -206,7 +14,7 @@ function filtros()
 	    
 		if($(this).is(":checked")) 
 		{ 
-			$(".scores").append(tipo_score+", ");
+			$(".scores").append(tipo_score + ", ");
 		}
 	});
 	
@@ -247,8 +55,8 @@ function filtros()
 	 $(".resultados .desde").html(desde);
 	 $(".resultados .hasta").html(hasta);
 	
-	if ($("#sidebar").is(":visible")) 
-	{
+	 if ($("#sidebar").is(":visible")) 
+	 {
 		 if ( ($("#inputFrom").val().length==0) &&  ($("#inputTo").val().length==0 )) 
 		 {
 			  $(".d").hide();
@@ -258,7 +66,7 @@ function filtros()
 			 $(".d").show();
 			 $(".h").show();
 		 }
-	}
+	 }
 	
 	var plazo_meses;
 	
@@ -267,43 +75,50 @@ function filtros()
 			plazo_meses = "6";
 	}
 	
-		 if ($(".plazo_2").hasClass("itemCheck")) {
-			plazo_meses = "9";
-		}
-		 if ($(".plazo_3").hasClass("itemCheck")) {
-			plazo_meses = "12";
-		}
-		 if ($(".plazo_4").hasClass("itemCheck")) {
-			plazo_meses = "15";
-		}
-		 if ($(".plazo_5").hasClass("itemCheck")) {
-			plazo_meses = "36";
-		}
+	 if ($(".plazo_2").hasClass("itemCheck")) 
+	 {
+		plazo_meses = "9";
+	 }
+	 
+	 if ($(".plazo_3").hasClass("itemCheck")) 
+	 {
+		plazo_meses = "12";
+	 }
+	 
+	 if ($(".plazo_4").hasClass("itemCheck")) 
+	 {
+		plazo_meses = "15";
+	 }
 		 
-		 $(".resultados .plazo").html(plazo_meses);
-		 $(".proyectos_disponibles").html($("#pnlNumCredito span").text());	
+	 if ($(".plazo_5").hasClass("itemCheck")) 
+	 {
+		plazo_meses = "36";
+	 }
+	 
+	 $(".resultados .plazo").html(plazo_meses);
+	 $(".proyectos_disponibles").html($("#pnlNumCredito span").text());	
 
-		 fondeo_previo();
-		 n_boton_distribuir_quitar();
+	 fondeo_previo();
+	 n_boton_distribuir_quitar();
+	 
+	 if($(".tienda").hasClass("active")) 
+	 {
+		 $("#sidebar").removeClass("active");
+		 $(".velo").fadeOut();
+	 }
+	 
+	 revisarSeleccionados();
 		 
-		 if($(".tienda").hasClass("active")) 
+	 if($(".tablaTienda").is(":visible") &&  scrollea == true)
+	 {
+		 scrollea = false;
+		 	
+		 $('html, body').animate(
 		 {
-			 $("#sidebar").removeClass("active");
-			 $(".velo").fadeOut();
-		 }
-		 
-		 revisarSeleccionados();
-		 
-		 if($(".tablaTienda").is(":visible") &&  scrollea == true)
-		 {
-			 	scrollea = false;
-			 	
-				 $('html, body').animate(
-				{
-				       scrollTop: ($('#encabezadoTablaTienda').offset().top - 100)
-				 },1400);			 
-		 }
-		
+			 scrollTop: ($('#encabezadoTablaTienda').offset().top - 100)
+			 
+		  }, 1400);			 
+	 }		
 }
 
 function fondeo_previo() 
@@ -312,24 +127,32 @@ function fondeo_previo()
 	
    	$(".numero_inversiones").each(function() 
    	{
-   			var numero_inversiones = $(this).find("p").length;
-   			$(this).find("h6 span").html(numero_inversiones);
-   			if(numero_inversiones == 0) {
-   				$(this).hide();
-   				$(this).next(".monto_inversiones").hide();
-   			}
-   			if(numero_inversiones != 0) {
-   				$(this).show();
-   				$(this).next(".monto_inversiones").show();
-   			}
-   			if(numero_inversiones == 1) {
-   				$(this).find("h6 small").html("inversion");
-   			}
-   		     else if (numero_inversiones > 1) {
-   				$(this).find("h6 small").html("inversiones");
-   			}
+		var numero_inversiones = $(this).find("p").length;
+		
+		$(this).find("h6 span").html(numero_inversiones);
+		
+		if(numero_inversiones == 0) 
+		{
+			$(this).hide();
+			$(this).next(".monto_inversiones").hide();
+		}
+		
+		if(numero_inversiones != 0) 
+		{
+			$(this).show();
+			$(this).next(".monto_inversiones").show();
+		}
+		
+		if(numero_inversiones == 1) 
+		{
+			$(this).find("h6 small").html("inversion");
+		}
+		
+	    else if (numero_inversiones > 1) 
+	    {
+			$(this).find("h6 small").html("inversiones");
+		}
  	});
-
 }
 
 function n_boton_distribuir_quitar() 
@@ -608,7 +431,8 @@ Filters.init = function()
 		{
 			$(this).removeClass("itemCheck");
 		
-		}else{
+		} else {
+			
 			$(this).addClass("itemCheck");
 		}
 		
@@ -619,15 +443,15 @@ Filters.init = function()
 		{			
 			if($(this).hasClass("itemCheck"))
 			{
-				if( item_num_risk != 0 ){
-					strCadena+=",";
+				if( item_num_risk != 0 )
+				{
+					strCadena += ",";
 				}
 				
-				strCadena+= $(this).attr("id");
-				item_num_risk++;
-			
-			}
+				strCadena += $(this).attr("id");
 				
+				item_num_risk++;			
+			}				
 		});
 		
 		$("#cadena1").val( strCadena );
@@ -653,7 +477,8 @@ Filters.init = function()
 			
 			if($(this).hasClass("itemCheck"))
 			{
-				if( item_num_risk != 0 ){
+				if( item_num_risk != 0 )
+				{
 					strCadena+=",";
 				}
 				
@@ -663,20 +488,22 @@ Filters.init = function()
 			} 
 				
 		});
-		/*
-		while(strCadena.indexOf("purpose_") != (-1)){
+		
+/*		
+		while(strCadena.indexOf("purpose_") != (-1))
+		{
 			strCadena = strCadena.replace("purpose_", "");
 		}
-		*/
+*/		
+		
 		$("#destiny_str").val( strCadena );
 		$("#destiny_str_val").val( strCadena );
 		
 	});
 	
 	
-	$(".clsTerm").click( function(){
-
-		
+	$(".clsTerm").click( function()
+	{		
 		var this_id = $(this).attr("id");
 		
 		var this_sec = this_id.split("_")[1];
@@ -684,8 +511,8 @@ Filters.init = function()
 		
 		var valMax = this_id.split("_")[0];
 		
-		if(valMax == "gender"){
-			
+		if(valMax == "gender")
+		{			
 			if($(this).hasClass("itemCheck"))
 			{
 				$(this).removeClass("itemCheck");
@@ -695,53 +522,57 @@ Filters.init = function()
 			}
 			
 			var flagGender = false;
-			$(".clsTerm").each(function(){
-				
+			
+			$(".clsTerm").each(function()
+			{				
 				this_id = $(this).attr("id");
 				
 				var tipo = this_id.split("_")[0];
 				
-				if( tipo == "gender" ){
-				
-					if($(this).hasClass("itemCheck")){
+				if( tipo == "gender" )
+				{				
+					if($(this).hasClass("itemCheck"))
+					{
 						flagGender = true;
 					}
 				
 				}
 			});
 			
-			if( !flagGender ){
+			if( !flagGender )
+			{
 				$(this).addClass("itemCheck");
-			}
+			}			
 			
+		} else {
 			
-		}else{
-			
-			$(".clsTerm").each(function(){
+			$(".clsTerm").each(function()
+			{
 				
 				this_id = $(this).attr("id");
 				
 				var tipo = this_id.split("_")[0];
 				
-				if( tipo != "gender" ){
-				
-					if($(this).hasClass("itemCheck")){
+				if( tipo != "gender" )
+				{			
+					if($(this).hasClass("itemCheck"))
+					{
 						$(this).removeClass("itemCheck")
 					}
 					
-				}
-					
+				}					
 			});
 			
 			$("#cadena2").val("");
 			
-			$(".clsTerm").each(function(){
-				
+			$(".clsTerm").each(function()
+			{				
 				var this_id_2 = $(this).attr("id");
 				
 				var this_sec_2 = this_id_2.split("_")[1];
 				
-				if( parseInt(this_sec) >=  parseInt(this_sec_2) ){
+				if( parseInt(this_sec) >=  parseInt(this_sec_2) )
+				{
 					$(this).addClass("itemCheck")
 				}
 
@@ -749,9 +580,7 @@ Filters.init = function()
 			
 			$("#cadena2").val( valMax );
 			
-			$("#cadena2").trigger("blur");
-			
-			
+			$("#cadena2").trigger("blur");						
 		}
 		
 	} );

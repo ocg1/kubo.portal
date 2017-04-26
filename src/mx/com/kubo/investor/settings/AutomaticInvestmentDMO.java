@@ -2,10 +2,16 @@ package mx.com.kubo.investor.settings;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.ExternalContext;
+
+import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.bean.FilterStore;
 import mx.com.kubo.bean.InvestorsAccounts;
@@ -27,7 +33,12 @@ import mx.com.kubo.tools.Utilities;
 
 public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 {
+	protected  RequestContext request;
 	protected ExternalContext external;
+	
+	protected HtmlInputText input;
+	protected HtmlSelectOneMenu select;
+	
 	
 	protected Map<String , String > map;
 	
@@ -56,6 +67,10 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected SimpleDateFormat frm;
 	protected StringBuilder sb;
 	
+	protected Date finisehd_date;
+	
+	private Calendar calendar;
+	
 	protected String previousType = "0";
 	protected String flagRisk = "0";
 	protected String destiny_str;
@@ -70,8 +85,13 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected String safi_client_id;
 	protected String account;
 	protected String ultimoFiltro;
+	protected String label = "";
+	protected String frequency_label;
 	protected String frequency = "D";
-	protected String is_active = "0";
+	protected String is_active = "1";
+	
+	protected final String DIARIA  = "Diaria";
+	protected final String SEMANAL = "Semanal";
 	
 	protected Double saldoTotal;
 	protected Double saldoActual;
@@ -96,6 +116,14 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 		proyectList = new ArrayList<ItemLoanList>();
 		
 		frm = new SimpleDateFormat("yyyy-MM-dd");
+		
+    	calendar = Calendar.getInstance();
+    	calendar.setTime(new Date());
+    	calendar.add(Calendar.YEAR, 100);
+    	
+    	finisehd_date = calendar.getTime();
+    	
+    	frequency_label = DIARIA;
 	}
 
 	public void setSesion(SessionBean sesion)
@@ -159,6 +187,21 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	{
 		this.typeSearch = typeSearch;
 	}
+	
+	public String getLabel()
+	{
+		return label;
+	}
+	
+	public String getFrequency()
+	{
+		return frequency;
+	}
+	
+	public String getFrequency_label()
+	{
+		return frequency_label;
+	}	
 	
 	public String getPreviousType() 
 	{

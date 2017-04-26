@@ -1,0 +1,27 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+								
+	<div id = "dvContentLoanLst" class = "container_loanlist automatic-investment-filters" style = "display: none">				
+		<div class = "tienda" id = "sidebar">					
+			<fieldset class = "fieldsetFormLL">				
+				<ui:include src = "filters/score.xhtml"/>	
+				<ui:include src = "filters/funding.xhtml"/>
+				<ui:include src = "filters/previous.xhtml"/>
+				<ui:include src = "filters/term.xhtml"/>
+				<ui:include src = "filters/gender.xhtml"/>
+				<ui:include src = "filters/ammount.xhtml"/>
+				<ui:include src = "filters/purpose.xhtml"/>
+			</fieldset>				
+		</div>
+	</div>
+	
+	<script>
+		$(document).ready(function()
+		{
+			Filters.init();
+		});
+	</script>
+</ui:composition>	

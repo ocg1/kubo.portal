@@ -17,14 +17,15 @@
 					</div>
 					
 					
-						<div id = "investment-param" class = "riesgo-contenido" style = "display: none">							
-							<ui:include src = "inversionista/settings/investment-param.xhtml"/>
-											
-							<h:outputLabel escape = "false" value = "#{ajustes.investor_param_script}" />							
-						</div>					
+					<div id = "investment-param" class = "riesgo-contenido" style = "display: block">							
+						<ui:include src = "inversionista/settings/investment-param.xhtml"/>
 										
-						<ui:include src = "inversionista/settings/automatic-investment/list.xhtml"/>										
-						<ui:include src = "inversionista/settings/automatic-investment.xhtml"/>										
+						<h:outputLabel escape = "false" value = "#{ajustes.investor_param_script}" />							
+					</div>					
+									
+					<ui:include src = "inversionista/settings/automatic-investment/list.xhtml"/>
+					<ui:include src = "inversionista/settings/automatic-investment/token.xhtml"/>										
+					<ui:include src = "inversionista/settings/automatic-investment/filters.xhtml"/>										
 							
 				</div>
 				

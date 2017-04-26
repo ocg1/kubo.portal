@@ -186,11 +186,12 @@ public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO
     	automatic_investment.setProspectus_id(prospectus_id);
     	automatic_investment.setSafi_account_id(account);
     	automatic_investment.setSafi_client_id(safi_client_id);
+    	automatic_investment.setFilter_label(label);
     	automatic_investment.setFilter(strQuery);
     	automatic_investment.setIs_active(is_active);
     	automatic_investment.setFrequency(frequency);
-    	automatic_investment.setInscription_date(frm.format(new Date()));   	
-    	automatic_investment.setFinished_date(new Date());
+    	automatic_investment.setInscription_date(frm.format(new Date()));       	    	
+    	automatic_investment.setFinished_date(finisehd_date);
     	automatic_investment.setNext_investment(new Date());
     	automatic_investment.setNext_investment_apply(new Date()); 
 	}

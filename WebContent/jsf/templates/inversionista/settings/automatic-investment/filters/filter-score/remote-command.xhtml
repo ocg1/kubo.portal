@@ -1,0 +1,15 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:p  = "http://primefaces.org/ui">											
+					
+	<p:commandLink id = "selectAllOrNothing" immediate = "true"						
+				   value = "#{msg.ll_link_check}"
+				   onclick = "checkUncheck();"
+				   styleClass = "callActionMedium btnVerde" style = "display:none"/>
+				   
+	<p:commandLink value = "#{msg.ll_link_filter}" 
+				   onclick = "buildQueryFilter();" 
+				   oncomplete = "filtros();" 
+				   styleClass = "callActionMedium btnVerde" style = "display:none"/>											
+</ui:composition>				

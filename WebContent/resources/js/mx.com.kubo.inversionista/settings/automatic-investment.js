@@ -1,5 +1,63 @@
 console.log("automatic-investment.js");
 
+AutomaticInvestment.alta = function()
+{
+	console.log("AutomaticInvestment.alta(): ");
+	
+	$(".automatic-investment-filters").show();
+	$(".automatic-investment-list").hide();
+};
+
+AutomaticInvestment.cancelar_alta = function()
+{
+	console.log("AutomaticInvestment.cancelar_alta(): ");
+	
+	$(".automatic-investment-filters").hide();
+	$(".automatic-investment-list").show();
+};
+
+AutomaticInvestment.label_oncomplete = function(xhr, status, args)
+{
+	var label = args.label;
+	
+	console.log("AutomaticInvestment.label_oncomplete(): " + label);		
+};
+
+AutomaticInvestment.frequency_oncomplete = function(xhr, status, args)
+{
+	var frequency = args.frequency;
+	var frequency_label = args.frequency_label;
+	
+	
+	console.log("AutomaticInvestment.frequency_oncomplete(): ");
+	console.log(" > frequency = " + frequency);
+	console.log(" > frequency_label = " + frequency_label);
+};
+
+AutomaticInvestment.save = function()
+{
+	console.log("AutomaticInvestment.save(): ");
+	
+	buildQueryFilter();
+};
+
+AutomaticInvestment.save_oncomplete = function(xhr, status, args)
+{
+	var save_OK = args.save_OK;
+	
+	console.log("AutomaticInvestment.save_oncomplete(): " + save_OK);		
+	
+	closeFancy();
+	
+	if(save_OK)
+	{
+		filtros();
+		
+		$(".automatic-investment-filters").hide();
+		$(".automatic-investment-list").show();	
+	}
+};
+
 AutomaticInvestment.activar = function(automatic_investment_id)
 {
 	console.log("AutomaticInvestment.activar(): " + automatic_investment_id);

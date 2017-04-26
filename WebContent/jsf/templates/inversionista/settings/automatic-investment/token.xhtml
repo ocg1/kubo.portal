@@ -1,0 +1,47 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+				
+	<div class = "automatic-investment-filters" style = "display: none; font-size: 14px;">
+		<p>Etiqueta</p>
+						
+		<h:inputText value = "#{ajustes.filter.label}" immediate = "true" style = "width: 99%;font-size: 14px;padding: 5px 0;height: 20px;">
+			<p:ajax event = "blur"
+					oncomplete = "AutomaticInvestment.label_oncomplete(xhr, status, args);" 
+					listener = "#{ajustes.filter.init_label}"/>
+		</h:inputText>				
+		
+		<p>Frecuencia</p>
+	
+		<div class = "selectNuevo">	
+			<h:selectOneMenu id = "select-type_phone" immediate = "true" value = "#{ajustes.filter.frequency}">
+						     
+				<f:selectItem itemValue = "D" itemLabel = "Diaria"/>
+				<f:selectItem itemValue = "S" itemLabel = "Semanal"/>							
+				
+				<p:ajax event = "change"
+						oncomplete = "AutomaticInvestment.frequency_oncomplete(xhr, status, args);" 
+						listener = "#{ajustes.filter.init_frequency}"/>															
+			</h:selectOneMenu>																						
+		</div>		
+					
+		<p>Tu filtro de #{ajustes.filter.label} es de frecuencia #{ajustes.filter.frequency_label}</p>
+				
+				
+	<div style = "width: 99%; overflow: hidden;" >
+		<div onclick = "AutomaticInvestment.cancelar_alta();" 
+		     class = "callActionMedium borrarSesion btnNaranja " 
+		     style="float: right; width: 120px; margin-right: 5px">
+			Cancelar
+		</div>		
+						
+		<div onclick = "AutomaticInvestment.save();" 
+		     class = "callActionMedium borrarSesion btnNaranja " 
+		     style="float: right; width: 120px; margin-right: 5px">
+			Guardar
+		</div>			
+	</div>	
+	</div>				
+</ui:composition>				

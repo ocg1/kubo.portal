@@ -31,7 +31,7 @@
 					<p:commandLink value = "#{msg.ll_link_filter}" update = ":pnlScriptStatus"  
 							     onclick = "buildQueryFilter();" 
 							  oncomplete = "filtros();"  					
-							  styleClass = "callActionMedium btnVerde" />
+							  styleClass = "callActionMedium btnVerde" style = "display:none"/>
 					
 					<div id = "labelForFundedFilter">
 						<h:outputLabel id = "lblForFundedFilter" value = "#{ajustes.filter.labelOnFilteringByAmmount}"/>

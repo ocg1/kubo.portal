@@ -4,8 +4,13 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Date;
 
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
+
+import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.model.InvestmentFilter;
@@ -59,6 +64,60 @@ implements AutomaticInvestmentIMO
 */		
 		
 		cargaListaTienda();			
+	}
+	
+	public void init_label(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		input = (HtmlInputText) event.getComponent();
+		
+		label = input.getValue().toString();
+		
+		request.addCallbackParam("label", label);
+	}
+	
+	public void init_frequency(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		select = (HtmlSelectOneMenu) event.getComponent();
+		
+		frequency = select.getValue().toString();
+		
+		if(frequency.equals("D"))
+		{
+			frequency_label = DIARIA;
+		}
+		
+		else if(frequency.equals("S"))
+		{
+			frequency_label = SEMANAL;
+		}
+		
+		request.addCallbackParam("frequency", frequency);
+		request.addCallbackParam("frequency_label", frequency_label);
+	}
+	
+	public void save_automatic_investment()
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		external = FacesContext.getCurrentInstance().getExternalContext();
+		
+    	map = external.getRequestParameterMap();
+    	
+    	init_filter();    	     	    	
+    	init_automatic_investment();
+    	
+    	boolean save_OK = service_automatic_investment.saveAutomaticInvestment(automatic_investment);
+    	
+    	if(save_OK)
+    	{
+    		automatic_investment_list = service_automatic_investment.getAutomaticInvestmentListByProspect(prospectus_id);
+    	}
+    	
+		request.addCallbackParam("save_OK", true);
 	}
 	
 	public void updateByFiltering(ActionEvent event)

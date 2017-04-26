@@ -12,6 +12,9 @@ public interface AutomaticInvestmentIMO
 	
 	void init();
 	
+	String getLabel();
+	String getFrequency();
+	
 	List<Purpose> getPurposelst();
 	List<AutomaticInvestment> getAutomatic_investment_list();
 }

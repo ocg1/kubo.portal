@@ -12,13 +12,12 @@
 					<strong>Inversiones Automáticas:			
 					<h:outputText value="#{ajustes.filter.automatic_investment_list.size()}" /></strong>
 				</div>
-<!-- 
-				<div onclick = "Administracion.delete_blocked_person();" 
+
+				<div onclick = "AutomaticInvestment.alta();" 
 				     class = "callActionMedium borrarSesion btnNaranja " 
 				     style="float: right; width: 120px; margin-right: 5px">
-					Borrar
-				</div>
--->				
+					Alta
+				</div>				
 			</div>
 				
 			<h:panelGroup rendered = "#{ajustes.filter.automatic_investment_list.size() > 0}">
@@ -27,10 +26,9 @@
 						<thead>
 							<tr>
 								<th>no.</th>
-								<th style= "text-align: left;">Filtro</th>
-								<th style= "text-align: left;">Activo</th>
-								<th style= "text-align: left;">Termina</th>		
-								<th>    </th>				
+								<th style= "text-align: left;">Etiqueta</th>
+								<th style= "text-align: left;">Última inversión</th>		
+								<!-- <th>    </th> -->				
 							</tr>
 						</thead>
 								
@@ -39,20 +37,20 @@
 									   var = "automatic_investment" varStatus = "row_counter">
 									<tr>
 										<td >#{row_counter.index + 1}</td>
-										<td >#{automatic_investment.filter}</td>									
-										<td>#{automatic_investment.is_active}</td>									
+										<td>#{automatic_investment.filter_label}</td>										
 										<td>
-											<h:outputText value = "#{automatic_investment.finished_date}" >
+											<h:outputText value = "#{automatic_investment.last_investment}" >
 	   				 							<f:convertDateTime pattern = "dd-MM-yyyy" />   			
 											</h:outputText>									
 										</td>	
-	
+<!-- 	
 										<td>						
 											<div onclick = "AutomaticInvestment.activar(#{automatic_investment.automatic_investment_id});" 
 											     class = "callActionMedium borrarSesion btnNaranja ">
 												Activar
 											</div>		
-										</td>									
+										</td>	
+-->
 									</tr>						
 							</ui:repeat>
 						</tbody>
@@ -60,15 +58,14 @@
 				</div>
 				
 				<script>
-					 $(document).ready(function() {
+					 $(document).ready(function() 
+					{
 				    
-					setTimeout(function(){
-			    		
+					setTimeout(function()
+					{			    		
 						$(".sesiones tr:odd").addClass("par");
-			
 						
-						 
-					 	},100);
+					 }, 100);
 					
 					 });
 					
