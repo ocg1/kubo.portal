@@ -1,26 +1,54 @@
 console.log("automatic-investment.js");
 
 AutomaticInvestment.alta = function()
-{
-	console.log("AutomaticInvestment.alta(): ");
-	
+{		
 	$(".automatic-investment-filters").show();
-	$(".automatic-investment-list").hide();
+	$(".automatic-investment-list").hide();			
+	$(".automatic-investment-filters input").val("");
+	
+	console.log("AutomaticInvestment.alta(): OK");
 };
 
 AutomaticInvestment.cancelar_alta = function()
-{
-	console.log("AutomaticInvestment.cancelar_alta(): ");
-	
+{		
 	$(".automatic-investment-filters").hide();
 	$(".automatic-investment-list").show();
+	$(".automatic-investment-filters input").val("");
+	
+	console.log("AutomaticInvestment.cancelar_alta(): OK");
 };
+
+
+AutomaticInvestment.init_label = function(input)
+{	
+	var label;
+	
+	var label_OK = true;
+	
+	console.log("AutomaticInvestment.init_label(): " + $(input).val());
+		
+	try
+	{
+		label = input.value;
+		
+		console.log(" > label = " + label);
+		
+	} catch (e) {
+		
+		label_OK = false;
+	}
+		
+	return label_OK;
+};
+
 
 AutomaticInvestment.label_oncomplete = function(xhr, status, args)
 {
 	var label = args.label;
 	
 	console.log("AutomaticInvestment.label_oncomplete(): " + label);		
+	
+	$(".guardar").show();
 };
 
 AutomaticInvestment.frequency_oncomplete = function(xhr, status, args)

@@ -119,3 +119,58 @@
 #frm_content {
 	margin-top:40px;
 }			
+
+#confModulo
+{
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align: center; 
+	color: #439539;
+	font-weight: bold; 
+	font-size: 1.3em;
+}
+
+#investment-param
+{
+	display: block;
+}
+
+.automatic-investment-filters
+{
+	display: none;
+}
+
+.automatic-investment-filters li
+{
+	margin: 10px 0;
+}
+
+ul.automatic-investment-filters li input
+{
+	width: 99%;
+	font-size: 14px;
+	padding: 5px 0;
+	height: 20px;
+}
+
+.automatic-investment-list.table
+{
+	display: none;
+	height: 270px; 
+	clear: both; 
+	
+	overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.callActionMedium.borrarSesion.btnNaranja
+{
+	float: right;
+	width: 120px;
+	margin-right: 5px
+}
+
+.callActionMedium.borrarSesion.btnNaranja.guardar
+{
+	/*display: none;*/
+}

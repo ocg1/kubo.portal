@@ -1,7 +1,6 @@
 package mx.com.kubo.investor.settings;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -13,9 +12,7 @@ import javax.faces.context.ExternalContext;
 
 import org.primefaces.context.RequestContext;
 
-import mx.com.kubo.bean.FilterStore;
 import mx.com.kubo.bean.InvestorsAccounts;
-import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.InvestmentFilter;
@@ -54,13 +51,10 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected InvestmentFilterPK fpk;
 	protected AutomaticInvestment automatic_investment;
 	
-	protected FilterStore filter;
 	protected CuentasClienteIMO cuenta;
 	protected SAFIInvestmentIMO inversion;	
 	
 	protected List<Purpose> purposelst;
-	protected List<ItemLoanList> proyectList;
-	protected List<ItemLoanList> proyectListForInvesInd;
 	protected List<InvestorsAccounts> listInvAccounts;
 	protected List<AutomaticInvestment> automatic_investment_list;
 	
@@ -96,24 +90,20 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected Double saldoTotal;
 	protected Double saldoActual;
 	protected Double ammoutToInv;
-	protected Double ammountFoundedInv;
 	
 	protected int typeSearch;
 	protected int company_id;
 	protected int prospectus_id;
 	
-	protected boolean flagNumberProy = true;
+	protected boolean save_OK;
 	protected boolean flagInversionFG;
-	protected boolean hold_selected;
 	
 	protected AutomaticInvestmentDMO()
 	{
     				purposeservice   = Utilities.findBean("purposeServiceImp");
 		      naturalPersonService   = Utilities.findBean("naturalPersonServiceImp");
 		investmentFilterServiceImp   = Utilities.findBean("investmentFilterServiceImp");
-		service_automatic_investment = Utilities.findBean("automaticInvestmentServiceImp");
-		
-		proyectList = new ArrayList<ItemLoanList>();
+		service_automatic_investment = Utilities.findBean("automaticInvestmentServiceImp");				
 		
 		frm = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -142,12 +132,7 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	       	safi_client_id = person.getSafi_client_id();
 		}
 	}
-	
-	public void setFlagNumberProy(boolean flag) 
-	{
-		flagNumberProy = flag;
-	}
-	
+
 	public String getFlagRisk() 
 	{
 		return flagRisk;
@@ -156,11 +141,6 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	public void setFlagRisk(String flagRisk) 
 	{
 		this.flagRisk = flagRisk;
-	}
-	
-	public boolean isFlagNumberProy() 
-	{
-		return flagNumberProy;
 	}
 	
 	public boolean isFlagInversionFG() 

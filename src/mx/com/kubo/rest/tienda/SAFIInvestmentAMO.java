@@ -410,7 +410,7 @@ implements SAFIInvestmentIMO
 		}
 	}
 	
-	protected void generaScript( String ultimoFiltro, String flagRisk )
+	public void generaScript( String ultimoFiltro, String flagRisk )
 	{		
 		String[] filtros = ultimoFiltro.split("\\|\\|");
 		

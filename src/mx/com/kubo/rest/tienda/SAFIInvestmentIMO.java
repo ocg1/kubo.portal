@@ -36,6 +36,7 @@ public interface SAFIInvestmentIMO
 	
 	void init();
 	//void inicializaSaldos(List<String> sAFI_cuenta);
+	void generaScript( String ultimoFiltro, String flagRisk );
 	void cargaListaTienda( String query, int prospectusInvestor_id, int companyInvestor_id, String flagRisk,String safi_investor_client_id, String safi_account_id );
 	void createProyectListView(List<ViewForTiendaExec> temporalProyectListView, int intValue, int intValue2, String cuentaActual);
 	void setProyectList(List<ItemLoanList> proyectList);

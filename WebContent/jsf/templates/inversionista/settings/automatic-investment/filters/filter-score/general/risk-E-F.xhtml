@@ -13,7 +13,8 @@
 		</td>
 		
 		<td class = "tbGeneralRiskCellC">
-			<span id = "BCscoringTestSpan" class = "porcentKS">								 
+			<span id = "BCscoringTestSpan" class = "porcentKS">	
+<!-- 
 				<h:panelGroup rendered = "#{ajustes.filter.flagNumberProy}">								  		
 					<p:outputPanel autoUpdate = "true">#{ajustes.filter.getNumByKuboScore('E')}</p:outputPanel>
 				</h:panelGroup>
@@ -21,7 +22,8 @@
 				<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
 					<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('E')}%</p:outputPanel>
 				</h:panelGroup>
-			</span>
+ -->				
+			</span>			
 		</td>
 								  								  
 	<h:panelGroup rendered = "#{ajustes.filter.flagInversionFG}" >
@@ -32,9 +34,10 @@
 		<td class = "tbGeneralRiskCellB">
 			<span id = "BCscoringTestSpan" class = "FStestScoringSpan">F</span>
 		</td>
-		
+ 		
 		<td class = "tbGeneralRiskCellC">
 			<span id = "BCscoringTestSpan" class = "porcentKSR">
+<!--			
 		  		<h:panelGroup rendered="#{ajustes.filter.flagNumberProy}">
 		  			<p:outputPanel autoUpdate="true">#{ajustes.filter.getNumByKuboScore('F')}</p:outputPanel>
 		  		</h:panelGroup>
@@ -42,8 +45,9 @@
 		  		<h:panelGroup rendered = "#{!ajustes.filter.flagNumberProy}">
 		  			<p:outputPanel autoUpdate = "true">#{ajustes.filter.getPorcentByKuboScore('F')}%</p:outputPanel>
 		  		</h:panelGroup>
+-->		  		
 	  		</span>
-		</td>
+		</td>		
 	</h:panelGroup>
 	</tr>
 </ui:composition>				

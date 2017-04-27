@@ -2429,25 +2429,30 @@ implements InvestmentListIMO
 			
 		}
 				
-		public void showMoreProyects(){
+		public void showMoreProyects()
+		{
 			proyectList_B = new ArrayList<ItemLoanList>();
-			if( moreProyects ){
+			
+			if( moreProyects )
+			{
 				int i = 0;
-				for(ItemLoanList a : proyectList){
-					
-					if( maxProxect < i  ){
+				
+				for(ItemLoanList a : proyectList)
+				{					
+					if( maxProxect < i  )
+					{
 						proyectList_B.add(a);
 					}
-					i++;
-				
-				}
-			
-			}
-			
+					
+					i++;				
+				}		
+			}			
 		}
 		
-		public void changeHoldSel(){
+		public void changeHoldSel()
+		{
 			hold_selected = !hold_selected;
+			
 			System.out.println(" Mantiene Seleccionados: " + hold_selected);
 		}		
 }

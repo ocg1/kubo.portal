@@ -4,7 +4,7 @@ var scrollea = false;
 
 function filtros()
 {
-	console.log("Filters.filtros(): ");
+	console.log("Filters.filtros(): ");		
 	
 	$(".scores").html("");
 	

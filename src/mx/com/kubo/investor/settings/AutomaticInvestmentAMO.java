@@ -1,11 +1,11 @@
 package mx.com.kubo.investor.settings;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import mx.com.kubo.bean.InvestorsAccounts;
-import mx.com.kubo.bean.ItemLoanList;
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.InvestmentFilter;
+import mx.com.kubo.model.InvestmentFilterPK;
 import mx.com.kubo.model.Purpose;
 
 public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO 
@@ -66,22 +66,8 @@ public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO
 		
 		return suma;
 	}
-	
-	protected void cargaListaTienda()
-	{																	    	
-    	init_filter_default();
-    	
-    	inversion.cargaListaTienda(ultimoFiltro, prospectus_id, company_id, flagRisk+"", safi_client_id , cuentaActual);
-    	
-    	scriptStatus = inversion.getScriptStatus();    	
-		proyectList  = inversion.getProyectList();
-    	
-		filter = inversion.getFilter();
 		
-		asignaListForInvest();					
-	}
-	
-	private void init_filter_default() 
+	protected void init_filter_default() 
 	{
 		typeSearch = 2; 
 		
@@ -119,25 +105,6 @@ public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO
     	ultimoFiltro = sb.toString();
     	
     	System.out.println("ultimoFiltro = " + ultimoFiltro);
-	}
-
-	private void asignaListForInvest()
-	{		
-		if( !hold_selected )
-		{			
-			proyectListForInvesInd = new ArrayList<ItemLoanList>(); 
-			ammountFoundedInv = 0D;
-			
-			for( ItemLoanList item : proyectList )
-			{				
-				if( item.getInvestment_bite() > 0 )
-				{
-					proyectListForInvesInd.add(item);
-				}
-				
-				ammountFoundedInv += item.getInvestment_bite();				
-			}			
-		}		
 	}
 	
 	protected void init_filter() 
@@ -194,5 +161,23 @@ public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO
     	automatic_investment.setFinished_date(finisehd_date);
     	automatic_investment.setNext_investment(new Date());
     	automatic_investment.setNext_investment_apply(new Date()); 
+    	
+    	save_OK = service_automatic_investment.saveAutomaticInvestment(automatic_investment);
+	}
+	
+	protected void init_user_filter() 
+	{
+    	filterInvestment = new InvestmentFilter();
+    	
+    	fpk = new InvestmentFilterPK();
+    	
+    	fpk.setCompany_id(company_id);
+    	fpk.setProspectus_id(prospectus_id);
+    	
+    	filterInvestment.setFilter(strQuery);
+    	filterInvestment.setFilter_date_used(new Date());
+    	filterInvestment.setPk(fpk);
+    	
+    	save_OK = investmentFilterServiceImp.addFilterUsed(filterInvestment); 
 	}
 }
