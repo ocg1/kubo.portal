@@ -1,0 +1,21 @@
+<ui:composition xmlns    = "http://www.w3.org/1999/xhtml"
+				xmlns:ui = "http://java.sun.com/jsf/facelets"
+				xmlns:h  = "http://java.sun.com/jsf/html"
+				xmlns:f  = "http://java.sun.com/jsf/core"
+				xmlns:p  = "http://primefaces.org/ui">
+
+<div class="alerta-confirmacion-crearRegla mod modal-small centrar_h" >
+				<div class="mod-inner">
+					<p>Tu nueva regla <strong class="nombre-regla"></strong> de reinversión automática se dará de alta.</p>
+					<div class="contenedor-dos-botones" >
+						<div onclick = "AutomaticInvestment.cancelar_alta();" class = "callActionMedium borrarSesion btnVerde">
+							Cancelar
+						</div>		
+										
+						<div onclick = "AutomaticInvestment.save();" class = "callActionMedium borrarSesion btnNaranja guardar">
+							Crear regla
+						</div>	
+					</div>
+			</div>
+	</div>
+</ui:composition>

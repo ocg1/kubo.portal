@@ -5,7 +5,7 @@ AutomaticInvestment.alta = function()
 	$(".automatic-investment-filters").show();
 	$(".automatic-investment-list").hide();			
 	$(".automatic-investment-filters input").val("");
-	
+	$("#btns-alta-cancelar").show();	
 	console.log("AutomaticInvestment.alta(): OK");
 };
 
@@ -14,8 +14,12 @@ AutomaticInvestment.cancelar_alta = function()
 	$(".automatic-investment-filters").hide();
 	$(".automatic-investment-list").show();
 	$(".automatic-investment-filters input").val("");
+	$(".alerta-confirmacion-crearRegla").fadeOut();
 	
+	$(".velo").fadeOut();
+	$("#btns-alta-cancelar").hide();	
 	console.log("AutomaticInvestment.cancelar_alta(): OK");
+	
 };
 
 
@@ -68,7 +72,7 @@ AutomaticInvestment.save = function()
 {
 	console.log("AutomaticInvestment.save(): ");
 	
-	buildQueryFilter();
+	buildQueryFilter2();
 };
 
 AutomaticInvestment.save_oncomplete = function(xhr, status, args)
@@ -85,6 +89,10 @@ AutomaticInvestment.save_oncomplete = function(xhr, status, args)
 		
 		$(".automatic-investment-filters").hide();
 		$(".automatic-investment-list").show();	
+		$(".alerta-confirmacion-crearRegla").fadeOut();
+		$(".velo").fadeOut();
+		$("#btns-alta-cancelar").hide();
+		
 	}
 };
 
@@ -429,3 +437,26 @@ function esInteger(e)
 		return true;
 	}
 } 
+function abrirConfirmacionAlta () {
+	
+	if($("#nombre-regla").val() != "") {
+		$(".nombre-regla").html($("#nombre-regla").val());
+		$(".alerta-confirmacion-crearRegla").fadeIn();
+		$(".velo").fadeIn();
+		
+	}else{
+		$("#nombre-regla").addClass("error-style-input");
+	}
+	$('html, body').animate({
+	       scrollTop: ($('.content').offset().top - 100)
+	},1400);
+}
+
+function errorStyle (){
+	if($("#nombre-regla").val() != "") {
+		$("#nombre-regla").removeClass("error-style-input");
+	}else{
+		$("#nombre-regla").addClass("error-style-input");
+	}
+	
+}

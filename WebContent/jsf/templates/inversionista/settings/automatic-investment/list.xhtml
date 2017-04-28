@@ -8,15 +8,15 @@
 		<div class = "gestion-sesiones container automatic-investment-list" style = "display: none">
 	
 			<div style = "width: 99%; overflow: hidden;">
-				<div style="float: left; padding-top: 18px;">
-					<strong>Inversiones Automáticas:			
+				<div class="reinversion-automatica">
+					<strong>Reinversion automática:			
 					<h:outputText value="#{ajustes.filter.automatic_investment_list.size()}" /></strong>
 				</div>
 
 				<div onclick = "AutomaticInvestment.alta();" 
-				     class = "callActionMedium borrarSesion btnNaranja " 
-				     style="float: right; width: 120px; margin-right: 5px">
-					Alta
+				     class = "callActionMedium borrarSesion btnNaranja crearRegla-btn" 
+				   	>
+					 Crear nueva regla
 				</div>				
 			</div>
 				
@@ -26,7 +26,7 @@
 						<thead>
 							<tr>
 								<th>no.</th>
-								<th style= "text-align: left;">Etiqueta</th>
+								<th style= "text-align: left;">Nombre</th>
 								<th style= "text-align: left;">Última inversión</th>		
 								<!-- <th>    </th> -->				
 							</tr>
@@ -71,6 +71,9 @@
 					
 				</script>
 			</h:panelGroup>
-		</div>			
+		</div>	
+		
+		
+				
 	</h:panelGroup>					
 </ui:composition>

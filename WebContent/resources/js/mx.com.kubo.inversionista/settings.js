@@ -3,8 +3,9 @@ console.log("settings.js");
 Settings.init_menu = function(menu_item)
 {
 	console.log("Settings.init_menu():" + menu_item);
-	
+
 	$("#settings-menu-item").val(menu_item).trigger("click");
+
 };
 
 Settings.menu_oncomplete = function(xhr, status, args)
@@ -19,9 +20,10 @@ Settings.menu_oncomplete = function(xhr, status, args)
 	switch(menu_item)
 	{
 		case LIMITES:
-			
+			AutomaticInvestment.cancelar_alta();
 			$("#investment-param").show();			
 			$(".automatic-investment-list").hide();	
+			
 		break;
 		
 		case AUTOMATIC_INVESTMENT:

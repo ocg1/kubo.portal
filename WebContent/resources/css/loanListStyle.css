@@ -1695,8 +1695,7 @@ div.container_movimiento
 }
 .formato_tablas td{
 	vertical-align:top;
-	padding:0px 0;
-
+	padding: 5px 0;
 }
 
 .formato_tablas th{
@@ -5256,6 +5255,19 @@ margin:0 auto;
 	display:none;
 }
 
+.input-style {
+		padding: 7px 2% !important;
+		border-radius: 4px !important;
+		font-weight: 400 !important;
+		font-family: 'Lato', sans-serif;
+		font-size: 17px  !important;
+		height: auto !important;
+		margin: 0 !important;
+		color:#333;
+}
+.input-style.error-style-input {
+	border: solid 1px red !important;
+}
 .mod {
 	background: #fff;
 	display:block;
@@ -5323,4 +5335,70 @@ margin:0 auto;
 #FPyInv .plazoTable {
 	width:100%;
 	margin: 0 0 20px;
+}
+
+.contenedor-dos-botones .callActionMedium {
+	width:47%;
+	float:left;
+}
+
+.contenedor-dos-botones .callActionMedium + .callActionMedium {
+	float:right;
+}
+.field-style {
+	margin:0 0 10px !important;
+}
+
+.label-style {
+	margin:0 0 10px ;
+	display:block !important;
+}
+
+#btns-alta-cancelar {
+	max-width:250px;
+	margin:0 auto;
+	overflow:hidden;
+	clear:both;
+	display:none;
+
+}
+.reinversion-automatica {
+	float: left; 
+	padding-top: 18px;
+}
+
+@media (max-width: 1100px) {
+
+#FPyInv #sidebar {
+	width: 97% !important;
+	position: relative;
+	left: auto;
+	top: auto;
+	z-index: 0;
+}
+}
+
+@media (max-width: 600px) {
+.crearRegla-btn {
+	width:200px !important;
+	margin: 0px auto 0px !important;
+	float:none !important;
+	clear:both;
+	/* display: block; */
+}
+
+.automatic-investment-list.table
+{
+	display: none;
+	height: 270px;
+	clear: both;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin: 20px 0 20px !important;
+}
+.reinversion-automatica {
+	float: none; 
+	margin:20px 0;
+}
+
 }

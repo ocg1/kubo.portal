@@ -817,6 +817,10 @@ function pixel (){
 		if(valuePartner == "KWK"){
 			$("#KWK").attr("src", "https://action.metaffiliation.com/trk.php?mclic=G4E0271013&argann="+''+prospectoID+''+"&altid="+''+inputEmailCodificado+''+"" );
 	    }
+		
+		 $("#FEEBBO").attr("src", "http://feebbo.go2cloud.org/aff_l?offer_id=1358" );
+
+		
 	}
     if($.inArray(kuboScoreVal, scores2) >= 0) {
     	 GTM_eventos ('pre-aprobado-F1-V3');

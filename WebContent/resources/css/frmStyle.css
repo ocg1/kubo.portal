@@ -7865,6 +7865,12 @@ font-size: 24px !important;
 margin:0 0 20px;
 
 }
+
+
+.container-a__imagen_texto ul li:last-child .container-a-desc{
+	
+	margin:40px 0 0 0;
+}
 .container-a__imagen_texto ul li figure {
 	float:left;
 	display:block;
@@ -7915,7 +7921,12 @@ margin:0 0 20px;
 .container-a__imagen_texto ul li .container-a-desc{
 	float:none;
 	width: 100%;
-	
+	text-align: center !important;
+}
+
+.container-a__imagen_texto ul li .container-a-desc p{
+
+	text-align: center !important;
 }
  }
  
@@ -8657,9 +8668,6 @@ display:none;
 }
 
 
-
-
-
 ::-webkit-input-placeholder { color:#999; }
 ::-moz-placeholder { color:#999;} 
 :-ms-input-placeholder { color:#999 !important;  } 
@@ -8671,3 +8679,9 @@ display:none;
 :focus::-moz-placeholder { color:transparent; opacity:0} 
 :focus:-ms-input-placeholder { color:transparent; opacity:0 } 
 :focus:-moz-placeholder {color:transparent; opacity:0 }
+
+
+.paso_1_2 .consultaHistorialBreveLoader p {
+	margin:20px 0 20px;
+	
+}

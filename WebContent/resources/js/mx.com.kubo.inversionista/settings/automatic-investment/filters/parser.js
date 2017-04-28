@@ -1,6 +1,6 @@
 console.log("risk.js");
 
-function buildQueryFilter()
+function buildQueryFilter2()
 {
 	console.log("Filters.buildQueryFilter(): ");
 	

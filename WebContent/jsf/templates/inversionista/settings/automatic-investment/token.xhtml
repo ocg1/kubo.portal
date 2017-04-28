@@ -6,18 +6,21 @@
 				
 	<ul class = "automatic-investment-filters">
 		<li>
-			<p>Etiqueta</p>
+		<div class="field-style">
+						<label class="label-style">Nombre</label>
 						<!-- onstart    = "return AutomaticInvestment.init_label(this);"-->	
-			<h:inputText value = "#{ajustes.filter.label}" immediate = "true">
+			<h:inputText value = "#{ajustes.filter.label}" immediate = "true" styleClass="input-style" id="nombre-regla" onblur="errorStyle ();">
 				<p:ajax event = "blur"
 						
 						oncomplete = "AutomaticInvestment.label_oncomplete(xhr, status, args);" 
 						listener = "#{ajustes.filter.init_label}"/>
 			</h:inputText>
+			</div>
 		</li>				
 		
 		<li>
-			<p>Frecuencia</p>
+		<div class="field-style">
+			<label class="label-style">Frecuencia</label>
 	
 			
 			<div class = "selectNuevo">	
@@ -31,7 +34,7 @@
 							oncomplete = "AutomaticInvestment.frequency_oncomplete(xhr, status, args);" 
 							listener = "#{ajustes.filter.init_select_one}"/>															
 				</h:selectOneMenu>																						
-			</div>	
+			</div></div>
 		</li>	
 	
 <!-- 		
@@ -40,16 +43,6 @@
 		</li>
 -->		
 				
-		<li>		
-			<div style = "width: 99%; overflow: hidden;" >
-				<div onclick = "AutomaticInvestment.cancelar_alta();" class = "callActionMedium borrarSesion btnNaranja">
-					Cancelar
-				</div>		
-								
-				<div onclick = "AutomaticInvestment.save();" class = "callActionMedium borrarSesion btnNaranja guardar">
-					Guardar
-				</div>			
-			</div>	
-		</li>
+		
 	</ul>				
 </ui:composition>				

@@ -817,7 +817,9 @@ function initInvestment(element){
 	function getStringRisk(){		
 		var cadenaChk = "";
 		
-		if( $("input[name=flagRisk][value=0]'").is(":checked")  ){
+		 if( $("input[name=flagRisk][value=0]").is(":checked")  ){
+		
+		//if ( ("#tbGeneralRisk").is(":visible") ){
 				
 			if($("#chkA").is(":checked")){
 				cadenaChk = cadenaChk+"'A',";

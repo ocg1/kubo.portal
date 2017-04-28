@@ -1014,6 +1014,16 @@
       		<redirect/>
    		</navigation-case>
 	</navigation-rule>
+	
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+      		<from-outcome>reportes-financieros-2017</from-outcome>
+      		<to-view-id>/Portal/reportes-financieros/reportes-financieros-2017.xhtml</to-view-id>
+      		<redirect/>
+   		</navigation-case>
+	</navigation-rule>
 
 	<navigation-rule>
    		<from-view-id>*</from-view-id>
