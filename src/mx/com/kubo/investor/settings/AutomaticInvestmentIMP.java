@@ -17,7 +17,10 @@ implements AutomaticInvestmentIMO
 	{
 		purposelst = purposeservice.getPurposeList();
 		
+		     investment_frequency = service_automatic_investment.getInvestmentFrequencyLst();
 		automatic_investment_list = service_automatic_investment.getAutomaticInvestmentListByProspect(prospectus_id);
+		
+		init_access(AUTOMATIC_INVESTMENT);
 		
 		cuenta = new CuentasClienteIMP();
 		cuenta.setSesion(sesion);
@@ -53,26 +56,42 @@ implements AutomaticInvestmentIMO
 		request.addCallbackParam("label", label);
 	}
 	
-	public void init_frequency(AjaxBehaviorEvent event)
+	public void init_select_one(AjaxBehaviorEvent event)
 	{
 		request = RequestContext.getCurrentInstance();
 		
-		select = (HtmlSelectOneMenu) event.getComponent();
+		String id = event.getComponent().getId();
 		
-		frequency = select.getValue().toString();
-		
-		if(frequency.equals("D"))
+		if(id.equals("investment-frequency"))
 		{
-			frequency_label = DIARIA;
-		}
+			select = (HtmlSelectOneMenu) event.getComponent();
+			
+			frequency = select.getValue().toString();
+			
+			request.addCallbackParam("frequency", frequency);	
+		}				
+	}
+	
+	public void init_type_search(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
 		
-		else if(frequency.equals("S"))
-		{
-			frequency_label = SEMANAL;
-		}
+		input = (HtmlInputText) event.getComponent();
 		
-		request.addCallbackParam("frequency", frequency);
-		request.addCallbackParam("frequency_label", frequency_label);
+		typeSearch = Integer.parseInt(input.getValue().toString());
+		
+		request.addCallbackParam("typeSearch", typeSearch);
+	}
+	
+	public void init_previous_type(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		input = (HtmlInputText) event.getComponent();
+		
+		previousType = input.getValue().toString();
+		
+		request.addCallbackParam("previousType", previousType);
 	}
 	
 	public void save_automatic_investment()

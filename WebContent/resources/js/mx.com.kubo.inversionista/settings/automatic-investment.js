@@ -54,12 +54,14 @@ AutomaticInvestment.label_oncomplete = function(xhr, status, args)
 AutomaticInvestment.frequency_oncomplete = function(xhr, status, args)
 {
 	var frequency = args.frequency;
-	var frequency_label = args.frequency_label;
+	//var frequency_label = args.frequency_label;
 	
 	
 	console.log("AutomaticInvestment.frequency_oncomplete(): ");
 	console.log(" > frequency = " + frequency);
+/*	
 	console.log(" > frequency_label = " + frequency_label);
+*/	
 };
 
 AutomaticInvestment.save = function()
@@ -181,25 +183,6 @@ function dibujaLimites( val )
 
 	$("#dvContInfo_"+val).html( htmlStr );
 
-}
-
-function initViewRisk()
-{	
-	console.log("AutomaticInvestment.initViewRisk()");
-	
-	if( $("input[name=flagRisk][value=0]'").is(":checked") )
-	{
-		
-		$("#dvRiskDetail").hide();
-		$( "#tbGeneralRisk").show();
-		
-	}else{
-		
-		$("#dvRiskDetail").show();
-		$("#tbGeneralRisk").hide();
-		
-	}
-	
 }
 
 function seleccionaTerm( elmnt )

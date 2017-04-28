@@ -14,14 +14,17 @@ import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.bean.InvestorsAccounts;
 import mx.com.kubo.managedbeans.SessionBean;
+import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.InvestmentFilter;
 import mx.com.kubo.model.InvestmentFilterPK;
+import mx.com.kubo.model.InvestmentFrequency;
 import mx.com.kubo.model.NaturalPerson;
 import mx.com.kubo.model.Purpose;
 import mx.com.kubo.model.gnNaturalPersonPK;
 import mx.com.kubo.rest.tienda.SAFIInvestmentIMO;
 import mx.com.kubo.rest.tienda.accounts.CuentasClienteIMO;
+import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AutomaticInvestmentService;
 import mx.com.kubo.services.InvestmentFilterService;
 import mx.com.kubo.services.NaturalPersonService;
@@ -42,13 +45,17 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected             PurposeService purposeservice;	
 	protected       NaturalPersonService naturalPersonService;
 	protected    InvestmentFilterService investmentFilterServiceImp;
-	protected AutomaticInvestmentService service_automatic_investment;
+	protected AutomaticInvestmentService service_automatic_investment;	
+	protected              AccessService service_access;
 	
+	protected Access access;
 	protected SessionBean sesion;
 	protected NaturalPerson person;
 	protected gnNaturalPersonPK person_PK;
+	
 	protected InvestmentFilter filterInvestment;
 	protected InvestmentFilterPK fpk;
+	
 	protected AutomaticInvestment automatic_investment;
 	
 	protected CuentasClienteIMO cuenta;
@@ -57,6 +64,7 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected List<Purpose> purposelst;
 	protected List<InvestorsAccounts> listInvAccounts;
 	protected List<AutomaticInvestment> automatic_investment_list;
+	protected List<InvestmentFrequency> investment_frequency;
 	
 	protected SimpleDateFormat frm;
 	protected StringBuilder sb;
@@ -65,6 +73,9 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	
 	private Calendar calendar;
 	
+	protected String user_agent;
+	protected String device_info;
+	protected String IP_address_client;
 	protected String previousType = "0";
 	protected String flagRisk = "0";
 	protected String destiny_str;
@@ -80,7 +91,7 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected String account;
 	protected String ultimoFiltro;
 	protected String label = "";
-	protected String frequency_label;
+	//protected String frequency_label;
 	protected String frequency = "D";
 	protected String is_active = "1";
 	
@@ -91,15 +102,19 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected Double saldoActual;
 	protected Double ammoutToInv;
 	
-	protected int typeSearch;
+	protected Integer typeSearch;
+	
 	protected int company_id;
 	protected int prospectus_id;
+	
+	protected final int AUTOMATIC_INVESTMENT = 84;
 	
 	protected boolean save_OK;
 	protected boolean flagInversionFG;
 	
 	protected AutomaticInvestmentDMO()
 	{
+		              service_access = Utilities.findBean("accessServiceImp");
     				purposeservice   = Utilities.findBean("purposeServiceImp");
 		      naturalPersonService   = Utilities.findBean("naturalPersonServiceImp");
 		investmentFilterServiceImp   = Utilities.findBean("investmentFilterServiceImp");
@@ -113,7 +128,7 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
     	
     	finisehd_date = calendar.getTime();
     	
-    	frequency_label = DIARIA;
+    	//frequency_label = DIARIA;
 	}
 
 	public void setSesion(SessionBean sesion)
@@ -122,8 +137,11 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 		
 		if(sesion != null)
 		{
-	    	   company_id = sesion.getCompany_id();
-	       	prospectus_id = sesion.getProspectus_id();
+	    	       company_id = sesion.getCompany_id();
+	         	prospectus_id = sesion.getProspectus_id();
+	       	IP_address_client = sesion.getIP_address_client();
+	       	      device_info = sesion.getDevice_info();
+	       	       user_agent = sesion.getUser_agent();
 	   		
 	       	person_PK = new gnNaturalPersonPK(prospectus_id, company_id);
 	       	
@@ -158,14 +176,9 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 		return risk_str;
 	}
 	
-	public int getTypeSearch() 
+	public Integer getTypeSearch() 
 	{
 		return typeSearch;
-	}
-
-	public void setTypeSearch(int typeSearch) 
-	{
-		this.typeSearch = typeSearch;
 	}
 	
 	public String getLabel()
@@ -178,20 +191,28 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 		return frequency;
 	}
 	
-	public String getFrequency_label()
-	{
-		return frequency_label;
-	}	
-	
 	public String getPreviousType() 
 	{
 		return previousType;
 	}
 
+/*	
+ 
+ 	public String getFrequency_label()
+	{
+		return frequency_label;
+	}
+	
+	public void setTypeSearch(Integer typeSearch) 
+	{
+		this.typeSearch = typeSearch;
+	}
+	
 	public void setPreviousType(String previousType) 
 	{
 		this.previousType = previousType;
 	}
+*/	
 	
 	public String getLabelOnFilteringByAmmount() 
 	{
@@ -206,6 +227,11 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	public String getScriptStatus() 
 	{
 		return scriptStatus;
+	}
+	
+	public List<InvestmentFrequency> getInvestment_frequency()
+	{
+		return investment_frequency;
 	}
 	
 	public List<AutomaticInvestment> getAutomatic_investment_list()

@@ -4,6 +4,7 @@ import java.util.List;
 
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.InvestmentFrequency;
 import mx.com.kubo.model.Purpose;
 
 public interface AutomaticInvestmentIMO 
@@ -17,4 +18,5 @@ public interface AutomaticInvestmentIMO
 	
 	List<Purpose> getPurposelst();
 	List<AutomaticInvestment> getAutomatic_investment_list();
+	List<InvestmentFrequency> getInvestment_frequency();
 }

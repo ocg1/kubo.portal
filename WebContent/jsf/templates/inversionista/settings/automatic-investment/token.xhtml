@@ -21,21 +21,24 @@
 	
 			
 			<div class = "selectNuevo">	
-				<h:selectOneMenu id = "select-type_phone" immediate = "true" value = "#{ajustes.filter.frequency}">
-							     
-					<f:selectItem itemValue = "D" itemLabel = "Diaria"/>
-					<f:selectItem itemValue = "S" itemLabel = "Semanal"/>							
+				<h:selectOneMenu id = "investment-frequency" value = "#{ajustes.filter.frequency}" immediate = "true">
+							     					
+					<f:selectItems       var = "frequency" value = "#{ajustes.filter.investment_frequency}" 
+								   itemLabel = "#{frequency.frequency_name}" 
+								   itemValue = "#{frequency.frequency_letter}"/>					
 					
 					<p:ajax event = "change"
 							oncomplete = "AutomaticInvestment.frequency_oncomplete(xhr, status, args);" 
-							listener = "#{ajustes.filter.init_frequency}"/>															
+							listener = "#{ajustes.filter.init_select_one}"/>															
 				</h:selectOneMenu>																						
 			</div>	
 		</li>	
-		
+	
+<!-- 		
 		<li style = "margin: 20px 0;">			
 			<p>Tu filtro #{ajustes.filter.label} será de frecuencia #{ajustes.filter.frequency_label}</p>
 		</li>
+-->		
 				
 		<li>		
 			<div style = "width: 99%; overflow: hidden;" >

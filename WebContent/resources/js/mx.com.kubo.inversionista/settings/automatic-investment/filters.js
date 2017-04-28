@@ -2,6 +2,38 @@ console.log("filters.js");
 
 var scrollea = false;
 
+Filters.init_type_search = function(input)
+{
+	var valor = $(input).attr("id").split(":")[1];
+	
+	console.log("init_select_one() = " + valor);
+	
+	$("#init_type_search").val(valor).trigger("click");
+};
+
+Filters.init_previous_type = function(input)
+{
+	var valor = $(input).attr("id").split(":")[1];
+	
+	console.log("init_previous_type() = " + valor);
+	
+	$("#init_previous_type").val(valor).trigger("click");
+};
+
+Filters.type_oncomplete =  function(xhr, status, args)
+{
+	var typeSearch = args.typeSearch;
+	
+	console.log("Filters.type_oncomplete() = " + typeSearch);
+};
+
+Filters.previous_type_oncomplete =  function(xhr, status, args)
+{
+	var previousType = args.previousType;
+	
+	console.log("Filters.previous_type_oncomplete() = " + previousType);
+};
+
 function filtros()
 {
 	console.log("Filters.filtros(): ");		

@@ -1,12 +1,74 @@
 console.log("risk.js");
 
-function getStringRisk()
-{		
-	console.log("Filters.getStringRisk(): ");
+function init_risk(input)
+{
+	var flagRisk = $(input).attr("id").split(":")[1];
 	
+	panel_risk_toggle(flagRisk);
+	
+	console.log("Risk.init_risk() = " + flagRisk);
+}
+
+function panel_risk_toggle(flagRisk)
+{
+	var GENERAL = 0;
+	var DETALLE = 1;
+	
+	var risk_type = parseInt(flagRisk);
+	
+	switch(risk_type)
+	{
+		case GENERAL:
+			$("#dvRiskDetail").hide();
+			$( "#tbGeneralRisk").show();						
+		break;
+		
+		case DETALLE:
+			$("#dvRiskDetail").show();
+			$("#tbGeneralRisk").hide();							
+		break;
+		
+		default: break;
+	}
+}
+
+function initViewRisk()
+{			
+	var flagRisk = $("input[name=flagRisk][value=0]'").is(":checked")	
+	
+	var type = $("input[name=flagRisk]").attr("id").split(":")[1];
+	
+	console.log("Risk.initViewRisk() = " + type);
+	
+	panel_risk_toggle(type);
+	
+/*	
+	if(flagRisk)
+	{		
+		$("#dvRiskDetail").hide();
+		$( "#tbGeneralRisk").show();
+		
+	}else{
+		
+		$("#dvRiskDetail").show();
+		$("#tbGeneralRisk").hide();		
+	}	
+*/	
+}
+
+function getStringRisk()
+{				
 	var cadenaChk = "";
 	
-	if( $("input[name=flagRisk][value=0]'").is(":checked")  )
+	var flagRisk = $("input[name=flagRisk][value=0]'").is(":checked"); 
+	
+	var type = $("input[name=flagRisk]").attr("id").split(":")[1];
+	
+	var risk_type = parseInt(type);
+	
+	console.log("Filters.getStringRisk(): " + risk_type);
+	
+	if(risk_type < 1)
 	{			
 		if($("#chkA").is(":checked"))
 		{

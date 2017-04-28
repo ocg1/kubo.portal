@@ -5,13 +5,21 @@
 				xmlns:p  = "http://primefaces.org/ui">
 
 	<div class = "generalDetallada">	
+	
 		<sup class = "nuevo">¡Nuevo!</sup>
 		
-		<h:selectOneRadio id = "flagRisk" value = "#{ajustes.filter.flagRisk}" layout = "pageDirection" >
+		<h:selectOneRadio id = "flagRisk" immediate = "true"
+						  value = "#{ajustes.filter.flagRisk}" 
+					      layout = "pageDirection" 
+					      onchange = "init_risk(this);">
+					      
 		   	<f:selectItem itemValue = "0" itemLabel = "General" />
 		   	<f:selectItem itemValue = "1" itemLabel = "Detallada" />
 		   	
-		   	<p:ajax event = "change" oncomplete = "initViewRisk();" />
+<!--
+oncomplete = "initViewRisk();" 
+ -->		   	
+		   	<p:ajax event = "change"  />
 		</h:selectOneRadio>
 	</div>
 </ui:composition>							

@@ -3,6 +3,7 @@ package mx.com.kubo.investor.settings;
 import java.util.Date;
 
 import mx.com.kubo.bean.InvestorsAccounts;
+import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.InvestmentFilter;
 import mx.com.kubo.model.InvestmentFilterPK;
@@ -10,6 +11,25 @@ import mx.com.kubo.model.Purpose;
 
 public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO 
 {
+	protected void init_access(int screen_id) 
+	{
+		access = new Access();
+		access.setPercentage(0);
+		access.setCompany_id(company_id);
+		access.setProspectus_id(prospectus_id);
+		access.setScreen_id(screen_id);		
+		access.setUser_agent(user_agent);
+		access.setDevice_info(device_info);
+		access.setUrl_access( sesion.getUrl_access() );
+		access.setProspectus_id_coach (sesion.getCoachProspectus_id());
+		access.setAccess_from		  (sesion.getAccess_from());
+		access.setVersion_description (sesion.getVersion_description());
+		access.setAccess_datetime(new Date());
+		access.setIpaddress(IP_address_client);
+		
+		service_access.add(access, false);
+	}
+	
 	public void inicializaSaldos()
 	{				
 		flagInversionFG = false;
@@ -111,7 +131,7 @@ public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO
 	{
     	String riskCad 			= map.get("cadena1");
     	String termCadIni 		= map.get("cadena2");
-    	String flagRisk 		= map.get("flagRisk");
+    	//String flagRisk 		= map.get("flagRisk");
     	String destiny_values 	= map.get("destiny_str");
     	String genderCad 		= map.get("cadenaGender");
     	String ammountCadFrom 	= map.get("inputFromBtn");

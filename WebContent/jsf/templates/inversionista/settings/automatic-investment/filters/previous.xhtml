@@ -18,12 +18,17 @@
 						
 						<table class = "tablePreviousLoan">														
 							<tbody align = "left">																
-								<h:selectOneRadio id = "cbo_filter_previous_loan" value = "#{ajustes.filter.previousType}" layout = "pageDirection">
+								<h:selectOneRadio id = "cbo_filter_previous_loan" immediate = "true"
+												  value = "#{ajustes.filter.previousType}" 
+												  layout = "pageDirection"
+												  onclick = "Filters.init_previous_type(this);">
+												  
 								   	<f:selectItem itemValue = "1" itemLabel = "Primera vez" />
 								   	<f:selectItem itemValue = "2" itemLabel = "Repetido" />
 								   	<f:selectItem itemValue = "0" itemLabel = "Todos" />
-								   	
-								   	<p:ajax event = "click"  />
+<!-- 								   	
+								   	<p:ajax event = "change" listener = "#{ajustes.filter.init_select_one}"/>
+ -->								   	
 								</h:selectOneRadio>																
 							</tbody>
 						</table>
