@@ -332,6 +332,8 @@ implements InvestorListIMO, Serializable
 				
 				hs.updateProspectus(membership.getPerson().getProspectus().getHs_vid(), properties);
 				
+				hs.sendEvent("000002060784", membership.getEmail() );
+				
 				//hs.createField( properties);
 				
 			 }

@@ -19,7 +19,7 @@ function loader()
 
 function simulatorMirror(){
 	
-	$("#ammount").val( $("#ammount_input").val() );
+	$("#ammount").val( $("#simulador_ammount").val() );
 	
 	var f = simOnStartVal_e();
 	
@@ -27,7 +27,7 @@ function simulatorMirror(){
 	
 	if( !f ){
 		
-			$("#ammount_input").val( $("#ammount").val() );
+			$("#simulador_ammount").val( $("#ammount").val() );
 		
 	}
 	
@@ -57,7 +57,7 @@ function simOnStartVal_e()
 				return true;
 		 	// }
 		}else{
-			alert("Cantidad invalida " + ent +"  --  ");
+			alertify.alert("Cantidad invalida " + ent +"  --  ");
 			input.value="";
 			//showRes()
 			return false;

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.InvestmentFrequency;
 import mx.com.kubo.repositories.AutomaticInvestmentDao;
 
 @Repository
@@ -65,7 +66,13 @@ public class AutomaticInvestmentDaoImp implements AutomaticInvestmentDao,Seriali
 	
 	@Override
 	public List<AutomaticInvestment> getAutomaticInvestmentList( Date fecha ){
-		return em.createQuery("from AutomaticInvestment where next_investment_apply = ? and is_active = 1 ",AutomaticInvestment.class).setParameter(1, fecha).getResultList();
+		
+		// return em.createQuery("from AutomaticInvestment where next_investment_apply = ? and is_active = 1 ",AutomaticInvestment.class).setParameter(1, fecha).getResultList();
+		
+		return em.createNamedQuery("collectorAutomaticInvestment",AutomaticInvestment.class)
+				.setParameter("par_fecha",  fecha)
+				.getResultList();
+		
 	}
 	
 	
@@ -98,6 +105,19 @@ public class AutomaticInvestmentDaoImp implements AutomaticInvestmentDao,Seriali
 			//e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public List<InvestmentFrequency> getInvestmentFrequencyLst(){
+		
+		try{
+			
+			return em.createQuery("from InvestmentFrequency order by order_showed  " , InvestmentFrequency.class ).getResultList();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 	
 	

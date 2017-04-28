@@ -11,7 +11,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			resultClass = CoachPublicationsCollector.class,
+			name = "collectorAutomaticInvestment",    
+			 
+			// query = "	call microfin.CONTRATOSREP(100005328,86.1645,1,1,1,'2016-02-08 19:11:00','192.0.0.0','kubofinanciero.generaContratos',1,0)
+			
+			query = "call SP_GETAUTOMATICINVESTMENT(:par_fecha)",
+			
+			hints = {    
+			   			@QueryHint (name = "org.hibernate.callable", value = "true")  
+					}    
+	
+	)
+})
 
 @Entity @Table( name = "in_automatic_investment" )
 public class AutomaticInvestment implements Serializable 

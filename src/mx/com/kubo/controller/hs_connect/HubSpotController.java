@@ -1156,9 +1156,15 @@ public class HubSpotController {
 						hs_obj.setRegistration_reason_id(registration_reason_id);
 					}
 					
-					hs_obj.setUrl_medium( getUTMValue( hs_obj.getUrl_value()   , "utm_medium" ));
+					hs_obj.setUrl_medium( getUTMValue( hs_obj.getUrl_value()   	, "utm_medium" ));
 					
-					hs_obj.setUrl_campaign( getUTMValue( hs_obj.getUrl_value()   , "utm_campaign" ));
+					hs_obj.setUrl_campaign( getUTMValue( hs_obj.getUrl_value()  , "utm_campaign" ));
+					
+					hs_obj.setUrl_adset( getUTMValue( hs_obj.getUrl_value()   	, "utm_adset" ));
+					
+					hs_obj.setUrl_ad( getUTMValue( hs_obj.getUrl_value()  		, "utm_ad" ));
+					
+					hs_obj.setUrl_referred( getUTMValue( hs_obj.getUrl_value()  		, "utm_ref" ));
 					
 				}catch(Exception e){
 					hs_obj.setRegistration_reason_id(81);

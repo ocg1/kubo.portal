@@ -9,6 +9,7 @@ import javax.el.ELContext;
 import javax.faces.context.FacesContext;
 
 import mx.com.kubo.constantes.NavigationRule;
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.controller.infusion.InfusionSoft;
 import mx.com.kubo.managedbeans.ChangeMail;
 import mx.com.kubo.managedbeans.HeaderBean;
@@ -1308,7 +1309,7 @@ public abstract class PreregistroAMO extends PreregistroDMO
 	
 	
 private boolean callSaveHubspot( Membership membership ){
-		/*
+		
 		try{
 			
 			SystemParamPK system_param_PK_I = new SystemParamPK();
@@ -1368,9 +1369,9 @@ private boolean callSaveHubspot( Membership membership ){
 			return false;
 			
 		}
-		*/
+		
 	
-	return true;
+	// return true;
 	}
 
 private String validaUTMPartner( String partner_str ){

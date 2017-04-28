@@ -16,10 +16,10 @@
 				        
 				        <f:selectItem itemValue = "" itemLabel = "Seleccione una Clabe Interbancaria" />
 				        
-				        <f:selectItems value = "#{disposicionEfectivo.lstClabes}" 
+				        <f:selectItems  value = "#{disposicionEfectivo.lstClabes}" 
 				        			   var   = "account" 
-				        			   itemLabel = "#{account.mx_clabe}" 
-				        			   itemValue = "#{account.mx_clabe}"/>
+				        			   itemLabel = "#{account.mx_clabe == null ? 'NO PROPORCIONADA' : account.mx_clabe}" 
+				        			   itemValue = "#{account.mx_clabe == null ? 'NO PROPORCIONADA' : account.mx_clabe}"/>
 				        			   
 				        <p:ajax event = "change"  />
 				          

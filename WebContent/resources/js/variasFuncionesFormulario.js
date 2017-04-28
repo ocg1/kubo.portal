@@ -811,7 +811,7 @@ function pixel (){
 			$("#MDV").attr("src", "http://scomm.rurl.me/api/pixel/?cvt=lead&cvn=Qualified_Lead&cva=200.00&cid=");
 		}
 		if(valuePartner == "GR4"){
-			$("#GR4").attr("src", "www.euroads.mx/system/trackleads.php?cpid=21&sid=17&orderid="+''+prospectoID+''+"");
+			$("#GR4").attr("src", "https://www.euroads.mx/system/trackleads.php?cpid=21&sid=17&orderid="+''+prospectoID+''+"");
 	    }
 		
 		if(valuePartner == "KWK"){

@@ -308,6 +308,8 @@ public abstract class SimulatorAMO extends SimulatorDMO
 			if(proyectLoan!=null && proyectLoan.getScoring()!=null && proyectLoan.getScoring().getRate()!=null && proyectLoan.getScoring().getStatus()!=null && proyectLoan.getScoring().getStatus()==1  )
 			{
 				sesion.setRate(proyectLoan.getScoring().getRate());
+			}else{
+				sesion.setRate(52.6D);
 			}
 		}else{
 			sesion.setRate(52.6D);

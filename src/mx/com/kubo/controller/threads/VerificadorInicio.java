@@ -2395,12 +2395,16 @@ public class VerificadorInicio extends Thread  {
 						
 						if( r != null ){
 						
-							String prospectus_id = r.split("::")[0];
-							String prospectus_id_coach = r.split("::")[1];
-							ClientNotification cn = clientnotificationservice.getClientNotification( Integer.parseInt(prospectus_id) , 1);
-							cn.setProspectus_id_coach( Integer.parseInt(prospectus_id_coach) );
-							cn.setAssign_coach_status(1);
-							clientnotificationservice.updateClientNotification(cn);
+							if( (r.split("::")).length == 2 ){
+							
+								String prospectus_id = r.split("::")[0];
+								String prospectus_id_coach = r.split("::")[1];
+								ClientNotification cn = clientnotificationservice.getClientNotification( Integer.parseInt(prospectus_id) , 1);
+								cn.setProspectus_id_coach( Integer.parseInt(prospectus_id_coach) );
+								cn.setAssign_coach_status(1);
+								clientnotificationservice.updateClientNotification(cn);
+							
+							}
 						}
 						
 					}

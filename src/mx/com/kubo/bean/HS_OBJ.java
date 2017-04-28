@@ -13,8 +13,12 @@ public class HS_OBJ {
 	private String url_value;
 	private String url_medium;
 	private String url_campaign;
+	private String url_referred;
+	private String url_ad;
+	private String url_adset;
 	private Integer registration_reason_id;
 	private Integer prospectus_id;
+	
 	
 
 	public Integer getRegistration_reason_id() {
@@ -119,6 +123,30 @@ public class HS_OBJ {
 
 	public void setUrl_campaign(String url_campaign) {
 		this.url_campaign = url_campaign;
+	}
+
+	public String getUrl_referred() {
+		return url_referred;
+	}
+
+	public void setUrl_referred(String url_referred) {
+		this.url_referred = url_referred;
+	}
+
+	public String getUrl_ad() {
+		return url_ad;
+	}
+
+	public void setUrl_ad(String url_ad) {
+		this.url_ad = url_ad;
+	}
+
+	public String getUrl_adset() {
+		return url_adset;
+	}
+
+	public void setUrl_adset(String url_adset) {
+		this.url_adset = url_adset;
 	}
 	
 }

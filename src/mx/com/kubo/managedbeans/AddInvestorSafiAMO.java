@@ -146,6 +146,9 @@ public abstract class AddInvestorSafiAMO extends AddInvestorSafiDMO
 						
 						hs.updateProspectus(membership.getPerson().getProspectus().getHs_vid(), properties);
 						
+						
+						hs.sendEvent( "000002052984", membership.getEmail() );
+						
 						//hs.createField( properties);
 						
 					 }

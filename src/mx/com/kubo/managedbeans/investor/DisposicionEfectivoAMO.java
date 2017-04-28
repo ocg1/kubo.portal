@@ -38,14 +38,13 @@ public abstract class DisposicionEfectivoAMO extends DisposicionEfectivoDMO
 		if(lstClabes != null && lstClabes.size() == 1)
 		{
 			
-			clabeSel = lstClabes.get(0).getMx_clabe();
-			bnkStr   = lstClabes.get(0).getBank_description();
+			clabeSel = lstClabes.get(0).getMx_clabe() == null ? "" : lstClabes.get(0).getMx_clabe() ;
+			bnkStr   = lstClabes.get(0).getBank_description() == null ? "" : lstClabes.get(0).getBank_description() ;
 			
-			lstClabes.get(0).getMx_clabe();
 			
 		} else {
 			
-			clabeSel = null;			
+			clabeSel = "";			
 		}	
 	}
 }

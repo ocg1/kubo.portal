@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.InvestmentFrequency;
 import mx.com.kubo.repositories.AutomaticInvestmentDao;
 import mx.com.kubo.services.AutomaticInvestmentService;
 
@@ -42,6 +43,10 @@ public class AutomaticInvestmentServiceImp implements AutomaticInvestmentService
 	@Override
 	public List<AutomaticInvestment> getAutomaticInvestmentListByProspect( Integer prospectus_id ){
 		return repository.getAutomaticInvestmentListByProspect( prospectus_id );
+	}
+	@Override
+	public List<InvestmentFrequency> getInvestmentFrequencyLst(){
+		return repository.getInvestmentFrequencyLst();
 	}
 	
 }

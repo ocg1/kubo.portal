@@ -43,8 +43,16 @@ implements NotificacionIMO
 		
 		clabe_account = service_clabe_account.loadSelectedClabeAccount(clabe_account_PK);
 		
-		cuenta_CLABE = clabe_account.getMx_clabe();
-		banco        = clabe_account.getBank_description();		
+		if( clabe_account != null ){
+			
+			cuenta_CLABE = clabe_account.getMx_clabe() == null ? "" : clabe_account.getMx_clabe();
+			banco        = clabe_account.getBank_description() == null ? "" : clabe_account.getBank_description() ;	
+			
+		}else{
+			cuenta_CLABE = "";
+			banco        = "";	
+		}
+			
 		
 		fechaDep	 = movimiento.getFecha_deposito();		
 		descripcion	 = movimiento.getDescripcion() == null ? "" : movimiento.getDescripcion().replaceAll("\\$", "") ;		

@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.primefaces.context.RequestContext;
 
 import mx.com.kubo.controller.contract.investor.CreaContrato;
+import mx.com.kubo.controller.hs_connect.HubSpotController;
 import mx.com.kubo.kubows.NotificadorConfigRequest;
 import mx.com.kubo.kubows.PublicProyect;
 import mx.com.kubo.kubows.PublicProyectServiceLocator;
@@ -1262,6 +1263,13 @@ implements Serializable
 			WsResponse response = kuboservices.notificar(request);
 			
 			response.getStatus();
+			
+			if( isCredit() &&  membership.getPerson().getProspectus().getHs_vid() != null ){
+				
+				HubSpotController hs =  new HubSpotController();
+				hs.sendEvent( "000002059334", membership.getEmail() );
+				
+			}
 			
 			return true; 
 			

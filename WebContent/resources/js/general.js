@@ -85,7 +85,7 @@ function format(e,place)
 		    	
 			    //input.value = "50,000";
 			    input.blur();
-			    alert("La cantidad no debe superar los $"+sval);
+			    alertify.alert("La cantidad no debe superar los $"+sval);
 		    	return false;
 		    
 		    }
@@ -109,7 +109,7 @@ function format(e,place)
     	if ($("#dvContMenuREG").is(":visible")) {
     		alertify.alert('Solo se permiten numeros');
     	}else {
-    		alert('Solo se permiten numeros');
+    		alertify.alert('Solo se permiten numeros');
     	}
     
 	    num= ""; 
@@ -135,7 +135,7 @@ function validaMontoMin(e,place){
 	if(num.indexOf("\\.")!=(-1)){
 		
 		if((num.split("\\.")).length>2){
-			alert("numero no valido");
+			alertify.alert("numero no valido");
 			//num= num.substring(0,num.length-1);
 			num = "";
 			input.val(num);
@@ -191,7 +191,7 @@ function validaMontoMin(e,place){
 		    		if ($("#dvContMenuREG").is(":visible")) {
 		    			alertify.alert("La cantidad debe ser mayor a los $"+sval);
 		    		}else {
-		    			alert("La cantidad debe ser mayor a los $"+sval);
+		    			alertify.alert("La cantidad debe ser mayor a los $"+sval);
 		    		}
 		    	}
 		    	else if(  parseFloat(ent)>parseFloat(vmax) ){
@@ -199,7 +199,7 @@ function validaMontoMin(e,place){
 		    			alertify.alert("La cantidad debe ser menor a los $"+sval);
 		    		}else {
 		    			
-		    			alert("La cantidad debe ser menor a los $"+sval);
+		    			alertify.alert("La cantidad debe ser menor a los $"+sval);
 		    		}
 		    	}
 		    	//alert( vmax+" -- "+num+" -- "+vmin );

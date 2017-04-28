@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.InvestmentFrequency;
 
 public interface AutomaticInvestmentDao {
 
@@ -16,5 +17,7 @@ public interface AutomaticInvestmentDao {
 	public boolean esDiaFeriado( Date fecha );
 	
 	public List<AutomaticInvestment> getAutomaticInvestmentListByProspect( Integer prospectus_id );
+	
+	public List<InvestmentFrequency> getInvestmentFrequencyLst();
 	
 }

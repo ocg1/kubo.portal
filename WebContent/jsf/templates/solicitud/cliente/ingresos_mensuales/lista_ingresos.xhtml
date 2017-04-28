@@ -50,12 +50,12 @@
 									
 						<p:column>
 							<div>
-								<h:outputText rendered="#{listIncome.income_type_id !=4 and listIncome.income_type_id !=2 and listIncome.income_type_id !=6}"  value="#{listIncome.name}" />
-								<h:outputText rendered="#{listIncome.income_type_id ==4  and listIncome.ammount==0}"  value="#{listIncome.name}" />
-								<p:commandLink rendered="#{listIncome.income_type_id==4 and  listIncome.ammount>0}"  actionListener="#{summaryRequest.showOtherIncome}" immediate="true" update=":frmQuest:lstIncometb" value="#{listIncome.name}"></p:commandLink>
-								<p:commandLink rendered="#{listIncome.income_type_id==2 and  summaryRequest.hasIncomeDeatil}" onclick="showDetailIncome();"  value="#{listIncome.name}"></p:commandLink>
-								<h:outputText rendered="#{listIncome.income_type_id ==2 and !summaryRequest.hasIncomeDeatil}"  value="#{listIncome.name}" />
-								<h:outputText rendered="#{listIncome.income_type_id ==6}"  value="#{listIncome.name}" />
+								<h:outputText 	rendered = "#{listIncome.income_type_id != 4 and listIncome.income_type_id !=2 and listIncome.income_type_id !=6}"  value="#{listIncome.name}" />
+								<h:outputText 	rendered = "#{listIncome.income_type_id == 4 and listIncome.ammount==0}"  			value="#{listIncome.name}" />
+								<p:commandLink 	rendered = "#{listIncome.income_type_id == 4 and listIncome.ammount>0}"  			value="#{listIncome.name}" actionListener="#{summaryRequest.showOtherIncome}" immediate="true" update=":frmQuest:lstIncometb" ></p:commandLink>
+								<p:commandLink 	rendered = "#{listIncome.income_type_id == 2 and summaryRequest.hasIncomeDeatil}" 	value="#{listIncome.name}" onclick="showDetailIncome();"  ></p:commandLink>
+								<h:outputText 	rendered = "#{listIncome.income_type_id == 2 and !summaryRequest.hasIncomeDeatil}"  value="#{listIncome.name}" />
+								<h:outputText 	rendered = "#{listIncome.income_type_id == 6}"  									value="#{listIncome.name}" />
 							</div>
 	         			</p:column>
 	           					

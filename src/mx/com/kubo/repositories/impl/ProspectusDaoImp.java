@@ -168,15 +168,15 @@ implements ProspectusDao
 			  
 			  SP_UpdateProspectoCallector s = em.createNamedQuery("collectorUpdateProspecto",SP_UpdateProspectoCallector.class)
 					  
-					  .setParameter("param_prospectus_id",hs_obj.getProspectus_id())
-					  .setParameter("param_primer_nombre",hs_obj.getFirstname_value())
-					  .setParameter("param_segundo_nombre",hs_obj.getSecond_name())
-					  .setParameter("param_ap_paterno",hs_obj.getLast_name())
-					  .setParameter("param_ap_materno",hs_obj.getLast_name2())
-					  .setParameter("param_hs_vid",hs_obj.getV_id())
-					  .setParameter("param_s_email",hs_obj.getEmail_value())
-					  .setParameter("param_url_origin",hs_obj.getUrl_value())
-					  .setParameter("param_phone_mobile",hs_obj.getMobil_value())
+					  .setParameter("param_prospectus_id",		hs_obj.getProspectus_id())
+					  .setParameter("param_primer_nombre",		hs_obj.getFirstname_value())
+					  .setParameter("param_segundo_nombre",		hs_obj.getSecond_name())
+					  .setParameter("param_ap_paterno",			hs_obj.getLast_name())
+					  .setParameter("param_ap_materno",			hs_obj.getLast_name2())
+					  .setParameter("param_hs_vid",				hs_obj.getV_id())
+					  .setParameter("param_s_email",			hs_obj.getEmail_value())
+					  .setParameter("param_url_origin",			hs_obj.getUrl_value())
+					  .setParameter("param_phone_mobile",		hs_obj.getMobil_value())
 					  
 	    		.getSingleResult();
 			  
@@ -266,6 +266,9 @@ implements ProspectusDao
 							.setParameter("par_registration_reason", 				hs_obj.getRegistration_reason_id())
 							.setParameter("par_utm_medium",			hs_obj.getUrl_medium())
 							.setParameter("par_utm_campaign",		hs_obj.getUrl_campaign())
+							.setParameter("par_utm_ad",				hs_obj.getUrl_ad())
+							.setParameter("par_utm_adset",			hs_obj.getUrl_adset())
+							.setParameter("par_utm_referred",		hs_obj.getUrl_referred())
 					  
 	    		.getSingleResult();
 			  
