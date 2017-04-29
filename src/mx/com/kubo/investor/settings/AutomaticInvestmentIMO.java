@@ -2,6 +2,8 @@ package mx.com.kubo.investor.settings;
 
 import java.util.List;
 
+import javax.faces.event.AjaxBehaviorEvent;
+
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.InvestmentFrequency;
@@ -12,6 +14,7 @@ public interface AutomaticInvestmentIMO
 	void setSesion(SessionBean sesion);
 	
 	void init();
+	void init_is_active(AjaxBehaviorEvent event);
 	
 	String getLabel();
 	String getFrequency();

@@ -94,6 +94,50 @@ implements AutomaticInvestmentIMO
 		request.addCallbackParam("previousType", previousType);
 	}
 	
+	
+	public void init_is_active(AjaxBehaviorEvent event)
+	{
+		request = RequestContext.getCurrentInstance();
+		
+		input = (HtmlInputText) event.getComponent();
+		
+		String is_active_TOKEN = input.getValue().toString();
+		
+		is_active = is_active_TOKEN.split("::")[0];
+		
+		automatic_investment_id = Integer.parseInt(is_active_TOKEN.split("::")[1]);
+		
+		automatic_investment = service_automatic_investment.getAutomaticInvestment(automatic_investment_id);
+		
+	          new_value = is_active != null ? is_active : "";
+	     original_value = automatic_investment.getIs_active() != null ? automatic_investment.getIs_active() : "";
+	
+		change_control_ENABLED = !original_value.equals(new_value);
+	
+		if(change_control_ENABLED)
+		{
+			automatic_investment.setIs_active(is_active);								
+			
+			init_change_control(original_value, new_value);
+		}	
+	
+		if(change_control_OK)
+		{	
+			automatic_investment.setIs_active(is_active);
+			
+			save_OK = service_automatic_investment.updateAutomaticInvestment(automatic_investment);
+		}
+								
+		if(save_OK)
+		{			
+			automatic_investment_list = service_automatic_investment.getAutomaticInvestmentListByProspect(prospectus_id);
+		}
+				
+		request.addCallbackParam("save_OK", save_OK);
+		request.addCallbackParam("is_active", is_active);
+		request.addCallbackParam("automatic_investment_id", automatic_investment_id);
+	}
+	
 	public void save_automatic_investment()
 	{
 		request = RequestContext.getCurrentInstance();

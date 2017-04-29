@@ -5,6 +5,8 @@ import java.util.Date;
 import mx.com.kubo.bean.InvestorsAccounts;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.Change_control;
+import mx.com.kubo.model.Change_controlPK;
 import mx.com.kubo.model.InvestmentFilter;
 import mx.com.kubo.model.InvestmentFilterPK;
 import mx.com.kubo.model.Purpose;
@@ -183,6 +185,27 @@ public abstract class AutomaticInvestmentAMO extends AutomaticInvestmentDMO
     	automatic_investment.setNext_investment_apply(new Date()); 
     	
     	save_OK = service_automatic_investment.saveAutomaticInvestment(automatic_investment);
+	}
+	
+	protected void init_change_control(String origValue, String newValue)
+	{
+		change_control_PK = new Change_controlPK();
+		
+		change_control_PK.setProspectus_id(prospectus_id);
+		change_control_PK.setCompany_id   (company_id);
+		
+		change_control = new Change_control();
+		
+		change_control.setChange_controlPK(change_control_PK);
+		change_control.setChange_prospectus_id(prospectus_id);
+		change_control.setAfected_table("in_automatic_investment");
+		change_control.setField("is_active");			
+		change_control.setOriginal_value(origValue);
+		change_control.setNew_value(newValue);		
+		change_control.setComments("");		
+		change_control.setIp(IP_address_client);
+		
+		change_control_OK = service_change_control.addChangeControl(change_control, prospectus_id, company_id);				
 	}
 	
 	protected void init_user_filter() 

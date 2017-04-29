@@ -28,7 +28,8 @@
 								<th>no.</th>
 								<th style= "text-align: left;">Nombre</th>
 								<th style= "text-align: left;">Última inversión</th>		
-								<!-- <th>    </th> -->				
+								<th style= "text-align: left;">Estatus</th> 		
+									<th>    </th> 
 							</tr>
 						</thead>
 								
@@ -42,15 +43,42 @@
 											<h:outputText value = "#{automatic_investment.last_investment}" >
 	   				 							<f:convertDateTime pattern = "dd-MM-yyyy" />   			
 											</h:outputText>									
-										</td>	
-<!-- 	
+										</td>																					
+ 	
+ 										<td>
+	 										<strong>
+	 											<h:panelGroup rendered = "#{automatic_investment.is_active == '0' }">
+	 												Inactivo
+	 											</h:panelGroup>
+	 											<h:panelGroup rendered = "#{automatic_investment.is_active == '1' }">
+	 												Activo
+	 											</h:panelGroup>
+	 											<h:panelGroup rendered = "#{automatic_investment.is_active == '2' }">
+	 												Finalizado
+	 											</h:panelGroup>
+	 											<h:panelGroup rendered = "#{automatic_investment.is_active == '2' }">
+	 												Inactivo
+	 											</h:panelGroup>
+	 										</strong>
+ 										</td>	
+ 	
+ 										<h:panelGroup rendered = "#{automatic_investment.is_active == '0' or automatic_investment.is_active == '3' }">
 										<td>						
-											<div onclick = "AutomaticInvestment.activar(#{automatic_investment.automatic_investment_id});" 
+											<div onclick = "AutomaticInvestment.init_is_active(1, #{automatic_investment.automatic_investment_id});" 
 											     class = "callActionMedium borrarSesion btnNaranja ">
 												Activar
 											</div>		
 										</td>	
--->
+										</h:panelGroup>
+										
+										<h:panelGroup rendered = "#{automatic_investment.is_active == '1'}">
+											<td>						
+												<div onclick = "AutomaticInvestment.init_is_active(0, #{automatic_investment.automatic_investment_id});" 
+												     class = "callActionMedium borrarSesion btnNaranja ">
+													Desactivar
+												</div>		
+											</td>	
+										</h:panelGroup>
 									</tr>						
 							</ui:repeat>
 						</tbody>

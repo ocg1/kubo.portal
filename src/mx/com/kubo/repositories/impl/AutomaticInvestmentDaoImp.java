@@ -120,5 +120,20 @@ public class AutomaticInvestmentDaoImp implements AutomaticInvestmentDao,Seriali
 		
 	}
 	
+	@Override
+	public AutomaticInvestment getAutomaticInvestment( int automatic_investment_id )
+	{
+		try
+		{			
+			return em.createQuery("from AutomaticInvestment where automatic_investment_id = ? " , AutomaticInvestment.class ).setParameter(1, automatic_investment_id).getSingleResult();
+			
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			return null;
+		}
+	}
+	
 	
 }

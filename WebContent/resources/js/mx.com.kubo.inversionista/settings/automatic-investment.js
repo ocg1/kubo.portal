@@ -96,9 +96,29 @@ AutomaticInvestment.save_oncomplete = function(xhr, status, args)
 	}
 };
 
-AutomaticInvestment.activar = function(automatic_investment_id)
+AutomaticInvestment.init_is_active = function(is_active, automatic_investment_id)
 {
-	console.log("AutomaticInvestment.activar(): " + automatic_investment_id);
+	var is_active_TOKEN =  is_active + "::" + automatic_investment_id;
+	
+	console.log("AutomaticInvestment.activar(): " + is_active_TOKEN);
+	
+	$("#init-is-active").val(is_active_TOKEN).trigger("click");
+};
+
+AutomaticInvestment.is_active_oncomplete = function(xhr, status, args)
+{
+	var is_active = args.is_active; 
+	var   save_OK = args.save_OK;
+	var automatic_investment_id = args.automatic_investment_id;
+		
+	console.log("AutomaticInvestment.is_active_oncomplete(): ");
+	console.log(" > is_active = " + is_active);
+	console.log(" > save_OK   = " + save_OK);
+	console.log(" > automatic_investment_id   = " + automatic_investment_id);
+	
+	$(".automatic-investment-list").show();	
+	
+	closeFancy();
 };
 
 function dibujaLimites( val )

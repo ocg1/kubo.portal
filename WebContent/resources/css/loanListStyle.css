@@ -1695,7 +1695,7 @@ div.container_movimiento
 }
 .formato_tablas td{
 	vertical-align:top;
-	padding: 5px 0;
+	padding: 5px 10px;
 }
 
 .formato_tablas th{

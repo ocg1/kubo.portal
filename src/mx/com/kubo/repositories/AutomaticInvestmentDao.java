@@ -6,18 +6,19 @@ import java.util.List;
 import mx.com.kubo.model.AutomaticInvestment;
 import mx.com.kubo.model.InvestmentFrequency;
 
-public interface AutomaticInvestmentDao {
-
-	public boolean saveAutomaticInvestment( AutomaticInvestment ai );
+public interface AutomaticInvestmentDao 
+{
+	boolean saveAutomaticInvestment( AutomaticInvestment ai );
 	
-	public boolean updateAutomaticInvestment( AutomaticInvestment ai );
+	boolean updateAutomaticInvestment( AutomaticInvestment ai );
 	
-	public List<AutomaticInvestment> getAutomaticInvestmentList( Date fecha );
+	List<AutomaticInvestment> getAutomaticInvestmentList( Date fecha );
 	
-	public boolean esDiaFeriado( Date fecha );
+	boolean esDiaFeriado( Date fecha );
 	
-	public List<AutomaticInvestment> getAutomaticInvestmentListByProspect( Integer prospectus_id );
+	List<AutomaticInvestment> getAutomaticInvestmentListByProspect( Integer prospectus_id );
 	
-	public List<InvestmentFrequency> getInvestmentFrequencyLst();
+	List<InvestmentFrequency> getInvestmentFrequencyLst();
 	
+	AutomaticInvestment getAutomaticInvestment(int automatic_investment_id);
 }

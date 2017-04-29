@@ -10,14 +10,16 @@ public interface AutomaticInvestmentService {
 
 	public boolean saveAutomaticInvestment( AutomaticInvestment ai );
 	
-	public boolean updateAutomaticInvestment( AutomaticInvestment ai );
+	public boolean updateAutomaticInvestment( AutomaticInvestment ai );		
 	
-	public List<AutomaticInvestment> getAutomaticInvestmentList( Date fecha );
+	AutomaticInvestment getAutomaticInvestment(int automatic_investment_id);
 	
-	public boolean esDiaFeriado( Date fecha );
+	List<AutomaticInvestment> getAutomaticInvestmentList( Date fecha );
 	
-	public List<AutomaticInvestment> getAutomaticInvestmentListByProspect( Integer prospectus_id );
+	boolean esDiaFeriado( Date fecha );
 	
-	public List<InvestmentFrequency> getInvestmentFrequencyLst();
+	List<AutomaticInvestment> getAutomaticInvestmentListByProspect( Integer prospectus_id );
+	
+	List<InvestmentFrequency> getInvestmentFrequencyLst();
 	
 }

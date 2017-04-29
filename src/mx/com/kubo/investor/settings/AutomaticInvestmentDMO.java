@@ -16,6 +16,8 @@ import mx.com.kubo.bean.InvestorsAccounts;
 import mx.com.kubo.managedbeans.SessionBean;
 import mx.com.kubo.model.Access;
 import mx.com.kubo.model.AutomaticInvestment;
+import mx.com.kubo.model.Change_control;
+import mx.com.kubo.model.Change_controlPK;
 import mx.com.kubo.model.InvestmentFilter;
 import mx.com.kubo.model.InvestmentFilterPK;
 import mx.com.kubo.model.InvestmentFrequency;
@@ -26,6 +28,7 @@ import mx.com.kubo.rest.tienda.SAFIInvestmentIMO;
 import mx.com.kubo.rest.tienda.accounts.CuentasClienteIMO;
 import mx.com.kubo.services.AccessService;
 import mx.com.kubo.services.AutomaticInvestmentService;
+import mx.com.kubo.services.Change_controlService;
 import mx.com.kubo.services.InvestmentFilterService;
 import mx.com.kubo.services.NaturalPersonService;
 import mx.com.kubo.services.PurposeService;
@@ -47,6 +50,7 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected    InvestmentFilterService investmentFilterServiceImp;
 	protected AutomaticInvestmentService service_automatic_investment;	
 	protected              AccessService service_access;
+	protected      Change_controlService service_change_control;
 	
 	protected Access access;
 	protected SessionBean sesion;
@@ -55,6 +59,8 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	
 	protected InvestmentFilter filterInvestment;
 	protected InvestmentFilterPK fpk;
+	protected Change_controlPK change_control_PK;
+	protected Change_control   change_control;	
 	
 	protected AutomaticInvestment automatic_investment;
 	
@@ -91,9 +97,10 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	protected String account;
 	protected String ultimoFiltro;
 	protected String label = "";
-	//protected String frequency_label;
 	protected String frequency = "D";
-	protected String is_active = "1";
+	protected String is_active = "1";	
+	protected String original_value;
+	protected String new_value;	
 	
 	protected final String DIARIA  = "Diaria";
 	protected final String SEMANAL = "Semanal";
@@ -104,6 +111,7 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	
 	protected Integer typeSearch;
 	
+	protected int automatic_investment_id;	
 	protected int company_id;
 	protected int prospectus_id;
 	
@@ -111,6 +119,8 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	
 	protected boolean save_OK;
 	protected boolean flagInversionFG;
+	protected boolean change_control_OK;
+	protected boolean change_control_ENABLED;
 	
 	protected AutomaticInvestmentDMO()
 	{
@@ -118,7 +128,8 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
     				purposeservice   = Utilities.findBean("purposeServiceImp");
 		      naturalPersonService   = Utilities.findBean("naturalPersonServiceImp");
 		investmentFilterServiceImp   = Utilities.findBean("investmentFilterServiceImp");
-		service_automatic_investment = Utilities.findBean("automaticInvestmentServiceImp");				
+		service_automatic_investment = Utilities.findBean("automaticInvestmentServiceImp");
+		service_change_control       = Utilities.findBean("change_controlServiceImp");
 		
 		frm = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -195,24 +206,6 @@ public abstract class AutomaticInvestmentDMO implements AutomaticInvestmentIMO
 	{
 		return previousType;
 	}
-
-/*	
- 
- 	public String getFrequency_label()
-	{
-		return frequency_label;
-	}
-	
-	public void setTypeSearch(Integer typeSearch) 
-	{
-		this.typeSearch = typeSearch;
-	}
-	
-	public void setPreviousType(String previousType) 
-	{
-		this.previousType = previousType;
-	}
-*/	
 	
 	public String getLabelOnFilteringByAmmount() 
 	{

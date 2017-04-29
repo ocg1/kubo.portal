@@ -29,6 +29,15 @@
 			
 		</h:inputText>	
 		
+		<h:inputText id = "init-is-active" immediate = "true" value = "{ajustes.menu_item}">					
+			
+			<p:ajax event = "click"  update = "panel-automatic-investment-list" 
+					onstart    = "displayMessageProcessing('msgprocessing',false);"
+					oncomplete = "AutomaticInvestment.is_active_oncomplete(xhr, status, args);"
+					listener   = "#{ajustes.filter.init_is_active}"/>
+			
+		</h:inputText>	
+		
 		<p:commandLink id = "save-automatic-investment" immediate = "true" update = "panel-automatic-investment-list :pnlScriptStatus"
 					   onstart        = "displayMessageProcessing('msgprocessing',false);" 
 					   oncomplete     = "AutomaticInvestment.save_oncomplete(xhr, status, args);"

@@ -185,3 +185,7 @@ ul.automatic-investment-filters li input
 .crearRegla-btn {
 	width:200px !important;
 }
+
+.automatic-investment-list table td .callActionMedium  {
+	width:120px;
+}

@@ -60,9 +60,13 @@ function getStringRisk()
 {				
 	var cadenaChk = "";
 	
-	var flagRisk = $("input[name=flagRisk][value=0]'").is(":checked"); 
+//	var flagRisk = $("input[name=flagRisk][value=0]'").is(":checked"); 
+//	
+//	var type = $("input[name=flagRisk]").attr("id").split(":")[1];
 	
-	var type = $("input[name=flagRisk]").attr("id").split(":")[1];
+	
+	
+	var type = ( $("#tbGeneralRisk").is(":visible") ? "0" : "1" );
 	
 	var risk_type = parseInt(type);
 	

@@ -1,6 +1,5 @@
 package mx.com.kubo.services.impl;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,14 +12,8 @@ import mx.com.kubo.repositories.AutomaticInvestmentDao;
 import mx.com.kubo.services.AutomaticInvestmentService;
 
 @Service
-public class AutomaticInvestmentServiceImp implements AutomaticInvestmentService , Serializable  {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	
+public class AutomaticInvestmentServiceImp implements AutomaticInvestmentService  
+{	
 	@Autowired
 	private AutomaticInvestmentDao repository;
 	
@@ -47,6 +40,11 @@ public class AutomaticInvestmentServiceImp implements AutomaticInvestmentService
 	@Override
 	public List<InvestmentFrequency> getInvestmentFrequencyLst(){
 		return repository.getInvestmentFrequencyLst();
+	}
+	@Override
+	public AutomaticInvestment getAutomaticInvestment(int automatic_investment_id) 
+	{ 
+		return repository.getAutomaticInvestment(automatic_investment_id);
 	}
 	
 }
