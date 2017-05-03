@@ -4,20 +4,64 @@ var scrollea = false;
 
 Filters.init_type_search = function(input)
 {
+/*	
 	var valor = $(input).attr("id").split(":")[1];
+*/	
+	
+	var valor = $(input).next("label").html().trim();
+	
+	var typeSearch = -1;
+	
+	if(valor == "Todos")
+	{
+		typeSearch = 0;
+	}
+	
+	else if(valor == "Fondeados previamente")
+	{
+		typeSearch = 1;
+	}
+	
+	else if(valor == "Sin mi fondeo previo")
+	{
+		typeSearch = 2;
+	}
 	
 	console.log("init_select_one() = " + valor);
+	console.log(" > typeSearch = " + typeSearch);
 	
-	$("#init_type_search").val(valor).trigger("click");
+	$("#init_type_search").val(typeSearch).trigger("click");
 };
 
 Filters.init_previous_type = function(input)
 {
+/*	
 	var valor = $(input).attr("id").split(":")[1];
+*/	
+	
+	var valor = $(input).next("label").html().trim();
+	
+	var previous_type = -1;
+	
+	if(valor == "Todos")
+	{
+		previous_type = 0;
+	}
+	
+	else if(valor == "Primera vez")
+	{
+		previous_type = 1;
+	}
+	
+	else if(valor == "Repetido")
+	{
+		previous_type = 2;
+	}
 	
 	console.log("init_previous_type() = " + valor);
+	console.log(" > previous_type = " + previous_type);
 	
-	$("#init_previous_type").val(valor).trigger("click");
+	$("#init_previous_type").val(previous_type).trigger("click");
 };
 
 Filters.type_oncomplete =  function(xhr, status, args)
