@@ -271,11 +271,18 @@ implements ForgotPassIMO, Serializable
 			}
 		}
 		
+		try{
 		
-		 RequestContext request   = RequestContext.getCurrentInstance();
-		 
-		 request.addCallbackParam("is_success", is_success);
-		 request.addCallbackParam("mensajeError", mensajeError);
+			RequestContext request2   = RequestContext.getCurrentInstance();
+			 
+			request2.addCallbackParam("is_success", is_success);
+			request2.addCallbackParam("mensajeError", mensajeError);
+		
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
 		 
 		return faces_action;
 	}

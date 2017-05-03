@@ -107,6 +107,7 @@ import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelatedPersonLoanPK;
 import mx.com.kubo.model.ResidencePK;
 import mx.com.kubo.model.RiskTask;
+import mx.com.kubo.model.RuleExecution;
 import mx.com.kubo.model.SavingAccount;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.ServiceCalling;
@@ -3457,12 +3458,40 @@ membershipTemp = new Membership();
 		
 		service_prospecto_duplicado.init_natural_person(actualProyect.getProyectloanPk().getProspectus_id(),actualProyect.getProyectloanPk().getCompany_id(), sesion);
 		
+		
+		
+		RuleExecution reEmp = new RuleExecution();
+		
+		reEmp.setCreation_date(new Date());
+		reEmp.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+		
+		reEmp.setRule_id(1);
+		
+		
+		
 		service_prospecto_duplicado.valida_persona_relacionada_y_empleado();
 		
 		boolean is_relatedPerson = service_prospecto_duplicado.isFlagRelation();
 		
 		boolean is_employed = service_prospecto_duplicado.isFlagEmployee();
 		Stackholder_relationship stackholder = service_prospecto_duplicado.getStackholder_selection();
+		
+		RuleExecution reRel = new RuleExecution();
+		
+		reRel.setCreation_date(new Date());
+		reRel.setProspectus_id(actualProyect.getProyectloanPk().getProspectus_id());
+		
+		reRel.setRule_id(2);
+		
+		
+		reEmp.setResult_text(is_employed ? "El acreditado es empleado kubo." :  "El acreditado no es empleado kubo.");
+		reEmp.setResult_value( is_employed ? "1" : "0" );
+		
+		reRel.setResult_text(is_relatedPerson ? "El acreditado es persona relacionada." :  "El acreditado no es persona relacionada.");
+		reRel.setResult_value(is_relatedPerson ? "1" : "0" );
+		
+		ruleexecutionservice.saveRuleExecution(reEmp);
+		ruleexecutionservice.saveRuleExecution(reRel);
 		
 		if(is_relatedPerson)
 		{
@@ -3499,6 +3528,13 @@ membershipTemp = new Membership();
 		}
 		
 		service_membership.update(member);
+		
+		RuleExecution ruleEmp =  ruleexecutionservice.getMaxRuleExecution(actualProyect.getProyectloanPk().getProspectus_id(), 1);
+		RuleExecution ruleRel =  ruleexecutionservice.getMaxRuleExecution(actualProyect.getProyectloanPk().getProspectus_id(), 2);
+		
+		fechaRuleEmp =  ruleEmp.getCreation_date();
+		
+		fechaRuleRel = ruleRel.getCreation_date();
 		
 		
 	}

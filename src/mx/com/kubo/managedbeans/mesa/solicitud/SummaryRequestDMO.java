@@ -174,6 +174,7 @@ import mx.com.kubo.services.RelationShipService;
 import mx.com.kubo.services.ResidenceService;
 import mx.com.kubo.services.RiskTaskService;
 import mx.com.kubo.services.RoleAccessService;
+import mx.com.kubo.services.RuleExecutionService;
 import mx.com.kubo.services.SavingAccountService;
 import mx.com.kubo.services.ScoringService;
 import mx.com.kubo.services.ScreenService;
@@ -427,6 +428,9 @@ implements SummaryRequestIMO
 	@ManagedProperty("#{riskTaskServiceImp}")
 	protected RiskTaskService risktaskservice;
 	
+	@ManagedProperty("#{ruleExecutionServiceImp}")
+	protected RuleExecutionService ruleexecutionservice;
+	
 	protected RequestContext request;
 	protected FacesContext   faces;
 	protected ExternalContext external;
@@ -563,6 +567,9 @@ implements SummaryRequestIMO
 	protected Character funding_type;
 
 	protected Date changeSignatureDate;
+	
+	protected Date fechaRuleEmp;
+	protected Date fechaRuleRel;
 	
 	protected Calendar mD01;
 	protected Calendar mD02;
@@ -2503,6 +2510,22 @@ implements SummaryRequestIMO
 	public void setChangeSignatureDate(Date changeSignatureDate) {
 		this.changeSignatureDate = changeSignatureDate;
 	}
+	
+	public Date getFechaRuleEmp() {
+		return fechaRuleEmp;
+	}
+
+	public void setFechaRuleEmp(Date fechaRuleEmp) {
+		this.fechaRuleEmp = fechaRuleEmp;
+	}
+	
+	public Date getFechaRuleRel() {
+		return fechaRuleRel;
+	}
+
+	public void setFechaRuleRel(Date fechaRuleRel) {
+		this.fechaRuleRel = fechaRuleRel;
+	}
 
 	public ProyectLoan getActualProyect() {
 		return actualProyect;
@@ -3769,6 +3792,14 @@ implements SummaryRequestIMO
 
 	public void setRisktaskservice(RiskTaskService risktaskservice) {
 		this.risktaskservice = risktaskservice;
+	}
+	
+	public RuleExecutionService getRuleexecutionservice() {
+		return ruleexecutionservice;
+	}
+
+	public void setRuleexecutionservice(RuleExecutionService ruleexecutionservice) {
+		this.ruleexecutionservice = ruleexecutionservice;
 	}
 
 	public boolean isRisktask1() {
