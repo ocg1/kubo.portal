@@ -8,17 +8,7 @@
 	<h:panelGroup rendered = "#{!summaryRequest.permisos.changeStatus or summaryRequest.lista_cambio_estatus.size() lt 1}">
 		<div class="detailsMiddleBox">
 		
-			
-				<h:panelGroup id="statusUpdate_A" rendered="#{summaryRequest.actualProyect!=null and summaryRequest.actualProyect.status_id!=null}" >
-					<p class="detailsBoxValue">	
-						<p:graphicImage width="25" height="25" title="#{summaryRequest.actualProyect.statusProyect.name}" url="../resources#{summaryRequest.actualProyect.statusProyect.url_img}"></p:graphicImage>
-					</p>
-					
-					<p class="smallGray">#{summaryRequest.actualProyect.statusProyect.name}</p>
-				</h:panelGroup>
-	
-		 
-			<div class="statusBitacora"  align="right" style="width: 30px; float: right;">
+				<div class="statusBitacora"  align="right" style="width: 30px;">
 				<p:commandLink immediate      = "true" 
 							   rendered       = "#{sessionBean.area == 'M' and summaryRequest.changeStatusProyect!=null and summaryRequest.changeStatusProyect.hasChange}" 													
 				               actionListener = "#{summaryRequest.setListChanges(summaryRequest.changeStatusProyect)}" 
@@ -30,6 +20,16 @@
 					</h:graphicImage>
 				</p:commandLink>
 			</div>
+				<h:panelGroup id="statusUpdate_A" rendered="#{summaryRequest.actualProyect!=null and summaryRequest.actualProyect.status_id!=null}" >
+					<p class="detailsBoxValue">	
+						<p:graphicImage width="25" height="25" title="#{summaryRequest.actualProyect.statusProyect.name}" url="../resources#{summaryRequest.actualProyect.statusProyect.url_img}"></p:graphicImage>
+					</p>
+					
+					<p class="smallGray">#{summaryRequest.actualProyect.statusProyect.name}</p>
+				</h:panelGroup>
+	
+		 
+		
 		</div>
 	</h:panelGroup>				
 </ui:composition>				

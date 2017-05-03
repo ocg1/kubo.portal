@@ -923,13 +923,14 @@ border-bottom: solid 1px #ccc;
 }
 
 #rightRating {
-	float: right;
+	float: left;
 	color: #4D4D4D;
 	font-size: 0.8em;
 	width: 60px;
 	padding-top: 4px;
 	margin-right: 42px;
 	margin-left: 10px;
+	text-align: left;
 }
 
 .rightVerification 
@@ -1575,6 +1576,7 @@ border-bottom: solid 1px #ccc;
 	padding: 15px 0 0 !important;
 	display: block;
 	font-size: 16px;
+	margin:0 0 20px !important;
 	/* overflow: hidden; */
 }
 
@@ -1741,9 +1743,9 @@ font-size: 16px !important;
 	margin:0 0 20px;
 }
 .change_icon {
-	margin-left: 10px;
-	height: 25px; 
-	width: 25px;
+	margin-right: 4px;
+	height: auto;
+	width: 17px;
 }
 .radio-question-consol {
 	width:100px;
@@ -1939,7 +1941,7 @@ font-size: 16px !important;
 	color: #439539;
 }
 .titulo_proyectos {
-	width: 63% !important;
+	width: 59% !important;
 	float: left;
 	margin: 0 0 24px;
 	border: solid 1px #ccc;
@@ -2149,7 +2151,7 @@ margin: 0;
 	margin:0 0 10px;
 
 }
-#dvSummaryCont Ãƒ, .editar_nota {
+#dvSummaryCont ÃƒÆ’Ã†â€™, .editar_nota {
  	border: solid 1px #ccc !important;
  	display:block;
  	width:20px;
@@ -2564,9 +2566,8 @@ margin:0 0 20px;
 	right: 10px;
 }
 .bitacoraCambios a, .bitacoraCambios img {
-	width:100%;
-	height:auto;
-	
+	/* width:100%; */
+	/* height:auto; */
 }
 
 .imgInstitutionalInvestor {
@@ -2596,8 +2597,8 @@ margin:0 0 20px;
 
 
 .statusBitacora img{
-	width:100%;
-	height:auto;
+	/* width:100%; */
+	/* height:auto; */
 	left:0;
 	margin:0;
 }
@@ -3823,7 +3824,8 @@ div.articulos-desglose table {
 }
 
 .articulos-desglose table tr td a {
-	text-decoration:underline;
+	text-decoration:none;
+	cursor:default;
 
 }
 
@@ -4284,4 +4286,67 @@ div.bloque.respuesta-si {
 
 .motivoOcultar {
 	display:none;
+}
+
+.credito-aprobado {
+	clear:both;
+ 	padding: 10px !important; 
+  background-color: #E6E6E6;
+  margin:0 0 20px;
+}
+
+.credito-aprobado ul  {
+	clear:both;
+	overflow:hidden;
+}
+
+
+.credito-aprobado ul li  {
+	float:none;
+	
+}
+
+#statusUpdate_A {
+	float:left;
+	display: block;
+}
+
+.statusBitacora {
+	position:relative;
+	float:left;
+	margin: 0 5px 0 0;
+	top:0;
+	left:auto;
+	right:auto;
+	width: 18px !important;
+}
+
+
+.kuboScoreWidget {
+	float:left;
+	margin: 0 !important;
+	display:block;
+	width: auto !important;
+	clear: none;
+}
+
+.kuboScoreSquares {
+	float:left;
+	display:block;
+	margin: 0 10px 0 0;
+}
+
+.score-statusMoved {
+	width: 195px;
+	margin: 14px 0;
+	border-top: solid 1px #00b929;
+	padding: 10px 0;
+}
+.score-statusMoved #status {
+	text-align:left;
+	font-size: 15px;
+}
+
+.score-statusMoved  .detailsMiddleStatusData {
+	margin:0;
 }

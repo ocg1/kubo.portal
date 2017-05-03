@@ -9,7 +9,7 @@
 				   actionListener = "#{summaryRequest.setListChanges(summaryRequest.documentacion.changedocument)}" 
 				   oncomplete = "showPopUpChanges();" 
 				   style = "cursor:pointer;">
-			<h:graphicImage rendered = "#{summaryRequest.documentacion.changedocument.hasChange}" url = "../resources/img/change-icon.png" />
+			<h:graphicImage styleClass="change_icon" rendered = "#{summaryRequest.documentacion.changedocument.hasChange}" url = "../resources/img/change-icon.png" />
 	</p:commandLink>
 
 	<br style = "clear:both;" />	

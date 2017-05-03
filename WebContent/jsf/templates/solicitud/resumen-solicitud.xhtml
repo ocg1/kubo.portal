@@ -7,7 +7,7 @@
 	<div id = "dvCntTitleProfile">			
 		<h:panelGroup rendered = "#{sessionBean.area != 'M'}">		
 			<div class="info_titulo">				
-				<h1 style = "margin-bottom: 10px;" class = "clTitle">Resumen de la solicitud</h1> 
+				<h1 style = "margin-bottom: 10px;" class = "clTitle">Resumen de la solicitud / Expediente de crédito</h1> 
 				
 				<strong  class = "smallOrange">Número de cliente</strong>
 				<strong class = "small prospectoID">#{summaryRequest == null ? (activityPerson != null ? activityPerson.prospectus_id: '') : summaryRequest.numCliente }</strong>
@@ -21,7 +21,7 @@
 					
 		<h:panelGroup rendered = "#{sessionBean.area == 'M'}">
 			<div class="info_titulo">		
-				<h1 style = "margin-bottom: 10px;" class = "clTitle">Resumen de la solicitud</h1> 
+				<h1 style = "margin-bottom: 10px;" class = "clTitle">Resumen de la solicitud / Expediente de crédito </h1> 
 				
 				<strong class="smallOrange">Número de cliente</strong>
 				<strong class="small prospectoID">#{summaryRequest == null ? (activityPerson != null ? activityPerson.prospectus_id: '') : summaryRequest.numCliente }</strong>

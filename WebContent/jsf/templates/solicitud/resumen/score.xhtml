@@ -4,7 +4,7 @@
 				xmlns:h  = "http://java.sun.com/jsf/html"
 				xmlns:p  = "http://primefaces.org/ui">
 				
-	<div class = "detailsMiddleStatus">										
+	<div class = "detailsMiddleStatus score-statusMoved">										
 		<div class = "detailsMiddleStatusData #{summaryRequest.scoreClass} ">
 			<h:panelGroup rendered = "#{sessionBean.area=='I'}">
 				<p class = "statusLeft">#{summaryRequest.kuboScoreLetter}</p>
@@ -15,7 +15,8 @@
 						   onstart = "return displayMessageProcessing('msgprocessing', false);" 
 						   oncomplete = "closeFancy();"  
 						   actionListener = "#{summaryRequest.goToLogs}" 
-						   action = "#{summaryRequest.actionNavLogs}">
+						   action = "#{summaryRequest.actionNavLogs}"
+						   styleClass="kuboScoreSquares">
 						   
 				<p class = "statusLeft">#{summaryRequest.kuboScoreLetter}</p>
 				<p class = "statusRight">#{summaryRequest.kuboScoreNumber}</p>
@@ -24,17 +25,18 @@
 			</p:commandLink>
 																				
 			<h:panelGroup rendered = "#{!summaryRequest.permisos.modificar_calificacion}">			
-				<p id = "rightRating" style = "font-size: 1.1em; font-weight: normal;">Calificación</p>	
+				<p id = "rightRating" style = "font-size: 1.1em; font-weight: normal;">kubo.score</p>	
 			</h:panelGroup>			
 			
-			<div class = "clear smallGray" style = "width: 180px; overflow: visible; margin-top: 35px; ">
+			<div class = "clear smallGray kuboScoreWidget" style = "width: 180px; overflow: visible; margin-top: 35px; ">
 				<div style = "overflow: visible; float: left;">						
 					<ui:include src = "editor-loan-score/bitacora.xhtml" />
 				</div>		
 												
 				<p:inplace widgetVar = "editorLoanScore"
 						   rendered  = "#{summaryRequest.permisos.modificar_calificacion}" 
-				 		   label     = "Calificación" >
+				 		   label     = "kubo.score"
+				 		    >
 				
 					<p:ajax event = "save" immediate = "true"
 						    oncomplete = "Resumen.loan_score_oncomplete(xhr, status, args);"
