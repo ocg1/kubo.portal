@@ -110,6 +110,20 @@ public class TableroNormativoDetallado implements Serializable {
 	private String estatusLiquidez;// varchar(20)
 	@Column(name="FechaInforme")
 	private Date fechaInforme; // date
+	@Column(name="Var_has_identification")	//		varchar(40);
+	private String has_identification ;
+	@Column(name="Var_has_consulting")	// 				varchar(40);
+	private String has_consulting ;
+	@Column(name="Var_has_income")	// 					varchar(40);
+	private String has_income ;
+	@Column(name="Var_has_address")	// 				varchar(40);
+	private String has_address;
+	@Column(name="Var_has_note")	// 					varchar(40);
+	private String has_note;
+	@Column(name="Var_has_proyect_loan")	// 			varchar(40);
+	private String has_proyect_loan;
+	@Column(name="Var_has_warranty")	// 				varchar(40);
+	private String has_warranty;
 	
 	public Double getCapitalNeto() {
 		return capitalNeto;
@@ -344,6 +358,48 @@ public class TableroNormativoDetallado implements Serializable {
 	}
 	public void setFechaInforme(Date fechaInforme) {
 		this.fechaInforme = fechaInforme;
+	}
+	public String getHas_identification() {
+		return has_identification;
+	}
+	public void setHas_identification(String has_identification) {
+		this.has_identification = has_identification;
+	}
+	public String getHas_consulting() {
+		return has_consulting;
+	}
+	public void setHas_consulting(String has_consulting) {
+		this.has_consulting = has_consulting;
+	}
+	public String getHas_income() {
+		return has_income;
+	}
+	public void setHas_income(String has_income) {
+		this.has_income = has_income;
+	}
+	public String getHas_address() {
+		return has_address;
+	}
+	public void setHas_address(String has_address) {
+		this.has_address = has_address;
+	}
+	public String getHas_note() {
+		return has_note;
+	}
+	public void setHas_note(String has_note) {
+		this.has_note = has_note;
+	}
+	public String getHas_proyect_loan() {
+		return has_proyect_loan;
+	}
+	public void setHas_proyect_loan(String has_proyect_loan) {
+		this.has_proyect_loan = has_proyect_loan;
+	}
+	public String getHas_warranty() {
+		return has_warranty;
+	}
+	public void setHas_warranty(String has_warranty) {
+		this.has_warranty = has_warranty;
 	}
 
 }

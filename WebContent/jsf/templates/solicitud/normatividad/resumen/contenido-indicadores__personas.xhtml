@@ -25,38 +25,118 @@
 		</div>
 		<div class="container-side">
 			<h3>Personas Relacionadas</h3>
-		<div class="tabla-style2 articulos-desglose">
+		<div class="tabla-style2 articulos-desglose gray-table">
 				<table cellpadding="0" cellspacing="0" border="0">
 					<tr>
-						<th></th>
-						<th><span>Créditos Activos</span></th>
+						<th style="width:70%;">Personas Relacionadas</th>
+						<th><span >Créditos Activos</span></th>
 					</tr>
+					
 					<tr>
-						<td>Empleados de Kubo con crédito	</td>
-						<td><strong>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.numCreEmpleados)}</strong></td>
-					</tr>
-					<tr>
-						<td>Personas Relacionadas con crédito	</td>
-						<td><strong>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.numOperacionesRel)}</strong></td>
+						<td class="black-style-font"><span class="tip-element" data-tip="Lorem ipsum">Con crédito en kubo.financiero</span></td>
+						<td><strong >#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.numOperacionesRel)}</strong></td>
 					</tr>
 						<tr>
-					<td>Requirieron autorización del Comité de Personas Relacionadas	</td>
+					<td class="sangria"><span class="tip-element" data-tip="Lorem ipsum">Requirieron autorización del Comité de Personas Relacionadas</span>	</td>
 						<td><strong>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.autorizaComite)}</strong></td>
 					</tr>
 					<tr>
-						<td>Requirieron autorización del Consejo de Administración	</td>
+						<td class="sangria"><span class="tip-element" data-tip="Lorem ipsum">Requirieron autorización del Consejo de Administración</span>	</td>
 						<td><strong>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.autorizaConsejo)}</strong></td>
 					</tr>
 					<tr>
-						<td>Requirieron control de sus vínculos patrimoniales y de parentesco	</td>
-						<td><strong>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.autorizaParentesco)}</strong></td>
+						<td class="black-style-font"><span class="tip-element" data-tip="Lorem ipsum"> Requirieron control de sus vínculos patrimoniales y de parentesco</span>	</td>
+						<td><strong data-tip="Lorem ipsum">#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.autorizaParentesco)}</strong></td>
 					</tr>
 				</table>
 			</div>
-	
+			
+			<div class="tabla-style2 articulos-desglose gray-table">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<th style="width:70%;">Empleados</th>
+						<th><span>Créditos Activos</span></th>
+					</tr>
+					<tr>
+						<td class="black-style-font"><span class="tip-element" data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere erat tempus diam ultrices, sed maximus dui malesuada.">Con crédito en kubo.financiero</span></td>
+						<td><strong>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.numCreEmpleados)}</strong></td>
+					</tr>
+				</table>
+			</div>
+			<div class="indicadores-normativos_tabs relacionados-list">
+				    <ul>
+				        <li>
+				            <div class="btn-normativo vista-porcentaje bigger active" onclick="jsShowCartera(this, '.relacionados-list', '.vista-porcentaje2');">
+				                Ver porcentaje
+				            </div>
+				        </li>
+				        <li>
+				            <div class="btn-normativo bigger vista-monto" onclick="jsShowCartera(this, '.relacionados-list',  '.vista-monto2');">
+				                Ver monto
+				            </div>
+				        </li>
+				    </ul>
+				</div>
+				<div class="indicadores-normativos_modulos_block vista-porcentaje2">
+				<div class="indicadores-modulo total-operaciones-style">
+				        <h5>Operaciones de personas relacionadas</h5>
+				        <h2>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcentajePersRel)}%</h2>					
+				        
+				        <div class="limites-inicadores">
+				       		 <p><strong>Límite</strong></p>
+				        		<p>#{resumenTableroNormativo.tableronormativoresumen.descripPersRel}</p>
+				       	</div>
+				   <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel != 'CUMPLIMIENTO'}" >
+				       	
+				       	 <div class="indicador-estatus incumplimiento">
+						           				 <h4>
+											 		<i class="fa fa-exclamation-circle"></i>
+											 		<span>#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel}</span>
+											 	</h4>
+								</div>
+								</h:panelGroup>
+							<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel == 'CUMPLIMIENTO'}" >
+								
+							 	 <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	
+											 <span>#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel}</span>
+										</h4>
+									</div>
+							</h:panelGroup>
+				    </div>
+				</div>
 				
-				
-				<div class="tabla-style2 articulos-desglose">
+				<div class="indicadores-normativos_modulos_block vista-monto2">
+				<div class="indicadores-modulo total-operaciones-style">
+				        <h5>Operaciones de personas relacionadas</h5>
+				        <h4>$ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.montoPersonaRel)}</h4>
+				        
+				        <div class="limites-inicadores">
+				       		 <p><strong>Límite</strong></p>
+				        		<p>#{resumenTableroNormativo.tableronormativoresumen.descripPersRel}</p>
+				       	</div>
+				   <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel != 'CUMPLIMIENTO'}" >
+				       	
+				       	 <div class="indicador-estatus incumplimiento">
+						           				 <h4>
+											 		<i class="fa fa-exclamation-circle"></i>
+											 		<span>#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel}</span>
+											 	</h4>
+								</div>
+								</h:panelGroup>
+							<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel == 'CUMPLIMIENTO'}" >
+								
+							 	 <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	
+											 <span>#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel}</span>
+										</h4>
+									</div>
+							</h:panelGroup>
+				    </div>
+				</div>
+				<!-- div class="tabla-style2 articulos-desglose">
 					<table cellpadding="0" cellspacing="0" border="0">
 						<tr>
 							<th></th>
@@ -80,7 +160,7 @@
 							</td>
 						</tr>
 					</table>
-			   </div>
+			   </div-->
 				
 		</div>
 		

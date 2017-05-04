@@ -94,6 +94,7 @@ import mx.com.kubo.model.Referred;
 import mx.com.kubo.model.RelatedPersonLoan;
 import mx.com.kubo.model.RelationShip;
 import mx.com.kubo.model.Residence;
+import mx.com.kubo.model.RuleExecution;
 import mx.com.kubo.model.Scoring;
 import mx.com.kubo.model.StateCat;
 import mx.com.kubo.model.StatusProyectCat;
@@ -438,6 +439,9 @@ implements SummaryRequestIMO
 	protected ELResolver     resolver;
 	protected HtmlInputText  ajax_inputText;			
 	protected HttpServletRequest httpServletRequest;
+	
+	protected List<RuleExecution> ruleEmpLst;
+	protected List<RuleExecution> ruleRelLst;
 	
 	protected SessionBean         sesion;
 	protected SearchSummaySession session_sumary;
@@ -3536,6 +3540,22 @@ implements SummaryRequestIMO
 	
 	public void  setLstApproval( List<ApprovalCredit> lstApproval ){
 		this.lstApproval  = lstApproval;
+	}
+	
+	public List<RuleExecution> getruleRelLst(){
+		return ruleRelLst;
+	}
+	
+	public void  setruleRelLst( List<RuleExecution> ruleRelLst ){
+		this.ruleRelLst  = ruleRelLst;
+	}
+	
+	public List<RuleExecution> getRuleEmpLst(){
+		return ruleEmpLst;
+	}
+	
+	public void  setRuleEmpLst( List<RuleExecution> ruleEmpLst ){
+		this.ruleEmpLst  = ruleEmpLst;
 	}
 	
 	public void setImg_status_inv( String img_status_inv){

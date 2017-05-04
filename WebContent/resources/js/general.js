@@ -286,6 +286,23 @@ function showPopUpChanges(){
 	});
 }
 
+function showPopUpIsEmployed(){
+	$.fancybox({		
+		padding : 	0,
+		margin 	:	0,
+		width	:	800,
+		height  :	400,
+		transitionIn: 'none',
+		transitionOut : 'none',	
+		scrolling : 'auto',
+		centerOnScroll : true,
+		type : 'iframe',
+		href: '../jsf/templates/showListRuleExecution.xhtml',
+		overlayColor: '#333333'
+
+	});
+}
+
 function showEflProgress(){
 	$.fancybox({		
 		padding : 	0,

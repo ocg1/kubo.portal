@@ -3539,6 +3539,18 @@ membershipTemp = new Membership();
 		
 	}
 	
+	public void getIsemployedlogs(){
+		
+		ruleEmpLst =  ruleexecutionservice.getRuleExecutionLst(actualProyect.getProyectloanPk().getProspectus_id(), 1);
+		
+	}
+	
+	public void getIsRelatedlogs(){
+		
+		ruleEmpLst =  ruleexecutionservice.getRuleExecutionLst(actualProyect.getProyectloanPk().getProspectus_id(), 2);
+		
+	}
+	
 	public void uploadAuthorizedFile(FileUploadEvent event){
 		
 		try{

@@ -26,7 +26,17 @@
 			$(bloque).slideDown();
 			$(btn).addClass("active");
 		}
-	
+		
+		function jsShowCartera (btn, list, bloque){
+			
+			$(".indicadores-normativos_modulos_block").slideUp()
+			$(list+" .btn-normativo").removeClass("active")
+			$(bloque).slideDown();
+			$(btn).addClass("active");
+		}
+		$(document).ready(function() {
+		     $('.tip-element').tipr();
+		});
 	</script>
 </div>
 </ui:composition>

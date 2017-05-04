@@ -7,8 +7,249 @@
 
 	
 		<div class="subcontent side-cartera">
-						<div class="container-side">
+		
+		
+			<div class="indicadores-normativos_modulos">
+				<h2>Indicadores Normativos - cartera</h2>
+				<div class="indicadores-normativos_tabs creditos-list">
+				    <ul>
+				        <li>
+				            <div class="btn-normativo active vista-porcentaje bigger" onclick="jsShowCartera(this, '.creditos-list', '.vista-porcentaje');">
+				                Ver porcentaje
+				            </div>
+				        </li>
+				        <li>
+				            <div class="btn-normativo bigger vista-monto" onclick="jsShowCartera(this, '.creditos-list', '.vista-monto');">
+				                Ver monto
+				            </div>
+				        </li>
+				    </ul>
+				</div>
+				<div class="indicadores-normativos_modulos_block vista-porcentaje">
+				    <div class="indicadores-modulo">
+				        <h5>Coeficiente de liquidez</h5>
+				        <h2>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcLiquidez)}%
+</h2>					<div class="limites-inicadores">
+				       		 <p><strong>Mínimo permitido</strong></p>
+				        		<p>#{resumenTableroNormativo.tableronormativoresumen.descripLiquidez}</p>
+				       	</div>
+						     <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez != 'CUMPLIMIENTO'}" >
+						       <div class="indicador-estatus incumplimiento">
+						           				 <h4>
+											 		<i class="fa fa-exclamation-circle"></i>
+											 		<span>#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez}</span>
+											 	</h4>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez == 'CUMPLIMIENTO'}" >
+							 		 <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	
+											 <span>#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez}</span>
+										</h4>
+									</div>
+							
+							</h:panelGroup>
+				    </div>
+				     <div class="indicadores-modulo">
+				        <h5>Créditos con plazos entre 36 y 60 meses</h5>
+				        
+				        <h2>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcentaje60meses)}%</h2>
+				        <div class="limites-inicadores">
+				        	<p><strong>Máximo permitido</strong></p>
+				      		  <p>#{resumenTableroNormativo.tableronormativoresumen.descrip60Meses}</p>
+				      	</div>
+				        	 <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses != 'CUMPLIMIENTO'}" >
+				           		   <div class="indicador-estatus incumplimiento">
+				           				 <h4>
+									 		<i class="fa fa-exclamation-circle"></i><span>#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses}</span>
+								   		</h4>
+								   
+								 </div>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses == 'CUMPLIMIENTO'}" >
+								  <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	<span>#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses}</span>
+										</h4>
+								   
+								 </div>
+								</h:panelGroup>
+				    </div>
+				     <div class="indicadores-modulo">
+				        <h5>Relación entre monto máximo y capital neto</h5>
+				        <h2>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcCreditoMax)}%</h2>
+				         <div class="limites-inicadores">
+				       		 <p><strong>Máximo permitido</strong></p>
+				        	<p>#{resumenTableroNormativo.tableronormativoresumen.descripCredMax}</p>
+				        </div>
+				        
+				        <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax != 'CUMPLIMIENTO'}" >
+				        <div class="indicador-estatus incumplimiento">
+				           				 <h4>
+									 		<i class="fa fa-exclamation-circle"></i><span>#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax}</span>
+								   		</h4>
+								   
+								 </div>
+							</h:panelGroup>
+								 
+								 <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax == 'CUMPLIMIENTO'}" >
+								 <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	<span>#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax}</span>
+										</h4>
+								   
+								 </div>
+						</h:panelGroup>
+				    </div>
+				     <div class="indicadores-modulo">
+				        <h5>Créditos con plazos mayores a 30 años</h5>
+				        <h2>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcentaje30Anios)}%</h2>
+				      	<div class="limites-inicadores">
+				        	<p>#{resumenTableroNormativo.tableronormativoresumen.descrip30Anios}</p>
+				        </div>
+				   
+				        
+				        
+				        <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios != 'CUMPLIMIENTO'}" >
+									    <div class="indicador-estatus incumplimiento">
+				            				<h4>
+				           						 <i class="fa fa-exclamation-circle"></i> 
+				           					 	<span>#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios}</span>
+				            				</h4>
+				            			</div>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios == 'CUMPLIMIENTO'}" >
+											        <div class="indicador-estatus cumplimiento">
+				            								<h4>
+				           										<i class="fa fa-check"></i>	
+				           										<span>#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios}</span>
+				           									</h4>
+				           								</div>
+								</h:panelGroup>
+								
+								
+								
+				    </div>
+				</div>
+				
+				
+				<div class="indicadores-normativos_modulos_block vista-monto">
+				    <div class="indicadores-modulo">
+				        <h5>Coeficiente de liquidez</h5>
+				        <h4>$#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.montoLiquidez)}</h4>
+				       
+				       <div class="limites-inicadores">
+				        <p><strong>Mínimo permitido</strong></p>
+				        <p>#{resumenTableroNormativo.tableronormativoresumen.descripLiquidez}</p>
+				       </div>
+				         <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez != 'CUMPLIMIENTO'}" >
+						       <div class="indicador-estatus incumplimiento">
+						           				 <h4>
+											 		<i class="fa fa-exclamation-circle"></i>
+											 		<span>#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez}</span>
+											 	</h4>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez == 'CUMPLIMIENTO'}" >
+							 		 <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	
+											 <span>#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez}</span>
+										</h4>
+									</div>
+							
+							</h:panelGroup>
+				    </div>
+				     <div class="indicadores-modulo">
+				        <h5>Créditos con plazos entre 36 y 60 meses</h5>
+				        <h4>$ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.monto60Meses)} </h4>
+				       <div class="limites-inicadores">
+				        <p><strong>Máximo permitido</strong></p>
+				      
+				        <p>#{resumenTableroNormativo.tableronormativoresumen.descrip60Meses}</p>
+				         </div>
+				      
+				           		 <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses != 'CUMPLIMIENTO'}" >
+				           		   <div class="indicador-estatus incumplimiento">
+				           				 <h4>
+									 		<i class="fa fa-exclamation-circle"></i><span>#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses}</span>
+								   		</h4>
+								   
+								 </div>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses == 'CUMPLIMIENTO'}" >
+								  <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	<span>#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses}</span>
+										</h4>
+								   
+								 </div>
+								</h:panelGroup>
+				         
+				      
+				    </div>
+				     <div class="indicadores-modulo">
+				        <h5>Relación entre monto máximo y capital neto</h5>
+				        <h4> $#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.montoCreditoMax)}</h4>
+				        <div class="limites-inicadores">
+				        <p><strong>Máximo permitido</strong></p>
+				        <p>#{resumenTableroNormativo.tableronormativoresumen.descripCredMax}</p>
+				        </div>
+				       <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax != 'CUMPLIMIENTO'}" >
+				        <div class="indicador-estatus incumplimiento">
+				           				 <h4>
+									 		<i class="fa fa-exclamation-circle"></i><span>#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax}</span>
+								   		</h4>
+								   
+								 </div>
+							</h:panelGroup>
+								 
+								 <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax == 'CUMPLIMIENTO'}" >
+								 <div class="indicador-estatus cumplimiento">
+				           				 <h4>
+											 <i class="fa fa-check"></i>	<span>#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax}</span>
+										</h4>
+								   
+								 </div>
+						</h:panelGroup>
+				    </div>
+				     <div class="indicadores-modulo">
+				        <h5>Créditos con plazos mayores a 30 años</h5>
+				        <h4>$ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.monto30Anios)}</h4>
+				       <div class="limites-inicadores">
+				        <p>#{resumenTableroNormativo.tableronormativoresumen.descrip30Anios}</p>
+				       </div>
+				           <h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios != 'CUMPLIMIENTO'}" >
+									    <div class="indicador-estatus incumplimiento">
+				            				<h4>
+				           						 <i class="fa fa-exclamation-circle"></i> 
+				           					 	<span>#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios}</span>
+				            				</h4>
+				            			</div>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios == 'CUMPLIMIENTO'}" >
+											        <div class="indicador-estatus cumplimiento">
+				            								<h4>
+				           										<i class="fa fa-check"></i>	
+				           										<span>#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios}</span>
+				           									</h4>
+				           								</div>
+								</h:panelGroup>
+				    </div>
+				</div>
+				
+				
+				
+				
+				
+		</div>
+						<!-- div class="container-side">
 			<h3>Cartera</h3>
+			
+			
+			
+			
 					<div class="tabla-style2 articulos-desglose">
 					<table cellpadding="0" cellspacing="0" border="0">
 						<tr>
@@ -21,7 +262,7 @@
 						<tr>
 							<td>Créditos de hasta 60 meses</td>
 							<td><strong>#{resumenTableroNormativo.tableronormativoresumen.descrip60Meses}</strong></td>
-							<td> <strong> $ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.monto60Meses)} </strong>  </td>
+							<td><strong> $ #{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.monto60Meses)} </strong>  </td>
 							<td><span>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcentaje60meses)}%</span></td>
 							<td> 
 								
@@ -96,7 +337,7 @@
 						</tr>
 					</table>
 				</div>
-		</div>
+		</div-->
 		</div>
 	
 </ui:composition>

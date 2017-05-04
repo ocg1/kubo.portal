@@ -1,6 +1,7 @@
 package mx.com.kubo.repositories.impl;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -63,6 +64,20 @@ public class RuleExecutionDaoImp implements Serializable, RuleExecutionDao {
 			e.printStackTrace();
 			return null;
 			
+		}
+		
+	}
+	
+	public List<RuleExecution> getRuleExecutionLst(Integer prospectus , Integer rule_id){
+		
+		try{
+			String query = "from RuleExecution where prospectus_id = ? and rule_id = ? order by rule_execution_id desc ";
+			
+			return  em.createQuery(query,RuleExecution.class).setParameter(1, prospectus).setParameter(2, rule_id).getResultList();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
 		}
 		
 	}

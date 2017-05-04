@@ -32,10 +32,10 @@
 									<td><span>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porc20CredMax)}%</span></td>
 							<td> 
 								
-								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax != 'Permitido'}" >
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax != 'CUMPLIMIENTO'}" >
 									<strong  class="valor-negativo"><i class="fa fa-exclamation-circle"></i> #{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax}</strong>
 								</h:panelGroup>
-								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax == 'Permitido'}" >
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax == 'CUMPLIMIENTO'}" >
 									<a href="#">#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax}</a>
 								</h:panelGroup>
 								
@@ -48,10 +48,10 @@
 									<td><span>#{resumenTableroNormativo.formatNumber(resumenTableroNormativo.tableronormativoresumen.porcCreditoGde)}%</span></td>
 							<td> 
 								
-								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde != 'Permitido'}" >
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde != 'CUMPLIMIENTO'}" >
 									<strong  class="valor-negativo"><i class="fa fa-exclamation-circle"></i> #{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde}</strong>
 								</h:panelGroup>
-								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde == 'Permitido'}" >
+								<h:panelGroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde == 'CUMPLIMIENTO'}" >
 									<a href="#">#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde}</a>
 								</h:panelGroup>
 								

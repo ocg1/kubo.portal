@@ -14,12 +14,26 @@
 		
 			<div>
 			
-				<h5>Búsqueda realizada automáticamente el <h:outputText value="#{summaryRequest.fechaRuleEmp}" >  <f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm:ss "/> </h:outputText>  </h5>
+				<h5>Búsqueda realizada automáticamente el <h:outputText value="#{summaryRequest.fechaRuleEmp}" >  <f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm:ss "/> </h:outputText> <p:commandLink  
+				   immediate = "true" 
+				   actionListener = "#{summaryRequest.getIsemployedlogs}" 
+				   oncomplete     = "showPopUpIsEmployed();" 
+				   style          = "cursor:pointer;">
+				   
+					<h:graphicImage
+							url = "../resources/img/change-icon.png" styleClass = "change_icon" style="margin:0 0 0 20px;" >
+					</h:graphicImage>
+					
+				</p:commandLink>  </h5>
+			
+			</div>
+			
+			<div>
 			
 			</div>
 		
 			<div class="pregunta-1">
-				<p>¿Es empleado de Kubo?</p>
+				<p>	¿Es empleado de Kubo?</p>
 			</div>
 			<div class="respuesta-1">
 				<h:panelGroup rendered="#{summaryRequest.member.is_employee != null and summaryRequest.member.is_employee == 'S' }" >
@@ -38,12 +52,26 @@
 		
 				<div>
 			
-				<h5>Búsqueda realizada automáticamente el <h:outputText value="#{summaryRequest.fechaRuleRel}" >  <f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm:ss "/> </h:outputText>  </h5>
+				<h5>Búsqueda realizada automáticamente el <h:outputText value="#{summaryRequest.fechaRuleRel}" >  <f:convertDateTime type="date" pattern="dd-MM-yyyy hh:mm:ss "/> </h:outputText> <p:commandLink  
+					   immediate = "true" 
+					   actionListener = "#{summaryRequest.getIsRelatedlogs}" 
+					   oncomplete     = "showPopUpIsEmployed();" 
+					   style          = "cursor:pointer;">
+					   
+						<h:graphicImage
+								url = "../resources/img/change-icon.png" styleClass = "change_icon" style="margin:0 0 0 20px;">
+						</h:graphicImage>
+						
+					</p:commandLink> </h5>
 			
-			</div>
+				</div>
+				
+				<div>
+				
+				</div>
 		
 				<div class="pregunta-1">
-					<p>¿Es persona relacionada?</p>
+					<p>	 ¿Es persona relacionada?</p>
 				</div>
 				<div class="respuesta-1">
 					<h:panelGroup rendered="#{summaryRequest.member.is_stackholder != null and summaryRequest.member.is_stackholder == 'S' }" >
@@ -315,7 +343,7 @@
             <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoPersonaRel)}</strong> </td>
             <td><strong> #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcentajePersRel)}%</strong></td>
             <td><strong> #{summaryRequest.tableronormativodetallado.descripPersRel}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusPersRel == 'Permitido' ? 'valor-positivo':'valor-negativo'}"> #{summaryRequest.tableronormativodetallado.estatusPersRel} </strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusPersRel == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}"> #{summaryRequest.tableronormativodetallado.estatusPersRel} </strong></td>
             <td><strong> 24/05/2016</strong></td>
         </tr>
         <tr>
@@ -324,7 +352,7 @@
             <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.monto60Meses)}</strong> </td> 
              <td><strong> #{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcentaje60meses)}%</strong></td>
              <td><strong>#{summaryRequest.tableronormativodetallado.descrip60Meses}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatus60Meses == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus60Meses}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatus60Meses == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus60Meses}</strong></td>
             <td>24/05/2016</td>
         </tr>
         <tr>
@@ -333,7 +361,7 @@
            <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.monto30Anios)}  </strong> </td>
             <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcentaje30Anios)}%</strong></td>
             <td><strong>#{summaryRequest.tableronormativodetallado.descrip30Anios}</strong></td>
-             <td><strong class="#{summaryRequest.tableronormativodetallado.estatus30Anios == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus30Anios}</strong></td>
+             <td><strong class="#{summaryRequest.tableronormativodetallado.estatus30Anios == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus30Anios}</strong></td>
             <td>24/05/2016</td>
         </tr>
         <tr>
@@ -342,7 +370,7 @@
         <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoCreditoMax)} </strong></td>
             <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcCreditoMax)}%</strong></td>
             <td><strong>#{summaryRequest.tableronormativodetallado.descripCredMax}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusCredMax == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusCredMax}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusCredMax == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusCredMax}</strong></td>
             <td>24/05/2016</td>
         </tr>
         <tr>
@@ -370,7 +398,7 @@
              <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.monto20CredMax)} </strong></td>
              <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porc20CredMax)}%</strong></td>
              <td><strong>#{summaryRequest.tableronormativodetallado.descrip20CreMax}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatus20CreMax == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus20CreMax}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatus20CreMax == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatus20CreMax}</strong></td>
             <td>24/05/2016</td>
         </tr>
         <tr>
@@ -379,7 +407,7 @@
              <td><strong>$#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoCreditoGde)}</strong> </td>
              <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcCreditoGde)}%</strong></td>
             <td><strong>#{summaryRequest.tableronormativodetallado.descripCredGde}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusCreditoGde == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusCreditoGde}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusCreditoGde == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusCreditoGde}</strong></td>
             <td>24/05/2016</td>
         </tr>
     
@@ -408,7 +436,7 @@
            <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoSolicitud)}</strong> </td>
             <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcSolicitud)}%</strong></td>
             <td><strong>#{summaryRequest.tableronormativodetallado.descripSolicitud}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusSolicitud == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusSolicitud}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusSolicitud == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusSolicitud}</strong></td>
             <td>24/05/2016</td>
         </tr>
       
@@ -445,12 +473,463 @@
             <td><strong> $#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.montoLiquidez)} </strong></td>
             <td><strong>#{summaryRequest.formatNumber(summaryRequest.tableronormativodetallado.porcLiquidez)}%</strong></td>
              <td><strong>#{summaryRequest.tableronormativodetallado.descripLiquidez}</strong></td>
-            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusLiquidez == 'Permitido' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusLiquidez}</strong></td>
+            <td><strong class="#{summaryRequest.tableronormativodetallado.estatusLiquidez == 'CUMPLIMIENTO' ? 'valor-positivo':'valor-negativo'}">#{summaryRequest.tableronormativodetallado.estatusLiquidez}</strong></td>
             <td>24/05/2016</td>
         </tr>
     </tbody>
 </table>
 </div>
+
+</div>
+
+<div class="bloque-articulos">
+
+<div class="articulos">
+		<h4>Expediente</h4>
+</div>
+<div class="tabla-style2 articulos-desglose expediente-table">
+					
+							<table cellpadding="0" cellspacing="0" border="0">
+								<tr class="row-top">
+									<th></th>
+									<th colspan="2">Cumple Vigencia	</th>
+									<th colspan="2">Cumple Legibilidad	</th>
+									<th colspan="2">Fue validado</th>
+									
+									
+								</tr>
+								<tr class="row-top2">
+									<th></th>
+									<th>Sí</th>
+									<th>No</th>
+									<th>Sí</th>
+									<th>No</th>
+									<th>Sí</th>
+									<th>No</th>
+									
+								</tr>
+								<tr>
+									<td>Identificación del Solicitante</td>
+									
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_identification == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_identification != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_identification == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_identification != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_identification == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_identification != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+
+									
+								</tr>
+								<!--  <tr>
+									<td>Identificación del Solicitante</td>
+									<td>1520</td>
+									<td>0</td>
+									<td>1520</td>
+									<td>0</td>
+									<td>1520</td>
+									<td>0</td>
+									
+								</tr> -->
+								<tr>
+									<td>Solicitud de Crédito</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_proyect_loan == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_proyect_loan != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_proyect_loan == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_proyect_loan != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_proyect_loan == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_proyect_loan != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									
+								</tr>
+								<tr>
+									<td>Capacidad de Pago</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_income == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_income != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_income == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_income != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_income == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_income != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+
+								
+								</tr>
+								<tr>
+									<td>Consulta en la SIC</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_consulting == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_consulting != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_consulting == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_consulting != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_consulting == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_consulting != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+
+									
+								</tr>
+								<tr>
+									<td>Comprobante de Domicilio</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_address == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_address != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_address == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_address != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_address == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_address != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									
+								</tr>
+								<tr>
+									<td>Garantías</td>
+									<td colspan="2" ><span class="center-text">#{summaryRequest.tableronormativodetallado.has_warranty}</span></td>
+									
+									<td colspan="2" ><span class="center-text">#{summaryRequest.tableronormativodetallado.has_warranty}</span></td>
+									
+									<td colspan="2" ><span class="center-text">#{summaryRequest.tableronormativodetallado.has_warranty}</span></td>
+									
+									
+								</tr>
+								<tr>
+									<td>Entrevista Personal</td>
+									
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_note == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_note != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_note == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_note != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_note == 'Si'}" > 
+									
+										<!--  <div class="indicador-estatus cumplimiento">
+					           				 <h4> -->
+												 <i class="fa fa-check"></i>
+											<!-- </h4>
+										</div> -->		
+										</h:panelGroup>
+									</td>
+									<td>
+										<h:panelGroup rendered="#{summaryRequest.tableronormativodetallado.has_note != 'Si'}" > 
+											<!-- <div class="indicador-estatus incumplimiento">
+						           				 <h4> -->
+											 		<i class="fa fa-exclamation-circle"></i>
+											 	<!-- </h4>
+											</div> -->
+										</h:panelGroup>
+											
+									</td>
+									
+								
+								</tr>
+								
+								
+							</table>
+					
+			   	</div>
+		
+		
+
+
+
+
+
 	</div>
 
 </ui:composition>

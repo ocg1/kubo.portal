@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	
+	<!-- <link rel="stylesheet" type="text/css" href="../../../resources/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/ayudaStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/header.css" /> -->
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/frmStyle.css" />
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/preregistro2.css" />
+	
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/loanListStyle.css" /> 
+	<link rel="stylesheet" type="text/css" href="/Kubo/resources/css/main-resumen.css" /> 
+	
+	
+	<script type = "text/javascript" src = "/Kubo/resources/js/jquery-1.10.2.min.js" /> 
+	<script type = "text/javascript" src = "/Kubo/resources/js/loanListScript_complements.js" /> 
+
+    <script type = "text/javascript" src = "/Kubo/resources/js/loanListScript_contadorToken.js"/>	
+    <script type = "text/javascript" src = "/Kubo/resources/js/loanListScript_movimentos.js"/>	
+    <script type = "text/javascript" src = "/Kubo/resources/js/loanListScript_botonRegreso.js"/>	
+    <script type = "text/javascript" src = "/Kubo/resources/js/urlParameters.js"/>	
+	<script type = "text/javascript" src = "/Kubo/resources/js/loanListScript_resumenSaldos.js"/>	
+
+
+</h:head>
+
+<h:body style="margin:10px 0 0 ; padding:0;">
+<div class="clTitle" style="text-align: center; width: 100%; margin: 0px; padding: 0px;">
+	<h:outputText value="Bitácora de Búsqueda"  />
+</div>
+<h:form id="frm_details_income_expenses" prependId="false">
+
+
+							
+				<table class="formato_tablas bitacoras" cellspacing="0" cellpadding="0">
+					<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Resultado</th>
+					</tr>
+					</thead>
+					<tbody>
+					<ui:repeat var="log" value="#{summaryRequest.ruleEmpLst}" varStatus="status">
+						<tr >
+							<td>
+								<h:outputText value="#{log.creation_date}">
+									<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss"  />
+								</h:outputText>							
+							</td>
+							<td>
+							#{log.result_text}
+							</td>
+						</tr>
+					</ui:repeat>
+				</tbody>
+			</table>
+			<script>
+	par();
+
+</script>
+
+</h:form>
+</h:body>
+</html>

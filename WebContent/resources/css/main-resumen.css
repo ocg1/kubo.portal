@@ -2151,7 +2151,7 @@ margin: 0;
 	margin:0 0 10px;
 
 }
-#dvSummaryCont ÃƒÆ’Ã†â€™, .editar_nota {
+#dvSummaryCont ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢, .editar_nota {
  	border: solid 1px #ccc !important;
  	display:block;
  	width:20px;
@@ -3813,7 +3813,8 @@ div.articulos-desglose table {
 .articulos-desglose table tr td{
 	border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;
 	font-size: 15px !important;
-   /*font-family:arial;*/
+	/*font-family:arial;*/
+	font-weight: 400;
 }
 .articulos-desglose table tr td + td{
 		font-weight:600;
@@ -3896,6 +3897,26 @@ div.bloque.respuesta-si {
 	text-align: left !important;
 	color: #666 !important;
 	/*font-family:arial;*/
+}
+
+.gray-table table th {
+	background:#c1c1c1;
+	font-size: 20px;
+	text-align: left;
+	padding: 6px 10px;
+	font-weight: 600;
+}
+
+.gray-table table  .black-style-font {
+	color: #000 !important;
+}
+
+.gray-table table   .sangria {
+	padding: 0 0 0 30px !important;
+}
+
+.side-personasRelacionadas .gray-table table  td:nth-child(2) {
+	text-align:center !important;
 }
 .menu-main {
 	margin:0 0 30px;
@@ -4349,4 +4370,307 @@ div.bloque.respuesta-si {
 
 .score-statusMoved  .detailsMiddleStatusData {
 	margin:0;
+}
+
+
+
+.indicadores-normativos_modulos > h2 {
+	color:#7ED321;
+	font-size: 37px;
+	font-weight:600;
+	margin:0;
+	padding:0;
+	line-height:60px;
+	margin:0 0 20px;
+}
+
+.indicadores-normativos_tabs  {
+	overflow: hidden;
+	clear: both;
+	margin: 0 0 30px;
+}
+.indicadores-normativos_tabs ul{
+	
+}
+.indicadores-normativos_tabs ul li  {
+	float:left;
+	margin: 0 30px 0 0;
+}
+.indicadores-normativos_tabs ul li:last-child  {
+	margin:0;
+}
+
+.btn-normativo  {
+	background:#ccc;
+	color:#fff;
+	font-weight:600;
+	cursor: pointer;
+}
+
+.btn-normativo.active  {
+	background:#7ED321;
+}
+
+.btn-normativo.bigger  {
+	border-radius: 6px;
+	padding: 8px 20px;
+	text-align: center;
+	font-size: 19px;
+}
+
+.indicadores-normativos_modulos_block {
+	overflow:hidden;
+	clear:both;
+	margin: 0 0 20px;
+	display: none;
+}
+.vista-porcentaje {
+	display:block;
+}
+.indicadores-modulo {
+	width: 19%;
+	float:left;
+	background:#f1f1f1;
+	border:solid 1px #ccc;
+	text-align:center;
+	padding: 10px 2% 60px;
+	position: relative;
+	margin: 0 2% 0 0;
+	height: 220px;
+}
+.indicadores-modulo:last-of-type {
+	margin:0 !important;
+}
+.indicadores-modulo h5 {
+	color:#7ED321;
+	font-size: 17px;
+	font-weight:600;
+	margin:0;
+	padding:0;
+	line-height: 23px;
+	margin: 0 0 20px;
+}
+
+.indicadores-modulo h2 {
+	font-size: 45px;
+	font-weight: 600;
+	line-height: 36px;
+	margin: 0 0 20px;
+	padding: 0;
+	color: #444444;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 91px;
+	left: 0;
+}
+.indicadores-modulo > h4 {
+	font-size: 21px;
+	font-weight: 600;
+	line-height: 36px;
+	margin: 0 0 20px;
+	padding: 0;
+	color: #444444;
+	position: absolute;
+	width: 100%;
+	top: 92px;
+	left: 0;
+}
+
+.indicadores-modulo p {
+	font-size: 16px;
+	font-weight: 500;
+	color: #666;
+}
+
+.indicador-estatus {position: absolute;bottom: 0;background: #ccc;left: 0;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-size: 16px;}
+
+.indicador-estatus h4 {margin: 0;}
+
+.indicador-estatus i {
+
+}
+
+.indicador-estatus p {
+
+}
+
+.indicador-estatus.cumplimiento {background: #7ED321;}
+.indicador-estatus.incumplimiento {background:red;}
+.limites-inicadores {
+	position:absolute;
+	top: 150px;
+	width:100%;
+	left: 0;
+}
+
+.bloque h5 {
+	text-align: left;
+	color:#999;
+	font-weight: 400;
+}
+
+
+/* ------------------------------------------------------------
+    TOOLTIP
+------------------------------------------------------------ */
+.tipr_content {
+	max-width:500px;
+  color: #fff;
+  background-color: #333;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+.tipr_container_bottom {
+  display: none;
+  position: absolute;
+  margin-top: 13px;
+
+  z-index: 1000;
+}
+.tipr_container_top {
+  display: none;
+  position: absolute;
+ margin:-67px;
+  z-index: 1000;
+}
+.tipr_point_top,
+.tipr_point_bottom {
+  position: relative;
+  background-color: #333;
+  border: 1px solid #333;
+}
+.tipr_point_top:after,
+.tipr_point_top:before {
+  position: absolute;
+  pointer-events: none;
+  border: solid transparent;
+  top: 100%;
+  content: "";
+  height: 0;
+  width: 0;
+}
+.tipr_point_top:after {
+  border-top-color:#333;
+  border-width: 8px;
+  left: 50%;
+  margin-left: -8px;
+}
+.tipr_point_top:before {
+  border-top-color: #333;
+  border-width: 9px;
+  left: 50%;
+  margin-left: -9px;
+}
+.tipr_point_bottom:after,
+.tipr_point_bottom:before {
+  position: absolute;
+  pointer-events: none;
+  border: solid transparent;
+  bottom: 100%;
+  content: "";
+  height: 0;
+  width: 0;
+}
+.tipr_point_bottom:after {
+  border-bottom-color: #333;
+  border-width: 8px;
+  left: 50%;
+  margin-left: -8px;
+}
+.tipr_point_bottom:before {
+  border-bottom-color: #333;
+  border-width: 9px;
+  left: 50%;
+  margin-left: -9px;
+}
+.indicadores-modulo.total-operaciones-style {
+	width:300px;
+
+	margin: 0 auto !important;
+	float: none;
+}
+.vista-porcentaje2 {
+	display:block;
+}
+.relacionados-list {
+	width: 346px;
+	margin: 0 auto 30px;
+}
+.row-top th {
+	font-size: 13px !important;
+	
+	text-align:center !important;
+	padding:8px 5px;
+	border-right: solid 1px rgb(214, 255, 165);
+	border-bottom: solid 1px rgb(214, 255, 165);
+}
+.row-top2 th {
+	font-size:13px;
+	font-weight:400 !important;
+	text-align:center !important;
+	
+	border-right: solid 1px rgb(214, 255, 165);
+	border-bottom: solid 1px rgb(214, 255, 165);
+}
+
+.tip-element {
+	border-bottom:dotted 2px #ccc;
+}
+
+/*
+
+
+.total-operaciones-style.indicadores-modulo > h2 {
+
+	top: 59px !important;
+	
+}
+.total-operaciones-style.indicadores-modulo > h2 p {
+	margin:0;
+	padding:0;
+	line-height: 31px;
+}
+
+.total-operaciones-style  .limites-inicadores {
+	top: 203px;
+}
+.total-operaciones-style.indicadores-modulo > h4{
+	top:150px !important;
+}
+
+.total-operaciones-style.indicadores-modulo > h4 p{
+	margin:0 0 10px;
+	padding:0;
+	line-height:0;
+}
+
+.tip-element {
+	border-bottom:dotted 2px #ccc;
+}
+*/
+
+
+.expediente-table tr td .fa-check {
+	background:#8FC450;
+	color:#fff;
+	line-height:24px;
+	border-radius:20px;
+	margin:0 auto;
+	display:block;
+	width:25px;
+	height:25px;
+	text-align:center;
+}
+.expediente-table tr td  .fa-exclamation-circle {
+	color:red;
+	font-size:26px;
+	display:block;
+	margin:0 auto;
+}
+
+.center-text {
+	text-align:center;
+	width: 100%;
+	display: block;
 }
