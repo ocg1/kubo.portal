@@ -1,353 +1,534 @@
 <!DOCTYPE html>
 <html>
-<head>
-  
-
- <meta charset="UTF-8">
- <style>
-
- </style>
-</head>
-<body>
-<!--contenido personasRelacionadas-->
-<div class="subcontent side-personasRelacionadas">
-	<div class="container-side">
-			<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-				<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-					<tr>
-						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Capital Neto del último trimestre</span></td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;">###capitalNeto###</strong> </td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Pasivos de Corto Plazo</span></td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###pasivoCortoPlazo###</strong> </td>
-					</tr>
-					<tr>
-						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Saldo Cartera total</span></td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###totalCartera### </strong> </td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Inversiones a la vista o con plazo menor a 30 días</span></td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###montoPasivoMenor### </strong> </td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="container-side">
-			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Personas Relacionadas</h3>
-		<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-				<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-					<tr>
-						<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
-						<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;"><span>Créditos Activos</span></th>
-					</tr>
-					<tr>
-						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Empleados de Kubo con crédito	</td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###numCreEmpleados###</strong></td>
-					</tr>
-					<tr>
-						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Personas Relacionadas con crédito	</td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###numOperacionesRel###</strong></td>
-					</tr>
-						<tr>
-					<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Requirieron autorización del Comité de Personas Relacionadas	</td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###autorizaComite###</strong></td>
-					</tr>
-					<tr>
-						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Requirieron autorización del Consejo de Administración	</td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###autorizaConsejo###</strong></td>
-					</tr>
-					<tr>
-						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Requirieron control de sus vínculos patrimoniales y de parentesco	</td>
-						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###autorizaParentesco###</strong></td>
-					</tr>
-				</table>
-			</div>
-	
-				
-				
-				<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-						<tr>
-							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
-							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
-							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
-								<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
-							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
-						</tr>
-						<tr>
-							<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Suma Total de operaciones de personas relacionadas</td>
-							<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descripPersRel###</strong></td>
-							<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###montoPersonaRel###</strong> </td>
-									<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcentajePersRel###%</span></td>
-							<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-								
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;">###estatusPersRel###<i class="fa fa-exclamation-circle"></i></strong>
-							
-							
-									<a href="#" style="text-decoration: underline;">###estatusPersRel###</a>
-							
-							</td>
-						</tr>
-					</table>
-			   </div>
-				
-		</div>
-		
-	
-	</div>
-
-<!--riesgo comun-->
-
-<div class="subcontent side-riesgoComun">
-						<div class="container-side">
-			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Riesgo Común</h3>
-				<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-						<tr>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
-								<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
-						</tr>
-						<tr>
-							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Suma de los veinte créditos con mayor saldo</td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descrip20CreMax###</strong></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###monto20CredMax###</strong>  </td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porc20CredMax###%</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-							
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;">###estatus20CreMax###<i class="fa fa-exclamation-circle"></i></strong>
-							
-									<a href="#" style="text-decoration: underline;">###estatus20CreMax###</a>
-							
-								
-							</td>
-						</tr>
-						<tr>
-							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Crédito más grande</td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###descripCredGde###</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###montoCreditoGde### </strong>  </td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcCreditoGde###%</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-								
-								
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;">###estatusCreditoGde###<i class="fa fa-exclamation-circle"></i></strong>
-								
-									<a href="#" style="text-decoration: underline;">###estatusCreditoGde###</a>
-					
-								
-							</td>
-						</tr>
-					</table>
-			   	</div>
-		</div>
-
-		</div>
-
-
-<!--cartera-->
-
-
-<div class="subcontent side-cartera">
-						<div class="container-side">
-			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Cartera</h3>
-					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-						<tr>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
-								<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
-						</tr>
-						<tr>
-							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Créditos de hasta 60 meses</td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descrip60Meses###</strong></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;">###monto60Meses### </strong>  </td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcentaje60meses###%</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-								
-								
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i>###estatus60Meses###</strong>
-								
-									<a href="#" style="text-decoration: underline;">###estatus60Meses###</a>
-					
-							
-							</td>
-						</tr>
-						<tr>
-							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Créditos de más de 30 añose</td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###descrip30Anios}</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###monto30Anios###   </strong>  </td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcentaje30Anios###%</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-								
-								
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i> ###estatus30Anios###</strong>
-							
-									<a href="#" style="text-decoration: underline;">###estatus30Anios###</a>
-								
-							</td>
-						</tr>
-						<tr>
-							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Coeficiente de Liquidez</td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###descripLiquidez}</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###montoLiquidez###  </strong>  </td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcLiquidez###%</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-								
-								
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i>###estatusLiquidez###</strong>
-								
-									<a href="#" style="text-decoration: underline;">###estatusLiquidez###</a>
-								
-							
-							</td>
-						</tr>
-					</table>
-			   	</div>
-			   	
-			   	<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-						<tr>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
-								<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
-							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
-						</tr>
-						<tr>
-							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Crédito máximo</td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descripCredMax###</strong></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;">###montoCreditoMax### </strong>  </td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcCreditoMax###%</span></td>
-							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
-								
-								
-									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i> ###estatusCredMax###</strong>
-							
-									<a href="#" style="text-decoration: underline;">###estatusCredMax###</a>
-								
-								
-							</td>
-						</tr>
-					</table>
-				</div>
-		</div>
-		</div>
-
-
-	<div class="subcontent side-expedientes">
+   <head>
+      <meta charset="UTF-8">
+      <style>
+      </style>
+   </head>
+   <body>
+      <div class="subcontent side-personasRelacionadas">
+         <div class="container-side">
+            <div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                  <tr>
+                     <td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>Capital Neto del último trimestre</span></td>
+                     <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"> <strong style="font-weight: bold;display: block;width: 100%;"> $###capitalNeto###</strong> </td>
+                     <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>Pasivos de Corto Plazo</span></td>
+                     <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"> <strong style="font-weight: bold;display: block;width: 100%;"> $ ###pasivoCortoPlazo###</strong> </td>
+                  </tr>
+                  <tr>
+                     <td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>Saldo Cartera total</span></td>
+                     <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"> <strong style="font-weight: bold;display: block;width: 100%;"> $ ###totalCartera### </strong> </td>
+                     <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>Inversiones a la vista o con plazo menor a 30 días</span></td>
+                     <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"> <strong style="font-weight: bold;display: block;width: 100%;"> $ ###montoPasivoMenor### </strong> </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+         <div class="container-side">
+            <h3 style="font-weight: 400;font-family: arial; font-size: 20px;margin: 0 auto 50px;padding: 0 0 20px;color: #568e3e;border-bottom: dotted 3px #8FC450;text-align: center;">Personas Relacionadas</h3>
+            <div class="tabla-style2 articulos-desglose gray-table" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                  <tr>
+                     <th style="width: 70%;background: #c1c1c1;font-family: arial; font-size: 20px;color: #fff;padding: 6px 10px;text-align: left;font-weight: 600;">Personas Relacionadas</th>
+                     <th style="background: #c1c1c1;font-family: arial; font-size: 20px;color: #fff;padding: 6px 10px;text-align: left;font-weight: 600;"><span>Créditos Activos</span></th>
+                  </tr>
+                  <tr>
+                     <td class="black-style-font" style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #000 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span class="tip-element"  style="border-bottom: dotted 2px #ccc;">Con crédito en kubo.financiero</span></td>
+                     <td style="font-weight: 300 !important;text-align: center !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><strong style="font-weight: bold;display: block;width: 100%;">###numOperacionesRel###</strong></td>
+                  </tr>
+                  <tr>
+                     <td class="sangria" style="font-weight: 400;padding: 0 0 0 30px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span class="tip-element"  style="border-bottom: dotted 2px #ccc;">Requirieron autorización del Comité de Personas Relacionadas</span>   </td>
+                     <td style="font-weight: 300 !important;text-align: center !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><strong style="font-weight: bold;display: block;width: 100%;">###autorizaComite###</strong></td>
+                  </tr>
+                  <tr>
+                     <td class="sangria" style="font-weight: 400;padding: 0 0 0 30px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span class="tip-element"  style="border-bottom: dotted 2px #ccc;">Requirieron autorización del Consejo de Administración</span> </td>
+                     <td style="font-weight: 300 !important;text-align: center !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><strong style="font-weight: bold;display: block;width: 100%;">###autorizaConsejo###</strong></td>
+                  </tr>
+                  <tr>
+                     <td class="black-style-font" style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #000 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span class="tip-element"  style="border-bottom: dotted 2px #ccc;"> Requirieron control de sus vínculos patrimoniales y de parentesco</span> </td>
+                     <td style="font-weight: 300 !important;text-align: center !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><strong  style="font-weight: bold;display: block;width: 100%;">###autorizaParentesco###</strong></td>
+                  </tr>
+               </table>
+            </div>
+            <div class="tabla-style2 articulos-desglose gray-table" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                  <tr>
+                     <th style="width: 70%;background: #c1c1c1;font-family: arial; font-size: 20px;color: #fff;padding: 6px 10px;text-align: left;font-weight: 600;">Empleados</th>
+                     <th style="background: #c1c1c1;font-family: arial; font-size: 20px;color: #fff;padding: 6px 10px;text-align: left;font-weight: 600;"><span>Créditos Activos</span></th>
+                  </tr>
+                  <tr>
+                     <td class="black-style-font" style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #000 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span class="tip-element" style="border-bottom: dotted 2px #ccc;">Con crédito en kubo.financiero</span></td>
+                     <td style="font-weight: 300 !important;text-align: center !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><strong style="font-weight: bold;display: block;width: 100%;">###numCreEmpleados###</strong></td>
+                  </tr>
+               </table>
+            </div>
+            <div style="    
+               background: #c1c1c1;
+               font-family: arial;
+               font-size: 20px;
+               color: #fff;
+               padding: 6px 10px;
+               text-align: left;
+               font-weight: 600; margin:0 0 30px;">
+               Porcentaje
+            </div>
+            <div class="indicadores-modulo-container"  style="width: 300px; float: none; background: #f1f1f1;border: solid 1px #ccc;text-align: center; margin: 0 auto 30px !important; ">
+               <div class="indicadores-modulo total-operaciones-style" style="padding: 10px 2% 20px;">
+                  <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Operaciones de personas relacionadas</h5>
+                  <h2 style="font-weight: 600;font-family: arial; font-size: 45px;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;;width: 100%;text-align: center;">###porcentajePersRel###%</h2>
+                  <div class="limites-inicadores" style="width: 100%;">
+                     <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Límite</strong></p>
+                     <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descripPersRel###</p>
+                  </div>
+               </div>
+               <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel != 'CUMPLIMIENTO'}">
+                  <div class="indicador-estatus incumplimiento" style="background: red;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                     <h4 style="margin: 0;">
+                        <i class="fa fa-exclamation-circle"></i>
+                        <span>###estatusPersRel###</span>
+                     </h4>
+                  </div>
+               </h:panelgroup>
+               <h:panelgroup rendered="###estatusPersRel == 'CUMPLIMIENTO'}">
+                  <div class="indicador-estatus cumplimiento" style="background: #7ED321; width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                     <h4 style="margin: 0;">
+                        <i class="fa fa-check"></i>    
+                        <span>###estatusPersRel###</span>
+                     </h4>
+                  </div>
+               </h:panelgroup>
+            </div>
+         </div>
+         <div style="    
+            background: #c1c1c1;
+            font-family: arial;
+            font-size: 20px;
+            color: #fff;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: 600; margin:0 0 30px;">
+            Monto
+         </div>
+         <div class="indicadores-normativos_modulos_block vista-monto2" style="overflow: hidden;clear: both;margin: 0 0 30px;">
+            <div class="indicadores-modulo-container"  style="width: 300px; float: none; background: #f1f1f1;border: solid 1px #ccc;text-align: center; margin: 0 auto !important; ">
+               <div class="indicadores-modulo total-operaciones-style" style="padding: 10px 2% 20px;">
+                  <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Operaciones de personas relacionadas</h5>
+                  <h4 style="font-family: arial; font-size: 21px;font-weight: 600;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;width: 100%;">$ ###montoPersonaRel###</h4>
+                  <div class="limites-inicadores" style="width: 100%;">
+                     <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Límite</strong></p>
+                     <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descripPersRel###</p>
+                  </div>
+               </div>
+               <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel != 'CUMPLIMIENTO'}">
+                  <div class="indicador-estatus incumplimiento" style="background: red;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                     <h4 style="margin: 0;">
+                        <i class="fa fa-exclamation-circle"></i>
+                        <span>###estatusPersRel###</span>
+                     </h4>
+                  </div>
+               </h:panelgroup>
+               <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusPersRel == 'CUMPLIMIENTO'}">
+                  <div class="indicador-estatus cumplimiento" style="background: #7ED321;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                     <h4 style="margin: 0;">
+                        <i class="fa fa-check"></i>    
+                        <span>###estatusPersRel###</span>
+                     </h4>
+                  </div>
+               </h:panelgroup>
+            </div>
+         </div>
+         <div class="subcontent side-riesgoComun">
+            <div class="container-side">
+               <h3 style="font-weight: 400;font-family: arial; font-size: 20px;margin: 0 auto 50px;padding: 0 0 20px;color: #568e3e;border-bottom: dotted 3px #8FC450;text-align: center;">Riesgo Común</h3>
+               <div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+                  <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                     <tr>
+                        <td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;">¿Aplica identificación de créditos de riesgo común?</td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;">No</td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+                  <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                     <tr>
+                        <th style="background: #8FC450;font-family: arial; font-size: 15px;color: #fff;padding: 10px 10px;"></th>
+                        <th style="background: #8FC450;font-family: arial; font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
+                        <th style="background: #8FC450;font-family: arial; font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
+                        <th style="background: #8FC450;font-family: arial; font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
+                        <th style="background: #8FC450;font-family: arial; font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
+                     </tr>
+                     <tr>
+                        <td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;">Suma de los veinte créditos con mayor saldo</td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><strong style="font-weight: bold;display: block;width: 100%;">###descrip20CreMax###</strong></td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"> <strong style="font-weight: bold;display: block;width: 100%;"> $ ###monto20CredMax###</strong>  </td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>###porc20CredMax###%</span></td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;">
+                           <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax != 'CUMPLIMIENTO'}">
+                              <strong class="valor-negativo" style="font-weight: bold;color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i> ###estatus20CreMax###</strong>
+                           </h:panelgroup>
+                           <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus20CreMax == 'CUMPLIMIENTO'}">
+                              <a href="#" style="text-decoration: none;color: #4ca330;cursor: default;">###estatus20CreMax###</a>
+                           </h:panelgroup>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;">Crédito más grande</td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>###descripCredGde###</span></td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"> <strong style="font-weight: bold;display: block;width: 100%;"> $ ###montoCreditoGde### </strong>  </td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;"><span>###porcCreditoGde###%</span></td>
+                        <td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-family: arial; font-size: 15px !important;">
+                           <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde != 'CUMPLIMIENTO'}">
+                              <strong class="valor-negativo" style="font-weight: bold;color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i> ###estatusCreditoGde###</strong>
+                           </h:panelgroup>
+                           <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCreditoGde == 'CUMPLIMIENTO'}">
+                              <a href="#" style="text-decoration: none;color: #4ca330;cursor: default;">###estatusCreditoGde###</a>
+                           </h:panelgroup>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="subcontent side-cartera">
+         <div class="indicadores-normativos_modulos">
+            <h3 style="font-weight: 400;font-family: arial; font-size: 20px;margin: 0 auto 50px;padding: 0 0 20px;color: #568e3e;border-bottom: dotted 3px #8FC450;text-align: center;">Indicadores Normativos - cartera</h3>
+            <div style="    
+               background: #c1c1c1;
+               font-family: arial;
+               font-size: 20px;
+               color: #fff;
+               padding: 6px 10px;
+               text-align: left;
+               font-weight: 600; margin:0 0 30px;">
+               Porcentaje
+            </div>
+            <div class="indicadores-normativos_modulos_block vista-porcentaje" style="overflow: hidden;clear: both;margin: 0 0 20px;">
+               <div class="par-bloques" style="max-width: 555px; clear:0 auto; margin:0 auto 30px; overflow:hidden;">
+                  <div class="indicadores-modulo-container"  style="width: 265px;  float: left; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Coeficiente de liquidez</h5>
+                        <h2 style="font-weight: 600;font-family: arial; font-size: 45px;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;text-align: center;top: auto;left:auto;">###porcLiquidez###%</h2>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Mínimo permitido</strong></p>
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descripLiquidez###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i>
+                              <span>###estatusLiquidez###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i>    
+                              <span>###estatusLiquidez###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+                  <div class="indicadores-modulo-container"  style="width: 265px;  float: right;  background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Créditos con plazos entre 36 y 60 meses</h5>
+                        <h2 style="font-weight: 600;font-family: arial; font-size: 45px;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;text-align: center;top: auto;left:auto;">###porcentaje60meses###%</h2>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Máximo permitido</strong></p>
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descrip60Meses###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i><span>###estatus60Meses###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i>    <span>###estatus60Meses###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+               </div>
+               <div class="par-bloques" style="max-width: 555px; clear:0 auto; margin:0 auto 30px; overflow:hidden;">
+                  <div class="indicadores-modulo-container"  style="width: 265px;  float: left; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Relación entre monto máximo y capital neto</h5>
+                        <h2 style="font-weight: 600;font-family: arial; font-size: 45px;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;text-align: center;top: auto;left:auto;">###porcCreditoMax###%</h2>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Máximo permitido</strong></p>
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descripCredMax###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i><span>###estatusCredMax###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i>    <span>###estatusCredMax###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+                  <div class="indicadores-modulo-container"  style="width: 265px; float: right; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Créditos con plazos mayores a 30 años</h5>
+                        <h2 style="font-weight: 600;font-family: arial; font-size: 45px;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;text-align: center;top: auto;left:auto;">###porcentaje30Anios###%</h2>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descrip30Anios###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i> 
+                              <span>###estatus30Anios###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i> 
+                              <span>###estatus30Anios###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+               </div>
+            </div>
+            <div class="indicadores-normativos_modulos_block vista-monto" style="overflow: hidden;clear: both;margin: 0 0 20px;">
+               <div style="    
+                  background: #c1c1c1;
+                  font-family: arial;
+                  font-size: 20px;
+                  color: #fff;
+                  padding: 6px 10px;
+                  text-align: left;
+                  font-weight: 600; margin:0 0 30px;">
+                  Monto
+               </div>
+               <div class="par-bloques" style="max-width: 555px; clear:0 auto; margin:0 auto 30px; overflow:hidden;">
+                  <div class="indicadores-modulo-container"  style="width: 265px;  float: left; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Coeficiente de liquidez</h5>
+                        <h4 style="font-family: arial; font-size: 21px;font-weight: 600;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;top: auto;left: auto;">$###montoLiquidez###</h4>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Mínimo permitido</strong></p>
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descripLiquidez###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i>
+                              <span>###estatusLiquidez###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusLiquidez == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i>    
+                              <span>###estatusLiquidez###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+                  <div class="indicadores-modulo-container"  style="width:265px; float: right; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Créditos con plazos entre 36 y 60 meses</h5>
+                        <h4 style="font-family: arial; font-size: 21px;font-weight: 600;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;top: auto;left: auto;">$###monto60Meses### </h4>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Máximo permitido</strong></p>
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descrip60Meses###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i><span>###estatus60Meses###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus60Meses == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i>    <span>###estatus60Meses###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+               </div>
+               <div class="par-bloques" style="max-width: 555px; clear:0 auto; margin:0 auto 30px; overflow:hidden;">
+                  <div class="indicadores-modulo-container"  style="width: 265px;  float: left; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Relación entre monto máximo y capital neto</h5>
+                        <h4 style="font-family: arial; font-size: 21px;font-weight: 600;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;top: auto;left: auto;"> $###montoCreditoMax###</h4>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;"><strong style="font-weight: bold;">Máximo permitido</strong></p>
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descripCredMax###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i><span>###estatusCredMax###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatusCredMax == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i>    <span>###estatusCredMax###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+                  <div class="indicadores-modulo-container"  style="width: 265px; float: right; background: #f1f1f1;border: solid 1px #ccc;text-align: center;">
+                     <div class="indicadores-modulo" style="padding: 10px 2% 20px; position:relative;">
+                        <h5 style="color: #7ED321;font-family: arial; font-size: 17px;font-weight: 600;margin: 0 0 20px;padding: 0;line-height: 23px; height:46px;">Créditos con plazos mayores a 30 años</h5>
+                        <h4 style="font-family: arial; font-size: 21px;font-weight: 600;line-height: 36px;margin: 0 0 20px;padding: 0;color: #444444;position: relative;width: 100%;top: auto;left: auto;">$###monto30Anios###</h4>
+                        <div class="limites-inicadores" style="position: relative;top: auto;width: 100%;left: auto; height:40px">
+                           <p style="margin-top: 30px;margin: 0;padding: 0;list-style: none;font-family: arial; font-size: 16px;font-weight: 500;color: #666;">###descrip30Anios###</p>
+                        </div>
+                     </div>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios != 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus incumplimiento" style="position: relative;bottom: auto;background: red;left: auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-exclamation-circle"></i> 
+                              <span>###estatus30Anios###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                     <h:panelgroup rendered="#{resumenTableroNormativo.tableronormativoresumen.estatus30Anios == 'CUMPLIMIENTO'}">
+                        <div class="indicador-estatus cumplimiento" style="position: relative;bottom: auto;background: #7ED321;left:auto;width: 100%;padding: 10px 0;text-align: center;color: #fff;text-transform: uppercase;font-family: arial; font-size: 16px;">
+                           <h4 style="margin: 0;">
+                              <i class="fa fa-check"></i> 
+                              <span>###estatus30Anios###</span>
+                           </h4>
+                        </div>
+                     </h:panelgroup>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="subcontent side-expedientes">
 		
 					<div class="container-side">
-			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Expedientes</h3>
+			<h3 style="font-weight: 400;font-size: 20px;margin: 0 auto 50px;padding: 0 0 20px;color: #568e3e;border-bottom: dotted 3px #8FC450;text-align: center;">Expedientes</h3>
 					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
 					
 							<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-								<tr>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
-									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
-									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
-									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
-									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+								<tr class="row-top">
+									<th style="background: #8FC450;font-size: 13px !important;color: #fff;padding: 8px 5px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);text-align: center !important;"></th>
+									<th colspan="2" style="background: #8FC450;font-size: 13px !important;color: #fff;padding: 8px 5px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);text-align: center !important;">Cumple Vigencia	</th>
+									<th colspan="2" style="background: #8FC450;font-size: 13px !important;color: #fff;padding: 8px 5px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);text-align: center !important;">Cumple Legibilidad	</th>
+									<th colspan="2" style="background: #8FC450;font-size: 13px !important;color: #fff;padding: 8px 5px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);text-align: center !important;">Fue validado</th>
+									<th colspan="2" style="background: #8FC450;font-size: 13px !important;color: #fff;padding: 8px 5px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);text-align: center !important;">Auditoría	</th>
 									
 								</tr>
-								<tr>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Sí</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">No</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Sí</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">No</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Sí</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">No</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Revisados</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Con observaciones</th>
+								<tr class="row-top2">
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;"></th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">Sí</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">No</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">Sí</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">No</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">Sí</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">No</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">Revisados</th>
+									<th style="background: #8FC450;font-size: 13px;color: #fff;padding: 10px 10px;border-right: solid 1px rgb(214, 255, 165);border-bottom: solid 1px rgb(214, 255, 165);font-weight: 400 !important;text-align: center !important;">Con observaciones</th>
 								</tr>
 								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Identificación del Solicitante</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Identificación del Solicitante</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ident_ConObservaciones###</td>
+								</tr>
+								
+								<tr>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Solicitud de Crédito</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###sol_ConObservaciones###</td>
 								</tr>
 								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Identificación del Solicitante</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Capacidad de Pago</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ing_ConObservaciones###</td>
 								</tr>
 								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Solicitud de Crédito</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">5</td>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Consulta en la SIC</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###buro_ConObservaciones###</td>
 								</tr>
 								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Capacidad de Pago</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">3</td>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Comprobante de Domicilio</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###domi_ConObservaciones###</td>
 								</tr>
 								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Consulta en la SIC</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Garantías</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###gar_ConObservaciones###</td>
 								</tr>
 								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Comprobante de Domicilio</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Garantías</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Entrevista Personal</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+									<td style="font-weight: 400;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Entrevista Personal</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_No_CumpleVigencia###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_No_CumpleLegibilidad###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_No_FueValidado###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_Revisados###</td>
+									<td style="font-weight: 300 !important;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">###ent_ConObservaciones###</td>
 								</tr>
 								
 								
@@ -355,106 +536,542 @@
 					
 			   	</div>
 			   	
-				
-		</div>
-		</div>
-
-
-
-	<div class="subcontent side-riesgoOperativo">
-		
-					<div class="container-side">
-			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Tecnología</h3>
-					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-					
-					
-							<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-								<tr>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"><strong style="display: block;width: 100%;">>Eventos Relevantes (BIA)</strong></th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Número de eventos</th>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falta de energía eléctrica en las oficinas</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en los servicios de telefonía</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema Portal Kubo</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema SGB</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema SAFI</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en la comunicación con Buró de Crédito</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">3</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el Firewall</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en la administración de los servidores</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Ataque informático</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-								</tr>
-							</table>
-					</div>
-					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
 			
-									<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-								<tr>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Plan de recuperación de desastres (DRP)</th>
-									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Número de eventos</th>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de comunicación con Buró de Crédito</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">4</td>
-								</tr>
-									<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de bases de datos</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de servidores</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-								</tr>
-								<tr>
-									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Puesta en marcha de sitio alterno</td>
-									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-								</tr>
-							</table>
-					</div>	
-						<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
-			
-									<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
-										<tr>
-											<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
-											<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Exitosos</th>
-											<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Fallidos</th>
-										</tr>
-										<tr>
-											<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Eventos de pase a producción del  último mes</td>
-											<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">72</td>
-											<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
-										</tr>
-									</table>
-					
-				
-					</div>
 		</div>
-	</div>
-
-	</body>
-	</html>
+		</div>
+	
+      <div class="subcontent side-riesgoOperativo">
+         <div class="container-side">
+            <h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Tecnología</h3>
+            <div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                  <tr>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"><strong style="display: block;width: 100%;">>Eventos Relevantes (BIA)</strong></th>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Número de eventos</th>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falta de energía eléctrica en las oficinas</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en los servicios de telefonía</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema Portal Kubo</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema SGB</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema SAFI</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en la comunicación con Buró de Crédito</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">3</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el Firewall</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en la administración de los servidores</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Ataque informático</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+                  </tr>
+               </table>
+            </div>
+            <div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                  <tr>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Plan de recuperación de desastres (DRP)</th>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Número de eventos</th>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de comunicación con Buró de Crédito</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">4</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de bases de datos</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de servidores</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Puesta en marcha de sitio alterno</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+                  </tr>
+               </table>
+            </div>
+            <div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+                  <tr>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Exitosos</th>
+                     <th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Fallidos</th>
+                  </tr>
+                  <tr>
+                     <td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Eventos de pase a producción del  último mes</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">72</td>
+                     <td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+      <!-- 
+         <div class="subcontent side-personasRelacionadas">
+         	<div class="container-side">
+         			<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         				<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         					<tr>
+         						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Capital Neto del último trimestre</span></td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;">###capitalNeto###</strong> </td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Pasivos de Corto Plazo</span></td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###pasivoCortoPlazo###</strong> </td>
+         					</tr>
+         					<tr>
+         						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Saldo Cartera total</span></td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###totalCartera### </strong> </td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>Inversiones a la vista o con plazo menor a 30 días</span></td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###montoPasivoMenor### </strong> </td>
+         					</tr>
+         				</table>
+         			</div>
+         		</div>
+         		<div class="container-side">
+         			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Personas Relacionadas</h3>
+         		<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         				<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         					<tr>
+         						<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
+         						<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;"><span>Créditos Activos</span></th>
+         					</tr>
+         					<tr>
+         						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Empleados de Kubo con crédito	</td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###numCreEmpleados###</strong></td>
+         					</tr>
+         					<tr>
+         						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Personas Relacionadas con crédito	</td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###numOperacionesRel###</strong></td>
+         					</tr>
+         						<tr>
+         					<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Requirieron autorización del Comité de Personas Relacionadas	</td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###autorizaComite###</strong></td>
+         					</tr>
+         					<tr>
+         						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Requirieron autorización del Consejo de Administración	</td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###autorizaConsejo###</strong></td>
+         					</tr>
+         					<tr>
+         						<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Requirieron control de sus vínculos patrimoniales y de parentesco	</td>
+         						<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###autorizaParentesco###</strong></td>
+         					</tr>
+         				</table>
+         			</div>
+         	
+         				
+         				
+         				<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         						<tr>
+         							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
+         							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
+         							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
+         								<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
+         							<th style="background: #8FC450; font-family:arial;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
+         						</tr>
+         						<tr>
+         							<td style="padding: 10px 10px !important; font-family:arial;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Suma Total de operaciones de personas relacionadas</td>
+         							<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descripPersRel###</strong></td>
+         							<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###montoPersonaRel###</strong> </td>
+         									<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcentajePersRel###%</span></td>
+         							<td style="font-weight: 600;text-align: left !important;padding: 10px 10px !important; font-family:arial;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         								
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;">###estatusPersRel###<i class="fa fa-exclamation-circle"></i></strong>
+         							
+         							
+         									<a href="#" style="text-decoration: underline;">###estatusPersRel###</a>
+         							
+         							</td>
+         						</tr>
+         					</table>
+         			   </div>
+         				
+         		</div>
+         		
+         	
+         	</div>
+         
+         
+         
+         <div class="subcontent side-riesgoComun">
+         						<div class="container-side">
+         			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Riesgo Común</h3>
+         				<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         						<tr>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
+         								<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
+         						</tr>
+         						<tr>
+         							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Suma de los veinte créditos con mayor saldo</td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descrip20CreMax###</strong></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###monto20CredMax###</strong>  </td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porc20CredMax###%</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         							
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;">###estatus20CreMax###<i class="fa fa-exclamation-circle"></i></strong>
+         							
+         									<a href="#" style="text-decoration: underline;">###estatus20CreMax###</a>
+         							
+         								
+         							</td>
+         						</tr>
+         						<tr>
+         							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Crédito más grande</td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###descripCredGde###</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###montoCreditoGde### </strong>  </td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcCreditoGde###%</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         								
+         								
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;">###estatusCreditoGde###<i class="fa fa-exclamation-circle"></i></strong>
+         								
+         									<a href="#" style="text-decoration: underline;">###estatusCreditoGde###</a>
+         					
+         								
+         							</td>
+         						</tr>
+         					</table>
+         			   	</div>
+         		</div>
+         
+         		</div>
+         
+         
+         
+         
+         <div class="subcontent side-cartera">
+         						<div class="container-side">
+         			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Cartera</h3>
+         					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         						<tr>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
+         								<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
+         						</tr>
+         						<tr>
+         							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Créditos de hasta 60 meses</td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descrip60Meses###</strong></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;">###monto60Meses### </strong>  </td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcentaje60meses###%</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         								
+         								
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i>###estatus60Meses###</strong>
+         								
+         									<a href="#" style="text-decoration: underline;">###estatus60Meses###</a>
+         					
+         							
+         							</td>
+         						</tr>
+         						<tr>
+         							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Créditos de más de 30 añose</td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###descrip30Anios}</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###monto30Anios###   </strong>  </td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcentaje30Anios###%</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         								
+         								
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i> ###estatus30Anios###</strong>
+         							
+         									<a href="#" style="text-decoration: underline;">###estatus30Anios###</a>
+         								
+         							</td>
+         						</tr>
+         						<tr>
+         							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Coeficiente de Liquidez</td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###descripLiquidez}</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;"> ###montoLiquidez###  </strong>  </td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcLiquidez###%</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         								
+         								
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i>###estatusLiquidez###</strong>
+         								
+         									<a href="#" style="text-decoration: underline;">###estatusLiquidez###</a>
+         								
+         							
+         							</td>
+         						</tr>
+         					</table>
+         			   	</div>
+         			   	
+         			   	<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         					<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         						<tr>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;"></th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Límite</th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Suma Total</th>
+         								<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">%</th>
+         							<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;">Estatus</th>
+         						</tr>
+         						<tr>
+         							<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Crédito máximo</td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><strong style="display: block;width: 100%;">###descripCredMax###</strong></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> <strong style="display: block;width: 100%;">###montoCreditoMax### </strong>  </td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"><span>###porcCreditoMax###%</span></td>
+         							<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;"> 
+         								
+         								
+         									<strong class="valor-negativo" style="color: red;display: block;width: 100%;"><i class="fa fa-exclamation-circle"></i> ###estatusCredMax###</strong>
+         							
+         									<a href="#" style="text-decoration: underline;">###estatusCredMax###</a>
+         								
+         								
+         							</td>
+         						</tr>
+         					</table>
+         				</div>
+         		</div>
+         		</div>
+         
+         
+         	<div class="subcontent side-expedientes">
+         		
+         					<div class="container-side">
+         			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Expedientes</h3>
+         					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         					
+         							<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         								<tr>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         									<th colspan="2" style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         									
+         								</tr>
+         								<tr>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Sí</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">No</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Sí</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">No</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Sí</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">No</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Revisados</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Con observaciones</th>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Identificación del Solicitante</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Identificación del Solicitante</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Solicitud de Crédito</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">5</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Capacidad de Pago</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">3</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Consulta en la SIC</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Comprobante de Domicilio</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Garantías</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Entrevista Personal</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1520</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+         								</tr>
+         								
+         								
+         							</table>
+         					
+         			   	</div>
+         			   	
+         				
+         		</div>
+         		</div>
+         
+         
+         
+         	<div class="subcontent side-riesgoOperativo">
+         		
+         					<div class="container-side">
+         			<h3 style="color: #568e3e;font-size: 20px;font-weight: 400;border-bottom: dotted 3px #8FC450;padding: 0 0 20px;margin: 0 auto 50px;text-align: center;">Tecnología</h3>
+         					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         					
+         					
+         							<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         								<tr>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"><strong style="display: block;width: 100%;">>Eventos Relevantes (BIA)</strong></th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Número de eventos</th>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falta de energía eléctrica en las oficinas</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en los servicios de telefonía</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema Portal Kubo</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema SGB</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">1</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el sistema SAFI</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en la comunicación con Buró de Crédito</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">3</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en el Firewall</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">2</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Falla en la administración de los servidores</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Ataque informático</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         							</table>
+         					</div>
+         					<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         			
+         									<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         								<tr>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Plan de recuperación de desastres (DRP)</th>
+         									<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Número de eventos</th>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de comunicación con Buró de Crédito</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">4</td>
+         								</tr>
+         									<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de bases de datos</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Restauración de servidores</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         								<tr>
+         									<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Puesta en marcha de sitio alterno</td>
+         									<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         								</tr>
+         							</table>
+         					</div>	
+         						<div class="tabla-style2 articulos-desglose" style="margin: 0 0 30px;width: 100%;position: relative;padding: 0px 0 0;">
+         			
+         									<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;margin: 20px 0;">
+         										<tr>
+         											<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;"></th>
+         											<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Exitosos</th>
+         											<th style="background: #8FC450;font-size: 15px;color: #fff;padding: 10px 10px;font-family: arial;">Fallidos</th>
+         										</tr>
+         										<tr>
+         											<td style="font-family: arial;padding: 10px 10px !important;text-align: left !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">Eventos de pase a producción del  último mes</td>
+         											<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">72</td>
+         											<td style="font-family: arial;font-weight: 600;text-align: left !important;padding: 10px 10px !important;color: #666 !important;border-bottom: solid 1px rgba(204, 204, 204, 0.53) !important;font-size: 15px !important;">0</td>
+         										</tr>
+         									</table>
+         					
+         				
+         					</div>
+         		</div>
+         	</div>
+         -->
+   </body>
+</html>

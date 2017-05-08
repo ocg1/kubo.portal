@@ -100,8 +100,8 @@ public abstract class RoleFunctionDMO implements RoleFunctionIMO
 	protected final int EDICION_TIPO_CREDITO = 27;	
 	protected final int  AUTORIZAR_CONTRATOS = 29;	
 	protected final int    COPIAR_DOCUMENTOS = 30;
-	protected final int AUTORIZAR_PERSONAS_RELACIONADAS  = 31;
-	protected final int VER_PESTANA_TABLERO_NORMATIVO    = 32;
+	protected final int VER_PESTANA_TABLERO_NORMATIVO    = 31;
+	protected final int AUTORIZAR_PERSONAS_RELACIONADAS  = 32;	
 	protected final int VER_NOTAS_COMPORTAMIENTO_INUSUAL = 33;
 	protected final int REN_4_C = 34;
 	protected final int       MODIFICAR_TASA_ACREDITADO = 36;

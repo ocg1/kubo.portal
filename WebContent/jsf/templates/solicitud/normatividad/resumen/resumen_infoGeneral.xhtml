@@ -5,9 +5,29 @@
 				xmlns:p  = "http://primefaces.org/ui">
 				
 				<div class="infoGeneral">
+						
 						<h2>Tablero Normativo - Revisión Diaria</h2>
-						<p>Información al <strong>21/07/2016</strong> <a href="#">Cambiar fecha</a></p>
-						<p>Revisión por: <strong>Juan López</strong></p>
+						
+						<p>Información al 
+						
+							<strong>
+								<span class="actualDateCls"></span>
+							</strong> 
+							
+							<a href="#">Cambiar fecha</a>
+						
+						</p>
+						
+						<p>Revisado por: <strong>#{headerBean.name}</strong></p>
 						
 				</div>
+				
+				<script>
+				
+				setActualDate();
+				
+				
+				
+				</script>
+				
 </ui:composition>
